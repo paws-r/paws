@@ -64,7 +64,7 @@ schedule one-time or recurring scaling actions, and retrieve your
 recent scaling activity history.
 \item Suspend and resume scaling - Temporarily suspend and later resume
 automatic scaling by calling the
-\code{\link[=applicationautoscaling_register_scalable_target]{register_scalable_target}}
+\code{register_scalable_target}
 API action for any Application Auto Scaling scalable target. You can
 suspend and resume (individually or in combination) scale-out
 activities that are triggered by a scaling policy, scale-in
@@ -103,16 +103,16 @@ Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/applicati
 \section{Operations}{
 
 \tabular{ll}{
-\link[=applicationautoscaling_delete_scaling_policy]{delete_scaling_policy} \tab Deletes the specified scaling policy for an Application Auto Scaling scalable target\cr
-\link[=applicationautoscaling_delete_scheduled_action]{delete_scheduled_action} \tab Deletes the specified scheduled action for an Application Auto Scaling scalable target\cr
-\link[=applicationautoscaling_deregister_scalable_target]{deregister_scalable_target} \tab Deregisters an Application Auto Scaling scalable target when you have finished using it\cr
-\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets} \tab Gets information about the scalable targets in the specified namespace\cr
-\link[=applicationautoscaling_describe_scaling_activities]{describe_scaling_activities} \tab Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks\cr
-\link[=applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the Application Auto Scaling scaling policies for the specified service namespace\cr
-\link[=applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the Application Auto Scaling scheduled actions for the specified service namespace\cr
-\link[=applicationautoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Application Auto Scaling scalable target\cr
-\link[=applicationautoscaling_put_scheduled_action]{put_scheduled_action} \tab Creates or updates a scheduled action for an Application Auto Scaling scalable target\cr
-\link[=applicationautoscaling_register_scalable_target]{register_scalable_target} \tab Registers or updates a scalable target
+\link[paws.management.p1:applicationautoscaling_delete_scaling_policy]{delete_scaling_policy} \tab Deletes the specified scaling policy for an Application Auto Scaling scalable target\cr
+\link[paws.management.p1:applicationautoscaling_delete_scheduled_action]{delete_scheduled_action} \tab Deletes the specified scheduled action for an Application Auto Scaling scalable target\cr
+\link[paws.management.p1:applicationautoscaling_deregister_scalable_target]{deregister_scalable_target} \tab Deregisters an Application Auto Scaling scalable target when you have finished using it\cr
+\link[paws.management.p1:applicationautoscaling_describe_scalable_targets]{describe_scalable_targets} \tab Gets information about the scalable targets in the specified namespace\cr
+\link[paws.management.p1:applicationautoscaling_describe_scaling_activities]{describe_scaling_activities} \tab Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks\cr
+\link[paws.management.p1:applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the Application Auto Scaling scaling policies for the specified service namespace\cr
+\link[paws.management.p1:applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the Application Auto Scaling scheduled actions for the specified service namespace\cr
+\link[paws.management.p1:applicationautoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Application Auto Scaling scalable target\cr
+\link[paws.management.p1:applicationautoscaling_put_scheduled_action]{put_scheduled_action} \tab Creates or updates a scheduled action for an Application Auto Scaling scalable target\cr
+\link[paws.management.p1:applicationautoscaling_register_scalable_target]{register_scalable_target} \tab Registers or updates a scalable target
 }
 }
 

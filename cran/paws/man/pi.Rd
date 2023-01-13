@@ -89,12 +89,12 @@ Amazon DocumentDB Developer Guide</span>} .
 \section{Operations}{
 
 \tabular{ll}{
-\link[=pi_describe_dimension_keys]{describe_dimension_keys} \tab For a specific time period, retrieve the top N dimension keys for a metric\cr
-\link[=pi_get_dimension_key_details]{get_dimension_key_details} \tab Get the attributes of the specified dimension group for a DB instance or data source\cr
-\link[=pi_get_resource_metadata]{get_resource_metadata} \tab Retrieve the metadata for different features\cr
-\link[=pi_get_resource_metrics]{get_resource_metrics} \tab Retrieve Performance Insights metrics for a set of data sources over a time period\cr
-\link[=pi_list_available_resource_dimensions]{list_available_resource_dimensions} \tab Retrieve the dimensions that can be queried for each specified metric type on a specified DB instance\cr
-\link[=pi_list_available_resource_metrics]{list_available_resource_metrics} \tab Retrieve metrics of the specified types that can be queried for a specified DB instance
+\link[paws.management.p2:pi_describe_dimension_keys]{describe_dimension_keys} \tab For a specific time period, retrieve the top N dimension keys for a metric\cr
+\link[paws.management.p2:pi_get_dimension_key_details]{get_dimension_key_details} \tab Get the attributes of the specified dimension group for a DB instance or data source\cr
+\link[paws.management.p2:pi_get_resource_metadata]{get_resource_metadata} \tab Retrieve the metadata for different features\cr
+\link[paws.management.p2:pi_get_resource_metrics]{get_resource_metrics} \tab Retrieve Performance Insights metrics for a set of data sources over a time period\cr
+\link[paws.management.p2:pi_list_available_resource_dimensions]{list_available_resource_dimensions} \tab Retrieve the dimensions that can be queried for each specified metric type on a specified DB instance\cr
+\link[paws.management.p2:pi_list_available_resource_metrics]{list_available_resource_metrics} \tab Retrieve metrics of the specified types that can be queried for a specified DB instance
 }
 }
 

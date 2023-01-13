@@ -15,7 +15,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-Removes the \code{PublicAccessBlock} configuration for an Amazon S3 bucket. To use this operation, you must have the \code{s3:PutBucketPublicAccessBlock} permission. For more information about permissions, see Permissions Related to Bucket Subresource Operations and Managing Access Permissions to Your Amazon S3 Resources.
+Removes the \code{PublicAccessBlock} configuration for an Amazon S3 bucket. To use this operation, you must have the \code{s3:PutBucketPublicAccessBlock} permission. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations} and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
 See \url{https://paws-r.github.io/docs/s3/delete_public_access_block.html} for full documentation.
 }

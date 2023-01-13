@@ -508,7 +508,7 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
 #' If you are using an Amazon Web Services SDK tool or the CLI, you can
 #' specify `SourceRegion` (or `--source-region` for the CLI) instead of
@@ -720,7 +720,7 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
 #' If you are using an Amazon Web Services SDK tool or the CLI, you can
 #' specify `SourceRegion` (or `--source-region` for the CLI) instead of
@@ -854,23 +854,23 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #' 
 #' The following JSON fields are valid:
 #' 
-#' ### MediaImportTemplateVersion
+#' **MediaImportTemplateVersion**
 #' 
 #' Version of the CEV manifest. The date is in the format `YYYY-MM-DD`.
 #' 
-#' ### databaseInstallationFileNames
+#' **databaseInstallationFileNames**
 #' 
 #' Ordered list of installation files for the CEV.
 #' 
-#' ### opatchFileNames
+#' **opatchFileNames**
 #' 
 #' Ordered list of OPatch installers used for the Oracle DB engine.
 #' 
-#' ### psuRuPatchFileNames
+#' **psuRuPatchFileNames**
 #' 
 #' The PSU and RU patches for this CEV.
 #' 
-#' ### OtherPatchFileNames
+#' **OtherPatchFileNames**
 #' 
 #' The patches that are not in the list of PSU and RU patches. Amazon RDS
 #' applies these patches after applying the PSU and RU patches.
@@ -1190,7 +1190,7 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
 #' If you are using an Amazon Web Services SDK tool or the CLI, you can
 #' specify `SourceRegion` (or `--source-region` for the CLI) instead of
@@ -2936,7 +2936,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
 #' If you are using an Amazon Web Services SDK tool or the CLI, you can
 #' specify `SourceRegion` (or `--source-region` for the CLI) instead of
@@ -6893,11 +6893,11 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' @param Status The availability status to be assigned to the CEV. Valid values are as
 #' follows:
 #' 
-#' ### available
+#' **available**
 #' 
 #' You can use this CEV to create a new RDS Custom DB instance.
 #' 
-#' ### inactive
+#' **inactive**
 #' 
 #' You can create a new RDS Custom instance by restoring a DB snapshot with
 #' this CEV. You can't patch or create new instances with this CEV.
@@ -11223,7 +11223,7 @@ rds_start_db_instance <- function(DBInstanceIdentifier) {
 #' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
 #' If you are using an Amazon Web Services SDK tool or the CLI, you can
 #' specify `SourceRegion` (or `--source-region` for the CLI) instead of

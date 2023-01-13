@@ -69,43 +69,43 @@ To learn more about Amazon Redshift Serverless, see \href{https://docs.aws.amazo
 \section{Operations}{
 
 \tabular{ll}{
-\link[=redshiftserverless_convert_recovery_point_to_snapshot]{convert_recovery_point_to_snapshot} \tab Converts a recovery point to a snapshot\cr
-\link[=redshiftserverless_create_endpoint_access]{create_endpoint_access} \tab Creates an Amazon Redshift Serverless managed VPC endpoint\cr
-\link[=redshiftserverless_create_namespace]{create_namespace} \tab Creates a namespace in Amazon Redshift Serverless\cr
-\link[=redshiftserverless_create_snapshot]{create_snapshot} \tab Creates a snapshot of all databases in a namespace\cr
-\link[=redshiftserverless_create_usage_limit]{create_usage_limit} \tab Creates a usage limit for a specified Amazon Redshift Serverless usage type\cr
-\link[=redshiftserverless_create_workgroup]{create_workgroup} \tab Creates an workgroup in Amazon Redshift Serverless\cr
-\link[=redshiftserverless_delete_endpoint_access]{delete_endpoint_access} \tab Deletes an Amazon Redshift Serverless managed VPC endpoint\cr
-\link[=redshiftserverless_delete_namespace]{delete_namespace} \tab Deletes a namespace from Amazon Redshift Serverless\cr
-\link[=redshiftserverless_delete_resource_policy]{delete_resource_policy} \tab Deletes the specified resource policy\cr
-\link[=redshiftserverless_delete_snapshot]{delete_snapshot} \tab Deletes a snapshot from Amazon Redshift Serverless\cr
-\link[=redshiftserverless_delete_usage_limit]{delete_usage_limit} \tab Deletes a usage limit from Amazon Redshift Serverless\cr
-\link[=redshiftserverless_delete_workgroup]{delete_workgroup} \tab Deletes a workgroup\cr
-\link[=redshiftserverless_get_credentials]{get_credentials} \tab Returns a database user name and temporary password with temporary authorization to log in to Amazon Redshift Serverless\cr
-\link[=redshiftserverless_get_endpoint_access]{get_endpoint_access} \tab Returns information, such as the name, about a VPC endpoint\cr
-\link[=redshiftserverless_get_namespace]{get_namespace} \tab Returns information about a namespace in Amazon Redshift Serverless\cr
-\link[=redshiftserverless_get_recovery_point]{get_recovery_point} \tab Returns information about a recovery point\cr
-\link[=redshiftserverless_get_resource_policy]{get_resource_policy} \tab Returns a resource policy\cr
-\link[=redshiftserverless_get_snapshot]{get_snapshot} \tab Returns information about a specific snapshot\cr
-\link[=redshiftserverless_get_usage_limit]{get_usage_limit} \tab Returns information about a usage limit\cr
-\link[=redshiftserverless_get_workgroup]{get_workgroup} \tab Returns information about a specific workgroup\cr
-\link[=redshiftserverless_list_endpoint_access]{list_endpoint_access} \tab Returns an array of EndpointAccess objects and relevant information\cr
-\link[=redshiftserverless_list_namespaces]{list_namespaces} \tab Returns information about a list of specified namespaces\cr
-\link[=redshiftserverless_list_recovery_points]{list_recovery_points} \tab Returns an array of recovery points\cr
-\link[=redshiftserverless_list_snapshots]{list_snapshots} \tab Returns a list of snapshots\cr
-\link[=redshiftserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource\cr
-\link[=redshiftserverless_list_usage_limits]{list_usage_limits} \tab Lists all usage limits within Amazon Redshift Serverless\cr
-\link[=redshiftserverless_list_workgroups]{list_workgroups} \tab Returns information about a list of specified workgroups\cr
-\link[=redshiftserverless_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy\cr
-\link[=redshiftserverless_restore_from_recovery_point]{restore_from_recovery_point} \tab Restore the data from a recovery point\cr
-\link[=redshiftserverless_restore_from_snapshot]{restore_from_snapshot} \tab Restores a namespace from a snapshot\cr
-\link[=redshiftserverless_tag_resource]{tag_resource} \tab Assigns one or more tags to a resource\cr
-\link[=redshiftserverless_untag_resource]{untag_resource} \tab Removes a tag or set of tags from a resource\cr
-\link[=redshiftserverless_update_endpoint_access]{update_endpoint_access} \tab Updates an Amazon Redshift Serverless managed endpoint\cr
-\link[=redshiftserverless_update_namespace]{update_namespace} \tab Updates a namespace with the specified settings\cr
-\link[=redshiftserverless_update_snapshot]{update_snapshot} \tab Updates a snapshot\cr
-\link[=redshiftserverless_update_usage_limit]{update_usage_limit} \tab Update a usage limit in Amazon Redshift Serverless\cr
-\link[=redshiftserverless_update_workgroup]{update_workgroup} \tab Updates a workgroup with the specified configuration settings
+\link[paws.database:redshiftserverless_convert_recovery_point_to_snapshot]{convert_recovery_point_to_snapshot} \tab Converts a recovery point to a snapshot\cr
+\link[paws.database:redshiftserverless_create_endpoint_access]{create_endpoint_access} \tab Creates an Amazon Redshift Serverless managed VPC endpoint\cr
+\link[paws.database:redshiftserverless_create_namespace]{create_namespace} \tab Creates a namespace in Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_create_snapshot]{create_snapshot} \tab Creates a snapshot of all databases in a namespace\cr
+\link[paws.database:redshiftserverless_create_usage_limit]{create_usage_limit} \tab Creates a usage limit for a specified Amazon Redshift Serverless usage type\cr
+\link[paws.database:redshiftserverless_create_workgroup]{create_workgroup} \tab Creates an workgroup in Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_delete_endpoint_access]{delete_endpoint_access} \tab Deletes an Amazon Redshift Serverless managed VPC endpoint\cr
+\link[paws.database:redshiftserverless_delete_namespace]{delete_namespace} \tab Deletes a namespace from Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_delete_resource_policy]{delete_resource_policy} \tab Deletes the specified resource policy\cr
+\link[paws.database:redshiftserverless_delete_snapshot]{delete_snapshot} \tab Deletes a snapshot from Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_delete_usage_limit]{delete_usage_limit} \tab Deletes a usage limit from Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_delete_workgroup]{delete_workgroup} \tab Deletes a workgroup\cr
+\link[paws.database:redshiftserverless_get_credentials]{get_credentials} \tab Returns a database user name and temporary password with temporary authorization to log in to Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_get_endpoint_access]{get_endpoint_access} \tab Returns information, such as the name, about a VPC endpoint\cr
+\link[paws.database:redshiftserverless_get_namespace]{get_namespace} \tab Returns information about a namespace in Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_get_recovery_point]{get_recovery_point} \tab Returns information about a recovery point\cr
+\link[paws.database:redshiftserverless_get_resource_policy]{get_resource_policy} \tab Returns a resource policy\cr
+\link[paws.database:redshiftserverless_get_snapshot]{get_snapshot} \tab Returns information about a specific snapshot\cr
+\link[paws.database:redshiftserverless_get_usage_limit]{get_usage_limit} \tab Returns information about a usage limit\cr
+\link[paws.database:redshiftserverless_get_workgroup]{get_workgroup} \tab Returns information about a specific workgroup\cr
+\link[paws.database:redshiftserverless_list_endpoint_access]{list_endpoint_access} \tab Returns an array of EndpointAccess objects and relevant information\cr
+\link[paws.database:redshiftserverless_list_namespaces]{list_namespaces} \tab Returns information about a list of specified namespaces\cr
+\link[paws.database:redshiftserverless_list_recovery_points]{list_recovery_points} \tab Returns an array of recovery points\cr
+\link[paws.database:redshiftserverless_list_snapshots]{list_snapshots} \tab Returns a list of snapshots\cr
+\link[paws.database:redshiftserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource\cr
+\link[paws.database:redshiftserverless_list_usage_limits]{list_usage_limits} \tab Lists all usage limits within Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_list_workgroups]{list_workgroups} \tab Returns information about a list of specified workgroups\cr
+\link[paws.database:redshiftserverless_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy\cr
+\link[paws.database:redshiftserverless_restore_from_recovery_point]{restore_from_recovery_point} \tab Restore the data from a recovery point\cr
+\link[paws.database:redshiftserverless_restore_from_snapshot]{restore_from_snapshot} \tab Restores a namespace from a snapshot\cr
+\link[paws.database:redshiftserverless_tag_resource]{tag_resource} \tab Assigns one or more tags to a resource\cr
+\link[paws.database:redshiftserverless_untag_resource]{untag_resource} \tab Removes a tag or set of tags from a resource\cr
+\link[paws.database:redshiftserverless_update_endpoint_access]{update_endpoint_access} \tab Updates an Amazon Redshift Serverless managed endpoint\cr
+\link[paws.database:redshiftserverless_update_namespace]{update_namespace} \tab Updates a namespace with the specified settings\cr
+\link[paws.database:redshiftserverless_update_snapshot]{update_snapshot} \tab Updates a snapshot\cr
+\link[paws.database:redshiftserverless_update_usage_limit]{update_usage_limit} \tab Update a usage limit in Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_update_workgroup]{update_workgroup} \tab Updates a workgroup with the specified configuration settings
 }
 }
 

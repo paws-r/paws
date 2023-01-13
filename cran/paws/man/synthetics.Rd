@@ -71,27 +71,27 @@ considerations. For more information, see \href{https://docs.aws.amazon.com/Amaz
 \section{Operations}{
 
 \tabular{ll}{
-\link[=synthetics_associate_resource]{associate_resource} \tab Associates a canary with a group\cr
-\link[=synthetics_create_canary]{create_canary} \tab Creates a canary\cr
-\link[=synthetics_create_group]{create_group} \tab Creates a group which you can use to associate canaries with each other, including cross-Region canaries\cr
-\link[=synthetics_delete_canary]{delete_canary} \tab Permanently deletes the specified canary\cr
-\link[=synthetics_delete_group]{delete_group} \tab Deletes a group\cr
-\link[=synthetics_describe_canaries]{describe_canaries} \tab This operation returns a list of the canaries in your account, along with full details about each canary\cr
-\link[=synthetics_describe_canaries_last_run]{describe_canaries_last_run} \tab Use this operation to see information from the most recent run of each canary that you have created\cr
-\link[=synthetics_describe_runtime_versions]{describe_runtime_versions} \tab Returns a list of Synthetics canary runtime versions\cr
-\link[=synthetics_disassociate_resource]{disassociate_resource} \tab Removes a canary from a group\cr
-\link[=synthetics_get_canary]{get_canary} \tab Retrieves complete information about one canary\cr
-\link[=synthetics_get_canary_runs]{get_canary_runs} \tab Retrieves a list of runs for a specified canary\cr
-\link[=synthetics_get_group]{get_group} \tab Returns information about one group\cr
-\link[=synthetics_list_associated_groups]{list_associated_groups} \tab Returns a list of the groups that the specified canary is associated with\cr
-\link[=synthetics_list_group_resources]{list_group_resources} \tab This operation returns a list of the ARNs of the canaries that are associated with the specified group\cr
-\link[=synthetics_list_groups]{list_groups} \tab Returns a list of all groups in the account, displaying their names, unique IDs, and ARNs\cr
-\link[=synthetics_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a canary or group\cr
-\link[=synthetics_start_canary]{start_canary} \tab Use this operation to run a canary that has already been created\cr
-\link[=synthetics_stop_canary]{stop_canary} \tab Stops the canary to prevent all future runs\cr
-\link[=synthetics_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified canary or group\cr
-\link[=synthetics_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
-\link[=synthetics_update_canary]{update_canary} \tab Updates the configuration of a canary that has already been created
+\link[paws.management.p2:synthetics_associate_resource]{associate_resource} \tab Associates a canary with a group\cr
+\link[paws.management.p2:synthetics_create_canary]{create_canary} \tab Creates a canary\cr
+\link[paws.management.p2:synthetics_create_group]{create_group} \tab Creates a group which you can use to associate canaries with each other, including cross-Region canaries\cr
+\link[paws.management.p2:synthetics_delete_canary]{delete_canary} \tab Permanently deletes the specified canary\cr
+\link[paws.management.p2:synthetics_delete_group]{delete_group} \tab Deletes a group\cr
+\link[paws.management.p2:synthetics_describe_canaries]{describe_canaries} \tab This operation returns a list of the canaries in your account, along with full details about each canary\cr
+\link[paws.management.p2:synthetics_describe_canaries_last_run]{describe_canaries_last_run} \tab Use this operation to see information from the most recent run of each canary that you have created\cr
+\link[paws.management.p2:synthetics_describe_runtime_versions]{describe_runtime_versions} \tab Returns a list of Synthetics canary runtime versions\cr
+\link[paws.management.p2:synthetics_disassociate_resource]{disassociate_resource} \tab Removes a canary from a group\cr
+\link[paws.management.p2:synthetics_get_canary]{get_canary} \tab Retrieves complete information about one canary\cr
+\link[paws.management.p2:synthetics_get_canary_runs]{get_canary_runs} \tab Retrieves a list of runs for a specified canary\cr
+\link[paws.management.p2:synthetics_get_group]{get_group} \tab Returns information about one group\cr
+\link[paws.management.p2:synthetics_list_associated_groups]{list_associated_groups} \tab Returns a list of the groups that the specified canary is associated with\cr
+\link[paws.management.p2:synthetics_list_group_resources]{list_group_resources} \tab This operation returns a list of the ARNs of the canaries that are associated with the specified group\cr
+\link[paws.management.p2:synthetics_list_groups]{list_groups} \tab Returns a list of all groups in the account, displaying their names, unique IDs, and ARNs\cr
+\link[paws.management.p2:synthetics_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a canary or group\cr
+\link[paws.management.p2:synthetics_start_canary]{start_canary} \tab Use this operation to run a canary that has already been created\cr
+\link[paws.management.p2:synthetics_stop_canary]{stop_canary} \tab Stops the canary to prevent all future runs\cr
+\link[paws.management.p2:synthetics_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified canary or group\cr
+\link[paws.management.p2:synthetics_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
+\link[paws.management.p2:synthetics_update_canary]{update_canary} \tab Updates the configuration of a canary that has already been created
 }
 }
 

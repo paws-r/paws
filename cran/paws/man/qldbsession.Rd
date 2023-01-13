@@ -35,7 +35,7 @@ QLDB driver or the QLDB shell to execute data transactions on a ledger.
 \itemize{
 \item If you are working with an AWS SDK, use the QLDB driver. The driver
 provides a high-level abstraction layer above this \emph{QLDB Session}
-data plane and manages \code{\link[=qldbsession_send_command]{send_command}}
+data plane and manages \code{send_command}
 API calls for you. For information and a list of supported
 programming languages, see \href{https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html}{Getting started with the driver}
 in the \emph{Amazon QLDB Developer Guide}.
@@ -72,7 +72,7 @@ the QLDB driver to interact with a ledger. For information, see
 \section{Operations}{
 
 \tabular{ll}{
-\link[=qldbsession_send_command]{send_command} \tab Sends a command to an Amazon QLDB ledger
+\link[paws.database:qldbsession_send_command]{send_command} \tab Sends a command to an Amazon QLDB ledger
 }
 }
 

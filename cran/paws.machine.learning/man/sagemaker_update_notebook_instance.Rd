@@ -27,15 +27,13 @@ sagemaker_update_notebook_instance(
 \item{InstanceType}{The Amazon ML compute instance type.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role that SageMaker can assume
-to access the notebook instance. For more information, see SageMaker
-Roles.
+to access the notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker Roles}.
 
 To be able to pass this role to SageMaker, the caller of this API must
 have the \code{iam:PassRole} permission.}
 
 \item{LifecycleConfigName}{The name of a lifecycle configuration to associate with the notebook
-instance. For information about lifestyle configurations, see Step 2.1:
-(Optional) Customize a Notebook Instance.}
+instance. For information about lifestyle configurations, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.}
 
 \item{DisassociateLifecycleConfig}{Set to \code{true} to remove the notebook instance lifecycle configuration
 currently associated with the notebook instance. This operation is
@@ -57,21 +55,18 @@ stored as a resource in your account, or the URL of a Git repository in
 \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{Amazon Web Services CodeCommit}
 or in any other Git repository. When you open a notebook instance, it
 opens in the directory that contains this repository. For more
-information, see Associating Git Repositories with SageMaker Notebook
-Instances.}
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker Notebook Instances}.}
 
 \item{AdditionalCodeRepositories}{An array of up to three Git repositories to associate with the notebook
 instance. These can be either the names of Git repositories stored as
 resources in your account, or the URL of Git repositories in \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{Amazon Web Services CodeCommit}
 or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For more
-information, see Associating Git Repositories with SageMaker Notebook
-Instances.}
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker Notebook Instances}.}
 
 \item{AcceleratorTypes}{A list of the Elastic Inference (EI) instance types to associate with
 this notebook instance. Currently only one EI instance type can be
-associated with a notebook instance. For more information, see Using
-Elastic Inference in Amazon SageMaker.}
+associated with a notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html}{Using Elastic Inference in Amazon SageMaker}.}
 
 \item{DisassociateAcceleratorTypes}{A list of the Elastic Inference (EI) instance types to remove from this
 notebook instance. This operation is idempotent. If you specify an

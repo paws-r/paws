@@ -14,9 +14,8 @@ route53domains_get_domain_suggestions(
 \arguments{
 \item{DomainName}{[required] A domain name that you want to use as the basis for a list of possible
 domain names. The top-level domain (TLD), such as .com, must be a TLD
-that Route 53 supports. For a list of supported TLDs, see Domains that
-You Can Register with Amazon Route 53 in the \emph{Amazon Route 53 Developer
-Guide}.
+that Route 53 supports. For a list of supported TLDs, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
+in the \emph{Amazon Route 53 Developer Guide}.
 
 The domain name can contain only the following characters:
 \itemize{
@@ -30,8 +29,7 @@ label.
 
 Internationalized domain names are not supported for some top-level
 domains. To determine whether the TLD that you want to use supports
-internationalized domain names, see Domains that You Can Register with
-Amazon Route 53.}
+internationalized domain names, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}.}
 
 \item{SuggestionCount}{[required] The number of suggested domain names that you want Route 53 to return.
 Specify a value between 1 and 50.}

@@ -39,7 +39,7 @@ notebook instance, SageMaker assumes this role to perform tasks on your
 behalf. You must grant this role necessary permissions so SageMaker can
 perform these tasks. The policy must allow the SageMaker service
 principal (sagemaker.amazonaws.com) permissions to assume this role. For
-more information, see SageMaker Roles.
+more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker Roles}.
 
 To be able to pass this role to SageMaker, the caller of this API must
 have the \code{iam:PassRole} permission.}
@@ -47,16 +47,15 @@ have the \code{iam:PassRole} permission.}
 \item{KmsKeyId}{The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
 Service key that SageMaker uses to encrypt data on the storage volume
 attached to your notebook instance. The KMS key you provide must be
-enabled. For information, see Enabling and Disabling Keys in the \emph{Amazon
-Web Services Key Management Service Developer Guide}.}
+enabled. For information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html}{Enabling and Disabling Keys}
+in the \emph{Amazon Web Services Key Management Service Developer Guide}.}
 
 \item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
 Web Services resources in different ways, for example, by purpose,
 owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
 
 \item{LifecycleConfigName}{The name of a lifecycle configuration to associate with the notebook
-instance. For information about lifestyle configurations, see Step 2.1:
-(Optional) Customize a Notebook Instance.}
+instance. For information about lifestyle configurations, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.}
 
 \item{DirectInternetAccess}{Sets whether SageMaker provides internet access to the notebook
 instance. If you set this to \code{Disabled} this notebook instance is able
@@ -64,33 +63,30 @@ to access resources only in your VPC, and is not be able to connect to
 SageMaker training and endpoint services unless you configure a NAT
 Gateway in your VPC.
 
-For more information, see Notebook Instances Are Internet-Enabled by
-Default. You can set the value of this parameter to \code{Disabled} only if
-you set a value for the \code{SubnetId} parameter.}
+For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-interface-endpoint.html#appendix-notebook-and-internet-access}{Notebook Instances Are Internet-Enabled by Default}.
+You can set the value of this parameter to \code{Disabled} only if you set a
+value for the \code{SubnetId} parameter.}
 
 \item{VolumeSizeInGB}{The size, in GB, of the ML storage volume to attach to the notebook
 instance. The default value is 5 GB.}
 
 \item{AcceleratorTypes}{A list of Elastic Inference (EI) instance types to associate with this
 notebook instance. Currently, only one instance type can be associated
-with a notebook instance. For more information, see Using Elastic
-Inference in Amazon SageMaker.}
+with a notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html}{Using Elastic Inference in Amazon SageMaker}.}
 
 \item{DefaultCodeRepository}{A Git repository to associate with the notebook instance as its default
 code repository. This can be either the name of a Git repository stored
 as a resource in your account, or the URL of a Git repository in \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{Amazon Web Services CodeCommit}
 or in any other Git repository. When you open a notebook instance, it
 opens in the directory that contains this repository. For more
-information, see Associating Git Repositories with SageMaker Notebook
-Instances.}
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker Notebook Instances}.}
 
 \item{AdditionalCodeRepositories}{An array of up to three Git repositories to associate with the notebook
 instance. These can be either the names of Git repositories stored as
 resources in your account, or the URL of Git repositories in \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{Amazon Web Services CodeCommit}
 or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For more
-information, see Associating Git Repositories with SageMaker Notebook
-Instances.}
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker Notebook Instances}.}
 
 \item{RootAccess}{Whether root access is enabled or disabled for users of the notebook
 instance. The default value is \code{Enabled}.

@@ -59,8 +59,8 @@ way to connect to their instances.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=ec2instanceconnect_send_serial_console_ssh_public_key]{send_serial_console_ssh_public_key} \tab Pushes an SSH public key to the specified EC2 instance\cr
-\link[=ec2instanceconnect_send_ssh_public_key]{send_ssh_public_key} \tab Pushes an SSH public key to the specified EC2 instance for use by the specified user
+\link[paws.compute.p2:ec2instanceconnect_send_serial_console_ssh_public_key]{send_serial_console_ssh_public_key} \tab Pushes an SSH public key to the specified EC2 instance\cr
+\link[paws.compute.p2:ec2instanceconnect_send_ssh_public_key]{send_ssh_public_key} \tab Pushes an SSH public key to the specified EC2 instance for use by the specified user
 }
 }
 

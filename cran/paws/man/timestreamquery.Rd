@@ -57,19 +57,19 @@ Amazon Timestream Query
 \section{Operations}{
 
 \tabular{ll}{
-\link[=timestreamquery_cancel_query]{cancel_query} \tab Cancels a query that has been issued\cr
-\link[=timestreamquery_create_scheduled_query]{create_scheduled_query} \tab Create a scheduled query that will be run on your behalf at the configured schedule\cr
-\link[=timestreamquery_delete_scheduled_query]{delete_scheduled_query} \tab Deletes a given scheduled query\cr
-\link[=timestreamquery_describe_endpoints]{describe_endpoints} \tab DescribeEndpoints returns a list of available endpoints to make Timestream API calls against\cr
-\link[=timestreamquery_describe_scheduled_query]{describe_scheduled_query} \tab Provides detailed information about a scheduled query\cr
-\link[=timestreamquery_execute_scheduled_query]{execute_scheduled_query} \tab You can use this API to run a scheduled query manually\cr
-\link[=timestreamquery_list_scheduled_queries]{list_scheduled_queries} \tab Gets a list of all scheduled queries in the caller's Amazon account and Region\cr
-\link[=timestreamquery_list_tags_for_resource]{list_tags_for_resource} \tab List all tags on a Timestream query resource\cr
-\link[=timestreamquery_prepare_query]{prepare_query} \tab A synchronous operation that allows you to submit a query with parameters to be stored by Timestream for later running\cr
-\link[=timestreamquery_query]{query} \tab Query is a synchronous operation that enables you to run a query against your Amazon Timestream data\cr
-\link[=timestreamquery_tag_resource]{tag_resource} \tab Associate a set of tags with a Timestream resource\cr
-\link[=timestreamquery_untag_resource]{untag_resource} \tab Removes the association of tags from a Timestream query resource\cr
-\link[=timestreamquery_update_scheduled_query]{update_scheduled_query} \tab Update a scheduled query
+\link[paws.database:timestreamquery_cancel_query]{cancel_query} \tab Cancels a query that has been issued\cr
+\link[paws.database:timestreamquery_create_scheduled_query]{create_scheduled_query} \tab Create a scheduled query that will be run on your behalf at the configured schedule\cr
+\link[paws.database:timestreamquery_delete_scheduled_query]{delete_scheduled_query} \tab Deletes a given scheduled query\cr
+\link[paws.database:timestreamquery_describe_endpoints]{describe_endpoints} \tab DescribeEndpoints returns a list of available endpoints to make Timestream API calls against\cr
+\link[paws.database:timestreamquery_describe_scheduled_query]{describe_scheduled_query} \tab Provides detailed information about a scheduled query\cr
+\link[paws.database:timestreamquery_execute_scheduled_query]{execute_scheduled_query} \tab You can use this API to run a scheduled query manually\cr
+\link[paws.database:timestreamquery_list_scheduled_queries]{list_scheduled_queries} \tab Gets a list of all scheduled queries in the caller's Amazon account and Region\cr
+\link[paws.database:timestreamquery_list_tags_for_resource]{list_tags_for_resource} \tab List all tags on a Timestream query resource\cr
+\link[paws.database:timestreamquery_prepare_query]{prepare_query} \tab A synchronous operation that allows you to submit a query with parameters to be stored by Timestream for later running\cr
+\link[paws.database:timestreamquery_query]{query} \tab Query is a synchronous operation that enables you to run a query against your Amazon Timestream data\cr
+\link[paws.database:timestreamquery_tag_resource]{tag_resource} \tab Associate a set of tags with a Timestream resource\cr
+\link[paws.database:timestreamquery_untag_resource]{untag_resource} \tab Removes the association of tags from a Timestream query resource\cr
+\link[paws.database:timestreamquery_update_scheduled_query]{update_scheduled_query} \tab Update a scheduled query
 }
 }
 

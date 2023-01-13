@@ -57,14 +57,14 @@ Resource Groups Tagging API
 \section{Operations}{
 
 \tabular{ll}{
-\link[=resourcegroupstaggingapi_describe_report_creation]{describe_report_creation} \tab Describes the status of the StartReportCreation operation\cr
-\link[=resourcegroupstaggingapi_get_compliance_summary]{get_compliance_summary} \tab Returns a table that shows counts of resources that are noncompliant with their tag policies\cr
-\link[=resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified Amazon Web Services Region for the account\cr
-\link[=resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys currently in use in the specified Amazon Web Services Region for the calling account\cr
-\link[=resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key that are used in the specified Amazon Web Services Region for the calling account\cr
-\link[=resourcegroupstaggingapi_start_report_creation]{start_report_creation} \tab Generates a report that lists all tagged resources in the accounts across your organization and tells whether each resource is compliant with the effective tag policy\cr
-\link[=resourcegroupstaggingapi_tag_resources]{tag_resources} \tab Applies one or more tags to the specified resources\cr
-\link[=resourcegroupstaggingapi_untag_resources]{untag_resources} \tab Removes the specified tags from the specified resources
+\link[paws.management.p2:resourcegroupstaggingapi_describe_report_creation]{describe_report_creation} \tab Describes the status of the StartReportCreation operation\cr
+\link[paws.management.p2:resourcegroupstaggingapi_get_compliance_summary]{get_compliance_summary} \tab Returns a table that shows counts of resources that are noncompliant with their tag policies\cr
+\link[paws.management.p2:resourcegroupstaggingapi_get_resources]{get_resources} \tab Returns all the tagged or previously tagged resources that are located in the specified Amazon Web Services Region for the account\cr
+\link[paws.management.p2:resourcegroupstaggingapi_get_tag_keys]{get_tag_keys} \tab Returns all tag keys currently in use in the specified Amazon Web Services Region for the calling account\cr
+\link[paws.management.p2:resourcegroupstaggingapi_get_tag_values]{get_tag_values} \tab Returns all tag values for the specified key that are used in the specified Amazon Web Services Region for the calling account\cr
+\link[paws.management.p2:resourcegroupstaggingapi_start_report_creation]{start_report_creation} \tab Generates a report that lists all tagged resources in the accounts across your organization and tells whether each resource is compliant with the effective tag policy\cr
+\link[paws.management.p2:resourcegroupstaggingapi_tag_resources]{tag_resources} \tab Applies one or more tags to the specified resources\cr
+\link[paws.management.p2:resourcegroupstaggingapi_untag_resources]{untag_resources} \tab Removes the specified tags from the specified resources
 }
 }
 

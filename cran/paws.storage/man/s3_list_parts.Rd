@@ -25,8 +25,8 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
-name. For more information about access point ARNs, see Using access
-points in the \emph{Amazon S3 User Guide}.
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
 When using this action with Amazon S3 on Outposts, you must direct
 requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -34,8 +34,8 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When using this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts bucket ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see Using
-Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Object key for which the multipart upload was initiated.}
 
@@ -54,18 +54,18 @@ different account, the request fails with the HTTP status code
 
 \item{SSECustomerAlgorithm}{The server-side encryption (SSE) algorithm used to encrypt the object.
 This parameter is needed only when the object was created using a
-checksum algorithm. For more information, see Protecting data using
-SSE-C keys in the \emph{Amazon S3 User Guide}.}
+checksum algorithm. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{SSECustomerKey}{The server-side encryption (SSE) customer managed key. This parameter is
 needed only when the object was created using a checksum algorithm. For
-more information, see Protecting data using SSE-C keys in the \emph{Amazon S3
-User Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{SSECustomerKeyMD5}{The MD5 server-side encryption (SSE) customer managed key. This
 parameter is needed only when the object was created using a checksum
-algorithm. For more information, see Protecting data using SSE-C keys in
-the \emph{Amazon S3 User Guide}.}
+algorithm. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
 }
 \description{
 Lists the parts that have been uploaded for a specific multipart upload. This operation must include the upload ID, which you obtain by sending the initiate multipart upload request (see \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}). This request returns a maximum of 1,000 uploaded parts. The default number of parts returned is 1,000 parts. You can restrict the number of parts returned by specifying the \code{max-parts} request parameter. If your multipart upload consists of more than 1,000 parts, the response returns an \code{IsTruncated} field with the value of true, and a \code{NextPartNumberMarker} element. In subsequent \code{\link[=s3_list_parts]{list_parts}} requests you can include the part-number-marker query string parameter and set its value to the \code{NextPartNumberMarker} field value from the previous response.

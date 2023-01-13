@@ -57,37 +57,37 @@ The FinSpace APIs let you take actions inside the FinSpace.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=finspacedata_associate_user_to_permission_group]{associate_user_to_permission_group} \tab Adds a user account to a permission group to grant permissions for actions a user can perform in FinSpace\cr
-\link[=finspacedata_create_changeset]{create_changeset} \tab Creates a new Changeset in a FinSpace Dataset\cr
-\link[=finspacedata_create_dataset]{create_dataset} \tab Creates a new FinSpace Dataset\cr
-\link[=finspacedata_create_data_view]{create_data_view} \tab Creates a Dataview for a Dataset\cr
-\link[=finspacedata_create_permission_group]{create_permission_group} \tab Creates a group of permissions for various actions that a user can perform in FinSpace\cr
-\link[=finspacedata_create_user]{create_user} \tab Creates a new user in FinSpace\cr
-\link[=finspacedata_delete_dataset]{delete_dataset} \tab Deletes a FinSpace Dataset\cr
-\link[=finspacedata_delete_permission_group]{delete_permission_group} \tab Deletes a permission group\cr
-\link[=finspacedata_disable_user]{disable_user} \tab Denies access to the FinSpace web application and API for the specified user\cr
-\link[=finspacedata_disassociate_user_from_permission_group]{disassociate_user_from_permission_group} \tab Removes a user account from a permission group\cr
-\link[=finspacedata_enable_user]{enable_user} \tab Allows the specified user to access the FinSpace web application and API\cr
-\link[=finspacedata_get_changeset]{get_changeset} \tab Get information about a Changeset\cr
-\link[=finspacedata_get_dataset]{get_dataset} \tab Returns information about a Dataset\cr
-\link[=finspacedata_get_data_view]{get_data_view} \tab Gets information about a Dataview\cr
-\link[=finspacedata_get_external_data_view_access_details]{get_external_data_view_access_details} \tab Returns the credentials to access the external Dataview from an S3 location\cr
-\link[=finspacedata_get_permission_group]{get_permission_group} \tab Retrieves the details of a specific permission group\cr
-\link[=finspacedata_get_programmatic_access_credentials]{get_programmatic_access_credentials} \tab Request programmatic credentials to use with FinSpace SDK\cr
-\link[=finspacedata_get_user]{get_user} \tab Retrieves details for a specific user\cr
-\link[=finspacedata_get_working_location]{get_working_location} \tab A temporary Amazon S3 location, where you can copy your files from a source location to stage or use as a scratch space in FinSpace notebook\cr
-\link[=finspacedata_list_changesets]{list_changesets} \tab Lists the FinSpace Changesets for a Dataset\cr
-\link[=finspacedata_list_datasets]{list_datasets} \tab Lists all of the active Datasets that a user has access to\cr
-\link[=finspacedata_list_data_views]{list_data_views} \tab Lists all available Dataviews for a Dataset\cr
-\link[=finspacedata_list_permission_groups]{list_permission_groups} \tab Lists all available permission groups in FinSpace\cr
-\link[=finspacedata_list_permission_groups_by_user]{list_permission_groups_by_user} \tab Lists all the permission groups that are associated with a specific user account\cr
-\link[=finspacedata_list_users]{list_users} \tab Lists all available user accounts in FinSpace\cr
-\link[=finspacedata_list_users_by_permission_group]{list_users_by_permission_group} \tab Lists details of all the users in a specific permission group\cr
-\link[=finspacedata_reset_user_password]{reset_user_password} \tab Resets the password for a specified user ID and generates a temporary one\cr
-\link[=finspacedata_update_changeset]{update_changeset} \tab Updates a FinSpace Changeset\cr
-\link[=finspacedata_update_dataset]{update_dataset} \tab Updates a FinSpace Dataset\cr
-\link[=finspacedata_update_permission_group]{update_permission_group} \tab Modifies the details of a permission group\cr
-\link[=finspacedata_update_user]{update_user} \tab Modifies the details of the specified user account
+\link[paws.storage:finspacedata_associate_user_to_permission_group]{associate_user_to_permission_group} \tab Adds a user account to a permission group to grant permissions for actions a user can perform in FinSpace\cr
+\link[paws.storage:finspacedata_create_changeset]{create_changeset} \tab Creates a new Changeset in a FinSpace Dataset\cr
+\link[paws.storage:finspacedata_create_dataset]{create_dataset} \tab Creates a new FinSpace Dataset\cr
+\link[paws.storage:finspacedata_create_data_view]{create_data_view} \tab Creates a Dataview for a Dataset\cr
+\link[paws.storage:finspacedata_create_permission_group]{create_permission_group} \tab Creates a group of permissions for various actions that a user can perform in FinSpace\cr
+\link[paws.storage:finspacedata_create_user]{create_user} \tab Creates a new user in FinSpace\cr
+\link[paws.storage:finspacedata_delete_dataset]{delete_dataset} \tab Deletes a FinSpace Dataset\cr
+\link[paws.storage:finspacedata_delete_permission_group]{delete_permission_group} \tab Deletes a permission group\cr
+\link[paws.storage:finspacedata_disable_user]{disable_user} \tab Denies access to the FinSpace web application and API for the specified user\cr
+\link[paws.storage:finspacedata_disassociate_user_from_permission_group]{disassociate_user_from_permission_group} \tab Removes a user account from a permission group\cr
+\link[paws.storage:finspacedata_enable_user]{enable_user} \tab Allows the specified user to access the FinSpace web application and API\cr
+\link[paws.storage:finspacedata_get_changeset]{get_changeset} \tab Get information about a Changeset\cr
+\link[paws.storage:finspacedata_get_dataset]{get_dataset} \tab Returns information about a Dataset\cr
+\link[paws.storage:finspacedata_get_data_view]{get_data_view} \tab Gets information about a Dataview\cr
+\link[paws.storage:finspacedata_get_external_data_view_access_details]{get_external_data_view_access_details} \tab Returns the credentials to access the external Dataview from an S3 location\cr
+\link[paws.storage:finspacedata_get_permission_group]{get_permission_group} \tab Retrieves the details of a specific permission group\cr
+\link[paws.storage:finspacedata_get_programmatic_access_credentials]{get_programmatic_access_credentials} \tab Request programmatic credentials to use with FinSpace SDK\cr
+\link[paws.storage:finspacedata_get_user]{get_user} \tab Retrieves details for a specific user\cr
+\link[paws.storage:finspacedata_get_working_location]{get_working_location} \tab A temporary Amazon S3 location, where you can copy your files from a source location to stage or use as a scratch space in FinSpace notebook\cr
+\link[paws.storage:finspacedata_list_changesets]{list_changesets} \tab Lists the FinSpace Changesets for a Dataset\cr
+\link[paws.storage:finspacedata_list_datasets]{list_datasets} \tab Lists all of the active Datasets that a user has access to\cr
+\link[paws.storage:finspacedata_list_data_views]{list_data_views} \tab Lists all available Dataviews for a Dataset\cr
+\link[paws.storage:finspacedata_list_permission_groups]{list_permission_groups} \tab Lists all available permission groups in FinSpace\cr
+\link[paws.storage:finspacedata_list_permission_groups_by_user]{list_permission_groups_by_user} \tab Lists all the permission groups that are associated with a specific user account\cr
+\link[paws.storage:finspacedata_list_users]{list_users} \tab Lists all available user accounts in FinSpace\cr
+\link[paws.storage:finspacedata_list_users_by_permission_group]{list_users_by_permission_group} \tab Lists details of all the users in a specific permission group\cr
+\link[paws.storage:finspacedata_reset_user_password]{reset_user_password} \tab Resets the password for a specified user ID and generates a temporary one\cr
+\link[paws.storage:finspacedata_update_changeset]{update_changeset} \tab Updates a FinSpace Changeset\cr
+\link[paws.storage:finspacedata_update_dataset]{update_dataset} \tab Updates a FinSpace Dataset\cr
+\link[paws.storage:finspacedata_update_permission_group]{update_permission_group} \tab Modifies the details of a permission group\cr
+\link[paws.storage:finspacedata_update_user]{update_user} \tab Modifies the details of the specified user account
 }
 }
 

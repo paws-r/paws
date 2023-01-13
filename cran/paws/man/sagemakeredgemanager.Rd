@@ -58,9 +58,9 @@ agents.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=sagemakeredgemanager_get_deployments]{get_deployments} \tab Use to get the active deployments from a device\cr
-\link[=sagemakeredgemanager_get_device_registration]{get_device_registration} \tab Use to check if a device is registered with SageMaker Edge Manager\cr
-\link[=sagemakeredgemanager_send_heartbeat]{send_heartbeat} \tab Use to get the current status of devices registered on SageMaker Edge Manager
+\link[paws.machine.learning:sagemakeredgemanager_get_deployments]{get_deployments} \tab Use to get the active deployments from a device\cr
+\link[paws.machine.learning:sagemakeredgemanager_get_device_registration]{get_device_registration} \tab Use to check if a device is registered with SageMaker Edge Manager\cr
+\link[paws.machine.learning:sagemakeredgemanager_send_heartbeat]{send_heartbeat} \tab Use to get the current status of devices registered on SageMaker Edge Manager
 }
 }
 

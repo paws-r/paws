@@ -49,8 +49,8 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
-name. For more information about access point ARNs, see Using access
-points in the \emph{Amazon S3 User Guide}.
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
 When using this action with Amazon S3 on Outposts, you must direct
 requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -58,8 +58,8 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When using this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts bucket ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see Using
-Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Specifies caching behavior along the request/reply chain.}
 
@@ -103,8 +103,8 @@ Amazon S3 (for example, AES256, aws:kms).}
 created objects. The STANDARD storage class provides high durability and
 high availability. Depending on performance needs, you can specify a
 different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-Storage Class. For more information, see Storage Classes in the \emph{Amazon
-S3 User Guide}.}
+Storage Class. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
@@ -127,9 +127,8 @@ that the encryption key was transmitted without error.}
 encryption. All GET and PUT requests for an object protected by Amazon
 Web Services KMS will fail if not made via SSL or using SigV4. For
 information about configuring using any of the officially supported
-Amazon Web Services SDKs and Amazon Web Services CLI, see Specifying the
-Signature Version in Request Authentication in the \emph{Amazon S3 User
-Guide}.}
+Amazon Web Services SDKs and Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context to use for
 object encryption. The value of this header is a base64-encoded UTF-8
@@ -160,8 +159,8 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 
 \item{ChecksumAlgorithm}{Indicates the algorithm you want Amazon S3 to use to create the checksum
-for the object. For more information, see Checking object integrity in
-the \emph{Amazon S3 User Guide}.}
+for the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
 }
 \description{
 This action initiates a multipart upload and returns an upload ID. This upload ID is used to associate all of the parts in the specific multipart upload. You specify this upload ID in each of your subsequent upload part requests (see \code{\link[=s3_upload_part]{upload_part}}). You also include this upload ID in the final request to either complete or abort the multipart upload request.

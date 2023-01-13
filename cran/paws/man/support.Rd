@@ -53,23 +53,23 @@ The following list describes the Amazon Web Services Support case
 management operations:
 \itemize{
 \item Service names, issue categories, and available severity levels - The
-\code{\link[=support_describe_services]{describe_services}} and
-\code{\link[=support_describe_severity_levels]{describe_severity_levels}}
+\code{describe_services} and
+\code{describe_severity_levels}
 operations return Amazon Web Services service names, service codes,
 service categories, and problem severity levels. You use these
-values when you call the \code{\link[=support_create_case]{create_case}}
+values when you call the \code{create_case}
 operation.
 \item Case creation, case details, and case resolution - The
-\code{\link[=support_create_case]{create_case}},
-\code{\link[=support_describe_cases]{describe_cases}},
-\code{\link[=support_describe_attachment]{describe_attachment}}, and
-\code{\link[=support_resolve_case]{resolve_case}} operations create Amazon Web
+\code{create_case},
+\code{describe_cases},
+\code{describe_attachment}, and
+\code{resolve_case} operations create Amazon Web
 Services Support cases, retrieve information about cases, and
 resolve cases.
 \item Case communication - The
-\code{\link[=support_describe_communications]{describe_communications}},
-\code{\link[=support_add_communication_to_case]{add_communication_to_case}},
-and \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}
+\code{describe_communications},
+\code{add_communication_to_case},
+and \code{add_attachments_to_set}
 operations retrieve and add communications and attachments to Amazon
 Web Services Support cases.
 }
@@ -77,29 +77,29 @@ Web Services Support cases.
 The following list describes the operations available from the Amazon
 Web Services Support service for Trusted Advisor:
 \itemize{
-\item \code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}}
+\item \code{describe_trusted_advisor_checks}
 returns the list of checks that run against your Amazon Web Services
 resources.
 \item Using the \code{checkId} for a specific check returned by
-\code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}},
+\code{describe_trusted_advisor_checks},
 you can call
-\code{\link[=support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result}}
+\code{describe_trusted_advisor_check_result}
 to obtain the results for the check that you specified.
-\item \code{\link[=support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries}}
+\item \code{describe_trusted_advisor_check_summaries}
 returns summarized results for one or more Trusted Advisor checks.
-\item \code{\link[=support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check}}
+\item \code{refresh_trusted_advisor_check}
 requests that Trusted Advisor rerun a specified check.
-\item \code{\link[=support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses}}
+\item \code{describe_trusted_advisor_check_refresh_statuses}
 reports the refresh status of one or more checks.
 }
 
 For authentication of requests, Amazon Web Services Support uses
-\href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
+\href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process}.
 
-See \href{https://docs.aws.amazon.com/awssupport/latest/user/Welcome.html}{About the Amazon Web Services Support API} in
-the \emph{Amazon Web Services Support User Guide} for information about how
-to use this service to create and manage your support cases, and how to
-call Trusted Advisor for results of checks on your resources.
+See \href{https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html}{About the Amazon Web Services Support API}
+in the \emph{Amazon Web Services Support User Guide} for information about
+how to use this service to create and manage your support cases, and how
+to call Trusted Advisor for results of checks on your resources.
 }
 \section{Service syntax}{
 
@@ -128,20 +128,20 @@ call Trusted Advisor for results of checks on your resources.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=support_add_attachments_to_set]{add_attachments_to_set} \tab Adds one or more attachments to an attachment set\cr
-\link[=support_add_communication_to_case]{add_communication_to_case} \tab Adds additional customer communication to an Amazon Web Services Support case\cr
-\link[=support_create_case]{create_case} \tab Creates a case in the Amazon Web Services Support Center\cr
-\link[=support_describe_attachment]{describe_attachment} \tab Returns the attachment that has the specified ID\cr
-\link[=support_describe_cases]{describe_cases} \tab Returns a list of cases that you specify by passing one or more case IDs\cr
-\link[=support_describe_communications]{describe_communications} \tab Returns communications and attachments for one or more support cases\cr
-\link[=support_describe_services]{describe_services} \tab Returns the current list of Amazon Web Services services and a list of service categories for each service\cr
-\link[=support_describe_severity_levels]{describe_severity_levels} \tab Returns the list of severity levels that you can assign to a support case\cr
-\link[=support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses} \tab Returns the refresh status of the Trusted Advisor checks that have the specified check IDs\cr
-\link[=support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result} \tab Returns the results of the Trusted Advisor check that has the specified check ID\cr
-\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks} \tab Returns information about all available Trusted Advisor checks, including the name, ID, category, description, and metadata\cr
-\link[=support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries} \tab Returns the results for the Trusted Advisor check summaries for the check IDs that you specified\cr
-\link[=support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check} \tab Refreshes the Trusted Advisor check that you specify using the check ID\cr
-\link[=support_resolve_case]{resolve_case} \tab Resolves a support case
+\link[paws.management.p2:support_add_attachments_to_set]{add_attachments_to_set} \tab Adds one or more attachments to an attachment set\cr
+\link[paws.management.p2:support_add_communication_to_case]{add_communication_to_case} \tab Adds additional customer communication to an Amazon Web Services Support case\cr
+\link[paws.management.p2:support_create_case]{create_case} \tab Creates a case in the Amazon Web Services Support Center\cr
+\link[paws.management.p2:support_describe_attachment]{describe_attachment} \tab Returns the attachment that has the specified ID\cr
+\link[paws.management.p2:support_describe_cases]{describe_cases} \tab Returns a list of cases that you specify by passing one or more case IDs\cr
+\link[paws.management.p2:support_describe_communications]{describe_communications} \tab Returns communications and attachments for one or more support cases\cr
+\link[paws.management.p2:support_describe_services]{describe_services} \tab Returns the current list of Amazon Web Services services and a list of service categories for each service\cr
+\link[paws.management.p2:support_describe_severity_levels]{describe_severity_levels} \tab Returns the list of severity levels that you can assign to a support case\cr
+\link[paws.management.p2:support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses} \tab Returns the refresh status of the Trusted Advisor checks that have the specified check IDs\cr
+\link[paws.management.p2:support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result} \tab Returns the results of the Trusted Advisor check that has the specified check ID\cr
+\link[paws.management.p2:support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks} \tab Returns information about all available Trusted Advisor checks, including the name, ID, category, description, and metadata\cr
+\link[paws.management.p2:support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries} \tab Returns the results for the Trusted Advisor check summaries for the check IDs that you specified\cr
+\link[paws.management.p2:support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check} \tab Refreshes the Trusted Advisor check that you specify using the check ID\cr
+\link[paws.management.p2:support_resolve_case]{resolve_case} \tab Resolves a support case
 }
 }
 

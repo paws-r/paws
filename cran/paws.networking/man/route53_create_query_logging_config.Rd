@@ -16,8 +16,11 @@ Route 53 to send query logs to. This is the format of the ARN:
 arn:aws:logs:\emph{region}:\emph{account-id}:log-group:\emph{log_group_name}
 
 To get the ARN for a log group, you can use the CloudWatch console, the
-DescribeLogGroups API action, the describe-log-groups command, or the
-applicable command in one of the Amazon Web Services SDKs.}
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html}{DescribeLogGroups}
+API action, the
+\href{https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html}{describe-log-groups}
+command, or the applicable command in one of the Amazon Web Services
+SDKs.}
 }
 \description{
 Creates a configuration for DNS query logging. After you create a query logging configuration, Amazon Route 53 begins to publish log data to an Amazon CloudWatch Logs log group.

@@ -126,53 +126,53 @@ deployment, and to get details about Amazon ECS service deployments.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=codedeploy_add_tags_to_on_premises_instances]{add_tags_to_on_premises_instances} \tab Adds tags to on-premises instances\cr
-\link[=codedeploy_batch_get_application_revisions]{batch_get_application_revisions} \tab Gets information about one or more application revisions\cr
-\link[=codedeploy_batch_get_applications]{batch_get_applications} \tab Gets information about one or more applications\cr
-\link[=codedeploy_batch_get_deployment_groups]{batch_get_deployment_groups} \tab Gets information about one or more deployment groups\cr
-\link[=codedeploy_batch_get_deployment_instances]{batch_get_deployment_instances} \tab This method works, but is deprecated\cr
-\link[=codedeploy_batch_get_deployments]{batch_get_deployments} \tab Gets information about one or more deployments\cr
-\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets} \tab Returns an array of one or more targets associated with a deployment\cr
-\link[=codedeploy_batch_get_on_premises_instances]{batch_get_on_premises_instances} \tab Gets information about one or more on-premises instances\cr
-\link[=codedeploy_continue_deployment]{continue_deployment} \tab For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse\cr
-\link[=codedeploy_create_application]{create_application} \tab Creates an application\cr
-\link[=codedeploy_create_deployment]{create_deployment} \tab Deploys an application revision through the specified deployment group\cr
-\link[=codedeploy_create_deployment_config]{create_deployment_config} \tab Creates a deployment configuration\cr
-\link[=codedeploy_create_deployment_group]{create_deployment_group} \tab Creates a deployment group to which application revisions are deployed\cr
-\link[=codedeploy_delete_application]{delete_application} \tab Deletes an application\cr
-\link[=codedeploy_delete_deployment_config]{delete_deployment_config} \tab Deletes a deployment configuration\cr
-\link[=codedeploy_delete_deployment_group]{delete_deployment_group} \tab Deletes a deployment group\cr
-\link[=codedeploy_delete_git_hub_account_token]{delete_git_hub_account_token} \tab Deletes a GitHub account connection\cr
-\link[=codedeploy_delete_resources_by_external_id]{delete_resources_by_external_id} \tab Deletes resources linked to an external ID\cr
-\link[=codedeploy_deregister_on_premises_instance]{deregister_on_premises_instance} \tab Deregisters an on-premises instance\cr
-\link[=codedeploy_get_application]{get_application} \tab Gets information about an application\cr
-\link[=codedeploy_get_application_revision]{get_application_revision} \tab Gets information about an application revision\cr
-\link[=codedeploy_get_deployment]{get_deployment} \tab Gets information about a deployment\cr
-\link[=codedeploy_get_deployment_config]{get_deployment_config} \tab Gets information about a deployment configuration\cr
-\link[=codedeploy_get_deployment_group]{get_deployment_group} \tab Gets information about a deployment group\cr
-\link[=codedeploy_get_deployment_instance]{get_deployment_instance} \tab Gets information about an instance as part of a deployment\cr
-\link[=codedeploy_get_deployment_target]{get_deployment_target} \tab Returns information about a deployment target\cr
-\link[=codedeploy_get_on_premises_instance]{get_on_premises_instance} \tab Gets information about an on-premises instance\cr
-\link[=codedeploy_list_application_revisions]{list_application_revisions} \tab Lists information about revisions for an application\cr
-\link[=codedeploy_list_applications]{list_applications} \tab Lists the applications registered with the IAM user or AWS account\cr
-\link[=codedeploy_list_deployment_configs]{list_deployment_configs} \tab Lists the deployment configurations with the IAM user or AWS account\cr
-\link[=codedeploy_list_deployment_groups]{list_deployment_groups} \tab Lists the deployment groups for an application registered with the IAM user or AWS account\cr
-\link[=codedeploy_list_deployment_instances]{list_deployment_instances} \tab The newer BatchGetDeploymentTargets should be used instead because it works with all compute types\cr
-\link[=codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the IAM user or AWS account\cr
-\link[=codedeploy_list_deployment_targets]{list_deployment_targets} \tab Returns an array of target IDs that are associated a deployment\cr
-\link[=codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names} \tab Lists the names of stored connections to GitHub accounts\cr
-\link[=codedeploy_list_on_premises_instances]{list_on_premises_instances} \tab Gets a list of names for one or more on-premises instances\cr
-\link[=codedeploy_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the resource identified by a specified Amazon Resource Name (ARN)\cr
-\link[=codedeploy_put_lifecycle_event_hook_execution_status]{put_lifecycle_event_hook_execution_status} \tab Sets the result of a Lambda validation function\cr
-\link[=codedeploy_register_application_revision]{register_application_revision} \tab Registers with AWS CodeDeploy a revision for the specified application\cr
-\link[=codedeploy_register_on_premises_instance]{register_on_premises_instance} \tab Registers an on-premises instance\cr
-\link[=codedeploy_remove_tags_from_on_premises_instances]{remove_tags_from_on_premises_instances} \tab Removes one or more tags from one or more on-premises instances\cr
-\link[=codedeploy_skip_wait_time_for_instance_termination]{skip_wait_time_for_instance_termination} \tab In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete\cr
-\link[=codedeploy_stop_deployment]{stop_deployment} \tab Attempts to stop an ongoing deployment\cr
-\link[=codedeploy_tag_resource]{tag_resource} \tab Associates the list of tags in the input Tags parameter with the resource identified by the ResourceArn input parameter\cr
-\link[=codedeploy_untag_resource]{untag_resource} \tab Disassociates a resource from a list of tags\cr
-\link[=codedeploy_update_application]{update_application} \tab Changes the name of an application\cr
-\link[=codedeploy_update_deployment_group]{update_deployment_group} \tab Changes information about a deployment group
+\link[paws.developer.tools:codedeploy_add_tags_to_on_premises_instances]{add_tags_to_on_premises_instances} \tab Adds tags to on-premises instances\cr
+\link[paws.developer.tools:codedeploy_batch_get_application_revisions]{batch_get_application_revisions} \tab Gets information about one or more application revisions\cr
+\link[paws.developer.tools:codedeploy_batch_get_applications]{batch_get_applications} \tab Gets information about one or more applications\cr
+\link[paws.developer.tools:codedeploy_batch_get_deployment_groups]{batch_get_deployment_groups} \tab Gets information about one or more deployment groups\cr
+\link[paws.developer.tools:codedeploy_batch_get_deployment_instances]{batch_get_deployment_instances} \tab This method works, but is deprecated\cr
+\link[paws.developer.tools:codedeploy_batch_get_deployments]{batch_get_deployments} \tab Gets information about one or more deployments\cr
+\link[paws.developer.tools:codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets} \tab Returns an array of one or more targets associated with a deployment\cr
+\link[paws.developer.tools:codedeploy_batch_get_on_premises_instances]{batch_get_on_premises_instances} \tab Gets information about one or more on-premises instances\cr
+\link[paws.developer.tools:codedeploy_continue_deployment]{continue_deployment} \tab For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse\cr
+\link[paws.developer.tools:codedeploy_create_application]{create_application} \tab Creates an application\cr
+\link[paws.developer.tools:codedeploy_create_deployment]{create_deployment} \tab Deploys an application revision through the specified deployment group\cr
+\link[paws.developer.tools:codedeploy_create_deployment_config]{create_deployment_config} \tab Creates a deployment configuration\cr
+\link[paws.developer.tools:codedeploy_create_deployment_group]{create_deployment_group} \tab Creates a deployment group to which application revisions are deployed\cr
+\link[paws.developer.tools:codedeploy_delete_application]{delete_application} \tab Deletes an application\cr
+\link[paws.developer.tools:codedeploy_delete_deployment_config]{delete_deployment_config} \tab Deletes a deployment configuration\cr
+\link[paws.developer.tools:codedeploy_delete_deployment_group]{delete_deployment_group} \tab Deletes a deployment group\cr
+\link[paws.developer.tools:codedeploy_delete_git_hub_account_token]{delete_git_hub_account_token} \tab Deletes a GitHub account connection\cr
+\link[paws.developer.tools:codedeploy_delete_resources_by_external_id]{delete_resources_by_external_id} \tab Deletes resources linked to an external ID\cr
+\link[paws.developer.tools:codedeploy_deregister_on_premises_instance]{deregister_on_premises_instance} \tab Deregisters an on-premises instance\cr
+\link[paws.developer.tools:codedeploy_get_application]{get_application} \tab Gets information about an application\cr
+\link[paws.developer.tools:codedeploy_get_application_revision]{get_application_revision} \tab Gets information about an application revision\cr
+\link[paws.developer.tools:codedeploy_get_deployment]{get_deployment} \tab Gets information about a deployment\cr
+\link[paws.developer.tools:codedeploy_get_deployment_config]{get_deployment_config} \tab Gets information about a deployment configuration\cr
+\link[paws.developer.tools:codedeploy_get_deployment_group]{get_deployment_group} \tab Gets information about a deployment group\cr
+\link[paws.developer.tools:codedeploy_get_deployment_instance]{get_deployment_instance} \tab Gets information about an instance as part of a deployment\cr
+\link[paws.developer.tools:codedeploy_get_deployment_target]{get_deployment_target} \tab Returns information about a deployment target\cr
+\link[paws.developer.tools:codedeploy_get_on_premises_instance]{get_on_premises_instance} \tab Gets information about an on-premises instance\cr
+\link[paws.developer.tools:codedeploy_list_application_revisions]{list_application_revisions} \tab Lists information about revisions for an application\cr
+\link[paws.developer.tools:codedeploy_list_applications]{list_applications} \tab Lists the applications registered with the IAM user or AWS account\cr
+\link[paws.developer.tools:codedeploy_list_deployment_configs]{list_deployment_configs} \tab Lists the deployment configurations with the IAM user or AWS account\cr
+\link[paws.developer.tools:codedeploy_list_deployment_groups]{list_deployment_groups} \tab Lists the deployment groups for an application registered with the IAM user or AWS account\cr
+\link[paws.developer.tools:codedeploy_list_deployment_instances]{list_deployment_instances} \tab The newer BatchGetDeploymentTargets should be used instead because it works with all compute types\cr
+\link[paws.developer.tools:codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the IAM user or AWS account\cr
+\link[paws.developer.tools:codedeploy_list_deployment_targets]{list_deployment_targets} \tab Returns an array of target IDs that are associated a deployment\cr
+\link[paws.developer.tools:codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names} \tab Lists the names of stored connections to GitHub accounts\cr
+\link[paws.developer.tools:codedeploy_list_on_premises_instances]{list_on_premises_instances} \tab Gets a list of names for one or more on-premises instances\cr
+\link[paws.developer.tools:codedeploy_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the resource identified by a specified Amazon Resource Name (ARN)\cr
+\link[paws.developer.tools:codedeploy_put_lifecycle_event_hook_execution_status]{put_lifecycle_event_hook_execution_status} \tab Sets the result of a Lambda validation function\cr
+\link[paws.developer.tools:codedeploy_register_application_revision]{register_application_revision} \tab Registers with AWS CodeDeploy a revision for the specified application\cr
+\link[paws.developer.tools:codedeploy_register_on_premises_instance]{register_on_premises_instance} \tab Registers an on-premises instance\cr
+\link[paws.developer.tools:codedeploy_remove_tags_from_on_premises_instances]{remove_tags_from_on_premises_instances} \tab Removes one or more tags from one or more on-premises instances\cr
+\link[paws.developer.tools:codedeploy_skip_wait_time_for_instance_termination]{skip_wait_time_for_instance_termination} \tab In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete\cr
+\link[paws.developer.tools:codedeploy_stop_deployment]{stop_deployment} \tab Attempts to stop an ongoing deployment\cr
+\link[paws.developer.tools:codedeploy_tag_resource]{tag_resource} \tab Associates the list of tags in the input Tags parameter with the resource identified by the ResourceArn input parameter\cr
+\link[paws.developer.tools:codedeploy_untag_resource]{untag_resource} \tab Disassociates a resource from a list of tags\cr
+\link[paws.developer.tools:codedeploy_update_application]{update_application} \tab Changes the name of an application\cr
+\link[paws.developer.tools:codedeploy_update_deployment_group]{update_deployment_group} \tab Changes information about a deployment group
 }
 }
 

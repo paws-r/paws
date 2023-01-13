@@ -61,39 +61,39 @@ in the \emph{AWS Panorama Developer Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=panorama_create_application_instance]{create_application_instance} \tab Creates an application instance and deploys it to a device\cr
-\link[=panorama_create_job_for_devices]{create_job_for_devices} \tab Creates a job to run on one or more devices\cr
-\link[=panorama_create_node_from_template_job]{create_node_from_template_job} \tab Creates a camera stream node\cr
-\link[=panorama_create_package]{create_package} \tab Creates a package and storage location in an Amazon S3 access point\cr
-\link[=panorama_create_package_import_job]{create_package_import_job} \tab Imports a node package\cr
-\link[=panorama_delete_device]{delete_device} \tab Deletes a device\cr
-\link[=panorama_delete_package]{delete_package} \tab Deletes a package\cr
-\link[=panorama_deregister_package_version]{deregister_package_version} \tab Deregisters a package version\cr
-\link[=panorama_describe_application_instance]{describe_application_instance} \tab Returns information about an application instance on a device\cr
-\link[=panorama_describe_application_instance_details]{describe_application_instance_details} \tab Returns information about an application instance's configuration manifest\cr
-\link[=panorama_describe_device]{describe_device} \tab Returns information about a device\cr
-\link[=panorama_describe_device_job]{describe_device_job} \tab Returns information about a device job\cr
-\link[=panorama_describe_node]{describe_node} \tab Returns information about a node\cr
-\link[=panorama_describe_node_from_template_job]{describe_node_from_template_job} \tab Returns information about a job to create a camera stream node\cr
-\link[=panorama_describe_package]{describe_package} \tab Returns information about a package\cr
-\link[=panorama_describe_package_import_job]{describe_package_import_job} \tab Returns information about a package import job\cr
-\link[=panorama_describe_package_version]{describe_package_version} \tab Returns information about a package version\cr
-\link[=panorama_list_application_instance_dependencies]{list_application_instance_dependencies} \tab Returns a list of application instance dependencies\cr
-\link[=panorama_list_application_instance_node_instances]{list_application_instance_node_instances} \tab Returns a list of application node instances\cr
-\link[=panorama_list_application_instances]{list_application_instances} \tab Returns a list of application instances\cr
-\link[=panorama_list_devices]{list_devices} \tab Returns a list of devices\cr
-\link[=panorama_list_devices_jobs]{list_devices_jobs} \tab Returns a list of jobs\cr
-\link[=panorama_list_node_from_template_jobs]{list_node_from_template_jobs} \tab Returns a list of camera stream node jobs\cr
-\link[=panorama_list_nodes]{list_nodes} \tab Returns a list of nodes\cr
-\link[=panorama_list_package_import_jobs]{list_package_import_jobs} \tab Returns a list of package import jobs\cr
-\link[=panorama_list_packages]{list_packages} \tab Returns a list of packages\cr
-\link[=panorama_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for a resource\cr
-\link[=panorama_provision_device]{provision_device} \tab Creates a device and returns a configuration archive\cr
-\link[=panorama_register_package_version]{register_package_version} \tab Registers a package version\cr
-\link[=panorama_remove_application_instance]{remove_application_instance} \tab Removes an application instance\cr
-\link[=panorama_tag_resource]{tag_resource} \tab Tags a resource\cr
-\link[=panorama_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
-\link[=panorama_update_device_metadata]{update_device_metadata} \tab Updates a device's metadata
+\link[paws.machine.learning:panorama_create_application_instance]{create_application_instance} \tab Creates an application instance and deploys it to a device\cr
+\link[paws.machine.learning:panorama_create_job_for_devices]{create_job_for_devices} \tab Creates a job to run on one or more devices\cr
+\link[paws.machine.learning:panorama_create_node_from_template_job]{create_node_from_template_job} \tab Creates a camera stream node\cr
+\link[paws.machine.learning:panorama_create_package]{create_package} \tab Creates a package and storage location in an Amazon S3 access point\cr
+\link[paws.machine.learning:panorama_create_package_import_job]{create_package_import_job} \tab Imports a node package\cr
+\link[paws.machine.learning:panorama_delete_device]{delete_device} \tab Deletes a device\cr
+\link[paws.machine.learning:panorama_delete_package]{delete_package} \tab Deletes a package\cr
+\link[paws.machine.learning:panorama_deregister_package_version]{deregister_package_version} \tab Deregisters a package version\cr
+\link[paws.machine.learning:panorama_describe_application_instance]{describe_application_instance} \tab Returns information about an application instance on a device\cr
+\link[paws.machine.learning:panorama_describe_application_instance_details]{describe_application_instance_details} \tab Returns information about an application instance's configuration manifest\cr
+\link[paws.machine.learning:panorama_describe_device]{describe_device} \tab Returns information about a device\cr
+\link[paws.machine.learning:panorama_describe_device_job]{describe_device_job} \tab Returns information about a device job\cr
+\link[paws.machine.learning:panorama_describe_node]{describe_node} \tab Returns information about a node\cr
+\link[paws.machine.learning:panorama_describe_node_from_template_job]{describe_node_from_template_job} \tab Returns information about a job to create a camera stream node\cr
+\link[paws.machine.learning:panorama_describe_package]{describe_package} \tab Returns information about a package\cr
+\link[paws.machine.learning:panorama_describe_package_import_job]{describe_package_import_job} \tab Returns information about a package import job\cr
+\link[paws.machine.learning:panorama_describe_package_version]{describe_package_version} \tab Returns information about a package version\cr
+\link[paws.machine.learning:panorama_list_application_instance_dependencies]{list_application_instance_dependencies} \tab Returns a list of application instance dependencies\cr
+\link[paws.machine.learning:panorama_list_application_instance_node_instances]{list_application_instance_node_instances} \tab Returns a list of application node instances\cr
+\link[paws.machine.learning:panorama_list_application_instances]{list_application_instances} \tab Returns a list of application instances\cr
+\link[paws.machine.learning:panorama_list_devices]{list_devices} \tab Returns a list of devices\cr
+\link[paws.machine.learning:panorama_list_devices_jobs]{list_devices_jobs} \tab Returns a list of jobs\cr
+\link[paws.machine.learning:panorama_list_node_from_template_jobs]{list_node_from_template_jobs} \tab Returns a list of camera stream node jobs\cr
+\link[paws.machine.learning:panorama_list_nodes]{list_nodes} \tab Returns a list of nodes\cr
+\link[paws.machine.learning:panorama_list_package_import_jobs]{list_package_import_jobs} \tab Returns a list of package import jobs\cr
+\link[paws.machine.learning:panorama_list_packages]{list_packages} \tab Returns a list of packages\cr
+\link[paws.machine.learning:panorama_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for a resource\cr
+\link[paws.machine.learning:panorama_provision_device]{provision_device} \tab Creates a device and returns a configuration archive\cr
+\link[paws.machine.learning:panorama_register_package_version]{register_package_version} \tab Registers a package version\cr
+\link[paws.machine.learning:panorama_remove_application_instance]{remove_application_instance} \tab Removes an application instance\cr
+\link[paws.machine.learning:panorama_tag_resource]{tag_resource} \tab Tags a resource\cr
+\link[paws.machine.learning:panorama_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
+\link[paws.machine.learning:panorama_update_device_metadata]{update_device_metadata} \tab Updates a device's metadata
 }
 }
 

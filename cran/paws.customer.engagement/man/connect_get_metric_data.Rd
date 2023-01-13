@@ -59,175 +59,152 @@ in the \emph{Amazon Connect Administrator Guide}.
 
 This API does not support a contacts incoming metric (there's no
 CONTACTS_INCOMING metric missing from the documented list).
-\subsection{ABANDON_TIME}{
+
+\strong{ABANDON_TIME}
 
 Unit: SECONDS
 
 Statistic: AVG
-}
 
-\subsection{AFTER_CONTACT_WORK_TIME}{
-
-Unit: SECONDS
-
-Statistic: AVG
-}
-
-\subsection{API_CONTACTS_HANDLED}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CALLBACK_CONTACTS_HANDLED}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_ABANDONED}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_AGENT_HUNG_UP_FIRST}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_CONSULTED}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_HANDLED}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_HANDLED_INCOMING}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_HANDLED_OUTBOUND}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_HOLD_ABANDONS}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_MISSED}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_QUEUED}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_TRANSFERRED_IN}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_TRANSFERRED_IN_FROM_QUEUE}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_TRANSFERRED_OUT}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{CONTACTS_TRANSFERRED_OUT_FROM_QUEUE}{
-
-Unit: COUNT
-
-Statistic: SUM
-}
-
-\subsection{HANDLE_TIME}{
+\strong{AFTER_CONTACT_WORK_TIME}
 
 Unit: SECONDS
 
 Statistic: AVG
-}
 
-\subsection{HOLD_TIME}{
+\strong{API_CONTACTS_HANDLED}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CALLBACK_CONTACTS_HANDLED}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_ABANDONED}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_AGENT_HUNG_UP_FIRST}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_CONSULTED}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_HANDLED}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_HANDLED_INCOMING}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_HANDLED_OUTBOUND}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_HOLD_ABANDONS}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_MISSED}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_QUEUED}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_TRANSFERRED_IN}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_TRANSFERRED_IN_FROM_QUEUE}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_TRANSFERRED_OUT}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{CONTACTS_TRANSFERRED_OUT_FROM_QUEUE}
+
+Unit: COUNT
+
+Statistic: SUM
+
+\strong{HANDLE_TIME}
 
 Unit: SECONDS
 
 Statistic: AVG
-}
 
-\subsection{INTERACTION_AND_HOLD_TIME}{
-
-Unit: SECONDS
-
-Statistic: AVG
-}
-
-\subsection{INTERACTION_TIME}{
+\strong{HOLD_TIME}
 
 Unit: SECONDS
 
 Statistic: AVG
-}
 
-\subsection{OCCUPANCY}{
+\strong{INTERACTION_AND_HOLD_TIME}
+
+Unit: SECONDS
+
+Statistic: AVG
+
+\strong{INTERACTION_TIME}
+
+Unit: SECONDS
+
+Statistic: AVG
+
+\strong{OCCUPANCY}
 
 Unit: PERCENT
 
 Statistic: AVG
-}
 
-\subsection{QUEUE_ANSWER_TIME}{
+\strong{QUEUE_ANSWER_TIME}
 
 Unit: SECONDS
 
 Statistic: AVG
-}
 
-\subsection{QUEUED_TIME}{
+\strong{QUEUED_TIME}
 
 Unit: SECONDS
 
 Statistic: MAX
-}
 
-\subsection{SERVICE_LEVEL}{
+\strong{SERVICE_LEVEL}
 
 You can include up to 20 SERVICE_LEVEL metrics in a request.
 
@@ -237,8 +214,7 @@ Statistic: AVG
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
-"Less than").
-}}
+"Less than").}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

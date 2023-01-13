@@ -879,7 +879,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput, Tags = NULL) {
 #' 
 #' You can only use pure Python libraries with a `DevEndpoint`. Libraries
 #' that rely on C extensions, such as the
-#' [pandas](https://pandas.pydata.org/) Python data analysis library, are
+#' [pandas](http://pandas.pydata.org/) Python data analysis library, are
 #' not yet supported.
 #' @param ExtraJarsS3Path The path to one or more Java `.jar` files in an S3 bucket that should be
 #' loaded in your `DevEndpoint`.
@@ -3435,7 +3435,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' *Operators*: The following are the operators that you can use in the
 #' `Expression` API call:
 #' 
-#' ### =
+#' **=**
 #' 
 #' Checks whether the values of the two operands are equal; if yes, then
 #' the condition becomes true.
@@ -3444,42 +3444,42 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' 
 #' (a = b) is not true.
 #' 
-#' ### \< \>
+#' **\< \>**
 #' 
 #' Checks whether the values of two operands are equal; if the values are
 #' not equal, then the condition becomes true.
 #' 
 #' Example: (a \< \> b) is true.
 #' 
-#' ### \>
+#' **\>**
 #' 
 #' Checks whether the value of the left operand is greater than the value
 #' of the right operand; if yes, then the condition becomes true.
 #' 
 #' Example: (a \> b) is not true.
 #' 
-#' ### \<
+#' **\<**
 #' 
 #' Checks whether the value of the left operand is less than the value of
 #' the right operand; if yes, then the condition becomes true.
 #' 
 #' Example: (a \< b) is true.
 #' 
-#' ### \>=
+#' **\>=**
 #' 
 #' Checks whether the value of the left operand is greater than or equal to
 #' the value of the right operand; if yes, then the condition becomes true.
 #' 
 #' Example: (a \>= b) is not true.
 #' 
-#' ### \<=
+#' **\<=**
 #' 
 #' Checks whether the value of the left operand is less than or equal to
 #' the value of the right operand; if yes, then the condition becomes true.
 #' 
 #' Example: (a \<= b) is true.
 #' 
-#' ### AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL
+#' **AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL**
 #' 
 #' Logical operators.
 #' 

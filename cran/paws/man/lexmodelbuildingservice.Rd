@@ -61,48 +61,48 @@ conversational bots for new and existing client applications.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=lexmodelbuildingservice_create_bot_version]{create_bot_version} \tab Creates a new version of the bot based on the $LATEST version\cr
-\link[=lexmodelbuildingservice_create_intent_version]{create_intent_version} \tab Creates a new version of an intent based on the $LATEST version of the intent\cr
-\link[=lexmodelbuildingservice_create_slot_type_version]{create_slot_type_version} \tab Creates a new version of a slot type based on the $LATEST version of the specified slot type\cr
-\link[=lexmodelbuildingservice_delete_bot]{delete_bot} \tab Deletes all versions of the bot, including the $LATEST version\cr
-\link[=lexmodelbuildingservice_delete_bot_alias]{delete_bot_alias} \tab Deletes an alias for the specified bot\cr
-\link[=lexmodelbuildingservice_delete_bot_channel_association]{delete_bot_channel_association} \tab Deletes the association between an Amazon Lex bot and a messaging platform\cr
-\link[=lexmodelbuildingservice_delete_bot_version]{delete_bot_version} \tab Deletes a specific version of a bot\cr
-\link[=lexmodelbuildingservice_delete_intent]{delete_intent} \tab Deletes all versions of the intent, including the $LATEST version\cr
-\link[=lexmodelbuildingservice_delete_intent_version]{delete_intent_version} \tab Deletes a specific version of an intent\cr
-\link[=lexmodelbuildingservice_delete_slot_type]{delete_slot_type} \tab Deletes all versions of the slot type, including the $LATEST version\cr
-\link[=lexmodelbuildingservice_delete_slot_type_version]{delete_slot_type_version} \tab Deletes a specific version of a slot type\cr
-\link[=lexmodelbuildingservice_delete_utterances]{delete_utterances} \tab Deletes stored utterances\cr
-\link[=lexmodelbuildingservice_get_bot]{get_bot} \tab Returns metadata information for a specific bot\cr
-\link[=lexmodelbuildingservice_get_bot_alias]{get_bot_alias} \tab Returns information about an Amazon Lex bot alias\cr
-\link[=lexmodelbuildingservice_get_bot_aliases]{get_bot_aliases} \tab Returns a list of aliases for a specified Amazon Lex bot\cr
-\link[=lexmodelbuildingservice_get_bot_channel_association]{get_bot_channel_association} \tab Returns information about the association between an Amazon Lex bot and a messaging platform\cr
-\link[=lexmodelbuildingservice_get_bot_channel_associations]{get_bot_channel_associations} \tab Returns a list of all of the channels associated with the specified bot\cr
-\link[=lexmodelbuildingservice_get_bots]{get_bots} \tab Returns bot information as follows:\cr
-\link[=lexmodelbuildingservice_get_bot_versions]{get_bot_versions} \tab Gets information about all of the versions of a bot\cr
-\link[=lexmodelbuildingservice_get_builtin_intent]{get_builtin_intent} \tab Returns information about a built-in intent\cr
-\link[=lexmodelbuildingservice_get_builtin_intents]{get_builtin_intents} \tab Gets a list of built-in intents that meet the specified criteria\cr
-\link[=lexmodelbuildingservice_get_builtin_slot_types]{get_builtin_slot_types} \tab Gets a list of built-in slot types that meet the specified criteria\cr
-\link[=lexmodelbuildingservice_get_export]{get_export} \tab Exports the contents of a Amazon Lex resource in a specified format\cr
-\link[=lexmodelbuildingservice_get_import]{get_import} \tab Gets information about an import job started with the StartImport operation\cr
-\link[=lexmodelbuildingservice_get_intent]{get_intent} \tab Returns information about an intent\cr
-\link[=lexmodelbuildingservice_get_intents]{get_intents} \tab Returns intent information as follows:\cr
-\link[=lexmodelbuildingservice_get_intent_versions]{get_intent_versions} \tab Gets information about all of the versions of an intent\cr
-\link[=lexmodelbuildingservice_get_migration]{get_migration} \tab Provides details about an ongoing or complete migration from an Amazon Lex V1 bot to an Amazon Lex V2 bot\cr
-\link[=lexmodelbuildingservice_get_migrations]{get_migrations} \tab Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2\cr
-\link[=lexmodelbuildingservice_get_slot_type]{get_slot_type} \tab Returns information about a specific version of a slot type\cr
-\link[=lexmodelbuildingservice_get_slot_types]{get_slot_types} \tab Returns slot type information as follows:\cr
-\link[=lexmodelbuildingservice_get_slot_type_versions]{get_slot_type_versions} \tab Gets information about all versions of a slot type\cr
-\link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view} \tab Use the GetUtterancesView operation to get information about the utterances that your users have made to your bot\cr
-\link[=lexmodelbuildingservice_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with the specified resource\cr
-\link[=lexmodelbuildingservice_put_bot]{put_bot} \tab Creates an Amazon Lex conversational bot or replaces an existing bot\cr
-\link[=lexmodelbuildingservice_put_bot_alias]{put_bot_alias} \tab Creates an alias for the specified version of the bot or replaces an alias for the specified bot\cr
-\link[=lexmodelbuildingservice_put_intent]{put_intent} \tab Creates an intent or replaces an existing intent\cr
-\link[=lexmodelbuildingservice_put_slot_type]{put_slot_type} \tab Creates a custom slot type or replaces an existing custom slot type\cr
-\link[=lexmodelbuildingservice_start_import]{start_import} \tab Starts a job to import a resource to Amazon Lex\cr
-\link[=lexmodelbuildingservice_start_migration]{start_migration} \tab Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2\cr
-\link[=lexmodelbuildingservice_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
-\link[=lexmodelbuildingservice_untag_resource]{untag_resource} \tab Removes tags from a bot, bot alias or bot channel
+\link[paws.machine.learning:lexmodelbuildingservice_create_bot_version]{create_bot_version} \tab Creates a new version of the bot based on the $LATEST version\cr
+\link[paws.machine.learning:lexmodelbuildingservice_create_intent_version]{create_intent_version} \tab Creates a new version of an intent based on the $LATEST version of the intent\cr
+\link[paws.machine.learning:lexmodelbuildingservice_create_slot_type_version]{create_slot_type_version} \tab Creates a new version of a slot type based on the $LATEST version of the specified slot type\cr
+\link[paws.machine.learning:lexmodelbuildingservice_delete_bot]{delete_bot} \tab Deletes all versions of the bot, including the $LATEST version\cr
+\link[paws.machine.learning:lexmodelbuildingservice_delete_bot_alias]{delete_bot_alias} \tab Deletes an alias for the specified bot\cr
+\link[paws.machine.learning:lexmodelbuildingservice_delete_bot_channel_association]{delete_bot_channel_association} \tab Deletes the association between an Amazon Lex bot and a messaging platform\cr
+\link[paws.machine.learning:lexmodelbuildingservice_delete_bot_version]{delete_bot_version} \tab Deletes a specific version of a bot\cr
+\link[paws.machine.learning:lexmodelbuildingservice_delete_intent]{delete_intent} \tab Deletes all versions of the intent, including the $LATEST version\cr
+\link[paws.machine.learning:lexmodelbuildingservice_delete_intent_version]{delete_intent_version} \tab Deletes a specific version of an intent\cr
+\link[paws.machine.learning:lexmodelbuildingservice_delete_slot_type]{delete_slot_type} \tab Deletes all versions of the slot type, including the $LATEST version\cr
+\link[paws.machine.learning:lexmodelbuildingservice_delete_slot_type_version]{delete_slot_type_version} \tab Deletes a specific version of a slot type\cr
+\link[paws.machine.learning:lexmodelbuildingservice_delete_utterances]{delete_utterances} \tab Deletes stored utterances\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_bot]{get_bot} \tab Returns metadata information for a specific bot\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_bot_alias]{get_bot_alias} \tab Returns information about an Amazon Lex bot alias\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_bot_aliases]{get_bot_aliases} \tab Returns a list of aliases for a specified Amazon Lex bot\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_bot_channel_association]{get_bot_channel_association} \tab Returns information about the association between an Amazon Lex bot and a messaging platform\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_bot_channel_associations]{get_bot_channel_associations} \tab Returns a list of all of the channels associated with the specified bot\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_bots]{get_bots} \tab Returns bot information as follows:\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_bot_versions]{get_bot_versions} \tab Gets information about all of the versions of a bot\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_builtin_intent]{get_builtin_intent} \tab Returns information about a built-in intent\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_builtin_intents]{get_builtin_intents} \tab Gets a list of built-in intents that meet the specified criteria\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_builtin_slot_types]{get_builtin_slot_types} \tab Gets a list of built-in slot types that meet the specified criteria\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_export]{get_export} \tab Exports the contents of a Amazon Lex resource in a specified format\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_import]{get_import} \tab Gets information about an import job started with the StartImport operation\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_intent]{get_intent} \tab Returns information about an intent\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_intents]{get_intents} \tab Returns intent information as follows:\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_intent_versions]{get_intent_versions} \tab Gets information about all of the versions of an intent\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_migration]{get_migration} \tab Provides details about an ongoing or complete migration from an Amazon Lex V1 bot to an Amazon Lex V2 bot\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_migrations]{get_migrations} \tab Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_slot_type]{get_slot_type} \tab Returns information about a specific version of a slot type\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_slot_types]{get_slot_types} \tab Returns slot type information as follows:\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_slot_type_versions]{get_slot_type_versions} \tab Gets information about all versions of a slot type\cr
+\link[paws.machine.learning:lexmodelbuildingservice_get_utterances_view]{get_utterances_view} \tab Use the GetUtterancesView operation to get information about the utterances that your users have made to your bot\cr
+\link[paws.machine.learning:lexmodelbuildingservice_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with the specified resource\cr
+\link[paws.machine.learning:lexmodelbuildingservice_put_bot]{put_bot} \tab Creates an Amazon Lex conversational bot or replaces an existing bot\cr
+\link[paws.machine.learning:lexmodelbuildingservice_put_bot_alias]{put_bot_alias} \tab Creates an alias for the specified version of the bot or replaces an alias for the specified bot\cr
+\link[paws.machine.learning:lexmodelbuildingservice_put_intent]{put_intent} \tab Creates an intent or replaces an existing intent\cr
+\link[paws.machine.learning:lexmodelbuildingservice_put_slot_type]{put_slot_type} \tab Creates a custom slot type or replaces an existing custom slot type\cr
+\link[paws.machine.learning:lexmodelbuildingservice_start_import]{start_import} \tab Starts a job to import a resource to Amazon Lex\cr
+\link[paws.machine.learning:lexmodelbuildingservice_start_migration]{start_migration} \tab Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2\cr
+\link[paws.machine.learning:lexmodelbuildingservice_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
+\link[paws.machine.learning:lexmodelbuildingservice_untag_resource]{untag_resource} \tab Removes tags from a bot, bot alias or bot channel
 }
 }
 

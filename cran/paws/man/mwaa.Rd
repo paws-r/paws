@@ -38,25 +38,25 @@ This section contains the Amazon Managed Workflows for Apache Airflow
 \item \verb{api.airflow.\{region\}.amazonaws.com} - This endpoint is used for
 environment management.
 \itemize{
-\item \code{\link[=mwaa_create_environment]{create_environment}}
-\item \code{\link[=mwaa_delete_environment]{delete_environment}}
-\item \code{\link[=mwaa_get_environment]{get_environment}}
-\item \code{\link[=mwaa_list_environments]{list_environments}}
-\item \code{\link[=mwaa_list_tags_for_resource]{list_tags_for_resource}}
-\item \code{\link[=mwaa_tag_resource]{tag_resource}}
-\item \code{\link[=mwaa_untag_resource]{untag_resource}}
-\item \code{\link[=mwaa_update_environment]{update_environment}}
+\item \code{create_environment}
+\item \code{delete_environment}
+\item \code{get_environment}
+\item \code{list_environments}
+\item \code{list_tags_for_resource}
+\item \code{tag_resource}
+\item \code{untag_resource}
+\item \code{update_environment}
 }
 \item \verb{env.airflow.\{region\}.amazonaws.com} - This endpoint is used to
 operate the Airflow environment.
 \itemize{
-\item \code{\link[=mwaa_create_cli_token]{create_cli_token}}
-\item \code{\link[=mwaa_create_web_login_token]{create_web_login_token}}
+\item \code{create_cli_token}
+\item \code{create_web_login_token}
 }
 \item \verb{ops.airflow.\{region\}.amazonaws.com} - This endpoint is used to push
 environment metrics that track environment health.
 \itemize{
-\item \code{\link[=mwaa_publish_metrics]{publish_metrics}}
+\item \code{publish_metrics}
 }
 }
 
@@ -92,17 +92,17 @@ in the \emph{Amazon MWAA User Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=mwaa_create_cli_token]{create_cli_token} \tab Creates a CLI token for the Airflow CLI\cr
-\link[=mwaa_create_environment]{create_environment} \tab Creates an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
-\link[=mwaa_create_web_login_token]{create_web_login_token} \tab Creates a web login token for the Airflow Web UI\cr
-\link[=mwaa_delete_environment]{delete_environment} \tab Deletes an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
-\link[=mwaa_get_environment]{get_environment} \tab Describes an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
-\link[=mwaa_list_environments]{list_environments} \tab Lists the Amazon Managed Workflows for Apache Airflow (MWAA) environments\cr
-\link[=mwaa_list_tags_for_resource]{list_tags_for_resource} \tab Lists the key-value tag pairs associated to the Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
-\link[=mwaa_publish_metrics]{publish_metrics} \tab Internal only\cr
-\link[=mwaa_tag_resource]{tag_resource} \tab Associates key-value tag pairs to your Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
-\link[=mwaa_untag_resource]{untag_resource} \tab Removes key-value tag pairs associated to your Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
-\link[=mwaa_update_environment]{update_environment} \tab Updates an Amazon Managed Workflows for Apache Airflow (MWAA) environment
+\link[paws.application.integration:mwaa_create_cli_token]{create_cli_token} \tab Creates a CLI token for the Airflow CLI\cr
+\link[paws.application.integration:mwaa_create_environment]{create_environment} \tab Creates an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+\link[paws.application.integration:mwaa_create_web_login_token]{create_web_login_token} \tab Creates a web login token for the Airflow Web UI\cr
+\link[paws.application.integration:mwaa_delete_environment]{delete_environment} \tab Deletes an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+\link[paws.application.integration:mwaa_get_environment]{get_environment} \tab Describes an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+\link[paws.application.integration:mwaa_list_environments]{list_environments} \tab Lists the Amazon Managed Workflows for Apache Airflow (MWAA) environments\cr
+\link[paws.application.integration:mwaa_list_tags_for_resource]{list_tags_for_resource} \tab Lists the key-value tag pairs associated to the Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+\link[paws.application.integration:mwaa_publish_metrics]{publish_metrics} \tab Internal only\cr
+\link[paws.application.integration:mwaa_tag_resource]{tag_resource} \tab Associates key-value tag pairs to your Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+\link[paws.application.integration:mwaa_untag_resource]{untag_resource} \tab Removes key-value tag pairs associated to your Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+\link[paws.application.integration:mwaa_update_environment]{update_environment} \tab Updates an Amazon Managed Workflows for Apache Airflow (MWAA) environment
 }
 }
 

@@ -90,28 +90,28 @@ about CloudTrail, including enabling it and find your log files, see the
 \section{Operations}{
 
 \tabular{ll}{
-\link[=secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Turns off automatic rotation, and if a rotation is currently in progress, cancels the rotation\cr
-\link[=secretsmanager_create_secret]{create_secret} \tab Creates a new secret\cr
-\link[=secretsmanager_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based permission policy attached to the secret\cr
-\link[=secretsmanager_delete_secret]{delete_secret} \tab Deletes a secret and all of its versions\cr
-\link[=secretsmanager_describe_secret]{describe_secret} \tab Retrieves the details of a secret\cr
-\link[=secretsmanager_get_random_password]{get_random_password} \tab Generates a random password\cr
-\link[=secretsmanager_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the secret\cr
-\link[=secretsmanager_get_secret_value]{get_secret_value} \tab Retrieves the contents of the encrypted fields SecretString or SecretBinary from the specified version of a secret, whichever contains content\cr
-\link[=secretsmanager_list_secrets]{list_secrets} \tab Lists the secrets that are stored by Secrets Manager in the Amazon Web Services account, not including secrets that are marked for deletion\cr
-\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids} \tab Lists the versions of a secret\cr
-\link[=secretsmanager_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based permission policy to a secret\cr
-\link[=secretsmanager_put_secret_value]{put_secret_value} \tab Creates a new version with a new encrypted secret value and attaches it to the secret\cr
-\link[=secretsmanager_remove_regions_from_replication]{remove_regions_from_replication} \tab For a secret that is replicated to other Regions, deletes the secret replicas from the Regions you specify\cr
-\link[=secretsmanager_replicate_secret_to_regions]{replicate_secret_to_regions} \tab Replicates the secret to a new Regions\cr
-\link[=secretsmanager_restore_secret]{restore_secret} \tab Cancels the scheduled deletion of a secret by removing the DeletedDate time stamp\cr
-\link[=secretsmanager_rotate_secret]{rotate_secret} \tab Configures and starts the asynchronous process of rotating the secret\cr
-\link[=secretsmanager_stop_replication_to_replica]{stop_replication_to_replica} \tab Removes the link between the replica secret and the primary secret and promotes the replica to a primary secret in the replica Region\cr
-\link[=secretsmanager_tag_resource]{tag_resource} \tab Attaches tags to a secret\cr
-\link[=secretsmanager_untag_resource]{untag_resource} \tab Removes specific tags from a secret\cr
-\link[=secretsmanager_update_secret]{update_secret} \tab Modifies the details of a secret, including metadata and the secret value\cr
-\link[=secretsmanager_update_secret_version_stage]{update_secret_version_stage} \tab Modifies the staging labels attached to a version of a secret\cr
-\link[=secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates that a resource policy does not grant a wide range of principals access to your secret
+\link[paws.security.identity.p2:secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Turns off automatic rotation, and if a rotation is currently in progress, cancels the rotation\cr
+\link[paws.security.identity.p2:secretsmanager_create_secret]{create_secret} \tab Creates a new secret\cr
+\link[paws.security.identity.p2:secretsmanager_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based permission policy attached to the secret\cr
+\link[paws.security.identity.p2:secretsmanager_delete_secret]{delete_secret} \tab Deletes a secret and all of its versions\cr
+\link[paws.security.identity.p2:secretsmanager_describe_secret]{describe_secret} \tab Retrieves the details of a secret\cr
+\link[paws.security.identity.p2:secretsmanager_get_random_password]{get_random_password} \tab Generates a random password\cr
+\link[paws.security.identity.p2:secretsmanager_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the secret\cr
+\link[paws.security.identity.p2:secretsmanager_get_secret_value]{get_secret_value} \tab Retrieves the contents of the encrypted fields SecretString or SecretBinary from the specified version of a secret, whichever contains content\cr
+\link[paws.security.identity.p2:secretsmanager_list_secrets]{list_secrets} \tab Lists the secrets that are stored by Secrets Manager in the Amazon Web Services account, not including secrets that are marked for deletion\cr
+\link[paws.security.identity.p2:secretsmanager_list_secret_version_ids]{list_secret_version_ids} \tab Lists the versions of a secret\cr
+\link[paws.security.identity.p2:secretsmanager_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based permission policy to a secret\cr
+\link[paws.security.identity.p2:secretsmanager_put_secret_value]{put_secret_value} \tab Creates a new version with a new encrypted secret value and attaches it to the secret\cr
+\link[paws.security.identity.p2:secretsmanager_remove_regions_from_replication]{remove_regions_from_replication} \tab For a secret that is replicated to other Regions, deletes the secret replicas from the Regions you specify\cr
+\link[paws.security.identity.p2:secretsmanager_replicate_secret_to_regions]{replicate_secret_to_regions} \tab Replicates the secret to a new Regions\cr
+\link[paws.security.identity.p2:secretsmanager_restore_secret]{restore_secret} \tab Cancels the scheduled deletion of a secret by removing the DeletedDate time stamp\cr
+\link[paws.security.identity.p2:secretsmanager_rotate_secret]{rotate_secret} \tab Configures and starts the asynchronous process of rotating the secret\cr
+\link[paws.security.identity.p2:secretsmanager_stop_replication_to_replica]{stop_replication_to_replica} \tab Removes the link between the replica secret and the primary secret and promotes the replica to a primary secret in the replica Region\cr
+\link[paws.security.identity.p2:secretsmanager_tag_resource]{tag_resource} \tab Attaches tags to a secret\cr
+\link[paws.security.identity.p2:secretsmanager_untag_resource]{untag_resource} \tab Removes specific tags from a secret\cr
+\link[paws.security.identity.p2:secretsmanager_update_secret]{update_secret} \tab Modifies the details of a secret, including metadata and the secret value\cr
+\link[paws.security.identity.p2:secretsmanager_update_secret_version_stage]{update_secret_version_stage} \tab Modifies the staging labels attached to a version of a secret\cr
+\link[paws.security.identity.p2:secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates that a resource policy does not grant a wide range of principals access to your secret
 }
 }
 

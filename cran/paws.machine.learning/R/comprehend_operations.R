@@ -1859,7 +1859,7 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 #' (IAM) role that grants Amazon Comprehend read access to your input data.
 #' For more information, see
-#' <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
+#' https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.
 #' @param JobName An identifier for the job.
 #' @param ClientRequestToken A unique identifier for the request. If you do not set the client
 #' request token, Amazon Comprehend generates one.
@@ -1914,7 +1914,7 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 #' (IAM) role that grants Amazon Comprehend read access to your input data.
 #' For more information, see
-#' <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
+#' https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.
 #' @param JobName The identifier of the job.
 #' @param EntityRecognizerArn The Amazon Resource Name (ARN) that identifies the specific entity
 #' recognizer to be used by the
@@ -2019,7 +2019,7 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 #' (IAM) role that grants Amazon Comprehend read access to your input data.
 #' For more information, see
-#' <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
+#' https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.
 #' @param JobName The identifier of the job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
@@ -2127,7 +2127,7 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 #' (IAM) role that grants Amazon Comprehend read access to your input data.
 #' For more information, see
-#' <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
+#' https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.
 #' @param JobName The identifier of the job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
@@ -2184,8 +2184,7 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 #' (IAM) role that grants Amazon Comprehend read access to your input data.
-#' For more information, see [Role-based
-#' permissions](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions).
+#' For more information, see Role-based permissions.
 #' @param JobName The identifier of the job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
 #' valid language.
@@ -2240,7 +2239,7 @@ comprehend_start_targeted_sentiment_detection_job <- function(InputDataConfig, O
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 #' (IAM) role that grants Amazon Comprehend read access to your input data.
 #' For more information, see
-#' <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
+#' https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.
 #' @param JobName The identifier of the job.
 #' @param NumberOfTopics The number of topics to detect.
 #' @param ClientRequestToken A unique identifier for the request. If you do not set the client

@@ -66,8 +66,9 @@ NULL
 #' A snapshot ID with the longer ID format looks like the following:
 #' `snap-78e226633445566ee`.
 #' 
-#' For more information, see Announcement: Heads-up – Longer Storage
-#' Gateway volume and snapshot IDs coming in 2016.
+#' For more information, see [Announcement: Heads-up – Longer Storage
+#' Gateway volume and snapshot IDs coming in
+#' 2016](https://repost.aws/questions/QUYzKAkD2iR0CY-_mOUpdIDQ?annID=3557).
 #'
 #' @param
 #' config

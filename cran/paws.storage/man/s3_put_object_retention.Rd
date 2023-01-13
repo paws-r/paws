@@ -25,8 +25,8 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
-name. For more information about access point ARNs, see Using access
-points in the \emph{Amazon S3 User Guide}.}
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] The key name for the object that you want to apply this Object Retention
 configuration to.}
@@ -52,7 +52,7 @@ using the SDK. This header will not provide any additional functionality
 if not using the SDK. When sending this header, there must be a
 corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
-\verb{400 Bad Request}. For more information, see Checking object integrity
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
 If you provide an individual checksum, Amazon S3 ignores any provided
@@ -63,7 +63,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-Places an Object Retention configuration on an object. For more information, see Locking Objects. Users or accounts require the \code{s3:PutObjectRetention} permission in order to place an Object Retention configuration on objects. Bypassing a Governance Retention configuration requires the \code{s3:BypassGovernanceRetention} permission.
+Places an Object Retention configuration on an object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}. Users or accounts require the \code{s3:PutObjectRetention} permission in order to place an Object Retention configuration on objects. Bypassing a Governance Retention configuration requires the \code{s3:BypassGovernanceRetention} permission.
 
 See \url{https://paws-r.github.io/docs/s3/put_object_retention.html} for full documentation.
 }

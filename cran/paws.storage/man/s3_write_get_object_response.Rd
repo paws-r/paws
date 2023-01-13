@@ -115,7 +115,8 @@ Object Lambda function. This may not match the checksum for the object
 stored in Amazon S3. Amazon S3 will perform validation of the checksum
 values only when the original \code{\link[=s3_get_object]{get_object}} request
 required checksum validation. For more information about checksums, see
-Checking object integrity in the \emph{Amazon S3 User Guide}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.
 
 Only one checksum header can be specified at a time. If you supply
 multiple checksum headers, this request will fail.}
@@ -127,7 +128,8 @@ Object Lambda function. This may not match the checksum for the object
 stored in Amazon S3. Amazon S3 will perform validation of the checksum
 values only when the original \code{\link[=s3_get_object]{get_object}} request
 required checksum validation. For more information about checksums, see
-Checking object integrity in the \emph{Amazon S3 User Guide}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.
 
 Only one checksum header can be specified at a time. If you supply
 multiple checksum headers, this request will fail.}
@@ -139,7 +141,8 @@ Object Lambda function. This may not match the checksum for the object
 stored in Amazon S3. Amazon S3 will perform validation of the checksum
 values only when the original \code{\link[=s3_get_object]{get_object}} request
 required checksum validation. For more information about checksums, see
-Checking object integrity in the \emph{Amazon S3 User Guide}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.
 
 Only one checksum header can be specified at a time. If you supply
 multiple checksum headers, this request will fail.}
@@ -151,7 +154,8 @@ Object Lambda function. This may not match the checksum for the object
 stored in Amazon S3. Amazon S3 will perform validation of the checksum
 values only when the original \code{\link[=s3_get_object]{get_object}} request
 required checksum validation. For more information about checksums, see
-Checking object integrity in the \emph{Amazon S3 User Guide}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.
 
 Only one checksum header can be specified at a time. If you supply
 multiple checksum headers, this request will fail.}
@@ -180,7 +184,7 @@ headers.}
 \item{Metadata}{A map of metadata to store with the object in S3.}
 
 \item{ObjectLockMode}{Indicates whether an object stored in Amazon S3 has Object Lock enabled.
-For more information about S3 Object Lock, see Object Lock.}
+For more information about S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Object Lock}.}
 
 \item{ObjectLockLegalHoldStatus}{Indicates whether an object stored in Amazon S3 has an active legal
 hold.}
@@ -191,7 +195,8 @@ hold.}
 
 \item{ReplicationStatus}{Indicates if request involves bucket that is either a source or
 destination in a Replication rule. For more information about S3
-Replication, see Replication.}
+Replication, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html}{Replication}.}
 
 \item{RequestCharged}{}
 
@@ -210,14 +215,12 @@ Service (Amazon Web Services KMS) symmetric customer managed key that
 was used for stored in Amazon S3 object.}
 
 \item{SSECustomerKeyMD5}{128-bit MD5 digest of customer-provided encryption key used in Amazon S3
-to encrypt data stored in S3. For more information, see Protecting data
-using server-side encryption with customer-provided encryption keys
-(SSE-C).}
+to encrypt data stored in S3. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using server-side encryption with customer-provided encryption keys (SSE-C)}.}
 
 \item{StorageClass}{Provides storage class information of the object. Amazon S3 returns this
 header for all objects except for S3 Standard storage class objects.
 
-For more information, see Storage Classes.}
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}.}
 
 \item{TagCount}{The number of tags, if any, on the object.}
 
@@ -227,7 +230,7 @@ For more information, see Storage Classes.}
 for server-side encryption with Amazon Web Services KMS (SSE-KMS).}
 }
 \description{
-Passes transformed objects to a \code{\link[=s3_get_object]{get_object}} operation when using Object Lambda access points. For information about Object Lambda access points, see Transforming objects with Object Lambda access points in the \emph{Amazon S3 User Guide}.
+Passes transformed objects to a \code{\link[=s3_get_object]{get_object}} operation when using Object Lambda access points. For information about Object Lambda access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html}{Transforming objects with Object Lambda access points} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3/write_get_object_response.html} for full documentation.
 }

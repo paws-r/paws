@@ -59,19 +59,19 @@ consistent fashion in the cloud.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=healthlake_create_fhir_datastore]{create_fhir_datastore} \tab Creates a Data Store that can ingest and export FHIR formatted data\cr
-\link[=healthlake_delete_fhir_datastore]{delete_fhir_datastore} \tab Deletes a Data Store\cr
-\link[=healthlake_describe_fhir_datastore]{describe_fhir_datastore} \tab Gets the properties associated with the FHIR Data Store, including the Data Store ID, Data Store ARN, Data Store name, Data Store status, created at, Data Store type version, and Data Store endpoint\cr
-\link[=healthlake_describe_fhir_export_job]{describe_fhir_export_job} \tab Displays the properties of a FHIR export job, including the ID, ARN, name, and the status of the job\cr
-\link[=healthlake_describe_fhir_import_job]{describe_fhir_import_job} \tab Displays the properties of a FHIR import job, including the ID, ARN, name, and the status of the job\cr
-\link[=healthlake_list_fhir_datastores]{list_fhir_datastores} \tab Lists all FHIR Data Stores that are in the user’s account, regardless of Data Store status\cr
-\link[=healthlake_list_fhir_export_jobs]{list_fhir_export_jobs} \tab Lists all FHIR export jobs associated with an account and their statuses\cr
-\link[=healthlake_list_fhir_import_jobs]{list_fhir_import_jobs} \tab Lists all FHIR import jobs associated with an account and their statuses\cr
-\link[=healthlake_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all existing tags associated with a Data Store\cr
-\link[=healthlake_start_fhir_export_job]{start_fhir_export_job} \tab Begins a FHIR export job\cr
-\link[=healthlake_start_fhir_import_job]{start_fhir_import_job} \tab Begins a FHIR Import job\cr
-\link[=healthlake_tag_resource]{tag_resource} \tab Adds a user specifed key and value tag to a Data Store\cr
-\link[=healthlake_untag_resource]{untag_resource} \tab Removes tags from a Data Store
+\link[paws.analytics:healthlake_create_fhir_datastore]{create_fhir_datastore} \tab Creates a Data Store that can ingest and export FHIR formatted data\cr
+\link[paws.analytics:healthlake_delete_fhir_datastore]{delete_fhir_datastore} \tab Deletes a Data Store\cr
+\link[paws.analytics:healthlake_describe_fhir_datastore]{describe_fhir_datastore} \tab Gets the properties associated with the FHIR Data Store, including the Data Store ID, Data Store ARN, Data Store name, Data Store status, created at, Data Store type version, and Data Store endpoint\cr
+\link[paws.analytics:healthlake_describe_fhir_export_job]{describe_fhir_export_job} \tab Displays the properties of a FHIR export job, including the ID, ARN, name, and the status of the job\cr
+\link[paws.analytics:healthlake_describe_fhir_import_job]{describe_fhir_import_job} \tab Displays the properties of a FHIR import job, including the ID, ARN, name, and the status of the job\cr
+\link[paws.analytics:healthlake_list_fhir_datastores]{list_fhir_datastores} \tab Lists all FHIR Data Stores that are in the user’s account, regardless of Data Store status\cr
+\link[paws.analytics:healthlake_list_fhir_export_jobs]{list_fhir_export_jobs} \tab Lists all FHIR export jobs associated with an account and their statuses\cr
+\link[paws.analytics:healthlake_list_fhir_import_jobs]{list_fhir_import_jobs} \tab Lists all FHIR import jobs associated with an account and their statuses\cr
+\link[paws.analytics:healthlake_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all existing tags associated with a Data Store\cr
+\link[paws.analytics:healthlake_start_fhir_export_job]{start_fhir_export_job} \tab Begins a FHIR export job\cr
+\link[paws.analytics:healthlake_start_fhir_import_job]{start_fhir_import_job} \tab Begins a FHIR Import job\cr
+\link[paws.analytics:healthlake_tag_resource]{tag_resource} \tab Adds a user specifed key and value tag to a Data Store\cr
+\link[paws.analytics:healthlake_untag_resource]{untag_resource} \tab Removes tags from a Data Store
 }
 }
 

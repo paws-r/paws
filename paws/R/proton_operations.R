@@ -4848,14 +4848,14 @@ proton_update_account_settings <- function(pipelineProvisioningRepository = NULL
 #' @param deploymentType &#91;required&#93; The deployment type. It defines the mode for updating a component, as
 #' follows:
 #' 
-#' ### 
+#' ****
 #' 
 #' `NONE`
 #' 
 #' In this mode, a deployment *doesn't* occur. Only the requested metadata
 #' parameters are updated. You can only specify `description` in this mode.
 #' 
-#' ### 
+#' ****
 #' 
 #' `CURRENT_VERSION`
 #' 
@@ -5038,14 +5038,14 @@ proton_update_component <- function(deploymentType, description = NULL, name, se
 #' @param deploymentType &#91;required&#93; There are four modes for updating an environment. The `deploymentType`
 #' field defines the mode.
 #' 
-#' ### 
+#' ****
 #' 
 #' `NONE`
 #' 
 #' In this mode, a deployment *doesn't* occur. Only the requested metadata
 #' parameters are updated.
 #' 
-#' ### 
+#' ****
 #' 
 #' `CURRENT_VERSION`
 #' 
@@ -5053,7 +5053,7 @@ proton_update_component <- function(deploymentType, description = NULL, name, se
 #' that you provide. Only requested parameters are updated. *Don’t* include
 #' major or minor version parameters when you use this `deployment-type`.
 #' 
-#' ### 
+#' ****
 #' 
 #' `MINOR_VERSION`
 #' 
@@ -5062,7 +5062,7 @@ proton_update_component <- function(deploymentType, description = NULL, name, se
 #' version in use, by default. You can also specify a different minor
 #' version of the current major version in use.
 #' 
-#' ### 
+#' ****
 #' 
 #' `MAJOR_VERSION`
 #' 
@@ -5512,14 +5512,14 @@ proton_update_service <- function(description = NULL, name, spec = NULL) {
 #' @param deploymentType &#91;required&#93; The deployment type. It defines the mode for updating a service
 #' instance, as follows:
 #' 
-#' ### 
+#' ****
 #' 
 #' `NONE`
 #' 
 #' In this mode, a deployment *doesn't* occur. Only the requested metadata
 #' parameters are updated.
 #' 
-#' ### 
+#' ****
 #' 
 #' `CURRENT_VERSION`
 #' 
@@ -5528,7 +5528,7 @@ proton_update_service <- function(description = NULL, name, spec = NULL) {
 #' include major or minor version parameters when you use this deployment
 #' type.
 #' 
-#' ### 
+#' ****
 #' 
 #' `MINOR_VERSION`
 #' 
@@ -5537,7 +5537,7 @@ proton_update_service <- function(description = NULL, name, spec = NULL) {
 #' version in use, by default. You can also specify a different minor
 #' version of the current major version in use.
 #' 
-#' ### 
+#' ****
 #' 
 #' `MAJOR_VERSION`
 #' 
@@ -5662,14 +5662,14 @@ proton_update_service_instance <- function(deploymentType, name, serviceName, sp
 #' There are four modes for updating a service pipeline. The
 #' `deploymentType` field defines the mode.
 #' 
-#' ### 
+#' ****
 #' 
 #' `NONE`
 #' 
 #' In this mode, a deployment *doesn't* occur. Only the requested metadata
 #' parameters are updated.
 #' 
-#' ### 
+#' ****
 #' 
 #' `CURRENT_VERSION`
 #' 
@@ -5678,7 +5678,7 @@ proton_update_service_instance <- function(deploymentType, name, serviceName, sp
 #' include major or minor version parameters when you use this
 #' `deployment-type`.
 #' 
-#' ### 
+#' ****
 #' 
 #' `MINOR_VERSION`
 #' 
@@ -5687,7 +5687,7 @@ proton_update_service_instance <- function(deploymentType, name, serviceName, sp
 #' version in use, by default. You can specify a different minor version of
 #' the current major version in use.
 #' 
-#' ### 
+#' ****
 #' 
 #' `MAJOR_VERSION`
 #' 

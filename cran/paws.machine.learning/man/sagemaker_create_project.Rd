@@ -21,8 +21,7 @@ sagemaker_create_project(
 \item{ServiceCatalogProvisioningDetails}{[required] The product ID and provisioning artifact ID to provision a service
 catalog. The provisioning artifact ID will default to the latest
 provisioning artifact ID of the product, if you don't provide the
-provisioning artifact ID. For more information, see What is Amazon Web
-Services Service Catalog.}
+provisioning artifact ID. For more information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html}{What is Amazon Web Services Service Catalog}.}
 
 \item{Tags}{An array of key-value pairs that you want to use to organize and track
 your Amazon Web Services resource costs. For more information, see

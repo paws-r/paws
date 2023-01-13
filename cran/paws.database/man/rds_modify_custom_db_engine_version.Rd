@@ -23,12 +23,12 @@ Amazon Web Services Region.}
 
 \item{Status}{The availability status to be assigned to the CEV. Valid values are as
 follows:
-\subsection{available}{
+
+\strong{available}
 
 You can use this CEV to create a new RDS Custom DB instance.
-}
 
-\subsection{inactive}{
+\strong{inactive}
 
 You can create a new RDS Custom instance by restoring a DB snapshot with
 this CEV. You can't patch or create new instances with this CEV.
@@ -39,8 +39,7 @@ deprecated CEV eligible for use again. For example, you might change the
 status of your CEV from \code{available} to \code{inactive}, and from \code{inactive}
 back to \code{available}. To change the availability status of the CEV, it
 must not currently be in use by an RDS Custom instance, snapshot, or
-automated backup.
-}}
+automated backup.}
 }
 \description{
 Modifies the status of a custom engine version (CEV). You can find CEVs to modify by calling \code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}.

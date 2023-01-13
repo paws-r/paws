@@ -31,8 +31,8 @@ worker assigns to the object. The \code{LabelAttributeName} must meet the
 following requirements.
 \itemize{
 \item The name can't end with "-metadata".
-\item If you are using one of the following built-in task types, the
-attribute name \emph{must} end with "-ref". If the task type you are
+\item If you are using one of the following \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html}{built-in task types},
+the attribute name \emph{must} end with "-ref". If the task type you are
 using is not listed below, the attribute name \emph{must not} end with
 "-ref".
 \itemize{
@@ -61,8 +61,7 @@ If you are creating an adjustment or verification labeling job, you must
 use a \emph{different} \code{LabelAttributeName} than the one used in the original
 labeling job. The original labeling job is the Ground Truth labeling job
 that produced the labels that you want verified or adjusted. To learn
-more about adjustment and verification labeling jobs, see Verify and
-Adjust Labels.}
+more about adjustment and verification labeling jobs, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-verification-data.html}{Verify and Adjust Labels}.}
 
 \item{InputConfig}{[required] Input data for the labeling job, such as the Amazon S3 location of the
 data objects and the location of the manifest file that describes the
@@ -100,20 +99,20 @@ file}, that defines the categories used to label the data objects.
 
 For 3D point cloud and video frame task types, you can add label
 category attributes and frame attributes to your label category
-configuration file. To learn how, see Create a Labeling Category
-Configuration File for 3D Point Cloud Labeling Jobs.
+configuration file. To learn how, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-label-cat-config-attributes.html}{Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs}.
 
 For named entity recognition jobs, in addition to \code{"labels"}, you must
 provide worker instructions in the label category configuration file
 using the \code{"instructions"} parameter:
 \verb{"instructions": \{"shortInstruction":"<h1>Add header</h1><p>Add Instructions</p>", "fullInstruction":"<p>Add additional instructions.</p>"\}}.
-For details and an example, see Create a Named Entity Recognition
-Labeling Job (API) .
+For details and an example, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-named-entity-recg.html#sms-creating-ner-api}{Create a Named Entity Recognition Labeling Job (API)}
+.
 
-For all other built-in task types and custom tasks, your label category
-configuration file must be a JSON file in the following format. Identify
-the labels you want to use by replacing \code{label_1},
-\code{label_2},\code{...},\code{label_n} with your label categories.
+For all other \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html}{built-in task types}
+and \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html}{custom tasks},
+your label category configuration file must be a JSON file in the
+following format. Identify the labels you want to use by replacing
+\code{label_1}, \code{label_2},\code{...},\code{label_n} with your label categories.
 
 \verb{\\\{ }
 
@@ -134,8 +133,9 @@ label categories.
 \item If you create a 3D point cloud or video frame adjustment or
 verification labeling job, you must include
 \code{auditLabelAttributeName} in the label category configuration. Use
-this parameter to enter the \code{LabelAttributeName} of the labeling job
-you want to adjust or verify annotations of.
+this parameter to enter the
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName}{\code{LabelAttributeName}}
+of the labeling job you want to adjust or verify annotations of.
 }}
 
 \item{StoppingConditions}{A set of conditions for stopping the labeling job. If any of the
@@ -148,9 +148,8 @@ conditions to control the cost of data labeling.}
 including, but not limited to price, keywords, and batch size (task
 count).}
 
-\item{Tags}{An array of key/value pairs. For more information, see Using Cost
-Allocation Tags in the \emph{Amazon Web Services Billing and Cost Management
-User Guide}.}
+\item{Tags}{An array of key/value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
+in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 }
 \description{
 Creates a job that uses workers to label the data objects in your input dataset. You can use the labeled data to train machine learning models.

@@ -464,10 +464,10 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter is a string of characters. That string can
-#' include almost any printable ASCII character from the space (`\u0020`)
-#' through the end of the ASCII character range (`\u00FF`). You can also
-#' include the tab (`\u0009`), line feed (`\u000A`), and carriage return
-#' (`\u000D`) characters. Any of these characters are valid in a password.
+#' include almost any printable ASCII character from the space (``U+0020``)
+#' through the end of the ASCII character range (``U+00FF``). You can also
+#' include the tab (``U+0009``), line feed (``U+000A``), and carriage return
+#' (``U+000D``) characters. Any of these characters are valid in a password.
 #' However, many tools, such as the Amazon Web Services Management Console,
 #' might restrict the ability to type certain characters because they have
 #' special meaning within that tool.
@@ -682,8 +682,8 @@ iam_create_account_alias <- function(AccountAlias) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param GroupName &#91;required&#93; The name of the group to create. Do not include the path in this value.
 #' 
@@ -779,8 +779,8 @@ iam_create_group <- function(Path = NULL, GroupName) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Tags A list of tags that you want to attach to the newly created IAM instance
 #' profile. Each tag consists of a key name and an associated value. For
@@ -919,10 +919,10 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL, Tags =
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter is a string of characters. That string can
-#' include almost any printable ASCII character from the space (`\u0020`)
-#' through the end of the ASCII character range (`\u00FF`). You can also
-#' include the tab (`\u0009`), line feed (`\u000A`), and carriage return
-#' (`\u000D`) characters. Any of these characters are valid in a password.
+#' include almost any printable ASCII character from the space (``U+0020``)
+#' through the end of the ASCII character range (``U+00FF``). You can also
+#' include the tab (``U+0009``), line feed (``U+000A``), and carriage return
+#' (``U+000D``) characters. Any of these characters are valid in a password.
 #' However, many tools, such as the Amazon Web Services Management Console,
 #' might restrict the ability to type certain characters because they have
 #' special meaning within that tool.
@@ -1200,8 +1200,8 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' 
 #' You cannot use an asterisk (*) in the path name.
@@ -1229,13 +1229,13 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param Description A friendly description of the policy.
 #' 
 #' Typically used to store information about the permissions defined in the
@@ -1366,13 +1366,13 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param SetAsDefault Specifies whether to set this version as the policy's default version.
 #' 
 #' When this parameter is `true`, the new policy version becomes the
@@ -1454,8 +1454,8 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param RoleName &#91;required&#93; The name of the role to create.
 #' 
@@ -1475,13 +1475,13 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' 
 #' Upon success, the response includes the same trust policy in JSON
 #' format.
@@ -1621,7 +1621,7 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' that is used as your organization's IdP.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
 #' For more information, see [Enabling SAML 2.0 federated users to access
 #' the Amazon Web Services Management
@@ -1925,8 +1925,8 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param UserName &#91;required&#93; The name of the user to create.
 #' 
@@ -2056,8 +2056,8 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param VirtualMFADeviceName &#91;required&#93; The name of the virtual MFA device. Use with path to uniquely identify a
 #' virtual MFA device.
@@ -3015,7 +3015,7 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
 #' provider resource ARN fails.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' iam_delete_saml_provider(SAMLProviderArn)
@@ -4716,13 +4716,13 @@ iam_get_account_summary <- function() {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' A list with the following syntax:
@@ -4817,13 +4817,13 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' A list with the following syntax:
@@ -5845,7 +5845,7 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #' SAML provider resource object was created or updated.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' iam_get_saml_provider(SAMLProviderArn)
@@ -6804,8 +6804,8 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -6901,8 +6901,8 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -6998,8 +6998,8 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -7099,8 +7099,8 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param PolicyUsageFilter The policy usage method to use for filtering the results.
 #' 
@@ -7295,8 +7295,8 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -7561,8 +7561,8 @@ iam_list_instance_profile_tags <- function(InstanceProfileName, Marker = NULL, M
 #' its [regex pattern](https://en.wikipedia.org/wiki/Regex)) a string of
 #' characters consisting of either a forward slash (/) by itself or a
 #' string that must begin and end with forward slashes. In addition, it can
-#' contain any ASCII character from the ! (`\u0021`) through the DEL
-#' character (`\u007F`), including most punctuation characters, digits, and
+#' contain any ASCII character from the ! (``U+0021``) through the DEL
+#' character (``U+007F``), including most punctuation characters, digits, and
 #' upper and lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -8131,8 +8131,8 @@ iam_list_open_id_connect_providers <- function() {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param PolicyUsageFilter The policy usage method to use for filtering the results.
 #' 
@@ -8712,8 +8712,8 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -8889,7 +8889,7 @@ iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems
 #' [`get_saml_provider`][iam_get_saml_provider].
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' iam_list_saml_providers()
@@ -9146,8 +9146,8 @@ iam_list_server_certificate_tags <- function(ServerCertificateName, Marker = NUL
 #' (through its [regex pattern](https://en.wikipedia.org/wiki/Regex)) a
 #' string of characters consisting of either a forward slash (/) by itself
 #' or a string that must begin and end with forward slashes. In addition,
-#' it can contain any ASCII character from the ! (`\u0021`) through the DEL
-#' character (`\u007F`), including most punctuation characters, digits, and
+#' it can contain any ASCII character from the ! (``U+0021``) through the DEL
+#' character (``U+007F``), including most punctuation characters, digits, and
 #' upper and lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -9584,8 +9584,8 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' [regex pattern](https://en.wikipedia.org/wiki/Regex)) a string of
 #' characters consisting of either a forward slash (/) by itself or a
 #' string that must begin and end with forward slashes. In addition, it can
-#' contain any ASCII character from the ! (`\u0021`) through the DEL
-#' character (`\u007F`), including most punctuation characters, digits, and
+#' contain any ASCII character from the ! (``U+0021``) through the DEL
+#' character (``U+007F``), including most punctuation characters, digits, and
 #' upper and lowercased letters.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -9843,13 +9843,13 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' An empty list.
@@ -10015,13 +10015,13 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' An empty list.
@@ -10176,13 +10176,13 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' An empty list.
@@ -10771,13 +10771,13 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param PermissionsBoundaryPolicyInputList The IAM permissions boundary policy to simulate. The permissions
 #' boundary sets the maximum permissions that an IAM entity can have. You
 #' can input only one permissions boundary when you pass a policy to this
@@ -10798,13 +10798,13 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each
 #' operation is evaluated against each resource. Each operation must
 #' include the service identifier, such as `iam:CreateUser`. This operation
@@ -10845,13 +10845,13 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param ResourceOwner An ARN representing the Amazon Web Services account ID that specifies
 #' the owner of any simulated resource that does not identify its owner in
 #' the resource ARN. Examples of resource ARNs include an S3 bucket or
@@ -11131,13 +11131,13 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param PermissionsBoundaryPolicyInputList The IAM permissions boundary policy to simulate. The permissions
 #' boundary sets the maximum permissions that the entity can have. You can
 #' input only one permissions boundary when you pass a policy to this
@@ -11163,13 +11163,13 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each
 #' operation is evaluated for each resource. Each operation must include
 #' the service identifier, such as `iam:CreateUser`.
@@ -11205,13 +11205,13 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param ResourceOwner An Amazon Web Services account ID that specifies the owner of any
 #' simulated resource that does not identify its owner in the resource ARN.
 #' Examples of resource ARNs include an S3 bucket or object. If
@@ -12903,13 +12903,13 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' An empty list.
@@ -12988,8 +12988,8 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param NewGroupName New name for the IAM group. Only include this if changing the group's
 #' name.
@@ -13069,13 +13069,13 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' 
 #' However, the format can be further restricted by the account
 #' administrator by setting a password policy on the Amazon Web Services
@@ -13353,7 +13353,7 @@ iam_update_role_description <- function(RoleName, Description) {
 #' object.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' iam_update_saml_provider(SAMLMetadataDocument, SAMLProviderArn)
@@ -13517,8 +13517,8 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param NewServerCertificateName The new name for the server certificate. Include this only if you are
 #' updating the server certificate's name. The name of the certificate
@@ -13733,8 +13733,8 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param NewUserName New name for the user. Include this parameter only if you're changing
 #' the user's name.
@@ -13816,13 +13816,13 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' A list with the following syntax:
@@ -13902,7 +13902,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' calling [`upload_server_certificate`][iam_upload_server_certificate].
 #' For information about setting up signatures and authorization through
 #' the API, see [Signing Amazon Web Services API
-#' requests](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html)
+#' requests](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html)
 #' in the *Amazon Web Services General Reference*. For general information
 #' about using the Query API with IAM, see [Calling the API by making HTTP
 #' query
@@ -13923,8 +13923,8 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of either a forward slash (/) by itself or a string that must
 #' begin and end with forward slashes. In addition, it can contain any
-#' ASCII character from the ! (`\u0021`) through the DEL character
-#' (`\u007F`), including most punctuation characters, digits, and upper and
+#' ASCII character from the ! (``U+0021``) through the DEL character
+#' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' 
 #' If you are uploading a server certificate specifically for use with
@@ -13945,13 +13945,13 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param PrivateKey &#91;required&#93; The contents of the private key in PEM-encoded format.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
@@ -13959,13 +13959,13 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param CertificateChain The contents of the certificate chain. This is typically a concatenation
 #' of the PEM-encoded public key certificates of the chain.
 #' 
@@ -13974,13 +13974,13 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param Tags A list of tags that you want to attach to the new IAM server certificate
 #' resource. Each tag consists of a key name and an associated value. For
 #' more information about tagging, see [Tagging IAM
@@ -14091,7 +14091,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' [`upload_signing_certificate`][iam_upload_signing_certificate]. For
 #' information about setting up signatures and authorization through the
 #' API, see [Signing Amazon Web Services API
-#' requests](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html)
+#' requests](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html)
 #' in the *Amazon Web Services General Reference*. For general information
 #' about using the Query API with IAM, see [Making query
 #' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)
@@ -14113,13 +14113,13 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' following:
 #' 
 #' -   Any printable ASCII character ranging from the space character
-#'     (`\u0020`) through the end of the ASCII character range
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
 #' -   The printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`)
+#'     character set (through ``U+00FF``)
 #' 
-#' -   The special characters tab (`\u0009`), line feed (`\u000A`), and
-#'     carriage return (`\u000D`)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' A list with the following syntax:

@@ -42,10 +42,10 @@ Use \code{GetServices} without a service code to retrieve the service codes
 for all AWS services, then \code{GetServices} with a service code to retrieve
 the attribute names for that service. After you have the service code
 and attribute names, you can use
-\code{\link[=pricing_get_attribute_values]{get_attribute_values}} to see what
+\code{get_attribute_values} to see what
 values are available for an attribute. With the service code and an
 attribute name and value, you can use
-\code{\link[=pricing_get_products]{get_products}} to find specific products that
+\code{get_products} to find specific products that
 you're interested in, such as an \code{AmazonEC2} instance, with a
 \verb{Provisioned IOPS} \code{volumeType}.
 
@@ -85,9 +85,9 @@ endpoints:
 \section{Operations}{
 
 \tabular{ll}{
-\link[=pricing_describe_services]{describe_services} \tab Returns the metadata for one service or a list of the metadata for all services\cr
-\link[=pricing_get_attribute_values]{get_attribute_values} \tab Returns a list of attribute values\cr
-\link[=pricing_get_products]{get_products} \tab Returns a list of all products that match the filter criteria
+\link[paws.cost.management:pricing_describe_services]{describe_services} \tab Returns the metadata for one service or a list of the metadata for all services\cr
+\link[paws.cost.management:pricing_get_attribute_values]{get_attribute_values} \tab Returns a list of attribute values\cr
+\link[paws.cost.management:pricing_get_products]{get_products} \tab Returns a list of all products that match the filter criteria
 }
 }
 

@@ -73,74 +73,74 @@ information about the AWS SDKs, see Tools to build on AWS.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=frauddetector_batch_create_variable]{batch_create_variable} \tab Creates a batch of variables\cr
-\link[=frauddetector_batch_get_variable]{batch_get_variable} \tab Gets a batch of variables\cr
-\link[=frauddetector_cancel_batch_import_job]{cancel_batch_import_job} \tab Cancels an in-progress batch import job\cr
-\link[=frauddetector_cancel_batch_prediction_job]{cancel_batch_prediction_job} \tab Cancels the specified batch prediction job\cr
-\link[=frauddetector_create_batch_import_job]{create_batch_import_job} \tab Creates a batch import job\cr
-\link[=frauddetector_create_batch_prediction_job]{create_batch_prediction_job} \tab Creates a batch prediction job\cr
-\link[=frauddetector_create_detector_version]{create_detector_version} \tab Creates a detector version\cr
-\link[=frauddetector_create_model]{create_model} \tab Creates a model using the specified model type\cr
-\link[=frauddetector_create_model_version]{create_model_version} \tab Creates a version of the model using the specified model type and model id\cr
-\link[=frauddetector_create_rule]{create_rule} \tab Creates a rule for use with the specified detector\cr
-\link[=frauddetector_create_variable]{create_variable} \tab Creates a variable\cr
-\link[=frauddetector_delete_batch_import_job]{delete_batch_import_job} \tab Deletes the specified batch import job ID record\cr
-\link[=frauddetector_delete_batch_prediction_job]{delete_batch_prediction_job} \tab Deletes a batch prediction job\cr
-\link[=frauddetector_delete_detector]{delete_detector} \tab Deletes the detector\cr
-\link[=frauddetector_delete_detector_version]{delete_detector_version} \tab Deletes the detector version\cr
-\link[=frauddetector_delete_entity_type]{delete_entity_type} \tab Deletes an entity type\cr
-\link[=frauddetector_delete_event]{delete_event} \tab Deletes the specified event\cr
-\link[=frauddetector_delete_events_by_event_type]{delete_events_by_event_type} \tab Deletes all events of a particular event type\cr
-\link[=frauddetector_delete_event_type]{delete_event_type} \tab Deletes an event type\cr
-\link[=frauddetector_delete_external_model]{delete_external_model} \tab Removes a SageMaker model from Amazon Fraud Detector\cr
-\link[=frauddetector_delete_label]{delete_label} \tab Deletes a label\cr
-\link[=frauddetector_delete_model]{delete_model} \tab Deletes a model\cr
-\link[=frauddetector_delete_model_version]{delete_model_version} \tab Deletes a model version\cr
-\link[=frauddetector_delete_outcome]{delete_outcome} \tab Deletes an outcome\cr
-\link[=frauddetector_delete_rule]{delete_rule} \tab Deletes the rule\cr
-\link[=frauddetector_delete_variable]{delete_variable} \tab Deletes a variable\cr
-\link[=frauddetector_describe_detector]{describe_detector} \tab Gets all versions for a specified detector\cr
-\link[=frauddetector_describe_model_versions]{describe_model_versions} \tab Gets all of the model versions for the specified model type or for the specified model type and model ID\cr
-\link[=frauddetector_get_batch_import_jobs]{get_batch_import_jobs} \tab Gets all batch import jobs or a specific job of the specified ID\cr
-\link[=frauddetector_get_batch_prediction_jobs]{get_batch_prediction_jobs} \tab Gets all batch prediction jobs or a specific job if you specify a job ID\cr
-\link[=frauddetector_get_delete_events_by_event_type_status]{get_delete_events_by_event_type_status} \tab Retrieves the status of a DeleteEventsByEventType action\cr
-\link[=frauddetector_get_detectors]{get_detectors} \tab Gets all detectors or a single detector if a detectorId is specified\cr
-\link[=frauddetector_get_detector_version]{get_detector_version} \tab Gets a particular detector version\cr
-\link[=frauddetector_get_entity_types]{get_entity_types} \tab Gets all entity types or a specific entity type if a name is specified\cr
-\link[=frauddetector_get_event]{get_event} \tab Retrieves details of events stored with Amazon Fraud Detector\cr
-\link[=frauddetector_get_event_prediction]{get_event_prediction} \tab Evaluates an event against a detector version\cr
-\link[=frauddetector_get_event_prediction_metadata]{get_event_prediction_metadata} \tab Gets details of the past fraud predictions for the specified event ID, event type, detector ID, and detector version ID that was generated in the specified time period\cr
-\link[=frauddetector_get_event_types]{get_event_types} \tab Gets all event types or a specific event type if name is provided\cr
-\link[=frauddetector_get_external_models]{get_external_models} \tab Gets the details for one or more Amazon SageMaker models that have been imported into the service\cr
-\link[=frauddetector_get_kms_encryption_key]{get_kms_encryption_key} \tab Gets the encryption key if a KMS key has been specified to be used to encrypt content in Amazon Fraud Detector\cr
-\link[=frauddetector_get_labels]{get_labels} \tab Gets all labels or a specific label if name is provided\cr
-\link[=frauddetector_get_models]{get_models} \tab Gets one or more models\cr
-\link[=frauddetector_get_model_version]{get_model_version} \tab Gets the details of the specified model version\cr
-\link[=frauddetector_get_outcomes]{get_outcomes} \tab Gets one or more outcomes\cr
-\link[=frauddetector_get_rules]{get_rules} \tab Get all rules for a detector (paginated) if ruleId and ruleVersion are not specified\cr
-\link[=frauddetector_get_variables]{get_variables} \tab Gets all of the variables or the specific variable\cr
-\link[=frauddetector_list_event_predictions]{list_event_predictions} \tab Gets a list of past predictions\cr
-\link[=frauddetector_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags associated with the resource\cr
-\link[=frauddetector_put_detector]{put_detector} \tab Creates or updates a detector\cr
-\link[=frauddetector_put_entity_type]{put_entity_type} \tab Creates or updates an entity type\cr
-\link[=frauddetector_put_event_type]{put_event_type} \tab Creates or updates an event type\cr
-\link[=frauddetector_put_external_model]{put_external_model} \tab Creates or updates an Amazon SageMaker model endpoint\cr
-\link[=frauddetector_put_kms_encryption_key]{put_kms_encryption_key} \tab Specifies the KMS key to be used to encrypt content in Amazon Fraud Detector\cr
-\link[=frauddetector_put_label]{put_label} \tab Creates or updates label\cr
-\link[=frauddetector_put_outcome]{put_outcome} \tab Creates or updates an outcome\cr
-\link[=frauddetector_send_event]{send_event} \tab Stores events in Amazon Fraud Detector without generating fraud predictions for those events\cr
-\link[=frauddetector_tag_resource]{tag_resource} \tab Assigns tags to a resource\cr
-\link[=frauddetector_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
-\link[=frauddetector_update_detector_version]{update_detector_version} \tab Updates a detector version\cr
-\link[=frauddetector_update_detector_version_metadata]{update_detector_version_metadata} \tab Updates the detector version's description\cr
-\link[=frauddetector_update_detector_version_status]{update_detector_version_status} \tab Updates the detector version’s status\cr
-\link[=frauddetector_update_event_label]{update_event_label} \tab Updates the specified event with a new label\cr
-\link[=frauddetector_update_model]{update_model} \tab Updates model description\cr
-\link[=frauddetector_update_model_version]{update_model_version} \tab Updates a model version\cr
-\link[=frauddetector_update_model_version_status]{update_model_version_status} \tab Updates the status of a model version\cr
-\link[=frauddetector_update_rule_metadata]{update_rule_metadata} \tab Updates a rule's metadata\cr
-\link[=frauddetector_update_rule_version]{update_rule_version} \tab Updates a rule version resulting in a new rule version\cr
-\link[=frauddetector_update_variable]{update_variable} \tab Updates a variable
+\link[paws.machine.learning:frauddetector_batch_create_variable]{batch_create_variable} \tab Creates a batch of variables\cr
+\link[paws.machine.learning:frauddetector_batch_get_variable]{batch_get_variable} \tab Gets a batch of variables\cr
+\link[paws.machine.learning:frauddetector_cancel_batch_import_job]{cancel_batch_import_job} \tab Cancels an in-progress batch import job\cr
+\link[paws.machine.learning:frauddetector_cancel_batch_prediction_job]{cancel_batch_prediction_job} \tab Cancels the specified batch prediction job\cr
+\link[paws.machine.learning:frauddetector_create_batch_import_job]{create_batch_import_job} \tab Creates a batch import job\cr
+\link[paws.machine.learning:frauddetector_create_batch_prediction_job]{create_batch_prediction_job} \tab Creates a batch prediction job\cr
+\link[paws.machine.learning:frauddetector_create_detector_version]{create_detector_version} \tab Creates a detector version\cr
+\link[paws.machine.learning:frauddetector_create_model]{create_model} \tab Creates a model using the specified model type\cr
+\link[paws.machine.learning:frauddetector_create_model_version]{create_model_version} \tab Creates a version of the model using the specified model type and model id\cr
+\link[paws.machine.learning:frauddetector_create_rule]{create_rule} \tab Creates a rule for use with the specified detector\cr
+\link[paws.machine.learning:frauddetector_create_variable]{create_variable} \tab Creates a variable\cr
+\link[paws.machine.learning:frauddetector_delete_batch_import_job]{delete_batch_import_job} \tab Deletes the specified batch import job ID record\cr
+\link[paws.machine.learning:frauddetector_delete_batch_prediction_job]{delete_batch_prediction_job} \tab Deletes a batch prediction job\cr
+\link[paws.machine.learning:frauddetector_delete_detector]{delete_detector} \tab Deletes the detector\cr
+\link[paws.machine.learning:frauddetector_delete_detector_version]{delete_detector_version} \tab Deletes the detector version\cr
+\link[paws.machine.learning:frauddetector_delete_entity_type]{delete_entity_type} \tab Deletes an entity type\cr
+\link[paws.machine.learning:frauddetector_delete_event]{delete_event} \tab Deletes the specified event\cr
+\link[paws.machine.learning:frauddetector_delete_events_by_event_type]{delete_events_by_event_type} \tab Deletes all events of a particular event type\cr
+\link[paws.machine.learning:frauddetector_delete_event_type]{delete_event_type} \tab Deletes an event type\cr
+\link[paws.machine.learning:frauddetector_delete_external_model]{delete_external_model} \tab Removes a SageMaker model from Amazon Fraud Detector\cr
+\link[paws.machine.learning:frauddetector_delete_label]{delete_label} \tab Deletes a label\cr
+\link[paws.machine.learning:frauddetector_delete_model]{delete_model} \tab Deletes a model\cr
+\link[paws.machine.learning:frauddetector_delete_model_version]{delete_model_version} \tab Deletes a model version\cr
+\link[paws.machine.learning:frauddetector_delete_outcome]{delete_outcome} \tab Deletes an outcome\cr
+\link[paws.machine.learning:frauddetector_delete_rule]{delete_rule} \tab Deletes the rule\cr
+\link[paws.machine.learning:frauddetector_delete_variable]{delete_variable} \tab Deletes a variable\cr
+\link[paws.machine.learning:frauddetector_describe_detector]{describe_detector} \tab Gets all versions for a specified detector\cr
+\link[paws.machine.learning:frauddetector_describe_model_versions]{describe_model_versions} \tab Gets all of the model versions for the specified model type or for the specified model type and model ID\cr
+\link[paws.machine.learning:frauddetector_get_batch_import_jobs]{get_batch_import_jobs} \tab Gets all batch import jobs or a specific job of the specified ID\cr
+\link[paws.machine.learning:frauddetector_get_batch_prediction_jobs]{get_batch_prediction_jobs} \tab Gets all batch prediction jobs or a specific job if you specify a job ID\cr
+\link[paws.machine.learning:frauddetector_get_delete_events_by_event_type_status]{get_delete_events_by_event_type_status} \tab Retrieves the status of a DeleteEventsByEventType action\cr
+\link[paws.machine.learning:frauddetector_get_detectors]{get_detectors} \tab Gets all detectors or a single detector if a detectorId is specified\cr
+\link[paws.machine.learning:frauddetector_get_detector_version]{get_detector_version} \tab Gets a particular detector version\cr
+\link[paws.machine.learning:frauddetector_get_entity_types]{get_entity_types} \tab Gets all entity types or a specific entity type if a name is specified\cr
+\link[paws.machine.learning:frauddetector_get_event]{get_event} \tab Retrieves details of events stored with Amazon Fraud Detector\cr
+\link[paws.machine.learning:frauddetector_get_event_prediction]{get_event_prediction} \tab Evaluates an event against a detector version\cr
+\link[paws.machine.learning:frauddetector_get_event_prediction_metadata]{get_event_prediction_metadata} \tab Gets details of the past fraud predictions for the specified event ID, event type, detector ID, and detector version ID that was generated in the specified time period\cr
+\link[paws.machine.learning:frauddetector_get_event_types]{get_event_types} \tab Gets all event types or a specific event type if name is provided\cr
+\link[paws.machine.learning:frauddetector_get_external_models]{get_external_models} \tab Gets the details for one or more Amazon SageMaker models that have been imported into the service\cr
+\link[paws.machine.learning:frauddetector_get_kms_encryption_key]{get_kms_encryption_key} \tab Gets the encryption key if a KMS key has been specified to be used to encrypt content in Amazon Fraud Detector\cr
+\link[paws.machine.learning:frauddetector_get_labels]{get_labels} \tab Gets all labels or a specific label if name is provided\cr
+\link[paws.machine.learning:frauddetector_get_models]{get_models} \tab Gets one or more models\cr
+\link[paws.machine.learning:frauddetector_get_model_version]{get_model_version} \tab Gets the details of the specified model version\cr
+\link[paws.machine.learning:frauddetector_get_outcomes]{get_outcomes} \tab Gets one or more outcomes\cr
+\link[paws.machine.learning:frauddetector_get_rules]{get_rules} \tab Get all rules for a detector (paginated) if ruleId and ruleVersion are not specified\cr
+\link[paws.machine.learning:frauddetector_get_variables]{get_variables} \tab Gets all of the variables or the specific variable\cr
+\link[paws.machine.learning:frauddetector_list_event_predictions]{list_event_predictions} \tab Gets a list of past predictions\cr
+\link[paws.machine.learning:frauddetector_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags associated with the resource\cr
+\link[paws.machine.learning:frauddetector_put_detector]{put_detector} \tab Creates or updates a detector\cr
+\link[paws.machine.learning:frauddetector_put_entity_type]{put_entity_type} \tab Creates or updates an entity type\cr
+\link[paws.machine.learning:frauddetector_put_event_type]{put_event_type} \tab Creates or updates an event type\cr
+\link[paws.machine.learning:frauddetector_put_external_model]{put_external_model} \tab Creates or updates an Amazon SageMaker model endpoint\cr
+\link[paws.machine.learning:frauddetector_put_kms_encryption_key]{put_kms_encryption_key} \tab Specifies the KMS key to be used to encrypt content in Amazon Fraud Detector\cr
+\link[paws.machine.learning:frauddetector_put_label]{put_label} \tab Creates or updates label\cr
+\link[paws.machine.learning:frauddetector_put_outcome]{put_outcome} \tab Creates or updates an outcome\cr
+\link[paws.machine.learning:frauddetector_send_event]{send_event} \tab Stores events in Amazon Fraud Detector without generating fraud predictions for those events\cr
+\link[paws.machine.learning:frauddetector_tag_resource]{tag_resource} \tab Assigns tags to a resource\cr
+\link[paws.machine.learning:frauddetector_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
+\link[paws.machine.learning:frauddetector_update_detector_version]{update_detector_version} \tab Updates a detector version\cr
+\link[paws.machine.learning:frauddetector_update_detector_version_metadata]{update_detector_version_metadata} \tab Updates the detector version's description\cr
+\link[paws.machine.learning:frauddetector_update_detector_version_status]{update_detector_version_status} \tab Updates the detector version’s status\cr
+\link[paws.machine.learning:frauddetector_update_event_label]{update_event_label} \tab Updates the specified event with a new label\cr
+\link[paws.machine.learning:frauddetector_update_model]{update_model} \tab Updates model description\cr
+\link[paws.machine.learning:frauddetector_update_model_version]{update_model_version} \tab Updates a model version\cr
+\link[paws.machine.learning:frauddetector_update_model_version_status]{update_model_version_status} \tab Updates the status of a model version\cr
+\link[paws.machine.learning:frauddetector_update_rule_metadata]{update_rule_metadata} \tab Updates a rule's metadata\cr
+\link[paws.machine.learning:frauddetector_update_rule_version]{update_rule_version} \tab Updates a rule version resulting in a new rule version\cr
+\link[paws.machine.learning:frauddetector_update_variable]{update_variable} \tab Updates a variable
 }
 }
 

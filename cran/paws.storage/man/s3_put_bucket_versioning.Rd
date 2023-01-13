@@ -18,7 +18,7 @@ s3_put_bucket_versioning(
 
 \item{ContentMD5}{\>The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, see RFC 1864.
+not corrupted in transit. For more information, see \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.
 
 For requests made using the Amazon Web Services Command Line Interface
 (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -29,7 +29,7 @@ using the SDK. This header will not provide any additional functionality
 if not using the SDK. When sending this header, there must be a
 corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
-\verb{400 Bad Request}. For more information, see Checking object integrity
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
 If you provide an individual checksum, Amazon S3 ignores any provided

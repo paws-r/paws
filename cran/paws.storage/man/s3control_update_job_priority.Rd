@@ -15,7 +15,7 @@ Operations job.}
 \item{Priority}{[required] The priority you want to assign to this job.}
 }
 \description{
-Updates an existing S3 Batch Operations job's priority. For more information, see S3 Batch Operations in the \emph{Amazon S3 User Guide}.
+Updates an existing S3 Batch Operations job's priority. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3control/update_job_priority.html} for full documentation.
 }

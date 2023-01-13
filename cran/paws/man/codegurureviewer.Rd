@@ -74,20 +74,20 @@ in the \emph{Amazon CodeGuru Reviewer User Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=codegurureviewer_associate_repository]{associate_repository} \tab Use to associate an Amazon Web Services CodeCommit repository or a repostory managed by Amazon Web Services CodeStar Connections with Amazon CodeGuru Reviewer\cr
-\link[=codegurureviewer_create_code_review]{create_code_review} \tab Use to create a code review with a CodeReviewType of RepositoryAnalysis\cr
-\link[=codegurureviewer_describe_code_review]{describe_code_review} \tab Returns the metadata associated with the code review along with its status\cr
-\link[=codegurureviewer_describe_recommendation_feedback]{describe_recommendation_feedback} \tab Describes the customer feedback for a CodeGuru Reviewer recommendation\cr
-\link[=codegurureviewer_describe_repository_association]{describe_repository_association} \tab Returns a RepositoryAssociation object that contains information about the requested repository association\cr
-\link[=codegurureviewer_disassociate_repository]{disassociate_repository} \tab Removes the association between Amazon CodeGuru Reviewer and a repository\cr
-\link[=codegurureviewer_list_code_reviews]{list_code_reviews} \tab Lists all the code reviews that the customer has created in the past 90 days\cr
-\link[=codegurureviewer_list_recommendation_feedback]{list_recommendation_feedback} \tab Returns a list of RecommendationFeedbackSummary objects that contain customer recommendation feedback for all CodeGuru Reviewer users\cr
-\link[=codegurureviewer_list_recommendations]{list_recommendations} \tab Returns the list of all recommendations for a completed code review\cr
-\link[=codegurureviewer_list_repository_associations]{list_repository_associations} \tab Returns a list of RepositoryAssociationSummary objects that contain summary information about a repository association\cr
-\link[=codegurureviewer_list_tags_for_resource]{list_tags_for_resource} \tab Returns the list of tags associated with an associated repository resource\cr
-\link[=codegurureviewer_put_recommendation_feedback]{put_recommendation_feedback} \tab Stores customer feedback for a CodeGuru Reviewer recommendation\cr
-\link[=codegurureviewer_tag_resource]{tag_resource} \tab Adds one or more tags to an associated repository\cr
-\link[=codegurureviewer_untag_resource]{untag_resource} \tab Removes a tag from an associated repository
+\link[paws.developer.tools:codegurureviewer_associate_repository]{associate_repository} \tab Use to associate an Amazon Web Services CodeCommit repository or a repostory managed by Amazon Web Services CodeStar Connections with Amazon CodeGuru Reviewer\cr
+\link[paws.developer.tools:codegurureviewer_create_code_review]{create_code_review} \tab Use to create a code review with a CodeReviewType of RepositoryAnalysis\cr
+\link[paws.developer.tools:codegurureviewer_describe_code_review]{describe_code_review} \tab Returns the metadata associated with the code review along with its status\cr
+\link[paws.developer.tools:codegurureviewer_describe_recommendation_feedback]{describe_recommendation_feedback} \tab Describes the customer feedback for a CodeGuru Reviewer recommendation\cr
+\link[paws.developer.tools:codegurureviewer_describe_repository_association]{describe_repository_association} \tab Returns a RepositoryAssociation object that contains information about the requested repository association\cr
+\link[paws.developer.tools:codegurureviewer_disassociate_repository]{disassociate_repository} \tab Removes the association between Amazon CodeGuru Reviewer and a repository\cr
+\link[paws.developer.tools:codegurureviewer_list_code_reviews]{list_code_reviews} \tab Lists all the code reviews that the customer has created in the past 90 days\cr
+\link[paws.developer.tools:codegurureviewer_list_recommendation_feedback]{list_recommendation_feedback} \tab Returns a list of RecommendationFeedbackSummary objects that contain customer recommendation feedback for all CodeGuru Reviewer users\cr
+\link[paws.developer.tools:codegurureviewer_list_recommendations]{list_recommendations} \tab Returns the list of all recommendations for a completed code review\cr
+\link[paws.developer.tools:codegurureviewer_list_repository_associations]{list_repository_associations} \tab Returns a list of RepositoryAssociationSummary objects that contain summary information about a repository association\cr
+\link[paws.developer.tools:codegurureviewer_list_tags_for_resource]{list_tags_for_resource} \tab Returns the list of tags associated with an associated repository resource\cr
+\link[paws.developer.tools:codegurureviewer_put_recommendation_feedback]{put_recommendation_feedback} \tab Stores customer feedback for a CodeGuru Reviewer recommendation\cr
+\link[paws.developer.tools:codegurureviewer_tag_resource]{tag_resource} \tab Adds one or more tags to an associated repository\cr
+\link[paws.developer.tools:codegurureviewer_untag_resource]{untag_resource} \tab Removes a tag from an associated repository
 }
 }
 

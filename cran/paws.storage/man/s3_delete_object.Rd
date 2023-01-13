@@ -23,8 +23,8 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
-name. For more information about access point ARNs, see Using access
-points in the \emph{Amazon S3 User Guide}.
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
 When using this action with Amazon S3 on Outposts, you must direct
 requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -32,8 +32,8 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When using this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts bucket ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see Using
-Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Key name of the object to delete.}
 

@@ -44,7 +44,7 @@ that you can use to interact with Amazon A2I programmatically. Use this
 guide to:
 \itemize{
 \item Start a human loop with the
-\code{\link[=augmentedairuntime_start_human_loop]{start_human_loop}} operation
+\code{start_human_loop} operation
 when using Amazon A2I with a \emph{custom task type}. To learn more about
 the difference between custom and built-in task types, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-general.html}{Use Task Types}
 . To learn how to start a human loop using this API, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-start-human-loop.html#a2i-instructions-starthumanloop}{Create and Start a Human Loop for a Custom Task Type}
@@ -87,11 +87,11 @@ in the Amazon SageMaker Developer Guide.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=augmentedairuntime_delete_human_loop]{delete_human_loop} \tab Deletes the specified human loop for a flow definition\cr
-\link[=augmentedairuntime_describe_human_loop]{describe_human_loop} \tab Returns information about the specified human loop\cr
-\link[=augmentedairuntime_list_human_loops]{list_human_loops} \tab Returns information about human loops, given the specified parameters\cr
-\link[=augmentedairuntime_start_human_loop]{start_human_loop} \tab Starts a human loop, provided that at least one activation condition is met\cr
-\link[=augmentedairuntime_stop_human_loop]{stop_human_loop} \tab Stops the specified human loop
+\link[paws.machine.learning:augmentedairuntime_delete_human_loop]{delete_human_loop} \tab Deletes the specified human loop for a flow definition\cr
+\link[paws.machine.learning:augmentedairuntime_describe_human_loop]{describe_human_loop} \tab Returns information about the specified human loop\cr
+\link[paws.machine.learning:augmentedairuntime_list_human_loops]{list_human_loops} \tab Returns information about human loops, given the specified parameters\cr
+\link[paws.machine.learning:augmentedairuntime_start_human_loop]{start_human_loop} \tab Starts a human loop, provided that at least one activation condition is met\cr
+\link[paws.machine.learning:augmentedairuntime_stop_human_loop]{stop_human_loop} \tab Stops the specified human loop
 }
 }
 

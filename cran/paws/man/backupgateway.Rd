@@ -72,24 +72,24 @@ the Backup console, choose \strong{Gateways}, then choose \strong{Create gateway
 \section{Operations}{
 
 \tabular{ll}{
-\link[=backupgateway_associate_gateway_to_server]{associate_gateway_to_server} \tab Associates a backup gateway with your server\cr
-\link[=backupgateway_create_gateway]{create_gateway} \tab Creates a backup gateway\cr
-\link[=backupgateway_delete_gateway]{delete_gateway} \tab Deletes a backup gateway\cr
-\link[=backupgateway_delete_hypervisor]{delete_hypervisor} \tab Deletes a hypervisor\cr
-\link[=backupgateway_disassociate_gateway_from_server]{disassociate_gateway_from_server} \tab Disassociates a backup gateway from the specified server\cr
-\link[=backupgateway_get_gateway]{get_gateway} \tab By providing the ARN (Amazon Resource Name), this API returns the gateway\cr
-\link[=backupgateway_import_hypervisor_configuration]{import_hypervisor_configuration} \tab Connect to a hypervisor by importing its configuration\cr
-\link[=backupgateway_list_gateways]{list_gateways} \tab Lists backup gateways owned by an Amazon Web Services account in an Amazon Web Services Region\cr
-\link[=backupgateway_list_hypervisors]{list_hypervisors} \tab Lists your hypervisors\cr
-\link[=backupgateway_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags applied to the resource identified by its Amazon Resource Name (ARN)\cr
-\link[=backupgateway_list_virtual_machines]{list_virtual_machines} \tab Lists your virtual machines\cr
-\link[=backupgateway_put_maintenance_start_time]{put_maintenance_start_time} \tab Set the maintenance start time for a gateway\cr
-\link[=backupgateway_tag_resource]{tag_resource} \tab Tag the resource\cr
-\link[=backupgateway_test_hypervisor_configuration]{test_hypervisor_configuration} \tab Tests your hypervisor configuration to validate that backup gateway can connect with the hypervisor and its resources\cr
-\link[=backupgateway_untag_resource]{untag_resource} \tab Removes tags from the resource\cr
-\link[=backupgateway_update_gateway_information]{update_gateway_information} \tab Updates a gateway's name\cr
-\link[=backupgateway_update_gateway_software_now]{update_gateway_software_now} \tab Updates the gateway virtual machine (VM) software\cr
-\link[=backupgateway_update_hypervisor]{update_hypervisor} \tab Updates a hypervisor metadata, including its host, username, and password
+\link[paws.networking:backupgateway_associate_gateway_to_server]{associate_gateway_to_server} \tab Associates a backup gateway with your server\cr
+\link[paws.networking:backupgateway_create_gateway]{create_gateway} \tab Creates a backup gateway\cr
+\link[paws.networking:backupgateway_delete_gateway]{delete_gateway} \tab Deletes a backup gateway\cr
+\link[paws.networking:backupgateway_delete_hypervisor]{delete_hypervisor} \tab Deletes a hypervisor\cr
+\link[paws.networking:backupgateway_disassociate_gateway_from_server]{disassociate_gateway_from_server} \tab Disassociates a backup gateway from the specified server\cr
+\link[paws.networking:backupgateway_get_gateway]{get_gateway} \tab By providing the ARN (Amazon Resource Name), this API returns the gateway\cr
+\link[paws.networking:backupgateway_import_hypervisor_configuration]{import_hypervisor_configuration} \tab Connect to a hypervisor by importing its configuration\cr
+\link[paws.networking:backupgateway_list_gateways]{list_gateways} \tab Lists backup gateways owned by an Amazon Web Services account in an Amazon Web Services Region\cr
+\link[paws.networking:backupgateway_list_hypervisors]{list_hypervisors} \tab Lists your hypervisors\cr
+\link[paws.networking:backupgateway_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags applied to the resource identified by its Amazon Resource Name (ARN)\cr
+\link[paws.networking:backupgateway_list_virtual_machines]{list_virtual_machines} \tab Lists your virtual machines\cr
+\link[paws.networking:backupgateway_put_maintenance_start_time]{put_maintenance_start_time} \tab Set the maintenance start time for a gateway\cr
+\link[paws.networking:backupgateway_tag_resource]{tag_resource} \tab Tag the resource\cr
+\link[paws.networking:backupgateway_test_hypervisor_configuration]{test_hypervisor_configuration} \tab Tests your hypervisor configuration to validate that backup gateway can connect with the hypervisor and its resources\cr
+\link[paws.networking:backupgateway_untag_resource]{untag_resource} \tab Removes tags from the resource\cr
+\link[paws.networking:backupgateway_update_gateway_information]{update_gateway_information} \tab Updates a gateway's name\cr
+\link[paws.networking:backupgateway_update_gateway_software_now]{update_gateway_software_now} \tab Updates the gateway virtual machine (VM) software\cr
+\link[paws.networking:backupgateway_update_hypervisor]{update_hypervisor} \tab Updates a hypervisor metadata, including its host, username, and password
 }
 }
 

@@ -121,37 +121,37 @@ through the new firewall endpoints.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=networkfirewall_associate_firewall_policy]{associate_firewall_policy} \tab Associates a FirewallPolicy to a Firewall\cr
-\link[=networkfirewall_associate_subnets]{associate_subnets} \tab Associates the specified subnets in the Amazon VPC to the firewall\cr
-\link[=networkfirewall_create_firewall]{create_firewall} \tab Creates an Network Firewall Firewall and accompanying FirewallStatus for a VPC\cr
-\link[=networkfirewall_create_firewall_policy]{create_firewall_policy} \tab Creates the firewall policy for the firewall according to the specifications\cr
-\link[=networkfirewall_create_rule_group]{create_rule_group} \tab Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags\cr
-\link[=networkfirewall_delete_firewall]{delete_firewall} \tab Deletes the specified Firewall and its FirewallStatus\cr
-\link[=networkfirewall_delete_firewall_policy]{delete_firewall_policy} \tab Deletes the specified FirewallPolicy\cr
-\link[=networkfirewall_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource policy that you created in a PutResourcePolicy request\cr
-\link[=networkfirewall_delete_rule_group]{delete_rule_group} \tab Deletes the specified RuleGroup\cr
-\link[=networkfirewall_describe_firewall]{describe_firewall} \tab Returns the data objects for the specified firewall\cr
-\link[=networkfirewall_describe_firewall_policy]{describe_firewall_policy} \tab Returns the data objects for the specified firewall policy\cr
-\link[=networkfirewall_describe_logging_configuration]{describe_logging_configuration} \tab Returns the logging configuration for the specified firewall\cr
-\link[=networkfirewall_describe_resource_policy]{describe_resource_policy} \tab Retrieves a resource policy that you created in a PutResourcePolicy request\cr
-\link[=networkfirewall_describe_rule_group]{describe_rule_group} \tab Returns the data objects for the specified rule group\cr
-\link[=networkfirewall_describe_rule_group_metadata]{describe_rule_group_metadata} \tab High-level information about a rule group, returned by operations like create and describe\cr
-\link[=networkfirewall_disassociate_subnets]{disassociate_subnets} \tab Removes the specified subnet associations from the firewall\cr
-\link[=networkfirewall_list_firewall_policies]{list_firewall_policies} \tab Retrieves the metadata for the firewall policies that you have defined\cr
-\link[=networkfirewall_list_firewalls]{list_firewalls} \tab Retrieves the metadata for the firewalls that you have defined\cr
-\link[=networkfirewall_list_rule_groups]{list_rule_groups} \tab Retrieves the metadata for the rule groups that you have defined\cr
-\link[=networkfirewall_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags associated with the specified resource\cr
-\link[=networkfirewall_put_resource_policy]{put_resource_policy} \tab Creates or updates an IAM policy for your rule group or firewall policy\cr
-\link[=networkfirewall_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
-\link[=networkfirewall_untag_resource]{untag_resource} \tab Removes the tags with the specified keys from the specified resource\cr
-\link[=networkfirewall_update_firewall_delete_protection]{update_firewall_delete_protection} \tab Modifies the flag, DeleteProtection, which indicates whether it is possible to delete the firewall\cr
-\link[=networkfirewall_update_firewall_description]{update_firewall_description} \tab Modifies the description for the specified firewall\cr
-\link[=networkfirewall_update_firewall_encryption_configuration]{update_firewall_encryption_configuration} \tab A complex type that contains settings for encryption of your firewall resources\cr
-\link[=networkfirewall_update_firewall_policy]{update_firewall_policy} \tab Updates the properties of the specified firewall policy\cr
-\link[=networkfirewall_update_firewall_policy_change_protection]{update_firewall_policy_change_protection} \tab Modifies the flag, ChangeProtection, which indicates whether it is possible to change the firewall\cr
-\link[=networkfirewall_update_logging_configuration]{update_logging_configuration} \tab Sets the logging configuration for the specified firewall\cr
-\link[=networkfirewall_update_rule_group]{update_rule_group} \tab Updates the rule settings for the specified rule group\cr
-\link[=networkfirewall_update_subnet_change_protection]{update_subnet_change_protection} \tab Update subnet change protection
+\link[paws.networking:networkfirewall_associate_firewall_policy]{associate_firewall_policy} \tab Associates a FirewallPolicy to a Firewall\cr
+\link[paws.networking:networkfirewall_associate_subnets]{associate_subnets} \tab Associates the specified subnets in the Amazon VPC to the firewall\cr
+\link[paws.networking:networkfirewall_create_firewall]{create_firewall} \tab Creates an Network Firewall Firewall and accompanying FirewallStatus for a VPC\cr
+\link[paws.networking:networkfirewall_create_firewall_policy]{create_firewall_policy} \tab Creates the firewall policy for the firewall according to the specifications\cr
+\link[paws.networking:networkfirewall_create_rule_group]{create_rule_group} \tab Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags\cr
+\link[paws.networking:networkfirewall_delete_firewall]{delete_firewall} \tab Deletes the specified Firewall and its FirewallStatus\cr
+\link[paws.networking:networkfirewall_delete_firewall_policy]{delete_firewall_policy} \tab Deletes the specified FirewallPolicy\cr
+\link[paws.networking:networkfirewall_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource policy that you created in a PutResourcePolicy request\cr
+\link[paws.networking:networkfirewall_delete_rule_group]{delete_rule_group} \tab Deletes the specified RuleGroup\cr
+\link[paws.networking:networkfirewall_describe_firewall]{describe_firewall} \tab Returns the data objects for the specified firewall\cr
+\link[paws.networking:networkfirewall_describe_firewall_policy]{describe_firewall_policy} \tab Returns the data objects for the specified firewall policy\cr
+\link[paws.networking:networkfirewall_describe_logging_configuration]{describe_logging_configuration} \tab Returns the logging configuration for the specified firewall\cr
+\link[paws.networking:networkfirewall_describe_resource_policy]{describe_resource_policy} \tab Retrieves a resource policy that you created in a PutResourcePolicy request\cr
+\link[paws.networking:networkfirewall_describe_rule_group]{describe_rule_group} \tab Returns the data objects for the specified rule group\cr
+\link[paws.networking:networkfirewall_describe_rule_group_metadata]{describe_rule_group_metadata} \tab High-level information about a rule group, returned by operations like create and describe\cr
+\link[paws.networking:networkfirewall_disassociate_subnets]{disassociate_subnets} \tab Removes the specified subnet associations from the firewall\cr
+\link[paws.networking:networkfirewall_list_firewall_policies]{list_firewall_policies} \tab Retrieves the metadata for the firewall policies that you have defined\cr
+\link[paws.networking:networkfirewall_list_firewalls]{list_firewalls} \tab Retrieves the metadata for the firewalls that you have defined\cr
+\link[paws.networking:networkfirewall_list_rule_groups]{list_rule_groups} \tab Retrieves the metadata for the rule groups that you have defined\cr
+\link[paws.networking:networkfirewall_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags associated with the specified resource\cr
+\link[paws.networking:networkfirewall_put_resource_policy]{put_resource_policy} \tab Creates or updates an IAM policy for your rule group or firewall policy\cr
+\link[paws.networking:networkfirewall_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
+\link[paws.networking:networkfirewall_untag_resource]{untag_resource} \tab Removes the tags with the specified keys from the specified resource\cr
+\link[paws.networking:networkfirewall_update_firewall_delete_protection]{update_firewall_delete_protection} \tab Modifies the flag, DeleteProtection, which indicates whether it is possible to delete the firewall\cr
+\link[paws.networking:networkfirewall_update_firewall_description]{update_firewall_description} \tab Modifies the description for the specified firewall\cr
+\link[paws.networking:networkfirewall_update_firewall_encryption_configuration]{update_firewall_encryption_configuration} \tab A complex type that contains settings for encryption of your firewall resources\cr
+\link[paws.networking:networkfirewall_update_firewall_policy]{update_firewall_policy} \tab Updates the properties of the specified firewall policy\cr
+\link[paws.networking:networkfirewall_update_firewall_policy_change_protection]{update_firewall_policy_change_protection} \tab Modifies the flag, ChangeProtection, which indicates whether it is possible to change the firewall\cr
+\link[paws.networking:networkfirewall_update_logging_configuration]{update_logging_configuration} \tab Sets the logging configuration for the specified firewall\cr
+\link[paws.networking:networkfirewall_update_rule_group]{update_rule_group} \tab Updates the rule settings for the specified rule group\cr
+\link[paws.networking:networkfirewall_update_subnet_change_protection]{update_subnet_change_protection} \tab Update subnet change protection
 }
 }
 

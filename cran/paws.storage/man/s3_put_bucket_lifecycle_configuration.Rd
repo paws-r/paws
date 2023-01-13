@@ -20,7 +20,7 @@ using the SDK. This header will not provide any additional functionality
 if not using the SDK. When sending this header, there must be a
 corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
-\verb{400 Bad Request}. For more information, see Checking object integrity
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
 If you provide an individual checksum, Amazon S3 ignores any provided
@@ -33,7 +33,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration. Keep in mind that this will overwrite an existing lifecycle configuration, so if you want to retain any configuration details, they must be included in the new lifecycle configuration. For information about lifecycle configuration, see Managing your storage lifecycle.
+Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration. Keep in mind that this will overwrite an existing lifecycle configuration, so if you want to retain any configuration details, they must be included in the new lifecycle configuration. For information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Managing your storage lifecycle}.
 
 See \url{https://paws-r.github.io/docs/s3/put_bucket_lifecycle_configuration.html} for full documentation.
 }

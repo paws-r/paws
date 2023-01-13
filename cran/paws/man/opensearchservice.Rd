@@ -69,46 +69,46 @@ target="_blank">Regions and Endpoints</a>.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=opensearchservice_accept_inbound_connection]{accept_inbound_connection} \tab Allows the remote domain owner to accept an inbound cross-cluster connection request\cr
-\link[=opensearchservice_add_tags]{add_tags} \tab Attaches tags to an existing domain\cr
-\link[=opensearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon OpenSearch Service domain\cr
-\link[=opensearchservice_cancel_service_software_update]{cancel_service_software_update} \tab Cancels a scheduled service software update for an Amazon OpenSearch Service domain\cr
-\link[=opensearchservice_create_domain]{create_domain} \tab Creates a new Amazon OpenSearch Service domain\cr
-\link[=opensearchservice_create_outbound_connection]{create_outbound_connection} \tab Creates a new cross-cluster connection from a local OpenSearch domain to a remote OpenSearch domain\cr
-\link[=opensearchservice_create_package]{create_package} \tab Create a package for use with Amazon OpenSearch Service domains\cr
-\link[=opensearchservice_delete_domain]{delete_domain} \tab Permanently deletes the specified domain and all of its data\cr
-\link[=opensearchservice_delete_inbound_connection]{delete_inbound_connection} \tab Allows the remote domain owner to delete an existing inbound cross-cluster connection\cr
-\link[=opensearchservice_delete_outbound_connection]{delete_outbound_connection} \tab Allows the local domain owner to delete an existing outbound cross-cluster connection\cr
-\link[=opensearchservice_delete_package]{delete_package} \tab Deletes the package\cr
-\link[=opensearchservice_describe_domain]{describe_domain} \tab Returns domain configuration information about the specified domain, including the domain ID, domain endpoint, and domain ARN\cr
-\link[=opensearchservice_describe_domain_auto_tunes]{describe_domain_auto_tunes} \tab Provides scheduled Auto-Tune action details for the domain, such as Auto-Tune action type, description, severity, and scheduled date\cr
-\link[=opensearchservice_describe_domain_change_progress]{describe_domain_change_progress} \tab Returns information about the current blue/green deployment happening on a domain, including a change ID, status, and progress stages\cr
-\link[=opensearchservice_describe_domain_config]{describe_domain_config} \tab Provides cluster configuration information about the specified domain, such as the state, creation date, update version, and update date for cluster options\cr
-\link[=opensearchservice_describe_domains]{describe_domains} \tab Returns domain configuration information about the specified domains, including the domain ID, domain endpoint, and domain ARN\cr
-\link[=opensearchservice_describe_inbound_connections]{describe_inbound_connections} \tab Lists all the inbound cross-cluster connections for a remote domain\cr
-\link[=opensearchservice_describe_instance_type_limits]{describe_instance_type_limits} \tab Describe the limits for a given instance type and OpenSearch or Elasticsearch version\cr
-\link[=opensearchservice_describe_outbound_connections]{describe_outbound_connections} \tab Lists all the outbound cross-cluster connections for a local domain\cr
-\link[=opensearchservice_describe_packages]{describe_packages} \tab Describes all packages available to Amazon OpenSearch Service domains\cr
-\link[=opensearchservice_describe_reserved_instance_offerings]{describe_reserved_instance_offerings} \tab Lists available reserved OpenSearch instance offerings\cr
-\link[=opensearchservice_describe_reserved_instances]{describe_reserved_instances} \tab Returns information about reserved OpenSearch instances for this account\cr
-\link[=opensearchservice_dissociate_package]{dissociate_package} \tab Dissociates a package from the Amazon OpenSearch Service domain\cr
-\link[=opensearchservice_get_compatible_versions]{get_compatible_versions} \tab Returns a list of upgrade-compatible versions of OpenSearch/Elasticsearch\cr
-\link[=opensearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of package versions, along with their creation time and commit message\cr
-\link[=opensearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades performed on the domain\cr
-\link[=opensearchservice_get_upgrade_status]{get_upgrade_status} \tab Retrieves the latest status of the last upgrade or upgrade eligibility check performed on the domain\cr
-\link[=opensearchservice_list_domain_names]{list_domain_names} \tab Returns the names of all domains owned by the current user's account\cr
-\link[=opensearchservice_list_domains_for_package]{list_domains_for_package} \tab Lists all Amazon OpenSearch Service domains associated with the package\cr
-\link[=opensearchservice_list_instance_type_details]{list_instance_type_details} \tab List instance type details\cr
-\link[=opensearchservice_list_packages_for_domain]{list_packages_for_domain} \tab Lists all packages associated with the Amazon OpenSearch Service domain\cr
-\link[=opensearchservice_list_tags]{list_tags} \tab Returns all tags for the given domain\cr
-\link[=opensearchservice_list_versions]{list_versions} \tab List all supported versions of OpenSearch and Elasticsearch\cr
-\link[=opensearchservice_purchase_reserved_instance_offering]{purchase_reserved_instance_offering} \tab Allows you to purchase reserved OpenSearch instances\cr
-\link[=opensearchservice_reject_inbound_connection]{reject_inbound_connection} \tab Allows the remote domain owner to reject an inbound cross-cluster connection request\cr
-\link[=opensearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from the given domain\cr
-\link[=opensearchservice_start_service_software_update]{start_service_software_update} \tab Schedules a service software update for an Amazon OpenSearch Service domain\cr
-\link[=opensearchservice_update_domain_config]{update_domain_config} \tab Modifies the cluster configuration of the specified domain, such as setting the instance type and the number of instances\cr
-\link[=opensearchservice_update_package]{update_package} \tab Updates a package for use with Amazon OpenSearch Service domains\cr
-\link[=opensearchservice_upgrade_domain]{upgrade_domain} \tab Allows you to either upgrade your domain or perform an upgrade eligibility check to a compatible version of OpenSearch or Elasticsearch
+\link[paws.analytics:opensearchservice_accept_inbound_connection]{accept_inbound_connection} \tab Allows the remote domain owner to accept an inbound cross-cluster connection request\cr
+\link[paws.analytics:opensearchservice_add_tags]{add_tags} \tab Attaches tags to an existing domain\cr
+\link[paws.analytics:opensearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_cancel_service_software_update]{cancel_service_software_update} \tab Cancels a scheduled service software update for an Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_create_domain]{create_domain} \tab Creates a new Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_create_outbound_connection]{create_outbound_connection} \tab Creates a new cross-cluster connection from a local OpenSearch domain to a remote OpenSearch domain\cr
+\link[paws.analytics:opensearchservice_create_package]{create_package} \tab Create a package for use with Amazon OpenSearch Service domains\cr
+\link[paws.analytics:opensearchservice_delete_domain]{delete_domain} \tab Permanently deletes the specified domain and all of its data\cr
+\link[paws.analytics:opensearchservice_delete_inbound_connection]{delete_inbound_connection} \tab Allows the remote domain owner to delete an existing inbound cross-cluster connection\cr
+\link[paws.analytics:opensearchservice_delete_outbound_connection]{delete_outbound_connection} \tab Allows the local domain owner to delete an existing outbound cross-cluster connection\cr
+\link[paws.analytics:opensearchservice_delete_package]{delete_package} \tab Deletes the package\cr
+\link[paws.analytics:opensearchservice_describe_domain]{describe_domain} \tab Returns domain configuration information about the specified domain, including the domain ID, domain endpoint, and domain ARN\cr
+\link[paws.analytics:opensearchservice_describe_domain_auto_tunes]{describe_domain_auto_tunes} \tab Provides scheduled Auto-Tune action details for the domain, such as Auto-Tune action type, description, severity, and scheduled date\cr
+\link[paws.analytics:opensearchservice_describe_domain_change_progress]{describe_domain_change_progress} \tab Returns information about the current blue/green deployment happening on a domain, including a change ID, status, and progress stages\cr
+\link[paws.analytics:opensearchservice_describe_domain_config]{describe_domain_config} \tab Provides cluster configuration information about the specified domain, such as the state, creation date, update version, and update date for cluster options\cr
+\link[paws.analytics:opensearchservice_describe_domains]{describe_domains} \tab Returns domain configuration information about the specified domains, including the domain ID, domain endpoint, and domain ARN\cr
+\link[paws.analytics:opensearchservice_describe_inbound_connections]{describe_inbound_connections} \tab Lists all the inbound cross-cluster connections for a remote domain\cr
+\link[paws.analytics:opensearchservice_describe_instance_type_limits]{describe_instance_type_limits} \tab Describe the limits for a given instance type and OpenSearch or Elasticsearch version\cr
+\link[paws.analytics:opensearchservice_describe_outbound_connections]{describe_outbound_connections} \tab Lists all the outbound cross-cluster connections for a local domain\cr
+\link[paws.analytics:opensearchservice_describe_packages]{describe_packages} \tab Describes all packages available to Amazon OpenSearch Service domains\cr
+\link[paws.analytics:opensearchservice_describe_reserved_instance_offerings]{describe_reserved_instance_offerings} \tab Lists available reserved OpenSearch instance offerings\cr
+\link[paws.analytics:opensearchservice_describe_reserved_instances]{describe_reserved_instances} \tab Returns information about reserved OpenSearch instances for this account\cr
+\link[paws.analytics:opensearchservice_dissociate_package]{dissociate_package} \tab Dissociates a package from the Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_get_compatible_versions]{get_compatible_versions} \tab Returns a list of upgrade-compatible versions of OpenSearch/Elasticsearch\cr
+\link[paws.analytics:opensearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of package versions, along with their creation time and commit message\cr
+\link[paws.analytics:opensearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades performed on the domain\cr
+\link[paws.analytics:opensearchservice_get_upgrade_status]{get_upgrade_status} \tab Retrieves the latest status of the last upgrade or upgrade eligibility check performed on the domain\cr
+\link[paws.analytics:opensearchservice_list_domain_names]{list_domain_names} \tab Returns the names of all domains owned by the current user's account\cr
+\link[paws.analytics:opensearchservice_list_domains_for_package]{list_domains_for_package} \tab Lists all Amazon OpenSearch Service domains associated with the package\cr
+\link[paws.analytics:opensearchservice_list_instance_type_details]{list_instance_type_details} \tab List instance type details\cr
+\link[paws.analytics:opensearchservice_list_packages_for_domain]{list_packages_for_domain} \tab Lists all packages associated with the Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_list_tags]{list_tags} \tab Returns all tags for the given domain\cr
+\link[paws.analytics:opensearchservice_list_versions]{list_versions} \tab List all supported versions of OpenSearch and Elasticsearch\cr
+\link[paws.analytics:opensearchservice_purchase_reserved_instance_offering]{purchase_reserved_instance_offering} \tab Allows you to purchase reserved OpenSearch instances\cr
+\link[paws.analytics:opensearchservice_reject_inbound_connection]{reject_inbound_connection} \tab Allows the remote domain owner to reject an inbound cross-cluster connection request\cr
+\link[paws.analytics:opensearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from the given domain\cr
+\link[paws.analytics:opensearchservice_start_service_software_update]{start_service_software_update} \tab Schedules a service software update for an Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_update_domain_config]{update_domain_config} \tab Modifies the cluster configuration of the specified domain, such as setting the instance type and the number of instances\cr
+\link[paws.analytics:opensearchservice_update_package]{update_package} \tab Updates a package for use with Amazon OpenSearch Service domains\cr
+\link[paws.analytics:opensearchservice_upgrade_domain]{upgrade_domain} \tab Allows you to either upgrade your domain or perform an upgrade eligibility check to a compatible version of OpenSearch or Elasticsearch
 }
 }
 

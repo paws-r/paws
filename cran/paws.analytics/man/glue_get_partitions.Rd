@@ -34,7 +34,8 @@ expression.
 
 \emph{Operators}: The following are the operators that you can use in the
 \code{Expression} API call:
-\subsection{=}{
+
+\strong{=}
 
 Checks whether the values of the two operands are equal; if yes, then
 the condition becomes true.
@@ -42,49 +43,43 @@ the condition becomes true.
 Example: Assume 'variable a' holds 10 and 'variable b' holds 20.
 
 (a = b) is not true.
-}
 
-\subsection{\< \>}{
+\strong{\< \>}
 
 Checks whether the values of two operands are equal; if the values are
 not equal, then the condition becomes true.
 
 Example: (a \< \> b) is true.
-}
 
-\subsection{\>}{
+\strong{\>}
 
 Checks whether the value of the left operand is greater than the value
 of the right operand; if yes, then the condition becomes true.
 
 Example: (a \> b) is not true.
-}
 
-\subsection{\<}{
+\strong{\<}
 
 Checks whether the value of the left operand is less than the value of
 the right operand; if yes, then the condition becomes true.
 
 Example: (a \< b) is true.
-}
 
-\subsection{\>=}{
+\strong{\>=}
 
 Checks whether the value of the left operand is greater than or equal to
 the value of the right operand; if yes, then the condition becomes true.
 
 Example: (a \>= b) is not true.
-}
 
-\subsection{\<=}{
+\strong{\<=}
 
 Checks whether the value of the left operand is less than or equal to
 the value of the right operand; if yes, then the condition becomes true.
 
 Example: (a \<= b) is true.
-}
 
-\subsection{AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL}{
+\strong{AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL}
 
 Logical operators.
 
@@ -108,8 +103,7 @@ The following list shows the valid operators on each type. When you
 define a crawler, the \code{partitionKey} type is created as a \code{STRING}, to
 be compatible with the catalog partitions.
 
-\emph{Sample API Call}:
-}}
+\emph{Sample API Call}:}
 
 \item{NextToken}{A continuation token, if this is not the first call to retrieve these
 partitions.}

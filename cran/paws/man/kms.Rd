@@ -74,7 +74,7 @@ IAM user. You can also use the Amazon Web Services Security Token
 Service to generate temporary security credentials that you can use to
 sign requests.
 
-All KMS operations require \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
+All KMS operations require \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4}.
 
 \strong{Logging API Requests}
 
@@ -97,7 +97,7 @@ credentials used to access Amazon Web Services.
 \item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html}{Temporary Security Credentials} -
 This section of the \emph{IAM User Guide} describes how to create and use
 temporary security credentials.
-\item \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process} -
+\item \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process} -
 This set of topics walks you through the process of signing a
 request using an access key ID and a secret access key.
 }
@@ -109,10 +109,10 @@ the most useful for most applications. You will likely perform
 operations other than these, such as creating keys and assigning
 policies, by using the console.
 \itemize{
-\item \code{\link[=kms_encrypt]{encrypt}}
-\item \code{\link[=kms_decrypt]{decrypt}}
-\item \code{\link[=kms_generate_data_key]{generate_data_key}}
-\item \code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}
+\item \code{encrypt}
+\item \code{decrypt}
+\item \code{generate_data_key}
+\item \code{generate_data_key_without_plaintext}
 }
 }
 \section{Service syntax}{
@@ -142,56 +142,56 @@ policies, by using the console.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=kms_cancel_key_deletion]{cancel_key_deletion} \tab Cancels the deletion of a KMS key\cr
-\link[=kms_connect_custom_key_store]{connect_custom_key_store} \tab Connects or reconnects a custom key store to its associated CloudHSM cluster\cr
-\link[=kms_create_alias]{create_alias} \tab Creates a friendly name for a KMS key\cr
-\link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an CloudHSM cluster that you own and manage\cr
-\link[=kms_create_grant]{create_grant} \tab Adds a grant to a KMS key\cr
-\link[=kms_create_key]{create_key} \tab Creates a unique customer managed KMS key in your Amazon Web Services account and Region\cr
-\link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a KMS key using any of the following operations:\cr
-\link[=kms_delete_alias]{delete_alias} \tab Deletes the specified alias\cr
-\link[=kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store\cr
-\link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that you previously imported\cr
-\link[=kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and Region\cr
-\link[=kms_describe_key]{describe_key} \tab Provides detailed information about a KMS key\cr
-\link[=kms_disable_key]{disable_key} \tab Sets the state of a KMS key to disabled\cr
-\link[=kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material of the specified symmetric encryption KMS key\cr
-\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its associated CloudHSM cluster\cr
-\link[=kms_enable_key]{enable_key} \tab Sets the key state of a KMS key to enabled\cr
-\link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material of the specified symmetric encryption KMS key\cr
-\link[=kms_encrypt]{encrypt} \tab Encrypts plaintext of up to 4,096 bytes using a KMS key\cr
-\link[=kms_generate_data_key]{generate_data_key} \tab Returns a unique symmetric data key for use outside of KMS\cr
-\link[=kms_generate_data_key_pair]{generate_data_key_pair} \tab Returns a unique asymmetric data key pair for use outside of KMS\cr
-\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext} \tab Returns a unique asymmetric data key pair for use outside of KMS\cr
-\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Returns a unique symmetric data key for use outside of KMS\cr
-\link[=kms_generate_mac]{generate_mac} \tab Generates a hash-based message authentication code (HMAC) for a message using an HMAC KMS key and a MAC algorithm that the key supports\cr
-\link[=kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure\cr
-\link[=kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified KMS key\cr
-\link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified KMS key\cr
-\link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need to import key material into a symmetric encryption KMS key\cr
-\link[=kms_get_public_key]{get_public_key} \tab Returns the public key of an asymmetric KMS key\cr
-\link[=kms_import_key_material]{import_key_material} \tab Imports key material into an existing symmetric encryption KMS key that was created without key material\cr
-\link[=kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's Amazon Web Services account and region\cr
-\link[=kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified KMS key\cr
-\link[=kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a KMS key\cr
-\link[=kms_list_keys]{list_keys} \tab Gets a list of all KMS keys in the caller's Amazon Web Services account and Region\cr
-\link[=kms_list_resource_tags]{list_resource_tags} \tab Returns all tags on the specified KMS key\cr
-\link[=kms_list_retirable_grants]{list_retirable_grants} \tab Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal\cr
-\link[=kms_put_key_policy]{put_key_policy} \tab Attaches a key policy to the specified KMS key\cr
-\link[=kms_re_encrypt]{re_encrypt} \tab Decrypts ciphertext and then reencrypts it entirely within KMS\cr
-\link[=kms_replicate_key]{replicate_key} \tab Replicates a multi-Region key into the specified Region\cr
-\link[=kms_retire_grant]{retire_grant} \tab Deletes a grant\cr
-\link[=kms_revoke_grant]{revoke_grant} \tab Deletes the specified grant\cr
-\link[=kms_schedule_key_deletion]{schedule_key_deletion} \tab Schedules the deletion of a KMS key\cr
-\link[=kms_sign]{sign} \tab Creates a digital signature for a message or message digest by using the private key in an asymmetric signing KMS key\cr
-\link[=kms_tag_resource]{tag_resource} \tab Adds or edits tags on a customer managed key\cr
-\link[=kms_untag_resource]{untag_resource} \tab Deletes tags from a customer managed key\cr
-\link[=kms_update_alias]{update_alias} \tab Associates an existing KMS alias with a different KMS key\cr
-\link[=kms_update_custom_key_store]{update_custom_key_store} \tab Changes the properties of a custom key store\cr
-\link[=kms_update_key_description]{update_key_description} \tab Updates the description of a KMS key\cr
-\link[=kms_update_primary_region]{update_primary_region} \tab Changes the primary key of a multi-Region key\cr
-\link[=kms_verify]{verify} \tab Verifies a digital signature that was generated by the Sign operation\cr
-\link[=kms_verify_mac]{verify_mac} \tab Verifies the hash-based message authentication code (HMAC) for a specified message, HMAC KMS key, and MAC algorithm
+\link[paws.security.identity.p1:kms_cancel_key_deletion]{cancel_key_deletion} \tab Cancels the deletion of a KMS key\cr
+\link[paws.security.identity.p1:kms_connect_custom_key_store]{connect_custom_key_store} \tab Connects or reconnects a custom key store to its associated CloudHSM cluster\cr
+\link[paws.security.identity.p1:kms_create_alias]{create_alias} \tab Creates a friendly name for a KMS key\cr
+\link[paws.security.identity.p1:kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an CloudHSM cluster that you own and manage\cr
+\link[paws.security.identity.p1:kms_create_grant]{create_grant} \tab Adds a grant to a KMS key\cr
+\link[paws.security.identity.p1:kms_create_key]{create_key} \tab Creates a unique customer managed KMS key in your Amazon Web Services account and Region\cr
+\link[paws.security.identity.p1:kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a KMS key using any of the following operations:\cr
+\link[paws.security.identity.p1:kms_delete_alias]{delete_alias} \tab Deletes the specified alias\cr
+\link[paws.security.identity.p1:kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store\cr
+\link[paws.security.identity.p1:kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that you previously imported\cr
+\link[paws.security.identity.p1:kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and Region\cr
+\link[paws.security.identity.p1:kms_describe_key]{describe_key} \tab Provides detailed information about a KMS key\cr
+\link[paws.security.identity.p1:kms_disable_key]{disable_key} \tab Sets the state of a KMS key to disabled\cr
+\link[paws.security.identity.p1:kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material of the specified symmetric encryption KMS key\cr
+\link[paws.security.identity.p1:kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its associated CloudHSM cluster\cr
+\link[paws.security.identity.p1:kms_enable_key]{enable_key} \tab Sets the key state of a KMS key to enabled\cr
+\link[paws.security.identity.p1:kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material of the specified symmetric encryption KMS key\cr
+\link[paws.security.identity.p1:kms_encrypt]{encrypt} \tab Encrypts plaintext of up to 4,096 bytes using a KMS key\cr
+\link[paws.security.identity.p1:kms_generate_data_key]{generate_data_key} \tab Returns a unique symmetric data key for use outside of KMS\cr
+\link[paws.security.identity.p1:kms_generate_data_key_pair]{generate_data_key_pair} \tab Returns a unique asymmetric data key pair for use outside of KMS\cr
+\link[paws.security.identity.p1:kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext} \tab Returns a unique asymmetric data key pair for use outside of KMS\cr
+\link[paws.security.identity.p1:kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Returns a unique symmetric data key for use outside of KMS\cr
+\link[paws.security.identity.p1:kms_generate_mac]{generate_mac} \tab Generates a hash-based message authentication code (HMAC) for a message using an HMAC KMS key and a MAC algorithm that the key supports\cr
+\link[paws.security.identity.p1:kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure\cr
+\link[paws.security.identity.p1:kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified KMS key\cr
+\link[paws.security.identity.p1:kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified KMS key\cr
+\link[paws.security.identity.p1:kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need to import key material into a symmetric encryption KMS key\cr
+\link[paws.security.identity.p1:kms_get_public_key]{get_public_key} \tab Returns the public key of an asymmetric KMS key\cr
+\link[paws.security.identity.p1:kms_import_key_material]{import_key_material} \tab Imports key material into an existing symmetric encryption KMS key that was created without key material\cr
+\link[paws.security.identity.p1:kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's Amazon Web Services account and region\cr
+\link[paws.security.identity.p1:kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified KMS key\cr
+\link[paws.security.identity.p1:kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a KMS key\cr
+\link[paws.security.identity.p1:kms_list_keys]{list_keys} \tab Gets a list of all KMS keys in the caller's Amazon Web Services account and Region\cr
+\link[paws.security.identity.p1:kms_list_resource_tags]{list_resource_tags} \tab Returns all tags on the specified KMS key\cr
+\link[paws.security.identity.p1:kms_list_retirable_grants]{list_retirable_grants} \tab Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal\cr
+\link[paws.security.identity.p1:kms_put_key_policy]{put_key_policy} \tab Attaches a key policy to the specified KMS key\cr
+\link[paws.security.identity.p1:kms_re_encrypt]{re_encrypt} \tab Decrypts ciphertext and then reencrypts it entirely within KMS\cr
+\link[paws.security.identity.p1:kms_replicate_key]{replicate_key} \tab Replicates a multi-Region key into the specified Region\cr
+\link[paws.security.identity.p1:kms_retire_grant]{retire_grant} \tab Deletes a grant\cr
+\link[paws.security.identity.p1:kms_revoke_grant]{revoke_grant} \tab Deletes the specified grant\cr
+\link[paws.security.identity.p1:kms_schedule_key_deletion]{schedule_key_deletion} \tab Schedules the deletion of a KMS key\cr
+\link[paws.security.identity.p1:kms_sign]{sign} \tab Creates a digital signature for a message or message digest by using the private key in an asymmetric signing KMS key\cr
+\link[paws.security.identity.p1:kms_tag_resource]{tag_resource} \tab Adds or edits tags on a customer managed key\cr
+\link[paws.security.identity.p1:kms_untag_resource]{untag_resource} \tab Deletes tags from a customer managed key\cr
+\link[paws.security.identity.p1:kms_update_alias]{update_alias} \tab Associates an existing KMS alias with a different KMS key\cr
+\link[paws.security.identity.p1:kms_update_custom_key_store]{update_custom_key_store} \tab Changes the properties of a custom key store\cr
+\link[paws.security.identity.p1:kms_update_key_description]{update_key_description} \tab Updates the description of a KMS key\cr
+\link[paws.security.identity.p1:kms_update_primary_region]{update_primary_region} \tab Changes the primary key of a multi-Region key\cr
+\link[paws.security.identity.p1:kms_verify]{verify} \tab Verifies a digital signature that was generated by the Sign operation\cr
+\link[paws.security.identity.p1:kms_verify_mac]{verify_mac} \tab Verifies the hash-based message authentication code (HMAC) for a specified message, HMAC KMS key, and MAC algorithm
 }
 }
 

@@ -4562,7 +4562,7 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
 #' functions as you like, as long as you leave at least 100 simultaneous
 #' executions unreserved for functions that aren't configured with a
 #' per-function limit. For more information, see [Managing
-#' Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html).
+#' Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html).
 #'
 #' @usage
 #' lambda_put_function_concurrency(FunctionName,

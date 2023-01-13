@@ -26,7 +26,7 @@ SageMaker to perform tasks on your behalf.}
 \item{Tags}{A list of tags to apply to the image.}
 }
 \description{
-Creates a custom SageMaker image. A SageMaker image is a set of image versions. Each image version represents a container image stored in Amazon Elastic Container Registry (ECR). For more information, see Bring your own SageMaker image.
+Creates a custom SageMaker image. A SageMaker image is a set of image versions. Each image version represents a container image stored in Amazon Elastic Container Registry (ECR). For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html}{Bring your own SageMaker image}.
 
 See \url{https://paws-r.github.io/docs/sagemaker/create_image.html} for full documentation.
 }

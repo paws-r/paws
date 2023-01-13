@@ -33,8 +33,8 @@ instance in a transform job. If \code{MaxConcurrentTransforms} is set to \code{0
 or left unset, Amazon SageMaker checks the optional execution-parameters
 to determine the settings for your chosen algorithm. If the
 execution-parameters endpoint is not enabled, the default value is \code{1}.
-For more information on execution-parameters, see How Containers Serve
-Requests. For built-in algorithms, you don't need to set a value for
+For more information on execution-parameters, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests}{How Containers Serve Requests}.
+For built-in algorithms, you don't need to set a value for
 \code{MaxConcurrentTransforms}.}
 
 \item{ModelClientConfig}{Configures the timeout and maximum number of retries for processing a
@@ -89,12 +89,10 @@ prediction results in the output. The input filter provided allows you
 to exclude input data that is not needed for inference in a batch
 transform job. The output filter provided allows you to include input
 data relevant to interpreting the predictions in the output from the
-job. For more information, see Associate Prediction Results with their
-Corresponding Input Records.}
+job. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html}{Associate Prediction Results with their Corresponding Input Records}.}
 
-\item{Tags}{(Optional) An array of key-value pairs. For more information, see Using
-Cost Allocation Tags in the \emph{Amazon Web Services Billing and Cost
-Management User Guide}.}
+\item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
+in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 
 \item{ExperimentConfig}{}
 }

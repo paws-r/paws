@@ -682,7 +682,7 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 #' 
 #' You can also create and update contact flows using the [Amazon Connect
 #' Flow
-#' language](https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html).
+#' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #'
 #' @usage
 #' connect_create_contact_flow(InstanceId, Name, Type, Description,
@@ -2418,7 +2418,7 @@ connect_describe_contact <- function(InstanceId, ContactId) {
 #' 
 #' You can also create and update contact flows using the [Amazon Connect
 #' Flow
-#' language](https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html).
+#' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #'
 #' @usage
 #' connect_describe_contact_flow(InstanceId, ContactFlowId)
@@ -3968,77 +3968,77 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' Definitions](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html)
 #' in the *Amazon Connect Administrator Guide*.
 #' 
-#' ### AGENTS_AFTER_CONTACT_WORK
+#' **AGENTS_AFTER_CONTACT_WORK**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
 #' [ACW](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#aftercallwork-real-time)
 #' 
-#' ### AGENTS_AVAILABLE
+#' **AGENTS_AVAILABLE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
 #' [Available](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#available-real-time)
 #' 
-#' ### AGENTS_ERROR
+#' **AGENTS_ERROR**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
 #' [Error](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#error-real-time)
 #' 
-#' ### AGENTS_NON_PRODUCTIVE
+#' **AGENTS_NON_PRODUCTIVE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report: [NPT (Non-Productive
 #' Time)](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#non-productive-time-real-time)
 #' 
-#' ### AGENTS_ON_CALL
+#' **AGENTS_ON_CALL**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report: [On
 #' contact](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time)
 #' 
-#' ### AGENTS_ON_CONTACT
+#' **AGENTS_ON_CONTACT**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report: [On
 #' contact](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time)
 #' 
-#' ### AGENTS_ONLINE
+#' **AGENTS_ONLINE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
 #' [Online](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#online-real-time)
 #' 
-#' ### AGENTS_STAFFED
+#' **AGENTS_STAFFED**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
 #' [Staffed](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#staffed-real-time)
 #' 
-#' ### CONTACTS_IN_QUEUE
+#' **CONTACTS_IN_QUEUE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report: [In
 #' queue](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#in-queue-real-time)
 #' 
-#' ### CONTACTS_SCHEDULED
+#' **CONTACTS_SCHEDULED**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
 #' [Scheduled](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#scheduled-real-time)
 #' 
-#' ### OLDEST_CONTACT_AGE
+#' **OLDEST_CONTACT_AGE**
 #' 
 #' Unit: SECONDS
 #' 
@@ -4055,14 +4055,14 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' Name in real-time metrics report:
 #' [Oldest](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#oldest-real-time)
 #' 
-#' ### SLOTS_ACTIVE
+#' **SLOTS_ACTIVE**
 #' 
 #' Unit: COUNT
 #' 
 #' Name in real-time metrics report:
 #' [Active](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#active-real-time)
 #' 
-#' ### SLOTS_AVAILABLE
+#' **SLOTS_AVAILABLE**
 #' 
 #' Unit: COUNT
 #' 
@@ -4403,151 +4403,151 @@ connect_get_federation_token <- function(InstanceId) {
 #' This API does not support a contacts incoming metric (there's no
 #' CONTACTS_INCOMING metric missing from the documented list).
 #' 
-#' ### ABANDON_TIME
+#' **ABANDON_TIME**
 #' 
 #' Unit: SECONDS
 #' 
 #' Statistic: AVG
 #' 
-#' ### AFTER_CONTACT_WORK_TIME
+#' **AFTER_CONTACT_WORK_TIME**
 #' 
 #' Unit: SECONDS
 #' 
 #' Statistic: AVG
 #' 
-#' ### API_CONTACTS_HANDLED
+#' **API_CONTACTS_HANDLED**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CALLBACK_CONTACTS_HANDLED
+#' **CALLBACK_CONTACTS_HANDLED**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_ABANDONED
+#' **CONTACTS_ABANDONED**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_AGENT_HUNG_UP_FIRST
+#' **CONTACTS_AGENT_HUNG_UP_FIRST**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_CONSULTED
+#' **CONTACTS_CONSULTED**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_HANDLED
+#' **CONTACTS_HANDLED**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_HANDLED_INCOMING
+#' **CONTACTS_HANDLED_INCOMING**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_HANDLED_OUTBOUND
+#' **CONTACTS_HANDLED_OUTBOUND**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_HOLD_ABANDONS
+#' **CONTACTS_HOLD_ABANDONS**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_MISSED
+#' **CONTACTS_MISSED**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_QUEUED
+#' **CONTACTS_QUEUED**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_TRANSFERRED_IN
+#' **CONTACTS_TRANSFERRED_IN**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_TRANSFERRED_IN_FROM_QUEUE
+#' **CONTACTS_TRANSFERRED_IN_FROM_QUEUE**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_TRANSFERRED_OUT
+#' **CONTACTS_TRANSFERRED_OUT**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### CONTACTS_TRANSFERRED_OUT_FROM_QUEUE
+#' **CONTACTS_TRANSFERRED_OUT_FROM_QUEUE**
 #' 
 #' Unit: COUNT
 #' 
 #' Statistic: SUM
 #' 
-#' ### HANDLE_TIME
+#' **HANDLE_TIME**
 #' 
 #' Unit: SECONDS
 #' 
 #' Statistic: AVG
 #' 
-#' ### HOLD_TIME
+#' **HOLD_TIME**
 #' 
 #' Unit: SECONDS
 #' 
 #' Statistic: AVG
 #' 
-#' ### INTERACTION_AND_HOLD_TIME
+#' **INTERACTION_AND_HOLD_TIME**
 #' 
 #' Unit: SECONDS
 #' 
 #' Statistic: AVG
 #' 
-#' ### INTERACTION_TIME
+#' **INTERACTION_TIME**
 #' 
 #' Unit: SECONDS
 #' 
 #' Statistic: AVG
 #' 
-#' ### OCCUPANCY
+#' **OCCUPANCY**
 #' 
 #' Unit: PERCENT
 #' 
 #' Statistic: AVG
 #' 
-#' ### QUEUE_ANSWER_TIME
+#' **QUEUE_ANSWER_TIME**
 #' 
 #' Unit: SECONDS
 #' 
 #' Statistic: AVG
 #' 
-#' ### QUEUED_TIME
+#' **QUEUED_TIME**
 #' 
 #' Unit: SECONDS
 #' 
 #' Statistic: MAX
 #' 
-#' ### SERVICE_LEVEL
+#' **SERVICE_LEVEL**
 #' 
 #' You can include up to 20 SERVICE_LEVEL metrics in a request.
 #' 
@@ -5039,7 +5039,7 @@ connect_list_contact_flow_modules <- function(InstanceId, NextToken = NULL, MaxR
 #' 
 #' You can also create and update contact flows using the [Amazon Connect
 #' Flow
-#' language](https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html).
+#' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #' 
 #' For more information about contact flows, see [Contact
 #' Flows](https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html)
@@ -8295,7 +8295,7 @@ connect_update_contact_attributes <- function(InitialContactId, InstanceId, Attr
 #' 
 #' You can also create and update contact flows using the [Amazon Connect
 #' Flow
-#' language](https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html).
+#' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #'
 #' @usage
 #' connect_update_contact_flow_content(InstanceId, ContactFlowId, Content)
@@ -8304,7 +8304,7 @@ connect_update_contact_attributes <- function(InitialContactId, InstanceId, Attr
 #' @param ContactFlowId &#91;required&#93; The identifier of the contact flow.
 #' @param Content &#91;required&#93; The JSON string that represents contact flow’s content. For an example,
 #' see [Example contact flow in Amazon Connect Flow
-#' language](https://docs.aws.amazon.com/connect/latest/adminguide/flow-language-example.html)
+#' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html)
 #' in the *Amazon Connect Administrator Guide*.
 #'
 #' @return
@@ -8494,7 +8494,7 @@ connect_update_contact_flow_module_metadata <- function(InstanceId, ContactFlowM
 #' 
 #' You can also create and update contact flows using the [Amazon Connect
 #' Flow
-#' language](https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html).
+#' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #'
 #' @usage
 #' connect_update_contact_flow_name(InstanceId, ContactFlowId, Name,

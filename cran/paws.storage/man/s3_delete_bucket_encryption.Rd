@@ -16,7 +16,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-This implementation of the DELETE action removes default encryption from the bucket. For information about the Amazon S3 default encryption feature, see Amazon S3 Default Bucket Encryption in the \emph{Amazon S3 User Guide}.
+This implementation of the DELETE action removes default encryption from the bucket. For information about the Amazon S3 default encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Default Bucket Encryption} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3/delete_bucket_encryption.html} for full documentation.
 }

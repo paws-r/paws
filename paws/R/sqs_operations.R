@@ -1692,7 +1692,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' 
 #' Any characters not included in this list will be rejected. For more
 #' information, see the [W3C specification for
-#' characters](http://www.w3.org/TR/REC-xml/#charsets).
+#' characters](https://www.w3.org/TR/REC-xml/#charsets).
 #'
 #' @usage
 #' sqs_send_message(QueueUrl, MessageBody, DelaySeconds, MessageAttributes,
@@ -1712,7 +1712,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' 
 #' Any characters not included in this list will be rejected. For more
 #' information, see the [W3C specification for
-#' characters](http://www.w3.org/TR/REC-xml/#charsets).
+#' characters](https://www.w3.org/TR/REC-xml/#charsets).
 #' @param DelaySeconds The length of time, in seconds, for which to delay a specific message.
 #' Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive
 #' `DelaySeconds` value become available for processing after the delay
@@ -1913,7 +1913,7 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 #' 
 #' Any characters not included in this list will be rejected. For more
 #' information, see the [W3C specification for
-#' characters](http://www.w3.org/TR/REC-xml/#charsets).
+#' characters](https://www.w3.org/TR/REC-xml/#charsets).
 #' 
 #' If you don't specify the `DelaySeconds` parameter for an entry, Amazon
 #' SQS uses the default value for the queue.

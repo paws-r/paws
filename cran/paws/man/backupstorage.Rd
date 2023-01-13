@@ -57,15 +57,15 @@ The frontend service for Cryo Storage.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=backupstorage_delete_object]{delete_object} \tab Delete Object from the incremental base Backup\cr
-\link[=backupstorage_get_chunk]{get_chunk} \tab Gets the specified object's chunk\cr
-\link[=backupstorage_get_object_metadata]{get_object_metadata} \tab Get metadata associated with an Object\cr
-\link[=backupstorage_list_chunks]{list_chunks} \tab List chunks in a given Object\cr
-\link[=backupstorage_list_objects]{list_objects} \tab List all Objects in a given Backup\cr
-\link[=backupstorage_notify_object_complete]{notify_object_complete} \tab Complete upload\cr
-\link[=backupstorage_put_chunk]{put_chunk} \tab Upload chunk\cr
-\link[=backupstorage_put_object]{put_object} \tab Upload object that can store object metadata String and data blob in single API call using inline chunk field\cr
-\link[=backupstorage_start_object]{start_object} \tab Start upload containing one or many chunks
+\link[paws.storage:backupstorage_delete_object]{delete_object} \tab Delete Object from the incremental base Backup\cr
+\link[paws.storage:backupstorage_get_chunk]{get_chunk} \tab Gets the specified object's chunk\cr
+\link[paws.storage:backupstorage_get_object_metadata]{get_object_metadata} \tab Get metadata associated with an Object\cr
+\link[paws.storage:backupstorage_list_chunks]{list_chunks} \tab List chunks in a given Object\cr
+\link[paws.storage:backupstorage_list_objects]{list_objects} \tab List all Objects in a given Backup\cr
+\link[paws.storage:backupstorage_notify_object_complete]{notify_object_complete} \tab Complete upload\cr
+\link[paws.storage:backupstorage_put_chunk]{put_chunk} \tab Upload chunk\cr
+\link[paws.storage:backupstorage_put_object]{put_object} \tab Upload object that can store object metadata String and data blob in single API call using inline chunk field\cr
+\link[paws.storage:backupstorage_start_object]{start_object} \tab Start upload containing one or many chunks
 }
 }
 

@@ -58,14 +58,14 @@ with local storage, the call to
 \code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}} fails.
 
 For a list of instance types that support local instance storage, see
-Instance Store Volumes.
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes}{Instance Store Volumes}.
 
-For more information about local instance storage encryption, see SSD
-Instance Store Volumes.}
+For more information about local instance storage encryption, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html}{SSD Instance Store Volumes}.}
 
 \item{AsyncInferenceConfig}{Specifies configuration for how an endpoint performs asynchronous
 inference. This is a required field in order for your Endpoint to be
-invoked using InvokeEndpointAsync.}
+invoked using
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpointAsync.html}{InvokeEndpointAsync}.}
 }
 \description{
 Creates an endpoint configuration that SageMaker hosting services uses to deploy models. In the configuration, you identify one or more models, created using the \code{\link[=sagemaker_create_model]{create_model}} API, to deploy and the resources that you want SageMaker to provision. Then you call the \code{\link[=sagemaker_create_endpoint]{create_endpoint}} API.

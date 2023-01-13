@@ -50,12 +50,12 @@ source versions in the batch build project.}
 \item{sourceVersion}{The version of the batch build input to be built, for this build only.
 If not specified, the latest version is used. If specified, the contents
 depends on the source provider:
-\subsection{CodeCommit}{
+
+\strong{CodeCommit}
 
 The commit ID, branch, or Git tag to use.
-}
 
-\subsection{GitHub}{
+\strong{GitHub}
 
 The commit ID, pull request ID, branch name, or tag name that
 corresponds to the version of the source code you want to build. If a
@@ -63,17 +63,15 @@ pull request ID is specified, it must use the format
 \code{pr/pull-request-ID} (for example \code{pr/25}). If a branch name is
 specified, the branch's HEAD commit ID is used. If not specified, the
 default branch's HEAD commit ID is used.
-}
 
-\subsection{Bitbucket}{
+\strong{Bitbucket}
 
 The commit ID, branch name, or tag name that corresponds to the version
 of the source code you want to build. If a branch name is specified, the
 branch's HEAD commit ID is used. If not specified, the default branch's
 HEAD commit ID is used.
-}
 
-\subsection{Amazon S3}{
+\strong{Amazon S3}
 
 The version ID of the object that represents the build input ZIP file to
 use.
@@ -82,8 +80,7 @@ If \code{sourceVersion} is specified at the project level, then this
 \code{sourceVersion} (at the build level) takes precedence.
 
 For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html}{Source Version Sample with CodeBuild}
-in the \emph{CodeBuild User Guide}.
-}}
+in the \emph{CodeBuild User Guide}.}
 
 \item{artifactsOverride}{An array of \code{ProjectArtifacts} objects that contains information about
 the build output artifact overrides for the build project.}
@@ -188,21 +185,20 @@ private registry.}
 
 \item{imagePullCredentialsTypeOverride}{The type of credentials CodeBuild uses to pull images in your batch
 build. There are two valid values:
-\subsection{CODEBUILD}{
+
+\strong{CODEBUILD}
 
 Specifies that CodeBuild uses its own credentials. This requires that
 you modify your ECR repository policy to trust CodeBuild's service
 principal.
-}
 
-\subsection{SERVICE_ROLE}{
+\strong{SERVICE_ROLE}
 
 Specifies that CodeBuild uses your build project's service role.
 
 When using a cross-account or private registry image, you must use
 \code{SERVICE_ROLE} credentials. When using an CodeBuild curated image, you
-must use \code{CODEBUILD} credentials.
-}}
+must use \code{CODEBUILD} credentials.}
 
 \item{buildBatchConfigOverride}{A \code{BuildBatchConfigOverride} object that contains batch build
 configuration overrides.}

@@ -21,9 +21,10 @@ NULL
 #' DNS resolvers on your network can forward DNS queries to Resolver in a
 #' specified VPC. This allows your DNS resolvers to easily resolve domain
 #' names for Amazon Web Services resources such as EC2 instances or records
-#' in a Route 53 private hosted zone. For more information, see How DNS
-#' Resolvers on Your Network Forward DNS Queries to Route 53 Resolver in
-#' the *Amazon Route 53 Developer Guide*.
+#' in a Route 53 private hosted zone. For more information, see [How DNS
+#' Resolvers on Your Network Forward DNS Queries to Route 53
+#' Resolver](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-network-to-vpc)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' **Conditionally forward queries from a VPC to resolvers on your
 #' network**
@@ -37,8 +38,9 @@ NULL
 #' rules (example.com, acme.example.com), Resolver chooses the rule with
 #' the most specific match (acme.example.com) and forwards the query to the
 #' IP addresses that you specified in that rule. For more information, see
-#' How Route 53 Resolver Forwards DNS Queries from Your VPCs to Your
-#' Network in the *Amazon Route 53 Developer Guide*.
+#' [How Route 53 Resolver Forwards DNS Queries from Your VPCs to Your
+#' Network](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-vpc-to-network)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' Like Amazon VPC, Resolver is Regional. In each Region where you have
 #' VPCs, you can choose whether to forward queries from your VPCs to your

@@ -58,8 +58,8 @@ are being sent and received by a WorkMail organization.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=workmailmessageflow_get_raw_message_content]{get_raw_message_content} \tab Retrieves the raw content of an in-transit email message, in MIME format\cr
-\link[=workmailmessageflow_put_raw_message_content]{put_raw_message_content} \tab Updates the raw content of an in-transit email message, in MIME format
+\link[paws.end.user.computing:workmailmessageflow_get_raw_message_content]{get_raw_message_content} \tab Retrieves the raw content of an in-transit email message, in MIME format\cr
+\link[paws.end.user.computing:workmailmessageflow_put_raw_message_content]{put_raw_message_content} \tab Updates the raw content of an in-transit email message, in MIME format
 }
 }
 

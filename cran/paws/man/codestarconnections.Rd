@@ -54,40 +54,40 @@ as GitHub Enterprise Server, you create a \emph{host} for your connections.
 
 You can work with connections by calling:
 \itemize{
-\item \code{\link[=codestarconnections_create_connection]{create_connection}}, which
+\item \code{create_connection}, which
 creates a uniquely named connection that can be referenced by
 services such as CodePipeline.
-\item \code{\link[=codestarconnections_delete_connection]{delete_connection}}, which
+\item \code{delete_connection}, which
 deletes the specified connection.
-\item \code{\link[=codestarconnections_get_connection]{get_connection}}, which
+\item \code{get_connection}, which
 returns information about the connection, including the connection
 status.
-\item \code{\link[=codestarconnections_list_connections]{list_connections}}, which
+\item \code{list_connections}, which
 lists the connections associated with your account.
 }
 
 You can work with hosts by calling:
 \itemize{
-\item \code{\link[=codestarconnections_create_host]{create_host}}, which creates a
+\item \code{create_host}, which creates a
 host that represents the infrastructure where your provider is
 installed.
-\item \code{\link[=codestarconnections_delete_host]{delete_host}}, which deletes the
+\item \code{delete_host}, which deletes the
 specified host.
-\item \code{\link[=codestarconnections_get_host]{get_host}}, which returns
+\item \code{get_host}, which returns
 information about the host, including the setup status.
-\item \code{\link[=codestarconnections_list_hosts]{list_hosts}}, which lists the
+\item \code{list_hosts}, which lists the
 hosts associated with your account.
 }
 
 You can work with tags in AWS CodeStar Connections by calling the
 following:
 \itemize{
-\item \code{\link[=codestarconnections_list_tags_for_resource]{list_tags_for_resource}},
+\item \code{list_tags_for_resource},
 which gets information about AWS tags for a specified Amazon
 Resource Name (ARN) in AWS CodeStar Connections.
-\item \code{\link[=codestarconnections_tag_resource]{tag_resource}}, which adds or
+\item \code{tag_resource}, which adds or
 updates tags for a resource in AWS CodeStar Connections.
-\item \code{\link[=codestarconnections_untag_resource]{untag_resource}}, which
+\item \code{untag_resource}, which
 removes tags for a resource in AWS CodeStar Connections.
 }
 
@@ -121,18 +121,18 @@ For information about how to use AWS CodeStar Connections, see the
 \section{Operations}{
 
 \tabular{ll}{
-\link[=codestarconnections_create_connection]{create_connection} \tab Creates a connection that can then be given to other AWS services like CodePipeline so that it can access third-party code repositories\cr
-\link[=codestarconnections_create_host]{create_host} \tab Creates a resource that represents the infrastructure where a third-party provider is installed\cr
-\link[=codestarconnections_delete_connection]{delete_connection} \tab The connection to be deleted\cr
-\link[=codestarconnections_delete_host]{delete_host} \tab The host to be deleted\cr
-\link[=codestarconnections_get_connection]{get_connection} \tab Returns the connection ARN and details such as status, owner, and provider type\cr
-\link[=codestarconnections_get_host]{get_host} \tab Returns the host ARN and details such as status, provider type, endpoint, and, if applicable, the VPC configuration\cr
-\link[=codestarconnections_list_connections]{list_connections} \tab Lists the connections associated with your account\cr
-\link[=codestarconnections_list_hosts]{list_hosts} \tab Lists the hosts associated with your account\cr
-\link[=codestarconnections_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource\cr
-\link[=codestarconnections_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
-\link[=codestarconnections_untag_resource]{untag_resource} \tab Removes tags from an AWS resource\cr
-\link[=codestarconnections_update_host]{update_host} \tab Updates a specified host with the provided configurations
+\link[paws.developer.tools:codestarconnections_create_connection]{create_connection} \tab Creates a connection that can then be given to other AWS services like CodePipeline so that it can access third-party code repositories\cr
+\link[paws.developer.tools:codestarconnections_create_host]{create_host} \tab Creates a resource that represents the infrastructure where a third-party provider is installed\cr
+\link[paws.developer.tools:codestarconnections_delete_connection]{delete_connection} \tab The connection to be deleted\cr
+\link[paws.developer.tools:codestarconnections_delete_host]{delete_host} \tab The host to be deleted\cr
+\link[paws.developer.tools:codestarconnections_get_connection]{get_connection} \tab Returns the connection ARN and details such as status, owner, and provider type\cr
+\link[paws.developer.tools:codestarconnections_get_host]{get_host} \tab Returns the host ARN and details such as status, provider type, endpoint, and, if applicable, the VPC configuration\cr
+\link[paws.developer.tools:codestarconnections_list_connections]{list_connections} \tab Lists the connections associated with your account\cr
+\link[paws.developer.tools:codestarconnections_list_hosts]{list_hosts} \tab Lists the hosts associated with your account\cr
+\link[paws.developer.tools:codestarconnections_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource\cr
+\link[paws.developer.tools:codestarconnections_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
+\link[paws.developer.tools:codestarconnections_untag_resource]{untag_resource} \tab Removes tags from an AWS resource\cr
+\link[paws.developer.tools:codestarconnections_update_host]{update_host} \tab Updates a specified host with the provided configurations
 }
 }
 

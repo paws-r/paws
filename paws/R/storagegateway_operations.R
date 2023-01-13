@@ -1267,19 +1267,19 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @param AdminUserList A list of users or groups in the Active Directory that will be granted
 #' administrator privileges on the file share. These users can do all file
 #' operations as the super-user. Acceptable formats include:
-#' `DOMAIN\User1`, `user1`, `@@group1`, and `@@DOMAIN\group1`.
+#' `DOMAIN\\User1`, `user1`, `@@group1`, and `@@DOMAIN\\group1`.
 #' 
 #' Use this option very carefully, because any user in this list can do
 #' anything they like on the file share, regardless of file permissions.
 #' @param ValidUserList A list of users or groups in the Active Directory that are allowed to
 #' access the file share. A group must be prefixed with the @@ character.
-#' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
-#' `@@DOMAIN\group1`. Can only be set if Authentication is set to
+#' Acceptable formats include: `DOMAIN\\User1`, `user1`, `@@group1`, and
+#' `@@DOMAIN\\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
 #' @param InvalidUserList A list of users or groups in the Active Directory that are not allowed
 #' to access the file share. A group must be prefixed with the @@ character.
-#' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
-#' `@@DOMAIN\group1`. Can only be set if Authentication is set to
+#' Acceptable formats include: `DOMAIN\\User1`, `user1`, `@@group1`, and
+#' `@@DOMAIN\\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
 #' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for audit logs.
 #' @param Authentication The authentication method that users use to access the file share. The
@@ -6862,18 +6862,18 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' read access.
 #' @param AdminUserList A list of users or groups in the Active Directory that have
 #' administrator rights to the file share. A group must be prefixed with
-#' the @@ character. Acceptable formats include: `DOMAIN\User1`, `user1`,
-#' `@@group1`, and `@@DOMAIN\group1`. Can only be set if Authentication is
+#' the @@ character. Acceptable formats include: `DOMAIN\\User1`, `user1`,
+#' `@@group1`, and `@@DOMAIN\\group1`. Can only be set if Authentication is
 #' set to `ActiveDirectory`.
 #' @param ValidUserList A list of users or groups in the Active Directory that are allowed to
 #' access the file share. A group must be prefixed with the @@ character.
-#' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
-#' `@@DOMAIN\group1`. Can only be set if Authentication is set to
+#' Acceptable formats include: `DOMAIN\\User1`, `user1`, `@@group1`, and
+#' `@@DOMAIN\\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
 #' @param InvalidUserList A list of users or groups in the Active Directory that are not allowed
 #' to access the file share. A group must be prefixed with the @@ character.
-#' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
-#' `@@DOMAIN\group1`. Can only be set if Authentication is set to
+#' Acceptable formats include: `DOMAIN\\User1`, `user1`, `@@group1`, and
+#' `@@DOMAIN\\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
 #' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for audit logs.
 #' @param CaseSensitivity The case of an object name in an Amazon S3 bucket. For

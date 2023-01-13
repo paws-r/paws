@@ -47,7 +47,7 @@ SDKs for Config. This reference guide contains documentation for the
 Config API and the Amazon Web Services CLI commands that you can use to
 manage Config. The Config API uses the Signature Version 4 protocol for
 signing requests. For more information about how to sign a request with
-this protocol, see \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
+this protocol, see \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process}.
 For detailed information about Config features and their associated
 actions or commands, as well as how to work with Amazon Web Services
 Management Console, see \href{https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html}{What Is Config}
@@ -80,95 +80,95 @@ in the \emph{Config Developer Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=configservice_batch_get_aggregate_resource_config]{batch_get_aggregate_resource_config} \tab Returns the current configuration items for resources that are present in your Config aggregator\cr
-\link[=configservice_batch_get_resource_config]{batch_get_resource_config} \tab Returns the BaseConfigurationItem for one or more requested resources\cr
-\link[=configservice_delete_aggregation_authorization]{delete_aggregation_authorization} \tab Deletes the authorization granted to the specified configuration aggregator account in a specified region\cr
-\link[=configservice_delete_config_rule]{delete_config_rule} \tab Deletes the specified Config rule and all of its evaluation results\cr
-\link[=configservice_delete_configuration_aggregator]{delete_configuration_aggregator} \tab Deletes the specified configuration aggregator and the aggregated data associated with the aggregator\cr
-\link[=configservice_delete_configuration_recorder]{delete_configuration_recorder} \tab Deletes the configuration recorder\cr
-\link[=configservice_delete_conformance_pack]{delete_conformance_pack} \tab Deletes the specified conformance pack and all the Config rules, remediation actions, and all evaluation results within that conformance pack\cr
-\link[=configservice_delete_delivery_channel]{delete_delivery_channel} \tab Deletes the delivery channel\cr
-\link[=configservice_delete_evaluation_results]{delete_evaluation_results} \tab Deletes the evaluation results for the specified Config rule\cr
-\link[=configservice_delete_organization_config_rule]{delete_organization_config_rule} \tab Deletes the specified organization Config rule and all of its evaluation results from all member accounts in that organization\cr
-\link[=configservice_delete_organization_conformance_pack]{delete_organization_conformance_pack} \tab Deletes the specified organization conformance pack and all of the Config rules and remediation actions from all member accounts in that organization\cr
-\link[=configservice_delete_pending_aggregation_request]{delete_pending_aggregation_request} \tab Deletes pending authorization requests for a specified aggregator account in a specified region\cr
-\link[=configservice_delete_remediation_configuration]{delete_remediation_configuration} \tab Deletes the remediation configuration\cr
-\link[=configservice_delete_remediation_exceptions]{delete_remediation_exceptions} \tab Deletes one or more remediation exceptions mentioned in the resource keys\cr
-\link[=configservice_delete_resource_config]{delete_resource_config} \tab Records the configuration state for a custom resource that has been deleted\cr
-\link[=configservice_delete_retention_configuration]{delete_retention_configuration} \tab Deletes the retention configuration\cr
-\link[=configservice_delete_stored_query]{delete_stored_query} \tab Deletes the stored query for a single Amazon Web Services account and a single Amazon Web Services Region\cr
-\link[=configservice_deliver_config_snapshot]{deliver_config_snapshot} \tab Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the specified delivery channel\cr
-\link[=configservice_describe_aggregate_compliance_by_config_rules]{describe_aggregate_compliance_by_config_rules} \tab Returns a list of compliant and noncompliant rules with the number of resources for compliant and noncompliant rules\cr
-\link[=configservice_describe_aggregate_compliance_by_conformance_packs]{describe_aggregate_compliance_by_conformance_packs} \tab Returns a list of the conformance packs and their associated compliance status with the count of compliant and noncompliant Config rules within each conformance pack\cr
-\link[=configservice_describe_aggregation_authorizations]{describe_aggregation_authorizations} \tab Returns a list of authorizations granted to various aggregator accounts and regions\cr
-\link[=configservice_describe_compliance_by_config_rule]{describe_compliance_by_config_rule} \tab Indicates whether the specified Config rules are compliant\cr
-\link[=configservice_describe_compliance_by_resource]{describe_compliance_by_resource} \tab Indicates whether the specified Amazon Web Services resources are compliant\cr
-\link[=configservice_describe_config_rule_evaluation_status]{describe_config_rule_evaluation_status} \tab Returns status information for each of your Config managed rules\cr
-\link[=configservice_describe_config_rules]{describe_config_rules} \tab Returns details about your Config rules\cr
-\link[=configservice_describe_configuration_aggregators]{describe_configuration_aggregators} \tab Returns the details of one or more configuration aggregators\cr
-\link[=configservice_describe_configuration_aggregator_sources_status]{describe_configuration_aggregator_sources_status} \tab Returns status information for sources within an aggregator\cr
-\link[=configservice_describe_configuration_recorders]{describe_configuration_recorders} \tab Returns the details for the specified configuration recorders\cr
-\link[=configservice_describe_configuration_recorder_status]{describe_configuration_recorder_status} \tab Returns the current status of the specified configuration recorder\cr
-\link[=configservice_describe_conformance_pack_compliance]{describe_conformance_pack_compliance} \tab Returns compliance details for each rule in that conformance pack\cr
-\link[=configservice_describe_conformance_packs]{describe_conformance_packs} \tab Returns a list of one or more conformance packs\cr
-\link[=configservice_describe_conformance_pack_status]{describe_conformance_pack_status} \tab Provides one or more conformance packs deployment status\cr
-\link[=configservice_describe_delivery_channels]{describe_delivery_channels} \tab Returns details about the specified delivery channel\cr
-\link[=configservice_describe_delivery_channel_status]{describe_delivery_channel_status} \tab Returns the current status of the specified delivery channel\cr
-\link[=configservice_describe_organization_config_rules]{describe_organization_config_rules} \tab Returns a list of organization Config rules\cr
-\link[=configservice_describe_organization_config_rule_statuses]{describe_organization_config_rule_statuses} \tab Provides organization Config rule deployment status for an organization\cr
-\link[=configservice_describe_organization_conformance_packs]{describe_organization_conformance_packs} \tab Returns a list of organization conformance packs\cr
-\link[=configservice_describe_organization_conformance_pack_statuses]{describe_organization_conformance_pack_statuses} \tab Provides organization conformance pack deployment status for an organization\cr
-\link[=configservice_describe_pending_aggregation_requests]{describe_pending_aggregation_requests} \tab Returns a list of all pending aggregation requests\cr
-\link[=configservice_describe_remediation_configurations]{describe_remediation_configurations} \tab Returns the details of one or more remediation configurations\cr
-\link[=configservice_describe_remediation_exceptions]{describe_remediation_exceptions} \tab Returns the details of one or more remediation exceptions\cr
-\link[=configservice_describe_remediation_execution_status]{describe_remediation_execution_status} \tab Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when steps for the remediation execution occur, and any error messages for steps that have failed\cr
-\link[=configservice_describe_retention_configurations]{describe_retention_configurations} \tab Returns the details of one or more retention configurations\cr
-\link[=configservice_get_aggregate_compliance_details_by_config_rule]{get_aggregate_compliance_details_by_config_rule} \tab Returns the evaluation results for the specified Config rule for a specific resource in a rule\cr
-\link[=configservice_get_aggregate_config_rule_compliance_summary]{get_aggregate_config_rule_compliance_summary} \tab Returns the number of compliant and noncompliant rules for one or more accounts and regions in an aggregator\cr
-\link[=configservice_get_aggregate_conformance_pack_compliance_summary]{get_aggregate_conformance_pack_compliance_summary} \tab Returns the count of compliant and noncompliant conformance packs across all Amazon Web Services accounts and Amazon Web Services Regions in an aggregator\cr
-\link[=configservice_get_aggregate_discovered_resource_counts]{get_aggregate_discovered_resource_counts} \tab Returns the resource counts across accounts and regions that are present in your Config aggregator\cr
-\link[=configservice_get_aggregate_resource_config]{get_aggregate_resource_config} \tab Returns configuration item that is aggregated for your specific resource in a specific source account and region\cr
-\link[=configservice_get_compliance_details_by_config_rule]{get_compliance_details_by_config_rule} \tab Returns the evaluation results for the specified Config rule\cr
-\link[=configservice_get_compliance_details_by_resource]{get_compliance_details_by_resource} \tab Returns the evaluation results for the specified Amazon Web Services resource\cr
-\link[=configservice_get_compliance_summary_by_config_rule]{get_compliance_summary_by_config_rule} \tab Returns the number of Config rules that are compliant and noncompliant, up to a maximum of 25 for each\cr
-\link[=configservice_get_compliance_summary_by_resource_type]{get_compliance_summary_by_resource_type} \tab Returns the number of resources that are compliant and the number that are noncompliant\cr
-\link[=configservice_get_conformance_pack_compliance_details]{get_conformance_pack_compliance_details} \tab Returns compliance details of a conformance pack for all Amazon Web Services resources that are monitered by conformance pack\cr
-\link[=configservice_get_conformance_pack_compliance_summary]{get_conformance_pack_compliance_summary} \tab Returns compliance details for the conformance pack based on the cumulative compliance results of all the rules in that conformance pack\cr
-\link[=configservice_get_custom_rule_policy]{get_custom_rule_policy} \tab Returns the policy definition containing the logic for your Config Custom Policy rule\cr
-\link[=configservice_get_discovered_resource_counts]{get_discovered_resource_counts} \tab Returns the resource types, the number of each resource type, and the total number of resources that Config is recording in this region for your Amazon Web Services account\cr
-\link[=configservice_get_organization_config_rule_detailed_status]{get_organization_config_rule_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization Config rule\cr
-\link[=configservice_get_organization_conformance_pack_detailed_status]{get_organization_conformance_pack_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization conformance pack\cr
-\link[=configservice_get_organization_custom_rule_policy]{get_organization_custom_rule_policy} \tab Returns the policy definition containing the logic for your organization Config Custom Policy rule\cr
-\link[=configservice_get_resource_config_history]{get_resource_config_history} \tab Returns a list of ConfigurationItems for the specified resource\cr
-\link[=configservice_get_stored_query]{get_stored_query} \tab Returns the details of a specific stored query\cr
-\link[=configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions\cr
-\link[=configservice_list_conformance_pack_compliance_scores]{list_conformance_pack_compliance_scores} \tab Returns a list of conformance pack compliance scores\cr
-\link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers for the resources of that type\cr
-\link[=configservice_list_stored_queries]{list_stored_queries} \tab Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region\cr
-\link[=configservice_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for Config resource\cr
-\link[=configservice_put_aggregation_authorization]{put_aggregation_authorization} \tab Authorizes the aggregator account and region to collect data from the source account and region\cr
-\link[=configservice_put_config_rule]{put_config_rule} \tab Adds or updates an Config rule to evaluate if your Amazon Web Services resources comply with your desired configurations\cr
-\link[=configservice_put_configuration_aggregator]{put_configuration_aggregator} \tab Creates and updates the configuration aggregator with the selected source accounts and regions\cr
-\link[=configservice_put_configuration_recorder]{put_configuration_recorder} \tab Creates a new configuration recorder to record the selected resource configurations\cr
-\link[=configservice_put_conformance_pack]{put_conformance_pack} \tab Creates or updates a conformance pack\cr
-\link[=configservice_put_delivery_channel]{put_delivery_channel} \tab Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic\cr
-\link[=configservice_put_evaluations]{put_evaluations} \tab Used by an Lambda function to deliver evaluation results to Config\cr
-\link[=configservice_put_external_evaluation]{put_external_evaluation} \tab Add or updates the evaluations for process checks\cr
-\link[=configservice_put_organization_config_rule]{put_organization_config_rule} \tab Adds or updates an Config rule for your entire organization to evaluate if your Amazon Web Services resources comply with your desired configurations\cr
-\link[=configservice_put_organization_conformance_pack]{put_organization_conformance_pack} \tab Deploys conformance packs across member accounts in an Amazon Web Services Organization\cr
-\link[=configservice_put_remediation_configurations]{put_remediation_configurations} \tab Adds or updates the remediation configuration with a specific Config rule with the selected target or action\cr
-\link[=configservice_put_remediation_exceptions]{put_remediation_exceptions} \tab A remediation exception is when a specific resource is no longer considered for auto-remediation\cr
-\link[=configservice_put_resource_config]{put_resource_config} \tab Records the configuration state for the resource provided in the request\cr
-\link[=configservice_put_retention_configuration]{put_retention_configuration} \tab Creates and updates the retention configuration with details about retention period (number of days) that Config stores your historical information\cr
-\link[=configservice_put_stored_query]{put_stored_query} \tab Saves a new query or updates an existing saved query\cr
-\link[=configservice_select_aggregate_resource_config]{select_aggregate_resource_config} \tab Accepts a structured query language (SQL) SELECT command and an aggregator to query configuration state of Amazon Web Services resources across multiple accounts and regions, performs the corresponding search, and returns resource configurations matching the properties\cr
-\link[=configservice_select_resource_config]{select_resource_config} \tab Accepts a structured query language (SQL) SELECT command, performs the corresponding search, and returns resource configurations matching the properties\cr
-\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation} \tab Runs an on-demand evaluation for the specified Config rules against the last known configuration state of the resources\cr
-\link[=configservice_start_configuration_recorder]{start_configuration_recorder} \tab Starts recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account\cr
-\link[=configservice_start_remediation_execution]{start_remediation_execution} \tab Runs an on-demand remediation for the specified Config rules against the last known remediation configuration\cr
-\link[=configservice_stop_configuration_recorder]{stop_configuration_recorder} \tab Stops recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account\cr
-\link[=configservice_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
-\link[=configservice_untag_resource]{untag_resource} \tab Deletes specified tags from a resource
+\link[paws.management.p1:configservice_batch_get_aggregate_resource_config]{batch_get_aggregate_resource_config} \tab Returns the current configuration items for resources that are present in your Config aggregator\cr
+\link[paws.management.p1:configservice_batch_get_resource_config]{batch_get_resource_config} \tab Returns the BaseConfigurationItem for one or more requested resources\cr
+\link[paws.management.p1:configservice_delete_aggregation_authorization]{delete_aggregation_authorization} \tab Deletes the authorization granted to the specified configuration aggregator account in a specified region\cr
+\link[paws.management.p1:configservice_delete_config_rule]{delete_config_rule} \tab Deletes the specified Config rule and all of its evaluation results\cr
+\link[paws.management.p1:configservice_delete_configuration_aggregator]{delete_configuration_aggregator} \tab Deletes the specified configuration aggregator and the aggregated data associated with the aggregator\cr
+\link[paws.management.p1:configservice_delete_configuration_recorder]{delete_configuration_recorder} \tab Deletes the configuration recorder\cr
+\link[paws.management.p1:configservice_delete_conformance_pack]{delete_conformance_pack} \tab Deletes the specified conformance pack and all the Config rules, remediation actions, and all evaluation results within that conformance pack\cr
+\link[paws.management.p1:configservice_delete_delivery_channel]{delete_delivery_channel} \tab Deletes the delivery channel\cr
+\link[paws.management.p1:configservice_delete_evaluation_results]{delete_evaluation_results} \tab Deletes the evaluation results for the specified Config rule\cr
+\link[paws.management.p1:configservice_delete_organization_config_rule]{delete_organization_config_rule} \tab Deletes the specified organization Config rule and all of its evaluation results from all member accounts in that organization\cr
+\link[paws.management.p1:configservice_delete_organization_conformance_pack]{delete_organization_conformance_pack} \tab Deletes the specified organization conformance pack and all of the Config rules and remediation actions from all member accounts in that organization\cr
+\link[paws.management.p1:configservice_delete_pending_aggregation_request]{delete_pending_aggregation_request} \tab Deletes pending authorization requests for a specified aggregator account in a specified region\cr
+\link[paws.management.p1:configservice_delete_remediation_configuration]{delete_remediation_configuration} \tab Deletes the remediation configuration\cr
+\link[paws.management.p1:configservice_delete_remediation_exceptions]{delete_remediation_exceptions} \tab Deletes one or more remediation exceptions mentioned in the resource keys\cr
+\link[paws.management.p1:configservice_delete_resource_config]{delete_resource_config} \tab Records the configuration state for a custom resource that has been deleted\cr
+\link[paws.management.p1:configservice_delete_retention_configuration]{delete_retention_configuration} \tab Deletes the retention configuration\cr
+\link[paws.management.p1:configservice_delete_stored_query]{delete_stored_query} \tab Deletes the stored query for a single Amazon Web Services account and a single Amazon Web Services Region\cr
+\link[paws.management.p1:configservice_deliver_config_snapshot]{deliver_config_snapshot} \tab Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the specified delivery channel\cr
+\link[paws.management.p1:configservice_describe_aggregate_compliance_by_config_rules]{describe_aggregate_compliance_by_config_rules} \tab Returns a list of compliant and noncompliant rules with the number of resources for compliant and noncompliant rules\cr
+\link[paws.management.p1:configservice_describe_aggregate_compliance_by_conformance_packs]{describe_aggregate_compliance_by_conformance_packs} \tab Returns a list of the conformance packs and their associated compliance status with the count of compliant and noncompliant Config rules within each conformance pack\cr
+\link[paws.management.p1:configservice_describe_aggregation_authorizations]{describe_aggregation_authorizations} \tab Returns a list of authorizations granted to various aggregator accounts and regions\cr
+\link[paws.management.p1:configservice_describe_compliance_by_config_rule]{describe_compliance_by_config_rule} \tab Indicates whether the specified Config rules are compliant\cr
+\link[paws.management.p1:configservice_describe_compliance_by_resource]{describe_compliance_by_resource} \tab Indicates whether the specified Amazon Web Services resources are compliant\cr
+\link[paws.management.p1:configservice_describe_config_rule_evaluation_status]{describe_config_rule_evaluation_status} \tab Returns status information for each of your Config managed rules\cr
+\link[paws.management.p1:configservice_describe_config_rules]{describe_config_rules} \tab Returns details about your Config rules\cr
+\link[paws.management.p1:configservice_describe_configuration_aggregators]{describe_configuration_aggregators} \tab Returns the details of one or more configuration aggregators\cr
+\link[paws.management.p1:configservice_describe_configuration_aggregator_sources_status]{describe_configuration_aggregator_sources_status} \tab Returns status information for sources within an aggregator\cr
+\link[paws.management.p1:configservice_describe_configuration_recorders]{describe_configuration_recorders} \tab Returns the details for the specified configuration recorders\cr
+\link[paws.management.p1:configservice_describe_configuration_recorder_status]{describe_configuration_recorder_status} \tab Returns the current status of the specified configuration recorder\cr
+\link[paws.management.p1:configservice_describe_conformance_pack_compliance]{describe_conformance_pack_compliance} \tab Returns compliance details for each rule in that conformance pack\cr
+\link[paws.management.p1:configservice_describe_conformance_packs]{describe_conformance_packs} \tab Returns a list of one or more conformance packs\cr
+\link[paws.management.p1:configservice_describe_conformance_pack_status]{describe_conformance_pack_status} \tab Provides one or more conformance packs deployment status\cr
+\link[paws.management.p1:configservice_describe_delivery_channels]{describe_delivery_channels} \tab Returns details about the specified delivery channel\cr
+\link[paws.management.p1:configservice_describe_delivery_channel_status]{describe_delivery_channel_status} \tab Returns the current status of the specified delivery channel\cr
+\link[paws.management.p1:configservice_describe_organization_config_rules]{describe_organization_config_rules} \tab Returns a list of organization Config rules\cr
+\link[paws.management.p1:configservice_describe_organization_config_rule_statuses]{describe_organization_config_rule_statuses} \tab Provides organization Config rule deployment status for an organization\cr
+\link[paws.management.p1:configservice_describe_organization_conformance_packs]{describe_organization_conformance_packs} \tab Returns a list of organization conformance packs\cr
+\link[paws.management.p1:configservice_describe_organization_conformance_pack_statuses]{describe_organization_conformance_pack_statuses} \tab Provides organization conformance pack deployment status for an organization\cr
+\link[paws.management.p1:configservice_describe_pending_aggregation_requests]{describe_pending_aggregation_requests} \tab Returns a list of all pending aggregation requests\cr
+\link[paws.management.p1:configservice_describe_remediation_configurations]{describe_remediation_configurations} \tab Returns the details of one or more remediation configurations\cr
+\link[paws.management.p1:configservice_describe_remediation_exceptions]{describe_remediation_exceptions} \tab Returns the details of one or more remediation exceptions\cr
+\link[paws.management.p1:configservice_describe_remediation_execution_status]{describe_remediation_execution_status} \tab Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when steps for the remediation execution occur, and any error messages for steps that have failed\cr
+\link[paws.management.p1:configservice_describe_retention_configurations]{describe_retention_configurations} \tab Returns the details of one or more retention configurations\cr
+\link[paws.management.p1:configservice_get_aggregate_compliance_details_by_config_rule]{get_aggregate_compliance_details_by_config_rule} \tab Returns the evaluation results for the specified Config rule for a specific resource in a rule\cr
+\link[paws.management.p1:configservice_get_aggregate_config_rule_compliance_summary]{get_aggregate_config_rule_compliance_summary} \tab Returns the number of compliant and noncompliant rules for one or more accounts and regions in an aggregator\cr
+\link[paws.management.p1:configservice_get_aggregate_conformance_pack_compliance_summary]{get_aggregate_conformance_pack_compliance_summary} \tab Returns the count of compliant and noncompliant conformance packs across all Amazon Web Services accounts and Amazon Web Services Regions in an aggregator\cr
+\link[paws.management.p1:configservice_get_aggregate_discovered_resource_counts]{get_aggregate_discovered_resource_counts} \tab Returns the resource counts across accounts and regions that are present in your Config aggregator\cr
+\link[paws.management.p1:configservice_get_aggregate_resource_config]{get_aggregate_resource_config} \tab Returns configuration item that is aggregated for your specific resource in a specific source account and region\cr
+\link[paws.management.p1:configservice_get_compliance_details_by_config_rule]{get_compliance_details_by_config_rule} \tab Returns the evaluation results for the specified Config rule\cr
+\link[paws.management.p1:configservice_get_compliance_details_by_resource]{get_compliance_details_by_resource} \tab Returns the evaluation results for the specified Amazon Web Services resource\cr
+\link[paws.management.p1:configservice_get_compliance_summary_by_config_rule]{get_compliance_summary_by_config_rule} \tab Returns the number of Config rules that are compliant and noncompliant, up to a maximum of 25 for each\cr
+\link[paws.management.p1:configservice_get_compliance_summary_by_resource_type]{get_compliance_summary_by_resource_type} \tab Returns the number of resources that are compliant and the number that are noncompliant\cr
+\link[paws.management.p1:configservice_get_conformance_pack_compliance_details]{get_conformance_pack_compliance_details} \tab Returns compliance details of a conformance pack for all Amazon Web Services resources that are monitered by conformance pack\cr
+\link[paws.management.p1:configservice_get_conformance_pack_compliance_summary]{get_conformance_pack_compliance_summary} \tab Returns compliance details for the conformance pack based on the cumulative compliance results of all the rules in that conformance pack\cr
+\link[paws.management.p1:configservice_get_custom_rule_policy]{get_custom_rule_policy} \tab Returns the policy definition containing the logic for your Config Custom Policy rule\cr
+\link[paws.management.p1:configservice_get_discovered_resource_counts]{get_discovered_resource_counts} \tab Returns the resource types, the number of each resource type, and the total number of resources that Config is recording in this region for your Amazon Web Services account\cr
+\link[paws.management.p1:configservice_get_organization_config_rule_detailed_status]{get_organization_config_rule_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization Config rule\cr
+\link[paws.management.p1:configservice_get_organization_conformance_pack_detailed_status]{get_organization_conformance_pack_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization conformance pack\cr
+\link[paws.management.p1:configservice_get_organization_custom_rule_policy]{get_organization_custom_rule_policy} \tab Returns the policy definition containing the logic for your organization Config Custom Policy rule\cr
+\link[paws.management.p1:configservice_get_resource_config_history]{get_resource_config_history} \tab Returns a list of ConfigurationItems for the specified resource\cr
+\link[paws.management.p1:configservice_get_stored_query]{get_stored_query} \tab Returns the details of a specific stored query\cr
+\link[paws.management.p1:configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions\cr
+\link[paws.management.p1:configservice_list_conformance_pack_compliance_scores]{list_conformance_pack_compliance_scores} \tab Returns a list of conformance pack compliance scores\cr
+\link[paws.management.p1:configservice_list_discovered_resources]{list_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers for the resources of that type\cr
+\link[paws.management.p1:configservice_list_stored_queries]{list_stored_queries} \tab Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region\cr
+\link[paws.management.p1:configservice_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for Config resource\cr
+\link[paws.management.p1:configservice_put_aggregation_authorization]{put_aggregation_authorization} \tab Authorizes the aggregator account and region to collect data from the source account and region\cr
+\link[paws.management.p1:configservice_put_config_rule]{put_config_rule} \tab Adds or updates an Config rule to evaluate if your Amazon Web Services resources comply with your desired configurations\cr
+\link[paws.management.p1:configservice_put_configuration_aggregator]{put_configuration_aggregator} \tab Creates and updates the configuration aggregator with the selected source accounts and regions\cr
+\link[paws.management.p1:configservice_put_configuration_recorder]{put_configuration_recorder} \tab Creates a new configuration recorder to record the selected resource configurations\cr
+\link[paws.management.p1:configservice_put_conformance_pack]{put_conformance_pack} \tab Creates or updates a conformance pack\cr
+\link[paws.management.p1:configservice_put_delivery_channel]{put_delivery_channel} \tab Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic\cr
+\link[paws.management.p1:configservice_put_evaluations]{put_evaluations} \tab Used by an Lambda function to deliver evaluation results to Config\cr
+\link[paws.management.p1:configservice_put_external_evaluation]{put_external_evaluation} \tab Add or updates the evaluations for process checks\cr
+\link[paws.management.p1:configservice_put_organization_config_rule]{put_organization_config_rule} \tab Adds or updates an Config rule for your entire organization to evaluate if your Amazon Web Services resources comply with your desired configurations\cr
+\link[paws.management.p1:configservice_put_organization_conformance_pack]{put_organization_conformance_pack} \tab Deploys conformance packs across member accounts in an Amazon Web Services Organization\cr
+\link[paws.management.p1:configservice_put_remediation_configurations]{put_remediation_configurations} \tab Adds or updates the remediation configuration with a specific Config rule with the selected target or action\cr
+\link[paws.management.p1:configservice_put_remediation_exceptions]{put_remediation_exceptions} \tab A remediation exception is when a specific resource is no longer considered for auto-remediation\cr
+\link[paws.management.p1:configservice_put_resource_config]{put_resource_config} \tab Records the configuration state for the resource provided in the request\cr
+\link[paws.management.p1:configservice_put_retention_configuration]{put_retention_configuration} \tab Creates and updates the retention configuration with details about retention period (number of days) that Config stores your historical information\cr
+\link[paws.management.p1:configservice_put_stored_query]{put_stored_query} \tab Saves a new query or updates an existing saved query\cr
+\link[paws.management.p1:configservice_select_aggregate_resource_config]{select_aggregate_resource_config} \tab Accepts a structured query language (SQL) SELECT command and an aggregator to query configuration state of Amazon Web Services resources across multiple accounts and regions, performs the corresponding search, and returns resource configurations matching the properties\cr
+\link[paws.management.p1:configservice_select_resource_config]{select_resource_config} \tab Accepts a structured query language (SQL) SELECT command, performs the corresponding search, and returns resource configurations matching the properties\cr
+\link[paws.management.p1:configservice_start_config_rules_evaluation]{start_config_rules_evaluation} \tab Runs an on-demand evaluation for the specified Config rules against the last known configuration state of the resources\cr
+\link[paws.management.p1:configservice_start_configuration_recorder]{start_configuration_recorder} \tab Starts recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account\cr
+\link[paws.management.p1:configservice_start_remediation_execution]{start_remediation_execution} \tab Runs an on-demand remediation for the specified Config rules against the last known remediation configuration\cr
+\link[paws.management.p1:configservice_stop_configuration_recorder]{stop_configuration_recorder} \tab Stops recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account\cr
+\link[paws.management.p1:configservice_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
+\link[paws.management.p1:configservice_untag_resource]{untag_resource} \tab Deletes specified tags from a resource
 }
 }
 

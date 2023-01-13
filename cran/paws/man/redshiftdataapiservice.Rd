@@ -63,16 +63,16 @@ the \emph{Amazon Redshift Cluster Management Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=redshiftdataapiservice_batch_execute_statement]{batch_execute_statement} \tab Runs one or more SQL statements, which can be data manipulation language (DML) or data definition language (DDL)\cr
-\link[=redshiftdataapiservice_cancel_statement]{cancel_statement} \tab Cancels a running query\cr
-\link[=redshiftdataapiservice_describe_statement]{describe_statement} \tab Describes the details about a specific instance when a query was run by the Amazon Redshift Data API\cr
-\link[=redshiftdataapiservice_describe_table]{describe_table} \tab Describes the detailed information about a table from metadata in the cluster\cr
-\link[=redshiftdataapiservice_execute_statement]{execute_statement} \tab Runs an SQL statement, which can be data manipulation language (DML) or data definition language (DDL)\cr
-\link[=redshiftdataapiservice_get_statement_result]{get_statement_result} \tab Fetches the temporarily cached result of an SQL statement\cr
-\link[=redshiftdataapiservice_list_databases]{list_databases} \tab List the databases in a cluster\cr
-\link[=redshiftdataapiservice_list_schemas]{list_schemas} \tab Lists the schemas in a database\cr
-\link[=redshiftdataapiservice_list_statements]{list_statements} \tab List of SQL statements\cr
-\link[=redshiftdataapiservice_list_tables]{list_tables} \tab List the tables in a database
+\link[paws.database:redshiftdataapiservice_batch_execute_statement]{batch_execute_statement} \tab Runs one or more SQL statements, which can be data manipulation language (DML) or data definition language (DDL)\cr
+\link[paws.database:redshiftdataapiservice_cancel_statement]{cancel_statement} \tab Cancels a running query\cr
+\link[paws.database:redshiftdataapiservice_describe_statement]{describe_statement} \tab Describes the details about a specific instance when a query was run by the Amazon Redshift Data API\cr
+\link[paws.database:redshiftdataapiservice_describe_table]{describe_table} \tab Describes the detailed information about a table from metadata in the cluster\cr
+\link[paws.database:redshiftdataapiservice_execute_statement]{execute_statement} \tab Runs an SQL statement, which can be data manipulation language (DML) or data definition language (DDL)\cr
+\link[paws.database:redshiftdataapiservice_get_statement_result]{get_statement_result} \tab Fetches the temporarily cached result of an SQL statement\cr
+\link[paws.database:redshiftdataapiservice_list_databases]{list_databases} \tab List the databases in a cluster\cr
+\link[paws.database:redshiftdataapiservice_list_schemas]{list_schemas} \tab Lists the schemas in a database\cr
+\link[paws.database:redshiftdataapiservice_list_statements]{list_statements} \tab List of SQL statements\cr
+\link[paws.database:redshiftdataapiservice_list_tables]{list_tables} \tab List the tables in a database
 }
 }
 

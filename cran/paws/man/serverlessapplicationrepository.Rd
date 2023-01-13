@@ -90,20 +90,20 @@ applications.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=serverlessapplicationrepository_create_application]{create_application} \tab Creates an application, optionally including an AWS SAM file to create the first application version in the same call\cr
-\link[=serverlessapplicationrepository_create_application_version]{create_application_version} \tab Creates an application version\cr
-\link[=serverlessapplicationrepository_create_cloud_formation_change_set]{create_cloud_formation_change_set} \tab Creates an AWS CloudFormation change set for the given application\cr
-\link[=serverlessapplicationrepository_create_cloud_formation_template]{create_cloud_formation_template} \tab Creates an AWS CloudFormation template\cr
-\link[=serverlessapplicationrepository_delete_application]{delete_application} \tab Deletes the specified application\cr
-\link[=serverlessapplicationrepository_get_application]{get_application} \tab Gets the specified application\cr
-\link[=serverlessapplicationrepository_get_application_policy]{get_application_policy} \tab Retrieves the policy for the application\cr
-\link[=serverlessapplicationrepository_get_cloud_formation_template]{get_cloud_formation_template} \tab Gets the specified AWS CloudFormation template\cr
-\link[=serverlessapplicationrepository_list_application_dependencies]{list_application_dependencies} \tab Retrieves the list of applications nested in the containing application\cr
-\link[=serverlessapplicationrepository_list_applications]{list_applications} \tab Lists applications owned by the requester\cr
-\link[=serverlessapplicationrepository_list_application_versions]{list_application_versions} \tab Lists versions for the specified application\cr
-\link[=serverlessapplicationrepository_put_application_policy]{put_application_policy} \tab Sets the permission policy for an application\cr
-\link[=serverlessapplicationrepository_unshare_application]{unshare_application} \tab Unshares an application from an AWS Organization\cr
-\link[=serverlessapplicationrepository_update_application]{update_application} \tab Updates the specified application
+\link[paws.compute.p2:serverlessapplicationrepository_create_application]{create_application} \tab Creates an application, optionally including an AWS SAM file to create the first application version in the same call\cr
+\link[paws.compute.p2:serverlessapplicationrepository_create_application_version]{create_application_version} \tab Creates an application version\cr
+\link[paws.compute.p2:serverlessapplicationrepository_create_cloud_formation_change_set]{create_cloud_formation_change_set} \tab Creates an AWS CloudFormation change set for the given application\cr
+\link[paws.compute.p2:serverlessapplicationrepository_create_cloud_formation_template]{create_cloud_formation_template} \tab Creates an AWS CloudFormation template\cr
+\link[paws.compute.p2:serverlessapplicationrepository_delete_application]{delete_application} \tab Deletes the specified application\cr
+\link[paws.compute.p2:serverlessapplicationrepository_get_application]{get_application} \tab Gets the specified application\cr
+\link[paws.compute.p2:serverlessapplicationrepository_get_application_policy]{get_application_policy} \tab Retrieves the policy for the application\cr
+\link[paws.compute.p2:serverlessapplicationrepository_get_cloud_formation_template]{get_cloud_formation_template} \tab Gets the specified AWS CloudFormation template\cr
+\link[paws.compute.p2:serverlessapplicationrepository_list_application_dependencies]{list_application_dependencies} \tab Retrieves the list of applications nested in the containing application\cr
+\link[paws.compute.p2:serverlessapplicationrepository_list_applications]{list_applications} \tab Lists applications owned by the requester\cr
+\link[paws.compute.p2:serverlessapplicationrepository_list_application_versions]{list_application_versions} \tab Lists versions for the specified application\cr
+\link[paws.compute.p2:serverlessapplicationrepository_put_application_policy]{put_application_policy} \tab Sets the permission policy for an application\cr
+\link[paws.compute.p2:serverlessapplicationrepository_unshare_application]{unshare_application} \tab Unshares an application from an AWS Organization\cr
+\link[paws.compute.p2:serverlessapplicationrepository_update_application]{update_application} \tab Updates the specified application
 }
 }
 

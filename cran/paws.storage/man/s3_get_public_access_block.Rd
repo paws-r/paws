@@ -15,7 +15,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-Retrieves the \code{PublicAccessBlock} configuration for an Amazon S3 bucket. To use this operation, you must have the \code{s3:GetBucketPublicAccessBlock} permission. For more information about Amazon S3 permissions, see Specifying Permissions in a Policy.
+Retrieves the \code{PublicAccessBlock} configuration for an Amazon S3 bucket. To use this operation, you must have the \code{s3:GetBucketPublicAccessBlock} permission. For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
 
 See \url{https://paws-r.github.io/docs/s3/get_public_access_block.html} for full documentation.
 }

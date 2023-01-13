@@ -58,29 +58,29 @@ Application Recovery Controller
 \section{Operations}{
 
 \tabular{ll}{
-\link[=route53recoverycontrolconfig_create_cluster]{create_cluster} \tab Create a new cluster\cr
-\link[=route53recoverycontrolconfig_create_control_panel]{create_control_panel} \tab Creates a new control panel\cr
-\link[=route53recoverycontrolconfig_create_routing_control]{create_routing_control} \tab Creates a new routing control\cr
-\link[=route53recoverycontrolconfig_create_safety_rule]{create_safety_rule} \tab Creates a safety rule in a control panel\cr
-\link[=route53recoverycontrolconfig_delete_cluster]{delete_cluster} \tab Delete a cluster\cr
-\link[=route53recoverycontrolconfig_delete_control_panel]{delete_control_panel} \tab Deletes a control panel\cr
-\link[=route53recoverycontrolconfig_delete_routing_control]{delete_routing_control} \tab Deletes a routing control\cr
-\link[=route53recoverycontrolconfig_delete_safety_rule]{delete_safety_rule} \tab Deletes a safety rule\cr
-\link[=route53recoverycontrolconfig_describe_cluster]{describe_cluster} \tab Display the details about a cluster\cr
-\link[=route53recoverycontrolconfig_describe_control_panel]{describe_control_panel} \tab Displays details about a control panel\cr
-\link[=route53recoverycontrolconfig_describe_routing_control]{describe_routing_control} \tab Displays details about a routing control\cr
-\link[=route53recoverycontrolconfig_describe_safety_rule]{describe_safety_rule} \tab Returns information about a safety rule\cr
-\link[=route53recoverycontrolconfig_list_associated_route_53_health_checks]{list_associated_route_53_health_checks} \tab Returns an array of all Amazon Route 53 health checks associated with a specific routing control\cr
-\link[=route53recoverycontrolconfig_list_clusters]{list_clusters} \tab Returns an array of all the clusters in an account\cr
-\link[=route53recoverycontrolconfig_list_control_panels]{list_control_panels} \tab Returns an array of control panels in an account or in a cluster\cr
-\link[=route53recoverycontrolconfig_list_routing_controls]{list_routing_controls} \tab Returns an array of routing controls for a control panel\cr
-\link[=route53recoverycontrolconfig_list_safety_rules]{list_safety_rules} \tab List the safety rules (the assertion rules and gating rules) that you've defined for the routing controls in a control panel\cr
-\link[=route53recoverycontrolconfig_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a resource\cr
-\link[=route53recoverycontrolconfig_tag_resource]{tag_resource} \tab Adds a tag to a resource\cr
-\link[=route53recoverycontrolconfig_untag_resource]{untag_resource} \tab Removes a tag from a resource\cr
-\link[=route53recoverycontrolconfig_update_control_panel]{update_control_panel} \tab Updates a control panel\cr
-\link[=route53recoverycontrolconfig_update_routing_control]{update_routing_control} \tab Updates a routing control\cr
-\link[=route53recoverycontrolconfig_update_safety_rule]{update_safety_rule} \tab Update a safety rule (an assertion rule or gating rule)
+\link[paws.networking:route53recoverycontrolconfig_create_cluster]{create_cluster} \tab Create a new cluster\cr
+\link[paws.networking:route53recoverycontrolconfig_create_control_panel]{create_control_panel} \tab Creates a new control panel\cr
+\link[paws.networking:route53recoverycontrolconfig_create_routing_control]{create_routing_control} \tab Creates a new routing control\cr
+\link[paws.networking:route53recoverycontrolconfig_create_safety_rule]{create_safety_rule} \tab Creates a safety rule in a control panel\cr
+\link[paws.networking:route53recoverycontrolconfig_delete_cluster]{delete_cluster} \tab Delete a cluster\cr
+\link[paws.networking:route53recoverycontrolconfig_delete_control_panel]{delete_control_panel} \tab Deletes a control panel\cr
+\link[paws.networking:route53recoverycontrolconfig_delete_routing_control]{delete_routing_control} \tab Deletes a routing control\cr
+\link[paws.networking:route53recoverycontrolconfig_delete_safety_rule]{delete_safety_rule} \tab Deletes a safety rule\cr
+\link[paws.networking:route53recoverycontrolconfig_describe_cluster]{describe_cluster} \tab Display the details about a cluster\cr
+\link[paws.networking:route53recoverycontrolconfig_describe_control_panel]{describe_control_panel} \tab Displays details about a control panel\cr
+\link[paws.networking:route53recoverycontrolconfig_describe_routing_control]{describe_routing_control} \tab Displays details about a routing control\cr
+\link[paws.networking:route53recoverycontrolconfig_describe_safety_rule]{describe_safety_rule} \tab Returns information about a safety rule\cr
+\link[paws.networking:route53recoverycontrolconfig_list_associated_route_53_health_checks]{list_associated_route_53_health_checks} \tab Returns an array of all Amazon Route 53 health checks associated with a specific routing control\cr
+\link[paws.networking:route53recoverycontrolconfig_list_clusters]{list_clusters} \tab Returns an array of all the clusters in an account\cr
+\link[paws.networking:route53recoverycontrolconfig_list_control_panels]{list_control_panels} \tab Returns an array of control panels in an account or in a cluster\cr
+\link[paws.networking:route53recoverycontrolconfig_list_routing_controls]{list_routing_controls} \tab Returns an array of routing controls for a control panel\cr
+\link[paws.networking:route53recoverycontrolconfig_list_safety_rules]{list_safety_rules} \tab List the safety rules (the assertion rules and gating rules) that you've defined for the routing controls in a control panel\cr
+\link[paws.networking:route53recoverycontrolconfig_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a resource\cr
+\link[paws.networking:route53recoverycontrolconfig_tag_resource]{tag_resource} \tab Adds a tag to a resource\cr
+\link[paws.networking:route53recoverycontrolconfig_untag_resource]{untag_resource} \tab Removes a tag from a resource\cr
+\link[paws.networking:route53recoverycontrolconfig_update_control_panel]{update_control_panel} \tab Updates a control panel\cr
+\link[paws.networking:route53recoverycontrolconfig_update_routing_control]{update_routing_control} \tab Updates a routing control\cr
+\link[paws.networking:route53recoverycontrolconfig_update_safety_rule]{update_safety_rule} \tab Update a safety rule (an assertion rule or gating rule)
 }
 }
 

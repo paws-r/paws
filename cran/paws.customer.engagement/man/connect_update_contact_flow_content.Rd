@@ -12,7 +12,7 @@ connect_update_contact_flow_content(InstanceId, ContactFlowId, Content)
 \item{ContactFlowId}{[required] The identifier of the contact flow.}
 
 \item{Content}{[required] The JSON string that represents contact flow’s content. For an example,
-see \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language-example.html}{Example contact flow in Amazon Connect Flow language}
+see \href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html}{Example contact flow in Amazon Connect Flow language}
 in the \emph{Amazon Connect Administrator Guide}.}
 }
 \description{

@@ -74,14 +74,14 @@ Bin, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/}{Recycle Bin
 \section{Operations}{
 
 \tabular{ll}{
-\link[=recyclebin_create_rule]{create_rule} \tab Creates a Recycle Bin retention rule\cr
-\link[=recyclebin_delete_rule]{delete_rule} \tab Deletes a Recycle Bin retention rule\cr
-\link[=recyclebin_get_rule]{get_rule} \tab Gets information about a Recycle Bin retention rule\cr
-\link[=recyclebin_list_rules]{list_rules} \tab Lists the Recycle Bin retention rules in the Region\cr
-\link[=recyclebin_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a retention rule\cr
-\link[=recyclebin_tag_resource]{tag_resource} \tab Assigns tags to the specified retention rule\cr
-\link[=recyclebin_untag_resource]{untag_resource} \tab Unassigns a tag from a retention rule\cr
-\link[=recyclebin_update_rule]{update_rule} \tab Updates an existing Recycle Bin retention rule
+\link[paws.storage:recyclebin_create_rule]{create_rule} \tab Creates a Recycle Bin retention rule\cr
+\link[paws.storage:recyclebin_delete_rule]{delete_rule} \tab Deletes a Recycle Bin retention rule\cr
+\link[paws.storage:recyclebin_get_rule]{get_rule} \tab Gets information about a Recycle Bin retention rule\cr
+\link[paws.storage:recyclebin_list_rules]{list_rules} \tab Lists the Recycle Bin retention rules in the Region\cr
+\link[paws.storage:recyclebin_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a retention rule\cr
+\link[paws.storage:recyclebin_tag_resource]{tag_resource} \tab Assigns tags to the specified retention rule\cr
+\link[paws.storage:recyclebin_untag_resource]{untag_resource} \tab Unassigns a tag from a retention rule\cr
+\link[paws.storage:recyclebin_update_rule]{update_rule} \tab Updates an existing Recycle Bin retention rule
 }
 }
 

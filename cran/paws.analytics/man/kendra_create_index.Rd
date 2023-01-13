@@ -55,20 +55,19 @@ resources.}
 \item{UserTokenConfigurations}{The user token configuration.}
 
 \item{UserContextPolicy}{The user context policy.
-\subsection{ATTRIBUTE_FILTER}{
+
+\strong{ATTRIBUTE_FILTER}
 
 All indexed content is searchable and displayable for all users. If you
 want to filter search results on user context, you can use the attribute
 filters of \verb{_user_id} and \verb{_group_ids} or you can provide user and group
 information in \code{UserContext}.
-}
 
-\subsection{USER_TOKEN}{
+\strong{USER_TOKEN}
 
 Enables token-based user access control to filter search results on user
 context. All documents with no access control and all documents
-accessible to the user will be searchable and displayable.
-}}
+accessible to the user will be searchable and displayable.}
 
 \item{UserGroupResolutionConfiguration}{Enables fetching access levels of groups and users from an Amazon Web
 Services Single Sign On identity source. To configure this, see

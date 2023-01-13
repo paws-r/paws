@@ -28,7 +28,8 @@ S3 console.}
 
 \item{Operation}{[required] The action that you want this job to perform on every object listed in
 the manifest. For more information about the available actions, see
-Operations in the \emph{Amazon S3 User Guide}.}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{Operations} in
+the \emph{Amazon S3 User Guide}.}
 
 \item{Report}{[required] Configuration parameters for the optional job-completion report.}
 
@@ -56,7 +57,7 @@ created with either a manifest file or a ManifestGenerator, but not
 both.}
 }
 \description{
-You can use S3 Batch Operations to perform large-scale batch actions on Amazon S3 objects. Batch Operations can run a single action on lists of Amazon S3 objects that you specify. For more information, see S3 Batch Operations in the \emph{Amazon S3 User Guide}.
+You can use S3 Batch Operations to perform large-scale batch actions on Amazon S3 objects. Batch Operations can run a single action on lists of Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3control/create_job.html} for full documentation.
 }

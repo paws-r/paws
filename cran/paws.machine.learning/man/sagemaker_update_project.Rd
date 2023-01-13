@@ -20,15 +20,14 @@ sagemaker_update_project(
 \item{ServiceCatalogProvisioningUpdateDetails}{The product ID and provisioning artifact ID to provision a service
 catalog. The provisioning artifact ID will default to the latest
 provisioning artifact ID of the product, if you don't provide the
-provisioning artifact ID. For more information, see What is Amazon Web
-Services Service Catalog.}
+provisioning artifact ID. For more information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html}{What is Amazon Web Services Service Catalog}.}
 
 \item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
 Web Services resources in different ways, for example, by purpose,
 owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.
 In addition, the project must have tag update constraints set in order
 to include this parameter in the request. For more information, see
-Amazon Web Services Service Catalog Tag Update Constraints.}
+\href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/constraints-resourceupdate.html}{Amazon Web Services Service Catalog Tag Update Constraints}.}
 }
 \description{
 Updates a machine learning (ML) project that is created from a template that sets up an ML pipeline from training to deploying an approved model.

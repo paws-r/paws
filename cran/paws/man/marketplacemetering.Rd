@@ -42,11 +42,11 @@ in the \emph{AWS Marketplace Seller Guide.}
 \strong{Submitting Metering Records}
 \itemize{
 \item \emph{MeterUsage} - Submits the metering record for an AWS Marketplace
-product. \code{\link[=marketplacemetering_meter_usage]{meter_usage}} is called
+product. \code{meter_usage} is called
 from an EC2 instance or a container running on EKS or ECS.
 \item \emph{BatchMeterUsage} - Submits the metering record for a set of
 customers.
-\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} is
+\code{batch_meter_usage} is
 called from a software-as-a-service (SaaS) application.
 }
 
@@ -64,21 +64,21 @@ and \code{ProductCode}.
 \itemize{
 \item Paid container software products sold through AWS Marketplace must
 integrate with the AWS Marketplace Metering Service and call the
-\code{\link[=marketplacemetering_register_usage]{register_usage}} operation for
+\code{register_usage} operation for
 software entitlement and metering. Free and BYOL products for Amazon
 ECS or Amazon EKS aren't required to call
-\code{\link[=marketplacemetering_register_usage]{register_usage}}, but you can
+\code{register_usage}, but you can
 do so if you want to receive usage data in your seller reports. For
 more information on using the
-\code{\link[=marketplacemetering_register_usage]{register_usage}} operation,
+\code{register_usage} operation,
 see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html}{Container-Based Products}.
 }
 
-\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} API calls
+\code{batch_meter_usage} API calls
 are captured by AWS CloudTrail. You can use Cloudtrail to verify that
 the SaaS metering records that you sent are accurate by searching for
 records with the \code{eventName} of
-\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}}. You can
+\code{batch_meter_usage}. You can
 also use CloudTrail to audit records over time. For more information,
 see the \emph{<span
 href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html">AWS
@@ -111,10 +111,10 @@ CloudTrail User Guide</span>.}
 \section{Operations}{
 
 \tabular{ll}{
-\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab BatchMeterUsage is called from a SaaS application listed on AWS Marketplace to post metering records for a set of customers\cr
-\link[=marketplacemetering_meter_usage]{meter_usage} \tab API to emit metering records\cr
-\link[=marketplacemetering_register_usage]{register_usage} \tab Paid container software products sold through AWS Marketplace must integrate with the AWS Marketplace Metering Service and call the RegisterUsage operation for software entitlement and metering\cr
-\link[=marketplacemetering_resolve_customer]{resolve_customer} \tab ResolveCustomer is called by a SaaS application during the registration process
+\link[paws.cost.management:marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab BatchMeterUsage is called from a SaaS application listed on AWS Marketplace to post metering records for a set of customers\cr
+\link[paws.cost.management:marketplacemetering_meter_usage]{meter_usage} \tab API to emit metering records\cr
+\link[paws.cost.management:marketplacemetering_register_usage]{register_usage} \tab Paid container software products sold through AWS Marketplace must integrate with the AWS Marketplace Metering Service and call the RegisterUsage operation for software entitlement and metering\cr
+\link[paws.cost.management:marketplacemetering_resolve_customer]{resolve_customer} \tab ResolveCustomer is called by a SaaS application during the registration process
 }
 }
 

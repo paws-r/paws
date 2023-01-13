@@ -17,8 +17,8 @@ override when you're updating routing control states. You can override
 one safety rule or multiple safety rules by including one or more ARNs,
 separated by commas.
 
-For more information, see Override safety rules to reroute traffic in
-the Amazon Route 53 Application Recovery Controller Developer Guide.}
+For more information, see \href{https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.override-safety-rule.html}{Override safety rules to reroute traffic}
+in the Amazon Route 53 Application Recovery Controller Developer Guide.}
 }
 \description{
 Set multiple routing control states. You can set the value for each state to be On or Off. When the state is On, traffic flows to a cell. When it's Off, traffic does not flow.

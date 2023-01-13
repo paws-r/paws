@@ -57,26 +57,26 @@ The control plane for Amazon QLDB
 \section{Operations}{
 
 \tabular{ll}{
-\link[=qldb_cancel_journal_kinesis_stream]{cancel_journal_kinesis_stream} \tab Ends a given Amazon QLDB journal stream\cr
-\link[=qldb_create_ledger]{create_ledger} \tab Creates a new ledger in your Amazon Web Services account in the current Region\cr
-\link[=qldb_delete_ledger]{delete_ledger} \tab Deletes a ledger and all of its contents\cr
-\link[=qldb_describe_journal_kinesis_stream]{describe_journal_kinesis_stream} \tab Returns detailed information about a given Amazon QLDB journal stream\cr
-\link[=qldb_describe_journal_s3_export]{describe_journal_s3_export} \tab Returns information about a journal export job, including the ledger name, export ID, creation time, current status, and the parameters of the original export creation request\cr
-\link[=qldb_describe_ledger]{describe_ledger} \tab Returns information about a ledger, including its state, permissions mode, encryption at rest settings, and when it was created\cr
-\link[=qldb_export_journal_to_s3]{export_journal_to_s3} \tab Exports journal contents within a date and time range from a ledger into a specified Amazon Simple Storage Service (Amazon S3) bucket\cr
-\link[=qldb_get_block]{get_block} \tab Returns a block object at a specified address in a journal\cr
-\link[=qldb_get_digest]{get_digest} \tab Returns the digest of a ledger at the latest committed block in the journal\cr
-\link[=qldb_get_revision]{get_revision} \tab Returns a revision data object for a specified document ID and block address\cr
-\link[=qldb_list_journal_kinesis_streams_for_ledger]{list_journal_kinesis_streams_for_ledger} \tab Returns an array of all Amazon QLDB journal stream descriptors for a given ledger\cr
-\link[=qldb_list_journal_s3_exports]{list_journal_s3_exports} \tab Returns an array of journal export job descriptions for all ledgers that are associated with the current Amazon Web Services account and Region\cr
-\link[=qldb_list_journal_s3_exports_for_ledger]{list_journal_s3_exports_for_ledger} \tab Returns an array of journal export job descriptions for a specified ledger\cr
-\link[=qldb_list_ledgers]{list_ledgers} \tab Returns an array of ledger summaries that are associated with the current Amazon Web Services account and Region\cr
-\link[=qldb_list_tags_for_resource]{list_tags_for_resource} \tab Returns all tags for a specified Amazon QLDB resource\cr
-\link[=qldb_stream_journal_to_kinesis]{stream_journal_to_kinesis} \tab Creates a journal stream for a given Amazon QLDB ledger\cr
-\link[=qldb_tag_resource]{tag_resource} \tab Adds one or more tags to a specified Amazon QLDB resource\cr
-\link[=qldb_untag_resource]{untag_resource} \tab Removes one or more tags from a specified Amazon QLDB resource\cr
-\link[=qldb_update_ledger]{update_ledger} \tab Updates properties on a ledger\cr
-\link[=qldb_update_ledger_permissions_mode]{update_ledger_permissions_mode} \tab Updates the permissions mode of a ledger
+\link[paws.database:qldb_cancel_journal_kinesis_stream]{cancel_journal_kinesis_stream} \tab Ends a given Amazon QLDB journal stream\cr
+\link[paws.database:qldb_create_ledger]{create_ledger} \tab Creates a new ledger in your Amazon Web Services account in the current Region\cr
+\link[paws.database:qldb_delete_ledger]{delete_ledger} \tab Deletes a ledger and all of its contents\cr
+\link[paws.database:qldb_describe_journal_kinesis_stream]{describe_journal_kinesis_stream} \tab Returns detailed information about a given Amazon QLDB journal stream\cr
+\link[paws.database:qldb_describe_journal_s3_export]{describe_journal_s3_export} \tab Returns information about a journal export job, including the ledger name, export ID, creation time, current status, and the parameters of the original export creation request\cr
+\link[paws.database:qldb_describe_ledger]{describe_ledger} \tab Returns information about a ledger, including its state, permissions mode, encryption at rest settings, and when it was created\cr
+\link[paws.database:qldb_export_journal_to_s3]{export_journal_to_s3} \tab Exports journal contents within a date and time range from a ledger into a specified Amazon Simple Storage Service (Amazon S3) bucket\cr
+\link[paws.database:qldb_get_block]{get_block} \tab Returns a block object at a specified address in a journal\cr
+\link[paws.database:qldb_get_digest]{get_digest} \tab Returns the digest of a ledger at the latest committed block in the journal\cr
+\link[paws.database:qldb_get_revision]{get_revision} \tab Returns a revision data object for a specified document ID and block address\cr
+\link[paws.database:qldb_list_journal_kinesis_streams_for_ledger]{list_journal_kinesis_streams_for_ledger} \tab Returns an array of all Amazon QLDB journal stream descriptors for a given ledger\cr
+\link[paws.database:qldb_list_journal_s3_exports]{list_journal_s3_exports} \tab Returns an array of journal export job descriptions for all ledgers that are associated with the current Amazon Web Services account and Region\cr
+\link[paws.database:qldb_list_journal_s3_exports_for_ledger]{list_journal_s3_exports_for_ledger} \tab Returns an array of journal export job descriptions for a specified ledger\cr
+\link[paws.database:qldb_list_ledgers]{list_ledgers} \tab Returns an array of ledger summaries that are associated with the current Amazon Web Services account and Region\cr
+\link[paws.database:qldb_list_tags_for_resource]{list_tags_for_resource} \tab Returns all tags for a specified Amazon QLDB resource\cr
+\link[paws.database:qldb_stream_journal_to_kinesis]{stream_journal_to_kinesis} \tab Creates a journal stream for a given Amazon QLDB ledger\cr
+\link[paws.database:qldb_tag_resource]{tag_resource} \tab Adds one or more tags to a specified Amazon QLDB resource\cr
+\link[paws.database:qldb_untag_resource]{untag_resource} \tab Removes one or more tags from a specified Amazon QLDB resource\cr
+\link[paws.database:qldb_update_ledger]{update_ledger} \tab Updates properties on a ledger\cr
+\link[paws.database:qldb_update_ledger_permissions_mode]{update_ledger_permissions_mode} \tab Updates the permissions mode of a ledger
 }
 }
 

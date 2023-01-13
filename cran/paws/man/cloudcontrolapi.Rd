@@ -58,14 +58,14 @@ the \href{https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/what-is-c
 \section{Operations}{
 
 \tabular{ll}{
-\link[=cloudcontrolapi_cancel_resource_request]{cancel_resource_request} \tab Cancels the specified resource operation request\cr
-\link[=cloudcontrolapi_create_resource]{create_resource} \tab Creates the specified resource\cr
-\link[=cloudcontrolapi_delete_resource]{delete_resource} \tab Deletes the specified resource\cr
-\link[=cloudcontrolapi_get_resource]{get_resource} \tab Returns information about the current state of the specified resource\cr
-\link[=cloudcontrolapi_get_resource_request_status]{get_resource_request_status} \tab Returns the current status of a resource operation request\cr
-\link[=cloudcontrolapi_list_resource_requests]{list_resource_requests} \tab Returns existing resource operation requests\cr
-\link[=cloudcontrolapi_list_resources]{list_resources} \tab Returns information about the specified resources\cr
-\link[=cloudcontrolapi_update_resource]{update_resource} \tab Updates the specified property values in the resource
+\link[paws.developer.tools:cloudcontrolapi_cancel_resource_request]{cancel_resource_request} \tab Cancels the specified resource operation request\cr
+\link[paws.developer.tools:cloudcontrolapi_create_resource]{create_resource} \tab Creates the specified resource\cr
+\link[paws.developer.tools:cloudcontrolapi_delete_resource]{delete_resource} \tab Deletes the specified resource\cr
+\link[paws.developer.tools:cloudcontrolapi_get_resource]{get_resource} \tab Returns information about the current state of the specified resource\cr
+\link[paws.developer.tools:cloudcontrolapi_get_resource_request_status]{get_resource_request_status} \tab Returns the current status of a resource operation request\cr
+\link[paws.developer.tools:cloudcontrolapi_list_resource_requests]{list_resource_requests} \tab Returns existing resource operation requests\cr
+\link[paws.developer.tools:cloudcontrolapi_list_resources]{list_resources} \tab Returns information about the specified resources\cr
+\link[paws.developer.tools:cloudcontrolapi_update_resource]{update_resource} \tab Updates the specified property values in the resource
 }
 }
 

@@ -32,8 +32,7 @@ During model compilation, Amazon SageMaker needs your permission to:
 
 You grant permissions for all of these tasks to an IAM role. To pass
 this role to Amazon SageMaker, the caller of this API must have the
-\code{iam:PassRole} permission. For more information, see Amazon SageMaker
-Roles.}
+\code{iam:PassRole} permission. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles.}}
 
 \item{ModelPackageVersionArn}{The Amazon Resource Name (ARN) of a versioned model package. Provide
 either a \code{ModelPackageVersionArn} or an \code{InputConfig} object in the
@@ -50,8 +49,7 @@ and the target device the model runs on.}
 
 \item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your compilation
 job to connect to. Control access to your models by configuring the VPC.
-For more information, see Protect Compilation Jobs by Using an Amazon
-Virtual Private Cloud.}
+For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html}{Protect Compilation Jobs by Using an Amazon Virtual Private Cloud}.}
 
 \item{StoppingCondition}{[required] Specifies a limit to how long a model compilation job can run. When the
 job reaches the time limit, Amazon SageMaker ends the compilation job.

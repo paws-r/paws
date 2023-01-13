@@ -20,7 +20,7 @@ route53domains_register_domain(
 \arguments{
 \item{DomainName}{[required] The domain name that you want to register. The top-level domain (TLD),
 such as .com, must be a TLD that Route 53 supports. For a list of
-supported TLDs, see Domains that You Can Register with Amazon Route 53
+supported TLDs, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
 in the \emph{Amazon Route 53 Developer Guide}.
 
 The domain name can contain only the following characters:
@@ -35,17 +35,16 @@ label.
 
 Internationalized domain names are not supported for some top-level
 domains. To determine whether the TLD that you want to use supports
-internationalized domain names, see Domains that You Can Register with
-Amazon Route 53. For more information, see Formatting Internationalized
-Domain Names.}
+internationalized domain names, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}.
+For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns}{Formatting Internationalized Domain Names}.}
 
 \item{IdnLangCode}{Reserved for future use.}
 
 \item{DurationInYears}{[required] The number of years that you want to register the domain for. Domains
 are registered for a minimum of one year. The maximum period depends on
 the top-level domain. For the range of valid values for your domain, see
-Domains that You Can Register with Amazon Route 53 in the \emph{Amazon Route
-53 Developer Guide}.
+\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
+in the \emph{Amazon Route 53 Developer Guide}.
 
 Default: 1}
 
@@ -56,13 +55,16 @@ charged.
 Default: \code{true}}
 
 \item{AdminContact}{[required] Provides detailed contact information. For information about the values
-that you specify for each element, see ContactDetail.}
+that you specify for each element, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html}{ContactDetail}.}
 
 \item{RegistrantContact}{[required] Provides detailed contact information. For information about the values
-that you specify for each element, see ContactDetail.}
+that you specify for each element, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html}{ContactDetail}.}
 
 \item{TechContact}{[required] Provides detailed contact information. For information about the values
-that you specify for each element, see ContactDetail.}
+that you specify for each element, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html}{ContactDetail}.}
 
 \item{PrivacyProtectAdminContact}{Whether you want to conceal contact information from WHOIS queries. If
 you specify \code{true}, WHOIS ("who is") queries return contact information
