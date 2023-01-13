@@ -1,3 +1,6 @@
+# paws.common 0.5.4.9000
+* add support to sso session for configure profile token (#583)
+
 # paws.common 0.5.4
 * add support for s3 `generate_presigned_url` (#572)
 
