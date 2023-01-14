@@ -272,3 +272,182 @@ services/"
     actual$body
   )
 })
+
+test_that("get sso legacy credentials", {
+  mock_get_config_file_path <- mock2("data_sso_ini")
+  mock_sso_credential_process <- mock2(invisible(TRUE))
+  mockery::stub(config_file_provider, 'get_config_file_path', mock_get_config_file_path)
+  mockery::stub(config_file_provider, 'sso_credential_process', mock_sso_credential_process)
+  config_file_provider("legacy_sso")
+
+  expect_equal(mock_arg(mock_sso_credential_process), list(
+    NULL, "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
+  ))
+})
+
+test_that("get sso credentials", {
+  mock_get_config_file_path <- mock2("data_sso_ini")
+  mock_sso_credential_process <- mock2(invisible(TRUE))
+  mockery::stub(config_file_provider, 'get_config_file_path', mock_get_config_file_path)
+  mockery::stub(config_file_provider, 'sso_credential_process', mock_sso_credential_process)
+  config_file_provider("sso")
+
+  expect_equal(mock_arg(mock_sso_credential_process), list(
+    "my-sso", "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
+  ))
+})
+
+test_that("sso_credential_process legacy", {
+  mock_file_exists <- mock2(TRUE)
+  mock_fromJSON <- mock2(list(
+    startUrl = "https://my-sso-portal.awsapps.com/start",
+    region = "us-east-1",
+    accessToken = "foo",
+    expiresAt = "bar",
+    clientId = "cho",
+    clientSecret = "zap",
+    registrationExpiresAt = "2023-01-01T12:00:00Z"
+  ))
+  mock_get_role_credentials <- mock2(list(
+    roleCredentials = list(
+      accessKeyId = "hello",
+      secretAccessKey = "world",
+      sessionToken = "foo_hello",
+      expiration = "foo_world"
+    )
+  ))
+  mock_Creds <- mock2(TRUE)
+  mock_sso <- mock2(list(get_role_credentials = mock_get_role_credentials))
+  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
+  mockery::stub(sso_credential_process, 'jsonlite::fromJSON', mock_fromJSON)
+  mockery::stub(sso_credential_process, 'sso', mock_sso)
+  mockery::stub(sso_credential_process, 'Creds', mock_Creds)
+
+  cred <- sso_credential_process(
+    NULL, "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
+  )
+
+  # check for correct sso_cache
+  expect_true(
+    grepl(
+      "c7aaaf71fcc8777ae2475525ed049d39fe16c484",
+      mock_arg(mock_fromJSON)[[1]])
+  )
+  expect_equal(mock_arg(mock_Creds), list(
+    access_key_id = "hello",
+    secret_access_key = "world",
+    session_token = "foo_hello",
+    expiration = "foo_world"
+  ))
+})
+
+test_that("sso_credential_process", {
+  mock_file_exists <- mock2(TRUE)
+  mock_fromJSON <- mock2(list(
+    startUrl = "https://my-sso-portal.awsapps.com/start",
+    region = "us-east-1",
+    accessToken = "foo",
+    expiresAt = "bar",
+    clientId = "cho",
+    clientSecret = "zap",
+    registrationExpiresAt = "2023-01-01T12:00:00Z"
+  ))
+  mock_get_role_credentials <- mock2(list(
+    roleCredentials = list(
+      accessKeyId = "hello",
+      secretAccessKey = "world",
+      sessionToken = "foo_hello",
+      expiration = "foo_world"
+    )
+  ))
+  mock_Creds <- mock2(TRUE)
+  mock_sso <- mock2(list(get_role_credentials = mock_get_role_credentials))
+  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
+  mockery::stub(sso_credential_process, 'jsonlite::fromJSON', mock_fromJSON)
+  mockery::stub(sso_credential_process, 'sso', mock_sso)
+  mockery::stub(sso_credential_process, 'Creds', mock_Creds)
+
+  cred <- sso_credential_process(
+    "my-sso", "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
+  )
+
+  # check for correct sso_cache
+  expect_true(
+    grepl(
+      "0ad374308c5a4e22f723adf10145eafad7c4031c",
+      mock_arg(mock_fromJSON)[[1]])
+  )
+  expect_equal(mock_arg(mock_Creds), list(
+    access_key_id = "hello",
+    secret_access_key = "world",
+    session_token = "foo_hello",
+    expiration = "foo_world"
+  ))
+})
+
+test_that("check sso_cache doesn't exist legacy", {
+  mock_file_exists <- mock2(FALSE)
+  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
+
+  expect_error(
+    sso_credential_process(
+      NULL, "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
+    ),
+    "Error loading SSO Token: Token for https://my-sso-portal.awsapps.com/start does not exist"
+  )
+})
+
+test_that("check sso_cache doesn't exist", {
+  mock_file_exists <- mock2(FALSE)
+  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
+
+
+  expect_error(
+    sso_credential_process(
+      "my-sso", "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
+    ),
+    "Error loading SSO Token: Token for my-sso does not exist"
+  )
+})
+
+test_that("check for invalid token, missing accessToken", {
+  mock_file_exists <- mock2(TRUE)
+  mock_fromJSON <- mock2(list(
+    startUrl = "https://my-sso-portal.awsapps.com/start",
+    region = "us-east-1",
+    expiresAt = "bar",
+    clientId = "cho",
+    clientSecret = "zap",
+    registrationExpiresAt = "2023-01-01T12:00:00Z"
+  ))
+  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
+  mockery::stub(sso_credential_process, 'jsonlite::fromJSON', mock_fromJSON)
+
+  expect_error(
+    sso_credential_process(
+      NULL, "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
+    ),
+    "Error loading SSO Token: Token for https://my-sso-portal.awsapps.com/start is invalid."
+  )
+})
+
+test_that("check for invalid token, missing expiresAt", {
+  mock_file_exists <- mock2(TRUE)
+  mock_fromJSON <- mock2(list(
+    startUrl = "https://my-sso-portal.awsapps.com/start",
+    region = "us-east-1",
+    accessToken = "foo",
+    clientId = "cho",
+    clientSecret = "zap",
+    registrationExpiresAt = "2023-01-01T12:00:00Z"
+  ))
+  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
+  mockery::stub(sso_credential_process, 'jsonlite::fromJSON', mock_fromJSON)
+
+  expect_error(
+    sso_credential_process(
+      NULL, "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
+    ),
+    "Error loading SSO Token: Token for https://my-sso-portal.awsapps.com/start is invalid."
+  )
+})
