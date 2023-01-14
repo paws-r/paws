@@ -1,10 +1,13 @@
 
 # Paws, an AWS SDK for R [<img src="docs/logo.png" align="right" height="150" />](https://paws-r.github.io)
 
+<!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/paws)](https://cran.r-project.org/package=paws)
 [![Build Status](https://github.com/paws-r/paws/workflows/Unit%20Tests/badge.svg)](https://github.com/paws-r/paws/actions?workflow=Unit%20Tests)
 [![codecov](https://codecov.io/gh/paws-r/paws/branch/main/graph/badge.svg)](https://codecov.io/gh/paws-r/paws)
 [![view examples](https://img.shields.io/badge/learn%20by-examples-0077b3.svg)](https://github.com/paws-r/paws/tree/main/examples)
+[![:name status badge](https://paws-r.r-universe.dev/badges/:name)](https://paws-r.r-universe.dev)
+<!-- badges: end -->
 
 ## Overview
 
@@ -27,6 +30,18 @@ If you are using Linux, you will need to install the following OS packages:
 
 * Debian/Ubuntu: `libcurl4-openssl-dev libssl-dev libxml2-dev`
 * CentOS/Fedora/Red Hat: `libcurl-devel libxml2-devel openssl-devel`
+
+Or install the development version from [r-universe](https://paws-r.r-universe.dev/ui#builds):
+``` r
+# Enable repository from paws-r
+options(repos = c(
+  pawsr = 'https://paws-r.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org')
+)
+
+# Download and install paws in R
+install.packages('paws')
+```
 
 ## Credentials
 
