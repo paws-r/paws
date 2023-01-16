@@ -57,6 +57,7 @@
   description: >-
     Interface to 'Amazon Web Services' storage services, including 'Simple
     Storage Service' ('S3') and more <https://aws.amazon.com/>.
+
 - name: database
   services:
     - dax
@@ -83,6 +84,7 @@
     Interface to 'Amazon Web Services' database services, including 'Relational
     Database Service' ('RDS'), 'DynamoDB' 'NoSQL' database, and more
     <https://aws.amazon.com/>.
+
 - name: migration
   services:
     - appflow
@@ -107,6 +109,7 @@
     Interface to 'Amazon Web Services' migration & transfer services, including
     file and database migration to 'Amazon Web Services'
     <https://aws.amazon.com/>.
+
 - name: networking
   services:
     - apigateway
@@ -133,6 +136,7 @@
     Interface to 'Amazon Web Services' networking and content delivery services,
     including 'Route 53' Domain Name System service, 'CloudFront' content
     delivery, load balancing, and more <https://aws.amazon.com/>.
+
 - name: developer.tools
   services:
     - cloud9
@@ -157,6 +161,7 @@
     Interface to 'Amazon Web Services' developer tools services, including
     version control, continuous integration and deployment, and more
     <https://aws.amazon.com/products/developer-tools/>.
+
 - name: robotics
   services:
     - robomaker
@@ -165,6 +170,7 @@
     Interface to 'Amazon Web Services' robotics services, including the
     'RobotMaker' API for developing, testing, and deploying intelligent robotics
     applications <https://aws.amazon.com/>.
+
 - name: blockchain
   services:
     - managedblockchain
@@ -173,6 +179,7 @@
     Interface to 'Amazon Web Services' blockchain services, including
     'BlockChain' API for creating and managing blockchain networks using
     open-source frameworks <https://aws.amazon.com/blockchain/>.
+
 - name: satellite
   services:
     - groundstation
@@ -181,6 +188,7 @@
     Interface to 'Amazon Web Services' satellite services, including the
     'groundstation' API for control satellite communications, downlink and
     process satellite data applications <https://aws.amazon.com/>.
+
 - name: management.p1
   services:
     - amp
@@ -258,6 +266,7 @@
     Interface to 'Amazon Web Services' media services services, including
     'Kinesis' video stream capture and processing, format conversion,
     and more <https://aws.amazon.com/media-services/>.
+
 - name: machine.learning
   services:
     - sagemaker-a2i-runtime
@@ -294,6 +303,7 @@
     'SageMaker' managed machine learning service, natural language processing,
     speech recognition, translation, and more
     <https://aws.amazon.com/machine-learning/>.
+
 - name: analytics
   services:
     - athena
@@ -321,6 +331,7 @@
     Interface to 'Amazon Web Services' 'analytics' services, including 'Elastic
     MapReduce' 'Hadoop' and 'Spark' big data service, 'Elasticsearch'
     search engine, and more <https://aws.amazon.com/>.
+
 - name: security.identity.p1
   services:
     - clouddirectory
@@ -396,6 +407,7 @@
     Interface to 'Amazon Web Services' mobile services, including the 'Amplify'
     library for mobile applications, 'AppSync' back-end for mobile
     applications, and more <https://aws.amazon.com/>.
+
 - name: ar.vr
   services:
   title: "'Amazon Web Services' AR & VR Services"
@@ -418,6 +430,7 @@
     including 'Simple Queue Service' ('SQS') message queue, 'Simple Notification
     Service' ('SNS') publish/subscribe messaging, and more
     <https://aws.amazon.com/>.
+
 - name: cost.management
   services:
     - billingconductor
@@ -435,6 +448,7 @@
     Interface to 'Amazon Web Services' cost management services, including
     cost and usage reports, budgets, pricing, and more
     <https://aws.amazon.com/>.
+
 - name: customer.engagement
   services:
     - connect
@@ -454,6 +468,7 @@
     Interface to 'Amazon Web Services' customer engagement services, including
     'Simple Email Service', 'Connect' contact center service, and more
     <https://aws.amazon.com/>.
+
 - name: business.applications
   services:
     - alexaforbusiness
@@ -470,6 +485,7 @@
     Interface to 'Amazon Web Services' business applications services, including
     online meetings and video conferencing, email and calendar service,
     and more <https://aws.amazon.com/>.
+
 - name: end.user.computing
   services:
     - appstream
@@ -486,6 +502,7 @@
     Interface to 'Amazon Web Services' end user computing services, including
     collaborative document editing, mobile intranet, and more
     <https://aws.amazon.com/>.
+
 - name: internet.of.things
   services:
     - greengrass
@@ -511,6 +528,7 @@
     Interface to 'Amazon Web Services' internet of things ('IoT') services,
     including data collection, management, and analysis for IoT devices.
     <https://aws.amazon.com/iot/>.
+
 - name: game.development
   services:
     - gamelift
