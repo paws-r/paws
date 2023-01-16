@@ -37,12 +37,14 @@ Suggests:
     formatR,
     testthat,
     paws.storage,
-    withr
+    withr,
+    mockery,
+    fs
 Remotes:
     r-lib/cachem
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd"))
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Collate: 
     'cache.R'
     'docs.R'
