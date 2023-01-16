@@ -1,5 +1,6 @@
 IN_DIR := ./vendor/aws-sdk-js
-OUT_DIR := ./paws
+OUT_DIR := ./cran
+DOC_DIR := ./paws
 CRAN_DIR := ./cran
 CACHE_DIR := ./cache
 
@@ -31,8 +32,6 @@ help:
 	@echo "  deps               get project dependencies"
 	@echo "  update-deps        update project dependencies"
 
-build: build-full build-cran
-
 rebuild: clean build
 
 install: build
@@ -46,13 +45,9 @@ install: build
 	@Rscript -e "devtools::install('${CRAN_DIR}/paws', upgrade = FALSE, quiet = TRUE)";
 	@echo "done"
 
-build-full: codegen
+build: codegen
 	@echo "build the AWS SDK package"
-	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}', '${CACHE_DIR}')"
-
-build-cran: codegen
-	@chmod +x ./build_cran.sh
-	@./build_cran.sh $(OUT_DIR) $(CRAN_DIR)
+	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}', '${DOC_DIR}', cache_dir = '${CACHE_DIR}')"
 
 check:
 	@echo "run R CMD check on packages"
