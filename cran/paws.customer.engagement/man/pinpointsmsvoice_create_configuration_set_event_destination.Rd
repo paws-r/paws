@@ -5,7 +5,10 @@
 \title{Create a new event destination in a configuration set}
 \usage{
 pinpointsmsvoice_create_configuration_set_event_destination(
-  ConfigurationSetName, EventDestination, EventDestinationName)
+  ConfigurationSetName,
+  EventDestination = NULL,
+  EventDestinationName = NULL
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] ConfigurationSetName}
@@ -14,35 +17,9 @@ pinpointsmsvoice_create_configuration_set_event_destination(
 
 \item{EventDestinationName}{A name that identifies the event destination.}
 }
-\value{
-An empty list.
-}
 \description{
 Create a new event destination in a configuration set.
-}
-\section{Request syntax}{
-\preformatted{svc$create_configuration_set_event_destination(
-  ConfigurationSetName = "string",
-  EventDestination = list(
-    CloudWatchLogsDestination = list(
-      IamRoleArn = "string",
-      LogGroupArn = "string"
-    ),
-    Enabled = TRUE|FALSE,
-    KinesisFirehoseDestination = list(
-      DeliveryStreamArn = "string",
-      IamRoleArn = "string"
-    ),
-    MatchingEventTypes = list(
-      "INITIATED_CALL"|"RINGING"|"ANSWERED"|"COMPLETED_CALL"|"BUSY"|"FAILED"|"NO_ANSWER"
-    ),
-    SnsDestination = list(
-      TopicArn = "string"
-    )
-  ),
-  EventDestinationName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set_event_destination.html} for full documentation.
+}
 \keyword{internal}

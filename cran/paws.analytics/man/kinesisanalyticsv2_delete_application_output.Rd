@@ -5,8 +5,11 @@
 \title{Deletes the output destination configuration from your SQL-based Kinesis
 Data Analytics application's configuration}
 \usage{
-kinesisanalyticsv2_delete_application_output(ApplicationName,
-  CurrentApplicationVersionId, OutputId)
+kinesisanalyticsv2_delete_application_output(
+  ApplicationName,
+  CurrentApplicationVersionId,
+  OutputId
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The application name.}
@@ -27,26 +30,9 @@ application configuration. You can use the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation to get the specific \code{OutputId}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationARN = "string",
-  ApplicationVersionId = 123
-)
-}
-}
 \description{
-Deletes the output destination configuration from your SQL-based Kinesis
-Data Analytics application's configuration. Kinesis Data Analytics will
-no longer write data from the corresponding in-application stream to the
-external output destination.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application_output(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  OutputId = "string"
-)
-}
-}
+Deletes the output destination configuration from your SQL-based Kinesis Data Analytics application's configuration. Kinesis Data Analytics will no longer write data from the corresponding in-application stream to the external output destination.
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_output.html} for full documentation.
+}
 \keyword{internal}

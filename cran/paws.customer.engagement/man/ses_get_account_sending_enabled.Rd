@@ -7,24 +7,9 @@ current region}
 \usage{
 ses_get_account_sending_enabled()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Enabled = TRUE|FALSE
-)
-}
-}
 \description{
-Returns the email sending status of the Amazon SES account for the
-current region.
+Returns the email sending status of the Amazon SES account for the current region.
 
-You can execute this operation no more than once per second.
-}
-\examples{
-\dontrun{
-# The following example returns if sending status for an account is
-# enabled. (true / false):
-svc$get_account_sending_enabled()
-}
-
+See \url{https://paws-r.github.io/docs/ses/get_account_sending_enabled.html} for full documentation.
 }
 \keyword{internal}

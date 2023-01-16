@@ -5,7 +5,11 @@
 \title{Allows you to purchase a reserved cache node offering}
 \usage{
 elasticache_purchase_reserved_cache_nodes_offering(
-  ReservedCacheNodesOfferingId, ReservedCacheNodeId, CacheNodeCount)
+  ReservedCacheNodesOfferingId,
+  ReservedCacheNodeId = NULL,
+  CacheNodeCount = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ReservedCacheNodesOfferingId}{[required] The ID of the reserved cache node offering to purchase.
@@ -23,44 +27,13 @@ Example: myreservationID}
 \item{CacheNodeCount}{The number of cache node instances to reserve.
 
 Default: \code{1}}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ReservedCacheNode = list(
-    ReservedCacheNodeId = "string",
-    ReservedCacheNodesOfferingId = "string",
-    CacheNodeType = "string",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Duration = 123,
-    FixedPrice = 123.0,
-    UsagePrice = 123.0,
-    CacheNodeCount = 123,
-    ProductDescription = "string",
-    OfferingType = "string",
-    State = "string",
-    RecurringCharges = list(
-      list(
-        RecurringChargeAmount = 123.0,
-        RecurringChargeFrequency = "string"
-      )
-    ),
-    ReservationARN = "string"
-  )
-)
-}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
-Allows you to purchase a reserved cache node offering.
-}
-\section{Request syntax}{
-\preformatted{svc$purchase_reserved_cache_nodes_offering(
-  ReservedCacheNodesOfferingId = "string",
-  ReservedCacheNodeId = "string",
-  CacheNodeCount = 123
-)
-}
-}
+Allows you to purchase a reserved cache node offering. Reserved nodes are not eligible for cancellation and are non-refundable. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/}{Managing Costs with Reserved Nodes} for Redis or \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/}{Managing Costs with Reserved Nodes} for Memcached.
 
+See \url{https://paws-r.github.io/docs/elasticache/purchase_reserved_cache_nodes_offering.html} for full documentation.
+}
 \keyword{internal}

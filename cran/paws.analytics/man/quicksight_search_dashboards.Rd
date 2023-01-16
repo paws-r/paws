@@ -4,12 +4,16 @@
 \alias{quicksight_search_dashboards}
 \title{Searches for dashboards that belong to a user}
 \usage{
-quicksight_search_dashboards(AwsAccountId, Filters, NextToken,
-  MaxResults)
+quicksight_search_dashboards(
+  AwsAccountId,
+  Filters,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the user whose dashboards you're
-searching for.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the user whose
+dashboards you're searching for.}
 
 \item{Filters}{[required] The filters to apply to the search. Currently, you can search only by
 user name, for example,
@@ -20,48 +24,9 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DashboardSummaryList = list(
-    list(
-      Arn = "string",
-      DashboardId = "string",
-      Name = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      PublishedVersionNumber = 123,
-      LastPublishedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Searches for dashboards that belong to a user.
-}
-\section{Request syntax}{
-\preformatted{svc$search_dashboards(
-  AwsAccountId = "string",
-  Filters = list(
-    list(
-      Operator = "StringEquals",
-      Name = "QUICKSIGHT_USER",
-      Value = "string"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/search_dashboards.html} for full documentation.
+}
 \keyword{internal}

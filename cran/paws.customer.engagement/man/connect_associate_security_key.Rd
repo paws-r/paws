@@ -8,28 +8,14 @@ change}
 connect_associate_security_key(InstanceId, Key)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{Key}{[required] A valid security key in PEM format.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssociationId = "string"
-)
-}
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Associates a security key to the instance.
+See \url{https://paws-r.github.io/docs/connect/associate_security_key.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_security_key(
-  InstanceId = "string",
-  Key = "string"
-)
-}
-}
-
 \keyword{internal}

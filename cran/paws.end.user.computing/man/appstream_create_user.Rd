@@ -4,8 +4,13 @@
 \alias{appstream_create_user}
 \title{Creates a new user in the user pool}
 \usage{
-appstream_create_user(UserName, MessageAction, FirstName, LastName,
-  AuthenticationType)
+appstream_create_user(
+  UserName,
+  MessageAction = NULL,
+  FirstName = NULL,
+  LastName = NULL,
+  AuthenticationType
+)
 }
 \arguments{
 \item{UserName}{[required] The email address of the user.
@@ -30,21 +35,9 @@ welcome email.}
 
 \item{AuthenticationType}{[required] The authentication type for the user. You must specify USERPOOL.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates a new user in the user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user(
-  UserName = "string",
-  MessageAction = "SUPPRESS"|"RESEND",
-  FirstName = "string",
-  LastName = "string",
-  AuthenticationType = "API"|"SAML"|"USERPOOL"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appstream/create_user.html} for full documentation.
+}
 \keyword{internal}

@@ -7,7 +7,19 @@
 xray(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,11 +28,14 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS X-Ray provides APIs for managing debug traces and retrieving service
-maps and other data created by processing those traces.
+Amazon Web Services X-Ray provides APIs for managing debug traces and
+retrieving service maps and other data created by processing those
+traces.
 }
 \section{Service syntax}{
-\preformatted{svc <- xray(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- xray(
   config = list(
     credentials = list(
       creds = list(
@@ -28,45 +43,49 @@ maps and other data created by processing those traces.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=xray_batch_get_traces]{batch_get_traces} \tab Retrieves a list of traces specified by ID\cr
-\link[=xray_create_group]{create_group} \tab Creates a group resource with a name and a filter expression\cr
-\link[=xray_create_sampling_rule]{create_sampling_rule} \tab Creates a rule to control sampling behavior for instrumented applications\cr
-\link[=xray_delete_group]{delete_group} \tab Deletes a group resource\cr
-\link[=xray_delete_sampling_rule]{delete_sampling_rule} \tab Deletes a sampling rule\cr
-\link[=xray_get_encryption_config]{get_encryption_config} \tab Retrieves the current encryption configuration for X-Ray data\cr
-\link[=xray_get_group]{get_group} \tab Retrieves group resource details\cr
-\link[=xray_get_groups]{get_groups} \tab Retrieves all active group details\cr
-\link[=xray_get_insight]{get_insight} \tab Retrieves the summary information of an insight\cr
-\link[=xray_get_insight_events]{get_insight_events} \tab X-Ray reevaluates insights periodically until they're resolved, and records each intermediate state as an event\cr
-\link[=xray_get_insight_impact_graph]{get_insight_impact_graph} \tab Retrieves a service graph structure filtered by the specified insight\cr
-\link[=xray_get_insight_summaries]{get_insight_summaries} \tab Retrieves the summaries of all insights in the specified group matching the provided filter values\cr
-\link[=xray_get_sampling_rules]{get_sampling_rules} \tab Retrieves all sampling rules\cr
-\link[=xray_get_sampling_statistic_summaries]{get_sampling_statistic_summaries} \tab Retrieves information about recent sampling results for all sampling rules\cr
-\link[=xray_get_sampling_targets]{get_sampling_targets} \tab Requests a sampling quota for rules that the service is using to sample requests\cr
-\link[=xray_get_service_graph]{get_service_graph} \tab Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result\cr
-\link[=xray_get_time_series_service_statistics]{get_time_series_service_statistics} \tab Get an aggregation of service statistics defined by a specific time range\cr
-\link[=xray_get_trace_graph]{get_trace_graph} \tab Retrieves a service graph for one or more specific trace IDs\cr
-\link[=xray_get_trace_summaries]{get_trace_summaries} \tab Retrieves IDs and annotations for traces available for a specified time frame using an optional filter\cr
-\link[=xray_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags that are applied to the specified AWS X-Ray group or sampling rule\cr
-\link[=xray_put_encryption_config]{put_encryption_config} \tab Updates the encryption configuration for X-Ray data\cr
-\link[=xray_put_telemetry_records]{put_telemetry_records} \tab Used by the AWS X-Ray daemon to upload telemetry\cr
-\link[=xray_put_trace_segments]{put_trace_segments} \tab Uploads segment documents to AWS X-Ray\cr
-\link[=xray_tag_resource]{tag_resource} \tab Applies tags to an existing AWS X-Ray group or sampling rule\cr
-\link[=xray_untag_resource]{untag_resource} \tab Removes tags from an AWS X-Ray group or sampling rule\cr
-\link[=xray_update_group]{update_group} \tab Updates a group resource\cr
-\link[=xray_update_sampling_rule]{update_sampling_rule} \tab Modifies a sampling rule's configuration
+\link[paws.developer.tools:xray_batch_get_traces]{batch_get_traces} \tab Retrieves a list of traces specified by ID\cr
+\link[paws.developer.tools:xray_create_group]{create_group} \tab Creates a group resource with a name and a filter expression\cr
+\link[paws.developer.tools:xray_create_sampling_rule]{create_sampling_rule} \tab Creates a rule to control sampling behavior for instrumented applications\cr
+\link[paws.developer.tools:xray_delete_group]{delete_group} \tab Deletes a group resource\cr
+\link[paws.developer.tools:xray_delete_sampling_rule]{delete_sampling_rule} \tab Deletes a sampling rule\cr
+\link[paws.developer.tools:xray_get_encryption_config]{get_encryption_config} \tab Retrieves the current encryption configuration for X-Ray data\cr
+\link[paws.developer.tools:xray_get_group]{get_group} \tab Retrieves group resource details\cr
+\link[paws.developer.tools:xray_get_groups]{get_groups} \tab Retrieves all active group details\cr
+\link[paws.developer.tools:xray_get_insight]{get_insight} \tab Retrieves the summary information of an insight\cr
+\link[paws.developer.tools:xray_get_insight_events]{get_insight_events} \tab X-Ray reevaluates insights periodically until they're resolved, and records each intermediate state as an event\cr
+\link[paws.developer.tools:xray_get_insight_impact_graph]{get_insight_impact_graph} \tab Retrieves a service graph structure filtered by the specified insight\cr
+\link[paws.developer.tools:xray_get_insight_summaries]{get_insight_summaries} \tab Retrieves the summaries of all insights in the specified group matching the provided filter values\cr
+\link[paws.developer.tools:xray_get_sampling_rules]{get_sampling_rules} \tab Retrieves all sampling rules\cr
+\link[paws.developer.tools:xray_get_sampling_statistic_summaries]{get_sampling_statistic_summaries} \tab Retrieves information about recent sampling results for all sampling rules\cr
+\link[paws.developer.tools:xray_get_sampling_targets]{get_sampling_targets} \tab Requests a sampling quota for rules that the service is using to sample requests\cr
+\link[paws.developer.tools:xray_get_service_graph]{get_service_graph} \tab Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result\cr
+\link[paws.developer.tools:xray_get_time_series_service_statistics]{get_time_series_service_statistics} \tab Get an aggregation of service statistics defined by a specific time range\cr
+\link[paws.developer.tools:xray_get_trace_graph]{get_trace_graph} \tab Retrieves a service graph for one or more specific trace IDs\cr
+\link[paws.developer.tools:xray_get_trace_summaries]{get_trace_summaries} \tab Retrieves IDs and annotations for traces available for a specified time frame using an optional filter\cr
+\link[paws.developer.tools:xray_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags that are applied to the specified Amazon Web Services X-Ray group or sampling rule\cr
+\link[paws.developer.tools:xray_put_encryption_config]{put_encryption_config} \tab Updates the encryption configuration for X-Ray data\cr
+\link[paws.developer.tools:xray_put_telemetry_records]{put_telemetry_records} \tab Used by the Amazon Web Services X-Ray daemon to upload telemetry\cr
+\link[paws.developer.tools:xray_put_trace_segments]{put_trace_segments} \tab Uploads segment documents to Amazon Web Services X-Ray\cr
+\link[paws.developer.tools:xray_tag_resource]{tag_resource} \tab Applies tags to an existing Amazon Web Services X-Ray group or sampling rule\cr
+\link[paws.developer.tools:xray_untag_resource]{untag_resource} \tab Removes tags from an Amazon Web Services X-Ray group or sampling rule\cr
+\link[paws.developer.tools:xray_update_group]{update_group} \tab Updates a group resource\cr
+\link[paws.developer.tools:xray_update_sampling_rule]{update_sampling_rule} \tab Modifies a sampling rule's configuration
 }
 }
 

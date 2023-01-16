@@ -4,8 +4,12 @@
 \alias{glue_create_classifier}
 \title{Creates a classifier in the user's account}
 \usage{
-glue_create_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
-  CsvClassifier)
+glue_create_classifier(
+  GrokClassifier = NULL,
+  XMLClassifier = NULL,
+  JsonClassifier = NULL,
+  CsvClassifier = NULL
+)
 }
 \arguments{
 \item{GrokClassifier}{A \code{GrokClassifier} object specifying the classifier to create.}
@@ -16,44 +20,9 @@ glue_create_classifier(GrokClassifier, XMLClassifier, JsonClassifier,
 
 \item{CsvClassifier}{A \code{CsvClassifier} object specifying the classifier to create.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a classifier in the user's account. This can be a
-\code{GrokClassifier}, an \code{XMLClassifier}, a \code{JsonClassifier}, or a
-\code{CsvClassifier}, depending on which field of the request is present.
-}
-\section{Request syntax}{
-\preformatted{svc$create_classifier(
-  GrokClassifier = list(
-    Classification = "string",
-    Name = "string",
-    GrokPattern = "string",
-    CustomPatterns = "string"
-  ),
-  XMLClassifier = list(
-    Classification = "string",
-    Name = "string",
-    RowTag = "string"
-  ),
-  JsonClassifier = list(
-    Name = "string",
-    JsonPath = "string"
-  ),
-  CsvClassifier = list(
-    Name = "string",
-    Delimiter = "string",
-    QuoteSymbol = "string",
-    ContainsHeader = "UNKNOWN"|"PRESENT"|"ABSENT",
-    Header = list(
-      "string"
-    ),
-    DisableValueTrimming = TRUE|FALSE,
-    AllowSingleColumn = TRUE|FALSE
-  )
-)
-}
-}
+Creates a classifier in the user's account. This can be a \code{GrokClassifier}, an \code{XMLClassifier}, a \code{JsonClassifier}, or a \code{CsvClassifier}, depending on which field of the request is present.
 
+See \url{https://paws-r.github.io/docs/glue/create_classifier.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,15 @@
 \title{Retrieves (queries) pre-aggregated data for a standard engagement metric
 that applies to a journey}
 \usage{
-pinpoint_get_journey_date_range_kpi(ApplicationId, EndTime, JourneyId,
-  KpiName, NextToken, PageSize, StartTime)
+pinpoint_get_journey_date_range_kpi(
+  ApplicationId,
+  EndTime = NULL,
+  JourneyId,
+  KpiName,
+  NextToken = NULL,
+  PageSize = NULL,
+  StartTime = NULL
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
@@ -40,62 +47,9 @@ extended ISO 8601 format and use Coordinated Universal Time (UTC), for
 example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
 should also be fewer than 90 days from the current day.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JourneyDateRangeKpiResponse = list(
-    ApplicationId = "string",
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    JourneyId = "string",
-    KpiName = "string",
-    KpiResult = list(
-      Rows = list(
-        list(
-          GroupedBys = list(
-            list(
-              Key = "string",
-              Type = "string",
-              Value = "string"
-            )
-          ),
-          Values = list(
-            list(
-              Key = "string",
-              Type = "string",
-              Value = "string"
-            )
-          )
-        )
-      )
-    ),
-    NextToken = "string",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves (queries) pre-aggregated data for a standard engagement metric
-that applies to a journey.
-}
-\section{Request syntax}{
-\preformatted{svc$get_journey_date_range_kpi(
-  ApplicationId = "string",
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  JourneyId = "string",
-  KpiName = "string",
-  NextToken = "string",
-  PageSize = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
+Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey.
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_journey_date_range_kpi.html} for full documentation.
+}
 \keyword{internal}

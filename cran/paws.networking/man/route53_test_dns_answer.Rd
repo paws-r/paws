@@ -5,8 +5,14 @@
 \title{Gets the value that Amazon Route 53 returns in response to a DNS request
 for a specified record name and type}
 \usage{
-route53_test_dns_answer(HostedZoneId, RecordName, RecordType,
-  ResolverIP, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask)
+route53_test_dns_answer(
+  HostedZoneId,
+  RecordName,
+  RecordType,
+  ResolverIP = NULL,
+  EDNS0ClientSubnetIP = NULL,
+  EDNS0ClientSubnetMask = NULL
+)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the hosted zone that you want Amazon Route 53 to simulate a
@@ -19,8 +25,8 @@ simulate a query for.}
 
 \item{ResolverIP}{If you want to simulate a request from a specific DNS resolver, specify
 the IP address for that resolver. If you omit this value,
-\code{TestDnsAnswer} uses the IP address of a DNS resolver in the AWS US East
-(N. Virginia) Region (\code{us-east-1}).}
+\code{TestDnsAnswer} uses the IP address of a DNS resolver in the Amazon Web
+Services US East (N. Virginia) Region (\code{us-east-1}).}
 
 \item{EDNS0ClientSubnetIP}{If the resolver that you specified for resolverip supports EDNS0,
 specify the IPv4 or IPv6 address of a client in the applicable location,
@@ -41,35 +47,9 @@ IPv4 or an IPv6 address:
 \item \strong{IPv6}: Specify a value between 0 and 128
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Nameserver = "string",
-  RecordName = "string",
-  RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-  RecordData = list(
-    "string"
-  ),
-  ResponseCode = "string",
-  Protocol = "string"
-)
-}
-}
 \description{
-Gets the value that Amazon Route 53 returns in response to a DNS request
-for a specified record name and type. You can optionally specify the IP
-address of a DNS resolver, an EDNS0 client subnet IP address, and a
-subnet mask.
-}
-\section{Request syntax}{
-\preformatted{svc$test_dns_answer(
-  HostedZoneId = "string",
-  RecordName = "string",
-  RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-  ResolverIP = "string",
-  EDNS0ClientSubnetIP = "string",
-  EDNS0ClientSubnetMask = "string"
-)
-}
-}
+Gets the value that Amazon Route 53 returns in response to a DNS request for a specified record name and type. You can optionally specify the IP address of a DNS resolver, an EDNS0 client subnet IP address, and a subnet mask.
 
+See \url{https://paws-r.github.io/docs/route53/test_dns_answer.html} for full documentation.
+}
 \keyword{internal}

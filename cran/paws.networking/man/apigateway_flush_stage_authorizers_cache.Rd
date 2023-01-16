@@ -11,18 +11,9 @@ apigateway_flush_stage_authorizers_cache(restApiId, stageName)
 
 \item{stageName}{[required] The name of the stage to flush.}
 }
-\value{
-An empty list.
-}
 \description{
 Flushes all authorizer cache entries on a stage.
-}
-\section{Request syntax}{
-\preformatted{svc$flush_stage_authorizers_cache(
-  restApiId = "string",
-  stageName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/flush_stage_authorizers_cache.html} for full documentation.
+}
 \keyword{internal}

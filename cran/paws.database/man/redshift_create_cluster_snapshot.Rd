@@ -4,12 +4,17 @@
 \alias{redshift_create_cluster_snapshot}
 \title{Creates a manual snapshot of the specified cluster}
 \usage{
-redshift_create_cluster_snapshot(SnapshotIdentifier, ClusterIdentifier,
-  ManualSnapshotRetentionPeriod, Tags)
+redshift_create_cluster_snapshot(
+  SnapshotIdentifier,
+  ClusterIdentifier,
+  ManualSnapshotRetentionPeriod = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{SnapshotIdentifier}{[required] A unique identifier for the snapshot that you are requesting. This
-identifier must be unique for all snapshots within the AWS account.
+identifier must be unique for all snapshots within the Amazon Web
+Services account.
 
 Constraints:
 \itemize{
@@ -32,85 +37,9 @@ The default value is -1.}
 
 \item{Tags}{A list of tag instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Snapshot = list(
-    SnapshotIdentifier = "string",
-    ClusterIdentifier = "string",
-    SnapshotCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Status = "string",
-    Port = 123,
-    AvailabilityZone = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    ClusterVersion = "string",
-    EngineFullVersion = "string",
-    SnapshotType = "string",
-    NodeType = "string",
-    NumberOfNodes = 123,
-    DBName = "string",
-    VpcId = "string",
-    Encrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    EncryptedWithHSM = TRUE|FALSE,
-    AccountsWithRestoreAccess = list(
-      list(
-        AccountId = "string",
-        AccountAlias = "string"
-      )
-    ),
-    OwnerAccount = "string",
-    TotalBackupSizeInMegaBytes = 123.0,
-    ActualIncrementalBackupSizeInMegaBytes = 123.0,
-    BackupProgressInMegaBytes = 123.0,
-    CurrentBackupRateInMegaBytesPerSecond = 123.0,
-    EstimatedSecondsToCompletion = 123,
-    ElapsedTimeInSeconds = 123,
-    SourceRegion = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    RestorableNodeTypes = list(
-      "string"
-    ),
-    EnhancedVpcRouting = TRUE|FALSE,
-    MaintenanceTrackName = "string",
-    ManualSnapshotRetentionPeriod = 123,
-    ManualSnapshotRemainingDays = 123,
-    SnapshotRetentionStartTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Creates a manual snapshot of the specified cluster. The cluster must be
-in the \code{available} state.
+Creates a manual snapshot of the specified cluster. The cluster must be in the \code{available} state.
 
-For more information about working with snapshots, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/create_cluster_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_cluster_snapshot(
-  SnapshotIdentifier = "string",
-  ClusterIdentifier = "string",
-  ManualSnapshotRetentionPeriod = 123,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

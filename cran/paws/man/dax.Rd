@@ -7,7 +7,19 @@
 dax(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -25,7 +37,9 @@ your application can begin taking advantage of the DAX cluster and
 realize significant improvements in read performance.
 }
 \section{Service syntax}{
-\preformatted{svc <- dax(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- dax(
   config = list(
     credentials = list(
       creds = list(
@@ -33,39 +47,43 @@ realize significant improvements in read performance.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=dax_create_cluster]{create_cluster} \tab Creates a DAX cluster\cr
-\link[=dax_create_parameter_group]{create_parameter_group} \tab Creates a new parameter group\cr
-\link[=dax_create_subnet_group]{create_subnet_group} \tab Creates a new subnet group\cr
-\link[=dax_decrease_replication_factor]{decrease_replication_factor} \tab Removes one or more nodes from a DAX cluster\cr
-\link[=dax_delete_cluster]{delete_cluster} \tab Deletes a previously provisioned DAX cluster\cr
-\link[=dax_delete_parameter_group]{delete_parameter_group} \tab Deletes the specified parameter group\cr
-\link[=dax_delete_subnet_group]{delete_subnet_group} \tab Deletes a subnet group\cr
-\link[=dax_describe_clusters]{describe_clusters} \tab Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied\cr
-\link[=dax_describe_default_parameters]{describe_default_parameters} \tab Returns the default system parameter information for the DAX caching software\cr
-\link[=dax_describe_events]{describe_events} \tab Returns events related to DAX clusters and parameter groups\cr
-\link[=dax_describe_parameter_groups]{describe_parameter_groups} \tab Returns a list of parameter group descriptions\cr
-\link[=dax_describe_parameters]{describe_parameters} \tab Returns the detailed parameter list for a particular parameter group\cr
-\link[=dax_describe_subnet_groups]{describe_subnet_groups} \tab Returns a list of subnet group descriptions\cr
-\link[=dax_increase_replication_factor]{increase_replication_factor} \tab Adds one or more nodes to a DAX cluster\cr
-\link[=dax_list_tags]{list_tags} \tab List all of the tags for a DAX cluster\cr
-\link[=dax_reboot_node]{reboot_node} \tab Reboots a single node of a DAX cluster\cr
-\link[=dax_tag_resource]{tag_resource} \tab Associates a set of tags with a DAX resource\cr
-\link[=dax_untag_resource]{untag_resource} \tab Removes the association of tags from a DAX resource\cr
-\link[=dax_update_cluster]{update_cluster} \tab Modifies the settings for a DAX cluster\cr
-\link[=dax_update_parameter_group]{update_parameter_group} \tab Modifies the parameters of a parameter group\cr
-\link[=dax_update_subnet_group]{update_subnet_group} \tab Modifies an existing subnet group
+\link[paws.database:dax_create_cluster]{create_cluster} \tab Creates a DAX cluster\cr
+\link[paws.database:dax_create_parameter_group]{create_parameter_group} \tab Creates a new parameter group\cr
+\link[paws.database:dax_create_subnet_group]{create_subnet_group} \tab Creates a new subnet group\cr
+\link[paws.database:dax_decrease_replication_factor]{decrease_replication_factor} \tab Removes one or more nodes from a DAX cluster\cr
+\link[paws.database:dax_delete_cluster]{delete_cluster} \tab Deletes a previously provisioned DAX cluster\cr
+\link[paws.database:dax_delete_parameter_group]{delete_parameter_group} \tab Deletes the specified parameter group\cr
+\link[paws.database:dax_delete_subnet_group]{delete_subnet_group} \tab Deletes a subnet group\cr
+\link[paws.database:dax_describe_clusters]{describe_clusters} \tab Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied\cr
+\link[paws.database:dax_describe_default_parameters]{describe_default_parameters} \tab Returns the default system parameter information for the DAX caching software\cr
+\link[paws.database:dax_describe_events]{describe_events} \tab Returns events related to DAX clusters and parameter groups\cr
+\link[paws.database:dax_describe_parameter_groups]{describe_parameter_groups} \tab Returns a list of parameter group descriptions\cr
+\link[paws.database:dax_describe_parameters]{describe_parameters} \tab Returns the detailed parameter list for a particular parameter group\cr
+\link[paws.database:dax_describe_subnet_groups]{describe_subnet_groups} \tab Returns a list of subnet group descriptions\cr
+\link[paws.database:dax_increase_replication_factor]{increase_replication_factor} \tab Adds one or more nodes to a DAX cluster\cr
+\link[paws.database:dax_list_tags]{list_tags} \tab List all of the tags for a DAX cluster\cr
+\link[paws.database:dax_reboot_node]{reboot_node} \tab Reboots a single node of a DAX cluster\cr
+\link[paws.database:dax_tag_resource]{tag_resource} \tab Associates a set of tags with a DAX resource\cr
+\link[paws.database:dax_untag_resource]{untag_resource} \tab Removes the association of tags from a DAX resource\cr
+\link[paws.database:dax_update_cluster]{update_cluster} \tab Modifies the settings for a DAX cluster\cr
+\link[paws.database:dax_update_parameter_group]{update_parameter_group} \tab Modifies the parameters of a parameter group\cr
+\link[paws.database:dax_update_subnet_group]{update_subnet_group} \tab Modifies an existing subnet group
 }
 }
 

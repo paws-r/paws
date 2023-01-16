@@ -4,8 +4,11 @@
 \alias{budgets_describe_budget_actions_for_account}
 \title{Describes all of the budget actions for an account}
 \usage{
-budgets_describe_budget_actions_for_account(AccountId, MaxResults,
-  NextToken)
+budgets_describe_budget_actions_for_account(
+  AccountId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AccountId}{[required]}
@@ -14,70 +17,9 @@ budgets_describe_budget_actions_for_account(AccountId, MaxResults,
 
 \item{NextToken}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Actions = list(
-    list(
-      ActionId = "string",
-      BudgetName = "string",
-      NotificationType = "ACTUAL"|"FORECASTED",
-      ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-      ActionThreshold = list(
-        ActionThresholdValue = 123.0,
-        ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-      ),
-      Definition = list(
-        IamActionDefinition = list(
-          PolicyArn = "string",
-          Roles = list(
-            "string"
-          ),
-          Groups = list(
-            "string"
-          ),
-          Users = list(
-            "string"
-          )
-        ),
-        ScpActionDefinition = list(
-          PolicyId = "string",
-          TargetIds = list(
-            "string"
-          )
-        ),
-        SsmActionDefinition = list(
-          ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-          Region = "string",
-          InstanceIds = list(
-            "string"
-          )
-        )
-      ),
-      ExecutionRoleArn = "string",
-      ApprovalModel = "AUTOMATIC"|"MANUAL",
-      Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-      Subscribers = list(
-        list(
-          SubscriptionType = "SNS"|"EMAIL",
-          Address = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes all of the budget actions for an account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_budget_actions_for_account(
-  AccountId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/budgets/describe_budget_actions_for_account.html} for full documentation.
+}
 \keyword{internal}

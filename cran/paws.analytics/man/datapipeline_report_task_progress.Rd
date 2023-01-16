@@ -5,7 +5,7 @@
 \title{Task runners call ReportTaskProgress when assigned a task to acknowledge
 that it has the task}
 \usage{
-datapipeline_report_task_progress(taskId, fields)
+datapipeline_report_task_progress(taskId, fields = NULL)
 }
 \arguments{
 \item{taskId}{[required] The ID of the task assigned to the task runner. This value is provided
@@ -14,42 +14,9 @@ in the response for \code{\link[=datapipeline_poll_for_task]{poll_for_task}}.}
 \item{fields}{Key-value pairs that define the properties of the
 ReportTaskProgressInput object.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  canceled = TRUE|FALSE
-)
-}
-}
 \description{
-Task runners call
-\code{\link[=datapipeline_report_task_progress]{report_task_progress}} when
-assigned a task to acknowledge that it has the task. If the web service
-does not receive this acknowledgement within 2 minutes, it assigns the
-task in a subsequent \code{\link[=datapipeline_poll_for_task]{poll_for_task}} call.
-After this initial acknowledgement, the task runner only needs to report
-progress every 15 minutes to maintain its ownership of the task. You can
-change this reporting time from 15 minutes by specifying a
-\code{reportProgressTimeout} field in your pipeline.
+Task runners call \code{\link[=datapipeline_report_task_progress]{report_task_progress}} when assigned a task to acknowledge that it has the task. If the web service does not receive this acknowledgement within 2 minutes, it assigns the task in a subsequent \code{\link[=datapipeline_poll_for_task]{poll_for_task}} call. After this initial acknowledgement, the task runner only needs to report progress every 15 minutes to maintain its ownership of the task. You can change this reporting time from 15 minutes by specifying a \code{reportProgressTimeout} field in your pipeline.
 
-If a task runner does not report its status after 5 minutes, AWS Data
-Pipeline assumes that the task runner is unable to process the task and
-reassigns the task in a subsequent response to
-\code{\link[=datapipeline_poll_for_task]{poll_for_task}}. Task runners should call
-\code{\link[=datapipeline_report_task_progress]{report_task_progress}} every 60
-seconds.
+See \url{https://paws-r.github.io/docs/datapipeline/report_task_progress.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$report_task_progress(
-  taskId = "string",
-  fields = list(
-    list(
-      key = "string",
-      stringValue = "string",
-      refValue = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

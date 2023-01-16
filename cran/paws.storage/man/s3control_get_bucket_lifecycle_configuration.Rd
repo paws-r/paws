@@ -2,21 +2,22 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_bucket_lifecycle_configuration}
 \alias{s3control_get_bucket_lifecycle_configuration}
-\title{This operation gets an Amazon S3 on Outposts bucket's lifecycle
+\title{This action gets an Amazon S3 on Outposts bucket's lifecycle
 configuration}
 \usage{
 s3control_get_bucket_lifecycle_configuration(AccountId, Bucket)
 }
 \arguments{
-\item{AccountId}{[required] The AWS account ID of the Outposts bucket.}
+\item{AccountId}{[required] The Amazon Web Services account ID of the Outposts bucket.}
 
 \item{Bucket}{[required] The Amazon Resource Name (ARN) of the bucket.
 
 For using this parameter with Amazon S3 on Outposts with the REST API,
 you must specify the name and the x-amz-outpost-id as well.
 
-For using this parameter with S3 on Outposts with the AWS SDK and CLI,
-you must specify the ARN of the bucket accessed in the format
+For using this parameter with S3 on Outposts with the Amazon Web
+Services SDK and CLI, you must specify the ARN of the bucket accessed in
+the format
 \verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
 For example, to access the bucket \code{reports} through outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
@@ -24,112 +25,9 @@ encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
 The value must be URL encoded.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Rules = list(
-    list(
-      Expiration = list(
-        Date = as.POSIXct(
-          "2015-01-01"
-        ),
-        Days = 123,
-        ExpiredObjectDeleteMarker = TRUE|FALSE
-      ),
-      ID = "string",
-      Filter = list(
-        Prefix = "string",
-        Tag = list(
-          Key = "string",
-          Value = "string"
-        ),
-        And = list(
-          Prefix = "string",
-          Tags = list(
-            list(
-              Key = "string",
-              Value = "string"
-            )
-          )
-        )
-      ),
-      Status = "Enabled"|"Disabled",
-      Transitions = list(
-        list(
-          Date = as.POSIXct(
-            "2015-01-01"
-          ),
-          Days = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
-        )
-      ),
-      NoncurrentVersionTransitions = list(
-        list(
-          NoncurrentDays = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
-        )
-      ),
-      NoncurrentVersionExpiration = list(
-        NoncurrentDays = 123
-      ),
-      AbortIncompleteMultipartUpload = list(
-        DaysAfterInitiation = 123
-      )
-    )
-  )
-)
-}
-}
 \description{
-This operation gets an Amazon S3 on Outposts bucket's lifecycle
-configuration. To get an S3 bucket's lifecycle configuration, see
-\code{\link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
-in the \emph{Amazon Simple Storage Service API}.
+This action gets an Amazon S3 on Outposts bucket's lifecycle configuration. To get an S3 bucket's lifecycle configuration, see \code{\link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}} in the \emph{Amazon S3 API Reference}.
 
-Returns the lifecycle configuration information set on the Outposts
-bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-and for information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}
-in \emph{Amazon Simple Storage Service Developer Guide}.
-
-To use this operation, you must have permission to perform the
-\code{s3-outposts:GetLifecycleConfiguration} action. The Outposts bucket
-owner has this permission, by default. The bucket owner can grant this
-permission to others. For more information about permissions, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
-
-All Amazon S3 on Outposts REST API requests for this action require an
-additional parameter of \code{x-amz-outpost-id} to be passed with the request
-and an S3 on Outposts endpoint hostname prefix instead of \code{s3-control}.
-For an example of the request syntax for Amazon S3 on Outposts that uses
-the S3 on Outposts endpoint hostname prefix and the \code{x-amz-outpost-id}
-derived using the access point ARN, see the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html#API_control_GetBucketLifecycleConfiguration_Examples}{Examples}
-section.
-
-\code{\link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
-has the following special error:
-\itemize{
-\item Error code: \code{NoSuchLifecycleConfiguration}
-\itemize{
-\item Description: The lifecycle configuration does not exist.
-\item HTTP Status Code: 404 Not Found
-\item SOAP Fault Code Prefix: Client
+See \url{https://paws-r.github.io/docs/s3control/get_bucket_lifecycle_configuration.html} for full documentation.
 }
-}
-
-The following actions are related to
-\code{\link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}:
-\itemize{
-\item \code{\link[=s3control_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
-\item \code{\link[=s3control_delete_bucket_lifecycle_configuration]{delete_bucket_lifecycle_configuration}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_lifecycle_configuration(
-  AccountId = "string",
-  Bucket = "string"
-)
-}
-}
-
 \keyword{internal}

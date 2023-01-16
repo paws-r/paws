@@ -5,9 +5,13 @@
 \title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications}
 \usage{
-kinesisanalytics_discover_input_schema(ResourceARN, RoleARN,
-  InputStartingPositionConfiguration, S3Configuration,
-  InputProcessingConfiguration)
+kinesisanalytics_discover_input_schema(
+  ResourceARN = NULL,
+  RoleARN = NULL,
+  InputStartingPositionConfiguration = NULL,
+  S3Configuration = NULL,
+  InputProcessingConfiguration = NULL
+)
 }
 \arguments{
 \item{ResourceARN}{Amazon Resource Name (ARN) of the streaming source.}
@@ -26,85 +30,9 @@ object.}
 to use to preprocess the records before discovering the schema of the
 records.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InputSchema = list(
-    RecordFormat = list(
-      RecordFormatType = "JSON"|"CSV",
-      MappingParameters = list(
-        JSONMappingParameters = list(
-          RecordRowPath = "string"
-        ),
-        CSVMappingParameters = list(
-          RecordRowDelimiter = "string",
-          RecordColumnDelimiter = "string"
-        )
-      )
-    ),
-    RecordEncoding = "string",
-    RecordColumns = list(
-      list(
-        Name = "string",
-        Mapping = "string",
-        SqlType = "string"
-      )
-    )
-  ),
-  ParsedInputRecords = list(
-    list(
-      "string"
-    )
-  ),
-  ProcessedInputRecords = list(
-    "string"
-  ),
-  RawInputRecords = list(
-    "string"
-  )
-)
-}
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Infers a schema by evaluating sample records on the specified streaming
-source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery
-stream) or S3 object. In the response, the operation returns the
-inferred schema and also the sample records that the operation used to
-infer the schema.
-
-You can use the inferred schema when configuring a streaming source for
-your application. For conceptual information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
-Note that when you create an application using the Amazon Kinesis
-Analytics console, the console uses this operation to infer a schema and
-show it in the console user interface.
-
-This operation requires permissions to perform the
-\code{kinesisanalytics:DiscoverInputSchema} action.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/discover_input_schema.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$discover_input_schema(
-  ResourceARN = "string",
-  RoleARN = "string",
-  InputStartingPositionConfiguration = list(
-    InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
-  ),
-  S3Configuration = list(
-    RoleARN = "string",
-    BucketARN = "string",
-    FileKey = "string"
-  ),
-  InputProcessingConfiguration = list(
-    InputLambdaProcessor = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

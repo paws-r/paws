@@ -2,9 +2,9 @@
 % Please edit documentation in R/kafka_operations.R
 \name{kafka_list_kafka_versions}
 \alias{kafka_list_kafka_versions}
-\title{Returns a list of Kafka versions}
+\title{Returns a list of Apache Kafka versions}
 \usage{
-kafka_list_kafka_versions(MaxResults, NextToken)
+kafka_list_kafka_versions(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to return in the response. If there are
@@ -14,27 +14,9 @@ more results, the response includes a NextToken parameter.}
 truncated, the call returns NextToken in the response. To get the next
 batch, provide this token in your next request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KafkaVersions = list(
-    list(
-      Version = "string",
-      Status = "ACTIVE"|"DEPRECATED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of Kafka versions.
-}
-\section{Request syntax}{
-\preformatted{svc$list_kafka_versions(
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns a list of Apache Kafka versions.
 
+See \url{https://paws-r.github.io/docs/kafka/list_kafka_versions.html} for full documentation.
+}
 \keyword{internal}

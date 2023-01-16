@@ -4,95 +4,28 @@
 \alias{appmesh_delete_gateway_route}
 \title{Deletes an existing gateway route}
 \usage{
-appmesh_delete_gateway_route(gatewayRouteName, meshName, meshOwner,
-  virtualGatewayName)
+appmesh_delete_gateway_route(
+  gatewayRouteName,
+  meshName,
+  meshOwner = NULL,
+  virtualGatewayName
+)
 }
 \arguments{
 \item{gatewayRouteName}{[required] The name of the gateway route to delete.}
 
 \item{meshName}{[required] The name of the service mesh to delete the gateway route from.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then it's the ID of the account that shared the mesh with
-your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then it's the ID of the account that shared
+the mesh with your account. For more information about mesh sharing, see
+\href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{virtualGatewayName}{[required] The name of the virtual gateway to delete the route from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  gatewayRoute = list(
-    gatewayRouteName = "string",
-    meshName = "string",
-    metadata = list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshOwner = "string",
-      resourceOwner = "string",
-      uid = "string",
-      version = 123
-    ),
-    spec = list(
-      grpcRoute = list(
-        action = list(
-          target = list(
-            virtualService = list(
-              virtualServiceName = "string"
-            )
-          )
-        ),
-        match = list(
-          serviceName = "string"
-        )
-      ),
-      http2Route = list(
-        action = list(
-          target = list(
-            virtualService = list(
-              virtualServiceName = "string"
-            )
-          )
-        ),
-        match = list(
-          prefix = "string"
-        )
-      ),
-      httpRoute = list(
-        action = list(
-          target = list(
-            virtualService = list(
-              virtualServiceName = "string"
-            )
-          )
-        ),
-        match = list(
-          prefix = "string"
-        )
-      )
-    ),
-    status = list(
-      status = "ACTIVE"|"INACTIVE"|"DELETED"
-    ),
-    virtualGatewayName = "string"
-  )
-)
-}
-}
 \description{
 Deletes an existing gateway route.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_gateway_route(
-  gatewayRouteName = "string",
-  meshName = "string",
-  meshOwner = "string",
-  virtualGatewayName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appmesh/delete_gateway_route.html} for full documentation.
+}
 \keyword{internal}

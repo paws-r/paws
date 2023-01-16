@@ -13,23 +13,9 @@ lexmodelbuildingservice_delete_intent_version(name, version)
 version of the intent. To delete the \verb{$LATEST} version, use the
 \code{\link[=lexmodelbuildingservice_delete_intent]{delete_intent}} operation.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a specific version of an intent. To delete all versions of a
-intent, use the \code{\link[=lexmodelbuildingservice_delete_intent]{delete_intent}}
-operation.
+Deletes a specific version of an intent. To delete all versions of a intent, use the \code{\link[=lexmodelbuildingservice_delete_intent]{delete_intent}} operation.
 
-This operation requires permissions for the \code{lex:DeleteIntentVersion}
-action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_intent_version.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_intent_version(
-  name = "string",
-  version = "string"
-)
-}
-}
-
 \keyword{internal}

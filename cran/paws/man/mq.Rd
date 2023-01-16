@@ -7,7 +7,19 @@
 mq(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -23,7 +35,9 @@ communicate using various programming languages, operating systems, and
 formal messaging protocols.
 }
 \section{Service syntax}{
-\preformatted{svc <- mq(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- mq(
   config = list(
     credentials = list(
       creds = list(
@@ -31,40 +45,44 @@ formal messaging protocols.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=mq_create_broker]{create_broker} \tab Creates a broker\cr
-\link[=mq_create_configuration]{create_configuration} \tab Creates a new configuration for the specified configuration name\cr
-\link[=mq_create_tags]{create_tags} \tab Add a tag to a resource\cr
-\link[=mq_create_user]{create_user} \tab Creates an ActiveMQ user\cr
-\link[=mq_delete_broker]{delete_broker} \tab Deletes a broker\cr
-\link[=mq_delete_tags]{delete_tags} \tab Removes a tag from a resource\cr
-\link[=mq_delete_user]{delete_user} \tab Deletes an ActiveMQ user\cr
-\link[=mq_describe_broker]{describe_broker} \tab Returns information about the specified broker\cr
-\link[=mq_describe_broker_engine_types]{describe_broker_engine_types} \tab Describe available engine types and versions\cr
-\link[=mq_describe_broker_instance_options]{describe_broker_instance_options} \tab Describe available broker instance options\cr
-\link[=mq_describe_configuration]{describe_configuration} \tab Returns information about the specified configuration\cr
-\link[=mq_describe_configuration_revision]{describe_configuration_revision} \tab Returns the specified configuration revision for the specified configuration\cr
-\link[=mq_describe_user]{describe_user} \tab Returns information about an ActiveMQ user\cr
-\link[=mq_list_brokers]{list_brokers} \tab Returns a list of all brokers\cr
-\link[=mq_list_configuration_revisions]{list_configuration_revisions} \tab Returns a list of all revisions for the specified configuration\cr
-\link[=mq_list_configurations]{list_configurations} \tab Returns a list of all configurations\cr
-\link[=mq_list_tags]{list_tags} \tab Lists tags for a resource\cr
-\link[=mq_list_users]{list_users} \tab Returns a list of all ActiveMQ users\cr
-\link[=mq_reboot_broker]{reboot_broker} \tab Reboots a broker\cr
-\link[=mq_update_broker]{update_broker} \tab Adds a pending configuration change to a broker\cr
-\link[=mq_update_configuration]{update_configuration} \tab Updates the specified configuration\cr
-\link[=mq_update_user]{update_user} \tab Updates the information for an ActiveMQ user
+\link[paws.application.integration:mq_create_broker]{create_broker} \tab Creates a broker\cr
+\link[paws.application.integration:mq_create_configuration]{create_configuration} \tab Creates a new configuration for the specified configuration name\cr
+\link[paws.application.integration:mq_create_tags]{create_tags} \tab Add a tag to a resource\cr
+\link[paws.application.integration:mq_create_user]{create_user} \tab Creates an ActiveMQ user\cr
+\link[paws.application.integration:mq_delete_broker]{delete_broker} \tab Deletes a broker\cr
+\link[paws.application.integration:mq_delete_tags]{delete_tags} \tab Removes a tag from a resource\cr
+\link[paws.application.integration:mq_delete_user]{delete_user} \tab Deletes an ActiveMQ user\cr
+\link[paws.application.integration:mq_describe_broker]{describe_broker} \tab Returns information about the specified broker\cr
+\link[paws.application.integration:mq_describe_broker_engine_types]{describe_broker_engine_types} \tab Describe available engine types and versions\cr
+\link[paws.application.integration:mq_describe_broker_instance_options]{describe_broker_instance_options} \tab Describe available broker instance options\cr
+\link[paws.application.integration:mq_describe_configuration]{describe_configuration} \tab Returns information about the specified configuration\cr
+\link[paws.application.integration:mq_describe_configuration_revision]{describe_configuration_revision} \tab Returns the specified configuration revision for the specified configuration\cr
+\link[paws.application.integration:mq_describe_user]{describe_user} \tab Returns information about an ActiveMQ user\cr
+\link[paws.application.integration:mq_list_brokers]{list_brokers} \tab Returns a list of all brokers\cr
+\link[paws.application.integration:mq_list_configuration_revisions]{list_configuration_revisions} \tab Returns a list of all revisions for the specified configuration\cr
+\link[paws.application.integration:mq_list_configurations]{list_configurations} \tab Returns a list of all configurations\cr
+\link[paws.application.integration:mq_list_tags]{list_tags} \tab Lists tags for a resource\cr
+\link[paws.application.integration:mq_list_users]{list_users} \tab Returns a list of all ActiveMQ users\cr
+\link[paws.application.integration:mq_reboot_broker]{reboot_broker} \tab Reboots a broker\cr
+\link[paws.application.integration:mq_update_broker]{update_broker} \tab Adds a pending configuration change to a broker\cr
+\link[paws.application.integration:mq_update_configuration]{update_configuration} \tab Updates the specified configuration\cr
+\link[paws.application.integration:mq_update_user]{update_user} \tab Updates the information for an ActiveMQ user
 }
 }
 

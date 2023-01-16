@@ -2,27 +2,14 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_describe_global_settings}
 \alias{backup_describe_global_settings}
-\title{The current feature settings for the AWS Account}
+\title{Describes whether the Amazon Web Services account is opted in to
+cross-account backup}
 \usage{
 backup_describe_global_settings()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalSettings = list(
-    "string"
-  ),
-  LastUpdateTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-The current feature settings for the AWS Account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_global_settings()
-}
-}
+Describes whether the Amazon Web Services account is opted in to cross-account backup. Returns an error if the account is not a member of an Organizations organization. Example: \verb{describe-global-settings --region us-west-2}
 
+See \url{https://paws-r.github.io/docs/backup/describe_global_settings.html} for full documentation.
+}
 \keyword{internal}

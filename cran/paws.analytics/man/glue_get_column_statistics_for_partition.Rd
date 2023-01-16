@@ -4,12 +4,17 @@
 \alias{glue_get_column_statistics_for_partition}
 \title{Retrieves partition statistics of columns}
 \usage{
-glue_get_column_statistics_for_partition(CatalogId, DatabaseName,
-  TableName, PartitionValues, ColumnNames)
+glue_get_column_statistics_for_partition(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  PartitionValues,
+  ColumnNames
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partitions in question reside. If
-none is supplied, the AWS account ID is used by default.}
+none is supplied, the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the partitions reside.}
 
@@ -19,101 +24,9 @@ none is supplied, the AWS account ID is used by default.}
 
 \item{ColumnNames}{[required] A list of the column names.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ColumnStatisticsList = list(
-    list(
-      ColumnName = "string",
-      ColumnType = "string",
-      AnalyzedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StatisticsData = list(
-        Type = "BOOLEAN"|"DATE"|"DECIMAL"|"DOUBLE"|"LONG"|"STRING"|"BINARY",
-        BooleanColumnStatisticsData = list(
-          NumberOfTrues = 123,
-          NumberOfFalses = 123,
-          NumberOfNulls = 123
-        ),
-        DateColumnStatisticsData = list(
-          MinimumValue = as.POSIXct(
-            "2015-01-01"
-          ),
-          MaximumValue = as.POSIXct(
-            "2015-01-01"
-          ),
-          NumberOfNulls = 123,
-          NumberOfDistinctValues = 123
-        ),
-        DecimalColumnStatisticsData = list(
-          MinimumValue = list(
-            UnscaledValue = raw,
-            Scale = 123
-          ),
-          MaximumValue = list(
-            UnscaledValue = raw,
-            Scale = 123
-          ),
-          NumberOfNulls = 123,
-          NumberOfDistinctValues = 123
-        ),
-        DoubleColumnStatisticsData = list(
-          MinimumValue = 123.0,
-          MaximumValue = 123.0,
-          NumberOfNulls = 123,
-          NumberOfDistinctValues = 123
-        ),
-        LongColumnStatisticsData = list(
-          MinimumValue = 123,
-          MaximumValue = 123,
-          NumberOfNulls = 123,
-          NumberOfDistinctValues = 123
-        ),
-        StringColumnStatisticsData = list(
-          MaximumLength = 123,
-          AverageLength = 123.0,
-          NumberOfNulls = 123,
-          NumberOfDistinctValues = 123
-        ),
-        BinaryColumnStatisticsData = list(
-          MaximumLength = 123,
-          AverageLength = 123.0,
-          NumberOfNulls = 123
-        )
-      )
-    )
-  ),
-  Errors = list(
-    list(
-      ColumnName = "string",
-      Error = list(
-        ErrorCode = "string",
-        ErrorMessage = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Retrieves partition statistics of columns.
 
-The Identity and Access Management (IAM) permission required for this
-operation is \code{\link[=glue_get_partition]{get_partition}}.
+See \url{https://paws-r.github.io/docs/glue/get_column_statistics_for_partition.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_column_statistics_for_partition(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  PartitionValues = list(
-    "string"
-  ),
-  ColumnNames = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

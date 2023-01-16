@@ -4,8 +4,13 @@
 \alias{budgets_describe_budget_performance_history}
 \title{Describes the history for DAILY, MONTHLY, and QUARTERLY budgets}
 \usage{
-budgets_describe_budget_performance_history(AccountId, BudgetName,
-  TimePeriod, MaxResults, NextToken)
+budgets_describe_budget_performance_history(
+  AccountId,
+  BudgetName,
+  TimePeriod = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AccountId}{[required]}
@@ -19,75 +24,9 @@ specified time period.}
 
 \item{NextToken}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BudgetPerformanceHistory = list(
-    BudgetName = "string",
-    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
-    CostFilters = list(
-      list(
-        "string"
-      )
-    ),
-    CostTypes = list(
-      IncludeTax = TRUE|FALSE,
-      IncludeSubscription = TRUE|FALSE,
-      UseBlended = TRUE|FALSE,
-      IncludeRefund = TRUE|FALSE,
-      IncludeCredit = TRUE|FALSE,
-      IncludeUpfront = TRUE|FALSE,
-      IncludeRecurring = TRUE|FALSE,
-      IncludeOtherSubscription = TRUE|FALSE,
-      IncludeSupport = TRUE|FALSE,
-      IncludeDiscount = TRUE|FALSE,
-      UseAmortized = TRUE|FALSE
-    ),
-    TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
-    BudgetedAndActualAmountsList = list(
-      list(
-        BudgetedAmount = list(
-          Amount = "string",
-          Unit = "string"
-        ),
-        ActualAmount = list(
-          Amount = "string",
-          Unit = "string"
-        ),
-        TimePeriod = list(
-          Start = as.POSIXct(
-            "2015-01-01"
-          ),
-          End = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the history for \code{DAILY}, \code{MONTHLY}, and \code{QUARTERLY} budgets.
-Budget history isn't available for \code{ANNUAL} budgets.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_budget_performance_history(
-  AccountId = "string",
-  BudgetName = "string",
-  TimePeriod = list(
-    Start = as.POSIXct(
-      "2015-01-01"
-    ),
-    End = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes the history for \code{DAILY}, \code{MONTHLY}, and \code{QUARTERLY} budgets. Budget history isn't available for \code{ANNUAL} budgets.
 
+See \url{https://paws-r.github.io/docs/budgets/describe_budget_performance_history.html} for full documentation.
+}
 \keyword{internal}

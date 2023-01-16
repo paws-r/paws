@@ -2,37 +2,22 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_confirm_transit_virtual_interface}
 \alias{directconnect_confirm_transit_virtual_interface}
-\title{Accepts ownership of a transit virtual interface created by another AWS
-account}
+\title{Accepts ownership of a transit virtual interface created by another
+Amazon Web Services account}
 \usage{
-directconnect_confirm_transit_virtual_interface(virtualInterfaceId,
-  directConnectGatewayId)
+directconnect_confirm_transit_virtual_interface(
+  virtualInterfaceId,
+  directConnectGatewayId
+)
 }
 \arguments{
 \item{virtualInterfaceId}{[required] The ID of the virtual interface.}
 
 \item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
-)
-}
-}
 \description{
-Accepts ownership of a transit virtual interface created by another AWS
-account.
+Accepts ownership of a transit virtual interface created by another Amazon Web Services account.
 
-After the owner of the transit virtual interface makes this call, the
-specified transit virtual interface is created and made available to
-handle traffic.
+See \url{https://paws-r.github.io/docs/directconnect/confirm_transit_virtual_interface.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$confirm_transit_virtual_interface(
-  virtualInterfaceId = "string",
-  directConnectGatewayId = "string"
-)
-}
-}
-
 \keyword{internal}

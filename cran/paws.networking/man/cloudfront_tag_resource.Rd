@@ -11,25 +11,9 @@ cloudfront_tag_resource(Resource, Tags)
 
 \item{Tags}{[required] A complex type that contains zero or more \code{Tag} elements.}
 }
-\value{
-An empty list.
-}
 \description{
 Add tags to a CloudFront resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  Resource = "string",
-  Tags = list(
-    Items = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/tag_resource.html} for full documentation.
+}
 \keyword{internal}

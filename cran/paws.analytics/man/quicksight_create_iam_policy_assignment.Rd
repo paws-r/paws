@@ -5,15 +5,21 @@
 \title{Creates an assignment with one specified IAM policy, identified by its
 Amazon Resource Name (ARN)}
 \usage{
-quicksight_create_iam_policy_assignment(AwsAccountId, AssignmentName,
-  AssignmentStatus, PolicyArn, Identities, Namespace)
+quicksight_create_iam_policy_assignment(
+  AwsAccountId,
+  AssignmentName,
+  AssignmentStatus,
+  PolicyArn = NULL,
+  Identities = NULL,
+  Namespace
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account where you want to assign an IAM policy to
-QuickSight users or groups.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account where you want to assign an
+IAM policy to Amazon QuickSight users or groups.}
 
 \item{AssignmentName}{[required] The name of the assignment, also called a rule. It must be unique within
-an AWS account.}
+an Amazon Web Services account.}
 
 \item{AssignmentStatus}{[required] The status of the assignment. Possible values are as follows:
 \itemize{
@@ -25,51 +31,17 @@ source.
 creating the data source.
 }}
 
-\item{PolicyArn}{The ARN for the IAM policy to apply to the QuickSight users and groups
-specified in this assignment.}
+\item{PolicyArn}{The ARN for the IAM policy to apply to the Amazon QuickSight users and
+groups specified in this assignment.}
 
-\item{Identities}{The QuickSight users, groups, or both that you want to assign the policy
-to.}
+\item{Identities}{The Amazon QuickSight users, groups, or both that you want to assign the
+policy to.}
 
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssignmentName = "string",
-  AssignmentId = "string",
-  AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
-  PolicyArn = "string",
-  Identities = list(
-    list(
-      "string"
-    )
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-Creates an assignment with one specified IAM policy, identified by its
-Amazon Resource Name (ARN). This policy assignment is attached to the
-specified groups or users of Amazon QuickSight. Assignment names are
-unique per AWS account. To avoid overwriting rules in other namespaces,
-use assignment names that are unique.
-}
-\section{Request syntax}{
-\preformatted{svc$create_iam_policy_assignment(
-  AwsAccountId = "string",
-  AssignmentName = "string",
-  AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
-  PolicyArn = "string",
-  Identities = list(
-    list(
-      "string"
-    )
-  ),
-  Namespace = "string"
-)
-}
-}
+Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN). This policy assignment is attached to the specified groups or users of Amazon QuickSight. Assignment names are unique per Amazon Web Services account. To avoid overwriting rules in other namespaces, use assignment names that are unique.
 
+See \url{https://paws-r.github.io/docs/quicksight/create_iam_policy_assignment.html} for full documentation.
+}
 \keyword{internal}

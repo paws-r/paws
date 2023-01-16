@@ -4,9 +4,16 @@
 \alias{emr_start_notebook_execution}
 \title{Starts a notebook execution}
 \usage{
-emr_start_notebook_execution(EditorId, RelativePath,
-  NotebookExecutionName, NotebookParams, ExecutionEngine, ServiceRole,
-  NotebookInstanceSecurityGroupId, Tags)
+emr_start_notebook_execution(
+  EditorId,
+  RelativePath,
+  NotebookExecutionName = NULL,
+  NotebookParams = NULL,
+  ExecutionEngine,
+  ServiceRole,
+  NotebookInstanceSecurityGroupId = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{EditorId}{[required] The unique identifier of the EMR Notebook to use for notebook execution.}
@@ -39,36 +46,9 @@ user-defined key-value pairs that consist of a required key string with
 a maximum of 128 characters and an optional value string with a maximum
 of 256 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NotebookExecutionId = "string"
-)
-}
-}
 \description{
 Starts a notebook execution.
-}
-\section{Request syntax}{
-\preformatted{svc$start_notebook_execution(
-  EditorId = "string",
-  RelativePath = "string",
-  NotebookExecutionName = "string",
-  NotebookParams = "string",
-  ExecutionEngine = list(
-    Id = "string",
-    Type = "EMR",
-    MasterInstanceSecurityGroupId = "string"
-  ),
-  ServiceRole = "string",
-  NotebookInstanceSecurityGroupId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/emr/start_notebook_execution.html} for full documentation.
+}
 \keyword{internal}

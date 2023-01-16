@@ -13,21 +13,9 @@ kinesisanalyticsv2_delete_application(ApplicationName, CreateTimestamp)
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation to get this value.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified application. Kinesis Data Analytics halts
-application execution and deletes the application.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application(
-  ApplicationName = "string",
-  CreateTimestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
+Deletes the specified application. Kinesis Data Analytics halts application execution and deletes the application.
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application.html} for full documentation.
+}
 \keyword{internal}

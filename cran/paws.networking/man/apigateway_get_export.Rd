@@ -4,16 +4,21 @@
 \alias{apigateway_get_export}
 \title{Exports a deployed version of a RestApi in a specified format}
 \usage{
-apigateway_get_export(restApiId, stageName, exportType, parameters,
-  accepts)
+apigateway_get_export(
+  restApiId,
+  stageName,
+  exportType,
+  parameters = NULL,
+  accepts = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{stageName}{[required] [Required] The name of the Stage that will be exported.}
+\item{stageName}{[required] The name of the Stage that will be exported.}
 
-\item{exportType}{[required] [Required] The type of export. Acceptable values are 'oas30' for
-OpenAPI 3.0.x and 'swagger' for Swagger/OpenAPI 2.0.}
+\item{exportType}{[required] The type of export. Acceptable values are 'oas30' for OpenAPI 3.0.x and
+'swagger' for Swagger/OpenAPI 2.0.}
 
 \item{parameters}{A key-value map of query string parameters that specify properties of
 the export, depending on the requested \code{exportType}. For \code{exportType}
@@ -29,28 +34,9 @@ Currently \code{application/json} and \code{application/yaml} are supported for
 \code{exportType} of\code{oas30} and \code{swagger}. This should be specified in the
 \code{Accept} header for direct API requests.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  contentType = "string",
-  contentDisposition = "string",
-  body = raw
-)
-}
-}
 \description{
 Exports a deployed version of a RestApi in a specified format.
-}
-\section{Request syntax}{
-\preformatted{svc$get_export(
-  restApiId = "string",
-  stageName = "string",
-  exportType = "string",
-  parameters = list(
-    "string"
-  ),
-  accepts = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_export.html} for full documentation.
+}
 \keyword{internal}

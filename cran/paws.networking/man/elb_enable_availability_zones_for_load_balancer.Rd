@@ -5,8 +5,10 @@
 \title{Adds the specified Availability Zones to the set of Availability Zones
 for the specified load balancer in EC2-Classic or a default VPC}
 \usage{
-elb_enable_availability_zones_for_load_balancer(LoadBalancerName,
-  AvailabilityZones)
+elb_enable_availability_zones_for_load_balancer(
+  LoadBalancerName,
+  AvailabilityZones
+)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -14,47 +16,9 @@ elb_enable_availability_zones_for_load_balancer(LoadBalancerName,
 \item{AvailabilityZones}{[required] The Availability Zones. These must be in the same region as the load
 balancer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AvailabilityZones = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Adds the specified Availability Zones to the set of Availability Zones
-for the specified load balancer in EC2-Classic or a default VPC.
+Adds the specified Availability Zones to the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC.
 
-For load balancers in a non-default VPC, use
-\code{\link[=elb_attach_load_balancer_to_subnets]{attach_load_balancer_to_subnets}}.
-
-The load balancer evenly distributes requests across all its registered
-Availability Zones that contain instances. For more information, see
-\href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html}{Add or Remove Availability Zones}
-in the \emph{Classic Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_availability_zones_for_load_balancer(
-  LoadBalancerName = "string",
-  AvailabilityZones = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example adds the specified Availability Zone to the specified load
-# balancer.
-svc$enable_availability_zones_for_load_balancer(
-  AvailabilityZones = list(
-    "us-west-2b"
-  ),
-  LoadBalancerName = "my-load-balancer"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/enable_availability_zones_for_load_balancer.html} for full documentation.
 }
 \keyword{internal}

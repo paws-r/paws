@@ -4,13 +4,26 @@
 \alias{codedeploy_update_deployment_group}
 \title{Changes information about a deployment group}
 \usage{
-codedeploy_update_deployment_group(applicationName,
-  currentDeploymentGroupName, newDeploymentGroupName,
-  deploymentConfigName, ec2TagFilters, onPremisesInstanceTagFilters,
-  autoScalingGroups, serviceRoleArn, triggerConfigurations,
-  alarmConfiguration, autoRollbackConfiguration, deploymentStyle,
-  blueGreenDeploymentConfiguration, loadBalancerInfo, ec2TagSet,
-  ecsServices, onPremisesTagSet)
+codedeploy_update_deployment_group(
+  applicationName,
+  currentDeploymentGroupName,
+  newDeploymentGroupName = NULL,
+  deploymentConfigName = NULL,
+  ec2TagFilters = NULL,
+  onPremisesInstanceTagFilters = NULL,
+  autoScalingGroups = NULL,
+  serviceRoleArn = NULL,
+  triggerConfigurations = NULL,
+  alarmConfiguration = NULL,
+  autoRollbackConfiguration = NULL,
+  outdatedInstancesStrategy = NULL,
+  deploymentStyle = NULL,
+  blueGreenDeploymentConfiguration = NULL,
+  loadBalancerInfo = NULL,
+  ec2TagSet = NULL,
+  ecsServices = NULL,
+  onPremisesTagSet = NULL
+)
 }
 \arguments{
 \item{applicationName}{[required] The application name that corresponds to the deployment group to update.}
@@ -47,6 +60,17 @@ deployment group is updated.}
 \item{autoRollbackConfiguration}{Information for an automatic rollback configuration that is added or
 changed when a deployment group is updated.}
 
+\item{outdatedInstancesStrategy}{Indicates what happens when new EC2 instances are launched
+mid-deployment and do not receive the deployed application revision.
+
+If this option is set to \code{UPDATE} or is unspecified, CodeDeploy
+initiates one or more 'auto-update outdated instances' deployments to
+apply the deployed application revision to the new EC2 instances.
+
+If this option is set to \code{IGNORE}, CodeDeploy does not initiate a
+deployment to update the new EC2 instances. This may result in instances
+having different revisions.}
+
 \item{deploymentStyle}{Information about the type of deployment, either in-place or blue/green,
 you want to run and whether to route deployment traffic behind a load
 balancer.}
@@ -67,146 +91,9 @@ service name pair using the format \verb{<clustername>:<servicename>}.}
 \item{onPremisesTagSet}{Information about an on-premises instance tag set. The deployment group
 includes only on-premises instances identified by all the tag groups.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  hooksNotCleanedUp = list(
-    list(
-      name = "string",
-      hook = "string"
-    )
-  )
-)
-}
-}
 \description{
 Changes information about a deployment group.
-}
-\section{Request syntax}{
-\preformatted{svc$update_deployment_group(
-  applicationName = "string",
-  currentDeploymentGroupName = "string",
-  newDeploymentGroupName = "string",
-  deploymentConfigName = "string",
-  ec2TagFilters = list(
-    list(
-      Key = "string",
-      Value = "string",
-      Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-    )
-  ),
-  onPremisesInstanceTagFilters = list(
-    list(
-      Key = "string",
-      Value = "string",
-      Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-    )
-  ),
-  autoScalingGroups = list(
-    "string"
-  ),
-  serviceRoleArn = "string",
-  triggerConfigurations = list(
-    list(
-      triggerName = "string",
-      triggerTargetArn = "string",
-      triggerEvents = list(
-        "DeploymentStart"|"DeploymentSuccess"|"DeploymentFailure"|"DeploymentStop"|"DeploymentRollback"|"DeploymentReady"|"InstanceStart"|"InstanceSuccess"|"InstanceFailure"|"InstanceReady"
-      )
-    )
-  ),
-  alarmConfiguration = list(
-    enabled = TRUE|FALSE,
-    ignorePollAlarmFailure = TRUE|FALSE,
-    alarms = list(
-      list(
-        name = "string"
-      )
-    )
-  ),
-  autoRollbackConfiguration = list(
-    enabled = TRUE|FALSE,
-    events = list(
-      "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
-    )
-  ),
-  deploymentStyle = list(
-    deploymentType = "IN_PLACE"|"BLUE_GREEN",
-    deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
-  ),
-  blueGreenDeploymentConfiguration = list(
-    terminateBlueInstancesOnDeploymentSuccess = list(
-      action = "TERMINATE"|"KEEP_ALIVE",
-      terminationWaitTimeInMinutes = 123
-    ),
-    deploymentReadyOption = list(
-      actionOnTimeout = "CONTINUE_DEPLOYMENT"|"STOP_DEPLOYMENT",
-      waitTimeInMinutes = 123
-    ),
-    greenFleetProvisioningOption = list(
-      action = "DISCOVER_EXISTING"|"COPY_AUTO_SCALING_GROUP"
-    )
-  ),
-  loadBalancerInfo = list(
-    elbInfoList = list(
-      list(
-        name = "string"
-      )
-    ),
-    targetGroupInfoList = list(
-      list(
-        name = "string"
-      )
-    ),
-    targetGroupPairInfoList = list(
-      list(
-        targetGroups = list(
-          list(
-            name = "string"
-          )
-        ),
-        prodTrafficRoute = list(
-          listenerArns = list(
-            "string"
-          )
-        ),
-        testTrafficRoute = list(
-          listenerArns = list(
-            "string"
-          )
-        )
-      )
-    )
-  ),
-  ec2TagSet = list(
-    ec2TagSetList = list(
-      list(
-        list(
-          Key = "string",
-          Value = "string",
-          Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-        )
-      )
-    )
-  ),
-  ecsServices = list(
-    list(
-      serviceName = "string",
-      clusterName = "string"
-    )
-  ),
-  onPremisesTagSet = list(
-    onPremisesTagSetList = list(
-      list(
-        list(
-          Key = "string",
-          Value = "string",
-          Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-        )
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/update_deployment_group.html} for full documentation.
+}
 \keyword{internal}

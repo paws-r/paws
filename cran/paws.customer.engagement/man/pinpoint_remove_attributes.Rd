@@ -5,8 +5,11 @@
 \title{Removes one or more attributes, of the same attribute type, from all the
 endpoints that are associated with an application}
 \usage{
-pinpoint_remove_attributes(ApplicationId, AttributeType,
-  UpdateAttributesRequest)
+pinpoint_remove_attributes(
+  ApplicationId,
+  AttributeType,
+  UpdateAttributesRequest
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
@@ -27,33 +30,9 @@ such as first name, last name, and age.
 
 \item{UpdateAttributesRequest}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AttributesResource = list(
-    ApplicationId = "string",
-    AttributeType = "string",
-    Attributes = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-Removes one or more attributes, of the same attribute type, from all the
-endpoints that are associated with an application.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_attributes(
-  ApplicationId = "string",
-  AttributeType = "string",
-  UpdateAttributesRequest = list(
-    Blacklist = list(
-      "string"
-    )
-  )
-)
-}
-}
+Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application.
 
+See \url{https://paws-r.github.io/docs/pinpoint/remove_attributes.html} for full documentation.
+}
 \keyword{internal}

@@ -5,15 +5,40 @@
 \title{Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon
 S3 bucket}
 \usage{
-rds_restore_db_cluster_from_s3(AvailabilityZones, BackupRetentionPeriod,
-  CharacterSetName, DatabaseName, DBClusterIdentifier,
-  DBClusterParameterGroupName, VpcSecurityGroupIds, DBSubnetGroupName,
-  Engine, EngineVersion, Port, MasterUsername, MasterUserPassword,
-  OptionGroupName, PreferredBackupWindow, PreferredMaintenanceWindow,
-  Tags, StorageEncrypted, KmsKeyId, EnableIAMDatabaseAuthentication,
-  SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix,
-  S3IngestionRoleArn, BacktrackWindow, EnableCloudwatchLogsExports,
-  DeletionProtection, CopyTagsToSnapshot, Domain, DomainIAMRoleName)
+rds_restore_db_cluster_from_s3(
+  AvailabilityZones = NULL,
+  BackupRetentionPeriod = NULL,
+  CharacterSetName = NULL,
+  DatabaseName = NULL,
+  DBClusterIdentifier,
+  DBClusterParameterGroupName = NULL,
+  VpcSecurityGroupIds = NULL,
+  DBSubnetGroupName = NULL,
+  Engine,
+  EngineVersion = NULL,
+  Port = NULL,
+  MasterUsername,
+  MasterUserPassword,
+  OptionGroupName = NULL,
+  PreferredBackupWindow = NULL,
+  PreferredMaintenanceWindow = NULL,
+  Tags = NULL,
+  StorageEncrypted = NULL,
+  KmsKeyId = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  SourceEngine,
+  SourceEngineVersion,
+  S3BucketName,
+  S3Prefix = NULL,
+  S3IngestionRoleArn,
+  BacktrackWindow = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  DeletionProtection = NULL,
+  CopyTagsToSnapshot = NULL,
+  Domain = NULL,
+  DomainIAMRoleName = NULL,
+  ServerlessV2ScalingConfiguration = NULL
+)
 }
 \arguments{
 \item{AvailabilityZones}{A list of Availability Zones (AZs) where instances in the restored DB
@@ -64,12 +89,13 @@ cluster.}
 Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
-Example: \code{mySubnetgroup}}
+Example: \code{mydbsubnetgroup}}
 
 \item{Engine}{[required] The name of the database engine to be used for this DB cluster.
 
-Valid Values: \code{aurora} (for MySQL 5.6-compatible Aurora), \code{aurora-mysql}
-(for MySQL 5.7-compatible Aurora), and \code{aurora-postgresql}}
+Valid Values: \code{aurora} (for MySQL 5.6-compatible Aurora) and
+\code{aurora-mysql} (for MySQL 5.7-compatible and MySQL 8.0-compatible
+Aurora)}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
@@ -79,23 +105,15 @@ To list all of the available engine versions for \code{aurora} (for MySQL
 \verb{aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"}
 
 To list all of the available engine versions for \code{aurora-mysql} (for
-MySQL 5.7-compatible Aurora), use the following command:
+MySQL 5.7-compatible and MySQL 8.0-compatible Aurora), use the following
+command:
 
 \verb{aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"}
 
-To list all of the available engine versions for \code{aurora-postgresql},
-use the following command:
-
-\verb{aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"}
-
 \strong{Aurora MySQL}
 
-Example: \verb{5.6.10a}, \verb{5.6.mysql_aurora.1.19.2}, \verb{5.7.12},
-\verb{5.7.mysql_aurora.2.04.5}
-
-\strong{Aurora PostgreSQL}
-
-Example: \verb{9.6.3}, \code{10.7}}
+Example: \verb{5.6.10a}, \verb{5.6.mysql_aurora.1.19.2},
+\verb{5.7.mysql_aurora.2.07.1}, \verb{8.0.mysql_aurora.3.02.0}}
 
 \item{Port}{The port number on which the instances in the restored DB cluster accept
 connections.
@@ -128,9 +146,9 @@ automated backups are enabled using the \code{BackupRetentionPeriod}
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available, see
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred Maintenance Window}
-in the \emph{Amazon Aurora User Guide.}
+block of time for each Amazon Web Services Region. To view the time
+blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow}{Backup window}
+in the \emph{Amazon Aurora User Guide}.
 
 Constraints:
 \itemize{
@@ -146,9 +164,9 @@ Universal Coordinated Time (UTC).
 Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred Maintenance Window}
-in the \emph{Amazon Aurora User Guide.}
+block of time for each Amazon Web Services Region, occurring on a random
+day of the week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred Maintenance Window}
+in the \emph{Amazon Aurora User Guide}.
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
@@ -158,23 +176,24 @@ Constraints: Minimum 30-minute window.}
 
 \item{StorageEncrypted}{A value that indicates whether the restored DB cluster is encrypted.}
 
-\item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB cluster.
+\item{KmsKeyId}{The Amazon Web Services KMS key identifier for an encrypted DB cluster.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK). To use a CMK in a
-different AWS account, specify the key ARN or alias ARN.
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
 
 If the StorageEncrypted parameter is enabled, and you do not specify a
 value for the \code{KmsKeyId} parameter, then Amazon RDS will use your
-default CMK. There is a default CMK for your AWS account. Your AWS
-account has a different default CMK for each AWS Region.}
+default KMS key. There is a default KMS key for your Amazon Web Services
+account. Your Amazon Web Services account has a different default KMS
+key for each Amazon Web Services Region.}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping isn't enabled.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
-in the \emph{Amazon Aurora User Guide.}}
+in the \emph{Amazon Aurora User Guide}.}
 
 \item{SourceEngine}{[required] The identifier for the database engine that was backed up to create the
 files stored in the Amazon S3 bucket.
@@ -195,9 +214,9 @@ create the Amazon Aurora DB cluster. If you do not specify a
 \strong{SourceS3Prefix} value, then the Amazon Aurora DB cluster is created
 by using all of the files in the Amazon S3 bucket.}
 
-\item{S3IngestionRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-(IAM) role that authorizes Amazon RDS to access the Amazon S3 bucket on
-your behalf.}
+\item{S3IngestionRoleArn}{[required] The Amazon Resource Name (ARN) of the Amazon Web Services Identity and
+Access Management (IAM) role that authorizes Amazon RDS to access the
+Amazon S3 bucket on your behalf.}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
@@ -213,13 +232,23 @@ Constraints:
 }}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB cluster is to export to CloudWatch
-Logs. The values in the list depend on the DB engine being used. For
-more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+Logs. The values in the list depend on the DB engine being used.
+
+\strong{Aurora MySQL}
+
+Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowquery}.
+
+\strong{Aurora PostgreSQL}
+
+Possible value is \code{postgresql}.
+
+For more information about exporting CloudWatch Logs for Amazon Aurora,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection is disabled.}
+enabled. By default, deletion protection isn't enabled.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
 cluster to snapshots of the restored DB cluster. The default is not to
@@ -235,208 +264,12 @@ in the \emph{Amazon Aurora User Guide}.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
 Directory Service.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AllocatedStorage = 123,
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    CharacterSetName = "string",
-    DatabaseName = "string",
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    CustomEndpoints = list(
-      "string"
-    ),
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    DBClusterOptionGroupMemberships = list(
-      list(
-        DBClusterOptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    ReplicationSourceIdentifier = "string",
-    ReadReplicaIdentifiers = list(
-      "string"
-    ),
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string",
-        FeatureName = "string"
-      )
-    ),
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    CloneGroupId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EarliestBacktrackTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    BacktrackWindow = 123,
-    BacktrackConsumedChangeRecords = 123,
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    Capacity = 123,
-    EngineMode = "string",
-    ScalingConfigurationInfo = list(
-      MinCapacity = 123,
-      MaxCapacity = 123,
-      AutoPause = TRUE|FALSE,
-      SecondsUntilAutoPause = 123,
-      TimeoutAction = "string"
-    ),
-    DeletionProtection = TRUE|FALSE,
-    HttpEndpointEnabled = TRUE|FALSE,
-    ActivityStreamMode = "sync"|"async",
-    ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-    ActivityStreamKmsKeyId = "string",
-    ActivityStreamKinesisStreamName = "string",
-    CopyTagsToSnapshot = TRUE|FALSE,
-    CrossAccountClone = TRUE|FALSE,
-    DomainMemberships = list(
-      list(
-        Domain = "string",
-        Status = "string",
-        FQDN = "string",
-        IAMRoleName = "string"
-      )
-    ),
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-    GlobalWriteForwardingRequested = TRUE|FALSE,
-    PendingModifiedValues = list(
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      ),
-      DBClusterIdentifier = "string",
-      MasterUserPassword = "string",
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-      EngineVersion = "string"
-    )
-  )
-)
-}
+
+\item{ServerlessV2ScalingConfiguration}{}
 }
 \description{
-Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon
-S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket
-and the data must be created using the Percona XtraBackup utility as
-described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3}{Migrating Data from MySQL by Using an Amazon S3 Bucket}
-in the \emph{Amazon Aurora User Guide}.
+Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and the data must be created using the Percona XtraBackup utility as described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3}{Migrating Data from MySQL by Using an Amazon S3 Bucket} in the \emph{Amazon Aurora User Guide}.
 
-This action only restores the DB cluster, not the DB instances for that
-DB cluster. You must invoke the
-\code{\link[=rds_create_db_instance]{create_db_instance}} action to create DB
-instances for the restored DB cluster, specifying the identifier of the
-restored DB cluster in \code{DBClusterIdentifier}. You can create DB
-instances only after the
-\code{\link[=rds_restore_db_cluster_from_s3]{restore_db_cluster_from_s3}} action
-has completed and the DB cluster is available.
-
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
-
-This action only applies to Aurora DB clusters. The source DB engine
-must be MySQL.
+See \url{https://paws-r.github.io/docs/rds/restore_db_cluster_from_s3.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$restore_db_cluster_from_s3(
-  AvailabilityZones = list(
-    "string"
-  ),
-  BackupRetentionPeriod = 123,
-  CharacterSetName = "string",
-  DatabaseName = "string",
-  DBClusterIdentifier = "string",
-  DBClusterParameterGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  DBSubnetGroupName = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  Port = 123,
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  OptionGroupName = "string",
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  SourceEngine = "string",
-  SourceEngineVersion = "string",
-  S3BucketName = "string",
-  S3Prefix = "string",
-  S3IngestionRoleArn = "string",
-  BacktrackWindow = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  DeletionProtection = TRUE|FALSE,
-  CopyTagsToSnapshot = TRUE|FALSE,
-  Domain = "string",
-  DomainIAMRoleName = "string"
-)
-}
-}
-
 \keyword{internal}

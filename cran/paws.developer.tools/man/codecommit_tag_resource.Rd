@@ -12,22 +12,9 @@ or update tags.}
 
 \item{tags}{[required] The key-value pair to use when tagging this repository.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or updates tags for a resource in AWS CodeCommit. For a list of
-valid resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations}
-in the \emph{AWS CodeCommit User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
+Adds or updates tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations} in the \emph{AWS CodeCommit User Guide}.
 
+See \url{https://paws-r.github.io/docs/codecommit/tag_resource.html} for full documentation.
+}
 \keyword{internal}

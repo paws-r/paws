@@ -5,8 +5,11 @@
 \title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications}
 \usage{
-kinesisanalytics_add_application_input(ApplicationName,
-  CurrentApplicationVersionId, Input)
+kinesisanalytics_add_application_input(
+  ApplicationName,
+  CurrentApplicationVersionId,
+  Input
+)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of your existing Amazon Kinesis Analytics application to which you
@@ -20,79 +23,9 @@ operation to find the current application version.}
 \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_Input.html}{Input}
 to add.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Adds a streaming source to your Amazon Kinesis application. For
-conceptual information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
-
-You can add a streaming source either when you create an application or
-you can use this operation to add a streaming source after you create an
-application. For more information, see
-\code{\link[=kinesisanalytics_create_application]{create_application}}.
-
-Any configuration update, including adding a streaming source using this
-operation, results in a new version of the application. You can use the
-\code{\link[=kinesisanalytics_describe_application]{describe_application}}
-operation to find the current application version.
-
-This operation requires permissions to perform the
-\code{kinesisanalytics:AddApplicationInput} action.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/add_application_input.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_application_input(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  Input = list(
-    NamePrefix = "string",
-    InputProcessingConfiguration = list(
-      InputLambdaProcessor = list(
-        ResourceARN = "string",
-        RoleARN = "string"
-      )
-    ),
-    KinesisStreamsInput = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    ),
-    KinesisFirehoseInput = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    ),
-    InputParallelism = list(
-      Count = 123
-    ),
-    InputSchema = list(
-      RecordFormat = list(
-        RecordFormatType = "JSON"|"CSV",
-        MappingParameters = list(
-          JSONMappingParameters = list(
-            RecordRowPath = "string"
-          ),
-          CSVMappingParameters = list(
-            RecordRowDelimiter = "string",
-            RecordColumnDelimiter = "string"
-          )
-        )
-      ),
-      RecordEncoding = "string",
-      RecordColumns = list(
-        list(
-          Name = "string",
-          Mapping = "string",
-          SqlType = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

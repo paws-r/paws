@@ -4,10 +4,20 @@
 \alias{route53domains_transfer_domain}
 \title{Transfers a domain from another registrar to Amazon Route 53}
 \usage{
-route53domains_transfer_domain(DomainName, IdnLangCode, DurationInYears,
-  Nameservers, AuthCode, AutoRenew, AdminContact, RegistrantContact,
-  TechContact, PrivacyProtectAdminContact,
-  PrivacyProtectRegistrantContact, PrivacyProtectTechContact)
+route53domains_transfer_domain(
+  DomainName,
+  IdnLangCode = NULL,
+  DurationInYears,
+  Nameservers = NULL,
+  AuthCode = NULL,
+  AutoRenew = NULL,
+  AdminContact,
+  RegistrantContact,
+  TechContact,
+  PrivacyProtectAdminContact = NULL,
+  PrivacyProtectRegistrantContact = NULL,
+  PrivacyProtectTechContact = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to transfer to Route 53. The
@@ -56,6 +66,9 @@ our registrar associate, Gandi (for all other TLDs). If you specify
 \code{false}, WHOIS queries return the information that you entered for the
 admin contact.
 
+You must specify the same privacy setting for the administrative,
+registrant, and technical contacts.
+
 Default: \code{true}}
 
 \item{PrivacyProtectRegistrantContact}{Whether you want to conceal contact information from WHOIS queries. If
@@ -64,6 +77,9 @@ either for Amazon Registrar (for .com, .net, and .org domains) or for
 our registrar associate, Gandi (for all other TLDs). If you specify
 \code{false}, WHOIS queries return the information that you entered for the
 registrant contact (domain owner).
+
+You must specify the same privacy setting for the administrative,
+registrant, and technical contacts.
 
 Default: \code{true}}
 
@@ -74,136 +90,14 @@ our registrar associate, Gandi (for all other TLDs). If you specify
 \code{false}, WHOIS queries return the information that you entered for the
 technical contact.
 
+You must specify the same privacy setting for the administrative,
+registrant, and technical contacts.
+
 Default: \code{true}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
-}
 \description{
-Transfers a domain from another registrar to Amazon Route 53. When the
-transfer is complete, the domain is registered either with Amazon
-Registrar (for .com, .net, and .org domains) or with our registrar
-associate, Gandi (for all other TLDs).
+Transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered either with Amazon Registrar (for .com, .net, and .org domains) or with our registrar associate, Gandi (for all other TLDs).
 
-For more information about transferring domains, see the following
-topics:
-\itemize{
-\item For transfer requirements, a detailed procedure, and information
-about viewing the status of a domain that you're transferring to
-Route 53, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html}{Transferring Registration for a Domain to Amazon Route 53}
-in the \emph{Amazon Route 53 Developer Guide}.
-\item For information about how to transfer a domain from one AWS account
-to another, see
-\code{\link[=route53domains_transfer_domain_to_another_aws_account]{transfer_domain_to_another_aws_account}}.
-\item For information about how to transfer a domain to another domain
-registrar, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html}{Transferring a Domain from Amazon Route 53 to Another Registrar}
-in the \emph{Amazon Route 53 Developer Guide}.
+See \url{https://paws-r.github.io/docs/route53domains/transfer_domain.html} for full documentation.
 }
-
-If the registrar for your domain is also the DNS service provider for
-the domain, we highly recommend that you transfer your DNS service to
-Route 53 or to another DNS service provider before you transfer your
-registration. Some registrars provide free DNS service when you purchase
-a domain registration. When you transfer the registration, the previous
-registrar will not renew your domain registration and could end your DNS
-service at any time.
-
-If the registrar for your domain is also the DNS service provider for
-the domain and you don't transfer DNS service to another provider, your
-website, email, and the web applications associated with the domain
-might become unavailable.
-
-If the transfer is successful, this method returns an operation ID that
-you can use to track the progress and completion of the action. If the
-transfer doesn't complete successfully, the domain registrant will be
-notified by email.
-}
-\section{Request syntax}{
-\preformatted{svc$transfer_domain(
-  DomainName = "string",
-  IdnLangCode = "string",
-  DurationInYears = 123,
-  Nameservers = list(
-    list(
-      Name = "string",
-      GlueIps = list(
-        "string"
-      )
-    )
-  ),
-  AuthCode = "string",
-  AutoRenew = TRUE|FALSE,
-  AdminContact = list(
-    FirstName = "string",
-    LastName = "string",
-    ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-    OrganizationName = "string",
-    AddressLine1 = "string",
-    AddressLine2 = "string",
-    City = "string",
-    State = "string",
-    CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-    ZipCode = "string",
-    PhoneNumber = "string",
-    Email = "string",
-    Fax = "string",
-    ExtraParams = list(
-      list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-        Value = "string"
-      )
-    )
-  ),
-  RegistrantContact = list(
-    FirstName = "string",
-    LastName = "string",
-    ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-    OrganizationName = "string",
-    AddressLine1 = "string",
-    AddressLine2 = "string",
-    City = "string",
-    State = "string",
-    CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-    ZipCode = "string",
-    PhoneNumber = "string",
-    Email = "string",
-    Fax = "string",
-    ExtraParams = list(
-      list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-        Value = "string"
-      )
-    )
-  ),
-  TechContact = list(
-    FirstName = "string",
-    LastName = "string",
-    ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
-    OrganizationName = "string",
-    AddressLine1 = "string",
-    AddressLine2 = "string",
-    City = "string",
-    State = "string",
-    CountryCode = "AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BR"|"BS"|"BT"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GH"|"GI"|"GL"|"GM"|"GN"|"GQ"|"GR"|"GT"|"GU"|"GW"|"GY"|"HK"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IQ"|"IR"|"IS"|"IT"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PT"|"PW"|"PY"|"QA"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"ST"|"SV"|"SY"|"SZ"|"TC"|"TD"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
-    ZipCode = "string",
-    PhoneNumber = "string",
-    Email = "string",
-    Fax = "string",
-    ExtraParams = list(
-      list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
-        Value = "string"
-      )
-    )
-  ),
-  PrivacyProtectAdminContact = TRUE|FALSE,
-  PrivacyProtectRegistrantContact = TRUE|FALSE,
-  PrivacyProtectTechContact = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

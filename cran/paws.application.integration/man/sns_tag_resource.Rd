@@ -12,37 +12,9 @@ sns_tag_resource(ResourceArn, Tags)
 \item{Tags}{[required] The tags to be added to the specified topic. A tag consists of a
 required key and an optional value.}
 }
-\value{
-An empty list.
-}
 \description{
-Add tags to the specified Amazon SNS topic. For an overview, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html}{Amazon SNS Tags} in
-the \emph{Amazon SNS Developer Guide}.
+Add tags to the specified Amazon SNS topic. For an overview, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html}{Amazon SNS Tags} in the \emph{Amazon SNS Developer Guide}.
 
-When you use topic tags, keep the following guidelines in mind:
-\itemize{
-\item Adding more than 50 tags to a topic isn't recommended.
-\item Tags don't have any semantic meaning. Amazon SNS interprets tags as
-character strings.
-\item Tags are case-sensitive.
-\item A new tag with a key identical to that of an existing tag overwrites
-the existing tag.
-\item Tagging actions are limited to 10 TPS per AWS account, per AWS
-region. If your application requires a higher throughput, file a
-technical support request.
+See \url{https://paws-r.github.io/docs/sns/tag_resource.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

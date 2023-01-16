@@ -4,9 +4,18 @@
 \alias{sagemaker_list_training_jobs}
 \title{Lists training jobs}
 \usage{
-sagemaker_list_training_jobs(NextToken, MaxResults, CreationTimeAfter,
-  CreationTimeBefore, LastModifiedTimeAfter, LastModifiedTimeBefore,
-  NameContains, StatusEquals, SortBy, SortOrder)
+sagemaker_list_training_jobs(
+  NextToken = NULL,
+  MaxResults = NULL,
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  NameContains = NULL,
+  StatusEquals = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{NextToken}{If the result of the previous
@@ -37,53 +46,9 @@ jobs whose name contains the specified string.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrainingJobSummaries = list(
-    list(
-      TrainingJobName = "string",
-      TrainingJobArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TrainingEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists training jobs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_training_jobs(
-  NextToken = "string",
-  MaxResults = 123,
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  NameContains = "string",
-  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_training_jobs.html} for full documentation.
+}
 \keyword{internal}

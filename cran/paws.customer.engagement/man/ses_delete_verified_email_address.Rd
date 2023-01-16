@@ -9,28 +9,9 @@ ses_delete_verified_email_address(EmailAddress)
 \arguments{
 \item{EmailAddress}{[required] An email address to be removed from the list of verified addresses.}
 }
-\value{
-An empty list.
-}
 \description{
-Deprecated. Use the \code{\link[=ses_delete_identity]{delete_identity}} operation
-to delete email addresses and domains.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_verified_email_address(
-  EmailAddress = "string"
-)
-}
-}
+Deprecated. Use the \code{\link[=ses_delete_identity]{delete_identity}} operation to delete email addresses and domains.
 
-\examples{
-\dontrun{
-# The following example deletes an email address from the list of
-# identities that have been submitted for verification with Amazon SES:
-svc$delete_verified_email_address(
-  EmailAddress = "user@example.com"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/delete_verified_email_address.html} for full documentation.
 }
 \keyword{internal}

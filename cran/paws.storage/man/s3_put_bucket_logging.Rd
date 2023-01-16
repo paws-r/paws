@@ -5,8 +5,13 @@
 \title{Set the logging parameters for a bucket and to specify permissions for
 who can view and modify the logging parameters}
 \usage{
-s3_put_bucket_logging(Bucket, BucketLoggingStatus, ContentMD5,
-  ExpectedBucketOwner)
+s3_put_bucket_logging(
+  Bucket,
+  BucketLoggingStatus,
+  ContentMD5 = NULL,
+  ChecksumAlgorithm = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to set the logging parameters.}
@@ -16,121 +21,28 @@ s3_put_bucket_logging(Bucket, BucketLoggingStatus, ContentMD5,
 \item{ContentMD5}{The MD5 hash of the \code{\link[=s3_put_bucket_logging]{put_bucket_logging}}
 request body.
 
-For requests made using the AWS Command Line Interface (CLI) or AWS
-SDKs, this field is calculated automatically.}
+For requests made using the Amazon Web Services Command Line Interface
+(CLI) or Amazon Web Services SDKs, this field is calculated
+automatically.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Set the logging parameters for a bucket and to specify permissions for
-who can view and modify the logging parameters. All logs are saved to
-buckets in the same AWS Region as the source bucket. To set the logging
-status of a bucket, you must be the bucket owner.
+Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters. All logs are saved to buckets in the same Amazon Web Services Region as the source bucket. To set the logging status of a bucket, you must be the bucket owner.
 
-The bucket owner is automatically granted FULL_CONTROL to all logs. You
-use the \code{Grantee} request element to grant access to other people. The
-\code{Permissions} request element specifies the kind of access the grantee
-has to the logs.
-
-\strong{Grantee Values}
-
-You can specify the person (grantee) to whom you're assigning access
-rights (using request elements) in the following ways:
-\itemize{
-\item By the person's ID:
-
-\verb{<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName> </Grantee>}
-
-DisplayName is optional and ignored in the request.
-\item By Email address:
-
-\verb{ <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@email.com<></EmailAddress></Grantee>}
-
-The grantee is resolved to the CanonicalUser and, in a response to a
-GET Object acl request, appears as the CanonicalUser.
-\item By URI:
-
-\verb{<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>}
-}
-
-To enable logging, you use LoggingEnabled and its children request
-elements. To disable logging, you use an empty BucketLoggingStatus
-request element:
-
-\verb{<BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" />}
-
-For more information about server access logging, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html}{Server Access Logging}.
-
-For more information about creating a bucket, see
-\code{\link[=s3_create_bucket]{create_bucket}}. For more information about
-returning the logging status of a bucket, see
-\code{\link[=s3_get_bucket_logging]{get_bucket_logging}}.
-
-The following operations are related to
-\code{\link[=s3_put_bucket_logging]{put_bucket_logging}}:
-\itemize{
-\item \code{\link[=s3_put_object]{put_object}}
-\item \code{\link[=s3_delete_bucket]{delete_bucket}}
-\item \code{\link[=s3_create_bucket]{create_bucket}}
-\item \code{\link[=s3_get_bucket_logging]{get_bucket_logging}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_bucket_logging(
-  Bucket = "string",
-  BucketLoggingStatus = list(
-    LoggingEnabled = list(
-      TargetBucket = "string",
-      TargetGrants = list(
-        list(
-          Grantee = list(
-            DisplayName = "string",
-            EmailAddress = "string",
-            ID = "string",
-            Type = "CanonicalUser"|"AmazonCustomerByEmail"|"Group",
-            URI = "string"
-          ),
-          Permission = "FULL_CONTROL"|"READ"|"WRITE"
-        )
-      ),
-      TargetPrefix = "string"
-    )
-  ),
-  ContentMD5 = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example sets logging policy on a bucket. For the Log
-# Delivery group to deliver logs to the destination bucket, it needs
-# permission for the READ_ACP action which the policy grants.
-svc$put_bucket_logging(
-  Bucket = "sourcebucket",
-  BucketLoggingStatus = list(
-    LoggingEnabled = list(
-      TargetBucket = "targetbucket",
-      TargetGrants = list(
-        list(
-          Grantee = list(
-            Type = "Group",
-            URI = "http://acs.amazonaws.com/groups/global/AllUsers"
-          ),
-          Permission = "READ"
-        )
-      ),
-      TargetPrefix = "MyBucketLogs/"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/put_bucket_logging.html} for full documentation.
 }
 \keyword{internal}

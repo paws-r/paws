@@ -5,12 +5,16 @@
 \title{Gets all the usage plan keys representing the API keys added to a
 specified usage plan}
 \usage{
-apigateway_get_usage_plan_keys(usagePlanId, position, limit, nameQuery)
+apigateway_get_usage_plan_keys(
+  usagePlanId,
+  position = NULL,
+  limit = NULL,
+  nameQuery = NULL
+)
 }
 \arguments{
-\item{usagePlanId}{[required] [Required] The Id of the UsagePlan resource representing the usage
-plan containing the to-be-retrieved UsagePlanKey resource representing a
-plan customer.}
+\item{usagePlanId}{[required] The Id of the UsagePlan resource representing the usage plan containing
+the to-be-retrieved UsagePlanKey resource representing a plan customer.}
 
 \item{position}{The current pagination position in the paged result set.}
 
@@ -20,32 +24,9 @@ and the maximum value is 500.}
 \item{nameQuery}{A query parameter specifying the name of the to-be-returned usage plan
 keys.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  position = "string",
-  items = list(
-    list(
-      id = "string",
-      type = "string",
-      value = "string",
-      name = "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets all the usage plan keys representing the API keys added to a
-specified usage plan.
-}
-\section{Request syntax}{
-\preformatted{svc$get_usage_plan_keys(
-  usagePlanId = "string",
-  position = "string",
-  limit = 123,
-  nameQuery = "string"
-)
-}
-}
+Gets all the usage plan keys representing the API keys added to a specified usage plan.
 
+See \url{https://paws-r.github.io/docs/apigateway/get_usage_plan_keys.html} for full documentation.
+}
 \keyword{internal}

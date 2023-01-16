@@ -17,26 +17,9 @@ or components, but not a mix of both types.}
 components, use \code{PAUSE} or \code{RESUME}. For instances, use \code{TRY_CANCEL},
 \code{RERUN}, or \code{MARK_FINISHED}.}
 }
-\value{
-An empty list.
-}
 \description{
-Requests that the status of the specified physical or logical pipeline
-objects be updated in the specified pipeline. This update might not
-occur immediately, but is eventually consistent. The status that can be
-set depends on the type of object (for example, DataNode or Activity).
-You cannot perform this operation on \code{FINISHED} pipelines and attempting
-to do so returns \code{InvalidRequestException}.
-}
-\section{Request syntax}{
-\preformatted{svc$set_status(
-  pipelineId = "string",
-  objectIds = list(
-    "string"
-  ),
-  status = "string"
-)
-}
-}
+Requests that the status of the specified physical or logical pipeline objects be updated in the specified pipeline. This update might not occur immediately, but is eventually consistent. The status that can be set depends on the type of object (for example, DataNode or Activity). You cannot perform this operation on \code{FINISHED} pipelines and attempting to do so returns \code{InvalidRequestException}.
 
+See \url{https://paws-r.github.io/docs/datapipeline/set_status.html} for full documentation.
+}
 \keyword{internal}

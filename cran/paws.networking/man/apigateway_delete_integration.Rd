@@ -7,26 +7,15 @@
 apigateway_delete_integration(restApiId, resourceId, httpMethod)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Specifies a delete integration request's resource
-identifier.}
+\item{resourceId}{[required] Specifies a delete integration request's resource identifier.}
 
-\item{httpMethod}{[required] [Required] Specifies a delete integration request's HTTP method.}
-}
-\value{
-An empty list.
+\item{httpMethod}{[required] Specifies a delete integration request's HTTP method.}
 }
 \description{
 Represents a delete integration.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_integration(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_integration.html} for full documentation.
+}
 \keyword{internal}

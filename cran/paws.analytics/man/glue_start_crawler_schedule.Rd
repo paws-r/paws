@@ -11,19 +11,9 @@ glue_start_crawler_schedule(CrawlerName)
 \arguments{
 \item{CrawlerName}{[required] Name of the crawler to schedule.}
 }
-\value{
-An empty list.
-}
 \description{
-Changes the schedule state of the specified crawler to \code{SCHEDULED},
-unless the crawler is already running or the schedule state is already
-\code{SCHEDULED}.
-}
-\section{Request syntax}{
-\preformatted{svc$start_crawler_schedule(
-  CrawlerName = "string"
-)
-}
-}
+Changes the schedule state of the specified crawler to \code{SCHEDULED}, unless the crawler is already running or the schedule state is already \code{SCHEDULED}.
 
+See \url{https://paws-r.github.io/docs/glue/start_crawler_schedule.html} for full documentation.
+}
 \keyword{internal}

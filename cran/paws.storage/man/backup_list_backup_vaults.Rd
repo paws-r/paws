@@ -5,7 +5,7 @@
 \title{Returns a list of recovery point storage containers along with
 information about them}
 \usage{
-backup_list_backup_vaults(NextToken, MaxResults)
+backup_list_backup_vaults(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The next item following a partial list of returned items. For example,
@@ -15,34 +15,9 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupVaultList = list(
-    list(
-      BackupVaultName = "string",
-      BackupVaultArn = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      EncryptionKeyArn = "string",
-      CreatorRequestId = "string",
-      NumberOfRecoveryPoints = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of recovery point storage containers along with
-information about them.
-}
-\section{Request syntax}{
-\preformatted{svc$list_backup_vaults(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns a list of recovery point storage containers along with information about them.
 
+See \url{https://paws-r.github.io/docs/backup/list_backup_vaults.html} for full documentation.
+}
 \keyword{internal}

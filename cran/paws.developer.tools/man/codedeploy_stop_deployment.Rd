@@ -4,7 +4,7 @@
 \alias{codedeploy_stop_deployment}
 \title{Attempts to stop an ongoing deployment}
 \usage{
-codedeploy_stop_deployment(deploymentId, autoRollbackEnabled)
+codedeploy_stop_deployment(deploymentId, autoRollbackEnabled = NULL)
 }
 \arguments{
 \item{deploymentId}{[required] The unique ID of a deployment.}
@@ -13,22 +13,9 @@ codedeploy_stop_deployment(deploymentId, autoRollbackEnabled)
 been updated should be rolled back to the previous version of the
 application revision.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  status = "Pending"|"Succeeded",
-  statusMessage = "string"
-)
-}
-}
 \description{
 Attempts to stop an ongoing deployment.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_deployment(
-  deploymentId = "string",
-  autoRollbackEnabled = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/stop_deployment.html} for full documentation.
+}
 \keyword{internal}

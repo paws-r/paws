@@ -3,10 +3,13 @@
 \name{route53resolver_list_resolver_dnssec_configs}
 \alias{route53resolver_list_resolver_dnssec_configs}
 \title{Lists the configurations for DNSSEC validation that are associated with
-the current AWS account}
+the current Amazon Web Services account}
 \usage{
-route53resolver_list_resolver_dnssec_configs(MaxResults, NextToken,
-  Filters)
+route53resolver_list_resolver_dnssec_configs(
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{MaxResults}{\emph{Optional}: An integer that specifies the maximum number of DNSSEC
@@ -14,9 +17,9 @@ configuration results that you want Amazon Route 53 to return. If you
 don't specify a value for \code{MaxResults}, Route 53 returns up to 100
 configuration per page.}
 
-\item{NextToken}{(Optional) If the current AWS account has more than \code{MaxResults} DNSSEC
-configurations, use \code{NextToken} to get the second and subsequent pages
-of results.
+\item{NextToken}{(Optional) If the current Amazon Web Services account has more than
+\code{MaxResults} DNSSEC configurations, use \code{NextToken} to get the second
+and subsequent pages of results.
 
 For the first
 \code{\link[=route53resolver_list_resolver_dnssec_configs]{list_resolver_dnssec_configs}}
@@ -28,38 +31,9 @@ request.}
 
 \item{Filters}{An optional specification to return a subset of objects.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  ResolverDnssecConfigs = list(
-    list(
-      Id = "string",
-      OwnerId = "string",
-      ResourceId = "string",
-      ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-    )
-  )
-)
-}
-}
 \description{
-Lists the configurations for DNSSEC validation that are associated with
-the current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_resolver_dnssec_configs(
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
+Lists the configurations for DNSSEC validation that are associated with the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/route53resolver/list_resolver_dnssec_configs.html} for full documentation.
+}
 \keyword{internal}

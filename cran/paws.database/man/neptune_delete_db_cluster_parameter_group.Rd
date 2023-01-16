@@ -16,18 +16,9 @@ Constraints:
 \item Cannot be associated with any DB clusters.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a specified DB cluster parameter group. The DB cluster parameter
-group to be deleted can't be associated with any DB clusters.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string"
-)
-}
-}
+Deletes a specified DB cluster parameter group. The DB cluster parameter group to be deleted can't be associated with any DB clusters.
 
+See \url{https://paws-r.github.io/docs/neptune/delete_db_cluster_parameter_group.html} for full documentation.
+}
 \keyword{internal}

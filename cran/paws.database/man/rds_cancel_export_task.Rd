@@ -10,44 +10,9 @@ rds_cancel_export_task(ExportTaskIdentifier)
 \arguments{
 \item{ExportTaskIdentifier}{[required] The identifier of the snapshot export task to cancel.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExportTaskIdentifier = "string",
-  SourceArn = "string",
-  ExportOnly = list(
-    "string"
-  ),
-  SnapshotTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  TaskStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  TaskEndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  S3Bucket = "string",
-  S3Prefix = "string",
-  IamRoleArn = "string",
-  KmsKeyId = "string",
-  Status = "string",
-  PercentProgress = 123,
-  TotalExtractedDataInGB = 123,
-  FailureCause = "string",
-  WarningMessage = "string"
-)
-}
-}
 \description{
-Cancels an export task in progress that is exporting a snapshot to
-Amazon S3. Any data that has already been written to the S3 bucket isn't
-removed.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_export_task(
-  ExportTaskIdentifier = "string"
-)
-}
-}
+Cancels an export task in progress that is exporting a snapshot to Amazon S3. Any data that has already been written to the S3 bucket isn't removed.
 
+See \url{https://paws-r.github.io/docs/rds/cancel_export_task.html} for full documentation.
+}
 \keyword{internal}

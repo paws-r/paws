@@ -55,10 +55,10 @@ cloudsearch_build_suggesters <- function(DomainName) {
 #' Creates a new search domain
 #'
 #' @description
-#' Creates a new search domain. For more information, see [Creating a
-#' Search
-#' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Creates a new search domain. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html"
+#' target="_blank">Creating a Search Domain</a> in the *Amazon CloudSearch
+#' Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_create_domain(DomainName)
@@ -130,9 +130,10 @@ cloudsearch_create_domain <- function(DomainName) {
 #' @description
 #' Configures an analysis scheme that can be applied to a `text` or
 #' `text-array` field to define language-specific text processing options.
-#' For more information, see [Configuring Analysis
-#' Schemes](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html"
+#' target="_blank">Configuring Analysis Schemes</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_define_analysis_scheme(DomainName, AnalysisScheme)
@@ -214,10 +215,10 @@ cloudsearch_define_analysis_scheme <- function(DomainName, AnalysisScheme) {
 #' @description
 #' Configures an `Expression` for the search domain. Used to create new
 #' expressions and modify existing ones. If the expression exists, the new
-#' configuration replaces the old one. For more information, see
-#' [Configuring
-#' Expressions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' configuration replaces the old one. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html"
+#' target="_blank">Configuring Expressions</a> in the *Amazon CloudSearch
+#' Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_define_expression(DomainName, Expression)
@@ -289,10 +290,10 @@ cloudsearch_define_expression <- function(DomainName, Expression) {
 #' configuration specifies a unique name, the index field type, and the
 #' options you want to configure for the field. The options you can specify
 #' depend on the `IndexFieldType`. If the field exists, the new
-#' configuration replaces the old one. For more information, see
-#' [Configuring Index
-#' Fields](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' configuration replaces the old one. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html"
+#' target="_blank">Configuring Index Fields</a> in the *Amazon CloudSearch
+#' Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_define_index_field(DomainName, IndexField)
@@ -528,9 +529,10 @@ cloudsearch_define_index_field <- function(DomainName, IndexField) {
 #' possible matches before users finish typing their queries. When you
 #' configure a suggester, you must specify the name of the text field you
 #' want to search for possible matches and a unique name for the suggester.
-#' For more information, see [Getting Search
-#' Suggestions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html"
+#' target="_blank">Getting Search Suggestions</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_define_suggester(DomainName, Suggester)
@@ -604,10 +606,10 @@ cloudsearch_define_suggester <- function(DomainName, Suggester) {
 #' Deletes an analysis scheme
 #'
 #' @description
-#' Deletes an analysis scheme. For more information, see [Configuring
-#' Analysis
-#' Schemes](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Deletes an analysis scheme. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html"
+#' target="_blank">Configuring Analysis Schemes</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_delete_analysis_scheme(DomainName, AnalysisSchemeName)
@@ -678,10 +680,10 @@ cloudsearch_delete_analysis_scheme <- function(DomainName, AnalysisSchemeName) {
 #'
 #' @description
 #' Permanently deletes a search domain and all of its data. Once a domain
-#' has been deleted, it cannot be recovered. For more information, see
-#' [Deleting a Search
-#' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' has been deleted, it cannot be recovered. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html"
+#' target="_blank">Deleting a Search Domain</a> in the *Amazon CloudSearch
+#' Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_delete_domain(DomainName)
@@ -748,9 +750,10 @@ cloudsearch_delete_domain <- function(DomainName) {
 #'
 #' @description
 #' Removes an `Expression` from the search domain. For more information,
-#' see [Configuring
-#' Expressions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html"
+#' target="_blank">Configuring Expressions</a> in the *Amazon CloudSearch
+#' Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_delete_expression(DomainName, ExpressionName)
@@ -814,9 +817,10 @@ cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
 #'
 #' @description
 #' Removes an `IndexField` from the search domain. For more information,
-#' see [Configuring Index
-#' Fields](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html"
+#' target="_blank">Configuring Index Fields</a> in the *Amazon CloudSearch
+#' Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_delete_index_field(DomainName, IndexFieldName)
@@ -963,9 +967,10 @@ cloudsearch_delete_index_field <- function(DomainName, IndexFieldName) {
 #' Deletes a suggester
 #'
 #' @description
-#' Deletes a suggester. For more information, see [Getting Search
-#' Suggestions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Deletes a suggester. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html"
+#' target="_blank">Getting Search Suggestions</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_delete_suggester(DomainName, SuggesterName)
@@ -1037,10 +1042,10 @@ cloudsearch_delete_suggester <- function(DomainName, SuggesterName) {
 #' Can be limited to specific analysis schemes by name. By default, shows
 #' all analysis schemes and includes any pending changes to the
 #' configuration. Set the `Deployed` option to `true` to show the active
-#' configuration and exclude pending changes. For more information, see
-#' [Configuring Analysis
-#' Schemes](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' configuration and exclude pending changes. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html"
+#' target="_blank">Configuring Analysis Schemes</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_describe_analysis_schemes(DomainName, AnalysisSchemeNames,
@@ -1121,9 +1126,10 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
 #' Gets the availability options configured for a domain. By default, shows
 #' the configuration with any pending changes. Set the `Deployed` option to
 #' `true` to show the active configuration and exclude pending changes. For
-#' more information, see [Configuring Availability
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html"
+#' target="_blank">Configuring Availability Options</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_describe_availability_options(DomainName, Deployed)
@@ -1186,10 +1192,10 @@ cloudsearch_describe_availability_options <- function(DomainName, Deployed = NUL
 #'
 #' @description
 #' Returns the domain's endpoint options, specifically whether all requests
-#' to the domain must arrive over HTTPS. For more information, see
-#' [Configuring Domain Endpoint
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' to the domain must arrive over HTTPS. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html"
+#' target="_blank">Configuring Domain Endpoint Options</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_describe_domain_endpoint_options(DomainName, Deployed)
@@ -1259,9 +1265,10 @@ cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = 
 #' number of searchable documents in a domain, use the console or submit a
 #' `matchall` request to your domain's search endpoint:
 #' `q=matchall&amp;q.parser=structured&amp;size=0`. For more information,
-#' see [Getting Information about a Search
-#' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html"
+#' target="_blank">Getting Information about a Search Domain</a> in the
+#' *Amazon CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_describe_domains(DomainNames)
@@ -1335,9 +1342,10 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
 #' specific expressions by name. By default, shows all expressions and
 #' includes any pending changes to the configuration. Set the `Deployed`
 #' option to `true` to show the active configuration and exclude pending
-#' changes. For more information, see [Configuring
-#' Expressions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' changes. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html"
+#' target="_blank">Configuring Expressions</a> in the *Amazon CloudSearch
+#' Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_describe_expressions(DomainName, ExpressionNames, Deployed)
@@ -1413,9 +1421,10 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
 #' domain. Can be limited to specific fields by name. By default, shows all
 #' fields and includes any pending changes to the configuration. Set the
 #' `Deployed` option to `true` to show the active configuration and exclude
-#' pending changes. For more information, see [Getting Domain
-#' Information](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' pending changes. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html"
+#' target="_blank">Getting Domain Information</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_describe_index_fields(DomainName, FieldNames, Deployed)
@@ -1571,9 +1580,10 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
 #' @description
 #' Gets the scaling parameters configured for a domain. A domain's scaling
 #' parameters specify the desired search instance type and replication
-#' count. For more information, see [Configuring Scaling
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' count. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html"
+#' target="_blank">Configuring Scaling Options</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_describe_scaling_parameters(DomainName)
@@ -1586,7 +1596,7 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
 #' list(
 #'   ScalingParameters = list(
 #'     Options = list(
-#'       DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge",
+#'       DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge"|"search.previousgeneration.small"|"search.previousgeneration.large"|"search.previousgeneration.xlarge"|"search.previousgeneration.2xlarge",
 #'       DesiredReplicationCount = 123,
 #'       DesiredPartitionCount = 123
 #'     ),
@@ -1640,9 +1650,10 @@ cloudsearch_describe_scaling_parameters <- function(DomainName) {
 #' domain's document and search endpoints. By default, shows the
 #' configuration with any pending changes. Set the `Deployed` option to
 #' `true` to show the active configuration and exclude pending changes. For
-#' more information, see [Configuring Access for a Search
-#' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html"
+#' target="_blank">Configuring Access for a Search Domain</a> in the
+#' *Amazon CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_describe_service_access_policies(DomainName, Deployed)
@@ -1708,9 +1719,10 @@ cloudsearch_describe_service_access_policies <- function(DomainName, Deployed = 
 #' be limited to specific suggesters by name. By default, shows all
 #' suggesters and includes any pending changes to the configuration. Set
 #' the `Deployed` option to `true` to show the active configuration and
-#' exclude pending changes. For more information, see [Getting Search
-#' Suggestions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' exclude pending changes. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html"
+#' target="_blank">Getting Search Suggestions</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_describe_suggesters(DomainName, SuggesterNames, Deployed)
@@ -1880,10 +1892,10 @@ cloudsearch_list_domain_names <- function() {
 #' option expands an Amazon CloudSearch domain to an additional
 #' Availability Zone in the same Region to increase fault tolerance in the
 #' event of a service disruption. Changes to the Multi-AZ option can take
-#' about half an hour to become active. For more information, see
-#' [Configuring Availability
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' about half an hour to become active. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html"
+#' target="_blank">Configuring Availability Options</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_update_availability_options(DomainName, MultiAZ)
@@ -1948,10 +1960,10 @@ cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
 #'
 #' @description
 #' Updates the domain's endpoint options, specifically whether all requests
-#' to the domain must arrive over HTTPS. For more information, see
-#' [Configuring Domain Endpoint
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' to the domain must arrive over HTTPS. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html"
+#' target="_blank">Configuring Domain Endpoint Options</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_update_domain_endpoint_options(DomainName,
@@ -2027,9 +2039,10 @@ cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpoin
 #' based on the volume of data and traffic, but not below the desired
 #' instance type and replication count. If the Multi-AZ option is enabled,
 #' these values control the resources used per Availability Zone. For more
-#' information, see [Configuring Scaling
-#' Options](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html"
+#' target="_blank">Configuring Scaling Options</a> in the *Amazon
+#' CloudSearch Developer Guide*.
 #'
 #' @usage
 #' cloudsearch_update_scaling_parameters(DomainName, ScalingParameters)
@@ -2043,7 +2056,7 @@ cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpoin
 #' list(
 #'   ScalingParameters = list(
 #'     Options = list(
-#'       DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge",
+#'       DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge"|"search.previousgeneration.small"|"search.previousgeneration.large"|"search.previousgeneration.xlarge"|"search.previousgeneration.2xlarge",
 #'       DesiredReplicationCount = 123,
 #'       DesiredPartitionCount = 123
 #'     ),
@@ -2067,7 +2080,7 @@ cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpoin
 #' svc$update_scaling_parameters(
 #'   DomainName = "string",
 #'   ScalingParameters = list(
-#'     DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge",
+#'     DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge"|"search.previousgeneration.small"|"search.previousgeneration.large"|"search.previousgeneration.xlarge"|"search.previousgeneration.2xlarge",
 #'     DesiredReplicationCount = 123,
 #'     DesiredPartitionCount = 123
 #'   )
@@ -2099,9 +2112,9 @@ cloudsearch_update_scaling_parameters <- function(DomainName, ScalingParameters)
 #'
 #' @description
 #' Configures the access rules that control access to the domain's document
-#' and search endpoints. For more information, see [Configuring Access for
-#' an Amazon CloudSearch
-#' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html).
+#' and search endpoints. For more information, see <a
+#' href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html"
+#' target="_blank">Configuring Access for an Amazon CloudSearch Domain</a>.
 #'
 #' @usage
 #' cloudsearch_update_service_access_policies(DomainName, AccessPolicies)

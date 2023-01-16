@@ -4,8 +4,13 @@
 \alias{codebuild_list_reports_for_report_group}
 \title{Returns a list of ARNs for the reports that belong to a ReportGroup}
 \usage{
-codebuild_list_reports_for_report_group(reportGroupArn, nextToken,
-  sortOrder, maxResults, filter)
+codebuild_list_reports_for_report_group(
+  reportGroupArn,
+  nextToken = NULL,
+  sortOrder = NULL,
+  maxResults = NULL,
+  filter = NULL
+)
 }
 \arguments{
 \item{reportGroupArn}{[required] The ARN of the report group for which you want to return report ARNs.}
@@ -27,29 +32,9 @@ per response. Use \code{nextToken} to iterate pages in the list of returned
 
 \item{filter}{A \code{ReportFilter} object used to filter the returned reports.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  reports = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Returns a list of ARNs for the reports that belong to a \code{ReportGroup}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_reports_for_report_group(
-  reportGroupArn = "string",
-  nextToken = "string",
-  sortOrder = "ASCENDING"|"DESCENDING",
-  maxResults = 123,
-  filter = list(
-    status = "GENERATING"|"SUCCEEDED"|"FAILED"|"INCOMPLETE"|"DELETING"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/list_reports_for_report_group.html} for full documentation.
+}
 \keyword{internal}

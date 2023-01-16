@@ -10,52 +10,9 @@ xray_get_sampling_targets(SamplingStatisticsDocuments)
 \arguments{
 \item{SamplingStatisticsDocuments}{[required] Information about rules that the service is using to sample requests.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SamplingTargetDocuments = list(
-    list(
-      RuleName = "string",
-      FixedRate = 123.0,
-      ReservoirQuota = 123,
-      ReservoirQuotaTTL = as.POSIXct(
-        "2015-01-01"
-      ),
-      Interval = 123
-    )
-  ),
-  LastRuleModification = as.POSIXct(
-    "2015-01-01"
-  ),
-  UnprocessedStatistics = list(
-    list(
-      RuleName = "string",
-      ErrorCode = "string",
-      Message = "string"
-    )
-  )
-)
-}
-}
 \description{
-Requests a sampling quota for rules that the service is using to sample
-requests.
-}
-\section{Request syntax}{
-\preformatted{svc$get_sampling_targets(
-  SamplingStatisticsDocuments = list(
-    list(
-      RuleName = "string",
-      ClientID = "string",
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      RequestCount = 123,
-      SampledCount = 123,
-      BorrowCount = 123
-    )
-  )
-)
-}
-}
+Requests a sampling quota for rules that the service is using to sample requests.
 
+See \url{https://paws-r.github.io/docs/xray/get_sampling_targets.html} for full documentation.
+}
 \keyword{internal}

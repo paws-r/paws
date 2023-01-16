@@ -4,9 +4,19 @@
 \alias{kafka_create_cluster}
 \title{Creates a new MSK cluster}
 \usage{
-kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
-  ClusterName, ConfigurationInfo, EncryptionInfo, EnhancedMonitoring,
-  OpenMonitoring, KafkaVersion, LoggingInfo, NumberOfBrokerNodes, Tags)
+kafka_create_cluster(
+  BrokerNodeGroupInfo,
+  ClientAuthentication = NULL,
+  ClusterName,
+  ConfigurationInfo = NULL,
+  EncryptionInfo = NULL,
+  EnhancedMonitoring = NULL,
+  OpenMonitoring = NULL,
+  KafkaVersion,
+  LoggingInfo = NULL,
+  NumberOfBrokerNodes,
+  Tags = NULL
+)
 }
 \arguments{
 \item{BrokerNodeGroupInfo}{[required] Information about the broker nodes in the cluster.}
@@ -34,95 +44,9 @@ PER_TOPIC_PER_PARTITION.}
 
 \item{Tags}{Create tags when creating the cluster.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterArn = "string",
-  ClusterName = "string",
-  State = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|"HEALING"|"MAINTENANCE"|"REBOOTING_BROKER"|"UPDATING"
-)
-}
-}
 \description{
 Creates a new MSK cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$create_cluster(
-  BrokerNodeGroupInfo = list(
-    BrokerAZDistribution = "DEFAULT",
-    ClientSubnets = list(
-      "string"
-    ),
-    InstanceType = "string",
-    SecurityGroups = list(
-      "string"
-    ),
-    StorageInfo = list(
-      EbsStorageInfo = list(
-        VolumeSize = 123
-      )
-    )
-  ),
-  ClientAuthentication = list(
-    Sasl = list(
-      Scram = list(
-        Enabled = TRUE|FALSE
-      )
-    ),
-    Tls = list(
-      CertificateAuthorityArnList = list(
-        "string"
-      )
-    )
-  ),
-  ClusterName = "string",
-  ConfigurationInfo = list(
-    Arn = "string",
-    Revision = 123
-  ),
-  EncryptionInfo = list(
-    EncryptionAtRest = list(
-      DataVolumeKMSKeyId = "string"
-    ),
-    EncryptionInTransit = list(
-      ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
-      InCluster = TRUE|FALSE
-    )
-  ),
-  EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
-  OpenMonitoring = list(
-    Prometheus = list(
-      JmxExporter = list(
-        EnabledInBroker = TRUE|FALSE
-      ),
-      NodeExporter = list(
-        EnabledInBroker = TRUE|FALSE
-      )
-    )
-  ),
-  KafkaVersion = "string",
-  LoggingInfo = list(
-    BrokerLogs = list(
-      CloudWatchLogs = list(
-        Enabled = TRUE|FALSE,
-        LogGroup = "string"
-      ),
-      Firehose = list(
-        DeliveryStream = "string",
-        Enabled = TRUE|FALSE
-      ),
-      S3 = list(
-        Bucket = "string",
-        Enabled = TRUE|FALSE,
-        Prefix = "string"
-      )
-    )
-  ),
-  NumberOfBrokerNodes = 123,
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/create_cluster.html} for full documentation.
+}
 \keyword{internal}

@@ -11,30 +11,9 @@ pinpointemail_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to retrieve
 tag information for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieve a list of the tags (keys and values) that are associated with a
-specified resource. A \emph{tag} is a label that you optionally define and
-associate with a resource in Amazon Pinpoint. Each tag consists of a
-required \emph{tag key} and an optional associated \emph{tag value}. A tag key is
-a general label that acts as a category for more specific tag values. A
-tag value acts as a descriptor within a tag key.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
+Retrieve a list of the tags (keys and values) that are associated with a specified resource. A \emph{tag} is a label that you optionally define and associate with a resource in Amazon Pinpoint. Each tag consists of a required \emph{tag key} and an optional associated \emph{tag value}. A tag key is a general label that acts as a category for more specific tag values. A tag value acts as a descriptor within a tag key.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

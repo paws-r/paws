@@ -3,23 +3,13 @@
 \name{route53_get_traffic_policy_instance_count}
 \alias{route53_get_traffic_policy_instance_count}
 \title{Gets the number of traffic policy instances that are associated with the
-current AWS account}
+current Amazon Web Services account}
 \usage{
 route53_get_traffic_policy_instance_count()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficPolicyInstanceCount = 123
-)
-}
-}
 \description{
-Gets the number of traffic policy instances that are associated with the
-current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$get_traffic_policy_instance_count()
-}
-}
+Gets the number of traffic policy instances that are associated with the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/route53/get_traffic_policy_instance_count.html} for full documentation.
+}
 \keyword{internal}

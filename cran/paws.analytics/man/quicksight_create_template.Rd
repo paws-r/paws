@@ -2,17 +2,26 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_template}
 \alias{quicksight_create_template}
-\title{Creates a template from an existing QuickSight analysis or template}
+\title{Creates a template from an existing Amazon QuickSight analysis or
+template}
 \usage{
-quicksight_create_template(AwsAccountId, TemplateId, Name, Permissions,
-  SourceEntity, Tags, VersionDescription)
+quicksight_create_template(
+  AwsAccountId,
+  TemplateId,
+  Name = NULL,
+  Permissions = NULL,
+  SourceEntity,
+  Tags = NULL,
+  VersionDescription = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account that the group is in. Currently, you use the
-ID for the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the group is in. You use
+the ID for the Amazon Web Services account that contains your Amazon
+QuickSight account.}
 
 \item{TemplateId}{[required] An ID for the template that you want to create. This template is unique
-per AWS Region in each AWS account.}
+per Amazon Web Services Region; in each Amazon Web Services account.}
 
 \item{Name}{A display name for the template.}
 
@@ -24,8 +33,8 @@ source: \code{SourceTemplate} for a template or \code{SourceAnalysis} for an
 analysis. Both of these require an Amazon Resource Name (ARN). For
 \code{SourceTemplate}, specify the ARN of the source template. For
 \code{SourceAnalysis}, specify the ARN of the source analysis. The
-\code{SourceTemplate} ARN can contain any AWS Account and any
-QuickSight-supported AWS Region.
+\code{SourceTemplate} ARN can contain any Amazon Web Services account and any
+Amazon QuickSight-supported Amazon Web Services Region.
 
 Use the \code{DataSetReferences} entity within \code{SourceTemplate} or
 \code{SourceAnalysis} to list the replacement datasets for the placeholders
@@ -41,65 +50,9 @@ operation creates the first version of the template. Every time
 is created. Each version of the template maintains a description of the
 version in the \code{VersionDescription} field.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  VersionArn = "string",
-  TemplateId = "string",
-  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
-Creates a template from an existing QuickSight analysis or template. You
-can use the resulting template to create a dashboard.
+Creates a template from an existing Amazon QuickSight analysis or template. You can use the resulting template to create a dashboard.
 
-A \emph{template} is an entity in QuickSight that encapsulates the metadata
-required to create an analysis and that you can use to create s
-dashboard. A template adds a layer of abstraction by using placeholders
-to replace the dataset associated with the analysis. You can use
-templates to create dashboards by replacing dataset placeholders with
-datasets that follow the same schema that was used to create the source
-analysis and template.
+See \url{https://paws-r.github.io/docs/quicksight/create_template.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_template(
-  AwsAccountId = "string",
-  TemplateId = "string",
-  Name = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  SourceEntity = list(
-    SourceAnalysis = list(
-      Arn = "string",
-      DataSetReferences = list(
-        list(
-          DataSetPlaceholder = "string",
-          DataSetArn = "string"
-        )
-      )
-    ),
-    SourceTemplate = list(
-      Arn = "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  VersionDescription = "string"
-)
-}
-}
-
 \keyword{internal}

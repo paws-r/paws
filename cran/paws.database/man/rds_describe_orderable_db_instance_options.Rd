@@ -2,14 +2,42 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_orderable_db_instance_options}
 \alias{rds_describe_orderable_db_instance_options}
-\title{Returns a list of orderable DB instance options for the specified engine}
+\title{Returns a list of orderable DB instance options for the specified DB
+engine, DB engine version, and DB instance class}
 \usage{
-rds_describe_orderable_db_instance_options(Engine, EngineVersion,
-  DBInstanceClass, LicenseModel, AvailabilityZoneGroup, Vpc, Filters,
-  MaxRecords, Marker)
+rds_describe_orderable_db_instance_options(
+  Engine,
+  EngineVersion = NULL,
+  DBInstanceClass = NULL,
+  LicenseModel = NULL,
+  AvailabilityZoneGroup = NULL,
+  Vpc = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
-\item{Engine}{[required] The name of the engine to retrieve DB instance options for.}
+\item{Engine}{[required] The name of the engine to retrieve DB instance options for.
+
+Valid Values:
+\itemize{
+\item \code{aurora} (for MySQL 5.6-compatible Aurora)
+\item \code{aurora-mysql} (for MySQL 5.7-compatible and MySQL 8.0-compatible
+Aurora)
+\item \code{aurora-postgresql}
+\item \code{mariadb}
+\item \code{mysql}
+\item \code{oracle-ee}
+\item \code{oracle-ee-cdb}
+\item \code{oracle-se2}
+\item \code{oracle-se2-cdb}
+\item \code{postgres}
+\item \code{sqlserver-ee}
+\item \code{sqlserver-se}
+\item \code{sqlserver-ex}
+\item \code{sqlserver-web}
+}}
 
 \item{EngineVersion}{The engine version filter value. Specify this parameter to show only the
 available offerings matching the specified engine version.}
@@ -18,16 +46,24 @@ available offerings matching the specified engine version.}
 the available offerings matching the specified DB instance class.}
 
 \item{LicenseModel}{The license model filter value. Specify this parameter to show only the
-available offerings matching the specified license model.}
+available offerings matching the specified license model.
+
+RDS Custom supports only the BYOL licensing model.}
 
 \item{AvailabilityZoneGroup}{The Availability Zone group associated with a Local Zone. Specify this
 parameter to retrieve available offerings for the Local Zones in the
 group.
 
-Omit this parameter to show the available offerings in the specified AWS
-Region.}
+Omit this parameter to show the available offerings in the specified
+Amazon Web Services Region.
 
-\item{Vpc}{A value that indicates whether to show only VPC or non-VPC offerings.}
+This setting doesn't apply to RDS Custom.}
+
+\item{Vpc}{A value that indicates whether to show only VPC or non-VPC offerings.
+RDS Custom supports only VPC offerings.
+
+RDS Custom supports only VPC offerings. If you describe non-VPC
+offerings for RDS Custom, the output shows VPC offerings.}
 
 \item{Filters}{This parameter isn't currently supported.}
 
@@ -38,86 +74,16 @@ remaining results.
 
 Default: 100
 
-Constraints: Minimum 20, maximum 100.}
+Constraints: Minimum 20, maximum 10000.}
 
 \item{Marker}{An optional pagination token provided by a previous
 DescribeOrderableDBInstanceOptions request. If this parameter is
 specified, the response includes only records beyond the marker, up to
-the value specified by \code{MaxRecords} .}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OrderableDBInstanceOptions = list(
-    list(
-      Engine = "string",
-      EngineVersion = "string",
-      DBInstanceClass = "string",
-      LicenseModel = "string",
-      AvailabilityZoneGroup = "string",
-      AvailabilityZones = list(
-        list(
-          Name = "string"
-        )
-      ),
-      MultiAZCapable = TRUE|FALSE,
-      ReadReplicaCapable = TRUE|FALSE,
-      Vpc = TRUE|FALSE,
-      SupportsStorageEncryption = TRUE|FALSE,
-      StorageType = "string",
-      SupportsIops = TRUE|FALSE,
-      SupportsEnhancedMonitoring = TRUE|FALSE,
-      SupportsIAMDatabaseAuthentication = TRUE|FALSE,
-      SupportsPerformanceInsights = TRUE|FALSE,
-      MinStorageSize = 123,
-      MaxStorageSize = 123,
-      MinIopsPerDbInstance = 123,
-      MaxIopsPerDbInstance = 123,
-      MinIopsPerGib = 123.0,
-      MaxIopsPerGib = 123.0,
-      AvailableProcessorFeatures = list(
-        list(
-          Name = "string",
-          DefaultValue = "string",
-          AllowedValues = "string"
-        )
-      ),
-      SupportedEngineModes = list(
-        "string"
-      ),
-      SupportsStorageAutoscaling = TRUE|FALSE,
-      SupportsKerberosAuthentication = TRUE|FALSE,
-      OutpostCapable = TRUE|FALSE,
-      SupportsGlobalDatabases = TRUE|FALSE
-    )
-  ),
-  Marker = "string"
-)
-}
+the value specified by \code{MaxRecords}.}
 }
 \description{
-Returns a list of orderable DB instance options for the specified
-engine.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_orderable_db_instance_options(
-  Engine = "string",
-  EngineVersion = "string",
-  DBInstanceClass = "string",
-  LicenseModel = "string",
-  AvailabilityZoneGroup = "string",
-  Vpc = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns a list of orderable DB instance options for the specified DB engine, DB engine version, and DB instance class.
 
+See \url{https://paws-r.github.io/docs/rds/describe_orderable_db_instance_options.html} for full documentation.
+}
 \keyword{internal}

@@ -4,25 +4,16 @@
 \alias{glue_start_workflow_run}
 \title{Starts a new run of the specified workflow}
 \usage{
-glue_start_workflow_run(Name)
+glue_start_workflow_run(Name, RunProperties = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the workflow to start.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  RunId = "string"
-)
-}
+
+\item{RunProperties}{The workflow run properties for the new workflow run.}
 }
 \description{
 Starts a new run of the specified workflow.
-}
-\section{Request syntax}{
-\preformatted{svc$start_workflow_run(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/start_workflow_run.html} for full documentation.
+}
 \keyword{internal}

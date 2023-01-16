@@ -4,11 +4,18 @@
 \alias{glue_update_table}
 \title{Updates a metadata table in the Data Catalog}
 \usage{
-glue_update_table(CatalogId, DatabaseName, TableInput, SkipArchive)
+glue_update_table(
+  CatalogId = NULL,
+  DatabaseName,
+  TableInput,
+  SkipArchive = NULL,
+  TransactionId = NULL,
+  VersionId = NULL
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the table resides. If none is provided,
-the AWS account ID is used by default.}
+the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database in which the table resides. For Hive
 compatibility, this name is entirely lowercase.}
@@ -20,110 +27,14 @@ catalog.}
 archived version of the table before updating it. However, if
 \code{skipArchive} is set to true, \code{\link[=glue_update_table]{update_table}} does
 not create the archived version.}
-}
-\value{
-An empty list.
+
+\item{TransactionId}{The transaction ID at which to update the table contents.}
+
+\item{VersionId}{The version ID at which to update the table contents.}
 }
 \description{
 Updates a metadata table in the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$update_table(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableInput = list(
-    Name = "string",
-    Description = "string",
-    Owner = "string",
-    LastAccessTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastAnalyzedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Retention = 123,
-    StorageDescriptor = list(
-      Columns = list(
-        list(
-          Name = "string",
-          Type = "string",
-          Comment = "string",
-          Parameters = list(
-            "string"
-          )
-        )
-      ),
-      Location = "string",
-      InputFormat = "string",
-      OutputFormat = "string",
-      Compressed = TRUE|FALSE,
-      NumberOfBuckets = 123,
-      SerdeInfo = list(
-        Name = "string",
-        SerializationLibrary = "string",
-        Parameters = list(
-          "string"
-        )
-      ),
-      BucketColumns = list(
-        "string"
-      ),
-      SortColumns = list(
-        list(
-          Column = "string",
-          SortOrder = 123
-        )
-      ),
-      Parameters = list(
-        "string"
-      ),
-      SkewedInfo = list(
-        SkewedColumnNames = list(
-          "string"
-        ),
-        SkewedColumnValues = list(
-          "string"
-        ),
-        SkewedColumnValueLocationMaps = list(
-          "string"
-        )
-      ),
-      StoredAsSubDirectories = TRUE|FALSE,
-      SchemaReference = list(
-        SchemaId = list(
-          SchemaArn = "string",
-          SchemaName = "string",
-          RegistryName = "string"
-        ),
-        SchemaVersionId = "string",
-        SchemaVersionNumber = 123
-      )
-    ),
-    PartitionKeys = list(
-      list(
-        Name = "string",
-        Type = "string",
-        Comment = "string",
-        Parameters = list(
-          "string"
-        )
-      )
-    ),
-    ViewOriginalText = "string",
-    ViewExpandedText = "string",
-    TableType = "string",
-    Parameters = list(
-      "string"
-    ),
-    TargetTable = list(
-      CatalogId = "string",
-      DatabaseName = "string",
-      Name = "string"
-    )
-  ),
-  SkipArchive = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/update_table.html} for full documentation.
+}
 \keyword{internal}

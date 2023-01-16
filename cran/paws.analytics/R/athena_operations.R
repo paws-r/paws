@@ -7,54 +7,11 @@ NULL
 #' queries, which you provide as an array of query ID strings
 #'
 #' @description
-#' Returns the details of a single named query or a list of up to 50
-#' queries, which you provide as an array of query ID strings. Requires you
-#' to have access to the workgroup in which the queries were saved. Use
-#' ListNamedQueriesInput to get the list of named query IDs in the
-#' specified workgroup. If information could not be retrieved for a
-#' submitted query ID, information about the query ID submitted is listed
-#' under UnprocessedNamedQueryId. Named queries differ from executed
-#' queries. Use BatchGetQueryExecutionInput to get details about each
-#' unique query execution, and ListQueryExecutionsInput to get a list of
-#' query execution IDs.
+#' Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings. Requires you to have access to the workgroup in which the queries were saved. Use ListNamedQueriesInput to get the list of named query IDs in the specified workgroup. If information could not be retrieved for a submitted query ID, information about the query ID submitted is listed under UnprocessedNamedQueryId. Named queries differ from executed queries. Use BatchGetQueryExecutionInput to get details about each unique query execution, and ListQueryExecutionsInput to get a list of query execution IDs.
 #'
-#' @usage
-#' athena_batch_get_named_query(NamedQueryIds)
+#' See [https://paws-r.github.io/docs/athena/batch_get_named_query.html](https://paws-r.github.io/docs/athena/batch_get_named_query.html) for full documentation.
 #'
 #' @param NamedQueryIds &#91;required&#93; An array of query IDs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NamedQueries = list(
-#'     list(
-#'       Name = "string",
-#'       Description = "string",
-#'       Database = "string",
-#'       QueryString = "string",
-#'       NamedQueryId = "string",
-#'       WorkGroup = "string"
-#'     )
-#'   ),
-#'   UnprocessedNamedQueryIds = list(
-#'     list(
-#'       NamedQueryId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_named_query(
-#'   NamedQueryIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -76,84 +33,48 @@ athena_batch_get_named_query <- function(NamedQueryIds) {
 }
 .athena$operations$batch_get_named_query <- athena_batch_get_named_query
 
+#' Returns the details of a single prepared statement or a list of up to
+#' 256 prepared statements for the array of prepared statement names that
+#' you provide
+#'
+#' @description
+#' Returns the details of a single prepared statement or a list of up to 256 prepared statements for the array of prepared statement names that you provide. Requires you to have access to the workgroup to which the prepared statements belong. If a prepared statement cannot be retrieved for the name specified, the statement is listed in `UnprocessedPreparedStatementNames`.
+#'
+#' See [https://paws-r.github.io/docs/athena/batch_get_prepared_statement.html](https://paws-r.github.io/docs/athena/batch_get_prepared_statement.html) for full documentation.
+#'
+#' @param PreparedStatementNames &#91;required&#93; A list of prepared statement names to return.
+#' @param WorkGroup &#91;required&#93; The name of the workgroup to which the prepared statements belong.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_batch_get_prepared_statement
+athena_batch_get_prepared_statement <- function(PreparedStatementNames, WorkGroup) {
+  op <- new_operation(
+    name = "BatchGetPreparedStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$batch_get_prepared_statement_input(PreparedStatementNames = PreparedStatementNames, WorkGroup = WorkGroup)
+  output <- .athena$batch_get_prepared_statement_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$batch_get_prepared_statement <- athena_batch_get_prepared_statement
+
 #' Returns the details of a single query execution or a list of up to 50
 #' query executions, which you provide as an array of query execution ID
 #' strings
 #'
 #' @description
-#' Returns the details of a single query execution or a list of up to 50
-#' query executions, which you provide as an array of query execution ID
-#' strings. Requires you to have access to the workgroup in which the
-#' queries ran. To get a list of query execution IDs, use
-#' ListQueryExecutionsInput$WorkGroup. Query executions differ from named
-#' (saved) queries. Use BatchGetNamedQueryInput to get details about named
-#' queries.
+#' Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings. Requires you to have access to the workgroup in which the queries ran. To get a list of query execution IDs, use ListQueryExecutionsInput$WorkGroup. Query executions differ from named (saved) queries. Use BatchGetNamedQueryInput to get details about named queries.
 #'
-#' @usage
-#' athena_batch_get_query_execution(QueryExecutionIds)
+#' See [https://paws-r.github.io/docs/athena/batch_get_query_execution.html](https://paws-r.github.io/docs/athena/batch_get_query_execution.html) for full documentation.
 #'
 #' @param QueryExecutionIds &#91;required&#93; An array of query execution IDs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   QueryExecutions = list(
-#'     list(
-#'       QueryExecutionId = "string",
-#'       Query = "string",
-#'       StatementType = "DDL"|"DML"|"UTILITY",
-#'       ResultConfiguration = list(
-#'         OutputLocation = "string",
-#'         EncryptionConfiguration = list(
-#'           EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-#'           KmsKey = "string"
-#'         )
-#'       ),
-#'       QueryExecutionContext = list(
-#'         Database = "string",
-#'         Catalog = "string"
-#'       ),
-#'       Status = list(
-#'         State = "QUEUED"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED",
-#'         StateChangeReason = "string",
-#'         SubmissionDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         CompletionDateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       Statistics = list(
-#'         EngineExecutionTimeInMillis = 123,
-#'         DataScannedInBytes = 123,
-#'         DataManifestLocation = "string",
-#'         TotalExecutionTimeInMillis = 123,
-#'         QueryQueueTimeInMillis = 123,
-#'         QueryPlanningTimeInMillis = 123,
-#'         ServiceProcessingTimeInMillis = 123
-#'       ),
-#'       WorkGroup = "string"
-#'     )
-#'   ),
-#'   UnprocessedQueryExecutionIds = list(
-#'     list(
-#'       QueryExecutionId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_query_execution(
-#'   QueryExecutionIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -179,18 +100,17 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #' properties
 #'
 #' @description
-#' Creates (registers) a data catalog with the specified name and
-#' properties. Catalogs created are visible to all users of the same AWS
-#' account.
+#' Creates (registers) a data catalog with the specified name and properties. Catalogs created are visible to all users of the same Amazon Web Services account.
 #'
-#' @usage
-#' athena_create_data_catalog(Name, Type, Description, Parameters, Tags)
+#' See [https://paws-r.github.io/docs/athena/create_data_catalog.html](https://paws-r.github.io/docs/athena/create_data_catalog.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to create. The catalog name must be unique
-#' for the AWS account and can use a maximum of 128 alphanumeric,
-#' underscore, at sign, or hyphen characters.
+#' for the Amazon Web Services account and can use a maximum of 127
+#' alphanumeric, underscore, at sign, or hyphen characters. The remainder
+#' of the length constraint of 256 is reserved for use by Athena.
 #' @param Type &#91;required&#93; The type of data catalog to create: `LAMBDA` for a federated catalog,
-#' `GLUE` for AWS Glue Catalog, or `HIVE` for an external hive metastore.
+#' `HIVE` for an external hive metastore, or `GLUE` for an Glue Data
+#' Catalog.
 #' @param Description A description of the data catalog to be created.
 #' @param Parameters Specifies the Lambda function or functions to use for creating the data
 #' catalog. This is a mapping whose values depend on the catalog type.
@@ -217,30 +137,24 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #' 
 #'         `function=lambda_arn `
 #' 
-#' -   The `GLUE` type has no parameters.
+#' -   The `GLUE` type takes a catalog ID parameter and is required. The
+#'     ` catalog_id ` is the account ID of the Amazon Web Services account
+#'     to which the Glue Data Catalog belongs.
+#' 
+#'     `catalog-id=catalog_id `
+#' 
+#'     -   The `GLUE` data catalog type also applies to the default
+#'         `AwsDataCatalog` that already exists in your account, of which
+#'         you can have only one and cannot modify.
+#' 
+#'     -   Queries that specify a Glue Data Catalog other than the default
+#'         `AwsDataCatalog` must be run on Athena engine version 2.
+#' 
+#'     -   In Regions where Athena engine version 2 is not available,
+#'         creating new Glue data catalogs results in an `INVALID_INPUT`
+#'         error.
 #' @param Tags A list of comma separated tags to add to the data catalog that is
 #' created.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_data_catalog(
-#'   Name = "string",
-#'   Type = "LAMBDA"|"GLUE"|"HIVE",
-#'   Description = "string",
-#'   Parameters = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -265,16 +179,9 @@ athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameter
 #' Creates a named query in the specified workgroup
 #'
 #' @description
-#' Creates a named query in the specified workgroup. Requires that you have
-#' access to the workgroup.
-#' 
-#' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
+#' Creates a named query in the specified workgroup. Requires that you have access to the workgroup.
 #'
-#' @usage
-#' athena_create_named_query(Name, Description, Database, QueryString,
-#'   ClientRequestToken, WorkGroup)
+#' See [https://paws-r.github.io/docs/athena/create_named_query.html](https://paws-r.github.io/docs/athena/create_named_query.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The query name.
 #' @param Description The query description.
@@ -287,31 +194,12 @@ athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameter
 #' parameter has changed, for example, the `QueryString`, an error is
 #' returned.
 #' 
-#' This token is listed as not required because AWS SDKs (for example the
-#' AWS SDK for Java) auto-generate the token for users. If you are not
-#' using the AWS SDK or the AWS CLI, you must provide this token or the
-#' action will fail.
+#' This token is listed as not required because Amazon Web Services SDKs
+#' (for example the Amazon Web Services SDK for Java) auto-generate the
+#' token for users. If you are not using the Amazon Web Services SDK or the
+#' Amazon Web Services CLI, you must provide this token or the action will
+#' fail.
 #' @param WorkGroup The name of the workgroup in which the named query is being created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NamedQueryId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_named_query(
-#'   Name = "string",
-#'   Description = "string",
-#'   Database = "string",
-#'   QueryString = "string",
-#'   ClientRequestToken = "string",
-#'   WorkGroup = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -333,13 +221,44 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 }
 .athena$operations$create_named_query <- athena_create_named_query
 
+#' Creates a prepared statement for use with SQL queries in Athena
+#'
+#' @description
+#' Creates a prepared statement for use with SQL queries in Athena.
+#'
+#' See [https://paws-r.github.io/docs/athena/create_prepared_statement.html](https://paws-r.github.io/docs/athena/create_prepared_statement.html) for full documentation.
+#'
+#' @param StatementName &#91;required&#93; The name of the prepared statement.
+#' @param WorkGroup &#91;required&#93; The name of the workgroup to which the prepared statement belongs.
+#' @param QueryStatement &#91;required&#93; The query string for the prepared statement.
+#' @param Description The description of the prepared statement.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_create_prepared_statement
+athena_create_prepared_statement <- function(StatementName, WorkGroup, QueryStatement, Description = NULL) {
+  op <- new_operation(
+    name = "CreatePreparedStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$create_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup, QueryStatement = QueryStatement, Description = Description)
+  output <- .athena$create_prepared_statement_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$create_prepared_statement <- athena_create_prepared_statement
+
 #' Creates a workgroup with the specified name
 #'
 #' @description
 #' Creates a workgroup with the specified name.
 #'
-#' @usage
-#' athena_create_work_group(Name, Configuration, Description, Tags)
+#' See [https://paws-r.github.io/docs/athena/create_work_group.html](https://paws-r.github.io/docs/athena/create_work_group.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The workgroup name.
 #' @param Configuration The configuration for the workgroup, which includes the location in
@@ -347,41 +266,11 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 #' if any, used for encrypting query results, whether the Amazon CloudWatch
 #' Metrics are enabled for the workgroup, the limit for the amount of bytes
 #' scanned (cutoff) per query, if it is specified, and whether workgroup's
-#' settings (specified with EnforceWorkGroupConfiguration) in the
-#' WorkGroupConfiguration override client-side settings. See
+#' settings (specified with `EnforceWorkGroupConfiguration`) in the
+#' `WorkGroupConfiguration` override client-side settings. See
 #' WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 #' @param Description The workgroup description.
 #' @param Tags A list of comma separated tags to add to the workgroup that is created.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_work_group(
-#'   Name = "string",
-#'   Configuration = list(
-#'     ResultConfiguration = list(
-#'       OutputLocation = "string",
-#'       EncryptionConfiguration = list(
-#'         EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-#'         KmsKey = "string"
-#'       )
-#'     ),
-#'     EnforceWorkGroupConfiguration = TRUE|FALSE,
-#'     PublishCloudWatchMetricsEnabled = TRUE|FALSE,
-#'     BytesScannedCutoffPerQuery = 123,
-#'     RequesterPaysEnabled = TRUE|FALSE
-#'   ),
-#'   Description = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -408,20 +297,9 @@ athena_create_work_group <- function(Name, Configuration = NULL, Description = N
 #' @description
 #' Deletes a data catalog.
 #'
-#' @usage
-#' athena_delete_data_catalog(Name)
+#' See [https://paws-r.github.io/docs/athena/delete_data_catalog.html](https://paws-r.github.io/docs/athena/delete_data_catalog.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_data_catalog(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -447,27 +325,11 @@ athena_delete_data_catalog <- function(Name) {
 #' query was saved
 #'
 #' @description
-#' Deletes the named query if you have access to the workgroup in which the
-#' query was saved.
-#' 
-#' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
+#' Deletes the named query if you have access to the workgroup in which the query was saved.
 #'
-#' @usage
-#' athena_delete_named_query(NamedQueryId)
+#' See [https://paws-r.github.io/docs/athena/delete_named_query.html](https://paws-r.github.io/docs/athena/delete_named_query.html) for full documentation.
 #'
 #' @param NamedQueryId &#91;required&#93; The unique ID of the query to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_named_query(
-#'   NamedQueryId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -489,29 +351,47 @@ athena_delete_named_query <- function(NamedQueryId) {
 }
 .athena$operations$delete_named_query <- athena_delete_named_query
 
+#' Deletes the prepared statement with the specified name from the
+#' specified workgroup
+#'
+#' @description
+#' Deletes the prepared statement with the specified name from the specified workgroup.
+#'
+#' See [https://paws-r.github.io/docs/athena/delete_prepared_statement.html](https://paws-r.github.io/docs/athena/delete_prepared_statement.html) for full documentation.
+#'
+#' @param StatementName &#91;required&#93; The name of the prepared statement to delete.
+#' @param WorkGroup &#91;required&#93; The workgroup to which the statement to be deleted belongs.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_delete_prepared_statement
+athena_delete_prepared_statement <- function(StatementName, WorkGroup) {
+  op <- new_operation(
+    name = "DeletePreparedStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$delete_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup)
+  output <- .athena$delete_prepared_statement_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$delete_prepared_statement <- athena_delete_prepared_statement
+
 #' Deletes the workgroup with the specified name
 #'
 #' @description
-#' Deletes the workgroup with the specified name. The primary workgroup
-#' cannot be deleted.
+#' Deletes the workgroup with the specified name. The primary workgroup cannot be deleted.
 #'
-#' @usage
-#' athena_delete_work_group(WorkGroup, RecursiveDeleteOption)
+#' See [https://paws-r.github.io/docs/athena/delete_work_group.html](https://paws-r.github.io/docs/athena/delete_work_group.html) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The unique name of the workgroup to delete.
 #' @param RecursiveDeleteOption The option to delete the workgroup and its contents even if the
-#' workgroup contains any named queries.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_work_group(
-#'   WorkGroup = "string",
-#'   RecursiveDeleteOption = TRUE|FALSE
-#' )
-#' ```
+#' workgroup contains any named queries or query executions.
 #'
 #' @keywords internal
 #'
@@ -538,32 +418,9 @@ athena_delete_work_group <- function(WorkGroup, RecursiveDeleteOption = NULL) {
 #' @description
 #' Returns the specified data catalog.
 #'
-#' @usage
-#' athena_get_data_catalog(Name)
+#' See [https://paws-r.github.io/docs/athena/get_data_catalog.html](https://paws-r.github.io/docs/athena/get_data_catalog.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataCatalog = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     Type = "LAMBDA"|"GLUE"|"HIVE",
-#'     Parameters = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_data_catalog(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -585,38 +442,15 @@ athena_get_data_catalog <- function(Name) {
 }
 .athena$operations$get_data_catalog <- athena_get_data_catalog
 
-#' Returns a database object for the specfied database and data catalog
+#' Returns a database object for the specified database and data catalog
 #'
 #' @description
-#' Returns a database object for the specfied database and data catalog.
+#' Returns a database object for the specified database and data catalog.
 #'
-#' @usage
-#' athena_get_database(CatalogName, DatabaseName)
+#' See [https://paws-r.github.io/docs/athena/get_database.html](https://paws-r.github.io/docs/athena/get_database.html) for full documentation.
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog that contains the database to return.
 #' @param DatabaseName &#91;required&#93; The name of the database to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Database = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     Parameters = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_database(
-#'   CatalogName = "string",
-#'   DatabaseName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -641,36 +475,12 @@ athena_get_database <- function(CatalogName, DatabaseName) {
 #' Returns information about a single query
 #'
 #' @description
-#' Returns information about a single query. Requires that you have access
-#' to the workgroup in which the query was saved.
+#' Returns information about a single query. Requires that you have access to the workgroup in which the query was saved.
 #'
-#' @usage
-#' athena_get_named_query(NamedQueryId)
+#' See [https://paws-r.github.io/docs/athena/get_named_query.html](https://paws-r.github.io/docs/athena/get_named_query.html) for full documentation.
 #'
 #' @param NamedQueryId &#91;required&#93; The unique ID of the query. Use
 #' [`list_named_queries`][athena_list_named_queries] to get query IDs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NamedQuery = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     Database = "string",
-#'     QueryString = "string",
-#'     NamedQueryId = "string",
-#'     WorkGroup = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_named_query(
-#'   NamedQueryId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -692,69 +502,46 @@ athena_get_named_query <- function(NamedQueryId) {
 }
 .athena$operations$get_named_query <- athena_get_named_query
 
+#' Retrieves the prepared statement with the specified name from the
+#' specified workgroup
+#'
+#' @description
+#' Retrieves the prepared statement with the specified name from the specified workgroup.
+#'
+#' See [https://paws-r.github.io/docs/athena/get_prepared_statement.html](https://paws-r.github.io/docs/athena/get_prepared_statement.html) for full documentation.
+#'
+#' @param StatementName &#91;required&#93; The name of the prepared statement to retrieve.
+#' @param WorkGroup &#91;required&#93; The workgroup to which the statement to be retrieved belongs.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_prepared_statement
+athena_get_prepared_statement <- function(StatementName, WorkGroup) {
+  op <- new_operation(
+    name = "GetPreparedStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup)
+  output <- .athena$get_prepared_statement_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_prepared_statement <- athena_get_prepared_statement
+
 #' Returns information about a single execution of a query if you have
 #' access to the workgroup in which the query ran
 #'
 #' @description
-#' Returns information about a single execution of a query if you have
-#' access to the workgroup in which the query ran. Each time a query
-#' executes, information about the query execution is saved with a unique
-#' ID.
+#' Returns information about a single execution of a query if you have access to the workgroup in which the query ran. Each time a query executes, information about the query execution is saved with a unique ID.
 #'
-#' @usage
-#' athena_get_query_execution(QueryExecutionId)
+#' See [https://paws-r.github.io/docs/athena/get_query_execution.html](https://paws-r.github.io/docs/athena/get_query_execution.html) for full documentation.
 #'
 #' @param QueryExecutionId &#91;required&#93; The unique ID of the query execution.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   QueryExecution = list(
-#'     QueryExecutionId = "string",
-#'     Query = "string",
-#'     StatementType = "DDL"|"DML"|"UTILITY",
-#'     ResultConfiguration = list(
-#'       OutputLocation = "string",
-#'       EncryptionConfiguration = list(
-#'         EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-#'         KmsKey = "string"
-#'       )
-#'     ),
-#'     QueryExecutionContext = list(
-#'       Database = "string",
-#'       Catalog = "string"
-#'     ),
-#'     Status = list(
-#'       State = "QUEUED"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED",
-#'       StateChangeReason = "string",
-#'       SubmissionDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CompletionDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     Statistics = list(
-#'       EngineExecutionTimeInMillis = 123,
-#'       DataScannedInBytes = 123,
-#'       DataManifestLocation = "string",
-#'       TotalExecutionTimeInMillis = 123,
-#'       QueryQueueTimeInMillis = 123,
-#'       QueryPlanningTimeInMillis = 123,
-#'       ServiceProcessingTimeInMillis = 123
-#'     ),
-#'     WorkGroup = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_query_execution(
-#'   QueryExecutionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -780,28 +567,9 @@ athena_get_query_execution <- function(QueryExecutionId) {
 #' QueryExecutionId from the Athena query results location in Amazon S3
 #'
 #' @description
-#' Streams the results of a single query execution specified by
-#' `QueryExecutionId` from the Athena query results location in Amazon S3.
-#' For more information, see [Query
-#' Results](https://docs.aws.amazon.com/athena/latest/ug/querying.html) in
-#' the *Amazon Athena User Guide*. This request does not execute the query
-#' but returns results. Use
-#' [`start_query_execution`][athena_start_query_execution] to run a query.
-#' 
-#' To stream query results successfully, the IAM principal with permission
-#' to call [`get_query_results`][athena_get_query_results] also must have
-#' permissions to the Amazon S3 `GetObject` action for the Athena query
-#' results location.
-#' 
-#' IAM principals with permission to the Amazon S3 `GetObject` action for
-#' the query results location are able to retrieve query results from
-#' Amazon S3 even if permission to the
-#' [`get_query_results`][athena_get_query_results] action is denied. To
-#' restrict user or role access, ensure that Amazon S3 permissions to the
-#' Athena query location are denied.
+#' Streams the results of a single query execution specified by `QueryExecutionId` from the Athena query results location in Amazon S3. For more information, see [Query Results](https://docs.aws.amazon.com/athena/latest/ug/querying.html) in the *Amazon Athena User Guide*. This request does not execute the query but returns results. Use [`start_query_execution`][athena_start_query_execution] to run a query.
 #'
-#' @usage
-#' athena_get_query_results(QueryExecutionId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/athena/get_query_results.html](https://paws-r.github.io/docs/athena/get_query_results.html) for full documentation.
 #'
 #' @param QueryExecutionId &#91;required&#93; The unique ID of the query execution.
 #' @param NextToken A token generated by the Athena service that specifies where to continue
@@ -809,51 +577,6 @@ athena_get_query_execution <- function(QueryExecutionId) {
 #' of pages, pass in the `NextToken` from the response object of the
 #' previous page call.
 #' @param MaxResults The maximum number of results (rows) to return in this request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UpdateCount = 123,
-#'   ResultSet = list(
-#'     Rows = list(
-#'       list(
-#'         Data = list(
-#'           list(
-#'             VarCharValue = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     ResultSetMetadata = list(
-#'       ColumnInfo = list(
-#'         list(
-#'           CatalogName = "string",
-#'           SchemaName = "string",
-#'           TableName = "string",
-#'           Name = "string",
-#'           Label = "string",
-#'           Type = "string",
-#'           Precision = 123,
-#'           Scale = 123,
-#'           Nullable = "NOT_NULL"|"NULLABLE"|"UNKNOWN",
-#'           CaseSensitive = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_query_results(
-#'   QueryExecutionId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -875,61 +598,47 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
 }
 .athena$operations$get_query_results <- athena_get_query_results
 
+#' Returns query execution runtime statistics related to a single execution
+#' of a query if you have access to the workgroup in which the query ran
+#'
+#' @description
+#' Returns query execution runtime statistics related to a single execution of a query if you have access to the workgroup in which the query ran. The query execution runtime statistics is returned only when QueryExecutionStatus$State is in a SUCCEEDED or FAILED state.
+#'
+#' See [https://paws-r.github.io/docs/athena/get_query_runtime_statistics.html](https://paws-r.github.io/docs/athena/get_query_runtime_statistics.html) for full documentation.
+#'
+#' @param QueryExecutionId &#91;required&#93; The unique ID of the query execution.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_query_runtime_statistics
+athena_get_query_runtime_statistics <- function(QueryExecutionId) {
+  op <- new_operation(
+    name = "GetQueryRuntimeStatistics",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_query_runtime_statistics_input(QueryExecutionId = QueryExecutionId)
+  output <- .athena$get_query_runtime_statistics_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_query_runtime_statistics <- athena_get_query_runtime_statistics
+
 #' Returns table metadata for the specified catalog, database, and table
 #'
 #' @description
 #' Returns table metadata for the specified catalog, database, and table.
 #'
-#' @usage
-#' athena_get_table_metadata(CatalogName, DatabaseName, TableName)
+#' See [https://paws-r.github.io/docs/athena/get_table_metadata.html](https://paws-r.github.io/docs/athena/get_table_metadata.html) for full documentation.
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog that contains the database and table
 #' metadata to return.
 #' @param DatabaseName &#91;required&#93; The name of the database that contains the table metadata to return.
 #' @param TableName &#91;required&#93; The name of the table for which metadata is returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableMetadata = list(
-#'     Name = "string",
-#'     CreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastAccessTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TableType = "string",
-#'     Columns = list(
-#'       list(
-#'         Name = "string",
-#'         Type = "string",
-#'         Comment = "string"
-#'       )
-#'     ),
-#'     PartitionKeys = list(
-#'       list(
-#'         Name = "string",
-#'         Type = "string",
-#'         Comment = "string"
-#'       )
-#'     ),
-#'     Parameters = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_table_metadata(
-#'   CatalogName = "string",
-#'   DatabaseName = "string",
-#'   TableName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -956,45 +665,9 @@ athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName) {
 #' @description
 #' Returns information about the workgroup with the specified name.
 #'
-#' @usage
-#' athena_get_work_group(WorkGroup)
+#' See [https://paws-r.github.io/docs/athena/get_work_group.html](https://paws-r.github.io/docs/athena/get_work_group.html) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The name of the workgroup.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WorkGroup = list(
-#'     Name = "string",
-#'     State = "ENABLED"|"DISABLED",
-#'     Configuration = list(
-#'       ResultConfiguration = list(
-#'         OutputLocation = "string",
-#'         EncryptionConfiguration = list(
-#'           EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-#'           KmsKey = "string"
-#'         )
-#'       ),
-#'       EnforceWorkGroupConfiguration = TRUE|FALSE,
-#'       PublishCloudWatchMetricsEnabled = TRUE|FALSE,
-#'       BytesScannedCutoffPerQuery = 123,
-#'       RequesterPaysEnabled = TRUE|FALSE
-#'     ),
-#'     Description = "string",
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_work_group(
-#'   WorkGroup = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1016,41 +689,18 @@ athena_get_work_group <- function(WorkGroup) {
 }
 .athena$operations$get_work_group <- athena_get_work_group
 
-#' Lists the data catalogs in the current AWS account
+#' Lists the data catalogs in the current Amazon Web Services account
 #'
 #' @description
-#' Lists the data catalogs in the current AWS account.
+#' Lists the data catalogs in the current Amazon Web Services account.
 #'
-#' @usage
-#' athena_list_data_catalogs(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/athena/list_data_catalogs.html](https://paws-r.github.io/docs/athena/list_data_catalogs.html) for full documentation.
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated. To obtain the next set
 #' of pages, pass in the NextToken from the response object of the previous
 #' page call.
 #' @param MaxResults Specifies the maximum number of data catalogs to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataCatalogsSummary = list(
-#'     list(
-#'       CatalogName = "string",
-#'       Type = "LAMBDA"|"GLUE"|"HIVE"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_data_catalogs(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1077,8 +727,7 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists the databases in the specified data catalog.
 #'
-#' @usage
-#' athena_list_databases(CatalogName, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/athena/list_databases.html](https://paws-r.github.io/docs/athena/list_databases.html) for full documentation.
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog that contains the databases to return.
 #' @param NextToken A token generated by the Athena service that specifies where to continue
@@ -1086,32 +735,6 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
 #' of pages, pass in the `NextToken` from the response object of the
 #' previous page call.
 #' @param MaxResults Specifies the maximum number of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DatabaseList = list(
-#'     list(
-#'       Name = "string",
-#'       Description = "string",
-#'       Parameters = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_databases(
-#'   CatalogName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1133,21 +756,47 @@ athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NU
 }
 .athena$operations$list_databases <- athena_list_databases
 
+#' Returns a list of engine versions that are available to choose from,
+#' including the Auto option
+#'
+#' @description
+#' Returns a list of engine versions that are available to choose from, including the Auto option.
+#'
+#' See [https://paws-r.github.io/docs/athena/list_engine_versions.html](https://paws-r.github.io/docs/athena/list_engine_versions.html) for full documentation.
+#'
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
+#' @param MaxResults The maximum number of engine versions to return in this request.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_engine_versions
+athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEngineVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_engine_versions_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .athena$list_engine_versions_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_engine_versions <- athena_list_engine_versions
+
 #' Provides a list of available query IDs only for queries saved in the
 #' specified workgroup
 #'
 #' @description
-#' Provides a list of available query IDs only for queries saved in the
-#' specified workgroup. Requires that you have access to the specified
-#' workgroup. If a workgroup is not specified, lists the saved queries for
-#' the primary workgroup.
-#' 
-#' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
+#' Provides a list of available query IDs only for queries saved in the specified workgroup. Requires that you have access to the specified workgroup. If a workgroup is not specified, lists the saved queries for the primary workgroup.
 #'
-#' @usage
-#' athena_list_named_queries(NextToken, MaxResults, WorkGroup)
+#' See [https://paws-r.github.io/docs/athena/list_named_queries.html](https://paws-r.github.io/docs/athena/list_named_queries.html) for full documentation.
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated. To obtain the next set
@@ -1157,26 +806,6 @@ athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NU
 #' @param WorkGroup The name of the workgroup from which the named queries are being
 #' returned. If a workgroup is not specified, the saved queries for the
 #' primary workgroup are returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NamedQueryIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_named_queries(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   WorkGroup = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1198,21 +827,47 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
 }
 .athena$operations$list_named_queries <- athena_list_named_queries
 
+#' Lists the prepared statements in the specified workgroup
+#'
+#' @description
+#' Lists the prepared statements in the specified workgroup.
+#'
+#' See [https://paws-r.github.io/docs/athena/list_prepared_statements.html](https://paws-r.github.io/docs/athena/list_prepared_statements.html) for full documentation.
+#'
+#' @param WorkGroup &#91;required&#93; The workgroup to list the prepared statements for.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
+#' @param MaxResults The maximum number of results to return in this request.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_prepared_statements
+athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPreparedStatements",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_prepared_statements_input(WorkGroup = WorkGroup, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .athena$list_prepared_statements_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_prepared_statements <- athena_list_prepared_statements
+
 #' Provides a list of available query execution IDs for the queries in the
 #' specified workgroup
 #'
 #' @description
-#' Provides a list of available query execution IDs for the queries in the
-#' specified workgroup. If a workgroup is not specified, returns a list of
-#' query execution IDs for the primary workgroup. Requires you to have
-#' access to the workgroup in which the queries ran.
-#' 
-#' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
+#' Provides a list of available query execution IDs for the queries in the specified workgroup. If a workgroup is not specified, returns a list of query execution IDs for the primary workgroup. Requires you to have access to the workgroup in which the queries ran.
 #'
-#' @usage
-#' athena_list_query_executions(NextToken, MaxResults, WorkGroup)
+#' See [https://paws-r.github.io/docs/athena/list_query_executions.html](https://paws-r.github.io/docs/athena/list_query_executions.html) for full documentation.
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated. To obtain the next set
@@ -1222,26 +877,6 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
 #' @param WorkGroup The name of the workgroup from which queries are being returned. If a
 #' workgroup is not specified, a list of available query execution IDs for
 #' the queries in the primary workgroup is returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   QueryExecutionIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_query_executions(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   WorkGroup = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1266,12 +901,9 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
 #' Lists the metadata for the tables in the specified data catalog database
 #'
 #' @description
-#' Lists the metadata for the tables in the specified data catalog
-#' database.
+#' Lists the metadata for the tables in the specified data catalog database.
 #'
-#' @usage
-#' athena_list_table_metadata(CatalogName, DatabaseName, Expression,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/athena/list_table_metadata.html](https://paws-r.github.io/docs/athena/list_table_metadata.html) for full documentation.
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog for which table metadata should be
 #' returned.
@@ -1283,54 +915,6 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
 #' of pages, pass in the NextToken from the response object of the previous
 #' page call.
 #' @param MaxResults Specifies the maximum number of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TableMetadataList = list(
-#'     list(
-#'       Name = "string",
-#'       CreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastAccessTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TableType = "string",
-#'       Columns = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string"
-#'         )
-#'       ),
-#'       PartitionKeys = list(
-#'         list(
-#'           Name = "string",
-#'           Type = "string",
-#'           Comment = "string"
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_table_metadata(
-#'   CatalogName = "string",
-#'   DatabaseName = "string",
-#'   Expression = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1356,11 +940,9 @@ athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = N
 #' resource
 #'
 #' @description
-#' Lists the tags associated with an Athena workgroup or data catalog
-#' resource.
+#' Lists the tags associated with an Athena workgroup or data catalog resource.
 #'
-#' @usage
-#' athena_list_tags_for_resource(ResourceARN, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/athena/list_tags_for_resource.html](https://paws-r.github.io/docs/athena/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Lists the tags for the resource with the specified ARN.
 #' @param NextToken The token for the next set of results, or null if there are no
@@ -1368,29 +950,6 @@ athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = N
 #' for the resource with the specified ARN.
 #' @param MaxResults The maximum number of results to be returned per request that lists the
 #' tags for the resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceARN = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1417,40 +976,13 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
 #' @description
 #' Lists available workgroups for the account.
 #'
-#' @usage
-#' athena_list_work_groups(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/athena/list_work_groups.html](https://paws-r.github.io/docs/athena/list_work_groups.html) for full documentation.
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated. To obtain the next set
 #' of pages, pass in the `NextToken` from the response object of the
 #' previous page call.
 #' @param MaxResults The maximum number of workgroups to return in this request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WorkGroups = list(
-#'     list(
-#'       Name = "string",
-#'       State = "ENABLED"|"DISABLED",
-#'       Description = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_work_groups(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1475,17 +1007,9 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' Runs the SQL query statements contained in the Query
 #'
 #' @description
-#' Runs the SQL query statements contained in the `Query`. Requires you to
-#' have access to the workgroup in which the query ran. Running queries
-#' against an external catalog requires
-#' [`get_data_catalog`][athena_get_data_catalog] permission to the catalog.
-#' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
+#' Runs the SQL query statements contained in the `Query`. Requires you to have access to the workgroup in which the query ran. Running queries against an external catalog requires [`get_data_catalog`][athena_get_data_catalog] permission to the catalog. For code samples using the Amazon Web Services SDK for Java, see [Examples and Code Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html) in the *Amazon Athena User Guide*.
 #'
-#' @usage
-#' athena_start_query_execution(QueryString, ClientRequestToken,
-#'   QueryExecutionContext, ResultConfiguration, WorkGroup)
+#' See [https://paws-r.github.io/docs/athena/start_query_execution.html](https://paws-r.github.io/docs/athena/start_query_execution.html) for full documentation.
 #'
 #' @param QueryString &#91;required&#93; The SQL query statements to be executed.
 #' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
@@ -1495,10 +1019,11 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' created. If a parameter has changed, for example, the `QueryString`, an
 #' error is returned.
 #' 
-#' This token is listed as not required because AWS SDKs (for example the
-#' AWS SDK for Java) auto-generate the token for users. If you are not
-#' using the AWS SDK or the AWS CLI, you must provide this token or the
-#' action will fail.
+#' This token is listed as not required because Amazon Web Services SDKs
+#' (for example the Amazon Web Services SDK for Java) auto-generate the
+#' token for users. If you are not using the Amazon Web Services SDK or the
+#' Amazon Web Services CLI, you must provide this token or the action will
+#' fail.
 #' @param QueryExecutionContext The database within which the query executes.
 #' @param ResultConfiguration Specifies information about where and how to save the results of the
 #' query execution. If the query runs in a workgroup, then workgroup's
@@ -1508,46 +1033,21 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' WorkGroupConfiguration. See
 #' WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 #' @param WorkGroup The name of the workgroup in which the query is being started.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   QueryExecutionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_query_execution(
-#'   QueryString = "string",
-#'   ClientRequestToken = "string",
-#'   QueryExecutionContext = list(
-#'     Database = "string",
-#'     Catalog = "string"
-#'   ),
-#'   ResultConfiguration = list(
-#'     OutputLocation = "string",
-#'     EncryptionConfiguration = list(
-#'       EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-#'       KmsKey = "string"
-#'     )
-#'   ),
-#'   WorkGroup = "string"
-#' )
-#' ```
+#' @param ExecutionParameters A list of values for the parameters in a query. The values are applied
+#' sequentially to the parameters in the query in the order in which the
+#' parameters occur.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_start_query_execution
-athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL, QueryExecutionContext = NULL, ResultConfiguration = NULL, WorkGroup = NULL) {
+athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL, QueryExecutionContext = NULL, ResultConfiguration = NULL, WorkGroup = NULL, ExecutionParameters = NULL) {
   op <- new_operation(
     name = "StartQueryExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .athena$start_query_execution_input(QueryString = QueryString, ClientRequestToken = ClientRequestToken, QueryExecutionContext = QueryExecutionContext, ResultConfiguration = ResultConfiguration, WorkGroup = WorkGroup)
+  input <- .athena$start_query_execution_input(QueryString = QueryString, ClientRequestToken = ClientRequestToken, QueryExecutionContext = QueryExecutionContext, ResultConfiguration = ResultConfiguration, WorkGroup = WorkGroup, ExecutionParameters = ExecutionParameters)
   output <- .athena$start_query_execution_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -1560,27 +1060,11 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
 #' Stops a query execution
 #'
 #' @description
-#' Stops a query execution. Requires you to have access to the workgroup in
-#' which the query ran.
-#' 
-#' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
+#' Stops a query execution. Requires you to have access to the workgroup in which the query ran.
 #'
-#' @usage
-#' athena_stop_query_execution(QueryExecutionId)
+#' See [https://paws-r.github.io/docs/athena/stop_query_execution.html](https://paws-r.github.io/docs/athena/stop_query_execution.html) for full documentation.
 #'
 #' @param QueryExecutionId &#91;required&#93; The unique ID of the query execution to stop.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_query_execution(
-#'   QueryExecutionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1605,44 +1089,14 @@ athena_stop_query_execution <- function(QueryExecutionId) {
 #' Adds one or more tags to an Athena resource
 #'
 #' @description
-#' Adds one or more tags to an Athena resource. A tag is a label that you
-#' assign to a resource. In Athena, a resource can be a workgroup or data
-#' catalog. Each tag consists of a key and an optional value, both of which
-#' you define. For example, you can use tags to categorize Athena
-#' workgroups or data catalogs by purpose, owner, or environment. Use a
-#' consistent set of tag keys to make it easier to search and filter
-#' workgroups or data catalogs in your account. For best practices, see
-#' [Tagging Best
-#' Practices](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf).
-#' Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values
-#' can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and
-#' numbers representable in UTF-8, and the following characters: + - = . _
-#' : / @@. Tag keys and values are case-sensitive. Tag keys must be unique
-#' per resource. If you specify more than one tag, separate them by commas.
+#' Adds one or more tags to an Athena resource. A tag is a label that you assign to a resource. In Athena, a resource can be a workgroup or data catalog. Each tag consists of a key and an optional value, both of which you define. For example, you can use tags to categorize Athena workgroups or data catalogs by purpose, owner, or environment. Use a consistent set of tag keys to make it easier to search and filter workgroups or data catalogs in your account. For best practices, see [Tagging Best Practices](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf). Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and numbers representable in UTF-8, and the following characters: + - = . _ : / @@. Tag keys and values are case-sensitive. Tag keys must be unique per resource. If you specify more than one tag, separate them by commas.
 #'
-#' @usage
-#' athena_tag_resource(ResourceARN, Tags)
+#' See [https://paws-r.github.io/docs/athena/tag_resource.html](https://paws-r.github.io/docs/athena/tag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Specifies the ARN of the Athena resource (workgroup or data catalog) to
 #' which tags are to be added.
 #' @param Tags &#91;required&#93; A collection of one or more tags, separated by commas, to be added to an
 #' Athena workgroup or data catalog resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceARN = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1669,25 +1123,11 @@ athena_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes one or more tags from a data catalog or workgroup resource.
 #'
-#' @usage
-#' athena_untag_resource(ResourceARN, TagKeys)
+#' See [https://paws-r.github.io/docs/athena/untag_resource.html](https://paws-r.github.io/docs/athena/untag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Specifies the ARN of the resource from which tags are to be removed.
 #' @param TagKeys &#91;required&#93; A comma-separated list of one or more tag keys whose tags are to be
 #' removed from the specified resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceARN = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1714,15 +1154,15 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates the data catalog that has the specified name.
 #'
-#' @usage
-#' athena_update_data_catalog(Name, Type, Description, Parameters)
+#' See [https://paws-r.github.io/docs/athena/update_data_catalog.html](https://paws-r.github.io/docs/athena/update_data_catalog.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to update. The catalog name must be unique
-#' for the AWS account and can use a maximum of 128 alphanumeric,
-#' underscore, at sign, or hyphen characters.
+#' for the Amazon Web Services account and can use a maximum of 127
+#' alphanumeric, underscore, at sign, or hyphen characters. The remainder
+#' of the length constraint of 256 is reserved for use by Athena.
 #' @param Type &#91;required&#93; Specifies the type of data catalog to update. Specify `LAMBDA` for a
-#' federated catalog, `GLUE` for AWS Glue Catalog, or `HIVE` for an
-#' external hive metastore.
+#' federated catalog, `HIVE` for an external hive metastore, or `GLUE` for
+#' an Glue Data Catalog.
 #' @param Description New or modified text that describes the data catalog.
 #' @param Parameters Specifies the Lambda function or functions to use for updating the data
 #' catalog. This is a mapping whose values depend on the catalog type.
@@ -1748,23 +1188,6 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 #'         Lambda function.
 #' 
 #'         `function=lambda_arn `
-#' 
-#' -   The `GLUE` type has no parameters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_data_catalog(
-#'   Name = "string",
-#'   Type = "LAMBDA"|"GLUE"|"HIVE",
-#'   Description = "string",
-#'   Parameters = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1786,49 +1209,82 @@ athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameter
 }
 .athena$operations$update_data_catalog <- athena_update_data_catalog
 
+#' Updates a NamedQuery object
+#'
+#' @description
+#' Updates a NamedQuery object. The database or workgroup cannot be updated.
+#'
+#' See [https://paws-r.github.io/docs/athena/update_named_query.html](https://paws-r.github.io/docs/athena/update_named_query.html) for full documentation.
+#'
+#' @param NamedQueryId &#91;required&#93; The unique identifier (UUID) of the query.
+#' @param Name &#91;required&#93; The name of the query.
+#' @param Description The query description.
+#' @param QueryString &#91;required&#93; The contents of the query with all query statements.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_update_named_query
+athena_update_named_query <- function(NamedQueryId, Name, Description = NULL, QueryString) {
+  op <- new_operation(
+    name = "UpdateNamedQuery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$update_named_query_input(NamedQueryId = NamedQueryId, Name = Name, Description = Description, QueryString = QueryString)
+  output <- .athena$update_named_query_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$update_named_query <- athena_update_named_query
+
+#' Updates a prepared statement
+#'
+#' @description
+#' Updates a prepared statement.
+#'
+#' See [https://paws-r.github.io/docs/athena/update_prepared_statement.html](https://paws-r.github.io/docs/athena/update_prepared_statement.html) for full documentation.
+#'
+#' @param StatementName &#91;required&#93; The name of the prepared statement.
+#' @param WorkGroup &#91;required&#93; The workgroup for the prepared statement.
+#' @param QueryStatement &#91;required&#93; The query string for the prepared statement.
+#' @param Description The description of the prepared statement.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_update_prepared_statement
+athena_update_prepared_statement <- function(StatementName, WorkGroup, QueryStatement, Description = NULL) {
+  op <- new_operation(
+    name = "UpdatePreparedStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$update_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup, QueryStatement = QueryStatement, Description = Description)
+  output <- .athena$update_prepared_statement_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$update_prepared_statement <- athena_update_prepared_statement
+
 #' Updates the workgroup with the specified name
 #'
 #' @description
-#' Updates the workgroup with the specified name. The workgroup's name
-#' cannot be changed.
+#' Updates the workgroup with the specified name. The workgroup's name cannot be changed.
 #'
-#' @usage
-#' athena_update_work_group(WorkGroup, Description, ConfigurationUpdates,
-#'   State)
+#' See [https://paws-r.github.io/docs/athena/update_work_group.html](https://paws-r.github.io/docs/athena/update_work_group.html) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The specified workgroup that will be updated.
 #' @param Description The workgroup description.
 #' @param ConfigurationUpdates The workgroup configuration that will be updated for the given
 #' workgroup.
 #' @param State The workgroup state that will be updated for the given workgroup.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_work_group(
-#'   WorkGroup = "string",
-#'   Description = "string",
-#'   ConfigurationUpdates = list(
-#'     EnforceWorkGroupConfiguration = TRUE|FALSE,
-#'     ResultConfigurationUpdates = list(
-#'       OutputLocation = "string",
-#'       RemoveOutputLocation = TRUE|FALSE,
-#'       EncryptionConfiguration = list(
-#'         EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-#'         KmsKey = "string"
-#'       ),
-#'       RemoveEncryptionConfiguration = TRUE|FALSE
-#'     ),
-#'     PublishCloudWatchMetricsEnabled = TRUE|FALSE,
-#'     BytesScannedCutoffPerQuery = 123,
-#'     RemoveBytesScannedCutoffPerQuery = TRUE|FALSE,
-#'     RequesterPaysEnabled = TRUE|FALSE
-#'   ),
-#'   State = "ENABLED"|"DISABLED"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

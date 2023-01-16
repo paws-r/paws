@@ -5,7 +5,12 @@
 \title{Returns a description of the specified Amazon Resource Name (ARN) of
 virtual tapes}
 \usage{
-storagegateway_describe_tapes(GatewayARN, TapeARNs, Marker, Limit)
+storagegateway_describe_tapes(
+  GatewayARN,
+  TapeARNs = NULL,
+  Marker = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -26,68 +31,9 @@ specified number.
 
 Amazon Web Services may impose its own limit, if this field is not set.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tapes = list(
-    list(
-      TapeARN = "string",
-      TapeBarcode = "string",
-      TapeCreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      TapeSizeInBytes = 123,
-      TapeStatus = "string",
-      VTLDevice = "string",
-      Progress = 123.0,
-      TapeUsedInBytes = 123,
-      KMSKey = "string",
-      PoolId = "string",
-      Worm = TRUE|FALSE,
-      RetentionStartDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      PoolEntryDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns a description of the specified Amazon Resource Name (ARN) of
-virtual tapes. If a \code{TapeARN} is not specified, returns a description of
-all virtual tapes associated with the specified gateway. This operation
-is only supported in the tape gateway type.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_tapes(
-  GatewayARN = "string",
-  TapeARNs = list(
-    "string"
-  ),
-  Marker = "string",
-  Limit = 123
-)
-}
-}
+Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a \code{TapeARN} is not specified, returns a description of all virtual tapes associated with the specified gateway. This operation is only supported in the tape gateway type.
 
-\examples{
-\dontrun{
-# Returns a description of the specified Amazon Resource Name (ARN) of
-# virtual tapes. If a TapeARN is not specified, returns a description of
-# all virtual tapes.
-svc$describe_tapes(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
-  Limit = 2L,
-  Marker = "1",
-  TapeARNs = list(
-    "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST04A2A1",
-    "arn:aws:storagegateway:us-east-1:999999999999:tape/TEST05A2A0"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/describe_tapes.html} for full documentation.
 }
 \keyword{internal}

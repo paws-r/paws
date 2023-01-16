@@ -6,26 +6,9 @@
 \usage{
 apigateway_get_account()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  cloudwatchRoleArn = "string",
-  throttleSettings = list(
-    burstLimit = 123,
-    rateLimit = 123.0
-  ),
-  features = list(
-    "string"
-  ),
-  apiKeyVersion = "string"
-)
-}
-}
 \description{
 Gets information about the current Account resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_account()
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_account.html} for full documentation.
+}
 \keyword{internal}

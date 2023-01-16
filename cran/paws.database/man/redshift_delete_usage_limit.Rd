@@ -9,17 +9,9 @@ redshift_delete_usage_limit(UsageLimitId)
 \arguments{
 \item{UsageLimitId}{[required] The identifier of the usage limit to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a usage limit from a cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_usage_limit(
-  UsageLimitId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/delete_usage_limit.html} for full documentation.
+}
 \keyword{internal}

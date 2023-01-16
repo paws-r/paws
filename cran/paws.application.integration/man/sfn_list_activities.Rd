@@ -4,7 +4,7 @@
 \alias{sfn_list_activities}
 \title{Lists the existing activities}
 \usage{
-sfn_list_activities(maxResults, nextToken)
+sfn_list_activities(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{maxResults}{The maximum number of results that are returned per call. You can use
@@ -21,40 +21,9 @@ arguments unchanged. Each pagination token expires after 24 hours. Using
 an expired pagination token will return an \emph{HTTP 400 InvalidToken}
 error.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  activities = list(
-    list(
-      activityArn = "string",
-      name = "string",
-      creationDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists the existing activities.
 
-If \code{nextToken} is returned, there are more results available. The value
-of \code{nextToken} is a unique pagination token for each page. Make the call
-again using the returned token to retrieve the next page. Keep all other
-arguments unchanged. Each pagination token expires after 24 hours. Using
-an expired pagination token will return an \emph{HTTP 400 InvalidToken}
-error.
-
-This operation is eventually consistent. The results are best effort and
-may not reflect very recent updates and changes.
+See \url{https://paws-r.github.io/docs/sfn/list_activities.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_activities(
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
-
 \keyword{internal}

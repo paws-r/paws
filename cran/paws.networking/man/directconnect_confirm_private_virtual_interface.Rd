@@ -2,11 +2,14 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_confirm_private_virtual_interface}
 \alias{directconnect_confirm_private_virtual_interface}
-\title{Accepts ownership of a private virtual interface created by another AWS
-account}
+\title{Accepts ownership of a private virtual interface created by another
+Amazon Web Services account}
 \usage{
-directconnect_confirm_private_virtual_interface(virtualInterfaceId,
-  virtualGatewayId, directConnectGatewayId)
+directconnect_confirm_private_virtual_interface(
+  virtualInterfaceId,
+  virtualGatewayId = NULL,
+  directConnectGatewayId = NULL
+)
 }
 \arguments{
 \item{virtualInterfaceId}{[required] The ID of the virtual interface.}
@@ -15,27 +18,9 @@ directconnect_confirm_private_virtual_interface(virtualInterfaceId,
 
 \item{directConnectGatewayId}{The ID of the Direct Connect gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown"
-)
-}
-}
 \description{
-Accepts ownership of a private virtual interface created by another AWS
-account.
+Accepts ownership of a private virtual interface created by another Amazon Web Services account.
 
-After the virtual interface owner makes this call, the virtual interface
-is created and attached to the specified virtual private gateway or
-Direct Connect gateway, and is made available to handle traffic.
+See \url{https://paws-r.github.io/docs/directconnect/confirm_private_virtual_interface.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$confirm_private_virtual_interface(
-  virtualInterfaceId = "string",
-  virtualGatewayId = "string",
-  directConnectGatewayId = "string"
-)
-}
-}
-
 \keyword{internal}

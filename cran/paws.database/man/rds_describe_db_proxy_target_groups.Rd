@@ -5,8 +5,13 @@
 \title{Returns information about DB proxy target groups, represented by
 DBProxyTargetGroup data structures}
 \usage{
-rds_describe_db_proxy_target_groups(DBProxyName, TargetGroupName,
-  Filters, Marker, MaxRecords)
+rds_describe_db_proxy_target_groups(
+  DBProxyName,
+  TargetGroupName = NULL,
+  Filters = NULL,
+  Marker = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{DBProxyName}{[required] The identifier of the \code{DBProxy} associated with the target group.}
@@ -28,56 +33,9 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TargetGroups = list(
-    list(
-      DBProxyName = "string",
-      TargetGroupName = "string",
-      TargetGroupArn = "string",
-      IsDefault = TRUE|FALSE,
-      Status = "string",
-      ConnectionPoolConfig = list(
-        MaxConnectionsPercent = 123,
-        MaxIdleConnectionsPercent = 123,
-        ConnectionBorrowTimeout = 123,
-        SessionPinningFilters = list(
-          "string"
-        ),
-        InitQuery = "string"
-      ),
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdatedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns information about DB proxy target groups, represented by
-\code{DBProxyTargetGroup} data structures.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_proxy_target_groups(
-  DBProxyName = "string",
-  TargetGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string",
-  MaxRecords = 123
-)
-}
-}
+Returns information about DB proxy target groups, represented by \code{DBProxyTargetGroup} data structures.
 
+See \url{https://paws-r.github.io/docs/rds/describe_db_proxy_target_groups.html} for full documentation.
+}
 \keyword{internal}

@@ -13,41 +13,9 @@ backup_get_backup_selection(BackupPlanId, SelectionId)
 \item{SelectionId}{[required] Uniquely identifies the body of a request to assign a set of resources
 to a backup plan.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupSelection = list(
-    SelectionName = "string",
-    IamRoleArn = "string",
-    Resources = list(
-      "string"
-    ),
-    ListOfTags = list(
-      list(
-        ConditionType = "STRINGEQUALS",
-        ConditionKey = "string",
-        ConditionValue = "string"
-      )
-    )
-  ),
-  SelectionId = "string",
-  BackupPlanId = "string",
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatorRequestId = "string"
-)
-}
-}
 \description{
-Returns selection metadata and a document in JSON format that specifies
-a list of resources that are associated with a backup plan.
-}
-\section{Request syntax}{
-\preformatted{svc$get_backup_selection(
-  BackupPlanId = "string",
-  SelectionId = "string"
-)
-}
-}
+Returns selection metadata and a document in JSON format that specifies a list of resources that are associated with a backup plan.
 
+See \url{https://paws-r.github.io/docs/backup/get_backup_selection.html} for full documentation.
+}
 \keyword{internal}

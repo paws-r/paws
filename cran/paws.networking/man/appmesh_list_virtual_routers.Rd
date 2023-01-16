@@ -4,7 +4,12 @@
 \alias{appmesh_list_virtual_routers}
 \title{Returns a list of existing virtual routers in a service mesh}
 \usage{
-appmesh_list_virtual_routers(limit, meshName, meshOwner, nextToken)
+appmesh_list_virtual_routers(
+  limit = NULL,
+  meshName,
+  meshOwner = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{limit}{The maximum number of results returned by
@@ -21,9 +26,10 @@ results and a \code{nextToken} value if applicable.}
 
 \item{meshName}{[required] The name of the service mesh to list virtual routers in.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then it's the ID of the account that shared the mesh with
-your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then it's the ID of the account that shared
+the mesh with your account. For more information about mesh sharing, see
+\href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
 \code{\link[=appmesh_list_virtual_routers]{list_virtual_routers}} request where
@@ -31,39 +37,9 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 Pagination continues from the end of the previous results that returned
 the \code{nextToken} value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  virtualRouters = list(
-    list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshName = "string",
-      meshOwner = "string",
-      resourceOwner = "string",
-      version = 123,
-      virtualRouterName = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns a list of existing virtual routers in a service mesh.
-}
-\section{Request syntax}{
-\preformatted{svc$list_virtual_routers(
-  limit = 123,
-  meshName = "string",
-  meshOwner = "string",
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appmesh/list_virtual_routers.html} for full documentation.
+}
 \keyword{internal}

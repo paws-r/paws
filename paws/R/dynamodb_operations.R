@@ -3,17 +3,30 @@
 #' @include dynamodb_service.R
 NULL
 
-#' This operation allows you to perform batch reads and writes on data
+#' This operation allows you to perform batch reads or writes on data
 #' stored in DynamoDB, using PartiQL
 #'
 #' @description
-#' This operation allows you to perform batch reads and writes on data
-#' stored in DynamoDB, using PartiQL.
+#' This operation allows you to perform batch reads or writes on data
+#' stored in DynamoDB, using PartiQL. Each read statement in a
+#' [`batch_execute_statement`][dynamodb_batch_execute_statement] must
+#' specify an equality condition on all key attributes. This enforces that
+#' each `SELECT` statement in a batch returns at most a single item.
+#' 
+#' The entire batch must consist of either read statements or write
+#' statements, you cannot mix both in one batch.
+#' 
+#' A HTTP 200 response does not mean that all statements in the
+#' BatchExecuteStatement succeeded. Error details for individual statements
+#' can be found under the
+#' [Error](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchStatementResponse.html#DDB-Type-BatchStatementResponse-Error)
+#' field of the `BatchStatementResponse` for each statement.
 #'
 #' @usage
-#' dynamodb_batch_execute_statement(Statements)
+#' dynamodb_batch_execute_statement(Statements, ReturnConsumedCapacity)
 #'
 #' @param Statements &#91;required&#93; The list of PartiQL statements representing the batch to run.
+#' @param ReturnConsumedCapacity 
 #'
 #' @return
 #' A list with the following syntax:
@@ -48,6 +61,33 @@ NULL
 #'           ),
 #'           NULL = TRUE|FALSE,
 #'           BOOL = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ConsumedCapacity = list(
+#'     list(
+#'       TableName = "string",
+#'       CapacityUnits = 123.0,
+#'       ReadCapacityUnits = 123.0,
+#'       WriteCapacityUnits = 123.0,
+#'       Table = list(
+#'         ReadCapacityUnits = 123.0,
+#'         WriteCapacityUnits = 123.0,
+#'         CapacityUnits = 123.0
+#'       ),
+#'       LocalSecondaryIndexes = list(
+#'         list(
+#'           ReadCapacityUnits = 123.0,
+#'           WriteCapacityUnits = 123.0,
+#'           CapacityUnits = 123.0
+#'         )
+#'       ),
+#'       GlobalSecondaryIndexes = list(
+#'         list(
+#'           ReadCapacityUnits = 123.0,
+#'           WriteCapacityUnits = 123.0,
+#'           CapacityUnits = 123.0
 #'         )
 #'       )
 #'     )
@@ -87,21 +127,22 @@ NULL
 #'       ),
 #'       ConsistentRead = TRUE|FALSE
 #'     )
-#'   )
+#'   ),
+#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_batch_execute_statement
-dynamodb_batch_execute_statement <- function(Statements) {
+dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$batch_execute_statement_input(Statements = Statements)
+  input <- .dynamodb$batch_execute_statement_input(Statements = Statements, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$batch_execute_statement_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -466,9 +507,13 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' @description
 #' The [`batch_write_item`][dynamodb_batch_write_item] operation puts or
 #' deletes multiple items in one or more tables. A single call to
-#' [`batch_write_item`][dynamodb_batch_write_item] can write up to 16 MB of
-#' data, which can comprise as many as 25 put or delete requests.
-#' Individual items to be written can be as large as 400 KB.
+#' [`batch_write_item`][dynamodb_batch_write_item] can transmit up to 16MB
+#' of data over the network, consisting of up to 25 item put or delete
+#' operations. While individual items can be up to 400 KB once stored, it's
+#' important to note that an item's representation might be greater than
+#' 400KB while being sent in DynamoDB's JSON format for the API call. For
+#' more details on this distinction, see [Naming Rules and Data
+#' Types](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html).
 #' 
 #' [`batch_write_item`][dynamodb_batch_write_item] cannot update items. To
 #' update items, use the [`update_item`][dynamodb_update_item] action.
@@ -1032,6 +1077,12 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #'         ),
 #'         ReplicaInaccessibleDateTime = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         ReplicaTableClassSummary = list(
+#'           TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'           LastUpdateDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1081,9 +1132,9 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'
 #' @description
 #' The [`create_table`][dynamodb_create_table] operation adds a new table
-#' to your account. In an AWS account, table names must be unique within
-#' each Region. That is, you can have two tables with same name if you
-#' create the tables in different Regions.
+#' to your account. In an Amazon Web Services account, table names must be
+#' unique within each Region. That is, you can have two tables with same
+#' name if you create the tables in different Regions.
 #' 
 #' [`create_table`][dynamodb_create_table] is an asynchronous operation.
 #' Upon receiving a [`create_table`][dynamodb_create_table] request,
@@ -1104,7 +1155,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @usage
 #' dynamodb_create_table(AttributeDefinitions, TableName, KeySchema,
 #'   LocalSecondaryIndexes, GlobalSecondaryIndexes, BillingMode,
-#'   ProvisionedThroughput, StreamSpecification, SSESpecification, Tags)
+#'   ProvisionedThroughput, StreamSpecification, SSESpecification, Tags,
+#'   TableClass)
 #'
 #' @param AttributeDefinitions &#91;required&#93; An array of attributes that describe the key schema for the table and
 #' indexes.
@@ -1241,7 +1293,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' 
 #' For current minimum and maximum provisioned throughput values, see
 #' [Service, Account, and Table
-#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ServiceQuotas.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param StreamSpecification The settings for DynamoDB Streams on the table. These settings consist
 #' of:
@@ -1268,6 +1320,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @param Tags A list of key-value pairs to label the table. For more information, see
 #' [Tagging for
 #' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html).
+#' @param TableClass The table class of the new table. Valid values are `STANDARD` and
+#' `STANDARD_INFREQUENT_ACCESS`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1392,6 +1446,12 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         ),
 #'         ReplicaInaccessibleDateTime = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         ReplicaTableClassSummary = list(
+#'           TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'           LastUpdateDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1417,6 +1477,12 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'       ),
 #'       ArchivalReason = "string",
 #'       ArchivalBackupArn = "string"
+#'     ),
+#'     TableClassSummary = list(
+#'       TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'       LastUpdateDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1495,7 +1561,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS"
 #' )
 #' ```
 #'
@@ -1534,14 +1601,14 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_create_table
-dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL) {
+dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags)
+  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass)
   output <- .dynamodb$create_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -1740,6 +1807,10 @@ dynamodb_delete_backup <- function(BackupArn) {
 #'     `ReturnValues`.)
 #' 
 #' -   `ALL_OLD` - The content of the old item is returned.
+#' 
+#' There is no additional cost associated with requesting a return value
+#' aside from the small network and processing overhead of receiving a
+#' larger response. No read capacity units are consumed.
 #' 
 #' The `ReturnValues` parameter is used by several DynamoDB operations;
 #' however, [`delete_item`][dynamodb_delete_item] does not recognize any
@@ -2212,6 +2283,12 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #'         ),
 #'         ReplicaInaccessibleDateTime = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         ReplicaTableClassSummary = list(
+#'           TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'           LastUpdateDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2237,6 +2314,12 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #'       ),
 #'       ArchivalReason = "string",
 #'       ArchivalBackupArn = "string"
+#'     ),
+#'     TableClassSummary = list(
+#'       TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'       LastUpdateDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -2708,6 +2791,12 @@ dynamodb_describe_export <- function(ExportArn) {
 #'         ),
 #'         ReplicaInaccessibleDateTime = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         ReplicaTableClassSummary = list(
+#'           TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'           LastUpdateDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2854,6 +2943,12 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       ReplicaTableClassSummary = list(
+#'         TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'         LastUpdateDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -2939,31 +3034,33 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
 }
 .dynamodb$operations$describe_kinesis_streaming_destination <- dynamodb_describe_kinesis_streaming_destination
 
-#' Returns the current provisioned-capacity quotas for your AWS account in
-#' a Region, both for the Region as a whole and for any one DynamoDB table
-#' that you create there
+#' Returns the current provisioned-capacity quotas for your Amazon Web
+#' Services account in a Region, both for the Region as a whole and for any
+#' one DynamoDB table that you create there
 #'
 #' @description
-#' Returns the current provisioned-capacity quotas for your AWS account in
-#' a Region, both for the Region as a whole and for any one DynamoDB table
-#' that you create there.
+#' Returns the current provisioned-capacity quotas for your Amazon Web
+#' Services account in a Region, both for the Region as a whole and for any
+#' one DynamoDB table that you create there.
 #' 
-#' When you establish an AWS account, the account has initial quotas on the
-#' maximum read capacity units and write capacity units that you can
-#' provision across all of your DynamoDB tables in a given Region. Also,
-#' there are per-table quotas that apply when you create a table there. For
-#' more information, see [Service, Account, and Table
-#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+#' When you establish an Amazon Web Services account, the account has
+#' initial quotas on the maximum read capacity units and write capacity
+#' units that you can provision across all of your DynamoDB tables in a
+#' given Region. Also, there are per-table quotas that apply when you
+#' create a table there. For more information, see [Service, Account, and
+#' Table
+#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ServiceQuotas.html)
 #' page in the *Amazon DynamoDB Developer Guide*.
 #' 
-#' Although you can increase these quotas by filing a case at AWS Support
-#' Center, obtaining the increase is not instantaneous. The
-#' [`describe_limits`][dynamodb_describe_limits] action lets you write code
-#' to compare the capacity you are currently using to those quotas imposed
-#' by your account so that you have enough time to apply for an increase
-#' before you hit a quota.
+#' Although you can increase these quotas by filing a case at Amazon Web
+#' Services Support Center, obtaining the increase is not instantaneous.
+#' The [`describe_limits`][dynamodb_describe_limits] action lets you write
+#' code to compare the capacity you are currently using to those quotas
+#' imposed by your account so that you have enough time to apply for an
+#' increase before you hit a quota.
 #' 
-#' For example, you could use one of the AWS SDKs to do the following:
+#' For example, you could use one of the Amazon Web Services SDKs to do the
+#' following:
 #' 
 #' 1.  Call [`describe_limits`][dynamodb_describe_limits] for a particular
 #'     Region to obtain your current account quotas on provisioned capacity
@@ -3205,6 +3302,12 @@ dynamodb_describe_limits <- function() {
 #'         ),
 #'         ReplicaInaccessibleDateTime = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         ReplicaTableClassSummary = list(
+#'           TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'           LastUpdateDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -3230,6 +3333,12 @@ dynamodb_describe_limits <- function() {
 #'       ),
 #'       ArchivalReason = "string",
 #'       ArchivalBackupArn = "string"
+#'     ),
+#'     TableClassSummary = list(
+#'       TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'       LastUpdateDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -3563,10 +3672,23 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #' @description
 #' This operation allows you to perform reads and singleton writes on data
 #' stored in DynamoDB, using PartiQL.
+#' 
+#' For PartiQL reads (`SELECT` statement), if the total number of processed
+#' items exceeds the maximum dataset size limit of 1 MB, the read stops and
+#' results are returned to the user as a `LastEvaluatedKey` value to
+#' continue the read in a subsequent operation. If the filter criteria in
+#' `WHERE` clause does not match any data, the read will return an empty
+#' result set.
+#' 
+#' A single `SELECT` statement response can return up to the maximum number
+#' of items (if using the Limit parameter) or a maximum of 1 MB of data
+#' (and then apply any filtering to the results using `WHERE` clause). If
+#' `LastEvaluatedKey` is present in the response, you need to paginate the
+#' result set.
 #'
 #' @usage
 #' dynamodb_execute_statement(Statement, Parameters, ConsistentRead,
-#'   NextToken)
+#'   NextToken, ReturnConsumedCapacity, Limit)
 #'
 #' @param Statement &#91;required&#93; The PartiQL statement representing the operation to run.
 #' @param Parameters The parameters for the PartiQL statement, if any.
@@ -3575,6 +3697,16 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #' used.
 #' @param NextToken Set this value to get remaining results, if `NextToken` was returned in
 #' the statement response.
+#' @param ReturnConsumedCapacity 
+#' @param Limit The maximum number of items to evaluate (not necessarily the number of
+#' matching items). If DynamoDB processes the number of items up to the
+#' limit while processing the results, it stops the operation and returns
+#' the matching values up to that point, along with a key in
+#' `LastEvaluatedKey` to apply in a subsequent operation so you can pick up
+#' where you left off. Also, if the processed dataset size exceeds 1 MB
+#' before DynamoDB reaches this limit, it stops the operation and returns
+#' the matching values up to the limit, and a key in `LastEvaluatedKey` to
+#' apply in a subsequent operation to continue the operation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3606,7 +3738,56 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #'       )
 #'     )
 #'   ),
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   ConsumedCapacity = list(
+#'     TableName = "string",
+#'     CapacityUnits = 123.0,
+#'     ReadCapacityUnits = 123.0,
+#'     WriteCapacityUnits = 123.0,
+#'     Table = list(
+#'       ReadCapacityUnits = 123.0,
+#'       WriteCapacityUnits = 123.0,
+#'       CapacityUnits = 123.0
+#'     ),
+#'     LocalSecondaryIndexes = list(
+#'       list(
+#'         ReadCapacityUnits = 123.0,
+#'         WriteCapacityUnits = 123.0,
+#'         CapacityUnits = 123.0
+#'       )
+#'     ),
+#'     GlobalSecondaryIndexes = list(
+#'       list(
+#'         ReadCapacityUnits = 123.0,
+#'         WriteCapacityUnits = 123.0,
+#'         CapacityUnits = 123.0
+#'       )
+#'     )
+#'   ),
+#'   LastEvaluatedKey = list(
+#'     list(
+#'       S = "string",
+#'       N = "string",
+#'       B = raw,
+#'       SS = list(
+#'         "string"
+#'       ),
+#'       NS = list(
+#'         "string"
+#'       ),
+#'       BS = list(
+#'         raw
+#'       ),
+#'       M = list(
+#'         list()
+#'       ),
+#'       L = list(
+#'         list()
+#'       ),
+#'       NULL = TRUE|FALSE,
+#'       BOOL = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -3639,21 +3820,23 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #'     )
 #'   ),
 #'   ConsistentRead = TRUE|FALSE,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
+#'   Limit = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_execute_statement
-dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentRead = NULL, NextToken = NULL) {
+dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentRead = NULL, NextToken = NULL, ReturnConsumedCapacity = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$execute_statement_input(Statement = Statement, Parameters = Parameters, ConsistentRead = ConsistentRead, NextToken = NextToken)
+  input <- .dynamodb$execute_statement_input(Statement = Statement, Parameters = Parameters, ConsistentRead = ConsistentRead, NextToken = NextToken, ReturnConsumedCapacity = ReturnConsumedCapacity, Limit = Limit)
   output <- .dynamodb$execute_statement_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -3669,13 +3852,24 @@ dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentR
 #' @description
 #' This operation allows you to perform transactional reads or writes on
 #' data stored in DynamoDB, using PartiQL.
+#' 
+#' The entire transaction must consist of either read statements or write
+#' statements, you cannot mix both in one transaction. The EXISTS function
+#' is an exception and can be used to check the condition of specific
+#' attributes of the item in a similar manner to `ConditionCheck` in the
+#' [`transact_write_items`][dynamodb_transact_write_items] API.
 #'
 #' @usage
-#' dynamodb_execute_transaction(TransactStatements, ClientRequestToken)
+#' dynamodb_execute_transaction(TransactStatements, ClientRequestToken,
+#'   ReturnConsumedCapacity)
 #'
 #' @param TransactStatements &#91;required&#93; The list of PartiQL statements representing the transaction to run.
 #' @param ClientRequestToken Set this value to get remaining results, if `NextToken` was returned in
 #' the statement response.
+#' @param ReturnConsumedCapacity Determines the level of detail about either provisioned or on-demand
+#' throughput consumption that is returned in the response. For more
+#' information, see [`transact_get_items`][dynamodb_transact_get_items] and
+#' [`transact_write_items`][dynamodb_transact_write_items].
 #'
 #' @return
 #' A list with the following syntax:
@@ -3705,6 +3899,33 @@ dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentR
 #'           ),
 #'           NULL = TRUE|FALSE,
 #'           BOOL = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ConsumedCapacity = list(
+#'     list(
+#'       TableName = "string",
+#'       CapacityUnits = 123.0,
+#'       ReadCapacityUnits = 123.0,
+#'       WriteCapacityUnits = 123.0,
+#'       Table = list(
+#'         ReadCapacityUnits = 123.0,
+#'         WriteCapacityUnits = 123.0,
+#'         CapacityUnits = 123.0
+#'       ),
+#'       LocalSecondaryIndexes = list(
+#'         list(
+#'           ReadCapacityUnits = 123.0,
+#'           WriteCapacityUnits = 123.0,
+#'           CapacityUnits = 123.0
+#'         )
+#'       ),
+#'       GlobalSecondaryIndexes = list(
+#'         list(
+#'           ReadCapacityUnits = 123.0,
+#'           WriteCapacityUnits = 123.0,
+#'           CapacityUnits = 123.0
 #'         )
 #'       )
 #'     )
@@ -3744,21 +3965,22 @@ dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentR
 #'       )
 #'     )
 #'   ),
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_execute_transaction
-dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken = NULL) {
+dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken = NULL, ReturnConsumedCapacity = NULL) {
   op <- new_operation(
     name = "ExecuteTransaction",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$execute_transaction_input(TransactStatements = TransactStatements, ClientRequestToken = ClientRequestToken)
+  input <- .dynamodb$execute_transaction_input(TransactStatements = TransactStatements, ClientRequestToken = ClientRequestToken, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$execute_transaction_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -3781,8 +4003,9 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #'   S3SseKmsKeyId, ExportFormat)
 #'
 #' @param TableArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the table to export.
-#' @param ExportTime Time in the past from which to export table data. The table export will
-#' be a snapshot of the table's state at this point in time.
+#' @param ExportTime Time in the past from which to export table data, counted in seconds
+#' from the start of the Unix epoch. The table export will be a snapshot of
+#' the table's state at this point in time.
 #' @param ClientToken Providing a `ClientToken` makes the call to
 #' `ExportTableToPointInTimeInput` idempotent, meaning that multiple
 #' identical calls have the same effect as one single call.
@@ -3797,8 +4020,8 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' parameters within the 8-hour idempotency window, DynamoDB returns an
 #' `IdempotentParameterMismatch` exception.
 #' @param S3Bucket &#91;required&#93; The name of the Amazon S3 bucket to export the snapshot to.
-#' @param S3BucketOwner The ID of the AWS account that owns the bucket the export will be stored
-#' in.
+#' @param S3BucketOwner The ID of the Amazon Web Services account that owns the bucket the
+#' export will be stored in.
 #' @param S3Prefix The Amazon S3 bucket prefix to use as the file name and path of the
 #' exported snapshot.
 #' @param S3SseAlgorithm Type of encryption used on the bucket where export data will be stored.
@@ -3806,9 +4029,9 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' 
 #' -   `AES256` - server-side encryption with Amazon S3 managed keys
 #' 
-#' -   `KMS` - server-side encryption with AWS KMS managed keys
-#' @param S3SseKmsKeyId The ID of the AWS KMS managed key used to encrypt the S3 bucket where
-#' export data will be stored (if applicable).
+#' -   `KMS` - server-side encryption with KMS managed keys
+#' @param S3SseKmsKeyId The ID of the KMS managed key used to encrypt the S3 bucket where export
+#' data will be stored (if applicable).
 #' @param ExportFormat The format for the exported data. Valid values for `ExportFormat` are
 #' `DYNAMODB_JSON` or `ION`.
 #'
@@ -4101,14 +4324,14 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 }
 .dynamodb$operations$get_item <- dynamodb_get_item
 
-#' List backups associated with an AWS account
+#' List backups associated with an Amazon Web Services account
 #'
 #' @description
-#' List backups associated with an AWS account. To list backups for a given
-#' table, specify `TableName`. [`list_backups`][dynamodb_list_backups]
-#' returns a paginated list of results with at most 1 MB worth of items in
-#' a page. You can also specify a maximum number of entries to be returned
-#' in a page.
+#' List backups associated with an Amazon Web Services account. To list
+#' backups for a given table, specify `TableName`.
+#' [`list_backups`][dynamodb_list_backups] returns a paginated list of
+#' results with at most 1 MB worth of items in a page. You can also specify
+#' a maximum number of entries to be returned in a page.
 #' 
 #' In the request, start time is inclusive, but end time is exclusive. Note
 #' that these boundaries are for the time at which the original backup was
@@ -4137,7 +4360,8 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 #' 
 #' Where `BackupType` can be:
 #' 
-#' -   `USER` - On-demand backup created by you.
+#' -   `USER` - On-demand backup created by you. (The default setting if no
+#'     other backup types are specified.)
 #' 
 #' -   `SYSTEM` - On-demand backup automatically created by DynamoDB.
 #' 
@@ -4526,39 +4750,6 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' has certain attribute values. You can return the item's attribute values
 #' in the same operation, using the `ReturnValues` parameter.
 #' 
-#' This topic provides general information about the
-#' [`put_item`][dynamodb_put_item] API.
-#' 
-#' For information on how to call the [`put_item`][dynamodb_put_item] API
-#' using the AWS SDK in specific languages, see the following:
-#' 
-#' -   [PutItem in the AWS Command Line
-#'     Interface](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2/MDynamoDBPutItemPutItemRequest.html)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     C++](https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=dynamodb-2012-08-10&type=PutItem)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     Go](https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/#DynamoDB.PutItem)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDB.html#putItem-com.amazonaws.services.dynamodbv2.model.PutItemRequest-)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#putItem-property)
-#' 
-#' -   [PutItem in the AWS SDK for PHP
-#'     V3](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-dynamodb-2012-08-10.html#putitem)
-#' 
-#' -   [PutItem in the AWS SDK for
-#'     Python](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html)
-#' 
-#' -   [PutItem in the AWS SDK for Ruby
-#'     V2](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/DynamoDB/Client.html#put_item-instance_method)
-#' 
 #' When you add an item, the primary key attributes are the only required
 #' attributes. Attribute values cannot be null.
 #' 
@@ -4627,6 +4818,12 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' -   `ALL_OLD` - If [`put_item`][dynamodb_put_item] overwrote an
 #'     attribute name-value pair, then the content of the old item is
 #'     returned.
+#' 
+#' The values returned are strongly consistent.
+#' 
+#' There is no additional cost associated with requesting a return value
+#' aside from the small network and processing overhead of receiving a
+#' larger response. No read capacity units are consumed.
 #' 
 #' The `ReturnValues` parameter is used by several DynamoDB operations;
 #' however, [`put_item`][dynamodb_put_item] does not recognize any values
@@ -4954,12 +5151,14 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 }
 .dynamodb$operations$put_item <- dynamodb_put_item
 
-#' The Query operation finds items based on primary key values
+#' You must provide the name of the partition key attribute and a single
+#' value for that attribute
 #'
 #' @description
-#' The [`query`][dynamodb_query] operation finds items based on primary key
-#' values. You can query any table or secondary index that has a composite
-#' primary key (a partition key and a sort key).
+#' You must provide the name of the partition key attribute and a single
+#' value for that attribute. [`query`][dynamodb_query] returns all items
+#' with that partition key value. Optionally, you can provide a sort key
+#' attribute and use a comparison operator to refine the search results.
 #' 
 #' Use the `KeyConditionExpression` parameter to provide a specific value
 #' for the partition key. The [`query`][dynamodb_query] operation will
@@ -5047,8 +5246,9 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #'     matching items themselves.
 #' 
 #' -   `SPECIFIC_ATTRIBUTES` - Returns only the attributes listed in
-#'     `AttributesToGet`. This return value is equivalent to specifying
-#'     `AttributesToGet` without specifying any value for `Select`.
+#'     `ProjectionExpression`. This return value is equivalent to
+#'     specifying `ProjectionExpression` without specifying any value for
+#'     `Select`.
 #' 
 #'     If you query or scan a local secondary index and request only
 #'     attributes that are projected into that index, the operation will
@@ -5061,12 +5261,13 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #'     attributes that are projected into the index. Global secondary index
 #'     queries cannot fetch attributes from the parent table.
 #' 
-#' If neither `Select` nor `AttributesToGet` are specified, DynamoDB
+#' If neither `Select` nor `ProjectionExpression` are specified, DynamoDB
 #' defaults to `ALL_ATTRIBUTES` when accessing a table, and
 #' `ALL_PROJECTED_ATTRIBUTES` when accessing an index. You cannot use both
-#' `Select` and `AttributesToGet` together in a single request, unless the
-#' value for `Select` is `SPECIFIC_ATTRIBUTES`. (This usage is equivalent
-#' to specifying `AttributesToGet` without any value for `Select`.)
+#' `Select` and `ProjectionExpression` together in a single request, unless
+#' the value for `Select` is `SPECIFIC_ATTRIBUTES`. (This usage is
+#' equivalent to specifying `ProjectionExpression` without any value for
+#' `Select`.)
 #' 
 #' If you use the `ProjectionExpression` parameter, then the value for
 #' `Select` can only be `SPECIFIC_ATTRIBUTES`. Any other value for `Select`
@@ -5152,7 +5353,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' units.
 #' 
 #' For more information, see [Filter
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#FilteringResults)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param KeyConditionExpression The condition that specifies the key values for items to be retrieved by
 #' the [`query`][dynamodb_query] action.
@@ -5704,6 +5905,12 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'         ),
 #'         ReplicaInaccessibleDateTime = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         ReplicaTableClassSummary = list(
+#'           TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'           LastUpdateDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -5729,6 +5936,12 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'       ),
 #'       ArchivalReason = "string",
 #'       ArchivalBackupArn = "string"
+#'     ),
+#'     TableClassSummary = list(
+#'       TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'       LastUpdateDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -6002,6 +6215,12 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'         ),
 #'         ReplicaInaccessibleDateTime = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         ReplicaTableClassSummary = list(
+#'           TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'           LastUpdateDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -6027,6 +6246,12 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'       ),
 #'       ArchivalReason = "string",
 #'       ArchivalBackupArn = "string"
+#'     ),
+#'     TableClassSummary = list(
+#'       TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'       LastUpdateDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -6201,8 +6426,9 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #'     matching items themselves.
 #' 
 #' -   `SPECIFIC_ATTRIBUTES` - Returns only the attributes listed in
-#'     `AttributesToGet`. This return value is equivalent to specifying
-#'     `AttributesToGet` without specifying any value for `Select`.
+#'     `ProjectionExpression`. This return value is equivalent to
+#'     specifying `ProjectionExpression` without specifying any value for
+#'     `Select`.
 #' 
 #'     If you query or scan a local secondary index and request only
 #'     attributes that are projected into that index, the operation reads
@@ -6215,12 +6441,13 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #'     attributes that are projected into the index. Global secondary index
 #'     queries cannot fetch attributes from the parent table.
 #' 
-#' If neither `Select` nor `AttributesToGet` are specified, DynamoDB
+#' If neither `Select` nor `ProjectionExpression` are specified, DynamoDB
 #' defaults to `ALL_ATTRIBUTES` when accessing a table, and
 #' `ALL_PROJECTED_ATTRIBUTES` when accessing an index. You cannot use both
-#' `Select` and `AttributesToGet` together in a single request, unless the
-#' value for `Select` is `SPECIFIC_ATTRIBUTES`. (This usage is equivalent
-#' to specifying `AttributesToGet` without any value for `Select`.)
+#' `Select` and `ProjectionExpression` together in a single request, unless
+#' the value for `Select` is `SPECIFIC_ATTRIBUTES`. (This usage is
+#' equivalent to specifying `ProjectionExpression` without any value for
+#' `Select`.)
 #' 
 #' If you use the `ProjectionExpression` parameter, then the value for
 #' `Select` can only be `SPECIFIC_ATTRIBUTES`. Any other value for `Select`
@@ -6297,7 +6524,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' units.
 #' 
 #' For more information, see [Filter
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#FilteringResults)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -6668,8 +6895,9 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 #' structure that specifies an item to retrieve from a table in the account
 #' and Region. A call to
 #' [`transact_get_items`][dynamodb_transact_get_items] cannot retrieve
-#' items from tables in more than one AWS account or Region. The aggregate
-#' size of the items in the transaction cannot exceed 4 MB.
+#' items from tables in more than one Amazon Web Services account or
+#' Region. The aggregate size of the items in the transaction cannot exceed
+#' 4 MB.
 #' 
 #' DynamoDB rejects the entire
 #' [`transact_get_items`][dynamodb_transact_get_items] request if any of
@@ -6825,10 +7053,11 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' @description
 #' [`transact_write_items`][dynamodb_transact_write_items] is a synchronous
 #' write operation that groups up to 25 action requests. These actions can
-#' target items in different tables, but not in different AWS accounts or
-#' Regions, and no two actions can target the same item. For example, you
-#' cannot both `ConditionCheck` and `Update` the same item. The aggregate
-#' size of the items in the transaction cannot exceed 4 MB.
+#' target items in different tables, but not in different Amazon Web
+#' Services accounts or Regions, and no two actions can target the same
+#' item. For example, you cannot both `ConditionCheck` and `Update` the
+#' same item. The aggregate size of the items in the transaction cannot
+#' exceed 4 MB.
 #' 
 #' The actions are completed atomically so that either all of them succeed,
 #' or all of them fail. They are defined by the following objects:
@@ -6889,8 +7118,8 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' @param TransactItems &#91;required&#93; An ordered array of up to 25 `TransactWriteItem` objects, each of which
 #' contains a `ConditionCheck`, `Put`, `Update`, or `Delete` object. These
 #' can operate on items in different tables, but the tables must reside in
-#' the same AWS account and Region, and no two of them can operate on the
-#' same item.
+#' the same Amazon Web Services account and Region, and no two of them can
+#' operate on the same item.
 #' @param ReturnConsumedCapacity 
 #' @param ReturnItemCollectionMetrics Determines whether item collection metrics are returned. If set to
 #' `SIZE`, the response includes statistics about item collections (if
@@ -7379,7 +7608,13 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #'
 #' @description
 #' Updates the status for contributor insights for a specific table or
-#' index.
+#' index. CloudWatch Contributor Insights for DynamoDB graphs display the
+#' partition key and (if applicable) sort key of frequently accessed items
+#' and frequently throttled items in plaintext. If you require the use of
+#' Amazon Web Services Key Management Service (KMS) to encrypt this table’s
+#' partition key and sort key data with an Amazon Web Services managed key
+#' or customer managed key, you should not enable CloudWatch Contributor
+#' Insights for DynamoDB for this table.
 #'
 #' @usage
 #' dynamodb_update_contributor_insights(TableName, IndexName,
@@ -7484,6 +7719,12 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #'         ),
 #'         ReplicaInaccessibleDateTime = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         ReplicaTableClassSummary = list(
+#'           TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'           LastUpdateDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -7659,6 +7900,12 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       ReplicaTableClassSummary = list(
+#'         TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'         LastUpdateDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -7746,7 +7993,8 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       ReplicaTableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS"
 #'     )
 #'   )
 #' )
@@ -8291,8 +8539,6 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' 
 #' -   Modify the provisioned throughput settings of the table.
 #' 
-#' -   Enable or disable DynamoDB Streams on the table.
-#' 
 #' -   Remove a global secondary index from the table.
 #' 
 #' -   Create a new global secondary index on the table. After the index
@@ -8309,7 +8555,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' @usage
 #' dynamodb_update_table(AttributeDefinitions, TableName, BillingMode,
 #'   ProvisionedThroughput, GlobalSecondaryIndexUpdates, StreamSpecification,
-#'   SSESpecification, ReplicaUpdates)
+#'   SSESpecification, ReplicaUpdates, TableClass)
 #'
 #' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes. If you are adding a new global secondary index to the table,
@@ -8360,6 +8606,8 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' This property only applies to [Version
 #' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
 #' of global tables.
+#' @param TableClass The table class of the table to be updated. Valid values are `STANDARD`
+#' and `STANDARD_INFREQUENT_ACCESS`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8484,6 +8732,12 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #'         ),
 #'         ReplicaInaccessibleDateTime = as.POSIXct(
 #'           "2015-01-01"
+#'         ),
+#'         ReplicaTableClassSummary = list(
+#'           TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'           LastUpdateDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -8509,6 +8763,12 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #'       ),
 #'       ArchivalReason = "string",
 #'       ArchivalBackupArn = "string"
+#'     ),
+#'     TableClassSummary = list(
+#'       TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'       LastUpdateDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -8586,7 +8846,8 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #'               ReadCapacityUnits = 123
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         TableClassOverride = "STANDARD"|"STANDARD_INFREQUENT_ACCESS"
 #'       ),
 #'       Update = list(
 #'         RegionName = "string",
@@ -8601,13 +8862,15 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #'               ReadCapacityUnits = 123
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         TableClassOverride = "STANDARD"|"STANDARD_INFREQUENT_ACCESS"
 #'       ),
 #'       Delete = list(
 #'         RegionName = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS"
 #' )
 #' ```
 #'
@@ -8627,14 +8890,14 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_table
-dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL) {
+dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates)
+  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass)
   output <- .dynamodb$update_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config)

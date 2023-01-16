@@ -79,20 +79,22 @@ globalaccelerator_add_custom_routing_endpoints <- function(EndpointConfiguration
 .globalaccelerator$operations$add_custom_routing_endpoints <- globalaccelerator_add_custom_routing_endpoints
 
 #' Advertises an IPv4 address range that is provisioned for use with your
-#' AWS resources through bring your own IP addresses (BYOIP)
+#' Amazon Web Services resources through bring your own IP addresses
+#' (BYOIP)
 #'
 #' @description
 #' Advertises an IPv4 address range that is provisioned for use with your
-#' AWS resources through bring your own IP addresses (BYOIP). It can take a
-#' few minutes before traffic to the specified addresses starts routing to
-#' AWS because of propagation delays.
+#' Amazon Web Services resources through bring your own IP addresses
+#' (BYOIP). It can take a few minutes before traffic to the specified
+#' addresses starts routing to Amazon Web Services because of propagation
+#' delays.
 #' 
 #' To stop advertising the BYOIP address range, use
 #' [WithdrawByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/).
 #' 
-#' For more information, see [Bring Your Own IP Addresses
+#' For more information, see [Bring your own IP addresses
 #' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage
 #' globalaccelerator_advertise_byoip_cidr(Cidr)
@@ -244,34 +246,42 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #' Balancers.
 #' 
 #' Global Accelerator is a global service that supports endpoints in
-#' multiple AWS Regions but you must specify the US West (Oregon) Region to
-#' create or update accelerators.
+#' multiple Amazon Web Services Regions but you must specify the US West
+#' (Oregon) Region to create, update, or otherwise work with accelerators.
+#' That is, for example, specify `--region us-west-2` on AWS CLI commands.
 #'
 #' @usage
 #' globalaccelerator_create_accelerator(Name, IpAddressType, IpAddresses,
 #'   Enabled, IdempotencyToken, Tags)
 #'
-#' @param Name &#91;required&#93; The name of an accelerator. The name can have a maximum of 32
-#' characters, must contain only alphanumeric characters or hyphens (-),
-#' and must not begin or end with a hyphen.
-#' @param IpAddressType The value for the address type must be IPv4.
+#' @param Name &#91;required&#93; The name of the accelerator. The name can have a maximum of 64
+#' characters, must contain only alphanumeric characters, periods (.), or
+#' hyphens (-), and must not begin or end with a hyphen or period.
+#' @param IpAddressType The IP address type that an accelerator supports. For a standard
+#' accelerator, the value can be IPV4 or DUAL_STACK.
 #' @param IpAddresses Optionally, if you've added your own IP address pool to Global
-#' Accelerator (BYOIP), you can choose IP addresses from your own pool to
-#' use for the accelerator's static IP addresses when you create an
-#' accelerator. You can specify one or two addresses, separated by a comma.
-#' Do not include the /32 suffix.
+#' Accelerator (BYOIP), you can choose an IPv4 address from your own pool
+#' to use for the accelerator's static IPv4 address when you create an
+#' accelerator.
 #' 
-#' Only one IP address from each of your IP address ranges can be used for
-#' each accelerator. If you specify only one IP address from your IP
-#' address range, Global Accelerator assigns a second static IP address for
-#' the accelerator from the AWS IP address pool.
+#' After you bring an address range to Amazon Web Services, it appears in
+#' your account as an address pool. When you create an accelerator, you can
+#' assign one IPv4 address from your range to it. Global Accelerator
+#' assigns you a second static IPv4 address from an Amazon IP address
+#' range. If you bring two IPv4 address ranges to Amazon Web Services, you
+#' can assign one IPv4 address from each range to your accelerator. This
+#' restriction is because Global Accelerator assigns each address range to
+#' a different network zone, for high availability.
+#' 
+#' You can specify one or two addresses, separated by a space. Do not
+#' include the /32 suffix.
 #' 
 #' Note that you can't update IP addresses for an existing accelerator. To
 #' change them, you must create a new accelerator with the new addresses.
 #' 
-#' For more information, see [Bring Your Own IP Addresses
+#' For more information, see [Bring your own IP addresses
 #' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #' @param Enabled Indicates whether an accelerator is enabled. The value is true or false.
 #' The default value is true.
 #' 
@@ -281,9 +291,9 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #' idempotency—that is, the uniqueness—of an accelerator.
 #' @param Tags Create tags for an accelerator.
 #' 
-#' For more information, see [Tagging in AWS Global
+#' For more information, see [Tagging in Global
 #' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -292,14 +302,15 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #'   Accelerator = list(
 #'     AcceleratorArn = "string",
 #'     Name = "string",
-#'     IpAddressType = "IPV4",
+#'     IpAddressType = "IPV4"|"DUAL_STACK",
 #'     Enabled = TRUE|FALSE,
 #'     IpSets = list(
 #'       list(
 #'         IpFamily = "string",
 #'         IpAddresses = list(
 #'           "string"
-#'         )
+#'         ),
+#'         IpAddressFamily = "IPv4"|"IPv6"
 #'       )
 #'     ),
 #'     DnsName = "string",
@@ -309,6 +320,15 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #'     ),
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     DualStackDnsName = "string",
+#'     Events = list(
+#'       list(
+#'         Message = "string",
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -318,7 +338,7 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #' ```
 #' svc$create_accelerator(
 #'   Name = "string",
-#'   IpAddressType = "IPV4",
+#'   IpAddressType = "IPV4"|"DUAL_STACK",
 #'   IpAddresses = list(
 #'     "string"
 #'   ),
@@ -367,15 +387,44 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' traffic, see the
 #' [AllowCustomRoutingTraffic](https://docs.aws.amazon.com/global-accelerator/latest/api/API_AllowCustomRoutingTraffic.html)
 #' operation.
+#' 
+#' Global Accelerator is a global service that supports endpoints in
+#' multiple Amazon Web Services Regions but you must specify the US West
+#' (Oregon) Region to create, update, or otherwise work with accelerators.
+#' That is, for example, specify `--region us-west-2` on AWS CLI commands.
 #'
 #' @usage
 #' globalaccelerator_create_custom_routing_accelerator(Name, IpAddressType,
-#'   Enabled, IdempotencyToken, Tags)
+#'   IpAddresses, Enabled, IdempotencyToken, Tags)
 #'
 #' @param Name &#91;required&#93; The name of a custom routing accelerator. The name can have a maximum of
 #' 64 characters, must contain only alphanumeric characters or hyphens (-),
 #' and must not begin or end with a hyphen.
-#' @param IpAddressType The value for the address type must be IPv4.
+#' @param IpAddressType The IP address type that an accelerator supports. For a custom routing
+#' accelerator, the value must be IPV4.
+#' @param IpAddresses Optionally, if you've added your own IP address pool to Global
+#' Accelerator (BYOIP), you can choose an IPv4 address from your own pool
+#' to use for the accelerator's static IPv4 address when you create an
+#' accelerator.
+#' 
+#' After you bring an address range to Amazon Web Services, it appears in
+#' your account as an address pool. When you create an accelerator, you can
+#' assign one IPv4 address from your range to it. Global Accelerator
+#' assigns you a second static IPv4 address from an Amazon IP address
+#' range. If you bring two IPv4 address ranges to Amazon Web Services, you
+#' can assign one IPv4 address from each range to your accelerator. This
+#' restriction is because Global Accelerator assigns each address range to
+#' a different network zone, for high availability.
+#' 
+#' You can specify one or two addresses, separated by a space. Do not
+#' include the /32 suffix.
+#' 
+#' Note that you can't update IP addresses for an existing accelerator. To
+#' change them, you must create a new accelerator with the new addresses.
+#' 
+#' For more information, see [Bring your own IP addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the *Global Accelerator Developer Guide*.
 #' @param Enabled Indicates whether an accelerator is enabled. The value is true or false.
 #' The default value is true.
 #' 
@@ -385,9 +434,9 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' idempotency—that is, the uniqueness—of the request.
 #' @param Tags Create tags for an accelerator.
 #' 
-#' For more information, see [Tagging in AWS Global
+#' For more information, see [Tagging in Global
 #' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -396,14 +445,15 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #'   Accelerator = list(
 #'     AcceleratorArn = "string",
 #'     Name = "string",
-#'     IpAddressType = "IPV4",
+#'     IpAddressType = "IPV4"|"DUAL_STACK",
 #'     Enabled = TRUE|FALSE,
 #'     IpSets = list(
 #'       list(
 #'         IpFamily = "string",
 #'         IpAddresses = list(
 #'           "string"
-#'         )
+#'         ),
+#'         IpAddressFamily = "IPv4"|"IPv6"
 #'       )
 #'     ),
 #'     DnsName = "string",
@@ -422,7 +472,10 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' ```
 #' svc$create_custom_routing_accelerator(
 #'   Name = "string",
-#'   IpAddressType = "IPV4",
+#'   IpAddressType = "IPV4"|"DUAL_STACK",
+#'   IpAddresses = list(
+#'     "string"
+#'   ),
 #'   Enabled = TRUE|FALSE,
 #'   IdempotencyToken = "string",
 #'   Tags = list(
@@ -437,14 +490,14 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_create_custom_routing_accelerator
-globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressType = NULL, Enabled = NULL, IdempotencyToken, Tags = NULL) {
+globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressType = NULL, IpAddresses = NULL, Enabled = NULL, IdempotencyToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateCustomRoutingAccelerator",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .globalaccelerator$create_custom_routing_accelerator_input(Name = Name, IpAddressType = IpAddressType, Enabled = Enabled, IdempotencyToken = IdempotencyToken, Tags = Tags)
+  input <- .globalaccelerator$create_custom_routing_accelerator_input(Name = Name, IpAddressType = IpAddressType, IpAddresses = IpAddresses, Enabled = Enabled, IdempotencyToken = IdempotencyToken, Tags = Tags)
   output <- .globalaccelerator$create_custom_routing_accelerator_output()
   config <- get_config()
   svc <- .globalaccelerator$service(config)
@@ -459,8 +512,8 @@ globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressT
 #'
 #' @description
 #' Create an endpoint group for the specified listener for a custom routing
-#' accelerator. An endpoint group is a collection of endpoints in one AWS
-#' Region.
+#' accelerator. An endpoint group is a collection of endpoints in one
+#' Amazon Web Services Region.
 #'
 #' @usage
 #' globalaccelerator_create_custom_routing_endpoint_group(ListenerArn,
@@ -468,8 +521,8 @@ globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressT
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener for a custom routing
 #' endpoint.
-#' @param EndpointGroupRegion &#91;required&#93; The AWS Region where the endpoint group is located. A listener can have
-#' only one endpoint group in a specific Region.
+#' @param EndpointGroupRegion &#91;required&#93; The Amazon Web Services Region where the endpoint group is located. A
+#' listener can have only one endpoint group in a specific Region.
 #' @param DestinationConfigurations &#91;required&#93; Sets the port range and protocol for all endpoints (virtual private
 #' cloud subnets) in a custom routing endpoint group to accept client
 #' traffic on.
@@ -616,8 +669,8 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
 #'
 #' @description
 #' Create an endpoint group for the specified listener. An endpoint group
-#' is a collection of endpoints in one AWS Region. A resource must be valid
-#' and active when you add it as an endpoint.
+#' is a collection of endpoints in one Amazon Web Services Region. A
+#' resource must be valid and active when you add it as an endpoint.
 #'
 #' @usage
 #' globalaccelerator_create_endpoint_group(ListenerArn,
@@ -627,23 +680,23 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
 #'   PortOverrides)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
-#' @param EndpointGroupRegion &#91;required&#93; The AWS Region where the endpoint group is located. A listener can have
-#' only one endpoint group in a specific Region.
+#' @param EndpointGroupRegion &#91;required&#93; The Amazon Web Services Region where the endpoint group is located. A
+#' listener can have only one endpoint group in a specific Region.
 #' @param EndpointConfigurations The list of endpoint objects.
-#' @param TrafficDialPercentage The percentage of traffic to send to an AWS Region. Additional traffic
-#' is distributed to other endpoint groups for this listener.
+#' @param TrafficDialPercentage The percentage of traffic to send to an Amazon Web Services Region.
+#' Additional traffic is distributed to other endpoint groups for this
+#' listener.
 #' 
 #' Use this action to increase (dial up) or decrease (dial down) traffic to
 #' a specific Region. The percentage is applied to the traffic that would
 #' otherwise have been routed to the Region based on optimal routing.
 #' 
 #' The default value is 100.
-#' @param HealthCheckPort The port that AWS Global Accelerator uses to check the health of
-#' endpoints that are part of this endpoint group. The default port is the
-#' listener port that this endpoint group is associated with. If listener
-#' port is a list of ports, Global Accelerator uses the first port in the
-#' list.
-#' @param HealthCheckProtocol The protocol that AWS Global Accelerator uses to check the health of
+#' @param HealthCheckPort The port that Global Accelerator uses to check the health of endpoints
+#' that are part of this endpoint group. The default port is the listener
+#' port that this endpoint group is associated with. If listener port is a
+#' list of ports, Global Accelerator uses the first port in the list.
+#' @param HealthCheckProtocol The protocol that Global Accelerator uses to check the health of
 #' endpoints that are part of this endpoint group. The default value is
 #' TCP.
 #' @param HealthCheckPath If the protocol is HTTP/S, then this specifies the path that is the
@@ -661,9 +714,9 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
 #' 443, but your accelerator routes that traffic to ports 1080 and 1443,
 #' respectively, on the endpoints.
 #' 
-#' For more information, see [Port
-#' overrides](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' For more information, see [Overriding listener
+#' ports](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -766,15 +819,14 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #' protocol of the client request. Client affinity gives you control over
 #' whether to always route each client to the same specific endpoint.
 #' 
-#' AWS Global Accelerator uses a consistent-flow hashing algorithm to
-#' choose the optimal endpoint for a connection. If client affinity is
-#' `NONE`, Global Accelerator uses the "five-tuple" (5-tuple)
-#' properties—source IP address, source port, destination IP address,
-#' destination port, and protocol—to select the hash value, and then
-#' chooses the best endpoint. However, with this setting, if someone uses
-#' different ports to connect to Global Accelerator, their connections
-#' might not be always routed to the same endpoint because the hash value
-#' changes.
+#' Global Accelerator uses a consistent-flow hashing algorithm to choose
+#' the optimal endpoint for a connection. If client affinity is `NONE`,
+#' Global Accelerator uses the "five-tuple" (5-tuple) properties—source IP
+#' address, source port, destination IP address, destination port, and
+#' protocol—to select the hash value, and then chooses the best endpoint.
+#' However, with this setting, if someone uses different ports to connect
+#' to Global Accelerator, their connections might not be always routed to
+#' the same endpoint because the hash value changes.
 #' 
 #' If you want a given client to always be routed to the same endpoint, set
 #' client affinity to `SOURCE_IP` instead. When you use the `SOURCE_IP`
@@ -861,9 +913,9 @@ globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protoc
 #' have permissions in place to avoid inadvertently deleting accelerators.
 #' You can use IAM policies with Global Accelerator to limit the users who
 #' have permissions to delete an accelerator. For more information, see
-#' [Authentication and Access
-#' Control](https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' [Identity and access
+#' management](https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html)
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage
 #' globalaccelerator_delete_accelerator(AcceleratorArn)
@@ -919,9 +971,9 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
 #' have permissions in place to avoid inadvertently deleting accelerators.
 #' You can use IAM policies with Global Accelerator to limit the users who
 #' have permissions to delete an accelerator. For more information, see
-#' [Authentication and Access
-#' Control](https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' [Identity and access
+#' management](https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html)
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage
 #' globalaccelerator_delete_custom_routing_accelerator(AcceleratorArn)
@@ -1206,22 +1258,22 @@ globalaccelerator_deny_custom_routing_traffic <- function(EndpointGroupArn, Endp
 .globalaccelerator$operations$deny_custom_routing_traffic <- globalaccelerator_deny_custom_routing_traffic
 
 #' Releases the specified address range that you provisioned to use with
-#' your AWS resources through bring your own IP addresses (BYOIP) and
-#' deletes the corresponding address pool
+#' your Amazon Web Services resources through bring your own IP addresses
+#' (BYOIP) and deletes the corresponding address pool
 #'
 #' @description
 #' Releases the specified address range that you provisioned to use with
-#' your AWS resources through bring your own IP addresses (BYOIP) and
-#' deletes the corresponding address pool.
+#' your Amazon Web Services resources through bring your own IP addresses
+#' (BYOIP) and deletes the corresponding address pool.
 #' 
 #' Before you can release an address range, you must stop advertising it by
 #' using [`withdraw_byoip_cidr`][globalaccelerator_withdraw_byoip_cidr] and
 #' you must not have any accelerators that are using static IP addresses
 #' allocated from its address range.
 #' 
-#' For more information, see [Bring Your Own IP Addresses
+#' For more information, see [Bring your own IP addresses
 #' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage
 #' globalaccelerator_deprovision_byoip_cidr(Cidr)
@@ -1292,14 +1344,15 @@ globalaccelerator_deprovision_byoip_cidr <- function(Cidr) {
 #'   Accelerator = list(
 #'     AcceleratorArn = "string",
 #'     Name = "string",
-#'     IpAddressType = "IPV4",
+#'     IpAddressType = "IPV4"|"DUAL_STACK",
 #'     Enabled = TRUE|FALSE,
 #'     IpSets = list(
 #'       list(
 #'         IpFamily = "string",
 #'         IpAddresses = list(
 #'           "string"
-#'         )
+#'         ),
+#'         IpAddressFamily = "IPv4"|"IPv6"
 #'       )
 #'     ),
 #'     DnsName = "string",
@@ -1309,6 +1362,15 @@ globalaccelerator_deprovision_byoip_cidr <- function(Cidr) {
 #'     ),
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     DualStackDnsName = "string",
+#'     Events = list(
+#'       list(
+#'         Message = "string",
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -1408,14 +1470,15 @@ globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
 #'   Accelerator = list(
 #'     AcceleratorArn = "string",
 #'     Name = "string",
-#'     IpAddressType = "IPV4",
+#'     IpAddressType = "IPV4"|"DUAL_STACK",
 #'     Enabled = TRUE|FALSE,
 #'     IpSets = list(
 #'       list(
 #'         IpFamily = "string",
 #'         IpAddresses = list(
 #'           "string"
-#'         )
+#'         ),
+#'         IpAddressFamily = "IPv4"|"IPv6"
 #'       )
 #'     ),
 #'     DnsName = "string",
@@ -1748,10 +1811,10 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
 }
 .globalaccelerator$operations$describe_listener <- globalaccelerator_describe_listener
 
-#' List the accelerators for an AWS account
+#' List the accelerators for an Amazon Web Services account
 #'
 #' @description
-#' List the accelerators for an AWS account.
+#' List the accelerators for an Amazon Web Services account.
 #'
 #' @usage
 #' globalaccelerator_list_accelerators(MaxResults, NextToken)
@@ -1769,14 +1832,15 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
 #'     list(
 #'       AcceleratorArn = "string",
 #'       Name = "string",
-#'       IpAddressType = "IPV4",
+#'       IpAddressType = "IPV4"|"DUAL_STACK",
 #'       Enabled = TRUE|FALSE,
 #'       IpSets = list(
 #'         list(
 #'           IpFamily = "string",
 #'           IpAddresses = list(
 #'             "string"
-#'           )
+#'           ),
+#'           IpAddressFamily = "IPv4"|"IPv6"
 #'         )
 #'       ),
 #'       DnsName = "string",
@@ -1786,6 +1850,15 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
 #'       ),
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       DualStackDnsName = "string",
+#'       Events = list(
+#'         list(
+#'           Message = "string",
+#'           Timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1888,10 +1961,10 @@ globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NU
 }
 .globalaccelerator$operations$list_byoip_cidrs <- globalaccelerator_list_byoip_cidrs
 
-#' List the custom routing accelerators for an AWS account
+#' List the custom routing accelerators for an Amazon Web Services account
 #'
 #' @description
-#' List the custom routing accelerators for an AWS account.
+#' List the custom routing accelerators for an Amazon Web Services account.
 #'
 #' @usage
 #' globalaccelerator_list_custom_routing_accelerators(MaxResults,
@@ -1910,14 +1983,15 @@ globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NU
 #'     list(
 #'       AcceleratorArn = "string",
 #'       Name = "string",
-#'       IpAddressType = "IPV4",
+#'       IpAddressType = "IPV4"|"DUAL_STACK",
 #'       Enabled = TRUE|FALSE,
 #'       IpSets = list(
 #'         list(
 #'           IpFamily = "string",
 #'           IpAddresses = list(
 #'             "string"
-#'           )
+#'           ),
+#'           IpAddressFamily = "IPv4"|"IPv6"
 #'         )
 #'       ),
 #'       DnsName = "string",
@@ -2232,7 +2306,7 @@ globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, 
 #'         IpAddress = "string",
 #'         Port = 123
 #'       ),
-#'       IpAddressType = "IPV4",
+#'       IpAddressType = "IPV4"|"DUAL_STACK",
 #'       DestinationTrafficState = "ALLOW"|"DENY"
 #'     )
 #'   ),
@@ -2419,9 +2493,9 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
 #' @description
 #' List all tags for an accelerator.
 #' 
-#' For more information, see [Tagging in AWS Global
+#' For more information, see [Tagging in Global
 #' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage
 #' globalaccelerator_list_tags_for_resource(ResourceArn)
@@ -2469,20 +2543,20 @@ globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
 }
 .globalaccelerator$operations$list_tags_for_resource <- globalaccelerator_list_tags_for_resource
 
-#' Provisions an IP address range to use with your AWS resources through
-#' bring your own IP addresses (BYOIP) and creates a corresponding address
-#' pool
+#' Provisions an IP address range to use with your Amazon Web Services
+#' resources through bring your own IP addresses (BYOIP) and creates a
+#' corresponding address pool
 #'
 #' @description
-#' Provisions an IP address range to use with your AWS resources through
-#' bring your own IP addresses (BYOIP) and creates a corresponding address
-#' pool. After the address range is provisioned, it is ready to be
-#' advertised using
+#' Provisions an IP address range to use with your Amazon Web Services
+#' resources through bring your own IP addresses (BYOIP) and creates a
+#' corresponding address pool. After the address range is provisioned, it
+#' is ready to be advertised using
 #' [AdvertiseByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/).
 #' 
-#' For more information, see [Bring Your Own IP Addresses
+#' For more information, see [Bring your own IP addresses
 #' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage
 #' globalaccelerator_provision_byoip_cidr(Cidr, CidrAuthorizationContext)
@@ -2596,9 +2670,9 @@ globalaccelerator_remove_custom_routing_endpoints <- function(EndpointIds, Endpo
 #' @description
 #' Add tags to an accelerator resource.
 #' 
-#' For more information, see [Tagging in AWS Global
+#' For more information, see [Tagging in Global
 #' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage
 #' globalaccelerator_tag_resource(ResourceArn, Tags)
@@ -2652,9 +2726,9 @@ globalaccelerator_tag_resource <- function(ResourceArn, Tags) {
 #' operation succeeds even if you attempt to remove tags from an
 #' accelerator that was already removed.
 #' 
-#' For more information, see [Tagging in AWS Global
+#' For more information, see [Tagging in Global
 #' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage
 #' globalaccelerator_untag_resource(ResourceArn, TagKeys)
@@ -2702,18 +2776,20 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
 #' Update an accelerator.
 #' 
 #' Global Accelerator is a global service that supports endpoints in
-#' multiple AWS Regions but you must specify the US West (Oregon) Region to
-#' create or update accelerators.
+#' multiple Amazon Web Services Regions but you must specify the US West
+#' (Oregon) Region to create, update, or otherwise work with accelerators.
+#' That is, for example, specify `--region us-west-2` on AWS CLI commands.
 #'
 #' @usage
 #' globalaccelerator_update_accelerator(AcceleratorArn, Name,
 #'   IpAddressType, Enabled)
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to update.
-#' @param Name The name of the accelerator. The name can have a maximum of 32
-#' characters, must contain only alphanumeric characters or hyphens (-),
-#' and must not begin or end with a hyphen.
-#' @param IpAddressType The IP address type, which must be IPv4.
+#' @param Name The name of the accelerator. The name can have a maximum of 64
+#' characters, must contain only alphanumeric characters, periods (.), or
+#' hyphens (-), and must not begin or end with a hyphen or period.
+#' @param IpAddressType The IP address type that an accelerator supports. For a standard
+#' accelerator, the value can be IPV4 or DUAL_STACK.
 #' @param Enabled Indicates whether an accelerator is enabled. The value is true or false.
 #' The default value is true.
 #' 
@@ -2727,14 +2803,15 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
 #'   Accelerator = list(
 #'     AcceleratorArn = "string",
 #'     Name = "string",
-#'     IpAddressType = "IPV4",
+#'     IpAddressType = "IPV4"|"DUAL_STACK",
 #'     Enabled = TRUE|FALSE,
 #'     IpSets = list(
 #'       list(
 #'         IpFamily = "string",
 #'         IpAddresses = list(
 #'           "string"
-#'         )
+#'         ),
+#'         IpAddressFamily = "IPv4"|"IPv6"
 #'       )
 #'     ),
 #'     DnsName = "string",
@@ -2744,6 +2821,15 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
 #'     ),
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     DualStackDnsName = "string",
+#'     Events = list(
+#'       list(
+#'         Message = "string",
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2754,7 +2840,7 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
 #' svc$update_accelerator(
 #'   AcceleratorArn = "string",
 #'   Name = "string",
-#'   IpAddressType = "IPV4",
+#'   IpAddressType = "IPV4"|"DUAL_STACK",
 #'   Enabled = TRUE|FALSE
 #' )
 #' ```
@@ -2796,18 +2882,16 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #' 
 #' For more information, see [Flow
 #' Logs](https://docs.aws.amazon.com/global-accelerator/latest/dg/monitoring-global-accelerator.flow-logs.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #' @param FlowLogsS3Bucket The name of the Amazon S3 bucket for the flow logs. Attribute is
 #' required if `FlowLogsEnabled` is `true`. The bucket must exist and have
-#' a bucket policy that grants AWS Global Accelerator permission to write
-#' to the bucket.
+#' a bucket policy that grants Global Accelerator permission to write to
+#' the bucket.
 #' @param FlowLogsS3Prefix Update the prefix for the location in the Amazon S3 bucket for the flow
 #' logs. Attribute is required if `FlowLogsEnabled` is `true`.
 #' 
-#' If you don’t specify a prefix, the flow logs are stored in the root of
-#' the bucket. If you specify slash (/) for the S3 bucket prefix, the log
-#' file bucket folder structure will include a double slash (//), like the
-#' following:
+#' If you specify slash (/) for the S3 bucket prefix, the log file bucket
+#' folder structure will include a double slash (//), like the following:
 #' 
 #' s3-bucket_name//AWSLogs/aws_account_id
 #'
@@ -2863,10 +2947,11 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 #'   Name, IpAddressType, Enabled)
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to update.
-#' @param Name The name of the accelerator. The name can have a maximum of 32
-#' characters, must contain only alphanumeric characters or hyphens (-),
-#' and must not begin or end with a hyphen.
-#' @param IpAddressType The value for the address type must be IPv4.
+#' @param Name The name of the accelerator. The name can have a maximum of 64
+#' characters, must contain only alphanumeric characters, periods (.), or
+#' hyphens (-), and must not begin or end with a hyphen or period.
+#' @param IpAddressType The IP address type that an accelerator supports. For a custom routing
+#' accelerator, the value must be IPV4.
 #' @param Enabled Indicates whether an accelerator is enabled. The value is true or false.
 #' The default value is true.
 #' 
@@ -2880,14 +2965,15 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 #'   Accelerator = list(
 #'     AcceleratorArn = "string",
 #'     Name = "string",
-#'     IpAddressType = "IPV4",
+#'     IpAddressType = "IPV4"|"DUAL_STACK",
 #'     Enabled = TRUE|FALSE,
 #'     IpSets = list(
 #'       list(
 #'         IpFamily = "string",
 #'         IpAddresses = list(
 #'           "string"
-#'         )
+#'         ),
+#'         IpAddressFamily = "IPv4"|"IPv6"
 #'       )
 #'     ),
 #'     DnsName = "string",
@@ -2907,7 +2993,7 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 #' svc$update_custom_routing_accelerator(
 #'   AcceleratorArn = "string",
 #'   Name = "string",
-#'   IpAddressType = "IPV4",
+#'   IpAddressType = "IPV4"|"DUAL_STACK",
 #'   Enabled = TRUE|FALSE
 #' )
 #' ```
@@ -2948,12 +3034,12 @@ globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, 
 #' specified.
 #' 
 #' For more information, see [Flow
-#' Logs](https://docs.aws.amazon.com/global-accelerator/latest/dg/monitoring-global-accelerator.flow-logs.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' logs](https://docs.aws.amazon.com/global-accelerator/latest/dg/monitoring-global-accelerator.flow-logs.html)
+#' in the *Global Accelerator Developer Guide*.
 #' @param FlowLogsS3Bucket The name of the Amazon S3 bucket for the flow logs. Attribute is
 #' required if `FlowLogsEnabled` is `true`. The bucket must exist and have
-#' a bucket policy that grants AWS Global Accelerator permission to write
-#' to the bucket.
+#' a bucket policy that grants Global Accelerator permission to write to
+#' the bucket.
 #' @param FlowLogsS3Prefix Update the prefix for the location in the Amazon S3 bucket for the flow
 #' logs. Attribute is required if `FlowLogsEnabled` is `true`.
 #' 
@@ -3088,20 +3174,20 @@ globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRa
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
 #' @param EndpointConfigurations The list of endpoint objects. A resource must be valid and active when
 #' you add it as an endpoint.
-#' @param TrafficDialPercentage The percentage of traffic to send to an AWS Region. Additional traffic
-#' is distributed to other endpoint groups for this listener.
+#' @param TrafficDialPercentage The percentage of traffic to send to an Amazon Web Services Region.
+#' Additional traffic is distributed to other endpoint groups for this
+#' listener.
 #' 
 #' Use this action to increase (dial up) or decrease (dial down) traffic to
 #' a specific Region. The percentage is applied to the traffic that would
 #' otherwise have been routed to the Region based on optimal routing.
 #' 
 #' The default value is 100.
-#' @param HealthCheckPort The port that AWS Global Accelerator uses to check the health of
-#' endpoints that are part of this endpoint group. The default port is the
-#' listener port that this endpoint group is associated with. If the
-#' listener port is a list of ports, Global Accelerator uses the first port
-#' in the list.
-#' @param HealthCheckProtocol The protocol that AWS Global Accelerator uses to check the health of
+#' @param HealthCheckPort The port that Global Accelerator uses to check the health of endpoints
+#' that are part of this endpoint group. The default port is the listener
+#' port that this endpoint group is associated with. If the listener port
+#' is a list of ports, Global Accelerator uses the first port in the list.
+#' @param HealthCheckProtocol The protocol that Global Accelerator uses to check the health of
 #' endpoints that are part of this endpoint group. The default value is
 #' TCP.
 #' @param HealthCheckPath If the protocol is HTTP/S, then this specifies the path that is the
@@ -3117,9 +3203,9 @@ globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRa
 #' 443, but your accelerator routes that traffic to ports 1080 and 1443,
 #' respectively, on the endpoints.
 #' 
-#' For more information, see [Port
-#' overrides](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' For more information, see [Overriding listener
+#' ports](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3218,15 +3304,14 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 #' protocol of the client request. Client affinity gives you control over
 #' whether to always route each client to the same specific endpoint.
 #' 
-#' AWS Global Accelerator uses a consistent-flow hashing algorithm to
-#' choose the optimal endpoint for a connection. If client affinity is
-#' `NONE`, Global Accelerator uses the "five-tuple" (5-tuple)
-#' properties—source IP address, source port, destination IP address,
-#' destination port, and protocol—to select the hash value, and then
-#' chooses the best endpoint. However, with this setting, if someone uses
-#' different ports to connect to Global Accelerator, their connections
-#' might not be always routed to the same endpoint because the hash value
-#' changes.
+#' Global Accelerator uses a consistent-flow hashing algorithm to choose
+#' the optimal endpoint for a connection. If client affinity is `NONE`,
+#' Global Accelerator uses the "five-tuple" (5-tuple) properties—source IP
+#' address, source port, destination IP address, destination port, and
+#' protocol—to select the hash value, and then chooses the best endpoint.
+#' However, with this setting, if someone uses different ports to connect
+#' to Global Accelerator, their connections might not be always routed to
+#' the same endpoint because the hash value changes.
 #' 
 #' If you want a given client to always be routed to the same endpoint, set
 #' client affinity to `SOURCE_IP` instead. When you use the `SOURCE_IP`
@@ -3298,11 +3383,11 @@ globalaccelerator_update_listener <- function(ListenerArn, PortRanges = NULL, Pr
 #' if you specify different address ranges each time.
 #' 
 #' It can take a few minutes before traffic to the specified addresses
-#' stops routing to AWS because of propagation delays.
+#' stops routing to Amazon Web Services because of propagation delays.
 #' 
-#' For more information, see [Bring Your Own IP Addresses
+#' For more information, see [Bring your own IP addresses
 #' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage
 #' globalaccelerator_withdraw_byoip_cidr(Cidr)

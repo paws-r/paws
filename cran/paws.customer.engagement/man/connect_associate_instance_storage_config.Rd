@@ -5,68 +5,23 @@
 \title{This API is in preview release for Amazon Connect and is subject to
 change}
 \usage{
-connect_associate_instance_storage_config(InstanceId, ResourceType,
-  StorageConfig)
+connect_associate_instance_storage_config(
+  InstanceId,
+  ResourceType,
+  StorageConfig
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{ResourceType}{[required] A valid resource type.}
 
 \item{StorageConfig}{[required] A valid storage type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssociationId = "string"
-)
-}
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Associates a storage resource type for the first time. You can only
-associate one type of storage configuration in a single call. This
-means, for example, that you can't define an instance with multiple S3
-buckets for storing chat transcripts.
-
-This API does not create a resource that doesn't exist. It only
-associates it to the instance. Ensure that the resource being specified
-in the storage configuration, like an Amazon S3 bucket, exists when
-being used for association.
+See \url{https://paws-r.github.io/docs/connect/associate_instance_storage_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_instance_storage_config(
-  InstanceId = "string",
-  ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS",
-  StorageConfig = list(
-    AssociationId = "string",
-    StorageType = "S3"|"KINESIS_VIDEO_STREAM"|"KINESIS_STREAM"|"KINESIS_FIREHOSE",
-    S3Config = list(
-      BucketName = "string",
-      BucketPrefix = "string",
-      EncryptionConfig = list(
-        EncryptionType = "KMS",
-        KeyId = "string"
-      )
-    ),
-    KinesisVideoStreamConfig = list(
-      Prefix = "string",
-      RetentionPeriodHours = 123,
-      EncryptionConfig = list(
-        EncryptionType = "KMS",
-        KeyId = "string"
-      )
-    ),
-    KinesisStreamConfig = list(
-      StreamArn = "string"
-    ),
-    KinesisFirehoseConfig = list(
-      FirehoseArn = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

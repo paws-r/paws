@@ -6,8 +6,10 @@
 the configuration (term, payment type, or number of nodes) and no
 additional costs}
 \usage{
-redshift_accept_reserved_node_exchange(ReservedNodeId,
-  TargetReservedNodeOfferingId)
+redshift_accept_reserved_node_exchange(
+  ReservedNodeId,
+  TargetReservedNodeOfferingId
+)
 }
 \arguments{
 \item{ReservedNodeId}{[required] A string representing the node identifier of the DC1 Reserved Node to be
@@ -17,44 +19,9 @@ exchanged.}
 the exchange. You can obtain the value for the parameter by calling
 \code{\link[=redshift_get_reserved_node_exchange_offerings]{get_reserved_node_exchange_offerings}}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExchangedReservedNode = list(
-    ReservedNodeId = "string",
-    ReservedNodeOfferingId = "string",
-    NodeType = "string",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Duration = 123,
-    FixedPrice = 123.0,
-    UsagePrice = 123.0,
-    CurrencyCode = "string",
-    NodeCount = 123,
-    State = "string",
-    OfferingType = "string",
-    RecurringCharges = list(
-      list(
-        RecurringChargeAmount = 123.0,
-        RecurringChargeFrequency = "string"
-      )
-    ),
-    ReservedNodeOfferingType = "Regular"|"Upgradable"
-  )
-)
-}
-}
 \description{
-Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to
-the configuration (term, payment type, or number of nodes) and no
-additional costs.
-}
-\section{Request syntax}{
-\preformatted{svc$accept_reserved_node_exchange(
-  ReservedNodeId = "string",
-  TargetReservedNodeOfferingId = "string"
-)
-}
-}
+Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to the configuration (term, payment type, or number of nodes) and no additional costs.
 
+See \url{https://paws-r.github.io/docs/redshift/accept_reserved_node_exchange.html} for full documentation.
+}
 \keyword{internal}

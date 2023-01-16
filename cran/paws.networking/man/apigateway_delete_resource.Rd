@@ -7,22 +7,13 @@
 apigateway_delete_resource(restApiId, resourceId)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] The identifier of the Resource resource.}
-}
-\value{
-An empty list.
+\item{resourceId}{[required] The identifier of the Resource resource.}
 }
 \description{
 Deletes a Resource resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_resource(
-  restApiId = "string",
-  resourceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{firehose_list_tags_for_delivery_stream}
 \title{Lists the tags for the specified delivery stream}
 \usage{
-firehose_list_tags_for_delivery_stream(DeliveryStreamName,
-  ExclusiveStartTagKey, Limit)
+firehose_list_tags_for_delivery_stream(
+  DeliveryStreamName,
+  ExclusiveStartTagKey = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream whose tags you want to list.}
@@ -20,29 +23,9 @@ number of tags associated with the delivery stream, \code{HasMoreTags} is set
 to \code{true} in the response. To list additional tags, set
 \code{ExclusiveStartTagKey} to the last key in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  HasMoreTags = TRUE|FALSE
-)
-}
-}
 \description{
-Lists the tags for the specified delivery stream. This operation has a
-limit of five transactions per second per account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_delivery_stream(
-  DeliveryStreamName = "string",
-  ExclusiveStartTagKey = "string",
-  Limit = 123
-)
-}
-}
+Lists the tags for the specified delivery stream. This operation has a limit of five transactions per second per account.
 
+See \url{https://paws-r.github.io/docs/firehose/list_tags_for_delivery_stream.html} for full documentation.
+}
 \keyword{internal}

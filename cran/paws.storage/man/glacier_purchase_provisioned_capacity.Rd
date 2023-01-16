@@ -13,29 +13,9 @@ case Amazon S3 Glacier uses the AWS account ID associated with the
 credentials used to sign the request. If you use an account ID, don't
 include any hyphens ('-') in the ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  capacityId = "string"
-)
-}
-}
 \description{
 This operation purchases a provisioned capacity unit for an AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$purchase_provisioned_capacity(
-  accountId = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# The example purchases provisioned capacity unit for an AWS account.
-svc$purchase_provisioned_capacity(
-  accountId = "-"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/purchase_provisioned_capacity.html} for full documentation.
 }
 \keyword{internal}

@@ -4,24 +4,94 @@
 NULL
 
 #' Accepts the invitation to be a member account and be monitored by the
-#' Security Hub master account that the invitation was sent from
+#' Security Hub administrator account that the invitation was sent from
 #'
 #' @description
 #' Accepts the invitation to be a member account and be monitored by the
-#' Security Hub master account that the invitation was sent from.
+#' Security Hub administrator account that the invitation was sent from.
 #' 
 #' This operation is only used by member accounts that are not added
 #' through Organizations.
 #' 
 #' When the member account accepts the invitation, permission is granted to
-#' the master account to view findings generated in the member account.
+#' the administrator account to view findings generated in the member
+#' account.
+#'
+#' @usage
+#' securityhub_accept_administrator_invitation(AdministratorId,
+#'   InvitationId)
+#'
+#' @param AdministratorId &#91;required&#93; The account ID of the Security Hub administrator account that sent the
+#' invitation.
+#' @param InvitationId &#91;required&#93; The identifier of the invitation sent from the Security Hub
+#' administrator account.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$accept_administrator_invitation(
+#'   AdministratorId = "string",
+#'   InvitationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_accept_administrator_invitation
+securityhub_accept_administrator_invitation <- function(AdministratorId, InvitationId) {
+  op <- new_operation(
+    name = "AcceptAdministratorInvitation",
+    http_method = "POST",
+    http_path = "/administrator",
+    paginator = list()
+  )
+  input <- .securityhub$accept_administrator_invitation_input(AdministratorId = AdministratorId, InvitationId = InvitationId)
+  output <- .securityhub$accept_administrator_invitation_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$accept_administrator_invitation <- securityhub_accept_administrator_invitation
+
+#' This method is deprecated
+#'
+#' @description
+#' This method is deprecated. Instead, use
+#' [`accept_administrator_invitation`][securityhub_accept_administrator_invitation].
+#' 
+#' The Security Hub console continues to use
+#' [`accept_invitation`][securityhub_accept_invitation]. It will eventually
+#' change to use
+#' [`accept_administrator_invitation`][securityhub_accept_administrator_invitation].
+#' Any IAM policies that specifically control access to this function must
+#' continue to use [`accept_invitation`][securityhub_accept_invitation].
+#' You should also add
+#' [`accept_administrator_invitation`][securityhub_accept_administrator_invitation]
+#' to your policies to ensure that the correct permissions are in place
+#' after the console begins to use
+#' [`accept_administrator_invitation`][securityhub_accept_administrator_invitation].
+#' 
+#' Accepts the invitation to be a member account and be monitored by the
+#' Security Hub administrator account that the invitation was sent from.
+#' 
+#' This operation is only used by member accounts that are not added
+#' through Organizations.
+#' 
+#' When the member account accepts the invitation, permission is granted to
+#' the administrator account to view findings generated in the member
+#' account.
 #'
 #' @usage
 #' securityhub_accept_invitation(MasterId, InvitationId)
 #'
-#' @param MasterId &#91;required&#93; The account ID of the Security Hub master account that sent the
+#' @param MasterId &#91;required&#93; The account ID of the Security Hub administrator account that sent the
 #' invitation.
-#' @param InvitationId &#91;required&#93; The ID of the invitation sent from the Security Hub master account.
+#' @param InvitationId &#91;required&#93; The identifier of the invitation sent from the Security Hub
+#' administrator account.
 #'
 #' @return
 #' An empty list.
@@ -63,7 +133,7 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
 #' 
 #' For more information, see [Security
 #' Standards](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html)
-#' section of the *AWS Security Hub User Guide*.
+#' section of the *Security Hub User Guide*.
 #'
 #' @usage
 #' securityhub_batch_disable_standards(StandardsSubscriptionArns)
@@ -81,7 +151,10 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
 #'       StandardsInput = list(
 #'         "string"
 #'       ),
-#'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE"
+#'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE",
+#'       StandardsStatusReason = list(
+#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"INTERNAL_ERROR"
+#'       )
 #'     )
 #'   )
 #' )
@@ -125,7 +198,7 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #' 
 #' For more information, see the [Security
 #' Standards](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html)
-#' section of the *AWS Security Hub User Guide*.
+#' section of the *Security Hub User Guide*.
 #'
 #' @usage
 #' securityhub_batch_enable_standards(StandardsSubscriptionRequests)
@@ -143,7 +216,10 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #'       StandardsInput = list(
 #'         "string"
 #'       ),
-#'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE"
+#'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE",
+#'       StandardsStatusReason = list(
+#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"INTERNAL_ERROR"
+#'       )
 #'     )
 #'   )
 #' )
@@ -183,13 +259,32 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 }
 .securityhub$operations$batch_enable_standards <- securityhub_batch_enable_standards
 
-#' Imports security findings generated from an integrated third-party
-#' product into Security Hub
+#' Imports security findings generated by a finding provider into Security
+#' Hub
 #'
 #' @description
-#' Imports security findings generated from an integrated third-party
-#' product into Security Hub. This action is requested by the integrated
-#' product to import its findings into Security Hub.
+#' Imports security findings generated by a finding provider into Security
+#' Hub. This action is requested by the finding provider to import its
+#' findings into Security Hub.
+#' 
+#' [`batch_import_findings`][securityhub_batch_import_findings] must be
+#' called by one of the following:
+#' 
+#' -   The Amazon Web Services account that is associated with a finding if
+#'     you are using the [default product
+#'     ARN](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-custom-providers.html#securityhub-custom-providers-bfi-reqs)
+#'     or are a partner sending findings from within a customer's Amazon
+#'     Web Services account. In these cases, the identifier of the account
+#'     that you are calling
+#'     [`batch_import_findings`][securityhub_batch_import_findings] from
+#'     needs to be the same as the `AwsAccountId` attribute for the
+#'     finding.
+#' 
+#' -   An Amazon Web Services account that Security Hub has allow-listed
+#'     for an official partner integration. In this case, you can call
+#'     [`batch_import_findings`][securityhub_batch_import_findings] from
+#'     the allow-listed account and send findings from different customer
+#'     accounts in the same batch.
 #' 
 #' The maximum allowed size for a finding is 240 Kb. An error is returned
 #' for any finding larger than 240 Kb.
@@ -207,14 +302,9 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #' 
 #' -   `Workflow`
 #' 
-#' [`batch_import_findings`][securityhub_batch_import_findings] can be used
-#' to update the following finding fields and objects only if they have not
-#' been updated using
-#' [`batch_update_findings`][securityhub_batch_update_findings]. After they
-#' are updated using
-#' [`batch_update_findings`][securityhub_batch_update_findings], these
-#' fields cannot be updated using
-#' [`batch_import_findings`][securityhub_batch_import_findings].
+#' Finding providers also should not use
+#' [`batch_import_findings`][securityhub_batch_import_findings] to update
+#' the following attributes.
 #' 
 #' -   `Confidence`
 #' 
@@ -225,12 +315,15 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #' -   `Severity`
 #' 
 #' -   `Types`
+#' 
+#' Instead, finding providers use `FindingProviderFields` to provide values
+#' for these attributes.
 #'
 #' @usage
 #' securityhub_batch_import_findings(Findings)
 #'
 #' @param Findings &#91;required&#93; A list of findings to import. To successfully import a finding, it must
-#' follow the [AWS Security Finding
+#' follow the [Amazon Web Services Security Finding
 #' Format](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html).
 #' Maximum of 100 findings per request.
 #'
@@ -258,6 +351,9 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'       SchemaVersion = "string",
 #'       Id = "string",
 #'       ProductArn = "string",
+#'       ProductName = "string",
+#'       CompanyName = "string",
+#'       Region = "string",
 #'       GeneratorId = "string",
 #'       AwsAccountId = "string",
 #'       Types = list(
@@ -379,6 +475,21 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'         LaunchedAt = "string",
 #'         TerminatedAt = "string"
 #'       ),
+#'       Threats = list(
+#'         list(
+#'           Name = "string",
+#'           Severity = "string",
+#'           ItemCount = 123,
+#'           FilePaths = list(
+#'             list(
+#'               FilePath = "string",
+#'               FileName = "string",
+#'               ResourceId = "string",
+#'               Hash = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       ThreatIntelIndicators = list(
 #'         list(
 #'           Type = "DOMAIN"|"EMAIL_ADDRESS"|"HASH_MD5"|"HASH_SHA1"|"HASH_SHA256"|"HASH_SHA512"|"IPV4_ADDRESS"|"IPV6_ADDRESS"|"MUTEX"|"PROCESS"|"URL",
@@ -399,6 +510,130 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'           Tags = list(
 #'             "string"
 #'           ),
+#'           DataClassification = list(
+#'             DetailedResultsLocation = "string",
+#'             Result = list(
+#'               MimeType = "string",
+#'               SizeClassified = 123,
+#'               AdditionalOccurrences = TRUE|FALSE,
+#'               Status = list(
+#'                 Code = "string",
+#'                 Reason = "string"
+#'               ),
+#'               SensitiveData = list(
+#'                 list(
+#'                   Category = "string",
+#'                   Detections = list(
+#'                     list(
+#'                       Count = 123,
+#'                       Type = "string",
+#'                       Occurrences = list(
+#'                         LineRanges = list(
+#'                           list(
+#'                             Start = 123,
+#'                             End = 123,
+#'                             StartColumn = 123
+#'                           )
+#'                         ),
+#'                         OffsetRanges = list(
+#'                           list(
+#'                             Start = 123,
+#'                             End = 123,
+#'                             StartColumn = 123
+#'                           )
+#'                         ),
+#'                         Pages = list(
+#'                           list(
+#'                             PageNumber = 123,
+#'                             LineRange = list(
+#'                               Start = 123,
+#'                               End = 123,
+#'                               StartColumn = 123
+#'                             ),
+#'                             OffsetRange = list(
+#'                               Start = 123,
+#'                               End = 123,
+#'                               StartColumn = 123
+#'                             )
+#'                           )
+#'                         ),
+#'                         Records = list(
+#'                           list(
+#'                             JsonPath = "string",
+#'                             RecordIndex = 123
+#'                           )
+#'                         ),
+#'                         Cells = list(
+#'                           list(
+#'                             Column = 123,
+#'                             Row = 123,
+#'                             ColumnName = "string",
+#'                             CellReference = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   TotalCount = 123
+#'                 )
+#'               ),
+#'               CustomDataIdentifiers = list(
+#'                 Detections = list(
+#'                   list(
+#'                     Count = 123,
+#'                     Arn = "string",
+#'                     Name = "string",
+#'                     Occurrences = list(
+#'                       LineRanges = list(
+#'                         list(
+#'                           Start = 123,
+#'                           End = 123,
+#'                           StartColumn = 123
+#'                         )
+#'                       ),
+#'                       OffsetRanges = list(
+#'                         list(
+#'                           Start = 123,
+#'                           End = 123,
+#'                           StartColumn = 123
+#'                         )
+#'                       ),
+#'                       Pages = list(
+#'                         list(
+#'                           PageNumber = 123,
+#'                           LineRange = list(
+#'                             Start = 123,
+#'                             End = 123,
+#'                             StartColumn = 123
+#'                           ),
+#'                           OffsetRange = list(
+#'                             Start = 123,
+#'                             End = 123,
+#'                             StartColumn = 123
+#'                           )
+#'                         )
+#'                       ),
+#'                       Records = list(
+#'                         list(
+#'                           JsonPath = "string",
+#'                           RecordIndex = 123
+#'                         )
+#'                       ),
+#'                       Cells = list(
+#'                         list(
+#'                           Column = 123,
+#'                           Row = 123,
+#'                           ColumnName = "string",
+#'                           CellReference = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 TotalCount = 123
+#'               )
+#'             )
+#'           ),
 #'           Details = list(
 #'             AwsAutoScalingAutoScalingGroup = list(
 #'               LaunchConfigurationName = "string",
@@ -407,12 +642,67 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               ),
 #'               HealthCheckType = "string",
 #'               HealthCheckGracePeriod = 123,
-#'               CreatedTime = "string"
+#'               CreatedTime = "string",
+#'               MixedInstancesPolicy = list(
+#'                 InstancesDistribution = list(
+#'                   OnDemandAllocationStrategy = "string",
+#'                   OnDemandBaseCapacity = 123,
+#'                   OnDemandPercentageAboveBaseCapacity = 123,
+#'                   SpotAllocationStrategy = "string",
+#'                   SpotInstancePools = 123,
+#'                   SpotMaxPrice = "string"
+#'                 ),
+#'                 LaunchTemplate = list(
+#'                   LaunchTemplateSpecification = list(
+#'                     LaunchTemplateId = "string",
+#'                     LaunchTemplateName = "string",
+#'                     Version = "string"
+#'                   ),
+#'                   Overrides = list(
+#'                     list(
+#'                       InstanceType = "string",
+#'                       WeightedCapacity = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               AvailabilityZones = list(
+#'                 list(
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               LaunchTemplate = list(
+#'                 LaunchTemplateId = "string",
+#'                 LaunchTemplateName = "string",
+#'                 Version = "string"
+#'               ),
+#'               CapacityRebalance = TRUE|FALSE
 #'             ),
 #'             AwsCodeBuildProject = list(
 #'               EncryptionKey = "string",
+#'               Artifacts = list(
+#'                 list(
+#'                   ArtifactIdentifier = "string",
+#'                   EncryptionDisabled = TRUE|FALSE,
+#'                   Location = "string",
+#'                   Name = "string",
+#'                   NamespaceType = "string",
+#'                   OverrideArtifactName = TRUE|FALSE,
+#'                   Packaging = "string",
+#'                   Path = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
 #'               Environment = list(
 #'                 Certificate = "string",
+#'                 EnvironmentVariables = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     Value = "string"
+#'                   )
+#'                 ),
+#'                 PrivilegedMode = TRUE|FALSE,
 #'                 ImagePullCredentialsType = "string",
 #'                 RegistryCredential = list(
 #'                   Credential = "string",
@@ -428,6 +718,18 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                 InsecureSsl = TRUE|FALSE
 #'               ),
 #'               ServiceRole = "string",
+#'               LogsConfig = list(
+#'                 CloudWatchLogs = list(
+#'                   GroupName = "string",
+#'                   Status = "string",
+#'                   StreamName = "string"
+#'                 ),
+#'                 S3Logs = list(
+#'                   EncryptionDisabled = TRUE|FALSE,
+#'                   Location = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
 #'               VpcConfig = list(
 #'                 VpcId = "string",
 #'                 Subnets = list(
@@ -435,6 +737,19 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                 ),
 #'                 SecurityGroupIds = list(
 #'                   "string"
+#'                 )
+#'               ),
+#'               SecondaryArtifacts = list(
+#'                 list(
+#'                   ArtifactIdentifier = "string",
+#'                   EncryptionDisabled = TRUE|FALSE,
+#'                   Location = "string",
+#'                   Name = "string",
+#'                   NamespaceType = "string",
+#'                   OverrideArtifactName = TRUE|FALSE,
+#'                   Packaging = "string",
+#'                   Path = "string",
+#'                   Type = "string"
 #'                 )
 #'               )
 #'             ),
@@ -467,6 +782,19 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                     OriginPath = "string",
 #'                     S3OriginConfig = list(
 #'                       OriginAccessIdentity = "string"
+#'                     ),
+#'                     CustomOriginConfig = list(
+#'                       HttpPort = 123,
+#'                       HttpsPort = 123,
+#'                       OriginKeepaliveTimeout = 123,
+#'                       OriginProtocolPolicy = "string",
+#'                       OriginReadTimeout = 123,
+#'                       OriginSslProtocols = list(
+#'                         Items = list(
+#'                           "string"
+#'                         ),
+#'                         Quantity = 123
+#'                       )
 #'                     )
 #'                   )
 #'                 )
@@ -485,6 +813,15 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                   )
 #'                 )
 #'               ),
+#'               ViewerCertificate = list(
+#'                 AcmCertificateArn = "string",
+#'                 Certificate = "string",
+#'                 CertificateSource = "string",
+#'                 CloudFrontDefaultCertificate = TRUE|FALSE,
+#'                 IamCertificateId = "string",
+#'                 MinimumProtocolVersion = "string",
+#'                 SslSupportMethod = "string"
+#'               ),
 #'               Status = "string",
 #'               WebAclId = "string"
 #'             ),
@@ -501,7 +838,20 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               IamInstanceProfileArn = "string",
 #'               VpcId = "string",
 #'               SubnetId = "string",
-#'               LaunchedAt = "string"
+#'               LaunchedAt = "string",
+#'               NetworkInterfaces = list(
+#'                 list(
+#'                   NetworkInterfaceId = "string"
+#'                 )
+#'               ),
+#'               VirtualizationType = "string",
+#'               MetadataOptions = list(
+#'                 HttpEndpoint = "string",
+#'                 HttpProtocolIpv6 = "string",
+#'                 HttpPutResponseHopLimit = 123,
+#'                 HttpTokens = "string",
+#'                 InstanceMetadataTags = "string"
+#'               )
 #'             ),
 #'             AwsEc2NetworkInterface = list(
 #'               Attachment = list(
@@ -520,7 +870,20 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                   GroupId = "string"
 #'                 )
 #'               ),
-#'               SourceDestCheck = TRUE|FALSE
+#'               SourceDestCheck = TRUE|FALSE,
+#'               IpV6Addresses = list(
+#'                 list(
+#'                   IpV6Address = "string"
+#'                 )
+#'               ),
+#'               PrivateIpAddresses = list(
+#'                 list(
+#'                   PrivateIpAddress = "string",
+#'                   PrivateDnsName = "string"
+#'                 )
+#'               ),
+#'               PublicDnsName = "string",
+#'               PublicIp = "string"
 #'             ),
 #'             AwsEc2SecurityGroup = list(
 #'               GroupName = "string",
@@ -594,6 +957,7 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'             ),
 #'             AwsEc2Volume = list(
 #'               CreateTime = "string",
+#'               DeviceName = "string",
 #'               Encrypted = TRUE|FALSE,
 #'               Size = 123,
 #'               SnapshotId = "string",
@@ -606,7 +970,10 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                   InstanceId = "string",
 #'                   Status = "string"
 #'                 )
-#'               )
+#'               ),
+#'               VolumeId = "string",
+#'               VolumeType = "string",
+#'               VolumeScanStatus = "string"
 #'             ),
 #'             AwsEc2Vpc = list(
 #'               CidrBlockAssociationSet = list(
@@ -638,6 +1005,58 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               NetworkInterfaceOwnerId = "string",
 #'               PrivateIpAddress = "string"
 #'             ),
+#'             AwsEc2Subnet = list(
+#'               AssignIpv6AddressOnCreation = TRUE|FALSE,
+#'               AvailabilityZone = "string",
+#'               AvailabilityZoneId = "string",
+#'               AvailableIpAddressCount = 123,
+#'               CidrBlock = "string",
+#'               DefaultForAz = TRUE|FALSE,
+#'               MapPublicIpOnLaunch = TRUE|FALSE,
+#'               OwnerId = "string",
+#'               State = "string",
+#'               SubnetArn = "string",
+#'               SubnetId = "string",
+#'               VpcId = "string",
+#'               Ipv6CidrBlockAssociationSet = list(
+#'                 list(
+#'                   AssociationId = "string",
+#'                   Ipv6CidrBlock = "string",
+#'                   CidrBlockState = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsEc2NetworkAcl = list(
+#'               IsDefault = TRUE|FALSE,
+#'               NetworkAclId = "string",
+#'               OwnerId = "string",
+#'               VpcId = "string",
+#'               Associations = list(
+#'                 list(
+#'                   NetworkAclAssociationId = "string",
+#'                   NetworkAclId = "string",
+#'                   SubnetId = "string"
+#'                 )
+#'               ),
+#'               Entries = list(
+#'                 list(
+#'                   CidrBlock = "string",
+#'                   Egress = TRUE|FALSE,
+#'                   IcmpTypeCode = list(
+#'                     Code = 123,
+#'                     Type = 123
+#'                   ),
+#'                   Ipv6CidrBlock = "string",
+#'                   PortRange = list(
+#'                     From = 123,
+#'                     To = 123
+#'                   ),
+#'                   Protocol = "string",
+#'                   RuleAction = "string",
+#'                   RuleNumber = 123
+#'                 )
+#'               )
+#'             ),
 #'             AwsElbv2LoadBalancer = list(
 #'               AvailabilityZones = list(
 #'                 list(
@@ -658,7 +1077,47 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                 Reason = "string"
 #'               ),
 #'               Type = "string",
-#'               VpcId = "string"
+#'               VpcId = "string",
+#'               LoadBalancerAttributes = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsElasticBeanstalkEnvironment = list(
+#'               ApplicationName = "string",
+#'               Cname = "string",
+#'               DateCreated = "string",
+#'               DateUpdated = "string",
+#'               Description = "string",
+#'               EndpointUrl = "string",
+#'               EnvironmentArn = "string",
+#'               EnvironmentId = "string",
+#'               EnvironmentLinks = list(
+#'                 list(
+#'                   EnvironmentName = "string",
+#'                   LinkName = "string"
+#'                 )
+#'               ),
+#'               EnvironmentName = "string",
+#'               OptionSettings = list(
+#'                 list(
+#'                   Namespace = "string",
+#'                   OptionName = "string",
+#'                   ResourceName = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               PlatformArn = "string",
+#'               SolutionStackName = "string",
+#'               Status = "string",
+#'               Tier = list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 Version = "string"
+#'               ),
+#'               VersionLabel = "string"
 #'             ),
 #'             AwsElasticsearchDomain = list(
 #'               AccessPolicies = "string",
@@ -673,12 +1132,46 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                 "string"
 #'               ),
 #'               ElasticsearchVersion = "string",
+#'               ElasticsearchClusterConfig = list(
+#'                 DedicatedMasterCount = 123,
+#'                 DedicatedMasterEnabled = TRUE|FALSE,
+#'                 DedicatedMasterType = "string",
+#'                 InstanceCount = 123,
+#'                 InstanceType = "string",
+#'                 ZoneAwarenessConfig = list(
+#'                   AvailabilityZoneCount = 123
+#'                 ),
+#'                 ZoneAwarenessEnabled = TRUE|FALSE
+#'               ),
 #'               EncryptionAtRestOptions = list(
 #'                 Enabled = TRUE|FALSE,
 #'                 KmsKeyId = "string"
 #'               ),
+#'               LogPublishingOptions = list(
+#'                 IndexSlowLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 SearchSlowLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 AuditLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 )
+#'               ),
 #'               NodeToNodeEncryptionOptions = list(
 #'                 Enabled = TRUE|FALSE
+#'               ),
+#'               ServiceSoftwareOptions = list(
+#'                 AutomatedUpdateDate = "string",
+#'                 Cancellable = TRUE|FALSE,
+#'                 CurrentVersion = "string",
+#'                 Description = "string",
+#'                 NewVersion = "string",
+#'                 UpdateAvailable = TRUE|FALSE,
+#'                 UpdateStatus = "string"
 #'               ),
 #'               VPCOptions = list(
 #'                 AvailabilityZones = list(
@@ -696,6 +1189,7 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'             AwsS3Bucket = list(
 #'               OwnerId = "string",
 #'               OwnerName = "string",
+#'               OwnerAccountId = "string",
 #'               CreatedAt = "string",
 #'               ServerSideEncryptionConfiguration = list(
 #'                 Rules = list(
@@ -706,7 +1200,121 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                     )
 #'                   )
 #'                 )
+#'               ),
+#'               BucketLifecycleConfiguration = list(
+#'                 Rules = list(
+#'                   list(
+#'                     AbortIncompleteMultipartUpload = list(
+#'                       DaysAfterInitiation = 123
+#'                     ),
+#'                     ExpirationDate = "string",
+#'                     ExpirationInDays = 123,
+#'                     ExpiredObjectDeleteMarker = TRUE|FALSE,
+#'                     Filter = list(
+#'                       Predicate = list(
+#'                         Operands = list(
+#'                           list(
+#'                             Prefix = "string",
+#'                             Tag = list(
+#'                               Key = "string",
+#'                               Value = "string"
+#'                             ),
+#'                             Type = "string"
+#'                           )
+#'                         ),
+#'                         Prefix = "string",
+#'                         Tag = list(
+#'                           Key = "string",
+#'                           Value = "string"
+#'                         ),
+#'                         Type = "string"
+#'                       )
+#'                     ),
+#'                     ID = "string",
+#'                     NoncurrentVersionExpirationInDays = 123,
+#'                     NoncurrentVersionTransitions = list(
+#'                       list(
+#'                         Days = 123,
+#'                         StorageClass = "string"
+#'                       )
+#'                     ),
+#'                     Prefix = "string",
+#'                     Status = "string",
+#'                     Transitions = list(
+#'                       list(
+#'                         Date = "string",
+#'                         Days = 123,
+#'                         StorageClass = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               PublicAccessBlockConfiguration = list(
+#'                 BlockPublicAcls = TRUE|FALSE,
+#'                 BlockPublicPolicy = TRUE|FALSE,
+#'                 IgnorePublicAcls = TRUE|FALSE,
+#'                 RestrictPublicBuckets = TRUE|FALSE
+#'               ),
+#'               AccessControlList = "string",
+#'               BucketLoggingConfiguration = list(
+#'                 DestinationBucketName = "string",
+#'                 LogFilePrefix = "string"
+#'               ),
+#'               BucketWebsiteConfiguration = list(
+#'                 ErrorDocument = "string",
+#'                 IndexDocumentSuffix = "string",
+#'                 RedirectAllRequestsTo = list(
+#'                   Hostname = "string",
+#'                   Protocol = "string"
+#'                 ),
+#'                 RoutingRules = list(
+#'                   list(
+#'                     Condition = list(
+#'                       HttpErrorCodeReturnedEquals = "string",
+#'                       KeyPrefixEquals = "string"
+#'                     ),
+#'                     Redirect = list(
+#'                       Hostname = "string",
+#'                       HttpRedirectCode = "string",
+#'                       Protocol = "string",
+#'                       ReplaceKeyPrefixWith = "string",
+#'                       ReplaceKeyWith = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               BucketNotificationConfiguration = list(
+#'                 Configurations = list(
+#'                   list(
+#'                     Events = list(
+#'                       "string"
+#'                     ),
+#'                     Filter = list(
+#'                       S3KeyFilter = list(
+#'                         FilterRules = list(
+#'                           list(
+#'                             Name = "Prefix"|"Suffix",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Destination = "string",
+#'                     Type = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BucketVersioningConfiguration = list(
+#'                 IsMfaDeleteEnabled = TRUE|FALSE,
+#'                 Status = "string"
 #'               )
+#'             ),
+#'             AwsS3AccountPublicAccessBlock = list(
+#'               BlockPublicAcls = TRUE|FALSE,
+#'               BlockPublicPolicy = TRUE|FALSE,
+#'               IgnorePublicAcls = TRUE|FALSE,
+#'               RestrictPublicBuckets = TRUE|FALSE
 #'             ),
 #'             AwsS3Object = list(
 #'               LastModified = "string",
@@ -795,6 +1403,7 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               UpdateDate = "string"
 #'             ),
 #'             AwsApiGatewayV2Stage = list(
+#'               ClientCertificateId = "string",
 #'               CreatedDate = "string",
 #'               Description = "string",
 #'               DefaultRouteSettings = list(
@@ -1047,6 +1656,30 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               SnsTopicName = "string",
 #'               TrailArn = "string"
 #'             ),
+#'             AwsSsmPatchCompliance = list(
+#'               Patch = list(
+#'                 ComplianceSummary = list(
+#'                   Status = "string",
+#'                   CompliantCriticalCount = 123,
+#'                   CompliantHighCount = 123,
+#'                   CompliantMediumCount = 123,
+#'                   ExecutionType = "string",
+#'                   NonCompliantCriticalCount = 123,
+#'                   CompliantInformationalCount = 123,
+#'                   NonCompliantInformationalCount = 123,
+#'                   CompliantUnspecifiedCount = 123,
+#'                   NonCompliantLowCount = 123,
+#'                   NonCompliantHighCount = 123,
+#'                   CompliantLowCount = 123,
+#'                   ComplianceType = "string",
+#'                   PatchBaselineId = "string",
+#'                   OverallSeverity = "string",
+#'                   NonCompliantMediumCount = 123,
+#'                   NonCompliantUnspecifiedCount = 123,
+#'                   PatchGroup = "string"
+#'                 )
+#'               )
+#'             ),
 #'             AwsCertificateManagerCertificate = list(
 #'               CertificateAuthorityArn = "string",
 #'               CreatedAt = "string",
@@ -1243,6 +1876,14 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                   Status = "string",
 #'                   VpcSecurityGroupId = "string"
 #'                 )
+#'               ),
+#'               LoggingStatus = list(
+#'                 BucketName = "string",
+#'                 LastFailureMessage = "string",
+#'                 LastFailureTime = "string",
+#'                 LastSuccessfulDeliveryTime = "string",
+#'                 LoggingEnabled = TRUE|FALSE,
+#'                 S3KeyPrefix = "string"
 #'               )
 #'             ),
 #'             AwsElbLoadBalancer = list(
@@ -1303,6 +1944,12 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                 ),
 #'                 CrossZoneLoadBalancing = list(
 #'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 AdditionalAttributes = list(
+#'                   list(
+#'                     Key = "string",
+#'                     Value = "string"
+#'                   )
 #'                 )
 #'               ),
 #'               LoadBalancerName = "string",
@@ -1402,7 +2049,8 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               KeyManager = "string",
 #'               KeyState = "string",
 #'               Origin = "string",
-#'               Description = "string"
+#'               Description = "string",
+#'               KeyRotationStatus = TRUE|FALSE
 #'             ),
 #'             AwsLambdaFunction = list(
 #'               Code = list(
@@ -1628,7 +2276,14 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                 )
 #'               ),
 #'               TopicName = "string",
-#'               Owner = "string"
+#'               Owner = "string",
+#'               SqsSuccessFeedbackRoleArn = "string",
+#'               SqsFailureFeedbackRoleArn = "string",
+#'               ApplicationSuccessFeedbackRoleArn = "string",
+#'               FirehoseSuccessFeedbackRoleArn = "string",
+#'               FirehoseFailureFeedbackRoleArn = "string",
+#'               HttpSuccessFeedbackRoleArn = "string",
+#'               HttpFailureFeedbackRoleArn = "string"
 #'             ),
 #'             AwsSqsQueue = list(
 #'               KmsDataKeyReusePeriodSeconds = 123,
@@ -1791,14 +2446,1149 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               ),
 #'               IamDatabaseAuthenticationEnabled = TRUE|FALSE
 #'             ),
+#'             AwsEcsCluster = list(
+#'               ClusterArn = "string",
+#'               ActiveServicesCount = 123,
+#'               CapacityProviders = list(
+#'                 "string"
+#'               ),
+#'               ClusterSettings = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               Configuration = list(
+#'                 ExecuteCommandConfiguration = list(
+#'                   KmsKeyId = "string",
+#'                   LogConfiguration = list(
+#'                     CloudWatchEncryptionEnabled = TRUE|FALSE,
+#'                     CloudWatchLogGroupName = "string",
+#'                     S3BucketName = "string",
+#'                     S3EncryptionEnabled = TRUE|FALSE,
+#'                     S3KeyPrefix = "string"
+#'                   ),
+#'                   Logging = "string"
+#'                 )
+#'               ),
+#'               DefaultCapacityProviderStrategy = list(
+#'                 list(
+#'                   Base = 123,
+#'                   CapacityProvider = "string",
+#'                   Weight = 123
+#'                 )
+#'               ),
+#'               ClusterName = "string",
+#'               RegisteredContainerInstancesCount = 123,
+#'               RunningTasksCount = 123,
+#'               Status = "string"
+#'             ),
+#'             AwsEcsContainer = list(
+#'               Name = "string",
+#'               Image = "string",
+#'               MountPoints = list(
+#'                 list(
+#'                   SourceVolume = "string",
+#'                   ContainerPath = "string"
+#'                 )
+#'               ),
+#'               Privileged = TRUE|FALSE
+#'             ),
+#'             AwsEcsTaskDefinition = list(
+#'               ContainerDefinitions = list(
+#'                 list(
+#'                   Command = list(
+#'                     "string"
+#'                   ),
+#'                   Cpu = 123,
+#'                   DependsOn = list(
+#'                     list(
+#'                       Condition = "string",
+#'                       ContainerName = "string"
+#'                     )
+#'                   ),
+#'                   DisableNetworking = TRUE|FALSE,
+#'                   DnsSearchDomains = list(
+#'                     "string"
+#'                   ),
+#'                   DnsServers = list(
+#'                     "string"
+#'                   ),
+#'                   DockerLabels = list(
+#'                     "string"
+#'                   ),
+#'                   DockerSecurityOptions = list(
+#'                     "string"
+#'                   ),
+#'                   EntryPoint = list(
+#'                     "string"
+#'                   ),
+#'                   Environment = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   EnvironmentFiles = list(
+#'                     list(
+#'                       Type = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   Essential = TRUE|FALSE,
+#'                   ExtraHosts = list(
+#'                     list(
+#'                       Hostname = "string",
+#'                       IpAddress = "string"
+#'                     )
+#'                   ),
+#'                   FirelensConfiguration = list(
+#'                     Options = list(
+#'                       "string"
+#'                     ),
+#'                     Type = "string"
+#'                   ),
+#'                   HealthCheck = list(
+#'                     Command = list(
+#'                       "string"
+#'                     ),
+#'                     Interval = 123,
+#'                     Retries = 123,
+#'                     StartPeriod = 123,
+#'                     Timeout = 123
+#'                   ),
+#'                   Hostname = "string",
+#'                   Image = "string",
+#'                   Interactive = TRUE|FALSE,
+#'                   Links = list(
+#'                     "string"
+#'                   ),
+#'                   LinuxParameters = list(
+#'                     Capabilities = list(
+#'                       Add = list(
+#'                         "string"
+#'                       ),
+#'                       Drop = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     Devices = list(
+#'                       list(
+#'                         ContainerPath = "string",
+#'                         HostPath = "string",
+#'                         Permissions = list(
+#'                           "string"
+#'                         )
+#'                       )
+#'                     ),
+#'                     InitProcessEnabled = TRUE|FALSE,
+#'                     MaxSwap = 123,
+#'                     SharedMemorySize = 123,
+#'                     Swappiness = 123,
+#'                     Tmpfs = list(
+#'                       list(
+#'                         ContainerPath = "string",
+#'                         MountOptions = list(
+#'                           "string"
+#'                         ),
+#'                         Size = 123
+#'                       )
+#'                     )
+#'                   ),
+#'                   LogConfiguration = list(
+#'                     LogDriver = "string",
+#'                     Options = list(
+#'                       "string"
+#'                     ),
+#'                     SecretOptions = list(
+#'                       list(
+#'                         Name = "string",
+#'                         ValueFrom = "string"
+#'                       )
+#'                     )
+#'                   ),
+#'                   Memory = 123,
+#'                   MemoryReservation = 123,
+#'                   MountPoints = list(
+#'                     list(
+#'                       ContainerPath = "string",
+#'                       ReadOnly = TRUE|FALSE,
+#'                       SourceVolume = "string"
+#'                     )
+#'                   ),
+#'                   Name = "string",
+#'                   PortMappings = list(
+#'                     list(
+#'                       ContainerPort = 123,
+#'                       HostPort = 123,
+#'                       Protocol = "string"
+#'                     )
+#'                   ),
+#'                   Privileged = TRUE|FALSE,
+#'                   PseudoTerminal = TRUE|FALSE,
+#'                   ReadonlyRootFilesystem = TRUE|FALSE,
+#'                   RepositoryCredentials = list(
+#'                     CredentialsParameter = "string"
+#'                   ),
+#'                   ResourceRequirements = list(
+#'                     list(
+#'                       Type = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   Secrets = list(
+#'                     list(
+#'                       Name = "string",
+#'                       ValueFrom = "string"
+#'                     )
+#'                   ),
+#'                   StartTimeout = 123,
+#'                   StopTimeout = 123,
+#'                   SystemControls = list(
+#'                     list(
+#'                       Namespace = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   Ulimits = list(
+#'                     list(
+#'                       HardLimit = 123,
+#'                       Name = "string",
+#'                       SoftLimit = 123
+#'                     )
+#'                   ),
+#'                   User = "string",
+#'                   VolumesFrom = list(
+#'                     list(
+#'                       ReadOnly = TRUE|FALSE,
+#'                       SourceContainer = "string"
+#'                     )
+#'                   ),
+#'                   WorkingDirectory = "string"
+#'                 )
+#'               ),
+#'               Cpu = "string",
+#'               ExecutionRoleArn = "string",
+#'               Family = "string",
+#'               InferenceAccelerators = list(
+#'                 list(
+#'                   DeviceName = "string",
+#'                   DeviceType = "string"
+#'                 )
+#'               ),
+#'               IpcMode = "string",
+#'               Memory = "string",
+#'               NetworkMode = "string",
+#'               PidMode = "string",
+#'               PlacementConstraints = list(
+#'                 list(
+#'                   Expression = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               ProxyConfiguration = list(
+#'                 ContainerName = "string",
+#'                 ProxyConfigurationProperties = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Value = "string"
+#'                   )
+#'                 ),
+#'                 Type = "string"
+#'               ),
+#'               RequiresCompatibilities = list(
+#'                 "string"
+#'               ),
+#'               TaskRoleArn = "string",
+#'               Volumes = list(
+#'                 list(
+#'                   DockerVolumeConfiguration = list(
+#'                     Autoprovision = TRUE|FALSE,
+#'                     Driver = "string",
+#'                     DriverOpts = list(
+#'                       "string"
+#'                     ),
+#'                     Labels = list(
+#'                       "string"
+#'                     ),
+#'                     Scope = "string"
+#'                   ),
+#'                   EfsVolumeConfiguration = list(
+#'                     AuthorizationConfig = list(
+#'                       AccessPointId = "string",
+#'                       Iam = "string"
+#'                     ),
+#'                     FilesystemId = "string",
+#'                     RootDirectory = "string",
+#'                     TransitEncryption = "string",
+#'                     TransitEncryptionPort = 123
+#'                   ),
+#'                   Host = list(
+#'                     SourcePath = "string"
+#'                   ),
+#'                   Name = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Container = list(
+#'               ContainerRuntime = "string",
 #'               Name = "string",
 #'               ImageId = "string",
 #'               ImageName = "string",
-#'               LaunchedAt = "string"
+#'               LaunchedAt = "string",
+#'               VolumeMounts = list(
+#'                 list(
+#'                   Name = "string",
+#'                   MountPath = "string"
+#'                 )
+#'               ),
+#'               Privileged = TRUE|FALSE
 #'             ),
 #'             Other = list(
 #'               "string"
+#'             ),
+#'             AwsRdsEventSubscription = list(
+#'               CustSubscriptionId = "string",
+#'               CustomerAwsId = "string",
+#'               Enabled = TRUE|FALSE,
+#'               EventCategoriesList = list(
+#'                 "string"
+#'               ),
+#'               EventSubscriptionArn = "string",
+#'               SnsTopicArn = "string",
+#'               SourceIdsList = list(
+#'                 "string"
+#'               ),
+#'               SourceType = "string",
+#'               Status = "string",
+#'               SubscriptionCreationTime = "string"
+#'             ),
+#'             AwsEcsService = list(
+#'               CapacityProviderStrategy = list(
+#'                 list(
+#'                   Base = 123,
+#'                   CapacityProvider = "string",
+#'                   Weight = 123
+#'                 )
+#'               ),
+#'               Cluster = "string",
+#'               DeploymentConfiguration = list(
+#'                 DeploymentCircuitBreaker = list(
+#'                   Enable = TRUE|FALSE,
+#'                   Rollback = TRUE|FALSE
+#'                 ),
+#'                 MaximumPercent = 123,
+#'                 MinimumHealthyPercent = 123
+#'               ),
+#'               DeploymentController = list(
+#'                 Type = "string"
+#'               ),
+#'               DesiredCount = 123,
+#'               EnableEcsManagedTags = TRUE|FALSE,
+#'               EnableExecuteCommand = TRUE|FALSE,
+#'               HealthCheckGracePeriodSeconds = 123,
+#'               LaunchType = "string",
+#'               LoadBalancers = list(
+#'                 list(
+#'                   ContainerName = "string",
+#'                   ContainerPort = 123,
+#'                   LoadBalancerName = "string",
+#'                   TargetGroupArn = "string"
+#'                 )
+#'               ),
+#'               Name = "string",
+#'               NetworkConfiguration = list(
+#'                 AwsVpcConfiguration = list(
+#'                   AssignPublicIp = "string",
+#'                   SecurityGroups = list(
+#'                     "string"
+#'                   ),
+#'                   Subnets = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               PlacementConstraints = list(
+#'                 list(
+#'                   Expression = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               PlacementStrategies = list(
+#'                 list(
+#'                   Field = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               PlatformVersion = "string",
+#'               PropagateTags = "string",
+#'               Role = "string",
+#'               SchedulingStrategy = "string",
+#'               ServiceArn = "string",
+#'               ServiceName = "string",
+#'               ServiceRegistries = list(
+#'                 list(
+#'                   ContainerName = "string",
+#'                   ContainerPort = 123,
+#'                   Port = 123,
+#'                   RegistryArn = "string"
+#'                 )
+#'               ),
+#'               TaskDefinition = "string"
+#'             ),
+#'             AwsAutoScalingLaunchConfiguration = list(
+#'               AssociatePublicIpAddress = TRUE|FALSE,
+#'               BlockDeviceMappings = list(
+#'                 list(
+#'                   DeviceName = "string",
+#'                   Ebs = list(
+#'                     DeleteOnTermination = TRUE|FALSE,
+#'                     Encrypted = TRUE|FALSE,
+#'                     Iops = 123,
+#'                     SnapshotId = "string",
+#'                     VolumeSize = 123,
+#'                     VolumeType = "string"
+#'                   ),
+#'                   NoDevice = TRUE|FALSE,
+#'                   VirtualName = "string"
+#'                 )
+#'               ),
+#'               ClassicLinkVpcId = "string",
+#'               ClassicLinkVpcSecurityGroups = list(
+#'                 "string"
+#'               ),
+#'               CreatedTime = "string",
+#'               EbsOptimized = TRUE|FALSE,
+#'               IamInstanceProfile = "string",
+#'               ImageId = "string",
+#'               InstanceMonitoring = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               InstanceType = "string",
+#'               KernelId = "string",
+#'               KeyName = "string",
+#'               LaunchConfigurationName = "string",
+#'               PlacementTenancy = "string",
+#'               RamdiskId = "string",
+#'               SecurityGroups = list(
+#'                 "string"
+#'               ),
+#'               SpotPrice = "string",
+#'               UserData = "string",
+#'               MetadataOptions = list(
+#'                 HttpEndpoint = "string",
+#'                 HttpPutResponseHopLimit = 123,
+#'                 HttpTokens = "string"
+#'               )
+#'             ),
+#'             AwsEc2VpnConnection = list(
+#'               VpnConnectionId = "string",
+#'               State = "string",
+#'               CustomerGatewayId = "string",
+#'               CustomerGatewayConfiguration = "string",
+#'               Type = "string",
+#'               VpnGatewayId = "string",
+#'               Category = "string",
+#'               VgwTelemetry = list(
+#'                 list(
+#'                   AcceptedRouteCount = 123,
+#'                   CertificateArn = "string",
+#'                   LastStatusChange = "string",
+#'                   OutsideIpAddress = "string",
+#'                   Status = "string",
+#'                   StatusMessage = "string"
+#'                 )
+#'               ),
+#'               Options = list(
+#'                 StaticRoutesOnly = TRUE|FALSE,
+#'                 TunnelOptions = list(
+#'                   list(
+#'                     DpdTimeoutSeconds = 123,
+#'                     IkeVersions = list(
+#'                       "string"
+#'                     ),
+#'                     OutsideIpAddress = "string",
+#'                     Phase1DhGroupNumbers = list(
+#'                       123
+#'                     ),
+#'                     Phase1EncryptionAlgorithms = list(
+#'                       "string"
+#'                     ),
+#'                     Phase1IntegrityAlgorithms = list(
+#'                       "string"
+#'                     ),
+#'                     Phase1LifetimeSeconds = 123,
+#'                     Phase2DhGroupNumbers = list(
+#'                       123
+#'                     ),
+#'                     Phase2EncryptionAlgorithms = list(
+#'                       "string"
+#'                     ),
+#'                     Phase2IntegrityAlgorithms = list(
+#'                       "string"
+#'                     ),
+#'                     Phase2LifetimeSeconds = 123,
+#'                     PreSharedKey = "string",
+#'                     RekeyFuzzPercentage = 123,
+#'                     RekeyMarginTimeSeconds = 123,
+#'                     ReplayWindowSize = 123,
+#'                     TunnelInsideCidr = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Routes = list(
+#'                 list(
+#'                   DestinationCidrBlock = "string",
+#'                   State = "string"
+#'                 )
+#'               ),
+#'               TransitGatewayId = "string"
+#'             ),
+#'             AwsEcrContainerImage = list(
+#'               RegistryId = "string",
+#'               RepositoryName = "string",
+#'               Architecture = "string",
+#'               ImageDigest = "string",
+#'               ImageTags = list(
+#'                 "string"
+#'               ),
+#'               ImagePublishedAt = "string"
+#'             ),
+#'             AwsOpenSearchServiceDomain = list(
+#'               Arn = "string",
+#'               AccessPolicies = "string",
+#'               DomainName = "string",
+#'               Id = "string",
+#'               DomainEndpoint = "string",
+#'               EngineVersion = "string",
+#'               EncryptionAtRestOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 KmsKeyId = "string"
+#'               ),
+#'               NodeToNodeEncryptionOptions = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               ServiceSoftwareOptions = list(
+#'                 AutomatedUpdateDate = "string",
+#'                 Cancellable = TRUE|FALSE,
+#'                 CurrentVersion = "string",
+#'                 Description = "string",
+#'                 NewVersion = "string",
+#'                 UpdateAvailable = TRUE|FALSE,
+#'                 UpdateStatus = "string",
+#'                 OptionalDeployment = TRUE|FALSE
+#'               ),
+#'               ClusterConfig = list(
+#'                 InstanceCount = 123,
+#'                 WarmEnabled = TRUE|FALSE,
+#'                 WarmCount = 123,
+#'                 DedicatedMasterEnabled = TRUE|FALSE,
+#'                 ZoneAwarenessConfig = list(
+#'                   AvailabilityZoneCount = 123
+#'                 ),
+#'                 DedicatedMasterCount = 123,
+#'                 InstanceType = "string",
+#'                 WarmType = "string",
+#'                 ZoneAwarenessEnabled = TRUE|FALSE,
+#'                 DedicatedMasterType = "string"
+#'               ),
+#'               DomainEndpointOptions = list(
+#'                 CustomEndpointCertificateArn = "string",
+#'                 CustomEndpointEnabled = TRUE|FALSE,
+#'                 EnforceHTTPS = TRUE|FALSE,
+#'                 CustomEndpoint = "string",
+#'                 TLSSecurityPolicy = "string"
+#'               ),
+#'               VpcOptions = list(
+#'                 SecurityGroupIds = list(
+#'                   "string"
+#'                 ),
+#'                 SubnetIds = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               LogPublishingOptions = list(
+#'                 IndexSlowLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 SearchSlowLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 AuditLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 )
+#'               ),
+#'               DomainEndpoints = list(
+#'                 "string"
+#'               ),
+#'               AdvancedSecurityOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 InternalUserDatabaseEnabled = TRUE|FALSE,
+#'                 MasterUserOptions = list(
+#'                   MasterUserArn = "string",
+#'                   MasterUserName = "string",
+#'                   MasterUserPassword = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsEc2VpcEndpointService = list(
+#'               AcceptanceRequired = TRUE|FALSE,
+#'               AvailabilityZones = list(
+#'                 "string"
+#'               ),
+#'               BaseEndpointDnsNames = list(
+#'                 "string"
+#'               ),
+#'               ManagesVpcEndpoints = TRUE|FALSE,
+#'               GatewayLoadBalancerArns = list(
+#'                 "string"
+#'               ),
+#'               NetworkLoadBalancerArns = list(
+#'                 "string"
+#'               ),
+#'               PrivateDnsName = "string",
+#'               ServiceId = "string",
+#'               ServiceName = "string",
+#'               ServiceState = "string",
+#'               ServiceType = list(
+#'                 list(
+#'                   ServiceType = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsXrayEncryptionConfig = list(
+#'               KeyId = "string",
+#'               Status = "string",
+#'               Type = "string"
+#'             ),
+#'             AwsWafRateBasedRule = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               RateKey = "string",
+#'               RateLimit = 123,
+#'               RuleId = "string",
+#'               MatchPredicates = list(
+#'                 list(
+#'                   DataId = "string",
+#'                   Negated = TRUE|FALSE,
+#'                   Type = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsWafRegionalRateBasedRule = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               RateKey = "string",
+#'               RateLimit = 123,
+#'               RuleId = "string",
+#'               MatchPredicates = list(
+#'                 list(
+#'                   DataId = "string",
+#'                   Negated = TRUE|FALSE,
+#'                   Type = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsEcrRepository = list(
+#'               Arn = "string",
+#'               ImageScanningConfiguration = list(
+#'                 ScanOnPush = TRUE|FALSE
+#'               ),
+#'               ImageTagMutability = "string",
+#'               LifecyclePolicy = list(
+#'                 LifecyclePolicyText = "string",
+#'                 RegistryId = "string"
+#'               ),
+#'               RepositoryName = "string",
+#'               RepositoryPolicyText = "string"
+#'             ),
+#'             AwsEksCluster = list(
+#'               Arn = "string",
+#'               CertificateAuthorityData = "string",
+#'               ClusterStatus = "string",
+#'               Endpoint = "string",
+#'               Name = "string",
+#'               ResourcesVpcConfig = list(
+#'                 SecurityGroupIds = list(
+#'                   "string"
+#'                 ),
+#'                 SubnetIds = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               RoleArn = "string",
+#'               Version = "string",
+#'               Logging = list(
+#'                 ClusterLogging = list(
+#'                   list(
+#'                     Enabled = TRUE|FALSE,
+#'                     Types = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             AwsNetworkFirewallFirewallPolicy = list(
+#'               FirewallPolicy = list(
+#'                 StatefulRuleGroupReferences = list(
+#'                   list(
+#'                     ResourceArn = "string"
+#'                   )
+#'                 ),
+#'                 StatelessCustomActions = list(
+#'                   list(
+#'                     ActionDefinition = list(
+#'                       PublishMetricAction = list(
+#'                         Dimensions = list(
+#'                           list(
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     ActionName = "string"
+#'                   )
+#'                 ),
+#'                 StatelessDefaultActions = list(
+#'                   "string"
+#'                 ),
+#'                 StatelessFragmentDefaultActions = list(
+#'                   "string"
+#'                 ),
+#'                 StatelessRuleGroupReferences = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     ResourceArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               FirewallPolicyArn = "string",
+#'               FirewallPolicyId = "string",
+#'               FirewallPolicyName = "string",
+#'               Description = "string"
+#'             ),
+#'             AwsNetworkFirewallFirewall = list(
+#'               DeleteProtection = TRUE|FALSE,
+#'               Description = "string",
+#'               FirewallArn = "string",
+#'               FirewallId = "string",
+#'               FirewallName = "string",
+#'               FirewallPolicyArn = "string",
+#'               FirewallPolicyChangeProtection = TRUE|FALSE,
+#'               SubnetChangeProtection = TRUE|FALSE,
+#'               SubnetMappings = list(
+#'                 list(
+#'                   SubnetId = "string"
+#'                 )
+#'               ),
+#'               VpcId = "string"
+#'             ),
+#'             AwsNetworkFirewallRuleGroup = list(
+#'               Capacity = 123,
+#'               Description = "string",
+#'               RuleGroup = list(
+#'                 RuleVariables = list(
+#'                   IpSets = list(
+#'                     Definition = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   PortSets = list(
+#'                     Definition = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 RulesSource = list(
+#'                   RulesSourceList = list(
+#'                     GeneratedRulesType = "string",
+#'                     TargetTypes = list(
+#'                       "string"
+#'                     ),
+#'                     Targets = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   RulesString = "string",
+#'                   StatefulRules = list(
+#'                     list(
+#'                       Action = "string",
+#'                       Header = list(
+#'                         Destination = "string",
+#'                         DestinationPort = "string",
+#'                         Direction = "string",
+#'                         Protocol = "string",
+#'                         Source = "string",
+#'                         SourcePort = "string"
+#'                       ),
+#'                       RuleOptions = list(
+#'                         list(
+#'                           Keyword = "string",
+#'                           Settings = list(
+#'                             "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   StatelessRulesAndCustomActions = list(
+#'                     CustomActions = list(
+#'                       list(
+#'                         ActionDefinition = list(
+#'                           PublishMetricAction = list(
+#'                             Dimensions = list(
+#'                               list(
+#'                                 Value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         ),
+#'                         ActionName = "string"
+#'                       )
+#'                     ),
+#'                     StatelessRules = list(
+#'                       list(
+#'                         Priority = 123,
+#'                         RuleDefinition = list(
+#'                           Actions = list(
+#'                             "string"
+#'                           ),
+#'                           MatchAttributes = list(
+#'                             DestinationPorts = list(
+#'                               list(
+#'                                 FromPort = 123,
+#'                                 ToPort = 123
+#'                               )
+#'                             ),
+#'                             Destinations = list(
+#'                               list(
+#'                                 AddressDefinition = "string"
+#'                               )
+#'                             ),
+#'                             Protocols = list(
+#'                               123
+#'                             ),
+#'                             SourcePorts = list(
+#'                               list(
+#'                                 FromPort = 123,
+#'                                 ToPort = 123
+#'                               )
+#'                             ),
+#'                             Sources = list(
+#'                               list(
+#'                                 AddressDefinition = "string"
+#'                               )
+#'                             ),
+#'                             TcpFlags = list(
+#'                               list(
+#'                                 Flags = list(
+#'                                   "string"
+#'                                 ),
+#'                                 Masks = list(
+#'                                   "string"
+#'                                 )
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               RuleGroupArn = "string",
+#'               RuleGroupId = "string",
+#'               RuleGroupName = "string",
+#'               Type = "string"
+#'             ),
+#'             AwsRdsDbSecurityGroup = list(
+#'               DbSecurityGroupArn = "string",
+#'               DbSecurityGroupDescription = "string",
+#'               DbSecurityGroupName = "string",
+#'               Ec2SecurityGroups = list(
+#'                 list(
+#'                   Ec2SecurityGroupId = "string",
+#'                   Ec2SecurityGroupName = "string",
+#'                   Ec2SecurityGroupOwnerId = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               IpRanges = list(
+#'                 list(
+#'                   CidrIp = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               OwnerId = "string",
+#'               VpcId = "string"
+#'             ),
+#'             AwsKinesisStream = list(
+#'               Name = "string",
+#'               Arn = "string",
+#'               StreamEncryption = list(
+#'                 EncryptionType = "string",
+#'                 KeyId = "string"
+#'               ),
+#'               ShardCount = 123,
+#'               RetentionPeriodHours = 123
+#'             ),
+#'             AwsEc2TransitGateway = list(
+#'               Id = "string",
+#'               Description = "string",
+#'               DefaultRouteTablePropagation = "string",
+#'               AutoAcceptSharedAttachments = "string",
+#'               DefaultRouteTableAssociation = "string",
+#'               TransitGatewayCidrBlocks = list(
+#'                 "string"
+#'               ),
+#'               AssociationDefaultRouteTableId = "string",
+#'               PropagationDefaultRouteTableId = "string",
+#'               VpnEcmpSupport = "string",
+#'               DnsSupport = "string",
+#'               MulticastSupport = "string",
+#'               AmazonSideAsn = 123
+#'             ),
+#'             AwsEfsAccessPoint = list(
+#'               AccessPointId = "string",
+#'               Arn = "string",
+#'               ClientToken = "string",
+#'               FileSystemId = "string",
+#'               PosixUser = list(
+#'                 Gid = "string",
+#'                 SecondaryGids = list(
+#'                   "string"
+#'                 ),
+#'                 Uid = "string"
+#'               ),
+#'               RootDirectory = list(
+#'                 CreationInfo = list(
+#'                   OwnerGid = "string",
+#'                   OwnerUid = "string",
+#'                   Permissions = "string"
+#'                 ),
+#'                 Path = "string"
+#'               )
+#'             ),
+#'             AwsCloudFormationStack = list(
+#'               Capabilities = list(
+#'                 "string"
+#'               ),
+#'               CreationTime = "string",
+#'               Description = "string",
+#'               DisableRollback = TRUE|FALSE,
+#'               DriftInformation = list(
+#'                 StackDriftStatus = "string"
+#'               ),
+#'               EnableTerminationProtection = TRUE|FALSE,
+#'               LastUpdatedTime = "string",
+#'               NotificationArns = list(
+#'                 "string"
+#'               ),
+#'               Outputs = list(
+#'                 list(
+#'                   Description = "string",
+#'                   OutputKey = "string",
+#'                   OutputValue = "string"
+#'                 )
+#'               ),
+#'               RoleArn = "string",
+#'               StackId = "string",
+#'               StackName = "string",
+#'               StackStatus = "string",
+#'               StackStatusReason = "string",
+#'               TimeoutInMinutes = 123
+#'             ),
+#'             AwsCloudWatchAlarm = list(
+#'               ActionsEnabled = TRUE|FALSE,
+#'               AlarmActions = list(
+#'                 "string"
+#'               ),
+#'               AlarmArn = "string",
+#'               AlarmConfigurationUpdatedTimestamp = "string",
+#'               AlarmDescription = "string",
+#'               AlarmName = "string",
+#'               ComparisonOperator = "string",
+#'               DatapointsToAlarm = 123,
+#'               Dimensions = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               EvaluateLowSampleCountPercentile = "string",
+#'               EvaluationPeriods = 123,
+#'               ExtendedStatistic = "string",
+#'               InsufficientDataActions = list(
+#'                 "string"
+#'               ),
+#'               MetricName = "string",
+#'               Namespace = "string",
+#'               OkActions = list(
+#'                 "string"
+#'               ),
+#'               Period = 123,
+#'               Statistic = "string",
+#'               Threshold = 123.0,
+#'               ThresholdMetricId = "string",
+#'               TreatMissingData = "string",
+#'               Unit = "string"
+#'             ),
+#'             AwsEc2VpcPeeringConnection = list(
+#'               AccepterVpcInfo = list(
+#'                 CidrBlock = "string",
+#'                 CidrBlockSet = list(
+#'                   list(
+#'                     CidrBlock = "string"
+#'                   )
+#'                 ),
+#'                 Ipv6CidrBlockSet = list(
+#'                   list(
+#'                     Ipv6CidrBlock = "string"
+#'                   )
+#'                 ),
+#'                 OwnerId = "string",
+#'                 PeeringOptions = list(
+#'                   AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'                   AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'                   AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'                 ),
+#'                 Region = "string",
+#'                 VpcId = "string"
+#'               ),
+#'               ExpirationTime = "string",
+#'               RequesterVpcInfo = list(
+#'                 CidrBlock = "string",
+#'                 CidrBlockSet = list(
+#'                   list(
+#'                     CidrBlock = "string"
+#'                   )
+#'                 ),
+#'                 Ipv6CidrBlockSet = list(
+#'                   list(
+#'                     Ipv6CidrBlock = "string"
+#'                   )
+#'                 ),
+#'                 OwnerId = "string",
+#'                 PeeringOptions = list(
+#'                   AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'                   AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'                   AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'                 ),
+#'                 Region = "string",
+#'                 VpcId = "string"
+#'               ),
+#'               Status = list(
+#'                 Code = "string",
+#'                 Message = "string"
+#'               ),
+#'               VpcPeeringConnectionId = "string"
+#'             ),
+#'             AwsWafRegionalRuleGroup = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               RuleGroupId = "string",
+#'               Rules = list(
+#'                 list(
+#'                   Action = list(
+#'                     Type = "string"
+#'                   ),
+#'                   Priority = 123,
+#'                   RuleId = "string",
+#'                   Type = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsWafRegionalRule = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               PredicateList = list(
+#'                 list(
+#'                   DataId = "string",
+#'                   Negated = TRUE|FALSE,
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               RuleId = "string"
+#'             ),
+#'             AwsWafRegionalWebAcl = list(
+#'               DefaultAction = "string",
+#'               MetricName = "string",
+#'               Name = "string",
+#'               RulesList = list(
+#'                 list(
+#'                   Action = list(
+#'                     Type = "string"
+#'                   ),
+#'                   OverrideAction = list(
+#'                     Type = "string"
+#'                   ),
+#'                   Priority = 123,
+#'                   RuleId = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               WebAclId = "string"
+#'             ),
+#'             AwsWafRule = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               PredicateList = list(
+#'                 list(
+#'                   DataId = "string",
+#'                   Negated = TRUE|FALSE,
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               RuleId = "string"
+#'             ),
+#'             AwsWafRuleGroup = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               RuleGroupId = "string",
+#'               Rules = list(
+#'                 list(
+#'                   Action = list(
+#'                     Type = "string"
+#'                   ),
+#'                   Priority = 123,
+#'                   RuleId = "string",
+#'                   Type = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsEcsTask = list(
+#'               ClusterArn = "string",
+#'               TaskDefinitionArn = "string",
+#'               Version = "string",
+#'               CreatedAt = "string",
+#'               StartedAt = "string",
+#'               StartedBy = "string",
+#'               Group = "string",
+#'               Volumes = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Host = list(
+#'                     SourcePath = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Containers = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Image = "string",
+#'                   MountPoints = list(
+#'                     list(
+#'                       SourceVolume = "string",
+#'                       ContainerPath = "string"
+#'                     )
+#'                   ),
+#'                   Privileged = TRUE|FALSE
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -1841,14 +3631,23 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               Version = "string",
 #'               Epoch = "string",
 #'               Release = "string",
-#'               Architecture = "string"
+#'               Architecture = "string",
+#'               PackageManager = "string",
+#'               FilePath = "string"
 #'             )
 #'           ),
 #'           Cvss = list(
 #'             list(
 #'               Version = "string",
 #'               BaseScore = 123.0,
-#'               BaseVector = "string"
+#'               BaseVector = "string",
+#'               Source = "string",
+#'               Adjustments = list(
+#'                 list(
+#'                   Metric = "string",
+#'                   Reason = "string"
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           RelatedVulnerabilities = list(
@@ -1878,7 +3677,133 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'         OperationEndTime = "string",
 #'         RebootOption = "string",
 #'         Operation = "string"
-#'       )
+#'       ),
+#'       Action = list(
+#'         ActionType = "string",
+#'         NetworkConnectionAction = list(
+#'           ConnectionDirection = "string",
+#'           RemoteIpDetails = list(
+#'             IpAddressV4 = "string",
+#'             Organization = list(
+#'               Asn = 123,
+#'               AsnOrg = "string",
+#'               Isp = "string",
+#'               Org = "string"
+#'             ),
+#'             Country = list(
+#'               CountryCode = "string",
+#'               CountryName = "string"
+#'             ),
+#'             City = list(
+#'               CityName = "string"
+#'             ),
+#'             GeoLocation = list(
+#'               Lon = 123.0,
+#'               Lat = 123.0
+#'             )
+#'           ),
+#'           RemotePortDetails = list(
+#'             Port = 123,
+#'             PortName = "string"
+#'           ),
+#'           LocalPortDetails = list(
+#'             Port = 123,
+#'             PortName = "string"
+#'           ),
+#'           Protocol = "string",
+#'           Blocked = TRUE|FALSE
+#'         ),
+#'         AwsApiCallAction = list(
+#'           Api = "string",
+#'           ServiceName = "string",
+#'           CallerType = "string",
+#'           RemoteIpDetails = list(
+#'             IpAddressV4 = "string",
+#'             Organization = list(
+#'               Asn = 123,
+#'               AsnOrg = "string",
+#'               Isp = "string",
+#'               Org = "string"
+#'             ),
+#'             Country = list(
+#'               CountryCode = "string",
+#'               CountryName = "string"
+#'             ),
+#'             City = list(
+#'               CityName = "string"
+#'             ),
+#'             GeoLocation = list(
+#'               Lon = 123.0,
+#'               Lat = 123.0
+#'             )
+#'           ),
+#'           DomainDetails = list(
+#'             Domain = "string"
+#'           ),
+#'           AffectedResources = list(
+#'             "string"
+#'           ),
+#'           FirstSeen = "string",
+#'           LastSeen = "string"
+#'         ),
+#'         DnsRequestAction = list(
+#'           Domain = "string",
+#'           Protocol = "string",
+#'           Blocked = TRUE|FALSE
+#'         ),
+#'         PortProbeAction = list(
+#'           PortProbeDetails = list(
+#'             list(
+#'               LocalPortDetails = list(
+#'                 Port = 123,
+#'                 PortName = "string"
+#'               ),
+#'               LocalIpDetails = list(
+#'                 IpAddressV4 = "string"
+#'               ),
+#'               RemoteIpDetails = list(
+#'                 IpAddressV4 = "string",
+#'                 Organization = list(
+#'                   Asn = 123,
+#'                   AsnOrg = "string",
+#'                   Isp = "string",
+#'                   Org = "string"
+#'                 ),
+#'                 Country = list(
+#'                   CountryCode = "string",
+#'                   CountryName = "string"
+#'                 ),
+#'                 City = list(
+#'                   CityName = "string"
+#'                 ),
+#'                 GeoLocation = list(
+#'                   Lon = 123.0,
+#'                   Lat = 123.0
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Blocked = TRUE|FALSE
+#'         )
+#'       ),
+#'       FindingProviderFields = list(
+#'         Confidence = 123,
+#'         Criticality = 123,
+#'         RelatedFindings = list(
+#'           list(
+#'             ProductArn = "string",
+#'             Id = "string"
+#'           )
+#'         ),
+#'         Severity = list(
+#'           Label = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+#'           Original = "string"
+#'         ),
+#'         Types = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Sample = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -1909,16 +3834,16 @@ securityhub_batch_import_findings <- function(Findings) {
 #'
 #' @description
 #' Used by Security Hub customers to update information about their
-#' investigation into a finding. Requested by master accounts or member
-#' accounts. Master accounts can update findings for their account and
-#' their member accounts. Member accounts can update findings for their
-#' account.
+#' investigation into a finding. Requested by administrator accounts or
+#' member accounts. Administrator accounts can update findings for their
+#' account and their member accounts. Member accounts can update findings
+#' for their account.
 #' 
 #' Updates from
 #' [`batch_update_findings`][securityhub_batch_update_findings] do not
 #' affect the value of `UpdatedAt` for a finding.
 #' 
-#' Master and member accounts can use
+#' Administrator and member accounts can use
 #' [`batch_update_findings`][securityhub_batch_update_findings] to update
 #' the following finding fields and objects.
 #' 
@@ -1945,7 +3870,7 @@ securityhub_batch_import_findings <- function(Findings) {
 #' suppress findings or change the finding severity. See [Configuring
 #' access to
 #' BatchUpdateFindings](https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access)
-#' in the *AWS Security Hub User Guide*.
+#' in the *Security Hub User Guide*.
 #'
 #' @usage
 #' securityhub_batch_update_findings(FindingIdentifiers, Note, Severity,
@@ -2099,9 +4024,10 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 #' @usage
 #' securityhub_create_action_target(Name, Description, Id)
 #'
-#' @param Name &#91;required&#93; The name of the custom action target.
+#' @param Name &#91;required&#93; The name of the custom action target. Can contain up to 20 characters.
 #' @param Description &#91;required&#93; The description for the custom action target.
-#' @param Id &#91;required&#93; The ID for the custom action target.
+#' @param Id &#91;required&#93; The ID for the custom action target. Can contain up to 20 alphanumeric
+#' characters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2139,6 +4065,95 @@ securityhub_create_action_target <- function(Name, Description, Id) {
   return(response)
 }
 .securityhub$operations$create_action_target <- securityhub_create_action_target
+
+#' Used to enable finding aggregation
+#'
+#' @description
+#' Used to enable finding aggregation. Must be called from the aggregation
+#' Region.
+#' 
+#' For more details about cross-Region replication, see [Configuring
+#' finding
+#' aggregation](https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation.html)
+#' in the *Security Hub User Guide*.
+#'
+#' @usage
+#' securityhub_create_finding_aggregator(RegionLinkingMode, Regions)
+#'
+#' @param RegionLinkingMode &#91;required&#93; Indicates whether to aggregate findings from all of the available
+#' Regions in the current partition. Also determines whether to
+#' automatically aggregate findings from new Regions as Security Hub
+#' supports them and you opt into them.
+#' 
+#' The selected option also determines how to use the Regions provided in
+#' the Regions list.
+#' 
+#' The options are as follows:
+#' 
+#' -   `ALL_REGIONS` - Indicates to aggregate findings from all of the
+#'     Regions where Security Hub is enabled. When you choose this option,
+#'     Security Hub also automatically aggregates findings from new Regions
+#'     as Security Hub supports them and you opt into them.
+#' 
+#' -   `ALL_REGIONS_EXCEPT_SPECIFIED` - Indicates to aggregate findings
+#'     from all of the Regions where Security Hub is enabled, except for
+#'     the Regions listed in the `Regions` parameter. When you choose this
+#'     option, Security Hub also automatically aggregates findings from new
+#'     Regions as Security Hub supports them and you opt into them.
+#' 
+#' -   `SPECIFIED_REGIONS` - Indicates to aggregate findings only from the
+#'     Regions listed in the `Regions` parameter. Security Hub does not
+#'     automatically aggregate findings from new Regions.
+#' @param Regions If `RegionLinkingMode` is `ALL_REGIONS_EXCEPT_SPECIFIED`, then this is a
+#' comma-separated list of Regions that do not aggregate findings to the
+#' aggregation Region.
+#' 
+#' If `RegionLinkingMode` is `SPECIFIED_REGIONS`, then this is a
+#' comma-separated list of Regions that do aggregate findings to the
+#' aggregation Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FindingAggregatorArn = "string",
+#'   FindingAggregationRegion = "string",
+#'   RegionLinkingMode = "string",
+#'   Regions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_finding_aggregator(
+#'   RegionLinkingMode = "string",
+#'   Regions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_finding_aggregator
+securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = NULL) {
+  op <- new_operation(
+    name = "CreateFindingAggregator",
+    http_method = "POST",
+    http_path = "/findingAggregator/create",
+    paginator = list()
+  )
+  input <- .securityhub$create_finding_aggregator_input(RegionLinkingMode = RegionLinkingMode, Regions = Regions)
+  output <- .securityhub$create_finding_aggregator_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_finding_aggregator <- securityhub_create_finding_aggregator
 
 #' Creates a custom insight in Security Hub
 #'
@@ -2194,6 +4209,12 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'       )
 #'     ),
 #'     GeneratorId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     Region = list(
 #'       list(
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
@@ -2608,6 +4629,12 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
+#'     ResourceAwsIamAccessKeyPrincipalName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
@@ -2622,6 +4649,12 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'           Value = 123,
 #'           Unit = "DAYS"
 #'         )
+#'       )
+#'     ),
+#'     ResourceAwsIamUserUserName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerName = list(
@@ -2727,6 +4760,55 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'       list(
 #'         Value = "string"
 #'       )
+#'     ),
+#'     FindingProviderFieldsConfidence = list(
+#'       list(
+#'         Gte = 123.0,
+#'         Lte = 123.0,
+#'         Eq = 123.0
+#'       )
+#'     ),
+#'     FindingProviderFieldsCriticality = list(
+#'       list(
+#'         Gte = 123.0,
+#'         Lte = 123.0,
+#'         Eq = 123.0
+#'       )
+#'     ),
+#'     FindingProviderFieldsRelatedFindingsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsRelatedFindingsProductArn = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsSeverityLabel = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsSeverityOriginal = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsTypes = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     Sample = list(
+#'       list(
+#'         Value = TRUE|FALSE
+#'       )
 #'     )
 #'   ),
 #'   GroupByAttribute = "string"
@@ -2754,25 +4836,25 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 .securityhub$operations$create_insight <- securityhub_create_insight
 
 #' Creates a member association in Security Hub between the specified
-#' accounts and the account used to make the request, which is the master
-#' account
+#' accounts and the account used to make the request, which is the
+#' administrator account
 #'
 #' @description
 #' Creates a member association in Security Hub between the specified
-#' accounts and the account used to make the request, which is the master
-#' account. If you are integrated with Organizations, then the master
-#' account is the Security Hub administrator account that is designated by
-#' the organization management account.
+#' accounts and the account used to make the request, which is the
+#' administrator account. If you are integrated with Organizations, then
+#' the administrator account is designated by the organization management
+#' account.
 #' 
 #' [`create_members`][securityhub_create_members] is always used to add
 #' accounts that are not organization members.
 #' 
-#' For accounts that are part of an organization,
+#' For accounts that are managed using Organizations,
 #' [`create_members`][securityhub_create_members] is only used in the
 #' following cases:
 #' 
-#' -   Security Hub is not configured to automatically add new accounts in
-#'     an organization.
+#' -   Security Hub is not configured to automatically add new organization
+#'     accounts.
 #' 
 #' -   The account was disassociated or deleted in Security Hub.
 #' 
@@ -2787,25 +4869,34 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' owner accepts the invitation, the account becomes a member account in
 #' Security Hub.
 #' 
-#' Accounts that are part of an organization do not receive an invitation.
-#' They automatically become a member account in Security Hub.
+#' Accounts that are managed using Organizations do not receive an
+#' invitation. They automatically become a member account in Security Hub.
 #' 
-#' A permissions policy is added that permits the master account to view
-#' the findings generated in the member account. When Security Hub is
-#' enabled in a member account, findings are sent to both the member and
-#' master accounts.
+#' -   If the organization account does not have Security Hub enabled, then
+#'     Security Hub and the default standards are automatically enabled.
+#'     Note that Security Hub cannot be enabled automatically for the
+#'     organization management account. The organization management account
+#'     must enable Security Hub before the administrator account enables it
+#'     as a member account.
 #' 
-#' To remove the association between the master and member accounts, use
-#' the
+#' -   For organization accounts that already have Security Hub enabled,
+#'     Security Hub does not make any other changes to those accounts. It
+#'     does not change their enabled standards or controls.
+#' 
+#' A permissions policy is added that permits the administrator account to
+#' view the findings generated in the member account.
+#' 
+#' To remove the association between the administrator and member accounts,
+#' use the
 #' [`disassociate_from_master_account`][securityhub_disassociate_from_master_account]
 #' or [`disassociate_members`][securityhub_disassociate_members] operation.
 #'
 #' @usage
 #' securityhub_create_members(AccountDetails)
 #'
-#' @param AccountDetails &#91;required&#93; The list of accounts to associate with the Security Hub master account.
-#' For each account, the list includes the account ID and optionally the
-#' email address.
+#' @param AccountDetails &#91;required&#93; The list of accounts to associate with the Security Hub administrator
+#' account. For each account, the list includes the account ID and
+#' optionally the email address.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2957,6 +5048,52 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
 }
 .securityhub$operations$delete_action_target <- securityhub_delete_action_target
 
+#' Deletes a finding aggregator
+#'
+#' @description
+#' Deletes a finding aggregator. When you delete the finding aggregator,
+#' you stop finding aggregation.
+#' 
+#' When you stop finding aggregation, findings that were already aggregated
+#' to the aggregation Region are still visible from the aggregation Region.
+#' New findings and finding updates are not aggregated.
+#'
+#' @usage
+#' securityhub_delete_finding_aggregator(FindingAggregatorArn)
+#'
+#' @param FindingAggregatorArn &#91;required&#93; The ARN of the finding aggregator to delete. To obtain the ARN, use
+#' [`list_finding_aggregators`][securityhub_list_finding_aggregators].
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_finding_aggregator(
+#'   FindingAggregatorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_finding_aggregator
+securityhub_delete_finding_aggregator <- function(FindingAggregatorArn) {
+  op <- new_operation(
+    name = "DeleteFindingAggregator",
+    http_method = "DELETE",
+    http_path = "/findingAggregator/delete/{FindingAggregatorArn+}",
+    paginator = list()
+  )
+  input <- .securityhub$delete_finding_aggregator_input(FindingAggregatorArn = FindingAggregatorArn)
+  output <- .securityhub$delete_finding_aggregator_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_finding_aggregator <- securityhub_delete_finding_aggregator
+
 #' Deletes the insight specified by the InsightArn
 #'
 #' @description
@@ -3002,12 +5139,12 @@ securityhub_delete_insight <- function(InsightArn) {
 }
 .securityhub$operations$delete_insight <- securityhub_delete_insight
 
-#' Deletes invitations received by the AWS account to become a member
-#' account
+#' Deletes invitations received by the Amazon Web Services account to
+#' become a member account
 #'
 #' @description
-#' Deletes invitations received by the AWS account to become a member
-#' account.
+#' Deletes invitations received by the Amazon Web Services account to
+#' become a member account.
 #' 
 #' This operation is only used by accounts that are not part of an
 #' organization. Organization accounts do not receive invitations.
@@ -3246,7 +5383,8 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 #' ```
 #' list(
 #'   AutoEnable = TRUE|FALSE,
-#'   MemberAccountLimitReached = TRUE|FALSE
+#'   MemberAccountLimitReached = TRUE|FALSE,
+#'   AutoEnableStandards = "NONE"|"DEFAULT"
 #' )
 #' ```
 #'
@@ -3275,15 +5413,19 @@ securityhub_describe_organization_configuration <- function() {
 }
 .securityhub$operations$describe_organization_configuration <- securityhub_describe_organization_configuration
 
-#' Returns information about the available products that you can subscribe
-#' to and integrate with Security Hub in order to consolidate findings
+#' Returns information about product integrations in Security Hub
 #'
 #' @description
-#' Returns information about the available products that you can subscribe
-#' to and integrate with Security Hub in order to consolidate findings.
+#' Returns information about product integrations in Security Hub.
+#' 
+#' You can optionally provide an integration ARN. If you provide an
+#' integration ARN, then the results only include that integration.
+#' 
+#' If you do not provide an integration ARN, then the results include all
+#' of the available product integrations.
 #'
 #' @usage
-#' securityhub_describe_products(NextToken, MaxResults)
+#' securityhub_describe_products(NextToken, MaxResults, ProductArn)
 #'
 #' @param NextToken The token that is required for pagination. On your first call to the
 #' [`describe_products`][securityhub_describe_products] operation, set the
@@ -3293,6 +5435,7 @@ securityhub_describe_organization_configuration <- function() {
 #' value of this parameter to the value returned from the previous
 #' response.
 #' @param MaxResults The maximum number of results to return.
+#' @param ProductArn The ARN of the integration to return.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3308,7 +5451,7 @@ securityhub_describe_organization_configuration <- function() {
 #'         "string"
 #'       ),
 #'       IntegrationTypes = list(
-#'         "SEND_FINDINGS_TO_SECURITY_HUB"|"RECEIVE_FINDINGS_FROM_SECURITY_HUB"
+#'         "SEND_FINDINGS_TO_SECURITY_HUB"|"RECEIVE_FINDINGS_FROM_SECURITY_HUB"|"UPDATE_FINDINGS_IN_SECURITY_HUB"
 #'       ),
 #'       MarketplaceUrl = "string",
 #'       ActivationUrl = "string",
@@ -3323,21 +5466,22 @@ securityhub_describe_organization_configuration <- function() {
 #' ```
 #' svc$describe_products(
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   ProductArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_products
-securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL) {
+securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, ProductArn = NULL) {
   op <- new_operation(
     name = "DescribeProducts",
     http_method = "GET",
     http_path = "/products",
     paginator = list()
   )
-  input <- .securityhub$describe_products_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .securityhub$describe_products_input(NextToken = NextToken, MaxResults = MaxResults, ProductArn = ProductArn)
   output <- .securityhub$describe_products_output()
   config <- get_config()
   svc <- .securityhub$service(config)
@@ -3542,7 +5686,8 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #' @usage
 #' securityhub_disable_organization_admin_account(AdminAccountId)
 #'
-#' @param AdminAccountId &#91;required&#93; The AWS account identifier of the Security Hub administrator account.
+#' @param AdminAccountId &#91;required&#93; The Amazon Web Services account identifier of the Security Hub
+#' administrator account.
 #'
 #' @return
 #' An empty list.
@@ -3581,13 +5726,13 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
 #' disable Security Hub in all Regions, you must submit one request per
 #' Region where you have enabled Security Hub.
 #' 
-#' When you disable Security Hub for a master account, it doesn't disable
-#' Security Hub for any associated member accounts.
+#' When you disable Security Hub for an administrator account, it doesn't
+#' disable Security Hub for any associated member accounts.
 #' 
 #' When you disable Security Hub, your existing findings and insights and
 #' any Security Hub configuration settings are deleted after 90 days and
 #' cannot be recovered. Any standards that were enabled are disabled, and
-#' your master and member account associations are removed.
+#' your administrator and member account associations are removed.
 #' 
 #' If you want to save your existing findings, you must export them before
 #' you disable Security Hub.
@@ -3624,16 +5769,72 @@ securityhub_disable_security_hub <- function() {
 .securityhub$operations$disable_security_hub <- securityhub_disable_security_hub
 
 #' Disassociates the current Security Hub member account from the
-#' associated master account
+#' associated administrator account
 #'
 #' @description
 #' Disassociates the current Security Hub member account from the
-#' associated master account.
+#' associated administrator account.
 #' 
 #' This operation is only used by accounts that are not part of an
-#' organization. For organization accounts, only the master account (the
-#' designated Security Hub administrator) can disassociate a member
-#' account.
+#' organization. For organization accounts, only the administrator account
+#' can disassociate a member account.
+#'
+#' @usage
+#' securityhub_disassociate_from_administrator_account()
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_from_administrator_account()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_disassociate_from_administrator_account
+securityhub_disassociate_from_administrator_account <- function() {
+  op <- new_operation(
+    name = "DisassociateFromAdministratorAccount",
+    http_method = "POST",
+    http_path = "/administrator/disassociate",
+    paginator = list()
+  )
+  input <- .securityhub$disassociate_from_administrator_account_input()
+  output <- .securityhub$disassociate_from_administrator_account_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$disassociate_from_administrator_account <- securityhub_disassociate_from_administrator_account
+
+#' This method is deprecated
+#'
+#' @description
+#' This method is deprecated. Instead, use
+#' [`disassociate_from_administrator_account`][securityhub_disassociate_from_administrator_account].
+#' 
+#' The Security Hub console continues to use
+#' [`disassociate_from_master_account`][securityhub_disassociate_from_master_account].
+#' It will eventually change to use
+#' [`disassociate_from_administrator_account`][securityhub_disassociate_from_administrator_account].
+#' Any IAM policies that specifically control access to this function must
+#' continue to use
+#' [`disassociate_from_master_account`][securityhub_disassociate_from_master_account].
+#' You should also add
+#' [`disassociate_from_administrator_account`][securityhub_disassociate_from_administrator_account]
+#' to your policies to ensure that the correct permissions are in place
+#' after the console begins to use
+#' [`disassociate_from_administrator_account`][securityhub_disassociate_from_administrator_account].
+#' 
+#' Disassociates the current Security Hub member account from the
+#' associated administrator account.
+#' 
+#' This operation is only used by accounts that are not part of an
+#' organization. For organization accounts, only the administrator account
+#' can disassociate a member account.
 #'
 #' @usage
 #' securityhub_disassociate_from_master_account()
@@ -3666,21 +5867,21 @@ securityhub_disassociate_from_master_account <- function() {
 }
 .securityhub$operations$disassociate_from_master_account <- securityhub_disassociate_from_master_account
 
-#' Disassociates the specified member accounts from the associated master
-#' account
+#' Disassociates the specified member accounts from the associated
+#' administrator account
 #'
 #' @description
-#' Disassociates the specified member accounts from the associated master
-#' account.
+#' Disassociates the specified member accounts from the associated
+#' administrator account.
 #' 
-#' Can be used to disassociate both accounts that are in an organization
-#' and accounts that were invited manually.
+#' Can be used to disassociate both accounts that are managed using
+#' Organizations and accounts that were invited manually.
 #'
 #' @usage
 #' securityhub_disassociate_members(AccountIds)
 #'
-#' @param AccountIds &#91;required&#93; The account IDs of the member accounts to disassociate from the master
-#' account.
+#' @param AccountIds &#91;required&#93; The account IDs of the member accounts to disassociate from the
+#' administrator account.
 #'
 #' @return
 #' An empty list.
@@ -3772,8 +5973,8 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 #' @usage
 #' securityhub_enable_organization_admin_account(AdminAccountId)
 #'
-#' @param AdminAccountId &#91;required&#93; The AWS account identifier of the account to designate as the Security
-#' Hub administrator account.
+#' @param AdminAccountId &#91;required&#93; The Amazon Web Services account identifier of the account to designate
+#' as the Security Hub administrator account.
 #'
 #' @return
 #' An empty list.
@@ -3821,9 +6022,9 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #' enable Security Hub, you also automatically enable the following
 #' standards.
 #' 
-#' -   CIS AWS Foundations
+#' -   CIS Amazon Web Services Foundations
 #' 
-#' -   AWS Foundational Security Best Practices
+#' -   Amazon Web Services Foundational Security Best Practices
 #' 
 #' You do not enable the Payment Card Industry Data Security Standard (PCI
 #' DSS) standard.
@@ -3837,9 +6038,9 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #' [`batch_disable_standards`][securityhub_batch_disable_standards]
 #' operation.
 #' 
-#' To learn more, see [Setting Up AWS Security
-#' Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html)
-#' in the *AWS Security Hub User Guide*.
+#' To learn more, see the [setup
+#' information](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html)
+#' in the *Security Hub User Guide*.
 #'
 #' @usage
 #' securityhub_enable_security_hub(Tags, EnableDefaultStandards)
@@ -3884,6 +6085,59 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 }
 .securityhub$operations$enable_security_hub <- securityhub_enable_security_hub
 
+#' Provides the details for the Security Hub administrator account for the
+#' current member account
+#'
+#' @description
+#' Provides the details for the Security Hub administrator account for the
+#' current member account.
+#' 
+#' Can be used by both member accounts that are managed using Organizations
+#' and accounts that were invited manually.
+#'
+#' @usage
+#' securityhub_get_administrator_account()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Administrator = list(
+#'     AccountId = "string",
+#'     InvitationId = "string",
+#'     InvitedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MemberStatus = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_administrator_account()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_administrator_account
+securityhub_get_administrator_account <- function() {
+  op <- new_operation(
+    name = "GetAdministratorAccount",
+    http_method = "GET",
+    http_path = "/administrator",
+    paginator = list()
+  )
+  input <- .securityhub$get_administrator_account_input()
+  output <- .securityhub$get_administrator_account_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_administrator_account <- securityhub_get_administrator_account
+
 #' Returns a list of the standards that are currently enabled
 #'
 #' @description
@@ -3915,7 +6169,10 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 #'       StandardsInput = list(
 #'         "string"
 #'       ),
-#'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE"
+#'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE",
+#'       StandardsStatusReason = list(
+#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"INTERNAL_ERROR"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3953,10 +6210,67 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 }
 .securityhub$operations$get_enabled_standards <- securityhub_get_enabled_standards
 
+#' Returns the current finding aggregation configuration
+#'
+#' @description
+#' Returns the current finding aggregation configuration.
+#'
+#' @usage
+#' securityhub_get_finding_aggregator(FindingAggregatorArn)
+#'
+#' @param FindingAggregatorArn &#91;required&#93; The ARN of the finding aggregator to return details for. To obtain the
+#' ARN, use
+#' [`list_finding_aggregators`][securityhub_list_finding_aggregators].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FindingAggregatorArn = "string",
+#'   FindingAggregationRegion = "string",
+#'   RegionLinkingMode = "string",
+#'   Regions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_finding_aggregator(
+#'   FindingAggregatorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_finding_aggregator
+securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
+  op <- new_operation(
+    name = "GetFindingAggregator",
+    http_method = "GET",
+    http_path = "/findingAggregator/get/{FindingAggregatorArn+}",
+    paginator = list()
+  )
+  input <- .securityhub$get_finding_aggregator_input(FindingAggregatorArn = FindingAggregatorArn)
+  output <- .securityhub$get_finding_aggregator_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_finding_aggregator <- securityhub_get_finding_aggregator
+
 #' Returns a list of findings that match the specified criteria
 #'
 #' @description
 #' Returns a list of findings that match the specified criteria.
+#' 
+#' If finding aggregation is enabled, then when you call
+#' [`get_findings`][securityhub_get_findings] from the aggregation Region,
+#' the results include all of the matching findings from both the
+#' aggregation Region and the linked Regions.
 #'
 #' @usage
 #' securityhub_get_findings(Filters, SortCriteria, NextToken, MaxResults)
@@ -3989,6 +6303,9 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'       SchemaVersion = "string",
 #'       Id = "string",
 #'       ProductArn = "string",
+#'       ProductName = "string",
+#'       CompanyName = "string",
+#'       Region = "string",
 #'       GeneratorId = "string",
 #'       AwsAccountId = "string",
 #'       Types = list(
@@ -4110,6 +6427,21 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'         LaunchedAt = "string",
 #'         TerminatedAt = "string"
 #'       ),
+#'       Threats = list(
+#'         list(
+#'           Name = "string",
+#'           Severity = "string",
+#'           ItemCount = 123,
+#'           FilePaths = list(
+#'             list(
+#'               FilePath = "string",
+#'               FileName = "string",
+#'               ResourceId = "string",
+#'               Hash = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       ThreatIntelIndicators = list(
 #'         list(
 #'           Type = "DOMAIN"|"EMAIL_ADDRESS"|"HASH_MD5"|"HASH_SHA1"|"HASH_SHA256"|"HASH_SHA512"|"IPV4_ADDRESS"|"IPV6_ADDRESS"|"MUTEX"|"PROCESS"|"URL",
@@ -4130,6 +6462,130 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'           Tags = list(
 #'             "string"
 #'           ),
+#'           DataClassification = list(
+#'             DetailedResultsLocation = "string",
+#'             Result = list(
+#'               MimeType = "string",
+#'               SizeClassified = 123,
+#'               AdditionalOccurrences = TRUE|FALSE,
+#'               Status = list(
+#'                 Code = "string",
+#'                 Reason = "string"
+#'               ),
+#'               SensitiveData = list(
+#'                 list(
+#'                   Category = "string",
+#'                   Detections = list(
+#'                     list(
+#'                       Count = 123,
+#'                       Type = "string",
+#'                       Occurrences = list(
+#'                         LineRanges = list(
+#'                           list(
+#'                             Start = 123,
+#'                             End = 123,
+#'                             StartColumn = 123
+#'                           )
+#'                         ),
+#'                         OffsetRanges = list(
+#'                           list(
+#'                             Start = 123,
+#'                             End = 123,
+#'                             StartColumn = 123
+#'                           )
+#'                         ),
+#'                         Pages = list(
+#'                           list(
+#'                             PageNumber = 123,
+#'                             LineRange = list(
+#'                               Start = 123,
+#'                               End = 123,
+#'                               StartColumn = 123
+#'                             ),
+#'                             OffsetRange = list(
+#'                               Start = 123,
+#'                               End = 123,
+#'                               StartColumn = 123
+#'                             )
+#'                           )
+#'                         ),
+#'                         Records = list(
+#'                           list(
+#'                             JsonPath = "string",
+#'                             RecordIndex = 123
+#'                           )
+#'                         ),
+#'                         Cells = list(
+#'                           list(
+#'                             Column = 123,
+#'                             Row = 123,
+#'                             ColumnName = "string",
+#'                             CellReference = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   TotalCount = 123
+#'                 )
+#'               ),
+#'               CustomDataIdentifiers = list(
+#'                 Detections = list(
+#'                   list(
+#'                     Count = 123,
+#'                     Arn = "string",
+#'                     Name = "string",
+#'                     Occurrences = list(
+#'                       LineRanges = list(
+#'                         list(
+#'                           Start = 123,
+#'                           End = 123,
+#'                           StartColumn = 123
+#'                         )
+#'                       ),
+#'                       OffsetRanges = list(
+#'                         list(
+#'                           Start = 123,
+#'                           End = 123,
+#'                           StartColumn = 123
+#'                         )
+#'                       ),
+#'                       Pages = list(
+#'                         list(
+#'                           PageNumber = 123,
+#'                           LineRange = list(
+#'                             Start = 123,
+#'                             End = 123,
+#'                             StartColumn = 123
+#'                           ),
+#'                           OffsetRange = list(
+#'                             Start = 123,
+#'                             End = 123,
+#'                             StartColumn = 123
+#'                           )
+#'                         )
+#'                       ),
+#'                       Records = list(
+#'                         list(
+#'                           JsonPath = "string",
+#'                           RecordIndex = 123
+#'                         )
+#'                       ),
+#'                       Cells = list(
+#'                         list(
+#'                           Column = 123,
+#'                           Row = 123,
+#'                           ColumnName = "string",
+#'                           CellReference = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 TotalCount = 123
+#'               )
+#'             )
+#'           ),
 #'           Details = list(
 #'             AwsAutoScalingAutoScalingGroup = list(
 #'               LaunchConfigurationName = "string",
@@ -4138,12 +6594,67 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'               ),
 #'               HealthCheckType = "string",
 #'               HealthCheckGracePeriod = 123,
-#'               CreatedTime = "string"
+#'               CreatedTime = "string",
+#'               MixedInstancesPolicy = list(
+#'                 InstancesDistribution = list(
+#'                   OnDemandAllocationStrategy = "string",
+#'                   OnDemandBaseCapacity = 123,
+#'                   OnDemandPercentageAboveBaseCapacity = 123,
+#'                   SpotAllocationStrategy = "string",
+#'                   SpotInstancePools = 123,
+#'                   SpotMaxPrice = "string"
+#'                 ),
+#'                 LaunchTemplate = list(
+#'                   LaunchTemplateSpecification = list(
+#'                     LaunchTemplateId = "string",
+#'                     LaunchTemplateName = "string",
+#'                     Version = "string"
+#'                   ),
+#'                   Overrides = list(
+#'                     list(
+#'                       InstanceType = "string",
+#'                       WeightedCapacity = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               AvailabilityZones = list(
+#'                 list(
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               LaunchTemplate = list(
+#'                 LaunchTemplateId = "string",
+#'                 LaunchTemplateName = "string",
+#'                 Version = "string"
+#'               ),
+#'               CapacityRebalance = TRUE|FALSE
 #'             ),
 #'             AwsCodeBuildProject = list(
 #'               EncryptionKey = "string",
+#'               Artifacts = list(
+#'                 list(
+#'                   ArtifactIdentifier = "string",
+#'                   EncryptionDisabled = TRUE|FALSE,
+#'                   Location = "string",
+#'                   Name = "string",
+#'                   NamespaceType = "string",
+#'                   OverrideArtifactName = TRUE|FALSE,
+#'                   Packaging = "string",
+#'                   Path = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
 #'               Environment = list(
 #'                 Certificate = "string",
+#'                 EnvironmentVariables = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     Value = "string"
+#'                   )
+#'                 ),
+#'                 PrivilegedMode = TRUE|FALSE,
 #'                 ImagePullCredentialsType = "string",
 #'                 RegistryCredential = list(
 #'                   Credential = "string",
@@ -4159,6 +6670,18 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                 InsecureSsl = TRUE|FALSE
 #'               ),
 #'               ServiceRole = "string",
+#'               LogsConfig = list(
+#'                 CloudWatchLogs = list(
+#'                   GroupName = "string",
+#'                   Status = "string",
+#'                   StreamName = "string"
+#'                 ),
+#'                 S3Logs = list(
+#'                   EncryptionDisabled = TRUE|FALSE,
+#'                   Location = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
 #'               VpcConfig = list(
 #'                 VpcId = "string",
 #'                 Subnets = list(
@@ -4166,6 +6689,19 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                 ),
 #'                 SecurityGroupIds = list(
 #'                   "string"
+#'                 )
+#'               ),
+#'               SecondaryArtifacts = list(
+#'                 list(
+#'                   ArtifactIdentifier = "string",
+#'                   EncryptionDisabled = TRUE|FALSE,
+#'                   Location = "string",
+#'                   Name = "string",
+#'                   NamespaceType = "string",
+#'                   OverrideArtifactName = TRUE|FALSE,
+#'                   Packaging = "string",
+#'                   Path = "string",
+#'                   Type = "string"
 #'                 )
 #'               )
 #'             ),
@@ -4198,6 +6734,19 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                     OriginPath = "string",
 #'                     S3OriginConfig = list(
 #'                       OriginAccessIdentity = "string"
+#'                     ),
+#'                     CustomOriginConfig = list(
+#'                       HttpPort = 123,
+#'                       HttpsPort = 123,
+#'                       OriginKeepaliveTimeout = 123,
+#'                       OriginProtocolPolicy = "string",
+#'                       OriginReadTimeout = 123,
+#'                       OriginSslProtocols = list(
+#'                         Items = list(
+#'                           "string"
+#'                         ),
+#'                         Quantity = 123
+#'                       )
 #'                     )
 #'                   )
 #'                 )
@@ -4216,6 +6765,15 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                   )
 #'                 )
 #'               ),
+#'               ViewerCertificate = list(
+#'                 AcmCertificateArn = "string",
+#'                 Certificate = "string",
+#'                 CertificateSource = "string",
+#'                 CloudFrontDefaultCertificate = TRUE|FALSE,
+#'                 IamCertificateId = "string",
+#'                 MinimumProtocolVersion = "string",
+#'                 SslSupportMethod = "string"
+#'               ),
 #'               Status = "string",
 #'               WebAclId = "string"
 #'             ),
@@ -4232,7 +6790,20 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'               IamInstanceProfileArn = "string",
 #'               VpcId = "string",
 #'               SubnetId = "string",
-#'               LaunchedAt = "string"
+#'               LaunchedAt = "string",
+#'               NetworkInterfaces = list(
+#'                 list(
+#'                   NetworkInterfaceId = "string"
+#'                 )
+#'               ),
+#'               VirtualizationType = "string",
+#'               MetadataOptions = list(
+#'                 HttpEndpoint = "string",
+#'                 HttpProtocolIpv6 = "string",
+#'                 HttpPutResponseHopLimit = 123,
+#'                 HttpTokens = "string",
+#'                 InstanceMetadataTags = "string"
+#'               )
 #'             ),
 #'             AwsEc2NetworkInterface = list(
 #'               Attachment = list(
@@ -4251,7 +6822,20 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                   GroupId = "string"
 #'                 )
 #'               ),
-#'               SourceDestCheck = TRUE|FALSE
+#'               SourceDestCheck = TRUE|FALSE,
+#'               IpV6Addresses = list(
+#'                 list(
+#'                   IpV6Address = "string"
+#'                 )
+#'               ),
+#'               PrivateIpAddresses = list(
+#'                 list(
+#'                   PrivateIpAddress = "string",
+#'                   PrivateDnsName = "string"
+#'                 )
+#'               ),
+#'               PublicDnsName = "string",
+#'               PublicIp = "string"
 #'             ),
 #'             AwsEc2SecurityGroup = list(
 #'               GroupName = "string",
@@ -4325,6 +6909,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'             ),
 #'             AwsEc2Volume = list(
 #'               CreateTime = "string",
+#'               DeviceName = "string",
 #'               Encrypted = TRUE|FALSE,
 #'               Size = 123,
 #'               SnapshotId = "string",
@@ -4337,7 +6922,10 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                   InstanceId = "string",
 #'                   Status = "string"
 #'                 )
-#'               )
+#'               ),
+#'               VolumeId = "string",
+#'               VolumeType = "string",
+#'               VolumeScanStatus = "string"
 #'             ),
 #'             AwsEc2Vpc = list(
 #'               CidrBlockAssociationSet = list(
@@ -4369,6 +6957,58 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'               NetworkInterfaceOwnerId = "string",
 #'               PrivateIpAddress = "string"
 #'             ),
+#'             AwsEc2Subnet = list(
+#'               AssignIpv6AddressOnCreation = TRUE|FALSE,
+#'               AvailabilityZone = "string",
+#'               AvailabilityZoneId = "string",
+#'               AvailableIpAddressCount = 123,
+#'               CidrBlock = "string",
+#'               DefaultForAz = TRUE|FALSE,
+#'               MapPublicIpOnLaunch = TRUE|FALSE,
+#'               OwnerId = "string",
+#'               State = "string",
+#'               SubnetArn = "string",
+#'               SubnetId = "string",
+#'               VpcId = "string",
+#'               Ipv6CidrBlockAssociationSet = list(
+#'                 list(
+#'                   AssociationId = "string",
+#'                   Ipv6CidrBlock = "string",
+#'                   CidrBlockState = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsEc2NetworkAcl = list(
+#'               IsDefault = TRUE|FALSE,
+#'               NetworkAclId = "string",
+#'               OwnerId = "string",
+#'               VpcId = "string",
+#'               Associations = list(
+#'                 list(
+#'                   NetworkAclAssociationId = "string",
+#'                   NetworkAclId = "string",
+#'                   SubnetId = "string"
+#'                 )
+#'               ),
+#'               Entries = list(
+#'                 list(
+#'                   CidrBlock = "string",
+#'                   Egress = TRUE|FALSE,
+#'                   IcmpTypeCode = list(
+#'                     Code = 123,
+#'                     Type = 123
+#'                   ),
+#'                   Ipv6CidrBlock = "string",
+#'                   PortRange = list(
+#'                     From = 123,
+#'                     To = 123
+#'                   ),
+#'                   Protocol = "string",
+#'                   RuleAction = "string",
+#'                   RuleNumber = 123
+#'                 )
+#'               )
+#'             ),
 #'             AwsElbv2LoadBalancer = list(
 #'               AvailabilityZones = list(
 #'                 list(
@@ -4389,7 +7029,47 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                 Reason = "string"
 #'               ),
 #'               Type = "string",
-#'               VpcId = "string"
+#'               VpcId = "string",
+#'               LoadBalancerAttributes = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsElasticBeanstalkEnvironment = list(
+#'               ApplicationName = "string",
+#'               Cname = "string",
+#'               DateCreated = "string",
+#'               DateUpdated = "string",
+#'               Description = "string",
+#'               EndpointUrl = "string",
+#'               EnvironmentArn = "string",
+#'               EnvironmentId = "string",
+#'               EnvironmentLinks = list(
+#'                 list(
+#'                   EnvironmentName = "string",
+#'                   LinkName = "string"
+#'                 )
+#'               ),
+#'               EnvironmentName = "string",
+#'               OptionSettings = list(
+#'                 list(
+#'                   Namespace = "string",
+#'                   OptionName = "string",
+#'                   ResourceName = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               PlatformArn = "string",
+#'               SolutionStackName = "string",
+#'               Status = "string",
+#'               Tier = list(
+#'                 Name = "string",
+#'                 Type = "string",
+#'                 Version = "string"
+#'               ),
+#'               VersionLabel = "string"
 #'             ),
 #'             AwsElasticsearchDomain = list(
 #'               AccessPolicies = "string",
@@ -4404,12 +7084,46 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                 "string"
 #'               ),
 #'               ElasticsearchVersion = "string",
+#'               ElasticsearchClusterConfig = list(
+#'                 DedicatedMasterCount = 123,
+#'                 DedicatedMasterEnabled = TRUE|FALSE,
+#'                 DedicatedMasterType = "string",
+#'                 InstanceCount = 123,
+#'                 InstanceType = "string",
+#'                 ZoneAwarenessConfig = list(
+#'                   AvailabilityZoneCount = 123
+#'                 ),
+#'                 ZoneAwarenessEnabled = TRUE|FALSE
+#'               ),
 #'               EncryptionAtRestOptions = list(
 #'                 Enabled = TRUE|FALSE,
 #'                 KmsKeyId = "string"
 #'               ),
+#'               LogPublishingOptions = list(
+#'                 IndexSlowLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 SearchSlowLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 AuditLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 )
+#'               ),
 #'               NodeToNodeEncryptionOptions = list(
 #'                 Enabled = TRUE|FALSE
+#'               ),
+#'               ServiceSoftwareOptions = list(
+#'                 AutomatedUpdateDate = "string",
+#'                 Cancellable = TRUE|FALSE,
+#'                 CurrentVersion = "string",
+#'                 Description = "string",
+#'                 NewVersion = "string",
+#'                 UpdateAvailable = TRUE|FALSE,
+#'                 UpdateStatus = "string"
 #'               ),
 #'               VPCOptions = list(
 #'                 AvailabilityZones = list(
@@ -4427,6 +7141,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'             AwsS3Bucket = list(
 #'               OwnerId = "string",
 #'               OwnerName = "string",
+#'               OwnerAccountId = "string",
 #'               CreatedAt = "string",
 #'               ServerSideEncryptionConfiguration = list(
 #'                 Rules = list(
@@ -4437,7 +7152,121 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                     )
 #'                   )
 #'                 )
+#'               ),
+#'               BucketLifecycleConfiguration = list(
+#'                 Rules = list(
+#'                   list(
+#'                     AbortIncompleteMultipartUpload = list(
+#'                       DaysAfterInitiation = 123
+#'                     ),
+#'                     ExpirationDate = "string",
+#'                     ExpirationInDays = 123,
+#'                     ExpiredObjectDeleteMarker = TRUE|FALSE,
+#'                     Filter = list(
+#'                       Predicate = list(
+#'                         Operands = list(
+#'                           list(
+#'                             Prefix = "string",
+#'                             Tag = list(
+#'                               Key = "string",
+#'                               Value = "string"
+#'                             ),
+#'                             Type = "string"
+#'                           )
+#'                         ),
+#'                         Prefix = "string",
+#'                         Tag = list(
+#'                           Key = "string",
+#'                           Value = "string"
+#'                         ),
+#'                         Type = "string"
+#'                       )
+#'                     ),
+#'                     ID = "string",
+#'                     NoncurrentVersionExpirationInDays = 123,
+#'                     NoncurrentVersionTransitions = list(
+#'                       list(
+#'                         Days = 123,
+#'                         StorageClass = "string"
+#'                       )
+#'                     ),
+#'                     Prefix = "string",
+#'                     Status = "string",
+#'                     Transitions = list(
+#'                       list(
+#'                         Date = "string",
+#'                         Days = 123,
+#'                         StorageClass = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               PublicAccessBlockConfiguration = list(
+#'                 BlockPublicAcls = TRUE|FALSE,
+#'                 BlockPublicPolicy = TRUE|FALSE,
+#'                 IgnorePublicAcls = TRUE|FALSE,
+#'                 RestrictPublicBuckets = TRUE|FALSE
+#'               ),
+#'               AccessControlList = "string",
+#'               BucketLoggingConfiguration = list(
+#'                 DestinationBucketName = "string",
+#'                 LogFilePrefix = "string"
+#'               ),
+#'               BucketWebsiteConfiguration = list(
+#'                 ErrorDocument = "string",
+#'                 IndexDocumentSuffix = "string",
+#'                 RedirectAllRequestsTo = list(
+#'                   Hostname = "string",
+#'                   Protocol = "string"
+#'                 ),
+#'                 RoutingRules = list(
+#'                   list(
+#'                     Condition = list(
+#'                       HttpErrorCodeReturnedEquals = "string",
+#'                       KeyPrefixEquals = "string"
+#'                     ),
+#'                     Redirect = list(
+#'                       Hostname = "string",
+#'                       HttpRedirectCode = "string",
+#'                       Protocol = "string",
+#'                       ReplaceKeyPrefixWith = "string",
+#'                       ReplaceKeyWith = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               BucketNotificationConfiguration = list(
+#'                 Configurations = list(
+#'                   list(
+#'                     Events = list(
+#'                       "string"
+#'                     ),
+#'                     Filter = list(
+#'                       S3KeyFilter = list(
+#'                         FilterRules = list(
+#'                           list(
+#'                             Name = "Prefix"|"Suffix",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Destination = "string",
+#'                     Type = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BucketVersioningConfiguration = list(
+#'                 IsMfaDeleteEnabled = TRUE|FALSE,
+#'                 Status = "string"
 #'               )
+#'             ),
+#'             AwsS3AccountPublicAccessBlock = list(
+#'               BlockPublicAcls = TRUE|FALSE,
+#'               BlockPublicPolicy = TRUE|FALSE,
+#'               IgnorePublicAcls = TRUE|FALSE,
+#'               RestrictPublicBuckets = TRUE|FALSE
 #'             ),
 #'             AwsS3Object = list(
 #'               LastModified = "string",
@@ -4526,6 +7355,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'               UpdateDate = "string"
 #'             ),
 #'             AwsApiGatewayV2Stage = list(
+#'               ClientCertificateId = "string",
 #'               CreatedDate = "string",
 #'               Description = "string",
 #'               DefaultRouteSettings = list(
@@ -4778,6 +7608,30 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'               SnsTopicName = "string",
 #'               TrailArn = "string"
 #'             ),
+#'             AwsSsmPatchCompliance = list(
+#'               Patch = list(
+#'                 ComplianceSummary = list(
+#'                   Status = "string",
+#'                   CompliantCriticalCount = 123,
+#'                   CompliantHighCount = 123,
+#'                   CompliantMediumCount = 123,
+#'                   ExecutionType = "string",
+#'                   NonCompliantCriticalCount = 123,
+#'                   CompliantInformationalCount = 123,
+#'                   NonCompliantInformationalCount = 123,
+#'                   CompliantUnspecifiedCount = 123,
+#'                   NonCompliantLowCount = 123,
+#'                   NonCompliantHighCount = 123,
+#'                   CompliantLowCount = 123,
+#'                   ComplianceType = "string",
+#'                   PatchBaselineId = "string",
+#'                   OverallSeverity = "string",
+#'                   NonCompliantMediumCount = 123,
+#'                   NonCompliantUnspecifiedCount = 123,
+#'                   PatchGroup = "string"
+#'                 )
+#'               )
+#'             ),
 #'             AwsCertificateManagerCertificate = list(
 #'               CertificateAuthorityArn = "string",
 #'               CreatedAt = "string",
@@ -4974,6 +7828,14 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                   Status = "string",
 #'                   VpcSecurityGroupId = "string"
 #'                 )
+#'               ),
+#'               LoggingStatus = list(
+#'                 BucketName = "string",
+#'                 LastFailureMessage = "string",
+#'                 LastFailureTime = "string",
+#'                 LastSuccessfulDeliveryTime = "string",
+#'                 LoggingEnabled = TRUE|FALSE,
+#'                 S3KeyPrefix = "string"
 #'               )
 #'             ),
 #'             AwsElbLoadBalancer = list(
@@ -5034,6 +7896,12 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                 ),
 #'                 CrossZoneLoadBalancing = list(
 #'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 AdditionalAttributes = list(
+#'                   list(
+#'                     Key = "string",
+#'                     Value = "string"
+#'                   )
 #'                 )
 #'               ),
 #'               LoadBalancerName = "string",
@@ -5133,7 +8001,8 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'               KeyManager = "string",
 #'               KeyState = "string",
 #'               Origin = "string",
-#'               Description = "string"
+#'               Description = "string",
+#'               KeyRotationStatus = TRUE|FALSE
 #'             ),
 #'             AwsLambdaFunction = list(
 #'               Code = list(
@@ -5359,7 +8228,14 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'                 )
 #'               ),
 #'               TopicName = "string",
-#'               Owner = "string"
+#'               Owner = "string",
+#'               SqsSuccessFeedbackRoleArn = "string",
+#'               SqsFailureFeedbackRoleArn = "string",
+#'               ApplicationSuccessFeedbackRoleArn = "string",
+#'               FirehoseSuccessFeedbackRoleArn = "string",
+#'               FirehoseFailureFeedbackRoleArn = "string",
+#'               HttpSuccessFeedbackRoleArn = "string",
+#'               HttpFailureFeedbackRoleArn = "string"
 #'             ),
 #'             AwsSqsQueue = list(
 #'               KmsDataKeyReusePeriodSeconds = 123,
@@ -5522,14 +8398,1149 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'               ),
 #'               IamDatabaseAuthenticationEnabled = TRUE|FALSE
 #'             ),
+#'             AwsEcsCluster = list(
+#'               ClusterArn = "string",
+#'               ActiveServicesCount = 123,
+#'               CapacityProviders = list(
+#'                 "string"
+#'               ),
+#'               ClusterSettings = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               Configuration = list(
+#'                 ExecuteCommandConfiguration = list(
+#'                   KmsKeyId = "string",
+#'                   LogConfiguration = list(
+#'                     CloudWatchEncryptionEnabled = TRUE|FALSE,
+#'                     CloudWatchLogGroupName = "string",
+#'                     S3BucketName = "string",
+#'                     S3EncryptionEnabled = TRUE|FALSE,
+#'                     S3KeyPrefix = "string"
+#'                   ),
+#'                   Logging = "string"
+#'                 )
+#'               ),
+#'               DefaultCapacityProviderStrategy = list(
+#'                 list(
+#'                   Base = 123,
+#'                   CapacityProvider = "string",
+#'                   Weight = 123
+#'                 )
+#'               ),
+#'               ClusterName = "string",
+#'               RegisteredContainerInstancesCount = 123,
+#'               RunningTasksCount = 123,
+#'               Status = "string"
+#'             ),
+#'             AwsEcsContainer = list(
+#'               Name = "string",
+#'               Image = "string",
+#'               MountPoints = list(
+#'                 list(
+#'                   SourceVolume = "string",
+#'                   ContainerPath = "string"
+#'                 )
+#'               ),
+#'               Privileged = TRUE|FALSE
+#'             ),
+#'             AwsEcsTaskDefinition = list(
+#'               ContainerDefinitions = list(
+#'                 list(
+#'                   Command = list(
+#'                     "string"
+#'                   ),
+#'                   Cpu = 123,
+#'                   DependsOn = list(
+#'                     list(
+#'                       Condition = "string",
+#'                       ContainerName = "string"
+#'                     )
+#'                   ),
+#'                   DisableNetworking = TRUE|FALSE,
+#'                   DnsSearchDomains = list(
+#'                     "string"
+#'                   ),
+#'                   DnsServers = list(
+#'                     "string"
+#'                   ),
+#'                   DockerLabels = list(
+#'                     "string"
+#'                   ),
+#'                   DockerSecurityOptions = list(
+#'                     "string"
+#'                   ),
+#'                   EntryPoint = list(
+#'                     "string"
+#'                   ),
+#'                   Environment = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   EnvironmentFiles = list(
+#'                     list(
+#'                       Type = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   Essential = TRUE|FALSE,
+#'                   ExtraHosts = list(
+#'                     list(
+#'                       Hostname = "string",
+#'                       IpAddress = "string"
+#'                     )
+#'                   ),
+#'                   FirelensConfiguration = list(
+#'                     Options = list(
+#'                       "string"
+#'                     ),
+#'                     Type = "string"
+#'                   ),
+#'                   HealthCheck = list(
+#'                     Command = list(
+#'                       "string"
+#'                     ),
+#'                     Interval = 123,
+#'                     Retries = 123,
+#'                     StartPeriod = 123,
+#'                     Timeout = 123
+#'                   ),
+#'                   Hostname = "string",
+#'                   Image = "string",
+#'                   Interactive = TRUE|FALSE,
+#'                   Links = list(
+#'                     "string"
+#'                   ),
+#'                   LinuxParameters = list(
+#'                     Capabilities = list(
+#'                       Add = list(
+#'                         "string"
+#'                       ),
+#'                       Drop = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     Devices = list(
+#'                       list(
+#'                         ContainerPath = "string",
+#'                         HostPath = "string",
+#'                         Permissions = list(
+#'                           "string"
+#'                         )
+#'                       )
+#'                     ),
+#'                     InitProcessEnabled = TRUE|FALSE,
+#'                     MaxSwap = 123,
+#'                     SharedMemorySize = 123,
+#'                     Swappiness = 123,
+#'                     Tmpfs = list(
+#'                       list(
+#'                         ContainerPath = "string",
+#'                         MountOptions = list(
+#'                           "string"
+#'                         ),
+#'                         Size = 123
+#'                       )
+#'                     )
+#'                   ),
+#'                   LogConfiguration = list(
+#'                     LogDriver = "string",
+#'                     Options = list(
+#'                       "string"
+#'                     ),
+#'                     SecretOptions = list(
+#'                       list(
+#'                         Name = "string",
+#'                         ValueFrom = "string"
+#'                       )
+#'                     )
+#'                   ),
+#'                   Memory = 123,
+#'                   MemoryReservation = 123,
+#'                   MountPoints = list(
+#'                     list(
+#'                       ContainerPath = "string",
+#'                       ReadOnly = TRUE|FALSE,
+#'                       SourceVolume = "string"
+#'                     )
+#'                   ),
+#'                   Name = "string",
+#'                   PortMappings = list(
+#'                     list(
+#'                       ContainerPort = 123,
+#'                       HostPort = 123,
+#'                       Protocol = "string"
+#'                     )
+#'                   ),
+#'                   Privileged = TRUE|FALSE,
+#'                   PseudoTerminal = TRUE|FALSE,
+#'                   ReadonlyRootFilesystem = TRUE|FALSE,
+#'                   RepositoryCredentials = list(
+#'                     CredentialsParameter = "string"
+#'                   ),
+#'                   ResourceRequirements = list(
+#'                     list(
+#'                       Type = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   Secrets = list(
+#'                     list(
+#'                       Name = "string",
+#'                       ValueFrom = "string"
+#'                     )
+#'                   ),
+#'                   StartTimeout = 123,
+#'                   StopTimeout = 123,
+#'                   SystemControls = list(
+#'                     list(
+#'                       Namespace = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   Ulimits = list(
+#'                     list(
+#'                       HardLimit = 123,
+#'                       Name = "string",
+#'                       SoftLimit = 123
+#'                     )
+#'                   ),
+#'                   User = "string",
+#'                   VolumesFrom = list(
+#'                     list(
+#'                       ReadOnly = TRUE|FALSE,
+#'                       SourceContainer = "string"
+#'                     )
+#'                   ),
+#'                   WorkingDirectory = "string"
+#'                 )
+#'               ),
+#'               Cpu = "string",
+#'               ExecutionRoleArn = "string",
+#'               Family = "string",
+#'               InferenceAccelerators = list(
+#'                 list(
+#'                   DeviceName = "string",
+#'                   DeviceType = "string"
+#'                 )
+#'               ),
+#'               IpcMode = "string",
+#'               Memory = "string",
+#'               NetworkMode = "string",
+#'               PidMode = "string",
+#'               PlacementConstraints = list(
+#'                 list(
+#'                   Expression = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               ProxyConfiguration = list(
+#'                 ContainerName = "string",
+#'                 ProxyConfigurationProperties = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Value = "string"
+#'                   )
+#'                 ),
+#'                 Type = "string"
+#'               ),
+#'               RequiresCompatibilities = list(
+#'                 "string"
+#'               ),
+#'               TaskRoleArn = "string",
+#'               Volumes = list(
+#'                 list(
+#'                   DockerVolumeConfiguration = list(
+#'                     Autoprovision = TRUE|FALSE,
+#'                     Driver = "string",
+#'                     DriverOpts = list(
+#'                       "string"
+#'                     ),
+#'                     Labels = list(
+#'                       "string"
+#'                     ),
+#'                     Scope = "string"
+#'                   ),
+#'                   EfsVolumeConfiguration = list(
+#'                     AuthorizationConfig = list(
+#'                       AccessPointId = "string",
+#'                       Iam = "string"
+#'                     ),
+#'                     FilesystemId = "string",
+#'                     RootDirectory = "string",
+#'                     TransitEncryption = "string",
+#'                     TransitEncryptionPort = 123
+#'                   ),
+#'                   Host = list(
+#'                     SourcePath = "string"
+#'                   ),
+#'                   Name = "string"
+#'                 )
+#'               )
+#'             ),
 #'             Container = list(
+#'               ContainerRuntime = "string",
 #'               Name = "string",
 #'               ImageId = "string",
 #'               ImageName = "string",
-#'               LaunchedAt = "string"
+#'               LaunchedAt = "string",
+#'               VolumeMounts = list(
+#'                 list(
+#'                   Name = "string",
+#'                   MountPath = "string"
+#'                 )
+#'               ),
+#'               Privileged = TRUE|FALSE
 #'             ),
 #'             Other = list(
 #'               "string"
+#'             ),
+#'             AwsRdsEventSubscription = list(
+#'               CustSubscriptionId = "string",
+#'               CustomerAwsId = "string",
+#'               Enabled = TRUE|FALSE,
+#'               EventCategoriesList = list(
+#'                 "string"
+#'               ),
+#'               EventSubscriptionArn = "string",
+#'               SnsTopicArn = "string",
+#'               SourceIdsList = list(
+#'                 "string"
+#'               ),
+#'               SourceType = "string",
+#'               Status = "string",
+#'               SubscriptionCreationTime = "string"
+#'             ),
+#'             AwsEcsService = list(
+#'               CapacityProviderStrategy = list(
+#'                 list(
+#'                   Base = 123,
+#'                   CapacityProvider = "string",
+#'                   Weight = 123
+#'                 )
+#'               ),
+#'               Cluster = "string",
+#'               DeploymentConfiguration = list(
+#'                 DeploymentCircuitBreaker = list(
+#'                   Enable = TRUE|FALSE,
+#'                   Rollback = TRUE|FALSE
+#'                 ),
+#'                 MaximumPercent = 123,
+#'                 MinimumHealthyPercent = 123
+#'               ),
+#'               DeploymentController = list(
+#'                 Type = "string"
+#'               ),
+#'               DesiredCount = 123,
+#'               EnableEcsManagedTags = TRUE|FALSE,
+#'               EnableExecuteCommand = TRUE|FALSE,
+#'               HealthCheckGracePeriodSeconds = 123,
+#'               LaunchType = "string",
+#'               LoadBalancers = list(
+#'                 list(
+#'                   ContainerName = "string",
+#'                   ContainerPort = 123,
+#'                   LoadBalancerName = "string",
+#'                   TargetGroupArn = "string"
+#'                 )
+#'               ),
+#'               Name = "string",
+#'               NetworkConfiguration = list(
+#'                 AwsVpcConfiguration = list(
+#'                   AssignPublicIp = "string",
+#'                   SecurityGroups = list(
+#'                     "string"
+#'                   ),
+#'                   Subnets = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               PlacementConstraints = list(
+#'                 list(
+#'                   Expression = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               PlacementStrategies = list(
+#'                 list(
+#'                   Field = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               PlatformVersion = "string",
+#'               PropagateTags = "string",
+#'               Role = "string",
+#'               SchedulingStrategy = "string",
+#'               ServiceArn = "string",
+#'               ServiceName = "string",
+#'               ServiceRegistries = list(
+#'                 list(
+#'                   ContainerName = "string",
+#'                   ContainerPort = 123,
+#'                   Port = 123,
+#'                   RegistryArn = "string"
+#'                 )
+#'               ),
+#'               TaskDefinition = "string"
+#'             ),
+#'             AwsAutoScalingLaunchConfiguration = list(
+#'               AssociatePublicIpAddress = TRUE|FALSE,
+#'               BlockDeviceMappings = list(
+#'                 list(
+#'                   DeviceName = "string",
+#'                   Ebs = list(
+#'                     DeleteOnTermination = TRUE|FALSE,
+#'                     Encrypted = TRUE|FALSE,
+#'                     Iops = 123,
+#'                     SnapshotId = "string",
+#'                     VolumeSize = 123,
+#'                     VolumeType = "string"
+#'                   ),
+#'                   NoDevice = TRUE|FALSE,
+#'                   VirtualName = "string"
+#'                 )
+#'               ),
+#'               ClassicLinkVpcId = "string",
+#'               ClassicLinkVpcSecurityGroups = list(
+#'                 "string"
+#'               ),
+#'               CreatedTime = "string",
+#'               EbsOptimized = TRUE|FALSE,
+#'               IamInstanceProfile = "string",
+#'               ImageId = "string",
+#'               InstanceMonitoring = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               InstanceType = "string",
+#'               KernelId = "string",
+#'               KeyName = "string",
+#'               LaunchConfigurationName = "string",
+#'               PlacementTenancy = "string",
+#'               RamdiskId = "string",
+#'               SecurityGroups = list(
+#'                 "string"
+#'               ),
+#'               SpotPrice = "string",
+#'               UserData = "string",
+#'               MetadataOptions = list(
+#'                 HttpEndpoint = "string",
+#'                 HttpPutResponseHopLimit = 123,
+#'                 HttpTokens = "string"
+#'               )
+#'             ),
+#'             AwsEc2VpnConnection = list(
+#'               VpnConnectionId = "string",
+#'               State = "string",
+#'               CustomerGatewayId = "string",
+#'               CustomerGatewayConfiguration = "string",
+#'               Type = "string",
+#'               VpnGatewayId = "string",
+#'               Category = "string",
+#'               VgwTelemetry = list(
+#'                 list(
+#'                   AcceptedRouteCount = 123,
+#'                   CertificateArn = "string",
+#'                   LastStatusChange = "string",
+#'                   OutsideIpAddress = "string",
+#'                   Status = "string",
+#'                   StatusMessage = "string"
+#'                 )
+#'               ),
+#'               Options = list(
+#'                 StaticRoutesOnly = TRUE|FALSE,
+#'                 TunnelOptions = list(
+#'                   list(
+#'                     DpdTimeoutSeconds = 123,
+#'                     IkeVersions = list(
+#'                       "string"
+#'                     ),
+#'                     OutsideIpAddress = "string",
+#'                     Phase1DhGroupNumbers = list(
+#'                       123
+#'                     ),
+#'                     Phase1EncryptionAlgorithms = list(
+#'                       "string"
+#'                     ),
+#'                     Phase1IntegrityAlgorithms = list(
+#'                       "string"
+#'                     ),
+#'                     Phase1LifetimeSeconds = 123,
+#'                     Phase2DhGroupNumbers = list(
+#'                       123
+#'                     ),
+#'                     Phase2EncryptionAlgorithms = list(
+#'                       "string"
+#'                     ),
+#'                     Phase2IntegrityAlgorithms = list(
+#'                       "string"
+#'                     ),
+#'                     Phase2LifetimeSeconds = 123,
+#'                     PreSharedKey = "string",
+#'                     RekeyFuzzPercentage = 123,
+#'                     RekeyMarginTimeSeconds = 123,
+#'                     ReplayWindowSize = 123,
+#'                     TunnelInsideCidr = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Routes = list(
+#'                 list(
+#'                   DestinationCidrBlock = "string",
+#'                   State = "string"
+#'                 )
+#'               ),
+#'               TransitGatewayId = "string"
+#'             ),
+#'             AwsEcrContainerImage = list(
+#'               RegistryId = "string",
+#'               RepositoryName = "string",
+#'               Architecture = "string",
+#'               ImageDigest = "string",
+#'               ImageTags = list(
+#'                 "string"
+#'               ),
+#'               ImagePublishedAt = "string"
+#'             ),
+#'             AwsOpenSearchServiceDomain = list(
+#'               Arn = "string",
+#'               AccessPolicies = "string",
+#'               DomainName = "string",
+#'               Id = "string",
+#'               DomainEndpoint = "string",
+#'               EngineVersion = "string",
+#'               EncryptionAtRestOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 KmsKeyId = "string"
+#'               ),
+#'               NodeToNodeEncryptionOptions = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               ServiceSoftwareOptions = list(
+#'                 AutomatedUpdateDate = "string",
+#'                 Cancellable = TRUE|FALSE,
+#'                 CurrentVersion = "string",
+#'                 Description = "string",
+#'                 NewVersion = "string",
+#'                 UpdateAvailable = TRUE|FALSE,
+#'                 UpdateStatus = "string",
+#'                 OptionalDeployment = TRUE|FALSE
+#'               ),
+#'               ClusterConfig = list(
+#'                 InstanceCount = 123,
+#'                 WarmEnabled = TRUE|FALSE,
+#'                 WarmCount = 123,
+#'                 DedicatedMasterEnabled = TRUE|FALSE,
+#'                 ZoneAwarenessConfig = list(
+#'                   AvailabilityZoneCount = 123
+#'                 ),
+#'                 DedicatedMasterCount = 123,
+#'                 InstanceType = "string",
+#'                 WarmType = "string",
+#'                 ZoneAwarenessEnabled = TRUE|FALSE,
+#'                 DedicatedMasterType = "string"
+#'               ),
+#'               DomainEndpointOptions = list(
+#'                 CustomEndpointCertificateArn = "string",
+#'                 CustomEndpointEnabled = TRUE|FALSE,
+#'                 EnforceHTTPS = TRUE|FALSE,
+#'                 CustomEndpoint = "string",
+#'                 TLSSecurityPolicy = "string"
+#'               ),
+#'               VpcOptions = list(
+#'                 SecurityGroupIds = list(
+#'                   "string"
+#'                 ),
+#'                 SubnetIds = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               LogPublishingOptions = list(
+#'                 IndexSlowLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 SearchSlowLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 AuditLogs = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   Enabled = TRUE|FALSE
+#'                 )
+#'               ),
+#'               DomainEndpoints = list(
+#'                 "string"
+#'               ),
+#'               AdvancedSecurityOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 InternalUserDatabaseEnabled = TRUE|FALSE,
+#'                 MasterUserOptions = list(
+#'                   MasterUserArn = "string",
+#'                   MasterUserName = "string",
+#'                   MasterUserPassword = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsEc2VpcEndpointService = list(
+#'               AcceptanceRequired = TRUE|FALSE,
+#'               AvailabilityZones = list(
+#'                 "string"
+#'               ),
+#'               BaseEndpointDnsNames = list(
+#'                 "string"
+#'               ),
+#'               ManagesVpcEndpoints = TRUE|FALSE,
+#'               GatewayLoadBalancerArns = list(
+#'                 "string"
+#'               ),
+#'               NetworkLoadBalancerArns = list(
+#'                 "string"
+#'               ),
+#'               PrivateDnsName = "string",
+#'               ServiceId = "string",
+#'               ServiceName = "string",
+#'               ServiceState = "string",
+#'               ServiceType = list(
+#'                 list(
+#'                   ServiceType = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsXrayEncryptionConfig = list(
+#'               KeyId = "string",
+#'               Status = "string",
+#'               Type = "string"
+#'             ),
+#'             AwsWafRateBasedRule = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               RateKey = "string",
+#'               RateLimit = 123,
+#'               RuleId = "string",
+#'               MatchPredicates = list(
+#'                 list(
+#'                   DataId = "string",
+#'                   Negated = TRUE|FALSE,
+#'                   Type = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsWafRegionalRateBasedRule = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               RateKey = "string",
+#'               RateLimit = 123,
+#'               RuleId = "string",
+#'               MatchPredicates = list(
+#'                 list(
+#'                   DataId = "string",
+#'                   Negated = TRUE|FALSE,
+#'                   Type = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsEcrRepository = list(
+#'               Arn = "string",
+#'               ImageScanningConfiguration = list(
+#'                 ScanOnPush = TRUE|FALSE
+#'               ),
+#'               ImageTagMutability = "string",
+#'               LifecyclePolicy = list(
+#'                 LifecyclePolicyText = "string",
+#'                 RegistryId = "string"
+#'               ),
+#'               RepositoryName = "string",
+#'               RepositoryPolicyText = "string"
+#'             ),
+#'             AwsEksCluster = list(
+#'               Arn = "string",
+#'               CertificateAuthorityData = "string",
+#'               ClusterStatus = "string",
+#'               Endpoint = "string",
+#'               Name = "string",
+#'               ResourcesVpcConfig = list(
+#'                 SecurityGroupIds = list(
+#'                   "string"
+#'                 ),
+#'                 SubnetIds = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               RoleArn = "string",
+#'               Version = "string",
+#'               Logging = list(
+#'                 ClusterLogging = list(
+#'                   list(
+#'                     Enabled = TRUE|FALSE,
+#'                     Types = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             AwsNetworkFirewallFirewallPolicy = list(
+#'               FirewallPolicy = list(
+#'                 StatefulRuleGroupReferences = list(
+#'                   list(
+#'                     ResourceArn = "string"
+#'                   )
+#'                 ),
+#'                 StatelessCustomActions = list(
+#'                   list(
+#'                     ActionDefinition = list(
+#'                       PublishMetricAction = list(
+#'                         Dimensions = list(
+#'                           list(
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     ActionName = "string"
+#'                   )
+#'                 ),
+#'                 StatelessDefaultActions = list(
+#'                   "string"
+#'                 ),
+#'                 StatelessFragmentDefaultActions = list(
+#'                   "string"
+#'                 ),
+#'                 StatelessRuleGroupReferences = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     ResourceArn = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               FirewallPolicyArn = "string",
+#'               FirewallPolicyId = "string",
+#'               FirewallPolicyName = "string",
+#'               Description = "string"
+#'             ),
+#'             AwsNetworkFirewallFirewall = list(
+#'               DeleteProtection = TRUE|FALSE,
+#'               Description = "string",
+#'               FirewallArn = "string",
+#'               FirewallId = "string",
+#'               FirewallName = "string",
+#'               FirewallPolicyArn = "string",
+#'               FirewallPolicyChangeProtection = TRUE|FALSE,
+#'               SubnetChangeProtection = TRUE|FALSE,
+#'               SubnetMappings = list(
+#'                 list(
+#'                   SubnetId = "string"
+#'                 )
+#'               ),
+#'               VpcId = "string"
+#'             ),
+#'             AwsNetworkFirewallRuleGroup = list(
+#'               Capacity = 123,
+#'               Description = "string",
+#'               RuleGroup = list(
+#'                 RuleVariables = list(
+#'                   IpSets = list(
+#'                     Definition = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   PortSets = list(
+#'                     Definition = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 RulesSource = list(
+#'                   RulesSourceList = list(
+#'                     GeneratedRulesType = "string",
+#'                     TargetTypes = list(
+#'                       "string"
+#'                     ),
+#'                     Targets = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   RulesString = "string",
+#'                   StatefulRules = list(
+#'                     list(
+#'                       Action = "string",
+#'                       Header = list(
+#'                         Destination = "string",
+#'                         DestinationPort = "string",
+#'                         Direction = "string",
+#'                         Protocol = "string",
+#'                         Source = "string",
+#'                         SourcePort = "string"
+#'                       ),
+#'                       RuleOptions = list(
+#'                         list(
+#'                           Keyword = "string",
+#'                           Settings = list(
+#'                             "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   StatelessRulesAndCustomActions = list(
+#'                     CustomActions = list(
+#'                       list(
+#'                         ActionDefinition = list(
+#'                           PublishMetricAction = list(
+#'                             Dimensions = list(
+#'                               list(
+#'                                 Value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         ),
+#'                         ActionName = "string"
+#'                       )
+#'                     ),
+#'                     StatelessRules = list(
+#'                       list(
+#'                         Priority = 123,
+#'                         RuleDefinition = list(
+#'                           Actions = list(
+#'                             "string"
+#'                           ),
+#'                           MatchAttributes = list(
+#'                             DestinationPorts = list(
+#'                               list(
+#'                                 FromPort = 123,
+#'                                 ToPort = 123
+#'                               )
+#'                             ),
+#'                             Destinations = list(
+#'                               list(
+#'                                 AddressDefinition = "string"
+#'                               )
+#'                             ),
+#'                             Protocols = list(
+#'                               123
+#'                             ),
+#'                             SourcePorts = list(
+#'                               list(
+#'                                 FromPort = 123,
+#'                                 ToPort = 123
+#'                               )
+#'                             ),
+#'                             Sources = list(
+#'                               list(
+#'                                 AddressDefinition = "string"
+#'                               )
+#'                             ),
+#'                             TcpFlags = list(
+#'                               list(
+#'                                 Flags = list(
+#'                                   "string"
+#'                                 ),
+#'                                 Masks = list(
+#'                                   "string"
+#'                                 )
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               RuleGroupArn = "string",
+#'               RuleGroupId = "string",
+#'               RuleGroupName = "string",
+#'               Type = "string"
+#'             ),
+#'             AwsRdsDbSecurityGroup = list(
+#'               DbSecurityGroupArn = "string",
+#'               DbSecurityGroupDescription = "string",
+#'               DbSecurityGroupName = "string",
+#'               Ec2SecurityGroups = list(
+#'                 list(
+#'                   Ec2SecurityGroupId = "string",
+#'                   Ec2SecurityGroupName = "string",
+#'                   Ec2SecurityGroupOwnerId = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               IpRanges = list(
+#'                 list(
+#'                   CidrIp = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               OwnerId = "string",
+#'               VpcId = "string"
+#'             ),
+#'             AwsKinesisStream = list(
+#'               Name = "string",
+#'               Arn = "string",
+#'               StreamEncryption = list(
+#'                 EncryptionType = "string",
+#'                 KeyId = "string"
+#'               ),
+#'               ShardCount = 123,
+#'               RetentionPeriodHours = 123
+#'             ),
+#'             AwsEc2TransitGateway = list(
+#'               Id = "string",
+#'               Description = "string",
+#'               DefaultRouteTablePropagation = "string",
+#'               AutoAcceptSharedAttachments = "string",
+#'               DefaultRouteTableAssociation = "string",
+#'               TransitGatewayCidrBlocks = list(
+#'                 "string"
+#'               ),
+#'               AssociationDefaultRouteTableId = "string",
+#'               PropagationDefaultRouteTableId = "string",
+#'               VpnEcmpSupport = "string",
+#'               DnsSupport = "string",
+#'               MulticastSupport = "string",
+#'               AmazonSideAsn = 123
+#'             ),
+#'             AwsEfsAccessPoint = list(
+#'               AccessPointId = "string",
+#'               Arn = "string",
+#'               ClientToken = "string",
+#'               FileSystemId = "string",
+#'               PosixUser = list(
+#'                 Gid = "string",
+#'                 SecondaryGids = list(
+#'                   "string"
+#'                 ),
+#'                 Uid = "string"
+#'               ),
+#'               RootDirectory = list(
+#'                 CreationInfo = list(
+#'                   OwnerGid = "string",
+#'                   OwnerUid = "string",
+#'                   Permissions = "string"
+#'                 ),
+#'                 Path = "string"
+#'               )
+#'             ),
+#'             AwsCloudFormationStack = list(
+#'               Capabilities = list(
+#'                 "string"
+#'               ),
+#'               CreationTime = "string",
+#'               Description = "string",
+#'               DisableRollback = TRUE|FALSE,
+#'               DriftInformation = list(
+#'                 StackDriftStatus = "string"
+#'               ),
+#'               EnableTerminationProtection = TRUE|FALSE,
+#'               LastUpdatedTime = "string",
+#'               NotificationArns = list(
+#'                 "string"
+#'               ),
+#'               Outputs = list(
+#'                 list(
+#'                   Description = "string",
+#'                   OutputKey = "string",
+#'                   OutputValue = "string"
+#'                 )
+#'               ),
+#'               RoleArn = "string",
+#'               StackId = "string",
+#'               StackName = "string",
+#'               StackStatus = "string",
+#'               StackStatusReason = "string",
+#'               TimeoutInMinutes = 123
+#'             ),
+#'             AwsCloudWatchAlarm = list(
+#'               ActionsEnabled = TRUE|FALSE,
+#'               AlarmActions = list(
+#'                 "string"
+#'               ),
+#'               AlarmArn = "string",
+#'               AlarmConfigurationUpdatedTimestamp = "string",
+#'               AlarmDescription = "string",
+#'               AlarmName = "string",
+#'               ComparisonOperator = "string",
+#'               DatapointsToAlarm = 123,
+#'               Dimensions = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               EvaluateLowSampleCountPercentile = "string",
+#'               EvaluationPeriods = 123,
+#'               ExtendedStatistic = "string",
+#'               InsufficientDataActions = list(
+#'                 "string"
+#'               ),
+#'               MetricName = "string",
+#'               Namespace = "string",
+#'               OkActions = list(
+#'                 "string"
+#'               ),
+#'               Period = 123,
+#'               Statistic = "string",
+#'               Threshold = 123.0,
+#'               ThresholdMetricId = "string",
+#'               TreatMissingData = "string",
+#'               Unit = "string"
+#'             ),
+#'             AwsEc2VpcPeeringConnection = list(
+#'               AccepterVpcInfo = list(
+#'                 CidrBlock = "string",
+#'                 CidrBlockSet = list(
+#'                   list(
+#'                     CidrBlock = "string"
+#'                   )
+#'                 ),
+#'                 Ipv6CidrBlockSet = list(
+#'                   list(
+#'                     Ipv6CidrBlock = "string"
+#'                   )
+#'                 ),
+#'                 OwnerId = "string",
+#'                 PeeringOptions = list(
+#'                   AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'                   AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'                   AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'                 ),
+#'                 Region = "string",
+#'                 VpcId = "string"
+#'               ),
+#'               ExpirationTime = "string",
+#'               RequesterVpcInfo = list(
+#'                 CidrBlock = "string",
+#'                 CidrBlockSet = list(
+#'                   list(
+#'                     CidrBlock = "string"
+#'                   )
+#'                 ),
+#'                 Ipv6CidrBlockSet = list(
+#'                   list(
+#'                     Ipv6CidrBlock = "string"
+#'                   )
+#'                 ),
+#'                 OwnerId = "string",
+#'                 PeeringOptions = list(
+#'                   AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'                   AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'                   AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'                 ),
+#'                 Region = "string",
+#'                 VpcId = "string"
+#'               ),
+#'               Status = list(
+#'                 Code = "string",
+#'                 Message = "string"
+#'               ),
+#'               VpcPeeringConnectionId = "string"
+#'             ),
+#'             AwsWafRegionalRuleGroup = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               RuleGroupId = "string",
+#'               Rules = list(
+#'                 list(
+#'                   Action = list(
+#'                     Type = "string"
+#'                   ),
+#'                   Priority = 123,
+#'                   RuleId = "string",
+#'                   Type = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsWafRegionalRule = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               PredicateList = list(
+#'                 list(
+#'                   DataId = "string",
+#'                   Negated = TRUE|FALSE,
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               RuleId = "string"
+#'             ),
+#'             AwsWafRegionalWebAcl = list(
+#'               DefaultAction = "string",
+#'               MetricName = "string",
+#'               Name = "string",
+#'               RulesList = list(
+#'                 list(
+#'                   Action = list(
+#'                     Type = "string"
+#'                   ),
+#'                   OverrideAction = list(
+#'                     Type = "string"
+#'                   ),
+#'                   Priority = 123,
+#'                   RuleId = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               WebAclId = "string"
+#'             ),
+#'             AwsWafRule = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               PredicateList = list(
+#'                 list(
+#'                   DataId = "string",
+#'                   Negated = TRUE|FALSE,
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               RuleId = "string"
+#'             ),
+#'             AwsWafRuleGroup = list(
+#'               MetricName = "string",
+#'               Name = "string",
+#'               RuleGroupId = "string",
+#'               Rules = list(
+#'                 list(
+#'                   Action = list(
+#'                     Type = "string"
+#'                   ),
+#'                   Priority = 123,
+#'                   RuleId = "string",
+#'                   Type = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsEcsTask = list(
+#'               ClusterArn = "string",
+#'               TaskDefinitionArn = "string",
+#'               Version = "string",
+#'               CreatedAt = "string",
+#'               StartedAt = "string",
+#'               StartedBy = "string",
+#'               Group = "string",
+#'               Volumes = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Host = list(
+#'                     SourcePath = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Containers = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Image = "string",
+#'                   MountPoints = list(
+#'                     list(
+#'                       SourceVolume = "string",
+#'                       ContainerPath = "string"
+#'                     )
+#'                   ),
+#'                   Privileged = TRUE|FALSE
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -5572,14 +9583,23 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'               Version = "string",
 #'               Epoch = "string",
 #'               Release = "string",
-#'               Architecture = "string"
+#'               Architecture = "string",
+#'               PackageManager = "string",
+#'               FilePath = "string"
 #'             )
 #'           ),
 #'           Cvss = list(
 #'             list(
 #'               Version = "string",
 #'               BaseScore = 123.0,
-#'               BaseVector = "string"
+#'               BaseVector = "string",
+#'               Source = "string",
+#'               Adjustments = list(
+#'                 list(
+#'                   Metric = "string",
+#'                   Reason = "string"
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           RelatedVulnerabilities = list(
@@ -5609,7 +9629,133 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'         OperationEndTime = "string",
 #'         RebootOption = "string",
 #'         Operation = "string"
-#'       )
+#'       ),
+#'       Action = list(
+#'         ActionType = "string",
+#'         NetworkConnectionAction = list(
+#'           ConnectionDirection = "string",
+#'           RemoteIpDetails = list(
+#'             IpAddressV4 = "string",
+#'             Organization = list(
+#'               Asn = 123,
+#'               AsnOrg = "string",
+#'               Isp = "string",
+#'               Org = "string"
+#'             ),
+#'             Country = list(
+#'               CountryCode = "string",
+#'               CountryName = "string"
+#'             ),
+#'             City = list(
+#'               CityName = "string"
+#'             ),
+#'             GeoLocation = list(
+#'               Lon = 123.0,
+#'               Lat = 123.0
+#'             )
+#'           ),
+#'           RemotePortDetails = list(
+#'             Port = 123,
+#'             PortName = "string"
+#'           ),
+#'           LocalPortDetails = list(
+#'             Port = 123,
+#'             PortName = "string"
+#'           ),
+#'           Protocol = "string",
+#'           Blocked = TRUE|FALSE
+#'         ),
+#'         AwsApiCallAction = list(
+#'           Api = "string",
+#'           ServiceName = "string",
+#'           CallerType = "string",
+#'           RemoteIpDetails = list(
+#'             IpAddressV4 = "string",
+#'             Organization = list(
+#'               Asn = 123,
+#'               AsnOrg = "string",
+#'               Isp = "string",
+#'               Org = "string"
+#'             ),
+#'             Country = list(
+#'               CountryCode = "string",
+#'               CountryName = "string"
+#'             ),
+#'             City = list(
+#'               CityName = "string"
+#'             ),
+#'             GeoLocation = list(
+#'               Lon = 123.0,
+#'               Lat = 123.0
+#'             )
+#'           ),
+#'           DomainDetails = list(
+#'             Domain = "string"
+#'           ),
+#'           AffectedResources = list(
+#'             "string"
+#'           ),
+#'           FirstSeen = "string",
+#'           LastSeen = "string"
+#'         ),
+#'         DnsRequestAction = list(
+#'           Domain = "string",
+#'           Protocol = "string",
+#'           Blocked = TRUE|FALSE
+#'         ),
+#'         PortProbeAction = list(
+#'           PortProbeDetails = list(
+#'             list(
+#'               LocalPortDetails = list(
+#'                 Port = 123,
+#'                 PortName = "string"
+#'               ),
+#'               LocalIpDetails = list(
+#'                 IpAddressV4 = "string"
+#'               ),
+#'               RemoteIpDetails = list(
+#'                 IpAddressV4 = "string",
+#'                 Organization = list(
+#'                   Asn = 123,
+#'                   AsnOrg = "string",
+#'                   Isp = "string",
+#'                   Org = "string"
+#'                 ),
+#'                 Country = list(
+#'                   CountryCode = "string",
+#'                   CountryName = "string"
+#'                 ),
+#'                 City = list(
+#'                   CityName = "string"
+#'                 ),
+#'                 GeoLocation = list(
+#'                   Lon = 123.0,
+#'                   Lat = 123.0
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Blocked = TRUE|FALSE
+#'         )
+#'       ),
+#'       FindingProviderFields = list(
+#'         Confidence = 123,
+#'         Criticality = 123,
+#'         RelatedFindings = list(
+#'           list(
+#'             ProductArn = "string",
+#'             Id = "string"
+#'           )
+#'         ),
+#'         Severity = list(
+#'           Label = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+#'           Original = "string"
+#'         ),
+#'         Types = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Sample = TRUE|FALSE
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -5639,6 +9785,12 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'       )
 #'     ),
 #'     GeneratorId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     Region = list(
 #'       list(
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
@@ -6053,6 +10205,12 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
+#'     ResourceAwsIamAccessKeyPrincipalName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
@@ -6067,6 +10225,12 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'           Value = 123,
 #'           Unit = "DAYS"
 #'         )
+#'       )
+#'     ),
+#'     ResourceAwsIamUserUserName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerName = list(
@@ -6171,6 +10335,55 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     Keyword = list(
 #'       list(
 #'         Value = "string"
+#'       )
+#'     ),
+#'     FindingProviderFieldsConfidence = list(
+#'       list(
+#'         Gte = 123.0,
+#'         Lte = 123.0,
+#'         Eq = 123.0
+#'       )
+#'     ),
+#'     FindingProviderFieldsCriticality = list(
+#'       list(
+#'         Gte = 123.0,
+#'         Lte = 123.0,
+#'         Eq = 123.0
+#'       )
+#'     ),
+#'     FindingProviderFieldsRelatedFindingsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsRelatedFindingsProductArn = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsSeverityLabel = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsSeverityOriginal = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsTypes = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     Sample = list(
+#'       list(
+#'         Value = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -6309,6 +10522,12 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           )
 #'         ),
 #'         GeneratorId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         Region = list(
 #'           list(
 #'             Value = "string",
 #'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
@@ -6723,6 +10942,12 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'           )
 #'         ),
+#'         ResourceAwsIamAccessKeyPrincipalName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
 #'         ResourceAwsIamAccessKeyStatus = list(
 #'           list(
 #'             Value = "string",
@@ -6737,6 +10962,12 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'               Value = 123,
 #'               Unit = "DAYS"
 #'             )
+#'           )
+#'         ),
+#'         ResourceAwsIamUserUserName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'           )
 #'         ),
 #'         ResourceContainerName = list(
@@ -6842,6 +11073,55 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Value = "string"
 #'           )
+#'         ),
+#'         FindingProviderFieldsConfidence = list(
+#'           list(
+#'             Gte = 123.0,
+#'             Lte = 123.0,
+#'             Eq = 123.0
+#'           )
+#'         ),
+#'         FindingProviderFieldsCriticality = list(
+#'           list(
+#'             Gte = 123.0,
+#'             Lte = 123.0,
+#'             Eq = 123.0
+#'           )
+#'         ),
+#'         FindingProviderFieldsRelatedFindingsId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         FindingProviderFieldsRelatedFindingsProductArn = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         FindingProviderFieldsSeverityLabel = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         FindingProviderFieldsSeverityOriginal = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         FindingProviderFieldsTypes = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         Sample = list(
+#'           list(
+#'             Value = TRUE|FALSE
+#'           )
 #'         )
 #'       ),
 #'       GroupByAttribute = "string"
@@ -6927,15 +11207,29 @@ securityhub_get_invitations_count <- function() {
 }
 .securityhub$operations$get_invitations_count <- securityhub_get_invitations_count
 
-#' Provides the details for the Security Hub master account for the current
-#' member account
+#' This method is deprecated
 #'
 #' @description
-#' Provides the details for the Security Hub master account for the current
-#' member account.
+#' This method is deprecated. Instead, use
+#' [`get_administrator_account`][securityhub_get_administrator_account].
 #' 
-#' Can be used by both member accounts that are in an organization and
-#' accounts that were invited manually.
+#' The Security Hub console continues to use
+#' [`get_master_account`][securityhub_get_master_account]. It will
+#' eventually change to use
+#' [`get_administrator_account`][securityhub_get_administrator_account].
+#' Any IAM policies that specifically control access to this function must
+#' continue to use [`get_master_account`][securityhub_get_master_account].
+#' You should also add
+#' [`get_administrator_account`][securityhub_get_administrator_account] to
+#' your policies to ensure that the correct permissions are in place after
+#' the console begins to use
+#' [`get_administrator_account`][securityhub_get_administrator_account].
+#' 
+#' Provides the details for the Security Hub administrator account for the
+#' current member account.
+#' 
+#' Can be used by both member accounts that are managed using Organizations
+#' and accounts that were invited manually.
 #'
 #' @usage
 #' securityhub_get_master_account()
@@ -6987,12 +11281,12 @@ securityhub_get_master_account <- function() {
 #' Returns the details for the Security Hub member accounts for the
 #' specified account IDs.
 #' 
-#' A master account can be either a delegated Security Hub administrator
-#' account for an organization or a master account that enabled Security
-#' Hub manually.
+#' An administrator account can be either the delegated Security Hub
+#' administrator account for an organization or an administrator account
+#' that enabled Security Hub manually.
 #' 
-#' The results include both member accounts that are in an organization and
-#' accounts that were invited manually.
+#' The results include both member accounts that are managed using
+#' Organizations and accounts that were invited manually.
 #'
 #' @usage
 #' securityhub_get_members(AccountIds)
@@ -7009,6 +11303,7 @@ securityhub_get_master_account <- function() {
 #'       AccountId = "string",
 #'       Email = "string",
 #'       MasterId = "string",
+#'       AdministratorId = "string",
 #'       MemberStatus = "string",
 #'       InvitedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -7056,12 +11351,12 @@ securityhub_get_members <- function(AccountIds) {
 }
 .securityhub$operations$get_members <- securityhub_get_members
 
-#' Invites other AWS accounts to become member accounts for the Security
-#' Hub master account that the invitation is sent from
+#' Invites other Amazon Web Services accounts to become member accounts for
+#' the Security Hub administrator account that the invitation is sent from
 #'
 #' @description
-#' Invites other AWS accounts to become member accounts for the Security
-#' Hub master account that the invitation is sent from.
+#' Invites other Amazon Web Services accounts to become member accounts for
+#' the Security Hub administrator account that the invitation is sent from.
 #' 
 #' This operation is only used to invite accounts that do not belong to an
 #' organization. Organization accounts do not receive invitations.
@@ -7071,14 +11366,14 @@ securityhub_get_members <- function(AccountIds) {
 #' member account in Security Hub.
 #' 
 #' When the account owner enables Security Hub and accepts the invitation
-#' to become a member account, the master account can view the findings
-#' generated from the member account.
+#' to become a member account, the administrator account can view the
+#' findings generated from the member account.
 #'
 #' @usage
 #' securityhub_invite_members(AccountIds)
 #'
-#' @param AccountIds &#91;required&#93; The list of account IDs of the AWS accounts to invite to Security Hub as
-#' members.
+#' @param AccountIds &#91;required&#93; The list of account IDs of the Amazon Web Services accounts to invite to
+#' Security Hub as members.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7180,15 +11475,74 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 }
 .securityhub$operations$list_enabled_products_for_import <- securityhub_list_enabled_products_for_import
 
+#' If finding aggregation is enabled, then ListFindingAggregators returns
+#' the ARN of the finding aggregator
+#'
+#' @description
+#' If finding aggregation is enabled, then
+#' [`list_finding_aggregators`][securityhub_list_finding_aggregators]
+#' returns the ARN of the finding aggregator. You can run this operation
+#' from any Region.
+#'
+#' @usage
+#' securityhub_list_finding_aggregators(NextToken, MaxResults)
+#'
+#' @param NextToken The token returned with the previous set of results. Identifies the next
+#' set of results to return.
+#' @param MaxResults The maximum number of results to return. This operation currently only
+#' returns a single result.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FindingAggregators = list(
+#'     list(
+#'       FindingAggregatorArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_finding_aggregators(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_finding_aggregators
+securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListFindingAggregators",
+    http_method = "GET",
+    http_path = "/findingAggregator/list",
+    paginator = list()
+  )
+  input <- .securityhub$list_finding_aggregators_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$list_finding_aggregators_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_finding_aggregators <- securityhub_list_finding_aggregators
+
 #' Lists all Security Hub membership invitations that were sent to the
-#' current AWS account
+#' current Amazon Web Services account
 #'
 #' @description
 #' Lists all Security Hub membership invitations that were sent to the
-#' current AWS account.
+#' current Amazon Web Services account.
 #' 
-#' This operation is only used by accounts that do not belong to an
-#' organization. Organization accounts do not receive invitations.
+#' This operation is only used by accounts that are managed by invitation.
+#' Accounts that are managed using the integration with Organizations do
+#' not receive invitations.
 #'
 #' @usage
 #' securityhub_list_invitations(MaxResults, NextToken)
@@ -7249,11 +11603,11 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 .securityhub$operations$list_invitations <- securityhub_list_invitations
 
 #' Lists details about all member accounts for the current Security Hub
-#' master account
+#' administrator account
 #'
 #' @description
 #' Lists details about all member accounts for the current Security Hub
-#' master account.
+#' administrator account.
 #' 
 #' The results include both member accounts that belong to an organization
 #' and member accounts that were invited manually.
@@ -7262,11 +11616,12 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' securityhub_list_members(OnlyAssociated, MaxResults, NextToken)
 #'
 #' @param OnlyAssociated Specifies which member accounts to include in the response based on
-#' their relationship status with the master account. The default value is
-#' `TRUE`.
+#' their relationship status with the administrator account. The default
+#' value is `TRUE`.
 #' 
 #' If `OnlyAssociated` is set to `TRUE`, the response includes member
-#' accounts whose relationship status with the master is set to `ENABLED`.
+#' accounts whose relationship status with the administrator account is set
+#' to `ENABLED`.
 #' 
 #' If `OnlyAssociated` is set to `FALSE`, the response includes all
 #' existing member accounts.
@@ -7288,6 +11643,7 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #'       AccountId = "string",
 #'       Email = "string",
 #'       MasterId = "string",
+#'       AdministratorId = "string",
 #'       MemberStatus = "string",
 #'       InvitedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -7444,7 +11800,9 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
 #' securityhub_tag_resource(ResourceArn, Tags)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource to apply the tags to.
-#' @param Tags &#91;required&#93; The tags to add to the resource.
+#' @param Tags &#91;required&#93; The tags to add to the resource. You can add up to 50 tags at a time.
+#' The tag keys can be no longer than 128 characters. The tag values can be
+#' no longer than 256 characters.
 #'
 #' @return
 #' An empty list.
@@ -7488,7 +11846,8 @@ securityhub_tag_resource <- function(ResourceArn, Tags) {
 #' securityhub_untag_resource(ResourceArn, TagKeys)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource to remove the tags from.
-#' @param TagKeys &#91;required&#93; The tag keys associated with the tags to remove from the resource.
+#' @param TagKeys &#91;required&#93; The tag keys associated with the tags to remove from the resource. You
+#' can remove up to 50 tags at a time.
 #'
 #' @return
 #' An empty list.
@@ -7569,6 +11928,100 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 }
 .securityhub$operations$update_action_target <- securityhub_update_action_target
 
+#' Updates the finding aggregation configuration
+#'
+#' @description
+#' Updates the finding aggregation configuration. Used to update the Region
+#' linking mode and the list of included or excluded Regions. You cannot
+#' use [`update_finding_aggregator`][securityhub_update_finding_aggregator]
+#' to change the aggregation Region.
+#' 
+#' You must run
+#' [`update_finding_aggregator`][securityhub_update_finding_aggregator]
+#' from the current aggregation Region.
+#'
+#' @usage
+#' securityhub_update_finding_aggregator(FindingAggregatorArn,
+#'   RegionLinkingMode, Regions)
+#'
+#' @param FindingAggregatorArn &#91;required&#93; The ARN of the finding aggregator. To obtain the ARN, use
+#' [`list_finding_aggregators`][securityhub_list_finding_aggregators].
+#' @param RegionLinkingMode &#91;required&#93; Indicates whether to aggregate findings from all of the available
+#' Regions in the current partition. Also determines whether to
+#' automatically aggregate findings from new Regions as Security Hub
+#' supports them and you opt into them.
+#' 
+#' The selected option also determines how to use the Regions provided in
+#' the Regions list.
+#' 
+#' The options are as follows:
+#' 
+#' -   `ALL_REGIONS` - Indicates to aggregate findings from all of the
+#'     Regions where Security Hub is enabled. When you choose this option,
+#'     Security Hub also automatically aggregates findings from new Regions
+#'     as Security Hub supports them and you opt into them.
+#' 
+#' -   `ALL_REGIONS_EXCEPT_SPECIFIED` - Indicates to aggregate findings
+#'     from all of the Regions where Security Hub is enabled, except for
+#'     the Regions listed in the `Regions` parameter. When you choose this
+#'     option, Security Hub also automatically aggregates findings from new
+#'     Regions as Security Hub supports them and you opt into them.
+#' 
+#' -   `SPECIFIED_REGIONS` - Indicates to aggregate findings only from the
+#'     Regions listed in the `Regions` parameter. Security Hub does not
+#'     automatically aggregate findings from new Regions.
+#' @param Regions If `RegionLinkingMode` is `ALL_REGIONS_EXCEPT_SPECIFIED`, then this is a
+#' comma-separated list of Regions that do not aggregate findings to the
+#' aggregation Region.
+#' 
+#' If `RegionLinkingMode` is `SPECIFIED_REGIONS`, then this is a
+#' comma-separated list of Regions that do aggregate findings to the
+#' aggregation Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FindingAggregatorArn = "string",
+#'   FindingAggregationRegion = "string",
+#'   RegionLinkingMode = "string",
+#'   Regions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_finding_aggregator(
+#'   FindingAggregatorArn = "string",
+#'   RegionLinkingMode = "string",
+#'   Regions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_finding_aggregator
+securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLinkingMode, Regions = NULL) {
+  op <- new_operation(
+    name = "UpdateFindingAggregator",
+    http_method = "PATCH",
+    http_path = "/findingAggregator/update",
+    paginator = list()
+  )
+  input <- .securityhub$update_finding_aggregator_input(FindingAggregatorArn = FindingAggregatorArn, RegionLinkingMode = RegionLinkingMode, Regions = Regions)
+  output <- .securityhub$update_finding_aggregator_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_finding_aggregator <- securityhub_update_finding_aggregator
+
 #' UpdateFindings is deprecated
 #'
 #' @description
@@ -7614,6 +12067,12 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'       )
 #'     ),
 #'     GeneratorId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     Region = list(
 #'       list(
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
@@ -8028,6 +12487,12 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
+#'     ResourceAwsIamAccessKeyPrincipalName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
@@ -8042,6 +12507,12 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'           Value = 123,
 #'           Unit = "DAYS"
 #'         )
+#'       )
+#'     ),
+#'     ResourceAwsIamUserUserName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerName = list(
@@ -8146,6 +12617,55 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     Keyword = list(
 #'       list(
 #'         Value = "string"
+#'       )
+#'     ),
+#'     FindingProviderFieldsConfidence = list(
+#'       list(
+#'         Gte = 123.0,
+#'         Lte = 123.0,
+#'         Eq = 123.0
+#'       )
+#'     ),
+#'     FindingProviderFieldsCriticality = list(
+#'       list(
+#'         Gte = 123.0,
+#'         Lte = 123.0,
+#'         Eq = 123.0
+#'       )
+#'     ),
+#'     FindingProviderFieldsRelatedFindingsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsRelatedFindingsProductArn = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsSeverityLabel = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsSeverityOriginal = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsTypes = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     Sample = list(
+#'       list(
+#'         Value = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -8224,6 +12744,12 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
+#'     Region = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
 #'     Type = list(
 #'       list(
 #'         Value = "string",
@@ -8633,6 +13159,12 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
+#'     ResourceAwsIamAccessKeyPrincipalName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
@@ -8647,6 +13179,12 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'           Value = 123,
 #'           Unit = "DAYS"
 #'         )
+#'       )
+#'     ),
+#'     ResourceAwsIamUserUserName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerName = list(
@@ -8752,6 +13290,55 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Value = "string"
 #'       )
+#'     ),
+#'     FindingProviderFieldsConfidence = list(
+#'       list(
+#'         Gte = 123.0,
+#'         Lte = 123.0,
+#'         Eq = 123.0
+#'       )
+#'     ),
+#'     FindingProviderFieldsCriticality = list(
+#'       list(
+#'         Gte = 123.0,
+#'         Lte = 123.0,
+#'         Eq = 123.0
+#'       )
+#'     ),
+#'     FindingProviderFieldsRelatedFindingsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsRelatedFindingsProductArn = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsSeverityLabel = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsSeverityOriginal = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FindingProviderFieldsTypes = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     Sample = list(
+#'       list(
+#'         Value = TRUE|FALSE
+#'       )
 #'     )
 #'   ),
 #'   GroupByAttribute = "string"
@@ -8785,7 +13372,8 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 #' called from a Security Hub administrator account.
 #'
 #' @usage
-#' securityhub_update_organization_configuration(AutoEnable)
+#' securityhub_update_organization_configuration(AutoEnable,
+#'   AutoEnableStandards)
 #'
 #' @param AutoEnable &#91;required&#93; Whether to automatically enable Security Hub for new accounts in the
 #' organization.
@@ -8795,6 +13383,15 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 #' 
 #' To automatically enable Security Hub for new accounts, set this to
 #' `true`.
+#' @param AutoEnableStandards Whether to automatically enable Security Hub [default
+#' standards](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-enable-disable.html)
+#' for new member accounts in the organization.
+#' 
+#' By default, this parameter is equal to `DEFAULT`, and new member
+#' accounts are automatically enabled with default Security Hub standards.
+#' 
+#' To opt out of enabling default standards for new member accounts, set
+#' this parameter equal to `NONE`.
 #'
 #' @return
 #' An empty list.
@@ -8802,21 +13399,22 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$update_organization_configuration(
-#'   AutoEnable = TRUE|FALSE
+#'   AutoEnable = TRUE|FALSE,
+#'   AutoEnableStandards = "NONE"|"DEFAULT"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_update_organization_configuration
-securityhub_update_organization_configuration <- function(AutoEnable) {
+securityhub_update_organization_configuration <- function(AutoEnable, AutoEnableStandards = NULL) {
   op <- new_operation(
     name = "UpdateOrganizationConfiguration",
     http_method = "POST",
     http_path = "/organization/configuration",
     paginator = list()
   )
-  input <- .securityhub$update_organization_configuration_input(AutoEnable = AutoEnable)
+  input <- .securityhub$update_organization_configuration_input(AutoEnable = AutoEnable, AutoEnableStandards = AutoEnableStandards)
   output <- .securityhub$update_organization_configuration_output()
   config <- get_config()
   svc <- .securityhub$service(config)

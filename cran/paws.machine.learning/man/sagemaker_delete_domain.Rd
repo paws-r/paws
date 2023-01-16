@@ -4,7 +4,7 @@
 \alias{sagemaker_delete_domain}
 \title{Used to delete a domain}
 \usage{
-sagemaker_delete_domain(DomainId, RetentionPolicy)
+sagemaker_delete_domain(DomainId, RetentionPolicy = NULL)
 }
 \arguments{
 \item{DomainId}{[required] The domain ID.}
@@ -13,23 +13,9 @@ sagemaker_delete_domain(DomainId, RetentionPolicy)
 will be retained after the Domain is deleted. By default, all resources
 are retained (not automatically deleted).}
 }
-\value{
-An empty list.
-}
 \description{
-Used to delete a domain. If you onboarded with IAM mode, you will need
-to delete your domain to onboard again using SSO. Use with caution. All
-of the members of the domain will lose access to their EFS volume,
-including data, notebooks, and other artifacts.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_domain(
-  DomainId = "string",
-  RetentionPolicy = list(
-    HomeEfsFileSystem = "Retain"|"Delete"
-  )
-)
-}
-}
+Used to delete a domain. If you onboarded with IAM mode, you will need to delete your domain to onboard again using SSO. Use with caution. All of the members of the domain will lose access to their EFS volume, including data, notebooks, and other artifacts.
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_domain.html} for full documentation.
+}
 \keyword{internal}

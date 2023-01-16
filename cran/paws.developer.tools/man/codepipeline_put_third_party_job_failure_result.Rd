@@ -5,8 +5,11 @@
 \title{Represents the failure of a third party job as returned to the pipeline
 by a job worker}
 \usage{
-codepipeline_put_third_party_job_failure_result(jobId, clientToken,
-  failureDetails)
+codepipeline_put_third_party_job_failure_result(
+  jobId,
+  clientToken,
+  failureDetails
+)
 }
 \arguments{
 \item{jobId}{[required] The ID of the job that failed. This is the same ID returned from
@@ -18,24 +21,9 @@ details.}
 
 \item{failureDetails}{[required] Represents information about failure details.}
 }
-\value{
-An empty list.
-}
 \description{
-Represents the failure of a third party job as returned to the pipeline
-by a job worker. Used for partner actions only.
-}
-\section{Request syntax}{
-\preformatted{svc$put_third_party_job_failure_result(
-  jobId = "string",
-  clientToken = "string",
-  failureDetails = list(
-    type = "JobFailed"|"ConfigurationError"|"PermissionError"|"RevisionOutOfSync"|"RevisionUnavailable"|"SystemUnavailable",
-    message = "string",
-    externalExecutionId = "string"
-  )
-)
-}
-}
+Represents the failure of a third party job as returned to the pipeline by a job worker. Used for partner actions only.
 
+See \url{https://paws-r.github.io/docs/codepipeline/put_third_party_job_failure_result.html} for full documentation.
+}
 \keyword{internal}

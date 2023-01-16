@@ -14,24 +14,9 @@ ses_test_render_template(TemplateName, TemplateData)
 a JSON object, typically consisting of key-value pairs in which the keys
 correspond to replacement tags in the email template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RenderedTemplate = "string"
-)
-}
-}
 \description{
-Creates a preview of the MIME content of an email when provided with a
-template and a set of replacement data.
+Creates a preview of the MIME content of an email when provided with a template and a set of replacement data.
 
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/test_render_template.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$test_render_template(
-  TemplateName = "string",
-  TemplateData = "string"
-)
-}
-}
-
 \keyword{internal}

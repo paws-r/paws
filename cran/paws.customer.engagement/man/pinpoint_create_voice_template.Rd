@@ -15,35 +15,9 @@ characters can be alphanumeric characters, underscores (_), or hyphens
 
 \item{VoiceTemplateRequest}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CreateTemplateMessageBody = list(
-    Arn = "string",
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Creates a message template for messages that are sent through the voice
-channel.
-}
-\section{Request syntax}{
-\preformatted{svc$create_voice_template(
-  TemplateName = "string",
-  VoiceTemplateRequest = list(
-    Body = "string",
-    DefaultSubstitutions = "string",
-    LanguageCode = "string",
-    tags = list(
-      "string"
-    ),
-    TemplateDescription = "string",
-    VoiceId = "string"
-  )
-)
-}
-}
+Creates a message template for messages that are sent through the voice channel.
 
+See \url{https://paws-r.github.io/docs/pinpoint/create_voice_template.html} for full documentation.
+}
 \keyword{internal}

@@ -7,27 +7,19 @@ NULL
 #'
 #' @description
 #' Creates a gateway route.
-#' 
-#' A gateway route is attached to a virtual gateway and routes traffic to
-#' an existing virtual service. If a route matches a request, it can
-#' distribute traffic to a target virtual service.
-#' 
-#' For more information about gateway routes, see [Gateway
-#' routes](https://docs.aws.amazon.com/app-mesh/latest/userguide/gateway-routes.html).
 #'
-#' @usage
-#' appmesh_create_gateway_route(clientToken, gatewayRouteName, meshName,
-#'   meshOwner, spec, tags, virtualGatewayName)
+#' See [https://paws-r.github.io/docs/appmesh/create_gateway_route.html](https://paws-r.github.io/docs/appmesh/create_gateway_route.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param gatewayRouteName &#91;required&#93; The name to use for the gateway route.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the gateway route in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The gateway route specification to apply.
 #' @param tags Optional metadata that you can apply to the gateway route to assist with
@@ -38,127 +30,6 @@ NULL
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to associate the gateway route with. If
 #' the virtual gateway is in a shared mesh, then you must be the owner of
 #' the virtual gateway resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   gatewayRoute = list(
-#'     gatewayRouteName = "string",
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       grpcRoute = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           serviceName = "string"
-#'         )
-#'       ),
-#'       http2Route = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           prefix = "string"
-#'         )
-#'       ),
-#'       httpRoute = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           prefix = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualGatewayName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_gateway_route(
-#'   clientToken = "string",
-#'   gatewayRouteName = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   spec = list(
-#'     grpcRoute = list(
-#'       action = list(
-#'         target = list(
-#'           virtualService = list(
-#'             virtualServiceName = "string"
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         serviceName = "string"
-#'       )
-#'     ),
-#'     http2Route = list(
-#'       action = list(
-#'         target = list(
-#'           virtualService = list(
-#'             virtualServiceName = "string"
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         prefix = "string"
-#'       )
-#'     ),
-#'     httpRoute = list(
-#'       action = list(
-#'         target = list(
-#'           virtualService = list(
-#'             virtualServiceName = "string"
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         prefix = "string"
-#'       )
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   virtualGatewayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -184,18 +55,8 @@ appmesh_create_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #'
 #' @description
 #' Creates a service mesh.
-#' 
-#' A service mesh is a logical boundary for network traffic between
-#' services that are represented by resources within the mesh. After you
-#' create your service mesh, you can create virtual services, virtual
-#' nodes, virtual routers, and routes to distribute traffic between the
-#' applications in your mesh.
-#' 
-#' For more information about service meshes, see [Service
-#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/meshes.html).
 #'
-#' @usage
-#' appmesh_create_mesh(clientToken, meshName, spec, tags)
+#' See [https://paws-r.github.io/docs/appmesh/create_mesh.html](https://paws-r.github.io/docs/appmesh/create_mesh.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -207,56 +68,6 @@ appmesh_create_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #' optional value, both of which you define. Tag keys can have a maximum
 #' character length of 128 characters, and tag values can have a maximum
 #' length of 256 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   mesh = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       egressFilter = list(
-#'         type = "ALLOW_ALL"|"DROP_ALL"
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_mesh(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   spec = list(
-#'     egressFilter = list(
-#'       type = "ALLOW_ALL"|"DROP_ALL"
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -282,25 +93,18 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'
 #' @description
 #' Creates a route that is associated with a virtual router.
-#' 
-#' You can route several different protocols and define a retry policy for
-#' a route. Traffic can be routed to one or more virtual nodes.
-#' 
-#' For more information about routes, see
-#' [Routes](https://docs.aws.amazon.com/app-mesh/latest/userguide/routes.html).
 #'
-#' @usage
-#' appmesh_create_route(clientToken, meshName, meshOwner, routeName, spec,
-#'   tags, virtualRouterName)
+#' See [https://paws-r.github.io/docs/appmesh/create_route.html](https://paws-r.github.io/docs/appmesh/create_route.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the route in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name to use for the route.
 #' @param spec &#91;required&#93; The route specification to apply.
@@ -312,417 +116,6 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router in which to create the route. If the
 #' virtual router is in a shared mesh, then you must be the owner of the
 #' virtual router resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   route = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     routeName = "string",
-#'     spec = list(
-#'       grpcRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           metadata = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           methodName = "string",
-#'           serviceName = "string"
-#'         ),
-#'         retryPolicy = list(
-#'           grpcRetryEvents = list(
-#'             "cancelled"|"deadline-exceeded"|"internal"|"resource-exhausted"|"unavailable"
-#'           ),
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       http2Route = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           headers = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'           prefix = "string",
-#'           scheme = "http"|"https"
-#'         ),
-#'         retryPolicy = list(
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       httpRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           headers = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'           prefix = "string",
-#'           scheme = "http"|"https"
-#'         ),
-#'         retryPolicy = list(
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       priority = 123,
-#'       tcpRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualRouterName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_route(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   routeName = "string",
-#'   spec = list(
-#'     grpcRoute = list(
-#'       action = list(
-#'         weightedTargets = list(
-#'           list(
-#'             virtualNode = "string",
-#'             weight = 123
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         metadata = list(
-#'           list(
-#'             invert = TRUE|FALSE,
-#'             match = list(
-#'               exact = "string",
-#'               prefix = "string",
-#'               range = list(
-#'                 end = 123,
-#'                 start = 123
-#'               ),
-#'               regex = "string",
-#'               suffix = "string"
-#'             ),
-#'             name = "string"
-#'           )
-#'         ),
-#'         methodName = "string",
-#'         serviceName = "string"
-#'       ),
-#'       retryPolicy = list(
-#'         grpcRetryEvents = list(
-#'           "cancelled"|"deadline-exceeded"|"internal"|"resource-exhausted"|"unavailable"
-#'         ),
-#'         httpRetryEvents = list(
-#'           "string"
-#'         ),
-#'         maxRetries = 123,
-#'         perRetryTimeout = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         tcpRetryEvents = list(
-#'           "connection-error"
-#'         )
-#'       ),
-#'       timeout = list(
-#'         idle = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         perRequest = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         )
-#'       )
-#'     ),
-#'     http2Route = list(
-#'       action = list(
-#'         weightedTargets = list(
-#'           list(
-#'             virtualNode = "string",
-#'             weight = 123
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         headers = list(
-#'           list(
-#'             invert = TRUE|FALSE,
-#'             match = list(
-#'               exact = "string",
-#'               prefix = "string",
-#'               range = list(
-#'                 end = 123,
-#'                 start = 123
-#'               ),
-#'               regex = "string",
-#'               suffix = "string"
-#'             ),
-#'             name = "string"
-#'           )
-#'         ),
-#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'         prefix = "string",
-#'         scheme = "http"|"https"
-#'       ),
-#'       retryPolicy = list(
-#'         httpRetryEvents = list(
-#'           "string"
-#'         ),
-#'         maxRetries = 123,
-#'         perRetryTimeout = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         tcpRetryEvents = list(
-#'           "connection-error"
-#'         )
-#'       ),
-#'       timeout = list(
-#'         idle = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         perRequest = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         )
-#'       )
-#'     ),
-#'     httpRoute = list(
-#'       action = list(
-#'         weightedTargets = list(
-#'           list(
-#'             virtualNode = "string",
-#'             weight = 123
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         headers = list(
-#'           list(
-#'             invert = TRUE|FALSE,
-#'             match = list(
-#'               exact = "string",
-#'               prefix = "string",
-#'               range = list(
-#'                 end = 123,
-#'                 start = 123
-#'               ),
-#'               regex = "string",
-#'               suffix = "string"
-#'             ),
-#'             name = "string"
-#'           )
-#'         ),
-#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'         prefix = "string",
-#'         scheme = "http"|"https"
-#'       ),
-#'       retryPolicy = list(
-#'         httpRetryEvents = list(
-#'           "string"
-#'         ),
-#'         maxRetries = 123,
-#'         perRetryTimeout = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         tcpRetryEvents = list(
-#'           "connection-error"
-#'         )
-#'       ),
-#'       timeout = list(
-#'         idle = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         perRequest = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         )
-#'       )
-#'     ),
-#'     priority = 123,
-#'     tcpRoute = list(
-#'       action = list(
-#'         weightedTargets = list(
-#'           list(
-#'             virtualNode = "string",
-#'             weight = 123
-#'           )
-#'         )
-#'       ),
-#'       timeout = list(
-#'         idle = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   virtualRouterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -748,29 +141,18 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'
 #' @description
 #' Creates a virtual gateway.
-#' 
-#' A virtual gateway allows resources outside your mesh to communicate to
-#' resources that are inside your mesh. The virtual gateway represents an
-#' Envoy proxy running in an Amazon ECS task, in a Kubernetes service, or
-#' on an Amazon EC2 instance. Unlike a virtual node, which represents an
-#' Envoy running with an application, a virtual gateway represents Envoy
-#' deployed by itself.
-#' 
-#' For more information about virtual gateways, see [Virtual
-#' gateways](https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_gateways.html).
 #'
-#' @usage
-#' appmesh_create_virtual_gateway(clientToken, meshName, meshOwner, spec,
-#'   tags, virtualGatewayName)
+#' See [https://paws-r.github.io/docs/appmesh/create_virtual_gateway.html](https://paws-r.github.io/docs/appmesh/create_virtual_gateway.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual gateway in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual gateway specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual gateway to assist
@@ -779,193 +161,6 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #' character length of 128 characters, and tag values can have a maximum
 #' length of 256 characters.
 #' @param virtualGatewayName &#91;required&#93; The name to use for the virtual gateway.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualGateway = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       backendDefaults = list(
-#'         clientPolicy = list(
-#'           tls = list(
-#'             enforce = TRUE|FALSE,
-#'             ports = list(
-#'               123
-#'             ),
-#'             validation = list(
-#'               trust = list(
-#'                 acm = list(
-#'                   certificateAuthorityArns = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 file = list(
-#'                   certificateChain = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       listeners = list(
-#'         list(
-#'           connectionPool = list(
-#'             grpc = list(
-#'               maxRequests = 123
-#'             ),
-#'             http = list(
-#'               maxConnections = 123,
-#'               maxPendingRequests = 123
-#'             ),
-#'             http2 = list(
-#'               maxRequests = 123
-#'             )
-#'           ),
-#'           healthCheck = list(
-#'             healthyThreshold = 123,
-#'             intervalMillis = 123,
-#'             path = "string",
-#'             port = 123,
-#'             protocol = "http"|"http2"|"grpc",
-#'             timeoutMillis = 123,
-#'             unhealthyThreshold = 123
-#'           ),
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"http2"|"grpc"
-#'           ),
-#'           tls = list(
-#'             certificate = list(
-#'               acm = list(
-#'                 certificateArn = "string"
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string",
-#'                 privateKey = "string"
-#'               )
-#'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'           )
-#'         )
-#'       ),
-#'       logging = list(
-#'         accessLog = list(
-#'           file = list(
-#'             path = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualGatewayName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_virtual_gateway(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   spec = list(
-#'     backendDefaults = list(
-#'       clientPolicy = list(
-#'         tls = list(
-#'           enforce = TRUE|FALSE,
-#'           ports = list(
-#'             123
-#'           ),
-#'           validation = list(
-#'             trust = list(
-#'               acm = list(
-#'                 certificateAuthorityArns = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     listeners = list(
-#'       list(
-#'         connectionPool = list(
-#'           grpc = list(
-#'             maxRequests = 123
-#'           ),
-#'           http = list(
-#'             maxConnections = 123,
-#'             maxPendingRequests = 123
-#'           ),
-#'           http2 = list(
-#'             maxRequests = 123
-#'           )
-#'         ),
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           intervalMillis = 123,
-#'           path = "string",
-#'           port = 123,
-#'           protocol = "http"|"http2"|"grpc",
-#'           timeoutMillis = 123,
-#'           unhealthyThreshold = 123
-#'         ),
-#'         portMapping = list(
-#'           port = 123,
-#'           protocol = "http"|"http2"|"grpc"
-#'         ),
-#'         tls = list(
-#'           certificate = list(
-#'             acm = list(
-#'               certificateArn = "string"
-#'             ),
-#'             file = list(
-#'               certificateChain = "string",
-#'               privateKey = "string"
-#'             )
-#'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'         )
-#'       )
-#'     ),
-#'     logging = list(
-#'       accessLog = list(
-#'         file = list(
-#'           path = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   virtualGatewayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -991,52 +186,18 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'
 #' @description
 #' Creates a virtual node within a service mesh.
-#' 
-#' A virtual node acts as a logical pointer to a particular task group,
-#' such as an Amazon ECS service or a Kubernetes deployment. When you
-#' create a virtual node, you can specify the service discovery information
-#' for your task group, and whether the proxy running in a task group will
-#' communicate with other proxies using Transport Layer Security (TLS).
-#' 
-#' You define a `listener` for any inbound traffic that your virtual node
-#' expects. Any virtual service that your virtual node expects to
-#' communicate to is specified as a `backend`.
-#' 
-#' The response metadata for your new virtual node contains the `arn` that
-#' is associated with the virtual node. Set this value to the full ARN; for
-#' example,
-#' `arn:aws:appmesh:us-west-2:123456789012:myMesh/default/virtualNode/myApp`)
-#' as the `APPMESH_RESOURCE_ARN` environment variable for your task group's
-#' Envoy proxy container in your task definition or pod spec. This is then
-#' mapped to the `node.id` and `node.cluster` Envoy parameters.
-#' 
-#' By default, App Mesh uses the name of the resource you specified in
-#' `APPMESH_RESOURCE_ARN` when Envoy is referring to itself in metrics and
-#' traces. You can override this behavior by setting the
-#' `APPMESH_RESOURCE_CLUSTER` environment variable with your own name.
-#' 
-#' AWS Cloud Map is not available in the eu-south-1 Region.
-#' 
-#' For more information about virtual nodes, see [Virtual
-#' nodes](https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_nodes.html).
-#' You must be using `1.15.0` or later of the Envoy image when setting
-#' these variables. For more information about App Mesh Envoy variables,
-#' see [Envoy
-#' image](https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html)
-#' in the AWS App Mesh User Guide.
 #'
-#' @usage
-#' appmesh_create_virtual_node(clientToken, meshName, meshOwner, spec,
-#'   tags, virtualNodeName)
+#' See [https://paws-r.github.io/docs/appmesh/create_virtual_node.html](https://paws-r.github.io/docs/appmesh/create_virtual_node.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual node in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual node specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual node to assist with
@@ -1045,383 +206,6 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' character length of 128 characters, and tag values can have a maximum
 #' length of 256 characters.
 #' @param virtualNodeName &#91;required&#93; The name to use for the virtual node.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualNode = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       backendDefaults = list(
-#'         clientPolicy = list(
-#'           tls = list(
-#'             enforce = TRUE|FALSE,
-#'             ports = list(
-#'               123
-#'             ),
-#'             validation = list(
-#'               trust = list(
-#'                 acm = list(
-#'                   certificateAuthorityArns = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 file = list(
-#'                   certificateChain = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       backends = list(
-#'         list(
-#'           virtualService = list(
-#'             clientPolicy = list(
-#'               tls = list(
-#'                 enforce = TRUE|FALSE,
-#'                 ports = list(
-#'                   123
-#'                 ),
-#'                 validation = list(
-#'                   trust = list(
-#'                     acm = list(
-#'                       certificateAuthorityArns = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     file = list(
-#'                       certificateChain = "string"
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             virtualServiceName = "string"
-#'           )
-#'         )
-#'       ),
-#'       listeners = list(
-#'         list(
-#'           connectionPool = list(
-#'             grpc = list(
-#'               maxRequests = 123
-#'             ),
-#'             http = list(
-#'               maxConnections = 123,
-#'               maxPendingRequests = 123
-#'             ),
-#'             http2 = list(
-#'               maxRequests = 123
-#'             ),
-#'             tcp = list(
-#'               maxConnections = 123
-#'             )
-#'           ),
-#'           healthCheck = list(
-#'             healthyThreshold = 123,
-#'             intervalMillis = 123,
-#'             path = "string",
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc",
-#'             timeoutMillis = 123,
-#'             unhealthyThreshold = 123
-#'           ),
-#'           outlierDetection = list(
-#'             baseEjectionDuration = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             interval = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             maxEjectionPercent = 123,
-#'             maxServerErrors = 123
-#'           ),
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc"
-#'           ),
-#'           timeout = list(
-#'             grpc = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             http = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             http2 = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             tcp = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             )
-#'           ),
-#'           tls = list(
-#'             certificate = list(
-#'               acm = list(
-#'                 certificateArn = "string"
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string",
-#'                 privateKey = "string"
-#'               )
-#'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'           )
-#'         )
-#'       ),
-#'       logging = list(
-#'         accessLog = list(
-#'           file = list(
-#'             path = "string"
-#'           )
-#'         )
-#'       ),
-#'       serviceDiscovery = list(
-#'         awsCloudMap = list(
-#'           attributes = list(
-#'             list(
-#'               key = "string",
-#'               value = "string"
-#'             )
-#'           ),
-#'           namespaceName = "string",
-#'           serviceName = "string"
-#'         ),
-#'         dns = list(
-#'           hostname = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualNodeName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_virtual_node(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   spec = list(
-#'     backendDefaults = list(
-#'       clientPolicy = list(
-#'         tls = list(
-#'           enforce = TRUE|FALSE,
-#'           ports = list(
-#'             123
-#'           ),
-#'           validation = list(
-#'             trust = list(
-#'               acm = list(
-#'                 certificateAuthorityArns = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     backends = list(
-#'       list(
-#'         virtualService = list(
-#'           clientPolicy = list(
-#'             tls = list(
-#'               enforce = TRUE|FALSE,
-#'               ports = list(
-#'                 123
-#'               ),
-#'               validation = list(
-#'                 trust = list(
-#'                   acm = list(
-#'                     certificateAuthorityArns = list(
-#'                       "string"
-#'                     )
-#'                   ),
-#'                   file = list(
-#'                     certificateChain = "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           virtualServiceName = "string"
-#'         )
-#'       )
-#'     ),
-#'     listeners = list(
-#'       list(
-#'         connectionPool = list(
-#'           grpc = list(
-#'             maxRequests = 123
-#'           ),
-#'           http = list(
-#'             maxConnections = 123,
-#'             maxPendingRequests = 123
-#'           ),
-#'           http2 = list(
-#'             maxRequests = 123
-#'           ),
-#'           tcp = list(
-#'             maxConnections = 123
-#'           )
-#'         ),
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           intervalMillis = 123,
-#'           path = "string",
-#'           port = 123,
-#'           protocol = "http"|"tcp"|"http2"|"grpc",
-#'           timeoutMillis = 123,
-#'           unhealthyThreshold = 123
-#'         ),
-#'         outlierDetection = list(
-#'           baseEjectionDuration = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           interval = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           maxEjectionPercent = 123,
-#'           maxServerErrors = 123
-#'         ),
-#'         portMapping = list(
-#'           port = 123,
-#'           protocol = "http"|"tcp"|"http2"|"grpc"
-#'         ),
-#'         timeout = list(
-#'           grpc = list(
-#'             idle = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             perRequest = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             )
-#'           ),
-#'           http = list(
-#'             idle = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             perRequest = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             )
-#'           ),
-#'           http2 = list(
-#'             idle = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             perRequest = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             )
-#'           ),
-#'           tcp = list(
-#'             idle = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             )
-#'           )
-#'         ),
-#'         tls = list(
-#'           certificate = list(
-#'             acm = list(
-#'               certificateArn = "string"
-#'             ),
-#'             file = list(
-#'               certificateChain = "string",
-#'               privateKey = "string"
-#'             )
-#'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'         )
-#'       )
-#'     ),
-#'     logging = list(
-#'       accessLog = list(
-#'         file = list(
-#'           path = "string"
-#'         )
-#'       )
-#'     ),
-#'     serviceDiscovery = list(
-#'       awsCloudMap = list(
-#'         attributes = list(
-#'           list(
-#'             key = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         namespaceName = "string",
-#'         serviceName = "string"
-#'       ),
-#'       dns = list(
-#'         hostname = "string"
-#'       )
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   virtualNodeName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1447,29 +231,18 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #'
 #' @description
 #' Creates a virtual router within a service mesh.
-#' 
-#' Specify a `listener` for any inbound traffic that your virtual router
-#' receives. Create a virtual router for each protocol and port that you
-#' need to route. Virtual routers handle traffic for one or more virtual
-#' services within your mesh. After you create your virtual router, create
-#' and associate routes for your virtual router that direct incoming
-#' requests to different virtual nodes.
-#' 
-#' For more information about virtual routers, see [Virtual
-#' routers](https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_routers.html).
 #'
-#' @usage
-#' appmesh_create_virtual_router(clientToken, meshName, meshOwner, spec,
-#'   tags, virtualRouterName)
+#' See [https://paws-r.github.io/docs/appmesh/create_virtual_router.html](https://paws-r.github.io/docs/appmesh/create_virtual_router.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual router in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual router specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual router to assist
@@ -1478,69 +251,6 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #' character length of 128 characters, and tag values can have a maximum
 #' length of 256 characters.
 #' @param virtualRouterName &#91;required&#93; The name to use for the virtual router.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualRouter = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       listeners = list(
-#'         list(
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualRouterName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_virtual_router(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   spec = list(
-#'     listeners = list(
-#'       list(
-#'         portMapping = list(
-#'           port = 123,
-#'           protocol = "http"|"tcp"|"http2"|"grpc"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   virtualRouterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1566,29 +276,18 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 #'
 #' @description
 #' Creates a virtual service within a service mesh.
-#' 
-#' A virtual service is an abstraction of a real service that is provided
-#' by a virtual node directly or indirectly by means of a virtual router.
-#' Dependent services call your virtual service by its
-#' `virtualServiceName`, and those requests are routed to the virtual node
-#' or virtual router that is specified as the provider for the virtual
-#' service.
-#' 
-#' For more information about virtual services, see [Virtual
-#' services](https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_services.html).
 #'
-#' @usage
-#' appmesh_create_virtual_service(clientToken, meshName, meshOwner, spec,
-#'   tags, virtualServiceName)
+#' See [https://paws-r.github.io/docs/appmesh/create_virtual_service.html](https://paws-r.github.io/docs/appmesh/create_virtual_service.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual service in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual service specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual service to assist
@@ -1597,69 +296,6 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 #' character length of 128 characters, and tag values can have a maximum
 #' length of 256 characters.
 #' @param virtualServiceName &#91;required&#93; The name to use for the virtual service.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualService = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       provider = list(
-#'         virtualNode = list(
-#'           virtualNodeName = "string"
-#'         ),
-#'         virtualRouter = list(
-#'           virtualRouterName = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualServiceName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_virtual_service(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   spec = list(
-#'     provider = list(
-#'       virtualNode = list(
-#'         virtualNodeName = "string"
-#'       ),
-#'       virtualRouter = list(
-#'         virtualRouterName = "string"
-#'       )
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   virtualServiceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1686,94 +322,16 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #' @description
 #' Deletes an existing gateway route.
 #'
-#' @usage
-#' appmesh_delete_gateway_route(gatewayRouteName, meshName, meshOwner,
-#'   virtualGatewayName)
+#' See [https://paws-r.github.io/docs/appmesh/delete_gateway_route.html](https://paws-r.github.io/docs/appmesh/delete_gateway_route.html) for full documentation.
 #'
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to delete.
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the gateway route from.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to delete the route from.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   gatewayRoute = list(
-#'     gatewayRouteName = "string",
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       grpcRoute = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           serviceName = "string"
-#'         )
-#'       ),
-#'       http2Route = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           prefix = "string"
-#'         )
-#'       ),
-#'       httpRoute = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           prefix = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualGatewayName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_gateway_route(
-#'   gatewayRouteName = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   virtualGatewayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1799,53 +357,10 @@ appmesh_delete_gateway_route <- function(gatewayRouteName, meshName, meshOwner =
 #'
 #' @description
 #' Deletes an existing service mesh.
-#' 
-#' You must delete all resources (virtual services, routes, virtual
-#' routers, and virtual nodes) in the service mesh before you can delete
-#' the mesh itself.
 #'
-#' @usage
-#' appmesh_delete_mesh(meshName)
+#' See [https://paws-r.github.io/docs/appmesh/delete_mesh.html](https://paws-r.github.io/docs/appmesh/delete_mesh.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   mesh = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       egressFilter = list(
-#'         type = "ALLOW_ALL"|"DROP_ALL"
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_mesh(
-#'   meshName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1872,238 +387,16 @@ appmesh_delete_mesh <- function(meshName) {
 #' @description
 #' Deletes an existing route.
 #'
-#' @usage
-#' appmesh_delete_route(meshName, meshOwner, routeName, virtualRouterName)
+#' See [https://paws-r.github.io/docs/appmesh/delete_route.html](https://paws-r.github.io/docs/appmesh/delete_route.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the route in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name of the route to delete.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to delete the route in.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   route = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     routeName = "string",
-#'     spec = list(
-#'       grpcRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           metadata = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           methodName = "string",
-#'           serviceName = "string"
-#'         ),
-#'         retryPolicy = list(
-#'           grpcRetryEvents = list(
-#'             "cancelled"|"deadline-exceeded"|"internal"|"resource-exhausted"|"unavailable"
-#'           ),
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       http2Route = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           headers = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'           prefix = "string",
-#'           scheme = "http"|"https"
-#'         ),
-#'         retryPolicy = list(
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       httpRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           headers = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'           prefix = "string",
-#'           scheme = "http"|"https"
-#'         ),
-#'         retryPolicy = list(
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       priority = 123,
-#'       tcpRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualRouterName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_route(
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   routeName = "string",
-#'   virtualRouterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2128,127 +421,17 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #' Deletes an existing virtual gateway
 #'
 #' @description
-#' Deletes an existing virtual gateway. You cannot delete a virtual gateway
-#' if any gateway routes are associated to it.
+#' Deletes an existing virtual gateway. You cannot delete a virtual gateway if any gateway routes are associated to it.
 #'
-#' @usage
-#' appmesh_delete_virtual_gateway(meshName, meshOwner, virtualGatewayName)
+#' See [https://paws-r.github.io/docs/appmesh/delete_virtual_gateway.html](https://paws-r.github.io/docs/appmesh/delete_virtual_gateway.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual gateway from.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualGateway = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       backendDefaults = list(
-#'         clientPolicy = list(
-#'           tls = list(
-#'             enforce = TRUE|FALSE,
-#'             ports = list(
-#'               123
-#'             ),
-#'             validation = list(
-#'               trust = list(
-#'                 acm = list(
-#'                   certificateAuthorityArns = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 file = list(
-#'                   certificateChain = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       listeners = list(
-#'         list(
-#'           connectionPool = list(
-#'             grpc = list(
-#'               maxRequests = 123
-#'             ),
-#'             http = list(
-#'               maxConnections = 123,
-#'               maxPendingRequests = 123
-#'             ),
-#'             http2 = list(
-#'               maxRequests = 123
-#'             )
-#'           ),
-#'           healthCheck = list(
-#'             healthyThreshold = 123,
-#'             intervalMillis = 123,
-#'             path = "string",
-#'             port = 123,
-#'             protocol = "http"|"http2"|"grpc",
-#'             timeoutMillis = 123,
-#'             unhealthyThreshold = 123
-#'           ),
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"http2"|"grpc"
-#'           ),
-#'           tls = list(
-#'             certificate = list(
-#'               acm = list(
-#'                 certificateArn = "string"
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string",
-#'                 privateKey = "string"
-#'               )
-#'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'           )
-#'         )
-#'       ),
-#'       logging = list(
-#'         accessLog = list(
-#'           file = list(
-#'             path = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualGatewayName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_virtual_gateway(
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   virtualGatewayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2274,223 +457,16 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'
 #' @description
 #' Deletes an existing virtual node.
-#' 
-#' You must delete any virtual services that list a virtual node as a
-#' service provider before you can delete the virtual node itself.
 #'
-#' @usage
-#' appmesh_delete_virtual_node(meshName, meshOwner, virtualNodeName)
+#' See [https://paws-r.github.io/docs/appmesh/delete_virtual_node.html](https://paws-r.github.io/docs/appmesh/delete_virtual_node.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual node in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualNode = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       backendDefaults = list(
-#'         clientPolicy = list(
-#'           tls = list(
-#'             enforce = TRUE|FALSE,
-#'             ports = list(
-#'               123
-#'             ),
-#'             validation = list(
-#'               trust = list(
-#'                 acm = list(
-#'                   certificateAuthorityArns = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 file = list(
-#'                   certificateChain = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       backends = list(
-#'         list(
-#'           virtualService = list(
-#'             clientPolicy = list(
-#'               tls = list(
-#'                 enforce = TRUE|FALSE,
-#'                 ports = list(
-#'                   123
-#'                 ),
-#'                 validation = list(
-#'                   trust = list(
-#'                     acm = list(
-#'                       certificateAuthorityArns = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     file = list(
-#'                       certificateChain = "string"
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             virtualServiceName = "string"
-#'           )
-#'         )
-#'       ),
-#'       listeners = list(
-#'         list(
-#'           connectionPool = list(
-#'             grpc = list(
-#'               maxRequests = 123
-#'             ),
-#'             http = list(
-#'               maxConnections = 123,
-#'               maxPendingRequests = 123
-#'             ),
-#'             http2 = list(
-#'               maxRequests = 123
-#'             ),
-#'             tcp = list(
-#'               maxConnections = 123
-#'             )
-#'           ),
-#'           healthCheck = list(
-#'             healthyThreshold = 123,
-#'             intervalMillis = 123,
-#'             path = "string",
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc",
-#'             timeoutMillis = 123,
-#'             unhealthyThreshold = 123
-#'           ),
-#'           outlierDetection = list(
-#'             baseEjectionDuration = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             interval = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             maxEjectionPercent = 123,
-#'             maxServerErrors = 123
-#'           ),
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc"
-#'           ),
-#'           timeout = list(
-#'             grpc = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             http = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             http2 = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             tcp = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             )
-#'           ),
-#'           tls = list(
-#'             certificate = list(
-#'               acm = list(
-#'                 certificateArn = "string"
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string",
-#'                 privateKey = "string"
-#'               )
-#'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'           )
-#'         )
-#'       ),
-#'       logging = list(
-#'         accessLog = list(
-#'           file = list(
-#'             path = "string"
-#'           )
-#'         )
-#'       ),
-#'       serviceDiscovery = list(
-#'         awsCloudMap = list(
-#'           attributes = list(
-#'             list(
-#'               key = "string",
-#'               value = "string"
-#'             )
-#'           ),
-#'           namespaceName = "string",
-#'           serviceName = "string"
-#'         ),
-#'         dns = list(
-#'           hostname = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualNodeName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_virtual_node(
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   virtualNodeName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2516,66 +492,16 @@ appmesh_delete_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeN
 #'
 #' @description
 #' Deletes an existing virtual router.
-#' 
-#' You must delete any routes associated with the virtual router before you
-#' can delete the router itself.
 #'
-#' @usage
-#' appmesh_delete_virtual_router(meshName, meshOwner, virtualRouterName)
+#' See [https://paws-r.github.io/docs/appmesh/delete_virtual_router.html](https://paws-r.github.io/docs/appmesh/delete_virtual_router.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual router in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualRouter = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       listeners = list(
-#'         list(
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualRouterName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_virtual_router(
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   virtualRouterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2602,62 +528,15 @@ appmesh_delete_virtual_router <- function(meshName, meshOwner = NULL, virtualRou
 #' @description
 #' Deletes an existing virtual service.
 #'
-#' @usage
-#' appmesh_delete_virtual_service(meshName, meshOwner, virtualServiceName)
+#' See [https://paws-r.github.io/docs/appmesh/delete_virtual_service.html](https://paws-r.github.io/docs/appmesh/delete_virtual_service.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual service in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualServiceName &#91;required&#93; The name of the virtual service to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualService = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       provider = list(
-#'         virtualNode = list(
-#'           virtualNodeName = "string"
-#'         ),
-#'         virtualRouter = list(
-#'           virtualRouterName = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualServiceName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_virtual_service(
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   virtualServiceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2684,95 +563,17 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #' @description
 #' Describes an existing gateway route.
 #'
-#' @usage
-#' appmesh_describe_gateway_route(gatewayRouteName, meshName, meshOwner,
-#'   virtualGatewayName)
+#' See [https://paws-r.github.io/docs/appmesh/describe_gateway_route.html](https://paws-r.github.io/docs/appmesh/describe_gateway_route.html) for full documentation.
 #'
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to describe.
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway that the gateway route is associated
 #' with.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   gatewayRoute = list(
-#'     gatewayRouteName = "string",
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       grpcRoute = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           serviceName = "string"
-#'         )
-#'       ),
-#'       http2Route = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           prefix = "string"
-#'         )
-#'       ),
-#'       httpRoute = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           prefix = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualGatewayName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_gateway_route(
-#'   gatewayRouteName = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   virtualGatewayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2799,54 +600,14 @@ appmesh_describe_gateway_route <- function(gatewayRouteName, meshName, meshOwner
 #' @description
 #' Describes an existing service mesh.
 #'
-#' @usage
-#' appmesh_describe_mesh(meshName, meshOwner)
+#' See [https://paws-r.github.io/docs/appmesh/describe_mesh.html](https://paws-r.github.io/docs/appmesh/describe_mesh.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to describe.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   mesh = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       egressFilter = list(
-#'         type = "ALLOW_ALL"|"DROP_ALL"
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_mesh(
-#'   meshName = "string",
-#'   meshOwner = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2873,239 +634,16 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #' @description
 #' Describes an existing route.
 #'
-#' @usage
-#' appmesh_describe_route(meshName, meshOwner, routeName,
-#'   virtualRouterName)
+#' See [https://paws-r.github.io/docs/appmesh/describe_route.html](https://paws-r.github.io/docs/appmesh/describe_route.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name of the route to describe.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router that the route is associated with.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   route = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     routeName = "string",
-#'     spec = list(
-#'       grpcRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           metadata = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           methodName = "string",
-#'           serviceName = "string"
-#'         ),
-#'         retryPolicy = list(
-#'           grpcRetryEvents = list(
-#'             "cancelled"|"deadline-exceeded"|"internal"|"resource-exhausted"|"unavailable"
-#'           ),
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       http2Route = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           headers = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'           prefix = "string",
-#'           scheme = "http"|"https"
-#'         ),
-#'         retryPolicy = list(
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       httpRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           headers = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'           prefix = "string",
-#'           scheme = "http"|"https"
-#'         ),
-#'         retryPolicy = list(
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       priority = 123,
-#'       tcpRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualRouterName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_route(
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   routeName = "string",
-#'   virtualRouterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3132,125 +670,15 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #' @description
 #' Describes an existing virtual gateway.
 #'
-#' @usage
-#' appmesh_describe_virtual_gateway(meshName, meshOwner,
-#'   virtualGatewayName)
+#' See [https://paws-r.github.io/docs/appmesh/describe_virtual_gateway.html](https://paws-r.github.io/docs/appmesh/describe_virtual_gateway.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualGateway = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       backendDefaults = list(
-#'         clientPolicy = list(
-#'           tls = list(
-#'             enforce = TRUE|FALSE,
-#'             ports = list(
-#'               123
-#'             ),
-#'             validation = list(
-#'               trust = list(
-#'                 acm = list(
-#'                   certificateAuthorityArns = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 file = list(
-#'                   certificateChain = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       listeners = list(
-#'         list(
-#'           connectionPool = list(
-#'             grpc = list(
-#'               maxRequests = 123
-#'             ),
-#'             http = list(
-#'               maxConnections = 123,
-#'               maxPendingRequests = 123
-#'             ),
-#'             http2 = list(
-#'               maxRequests = 123
-#'             )
-#'           ),
-#'           healthCheck = list(
-#'             healthyThreshold = 123,
-#'             intervalMillis = 123,
-#'             path = "string",
-#'             port = 123,
-#'             protocol = "http"|"http2"|"grpc",
-#'             timeoutMillis = 123,
-#'             unhealthyThreshold = 123
-#'           ),
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"http2"|"grpc"
-#'           ),
-#'           tls = list(
-#'             certificate = list(
-#'               acm = list(
-#'                 certificateArn = "string"
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string",
-#'                 privateKey = "string"
-#'               )
-#'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'           )
-#'         )
-#'       ),
-#'       logging = list(
-#'         accessLog = list(
-#'           file = list(
-#'             path = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualGatewayName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_virtual_gateway(
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   virtualGatewayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3277,219 +705,15 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #' @description
 #' Describes an existing virtual node.
 #'
-#' @usage
-#' appmesh_describe_virtual_node(meshName, meshOwner, virtualNodeName)
+#' See [https://paws-r.github.io/docs/appmesh/describe_virtual_node.html](https://paws-r.github.io/docs/appmesh/describe_virtual_node.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualNode = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       backendDefaults = list(
-#'         clientPolicy = list(
-#'           tls = list(
-#'             enforce = TRUE|FALSE,
-#'             ports = list(
-#'               123
-#'             ),
-#'             validation = list(
-#'               trust = list(
-#'                 acm = list(
-#'                   certificateAuthorityArns = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 file = list(
-#'                   certificateChain = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       backends = list(
-#'         list(
-#'           virtualService = list(
-#'             clientPolicy = list(
-#'               tls = list(
-#'                 enforce = TRUE|FALSE,
-#'                 ports = list(
-#'                   123
-#'                 ),
-#'                 validation = list(
-#'                   trust = list(
-#'                     acm = list(
-#'                       certificateAuthorityArns = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     file = list(
-#'                       certificateChain = "string"
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             virtualServiceName = "string"
-#'           )
-#'         )
-#'       ),
-#'       listeners = list(
-#'         list(
-#'           connectionPool = list(
-#'             grpc = list(
-#'               maxRequests = 123
-#'             ),
-#'             http = list(
-#'               maxConnections = 123,
-#'               maxPendingRequests = 123
-#'             ),
-#'             http2 = list(
-#'               maxRequests = 123
-#'             ),
-#'             tcp = list(
-#'               maxConnections = 123
-#'             )
-#'           ),
-#'           healthCheck = list(
-#'             healthyThreshold = 123,
-#'             intervalMillis = 123,
-#'             path = "string",
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc",
-#'             timeoutMillis = 123,
-#'             unhealthyThreshold = 123
-#'           ),
-#'           outlierDetection = list(
-#'             baseEjectionDuration = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             interval = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             maxEjectionPercent = 123,
-#'             maxServerErrors = 123
-#'           ),
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc"
-#'           ),
-#'           timeout = list(
-#'             grpc = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             http = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             http2 = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             tcp = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             )
-#'           ),
-#'           tls = list(
-#'             certificate = list(
-#'               acm = list(
-#'                 certificateArn = "string"
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string",
-#'                 privateKey = "string"
-#'               )
-#'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'           )
-#'         )
-#'       ),
-#'       logging = list(
-#'         accessLog = list(
-#'           file = list(
-#'             path = "string"
-#'           )
-#'         )
-#'       ),
-#'       serviceDiscovery = list(
-#'         awsCloudMap = list(
-#'           attributes = list(
-#'             list(
-#'               key = "string",
-#'               value = "string"
-#'             )
-#'           ),
-#'           namespaceName = "string",
-#'           serviceName = "string"
-#'         ),
-#'         dns = list(
-#'           hostname = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualNodeName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_virtual_node(
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   virtualNodeName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3516,62 +740,15 @@ appmesh_describe_virtual_node <- function(meshName, meshOwner = NULL, virtualNod
 #' @description
 #' Describes an existing virtual router.
 #'
-#' @usage
-#' appmesh_describe_virtual_router(meshName, meshOwner, virtualRouterName)
+#' See [https://paws-r.github.io/docs/appmesh/describe_virtual_router.html](https://paws-r.github.io/docs/appmesh/describe_virtual_router.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualRouter = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       listeners = list(
-#'         list(
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualRouterName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_virtual_router(
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   virtualRouterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3598,63 +775,15 @@ appmesh_describe_virtual_router <- function(meshName, meshOwner = NULL, virtualR
 #' @description
 #' Describes an existing virtual service.
 #'
-#' @usage
-#' appmesh_describe_virtual_service(meshName, meshOwner,
-#'   virtualServiceName)
+#' See [https://paws-r.github.io/docs/appmesh/describe_virtual_service.html](https://paws-r.github.io/docs/appmesh/describe_virtual_service.html) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualServiceName &#91;required&#93; The name of the virtual service to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualService = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       provider = list(
-#'         virtualNode = list(
-#'           virtualNodeName = "string"
-#'         ),
-#'         virtualRouter = list(
-#'           virtualRouterName = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualServiceName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_virtual_service(
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   virtualServiceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3680,12 +809,9 @@ appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtual
 #' virtual gateway
 #'
 #' @description
-#' Returns a list of existing gateway routes that are associated to a
-#' virtual gateway.
+#' Returns a list of existing gateway routes that are associated to a virtual gateway.
 #'
-#' @usage
-#' appmesh_list_gateway_routes(limit, meshName, meshOwner, nextToken,
-#'   virtualGatewayName)
+#' See [https://paws-r.github.io/docs/appmesh/list_gateway_routes.html](https://paws-r.github.io/docs/appmesh/list_gateway_routes.html) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_gateway_routes`][appmesh_list_gateway_routes] in paginated
@@ -3699,10 +825,10 @@ appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtual
 #' [`list_gateway_routes`][appmesh_list_gateway_routes] returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list gateway routes in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_gateway_routes`][appmesh_list_gateway_routes] request where
@@ -3710,42 +836,6 @@ appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtual
 #' Pagination continues from the end of the previous results that returned
 #' the `nextToken` value.
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to list gateway routes in.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   gatewayRoutes = list(
-#'     list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       gatewayRouteName = "string",
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshName = "string",
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       version = 123,
-#'       virtualGatewayName = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_gateway_routes(
-#'   limit = 123,
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   nextToken = "string",
-#'   virtualGatewayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3772,8 +862,7 @@ appmesh_list_gateway_routes <- function(limit = NULL, meshName, meshOwner = NULL
 #' @description
 #' Returns a list of existing service meshes.
 #'
-#' @usage
-#' appmesh_list_meshes(limit, nextToken)
+#' See [https://paws-r.github.io/docs/appmesh/list_meshes.html](https://paws-r.github.io/docs/appmesh/list_meshes.html) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_meshes`][appmesh_list_meshes] in paginated output. When you use
@@ -3793,37 +882,6 @@ appmesh_list_gateway_routes <- function(limit = NULL, meshName, meshOwner = NULL
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   meshes = list(
-#'     list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshName = "string",
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       version = 123
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_meshes(
-#'   limit = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3850,9 +908,7 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' @description
 #' Returns a list of existing routes in a service mesh.
 #'
-#' @usage
-#' appmesh_list_routes(limit, meshName, meshOwner, nextToken,
-#'   virtualRouterName)
+#' See [https://paws-r.github.io/docs/appmesh/list_routes.html](https://paws-r.github.io/docs/appmesh/list_routes.html) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_routes`][appmesh_list_routes] in paginated output. When you use
@@ -3864,10 +920,10 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' don't use this parameter, [`list_routes`][appmesh_list_routes] returns
 #' up to 100 results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list routes in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_routes`][appmesh_list_routes] request where `limit` was used and
@@ -3875,42 +931,6 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' from the end of the previous results that returned the `nextToken`
 #' value.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to list routes in.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   routes = list(
-#'     list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshName = "string",
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       routeName = "string",
-#'       version = 123,
-#'       virtualRouterName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_routes(
-#'   limit = 123,
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   nextToken = "string",
-#'   virtualRouterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3937,8 +957,7 @@ appmesh_list_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextTo
 #' @description
 #' List the tags for an App Mesh resource.
 #'
-#' @usage
-#' appmesh_list_tags_for_resource(limit, nextToken, resourceArn)
+#' See [https://paws-r.github.io/docs/appmesh/list_tags_for_resource.html](https://paws-r.github.io/docs/appmesh/list_tags_for_resource.html) for full documentation.
 #'
 #' @param limit The maximum number of tag results returned by
 #' [`list_tags_for_resource`][appmesh_list_tags_for_resource] in paginated
@@ -3959,29 +978,6 @@ appmesh_list_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextTo
 #' the `nextToken` value.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to list the
 #' tags for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   limit = 123,
-#'   nextToken = "string",
-#'   resourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4008,8 +1004,7 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 #' @description
 #' Returns a list of existing virtual gateways in a service mesh.
 #'
-#' @usage
-#' appmesh_list_virtual_gateways(limit, meshName, meshOwner, nextToken)
+#' See [https://paws-r.github.io/docs/appmesh/list_virtual_gateways.html](https://paws-r.github.io/docs/appmesh/list_virtual_gateways.html) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_virtual_gateways`][appmesh_list_virtual_gateways] in paginated
@@ -4023,50 +1018,16 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 #' [`list_virtual_gateways`][appmesh_list_virtual_gateways] returns up to
 #' 100 results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual gateways in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_virtual_gateways`][appmesh_list_virtual_gateways] request where
 #' `limit` was used and the results exceeded the value of that parameter.
 #' Pagination continues from the end of the previous results that returned
 #' the `nextToken` value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   virtualGateways = list(
-#'     list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshName = "string",
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       version = 123,
-#'       virtualGatewayName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_virtual_gateways(
-#'   limit = 123,
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4093,8 +1054,7 @@ appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NU
 #' @description
 #' Returns a list of existing virtual nodes.
 #'
-#' @usage
-#' appmesh_list_virtual_nodes(limit, meshName, meshOwner, nextToken)
+#' See [https://paws-r.github.io/docs/appmesh/list_virtual_nodes.html](https://paws-r.github.io/docs/appmesh/list_virtual_nodes.html) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_virtual_nodes`][appmesh_list_virtual_nodes] in paginated output.
@@ -4108,50 +1068,16 @@ appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NU
 #' [`list_virtual_nodes`][appmesh_list_virtual_nodes] returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual nodes in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_virtual_nodes`][appmesh_list_virtual_nodes] request where `limit`
 #' was used and the results exceeded the value of that parameter.
 #' Pagination continues from the end of the previous results that returned
 #' the `nextToken` value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   virtualNodes = list(
-#'     list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshName = "string",
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       version = 123,
-#'       virtualNodeName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_virtual_nodes(
-#'   limit = 123,
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4178,8 +1104,7 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL,
 #' @description
 #' Returns a list of existing virtual routers in a service mesh.
 #'
-#' @usage
-#' appmesh_list_virtual_routers(limit, meshName, meshOwner, nextToken)
+#' See [https://paws-r.github.io/docs/appmesh/list_virtual_routers.html](https://paws-r.github.io/docs/appmesh/list_virtual_routers.html) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_virtual_routers`][appmesh_list_virtual_routers] in paginated
@@ -4193,50 +1118,16 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL,
 #' [`list_virtual_routers`][appmesh_list_virtual_routers] returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual routers in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_virtual_routers`][appmesh_list_virtual_routers] request where
 #' `limit` was used and the results exceeded the value of that parameter.
 #' Pagination continues from the end of the previous results that returned
 #' the `nextToken` value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   virtualRouters = list(
-#'     list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshName = "string",
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       version = 123,
-#'       virtualRouterName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_virtual_routers(
-#'   limit = 123,
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4263,8 +1154,7 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NUL
 #' @description
 #' Returns a list of existing virtual services in a service mesh.
 #'
-#' @usage
-#' appmesh_list_virtual_services(limit, meshName, meshOwner, nextToken)
+#' See [https://paws-r.github.io/docs/appmesh/list_virtual_services.html](https://paws-r.github.io/docs/appmesh/list_virtual_services.html) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_virtual_services`][appmesh_list_virtual_services] in paginated
@@ -4278,50 +1168,16 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NUL
 #' [`list_virtual_services`][appmesh_list_virtual_services] returns up to
 #' 100 results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual services in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_virtual_services`][appmesh_list_virtual_services] request where
 #' `limit` was used and the results exceeded the value of that parameter.
 #' Pagination continues from the end of the previous results that returned
 #' the `nextToken` value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   virtualServices = list(
-#'     list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshName = "string",
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       version = 123,
-#'       virtualServiceName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_virtual_services(
-#'   limit = 123,
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4347,34 +1203,14 @@ appmesh_list_virtual_services <- function(limit = NULL, meshName, meshOwner = NU
 #' resourceArn
 #'
 #' @description
-#' Associates the specified tags to a resource with the specified
-#' `resourceArn`. If existing tags on a resource aren't specified in the
-#' request parameters, they aren't changed. When a resource is deleted, the
-#' tags associated with that resource are also deleted.
+#' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags associated with that resource are also deleted.
 #'
-#' @usage
-#' appmesh_tag_resource(resourceArn, tags)
+#' See [https://paws-r.github.io/docs/appmesh/tag_resource.html](https://paws-r.github.io/docs/appmesh/tag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to add tags to.
 #' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
 #' Tag keys can have a maximum character length of 128 characters, and tag
 #' values can have a maximum length of 256 characters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceArn = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4401,24 +1237,10 @@ appmesh_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' @usage
-#' appmesh_untag_resource(resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/appmesh/untag_resource.html](https://paws-r.github.io/docs/appmesh/untag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to delete tags from.
 #' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4444,142 +1266,24 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #' virtual gateway in a service mesh
 #'
 #' @description
-#' Updates an existing gateway route that is associated to a specified
-#' virtual gateway in a service mesh.
+#' Updates an existing gateway route that is associated to a specified virtual gateway in a service mesh.
 #'
-#' @usage
-#' appmesh_update_gateway_route(clientToken, gatewayRouteName, meshName,
-#'   meshOwner, spec, virtualGatewayName)
+#' See [https://paws-r.github.io/docs/appmesh/update_gateway_route.html](https://paws-r.github.io/docs/appmesh/update_gateway_route.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to update.
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new gateway route specification to apply. This overwrites the
 #' existing data.
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway that the gateway route is associated
 #' with.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   gatewayRoute = list(
-#'     gatewayRouteName = "string",
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       grpcRoute = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           serviceName = "string"
-#'         )
-#'       ),
-#'       http2Route = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           prefix = "string"
-#'         )
-#'       ),
-#'       httpRoute = list(
-#'         action = list(
-#'           target = list(
-#'             virtualService = list(
-#'               virtualServiceName = "string"
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           prefix = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualGatewayName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_gateway_route(
-#'   clientToken = "string",
-#'   gatewayRouteName = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   spec = list(
-#'     grpcRoute = list(
-#'       action = list(
-#'         target = list(
-#'           virtualService = list(
-#'             virtualServiceName = "string"
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         serviceName = "string"
-#'       )
-#'     ),
-#'     http2Route = list(
-#'       action = list(
-#'         target = list(
-#'           virtualService = list(
-#'             virtualServiceName = "string"
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         prefix = "string"
-#'       )
-#'     ),
-#'     httpRoute = list(
-#'       action = list(
-#'         target = list(
-#'           virtualService = list(
-#'             virtualServiceName = "string"
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         prefix = "string"
-#'       )
-#'     )
-#'   ),
-#'   virtualGatewayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4606,58 +1310,13 @@ appmesh_update_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #' @description
 #' Updates an existing service mesh.
 #'
-#' @usage
-#' appmesh_update_mesh(clientToken, meshName, spec)
+#' See [https://paws-r.github.io/docs/appmesh/update_mesh.html](https://paws-r.github.io/docs/appmesh/update_mesh.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to update.
 #' @param spec The service mesh specification to apply.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   mesh = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       egressFilter = list(
-#'         type = "ALLOW_ALL"|"DROP_ALL"
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_mesh(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   spec = list(
-#'     egressFilter = list(
-#'       type = "ALLOW_ALL"|"DROP_ALL"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4683,430 +1342,22 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #' router
 #'
 #' @description
-#' Updates an existing route for a specified service mesh and virtual
-#' router.
+#' Updates an existing route for a specified service mesh and virtual router.
 #'
-#' @usage
-#' appmesh_update_route(clientToken, meshName, meshOwner, routeName, spec,
-#'   virtualRouterName)
+#' See [https://paws-r.github.io/docs/appmesh/update_route.html](https://paws-r.github.io/docs/appmesh/update_route.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name of the route to update.
 #' @param spec &#91;required&#93; The new route specification to apply. This overwrites the existing data.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router that the route is associated with.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   route = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     routeName = "string",
-#'     spec = list(
-#'       grpcRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           metadata = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           methodName = "string",
-#'           serviceName = "string"
-#'         ),
-#'         retryPolicy = list(
-#'           grpcRetryEvents = list(
-#'             "cancelled"|"deadline-exceeded"|"internal"|"resource-exhausted"|"unavailable"
-#'           ),
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       http2Route = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           headers = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'           prefix = "string",
-#'           scheme = "http"|"https"
-#'         ),
-#'         retryPolicy = list(
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       httpRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         match = list(
-#'           headers = list(
-#'             list(
-#'               invert = TRUE|FALSE,
-#'               match = list(
-#'                 exact = "string",
-#'                 prefix = "string",
-#'                 range = list(
-#'                   end = 123,
-#'                   start = 123
-#'                 ),
-#'                 regex = "string",
-#'                 suffix = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'           prefix = "string",
-#'           scheme = "http"|"https"
-#'         ),
-#'         retryPolicy = list(
-#'           httpRetryEvents = list(
-#'             "string"
-#'           ),
-#'           maxRetries = 123,
-#'           perRetryTimeout = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           tcpRetryEvents = list(
-#'             "connection-error"
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           perRequest = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       ),
-#'       priority = 123,
-#'       tcpRoute = list(
-#'         action = list(
-#'           weightedTargets = list(
-#'             list(
-#'               virtualNode = "string",
-#'               weight = 123
-#'             )
-#'           )
-#'         ),
-#'         timeout = list(
-#'           idle = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualRouterName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_route(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   routeName = "string",
-#'   spec = list(
-#'     grpcRoute = list(
-#'       action = list(
-#'         weightedTargets = list(
-#'           list(
-#'             virtualNode = "string",
-#'             weight = 123
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         metadata = list(
-#'           list(
-#'             invert = TRUE|FALSE,
-#'             match = list(
-#'               exact = "string",
-#'               prefix = "string",
-#'               range = list(
-#'                 end = 123,
-#'                 start = 123
-#'               ),
-#'               regex = "string",
-#'               suffix = "string"
-#'             ),
-#'             name = "string"
-#'           )
-#'         ),
-#'         methodName = "string",
-#'         serviceName = "string"
-#'       ),
-#'       retryPolicy = list(
-#'         grpcRetryEvents = list(
-#'           "cancelled"|"deadline-exceeded"|"internal"|"resource-exhausted"|"unavailable"
-#'         ),
-#'         httpRetryEvents = list(
-#'           "string"
-#'         ),
-#'         maxRetries = 123,
-#'         perRetryTimeout = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         tcpRetryEvents = list(
-#'           "connection-error"
-#'         )
-#'       ),
-#'       timeout = list(
-#'         idle = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         perRequest = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         )
-#'       )
-#'     ),
-#'     http2Route = list(
-#'       action = list(
-#'         weightedTargets = list(
-#'           list(
-#'             virtualNode = "string",
-#'             weight = 123
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         headers = list(
-#'           list(
-#'             invert = TRUE|FALSE,
-#'             match = list(
-#'               exact = "string",
-#'               prefix = "string",
-#'               range = list(
-#'                 end = 123,
-#'                 start = 123
-#'               ),
-#'               regex = "string",
-#'               suffix = "string"
-#'             ),
-#'             name = "string"
-#'           )
-#'         ),
-#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'         prefix = "string",
-#'         scheme = "http"|"https"
-#'       ),
-#'       retryPolicy = list(
-#'         httpRetryEvents = list(
-#'           "string"
-#'         ),
-#'         maxRetries = 123,
-#'         perRetryTimeout = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         tcpRetryEvents = list(
-#'           "connection-error"
-#'         )
-#'       ),
-#'       timeout = list(
-#'         idle = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         perRequest = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         )
-#'       )
-#'     ),
-#'     httpRoute = list(
-#'       action = list(
-#'         weightedTargets = list(
-#'           list(
-#'             virtualNode = "string",
-#'             weight = 123
-#'           )
-#'         )
-#'       ),
-#'       match = list(
-#'         headers = list(
-#'           list(
-#'             invert = TRUE|FALSE,
-#'             match = list(
-#'               exact = "string",
-#'               prefix = "string",
-#'               range = list(
-#'                 end = 123,
-#'                 start = 123
-#'               ),
-#'               regex = "string",
-#'               suffix = "string"
-#'             ),
-#'             name = "string"
-#'           )
-#'         ),
-#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
-#'         prefix = "string",
-#'         scheme = "http"|"https"
-#'       ),
-#'       retryPolicy = list(
-#'         httpRetryEvents = list(
-#'           "string"
-#'         ),
-#'         maxRetries = 123,
-#'         perRetryTimeout = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         tcpRetryEvents = list(
-#'           "connection-error"
-#'         )
-#'       ),
-#'       timeout = list(
-#'         idle = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         ),
-#'         perRequest = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         )
-#'       )
-#'     ),
-#'     priority = 123,
-#'     tcpRoute = list(
-#'       action = list(
-#'         weightedTargets = list(
-#'           list(
-#'             virtualNode = "string",
-#'             weight = 123
-#'           )
-#'         )
-#'       ),
-#'       timeout = list(
-#'         idle = list(
-#'           unit = "s"|"ms",
-#'           value = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   virtualRouterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5133,203 +1384,20 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #' @description
 #' Updates an existing virtual gateway in a specified service mesh.
 #'
-#' @usage
-#' appmesh_update_virtual_gateway(clientToken, meshName, meshOwner, spec,
-#'   virtualGatewayName)
+#' See [https://paws-r.github.io/docs/appmesh/update_virtual_gateway.html](https://paws-r.github.io/docs/appmesh/update_virtual_gateway.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual gateway resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual gateway specification to apply. This overwrites the
 #' existing data.
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to update.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualGateway = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       backendDefaults = list(
-#'         clientPolicy = list(
-#'           tls = list(
-#'             enforce = TRUE|FALSE,
-#'             ports = list(
-#'               123
-#'             ),
-#'             validation = list(
-#'               trust = list(
-#'                 acm = list(
-#'                   certificateAuthorityArns = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 file = list(
-#'                   certificateChain = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       listeners = list(
-#'         list(
-#'           connectionPool = list(
-#'             grpc = list(
-#'               maxRequests = 123
-#'             ),
-#'             http = list(
-#'               maxConnections = 123,
-#'               maxPendingRequests = 123
-#'             ),
-#'             http2 = list(
-#'               maxRequests = 123
-#'             )
-#'           ),
-#'           healthCheck = list(
-#'             healthyThreshold = 123,
-#'             intervalMillis = 123,
-#'             path = "string",
-#'             port = 123,
-#'             protocol = "http"|"http2"|"grpc",
-#'             timeoutMillis = 123,
-#'             unhealthyThreshold = 123
-#'           ),
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"http2"|"grpc"
-#'           ),
-#'           tls = list(
-#'             certificate = list(
-#'               acm = list(
-#'                 certificateArn = "string"
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string",
-#'                 privateKey = "string"
-#'               )
-#'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'           )
-#'         )
-#'       ),
-#'       logging = list(
-#'         accessLog = list(
-#'           file = list(
-#'             path = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualGatewayName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_virtual_gateway(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   spec = list(
-#'     backendDefaults = list(
-#'       clientPolicy = list(
-#'         tls = list(
-#'           enforce = TRUE|FALSE,
-#'           ports = list(
-#'             123
-#'           ),
-#'           validation = list(
-#'             trust = list(
-#'               acm = list(
-#'                 certificateAuthorityArns = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     listeners = list(
-#'       list(
-#'         connectionPool = list(
-#'           grpc = list(
-#'             maxRequests = 123
-#'           ),
-#'           http = list(
-#'             maxConnections = 123,
-#'             maxPendingRequests = 123
-#'           ),
-#'           http2 = list(
-#'             maxRequests = 123
-#'           )
-#'         ),
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           intervalMillis = 123,
-#'           path = "string",
-#'           port = 123,
-#'           protocol = "http"|"http2"|"grpc",
-#'           timeoutMillis = 123,
-#'           unhealthyThreshold = 123
-#'         ),
-#'         portMapping = list(
-#'           port = 123,
-#'           protocol = "http"|"http2"|"grpc"
-#'         ),
-#'         tls = list(
-#'           certificate = list(
-#'             acm = list(
-#'               certificateArn = "string"
-#'             ),
-#'             file = list(
-#'               certificateChain = "string",
-#'               privateKey = "string"
-#'             )
-#'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'         )
-#'       )
-#'     ),
-#'     logging = list(
-#'       accessLog = list(
-#'         file = list(
-#'           path = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   virtualGatewayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5356,393 +1424,20 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' @description
 #' Updates an existing virtual node in a specified service mesh.
 #'
-#' @usage
-#' appmesh_update_virtual_node(clientToken, meshName, meshOwner, spec,
-#'   virtualNodeName)
+#' See [https://paws-r.github.io/docs/appmesh/update_virtual_node.html](https://paws-r.github.io/docs/appmesh/update_virtual_node.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual node specification to apply. This overwrites the
 #' existing data.
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to update.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualNode = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       backendDefaults = list(
-#'         clientPolicy = list(
-#'           tls = list(
-#'             enforce = TRUE|FALSE,
-#'             ports = list(
-#'               123
-#'             ),
-#'             validation = list(
-#'               trust = list(
-#'                 acm = list(
-#'                   certificateAuthorityArns = list(
-#'                     "string"
-#'                   )
-#'                 ),
-#'                 file = list(
-#'                   certificateChain = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       backends = list(
-#'         list(
-#'           virtualService = list(
-#'             clientPolicy = list(
-#'               tls = list(
-#'                 enforce = TRUE|FALSE,
-#'                 ports = list(
-#'                   123
-#'                 ),
-#'                 validation = list(
-#'                   trust = list(
-#'                     acm = list(
-#'                       certificateAuthorityArns = list(
-#'                         "string"
-#'                       )
-#'                     ),
-#'                     file = list(
-#'                       certificateChain = "string"
-#'                     )
-#'                   )
-#'                 )
-#'               )
-#'             ),
-#'             virtualServiceName = "string"
-#'           )
-#'         )
-#'       ),
-#'       listeners = list(
-#'         list(
-#'           connectionPool = list(
-#'             grpc = list(
-#'               maxRequests = 123
-#'             ),
-#'             http = list(
-#'               maxConnections = 123,
-#'               maxPendingRequests = 123
-#'             ),
-#'             http2 = list(
-#'               maxRequests = 123
-#'             ),
-#'             tcp = list(
-#'               maxConnections = 123
-#'             )
-#'           ),
-#'           healthCheck = list(
-#'             healthyThreshold = 123,
-#'             intervalMillis = 123,
-#'             path = "string",
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc",
-#'             timeoutMillis = 123,
-#'             unhealthyThreshold = 123
-#'           ),
-#'           outlierDetection = list(
-#'             baseEjectionDuration = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             interval = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             maxEjectionPercent = 123,
-#'             maxServerErrors = 123
-#'           ),
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc"
-#'           ),
-#'           timeout = list(
-#'             grpc = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             http = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             http2 = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               ),
-#'               perRequest = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             ),
-#'             tcp = list(
-#'               idle = list(
-#'                 unit = "s"|"ms",
-#'                 value = 123
-#'               )
-#'             )
-#'           ),
-#'           tls = list(
-#'             certificate = list(
-#'               acm = list(
-#'                 certificateArn = "string"
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string",
-#'                 privateKey = "string"
-#'               )
-#'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'           )
-#'         )
-#'       ),
-#'       logging = list(
-#'         accessLog = list(
-#'           file = list(
-#'             path = "string"
-#'           )
-#'         )
-#'       ),
-#'       serviceDiscovery = list(
-#'         awsCloudMap = list(
-#'           attributes = list(
-#'             list(
-#'               key = "string",
-#'               value = "string"
-#'             )
-#'           ),
-#'           namespaceName = "string",
-#'           serviceName = "string"
-#'         ),
-#'         dns = list(
-#'           hostname = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualNodeName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_virtual_node(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   spec = list(
-#'     backendDefaults = list(
-#'       clientPolicy = list(
-#'         tls = list(
-#'           enforce = TRUE|FALSE,
-#'           ports = list(
-#'             123
-#'           ),
-#'           validation = list(
-#'             trust = list(
-#'               acm = list(
-#'                 certificateAuthorityArns = list(
-#'                   "string"
-#'                 )
-#'               ),
-#'               file = list(
-#'                 certificateChain = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     backends = list(
-#'       list(
-#'         virtualService = list(
-#'           clientPolicy = list(
-#'             tls = list(
-#'               enforce = TRUE|FALSE,
-#'               ports = list(
-#'                 123
-#'               ),
-#'               validation = list(
-#'                 trust = list(
-#'                   acm = list(
-#'                     certificateAuthorityArns = list(
-#'                       "string"
-#'                     )
-#'                   ),
-#'                   file = list(
-#'                     certificateChain = "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           virtualServiceName = "string"
-#'         )
-#'       )
-#'     ),
-#'     listeners = list(
-#'       list(
-#'         connectionPool = list(
-#'           grpc = list(
-#'             maxRequests = 123
-#'           ),
-#'           http = list(
-#'             maxConnections = 123,
-#'             maxPendingRequests = 123
-#'           ),
-#'           http2 = list(
-#'             maxRequests = 123
-#'           ),
-#'           tcp = list(
-#'             maxConnections = 123
-#'           )
-#'         ),
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           intervalMillis = 123,
-#'           path = "string",
-#'           port = 123,
-#'           protocol = "http"|"tcp"|"http2"|"grpc",
-#'           timeoutMillis = 123,
-#'           unhealthyThreshold = 123
-#'         ),
-#'         outlierDetection = list(
-#'           baseEjectionDuration = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           interval = list(
-#'             unit = "s"|"ms",
-#'             value = 123
-#'           ),
-#'           maxEjectionPercent = 123,
-#'           maxServerErrors = 123
-#'         ),
-#'         portMapping = list(
-#'           port = 123,
-#'           protocol = "http"|"tcp"|"http2"|"grpc"
-#'         ),
-#'         timeout = list(
-#'           grpc = list(
-#'             idle = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             perRequest = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             )
-#'           ),
-#'           http = list(
-#'             idle = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             perRequest = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             )
-#'           ),
-#'           http2 = list(
-#'             idle = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             ),
-#'             perRequest = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             )
-#'           ),
-#'           tcp = list(
-#'             idle = list(
-#'               unit = "s"|"ms",
-#'               value = 123
-#'             )
-#'           )
-#'         ),
-#'         tls = list(
-#'           certificate = list(
-#'             acm = list(
-#'               certificateArn = "string"
-#'             ),
-#'             file = list(
-#'               certificateChain = "string",
-#'               privateKey = "string"
-#'             )
-#'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-#'         )
-#'       )
-#'     ),
-#'     logging = list(
-#'       accessLog = list(
-#'         file = list(
-#'           path = "string"
-#'         )
-#'       )
-#'     ),
-#'     serviceDiscovery = list(
-#'       awsCloudMap = list(
-#'         attributes = list(
-#'           list(
-#'             key = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         namespaceName = "string",
-#'         serviceName = "string"
-#'       ),
-#'       dns = list(
-#'         hostname = "string"
-#'       )
-#'     )
-#'   ),
-#'   virtualNodeName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5769,79 +1464,20 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #' @description
 #' Updates an existing virtual router in a specified service mesh.
 #'
-#' @usage
-#' appmesh_update_virtual_router(clientToken, meshName, meshOwner, spec,
-#'   virtualRouterName)
+#' See [https://paws-r.github.io/docs/appmesh/update_virtual_router.html](https://paws-r.github.io/docs/appmesh/update_virtual_router.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual router specification to apply. This overwrites the
 #' existing data.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to update.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualRouter = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       listeners = list(
-#'         list(
-#'           portMapping = list(
-#'             port = 123,
-#'             protocol = "http"|"tcp"|"http2"|"grpc"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualRouterName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_virtual_router(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   spec = list(
-#'     listeners = list(
-#'       list(
-#'         portMapping = list(
-#'           port = 123,
-#'           protocol = "http"|"tcp"|"http2"|"grpc"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   virtualRouterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5868,79 +1504,20 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 #' @description
 #' Updates an existing virtual service in a specified service mesh.
 #'
-#' @usage
-#' appmesh_update_virtual_service(clientToken, meshName, meshOwner, spec,
-#'   virtualServiceName)
+#' See [https://paws-r.github.io/docs/appmesh/update_virtual_service.html](https://paws-r.github.io/docs/appmesh/update_virtual_service.html) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual service specification to apply. This overwrites the
 #' existing data.
 #' @param virtualServiceName &#91;required&#93; The name of the virtual service to update.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   virtualService = list(
-#'     meshName = "string",
-#'     metadata = list(
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       meshOwner = "string",
-#'       resourceOwner = "string",
-#'       uid = "string",
-#'       version = 123
-#'     ),
-#'     spec = list(
-#'       provider = list(
-#'         virtualNode = list(
-#'           virtualNodeName = "string"
-#'         ),
-#'         virtualRouter = list(
-#'           virtualRouterName = "string"
-#'         )
-#'       )
-#'     ),
-#'     status = list(
-#'       status = "ACTIVE"|"INACTIVE"|"DELETED"
-#'     ),
-#'     virtualServiceName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_virtual_service(
-#'   clientToken = "string",
-#'   meshName = "string",
-#'   meshOwner = "string",
-#'   spec = list(
-#'     provider = list(
-#'       virtualNode = list(
-#'         virtualNodeName = "string"
-#'       ),
-#'       virtualRouter = list(
-#'         virtualRouterName = "string"
-#'       )
-#'     )
-#'   ),
-#'   virtualServiceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

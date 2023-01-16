@@ -4,12 +4,29 @@
 \alias{appstream_update_fleet}
 \title{Updates the specified fleet}
 \usage{
-appstream_update_fleet(ImageName, ImageArn, Name, InstanceType,
-  ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
-  DisconnectTimeoutInSeconds, DeleteVpcConfig, Description, DisplayName,
-  EnableDefaultInternetAccess, DomainJoinInfo,
-  IdleDisconnectTimeoutInSeconds, AttributesToDelete, IamRoleArn,
-  StreamView)
+appstream_update_fleet(
+  ImageName = NULL,
+  ImageArn = NULL,
+  Name = NULL,
+  InstanceType = NULL,
+  ComputeCapacity = NULL,
+  VpcConfig = NULL,
+  MaxUserDurationInSeconds = NULL,
+  DisconnectTimeoutInSeconds = NULL,
+  DeleteVpcConfig = NULL,
+  Description = NULL,
+  DisplayName = NULL,
+  EnableDefaultInternetAccess = NULL,
+  DomainJoinInfo = NULL,
+  IdleDisconnectTimeoutInSeconds = NULL,
+  AttributesToDelete = NULL,
+  IamRoleArn = NULL,
+  StreamView = NULL,
+  Platform = NULL,
+  MaxConcurrentSessions = NULL,
+  UsbDeviceFilterStrings = NULL,
+  SessionScriptS3Location = NULL
+)
 }
 \arguments{
 \item{ImageName}{The name of the image used to create the fleet.}
@@ -21,6 +38,7 @@ appstream_update_fleet(ImageName, ImageArn, Name, InstanceType,
 \item{InstanceType}{The instance type to use when launching fleet instances. The following
 instance types are available:
 \itemize{
+\item stream.standard.small
 \item stream.standard.medium
 \item stream.standard.large
 \item stream.compute.large
@@ -53,11 +71,20 @@ instance types are available:
 \item stream.graphics-pro.4xlarge
 \item stream.graphics-pro.8xlarge
 \item stream.graphics-pro.16xlarge
+}
+
+The following instance types are available for Elastic fleets:
+\itemize{
+\item stream.standard.small
+\item stream.standard.medium
 }}
 
-\item{ComputeCapacity}{The desired capacity for the fleet.}
+\item{ComputeCapacity}{The desired capacity for the fleet. This is not allowed for Elastic
+fleets.}
 
-\item{VpcConfig}{The VPC configuration for the fleet.}
+\item{VpcConfig}{The VPC configuration for the fleet. This is required for Elastic
+fleets, but not required for other fleet types. Elastic fleets require
+that you specify at least two subnets in different availability zones.}
 
 \item{MaxUserDurationInSeconds}{The maximum amount of time that a streaming session can remain active,
 in seconds. If users are still connected to a streaming instance five
@@ -129,101 +156,22 @@ applications opened by users display. When \code{DESKTOP} is specified, the
 standard desktop that is provided by the operating system displays.
 
 The default value is \code{APP}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Fleet = list(
-    Arn = "string",
-    Name = "string",
-    DisplayName = "string",
-    Description = "string",
-    ImageName = "string",
-    ImageArn = "string",
-    InstanceType = "string",
-    FleetType = "ALWAYS_ON"|"ON_DEMAND",
-    ComputeCapacityStatus = list(
-      Desired = 123,
-      Running = 123,
-      InUse = 123,
-      Available = 123
-    ),
-    MaxUserDurationInSeconds = 123,
-    DisconnectTimeoutInSeconds = 123,
-    State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED",
-    VpcConfig = list(
-      SubnetIds = list(
-        "string"
-      ),
-      SecurityGroupIds = list(
-        "string"
-      )
-    ),
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    FleetErrors = list(
-      list(
-        ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-        ErrorMessage = "string"
-      )
-    ),
-    EnableDefaultInternetAccess = TRUE|FALSE,
-    DomainJoinInfo = list(
-      DirectoryName = "string",
-      OrganizationalUnitDistinguishedName = "string"
-    ),
-    IdleDisconnectTimeoutInSeconds = 123,
-    IamRoleArn = "string",
-    StreamView = "APP"|"DESKTOP"
-  )
-)
-}
+
+\item{Platform}{The platform of the fleet. WINDOWS_SERVER_2019 and AMAZON_LINUX2 are
+supported for Elastic fleets.}
+
+\item{MaxConcurrentSessions}{The maximum number of concurrent sessions for a fleet.}
+
+\item{UsbDeviceFilterStrings}{The USB device filter strings that specify which USB devices a user can
+redirect to the fleet streaming session, when using the Windows native
+client. This is allowed but not required for Elastic fleets.}
+
+\item{SessionScriptS3Location}{The S3 location of the session scripts configuration zip file. This only
+applies to Elastic fleets.}
 }
 \description{
 Updates the specified fleet.
 
-If the fleet is in the \code{STOPPED} state, you can update any attribute
-except the fleet name. If the fleet is in the \code{RUNNING} state, you can
-update the \code{DisplayName}, \code{ComputeCapacity}, \code{ImageARN}, \code{ImageName},
-\code{IdleDisconnectTimeoutInSeconds}, and \code{DisconnectTimeoutInSeconds}
-attributes. If the fleet is in the \code{STARTING} or \code{STOPPING} state, you
-can't update it.
+See \url{https://paws-r.github.io/docs/appstream/update_fleet.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_fleet(
-  ImageName = "string",
-  ImageArn = "string",
-  Name = "string",
-  InstanceType = "string",
-  ComputeCapacity = list(
-    DesiredInstances = 123
-  ),
-  VpcConfig = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  MaxUserDurationInSeconds = 123,
-  DisconnectTimeoutInSeconds = 123,
-  DeleteVpcConfig = TRUE|FALSE,
-  Description = "string",
-  DisplayName = "string",
-  EnableDefaultInternetAccess = TRUE|FALSE,
-  DomainJoinInfo = list(
-    DirectoryName = "string",
-    OrganizationalUnitDistinguishedName = "string"
-  ),
-  IdleDisconnectTimeoutInSeconds = 123,
-  AttributesToDelete = list(
-    "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"|"IAM_ROLE_ARN"
-  ),
-  IamRoleArn = "string",
-  StreamView = "APP"|"DESKTOP"
-)
-}
-}
-
 \keyword{internal}

@@ -15,7 +15,7 @@ NULL
 
 .kinesis$create_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardCount = structure(logical(0), tags = list(type = "integer")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -61,7 +61,7 @@ NULL
 
 .kinesis$describe_limits_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ShardLimit = structure(logical(0), tags = list(type = "integer")), OpenShardCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(ShardLimit = structure(logical(0), tags = list(type = "integer")), OpenShardCount = structure(logical(0), tags = list(type = "integer")), OnDemandStreamCount = structure(logical(0), tags = list(type = "integer")), OnDemandStreamCountLimit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -73,7 +73,7 @@ NULL
 
 .kinesis$describe_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamDescription = structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), StreamStatus = structure(logical(0), tags = list(type = "string")), Shards = structure(list(structure(list(ShardId = structure(logical(0), tags = list(type = "string")), ParentShardId = structure(logical(0), tags = list(type = "string")), AdjacentParentShardId = structure(logical(0), tags = list(type = "string")), HashKeyRange = structure(list(StartingHashKey = structure(logical(0), tags = list(type = "string")), EndingHashKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SequenceNumberRange = structure(list(StartingSequenceNumber = structure(logical(0), tags = list(type = "string")), EndingSequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), HasMoreShards = structure(logical(0), tags = list(type = "boolean")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), EnhancedMonitoring = structure(list(structure(list(ShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamDescription = structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), StreamStatus = structure(logical(0), tags = list(type = "string")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Shards = structure(list(structure(list(ShardId = structure(logical(0), tags = list(type = "string")), ParentShardId = structure(logical(0), tags = list(type = "string")), AdjacentParentShardId = structure(logical(0), tags = list(type = "string")), HashKeyRange = structure(list(StartingHashKey = structure(logical(0), tags = list(type = "string")), EndingHashKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SequenceNumberRange = structure(list(StartingSequenceNumber = structure(logical(0), tags = list(type = "string")), EndingSequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), HasMoreShards = structure(logical(0), tags = list(type = "boolean")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), EnhancedMonitoring = structure(list(structure(list(ShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -97,7 +97,7 @@ NULL
 
 .kinesis$describe_stream_summary_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamDescriptionSummary = structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), StreamStatus = structure(logical(0), tags = list(type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), EnhancedMonitoring = structure(list(structure(list(ShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), OpenShardCount = structure(logical(0), tags = list(type = "integer")), ConsumerCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamDescriptionSummary = structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), StreamStatus = structure(logical(0), tags = list(type = "string")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), StreamCreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), EnhancedMonitoring = structure(list(structure(list(ShardLevelMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), OpenShardCount = structure(logical(0), tags = list(type = "integer")), ConsumerCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -303,4 +303,14 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), CurrentShardCount = structure(logical(0), tags = list(type = "integer")), TargetShardCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.kinesis$update_stream_mode_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StreamARN = structure(logical(0), tags = list(type = "string")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$update_stream_mode_output <- function(...) {
+  list()
 }

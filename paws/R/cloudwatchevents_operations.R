@@ -92,6 +92,75 @@ cloudwatchevents_cancel_replay <- function(ReplayName) {
 }
 .cloudwatchevents$operations$cancel_replay <- cloudwatchevents_cancel_replay
 
+#' Creates an API destination, which is an HTTP invocation endpoint
+#' configured as a target for events
+#'
+#' @description
+#' Creates an API destination, which is an HTTP invocation endpoint
+#' configured as a target for events.
+#'
+#' @usage
+#' cloudwatchevents_create_api_destination(Name, Description,
+#'   ConnectionArn, InvocationEndpoint, HttpMethod,
+#'   InvocationRateLimitPerSecond)
+#'
+#' @param Name &#91;required&#93; The name for the API destination to create.
+#' @param Description A description for the API destination to create.
+#' @param ConnectionArn &#91;required&#93; The ARN of the connection to use for the API destination. The
+#' destination endpoint must support the authorization type specified for
+#' the connection.
+#' @param InvocationEndpoint &#91;required&#93; The URL to the HTTP invocation endpoint for the API destination.
+#' @param HttpMethod &#91;required&#93; The method to use for the request to the HTTP invocation endpoint.
+#' @param InvocationRateLimitPerSecond The maximum number of requests per second to send to the HTTP invocation
+#' endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinationArn = "string",
+#'   ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_api_destination(
+#'   Name = "string",
+#'   Description = "string",
+#'   ConnectionArn = "string",
+#'   InvocationEndpoint = "string",
+#'   HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'   InvocationRateLimitPerSecond = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_create_api_destination
+cloudwatchevents_create_api_destination <- function(Name, Description = NULL, ConnectionArn, InvocationEndpoint, HttpMethod, InvocationRateLimitPerSecond = NULL) {
+  op <- new_operation(
+    name = "CreateApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$create_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
+  output <- .cloudwatchevents$create_api_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$create_api_destination <- cloudwatchevents_create_api_destination
+
 #' Creates an archive of events with the specified settings
 #'
 #' @description
@@ -107,7 +176,7 @@ cloudwatchevents_cancel_replay <- function(ReplayName) {
 #'   Description, EventPattern, RetentionDays)
 #'
 #' @param ArchiveName &#91;required&#93; The name for the archive to create.
-#' @param EventSourceArn &#91;required&#93; The ARN of the event source associated with the archive.
+#' @param EventSourceArn &#91;required&#93; The ARN of the event bus that sends events to the archive.
 #' @param Description A description for the archive.
 #' @param EventPattern An event pattern to use to filter events sent to the archive.
 #' @param RetentionDays The number of days to retain events for. Default value is 0. If set to
@@ -156,6 +225,131 @@ cloudwatchevents_create_archive <- function(ArchiveName, EventSourceArn, Descrip
   return(response)
 }
 .cloudwatchevents$operations$create_archive <- cloudwatchevents_create_archive
+
+#' Creates a connection
+#'
+#' @description
+#' Creates a connection. A connection defines the authorization type and
+#' credentials to use for authorization with an API destination HTTP
+#' endpoint.
+#'
+#' @usage
+#' cloudwatchevents_create_connection(Name, Description, AuthorizationType,
+#'   AuthParameters)
+#'
+#' @param Name &#91;required&#93; The name for the connection to create.
+#' @param Description A description for the connection to create.
+#' @param AuthorizationType &#91;required&#93; The type of authorization to use for the connection.
+#' @param AuthParameters &#91;required&#93; A `CreateConnectionAuthRequestParameters` object that contains the
+#' authorization parameters to use to authorize with the endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connection(
+#'   Name = "string",
+#'   Description = "string",
+#'   AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'   AuthParameters = list(
+#'     BasicAuthParameters = list(
+#'       Username = "string",
+#'       Password = "string"
+#'     ),
+#'     OAuthParameters = list(
+#'       ClientParameters = list(
+#'         ClientID = "string",
+#'         ClientSecret = "string"
+#'       ),
+#'       AuthorizationEndpoint = "string",
+#'       HttpMethod = "GET"|"POST"|"PUT",
+#'       OAuthHttpParameters = list(
+#'         HeaderParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         QueryStringParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         BodyParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ApiKeyAuthParameters = list(
+#'       ApiKeyName = "string",
+#'       ApiKeyValue = "string"
+#'     ),
+#'     InvocationHttpParameters = list(
+#'       HeaderParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       QueryStringParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       BodyParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_create_connection
+cloudwatchevents_create_connection <- function(Name, Description = NULL, AuthorizationType, AuthParameters) {
+  op <- new_operation(
+    name = "CreateConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
+  output <- .cloudwatchevents$create_connection_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$create_connection <- cloudwatchevents_create_connection
 
 #' Creates a new event bus within your account
 #'
@@ -226,42 +420,44 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
 #'
 #' @description
 #' Called by an SaaS partner to create a partner event source. This
-#' operation is not used by AWS customers.
+#' operation is not used by Amazon Web Services customers.
 #' 
-#' Each partner event source can be used by one AWS account to create a
-#' matching partner event bus in that AWS account. A SaaS partner must
-#' create one partner event source for each AWS account that wants to
-#' receive those event types.
+#' Each partner event source can be used by one Amazon Web Services account
+#' to create a matching partner event bus in that Amazon Web Services
+#' account. A SaaS partner must create one partner event source for each
+#' Amazon Web Services account that wants to receive those event types.
 #' 
 #' A partner event source creates events based on resources within the SaaS
 #' partner's service or application.
 #' 
-#' An AWS account that creates a partner event bus that matches the partner
-#' event source can use that event bus to receive events from the partner,
-#' and then process them using AWS Events rules and targets.
+#' An Amazon Web Services account that creates a partner event bus that
+#' matches the partner event source can use that event bus to receive
+#' events from the partner, and then process them using Amazon Web Services
+#' Events rules and targets.
 #' 
 #' Partner event source names follow this format:
 #' 
 #' ` partner_name/event_namespace/event_name `
 #' 
 #' *partner_name* is determined during partner registration and identifies
-#' the partner to AWS customers. *event_namespace* is determined by the
-#' partner and is a way for the partner to categorize their events.
-#' *event_name* is determined by the partner, and should uniquely identify
-#' an event-generating resource within the partner system. The combination
-#' of *event_namespace* and *event_name* should help AWS customers decide
-#' whether to create an event bus to receive these events.
+#' the partner to Amazon Web Services customers. *event_namespace* is
+#' determined by the partner and is a way for the partner to categorize
+#' their events. *event_name* is determined by the partner, and should
+#' uniquely identify an event-generating resource within the partner
+#' system. The combination of *event_namespace* and *event_name* should
+#' help Amazon Web Services customers decide whether to create an event bus
+#' to receive these events.
 #'
 #' @usage
 #' cloudwatchevents_create_partner_event_source(Name, Account)
 #'
 #' @param Name &#91;required&#93; The name of the partner event source. This name must be unique and must
-#' be in the format ` partner_name/event_namespace/event_name `. The AWS
-#' account that wants to use this partner event source must create a
-#' partner event bus with a name that matches the name of the partner event
-#' source.
-#' @param Account &#91;required&#93; The AWS account ID that is permitted to create a matching partner event
-#' bus for this partner event source.
+#' be in the format ` partner_name/event_namespace/event_name `. The Amazon
+#' Web Services account that wants to use this partner event source must
+#' create a partner event bus with a name that matches the name of the
+#' partner event source.
+#' @param Account &#91;required&#93; The Amazon Web Services account ID that is permitted to create a
+#' matching partner event bus for this partner event source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -348,6 +544,103 @@ cloudwatchevents_deactivate_event_source <- function(Name) {
 }
 .cloudwatchevents$operations$deactivate_event_source <- cloudwatchevents_deactivate_event_source
 
+#' Removes all authorization parameters from the connection
+#'
+#' @description
+#' Removes all authorization parameters from the connection. This lets you
+#' remove the secret from the connection so you can reuse it without having
+#' to create a new connection.
+#'
+#' @usage
+#' cloudwatchevents_deauthorize_connection(Name)
+#'
+#' @param Name &#91;required&#93; The name of the connection to remove authorization from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deauthorize_connection(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_deauthorize_connection
+cloudwatchevents_deauthorize_connection <- function(Name) {
+  op <- new_operation(
+    name = "DeauthorizeConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$deauthorize_connection_input(Name = Name)
+  output <- .cloudwatchevents$deauthorize_connection_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$deauthorize_connection <- cloudwatchevents_deauthorize_connection
+
+#' Deletes the specified API destination
+#'
+#' @description
+#' Deletes the specified API destination.
+#'
+#' @usage
+#' cloudwatchevents_delete_api_destination(Name)
+#'
+#' @param Name &#91;required&#93; The name of the destination to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_api_destination(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_delete_api_destination
+cloudwatchevents_delete_api_destination <- function(Name) {
+  op <- new_operation(
+    name = "DeleteApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$delete_api_destination_input(Name = Name)
+  output <- .cloudwatchevents$delete_api_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$delete_api_destination <- cloudwatchevents_delete_api_destination
+
 #' Deletes the specified archive
 #'
 #' @description
@@ -387,6 +680,61 @@ cloudwatchevents_delete_archive <- function(ArchiveName) {
   return(response)
 }
 .cloudwatchevents$operations$delete_archive <- cloudwatchevents_delete_archive
+
+#' Deletes a connection
+#'
+#' @description
+#' Deletes a connection.
+#'
+#' @usage
+#' cloudwatchevents_delete_connection(Name)
+#'
+#' @param Name &#91;required&#93; The name of the connection to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_delete_connection
+cloudwatchevents_delete_connection <- function(Name) {
+  op <- new_operation(
+    name = "DeleteConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$delete_connection_input(Name = Name)
+  output <- .cloudwatchevents$delete_connection_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$delete_connection <- cloudwatchevents_delete_connection
 
 #' Deletes the specified custom event bus or partner event bus
 #'
@@ -434,17 +782,17 @@ cloudwatchevents_delete_event_bus <- function(Name) {
 #'
 #' @description
 #' This operation is used by SaaS partners to delete a partner event
-#' source. This operation is not used by AWS customers.
+#' source. This operation is not used by Amazon Web Services customers.
 #' 
 #' When you delete an event source, the status of the corresponding partner
-#' event bus in the AWS customer account becomes DELETED.
+#' event bus in the Amazon Web Services customer account becomes DELETED.
 #'
 #' @usage
 #' cloudwatchevents_delete_partner_event_source(Name, Account)
 #'
 #' @param Name &#91;required&#93; The name of the event source to delete.
-#' @param Account &#91;required&#93; The AWS account ID of the AWS customer that the event source was created
-#' for.
+#' @param Account &#91;required&#93; The Amazon Web Services account ID of the Amazon Web Services customer
+#' that the event source was created for.
 #'
 #' @return
 #' An empty list.
@@ -488,11 +836,15 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
 #' When you delete a rule, incoming events might continue to match to the
 #' deleted rule. Allow a short period of time for changes to take effect.
 #' 
-#' Managed rules are rules created and managed by another AWS service on
-#' your behalf. These rules are created by those other AWS services to
-#' support functionality in those services. You can delete these rules
-#' using the `Force` option, but you should do so only if you are sure the
-#' other service is not still using that rule.
+#' If you call delete rule multiple times for the same rule, all calls will
+#' succeed. When you call delete rule for a non-existent custom eventbus,
+#' `ResourceNotFoundException` is returned.
+#' 
+#' Managed rules are rules created and managed by another Amazon Web
+#' Services service on your behalf. These rules are created by those other
+#' Amazon Web Services services to support functionality in those services.
+#' You can delete these rules using the `Force` option, but you should do
+#' so only if you are sure the other service is not still using that rule.
 #'
 #' @usage
 #' cloudwatchevents_delete_rule(Name, EventBusName, Force)
@@ -500,10 +852,10 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
-#' @param Force If this is a managed rule, created by an AWS service on your behalf, you
-#' must specify `Force` as `True` to delete the rule. This parameter is
-#' ignored for rules that are not managed rules. You can check whether a
-#' rule is a managed rule by using
+#' @param Force If this is a managed rule, created by an Amazon Web Services service on
+#' your behalf, you must specify `Force` as `True` to delete the rule. This
+#' parameter is ignored for rules that are not managed rules. You can check
+#' whether a rule is a managed rule by using
 #' [`describe_rule`][cloudwatchevents_describe_rule] or
 #' [`list_rules`][cloudwatchevents_list_rules] and checking the `ManagedBy`
 #' field of the response.
@@ -539,6 +891,64 @@ cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL
   return(response)
 }
 .cloudwatchevents$operations$delete_rule <- cloudwatchevents_delete_rule
+
+#' Retrieves details about an API destination
+#'
+#' @description
+#' Retrieves details about an API destination.
+#'
+#' @usage
+#' cloudwatchevents_describe_api_destination(Name)
+#'
+#' @param Name &#91;required&#93; The name of the API destination to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinationArn = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'   ConnectionArn = "string",
+#'   InvocationEndpoint = "string",
+#'   HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'   InvocationRateLimitPerSecond = 123,
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_api_destination(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_describe_api_destination
+cloudwatchevents_describe_api_destination <- function(Name) {
+  op <- new_operation(
+    name = "DescribeApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$describe_api_destination_input(Name = Name)
+  output <- .cloudwatchevents$describe_api_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$describe_api_destination <- cloudwatchevents_describe_api_destination
 
 #' Retrieves details about an archive
 #'
@@ -597,14 +1007,135 @@ cloudwatchevents_describe_archive <- function(ArchiveName) {
 }
 .cloudwatchevents$operations$describe_archive <- cloudwatchevents_describe_archive
 
+#' Retrieves details about a connection
+#'
+#' @description
+#' Retrieves details about a connection.
+#'
+#' @usage
+#' cloudwatchevents_describe_connection(Name)
+#'
+#' @param Name &#91;required&#93; The name of the connection to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   StateReason = "string",
+#'   AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'   SecretArn = "string",
+#'   AuthParameters = list(
+#'     BasicAuthParameters = list(
+#'       Username = "string"
+#'     ),
+#'     OAuthParameters = list(
+#'       ClientParameters = list(
+#'         ClientID = "string"
+#'       ),
+#'       AuthorizationEndpoint = "string",
+#'       HttpMethod = "GET"|"POST"|"PUT",
+#'       OAuthHttpParameters = list(
+#'         HeaderParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         QueryStringParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         BodyParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ApiKeyAuthParameters = list(
+#'       ApiKeyName = "string"
+#'     ),
+#'     InvocationHttpParameters = list(
+#'       HeaderParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       QueryStringParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       BodyParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_connection(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_describe_connection
+cloudwatchevents_describe_connection <- function(Name) {
+  op <- new_operation(
+    name = "DescribeConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$describe_connection_input(Name = Name)
+  output <- .cloudwatchevents$describe_connection_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$describe_connection <- cloudwatchevents_describe_connection
+
 #' Displays details about an event bus in your account
 #'
 #' @description
 #' Displays details about an event bus in your account. This can include
-#' the external AWS accounts that are permitted to write events to your
-#' default event bus, and the associated policy. For custom event buses and
-#' partner event buses, it displays the name, ARN, policy, state, and
-#' creation time.
+#' the external Amazon Web Services accounts that are permitted to write
+#' events to your default event bus, and the associated policy. For custom
+#' event buses and partner event buses, it displays the name, ARN, policy,
+#' state, and creation time.
 #' 
 #' To enable your account to receive events from other accounts on its
 #' default event bus, use
@@ -717,8 +1248,8 @@ cloudwatchevents_describe_event_source <- function(Name) {
 #'
 #' @description
 #' An SaaS partner can use this operation to list details about a partner
-#' event source that they have created. AWS customers do not use this
-#' operation. Instead, AWS customers can use
+#' event source that they have created. Amazon Web Services customers do
+#' not use this operation. Instead, Amazon Web Services customers can use
 #' [`describe_event_source`][cloudwatchevents_describe_event_source] to see
 #' details about a partner event source that is shared with them.
 #'
@@ -1001,6 +1532,78 @@ cloudwatchevents_enable_rule <- function(Name, EventBusName = NULL) {
 }
 .cloudwatchevents$operations$enable_rule <- cloudwatchevents_enable_rule
 
+#' Retrieves a list of API destination in the account in the current Region
+#'
+#' @description
+#' Retrieves a list of API destination in the account in the current
+#' Region.
+#'
+#' @usage
+#' cloudwatchevents_list_api_destinations(NamePrefix, ConnectionArn,
+#'   NextToken, Limit)
+#'
+#' @param NamePrefix A name prefix to filter results returned. Only API destinations with a
+#' name that starts with the prefix are returned.
+#' @param ConnectionArn The ARN of the connection specified for the API destination.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param Limit The maximum number of API destinations to include in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinations = list(
+#'     list(
+#'       ApiDestinationArn = "string",
+#'       Name = "string",
+#'       ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'       ConnectionArn = "string",
+#'       InvocationEndpoint = "string",
+#'       HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'       InvocationRateLimitPerSecond = 123,
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_api_destinations(
+#'   NamePrefix = "string",
+#'   ConnectionArn = "string",
+#'   NextToken = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_list_api_destinations
+cloudwatchevents_list_api_destinations <- function(NamePrefix = NULL, ConnectionArn = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListApiDestinations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$list_api_destinations_input(NamePrefix = NamePrefix, ConnectionArn = ConnectionArn, NextToken = NextToken, Limit = Limit)
+  output <- .cloudwatchevents$list_api_destinations_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$list_api_destinations <- cloudwatchevents_list_api_destinations
+
 #' Lists your archives
 #'
 #' @description
@@ -1073,6 +1676,78 @@ cloudwatchevents_list_archives <- function(NamePrefix = NULL, EventSourceArn = N
 }
 .cloudwatchevents$operations$list_archives <- cloudwatchevents_list_archives
 
+#' Retrieves a list of connections from the account
+#'
+#' @description
+#' Retrieves a list of connections from the account.
+#'
+#' @usage
+#' cloudwatchevents_list_connections(NamePrefix, ConnectionState,
+#'   NextToken, Limit)
+#'
+#' @param NamePrefix A name prefix to filter results returned. Only connections with a name
+#' that starts with the prefix are returned.
+#' @param ConnectionState The state of the connection.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param Limit The maximum number of connections to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connections = list(
+#'     list(
+#'       ConnectionArn = "string",
+#'       Name = "string",
+#'       ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'       StateReason = "string",
+#'       AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastAuthorizedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connections(
+#'   NamePrefix = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   NextToken = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_list_connections
+cloudwatchevents_list_connections <- function(NamePrefix = NULL, ConnectionState = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListConnections",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$list_connections_input(NamePrefix = NamePrefix, ConnectionState = ConnectionState, NextToken = NextToken, Limit = Limit)
+  output <- .cloudwatchevents$list_connections_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$list_connections <- cloudwatchevents_list_connections
+
 #' Lists all the event buses in your account, including the default event
 #' bus, custom event buses, and partner event buses
 #'
@@ -1136,12 +1811,13 @@ cloudwatchevents_list_event_buses <- function(NamePrefix = NULL, NextToken = NUL
 .cloudwatchevents$operations$list_event_buses <- cloudwatchevents_list_event_buses
 
 #' You can use this to see all the partner event sources that have been
-#' shared with your AWS account
+#' shared with your Amazon Web Services account
 #'
 #' @description
 #' You can use this to see all the partner event sources that have been
-#' shared with your AWS account. For more information about partner event
-#' sources, see [`create_event_bus`][cloudwatchevents_create_event_bus].
+#' shared with your Amazon Web Services account. For more information about
+#' partner event sources, see
+#' [`create_event_bus`][cloudwatchevents_create_event_bus].
 #'
 #' @usage
 #' cloudwatchevents_list_event_sources(NamePrefix, NextToken, Limit)
@@ -1205,13 +1881,15 @@ cloudwatchevents_list_event_sources <- function(NamePrefix = NULL, NextToken = N
 }
 .cloudwatchevents$operations$list_event_sources <- cloudwatchevents_list_event_sources
 
-#' An SaaS partner can use this operation to display the AWS account ID
-#' that a particular partner event source name is associated with
+#' An SaaS partner can use this operation to display the Amazon Web
+#' Services account ID that a particular partner event source name is
+#' associated with
 #'
 #' @description
-#' An SaaS partner can use this operation to display the AWS account ID
-#' that a particular partner event source name is associated with. This
-#' operation is not used by AWS customers.
+#' An SaaS partner can use this operation to display the Amazon Web
+#' Services account ID that a particular partner event source name is
+#' associated with. This operation is not used by Amazon Web Services
+#' customers.
 #'
 #' @usage
 #' cloudwatchevents_list_partner_event_source_accounts(EventSourceName,
@@ -1279,8 +1957,8 @@ cloudwatchevents_list_partner_event_source_accounts <- function(EventSourceName,
 #'
 #' @description
 #' An SaaS partner can use this operation to list all the partner event
-#' source names that they have created. This operation is not used by AWS
-#' customers.
+#' source names that they have created. This operation is not used by
+#' Amazon Web Services customers.
 #'
 #' @usage
 #' cloudwatchevents_list_partner_event_sources(NamePrefix, NextToken,
@@ -1351,7 +2029,7 @@ cloudwatchevents_list_partner_event_sources <- function(NamePrefix, NextToken = 
 #' @param NamePrefix A name prefix to filter the replays returned. Only replays with name
 #' that match the prefix are returned.
 #' @param State The state of the replay.
-#' @param EventSourceArn The ARN of the event source associated with the replay.
+#' @param EventSourceArn The ARN of the archive from which the events are replayed.
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of replays to retrieve.
@@ -1647,7 +2325,7 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
 #'       EcsParameters = list(
 #'         TaskDefinitionArn = "string",
 #'         TaskCount = 123,
-#'         LaunchType = "EC2"|"FARGATE",
+#'         LaunchType = "EC2"|"FARGATE"|"EXTERNAL",
 #'         NetworkConfiguration = list(
 #'           awsvpcConfiguration = list(
 #'             Subnets = list(
@@ -1660,7 +2338,36 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
 #'           )
 #'         ),
 #'         PlatformVersion = "string",
-#'         Group = "string"
+#'         Group = "string",
+#'         CapacityProviderStrategy = list(
+#'           list(
+#'             capacityProvider = "string",
+#'             weight = 123,
+#'             base = 123
+#'           )
+#'         ),
+#'         EnableECSManagedTags = TRUE|FALSE,
+#'         EnableExecuteCommand = TRUE|FALSE,
+#'         PlacementConstraints = list(
+#'           list(
+#'             type = "distinctInstance"|"memberOf",
+#'             expression = "string"
+#'           )
+#'         ),
+#'         PlacementStrategy = list(
+#'           list(
+#'             type = "random"|"spread"|"binpack",
+#'             field = "string"
+#'           )
+#'         ),
+#'         PropagateTags = "TASK_DEFINITION",
+#'         ReferenceId = "string",
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
 #'       ),
 #'       BatchParameters = list(
 #'         JobDefinition = "string",
@@ -1693,6 +2400,14 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
 #'         Sql = "string",
 #'         StatementName = "string",
 #'         WithEvent = TRUE|FALSE
+#'       ),
+#'       SageMakerPipelineParameters = list(
+#'         PipelineParameterList = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
 #'       ),
 #'       DeadLetterConfig = list(
 #'         Arn = "string"
@@ -1780,7 +2495,8 @@ cloudwatchevents_list_targets_by_rule <- function(Rule, EventBusName = NULL, Nex
 #'       ),
 #'       DetailType = "string",
 #'       Detail = "string",
-#'       EventBusName = "string"
+#'       EventBusName = "string",
+#'       TraceHeader = "string"
 #'     )
 #'   )
 #' )
@@ -1811,7 +2527,7 @@ cloudwatchevents_put_events <- function(Entries) {
 #'
 #' @description
 #' This is used by SaaS partners to write events to a customer's partner
-#' event bus. AWS customers do not use this operation.
+#' event bus. Amazon Web Services customers do not use this operation.
 #'
 #' @usage
 #' cloudwatchevents_put_partner_events(Entries)
@@ -1872,37 +2588,39 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 }
 .cloudwatchevents$operations$put_partner_events <- cloudwatchevents_put_partner_events
 
-#' Running PutPermission permits the specified AWS account or AWS
-#' organization to put events to the specified event bus
+#' Running PutPermission permits the specified Amazon Web Services account
+#' or Amazon Web Services organization to put events to the specified event
+#' bus
 #'
 #' @description
 #' Running [`put_permission`][cloudwatchevents_put_permission] permits the
-#' specified AWS account or AWS organization to put events to the specified
-#' *event bus*. Amazon EventBridge (CloudWatch Events) rules in your
-#' account are triggered by these events arriving to an event bus in your
-#' account.
+#' specified Amazon Web Services account or Amazon Web Services
+#' organization to put events to the specified *event bus*. Amazon
+#' EventBridge (CloudWatch Events) rules in your account are triggered by
+#' these events arriving to an event bus in your account.
 #' 
 #' For another account to send events to your account, that external
 #' account must have an EventBridge rule with your account's event bus as a
 #' target.
 #' 
-#' To enable multiple AWS accounts to put events to your event bus, run
-#' [`put_permission`][cloudwatchevents_put_permission] once for each of
-#' these accounts. Or, if all the accounts are members of the same AWS
-#' organization, you can run
+#' To enable multiple Amazon Web Services accounts to put events to your
+#' event bus, run [`put_permission`][cloudwatchevents_put_permission] once
+#' for each of these accounts. Or, if all the accounts are members of the
+#' same Amazon Web Services organization, you can run
 #' [`put_permission`][cloudwatchevents_put_permission] once specifying
-#' `Principal` as "*" and specifying the AWS organization ID in
-#' `Condition`, to grant permissions to all accounts in that organization.
+#' `Principal` as "*" and specifying the Amazon Web Services organization
+#' ID in `Condition`, to grant permissions to all accounts in that
+#' organization.
 #' 
 #' If you grant permissions using an organization, then accounts in that
 #' organization must specify a `RoleArn` with proper permissions when they
 #' use `PutTarget` to add your account's event bus as a target. For more
-#' information, see [Sending and Receiving Events Between AWS
+#' information, see [Sending and Receiving Events Between Amazon Web
+#' Services
 #' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
-#' The permission policy on the default event bus cannot exceed 10 KB in
-#' size.
+#' The permission policy on the event bus cannot exceed 10 KB in size.
 #'
 #' @usage
 #' cloudwatchevents_put_permission(EventBusName, Action, Principal,
@@ -1911,10 +2629,9 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' @param EventBusName The name of the event bus associated with the rule. If you omit this,
 #' the default event bus is used.
 #' @param Action The action that you are enabling the other account to perform.
-#' Currently, this must be `events:PutEvents`.
-#' @param Principal The 12-digit AWS account ID that you are permitting to put events to
-#' your default event bus. Specify "*" to permit any account to put events
-#' to your default event bus.
+#' @param Principal The 12-digit Amazon Web Services account ID that you are permitting to
+#' put events to your default event bus. Specify "*" to permit any account
+#' to put events to your default event bus.
 #' 
 #' If you specify "*" without specifying `Condition`, avoid creating rules
 #' that may match undesirable events. To create more secure rules, make
@@ -1926,15 +2643,15 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' external account, specify this `StatementId` when you run
 #' [`remove_permission`][cloudwatchevents_remove_permission].
 #' @param Condition This parameter enables you to limit the permission to accounts that
-#' fulfill a certain condition, such as being a member of a certain AWS
-#' organization. For more information about AWS Organizations, see [What Is
-#' AWS
+#' fulfill a certain condition, such as being a member of a certain Amazon
+#' Web Services organization. For more information about Amazon Web
+#' Services Organizations, see [What Is Amazon Web Services
 #' Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
-#' in the *AWS Organizations User Guide*.
+#' in the *Amazon Web Services Organizations User Guide*.
 #' 
-#' If you specify `Condition` with an AWS organization ID, and specify "*"
-#' as the value for `Principal`, you grant permission to all the accounts
-#' in the named organization.
+#' If you specify `Condition` with an Amazon Web Services organization ID,
+#' and specify "*" as the value for `Principal`, you grant permission to
+#' all the accounts in the named organization.
 #' 
 #' The `Condition` is a JSON string which must contain `Type`, `Key`, and
 #' `Value` fields.
@@ -1989,12 +2706,12 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #' [`disable_rule`][cloudwatchevents_disable_rule].
 #' 
 #' A single rule watches for events from a single event bus. Events
-#' generated by AWS services go to your account's default event bus. Events
-#' generated by SaaS partner services or applications go to the matching
-#' partner event bus. If you have custom applications or services, you can
-#' specify whether their events go to your default event bus or a custom
-#' event bus that you have created. For more information, see
-#' [`create_event_bus`][cloudwatchevents_create_event_bus].
+#' generated by Amazon Web Services services go to your account's default
+#' event bus. Events generated by SaaS partner services or applications go
+#' to the matching partner event bus. If you have custom applications or
+#' services, you can specify whether their events go to your default event
+#' bus or a custom event bus that you have created. For more information,
+#' see [`create_event_bus`][cloudwatchevents_create_event_bus].
 #' 
 #' If you are updating an existing rule, the rule is replaced with what you
 #' specify in this [`put_rule`][cloudwatchevents_put_rule] command. If you
@@ -2027,11 +2744,11 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #' [`tag_resource`][cloudwatchevents_tag_resource] and
 #' [`untag_resource`][cloudwatchevents_untag_resource].
 #' 
-#' Most services in AWS treat : or / as the same character in Amazon
-#' Resource Names (ARNs). However, EventBridge uses an exact match in event
-#' patterns and rules. Be sure to use the correct ARN characters when
-#' creating event patterns so that they match the ARN syntax in the event
-#' you want to match.
+#' Most services in Amazon Web Services treat : or / as the same character
+#' in Amazon Resource Names (ARNs). However, EventBridge uses an exact
+#' match in event patterns and rules. Be sure to use the correct ARN
+#' characters when creating event patterns so that they match the ARN
+#' syntax in the event you want to match.
 #' 
 #' In EventBridge, it is possible to create rules that lead to infinite
 #' loops, where a rule is fired repeatedly. For example, a rule might
@@ -2048,7 +2765,7 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #' recommend that you use budgeting, which alerts you when charges exceed
 #' your specified limit. For more information, see [Managing Your Costs
 #' with
-#' Budgets](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html).
+#' Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html).
 #'
 #' @usage
 #' cloudwatchevents_put_rule(Name, ScheduleExpression, EventPattern, State,
@@ -2063,6 +2780,12 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #' @param State Indicates whether the rule is enabled or disabled.
 #' @param Description A description of the rule.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role associated with the rule.
+#' 
+#' If you're setting an event bus in another account as the target and that
+#' account granted permission to your account through an organization
+#' instead of directly by the account ID, you must specify a `RoleArn` with
+#' proper permissions in the `Target` structure, instead of here in this
+#' parameter.
 #' @param Tags The list of key-value pairs to associate with the rule.
 #' @param EventBusName The name or ARN of the event bus to associate with this rule. If you
 #' omit this, the default event bus is used.
@@ -2125,44 +2848,63 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' 
 #' You can configure the following as targets for Events:
 #' 
-#' -   EC2 instances
+#' -   [API
+#'     destination](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-destinations.html)
 #' 
-#' -   SSM Run Command
+#' -   Amazon API Gateway REST API endpoints
 #' 
-#' -   SSM Automation
+#' -   API Gateway
 #' 
-#' -   AWS Lambda functions
+#' -   Batch job queue
 #' 
-#' -   Data streams in Amazon Kinesis Data Streams
+#' -   CloudWatch Logs group
 #' 
-#' -   Data delivery streams in Amazon Kinesis Data Firehose
+#' -   CodeBuild project
+#' 
+#' -   CodePipeline
+#' 
+#' -   Amazon EC2 `CreateSnapshot` API call
+#' 
+#' -   Amazon EC2 `RebootInstances` API call
+#' 
+#' -   Amazon EC2 `StopInstances` API call
+#' 
+#' -   Amazon EC2 `TerminateInstances` API call
 #' 
 #' -   Amazon ECS tasks
 #' 
-#' -   AWS Step Functions state machines
+#' -   Event bus in a different Amazon Web Services account or Region.
 #' 
-#' -   AWS Batch jobs
+#'     You can use an event bus in the US East (N. Virginia) us-east-1, US
+#'     West (Oregon) us-west-2, or Europe (Ireland) eu-west-1 Regions as a
+#'     target for a rule.
 #' 
-#' -   AWS CodeBuild projects
+#' -   Firehose delivery stream (Kinesis Data Firehose)
 #' 
-#' -   Pipelines in AWS CodePipeline
+#' -   Inspector assessment template (Amazon Inspector)
 #' 
-#' -   Amazon Inspector assessment templates
+#' -   Kinesis stream (Kinesis Data Stream)
 #' 
-#' -   Amazon SNS topics
+#' -   Lambda function
 #' 
-#' -   Amazon SQS queues, including FIFO queues
+#' -   Redshift clusters (Data API statement execution)
 #' 
-#' -   The default event bus of another AWS account
+#' -   Amazon SNS topic
 #' 
-#' -   Amazon API Gateway REST APIs
+#' -   Amazon SQS queues (includes FIFO queues
 #' 
-#' -   Redshift Clusters to invoke Data API ExecuteStatement on
+#' -   SSM Automation
 #' 
-#' Creating rules with built-in targets is supported only in the AWS
-#' Management Console. The built-in targets are
-#' `EC2 CreateSnapshot API call`, `EC2 RebootInstances API call`,
-#' `EC2 StopInstances API call`, and `EC2 TerminateInstances API call`.
+#' -   SSM OpsItem
+#' 
+#' -   SSM Run Command
+#' 
+#' -   Step Functions state machines
+#' 
+#' Creating rules with built-in targets is supported only in the Management
+#' Console. The built-in targets are `EC2 CreateSnapshot API call`,
+#' `EC2 RebootInstances API call`, `EC2 StopInstances API call`, and
+#' `EC2 TerminateInstances API call`.
 #' 
 #' For some target types, [`put_targets`][cloudwatchevents_put_targets]
 #' provides target-specific parameters. If the target is a Kinesis data
@@ -2172,36 +2914,37 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' field.
 #' 
 #' To be able to make API calls against the resources that you own, Amazon
-#' EventBridge (CloudWatch Events) needs the appropriate permissions. For
-#' AWS Lambda and Amazon SNS resources, EventBridge relies on
-#' resource-based policies. For EC2 instances, Kinesis data streams, AWS
-#' Step Functions state machines and API Gateway REST APIs, EventBridge
-#' relies on IAM roles that you specify in the `RoleARN` argument in
-#' [`put_targets`][cloudwatchevents_put_targets]. For more information, see
-#' [Authentication and Access
+#' EventBridge needs the appropriate permissions. For Lambda and Amazon SNS
+#' resources, EventBridge relies on resource-based policies. For EC2
+#' instances, Kinesis Data Streams, Step Functions state machines and API
+#' Gateway REST APIs, EventBridge relies on IAM roles that you specify in
+#' the `RoleARN` argument in [`put_targets`][cloudwatchevents_put_targets].
+#' For more information, see [Authentication and Access
 #' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-iam.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
-#' If another AWS account is in the same region and has granted you
-#' permission (using [`put_permission`][cloudwatchevents_put_permission]),
-#' you can send events to that account. Set that account's event bus as a
-#' target of the rules in your account. To send the matched events to the
-#' other account, specify that account's event bus as the `Arn` value when
-#' you run [`put_targets`][cloudwatchevents_put_targets]. If your account
-#' sends events to another account, your account is charged for each sent
-#' event. Each event sent to another account is charged as a custom event.
-#' The account receiving the event is not charged. For more information,
-#' see [Amazon EventBridge (CloudWatch Events)
+#' If another Amazon Web Services account is in the same region and has
+#' granted you permission (using
+#' [`put_permission`][cloudwatchevents_put_permission]), you can send
+#' events to that account. Set that account's event bus as a target of the
+#' rules in your account. To send the matched events to the other account,
+#' specify that account's event bus as the `Arn` value when you run
+#' [`put_targets`][cloudwatchevents_put_targets]. If your account sends
+#' events to another account, your account is charged for each sent event.
+#' Each event sent to another account is charged as a custom event. The
+#' account receiving the event is not charged. For more information, see
+#' [Amazon EventBridge
 #' Pricing](https://aws.amazon.com/eventbridge/pricing/).
 #' 
 #' `Input`, `InputPath`, and `InputTransformer` are not available with
-#' `PutTarget` if the target is an event bus of a different AWS account.
+#' `PutTarget` if the target is an event bus of a different Amazon Web
+#' Services account.
 #' 
 #' If you are setting the event bus of another account as the target, and
 #' that account granted permission to your account through an organization
 #' instead of directly by the account ID, then you must specify a `RoleArn`
 #' with proper permissions in the `Target` structure. For more information,
-#' see [Sending and Receiving Events Between AWS
+#' see [Sending and Receiving Events Between Amazon Web Services
 #' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
@@ -2298,7 +3041,7 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #'       EcsParameters = list(
 #'         TaskDefinitionArn = "string",
 #'         TaskCount = 123,
-#'         LaunchType = "EC2"|"FARGATE",
+#'         LaunchType = "EC2"|"FARGATE"|"EXTERNAL",
 #'         NetworkConfiguration = list(
 #'           awsvpcConfiguration = list(
 #'             Subnets = list(
@@ -2311,7 +3054,36 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #'           )
 #'         ),
 #'         PlatformVersion = "string",
-#'         Group = "string"
+#'         Group = "string",
+#'         CapacityProviderStrategy = list(
+#'           list(
+#'             capacityProvider = "string",
+#'             weight = 123,
+#'             base = 123
+#'           )
+#'         ),
+#'         EnableECSManagedTags = TRUE|FALSE,
+#'         EnableExecuteCommand = TRUE|FALSE,
+#'         PlacementConstraints = list(
+#'           list(
+#'             type = "distinctInstance"|"memberOf",
+#'             expression = "string"
+#'           )
+#'         ),
+#'         PlacementStrategy = list(
+#'           list(
+#'             type = "random"|"spread"|"binpack",
+#'             field = "string"
+#'           )
+#'         ),
+#'         PropagateTags = "TASK_DEFINITION",
+#'         ReferenceId = "string",
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
 #'       ),
 #'       BatchParameters = list(
 #'         JobDefinition = "string",
@@ -2345,6 +3117,14 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #'         StatementName = "string",
 #'         WithEvent = TRUE|FALSE
 #'       ),
+#'       SageMakerPipelineParameters = list(
+#'         PipelineParameterList = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
 #'       DeadLetterConfig = list(
 #'         Arn = "string"
 #'       ),
@@ -2377,13 +3157,13 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 }
 .cloudwatchevents$operations$put_targets <- cloudwatchevents_put_targets
 
-#' Revokes the permission of another AWS account to be able to put events
-#' to the specified event bus
+#' Revokes the permission of another Amazon Web Services account to be able
+#' to put events to the specified event bus
 #'
 #' @description
-#' Revokes the permission of another AWS account to be able to put events
-#' to the specified event bus. Specify the account to revoke by the
-#' `StatementId` value that you associated with the account when you
+#' Revokes the permission of another Amazon Web Services account to be able
+#' to put events to the specified event bus. Specify the account to revoke
+#' by the `StatementId` value that you associated with the account when you
 #' granted it permission with
 #' [`put_permission`][cloudwatchevents_put_permission]. You can find the
 #' `StatementId` by using
@@ -2453,10 +3233,10 @@ cloudwatchevents_remove_permission <- function(StatementId = NULL, RemoveAllPerm
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
 #' @param Ids &#91;required&#93; The IDs of the targets to remove from the rule.
-#' @param Force If this is a managed rule, created by an AWS service on your behalf, you
-#' must specify `Force` as `True` to remove targets. This parameter is
-#' ignored for rules that are not managed rules. You can check whether a
-#' rule is a managed rule by using
+#' @param Force If this is a managed rule, created by an Amazon Web Services service on
+#' your behalf, you must specify `Force` as `True` to remove targets. This
+#' parameter is ignored for rules that are not managed rules. You can check
+#' whether a rule is a managed rule by using
 #' [`describe_rule`][cloudwatchevents_describe_rule] or
 #' [`list_rules`][cloudwatchevents_list_rules] and checking the `ManagedBy`
 #' field of the response.
@@ -2601,8 +3381,8 @@ cloudwatchevents_start_replay <- function(ReplayName, Description = NULL, EventS
 #' permission to access or change only resources with certain tag values.
 #' In EventBridge, rules and event buses can be tagged.
 #' 
-#' Tags don't have any semantic meaning to AWS and are interpreted strictly
-#' as strings of characters.
+#' Tags don't have any semantic meaning to Amazon Web Services and are
+#' interpreted strictly as strings of characters.
 #' 
 #' You can use the [`tag_resource`][cloudwatchevents_tag_resource] action
 #' with a resource that already has tags. If you specify a new tag key,
@@ -2660,11 +3440,11 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Tests whether the specified event pattern matches the provided event.
 #' 
-#' Most services in AWS treat : or / as the same character in Amazon
-#' Resource Names (ARNs). However, EventBridge uses an exact match in event
-#' patterns and rules. Be sure to use the correct ARN characters when
-#' creating event patterns so that they match the ARN syntax in the event
-#' you want to match.
+#' Most services in Amazon Web Services treat : or / as the same character
+#' in Amazon Resource Names (ARNs). However, EventBridge uses an exact
+#' match in event patterns and rules. Be sure to use the correct ARN
+#' characters when creating event patterns so that they match the ARN
+#' syntax in the event you want to match.
 #'
 #' @usage
 #' cloudwatchevents_test_event_pattern(EventPattern, Event)
@@ -2672,7 +3452,24 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
 #' @param EventPattern &#91;required&#93; The event pattern. For more information, see [Events and Event
 #' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
 #' in the *Amazon EventBridge User Guide*.
-#' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern.
+#' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern. The JSON
+#' must follow the format specified in [Amazon Web Services
+#' Events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html),
+#' and the following fields are mandatory:
+#' 
+#' -   `id`
+#' 
+#' -   `account`
+#' 
+#' -   `source`
+#' 
+#' -   `time`
+#' 
+#' -   `region`
+#' 
+#' -   `resources`
+#' 
+#' -   `detail-type`
 #'
 #' @return
 #' A list with the following syntax:
@@ -2714,7 +3511,7 @@ cloudwatchevents_test_event_pattern <- function(EventPattern, Event) {
 #'
 #' @description
 #' Removes one or more tags from the specified EventBridge resource. In
-#' Amazon EventBridge (CloudWatch Events, rules and event buses can be
+#' Amazon EventBridge (CloudWatch Events), rules and event buses can be
 #' tagged.
 #'
 #' @usage
@@ -2755,6 +3552,71 @@ cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .cloudwatchevents$operations$untag_resource <- cloudwatchevents_untag_resource
+
+#' Updates an API destination
+#'
+#' @description
+#' Updates an API destination.
+#'
+#' @usage
+#' cloudwatchevents_update_api_destination(Name, Description,
+#'   ConnectionArn, InvocationEndpoint, HttpMethod,
+#'   InvocationRateLimitPerSecond)
+#'
+#' @param Name &#91;required&#93; The name of the API destination to update.
+#' @param Description The name of the API destination to update.
+#' @param ConnectionArn The ARN of the connection to use for the API destination.
+#' @param InvocationEndpoint The URL to the endpoint to use for the API destination.
+#' @param HttpMethod The method to use for the API destination.
+#' @param InvocationRateLimitPerSecond The maximum number of invocations per second to send to the API
+#' destination.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinationArn = "string",
+#'   ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_api_destination(
+#'   Name = "string",
+#'   Description = "string",
+#'   ConnectionArn = "string",
+#'   InvocationEndpoint = "string",
+#'   HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'   InvocationRateLimitPerSecond = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_update_api_destination
+cloudwatchevents_update_api_destination <- function(Name, Description = NULL, ConnectionArn = NULL, InvocationEndpoint = NULL, HttpMethod = NULL, InvocationRateLimitPerSecond = NULL) {
+  op <- new_operation(
+    name = "UpdateApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$update_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
+  output <- .cloudwatchevents$update_api_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$update_api_destination <- cloudwatchevents_update_api_destination
 
 #' Updates the specified archive
 #'
@@ -2812,3 +3674,128 @@ cloudwatchevents_update_archive <- function(ArchiveName, Description = NULL, Eve
   return(response)
 }
 .cloudwatchevents$operations$update_archive <- cloudwatchevents_update_archive
+
+#' Updates settings for a connection
+#'
+#' @description
+#' Updates settings for a connection.
+#'
+#' @usage
+#' cloudwatchevents_update_connection(Name, Description, AuthorizationType,
+#'   AuthParameters)
+#'
+#' @param Name &#91;required&#93; The name of the connection to update.
+#' @param Description A description for the connection.
+#' @param AuthorizationType The type of authorization to use for the connection.
+#' @param AuthParameters The authorization parameters to use for the connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connection(
+#'   Name = "string",
+#'   Description = "string",
+#'   AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'   AuthParameters = list(
+#'     BasicAuthParameters = list(
+#'       Username = "string",
+#'       Password = "string"
+#'     ),
+#'     OAuthParameters = list(
+#'       ClientParameters = list(
+#'         ClientID = "string",
+#'         ClientSecret = "string"
+#'       ),
+#'       AuthorizationEndpoint = "string",
+#'       HttpMethod = "GET"|"POST"|"PUT",
+#'       OAuthHttpParameters = list(
+#'         HeaderParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         QueryStringParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         BodyParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ApiKeyAuthParameters = list(
+#'       ApiKeyName = "string",
+#'       ApiKeyValue = "string"
+#'     ),
+#'     InvocationHttpParameters = list(
+#'       HeaderParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       QueryStringParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       BodyParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_update_connection
+cloudwatchevents_update_connection <- function(Name, Description = NULL, AuthorizationType = NULL, AuthParameters = NULL) {
+  op <- new_operation(
+    name = "UpdateConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
+  output <- .cloudwatchevents$update_connection_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$update_connection <- cloudwatchevents_update_connection

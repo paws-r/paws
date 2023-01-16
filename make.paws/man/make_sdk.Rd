@@ -6,14 +6,23 @@
 \usage{
 make_sdk(
   in_dir = "./vendor/aws-sdk-js",
-  out_dir = "./paws",
+  out_sdk_dir = "./cran",
+  out_doc_dir = "./paws",
+  apis = character(0),
+  only_cran = TRUE,
   cache_dir = "./cache"
 )
 }
 \arguments{
-\item{in_dir}{Directory containing API files.}
+\item{in_dir}{Directory containing AWS API input files.}
 
-\item{out_dir}{Directory of the R package.}
+\item{out_sdk_dir}{Directory to write the R packages to.}
+
+\item{out_doc_dir}{Directory to write the documentation to.}
+
+\item{apis}{An optional list of APIs to include.}
+
+\item{only_cran}{Whether to include only the R packages already on CRAN.}
 
 \item{cache_dir}{Directory to store cached artifacts. Providing a non-\code{NULL}
 value will greatly speed up subsequent runs that use the same value.}

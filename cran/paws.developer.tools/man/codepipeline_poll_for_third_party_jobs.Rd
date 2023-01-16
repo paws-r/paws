@@ -5,43 +5,16 @@
 \title{Determines whether there are any third party jobs for a job worker to
 act on}
 \usage{
-codepipeline_poll_for_third_party_jobs(actionTypeId, maxBatchSize)
+codepipeline_poll_for_third_party_jobs(actionTypeId, maxBatchSize = NULL)
 }
 \arguments{
 \item{actionTypeId}{[required] Represents information about an action type.}
 
 \item{maxBatchSize}{The maximum number of jobs to return in a poll for jobs call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  jobs = list(
-    list(
-      clientId = "string",
-      jobId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Determines whether there are any third party jobs for a job worker to
-act on. Used for partner actions only.
+Determines whether there are any third party jobs for a job worker to act on. Used for partner actions only.
 
-When this API is called, AWS CodePipeline returns temporary credentials
-for the S3 bucket used to store artifacts for the pipeline, if the
-action requires access to that S3 bucket for input or output artifacts.
+See \url{https://paws-r.github.io/docs/codepipeline/poll_for_third_party_jobs.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$poll_for_third_party_jobs(
-  actionTypeId = list(
-    category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-    owner = "AWS"|"ThirdParty"|"Custom",
-    provider = "string",
-    version = "string"
-  ),
-  maxBatchSize = 123
-)
-}
-}
-
 \keyword{internal}

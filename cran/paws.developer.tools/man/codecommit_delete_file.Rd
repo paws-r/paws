@@ -4,8 +4,16 @@
 \alias{codecommit_delete_file}
 \title{Deletes a specified file from a specified branch}
 \usage{
-codecommit_delete_file(repositoryName, branchName, filePath,
-  parentCommitId, keepEmptyFolders, commitMessage, name, email)
+codecommit_delete_file(
+  repositoryName,
+  branchName,
+  filePath,
+  parentCommitId,
+  keepEmptyFolders = NULL,
+  commitMessage = NULL,
+  name = NULL,
+  email = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository that contains the file to delete.}
@@ -40,32 +48,9 @@ name.}
 \item{email}{The email address for the commit that deletes the file. If no email
 address is specified, the email address is left blank.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commitId = "string",
-  blobId = "string",
-  treeId = "string",
-  filePath = "string"
-)
-}
-}
 \description{
-Deletes a specified file from a specified branch. A commit is created on
-the branch that contains the revision. The file still exists in the
-commits earlier to the commit that contains the deletion.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_file(
-  repositoryName = "string",
-  branchName = "string",
-  filePath = "string",
-  parentCommitId = "string",
-  keepEmptyFolders = TRUE|FALSE,
-  commitMessage = "string",
-  name = "string",
-  email = "string"
-)
-}
-}
+Deletes a specified file from a specified branch. A commit is created on the branch that contains the revision. The file still exists in the commits earlier to the commit that contains the deletion.
 
+See \url{https://paws-r.github.io/docs/codecommit/delete_file.html} for full documentation.
+}
 \keyword{internal}

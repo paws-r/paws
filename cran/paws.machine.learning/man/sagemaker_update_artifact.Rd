@@ -4,8 +4,12 @@
 \alias{sagemaker_update_artifact}
 \title{Updates an artifact}
 \usage{
-sagemaker_update_artifact(ArtifactArn, ArtifactName, Properties,
-  PropertiesToRemove)
+sagemaker_update_artifact(
+  ArtifactArn,
+  ArtifactName = NULL,
+  Properties = NULL,
+  PropertiesToRemove = NULL
+)
 }
 \arguments{
 \item{ArtifactArn}{[required] The Amazon Resource Name (ARN) of the artifact to update.}
@@ -16,27 +20,9 @@ sagemaker_update_artifact(ArtifactArn, ArtifactName, Properties,
 
 \item{PropertiesToRemove}{A list of properties to remove.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ArtifactArn = "string"
-)
-}
-}
 \description{
 Updates an artifact.
-}
-\section{Request syntax}{
-\preformatted{svc$update_artifact(
-  ArtifactArn = "string",
-  ArtifactName = "string",
-  Properties = list(
-    "string"
-  ),
-  PropertiesToRemove = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_artifact.html} for full documentation.
+}
 \keyword{internal}

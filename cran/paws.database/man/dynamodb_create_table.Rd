@@ -4,9 +4,19 @@
 \alias{dynamodb_create_table}
 \title{The CreateTable operation adds a new table to your account}
 \usage{
-dynamodb_create_table(AttributeDefinitions, TableName, KeySchema,
-  LocalSecondaryIndexes, GlobalSecondaryIndexes, BillingMode,
-  ProvisionedThroughput, StreamSpecification, SSESpecification, Tags)
+dynamodb_create_table(
+  AttributeDefinitions,
+  TableName,
+  KeySchema,
+  LocalSecondaryIndexes = NULL,
+  GlobalSecondaryIndexes = NULL,
+  BillingMode = NULL,
+  ProvisionedThroughput = NULL,
+  StreamSpecification = NULL,
+  SSESpecification = NULL,
+  Tags = NULL,
+  TableClass = NULL
+)
 }
 \arguments{
 \item{AttributeDefinitions}{[required] An array of attributes that describe the key schema for the table and
@@ -140,7 +150,7 @@ If you set BillingMode as \code{PAY_PER_REQUEST}, you cannot specify this
 property.
 
 For current minimum and maximum provisioned throughput values, see
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Service, Account, and Table Quotas}
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ServiceQuotas.html}{Service, Account, and Table Quotas}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{StreamSpecification}{The settings for DynamoDB Streams on the table. These settings consist
@@ -167,288 +177,13 @@ the item are written to the stream.
 
 \item{Tags}{A list of key-value pairs to label the table. For more information, see
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TableDescription = list(
-    AttributeDefinitions = list(
-      list(
-        AttributeName = "string",
-        AttributeType = "S"|"N"|"B"
-      )
-    ),
-    TableName = "string",
-    KeySchema = list(
-      list(
-        AttributeName = "string",
-        KeyType = "HASH"|"RANGE"
-      )
-    ),
-    TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-    CreationDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProvisionedThroughput = list(
-      LastIncreaseDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastDecreaseDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      NumberOfDecreasesToday = 123,
-      ReadCapacityUnits = 123,
-      WriteCapacityUnits = 123
-    ),
-    TableSizeBytes = 123,
-    ItemCount = 123,
-    TableArn = "string",
-    TableId = "string",
-    BillingModeSummary = list(
-      BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-      LastUpdateToPayPerRequestDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    LocalSecondaryIndexes = list(
-      list(
-        IndexName = "string",
-        KeySchema = list(
-          list(
-            AttributeName = "string",
-            KeyType = "HASH"|"RANGE"
-          )
-        ),
-        Projection = list(
-          ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-          NonKeyAttributes = list(
-            "string"
-          )
-        ),
-        IndexSizeBytes = 123,
-        ItemCount = 123,
-        IndexArn = "string"
-      )
-    ),
-    GlobalSecondaryIndexes = list(
-      list(
-        IndexName = "string",
-        KeySchema = list(
-          list(
-            AttributeName = "string",
-            KeyType = "HASH"|"RANGE"
-          )
-        ),
-        Projection = list(
-          ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-          NonKeyAttributes = list(
-            "string"
-          )
-        ),
-        IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-        Backfilling = TRUE|FALSE,
-        ProvisionedThroughput = list(
-          LastIncreaseDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          LastDecreaseDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          NumberOfDecreasesToday = 123,
-          ReadCapacityUnits = 123,
-          WriteCapacityUnits = 123
-        ),
-        IndexSizeBytes = 123,
-        ItemCount = 123,
-        IndexArn = "string"
-      )
-    ),
-    StreamSpecification = list(
-      StreamEnabled = TRUE|FALSE,
-      StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-    ),
-    LatestStreamLabel = "string",
-    LatestStreamArn = "string",
-    GlobalTableVersion = "string",
-    Replicas = list(
-      list(
-        RegionName = "string",
-        ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-        ReplicaStatusDescription = "string",
-        ReplicaStatusPercentProgress = "string",
-        KMSMasterKeyId = "string",
-        ProvisionedThroughputOverride = list(
-          ReadCapacityUnits = 123
-        ),
-        GlobalSecondaryIndexes = list(
-          list(
-            IndexName = "string",
-            ProvisionedThroughputOverride = list(
-              ReadCapacityUnits = 123
-            )
-          )
-        ),
-        ReplicaInaccessibleDateTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    RestoreSummary = list(
-      SourceBackupArn = "string",
-      SourceTableArn = "string",
-      RestoreDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      RestoreInProgress = TRUE|FALSE
-    ),
-    SSEDescription = list(
-      Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-      SSEType = "AES256"|"KMS",
-      KMSMasterKeyArn = "string",
-      InaccessibleEncryptionDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    ArchivalSummary = list(
-      ArchivalDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ArchivalReason = "string",
-      ArchivalBackupArn = "string"
-    )
-  )
-)
-}
+
+\item{TableClass}{The table class of the new table. Valid values are \code{STANDARD} and
+\code{STANDARD_INFREQUENT_ACCESS}.}
 }
 \description{
-The \code{\link[=dynamodb_create_table]{create_table}} operation adds a new table
-to your account. In an AWS account, table names must be unique within
-each Region. That is, you can have two tables with same name if you
-create the tables in different Regions.
+The \code{\link[=dynamodb_create_table]{create_table}} operation adds a new table to your account. In an Amazon Web Services account, table names must be unique within each Region. That is, you can have two tables with same name if you create the tables in different Regions.
 
-\code{\link[=dynamodb_create_table]{create_table}} is an asynchronous operation.
-Upon receiving a \code{\link[=dynamodb_create_table]{create_table}} request,
-DynamoDB immediately returns a response with a \code{TableStatus} of
-\code{CREATING}. After the table is created, DynamoDB sets the \code{TableStatus}
-to \code{ACTIVE}. You can perform read and write operations only on an
-\code{ACTIVE} table.
-
-You can optionally define secondary indexes on the new table, as part of
-the \code{\link[=dynamodb_create_table]{create_table}} operation. If you want to
-create multiple tables with secondary indexes on them, you must create
-the tables sequentially. Only one table with secondary indexes can be in
-the \code{CREATING} state at any given time.
-
-You can use the \code{\link[=dynamodb_describe_table]{describe_table}} action to
-check the table status.
-}
-\section{Request syntax}{
-\preformatted{svc$create_table(
-  AttributeDefinitions = list(
-    list(
-      AttributeName = "string",
-      AttributeType = "S"|"N"|"B"
-    )
-  ),
-  TableName = "string",
-  KeySchema = list(
-    list(
-      AttributeName = "string",
-      KeyType = "HASH"|"RANGE"
-    )
-  ),
-  LocalSecondaryIndexes = list(
-    list(
-      IndexName = "string",
-      KeySchema = list(
-        list(
-          AttributeName = "string",
-          KeyType = "HASH"|"RANGE"
-        )
-      ),
-      Projection = list(
-        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-        NonKeyAttributes = list(
-          "string"
-        )
-      )
-    )
-  ),
-  GlobalSecondaryIndexes = list(
-    list(
-      IndexName = "string",
-      KeySchema = list(
-        list(
-          AttributeName = "string",
-          KeyType = "HASH"|"RANGE"
-        )
-      ),
-      Projection = list(
-        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-        NonKeyAttributes = list(
-          "string"
-        )
-      ),
-      ProvisionedThroughput = list(
-        ReadCapacityUnits = 123,
-        WriteCapacityUnits = 123
-      )
-    )
-  ),
-  BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-  ProvisionedThroughput = list(
-    ReadCapacityUnits = 123,
-    WriteCapacityUnits = 123
-  ),
-  StreamSpecification = list(
-    StreamEnabled = TRUE|FALSE,
-    StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-  ),
-  SSESpecification = list(
-    Enabled = TRUE|FALSE,
-    SSEType = "AES256"|"KMS",
-    KMSMasterKeyId = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a table named Music.
-svc$create_table(
-  AttributeDefinitions = list(
-    list(
-      AttributeName = "Artist",
-      AttributeType = "S"
-    ),
-    list(
-      AttributeName = "SongTitle",
-      AttributeType = "S"
-    )
-  ),
-  KeySchema = list(
-    list(
-      AttributeName = "Artist",
-      KeyType = "HASH"
-    ),
-    list(
-      AttributeName = "SongTitle",
-      KeyType = "RANGE"
-    )
-  ),
-  ProvisionedThroughput = list(
-    ReadCapacityUnits = 5L,
-    WriteCapacityUnits = 5L
-  ),
-  TableName = "Music"
-)
-}
-
+See \url{https://paws-r.github.io/docs/dynamodb/create_table.html} for full documentation.
 }
 \keyword{internal}

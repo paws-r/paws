@@ -13,38 +13,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{BaiduChannelRequest}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BaiduChannelResponse = list(
-    ApplicationId = "string",
-    CreationDate = "string",
-    Credential = "string",
-    Enabled = TRUE|FALSE,
-    HasCredential = TRUE|FALSE,
-    Id = "string",
-    IsArchived = TRUE|FALSE,
-    LastModifiedBy = "string",
-    LastModifiedDate = "string",
-    Platform = "string",
-    Version = 123
-  )
-)
-}
-}
 \description{
-Enables the Baidu channel for an application or updates the status and
-settings of the Baidu channel for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$update_baidu_channel(
-  ApplicationId = "string",
-  BaiduChannelRequest = list(
-    ApiKey = "string",
-    Enabled = TRUE|FALSE,
-    SecretKey = "string"
-  )
-)
-}
-}
+Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for an application.
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_baidu_channel.html} for full documentation.
+}
 \keyword{internal}

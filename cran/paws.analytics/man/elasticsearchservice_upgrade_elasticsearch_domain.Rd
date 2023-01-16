@@ -5,8 +5,11 @@
 \title{Allows you to either upgrade your domain or perform an Upgrade
 eligibility check to a compatible Elasticsearch version}
 \usage{
-elasticsearchservice_upgrade_elasticsearch_domain(DomainName,
-  TargetVersion, PerformCheckOnly)
+elasticsearchservice_upgrade_elasticsearch_domain(
+  DomainName,
+  TargetVersion,
+  PerformCheckOnly = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required]}
@@ -16,25 +19,9 @@ elasticsearchservice_upgrade_elasticsearch_domain(DomainName,
 \item{PerformCheckOnly}{This flag, when set to True, indicates that an Upgrade Eligibility Check
 needs to be performed. This will not actually perform the Upgrade.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainName = "string",
-  TargetVersion = "string",
-  PerformCheckOnly = TRUE|FALSE
-)
-}
-}
 \description{
-Allows you to either upgrade your domain or perform an Upgrade
-eligibility check to a compatible Elasticsearch version.
-}
-\section{Request syntax}{
-\preformatted{svc$upgrade_elasticsearch_domain(
-  DomainName = "string",
-  TargetVersion = "string",
-  PerformCheckOnly = TRUE|FALSE
-)
-}
-}
+Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/upgrade_elasticsearch_domain.html} for full documentation.
+}
 \keyword{internal}

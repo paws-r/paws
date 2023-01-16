@@ -4,9 +4,16 @@
 \alias{lexmodelbuildingservice_put_slot_type}
 \title{Creates a custom slot type or replaces an existing custom slot type}
 \usage{
-lexmodelbuildingservice_put_slot_type(name, description,
-  enumerationValues, checksum, valueSelectionStrategy, createVersion,
-  parentSlotTypeSignature, slotTypeConfigurations)
+lexmodelbuildingservice_put_slot_type(
+  name,
+  description = NULL,
+  enumerationValues = NULL,
+  checksum = NULL,
+  valueSelectionStrategy = NULL,
+  createVersion = NULL,
+  parentSlotTypeSignature = NULL,
+  slotTypeConfigurations = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the slot type. The name is \emph{not} case sensitive.
@@ -76,100 +83,9 @@ Only \code{AMAZON.AlphaNumeric} is supported.}
 \item{slotTypeConfigurations}{Configuration information that extends the parent built-in slot type.
 The configuration is added to the settings for the parent slot type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  description = "string",
-  enumerationValues = list(
-    list(
-      value = "string",
-      synonyms = list(
-        "string"
-      )
-    )
-  ),
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  version = "string",
-  checksum = "string",
-  valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-  createVersion = TRUE|FALSE,
-  parentSlotTypeSignature = "string",
-  slotTypeConfigurations = list(
-    list(
-      regexConfiguration = list(
-        pattern = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Creates a custom slot type or replaces an existing custom slot type.
 
-To create a custom slot type, specify a name for the slot type and a set
-of enumeration values, which are the values that a slot of this type can
-assume. For more information, see how-it-works.
-
-If you specify the name of an existing slot type, the fields in the
-request replace the existing values in the \verb{$LATEST} version of the slot
-type. Amazon Lex removes the fields that you don't provide in the
-request. If you don't specify required fields, Amazon Lex throws an
-exception. When you update the \verb{$LATEST} version of a slot type, if a
-bot uses the \verb{$LATEST} version of an intent that contains the slot type,
-the bot's \code{status} field is set to \code{NOT_BUILT}.
-
-This operation requires permissions for the \code{lex:PutSlotType} action.
-}
-\section{Request syntax}{
-\preformatted{svc$put_slot_type(
-  name = "string",
-  description = "string",
-  enumerationValues = list(
-    list(
-      value = "string",
-      synonyms = list(
-        "string"
-      )
-    )
-  ),
-  checksum = "string",
-  valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-  createVersion = TRUE|FALSE,
-  parentSlotTypeSignature = "string",
-  slotTypeConfigurations = list(
-    list(
-      regexConfiguration = list(
-        pattern = "string"
-      )
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example shows how to create a slot type that describes pizza
-# sauces.
-svc$put_slot_type(
-  name = "PizzaSauceType",
-  description = "Available pizza sauces",
-  enumerationValues = list(
-    list(
-      value = "red"
-    ),
-    list(
-      value = "white"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/put_slot_type.html} for full documentation.
 }
 \keyword{internal}

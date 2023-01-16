@@ -4,7 +4,7 @@
 \alias{cloudfront_list_public_keys}
 \title{List all public keys that have been added to CloudFront for this account}
 \usage{
-cloudfront_list_public_keys(Marker, MaxItems)
+cloudfront_list_public_keys(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{Use this when paginating results to indicate where to begin in your list
@@ -15,37 +15,9 @@ also the ID of the last public key on that page).}
 
 \item{MaxItems}{The maximum number of public keys you want in the response body.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PublicKeyList = list(
-    NextMarker = "string",
-    MaxItems = 123,
-    Quantity = 123,
-    Items = list(
-      list(
-        Id = "string",
-        Name = "string",
-        CreatedTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        EncodedKey = "string",
-        Comment = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-List all public keys that have been added to CloudFront for this
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_public_keys(
-  Marker = "string",
-  MaxItems = "string"
-)
-}
-}
+List all public keys that have been added to CloudFront for this account.
 
+See \url{https://paws-r.github.io/docs/cloudfront/list_public_keys.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Displays a list of categories for all event source types, or, if
 specified, for a specified source type}
 \usage{
-neptune_describe_event_categories(SourceType, Filters)
+neptune_describe_event_categories(SourceType = NULL, Filters = NULL)
 }
 \arguments{
 \item{SourceType}{The type of source that is generating the events.
@@ -15,36 +15,9 @@ db-snapshot}
 
 \item{Filters}{This parameter is not currently supported.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventCategoriesMapList = list(
-    list(
-      SourceType = "string",
-      EventCategories = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Displays a list of categories for all event source types, or, if
-specified, for a specified source type.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_event_categories(
-  SourceType = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
+Displays a list of categories for all event source types, or, if specified, for a specified source type.
 
+See \url{https://paws-r.github.io/docs/neptune/describe_event_categories.html} for full documentation.
+}
 \keyword{internal}

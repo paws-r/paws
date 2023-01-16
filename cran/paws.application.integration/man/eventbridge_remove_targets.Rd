@@ -4,7 +4,7 @@
 \alias{eventbridge_remove_targets}
 \title{Removes the specified targets from the specified rule}
 \usage{
-eventbridge_remove_targets(Rule, EventBusName, Ids, Force)
+eventbridge_remove_targets(Rule, EventBusName = NULL, Ids, Force = NULL)
 }
 \arguments{
 \item{Rule}{[required] The name of the rule.}
@@ -14,50 +14,17 @@ this, the default event bus is used.}
 
 \item{Ids}{[required] The IDs of the targets to remove from the rule.}
 
-\item{Force}{If this is a managed rule, created by an AWS service on your behalf, you
-must specify \code{Force} as \code{True} to remove targets. This parameter is
-ignored for rules that are not managed rules. You can check whether a
-rule is a managed rule by using
+\item{Force}{If this is a managed rule, created by an Amazon Web Services service on
+your behalf, you must specify \code{Force} as \code{True} to remove targets. This
+parameter is ignored for rules that are not managed rules. You can check
+whether a rule is a managed rule by using
 \code{\link[=eventbridge_describe_rule]{describe_rule}} or
 \code{\link[=eventbridge_list_rules]{list_rules}} and checking the \code{ManagedBy}
 field of the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedEntryCount = 123,
-  FailedEntries = list(
-    list(
-      TargetId = "string",
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Removes the specified targets from the specified rule. When the rule is
-triggered, those targets are no longer be invoked.
+Removes the specified targets from the specified rule. When the rule is triggered, those targets are no longer be invoked.
 
-When you remove a target, when the associated rule triggers, removed
-targets might continue to be invoked. Allow a short period of time for
-changes to take effect.
-
-This action can partially fail if too many requests are made at the same
-time. If that happens, \code{FailedEntryCount} is non-zero in the response
-and each entry in \code{FailedEntries} provides the ID of the failed target
-and the error code.
+See \url{https://paws-r.github.io/docs/eventbridge/remove_targets.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$remove_targets(
-  Rule = "string",
-  EventBusName = "string",
-  Ids = list(
-    "string"
-  ),
-  Force = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

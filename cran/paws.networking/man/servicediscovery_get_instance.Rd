@@ -11,37 +11,9 @@ servicediscovery_get_instance(ServiceId, InstanceId)
 
 \item{InstanceId}{[required] The ID of the instance that you want to get information about.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Instance = list(
-    Id = "string",
-    CreatorRequestId = "string",
-    Attributes = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Gets information about a specified instance.
-}
-\section{Request syntax}{
-\preformatted{svc$get_instance(
-  ServiceId = "string",
-  InstanceId = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example gets information about a specified instance.
-svc$get_instance(
-  InstanceId = "i-abcd1234",
-  ServiceId = "srv-e4anhexample0004"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/get_instance.html} for full documentation.
 }
 \keyword{internal}

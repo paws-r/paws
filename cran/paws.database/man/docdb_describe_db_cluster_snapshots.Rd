@@ -4,9 +4,16 @@
 \alias{docdb_describe_db_cluster_snapshots}
 \title{Returns information about cluster snapshots}
 \usage{
-docdb_describe_db_cluster_snapshots(DBClusterIdentifier,
-  DBClusterSnapshotIdentifier, SnapshotType, Filters, MaxRecords, Marker,
-  IncludeShared, IncludePublic)
+docdb_describe_db_cluster_snapshots(
+  DBClusterIdentifier = NULL,
+  DBClusterSnapshotIdentifier = NULL,
+  SnapshotType = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  IncludeShared = NULL,
+  IncludePublic = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{The ID of the cluster to retrieve the list of cluster snapshots for.
@@ -34,11 +41,11 @@ parameter must also be specified.
 following values:
 \itemize{
 \item \code{automated} - Return all cluster snapshots that Amazon DocumentDB
-has automatically created for your AWS account.
+has automatically created for your Amazon Web Services account.
 \item \code{manual} - Return all cluster snapshots that you have manually
-created for your AWS account.
+created for your Amazon Web Services account.
 \item \code{shared} - Return all manual cluster snapshots that have been shared
-to your AWS account.
+to your Amazon Web Services account.
 \item \code{public} - Return all cluster snapshots that have been marked as
 public.
 }
@@ -47,7 +54,7 @@ If you don't specify a \code{SnapshotType} value, then both automated and
 manual cluster snapshots are returned. You can include shared cluster
 snapshots with these results by setting the \code{IncludeShared} parameter to
 \code{true}. You can include public cluster snapshots with these results by
-setting the \code{IncludePublic} parameter to \code{true}.
+setting the\code{IncludePublic} parameter to \code{true}.
 
 The \code{IncludeShared} and \code{IncludePublic} parameters don't apply for
 \code{SnapshotType} values of \code{manual} or \code{automated}. The \code{IncludePublic}
@@ -70,70 +77,18 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 
-\item{IncludeShared}{Set to \code{true} to include shared manual cluster snapshots from other AWS
-accounts that this AWS account has been given permission to copy or
-restore, and otherwise \code{false}. The default is \code{false}.}
+\item{IncludeShared}{Set to \code{true} to include shared manual cluster snapshots from other
+Amazon Web Services accounts that this Amazon Web Services account has
+been given permission to copy or restore, and otherwise \code{false}. The
+default is \code{false}.}
 
 \item{IncludePublic}{Set to \code{true} to include manual cluster snapshots that are public and
-can be copied or restored by any AWS account, and otherwise \code{false}. The
-default is \code{false}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBClusterSnapshots = list(
-    list(
-      AvailabilityZones = list(
-        "string"
-      ),
-      DBClusterSnapshotIdentifier = "string",
-      DBClusterIdentifier = "string",
-      SnapshotCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Engine = "string",
-      Status = "string",
-      Port = 123,
-      VpcId = "string",
-      ClusterCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      MasterUsername = "string",
-      EngineVersion = "string",
-      SnapshotType = "string",
-      PercentProgress = 123,
-      StorageEncrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      DBClusterSnapshotArn = "string",
-      SourceDBClusterSnapshotArn = "string"
-    )
-  )
-)
-}
+can be copied or restored by any Amazon Web Services account, and
+otherwise \code{false}. The default is \code{false}.}
 }
 \description{
-Returns information about cluster snapshots. This API operation supports
-pagination.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_cluster_snapshots(
-  DBClusterIdentifier = "string",
-  DBClusterSnapshotIdentifier = "string",
-  SnapshotType = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string",
-  IncludeShared = TRUE|FALSE,
-  IncludePublic = TRUE|FALSE
-)
-}
-}
+Returns information about cluster snapshots. This API operation supports pagination.
 
+See \url{https://paws-r.github.io/docs/docdb/describe_db_cluster_snapshots.html} for full documentation.
+}
 \keyword{internal}

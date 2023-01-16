@@ -4,25 +4,16 @@
 \alias{xray_delete_group}
 \title{Deletes a group resource}
 \usage{
-xray_delete_group(GroupName, GroupARN)
+xray_delete_group(GroupName = NULL, GroupARN = NULL)
 }
 \arguments{
 \item{GroupName}{The case-sensitive name of the group.}
 
 \item{GroupARN}{The ARN of the group that was generated on creation.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a group resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_group(
-  GroupName = "string",
-  GroupARN = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/xray/delete_group.html} for full documentation.
+}
 \keyword{internal}

@@ -13,51 +13,9 @@ its name or by using its Amazon Resource Name (ARN). Examples:
 \code{user@example.com}, \code{example.com},
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NotificationAttributes = list(
-    list(
-      BounceTopic = "string",
-      ComplaintTopic = "string",
-      DeliveryTopic = "string",
-      ForwardingEnabled = TRUE|FALSE,
-      HeadersInBounceNotificationsEnabled = TRUE|FALSE,
-      HeadersInComplaintNotificationsEnabled = TRUE|FALSE,
-      HeadersInDeliveryNotificationsEnabled = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Given a list of verified identities (email addresses and/or domains),
-returns a structure describing identity notification attributes.
+Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes.
 
-This operation is throttled at one request per second and can only get
-notification attributes for up to 100 identities at a time.
-
-For more information about using notifications with Amazon SES, see the
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_identity_notification_attributes(
-  Identities = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns the notification attributes for an
-# identity:
-svc$get_identity_notification_attributes(
-  Identities = list(
-    "example.com"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/get_identity_notification_attributes.html} for full documentation.
 }
 \keyword{internal}

@@ -4,12 +4,32 @@
 \alias{rds_describe_option_group_options}
 \title{Describes all available options}
 \usage{
-rds_describe_option_group_options(EngineName, MajorEngineVersion,
-  Filters, MaxRecords, Marker)
+rds_describe_option_group_options(
+  EngineName,
+  MajorEngineVersion = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{EngineName}{[required] A required parameter. Options available for the given engine name are
-described.}
+described.
+
+Valid Values:
+\itemize{
+\item \code{mariadb}
+\item \code{mysql}
+\item \code{oracle-ee}
+\item \code{oracle-ee-cdb}
+\item \code{oracle-se2}
+\item \code{oracle-se2-cdb}
+\item \code{postgres}
+\item \code{sqlserver-ee}
+\item \code{sqlserver-se}
+\item \code{sqlserver-ex}
+\item \code{sqlserver-web}
+}}
 
 \item{MajorEngineVersion}{If specified, filters the results to include only options for the
 specified major engine version.}
@@ -29,76 +49,9 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OptionGroupOptions = list(
-    list(
-      Name = "string",
-      Description = "string",
-      EngineName = "string",
-      MajorEngineVersion = "string",
-      MinimumRequiredMinorEngineVersion = "string",
-      PortRequired = TRUE|FALSE,
-      DefaultPort = 123,
-      OptionsDependedOn = list(
-        "string"
-      ),
-      OptionsConflictsWith = list(
-        "string"
-      ),
-      Persistent = TRUE|FALSE,
-      Permanent = TRUE|FALSE,
-      RequiresAutoMinorEngineVersionUpgrade = TRUE|FALSE,
-      VpcOnly = TRUE|FALSE,
-      SupportsOptionVersionDowngrade = TRUE|FALSE,
-      OptionGroupOptionSettings = list(
-        list(
-          SettingName = "string",
-          SettingDescription = "string",
-          DefaultValue = "string",
-          ApplyType = "string",
-          AllowedValues = "string",
-          IsModifiable = TRUE|FALSE,
-          IsRequired = TRUE|FALSE,
-          MinimumEngineVersionPerAllowedValue = list(
-            list(
-              AllowedValue = "string",
-              MinimumEngineVersion = "string"
-            )
-          )
-        )
-      ),
-      OptionGroupOptionVersions = list(
-        list(
-          Version = "string",
-          IsDefault = TRUE|FALSE
-        )
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
 Describes all available options.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_option_group_options(
-  EngineName = "string",
-  MajorEngineVersion = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/describe_option_group_options.html} for full documentation.
+}
 \keyword{internal}

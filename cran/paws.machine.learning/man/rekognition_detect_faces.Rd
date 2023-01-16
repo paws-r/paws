@@ -4,7 +4,7 @@
 \alias{rekognition_detect_faces}
 \title{Detects faces within an image that is provided as input}
 \usage{
-rekognition_detect_faces(Image, Attributes)
+rekognition_detect_faces(Image, Attributes = NULL)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the
@@ -26,135 +26,9 @@ If you provide both, \verb{["ALL", "DEFAULT"]}, the service uses a logical
 AND operator to determine which attributes to return (in this case, all
 attributes).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FaceDetails = list(
-    list(
-      BoundingBox = list(
-        Width = 123.0,
-        Height = 123.0,
-        Left = 123.0,
-        Top = 123.0
-      ),
-      AgeRange = list(
-        Low = 123,
-        High = 123
-      ),
-      Smile = list(
-        Value = TRUE|FALSE,
-        Confidence = 123.0
-      ),
-      Eyeglasses = list(
-        Value = TRUE|FALSE,
-        Confidence = 123.0
-      ),
-      Sunglasses = list(
-        Value = TRUE|FALSE,
-        Confidence = 123.0
-      ),
-      Gender = list(
-        Value = "Male"|"Female",
-        Confidence = 123.0
-      ),
-      Beard = list(
-        Value = TRUE|FALSE,
-        Confidence = 123.0
-      ),
-      Mustache = list(
-        Value = TRUE|FALSE,
-        Confidence = 123.0
-      ),
-      EyesOpen = list(
-        Value = TRUE|FALSE,
-        Confidence = 123.0
-      ),
-      MouthOpen = list(
-        Value = TRUE|FALSE,
-        Confidence = 123.0
-      ),
-      Emotions = list(
-        list(
-          Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
-          Confidence = 123.0
-        )
-      ),
-      Landmarks = list(
-        list(
-          Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
-          X = 123.0,
-          Y = 123.0
-        )
-      ),
-      Pose = list(
-        Roll = 123.0,
-        Yaw = 123.0,
-        Pitch = 123.0
-      ),
-      Quality = list(
-        Brightness = 123.0,
-        Sharpness = 123.0
-      ),
-      Confidence = 123.0
-    )
-  ),
-  OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270"
-)
-}
-}
 \description{
 Detects faces within an image that is provided as input.
 
-\code{\link[=rekognition_detect_faces]{detect_faces}} detects the 100 largest faces
-in the image. For each face detected, the operation returns face
-details. These details include a bounding box of the face, a confidence
-value (that the bounding box contains a face), and a fixed set of
-attributes such as facial landmarks (for example, coordinates of eye and
-mouth), presence of beard, sunglasses, and so on.
-
-The face-detection algorithm is most effective on frontal faces. For
-non-frontal or obscured faces, the algorithm might not detect the faces
-or might detect faces with lower confidence.
-
-You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
-call Amazon Rekognition operations, passing image bytes is not
-supported. The image must be either a PNG or JPEG formatted file.
-
-This is a stateless API operation. That is, the operation does not
-persist any data.
-
-This operation requires permissions to perform the
-\code{rekognition:DetectFaces} action.
-}
-\section{Request syntax}{
-\preformatted{svc$detect_faces(
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  Attributes = list(
-    "DEFAULT"|"ALL"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation detects faces in an image stored in an AWS S3 bucket.
-svc$detect_faces(
-  Image = list(
-    S3Object = list(
-      Bucket = "mybucket",
-      Name = "myphoto"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/rekognition/detect_faces.html} for full documentation.
 }
 \keyword{internal}

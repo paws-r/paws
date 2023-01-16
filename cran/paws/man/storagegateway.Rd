@@ -7,7 +7,19 @@
 storagegateway(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,36 +28,36 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Storage Gateway Service
+Storage Gateway Service
 
-AWS Storage Gateway is the service that connects an on-premises software
+Storage Gateway is the service that connects an on-premises software
 appliance with cloud-based storage to provide seamless and secure
 integration between an organization's on-premises IT environment and the
-AWS storage infrastructure. The service enables you to securely upload
-data to the AWS Cloud for cost effective backup and rapid disaster
-recovery.
+Amazon Web Services storage infrastructure. The service enables you to
+securely upload data to the Amazon Web Services Cloud for cost effective
+backup and rapid disaster recovery.
 
-Use the following links to get started using the \emph{AWS Storage Gateway
+Use the following links to get started using the \emph{Storage Gateway
 Service API Reference}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders}{AWS Storage Gateway required request headers}:
+\item \href{https://docs.aws.amazon.com/storagegateway/index.html#AWSStorageGatewayHTTPRequestsHeaders}{Storage Gateway required request headers}:
 Describes the required headers that you must send with every POST
-request to AWS Storage Gateway.
-\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests}{Signing requests}:
-AWS Storage Gateway requires that you authenticate every request you
+request to Storage Gateway.
+\item \href{https://docs.aws.amazon.com/storagegateway/index.html#AWSStorageGatewaySigningRequests}{Signing requests}:
+Storage Gateway requires that you authenticate every request you
 send; this topic describes how sign such a request.
-\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses}{Error responses}:
-Provides reference information about AWS Storage Gateway errors.
-\item \href{https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html}{Operations in AWS Storage Gateway}:
-Contains detailed descriptions of all AWS Storage Gateway
-operations, their request parameters, response elements, possible
-errors, and examples of requests and responses.
-\item \href{https://docs.aws.amazon.com/general/latest/gr/sg.html}{AWS Storage Gateway endpoints and quotas}:
-Provides a list of each AWS Region and the endpoints available for
-use with AWS Storage Gateway.
+\item \href{https://docs.aws.amazon.com/storagegateway/index.html#APIErrorResponses}{Error responses}:
+Provides reference information about Storage Gateway errors.
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html}{Operations in Storage Gateway}:
+Contains detailed descriptions of all Storage Gateway operations,
+their request parameters, response elements, possible errors, and
+examples of requests and responses.
+\item \href{https://docs.aws.amazon.com/general/latest/gr/sg.html}{Storage Gateway endpoints and quotas}:
+Provides a list of each Amazon Web Services Region and the endpoints
+available for use with Storage Gateway.
 }
 
-AWS Storage Gateway resource IDs are in uppercase. When you use these
+Storage Gateway resource IDs are in uppercase. When you use these
 resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
 lowercase. You must change your resource ID to lowercase to use it with
 the EC2 API. For example, in Storage Gateway the ID for a volume might
@@ -68,10 +80,12 @@ ID format looks like the following:
 A snapshot ID with the longer ID format looks like the following:
 \verb{snap-78e226633445566ee}.
 
-For more information, see \href{https://forums.aws.amazon.com:443/ann.jspa?annID=3557}{Announcement: Heads-up – Longer AWS Storage Gateway volume and snapshot IDs coming in 2016}.
+For more information, see \href{https://repost.aws/questions/QUYzKAkD2iR0CY-_mOUpdIDQ?annID=3557}{Announcement: Heads-up – Longer Storage Gateway volume and snapshot IDs coming in 2016}.
 }
 \section{Service syntax}{
-\preformatted{svc <- storagegateway(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- storagegateway(
   config = list(
     credentials = list(
       creds = list(
@@ -79,102 +93,112 @@ For more information, see \href{https://forums.aws.amazon.com:443/ann.jspa?annID
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=storagegateway_activate_gateway]{activate_gateway} \tab Activates the gateway you previously deployed on your host\cr
-\link[=storagegateway_add_cache]{add_cache} \tab Configures one or more gateway local disks as cache for a gateway\cr
-\link[=storagegateway_add_tags_to_resource]{add_tags_to_resource} \tab Adds one or more tags to the specified resource\cr
-\link[=storagegateway_add_upload_buffer]{add_upload_buffer} \tab Configures one or more gateway local disks as upload buffer for a specified gateway\cr
-\link[=storagegateway_add_working_storage]{add_working_storage} \tab Configures one or more gateway local disks as working storage for a gateway\cr
-\link[=storagegateway_assign_tape_pool]{assign_tape_pool} \tab Assigns a tape to a tape pool for archiving\cr
-\link[=storagegateway_attach_volume]{attach_volume} \tab Connects a volume to an iSCSI connection and then attaches the volume to the specified gateway\cr
-\link[=storagegateway_cancel_archival]{cancel_archival} \tab Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated\cr
-\link[=storagegateway_cancel_retrieval]{cancel_retrieval} \tab Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated\cr
-\link[=storagegateway_create_cachedi_scsi_volume]{create_cachedi_scsi_volume} \tab Creates a cached volume on a specified cached volume gateway\cr
-\link[=storagegateway_create_nfs_file_share]{create_nfs_file_share} \tab Creates a Network File System (NFS) file share on an existing file gateway\cr
-\link[=storagegateway_create_smb_file_share]{create_smb_file_share} \tab Creates a Server Message Block (SMB) file share on an existing file gateway\cr
-\link[=storagegateway_create_snapshot]{create_snapshot} \tab Initiates a snapshot of a volume\cr
-\link[=storagegateway_create_snapshot_from_volume_recovery_point]{create_snapshot_from_volume_recovery_point} \tab Initiates a snapshot of a gateway from a volume recovery point\cr
-\link[=storagegateway_create_storedi_scsi_volume]{create_storedi_scsi_volume} \tab Creates a volume on a specified gateway\cr
-\link[=storagegateway_create_tape_pool]{create_tape_pool} \tab Creates a new custom tape pool\cr
-\link[=storagegateway_create_tapes]{create_tapes} \tab Creates one or more virtual tapes\cr
-\link[=storagegateway_create_tape_with_barcode]{create_tape_with_barcode} \tab Creates a virtual tape by using your own barcode\cr
-\link[=storagegateway_delete_automatic_tape_creation_policy]{delete_automatic_tape_creation_policy} \tab Deletes the automatic tape creation policy of a gateway\cr
-\link[=storagegateway_delete_bandwidth_rate_limit]{delete_bandwidth_rate_limit} \tab Deletes the bandwidth rate limits of a gateway\cr
-\link[=storagegateway_delete_chap_credentials]{delete_chap_credentials} \tab Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target and initiator pair\cr
-\link[=storagegateway_delete_file_share]{delete_file_share} \tab Deletes a file share from a file gateway\cr
-\link[=storagegateway_delete_gateway]{delete_gateway} \tab Deletes a gateway\cr
-\link[=storagegateway_delete_snapshot_schedule]{delete_snapshot_schedule} \tab Deletes a snapshot of a volume\cr
-\link[=storagegateway_delete_tape]{delete_tape} \tab Deletes the specified virtual tape\cr
-\link[=storagegateway_delete_tape_archive]{delete_tape_archive} \tab Deletes the specified virtual tape from the virtual tape shelf (VTS)\cr
-\link[=storagegateway_delete_tape_pool]{delete_tape_pool} \tab Delete a custom tape pool\cr
-\link[=storagegateway_delete_volume]{delete_volume} \tab Deletes the specified storage volume that you previously created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume API\cr
-\link[=storagegateway_describe_availability_monitor_test]{describe_availability_monitor_test} \tab Returns information about the most recent High Availability monitoring test that was performed on the host in a cluster\cr
-\link[=storagegateway_describe_bandwidth_rate_limit]{describe_bandwidth_rate_limit} \tab Returns the bandwidth rate limits of a gateway\cr
-\link[=storagegateway_describe_bandwidth_rate_limit_schedule]{describe_bandwidth_rate_limit_schedule} \tab Returns information about the bandwidth rate limit schedule of a gateway\cr
-\link[=storagegateway_describe_cache]{describe_cache} \tab Returns information about the cache of a gateway\cr
-\link[=storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes} \tab Returns a description of the gateway volumes specified in the request\cr
-\link[=storagegateway_describe_chap_credentials]{describe_chap_credentials} \tab Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair\cr
-\link[=storagegateway_describe_gateway_information]{describe_gateway_information} \tab Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not)\cr
-\link[=storagegateway_describe_maintenance_start_time]{describe_maintenance_start_time} \tab Returns your gateway's weekly maintenance start time including the day and time of the week\cr
-\link[=storagegateway_describe_nfs_file_shares]{describe_nfs_file_shares} \tab Gets a description for one or more Network File System (NFS) file shares from a file gateway\cr
-\link[=storagegateway_describe_smb_file_shares]{describe_smb_file_shares} \tab Gets a description for one or more Server Message Block (SMB) file shares from a file gateway\cr
-\link[=storagegateway_describe_smb_settings]{describe_smb_settings} \tab Gets a description of a Server Message Block (SMB) file share settings from a file gateway\cr
-\link[=storagegateway_describe_snapshot_schedule]{describe_snapshot_schedule} \tab Describes the snapshot schedule for the specified gateway volume\cr
-\link[=storagegateway_describe_storedi_scsi_volumes]{describe_storedi_scsi_volumes} \tab Returns the description of the gateway volumes specified in the request\cr
-\link[=storagegateway_describe_tape_archives]{describe_tape_archives} \tab Returns a description of specified virtual tapes in the virtual tape shelf (VTS)\cr
-\link[=storagegateway_describe_tape_recovery_points]{describe_tape_recovery_points} \tab Returns a list of virtual tape recovery points that are available for the specified tape gateway\cr
-\link[=storagegateway_describe_tapes]{describe_tapes} \tab Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes\cr
-\link[=storagegateway_describe_upload_buffer]{describe_upload_buffer} \tab Returns information about the upload buffer of a gateway\cr
-\link[=storagegateway_describe_vtl_devices]{describe_vtl_devices} \tab Returns a description of virtual tape library (VTL) devices for the specified tape gateway\cr
-\link[=storagegateway_describe_working_storage]{describe_working_storage} \tab Returns information about the working storage of a gateway\cr
-\link[=storagegateway_detach_volume]{detach_volume} \tab Disconnects a volume from an iSCSI connection and then detaches the volume from the specified gateway\cr
-\link[=storagegateway_disable_gateway]{disable_gateway} \tab Disables a tape gateway when the gateway is no longer functioning\cr
-\link[=storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain\cr
-\link[=storagegateway_list_automatic_tape_creation_policies]{list_automatic_tape_creation_policies} \tab Lists the automatic tape creation policies for a gateway\cr
-\link[=storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling user account\cr
-\link[=storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an AWS account in an AWS Region specified in the request\cr
-\link[=storagegateway_list_local_disks]{list_local_disks} \tab Returns a list of the gateway's local disks\cr
-\link[=storagegateway_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that have been added to the specified resource\cr
-\link[=storagegateway_list_tape_pools]{list_tape_pools} \tab Lists custom tape pools\cr
-\link[=storagegateway_list_tapes]{list_tapes} \tab Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS)\cr
-\link[=storagegateway_list_volume_initiators]{list_volume_initiators} \tab Lists iSCSI initiators that are connected to a volume\cr
-\link[=storagegateway_list_volume_recovery_points]{list_volume_recovery_points} \tab Lists the recovery points for a specified gateway\cr
-\link[=storagegateway_list_volumes]{list_volumes} \tab Lists the iSCSI stored volumes of a gateway\cr
-\link[=storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to Amazon S3\cr
-\link[=storagegateway_refresh_cache]{refresh_cache} \tab Refreshes the cache for the specified file share\cr
-\link[=storagegateway_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes one or more tags from the specified resource\cr
-\link[=storagegateway_reset_cache]{reset_cache} \tab Resets all cache disks that have encountered an error and makes the disks available for reconfiguration as cache storage\cr
-\link[=storagegateway_retrieve_tape_archive]{retrieve_tape_archive} \tab Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway\cr
-\link[=storagegateway_retrieve_tape_recovery_point]{retrieve_tape_recovery_point} \tab Retrieves the recovery point for the specified virtual tape\cr
-\link[=storagegateway_set_local_console_password]{set_local_console_password} \tab Sets the password for your VM local console\cr
-\link[=storagegateway_set_smb_guest_password]{set_smb_guest_password} \tab Sets the password for the guest user smbguest\cr
-\link[=storagegateway_shutdown_gateway]{shutdown_gateway} \tab Shuts down a gateway\cr
-\link[=storagegateway_start_availability_monitor_test]{start_availability_monitor_test} \tab Start a test that verifies that the specified gateway is configured for High Availability monitoring in your host environment\cr
-\link[=storagegateway_start_gateway]{start_gateway} \tab Starts a gateway that you previously shut down (see ShutdownGateway)\cr
-\link[=storagegateway_update_automatic_tape_creation_policy]{update_automatic_tape_creation_policy} \tab Updates the automatic tape creation policy of a gateway\cr
-\link[=storagegateway_update_bandwidth_rate_limit]{update_bandwidth_rate_limit} \tab Updates the bandwidth rate limits of a gateway\cr
-\link[=storagegateway_update_bandwidth_rate_limit_schedule]{update_bandwidth_rate_limit_schedule} \tab Updates the bandwidth rate limit schedule for a specified gateway\cr
-\link[=storagegateway_update_chap_credentials]{update_chap_credentials} \tab Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target\cr
-\link[=storagegateway_update_gateway_information]{update_gateway_information} \tab Updates a gateway's metadata, which includes the gateway's name and time zone\cr
-\link[=storagegateway_update_gateway_software_now]{update_gateway_software_now} \tab Updates the gateway virtual machine (VM) software\cr
-\link[=storagegateway_update_maintenance_start_time]{update_maintenance_start_time} \tab Updates a gateway's weekly maintenance start time information, including day and time of the week\cr
-\link[=storagegateway_update_nfs_file_share]{update_nfs_file_share} \tab Updates a Network File System (NFS) file share\cr
-\link[=storagegateway_update_smb_file_share]{update_smb_file_share} \tab Updates a Server Message Block (SMB) file share\cr
-\link[=storagegateway_update_smb_file_share_visibility]{update_smb_file_share_visibility} \tab Controls whether the shares on a gateway are visible in a net view or browse list\cr
-\link[=storagegateway_update_smb_security_strategy]{update_smb_security_strategy} \tab Updates the SMB security strategy on a file gateway\cr
-\link[=storagegateway_update_snapshot_schedule]{update_snapshot_schedule} \tab Updates a snapshot schedule configured for a gateway volume\cr
-\link[=storagegateway_update_vtl_device_type]{update_vtl_device_type} \tab Updates the type of medium changer in a tape gateway
+\link[paws.storage:storagegateway_activate_gateway]{activate_gateway} \tab Activates the gateway you previously deployed on your host\cr
+\link[paws.storage:storagegateway_add_cache]{add_cache} \tab Configures one or more gateway local disks as cache for a gateway\cr
+\link[paws.storage:storagegateway_add_tags_to_resource]{add_tags_to_resource} \tab Adds one or more tags to the specified resource\cr
+\link[paws.storage:storagegateway_add_upload_buffer]{add_upload_buffer} \tab Configures one or more gateway local disks as upload buffer for a specified gateway\cr
+\link[paws.storage:storagegateway_add_working_storage]{add_working_storage} \tab Configures one or more gateway local disks as working storage for a gateway\cr
+\link[paws.storage:storagegateway_assign_tape_pool]{assign_tape_pool} \tab Assigns a tape to a tape pool for archiving\cr
+\link[paws.storage:storagegateway_associate_file_system]{associate_file_system} \tab Associate an Amazon FSx file system with the FSx File Gateway\cr
+\link[paws.storage:storagegateway_attach_volume]{attach_volume} \tab Connects a volume to an iSCSI connection and then attaches the volume to the specified gateway\cr
+\link[paws.storage:storagegateway_cancel_archival]{cancel_archival} \tab Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated\cr
+\link[paws.storage:storagegateway_cancel_retrieval]{cancel_retrieval} \tab Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated\cr
+\link[paws.storage:storagegateway_create_cachedi_scsi_volume]{create_cachedi_scsi_volume} \tab Creates a cached volume on a specified cached volume gateway\cr
+\link[paws.storage:storagegateway_create_nfs_file_share]{create_nfs_file_share} \tab Creates a Network File System (NFS) file share on an existing S3 File Gateway\cr
+\link[paws.storage:storagegateway_create_smb_file_share]{create_smb_file_share} \tab Creates a Server Message Block (SMB) file share on an existing S3 File Gateway\cr
+\link[paws.storage:storagegateway_create_snapshot]{create_snapshot} \tab Initiates a snapshot of a volume\cr
+\link[paws.storage:storagegateway_create_snapshot_from_volume_recovery_point]{create_snapshot_from_volume_recovery_point} \tab Initiates a snapshot of a gateway from a volume recovery point\cr
+\link[paws.storage:storagegateway_create_storedi_scsi_volume]{create_storedi_scsi_volume} \tab Creates a volume on a specified gateway\cr
+\link[paws.storage:storagegateway_create_tape_pool]{create_tape_pool} \tab Creates a new custom tape pool\cr
+\link[paws.storage:storagegateway_create_tapes]{create_tapes} \tab Creates one or more virtual tapes\cr
+\link[paws.storage:storagegateway_create_tape_with_barcode]{create_tape_with_barcode} \tab Creates a virtual tape by using your own barcode\cr
+\link[paws.storage:storagegateway_delete_automatic_tape_creation_policy]{delete_automatic_tape_creation_policy} \tab Deletes the automatic tape creation policy of a gateway\cr
+\link[paws.storage:storagegateway_delete_bandwidth_rate_limit]{delete_bandwidth_rate_limit} \tab Deletes the bandwidth rate limits of a gateway\cr
+\link[paws.storage:storagegateway_delete_chap_credentials]{delete_chap_credentials} \tab Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target and initiator pair\cr
+\link[paws.storage:storagegateway_delete_file_share]{delete_file_share} \tab Deletes a file share from an S3 File Gateway\cr
+\link[paws.storage:storagegateway_delete_gateway]{delete_gateway} \tab Deletes a gateway\cr
+\link[paws.storage:storagegateway_delete_snapshot_schedule]{delete_snapshot_schedule} \tab Deletes a snapshot of a volume\cr
+\link[paws.storage:storagegateway_delete_tape]{delete_tape} \tab Deletes the specified virtual tape\cr
+\link[paws.storage:storagegateway_delete_tape_archive]{delete_tape_archive} \tab Deletes the specified virtual tape from the virtual tape shelf (VTS)\cr
+\link[paws.storage:storagegateway_delete_tape_pool]{delete_tape_pool} \tab Delete a custom tape pool\cr
+\link[paws.storage:storagegateway_delete_volume]{delete_volume} \tab Deletes the specified storage volume that you previously created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume API\cr
+\link[paws.storage:storagegateway_describe_availability_monitor_test]{describe_availability_monitor_test} \tab Returns information about the most recent high availability monitoring test that was performed on the host in a cluster\cr
+\link[paws.storage:storagegateway_describe_bandwidth_rate_limit]{describe_bandwidth_rate_limit} \tab Returns the bandwidth rate limits of a gateway\cr
+\link[paws.storage:storagegateway_describe_bandwidth_rate_limit_schedule]{describe_bandwidth_rate_limit_schedule} \tab Returns information about the bandwidth rate limit schedule of a gateway\cr
+\link[paws.storage:storagegateway_describe_cache]{describe_cache} \tab Returns information about the cache of a gateway\cr
+\link[paws.storage:storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes} \tab Returns a description of the gateway volumes specified in the request\cr
+\link[paws.storage:storagegateway_describe_chap_credentials]{describe_chap_credentials} \tab Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair\cr
+\link[paws.storage:storagegateway_describe_file_system_associations]{describe_file_system_associations} \tab Gets the file system association information\cr
+\link[paws.storage:storagegateway_describe_gateway_information]{describe_gateway_information} \tab Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not)\cr
+\link[paws.storage:storagegateway_describe_maintenance_start_time]{describe_maintenance_start_time} \tab Returns your gateway's weekly maintenance start time including the day and time of the week\cr
+\link[paws.storage:storagegateway_describe_nfs_file_shares]{describe_nfs_file_shares} \tab Gets a description for one or more Network File System (NFS) file shares from an S3 File Gateway\cr
+\link[paws.storage:storagegateway_describe_smb_file_shares]{describe_smb_file_shares} \tab Gets a description for one or more Server Message Block (SMB) file shares from a S3 File Gateway\cr
+\link[paws.storage:storagegateway_describe_smb_settings]{describe_smb_settings} \tab Gets a description of a Server Message Block (SMB) file share settings from a file gateway\cr
+\link[paws.storage:storagegateway_describe_snapshot_schedule]{describe_snapshot_schedule} \tab Describes the snapshot schedule for the specified gateway volume\cr
+\link[paws.storage:storagegateway_describe_storedi_scsi_volumes]{describe_storedi_scsi_volumes} \tab Returns the description of the gateway volumes specified in the request\cr
+\link[paws.storage:storagegateway_describe_tape_archives]{describe_tape_archives} \tab Returns a description of specified virtual tapes in the virtual tape shelf (VTS)\cr
+\link[paws.storage:storagegateway_describe_tape_recovery_points]{describe_tape_recovery_points} \tab Returns a list of virtual tape recovery points that are available for the specified tape gateway\cr
+\link[paws.storage:storagegateway_describe_tapes]{describe_tapes} \tab Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes\cr
+\link[paws.storage:storagegateway_describe_upload_buffer]{describe_upload_buffer} \tab Returns information about the upload buffer of a gateway\cr
+\link[paws.storage:storagegateway_describe_vtl_devices]{describe_vtl_devices} \tab Returns a description of virtual tape library (VTL) devices for the specified tape gateway\cr
+\link[paws.storage:storagegateway_describe_working_storage]{describe_working_storage} \tab Returns information about the working storage of a gateway\cr
+\link[paws.storage:storagegateway_detach_volume]{detach_volume} \tab Disconnects a volume from an iSCSI connection and then detaches the volume from the specified gateway\cr
+\link[paws.storage:storagegateway_disable_gateway]{disable_gateway} \tab Disables a tape gateway when the gateway is no longer functioning\cr
+\link[paws.storage:storagegateway_disassociate_file_system]{disassociate_file_system} \tab Disassociates an Amazon FSx file system from the specified gateway\cr
+\link[paws.storage:storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain\cr
+\link[paws.storage:storagegateway_list_automatic_tape_creation_policies]{list_automatic_tape_creation_policies} \tab Lists the automatic tape creation policies for a gateway\cr
+\link[paws.storage:storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling user account\cr
+\link[paws.storage:storagegateway_list_file_system_associations]{list_file_system_associations} \tab Gets a list of FileSystemAssociationSummary objects\cr
+\link[paws.storage:storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an Amazon Web Services account in an Amazon Web Services Region specified in the request\cr
+\link[paws.storage:storagegateway_list_local_disks]{list_local_disks} \tab Returns a list of the gateway's local disks\cr
+\link[paws.storage:storagegateway_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that have been added to the specified resource\cr
+\link[paws.storage:storagegateway_list_tape_pools]{list_tape_pools} \tab Lists custom tape pools\cr
+\link[paws.storage:storagegateway_list_tapes]{list_tapes} \tab Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS)\cr
+\link[paws.storage:storagegateway_list_volume_initiators]{list_volume_initiators} \tab Lists iSCSI initiators that are connected to a volume\cr
+\link[paws.storage:storagegateway_list_volume_recovery_points]{list_volume_recovery_points} \tab Lists the recovery points for a specified gateway\cr
+\link[paws.storage:storagegateway_list_volumes]{list_volumes} \tab Lists the iSCSI stored volumes of a gateway\cr
+\link[paws.storage:storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to S3\cr
+\link[paws.storage:storagegateway_refresh_cache]{refresh_cache} \tab Refreshes the cached inventory of objects for the specified file share\cr
+\link[paws.storage:storagegateway_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes one or more tags from the specified resource\cr
+\link[paws.storage:storagegateway_reset_cache]{reset_cache} \tab Resets all cache disks that have encountered an error and makes the disks available for reconfiguration as cache storage\cr
+\link[paws.storage:storagegateway_retrieve_tape_archive]{retrieve_tape_archive} \tab Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway\cr
+\link[paws.storage:storagegateway_retrieve_tape_recovery_point]{retrieve_tape_recovery_point} \tab Retrieves the recovery point for the specified virtual tape\cr
+\link[paws.storage:storagegateway_set_local_console_password]{set_local_console_password} \tab Sets the password for your VM local console\cr
+\link[paws.storage:storagegateway_set_smb_guest_password]{set_smb_guest_password} \tab Sets the password for the guest user smbguest\cr
+\link[paws.storage:storagegateway_shutdown_gateway]{shutdown_gateway} \tab Shuts down a gateway\cr
+\link[paws.storage:storagegateway_start_availability_monitor_test]{start_availability_monitor_test} \tab Start a test that verifies that the specified gateway is configured for High Availability monitoring in your host environment\cr
+\link[paws.storage:storagegateway_start_gateway]{start_gateway} \tab Starts a gateway that you previously shut down (see ShutdownGateway)\cr
+\link[paws.storage:storagegateway_update_automatic_tape_creation_policy]{update_automatic_tape_creation_policy} \tab Updates the automatic tape creation policy of a gateway\cr
+\link[paws.storage:storagegateway_update_bandwidth_rate_limit]{update_bandwidth_rate_limit} \tab Updates the bandwidth rate limits of a gateway\cr
+\link[paws.storage:storagegateway_update_bandwidth_rate_limit_schedule]{update_bandwidth_rate_limit_schedule} \tab Updates the bandwidth rate limit schedule for a specified gateway\cr
+\link[paws.storage:storagegateway_update_chap_credentials]{update_chap_credentials} \tab Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target\cr
+\link[paws.storage:storagegateway_update_file_system_association]{update_file_system_association} \tab Updates a file system association\cr
+\link[paws.storage:storagegateway_update_gateway_information]{update_gateway_information} \tab Updates a gateway's metadata, which includes the gateway's name and time zone\cr
+\link[paws.storage:storagegateway_update_gateway_software_now]{update_gateway_software_now} \tab Updates the gateway virtual machine (VM) software\cr
+\link[paws.storage:storagegateway_update_maintenance_start_time]{update_maintenance_start_time} \tab Updates a gateway's weekly maintenance start time information, including day and time of the week\cr
+\link[paws.storage:storagegateway_update_nfs_file_share]{update_nfs_file_share} \tab Updates a Network File System (NFS) file share\cr
+\link[paws.storage:storagegateway_update_smb_file_share]{update_smb_file_share} \tab Updates a Server Message Block (SMB) file share\cr
+\link[paws.storage:storagegateway_update_smb_file_share_visibility]{update_smb_file_share_visibility} \tab Controls whether the shares on an S3 File Gateway are visible in a net view or browse list\cr
+\link[paws.storage:storagegateway_update_smb_local_groups]{update_smb_local_groups} \tab Updates the list of Active Directory users and groups that have special permissions for SMB file shares on the gateway\cr
+\link[paws.storage:storagegateway_update_smb_security_strategy]{update_smb_security_strategy} \tab Updates the SMB security strategy on a file gateway\cr
+\link[paws.storage:storagegateway_update_snapshot_schedule]{update_snapshot_schedule} \tab Updates a snapshot schedule configured for a gateway volume\cr
+\link[paws.storage:storagegateway_update_vtl_device_type]{update_vtl_device_type} \tab Updates the type of medium changer in a tape gateway
 }
 }
 

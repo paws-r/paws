@@ -7,7 +7,19 @@
 backup(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,13 +28,17 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Backup is a unified backup service designed to protect AWS services
-and their associated data. AWS Backup simplifies the creation,
-migration, restoration, and deletion of backups, while also providing
-reporting and auditing.
+Backup
+
+Backup is a unified backup service designed to protect Amazon Web
+Services services and their associated data. Backup simplifies the
+creation, migration, restoration, and deletion of backups, while also
+providing reporting and auditing.
 }
 \section{Service syntax}{
-\preformatted{svc <- backup(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- backup(
   config = list(
     credentials = list(
       creds = list(
@@ -30,68 +46,88 @@ reporting and auditing.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=backup_create_backup_plan]{create_backup_plan} \tab Creates a backup plan using a backup plan name and backup rules\cr
-\link[=backup_create_backup_selection]{create_backup_selection} \tab Creates a JSON document that specifies a set of resources to assign to a backup plan\cr
-\link[=backup_create_backup_vault]{create_backup_vault} \tab Creates a logical container where backups are stored\cr
-\link[=backup_delete_backup_plan]{delete_backup_plan} \tab Deletes a backup plan\cr
-\link[=backup_delete_backup_selection]{delete_backup_selection} \tab Deletes the resource selection associated with a backup plan that is specified by the SelectionId\cr
-\link[=backup_delete_backup_vault]{delete_backup_vault} \tab Deletes the backup vault identified by its name\cr
-\link[=backup_delete_backup_vault_access_policy]{delete_backup_vault_access_policy} \tab Deletes the policy document that manages permissions on a backup vault\cr
-\link[=backup_delete_backup_vault_notifications]{delete_backup_vault_notifications} \tab Deletes event notifications for the specified backup vault\cr
-\link[=backup_delete_recovery_point]{delete_recovery_point} \tab Deletes the recovery point specified by a recovery point ID\cr
-\link[=backup_describe_backup_job]{describe_backup_job} \tab Returns backup job details for the specified BackupJobId\cr
-\link[=backup_describe_backup_vault]{describe_backup_vault} \tab Returns metadata about a backup vault specified by its name\cr
-\link[=backup_describe_copy_job]{describe_copy_job} \tab Returns metadata associated with creating a copy of a resource\cr
-\link[=backup_describe_global_settings]{describe_global_settings} \tab The current feature settings for the AWS Account\cr
-\link[=backup_describe_protected_resource]{describe_protected_resource} \tab Returns information about a saved resource, including the last time it was backed up, its Amazon Resource Name (ARN), and the AWS service type of the saved resource\cr
-\link[=backup_describe_recovery_point]{describe_recovery_point} \tab Returns metadata associated with a recovery point, including ID, status, encryption, and lifecycle\cr
-\link[=backup_describe_region_settings]{describe_region_settings} \tab Returns the current service opt-in settings for the Region\cr
-\link[=backup_describe_restore_job]{describe_restore_job} \tab Returns metadata associated with a restore job that is specified by a job ID\cr
-\link[=backup_export_backup_plan_template]{export_backup_plan_template} \tab Returns the backup plan that is specified by the plan ID as a backup template\cr
-\link[=backup_get_backup_plan]{get_backup_plan} \tab Returns BackupPlan details for the specified BackupPlanId\cr
-\link[=backup_get_backup_plan_from_json]{get_backup_plan_from_json} \tab Returns a valid JSON document specifying a backup plan or an error\cr
-\link[=backup_get_backup_plan_from_template]{get_backup_plan_from_template} \tab Returns the template specified by its templateId as a backup plan\cr
-\link[=backup_get_backup_selection]{get_backup_selection} \tab Returns selection metadata and a document in JSON format that specifies a list of resources that are associated with a backup plan\cr
-\link[=backup_get_backup_vault_access_policy]{get_backup_vault_access_policy} \tab Returns the access policy document that is associated with the named backup vault\cr
-\link[=backup_get_backup_vault_notifications]{get_backup_vault_notifications} \tab Returns event notifications for the specified backup vault\cr
-\link[=backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns a set of metadata key-value pairs that were used to create the backup\cr
-\link[=backup_get_supported_resource_types]{get_supported_resource_types} \tab Returns the AWS resource types supported by AWS Backup\cr
-\link[=backup_list_backup_jobs]{list_backup_jobs} \tab Returns a list of existing backup jobs for an authenticated account\cr
-\link[=backup_list_backup_plans]{list_backup_plans} \tab Returns a list of existing backup plans for an authenticated account\cr
-\link[=backup_list_backup_plan_templates]{list_backup_plan_templates} \tab Returns metadata of your saved backup plan templates, including the template ID, name, and the creation and deletion dates\cr
-\link[=backup_list_backup_plan_versions]{list_backup_plan_versions} \tab Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan names, and version IDs\cr
-\link[=backup_list_backup_selections]{list_backup_selections} \tab Returns an array containing metadata of the resources associated with the target backup plan\cr
-\link[=backup_list_backup_vaults]{list_backup_vaults} \tab Returns a list of recovery point storage containers along with information about them\cr
-\link[=backup_list_copy_jobs]{list_copy_jobs} \tab Returns metadata about your copy jobs\cr
-\link[=backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by AWS Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
-\link[=backup_list_recovery_points_by_backup_vault]{list_recovery_points_by_backup_vault} \tab Returns detailed information about the recovery points stored in a backup vault\cr
-\link[=backup_list_recovery_points_by_resource]{list_recovery_points_by_resource} \tab Returns detailed information about recovery points of the type specified by a resource Amazon Resource Name (ARN)\cr
-\link[=backup_list_restore_jobs]{list_restore_jobs} \tab Returns a list of jobs that AWS Backup initiated to restore a saved resource, including metadata about the recovery process\cr
-\link[=backup_list_tags]{list_tags} \tab Returns a list of key-value pairs assigned to a target recovery point, backup plan, or backup vault\cr
-\link[=backup_put_backup_vault_access_policy]{put_backup_vault_access_policy} \tab Sets a resource-based policy that is used to manage access permissions on the target backup vault\cr
-\link[=backup_put_backup_vault_notifications]{put_backup_vault_notifications} \tab Turns on notifications on a backup vault for the specified topic and events\cr
-\link[=backup_start_backup_job]{start_backup_job} \tab Starts an on-demand backup job for the specified resource\cr
-\link[=backup_start_copy_job]{start_copy_job} \tab Starts a job to create a one-time copy of the specified resource\cr
-\link[=backup_start_restore_job]{start_restore_job} \tab Recovers the saved resource identified by an Amazon Resource Name (ARN)\cr
-\link[=backup_stop_backup_job]{stop_backup_job} \tab Attempts to cancel a job to create a one-time backup of a resource\cr
-\link[=backup_tag_resource]{tag_resource} \tab Assigns a set of key-value pairs to a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN)\cr
-\link[=backup_untag_resource]{untag_resource} \tab Removes a set of key-value pairs from a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN)\cr
-\link[=backup_update_backup_plan]{update_backup_plan} \tab Updates an existing backup plan identified by its backupPlanId with the input document in JSON format\cr
-\link[=backup_update_global_settings]{update_global_settings} \tab Updates the current global settings for the AWS Account\cr
-\link[=backup_update_recovery_point_lifecycle]{update_recovery_point_lifecycle} \tab Sets the transition lifecycle of a recovery point\cr
-\link[=backup_update_region_settings]{update_region_settings} \tab Updates the current service opt-in settings for the Region
+\link[paws.storage:backup_create_backup_plan]{create_backup_plan} \tab Creates a backup plan using a backup plan name and backup rules\cr
+\link[paws.storage:backup_create_backup_selection]{create_backup_selection} \tab Creates a JSON document that specifies a set of resources to assign to a backup plan\cr
+\link[paws.storage:backup_create_backup_vault]{create_backup_vault} \tab Creates a logical container where backups are stored\cr
+\link[paws.storage:backup_create_framework]{create_framework} \tab Creates a framework with one or more controls\cr
+\link[paws.storage:backup_create_report_plan]{create_report_plan} \tab Creates a report plan\cr
+\link[paws.storage:backup_delete_backup_plan]{delete_backup_plan} \tab Deletes a backup plan\cr
+\link[paws.storage:backup_delete_backup_selection]{delete_backup_selection} \tab Deletes the resource selection associated with a backup plan that is specified by the SelectionId\cr
+\link[paws.storage:backup_delete_backup_vault]{delete_backup_vault} \tab Deletes the backup vault identified by its name\cr
+\link[paws.storage:backup_delete_backup_vault_access_policy]{delete_backup_vault_access_policy} \tab Deletes the policy document that manages permissions on a backup vault\cr
+\link[paws.storage:backup_delete_backup_vault_lock_configuration]{delete_backup_vault_lock_configuration} \tab Deletes Backup Vault Lock from a backup vault specified by a backup vault name\cr
+\link[paws.storage:backup_delete_backup_vault_notifications]{delete_backup_vault_notifications} \tab Deletes event notifications for the specified backup vault\cr
+\link[paws.storage:backup_delete_framework]{delete_framework} \tab Deletes the framework specified by a framework name\cr
+\link[paws.storage:backup_delete_recovery_point]{delete_recovery_point} \tab Deletes the recovery point specified by a recovery point ID\cr
+\link[paws.storage:backup_delete_report_plan]{delete_report_plan} \tab Deletes the report plan specified by a report plan name\cr
+\link[paws.storage:backup_describe_backup_job]{describe_backup_job} \tab Returns backup job details for the specified BackupJobId\cr
+\link[paws.storage:backup_describe_backup_vault]{describe_backup_vault} \tab Returns metadata about a backup vault specified by its name\cr
+\link[paws.storage:backup_describe_copy_job]{describe_copy_job} \tab Returns metadata associated with creating a copy of a resource\cr
+\link[paws.storage:backup_describe_framework]{describe_framework} \tab Returns the framework details for the specified FrameworkName\cr
+\link[paws.storage:backup_describe_global_settings]{describe_global_settings} \tab Describes whether the Amazon Web Services account is opted in to cross-account backup\cr
+\link[paws.storage:backup_describe_protected_resource]{describe_protected_resource} \tab Returns information about a saved resource, including the last time it was backed up, its Amazon Resource Name (ARN), and the Amazon Web Services service type of the saved resource\cr
+\link[paws.storage:backup_describe_recovery_point]{describe_recovery_point} \tab Returns metadata associated with a recovery point, including ID, status, encryption, and lifecycle\cr
+\link[paws.storage:backup_describe_region_settings]{describe_region_settings} \tab Returns the current service opt-in settings for the Region\cr
+\link[paws.storage:backup_describe_report_job]{describe_report_job} \tab Returns the details associated with creating a report as specified by its ReportJobId\cr
+\link[paws.storage:backup_describe_report_plan]{describe_report_plan} \tab Returns a list of all report plans for an Amazon Web Services account and Amazon Web Services Region\cr
+\link[paws.storage:backup_describe_restore_job]{describe_restore_job} \tab Returns metadata associated with a restore job that is specified by a job ID\cr
+\link[paws.storage:backup_disassociate_recovery_point]{disassociate_recovery_point} \tab Deletes the specified continuous backup recovery point from Backup and releases control of that continuous backup to the source service, such as Amazon RDS\cr
+\link[paws.storage:backup_export_backup_plan_template]{export_backup_plan_template} \tab Returns the backup plan that is specified by the plan ID as a backup template\cr
+\link[paws.storage:backup_get_backup_plan]{get_backup_plan} \tab Returns BackupPlan details for the specified BackupPlanId\cr
+\link[paws.storage:backup_get_backup_plan_from_json]{get_backup_plan_from_json} \tab Returns a valid JSON document specifying a backup plan or an error\cr
+\link[paws.storage:backup_get_backup_plan_from_template]{get_backup_plan_from_template} \tab Returns the template specified by its templateId as a backup plan\cr
+\link[paws.storage:backup_get_backup_selection]{get_backup_selection} \tab Returns selection metadata and a document in JSON format that specifies a list of resources that are associated with a backup plan\cr
+\link[paws.storage:backup_get_backup_vault_access_policy]{get_backup_vault_access_policy} \tab Returns the access policy document that is associated with the named backup vault\cr
+\link[paws.storage:backup_get_backup_vault_notifications]{get_backup_vault_notifications} \tab Returns event notifications for the specified backup vault\cr
+\link[paws.storage:backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns a set of metadata key-value pairs that were used to create the backup\cr
+\link[paws.storage:backup_get_supported_resource_types]{get_supported_resource_types} \tab Returns the Amazon Web Services resource types supported by Backup\cr
+\link[paws.storage:backup_list_backup_jobs]{list_backup_jobs} \tab Returns a list of existing backup jobs for an authenticated account for the last 30 days\cr
+\link[paws.storage:backup_list_backup_plans]{list_backup_plans} \tab Returns a list of all active backup plans for an authenticated account\cr
+\link[paws.storage:backup_list_backup_plan_templates]{list_backup_plan_templates} \tab Returns metadata of your saved backup plan templates, including the template ID, name, and the creation and deletion dates\cr
+\link[paws.storage:backup_list_backup_plan_versions]{list_backup_plan_versions} \tab Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan names, and version IDs\cr
+\link[paws.storage:backup_list_backup_selections]{list_backup_selections} \tab Returns an array containing metadata of the resources associated with the target backup plan\cr
+\link[paws.storage:backup_list_backup_vaults]{list_backup_vaults} \tab Returns a list of recovery point storage containers along with information about them\cr
+\link[paws.storage:backup_list_copy_jobs]{list_copy_jobs} \tab Returns metadata about your copy jobs\cr
+\link[paws.storage:backup_list_frameworks]{list_frameworks} \tab Returns a list of all frameworks for an Amazon Web Services account and Amazon Web Services Region\cr
+\link[paws.storage:backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
+\link[paws.storage:backup_list_recovery_points_by_backup_vault]{list_recovery_points_by_backup_vault} \tab Returns detailed information about the recovery points stored in a backup vault\cr
+\link[paws.storage:backup_list_recovery_points_by_resource]{list_recovery_points_by_resource} \tab Returns detailed information about all the recovery points of the type specified by a resource Amazon Resource Name (ARN)\cr
+\link[paws.storage:backup_list_report_jobs]{list_report_jobs} \tab Returns details about your report jobs\cr
+\link[paws.storage:backup_list_report_plans]{list_report_plans} \tab Returns a list of your report plans\cr
+\link[paws.storage:backup_list_restore_jobs]{list_restore_jobs} \tab Returns a list of jobs that Backup initiated to restore a saved resource, including details about the recovery process\cr
+\link[paws.storage:backup_list_tags]{list_tags} \tab Returns a list of key-value pairs assigned to a target recovery point, backup plan, or backup vault\cr
+\link[paws.storage:backup_put_backup_vault_access_policy]{put_backup_vault_access_policy} \tab Sets a resource-based policy that is used to manage access permissions on the target backup vault\cr
+\link[paws.storage:backup_put_backup_vault_lock_configuration]{put_backup_vault_lock_configuration} \tab Applies Backup Vault Lock to a backup vault, preventing attempts to delete any recovery point stored in or created in a backup vault\cr
+\link[paws.storage:backup_put_backup_vault_notifications]{put_backup_vault_notifications} \tab Turns on notifications on a backup vault for the specified topic and events\cr
+\link[paws.storage:backup_start_backup_job]{start_backup_job} \tab Starts an on-demand backup job for the specified resource\cr
+\link[paws.storage:backup_start_copy_job]{start_copy_job} \tab Starts a job to create a one-time copy of the specified resource\cr
+\link[paws.storage:backup_start_report_job]{start_report_job} \tab Starts an on-demand report job for the specified report plan\cr
+\link[paws.storage:backup_start_restore_job]{start_restore_job} \tab Recovers the saved resource identified by an Amazon Resource Name (ARN)\cr
+\link[paws.storage:backup_stop_backup_job]{stop_backup_job} \tab Attempts to cancel a job to create a one-time backup of a resource\cr
+\link[paws.storage:backup_tag_resource]{tag_resource} \tab Assigns a set of key-value pairs to a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN)\cr
+\link[paws.storage:backup_untag_resource]{untag_resource} \tab Removes a set of key-value pairs from a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN)\cr
+\link[paws.storage:backup_update_backup_plan]{update_backup_plan} \tab Updates an existing backup plan identified by its backupPlanId with the input document in JSON format\cr
+\link[paws.storage:backup_update_framework]{update_framework} \tab Updates an existing framework identified by its FrameworkName with the input document in JSON format\cr
+\link[paws.storage:backup_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted in to cross-account backup\cr
+\link[paws.storage:backup_update_recovery_point_lifecycle]{update_recovery_point_lifecycle} \tab Sets the transition lifecycle of a recovery point\cr
+\link[paws.storage:backup_update_region_settings]{update_region_settings} \tab Updates the current service opt-in settings for the Region\cr
+\link[paws.storage:backup_update_report_plan]{update_report_plan} \tab Updates an existing report plan identified by its ReportPlanName with the input document in JSON format
 }
 }
 

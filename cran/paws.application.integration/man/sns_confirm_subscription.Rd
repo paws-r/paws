@@ -5,7 +5,7 @@
 \title{Verifies an endpoint owner's intent to receive messages by validating
 the token sent to the endpoint by an earlier Subscribe action}
 \usage{
-sns_confirm_subscription(TopicArn, Token, AuthenticateOnUnsubscribe)
+sns_confirm_subscription(TopicArn, Token, AuthenticateOnUnsubscribe = NULL)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic for which you wish to confirm a subscription.}
@@ -14,31 +14,14 @@ sns_confirm_subscription(TopicArn, Token, AuthenticateOnUnsubscribe)
 \code{\link[=sns_subscribe]{subscribe}} action.}
 
 \item{AuthenticateOnUnsubscribe}{Disallows unauthenticated unsubscribes of the subscription. If the value
-of this parameter is \code{true} and the request has an AWS signature, then
-only the topic owner and the subscription owner can unsubscribe the
-endpoint. The unsubscribe action requires AWS authentication.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SubscriptionArn = "string"
-)
-}
+of this parameter is \code{true} and the request has an Amazon Web Services
+signature, then only the topic owner and the subscription owner can
+unsubscribe the endpoint. The unsubscribe action requires Amazon Web
+Services authentication.}
 }
 \description{
-Verifies an endpoint owner's intent to receive messages by validating
-the token sent to the endpoint by an earlier
-\code{\link[=sns_subscribe]{subscribe}} action. If the token is valid, the action
-creates a new subscription and returns its Amazon Resource Name (ARN).
-This call requires an AWS signature only when the
-\code{AuthenticateOnUnsubscribe} flag is set to "true".
-}
-\section{Request syntax}{
-\preformatted{svc$confirm_subscription(
-  TopicArn = "string",
-  Token = "string",
-  AuthenticateOnUnsubscribe = "string"
-)
-}
-}
+Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier \code{\link[=sns_subscribe]{subscribe}} action. If the token is valid, the action creates a new subscription and returns its Amazon Resource Name (ARN). This call requires an AWS signature only when the \code{AuthenticateOnUnsubscribe} flag is set to "true".
 
+See \url{https://paws-r.github.io/docs/sns/confirm_subscription.html} for full documentation.
+}
 \keyword{internal}

@@ -4,11 +4,18 @@
 \alias{codedeploy_create_deployment}
 \title{Deploys an application revision through the specified deployment group}
 \usage{
-codedeploy_create_deployment(applicationName, deploymentGroupName,
-  revision, deploymentConfigName, description,
-  ignoreApplicationStopFailures, targetInstances,
-  autoRollbackConfiguration, updateOutdatedInstancesOnly,
-  fileExistsBehavior)
+codedeploy_create_deployment(
+  applicationName,
+  deploymentGroupName = NULL,
+  revision = NULL,
+  deploymentConfigName = NULL,
+  description = NULL,
+  ignoreApplicationStopFailures = NULL,
+  targetInstances = NULL,
+  autoRollbackConfiguration = NULL,
+  updateOutdatedInstancesOnly = NULL,
+  fileExistsBehavior = NULL
+)
 }
 \arguments{
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user
@@ -79,77 +86,9 @@ instance.
 used as part of the new deployment.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  deploymentId = "string"
-)
-}
-}
 \description{
 Deploys an application revision through the specified deployment group.
-}
-\section{Request syntax}{
-\preformatted{svc$create_deployment(
-  applicationName = "string",
-  deploymentGroupName = "string",
-  revision = list(
-    revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-    s3Location = list(
-      bucket = "string",
-      key = "string",
-      bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-      version = "string",
-      eTag = "string"
-    ),
-    gitHubLocation = list(
-      repository = "string",
-      commitId = "string"
-    ),
-    string = list(
-      content = "string",
-      sha256 = "string"
-    ),
-    appSpecContent = list(
-      content = "string",
-      sha256 = "string"
-    )
-  ),
-  deploymentConfigName = "string",
-  description = "string",
-  ignoreApplicationStopFailures = TRUE|FALSE,
-  targetInstances = list(
-    tagFilters = list(
-      list(
-        Key = "string",
-        Value = "string",
-        Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-      )
-    ),
-    autoScalingGroups = list(
-      "string"
-    ),
-    ec2TagSet = list(
-      ec2TagSetList = list(
-        list(
-          list(
-            Key = "string",
-            Value = "string",
-            Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-          )
-        )
-      )
-    )
-  ),
-  autoRollbackConfiguration = list(
-    enabled = TRUE|FALSE,
-    events = list(
-      "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
-    )
-  ),
-  updateOutdatedInstancesOnly = TRUE|FALSE,
-  fileExistsBehavior = "DISALLOW"|"OVERWRITE"|"RETAIN"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/create_deployment.html} for full documentation.
+}
 \keyword{internal}

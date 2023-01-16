@@ -4,10 +4,19 @@
 \alias{codecommit_merge_branches_by_three_way}
 \title{Merges two specified branches using the three-way merge strategy}
 \usage{
-codecommit_merge_branches_by_three_way(repositoryName,
-  sourceCommitSpecifier, destinationCommitSpecifier, targetBranch,
-  conflictDetailLevel, conflictResolutionStrategy, authorName, email,
-  commitMessage, keepEmptyFolders, conflictResolution)
+codecommit_merge_branches_by_three_way(
+  repositoryName,
+  sourceCommitSpecifier,
+  destinationCommitSpecifier,
+  targetBranch = NULL,
+  conflictDetailLevel = NULL,
+  conflictResolutionStrategy = NULL,
+  authorName = NULL,
+  email = NULL,
+  commitMessage = NULL,
+  keepEmptyFolders = NULL,
+  conflictResolution = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you want to merge two branches.}
@@ -46,51 +55,9 @@ file is created for empty folders. The default is false.}
 \item{conflictResolution}{If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 use when resolving conflicts during a merge.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commitId = "string",
-  treeId = "string"
-)
-}
-}
 \description{
 Merges two specified branches using the three-way merge strategy.
-}
-\section{Request syntax}{
-\preformatted{svc$merge_branches_by_three_way(
-  repositoryName = "string",
-  sourceCommitSpecifier = "string",
-  destinationCommitSpecifier = "string",
-  targetBranch = "string",
-  conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-  conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-  authorName = "string",
-  email = "string",
-  commitMessage = "string",
-  keepEmptyFolders = TRUE|FALSE,
-  conflictResolution = list(
-    replaceContents = list(
-      list(
-        filePath = "string",
-        replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
-        content = raw,
-        fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-      )
-    ),
-    deleteFiles = list(
-      list(
-        filePath = "string"
-      )
-    ),
-    setFileModes = list(
-      list(
-        filePath = "string",
-        fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/merge_branches_by_three_way.html} for full documentation.
+}
 \keyword{internal}

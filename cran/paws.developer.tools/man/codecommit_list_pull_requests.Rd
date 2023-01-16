@@ -4,8 +4,13 @@
 \alias{codecommit_list_pull_requests}
 \title{Returns a list of pull requests for a specified repository}
 \usage{
-codecommit_list_pull_requests(repositoryName, authorArn,
-  pullRequestStatus, nextToken, maxResults)
+codecommit_list_pull_requests(
+  repositoryName,
+  authorArn = NULL,
+  pullRequestStatus = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository for which you want to list pull requests.}
@@ -23,28 +28,9 @@ batch of the results.}
 \item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pullRequestIds = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of pull requests for a specified repository. The return
-list can be refined by pull request status or pull request author ARN.
-}
-\section{Request syntax}{
-\preformatted{svc$list_pull_requests(
-  repositoryName = "string",
-  authorArn = "string",
-  pullRequestStatus = "OPEN"|"CLOSED",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns a list of pull requests for a specified repository. The return list can be refined by pull request status or pull request author ARN.
 
+See \url{https://paws-r.github.io/docs/codecommit/list_pull_requests.html} for full documentation.
+}
 \keyword{internal}

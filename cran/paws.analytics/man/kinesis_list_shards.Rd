@@ -4,8 +4,14 @@
 \alias{kinesis_list_shards}
 \title{Lists the shards in a stream and provides information about each shard}
 \usage{
-kinesis_list_shards(StreamName, NextToken, ExclusiveStartShardId,
-  MaxResults, StreamCreationTimestamp, ShardFilter)
+kinesis_list_shards(
+  StreamName = NULL,
+  NextToken = NULL,
+  ExclusiveStartShardId = NULL,
+  MaxResults = NULL,
+  StreamCreationTimestamp = NULL,
+  ShardFilter = NULL
+)
 }
 \arguments{
 \item{StreamName}{The name of the data stream whose shards you want to list.
@@ -47,9 +53,9 @@ the first one in the stream.
 You cannot specify this parameter if you specify \code{NextToken}.}
 
 \item{MaxResults}{The maximum number of shards to return in a single call to
-\code{\link[=kinesis_list_shards]{list_shards}}. The minimum value you can specify
-for this parameter is 1, and the maximum is 10,000, which is also the
-default.
+\code{\link[=kinesis_list_shards]{list_shards}}. The maximum number of shards to
+return in a single call. The default value is 1000. If you specify a
+value greater than 1000, at most 1000 results are returned.
 
 When the number of shards to be listed is greater than the value of
 \code{MaxResults}, the response contains a \code{NextToken} value that you can use
@@ -65,57 +71,33 @@ list the shards for.
 You cannot specify this parameter if you specify the \code{NextToken}
 parameter.}
 
-\item{ShardFilter}{}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Shards = list(
-    list(
-      ShardId = "string",
-      ParentShardId = "string",
-      AdjacentParentShardId = "string",
-      HashKeyRange = list(
-        StartingHashKey = "string",
-        EndingHashKey = "string"
-      ),
-      SequenceNumberRange = list(
-        StartingSequenceNumber = "string",
-        EndingSequenceNumber = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{ShardFilter}{Enables you to filter out the response of the
+\code{\link[=kinesis_list_shards]{list_shards}} API. You can only specify one
+filter at a time.
+
+If you use the \code{ShardFilter} parameter when invoking the ListShards API,
+the \code{Type} is the required property and must be specified. If you
+specify the \code{AT_TRIM_HORIZON}, \code{FROM_TRIM_HORIZON}, or \code{AT_LATEST}
+types, you do not need to specify either the \code{ShardId} or the
+\code{Timestamp} optional properties.
+
+If you specify the \code{AFTER_SHARD_ID} type, you must also provide the
+value for the optional \code{ShardId} property. The \code{ShardId} property is
+identical in fuctionality to the \code{ExclusiveStartShardId} parameter of
+the \code{\link[=kinesis_list_shards]{list_shards}} API. When \code{ShardId} property is
+specified, the response includes the shards starting with the shard
+whose ID immediately follows the \code{ShardId} that you provided.
+
+If you specify the \code{AT_TIMESTAMP} or \code{FROM_TIMESTAMP_ID} type, you must
+also provide the value for the optional \code{Timestamp} property. If you
+specify the AT_TIMESTAMP type, then all shards that were open at the
+provided timestamp are returned. If you specify the FROM_TIMESTAMP type,
+then all shards starting from the provided timestamp to TIP are
+returned.}
 }
 \description{
-Lists the shards in a stream and provides information about each shard.
-This operation has a limit of 100 transactions per second per data
-stream.
+Lists the shards in a stream and provides information about each shard. This operation has a limit of 1000 transactions per second per data stream.
 
-This API is a new operation that is used by the Amazon Kinesis Client
-Library (KCL). If you have a fine-grained IAM policy that only allows
-specific operations, you must update your policy to allow calls to this
-API. For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html}{Controlling Access to Amazon Kinesis Data Streams Resources Using IAM}.
+See \url{https://paws-r.github.io/docs/kinesis/list_shards.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_shards(
-  StreamName = "string",
-  NextToken = "string",
-  ExclusiveStartShardId = "string",
-  MaxResults = 123,
-  StreamCreationTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  ShardFilter = list(
-    Type = "AFTER_SHARD_ID"|"AT_TRIM_HORIZON"|"FROM_TRIM_HORIZON"|"AT_LATEST"|"AT_TIMESTAMP"|"FROM_TIMESTAMP",
-    ShardId = "string",
-    Timestamp = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

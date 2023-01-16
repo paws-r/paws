@@ -9,27 +9,9 @@ servicediscovery_delete_service(Id)
 \arguments{
 \item{Id}{[required] The ID of the service that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a specified service. If the service still contains one or more
-registered instances, the request fails.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_service(
-  Id = "string"
-)
-}
-}
+Deletes a specified service. If the service still contains one or more registered instances, the request fails.
 
-\examples{
-\dontrun{
-# Example: Delete service
-svc$delete_service(
-  Id = "srv-p5zdwlg5uvvzjita"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/delete_service.html} for full documentation.
 }
 \keyword{internal}

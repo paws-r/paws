@@ -9,48 +9,9 @@ directconnect_delete_connection(connectionId)
 \arguments{
 \item{connectionId}{[required] The ID of the connection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ownerAccount = "string",
-  connectionId = "string",
-  connectionName = "string",
-  connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-  region = "string",
-  location = "string",
-  bandwidth = "string",
-  vlan = 123,
-  partnerName = "string",
-  loaIssueTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  lagId = "string",
-  awsDevice = "string",
-  jumboFrameCapable = TRUE|FALSE,
-  awsDeviceV2 = "string",
-  hasLogicalRedundancy = "unknown"|"yes"|"no",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
-}
 \description{
 Deletes the specified connection.
 
-Deleting a connection only stops the AWS Direct Connect port hour and
-data transfer charges. If you are partnering with any third parties to
-connect with the AWS Direct Connect location, you must cancel your
-service with them separately.
+See \url{https://paws-r.github.io/docs/directconnect/delete_connection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_connection(
-  connectionId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -19,23 +19,9 @@ request.}
 verify that the calling entity is allowed access to the job and its
 details.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  status = "Created"|"Queued"|"Dispatched"|"InProgress"|"TimedOut"|"Succeeded"|"Failed"
-)
-}
-}
 \description{
-Confirms a job worker has received the specified job. Used for partner
-actions only.
-}
-\section{Request syntax}{
-\preformatted{svc$acknowledge_third_party_job(
-  jobId = "string",
-  nonce = "string",
-  clientToken = "string"
-)
-}
-}
+Confirms a job worker has received the specified job. Used for partner actions only.
 
+See \url{https://paws-r.github.io/docs/codepipeline/acknowledge_third_party_job.html} for full documentation.
+}
 \keyword{internal}

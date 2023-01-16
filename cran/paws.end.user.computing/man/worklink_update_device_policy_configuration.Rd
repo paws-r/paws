@@ -4,8 +4,10 @@
 \alias{worklink_update_device_policy_configuration}
 \title{Updates the device policy configuration for the fleet}
 \usage{
-worklink_update_device_policy_configuration(FleetArn,
-  DeviceCaCertificate)
+worklink_update_device_policy_configuration(
+  FleetArn,
+  DeviceCaCertificate = NULL
+)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
@@ -13,18 +15,9 @@ worklink_update_device_policy_configuration(FleetArn,
 \item{DeviceCaCertificate}{The certificate chain, including intermediate certificates and the root
 certificate authority certificate used to issue device certificates.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the device policy configuration for the fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$update_device_policy_configuration(
-  FleetArn = "string",
-  DeviceCaCertificate = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/update_device_policy_configuration.html} for full documentation.
+}
 \keyword{internal}

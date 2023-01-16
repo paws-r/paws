@@ -5,8 +5,7 @@
 \title{Given an identity (an email address or a domain), enables or disables
 whether Amazon SES forwards bounce and complaint notifications as email}
 \usage{
-ses_set_identity_feedback_forwarding_enabled(Identity,
-  ForwardingEnabled)
+ses_set_identity_feedback_forwarding_enabled(Identity, ForwardingEnabled)
 }
 \arguments{
 \item{Identity}{[required] The identity for which to set bounce and complaint notification
@@ -20,41 +19,9 @@ publish bounce and complaint notifications only through Amazon SNS. This
 value can only be set to \code{false} when Amazon SNS topics are set for both
 \code{Bounce} and \code{Complaint} notification types.}
 }
-\value{
-An empty list.
-}
 \description{
-Given an identity (an email address or a domain), enables or disables
-whether Amazon SES forwards bounce and complaint notifications as email.
-Feedback forwarding can only be disabled when Amazon Simple Notification
-Service (Amazon SNS) topics are specified for both bounces and
-complaints.
+Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email. Feedback forwarding can only be disabled when Amazon Simple Notification Service (Amazon SNS) topics are specified for both bounces and complaints.
 
-Feedback forwarding does not apply to delivery notifications. Delivery
-notifications are only available through Amazon SNS.
-
-You can execute this operation no more than once per second.
-
-For more information about using notifications with Amazon SES, see the
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$set_identity_feedback_forwarding_enabled(
-  Identity = "string",
-  ForwardingEnabled = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example configures Amazon SES to forward an identity's
-# bounces and complaints via email:
-svc$set_identity_feedback_forwarding_enabled(
-  ForwardingEnabled = TRUE,
-  Identity = "user@example.com"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/set_identity_feedback_forwarding_enabled.html} for full documentation.
 }
 \keyword{internal}

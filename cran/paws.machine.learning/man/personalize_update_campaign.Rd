@@ -5,8 +5,12 @@
 \title{Updates a campaign by either deploying a new solution or changing the
 value of the campaign's minProvisionedTPS parameter}
 \usage{
-personalize_update_campaign(campaignArn, solutionVersionArn,
-  minProvisionedTPS, campaignConfig)
+personalize_update_campaign(
+  campaignArn,
+  solutionVersionArn = NULL,
+  minProvisionedTPS = NULL,
+  campaignConfig = NULL
+)
 }
 \arguments{
 \item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign.}
@@ -18,38 +22,9 @@ personalize_update_campaign(campaignArn, solutionVersionArn,
 
 \item{campaignConfig}{The configuration details of a campaign.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  campaignArn = "string"
-)
-}
-}
 \description{
-Updates a campaign by either deploying a new solution or changing the
-value of the campaign's \code{minProvisionedTPS} parameter.
+Updates a campaign by either deploying a new solution or changing the value of the campaign's \code{minProvisionedTPS} parameter.
 
-To update a campaign, the campaign status must be ACTIVE or CREATE
-FAILED. Check the campaign status using the
-\code{\link[=personalize_describe_campaign]{describe_campaign}} API.
-
-You must wait until the \code{status} of the updated campaign is \code{ACTIVE}
-before asking the campaign for recommendations.
-
-For more information on campaigns, see
-\code{\link[=personalize_create_campaign]{create_campaign}}.
+See \url{https://paws-r.github.io/docs/personalize/update_campaign.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_campaign(
-  campaignArn = "string",
-  solutionVersionArn = "string",
-  minProvisionedTPS = 123,
-  campaignConfig = list(
-    itemExplorationConfig = list(
-      "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

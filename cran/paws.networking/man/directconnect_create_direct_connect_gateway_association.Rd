@@ -6,8 +6,11 @@
 private gateway}
 \usage{
 directconnect_create_direct_connect_gateway_association(
-  directConnectGatewayId, gatewayId,
-  addAllowedPrefixesToDirectConnectGateway, virtualGatewayId)
+  directConnectGatewayId,
+  gatewayId = NULL,
+  addAllowedPrefixesToDirectConnectGateway = NULL,
+  virtualGatewayId = NULL
+)
 }
 \arguments{
 \item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
@@ -20,53 +23,13 @@ This parameter is required when you create an association to a transit
 gateway.
 
 For information about how to set the prefixes, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes}{Allowed Prefixes}
-in the \emph{AWS Direct Connect User Guide}.}
+in the \emph{Direct Connect User Guide}.}
 
 \item{virtualGatewayId}{The ID of the virtual private gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  directConnectGatewayAssociation = list(
-    directConnectGatewayId = "string",
-    directConnectGatewayOwnerAccount = "string",
-    associationState = "associating"|"associated"|"disassociating"|"disassociated"|"updating",
-    stateChangeError = "string",
-    associatedGateway = list(
-      id = "string",
-      type = "virtualPrivateGateway"|"transitGateway",
-      ownerAccount = "string",
-      region = "string"
-    ),
-    associationId = "string",
-    allowedPrefixesToDirectConnectGateway = list(
-      list(
-        cidr = "string"
-      )
-    ),
-    virtualGatewayId = "string",
-    virtualGatewayRegion = "string",
-    virtualGatewayOwnerAccount = "string"
-  )
-)
-}
-}
 \description{
-Creates an association between a Direct Connect gateway and a virtual
-private gateway. The virtual private gateway must be attached to a VPC
-and must not be associated with another Direct Connect gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$create_direct_connect_gateway_association(
-  directConnectGatewayId = "string",
-  gatewayId = "string",
-  addAllowedPrefixesToDirectConnectGateway = list(
-    list(
-      cidr = "string"
-    )
-  ),
-  virtualGatewayId = "string"
-)
-}
-}
+Creates an association between a Direct Connect gateway and a virtual private gateway. The virtual private gateway must be attached to a VPC and must not be associated with another Direct Connect gateway.
 
+See \url{https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway_association.html} for full documentation.
+}
 \keyword{internal}

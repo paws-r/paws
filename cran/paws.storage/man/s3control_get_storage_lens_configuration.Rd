@@ -11,86 +11,9 @@ s3control_get_storage_lens_configuration(ConfigId, AccountId)
 
 \item{AccountId}{[required] The account ID of the requester.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StorageLensConfiguration = list(
-    Id = "string",
-    AccountLevel = list(
-      ActivityMetrics = list(
-        IsEnabled = TRUE|FALSE
-      ),
-      BucketLevel = list(
-        ActivityMetrics = list(
-          IsEnabled = TRUE|FALSE
-        ),
-        PrefixLevel = list(
-          StorageMetrics = list(
-            IsEnabled = TRUE|FALSE,
-            SelectionCriteria = list(
-              Delimiter = "string",
-              MaxDepth = 123,
-              MinStorageBytesPercentage = 123.0
-            )
-          )
-        )
-      )
-    ),
-    Include = list(
-      Buckets = list(
-        "string"
-      ),
-      Regions = list(
-        "string"
-      )
-    ),
-    Exclude = list(
-      Buckets = list(
-        "string"
-      ),
-      Regions = list(
-        "string"
-      )
-    ),
-    DataExport = list(
-      S3BucketDestination = list(
-        Format = "CSV"|"Parquet",
-        OutputSchemaVersion = "V_1",
-        AccountId = "string",
-        Arn = "string",
-        Prefix = "string",
-        Encryption = list(
-          SSES3 = list(),
-          SSEKMS = list(
-            KeyId = "string"
-          )
-        )
-      )
-    ),
-    IsEnabled = TRUE|FALSE,
-    AwsOrg = list(
-      Arn = "string"
-    ),
-    StorageLensArn = "string"
-  )
-)
-}
-}
 \description{
-Gets the Amazon S3 Storage Lens configuration. For more information, see
-Working with Amazon S3 Storage Lens in the \emph{Amazon Simple Storage
-Service Developer Guide}.
+Gets the Amazon S3 Storage Lens configuration. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html}{Assessing your storage activity and usage with Amazon S3 Storage Lens} in the \emph{Amazon S3 User Guide}.
 
-To use this action, you must have permission to perform the
-\code{s3:GetStorageLensConfiguration} action. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html#storage_lens_IAM}{Setting permissions to use Amazon S3 Storage Lens}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+See \url{https://paws-r.github.io/docs/s3control/get_storage_lens_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_storage_lens_configuration(
-  ConfigId = "string",
-  AccountId = "string"
-)
-}
-}
-
 \keyword{internal}

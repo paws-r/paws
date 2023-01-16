@@ -11,31 +11,32 @@
     Interface to 'Amazon Web Services' compute services, including
     'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
     containers, batch processing, and more <https://aws.amazon.com/>.
+  parent: compute
 
 - name: compute.p2
   services:
     - apprunner
     - batch
     - braket
-    - computeoptimizer
-    - ec2instanceconnect
+    - compute-optimizer
+    - ec2-instance-connect
     - ecr
-    - ecrpublic
+    - ecr-public
     - ecs
     - eks
     - elasticbeanstalk
-    - elasticinference
-    - emrcontainers
-    - emrserverless
+    - emr-containers
+    - emr-serverless
     - imagebuilder
     - lightsail
     - proton
-    - serverlessapplicationrepository
+    - serverlessrepo
   title: "'Amazon Web Services' Compute Services"
   description: >-
     This is the backend package for 'paws.compute'. Please use 'paws.compute' to
     access 'Amazon Web Services' compute services.
   category_description: ""
+  parent: compute
 
 - name: storage
   services:
@@ -43,11 +44,11 @@
     - backupstorage
     - dlm
     - ebs
-    - efs
-    - finspacedata
+    - elasticfilesystem
+    - finspace-data
     - fsx
     - glacier
-    - recyclebin
+    - rbin
     - s3
     - s3control
     - s3outposts
@@ -57,62 +58,51 @@
     Interface to 'Amazon Web Services' storage services, including 'Simple
     Storage Service' ('S3') and more <https://aws.amazon.com/>.
 
-- name: database.p1
+- name: database
   services:
     - dax
     - docdb
     - dynamodb
-    - dynamodbstreams
+    - streams.dynamodb
     - elasticache
+    - keyspaces
+    - lakeformation
+    - memorydb
     - neptune
+    - qldb
+    - qldb-session
     - rds
-    - rdsdataservice
+    - rds-data
     - redshift
-    - simpledb
+    - redshift-data
+    - redshift-serverless
+    - sdb
+    - timestream-query
+    - timestream-write
   title: "'Amazon Web Services' Database Services"
   description: >-
-    This is the backend package for 'paws.database'. Please use 'paws.database' to
-    access 'Amazon Web Services' database services.
-  category_description: >-
     Interface to 'Amazon Web Services' database services, including 'Relational
     Database Service' ('RDS'), 'DynamoDB' 'NoSQL' database, and more
     <https://aws.amazon.com/>.
 
-- name: database.p2
-  services:
-    - keyspaces
-    - lakeformation
-    - memorydb
-    - qldb
-    - qldbsession
-    - redshiftdataapiservice
-    - redshiftserverless
-    - timestreamquery
-    - timestreamwrite
-  title: "'Amazon Web Services' Database Services"
-  description: >-
-    This is the backend package for 'paws.database'. Please use 'paws.database' to
-    access 'Amazon Web Services' database services.
-  category_description: ""
-
 - name: migration
   services:
     - appflow
-    - applicationdiscoveryservice
-    - appintegrationsservice
-    - databasemigrationservice
+    - discovery
+    - appintegrations
+    - dms
     - dataexchange
     - datasync
     - importexport
-    - mainframemodernization
+    - m2
     - mgn
-    - migrationhub
-    - migrationhubconfig
-    - migrationhubrefactorspaces
-    - migrationhubstrategyrecommendations
+    - AWSMigrationHub
+    - migrationhub-config
+    - migration-hub-refactor-spaces
+    - migrationhubstrategy
     - sms
     - snowball
-    - snowdevicemanagement
+    - snow-device-management
     - transfer
   title: "'Amazon Web Services' Migration & Transfer Services"
   description: >-
@@ -126,30 +116,19 @@
     - apigatewaymanagementapi
     - apigatewayv2
     - appmesh
-    - backupgateway
+    - backup-gateway
     - cloudfront
     - directconnect
-    - elb
-    - elbv2
-  title: "'Amazon Web Services' Networking & Content Delivery Services"
-  description: >-
-    This is the backend package for 'paws.networking'. Please use 'paws.networking' to
-    access 'Amazon Web Services' networking and content delivery services.
-  category_description: >-
-    Interface to 'Amazon Web Services' networking and content delivery services,
-    including 'Route 53' Domain Name System service, 'CloudFront' content
-    delivery, load balancing, and more <https://aws.amazon.com/>.
-
-- name: networking.p2
-  services:
+    - elasticloadbalancing
+    - elasticloadbalancingv2
     - globalaccelerator
-    - networkfirewall
+    - network-firewall
     - networkmanager
     - route53
     - route53domains
-    - route53recoverycluster
-    - route53recoverycontrolconfig
-    - route53recoveryreadiness
+    - route53-recovery-cluster
+    - route53-recovery-control-config
+    - route53-recovery-readiness
     - route53resolver
     - servicediscovery
   title: "'Amazon Web Services' Networking & Content Delivery Services"
@@ -161,19 +140,19 @@
 - name: developer.tools
   services:
     - cloud9
-    - cloudcontrolapi
+    - cloudcontrol
     - codebuild
     - codeartifact
     - codecommit
     - codedeploy
     - codeguruprofiler
-    - codegurureviewer
+    - codeguru-reviewer
     - codepipeline
     - codestar
-    - codestarconnections
-    - codestarnotifications
+    - codestar-connections
+    - codestar-notifications
     - drs
-    - devopsguru
+    - devops-guru
     - fis
     - wellarchitected
     - xray
@@ -212,74 +191,75 @@
 
 - name: management.p1
   services:
+    - amp
+    - application-autoscaling
+    - application-insights
+    - applicationcostprofiler
+    - auditmanager
     - autoscaling
+    - autoscaling-plans
     - cloudformation
-    - cloudwatchevents
-    - cloudwatchlogs
-    - licensemanager
-    - opsworks
-    - organizations
-    - servicecatalog
-    - ssm
+    - cloudtrail
+    - config
+    - events
+    - evidently
+    - finspace
+    - grafana
+    - health
+    - license-manager
+    - license-manager-user-subscriptions
+    - logs
   title: "'Amazon Web Services' Management & Governance Services"
   description: >-
-    This is the backend package for 'paws.management'. Please use
-    'paws.management' to access 'Amazon Web Services' management and
-    governance services.
-  category_description:  >-
+    This is the backend package for 'paws.management'. Please use 
+    'paws.management' to access 'Amazon Web Services' management services.
+  category_description: >-
     Interface to 'Amazon Web Services' management and governance services,
     including 'CloudWatch' application and infrastructure monitoring, 'Auto
     Scaling' for automatically scaling resources, and more
     <https://aws.amazon.com/>.
+  parent: management
 
 - name: management.p2
   services:
-    - applicationautoscaling
-    - applicationcostprofiler
-    - applicationinsights
-    - appregistry
-    - auditmanager
-    - autoscalingplans
-    - configservice
-    - cloudtrail
-    - cloudwatch
-    - cloudwatchevidently
-    - cloudwatchrum
-    - finspace
-    - health
-    - licensemanagerusersubscriptions
-    - managedgrafana
+    - monitoring
+    - opsworks
     - opsworkscm
+    - organizations
     - pi
-    - prometheusservice
     - resiliencehub
-    - resourcegroups
+    - resource-groups
     - resourcegroupstaggingapi
-    - servicequotas
-    - ssmcontacts
-    - ssmincidents
+    - rum
+    - service-quotas
+    - servicecatalog
+    - servicecatalog-appregistry
+    - ssm
+    - ssm-contacts
+    - ssm-incidents
     - support
     - synthetics
   title: "'Amazon Web Services' Management & Governance Services"
   description: >-
-    This is the backend package for 'paws.management'. Please use
-    'paws.management' to access 'Amazon Web Services' management and
-    governance services.
+    This is the backend package for 'paws.management'. Please use 
+    'paws.management' to access 'Amazon Web Services' management services.
   category_description: ""
+  parent: management
 
 - name: media.services
   services:
     - elastictranscoder
     - kinesisvideo
-    - kinesisvideoarchivedmedia
-    - kinesisvideomedia
+    - kinesis-video-archived-media
+    - kinesis-video-media
+    - kinesis-video-signaling
     - mediaconnect
     - mediaconvert
     - medialive
     - mediapackage
-    - mediapackagevod
+    - mediapackage-vod
     - mediastore
-    - mediastoredata
+    - mediastore-data
     - mediatailor
   title: "'Amazon Web Services' Media Services Services"
   description: >-
@@ -287,108 +267,82 @@
     'Kinesis' video stream capture and processing, format conversion,
     and more <https://aws.amazon.com/media-services/>.
 
-- name: machine.learning.p1
+- name: machine.learning
   services:
+    - sagemaker-a2i-runtime
     - comprehend
     - comprehendmedical
-    - lexmodelbuildingservice
-    - lexruntimeservice
+    - elastic-inference
+    - forecastquery
+    - forecast
+    - frauddetector
+    - lex-models
+    - models.lex.v2
+    - runtime.lex
+    - runtime.lex.v2
+    - lookoutequipment
+    - lookoutmetrics
+    - machinelearning
+    - panorama
     - personalize
-    - personalizeevents
-    - personalizeruntime
+    - personalize-events
+    - personalize-runtime
     - polly
     - rekognition
     - sagemaker
-    - sagemakerruntime
+    - sagemaker-edge
+    - sagemaker-featurestore-runtime
+    - runtime.sagemaker
     - textract
-    - transcribeservice
+    - transcribe
     - translate
+    - voice-id
   title: "'Amazon Web Services' Machine Learning Services"
   description: >-
-    This is the backend package for 'paws.machine.learning'. Please use
-    'paws.machine.learning' to access 'Amazon Web Services' machine learning
-    services.
-  category_description: >-
     Interface to 'Amazon Web Services' machine learning services, including
     'SageMaker' managed machine learning service, natural language processing,
     speech recognition, translation, and more
     <https://aws.amazon.com/machine-learning/>.
 
-- name: machine.learning.p2
-  services:
-    - augmentedairuntime
-    - forecastqueryservice
-    - forecastservice
-    - frauddetector
-    - lexmodelsv2
-    - lexruntimev2
-    - lookoutequipment
-    - lookoutmetrics
-    - machinelearning
-    - panorama
-    - sagemakeredgemanager
-    - sagemakerfeaturestoreruntime
-    - voiceid
-  title: "'Amazon Web Services' Machine Learning Services"
-  description: >-
-    This is the backend package for 'paws.machine.learning'. Please use
-    'paws.machine.learning' to access 'Amazon Web Services' machine learning
-    services.
-  category_description: ""
-
-- name: analytics.p1
+- name: analytics
   services:
     - athena
-    - elasticsearchservice
-    - emr
+    - cloudsearch
+    - cloudsearchdomain
+    - datapipeline
+    - es
+    - elasticmapreduce
+    - firehose
     - glue
-    - gluedatabrew
+    - databrew
+    - healthlake
+    - ivs
     - kafka
+    - kafkaconnect
     - kendra
+    - kinesis
+    - kinesisanalytics
     - kinesisanalyticsv2
-    - mturk
-    - opensearchservice
+    - mturk-requester
+    - opensearch
+    - quicksight
   title: "'Amazon Web Services' Analytics Services"
   description: >-
-    This is the backend package for 'paws.analytics'. Please use
-    'paws.analytics' to access 'Amazon Web Services' 'analytics'
-    services.
-  category_description: >-
     Interface to 'Amazon Web Services' 'analytics' services, including 'Elastic
     MapReduce' 'Hadoop' and 'Spark' big data service, 'Elasticsearch'
     search engine, and more <https://aws.amazon.com/>.
 
-- name: analytics.p2
-  services:
-    - cloudsearch
-    - cloudsearchdomain
-    - datapipeline
-    - firehose
-    - healthlake
-    - ivs
-    - kafkaconnect
-    - kinesis
-    - kinesisanalytics
-    - kinesisvideosignalingchannels
-    - quicksight
-  title: "'Amazon Web Services' Analytics Services"
-  description: >-
-    This is the backend package for 'paws.analytics'. Please use
-    'paws.analytics' to access 'Amazon Web Services' 'analytics'
-    services.
-  category_description: ""
-
 - name: security.identity.p1
   services:
     - clouddirectory
-    - cognitoidentityprovider
-    - directoryservice
+    - cognito-idp
+    - ds
     - guardduty
     - iam
     - kms
     - securityhub
     - waf
-    - wafregional
+    - waf-regional
   title: "'Amazon Web Services' Security, Identity, & Compliance Services"
   description: >-
     This is the backend package for 'paws.security.identity'. Please use
@@ -399,20 +353,21 @@
     services, including the 'Identity & Access Management' ('IAM') service for
     managing access to services and resources, and more
     <https://aws.amazon.com/>.
+  parent: security.identity
 
 - name: security.identity.p2
   services:
     - accessanalyzer
     - account
     - acm
-    - acmpca
+    - acm-pca
     - cloudhsm
     - cloudhsmv2
-    - cognitoidentity
-    - cognitosync
+    - cognito-identity
+    - cognito-sync
     - detective
     - fms
-    - iamrolesanywhere
+    - rolesanywhere
     - identitystore
     - inspector
     - inspector2
@@ -422,8 +377,8 @@
     - secretsmanager
     - shield
     - sso
-    - ssoadmin
-    - ssooidc
+    - sso-admin
+    - sso-oidc
     - sts
     - wafv2
   title: "'Amazon Web Services' Security, Identity, & Compliance Services"
@@ -432,6 +387,7 @@
     'paws.security.identity to access 'Amazon Web Services' security, identity,
     and compliance services.
   category_description: ""
+  parent: security.identity
 
 - name: mobile
   services:
@@ -445,7 +401,7 @@
     - honeycode
     - mobile
     - mobileanalytics
-    - private5g
+    - privatenetworks
   title: "'Amazon Web Services' Mobile Services"
   description: >-
     Interface to 'Amazon Web Services' mobile services, including the 'Amplify'
@@ -460,11 +416,11 @@
 - name: application.integration
   services:
     - eventbridge
-    - locationservice
+    - location
     - mq
     - mwaa
     - schemas
-    - sfn
+    - states
     - sns
     - sqs
     - swf
@@ -479,12 +435,12 @@
   services:
     - billingconductor
     - budgets
-    - costandusagereportservice
-    - costexplorer
-    - marketplacecatalog
+    - cur
+    - ce
+    - marketplace-catalog
     - marketplacecommerceanalytics
-    - marketplaceentitlementservice
-    - marketplacemetering
+    - entitlement.marketplace
+    - meteringmarketplace
     - pricing
     - savingsplans
   title: "'Amazon Web Services' Cost Management Services"
@@ -496,16 +452,16 @@
 - name: customer.engagement
   services:
     - connect
-    - connectcampaignservice
-    - connectcontactlens
+    - connectcampaigns
+    - connect-contact-lens
     - connectparticipant
-    - connectwisdomservice
-    - customerprofiles
+    - wisdom
+    - customer-profiles
     - pinpoint
-    - pinpointemail
-    - pinpointsmsvoice
-    - pinpointsmsvoicev2
-    - ses
+    - pinpoint-email
+    - sms-voice
+    - pinpoint-sms-voice-v2
+    - email
     - sesv2
   title: "'Amazon Web Services' Customer Engagement Services"
   description: >-
@@ -517,11 +473,11 @@
   services:
     - alexaforbusiness
     - chime
-    - chimesdkidentity
-    - chimesdkmediapipelines
-    - chimesdkmeetings
-    - chimesdkmessaging
-    - lookoutforvision
+    - chime-sdk-identity
+    - chime-sdk-media-pipelines
+    - chime-sdk-meetings
+    - chime-sdk-messaging
+    - lookoutvision
     - outposts
     - workmail
   title: "'Amazon Web Services' Business Applications Services"
@@ -534,12 +490,12 @@
   services:
     - appstream
     - ivschat
-    - nimblestudio
+    - nimble
     - workdocs
     - worklink
     - workmailmessageflow
     - workspaces
-    - workspacesweb
+    - workspaces-web
   title: "'Amazon Web Services' End User Computing Services"
   description: >-
     Interface to 'Amazon Web Services' end user computing services, including
@@ -551,15 +507,15 @@
     - greengrass
     - greengrassv2
     - iot
-    - iot1clickdevicesservice
-    - iot1clickprojects
+    - iot1click-devices
+    - iot1click-projects
     - iotanalytics
-    - iotdataplane
+    - iot-data
     - iotdeviceadvisor
     - iotevents
-    - ioteventsdata
+    - iotevents-data
     - iotfleethub
-    - iotjobsdataplane
+    - iot-jobs-data
     - iotsecuretunneling
     - iotsitewise
     - iotthingsgraph
@@ -572,7 +528,6 @@
     including data collection, management, and analysis for IoT devices.
     <https://aws.amazon.com/iot/>.
 
-
 - name: game.development
   services:
     - gamelift
@@ -581,4 +536,3 @@
   description: >-
     Interface to 'Amazon Web Services' game development services, including
     'GameLift' game server hosting <https://aws.amazon.com/gametech/>.
-...

@@ -4,8 +4,15 @@
 \alias{sagemaker_list_algorithms}
 \title{Lists the machine learning algorithms that have been created}
 \usage{
-sagemaker_list_algorithms(CreationTimeAfter, CreationTimeBefore,
-  MaxResults, NameContains, NextToken, SortBy, SortOrder)
+sagemaker_list_algorithms(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  NextToken = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only algorithms created after the specified time
@@ -29,41 +36,9 @@ algorithms, use the token in the next request.}
 
 \item{SortOrder}{The sort order for the results. The default is \code{Ascending}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AlgorithmSummaryList = list(
-    list(
-      AlgorithmName = "string",
-      AlgorithmArn = "string",
-      AlgorithmDescription = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      AlgorithmStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the machine learning algorithms that have been created.
-}
-\section{Request syntax}{
-\preformatted{svc$list_algorithms(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxResults = 123,
-  NameContains = "string",
-  NextToken = "string",
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_algorithms.html} for full documentation.
+}
 \keyword{internal}

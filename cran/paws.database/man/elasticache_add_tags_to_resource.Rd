@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_add_tags_to_resource}
 \alias{elasticache_add_tags_to_resource}
-\title{Adds up to 50 cost allocation tags to the named resource}
+\title{A tag is a key-value pair where the key and value are case-sensitive}
 \usage{
 elasticache_add_tags_to_resource(ResourceName, Tags)
 }
@@ -13,47 +13,14 @@ be added, for example
 \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}.
 ElastiCache resources are \emph{cluster} and \emph{snapshot}.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Service Namespaces}.}
 
-\item{Tags}{[required] A list of cost allocation tags to be added to this resource. A tag is a
-key-value pair. A tag key must be accompanied by a tag value.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
+\item{Tags}{[required] A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
-Adds up to 50 cost allocation tags to the named resource. A cost
-allocation tag is a key-value pair where the key and value are
-case-sensitive. You can use cost allocation tags to categorize and track
-your AWS costs.
+A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html}{Resource-level permissions}.
 
-When you apply tags to your ElastiCache resources, AWS generates a cost
-allocation report as a comma-separated value (CSV) file with your usage
-and costs aggregated by your tags. You can apply tags that represent
-business categories (such as cost centers, application names, or owners)
-to organize your costs across multiple services. For more information,
-see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html}{Using Cost Allocation Tags in Amazon ElastiCache}
-in the \emph{ElastiCache User Guide}.
+See \url{https://paws-r.github.io/docs/elasticache/add_tags_to_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
-  ResourceName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

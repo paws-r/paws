@@ -2,7 +2,7 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_describe_availability_monitor_test}
 \alias{storagegateway_describe_availability_monitor_test}
-\title{Returns information about the most recent High Availability monitoring
+\title{Returns information about the most recent high availability monitoring
 test that was performed on the host in a cluster}
 \usage{
 storagegateway_describe_availability_monitor_test(GatewayARN)
@@ -10,26 +10,9 @@ storagegateway_describe_availability_monitor_test(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  Status = "COMPLETE"|"FAILED"|"PENDING",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Returns information about the most recent High Availability monitoring
-test that was performed on the host in a cluster. If a test isn't
-performed, the status and start time in the response would be null.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_availability_monitor_test(
-  GatewayARN = "string"
-)
-}
-}
+Returns information about the most recent high availability monitoring test that was performed on the host in a cluster. If a test isn't performed, the status and start time in the response would be null.
 
+See \url{https://paws-r.github.io/docs/storagegateway/describe_availability_monitor_test.html} for full documentation.
+}
 \keyword{internal}

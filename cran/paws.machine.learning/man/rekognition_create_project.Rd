@@ -9,25 +9,9 @@ rekognition_create_project(ProjectName)
 \arguments{
 \item{ProjectName}{[required] The name of the project to create.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProjectArn = "string"
-)
-}
-}
 \description{
-Creates a new Amazon Rekognition Custom Labels project. A project is a
-logical grouping of resources (images, Labels, models) and operations
-(training, evaluation and detection).
+Creates a new Amazon Rekognition Custom Labels project. A project is a group of resources (datasets, model versions) that you use to create and manage Amazon Rekognition Custom Labels models.
 
-This operation requires permissions to perform the
-\code{rekognition:CreateProject} action.
+See \url{https://paws-r.github.io/docs/rekognition/create_project.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_project(
-  ProjectName = "string"
-)
-}
-}
-
 \keyword{internal}

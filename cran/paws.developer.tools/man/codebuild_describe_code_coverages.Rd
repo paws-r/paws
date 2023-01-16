@@ -4,8 +4,15 @@
 \alias{codebuild_describe_code_coverages}
 \title{Retrieves one or more code coverage reports}
 \usage{
-codebuild_describe_code_coverages(reportArn, nextToken, maxResults,
-  sortOrder, sortBy, minLineCoveragePercentage, maxLineCoveragePercentage)
+codebuild_describe_code_coverages(
+  reportArn,
+  nextToken = NULL,
+  maxResults = NULL,
+  sortOrder = NULL,
+  sortBy = NULL,
+  minLineCoveragePercentage = NULL,
+  maxLineCoveragePercentage = NULL
+)
 }
 \arguments{
 \item{reportArn}{[required] The ARN of the report for which test cases are returned.}
@@ -20,56 +27,22 @@ exclude this parameter.}
 \item{sortOrder}{Specifies if the results are sorted in ascending or descending order.}
 
 \item{sortBy}{Specifies how the results are sorted. Possible values are:
-\subsection{FILE_PATH}{
+
+\strong{FILE_PATH}
 
 The results are sorted by file path.
-}
 
-\subsection{LINE_COVERAGE_PERCENTAGE}{
+\strong{LINE_COVERAGE_PERCENTAGE}
 
-The results are sorted by the percentage of lines that are covered.
-}}
+The results are sorted by the percentage of lines that are covered.}
 
 \item{minLineCoveragePercentage}{The minimum line coverage percentage to report.}
 
 \item{maxLineCoveragePercentage}{The maximum line coverage percentage to report.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  codeCoverages = list(
-    list(
-      id = "string",
-      reportARN = "string",
-      filePath = "string",
-      lineCoveragePercentage = 123.0,
-      linesCovered = 123,
-      linesMissed = 123,
-      branchCoveragePercentage = 123.0,
-      branchesCovered = 123,
-      branchesMissed = 123,
-      expired = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Retrieves one or more code coverage reports.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_code_coverages(
-  reportArn = "string",
-  nextToken = "string",
-  maxResults = 123,
-  sortOrder = "ASCENDING"|"DESCENDING",
-  sortBy = "LINE_COVERAGE_PERCENTAGE"|"FILE_PATH",
-  minLineCoveragePercentage = 123.0,
-  maxLineCoveragePercentage = 123.0
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/describe_code_coverages.html} for full documentation.
+}
 \keyword{internal}

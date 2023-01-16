@@ -11,42 +11,9 @@ ses_create_receipt_filter(Filter)
 consists of a name, an IP address range, and whether to allow or block
 mail from it.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates a new IP address filter.
 
-For information about setting up IP address filters, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$create_receipt_filter(
-  Filter = list(
-    Name = "string",
-    IpFilter = list(
-      Policy = "Block"|"Allow",
-      Cidr = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example creates a new IP address filter:
-svc$create_receipt_filter(
-  Filter = list(
-    IpFilter = list(
-      Cidr = "1.2.3.4/24",
-      Policy = "Allow"
-    ),
-    Name = "MyFilter"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/create_receipt_filter.html} for full documentation.
 }
 \keyword{internal}

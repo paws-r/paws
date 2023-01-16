@@ -4,8 +4,15 @@
 \alias{rds_start_export_task}
 \title{Starts an export of a snapshot to Amazon S3}
 \usage{
-rds_start_export_task(ExportTaskIdentifier, SourceArn, S3BucketName,
-  IamRoleArn, KmsKeyId, S3Prefix, ExportOnly)
+rds_start_export_task(
+  ExportTaskIdentifier,
+  SourceArn,
+  S3BucketName,
+  IamRoleArn,
+  KmsKeyId,
+  S3Prefix = NULL,
+  ExportOnly = NULL
+)
 }
 \arguments{
 \item{ExportTaskIdentifier}{[required] A unique identifier for the snapshot export task. This ID isn't an
@@ -19,11 +26,11 @@ to.}
 \item{IamRoleArn}{[required] The name of the IAM role to use for writing to the Amazon S3 bucket when
 exporting a snapshot.}
 
-\item{KmsKeyId}{[required] The ID of the AWS KMS customer master key (CMK) to use to encrypt the
-snapshot exported to Amazon S3. The AWS KMS key identifier is the key
-ARN, key ID, alias ARN, or alias name for the AWS KMS customer master
-key (CMK). The caller of this operation must be authorized to execute
-the following operations. These can be set in the AWS KMS key policy:
+\item{KmsKeyId}{[required] The ID of the Amazon Web Services KMS key to use to encrypt the snapshot
+exported to Amazon S3. The Amazon Web Services KMS key identifier is the
+key ARN, key ID, alias ARN, or alias name for the KMS key. The caller of
+this operation must be authorized to execute the following operations.
+These can be set in the Amazon Web Services KMS key policy:
 \itemize{
 \item GrantOperation.Encrypt
 \item GrantOperation.Decrypt
@@ -55,51 +62,9 @@ database schema. This format is valid only for RDS for PostgreSQL
 and Aurora PostgreSQL.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExportTaskIdentifier = "string",
-  SourceArn = "string",
-  ExportOnly = list(
-    "string"
-  ),
-  SnapshotTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  TaskStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  TaskEndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  S3Bucket = "string",
-  S3Prefix = "string",
-  IamRoleArn = "string",
-  KmsKeyId = "string",
-  Status = "string",
-  PercentProgress = 123,
-  TotalExtractedDataInGB = 123,
-  FailureCause = "string",
-  WarningMessage = "string"
-)
-}
-}
 \description{
-Starts an export of a snapshot to Amazon S3. The provided IAM role must
-have access to the S3 bucket.
-}
-\section{Request syntax}{
-\preformatted{svc$start_export_task(
-  ExportTaskIdentifier = "string",
-  SourceArn = "string",
-  S3BucketName = "string",
-  IamRoleArn = "string",
-  KmsKeyId = "string",
-  S3Prefix = "string",
-  ExportOnly = list(
-    "string"
-  )
-)
-}
-}
+Starts an export of a snapshot to Amazon S3. The provided IAM role must have access to the S3 bucket.
 
+See \url{https://paws-r.github.io/docs/rds/start_export_task.html} for full documentation.
+}
 \keyword{internal}

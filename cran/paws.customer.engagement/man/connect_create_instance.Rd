@@ -5,8 +5,14 @@
 \title{This API is in preview release for Amazon Connect and is subject to
 change}
 \usage{
-connect_create_instance(ClientToken, IdentityManagementType,
-  InstanceAlias, DirectoryId, InboundCallsEnabled, OutboundCallsEnabled)
+connect_create_instance(
+  ClientToken = NULL,
+  IdentityManagementType,
+  InstanceAlias = NULL,
+  DirectoryId = NULL,
+  InboundCallsEnabled,
+  OutboundCallsEnabled
+)
 }
 \arguments{
 \item{ClientToken}{The idempotency token.}
@@ -17,36 +23,13 @@ connect_create_instance(ClientToken, IdentityManagementType,
 
 \item{DirectoryId}{The identifier for the directory.}
 
-\item{InboundCallsEnabled}{[required] Whether your contact center handles incoming contacts.}
+\item{InboundCallsEnabled}{[required] Your contact center handles incoming contacts.}
 
-\item{OutboundCallsEnabled}{[required] Whether your contact center allows outbound calls.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Id = "string",
-  Arn = "string"
-)
-}
+\item{OutboundCallsEnabled}{[required] Your contact center allows outbound calls.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Initiates an Amazon Connect instance with all the supported channels
-enabled. It does not attach any storage (such as Amazon S3, or Kinesis)
-or allow for any configurations on features such as Contact Lens for
-Amazon Connect.
+See \url{https://paws-r.github.io/docs/connect/create_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_instance(
-  ClientToken = "string",
-  IdentityManagementType = "SAML"|"CONNECT_MANAGED"|"EXISTING_DIRECTORY",
-  InstanceAlias = "string",
-  DirectoryId = "string",
-  InboundCallsEnabled = TRUE|FALSE,
-  OutboundCallsEnabled = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

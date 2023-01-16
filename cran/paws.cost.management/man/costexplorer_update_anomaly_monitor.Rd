@@ -4,29 +4,16 @@
 \alias{costexplorer_update_anomaly_monitor}
 \title{Updates an existing cost anomaly monitor}
 \usage{
-costexplorer_update_anomaly_monitor(MonitorArn, MonitorName)
+costexplorer_update_anomaly_monitor(MonitorArn, MonitorName = NULL)
 }
 \arguments{
 \item{MonitorArn}{[required] Cost anomaly monitor Amazon Resource Names (ARNs).}
 
 \item{MonitorName}{The new name for the cost anomaly monitor.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MonitorArn = "string"
-)
-}
-}
 \description{
-Updates an existing cost anomaly monitor. The changes made are applied
-going forward, and does not change anomalies detected in the past.
-}
-\section{Request syntax}{
-\preformatted{svc$update_anomaly_monitor(
-  MonitorArn = "string",
-  MonitorName = "string"
-)
-}
-}
+Updates an existing cost anomaly monitor. The changes made are applied going forward, and doesn't change anomalies detected in the past.
 
+See \url{https://paws-r.github.io/docs/costexplorer/update_anomaly_monitor.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{dax_update_subnet_group}
 \title{Modifies an existing subnet group}
 \usage{
-dax_update_subnet_group(SubnetGroupName, Description, SubnetIds)
+dax_update_subnet_group(SubnetGroupName, Description = NULL, SubnetIds = NULL)
 }
 \arguments{
 \item{SubnetGroupName}{[required] The name of the subnet group.}
@@ -13,34 +13,9 @@ dax_update_subnet_group(SubnetGroupName, Description, SubnetIds)
 
 \item{SubnetIds}{A list of subnet IDs in the subnet group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SubnetGroup = list(
-    SubnetGroupName = "string",
-    Description = "string",
-    VpcId = "string",
-    Subnets = list(
-      list(
-        SubnetIdentifier = "string",
-        SubnetAvailabilityZone = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Modifies an existing subnet group.
-}
-\section{Request syntax}{
-\preformatted{svc$update_subnet_group(
-  SubnetGroupName = "string",
-  Description = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/dax/update_subnet_group.html} for full documentation.
+}
 \keyword{internal}

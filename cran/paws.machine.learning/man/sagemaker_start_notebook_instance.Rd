@@ -10,21 +10,9 @@ sagemaker_start_notebook_instance(NotebookInstanceName)
 \arguments{
 \item{NotebookInstanceName}{[required] The name of the notebook instance to start.}
 }
-\value{
-An empty list.
-}
 \description{
-Launches an ML compute instance with the latest version of the libraries
-and attaches your ML storage volume. After configuring the notebook
-instance, Amazon SageMaker sets the notebook instance status to
-\code{InService}. A notebook instance's status must be \code{InService} before you
-can connect to your Jupyter notebook.
-}
-\section{Request syntax}{
-\preformatted{svc$start_notebook_instance(
-  NotebookInstanceName = "string"
-)
-}
-}
+Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume. After configuring the notebook instance, SageMaker sets the notebook instance status to \code{InService}. A notebook instance's status must be \code{InService} before you can connect to your Jupyter notebook.
 
+See \url{https://paws-r.github.io/docs/sagemaker/start_notebook_instance.html} for full documentation.
+}
 \keyword{internal}

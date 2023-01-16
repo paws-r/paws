@@ -5,7 +5,7 @@
 \title{This operation sets and then enacts a data retrieval policy in the
 region specified in the PUT request}
 \usage{
-glacier_set_data_retrieval_policy(accountId, Policy)
+glacier_set_data_retrieval_policy(accountId, Policy = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the
@@ -17,49 +17,9 @@ your account ID, do not include any hyphens ('-') in the ID.}
 
 \item{Policy}{The data retrieval policy in JSON format.}
 }
-\value{
-An empty list.
-}
 \description{
-This operation sets and then enacts a data retrieval policy in the
-region specified in the PUT request. You can set one policy per region
-for an AWS account. The policy is enacted within a few minutes of a
-successful PUT operation.
+This operation sets and then enacts a data retrieval policy in the region specified in the PUT request. You can set one policy per region for an AWS account. The policy is enacted within a few minutes of a successful PUT operation.
 
-The set policy operation does not affect retrieval jobs that were in
-progress before the policy was enacted. For more information about data
-retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html}{Amazon Glacier Data Retrieval Policies}.
-}
-\section{Request syntax}{
-\preformatted{svc$set_data_retrieval_policy(
-  accountId = "string",
-  Policy = list(
-    Rules = list(
-      list(
-        Strategy = "string",
-        BytesPerHour = 123
-      )
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The example sets and then enacts a data retrieval policy.
-svc$set_data_retrieval_policy(
-  Policy = list(
-    Rules = list(
-      list(
-        BytesPerHour = 10737418240,
-        Strategy = "BytesPerHour"
-      )
-    )
-  ),
-  accountId = "-"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/set_data_retrieval_policy.html} for full documentation.
 }
 \keyword{internal}

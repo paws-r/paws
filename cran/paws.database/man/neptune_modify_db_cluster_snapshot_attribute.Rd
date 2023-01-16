@@ -6,86 +6,44 @@
 from, a manual DB cluster snapshot}
 \usage{
 neptune_modify_db_cluster_snapshot_attribute(
-  DBClusterSnapshotIdentifier, AttributeName, ValuesToAdd, ValuesToRemove)
+  DBClusterSnapshotIdentifier,
+  AttributeName,
+  ValuesToAdd = NULL,
+  ValuesToRemove = NULL
+)
 }
 \arguments{
 \item{DBClusterSnapshotIdentifier}{[required] The identifier for the DB cluster snapshot to modify the attributes for.}
 
 \item{AttributeName}{[required] The name of the DB cluster snapshot attribute to modify.
 
-To manage authorization for other AWS accounts to copy or restore a
+To manage authorization for other Amazon accounts to copy or restore a
 manual DB cluster snapshot, set this value to \code{restore}.}
 
 \item{ValuesToAdd}{A list of DB cluster snapshot attributes to add to the attribute
 specified by \code{AttributeName}.
 
-To authorize other AWS accounts to copy or restore a manual DB cluster
-snapshot, set this list to include one or more AWS account IDs, or \code{all}
-to make the manual DB cluster snapshot restorable by any AWS account. Do
-not add the \code{all} value for any manual DB cluster snapshots that contain
-private information that you don't want available to all AWS accounts.}
+To authorize other Amazon accounts to copy or restore a manual DB
+cluster snapshot, set this list to include one or more Amazon account
+IDs, or \code{all} to make the manual DB cluster snapshot restorable by any
+Amazon account. Do not add the \code{all} value for any manual DB cluster
+snapshots that contain private information that you don't want available
+to all Amazon accounts.}
 
 \item{ValuesToRemove}{A list of DB cluster snapshot attributes to remove from the attribute
 specified by \code{AttributeName}.
 
-To remove authorization for other AWS accounts to copy or restore a
-manual DB cluster snapshot, set this list to include one or more AWS
-account identifiers, or \code{all} to remove authorization for any AWS
+To remove authorization for other Amazon accounts to copy or restore a
+manual DB cluster snapshot, set this list to include one or more Amazon
+account identifiers, or \code{all} to remove authorization for any Amazon
 account to copy or restore the DB cluster snapshot. If you specify
-\code{all}, an AWS account whose account ID is explicitly added to the
+\code{all}, an Amazon account whose account ID is explicitly added to the
 \code{restore} attribute can still copy or restore a manual DB cluster
 snapshot.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterSnapshotAttributesResult = list(
-    DBClusterSnapshotIdentifier = "string",
-    DBClusterSnapshotAttributes = list(
-      list(
-        AttributeName = "string",
-        AttributeValues = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Adds an attribute and values to, or removes an attribute and values
-from, a manual DB cluster snapshot.
+Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot.
 
-To share a manual DB cluster snapshot with other AWS accounts, specify
-\code{restore} as the \code{AttributeName} and use the \code{ValuesToAdd} parameter to
-add a list of IDs of the AWS accounts that are authorized to restore the
-manual DB cluster snapshot. Use the value \code{all} to make the manual DB
-cluster snapshot public, which means that it can be copied or restored
-by all AWS accounts. Do not add the \code{all} value for any manual DB
-cluster snapshots that contain private information that you don't want
-available to all AWS accounts. If a manual DB cluster snapshot is
-encrypted, it can be shared, but only by specifying a list of authorized
-AWS account IDs for the \code{ValuesToAdd} parameter. You can't use \code{all} as
-a value for that parameter in this case.
-
-To view which AWS accounts have access to copy or restore a manual DB
-cluster snapshot, or whether a manual DB cluster snapshot public or
-private, use the
-\code{\link[=neptune_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes}}
-API action.
+See \url{https://paws-r.github.io/docs/neptune/modify_db_cluster_snapshot_attribute.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_db_cluster_snapshot_attribute(
-  DBClusterSnapshotIdentifier = "string",
-  AttributeName = "string",
-  ValuesToAdd = list(
-    "string"
-  ),
-  ValuesToRemove = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,44 +4,24 @@
 \alias{apigateway_update_base_path_mapping}
 \title{Changes information about the BasePathMapping resource}
 \usage{
-apigateway_update_base_path_mapping(domainName, basePath,
-  patchOperations)
+apigateway_update_base_path_mapping(
+  domainName,
+  basePath,
+  patchOperations = NULL
+)
 }
 \arguments{
-\item{domainName}{[required] [Required] The domain name of the BasePathMapping resource to change.}
+\item{domainName}{[required] The domain name of the BasePathMapping resource to change.}
 
-\item{basePath}{[required] [Required] The base path of the BasePathMapping resource to change.
+\item{basePath}{[required] The base path of the BasePathMapping resource to change.
 
 To specify an empty base path, set this parameter to \code{'(none)'}.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  basePath = "string",
-  restApiId = "string",
-  stage = "string"
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Changes information about the BasePathMapping resource.
-}
-\section{Request syntax}{
-\preformatted{svc$update_base_path_mapping(
-  domainName = "string",
-  basePath = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_base_path_mapping.html} for full documentation.
+}
 \keyword{internal}

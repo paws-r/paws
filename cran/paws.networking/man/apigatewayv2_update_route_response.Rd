@@ -4,9 +4,15 @@
 \alias{apigatewayv2_update_route_response}
 \title{Updates a RouteResponse}
 \usage{
-apigatewayv2_update_route_response(ApiId, ModelSelectionExpression,
-  ResponseModels, ResponseParameters, RouteId, RouteResponseId,
-  RouteResponseKey)
+apigatewayv2_update_route_response(
+  ApiId,
+  ModelSelectionExpression = NULL,
+  ResponseModels = NULL,
+  ResponseParameters = NULL,
+  RouteId,
+  RouteResponseId,
+  RouteResponseKey = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -24,42 +30,9 @@ for WebSocket APIs.}
 
 \item{RouteResponseKey}{The route response key.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelSelectionExpression = "string",
-  ResponseModels = list(
-    "string"
-  ),
-  ResponseParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteResponseId = "string",
-  RouteResponseKey = "string"
-)
-}
-}
 \description{
 Updates a RouteResponse.
-}
-\section{Request syntax}{
-\preformatted{svc$update_route_response(
-  ApiId = "string",
-  ModelSelectionExpression = "string",
-  ResponseModels = list(
-    "string"
-  ),
-  ResponseParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteId = "string",
-  RouteResponseId = "string",
-  RouteResponseKey = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/update_route_response.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{elasticache_modify_user}
 \title{Changes user password(s) and/or access string}
 \usage{
-elasticache_modify_user(UserId, AccessString, AppendAccessString,
-  Passwords, NoPasswordRequired)
+elasticache_modify_user(
+  UserId,
+  AccessString = NULL,
+  AppendAccessString = NULL,
+  Passwords = NULL,
+  NoPasswordRequired = NULL
+)
 }
 \arguments{
 \item{UserId}{[required] The ID of the user.}
@@ -18,38 +23,9 @@ elasticache_modify_user(UserId, AccessString, AppendAccessString,
 
 \item{NoPasswordRequired}{Indicates no password is required for the user.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserId = "string",
-  UserName = "string",
-  Status = "string",
-  Engine = "string",
-  AccessString = "string",
-  UserGroupIds = list(
-    "string"
-  ),
-  Authentication = list(
-    Type = "password"|"no-password",
-    PasswordCount = 123
-  ),
-  ARN = "string"
-)
-}
-}
 \description{
 Changes user password(s) and/or access string.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_user(
-  UserId = "string",
-  AccessString = "string",
-  AppendAccessString = "string",
-  Passwords = list(
-    "string"
-  ),
-  NoPasswordRequired = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticache/modify_user.html} for full documentation.
+}
 \keyword{internal}

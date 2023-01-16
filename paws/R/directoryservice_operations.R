@@ -65,22 +65,22 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 }
 .directoryservice$operations$accept_shared_directory <- directoryservice_accept_shared_directory
 
-#' If the DNS server for your on-premises domain uses a publicly
+#' If the DNS server for your self-managed domain uses a publicly
 #' addressable IP address, you must add a CIDR address block to correctly
 #' route traffic to and from your Microsoft AD on Amazon Web Services
 #'
 #' @description
-#' If the DNS server for your on-premises domain uses a publicly
+#' If the DNS server for your self-managed domain uses a publicly
 #' addressable IP address, you must add a CIDR address block to correctly
 #' route traffic to and from your Microsoft AD on Amazon Web Services.
 #' *AddIpRoutes* adds this address block. You can also use *AddIpRoutes* to
 #' facilitate routing traffic that uses public IP ranges from your
-#' Microsoft AD on AWS to a peer VPC.
+#' Microsoft AD on Amazon Web Services to a peer VPC.
 #' 
 #' Before you call *AddIpRoutes*, ensure that all of the required
 #' permissions have been explicitly granted through a policy. For details
 #' about what permissions are required to run the *AddIpRoutes* operation,
-#' see [AWS Directory Service API Permissions: Actions, Resources, and
+#' see [Directory Service API Permissions: Actions, Resources, and
 #' Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
@@ -90,11 +90,12 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 #'
 #' @param DirectoryId &#91;required&#93; Identifier (ID) of the directory to which to add the address block.
 #' @param IpRoutes &#91;required&#93; IP address blocks, using CIDR format, of the traffic to route. This is
-#' often the IP address block of the DNS server used for your on-premises
+#' often the IP address block of the DNS server used for your self-managed
 #' domain.
 #' @param UpdateSecurityGroupForDirectoryControllers If set to true, updates the inbound and outbound rules of the security
-#' group that has the description: "AWS created security group for
-#' *directory ID* directory controllers." Following are the new rules:
+#' group that has the description: "Amazon Web Services created security
+#' group for *directory ID* directory controllers." Following are the new
+#' rules:
 #' 
 #' Inbound:
 #' 
@@ -326,28 +327,27 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 }
 .directoryservice$operations$cancel_schema_extension <- directoryservice_cancel_schema_extension
 
-#' Creates an AD Connector to connect to an on-premises directory
+#' Creates an AD Connector to connect to a self-managed directory
 #'
 #' @description
-#' Creates an AD Connector to connect to an on-premises directory.
+#' Creates an AD Connector to connect to a self-managed directory.
 #' 
 #' Before you call
 #' [`connect_directory`][directoryservice_connect_directory], ensure that
 #' all of the required permissions have been explicitly granted through a
 #' policy. For details about what permissions are required to run the
 #' [`connect_directory`][directoryservice_connect_directory] operation, see
-#' [AWS Directory Service API Permissions: Actions, Resources, and
-#' Conditions
+#' [Directory Service API Permissions: Actions, Resources, and Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
 #' directoryservice_connect_directory(Name, ShortName, Password,
 #'   Description, Size, ConnectSettings, Tags)
 #'
-#' @param Name &#91;required&#93; The fully qualified name of the on-premises directory, such as
+#' @param Name &#91;required&#93; The fully qualified name of your self-managed directory, such as
 #' `corp.example.com`.
-#' @param ShortName The NetBIOS name of the on-premises directory, such as `CORP`.
-#' @param Password &#91;required&#93; The password for the on-premises user account.
+#' @param ShortName The NetBIOS name of your self-managed directory, such as `CORP`.
+#' @param Password &#91;required&#93; The password for your self-managed user account.
 #' @param Description A description for the directory.
 #' @param Size &#91;required&#93; The size of the directory.
 #' @param ConnectSettings &#91;required&#93; A DirectoryConnectSettings object that contains additional information
@@ -425,9 +425,9 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to create the alias.
 #' @param Alias &#91;required&#93; The requested alias.
 #' 
-#' The alias must be unique amongst all aliases in AWS. This operation
-#' throws an `EntityAlreadyExistsException` error if the alias already
-#' exists.
+#' The alias must be unique amongst all aliases in Amazon Web Services.
+#' This operation throws an `EntityAlreadyExistsException` error if the
+#' alias already exists.
 #'
 #' @return
 #' A list with the following syntax:
@@ -537,20 +537,21 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
 }
 .directoryservice$operations$create_computer <- directoryservice_create_computer
 
-#' Creates a conditional forwarder associated with your AWS directory
+#' Creates a conditional forwarder associated with your Amazon Web Services
+#' directory
 #'
 #' @description
-#' Creates a conditional forwarder associated with your AWS directory.
-#' Conditional forwarders are required in order to set up a trust
-#' relationship with another domain. The conditional forwarder points to
-#' the trusted domain.
+#' Creates a conditional forwarder associated with your Amazon Web Services
+#' directory. Conditional forwarders are required in order to set up a
+#' trust relationship with another domain. The conditional forwarder points
+#' to the trusted domain.
 #'
 #' @usage
 #' directoryservice_create_conditional_forwarder(DirectoryId,
 #'   RemoteDomainName, DnsIpAddrs)
 #'
-#' @param DirectoryId &#91;required&#93; The directory ID of the AWS directory for which you are creating the
-#' conditional forwarder.
+#' @param DirectoryId &#91;required&#93; The directory ID of the Amazon Web Services directory for which you are
+#' creating the conditional forwarder.
 #' @param RemoteDomainName &#91;required&#93; The fully qualified domain name (FQDN) of the remote domain with which
 #' you will set up a trust relationship.
 #' @param DnsIpAddrs &#91;required&#93; The IP addresses of the remote DNS server associated with
@@ -595,13 +596,13 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @description
 #' Creates a Simple AD directory. For more information, see [Simple Active
 #' Directory](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html)
-#' in the *AWS Directory Service Admin Guide*.
+#' in the *Directory Service Admin Guide*.
 #' 
 #' Before you call [`create_directory`][directoryservice_create_directory],
 #' ensure that all of the required permissions have been explicitly granted
 #' through a policy. For details about what permissions are required to run
 #' the [`create_directory`][directoryservice_create_directory] operation,
-#' see [AWS Directory Service API Permissions: Actions, Resources, and
+#' see [Directory Service API Permissions: Actions, Resources, and
 #' Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
@@ -641,7 +642,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' 
 #' For additional information about how Active Directory passwords are
 #' enforced, see [Password must meet complexity
-#' requirements](https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)
+#' requirements](https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)
 #' on the Microsoft website.
 #' @param Description A description for the directory.
 #' @param Size &#91;required&#93; The size of the directory.
@@ -702,12 +703,12 @@ directoryservice_create_directory <- function(Name, ShortName = NULL, Password, 
 
 #' Creates a subscription to forward real-time Directory Service domain
 #' controller security logs to the specified Amazon CloudWatch log group in
-#' your AWS account
+#' your Amazon Web Services account
 #'
 #' @description
 #' Creates a subscription to forward real-time Directory Service domain
 #' controller security logs to the specified Amazon CloudWatch log group in
-#' your AWS account.
+#' your Amazon Web Services account.
 #'
 #' @usage
 #' directoryservice_create_log_subscription(DirectoryId, LogGroupName)
@@ -748,28 +749,28 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 }
 .directoryservice$operations$create_log_subscription <- directoryservice_create_log_subscription
 
-#' Creates a Microsoft AD directory in the AWS Cloud
+#' Creates a Microsoft AD directory in the Amazon Web Services Cloud
 #'
 #' @description
-#' Creates a Microsoft AD directory in the AWS Cloud. For more information,
-#' see [AWS Managed Microsoft
+#' Creates a Microsoft AD directory in the Amazon Web Services Cloud. For
+#' more information, see [Managed Microsoft
 #' AD](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html)
-#' in the *AWS Directory Service Admin Guide*.
+#' in the *Directory Service Admin Guide*.
 #' 
 #' Before you call *CreateMicrosoftAD*, ensure that all of the required
 #' permissions have been explicitly granted through a policy. For details
 #' about what permissions are required to run the *CreateMicrosoftAD*
-#' operation, see [AWS Directory Service API Permissions: Actions,
-#' Resources, and Conditions
+#' operation, see [Directory Service API Permissions: Actions, Resources,
+#' and Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
 #' directoryservice_create_microsoft_ad(Name, ShortName, Password,
 #'   Description, VpcSettings, Edition, Tags)
 #'
-#' @param Name &#91;required&#93; The fully qualified domain name for the AWS Managed Microsoft AD
-#' directory, such as `corp.example.com`. This name will resolve inside
-#' your VPC only. It does not need to be publicly resolvable.
+#' @param Name &#91;required&#93; The fully qualified domain name for the Managed Microsoft AD directory,
+#' such as `corp.example.com`. This name will resolve inside your VPC only.
+#' It does not need to be publicly resolvable.
 #' @param ShortName The NetBIOS name for your domain, such as `CORP`. If you don't specify a
 #' NetBIOS name, it will default to the first part of your directory DNS.
 #' For example, `CORP` for the directory DNS `corp.example.com`.
@@ -778,14 +779,15 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #' If you need to change the password for the administrator account, you
 #' can use the
 #' [`reset_user_password`][directoryservice_reset_user_password] API call.
-#' @param Description A description for the directory. This label will appear on the AWS
-#' console `Directory Details` page after the directory is created.
+#' @param Description A description for the directory. This label will appear on the Amazon
+#' Web Services console `Directory Details` page after the directory is
+#' created.
 #' @param VpcSettings &#91;required&#93; Contains VPC information for the
 #' [`create_directory`][directoryservice_create_directory] or
 #' [`create_microsoft_ad`][directoryservice_create_microsoft_ad] operation.
-#' @param Edition AWS Managed Microsoft AD is available in two editions: `Standard` and
+#' @param Edition Managed Microsoft AD is available in two editions: `Standard` and
 #' `Enterprise`. `Enterprise` is the default.
-#' @param Tags The tags to be assigned to the AWS Managed Microsoft AD directory.
+#' @param Tags The tags to be assigned to the Managed Microsoft AD directory.
 #'
 #' @return
 #' A list with the following syntax:
@@ -838,12 +840,12 @@ directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Passwor
 }
 .directoryservice$operations$create_microsoft_ad <- directoryservice_create_microsoft_ad
 
-#' Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS
-#' cloud
+#' Creates a snapshot of a Simple AD or Microsoft AD directory in the
+#' Amazon Web Services cloud
 #'
 #' @description
-#' Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS
-#' cloud.
+#' Creates a snapshot of a Simple AD or Microsoft AD directory in the
+#' Amazon Web Services cloud.
 #' 
 #' You cannot take snapshots of AD Connector directories.
 #'
@@ -889,19 +891,18 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 }
 .directoryservice$operations$create_snapshot <- directoryservice_create_snapshot
 
-#' AWS Directory Service for Microsoft Active Directory allows you to
-#' configure trust relationships
+#' Directory Service for Microsoft Active Directory allows you to configure
+#' trust relationships
 #'
 #' @description
-#' AWS Directory Service for Microsoft Active Directory allows you to
-#' configure trust relationships. For example, you can establish a trust
-#' between your AWS Managed Microsoft AD directory, and your existing
-#' on-premises Microsoft Active Directory. This would allow you to provide
-#' users and groups access to resources in either domain, with a single set
-#' of credentials.
+#' Directory Service for Microsoft Active Directory allows you to configure
+#' trust relationships. For example, you can establish a trust between your
+#' Managed Microsoft AD directory, and your existing self-managed Microsoft
+#' Active Directory. This would allow you to provide users and groups
+#' access to resources in either domain, with a single set of credentials.
 #' 
-#' This action initiates the creation of the AWS side of a trust
-#' relationship between an AWS Managed Microsoft AD directory and an
+#' This action initiates the creation of the Amazon Web Services side of a
+#' trust relationship between an Managed Microsoft AD directory and an
 #' external domain. You can create either a forest trust or an external
 #' trust.
 #'
@@ -910,7 +911,7 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #'   TrustPassword, TrustDirection, TrustType, ConditionalForwarderIpAddrs,
 #'   SelectiveAuth)
 #'
-#' @param DirectoryId &#91;required&#93; The Directory ID of the AWS Managed Microsoft AD directory for which to
+#' @param DirectoryId &#91;required&#93; The Directory ID of the Managed Microsoft AD directory for which to
 #' establish the trust relationship.
 #' @param RemoteDomainName &#91;required&#93; The Fully Qualified Domain Name (FQDN) of the external domain for which
 #' to create the trust relationship.
@@ -965,12 +966,12 @@ directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPa
 }
 .directoryservice$operations$create_trust <- directoryservice_create_trust
 
-#' Deletes a conditional forwarder that has been set up for your AWS
-#' directory
+#' Deletes a conditional forwarder that has been set up for your Amazon Web
+#' Services directory
 #'
 #' @description
-#' Deletes a conditional forwarder that has been set up for your AWS
-#' directory.
+#' Deletes a conditional forwarder that has been set up for your Amazon Web
+#' Services directory.
 #'
 #' @usage
 #' directoryservice_delete_conditional_forwarder(DirectoryId,
@@ -1011,16 +1012,16 @@ directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDom
 }
 .directoryservice$operations$delete_conditional_forwarder <- directoryservice_delete_conditional_forwarder
 
-#' Deletes an AWS Directory Service directory
+#' Deletes an Directory Service directory
 #'
 #' @description
-#' Deletes an AWS Directory Service directory.
+#' Deletes an Directory Service directory.
 #' 
 #' Before you call [`delete_directory`][directoryservice_delete_directory],
 #' ensure that all of the required permissions have been explicitly granted
 #' through a policy. For details about what permissions are required to run
 #' the [`delete_directory`][directoryservice_delete_directory] operation,
-#' see [AWS Directory Service API Permissions: Actions, Resources, and
+#' see [Directory Service API Permissions: Actions, Resources, and
 #' Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
@@ -1149,12 +1150,12 @@ directoryservice_delete_snapshot <- function(SnapshotId) {
 }
 .directoryservice$operations$delete_snapshot <- directoryservice_delete_snapshot
 
-#' Deletes an existing trust relationship between your AWS Managed
-#' Microsoft AD directory and an external domain
+#' Deletes an existing trust relationship between your Managed Microsoft AD
+#' directory and an external domain
 #'
 #' @description
-#' Deletes an existing trust relationship between your AWS Managed
-#' Microsoft AD directory and an external domain.
+#' Deletes an existing trust relationship between your Managed Microsoft AD
+#' directory and an external domain.
 #'
 #' @usage
 #' directoryservice_delete_trust(TrustId,
@@ -1243,19 +1244,19 @@ directoryservice_deregister_certificate <- function(DirectoryId, CertificateId) 
 }
 .directoryservice$operations$deregister_certificate <- directoryservice_deregister_certificate
 
-#' Removes the specified directory as a publisher to the specified SNS
-#' topic
+#' Removes the specified directory as a publisher to the specified Amazon
+#' SNS topic
 #'
 #' @description
-#' Removes the specified directory as a publisher to the specified SNS
-#' topic.
+#' Removes the specified directory as a publisher to the specified Amazon
+#' SNS topic.
 #'
 #' @usage
 #' directoryservice_deregister_event_topic(DirectoryId, TopicName)
 #'
 #' @param DirectoryId &#91;required&#93; The Directory ID to remove as a publisher. This directory will no longer
-#' send messages to the specified SNS topic.
-#' @param TopicName &#91;required&#93; The name of the SNS topic from which to remove the directory as a
+#' send messages to the specified Amazon SNS topic.
+#' @param TopicName &#91;required&#93; The name of the Amazon SNS topic from which to remove the directory as a
 #' publisher.
 #'
 #' @return
@@ -1352,6 +1353,79 @@ directoryservice_describe_certificate <- function(DirectoryId, CertificateId) {
   return(response)
 }
 .directoryservice$operations$describe_certificate <- directoryservice_describe_certificate
+
+#' Retrieves information about the type of client authentication for the
+#' specified directory, if the type is specified
+#'
+#' @description
+#' Retrieves information about the type of client authentication for the
+#' specified directory, if the type is specified. If no type is specified,
+#' information about all client authentication types that are supported for
+#' the specified directory is retrieved. Currently, only `SmartCard` is
+#' supported.
+#'
+#' @usage
+#' directoryservice_describe_client_authentication_settings(DirectoryId,
+#'   Type, NextToken, Limit)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory for which to retrieve information.
+#' @param Type The type of client authentication for which to retrieve information. If
+#' no type is specified, a list of all client authentication types that are
+#' supported for the specified directory is retrieved.
+#' @param NextToken The *DescribeClientAuthenticationSettingsResult.NextToken* value from a
+#' previous call to
+#' [`describe_client_authentication_settings`][directoryservice_describe_client_authentication_settings].
+#' Pass null if this is the first call.
+#' @param Limit The maximum number of items to return. If this value is zero, the
+#' maximum number of items is specified by the limitations of the
+#' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientAuthenticationSettingsInfo = list(
+#'     list(
+#'       Type = "SmartCard"|"SmartCardOrPassword",
+#'       Status = "Enabled"|"Disabled",
+#'       LastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_client_authentication_settings(
+#'   DirectoryId = "string",
+#'   Type = "SmartCard"|"SmartCardOrPassword",
+#'   NextToken = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_describe_client_authentication_settings
+directoryservice_describe_client_authentication_settings <- function(DirectoryId, Type = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "DescribeClientAuthenticationSettings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directoryservice$describe_client_authentication_settings_input(DirectoryId = DirectoryId, Type = Type, NextToken = NextToken, Limit = Limit)
+  output <- .directoryservice$describe_client_authentication_settings_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$describe_client_authentication_settings <- directoryservice_describe_client_authentication_settings
 
 #' Obtains information about the conditional forwarders for this account
 #'
@@ -1668,12 +1742,12 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
 }
 .directoryservice$operations$describe_domain_controllers <- directoryservice_describe_domain_controllers
 
-#' Obtains information about which SNS topics receive status messages from
-#' the specified directory
+#' Obtains information about which Amazon SNS topics receive status
+#' messages from the specified directory
 #'
 #' @description
-#' Obtains information about which SNS topics receive status messages from
-#' the specified directory.
+#' Obtains information about which Amazon SNS topics receive status
+#' messages from the specified directory.
 #' 
 #' If no input parameters are provided, such as DirectoryId or TopicName,
 #' this request describes all of the associations in the account.
@@ -1681,10 +1755,11 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
 #' @usage
 #' directoryservice_describe_event_topics(DirectoryId, TopicNames)
 #'
-#' @param DirectoryId The Directory ID for which to get the list of associated SNS topics. If
-#' this member is null, associations for all Directory IDs are returned.
-#' @param TopicNames A list of SNS topic names for which to obtain the information. If this
-#' member is null, all associations for the specified Directory ID are
+#' @param DirectoryId The Directory ID for which to get the list of associated Amazon SNS
+#' topics. If this member is null, associations for all Directory IDs are
+#' returned.
+#' @param TopicNames A list of Amazon SNS topic names for which to obtain the information. If
+#' this member is null, all associations for the specified Directory ID are
 #' returned.
 #' 
 #' An empty list results in an `InvalidParameterException` being thrown.
@@ -1876,6 +1951,80 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
 }
 .directoryservice$operations$describe_regions <- directoryservice_describe_regions
 
+#' Retrieves information about the configurable settings for the specified
+#' directory
+#'
+#' @description
+#' Retrieves information about the configurable settings for the specified
+#' directory.
+#'
+#' @usage
+#' directoryservice_describe_settings(DirectoryId, Status, NextToken)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory for which to retrieve information.
+#' @param Status The status of the directory settings for which to retrieve information.
+#' @param NextToken The `DescribeSettingsResult.NextToken` value from a previous call to
+#' [`describe_settings`][directoryservice_describe_settings]. Pass null if
+#' this is the first call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string",
+#'   SettingEntries = list(
+#'     list(
+#'       Type = "string",
+#'       Name = "string",
+#'       AllowedValues = "string",
+#'       AppliedValue = "string",
+#'       RequestedValue = "string",
+#'       RequestStatus = "Requested"|"Updating"|"Updated"|"Failed"|"Default",
+#'       RequestDetailedStatus = list(
+#'         "Requested"|"Updating"|"Updated"|"Failed"|"Default"
+#'       ),
+#'       RequestStatusMessage = "string",
+#'       LastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastRequestedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_settings(
+#'   DirectoryId = "string",
+#'   Status = "Requested"|"Updating"|"Updated"|"Failed"|"Default",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_describe_settings
+directoryservice_describe_settings <- function(DirectoryId, Status = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeSettings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directoryservice$describe_settings_input(DirectoryId = DirectoryId, Status = Status, NextToken = NextToken)
+  output <- .directoryservice$describe_settings_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$describe_settings <- directoryservice_describe_settings
+
 #' Returns the shared directories in your account
 #'
 #' @description
@@ -2046,8 +2195,8 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
 #' directoryservice_describe_trusts(DirectoryId, TrustIds, NextToken,
 #'   Limit)
 #'
-#' @param DirectoryId The Directory ID of the AWS directory that is a part of the requested
-#' trust relationship.
+#' @param DirectoryId The Directory ID of the Amazon Web Services directory that is a part of
+#' the requested trust relationship.
 #' @param TrustIds A list of identifiers of the trust relationships for which to obtain the
 #' information. If this member is null, all trust relationships that belong
 #' to the current account are returned.
@@ -2140,7 +2289,7 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
 #' ```
 #' svc$disable_client_authentication(
 #'   DirectoryId = "string",
-#'   Type = "SmartCard"
+#'   Type = "SmartCard"|"SmartCardOrPassword"
 #' )
 #' ```
 #'
@@ -2319,7 +2468,7 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
 #' @param Type &#91;required&#93; The type of client authentication to enable. Currently only the value
 #' `SmartCard` is supported. Smart card authentication in AD Connector
 #' requires that you enable Kerberos Constrained Delegation for the Service
-#' User to the LDAP service in the on-premises AD.
+#' User to the LDAP service in your self-managed AD.
 #'
 #' @return
 #' An empty list.
@@ -2328,7 +2477,7 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
 #' ```
 #' svc$enable_client_authentication(
 #'   DirectoryId = "string",
-#'   Type = "SmartCard"
+#'   Type = "SmartCard"|"SmartCardOrPassword"
 #' )
 #' ```
 #'
@@ -2459,8 +2608,9 @@ directoryservice_enable_radius <- function(DirectoryId, RadiusSettings) {
 #'
 #' @description
 #' Enables single sign-on for a directory. Single sign-on allows users in
-#' your directory to access certain AWS services from a computer joined to
-#' the directory without having to enter their credentials separately.
+#' your directory to access certain Amazon Web Services services from a
+#' computer joined to the directory without having to enter their
+#' credentials separately.
 #'
 #' @usage
 #' directoryservice_enable_sso(DirectoryId, UserName, Password)
@@ -2741,19 +2891,19 @@ directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit
 }
 .directoryservice$operations$list_ip_routes <- directoryservice_list_ip_routes
 
-#' Lists the active log subscriptions for the AWS account
+#' Lists the active log subscriptions for the Amazon Web Services account
 #'
 #' @description
-#' Lists the active log subscriptions for the AWS account.
+#' Lists the active log subscriptions for the Amazon Web Services account.
 #'
 #' @usage
 #' directoryservice_list_log_subscriptions(DirectoryId, NextToken, Limit)
 #'
 #' @param DirectoryId If a *DirectoryID* is provided, lists only the log subscription
 #' associated with that directory. If no *DirectoryId* is provided, lists
-#' all log subscriptions associated with your AWS account. If there are no
-#' log subscriptions for the AWS account or the directory, an empty list
-#' will be returned.
+#' all log subscriptions associated with your Amazon Web Services account.
+#' If there are no log subscriptions for the Amazon Web Services account or
+#' the directory, an empty list will be returned.
 #' @param NextToken The token for the next set of items to return.
 #' @param Limit The maximum number of items returned.
 #'
@@ -2984,22 +3134,24 @@ directoryservice_register_certificate <- function(DirectoryId, CertificateData, 
 }
 .directoryservice$operations$register_certificate <- directoryservice_register_certificate
 
-#' Associates a directory with an SNS topic
+#' Associates a directory with an Amazon SNS topic
 #'
 #' @description
-#' Associates a directory with an SNS topic. This establishes the directory
-#' as a publisher to the specified SNS topic. You can then receive email or
-#' text (SMS) messages when the status of your directory changes. You get
-#' notified if your directory goes from an Active status to an Impaired or
-#' Inoperable status. You also receive a notification when the directory
-#' returns to an Active status.
+#' Associates a directory with an Amazon SNS topic. This establishes the
+#' directory as a publisher to the specified Amazon SNS topic. You can then
+#' receive email or text (SMS) messages when the status of your directory
+#' changes. You get notified if your directory goes from an Active status
+#' to an Impaired or Inoperable status. You also receive a notification
+#' when the directory returns to an Active status.
 #'
 #' @usage
 #' directoryservice_register_event_topic(DirectoryId, TopicName)
 #'
-#' @param DirectoryId &#91;required&#93; The Directory ID that will publish status messages to the SNS topic.
-#' @param TopicName &#91;required&#93; The SNS topic name to which the directory will publish status messages.
-#' This SNS topic must be in the same region as the specified Directory ID.
+#' @param DirectoryId &#91;required&#93; The Directory ID that will publish status messages to the Amazon SNS
+#' topic.
+#' @param TopicName &#91;required&#93; The Amazon SNS topic name to which the directory will publish status
+#' messages. This Amazon SNS topic must be in the same region as the
+#' specified Directory ID.
 #'
 #' @return
 #' An empty list.
@@ -3214,12 +3366,12 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
 }
 .directoryservice$operations$remove_tags_from_resource <- directoryservice_remove_tags_from_resource
 
-#' Resets the password for any user in your AWS Managed Microsoft AD or
-#' Simple AD directory
+#' Resets the password for any user in your Managed Microsoft AD or Simple
+#' AD directory
 #'
 #' @description
-#' Resets the password for any user in your AWS Managed Microsoft AD or
-#' Simple AD directory.
+#' Resets the password for any user in your Managed Microsoft AD or Simple
+#' AD directory.
 #' 
 #' You can reset the password for any user in your directory with the
 #' following exceptions:
@@ -3228,20 +3380,20 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
 #'     member of either the **Domain Admins** or **Enterprise Admins**
 #'     group except for the administrator user.
 #' 
-#' -   For AWS Managed Microsoft AD, you can only reset the password for a
-#'     user that is in an OU based off of the NetBIOS name that you typed
-#'     when you created your directory. For example, you cannot reset the
-#'     password for a user in the **AWS Reserved** OU. For more information
-#'     about the OU structure for an AWS Managed Microsoft AD directory,
-#'     see [What Gets
+#' -   For Managed Microsoft AD, you can only reset the password for a user
+#'     that is in an OU based off of the NetBIOS name that you typed when
+#'     you created your directory. For example, you cannot reset the
+#'     password for a user in the **Amazon Web Services Reserved** OU. For
+#'     more information about the OU structure for an Managed Microsoft AD
+#'     directory, see [What Gets
 #'     Created](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started_what_gets_created.html)
-#'     in the *AWS Directory Service Administration Guide*.
+#'     in the *Directory Service Administration Guide*.
 #'
 #' @usage
 #' directoryservice_reset_user_password(DirectoryId, UserName, NewPassword)
 #'
-#' @param DirectoryId &#91;required&#93; Identifier of the AWS Managed Microsoft AD or Simple AD directory in
-#' which the user resides.
+#' @param DirectoryId &#91;required&#93; Identifier of the Managed Microsoft AD or Simple AD directory in which
+#' the user resides.
 #' @param UserName &#91;required&#93; The user name of the user whose password will be reset.
 #' @param NewPassword &#91;required&#93; The new password that will be reset.
 #'
@@ -3327,26 +3479,28 @@ directoryservice_restore_from_snapshot <- function(SnapshotId) {
 }
 .directoryservice$operations$restore_from_snapshot <- directoryservice_restore_from_snapshot
 
-#' Shares a specified directory (DirectoryId) in your AWS account
-#' (directory owner) with another AWS account (directory consumer)
+#' Shares a specified directory (DirectoryId) in your Amazon Web Services
+#' account (directory owner) with another Amazon Web Services account
+#' (directory consumer)
 #'
 #' @description
-#' Shares a specified directory (`DirectoryId`) in your AWS account
-#' (directory owner) with another AWS account (directory consumer). With
-#' this operation you can use your directory from any AWS account and from
-#' any Amazon VPC within an AWS Region.
+#' Shares a specified directory (`DirectoryId`) in your Amazon Web Services
+#' account (directory owner) with another Amazon Web Services account
+#' (directory consumer). With this operation you can use your directory
+#' from any Amazon Web Services account and from any Amazon VPC within an
+#' Amazon Web Services Region.
 #' 
-#' When you share your AWS Managed Microsoft AD directory, AWS Directory
-#' Service creates a shared directory in the directory consumer account.
-#' This shared directory contains the metadata to provide access to the
+#' When you share your Managed Microsoft AD directory, Directory Service
+#' creates a shared directory in the directory consumer account. This
+#' shared directory contains the metadata to provide access to the
 #' directory within the directory owner account. The shared directory is
 #' visible in all VPCs in the directory consumer account.
 #' 
 #' The `ShareMethod` parameter determines whether the specified directory
-#' can be shared between AWS accounts inside the same AWS organization
-#' (`ORGANIZATIONS`). It also determines whether you can share the
-#' directory with any other AWS account either inside or outside of the
-#' organization (`HANDSHAKE`).
+#' can be shared between Amazon Web Services accounts inside the same
+#' Amazon Web Services organization (`ORGANIZATIONS`). It also determines
+#' whether you can share the directory with any other Amazon Web Services
+#' account either inside or outside of the organization (`HANDSHAKE`).
 #' 
 #' The `ShareNotes` parameter is only used when `HANDSHAKE` is called,
 #' which sends a directory sharing request to the directory consumer.
@@ -3355,8 +3509,8 @@ directoryservice_restore_from_snapshot <- function(SnapshotId) {
 #' directoryservice_share_directory(DirectoryId, ShareNotes, ShareTarget,
 #'   ShareMethod)
 #'
-#' @param DirectoryId &#91;required&#93; Identifier of the AWS Managed Microsoft AD directory that you want to
-#' share with other AWS accounts.
+#' @param DirectoryId &#91;required&#93; Identifier of the Managed Microsoft AD directory that you want to share
+#' with other Amazon Web Services accounts.
 #' @param ShareNotes A directory share request that is sent by the directory owner to the
 #' directory consumer. The request includes a typed message to help the
 #' directory consumer administrator determine whether to approve or reject
@@ -3364,9 +3518,9 @@ directoryservice_restore_from_snapshot <- function(SnapshotId) {
 #' @param ShareTarget &#91;required&#93; Identifier for the directory consumer account with whom the directory is
 #' to be shared.
 #' @param ShareMethod &#91;required&#93; The method used when sharing a directory to determine whether the
-#' directory should be shared within your AWS organization
-#' (`ORGANIZATIONS`) or with any AWS account by sending a directory sharing
-#' request (`HANDSHAKE`).
+#' directory should be shared within your Amazon Web Services organization
+#' (`ORGANIZATIONS`) or with any Amazon Web Services account by sending a
+#' directory sharing request (`HANDSHAKE`).
 #'
 #' @return
 #' A list with the following syntax:
@@ -3424,8 +3578,8 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
 #' extension.
 #' @param LdifContent &#91;required&#93; The LDIF file represented as a string. To construct the LdifContent
 #' string, precede each line as it would be formatted in an ldif file with
-#' \\n. See the example request below for more details. The file size can
-#' be no larger than 1MB.
+#' \\n. See the example request below for more details. The file size can be
+#' no larger than 1MB.
 #' @param Description &#91;required&#93; A description of the schema extension.
 #'
 #' @return
@@ -3476,8 +3630,8 @@ directoryservice_start_schema_extension <- function(DirectoryId, CreateSnapshotB
 #' @usage
 #' directoryservice_unshare_directory(DirectoryId, UnshareTarget)
 #'
-#' @param DirectoryId &#91;required&#93; The identifier of the AWS Managed Microsoft AD directory that you want
-#' to stop sharing.
+#' @param DirectoryId &#91;required&#93; The identifier of the Managed Microsoft AD directory that you want to
+#' stop sharing.
 #' @param UnshareTarget &#91;required&#93; Identifier for the directory consumer account with whom the directory
 #' has to be unshared.
 #'
@@ -3520,19 +3674,19 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
 }
 .directoryservice$operations$unshare_directory <- directoryservice_unshare_directory
 
-#' Updates a conditional forwarder that has been set up for your AWS
-#' directory
+#' Updates a conditional forwarder that has been set up for your Amazon Web
+#' Services directory
 #'
 #' @description
-#' Updates a conditional forwarder that has been set up for your AWS
-#' directory.
+#' Updates a conditional forwarder that has been set up for your Amazon Web
+#' Services directory.
 #'
 #' @usage
 #' directoryservice_update_conditional_forwarder(DirectoryId,
 #'   RemoteDomainName, DnsIpAddrs)
 #'
-#' @param DirectoryId &#91;required&#93; The directory ID of the AWS directory for which to update the
-#' conditional forwarder.
+#' @param DirectoryId &#91;required&#93; The directory ID of the Amazon Web Services directory for which to
+#' update the conditional forwarder.
 #' @param RemoteDomainName &#91;required&#93; The fully qualified domain name (FQDN) of the remote domain with which
 #' you will set up a trust relationship.
 #' @param DnsIpAddrs &#91;required&#93; The updated IP addresses of the remote DNS server associated with the
@@ -3678,12 +3832,64 @@ directoryservice_update_radius <- function(DirectoryId, RadiusSettings) {
 }
 .directoryservice$operations$update_radius <- directoryservice_update_radius
 
-#' Updates the trust that has been set up between your AWS Managed
-#' Microsoft AD directory and an on-premises Active Directory
+#' Updates the configurable settings for the specified directory
 #'
 #' @description
-#' Updates the trust that has been set up between your AWS Managed
-#' Microsoft AD directory and an on-premises Active Directory.
+#' Updates the configurable settings for the specified directory.
+#'
+#' @usage
+#' directoryservice_update_settings(DirectoryId, Settings)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory for which to update settings.
+#' @param Settings &#91;required&#93; The list of Setting objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_settings(
+#'   DirectoryId = "string",
+#'   Settings = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_update_settings
+directoryservice_update_settings <- function(DirectoryId, Settings) {
+  op <- new_operation(
+    name = "UpdateSettings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directoryservice$update_settings_input(DirectoryId = DirectoryId, Settings = Settings)
+  output <- .directoryservice$update_settings_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$update_settings <- directoryservice_update_settings
+
+#' Updates the trust that has been set up between your Managed Microsoft AD
+#' directory and an self-managed Active Directory
+#'
+#' @description
+#' Updates the trust that has been set up between your Managed Microsoft AD
+#' directory and an self-managed Active Directory.
 #'
 #' @usage
 #' directoryservice_update_trust(TrustId, SelectiveAuth)
@@ -3728,15 +3934,15 @@ directoryservice_update_trust <- function(TrustId, SelectiveAuth = NULL) {
 }
 .directoryservice$operations$update_trust <- directoryservice_update_trust
 
-#' AWS Directory Service for Microsoft Active Directory allows you to
-#' configure and verify trust relationships
+#' Directory Service for Microsoft Active Directory allows you to configure
+#' and verify trust relationships
 #'
 #' @description
-#' AWS Directory Service for Microsoft Active Directory allows you to
-#' configure and verify trust relationships.
+#' Directory Service for Microsoft Active Directory allows you to configure
+#' and verify trust relationships.
 #' 
-#' This action verifies a trust relationship between your AWS Managed
-#' Microsoft AD directory and an external domain.
+#' This action verifies a trust relationship between your Managed Microsoft
+#' AD directory and an external domain.
 #'
 #' @usage
 #' directoryservice_verify_trust(TrustId)

@@ -2,30 +2,41 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_create_job}
 \alias{s3control_create_job}
-\title{S3 Batch Operations performs large-scale Batch Operations on Amazon S3
-objects}
+\title{You can use S3 Batch Operations to perform large-scale batch actions on
+Amazon S3 objects}
 \usage{
-s3control_create_job(AccountId, ConfirmationRequired, Operation, Report,
-  ClientRequestToken, Manifest, Description, Priority, RoleArn, Tags)
+s3control_create_job(
+  AccountId,
+  ConfirmationRequired = NULL,
+  Operation,
+  Report,
+  ClientRequestToken,
+  Manifest = NULL,
+  Description = NULL,
+  Priority,
+  RoleArn,
+  Tags = NULL,
+  ManifestGenerator = NULL
+)
 }
 \arguments{
-\item{AccountId}{[required] The AWS account ID that creates the job.}
+\item{AccountId}{[required] The Amazon Web Services account ID that creates the job.}
 
 \item{ConfirmationRequired}{Indicates whether confirmation is required before Amazon S3 runs the
 job. Confirmation is only required for jobs created through the Amazon
 S3 console.}
 
-\item{Operation}{[required] The operation that you want this job to perform on each object listed in
-the manifest. For more information about the available operations, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-operations.html}{Operations}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+\item{Operation}{[required] The action that you want this job to perform on every object listed in
+the manifest. For more information about the available actions, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{Operations} in
+the \emph{Amazon S3 User Guide}.}
 
 \item{Report}{[required] Configuration parameters for the optional job-completion report.}
 
 \item{ClientRequestToken}{[required] An idempotency token to ensure that you don't accidentally submit the
 same request twice. You can use any string up to the maximum length.}
 
-\item{Manifest}{[required] Configuration parameters for the manifest.}
+\item{Manifest}{Configuration parameters for the manifest.}
 
 \item{Description}{A description for this job. You can use any string within the permitted
 length. Descriptions don't need to be unique and can be used for
@@ -34,177 +45,20 @@ multiple jobs.}
 \item{Priority}{[required] The numerical priority for this job. Higher numbers indicate higher
 priority.}
 
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) for the AWS Identity and Access
-Management (IAM) role that Batch Operations will use to run this job's
-operation on each object in the manifest.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) for the Identity and Access Management
+(IAM) role that Batch Operations will use to run this job's action on
+every object in the manifest.}
 
 \item{Tags}{A set of tags to associate with the S3 Batch Operations job. This is an
 optional parameter.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
+
+\item{ManifestGenerator}{The attribute container for the ManifestGenerator details. Jobs must be
+created with either a manifest file or a ManifestGenerator, but not
+both.}
 }
 \description{
-S3 Batch Operations performs large-scale Batch Operations on Amazon S3
-objects. Batch Operations can run a single operation or action on lists
-of Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{S3 Batch Operations} in
-the \emph{Amazon Simple Storage Service Developer Guide}.
+You can use S3 Batch Operations to perform large-scale batch actions on Amazon S3 objects. Batch Operations can run a single action on lists of Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
-This operation creates an S3 Batch Operations job.
-
-Related actions include:
-\itemize{
-\item \code{\link[=s3control_describe_job]{describe_job}}
-\item \code{\link[=s3control_list_jobs]{list_jobs}}
-\item \code{\link[=s3control_update_job_priority]{update_job_priority}}
-\item \code{\link[=s3control_update_job_status]{update_job_status}}
+See \url{https://paws-r.github.io/docs/s3control/create_job.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$create_job(
-  AccountId = "string",
-  ConfirmationRequired = TRUE|FALSE,
-  Operation = list(
-    LambdaInvoke = list(
-      FunctionArn = "string"
-    ),
-    S3PutObjectCopy = list(
-      TargetResource = "string",
-      CannedAccessControlList = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control",
-      AccessControlGrants = list(
-        list(
-          Grantee = list(
-            TypeIdentifier = "id"|"emailAddress"|"uri",
-            Identifier = "string",
-            DisplayName = "string"
-          ),
-          Permission = "FULL_CONTROL"|"READ"|"WRITE"|"READ_ACP"|"WRITE_ACP"
-        )
-      ),
-      MetadataDirective = "COPY"|"REPLACE",
-      ModifiedSinceConstraint = as.POSIXct(
-        "2015-01-01"
-      ),
-      NewObjectMetadata = list(
-        CacheControl = "string",
-        ContentDisposition = "string",
-        ContentEncoding = "string",
-        ContentLanguage = "string",
-        UserMetadata = list(
-          "string"
-        ),
-        ContentLength = 123,
-        ContentMD5 = "string",
-        ContentType = "string",
-        HttpExpiresDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        RequesterCharged = TRUE|FALSE,
-        SSEAlgorithm = "AES256"|"KMS"
-      ),
-      NewObjectTagging = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      RedirectLocation = "string",
-      RequesterPays = TRUE|FALSE,
-      StorageClass = "STANDARD"|"STANDARD_IA"|"ONEZONE_IA"|"GLACIER"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE",
-      UnModifiedSinceConstraint = as.POSIXct(
-        "2015-01-01"
-      ),
-      SSEAwsKmsKeyId = "string",
-      TargetKeyPrefix = "string",
-      ObjectLockLegalHoldStatus = "OFF"|"ON",
-      ObjectLockMode = "COMPLIANCE"|"GOVERNANCE",
-      ObjectLockRetainUntilDate = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    S3PutObjectAcl = list(
-      AccessControlPolicy = list(
-        AccessControlList = list(
-          Owner = list(
-            ID = "string",
-            DisplayName = "string"
-          ),
-          Grants = list(
-            list(
-              Grantee = list(
-                TypeIdentifier = "id"|"emailAddress"|"uri",
-                Identifier = "string",
-                DisplayName = "string"
-              ),
-              Permission = "FULL_CONTROL"|"READ"|"WRITE"|"READ_ACP"|"WRITE_ACP"
-            )
-          )
-        ),
-        CannedAccessControlList = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"
-      )
-    ),
-    S3PutObjectTagging = list(
-      TagSet = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    ),
-    S3InitiateRestoreObject = list(
-      ExpirationInDays = 123,
-      GlacierJobTier = "BULK"|"STANDARD"
-    ),
-    S3PutObjectLegalHold = list(
-      LegalHold = list(
-        Status = "OFF"|"ON"
-      )
-    ),
-    S3PutObjectRetention = list(
-      BypassGovernanceRetention = TRUE|FALSE,
-      Retention = list(
-        RetainUntilDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        Mode = "COMPLIANCE"|"GOVERNANCE"
-      )
-    )
-  ),
-  Report = list(
-    Bucket = "string",
-    Format = "Report_CSV_20180820",
-    Enabled = TRUE|FALSE,
-    Prefix = "string",
-    ReportScope = "AllTasks"|"FailedTasksOnly"
-  ),
-  ClientRequestToken = "string",
-  Manifest = list(
-    Spec = list(
-      Format = "S3BatchOperations_CSV_20180820"|"S3InventoryReport_CSV_20161130",
-      Fields = list(
-        "Ignore"|"Bucket"|"Key"|"VersionId"
-      )
-    ),
-    Location = list(
-      ObjectArn = "string",
-      ObjectVersionId = "string",
-      ETag = "string"
-    )
-  ),
-  Description = "string",
-  Priority = 123,
-  RoleArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

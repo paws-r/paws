@@ -9,22 +9,9 @@ sagemaker_get_model_package_group_policy(ModelPackageGroupName)
 \arguments{
 \item{ModelPackageGroupName}{[required] The name of the model group for which to get the resource policy.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourcePolicy = "string"
-)
-}
-}
 \description{
-Gets a resource policy that manages access for a model group. For
-information about resource policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html}{Identity-based policies and resource-based policies}
-in the \emph{AWS Identity and Access Management User Guide.}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_model_package_group_policy(
-  ModelPackageGroupName = "string"
-)
-}
-}
+Gets a resource policy that manages access for a model group. For information about resource policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html}{Identity-based policies and resource-based policies} in the \emph{Amazon Web Services Identity and Access Management User Guide.}.
 
+See \url{https://paws-r.github.io/docs/sagemaker/get_model_package_group_policy.html} for full documentation.
+}
 \keyword{internal}

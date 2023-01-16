@@ -5,7 +5,11 @@
 \title{Returns an array of stream ARNs associated with the current account and
 endpoint}
 \usage{
-dynamodbstreams_list_streams(TableName, Limit, ExclusiveStartStreamArn)
+dynamodbstreams_list_streams(
+  TableName = NULL,
+  Limit = NULL,
+  ExclusiveStartStreamArn = NULL
+)
 }
 \arguments{
 \item{TableName}{If this parameter is provided, then only the streams associated with
@@ -17,42 +21,9 @@ this table name are returned.}
 will evaluate. Use the value that was returned for
 \code{LastEvaluatedStreamArn} in the previous operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Streams = list(
-    list(
-      StreamArn = "string",
-      TableName = "string",
-      StreamLabel = "string"
-    )
-  ),
-  LastEvaluatedStreamArn = "string"
-)
-}
-}
 \description{
-Returns an array of stream ARNs associated with the current account and
-endpoint. If the \code{TableName} parameter is present, then
-\code{\link[=dynamodbstreams_list_streams]{list_streams}} will return only the
-streams ARNs for that table.
+Returns an array of stream ARNs associated with the current account and endpoint. If the \code{TableName} parameter is present, then \code{\link[=dynamodbstreams_list_streams]{list_streams}} will return only the streams ARNs for that table.
 
-You can call \code{\link[=dynamodbstreams_list_streams]{list_streams}} at a maximum
-rate of 5 times per second.
-}
-\section{Request syntax}{
-\preformatted{svc$list_streams(
-  TableName = "string",
-  Limit = 123,
-  ExclusiveStartStreamArn = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists all of the stream ARNs.
-svc$list_streams()
-}
-
+See \url{https://paws-r.github.io/docs/dynamodbstreams/list_streams.html} for full documentation.
 }
 \keyword{internal}

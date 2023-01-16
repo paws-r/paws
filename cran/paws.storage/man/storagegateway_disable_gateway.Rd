@@ -9,37 +9,9 @@ storagegateway_disable_gateway(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Disables a tape gateway when the gateway is no longer functioning. For
-example, if your gateway VM is damaged, you can disable the gateway so
-you can recover virtual tapes.
+Disables a tape gateway when the gateway is no longer functioning. For example, if your gateway VM is damaged, you can disable the gateway so you can recover virtual tapes.
 
-Use this operation for a tape gateway that is not reachable or not
-functioning. This operation is only supported in the tape gateway type.
-
-After a gateway is disabled, it cannot be enabled.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_gateway(
-  GatewayARN = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Disables a gateway when the gateway is no longer functioning. Use this
-# operation for a gateway-VTL that is not reachable or not functioning.
-svc$disable_gateway(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/disable_gateway.html} for full documentation.
 }
 \keyword{internal}

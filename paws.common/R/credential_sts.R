@@ -1,10 +1,15 @@
-# Get STS temporary credentials for a role using the STS AssumeRole operation.
+# Get STS temporary credentials for a role using the STS AssumeRole or AssumeRoleWithWebIdentity operations.
 #
-# We need to re-implement the STS AssumeRole operation to avoid circular
+# We need to re-implement the STS AssumeRole and AssumeRoleWithWebIdentity operations to avoid circular
 # dependency: paws depends on paws.common, therefore we can't make paws.common
-# also depend on paws.
+# also depend on paws (namely, paws.security.identity within paws).
+#
+# Sources:
+# - paws/paws/R/sts_service.R
+# - paws/paws/R/sts_interfaces.R: .sts$X_input(), .sts$X_output(),
+# - paws/paws/R/sts_operations.R: sts_X()
 
-# STS service client.
+# STS Service Client ----
 sts <- function(config = list()) {
   svc <- .sts$operations
   svc <- set_config(svc, config)
@@ -31,6 +36,8 @@ sts <- function(config = list()) {
   new_service(.sts$metadata, handlers, config)
 }
 
+# AssumeRole ----
+# Docs: https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html
 .sts$assume_role_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), RoleSessionName = structure(logical(0), tags = list(type = "string")), PolicyArns = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string")), DurationSeconds = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TransitiveTagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExternalId = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), TokenCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -65,3 +72,34 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 }
 .sts$operations$assume_role <- sts_assume_role
 
+# AssumeRoleWithWebIdentity ----
+# Source: paws/paws/R/sts_interfaces.R,
+# Docs: https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html
+.sts$assume_role_with_web_identity_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), RoleSessionName = structure(logical(0), tags = list(type = "string")), WebIdentityToken = structure(logical(0), tags = list(type = "string")), ProviderId = structure(logical(0), tags = list(type = "string")), PolicyArns = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sts$assume_role_with_web_identity_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SubjectFromWebIdentityToken = structure(logical(0), tags = list(type = "string")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer")), Provider = structure(logical(0), tags = list(type = "string")), Audience = structure(logical(0), tags = list(type = "string")), SourceIdentity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "AssumeRoleWithWebIdentityResult"))
+  return(populate(args, shape))
+}
+
+sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdentityToken, ProviderId = NULL, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL) {
+  op <- new_operation(
+    name = "AssumeRoleWithWebIdentity",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sts$assume_role_with_web_identity_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, WebIdentityToken = WebIdentityToken, ProviderId = ProviderId, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
+  output <- .sts$assume_role_with_web_identity_output()
+  config <- get_config()
+  svc <- .sts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sts$operations$assume_role_with_web_identity <- sts_assume_role_with_web_identity

@@ -7,7 +7,19 @@
 shield(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,16 +28,18 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Shield Advanced
+Shield Advanced
 
-This is the \emph{AWS Shield Advanced API Reference}. This guide is for
-developers who need detailed information about the AWS Shield Advanced
-API actions, data types, and errors. For detailed information about AWS
-WAF and AWS Shield Advanced features and an overview of how to use the
-AWS WAF and AWS Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF and AWS Shield Developer Guide}.
+This is the \emph{Shield Advanced API Reference}. This guide is for
+developers who need detailed information about the Shield Advanced API
+actions, data types, and errors. For detailed information about WAF and
+Shield Advanced features and an overview of how to use the WAF and
+Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{WAF and Shield Developer Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- shield(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- shield(
   config = list(
     credentials = list(
       creds = list(
@@ -33,48 +47,58 @@ AWS WAF and AWS Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=shield_associate_drt_log_bucket]{associate_drt_log_bucket} \tab Authorizes the DDoS Response Team (DRT) to access the specified Amazon S3 bucket containing your AWS WAF logs\cr
-\link[=shield_associate_drt_role]{associate_drt_role} \tab Authorizes the DDoS Response Team (DRT), using the specified role, to access your AWS account to assist with DDoS attack mitigation during potential attacks\cr
-\link[=shield_associate_health_check]{associate_health_check} \tab Adds health-based detection to the Shield Advanced protection for a resource\cr
-\link[=shield_associate_proactive_engagement_details]{associate_proactive_engagement_details} \tab Initializes proactive engagement and sets the list of contacts for the DDoS Response Team (DRT) to use\cr
-\link[=shield_create_protection]{create_protection} \tab Enables AWS Shield Advanced for a specific AWS resource\cr
-\link[=shield_create_protection_group]{create_protection_group} \tab Creates a grouping of protected resources so they can be handled as a collective\cr
-\link[=shield_create_subscription]{create_subscription} \tab Activates AWS Shield Advanced for an account\cr
-\link[=shield_delete_protection]{delete_protection} \tab Deletes an AWS Shield Advanced Protection\cr
-\link[=shield_delete_protection_group]{delete_protection_group} \tab Removes the specified protection group\cr
-\link[=shield_delete_subscription]{delete_subscription} \tab Removes AWS Shield Advanced from an account\cr
-\link[=shield_describe_attack]{describe_attack} \tab Describes the details of a DDoS attack\cr
-\link[=shield_describe_attack_statistics]{describe_attack_statistics} \tab Provides information about the number and type of attacks AWS Shield has detected in the last year for all resources that belong to your account, regardless of whether you've defined Shield protections for them\cr
-\link[=shield_describe_drt_access]{describe_drt_access} \tab Returns the current role and list of Amazon S3 log buckets used by the DDoS Response Team (DRT) to access your AWS account while assisting with attack mitigation\cr
-\link[=shield_describe_emergency_contact_settings]{describe_emergency_contact_settings} \tab A list of email addresses and phone numbers that the DDoS Response Team (DRT) can use to contact you if you have proactive engagement enabled, for escalations to the DRT and to initiate proactive customer support\cr
-\link[=shield_describe_protection]{describe_protection} \tab Lists the details of a Protection object\cr
-\link[=shield_describe_protection_group]{describe_protection_group} \tab Returns the specification for the specified protection group\cr
-\link[=shield_describe_subscription]{describe_subscription} \tab Provides details about the AWS Shield Advanced subscription for an account\cr
-\link[=shield_disable_proactive_engagement]{disable_proactive_engagement} \tab Removes authorization from the DDoS Response Team (DRT) to notify contacts about escalations to the DRT and to initiate proactive customer support\cr
-\link[=shield_disassociate_drt_log_bucket]{disassociate_drt_log_bucket} \tab Removes the DDoS Response Team's (DRT) access to the specified Amazon S3 bucket containing your AWS WAF logs\cr
-\link[=shield_disassociate_drt_role]{disassociate_drt_role} \tab Removes the DDoS Response Team's (DRT) access to your AWS account\cr
-\link[=shield_disassociate_health_check]{disassociate_health_check} \tab Removes health-based detection from the Shield Advanced protection for a resource\cr
-\link[=shield_enable_proactive_engagement]{enable_proactive_engagement} \tab Authorizes the DDoS Response Team (DRT) to use email and phone to notify contacts about escalations to the DRT and to initiate proactive customer support\cr
-\link[=shield_get_subscription_state]{get_subscription_state} \tab Returns the SubscriptionState, either Active or Inactive\cr
-\link[=shield_list_attacks]{list_attacks} \tab Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period\cr
-\link[=shield_list_protection_groups]{list_protection_groups} \tab Retrieves the ProtectionGroup objects for the account\cr
-\link[=shield_list_protections]{list_protections} \tab Lists all Protection objects for the account\cr
-\link[=shield_list_resources_in_protection_group]{list_resources_in_protection_group} \tab Retrieves the resources that are included in the protection group\cr
-\link[=shield_update_emergency_contact_settings]{update_emergency_contact_settings} \tab Updates the details of the list of email addresses and phone numbers that the DDoS Response Team (DRT) can use to contact you if you have proactive engagement enabled, for escalations to the DRT and to initiate proactive customer support\cr
-\link[=shield_update_protection_group]{update_protection_group} \tab Updates an existing protection group\cr
-\link[=shield_update_subscription]{update_subscription} \tab Updates the details of an existing subscription
+\link[paws.security.identity.p2:shield_associate_drt_log_bucket]{associate_drt_log_bucket} \tab Authorizes the Shield Response Team (SRT) to access the specified Amazon S3 bucket containing log data such as Application Load Balancer access logs, CloudFront logs, or logs from third party sources\cr
+\link[paws.security.identity.p2:shield_associate_drt_role]{associate_drt_role} \tab Authorizes the Shield Response Team (SRT) using the specified role, to access your Amazon Web Services account to assist with DDoS attack mitigation during potential attacks\cr
+\link[paws.security.identity.p2:shield_associate_health_check]{associate_health_check} \tab Adds health-based detection to the Shield Advanced protection for a resource\cr
+\link[paws.security.identity.p2:shield_associate_proactive_engagement_details]{associate_proactive_engagement_details} \tab Initializes proactive engagement and sets the list of contacts for the Shield Response Team (SRT) to use\cr
+\link[paws.security.identity.p2:shield_create_protection]{create_protection} \tab Enables Shield Advanced for a specific Amazon Web Services resource\cr
+\link[paws.security.identity.p2:shield_create_protection_group]{create_protection_group} \tab Creates a grouping of protected resources so they can be handled as a collective\cr
+\link[paws.security.identity.p2:shield_create_subscription]{create_subscription} \tab Activates Shield Advanced for an account\cr
+\link[paws.security.identity.p2:shield_delete_protection]{delete_protection} \tab Deletes an Shield Advanced Protection\cr
+\link[paws.security.identity.p2:shield_delete_protection_group]{delete_protection_group} \tab Removes the specified protection group\cr
+\link[paws.security.identity.p2:shield_delete_subscription]{delete_subscription} \tab Removes Shield Advanced from an account\cr
+\link[paws.security.identity.p2:shield_describe_attack]{describe_attack} \tab Describes the details of a DDoS attack\cr
+\link[paws.security.identity.p2:shield_describe_attack_statistics]{describe_attack_statistics} \tab Provides information about the number and type of attacks Shield has detected in the last year for all resources that belong to your account, regardless of whether you've defined Shield protections for them\cr
+\link[paws.security.identity.p2:shield_describe_drt_access]{describe_drt_access} \tab Returns the current role and list of Amazon S3 log buckets used by the Shield Response Team (SRT) to access your Amazon Web Services account while assisting with attack mitigation\cr
+\link[paws.security.identity.p2:shield_describe_emergency_contact_settings]{describe_emergency_contact_settings} \tab A list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you if you have proactive engagement enabled, for escalations to the SRT and to initiate proactive customer support\cr
+\link[paws.security.identity.p2:shield_describe_protection]{describe_protection} \tab Lists the details of a Protection object\cr
+\link[paws.security.identity.p2:shield_describe_protection_group]{describe_protection_group} \tab Returns the specification for the specified protection group\cr
+\link[paws.security.identity.p2:shield_describe_subscription]{describe_subscription} \tab Provides details about the Shield Advanced subscription for an account\cr
+\link[paws.security.identity.p2:shield_disable_application_layer_automatic_response]{disable_application_layer_automatic_response} \tab Disable the Shield Advanced automatic application layer DDoS mitigation feature for the protected resource\cr
+\link[paws.security.identity.p2:shield_disable_proactive_engagement]{disable_proactive_engagement} \tab Removes authorization from the Shield Response Team (SRT) to notify contacts about escalations to the SRT and to initiate proactive customer support\cr
+\link[paws.security.identity.p2:shield_disassociate_drt_log_bucket]{disassociate_drt_log_bucket} \tab Removes the Shield Response Team's (SRT) access to the specified Amazon S3 bucket containing the logs that you shared previously\cr
+\link[paws.security.identity.p2:shield_disassociate_drt_role]{disassociate_drt_role} \tab Removes the Shield Response Team's (SRT) access to your Amazon Web Services account\cr
+\link[paws.security.identity.p2:shield_disassociate_health_check]{disassociate_health_check} \tab Removes health-based detection from the Shield Advanced protection for a resource\cr
+\link[paws.security.identity.p2:shield_enable_application_layer_automatic_response]{enable_application_layer_automatic_response} \tab Enable the Shield Advanced automatic application layer DDoS mitigation for the protected resource\cr
+\link[paws.security.identity.p2:shield_enable_proactive_engagement]{enable_proactive_engagement} \tab Authorizes the Shield Response Team (SRT) to use email and phone to notify contacts about escalations to the SRT and to initiate proactive customer support\cr
+\link[paws.security.identity.p2:shield_get_subscription_state]{get_subscription_state} \tab Returns the SubscriptionState, either Active or Inactive\cr
+\link[paws.security.identity.p2:shield_list_attacks]{list_attacks} \tab Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period\cr
+\link[paws.security.identity.p2:shield_list_protection_groups]{list_protection_groups} \tab Retrieves ProtectionGroup objects for the account\cr
+\link[paws.security.identity.p2:shield_list_protections]{list_protections} \tab Retrieves Protection objects for the account\cr
+\link[paws.security.identity.p2:shield_list_resources_in_protection_group]{list_resources_in_protection_group} \tab Retrieves the resources that are included in the protection group\cr
+\link[paws.security.identity.p2:shield_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about Amazon Web Services tags for a specified Amazon Resource Name (ARN) in Shield\cr
+\link[paws.security.identity.p2:shield_tag_resource]{tag_resource} \tab Adds or updates tags for a resource in Shield\cr
+\link[paws.security.identity.p2:shield_untag_resource]{untag_resource} \tab Removes tags from a resource in Shield\cr
+\link[paws.security.identity.p2:shield_update_application_layer_automatic_response]{update_application_layer_automatic_response} \tab Updates an existing Shield Advanced automatic application layer DDoS mitigation configuration for the specified resource\cr
+\link[paws.security.identity.p2:shield_update_emergency_contact_settings]{update_emergency_contact_settings} \tab Updates the details of the list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you if you have proactive engagement enabled, for escalations to the SRT and to initiate proactive customer support\cr
+\link[paws.security.identity.p2:shield_update_protection_group]{update_protection_group} \tab Updates an existing protection group\cr
+\link[paws.security.identity.p2:shield_update_subscription]{update_subscription} \tab Updates the details of an existing subscription
 }
 }
 

@@ -2,9 +2,15 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_list_report_groups}
 \alias{codebuild_list_report_groups}
-\title{Gets a list ARNs for the report groups in the current AWS account}
+\title{Gets a list ARNs for the report groups in the current Amazon Web
+Services account}
 \usage{
-codebuild_list_report_groups(sortOrder, sortBy, nextToken, maxResults)
+codebuild_list_report_groups(
+  sortOrder = NULL,
+  sortBy = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{sortOrder}{Used to specify the order to sort the list of returned report groups.
@@ -31,26 +37,9 @@ no more next tokens are returned.}
 \code{nextToken} to iterate pages in the list of returned \code{ReportGroup}
 objects. The default value is 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  reportGroups = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Gets a list ARNs for the report groups in the current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_report_groups(
-  sortOrder = "ASCENDING"|"DESCENDING",
-  sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Gets a list ARNs for the report groups in the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/codebuild/list_report_groups.html} for full documentation.
+}
 \keyword{internal}

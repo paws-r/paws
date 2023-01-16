@@ -15,31 +15,9 @@ value of null.}
 
 \item{ResourceType}{[required] The type of the ML object to tag.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceId = "string",
-  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
-)
-}
-}
 \description{
-Adds one or more tags to an object, up to a limit of 10. Each tag
-consists of a key and an optional value. If you add a tag using a key
-that is already associated with the ML object,
-\code{\link[=machinelearning_add_tags]{add_tags}} updates the tag's value.
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ResourceId = "string",
-  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
-)
-}
-}
+Adds one or more tags to an object, up to a limit of 10. Each tag consists of a key and an optional value. If you add a tag using a key that is already associated with the ML object, \code{\link[=machinelearning_add_tags]{add_tags}} updates the tag's value.
 
+See \url{https://paws-r.github.io/docs/machinelearning/add_tags.html} for full documentation.
+}
 \keyword{internal}

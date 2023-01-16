@@ -2,67 +2,27 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_disassociate_global_replication_group}
 \alias{elasticache_disassociate_global_replication_group}
-\title{Remove a secondary cluster from the Global Datastore using the Global
-Datastore name}
+\title{Remove a secondary cluster from the Global datastore using the Global
+datastore name}
 \usage{
 elasticache_disassociate_global_replication_group(
-  GlobalReplicationGroupId, ReplicationGroupId, ReplicationGroupRegion)
+  GlobalReplicationGroupId,
+  ReplicationGroupId,
+  ReplicationGroupRegion
+)
 }
 \arguments{
-\item{GlobalReplicationGroupId}{[required] The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{[required] The name of the Global datastore}
 
 \item{ReplicationGroupId}{[required] The name of the secondary cluster you wish to remove from the Global
-Datastore}
+datastore}
 
-\item{ReplicationGroupRegion}{[required] The AWS region of secondary cluster you wish to remove from the Global
-Datastore}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalReplicationGroup = list(
-    GlobalReplicationGroupId = "string",
-    GlobalReplicationGroupDescription = "string",
-    Status = "string",
-    CacheNodeType = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    Members = list(
-      list(
-        ReplicationGroupId = "string",
-        ReplicationGroupRegion = "string",
-        Role = "string",
-        AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-        Status = "string"
-      )
-    ),
-    ClusterEnabled = TRUE|FALSE,
-    GlobalNodeGroups = list(
-      list(
-        GlobalNodeGroupId = "string",
-        Slots = "string"
-      )
-    ),
-    AuthTokenEnabled = TRUE|FALSE,
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    ARN = "string"
-  )
-)
-}
+\item{ReplicationGroupRegion}{[required] The Amazon region of secondary cluster you wish to remove from the
+Global datastore}
 }
 \description{
-Remove a secondary cluster from the Global Datastore using the Global
-Datastore name. The secondary cluster will no longer receive updates
-from the primary cluster, but will remain as a standalone cluster in
-that AWS region.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_global_replication_group(
-  GlobalReplicationGroupId = "string",
-  ReplicationGroupId = "string",
-  ReplicationGroupRegion = "string"
-)
-}
-}
+Remove a secondary cluster from the Global datastore using the Global datastore name. The secondary cluster will no longer receive updates from the primary cluster, but will remain as a standalone cluster in that Amazon region.
 
+See \url{https://paws-r.github.io/docs/elasticache/disassociate_global_replication_group.html} for full documentation.
+}
 \keyword{internal}

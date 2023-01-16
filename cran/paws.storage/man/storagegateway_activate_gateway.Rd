@@ -4,9 +4,16 @@
 \alias{storagegateway_activate_gateway}
 \title{Activates the gateway you previously deployed on your host}
 \usage{
-storagegateway_activate_gateway(ActivationKey, GatewayName,
-  GatewayTimezone, GatewayRegion, GatewayType, TapeDriveType,
-  MediumChangerType, Tags)
+storagegateway_activate_gateway(
+  ActivationKey,
+  GatewayName,
+  GatewayTimezone,
+  GatewayRegion,
+  GatewayType = NULL,
+  TapeDriveType = NULL,
+  MediumChangerType = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ActivationKey}{[required] Your gateway activation key. You can obtain the activation key by
@@ -18,8 +25,8 @@ parameters, however, these are merely defaults -- the arguments you pass
 to the \code{\link[=storagegateway_activate_gateway]{activate_gateway}} API call
 determine the actual configuration of your gateway.
 
-For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html}{Getting activation key}
-in the \emph{AWS Storage Gateway User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/storagegateway/index.html}{Getting activation key} in the
+\emph{Storage Gateway User Guide}.}
 
 \item{GatewayName}{[required] The name you configured for your gateway.}
 
@@ -29,20 +36,23 @@ GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates
 the time is 2 hours ahead of GMT. The time zone is used, for example,
 for scheduling snapshots and your gateway's maintenance schedule.}
 
-\item{GatewayRegion}{[required] A value that indicates the AWS Region where you want to store your data.
-The gateway AWS Region specified must be the same AWS Region as the AWS
-Region in your \code{Host} header in the request. For more information about
-available AWS Regions and endpoints for AWS Storage Gateway, see \href{https://docs.aws.amazon.com/general/latest/gr/sg.html}{AWS Storage Gateway endpoints and quotas} in the
-\emph{AWS General Reference}.
+\item{GatewayRegion}{[required] A value that indicates the Amazon Web Services Region where you want to
+store your data. The gateway Amazon Web Services Region specified must
+be the same Amazon Web Services Region as the Amazon Web Services Region
+in your \code{Host} header in the request. For more information about
+available Amazon Web Services Regions and endpoints for Storage Gateway,
+see \href{https://docs.aws.amazon.com/general/latest/gr/sg.html}{Storage Gateway endpoints and quotas} in the
+\emph{Amazon Web Services General Reference}.
 
-Valid Values: See \href{https://docs.aws.amazon.com/general/latest/gr/sg.html}{AWS Storage Gateway endpoints and quotas} in the
-\emph{AWS General Reference}.}
+Valid Values: See \href{https://docs.aws.amazon.com/general/latest/gr/sg.html}{Storage Gateway endpoints and quotas} in the
+\emph{Amazon Web Services General Reference}.}
 
 \item{GatewayType}{A value that defines the type of gateway to activate. The type specified
 is critical to all later functions of the gateway and cannot be changed
 after activation. The default value is \code{CACHED}.
 
-Valid Values: \code{STORED} | \code{CACHED} | \code{VTL} | \code{FILE_S3}}
+Valid Values: \code{STORED} | \code{CACHED} | \code{VTL} | \code{VTL_SNOW} | \code{FILE_S3} |
+\code{FILE_FSX_SMB}}
 
 \item{TapeDriveType}{The value that indicates the type of tape drive to use for tape gateway.
 This field is optional.
@@ -62,55 +72,9 @@ can be represented in UTF-8 format, and the following special
 characters: + - = . _ : / @. The maximum length of a tag's key is 128
 characters, and the maximum length for a tag's value is 256 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Activates the gateway you previously deployed on your host. In the
-activation process, you specify information such as the AWS Region that
-you want to use for storing snapshots or tapes, the time zone for
-scheduled snapshots the gateway snapshot schedule window, an activation
-key, and a name for your gateway. The activation process also associates
-your gateway with your account. For more information, see
-\code{\link[=storagegateway_update_gateway_information]{update_gateway_information}}.
+Activates the gateway you previously deployed on your host. In the activation process, you specify information such as the Amazon Web Services Region that you want to use for storing snapshots or tapes, the time zone for scheduled snapshots the gateway snapshot schedule window, an activation key, and a name for your gateway. The activation process also associates your gateway with your account. For more information, see \code{\link[=storagegateway_update_gateway_information]{update_gateway_information}}.
 
-You must turn on the gateway VM before you can activate your gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$activate_gateway(
-  ActivationKey = "string",
-  GatewayName = "string",
-  GatewayTimezone = "string",
-  GatewayRegion = "string",
-  GatewayType = "string",
-  TapeDriveType = "string",
-  MediumChangerType = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# Activates the gateway you previously deployed on your host.
-svc$activate_gateway(
-  ActivationKey = "29AV1-3OFV9-VVIUB-NKT0I-LRO6V",
-  GatewayName = "My_Gateway",
-  GatewayRegion = "us-east-1",
-  GatewayTimezone = "GMT-12:00",
-  GatewayType = "STORED",
-  MediumChangerType = "AWS-Gateway-VTL",
-  TapeDriveType = "IBM-ULT3580-TD5"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/activate_gateway.html} for full documentation.
 }
 \keyword{internal}

@@ -10,33 +10,9 @@ ses_delete_receipt_rule_set(RuleSetName)
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified receipt rule set and all of the receipt rules it
-contains.
+Deletes the specified receipt rule set and all of the receipt rules it contains.
 
-The currently active rule set cannot be deleted.
-
-For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_receipt_rule_set(
-  RuleSetName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes a receipt rule set:
-svc$delete_receipt_rule_set(
-  RuleSetName = "MyRuleSet"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/delete_receipt_rule_set.html} for full documentation.
 }
 \keyword{internal}

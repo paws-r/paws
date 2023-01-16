@@ -5,8 +5,11 @@
 \title{This operation replaces the current set of name servers for the domain
 with the specified set of name servers}
 \usage{
-route53domains_update_domain_nameservers(DomainName, FIAuthKey,
-  Nameservers)
+route53domains_update_domain_nameservers(
+  DomainName,
+  FIAuthKey = NULL,
+  Nameservers
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to change name servers for.}
@@ -15,37 +18,9 @@ route53domains_update_domain_nameservers(DomainName, FIAuthKey,
 
 \item{Nameservers}{[required] A list of new name servers for the domain.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
-}
 \description{
-This operation replaces the current set of name servers for the domain
-with the specified set of name servers. If you use Amazon Route 53 as
-your DNS service, specify the four name servers in the delegation set
-for the hosted zone for the domain.
+This operation replaces the current set of name servers for the domain with the specified set of name servers. If you use Amazon Route 53 as your DNS service, specify the four name servers in the delegation set for the hosted zone for the domain.
 
-If successful, this operation returns an operation ID that you can use
-to track the progress and completion of the action. If the request is
-not completed successfully, the domain registrant will be notified by
-email.
+See \url{https://paws-r.github.io/docs/route53domains/update_domain_nameservers.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_domain_nameservers(
-  DomainName = "string",
-  FIAuthKey = "string",
-  Nameservers = list(
-    list(
-      Name = "string",
-      GlueIps = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

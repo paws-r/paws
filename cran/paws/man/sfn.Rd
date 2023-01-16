@@ -7,7 +7,19 @@
 sfn(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -33,11 +45,14 @@ Step Functions manages operations and underlying infrastructure to
 ensure your application is available at any scale. You can run tasks on
 AWS, your own servers, or any system that has access to AWS. You can
 access and use Step Functions using the console, the AWS SDKs, or an
-HTTP API. For more information about Step Functions, see the \emph{\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{AWS Step Functions Developer Guide}}
-.
+HTTP API. For more information about Step Functions, see the \emph{<span
+href="https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html">AWS
+Step Functions Developer Guide</span>} .
 }
 \section{Service syntax}{
-\preformatted{svc <- sfn(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sfn(
   config = list(
     credentials = list(
       creds = list(
@@ -45,41 +60,45 @@ HTTP API. For more information about Step Functions, see the \emph{\href{https:/
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=sfn_create_activity]{create_activity} \tab Creates an activity\cr
-\link[=sfn_create_state_machine]{create_state_machine} \tab Creates a state machine\cr
-\link[=sfn_delete_activity]{delete_activity} \tab Deletes an activity\cr
-\link[=sfn_delete_state_machine]{delete_state_machine} \tab Deletes a state machine\cr
-\link[=sfn_describe_activity]{describe_activity} \tab Describes an activity\cr
-\link[=sfn_describe_execution]{describe_execution} \tab Describes an execution\cr
-\link[=sfn_describe_state_machine]{describe_state_machine} \tab Describes a state machine\cr
-\link[=sfn_describe_state_machine_for_execution]{describe_state_machine_for_execution} \tab Describes the state machine associated with a specific execution\cr
-\link[=sfn_get_activity_task]{get_activity_task} \tab Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine\cr
-\link[=sfn_get_execution_history]{get_execution_history} \tab Returns the history of the specified execution as a list of events\cr
-\link[=sfn_list_activities]{list_activities} \tab Lists the existing activities\cr
-\link[=sfn_list_executions]{list_executions} \tab Lists the executions of a state machine that meet the filtering criteria\cr
-\link[=sfn_list_state_machines]{list_state_machines} \tab Lists the existing state machines\cr
-\link[=sfn_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given resource\cr
-\link[=sfn_send_task_failure]{send_task_failure} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken failed\cr
-\link[=sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and task states using the callback pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
-\link[=sfn_send_task_success]{send_task_success} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken completed successfully\cr
-\link[=sfn_start_execution]{start_execution} \tab Starts a state machine execution\cr
-\link[=sfn_start_sync_execution]{start_sync_execution} \tab Starts a Synchronous Express state machine execution\cr
-\link[=sfn_stop_execution]{stop_execution} \tab Stops an execution\cr
-\link[=sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource\cr
-\link[=sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
-\link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration
+\link[paws.application.integration:sfn_create_activity]{create_activity} \tab Creates an activity\cr
+\link[paws.application.integration:sfn_create_state_machine]{create_state_machine} \tab Creates a state machine\cr
+\link[paws.application.integration:sfn_delete_activity]{delete_activity} \tab Deletes an activity\cr
+\link[paws.application.integration:sfn_delete_state_machine]{delete_state_machine} \tab Deletes a state machine\cr
+\link[paws.application.integration:sfn_describe_activity]{describe_activity} \tab Describes an activity\cr
+\link[paws.application.integration:sfn_describe_execution]{describe_execution} \tab Describes an execution\cr
+\link[paws.application.integration:sfn_describe_state_machine]{describe_state_machine} \tab Describes a state machine\cr
+\link[paws.application.integration:sfn_describe_state_machine_for_execution]{describe_state_machine_for_execution} \tab Describes the state machine associated with a specific execution\cr
+\link[paws.application.integration:sfn_get_activity_task]{get_activity_task} \tab Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine\cr
+\link[paws.application.integration:sfn_get_execution_history]{get_execution_history} \tab Returns the history of the specified execution as a list of events\cr
+\link[paws.application.integration:sfn_list_activities]{list_activities} \tab Lists the existing activities\cr
+\link[paws.application.integration:sfn_list_executions]{list_executions} \tab Lists the executions of a state machine that meet the filtering criteria\cr
+\link[paws.application.integration:sfn_list_state_machines]{list_state_machines} \tab Lists the existing state machines\cr
+\link[paws.application.integration:sfn_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given resource\cr
+\link[paws.application.integration:sfn_send_task_failure]{send_task_failure} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken failed\cr
+\link[paws.application.integration:sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and task states using the callback pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
+\link[paws.application.integration:sfn_send_task_success]{send_task_success} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken completed successfully\cr
+\link[paws.application.integration:sfn_start_execution]{start_execution} \tab Starts a state machine execution\cr
+\link[paws.application.integration:sfn_start_sync_execution]{start_sync_execution} \tab Starts a Synchronous Express state machine execution\cr
+\link[paws.application.integration:sfn_stop_execution]{stop_execution} \tab Stops an execution\cr
+\link[paws.application.integration:sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource\cr
+\link[paws.application.integration:sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
+\link[paws.application.integration:sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration
 }
 }
 

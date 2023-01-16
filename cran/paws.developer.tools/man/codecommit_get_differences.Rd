@@ -6,8 +6,15 @@
 (such as a branch, tag, HEAD, commit ID, or other fully qualified
 reference)}
 \usage{
-codecommit_get_differences(repositoryName, beforeCommitSpecifier,
-  afterCommitSpecifier, beforePath, afterPath, MaxResults, NextToken)
+codecommit_get_differences(
+  repositoryName,
+  beforeCommitSpecifier = NULL,
+  afterCommitSpecifier,
+  beforePath = NULL,
+  afterPath = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you want to get differences.}
@@ -37,43 +44,9 @@ results.}
 \item{NextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  differences = list(
-    list(
-      beforeBlob = list(
-        blobId = "string",
-        path = "string",
-        mode = "string"
-      ),
-      afterBlob = list(
-        blobId = "string",
-        path = "string",
-        mode = "string"
-      ),
-      changeType = "A"|"M"|"D"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns information about the differences in a valid commit specifier
-(such as a branch, tag, HEAD, commit ID, or other fully qualified
-reference). Results can be limited to a specified path.
-}
-\section{Request syntax}{
-\preformatted{svc$get_differences(
-  repositoryName = "string",
-  beforeCommitSpecifier = "string",
-  afterCommitSpecifier = "string",
-  beforePath = "string",
-  afterPath = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be limited to a specified path.
 
+See \url{https://paws-r.github.io/docs/codecommit/get_differences.html} for full documentation.
+}
 \keyword{internal}

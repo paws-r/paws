@@ -18,55 +18,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VaultARN = "string",
-  VaultName = "string",
-  CreationDate = "string",
-  LastInventoryDate = "string",
-  NumberOfArchives = 123,
-  SizeInBytes = 123
-)
-}
-}
 \description{
-This operation returns information about a vault, including the vault's
-Amazon Resource Name (ARN), the date the vault was created, the number
-of archives it contains, and the total size of all the archives in the
-vault. The number of archives and their total size are as of the last
-inventory generation. This means that if you add or remove an archive
-from a vault, and then immediately use Describe Vault, the change in
-contents will not be immediately reflected. If you want to retrieve the
-latest inventory of the vault, use
-\code{\link[=glacier_initiate_job]{initiate_job}}. Amazon S3 Glacier generates
-vault inventories approximately daily. For more information, see
-\href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html}{Downloading a Vault Inventory in Amazon S3 Glacier}.
+This operation returns information about a vault, including the vault's Amazon Resource Name (ARN), the date the vault was created, the number of archives it contains, and the total size of all the archives in the vault. The number of archives and their total size are as of the last inventory generation. This means that if you add or remove an archive from a vault, and then immediately use Describe Vault, the change in contents will not be immediately reflected. If you want to retrieve the latest inventory of the vault, use \code{\link[=glacier_initiate_job]{initiate_job}}. Amazon S3 Glacier generates vault inventories approximately daily. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html}{Downloading a Vault Inventory in Amazon S3 Glacier}.
 
-An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
-permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html}{Access Control Using AWS Identity and Access Management (IAM)}.
-
-For conceptual information and underlying REST API, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html}{Retrieving Vault Metadata in Amazon S3 Glacier}
-and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html}{Describe Vault}
-in the \emph{Amazon Glacier Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_vault(
-  accountId = "string",
-  vaultName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The example retrieves data about a vault named my-vault.
-svc$describe_vault(
-  accountId = "-",
-  vaultName = "my-vault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/describe_vault.html} for full documentation.
 }
 \keyword{internal}

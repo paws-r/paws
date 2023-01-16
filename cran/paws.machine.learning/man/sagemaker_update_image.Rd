@@ -4,8 +4,13 @@
 \alias{sagemaker_update_image}
 \title{Updates the properties of a SageMaker image}
 \usage{
-sagemaker_update_image(DeleteProperties, Description, DisplayName,
-  ImageName, RoleArn)
+sagemaker_update_image(
+  DeleteProperties = NULL,
+  Description = NULL,
+  DisplayName = NULL,
+  ImageName,
+  RoleArn = NULL
+)
 }
 \arguments{
 \item{DeleteProperties}{A list of properties to delete. Only the \code{Description} and \code{DisplayName}
@@ -20,28 +25,9 @@ properties can be deleted.}
 \item{RoleArn}{The new Amazon Resource Name (ARN) for the IAM role that enables Amazon
 SageMaker to perform tasks on your behalf.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageArn = "string"
-)
-}
-}
 \description{
-Updates the properties of a SageMaker image. To change the image's tags,
-use the \code{\link[=sagemaker_add_tags]{add_tags}} and
-\code{\link[=sagemaker_delete_tags]{delete_tags}} APIs.
-}
-\section{Request syntax}{
-\preformatted{svc$update_image(
-  DeleteProperties = list(
-    "string"
-  ),
-  Description = "string",
-  DisplayName = "string",
-  ImageName = "string",
-  RoleArn = "string"
-)
-}
-}
+Updates the properties of a SageMaker image. To change the image's tags, use the \code{\link[=sagemaker_add_tags]{add_tags}} and \code{\link[=sagemaker_delete_tags]{delete_tags}} APIs.
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_image.html} for full documentation.
+}
 \keyword{internal}

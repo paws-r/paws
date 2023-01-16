@@ -2,39 +2,18 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_delete_key_signing_key}
 \alias{route53_delete_key_signing_key}
-\title{Deletes a key signing key (KSK)}
+\title{Deletes a key-signing key (KSK)}
 \usage{
 route53_delete_key_signing_key(HostedZoneId, Name)
 }
 \arguments{
 \item{HostedZoneId}{[required] A unique string used to identify a hosted zone.}
 
-\item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK).}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeInfo = list(
-    Id = "string",
-    Status = "PENDING"|"INSYNC",
-    SubmittedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    Comment = "string"
-  )
-)
-}
+\item{Name}{[required] A string used to identify a key-signing key (KSK).}
 }
 \description{
-Deletes a key signing key (KSK). Before you can delete a KSK, you must
-deactivate it. The KSK must be deactived before you can delete it
-regardless of whether the hosted zone is enabled for DNSSEC signing.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_key_signing_key(
-  HostedZoneId = "string",
-  Name = "string"
-)
-}
-}
+Deletes a key-signing key (KSK). Before you can delete a KSK, you must deactivate it. The KSK must be deactivated before you can delete it regardless of whether the hosted zone is enabled for DNSSEC signing.
 
+See \url{https://paws-r.github.io/docs/route53/delete_key_signing_key.html} for full documentation.
+}
 \keyword{internal}

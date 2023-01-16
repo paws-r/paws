@@ -16,44 +16,9 @@ using its Amazon Resource Name (ARN). Examples: \code{user@example.com},
 
 To successfully call this API, you must own the identity.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyNames = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns a list of sending authorization policies that are attached to
-the given identity (an email address or a domain). This API returns only
-a list. If you want the actual policy content, you can use
-\code{\link[=ses_get_identity_policies]{get_identity_policies}}.
+Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain). This API returns only a list. If you want the actual policy content, you can use \code{\link[=ses_get_identity_policies]{get_identity_policies}}.
 
-This API is for the identity owner only. If you have not verified the
-identity, this API will return an error.
-
-Sending authorization is a feature that enables an identity owner to
-authorize other senders to use its identities. For information about
-using sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$list_identity_policies(
-  Identity = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns a list of sending authorization policies
-# that are attached to an identity:
-svc$list_identity_policies(
-  Identity = "example.com"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/list_identity_policies.html} for full documentation.
 }
 \keyword{internal}

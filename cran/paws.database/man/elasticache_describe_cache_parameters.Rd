@@ -5,8 +5,12 @@
 \title{Returns the detailed parameter list for a particular cache parameter
 group}
 \usage{
-elasticache_describe_cache_parameters(CacheParameterGroupName, Source,
-  MaxRecords, Marker)
+elasticache_describe_cache_parameters(
+  CacheParameterGroupName,
+  Source = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{CacheParameterGroupName}{[required] The name of a specific cache parameter group to return details for.}
@@ -28,55 +32,9 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string",
-      ChangeType = "immediate"|"requires-reboot"
-    )
-  ),
-  CacheNodeTypeSpecificParameters = list(
-    list(
-      ParameterName = "string",
-      Description = "string",
-      Source = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string",
-      CacheNodeTypeSpecificValues = list(
-        list(
-          CacheNodeType = "string",
-          Value = "string"
-        )
-      ),
-      ChangeType = "immediate"|"requires-reboot"
-    )
-  )
-)
-}
-}
 \description{
-Returns the detailed parameter list for a particular cache parameter
-group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_cache_parameters(
-  CacheParameterGroupName = "string",
-  Source = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns the detailed parameter list for a particular cache parameter group.
 
+See \url{https://paws-r.github.io/docs/elasticache/describe_cache_parameters.html} for full documentation.
+}
 \keyword{internal}

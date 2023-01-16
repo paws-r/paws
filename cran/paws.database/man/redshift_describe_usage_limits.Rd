@@ -4,8 +4,15 @@
 \alias{redshift_describe_usage_limits}
 \title{Shows usage limits on a cluster}
 \usage{
-redshift_describe_usage_limits(UsageLimitId, ClusterIdentifier,
-  FeatureType, MaxRecords, Marker, TagKeys, TagValues)
+redshift_describe_usage_limits(
+  UsageLimitId = NULL,
+  ClusterIdentifier = NULL,
+  FeatureType = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  TagKeys = NULL,
+  TagValues = NULL
+)
 }
 \arguments{
 \item{UsageLimitId}{The identifier of the usage limit to describe.}
@@ -28,10 +35,10 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_usage_limits]{describe_usage_limits}} request exceed
-the value specified in \code{MaxRecords}, AWS returns a value in the \code{Marker}
-field of the response. You can retrieve the next set of response records
-by providing the returned marker value in the \code{Marker} parameter and
-retrying the request.}
+the value specified in \code{MaxRecords}, Amazon Web Services returns a value
+in the \code{Marker} field of the response. You can retrieve the next set of
+response records by providing the returned marker value in the \code{Marker}
+parameter and retrying the request.}
 
 \item{TagKeys}{A tag key or keys for which you want to return all matching usage limit
 objects that are associated with the specified key or keys. For example,
@@ -48,61 +55,9 @@ these tag values in the request, Amazon Redshift returns a response with
 the usage limit objects that have either or both of these tag values
 associated with them.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UsageLimits = list(
-    list(
-      UsageLimitId = "string",
-      ClusterIdentifier = "string",
-      FeatureType = "spectrum"|"concurrency-scaling",
-      LimitType = "time"|"data-scanned",
-      Amount = 123,
-      Period = "daily"|"weekly"|"monthly",
-      BreachAction = "log"|"emit-metric"|"disable",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Shows usage limits on a cluster. Results are filtered based on the
-combination of input usage limit identifier, cluster identifier, and
-feature type parameters:
-\itemize{
-\item If usage limit identifier, cluster identifier, and feature type are
-not provided, then all usage limit objects for the current account
-in the current region are returned.
-\item If usage limit identifier is provided, then the corresponding usage
-limit object is returned.
-\item If cluster identifier is provided, then all usage limit objects for
-the specified cluster are returned.
-\item If cluster identifier and feature type are provided, then all usage
-limit objects for the combination of cluster and feature are
-returned.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_usage_limits(
-  UsageLimitId = "string",
-  ClusterIdentifier = "string",
-  FeatureType = "spectrum"|"concurrency-scaling",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
-}
-}
+Shows usage limits on a cluster. Results are filtered based on the combination of input usage limit identifier, cluster identifier, and feature type parameters:
 
+See \url{https://paws-r.github.io/docs/redshift/describe_usage_limits.html} for full documentation.
+}
 \keyword{internal}

@@ -4,10 +4,20 @@
 \alias{docdb_restore_db_cluster_from_snapshot}
 \title{Creates a new cluster from a snapshot or cluster snapshot}
 \usage{
-docdb_restore_db_cluster_from_snapshot(AvailabilityZones,
-  DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
-  DBSubnetGroupName, VpcSecurityGroupIds, Tags, KmsKeyId,
-  EnableCloudwatchLogsExports, DeletionProtection)
+docdb_restore_db_cluster_from_snapshot(
+  AvailabilityZones = NULL,
+  DBClusterIdentifier,
+  SnapshotIdentifier,
+  Engine,
+  EngineVersion = NULL,
+  Port = NULL,
+  DBSubnetGroupName = NULL,
+  VpcSecurityGroupIds = NULL,
+  Tags = NULL,
+  KmsKeyId = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  DeletionProtection = NULL
+)
 }
 \arguments{
 \item{AvailabilityZones}{Provides the list of Amazon EC2 Availability Zones that instances in the
@@ -62,21 +72,21 @@ cluster will belong to.}
 
 \item{Tags}{The tags to be assigned to the restored cluster.}
 
-\item{KmsKeyId}{The AWS KMS key identifier to use when restoring an encrypted cluster
-from a DB snapshot or cluster snapshot.
+\item{KmsKeyId}{The KMS key identifier to use when restoring an encrypted cluster from a
+DB snapshot or cluster snapshot.
 
-The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-KMS encryption key. If you are restoring a cluster with the same AWS
-account that owns the AWS KMS encryption key used to encrypt the new
-cluster, then you can use the AWS KMS key alias instead of the ARN for
-the AWS KMS encryption key.
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are restoring a cluster with the same Amazon Web
+Services account that owns the KMS encryption key used to encrypt the
+new cluster, then you can use the KMS key alias instead of the ARN for
+the KMS encryption key.
 
 If you do not specify a value for the \code{KmsKeyId} parameter, then the
 following occurs:
 \itemize{
 \item If the snapshot or cluster snapshot in \code{SnapshotIdentifier} is
-encrypted, then the restored cluster is encrypted using the AWS KMS
-key that was used to encrypt the snapshot or the cluster snapshot.
+encrypted, then the restored cluster is encrypted using the KMS key
+that was used to encrypt the snapshot or the cluster snapshot.
 \item If the snapshot or the cluster snapshot in \code{SnapshotIdentifier} is
 not encrypted, then the restored DB cluster is not encrypted.
 }}
@@ -89,108 +99,9 @@ is enabled, the cluster cannot be deleted unless it is modified and
 \code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
 from being accidentally deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string"
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
-}
 \description{
 Creates a new cluster from a snapshot or cluster snapshot.
 
-If a snapshot is specified, the target cluster is created from the
-source DB snapshot with a default configuration and default security
-group.
-
-If a cluster snapshot is specified, the target cluster is created from
-the source cluster restore point with the same configuration as the
-original source DB cluster, except that the new cluster is created with
-the default security group.
+See \url{https://paws-r.github.io/docs/docdb/restore_db_cluster_from_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$restore_db_cluster_from_snapshot(
-  AvailabilityZones = list(
-    "string"
-  ),
-  DBClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  Port = 123,
-  DBSubnetGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  DeletionProtection = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

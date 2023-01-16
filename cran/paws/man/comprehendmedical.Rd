@@ -7,7 +7,19 @@
 comprehendmedical(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,12 +28,13 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Comprehend Medical extracts structured information from
-unstructured clinical text. Use these actions to gain insight in your
-documents.
+Comprehend Medical; extracts structured information from unstructured
+clinical text. Use these actions to gain insight in your documents.
 }
 \section{Service syntax}{
-\preformatted{svc <- comprehendmedical(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- comprehendmedical(
   config = list(
     credentials = list(
       creds = list(
@@ -29,39 +42,48 @@ documents.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=comprehendmedical_describe_entities_detection_v2_job]{describe_entities_detection_v2_job} \tab Gets the properties associated with a medical entities detection job\cr
-\link[=comprehendmedical_describe_icd10cm_inference_job]{describe_icd10cm_inference_job} \tab Gets the properties associated with an InferICD10CM job\cr
-\link[=comprehendmedical_describe_phi_detection_job]{describe_phi_detection_job} \tab Gets the properties associated with a protected health information (PHI) detection job\cr
-\link[=comprehendmedical_describe_rx_norm_inference_job]{describe_rx_norm_inference_job} \tab Gets the properties associated with an InferRxNorm job\cr
-\link[=comprehendmedical_detect_entities]{detect_entities} \tab The DetectEntities operation is deprecated\cr
-\link[=comprehendmedical_detect_entities_v2]{detect_entities_v2} \tab Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information\cr
-\link[=comprehendmedical_detect_phi]{detect_phi} \tab Inspects the clinical text for protected health information (PHI) entities and returns the entity category, location, and confidence score for each entity\cr
-\link[=comprehendmedical_infer_icd10cm]{infer_icd10cm} \tab InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control\cr
-\link[=comprehendmedical_infer_rx_norm]{infer_rx_norm} \tab InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept identifiers in the RxNorm database from the National Library of Medicine\cr
-\link[=comprehendmedical_list_entities_detection_v2_jobs]{list_entities_detection_v2_jobs} \tab Gets a list of medical entity detection jobs that you have submitted\cr
-\link[=comprehendmedical_list_icd10cm_inference_jobs]{list_icd10cm_inference_jobs} \tab Gets a list of InferICD10CM jobs that you have submitted\cr
-\link[=comprehendmedical_list_phi_detection_jobs]{list_phi_detection_jobs} \tab Gets a list of protected health information (PHI) detection jobs that you have submitted\cr
-\link[=comprehendmedical_list_rx_norm_inference_jobs]{list_rx_norm_inference_jobs} \tab Gets a list of InferRxNorm jobs that you have submitted\cr
-\link[=comprehendmedical_start_entities_detection_v2_job]{start_entities_detection_v2_job} \tab Starts an asynchronous medical entity detection job for a collection of documents\cr
-\link[=comprehendmedical_start_icd10cm_inference_job]{start_icd10cm_inference_job} \tab Starts an asynchronous job to detect medical conditions and link them to the ICD-10-CM ontology\cr
-\link[=comprehendmedical_start_phi_detection_job]{start_phi_detection_job} \tab Starts an asynchronous job to detect protected health information (PHI)\cr
-\link[=comprehendmedical_start_rx_norm_inference_job]{start_rx_norm_inference_job} \tab Starts an asynchronous job to detect medication entities and link them to the RxNorm ontology\cr
-\link[=comprehendmedical_stop_entities_detection_v2_job]{stop_entities_detection_v2_job} \tab Stops a medical entities detection job in progress\cr
-\link[=comprehendmedical_stop_icd10cm_inference_job]{stop_icd10cm_inference_job} \tab Stops an InferICD10CM inference job in progress\cr
-\link[=comprehendmedical_stop_phi_detection_job]{stop_phi_detection_job} \tab Stops a protected health information (PHI) detection job in progress\cr
-\link[=comprehendmedical_stop_rx_norm_inference_job]{stop_rx_norm_inference_job} \tab Stops an InferRxNorm inference job in progress
+\link[paws.machine.learning:comprehendmedical_describe_entities_detection_v2_job]{describe_entities_detection_v2_job} \tab Gets the properties associated with a medical entities detection job\cr
+\link[paws.machine.learning:comprehendmedical_describe_icd10cm_inference_job]{describe_icd10cm_inference_job} \tab Gets the properties associated with an InferICD10CM job\cr
+\link[paws.machine.learning:comprehendmedical_describe_phi_detection_job]{describe_phi_detection_job} \tab Gets the properties associated with a protected health information (PHI) detection job\cr
+\link[paws.machine.learning:comprehendmedical_describe_rx_norm_inference_job]{describe_rx_norm_inference_job} \tab Gets the properties associated with an InferRxNorm job\cr
+\link[paws.machine.learning:comprehendmedical_describe_snomedct_inference_job]{describe_snomedct_inference_job} \tab Gets the properties associated with an InferSNOMEDCT job\cr
+\link[paws.machine.learning:comprehendmedical_detect_entities]{detect_entities} \tab The DetectEntities operation is deprecated\cr
+\link[paws.machine.learning:comprehendmedical_detect_entities_v2]{detect_entities_v2} \tab Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information\cr
+\link[paws.machine.learning:comprehendmedical_detect_phi]{detect_phi} \tab Inspects the clinical text for protected health information (PHI) entities and returns the entity category, location, and confidence score for each entity\cr
+\link[paws.machine.learning:comprehendmedical_infer_icd10cm]{infer_icd10cm} \tab InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control\cr
+\link[paws.machine.learning:comprehendmedical_infer_rx_norm]{infer_rx_norm} \tab InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept identifiers in the RxNorm database from the National Library of Medicine\cr
+\link[paws.machine.learning:comprehendmedical_infer_snomedct]{infer_snomedct} \tab InferSNOMEDCT detects possible medical concepts as entities and links them to codes from the Systematized Nomenclature of Medicine, Clinical Terms (SNOMED-CT) ontology\cr
+\link[paws.machine.learning:comprehendmedical_list_entities_detection_v2_jobs]{list_entities_detection_v2_jobs} \tab Gets a list of medical entity detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehendmedical_list_icd10cm_inference_jobs]{list_icd10cm_inference_jobs} \tab Gets a list of InferICD10CM jobs that you have submitted\cr
+\link[paws.machine.learning:comprehendmedical_list_phi_detection_jobs]{list_phi_detection_jobs} \tab Gets a list of protected health information (PHI) detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehendmedical_list_rx_norm_inference_jobs]{list_rx_norm_inference_jobs} \tab Gets a list of InferRxNorm jobs that you have submitted\cr
+\link[paws.machine.learning:comprehendmedical_list_snomedct_inference_jobs]{list_snomedct_inference_jobs} \tab Gets a list of InferSNOMEDCT jobs a user has submitted\cr
+\link[paws.machine.learning:comprehendmedical_start_entities_detection_v2_job]{start_entities_detection_v2_job} \tab Starts an asynchronous medical entity detection job for a collection of documents\cr
+\link[paws.machine.learning:comprehendmedical_start_icd10cm_inference_job]{start_icd10cm_inference_job} \tab Starts an asynchronous job to detect medical conditions and link them to the ICD-10-CM ontology\cr
+\link[paws.machine.learning:comprehendmedical_start_phi_detection_job]{start_phi_detection_job} \tab Starts an asynchronous job to detect protected health information (PHI)\cr
+\link[paws.machine.learning:comprehendmedical_start_rx_norm_inference_job]{start_rx_norm_inference_job} \tab Starts an asynchronous job to detect medication entities and link them to the RxNorm ontology\cr
+\link[paws.machine.learning:comprehendmedical_start_snomedct_inference_job]{start_snomedct_inference_job} \tab Starts an asynchronous job to detect medical concepts and link them to the SNOMED-CT ontology\cr
+\link[paws.machine.learning:comprehendmedical_stop_entities_detection_v2_job]{stop_entities_detection_v2_job} \tab Stops a medical entities detection job in progress\cr
+\link[paws.machine.learning:comprehendmedical_stop_icd10cm_inference_job]{stop_icd10cm_inference_job} \tab Stops an InferICD10CM inference job in progress\cr
+\link[paws.machine.learning:comprehendmedical_stop_phi_detection_job]{stop_phi_detection_job} \tab Stops a protected health information (PHI) detection job in progress\cr
+\link[paws.machine.learning:comprehendmedical_stop_rx_norm_inference_job]{stop_rx_norm_inference_job} \tab Stops an InferRxNorm inference job in progress\cr
+\link[paws.machine.learning:comprehendmedical_stop_snomedct_inference_job]{stop_snomedct_inference_job} \tab Stops an InferSNOMEDCT inference job in progress
 }
 }
 

@@ -11,34 +11,9 @@ firehose_tag_delivery_stream(DeliveryStreamName, Tags)
 
 \item{Tags}{[required] A set of key-value pairs to use to create the tags.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or updates tags for the specified delivery stream. A tag is a
-key-value pair that you can define and assign to AWS resources. If you
-specify a tag that already exists, the tag value is replaced with the
-value that you specify in the request. Tags are metadata. For example,
-you can add friendly names and descriptions or other types of
-information that can help you distinguish the delivery stream. For more
-information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management User Guide}.
+Adds or updates tags for the specified delivery stream. A tag is a key-value pair that you can define and assign to AWS resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the delivery stream. For more information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags} in the \emph{AWS Billing and Cost Management User Guide}.
 
-Each delivery stream can have up to 50 tags.
-
-This operation has a limit of five transactions per second per account.
+See \url{https://paws-r.github.io/docs/firehose/tag_delivery_stream.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_delivery_stream(
-  DeliveryStreamName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

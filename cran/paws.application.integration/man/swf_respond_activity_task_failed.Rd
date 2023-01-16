@@ -5,7 +5,7 @@
 \title{Used by workers to tell the service that the ActivityTask identified by
 the taskToken has failed with reason (if specified)}
 \usage{
-swf_respond_activity_task_failed(taskToken, reason, details)
+swf_respond_activity_task_failed(taskToken, reason = NULL, details = NULL)
 }
 \arguments{
 \item{taskToken}{[required] The \code{taskToken} of the ActivityTask.
@@ -19,48 +19,9 @@ with results.}
 
 \item{details}{Detailed information about the failure.}
 }
-\value{
-An empty list.
-}
 \description{
-Used by workers to tell the service that the ActivityTask identified by
-the \code{taskToken} has failed with \code{reason} (if specified). The \code{reason}
-and \code{details} appear in the \code{ActivityTaskFailed} event added to the
-workflow history.
+Used by workers to tell the service that the ActivityTask identified by the \code{taskToken} has failed with \code{reason} (if specified). The \code{reason} and \code{details} appear in the \code{ActivityTaskFailed} event added to the workflow history.
 
-A task is considered open from the time that it is scheduled until it is
-closed. Therefore a task is reported as open while a worker is
-processing it. A task is closed after it has been specified in a call to
-\code{\link[=swf_respond_activity_task_completed]{respond_activity_task_completed}},
-\code{\link[=swf_respond_activity_task_canceled]{respond_activity_task_canceled}},
-RespondActivityTaskFailed, or the task has \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types}{timed out}.
-
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item You cannot use an IAM policy to constrain this action's parameters.
+See \url{https://paws-r.github.io/docs/swf/respond_activity_task_failed.html} for full documentation.
 }
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$respond_activity_task_failed(
-  taskToken = "string",
-  reason = "string",
-  details = "string"
-)
-}
-}
-
 \keyword{internal}

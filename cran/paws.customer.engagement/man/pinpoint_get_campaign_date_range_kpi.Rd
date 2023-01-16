@@ -5,8 +5,15 @@
 \title{Retrieves (queries) pre-aggregated data for a standard metric that
 applies to a campaign}
 \usage{
-pinpoint_get_campaign_date_range_kpi(ApplicationId, CampaignId, EndTime,
-  KpiName, NextToken, PageSize, StartTime)
+pinpoint_get_campaign_date_range_kpi(
+  ApplicationId,
+  CampaignId,
+  EndTime = NULL,
+  KpiName,
+  NextToken = NULL,
+  PageSize = NULL,
+  StartTime = NULL
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
@@ -40,62 +47,9 @@ extended ISO 8601 format and use Coordinated Universal Time (UTC), for
 example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
 should also be fewer than 90 days from the current day.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CampaignDateRangeKpiResponse = list(
-    ApplicationId = "string",
-    CampaignId = "string",
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    KpiName = "string",
-    KpiResult = list(
-      Rows = list(
-        list(
-          GroupedBys = list(
-            list(
-              Key = "string",
-              Type = "string",
-              Value = "string"
-            )
-          ),
-          Values = list(
-            list(
-              Key = "string",
-              Type = "string",
-              Value = "string"
-            )
-          )
-        )
-      )
-    ),
-    NextToken = "string",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves (queries) pre-aggregated data for a standard metric that
-applies to a campaign.
-}
-\section{Request syntax}{
-\preformatted{svc$get_campaign_date_range_kpi(
-  ApplicationId = "string",
-  CampaignId = "string",
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  KpiName = "string",
-  NextToken = "string",
-  PageSize = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
+Retrieves (queries) pre-aggregated data for a standard metric that applies to a campaign.
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_campaign_date_range_kpi.html} for full documentation.
+}
 \keyword{internal}

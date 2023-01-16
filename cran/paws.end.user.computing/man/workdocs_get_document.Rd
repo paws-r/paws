@@ -4,8 +4,11 @@
 \alias{workdocs_get_document}
 \title{Retrieves details of a document}
 \usage{
-workdocs_get_document(AuthenticationToken, DocumentId,
-  IncludeCustomMetadata)
+workdocs_get_document(
+  AuthenticationToken = NULL,
+  DocumentId,
+  IncludeCustomMetadata = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -15,66 +18,9 @@ administrator credentials to access the API.}
 
 \item{IncludeCustomMetadata}{Set this to \code{TRUE} to include custom metadata in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Metadata = list(
-    Id = "string",
-    CreatorId = "string",
-    ParentFolderId = "string",
-    CreatedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ModifiedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    LatestVersionMetadata = list(
-      Id = "string",
-      Name = "string",
-      ContentType = "string",
-      Size = 123,
-      Signature = "string",
-      Status = "INITIALIZED"|"ACTIVE",
-      CreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ModifiedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ContentCreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ContentModifiedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreatorId = "string",
-      Thumbnail = list(
-        "string"
-      ),
-      Source = list(
-        "string"
-      )
-    ),
-    ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-    Labels = list(
-      "string"
-    )
-  ),
-  CustomMetadata = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Retrieves details of a document.
-}
-\section{Request syntax}{
-\preformatted{svc$get_document(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  IncludeCustomMetadata = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/get_document.html} for full documentation.
+}
 \keyword{internal}

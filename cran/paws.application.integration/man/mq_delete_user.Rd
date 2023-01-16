@@ -13,18 +13,9 @@ mq_delete_user(BrokerId, Username)
 alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 2-100 characters long.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an ActiveMQ user.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user(
-  BrokerId = "string",
-  Username = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/delete_user.html} for full documentation.
+}
 \keyword{internal}

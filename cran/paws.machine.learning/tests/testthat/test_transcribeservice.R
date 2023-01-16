@@ -1,5 +1,21 @@
 svc <- paws::transcribeservice()
 
+test_that("list_call_analytics_categories", {
+  expect_error(svc$list_call_analytics_categories(), NA)
+})
+
+test_that("list_call_analytics_categories", {
+  expect_error(svc$list_call_analytics_categories(MaxResults = 20), NA)
+})
+
+test_that("list_call_analytics_jobs", {
+  expect_error(svc$list_call_analytics_jobs(), NA)
+})
+
+test_that("list_call_analytics_jobs", {
+  expect_error(svc$list_call_analytics_jobs(MaxResults = 20), NA)
+})
+
 test_that("list_language_models", {
   expect_error(svc$list_language_models(), NA)
 })

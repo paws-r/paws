@@ -12,24 +12,9 @@ machinelearning_update_evaluation(EvaluationId, EvaluationName)
 \item{EvaluationName}{[required] A new user-supplied name or description of the \code{Evaluation} that will
 replace the current content.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EvaluationId = "string"
-)
-}
-}
 \description{
 Updates the \code{EvaluationName} of an \code{Evaluation}.
 
-You can use the \code{\link[=machinelearning_get_evaluation]{get_evaluation}}
-operation to view the contents of the updated data element.
+See \url{https://paws-r.github.io/docs/machinelearning/update_evaluation.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_evaluation(
-  EvaluationId = "string",
-  EvaluationName = "string"
-)
-}
-}
-
 \keyword{internal}

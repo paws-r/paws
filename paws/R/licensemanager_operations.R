@@ -18,7 +18,7 @@ NULL
 #' ```
 #' list(
 #'   GrantArn = "string",
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
 #'   Version = "string"
 #' )
 #' ```
@@ -107,8 +107,7 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
 #' @param Entitlements &#91;required&#93; License entitlements. Partial checkouts are not supported.
 #' @param DigitalSignatureMethod &#91;required&#93; Digital signature method. The possible value is JSON Web Signature (JWS)
 #' algorithm PS384. For more information, see [RFC 7518 Digital Signature
-#' with
-#' RSASSA-PSS](https://datatracker.ietf.org/doc/html/rfc7518#section-3.5).
+#' with RSASSA-PSS](https://www.rfc-editor.org/rfc/rfc7518#section-3.5).
 #' @param NodeId Node ID.
 #' @param CheckoutMetadata Information about constraints.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
@@ -205,7 +204,7 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   CheckoutType = "PROVISIONAL",
+#'   CheckoutType = "PROVISIONAL"|"PERPETUAL",
 #'   LicenseConsumptionToken = "string",
 #'   EntitlementsAllowed = list(
 #'     list(
@@ -217,7 +216,8 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
 #'   SignedToken = "string",
 #'   NodeId = "string",
 #'   IssuedAt = "string",
-#'   Expiration = "string"
+#'   Expiration = "string",
+#'   LicenseArn = "string"
 #' )
 #' ```
 #'
@@ -225,7 +225,7 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
 #' ```
 #' svc$checkout_license(
 #'   ProductSKU = "string",
-#'   CheckoutType = "PROVISIONAL",
+#'   CheckoutType = "PROVISIONAL"|"PERPETUAL",
 #'   KeyFingerprint = "string",
 #'   Entitlements = list(
 #'     list(
@@ -264,7 +264,7 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #'
 #' @description
 #' Creates a grant for the specified license. A grant shares the use of
-#' license entitlements with specific AWS accounts.
+#' license entitlements with specific Amazon Web Services accounts.
 #'
 #' @usage
 #' licensemanager_create_grant(ClientToken, GrantName, LicenseArn,
@@ -283,7 +283,7 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #' ```
 #' list(
 #'   GrantArn = "string",
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
 #'   Version = "string"
 #' )
 #' ```
@@ -331,7 +331,7 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #'
 #' @usage
 #' licensemanager_create_grant_version(ClientToken, GrantArn, GrantName,
-#'   AllowedOperations, Status, SourceVersion)
+#'   AllowedOperations, Status, StatusReason, SourceVersion)
 #'
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -339,6 +339,7 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' @param GrantName Grant name.
 #' @param AllowedOperations Allowed operations for the grant.
 #' @param Status Grant status.
+#' @param StatusReason Grant status reason.
 #' @param SourceVersion Current version of the grant.
 #'
 #' @return
@@ -346,7 +347,7 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' ```
 #' list(
 #'   GrantArn = "string",
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
 #'   Version = "string"
 #' )
 #' ```
@@ -360,7 +361,8 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #'   AllowedOperations = list(
 #'     "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
 #'   ),
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
+#'   StatusReason = "string",
 #'   SourceVersion = "string"
 #' )
 #' ```
@@ -368,14 +370,14 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_grant_version
-licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName = NULL, AllowedOperations = NULL, Status = NULL, SourceVersion = NULL) {
+licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName = NULL, AllowedOperations = NULL, Status = NULL, StatusReason = NULL, SourceVersion = NULL) {
   op <- new_operation(
     name = "CreateGrantVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .licensemanager$create_grant_version_input(ClientToken = ClientToken, GrantArn = GrantArn, GrantName = GrantName, AllowedOperations = AllowedOperations, Status = Status, SourceVersion = SourceVersion)
+  input <- .licensemanager$create_grant_version_input(ClientToken = ClientToken, GrantArn = GrantArn, GrantName = GrantName, AllowedOperations = AllowedOperations, Status = Status, StatusReason = StatusReason, SourceVersion = SourceVersion)
   output <- .licensemanager$create_grant_version_output()
   config <- get_config()
   svc <- .licensemanager$service(config)
@@ -599,6 +601,150 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
 }
 .licensemanager$operations$create_license_configuration <- licensemanager_create_license_configuration
 
+#' Creates a new license conversion task
+#'
+#' @description
+#' Creates a new license conversion task.
+#'
+#' @usage
+#' licensemanager_create_license_conversion_task_for_resource(ResourceArn,
+#'   SourceLicenseContext, DestinationLicenseContext)
+#'
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource you are converting the
+#' license type for.
+#' @param SourceLicenseContext &#91;required&#93; Information that identifies the license type you are converting from.
+#' For the structure of the source license, see [Convert a license type
+#' using the AWS
+#' CLI](https://docs.aws.amazon.com/license-manager/latest/userguide/conversion-procedures.html#conversion-cli)
+#' in the *License Manager User Guide*.
+#' @param DestinationLicenseContext &#91;required&#93; Information that identifies the license type you are converting to. For
+#' the structure of the destination license, see [Convert a license type
+#' using the AWS
+#' CLI](https://docs.aws.amazon.com/license-manager/latest/userguide/conversion-procedures.html#conversion-cli)
+#' in the *License Manager User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseConversionTaskId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_license_conversion_task_for_resource(
+#'   ResourceArn = "string",
+#'   SourceLicenseContext = list(
+#'     UsageOperation = "string"
+#'   ),
+#'   DestinationLicenseContext = list(
+#'     UsageOperation = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_create_license_conversion_task_for_resource
+licensemanager_create_license_conversion_task_for_resource <- function(ResourceArn, SourceLicenseContext, DestinationLicenseContext) {
+  op <- new_operation(
+    name = "CreateLicenseConversionTaskForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$create_license_conversion_task_for_resource_input(ResourceArn = ResourceArn, SourceLicenseContext = SourceLicenseContext, DestinationLicenseContext = DestinationLicenseContext)
+  output <- .licensemanager$create_license_conversion_task_for_resource_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$create_license_conversion_task_for_resource <- licensemanager_create_license_conversion_task_for_resource
+
+#' Creates a report generator
+#'
+#' @description
+#' Creates a report generator.
+#'
+#' @usage
+#' licensemanager_create_license_manager_report_generator(
+#'   ReportGeneratorName, Type, ReportContext, ReportFrequency, ClientToken,
+#'   Description, Tags)
+#'
+#' @param ReportGeneratorName &#91;required&#93; Name of the report generator.
+#' @param Type &#91;required&#93; Type of reports to generate. The following report types an be generated:
+#' 
+#' -   License configuration report - Reports the number and details of
+#'     consumed licenses for a license configuration.
+#' 
+#' -   Resource report - Reports the tracked licenses and resource
+#'     consumption for a license configuration.
+#' @param ReportContext &#91;required&#93; Defines the type of license configuration the report generator tracks.
+#' @param ReportFrequency &#91;required&#93; Frequency by which reports are generated. Reports can be generated
+#' daily, monthly, or weekly.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param Description Description of the report generator.
+#' @param Tags Tags to add to the report generator.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseManagerReportGeneratorArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_license_manager_report_generator(
+#'   ReportGeneratorName = "string",
+#'   Type = list(
+#'     "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"
+#'   ),
+#'   ReportContext = list(
+#'     licenseConfigurationArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ReportFrequency = list(
+#'     value = 123,
+#'     period = "DAY"|"WEEK"|"MONTH"
+#'   ),
+#'   ClientToken = "string",
+#'   Description = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_create_license_manager_report_generator
+licensemanager_create_license_manager_report_generator <- function(ReportGeneratorName, Type, ReportContext, ReportFrequency, ClientToken, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateLicenseManagerReportGenerator",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$create_license_manager_report_generator_input(ReportGeneratorName = ReportGeneratorName, Type = Type, ReportContext = ReportContext, ReportFrequency = ReportFrequency, ClientToken = ClientToken, Description = Description, Tags = Tags)
+  output <- .licensemanager$create_license_manager_report_generator_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$create_license_manager_report_generator <- licensemanager_create_license_manager_report_generator
+
 #' Creates a new version of the specified license
 #'
 #' @description
@@ -779,9 +925,10 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
 #' Deletes the specified grant.
 #'
 #' @usage
-#' licensemanager_delete_grant(GrantArn, Version)
+#' licensemanager_delete_grant(GrantArn, StatusReason, Version)
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
+#' @param StatusReason The Status reason for the delete request.
 #' @param Version &#91;required&#93; Current version of the grant.
 #'
 #' @return
@@ -789,7 +936,7 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
 #' ```
 #' list(
 #'   GrantArn = "string",
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
 #'   Version = "string"
 #' )
 #' ```
@@ -798,6 +945,7 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
 #' ```
 #' svc$delete_grant(
 #'   GrantArn = "string",
+#'   StatusReason = "string",
 #'   Version = "string"
 #' )
 #' ```
@@ -805,14 +953,14 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
 #' @keywords internal
 #'
 #' @rdname licensemanager_delete_grant
-licensemanager_delete_grant <- function(GrantArn, Version) {
+licensemanager_delete_grant <- function(GrantArn, StatusReason = NULL, Version) {
   op <- new_operation(
     name = "DeleteGrant",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .licensemanager$delete_grant_input(GrantArn = GrantArn, Version = Version)
+  input <- .licensemanager$delete_grant_input(GrantArn = GrantArn, StatusReason = StatusReason, Version = Version)
   output <- .licensemanager$delete_grant_output()
   config <- get_config()
   svc <- .licensemanager$service(config)
@@ -911,6 +1059,51 @@ licensemanager_delete_license_configuration <- function(LicenseConfigurationArn)
   return(response)
 }
 .licensemanager$operations$delete_license_configuration <- licensemanager_delete_license_configuration
+
+#' Deletes the specified report generator
+#'
+#' @description
+#' Deletes the specified report generator.
+#' 
+#' This action deletes the report generator, which stops it from generating
+#' future reports. The action cannot be reversed. It has no effect on the
+#' previous reports from this generator.
+#'
+#' @usage
+#' licensemanager_delete_license_manager_report_generator(
+#'   LicenseManagerReportGeneratorArn)
+#'
+#' @param LicenseManagerReportGeneratorArn &#91;required&#93; Amazon Resource Name (ARN) of the report generator to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_license_manager_report_generator(
+#'   LicenseManagerReportGeneratorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_delete_license_manager_report_generator
+licensemanager_delete_license_manager_report_generator <- function(LicenseManagerReportGeneratorArn) {
+  op <- new_operation(
+    name = "DeleteLicenseManagerReportGenerator",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$delete_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn)
+  output <- .licensemanager$delete_license_manager_report_generator_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$delete_license_manager_report_generator <- licensemanager_delete_license_manager_report_generator
 
 #' Deletes the specified token
 #'
@@ -1075,7 +1268,7 @@ licensemanager_get_access_token <- function(Token, TokenProperties = NULL) {
 #'     LicenseArn = "string",
 #'     GranteePrincipalArn = "string",
 #'     HomeRegion = "string",
-#'     GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'     GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
 #'     StatusReason = "string",
 #'     Version = "string",
 #'     GrantedOperations = list(
@@ -1300,6 +1493,146 @@ licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
 }
 .licensemanager$operations$get_license_configuration <- licensemanager_get_license_configuration
 
+#' Gets information about the specified license type conversion task
+#'
+#' @description
+#' Gets information about the specified license type conversion task.
+#'
+#' @usage
+#' licensemanager_get_license_conversion_task(LicenseConversionTaskId)
+#'
+#' @param LicenseConversionTaskId &#91;required&#93; ID of the license type conversion task to retrieve information on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseConversionTaskId = "string",
+#'   ResourceArn = "string",
+#'   SourceLicenseContext = list(
+#'     UsageOperation = "string"
+#'   ),
+#'   DestinationLicenseContext = list(
+#'     UsageOperation = "string"
+#'   ),
+#'   StatusMessage = "string",
+#'   Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LicenseConversionTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_license_conversion_task(
+#'   LicenseConversionTaskId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_get_license_conversion_task
+licensemanager_get_license_conversion_task <- function(LicenseConversionTaskId) {
+  op <- new_operation(
+    name = "GetLicenseConversionTask",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$get_license_conversion_task_input(LicenseConversionTaskId = LicenseConversionTaskId)
+  output <- .licensemanager$get_license_conversion_task_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$get_license_conversion_task <- licensemanager_get_license_conversion_task
+
+#' Gets information about the specified report generator
+#'
+#' @description
+#' Gets information about the specified report generator.
+#'
+#' @usage
+#' licensemanager_get_license_manager_report_generator(
+#'   LicenseManagerReportGeneratorArn)
+#'
+#' @param LicenseManagerReportGeneratorArn &#91;required&#93; Amazon Resource Name (ARN) of the report generator.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReportGenerator = list(
+#'     ReportGeneratorName = "string",
+#'     ReportType = list(
+#'       "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"
+#'     ),
+#'     ReportContext = list(
+#'       licenseConfigurationArns = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ReportFrequency = list(
+#'       value = 123,
+#'       period = "DAY"|"WEEK"|"MONTH"
+#'     ),
+#'     LicenseManagerReportGeneratorArn = "string",
+#'     LastRunStatus = "string",
+#'     LastRunFailureReason = "string",
+#'     LastReportGenerationTime = "string",
+#'     ReportCreatorAccount = "string",
+#'     Description = "string",
+#'     S3Location = list(
+#'       bucket = "string",
+#'       keyPrefix = "string"
+#'     ),
+#'     CreateTime = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_license_manager_report_generator(
+#'   LicenseManagerReportGeneratorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_get_license_manager_report_generator
+licensemanager_get_license_manager_report_generator <- function(LicenseManagerReportGeneratorArn) {
+  op <- new_operation(
+    name = "GetLicenseManagerReportGenerator",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$get_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn)
+  output <- .licensemanager$get_license_manager_report_generator_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$get_license_manager_report_generator <- licensemanager_get_license_manager_report_generator
+
 #' Gets detailed information about the usage of the specified license
 #'
 #' @description
@@ -1478,13 +1811,15 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 #' @param GrantArns Amazon Resource Names (ARNs) of the grants.
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `LicenseARN`
+#' -   `LicenseArn`
 #' 
-#' -   `Status`
+#' -   `GrantStatus`
 #' 
-#' -   `PrincipalARN`
+#' -   `GranteePrincipalARN`
 #' 
-#' -   `ParentARN`
+#' -   `ProductSKU`
+#' 
+#' -   `LicenseIssuerName`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -1500,7 +1835,7 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 #'       LicenseArn = "string",
 #'       GranteePrincipalArn = "string",
 #'       HomeRegion = "string",
-#'       GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'       GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
 #'       StatusReason = "string",
 #'       Version = "string",
 #'       GrantedOperations = list(
@@ -1635,9 +1970,9 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #' @param Filters Filters to scope the results. The following filters and logical
 #' operators are supported:
 #' 
-#' -   `licenseCountingType` - The dimension on which licenses are counted.
-#'     Possible values are `vCPU` | `Instance` | `Core` | `Socket`. Logical
-#'     operators are `EQUALS` | `NOT_EQUALS`.
+#' -   `licenseCountingType` - The dimension for which licenses are
+#'     counted. Possible values are `vCPU` | `Instance` | `Core` |
+#'     `Socket`. Logical operators are `EQUALS` | `NOT_EQUALS`.
 #' 
 #' -   `enforceLicenseCount` - A Boolean value that indicates whether hard
 #'     license enforcement is used. Logical operators are `EQUALS` |
@@ -1742,6 +2077,180 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
   return(response)
 }
 .licensemanager$operations$list_license_configurations <- licensemanager_list_license_configurations
+
+#' Lists the license type conversion tasks for your account
+#'
+#' @description
+#' Lists the license type conversion tasks for your account.
+#'
+#' @usage
+#' licensemanager_list_license_conversion_tasks(NextToken, MaxResults,
+#'   Filters)
+#'
+#' @param NextToken Token for the next set of results.
+#' @param MaxResults Maximum number of results to return in a single call.
+#' @param Filters Filters to scope the results. Valid filters are `ResourceArns` and
+#' `Status`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseConversionTasks = list(
+#'     list(
+#'       LicenseConversionTaskId = "string",
+#'       ResourceArn = "string",
+#'       SourceLicenseContext = list(
+#'         UsageOperation = "string"
+#'       ),
+#'       DestinationLicenseContext = list(
+#'         UsageOperation = "string"
+#'       ),
+#'       Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'       StatusMessage = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LicenseConversionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_license_conversion_tasks(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_license_conversion_tasks
+licensemanager_list_license_conversion_tasks <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListLicenseConversionTasks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$list_license_conversion_tasks_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .licensemanager$list_license_conversion_tasks_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_license_conversion_tasks <- licensemanager_list_license_conversion_tasks
+
+#' Lists the report generators for your account
+#'
+#' @description
+#' Lists the report generators for your account.
+#'
+#' @usage
+#' licensemanager_list_license_manager_report_generators(Filters,
+#'   NextToken, MaxResults)
+#'
+#' @param Filters Filters to scope the results. The following filters are supported:
+#' 
+#' -   `LicenseConfigurationArn`
+#' @param NextToken Token for the next set of results.
+#' @param MaxResults Maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReportGenerators = list(
+#'     list(
+#'       ReportGeneratorName = "string",
+#'       ReportType = list(
+#'         "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"
+#'       ),
+#'       ReportContext = list(
+#'         licenseConfigurationArns = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ReportFrequency = list(
+#'         value = 123,
+#'         period = "DAY"|"WEEK"|"MONTH"
+#'       ),
+#'       LicenseManagerReportGeneratorArn = "string",
+#'       LastRunStatus = "string",
+#'       LastRunFailureReason = "string",
+#'       LastReportGenerationTime = "string",
+#'       ReportCreatorAccount = "string",
+#'       Description = "string",
+#'       S3Location = list(
+#'         bucket = "string",
+#'         keyPrefix = "string"
+#'       ),
+#'       CreateTime = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_license_manager_report_generators(
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_license_manager_report_generators
+licensemanager_list_license_manager_report_generators <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListLicenseManagerReportGenerators",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$list_license_manager_report_generators_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .licensemanager$list_license_manager_report_generators_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_license_manager_report_generators <- licensemanager_list_license_manager_report_generators
 
 #' Describes the license configurations for the specified resource
 #'
@@ -1913,7 +2422,7 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
 #' 
 #' -   `ProductSKU`
 #' 
-#' -   `KeyFingerprint`
+#' -   `Fingerprint`
 #' 
 #' -   `Status`
 #' @param NextToken Token for the next set of results.
@@ -2026,9 +2535,15 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 #' @param GrantArns Amazon Resource Names (ARNs) of the grants.
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `LicenseARN`
+#' -   `ProductSKU`
 #' 
-#' -   `Status`
+#' -   `LicenseIssuerName`
+#' 
+#' -   `LicenseArn`
+#' 
+#' -   `GrantStatus`
+#' 
+#' -   `GranterAccountId`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -2044,7 +2559,7 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 #'       LicenseArn = "string",
 #'       GranteePrincipalArn = "string",
 #'       HomeRegion = "string",
-#'       GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'       GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
 #'       StatusReason = "string",
 #'       Version = "string",
 #'       GrantedOperations = list(
@@ -2111,9 +2626,11 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
 #' 
 #' -   `Status`
 #' 
-#' -   `KeyFingerprint`
+#' -   `Fingerprint`
 #' 
-#' -   `Issuer`
+#' -   `IssuerName`
+#' 
+#' -   `Beneficiary`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -2168,7 +2685,8 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
 #'       CreateTime = "string",
 #'       Version = "string",
 #'       ReceivedMetadata = list(
-#'         ReceivedStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"DISABLED",
+#'         ReceivedStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"DISABLED"|"WORKFLOW_COMPLETED",
+#'         ReceivedStatusReason = "string",
 #'         AllowedOperations = list(
 #'           "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
 #'         )
@@ -2231,8 +2749,8 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
 #' @param Filters Filters to scope the results. The following filters and logical
 #' operators are supported:
 #' 
-#' -   `account_id` - The ID of the AWS account that owns the resource.
-#'     Logical operators are `EQUALS` | `NOT_EQUALS`.
+#' -   `account_id` - The ID of the Amazon Web Services account that owns
+#'     the resource. Logical operators are `EQUALS` | `NOT_EQUALS`.
 #' 
 #' -   `application_name` - The name of the application. Logical operators
 #'     are `EQUALS` | `BEGINS_WITH`.
@@ -2366,7 +2884,7 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
 #' @param TokenIds Token IDs.
 #' @param Filters Filters to scope the results. The following filter is supported:
 #' 
-#' -   `licenseArns`
+#' -   `LicenseArns`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -2533,7 +3051,7 @@ licensemanager_list_usage_for_license_configuration <- function(LicenseConfigura
 #' ```
 #' list(
 #'   GrantArn = "string",
-#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
 #'   Version = "string"
 #' )
 #' ```
@@ -2731,23 +3249,96 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
 }
 .licensemanager$operations$update_license_configuration <- licensemanager_update_license_configuration
 
+#' Updates a report generator
+#'
+#' @description
+#' Updates a report generator.
+#' 
+#' After you make changes to a report generator, it starts generating new
+#' reports within 60 minutes of being updated.
+#'
+#' @usage
+#' licensemanager_update_license_manager_report_generator(
+#'   LicenseManagerReportGeneratorArn, ReportGeneratorName, Type,
+#'   ReportContext, ReportFrequency, ClientToken, Description)
+#'
+#' @param LicenseManagerReportGeneratorArn &#91;required&#93; Amazon Resource Name (ARN) of the report generator to update.
+#' @param ReportGeneratorName &#91;required&#93; Name of the report generator.
+#' @param Type &#91;required&#93; Type of reports to generate. The following report types are supported:
+#' 
+#' -   License configuration report - Reports the number and details of
+#'     consumed licenses for a license configuration.
+#' 
+#' -   Resource report - Reports the tracked licenses and resource
+#'     consumption for a license configuration.
+#' @param ReportContext &#91;required&#93; The report context.
+#' @param ReportFrequency &#91;required&#93; Frequency by which reports are generated.
+#' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param Description Description of the report generator.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_license_manager_report_generator(
+#'   LicenseManagerReportGeneratorArn = "string",
+#'   ReportGeneratorName = "string",
+#'   Type = list(
+#'     "LicenseConfigurationSummaryReport"|"LicenseConfigurationUsageReport"
+#'   ),
+#'   ReportContext = list(
+#'     licenseConfigurationArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ReportFrequency = list(
+#'     value = 123,
+#'     period = "DAY"|"WEEK"|"MONTH"
+#'   ),
+#'   ClientToken = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_update_license_manager_report_generator
+licensemanager_update_license_manager_report_generator <- function(LicenseManagerReportGeneratorArn, ReportGeneratorName, Type, ReportContext, ReportFrequency, ClientToken, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateLicenseManagerReportGenerator",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$update_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn, ReportGeneratorName = ReportGeneratorName, Type = Type, ReportContext = ReportContext, ReportFrequency = ReportFrequency, ClientToken = ClientToken, Description = Description)
+  output <- .licensemanager$update_license_manager_report_generator_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$update_license_manager_report_generator <- licensemanager_update_license_manager_report_generator
+
 #' Adds or removes the specified license configurations for the specified
-#' AWS resource
+#' Amazon Web Services resource
 #'
 #' @description
 #' Adds or removes the specified license configurations for the specified
-#' AWS resource.
+#' Amazon Web Services resource.
 #' 
 #' You can update the license specifications of AMIs, instances, and hosts.
 #' You cannot update the license specifications for launch templates and
-#' AWS CloudFormation templates, as they send license configurations to the
+#' CloudFormation templates, as they send license configurations to the
 #' operation that creates the resource.
 #'
 #' @usage
 #' licensemanager_update_license_specifications_for_resource(ResourceArn,
 #'   AddLicenseSpecifications, RemoveLicenseSpecifications)
 #'
-#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the AWS resource.
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the Amazon Web Services resource.
 #' @param AddLicenseSpecifications ARNs of the license configurations to add.
 #' @param RemoveLicenseSpecifications ARNs of the license configurations to remove.
 #'
@@ -2806,7 +3397,7 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #' Manager information is stored.
 #' @param SnsTopicArn Amazon Resource Name (ARN) of the Amazon SNS topic used for License
 #' Manager alerts.
-#' @param OrganizationConfiguration Enables integration with AWS Organizations for cross-account discovery.
+#' @param OrganizationConfiguration Enables integration with Organizations for cross-account discovery.
 #' @param EnableCrossAccountsDiscovery Activates cross-account discovery.
 #'
 #' @return

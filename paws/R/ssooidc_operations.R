@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates and returns an access token for the authorized client. The
 #' access token issued will be used to fetch short-term credentials for the
-#' assigned roles in the AWS account.
+#' assigned roles in the Amazon Web Services account.
 #'
 #' @usage
 #' ssooidc_create_token(clientId, clientSecret, grantType, deviceCode,
@@ -20,8 +20,15 @@ NULL
 #' @param clientSecret &#91;required&#93; A secret string generated for the client. This value should come from
 #' the persisted result of the [`register_client`][ssooidc_register_client]
 #' API.
-#' @param grantType &#91;required&#93; Supports grant types for authorization code, refresh token, and device
-#' code request.
+#' @param grantType &#91;required&#93; Supports grant types for the authorization code, refresh token, and
+#' device code request. For device code requests, specify the following
+#' value:
+#' 
+#' `urn:ietf:params:oauth:grant-type:device_code `
+#' 
+#' For information about how to obtain the device code, see the
+#' [`start_device_authorization`][ssooidc_start_device_authorization]
+#' topic.
 #' @param deviceCode &#91;required&#93; Used only when calling this API for the device code grant type. This
 #' short-term code is used to identify this authentication attempt. This
 #' should come from an in-memory reference to the result of the
@@ -29,8 +36,14 @@ NULL
 #' @param code The authorization code received from the authorization service. This
 #' parameter is required to perform an authorization grant request to get
 #' access to a token.
-#' @param refreshToken The token used to obtain an access token in the event that the access
-#' token is invalid or expired. This token is not issued by the service.
+#' @param refreshToken Currently, `refreshToken` is not yet implemented and is not supported.
+#' For more information about the features and limitations of the current
+#' Amazon Web Services SSO OIDC implementation, see *Considerations for
+#' Using this Guide* in the [Amazon Web Services SSO OIDC API
+#' Reference](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html).
+#' 
+#' The token used to obtain an access token in the event that the access
+#' token is invalid or expired.
 #' @param scope The list of scopes that is defined by the client. Upon authorization,
 #' this list is used to restrict permissions when granting an access token.
 #' @param redirectUri The location of the application that will receive the authorization
@@ -84,12 +97,12 @@ ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode, 
 }
 .ssooidc$operations$create_token <- ssooidc_create_token
 
-#' Registers a client with AWS SSO
+#' Registers a client with Amazon Web Services SSO
 #'
 #' @description
-#' Registers a client with AWS SSO. This allows clients to initiate device
-#' authorization. The output should be persisted for reuse through many
-#' authentication requests.
+#' Registers a client with Amazon Web Services SSO. This allows clients to
+#' initiate device authorization. The output should be persisted for reuse
+#' through many authentication requests.
 #'
 #' @usage
 #' ssooidc_register_client(clientName, clientType, scopes)
@@ -154,16 +167,17 @@ ssooidc_register_client <- function(clientName, clientType, scopes = NULL) {
 #' @usage
 #' ssooidc_start_device_authorization(clientId, clientSecret, startUrl)
 #'
-#' @param clientId &#91;required&#93; The unique identifier string for the client that is registered with AWS
-#' SSO. This value should come from the persisted result of the
-#' [`register_client`][ssooidc_register_client] API operation.
+#' @param clientId &#91;required&#93; The unique identifier string for the client that is registered with
+#' Amazon Web Services SSO. This value should come from the persisted
+#' result of the [`register_client`][ssooidc_register_client] API
+#' operation.
 #' @param clientSecret &#91;required&#93; A secret string that is generated for the client. This value should come
 #' from the persisted result of the
 #' [`register_client`][ssooidc_register_client] API operation.
-#' @param startUrl &#91;required&#93; The URL for the AWS SSO user portal. For more information, see [Using
-#' the User
-#' Portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html)
-#' in the *AWS Single Sign-On User Guide*.
+#' @param startUrl &#91;required&#93; The URL for the AWS access portal. For more information, see [Using the
+#' AWS access
+#' portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html)
+#' in the *Amazon Web Services SSO User Guide*.
 #'
 #' @return
 #' A list with the following syntax:

@@ -5,17 +5,24 @@
 \title{Creates a hosted connection on the specified interconnect or a link
 aggregation group (LAG) of interconnects}
 \usage{
-directconnect_allocate_hosted_connection(connectionId, ownerAccount,
-  bandwidth, connectionName, vlan, tags)
+directconnect_allocate_hosted_connection(
+  connectionId,
+  ownerAccount,
+  bandwidth,
+  connectionName,
+  vlan,
+  tags = NULL
+)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the interconnect or LAG.}
 
-\item{ownerAccount}{[required] The ID of the AWS account ID of the customer for the connection.}
+\item{ownerAccount}{[required] The ID of the Amazon Web Services account ID of the customer for the
+connection.}
 
 \item{bandwidth}{[required] The bandwidth of the connection. The possible values are 50Mbps,
 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
-10Gbps. Note that only those AWS Direct Connect Partners who have met
+10Gbps. Note that only those Direct Connect Partners who have met
 specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
 10Gbps hosted connection.}
 
@@ -25,62 +32,9 @@ specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
 
 \item{tags}{The tags associated with the connection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ownerAccount = "string",
-  connectionId = "string",
-  connectionName = "string",
-  connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-  region = "string",
-  location = "string",
-  bandwidth = "string",
-  vlan = 123,
-  partnerName = "string",
-  loaIssueTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  lagId = "string",
-  awsDevice = "string",
-  jumboFrameCapable = TRUE|FALSE,
-  awsDeviceV2 = "string",
-  hasLogicalRedundancy = "unknown"|"yes"|"no",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
-}
 \description{
-Creates a hosted connection on the specified interconnect or a link
-aggregation group (LAG) of interconnects.
+Creates a hosted connection on the specified interconnect or a link aggregation group (LAG) of interconnects.
 
-Allocates a VLAN number and a specified amount of capacity (bandwidth)
-for use by a hosted connection on the specified interconnect or LAG of
-interconnects. AWS polices the hosted connection for the specified
-capacity and the AWS Direct Connect Partner must also police the hosted
-connection for the specified capacity.
-
-Intended for use by AWS Direct Connect Partners only.
+See \url{https://paws-r.github.io/docs/directconnect/allocate_hosted_connection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$allocate_hosted_connection(
-  connectionId = "string",
-  ownerAccount = "string",
-  bandwidth = "string",
-  connectionName = "string",
-  vlan = 123,
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

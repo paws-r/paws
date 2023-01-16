@@ -7,7 +7,19 @@
 pinpointsmsvoice(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -19,7 +31,9 @@ Operations section.
 Pinpoint SMS and Voice Messaging public facing APIs
 }
 \section{Service syntax}{
-\preformatted{svc <- pinpointsmsvoice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- pinpointsmsvoice(
   config = list(
     credentials = list(
       creds = list(
@@ -27,26 +41,30 @@ Pinpoint SMS and Voice Messaging public facing APIs
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=pinpointsmsvoice_create_configuration_set]{create_configuration_set} \tab Create a new configuration set\cr
-\link[=pinpointsmsvoice_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create a new event destination in a configuration set\cr
-\link[=pinpointsmsvoice_delete_configuration_set]{delete_configuration_set} \tab Deletes an existing configuration set\cr
-\link[=pinpointsmsvoice_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Deletes an event destination in a configuration set\cr
-\link[=pinpointsmsvoice_get_configuration_set_event_destinations]{get_configuration_set_event_destinations} \tab Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination\cr
-\link[=pinpointsmsvoice_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your Amazon Pinpoint account in the current region\cr
-\link[=pinpointsmsvoice_send_voice_message]{send_voice_message} \tab Create a new voice message and send it to a recipient's phone number\cr
-\link[=pinpointsmsvoice_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update an event destination in a configuration set
+\link[paws.customer.engagement:pinpointsmsvoice_create_configuration_set]{create_configuration_set} \tab Create a new configuration set\cr
+\link[paws.customer.engagement:pinpointsmsvoice_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create a new event destination in a configuration set\cr
+\link[paws.customer.engagement:pinpointsmsvoice_delete_configuration_set]{delete_configuration_set} \tab Deletes an existing configuration set\cr
+\link[paws.customer.engagement:pinpointsmsvoice_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Deletes an event destination in a configuration set\cr
+\link[paws.customer.engagement:pinpointsmsvoice_get_configuration_set_event_destinations]{get_configuration_set_event_destinations} \tab Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination\cr
+\link[paws.customer.engagement:pinpointsmsvoice_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your Amazon Pinpoint account in the current region\cr
+\link[paws.customer.engagement:pinpointsmsvoice_send_voice_message]{send_voice_message} \tab Create a new voice message and send it to a recipient's phone number\cr
+\link[paws.customer.engagement:pinpointsmsvoice_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update an event destination in a configuration set
 }
 }
 

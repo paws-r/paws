@@ -14,28 +14,9 @@ created by the Requester.}
 \item{RequesterFeedback}{[required] A message for the Worker, which the Worker can see in the Status section
 of the web site.}
 }
-\value{
-An empty list.
-}
 \description{
-The \code{\link[=mturk_reject_assignment]{reject_assignment}} operation rejects the
-results of a completed assignment.
+The \code{\link[=mturk_reject_assignment]{reject_assignment}} operation rejects the results of a completed assignment.
 
-You can include an optional feedback message with the rejection, which
-the Worker can see in the Status section of the web site. When you
-include a feedback message with the rejection, it helps the Worker
-understand why the assignment was rejected, and can improve the quality
-of the results the Worker submits in the future.
-
-Only the Requester who created the HIT can reject an assignment for the
-HIT.
+See \url{https://paws-r.github.io/docs/mturk/reject_assignment.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$reject_assignment(
-  AssignmentId = "string",
-  RequesterFeedback = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{eventbridge_list_rule_names_by_target}
 \title{Lists the rules for the specified target}
 \usage{
-eventbridge_list_rule_names_by_target(TargetArn, EventBusName,
-  NextToken, Limit)
+eventbridge_list_rule_names_by_target(
+  TargetArn,
+  EventBusName = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{TargetArn}{[required] The Amazon Resource Name (ARN) of the target resource.}
@@ -18,27 +22,9 @@ results.}
 
 \item{Limit}{The maximum number of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RuleNames = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the rules for the specified target. You can see which of the rules
-in Amazon EventBridge can invoke a specific target in your account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_rule_names_by_target(
-  TargetArn = "string",
-  EventBusName = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Lists the rules for the specified target. You can see which of the rules in Amazon EventBridge can invoke a specific target in your account.
 
+See \url{https://paws-r.github.io/docs/eventbridge/list_rule_names_by_target.html} for full documentation.
+}
 \keyword{internal}

@@ -1,5 +1,6 @@
 #' @include service.R
 #' @include stream.R
+#' @include util.R
 NULL
 
 ################################################################################
@@ -140,11 +141,15 @@ content_md5 <- function(request) {
                               "PutBucketLifecycleConfiguration",
                               "PutBucketReplication", "PutObject",
                               "UploadPart"))) {return(request)}
-  body <- request$body
-  if (length(body) == 0) body <- raw(0)
-  hash <- digest::digest(body, serialize = FALSE, raw = TRUE)
-  base64_hash <- base64enc::base64encode(hash)
-  request$http_request$header$`Content-Md5` <- base64_hash
+  # Create Content-MD5 header if missing.
+  # https://github.com/aws/aws-sdk-go/blob/e2d6cb448883e4f4fcc5246650f89bde349041ec/private/checksum/content_md5.go#L18
+  if (is.null(request$http_request$header[["Content-MD5"]])) {
+    body <- request$body
+    if (length(body) == 0) body <- raw(0)
+    hash <- digest::digest(body, serialize = FALSE, raw = TRUE)
+    base64_hash <- base64enc::base64encode(hash)
+    request$http_request$header$`Content-Md5` <- base64_hash
+  }
   return(request)
 }
 
@@ -181,11 +186,33 @@ s3_unmarshal_error <- function(request) {
     decode_xml(request$http_response$body),
     error = function(e) NULL
   )
+  # Bucket exists in a different region, and request needs
+  # to be made to the correct region.
+  if (request$http_response$status_code == 301) {
+    error_msg <- list()
+    error_msg[[1]] <- sprintf(
+      "incorrect region, the bucket is not in '%s' region at endpoint '%s'",
+      request$config$region,
+      request$config$endpoint
+    )
+    if (nzchar(v <- request$http_response$header[["x-amz-bucket-region"]] %||% "")) {
+      error_msg[[2]] <- sprintf(", bucket is in '%s' region", v)
+    }
+    request$error <- Error(
+      "BucketRegionError",
+      paste(error_msg, collapse = ""),
+      request$http_response$status_code,
+      request$request_id
+    )
+    return(request)
+  }
 
   if (is.null(data)) {
-    request$error <- Error("SerializationError",
-                           "failed to read from query HTTP response body",
-                           request$http_response$status_code)
+    request$error <- Error(
+      "SerializationError",
+      "failed to read from query HTTP response body",
+      request$http_response$status_code
+    )
     return(request)
   }
 
@@ -200,8 +227,172 @@ s3_unmarshal_error <- function(request) {
     return(request)
   }
 
-  request$error <- Error(code, message, request$http_response$status_code, error_response)
+  request$error <- Error(
+    code, message, request$http_response$status_code, error_response
+  )
   return(request)
+}
+
+################################################################################
+
+s3_endpoints <- list(
+  "us-gov-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "us-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "us-west-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "eu-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "ap-southeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "ap-southeast-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "ap-northeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "sa-east-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE),
+  "*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "cn-*" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE),
+  "us-iso-*" = list(endpoint = "s3.{region}.c2s.ic.gov", global = FALSE),
+  "us-isob-*" = list(endpoint = "s3.{region}.sc2s.sgov.gov", global = FALSE)
+)
+
+# Developed from botocore S3RegionRedirectorv2:
+# https://github.com/boto/botocore/blob/de6dfccdb68e70005ed2a73dc5d04bc1e97f0541/botocore/utils.py#L1509
+
+# An S3 request sent to the wrong region will return an error that
+# contains the endpoint the request should be sent to. This handler
+# will add the redirect information to the signing context and then
+# redirect the request.
+s3_redirect_from_error <- function(request){
+  if (is.null(request$http_response)) {
+      return(request)
+  }
+  if (isTRUE(request$context$s3_redirect)) {
+    log_debug(
+      'S3 request was previously redirected, not redirecting.'
+    )
+    return(request)
+  }
+  error_code <- request$http_response$status_code
+
+  # Exit s3_redirect_from_error function if initial request is successful
+  # https://docs.aws.amazon.com/waf/latest/developerguide/customizing-the-response-status-codes.html
+  http_success_code <- c(200, 201, 202, 204, 206)
+  if(error_code %in% http_success_code){
+    return(request)
+  }
+  error <- decode_xml(request$http_response$body)$Error
+  if (!can_be_redirected(request, error_code, error)) {
+    return(request)
+  }
+  bucket_name <- bucket_name_from_req_params(request)
+  new_region <- s3_get_bucket_region(request$http_response, error)
+  if (is.null(new_region)) {
+    log_debug(paste(
+      "S3 client configured for region %s but the bucket %s is not",
+      "in that region and the proper region could not be",
+      "automatically determined."),
+      request$client_info$signing_region, bucket_name
+    )
+    return(request)
+  }
+  log_debug(paste(
+    "S3 client configured for region %s but the bucket %s is in region",
+    "%s; Please configure the proper region to avoid multiple",
+    "unnecessary redirects and signing attempts."),
+    request$client_info$signing_region, bucket_name, new_region
+  )
+  # Update client_info for redirect
+  request$client_info$signing_region <- new_region
+  # Re-resolve endpoint with new region and modify request_dict with
+  # the new URL, auth scheme, and signing context.
+  ep_info <- resolver_endpoint(
+    service = "s3",
+    region = new_region,
+    endpoints = s3_endpoints
+  )
+  request$client_info$endpoint <- set_request_url(
+    request$client_info$endpoint, ep_info$endpoint
+  )
+  request$http_request$url <- parse_url(
+    paste0(request$client_info$endpoint, request$operation$http_path)
+  )
+  request$built <- FALSE
+  request$context$s3_redirect <- TRUE
+  # re-sign redirect request
+  request <- sign(request)
+  # re-send redirect request
+  request <- send(request)
+
+  return(request)
+}
+
+can_be_redirected <- function(request, error_code, error){
+  # We have to account for 400 responses because
+  # if we sign a Head* request with the wrong region,
+  # we'll get a 400 Bad Request but we won't get a
+  # body saying it's an "AuthorizationHeaderMalformed".
+  is_special_head_object <- (
+    error_code %in% c('301', '400') & request$operation$name == 'HeadObject'
+  )
+  is_special_head_bucket <- (
+    error_code %in% c('301', '400')
+    & request$operation$name == 'HeadBucket'
+    & 'x-amz-bucket-region' %in% names(request$http_response$header)
+  )
+  is_wrong_signing_region <- (
+    error$Code == 'AuthorizationHeaderMalformed' & 'Region' %in% names(error)
+  )
+  is_redirect_status <- request$http_response$status_code %in% c(301, 302, 307)
+  is_permanent_redirect <- error$Code == 'PermanentRedirect'
+
+  return(any(
+    c(
+      is_special_head_object,
+      is_wrong_signing_region,
+      is_permanent_redirect,
+      is_special_head_bucket,
+      is_redirect_status
+      )
+    )
+  )
+}
+
+# There are multiple potential sources for the new region to redirect to,
+# but they aren't all universally available for use. This will try to
+# find region from response elements, but will fall back to calling
+# HEAD on the bucket if all else fails.
+# param response: HttpResponse
+# param error: Error
+s3_get_bucket_region <- function(response, error){
+  # First try to source the region from the headers.
+  response_headers <- response$header
+  if ('x-amz-bucket-region' %in% names(response_headers)){
+      return(response_headers[['x-amz-bucket-region']])
+  }
+  # Next, check the error body
+  region <- error$Region
+  return(region)
+}
+
+# Splice a new endpoint into an existing URL. Note that some endpoints
+# from the endpoint provider have a path component which will be
+# discarded by this function.
+set_request_url <- function(original_endpoint,
+                            new_endpoint,
+                            use_new_scheme = TRUE){
+  new_endpoint_components <- httr::parse_url(new_endpoint)
+  original_endpoint_components <- httr::parse_url(original_endpoint)
+  scheme <- original_endpoint_components$scheme
+  if (use_new_scheme) {
+    scheme <- new_endpoint_components$scheme
+  }
+  final_endpoint_components <- structure(list(
+      scheme = scheme,
+      hostname = new_endpoint_components$hostname %||% "",
+      path = original_endpoint_components$path %||% "",
+      query = original_endpoint_components$query %||% "",
+      fragment = "",
+      raw_path = "",
+      raw_query = ""), class = "url"
+  )
+  final_endpoint <- build_url(final_endpoint_components)
+  return(final_endpoint)
 }
 
 ################################################################################
@@ -215,6 +406,7 @@ customizations$s3 <- function(handlers) {
                                        convert_file_to_raw)
   handlers$build <- handlers_add_back(handlers$build,
                                       content_md5)
+  handlers$send <- handlers_add_back(handlers$send, s3_redirect_from_error)
   handlers$unmarshal <- handlers_add_front(handlers$unmarshal,
                                            s3_unmarshal_select_object_content)
   handlers$unmarshal <- handlers_add_back(handlers$unmarshal,

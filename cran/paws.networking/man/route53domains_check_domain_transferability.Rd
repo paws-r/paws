@@ -4,7 +4,7 @@
 \alias{route53domains_check_domain_transferability}
 \title{Checks whether a domain name can be transferred to Amazon Route 53}
 \usage{
-route53domains_check_domain_transferability(DomainName, AuthCode)
+route53domains_check_domain_transferability(DomainName, AuthCode = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to transfer to Route 53. The
@@ -26,23 +26,9 @@ label.
 authorization code to transfer the domain, the code that you got from
 the current registrar for the domain.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Transferability = list(
-    Transferable = "TRANSFERABLE"|"UNTRANSFERABLE"|"DONT_KNOW"
-  )
-)
-}
-}
 \description{
 Checks whether a domain name can be transferred to Amazon Route 53.
-}
-\section{Request syntax}{
-\preformatted{svc$check_domain_transferability(
-  DomainName = "string",
-  AuthCode = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/route53domains/check_domain_transferability.html} for full documentation.
+}
 \keyword{internal}

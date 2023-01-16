@@ -7,56 +7,13 @@ NULL
 #' routing accelerator
 #'
 #' @description
-#' Associate a virtual private cloud (VPC) subnet endpoint with your custom
-#' routing accelerator.
-#' 
-#' The listener port range must be large enough to support the number of IP
-#' addresses that can be specified in your subnet. The number of ports
-#' required is: subnet size times the number of ports per destination EC2
-#' instances. For example, a subnet defined as /24 requires a listener port
-#' range of at least 255 ports.
-#' 
-#' Note: You must have enough remaining listener ports available to map to
-#' the subnet ports, or the call will fail with a LimitExceededException.
-#' 
-#' By default, all destinations in a subnet in a custom routing accelerator
-#' cannot receive traffic. To enable all destinations to receive traffic,
-#' or to specify individual port mappings that can receive traffic, see the
-#' [AllowCustomRoutingTraffic](https://docs.aws.amazon.com/global-accelerator/latest/api/API_AllowCustomRoutingTraffic.html)
-#' operation.
+#' Associate a virtual private cloud (VPC) subnet endpoint with your custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_add_custom_routing_endpoints(EndpointConfigurations,
-#'   EndpointGroupArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/add_custom_routing_endpoints.html](https://paws-r.github.io/docs/globalaccelerator/add_custom_routing_endpoints.html) for full documentation.
 #'
 #' @param EndpointConfigurations &#91;required&#93; The list of endpoint objects to add to a custom routing accelerator.
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group for the custom
 #' routing endpoint.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointDescriptions = list(
-#'     list(
-#'       EndpointId = "string"
-#'     )
-#'   ),
-#'   EndpointGroupArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_custom_routing_endpoints(
-#'   EndpointConfigurations = list(
-#'     list(
-#'       EndpointId = "string"
-#'     )
-#'   ),
-#'   EndpointGroupArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -79,53 +36,17 @@ globalaccelerator_add_custom_routing_endpoints <- function(EndpointConfiguration
 .globalaccelerator$operations$add_custom_routing_endpoints <- globalaccelerator_add_custom_routing_endpoints
 
 #' Advertises an IPv4 address range that is provisioned for use with your
-#' AWS resources through bring your own IP addresses (BYOIP)
+#' Amazon Web Services resources through bring your own IP addresses
+#' (BYOIP)
 #'
 #' @description
-#' Advertises an IPv4 address range that is provisioned for use with your
-#' AWS resources through bring your own IP addresses (BYOIP). It can take a
-#' few minutes before traffic to the specified addresses starts routing to
-#' AWS because of propagation delays.
-#' 
-#' To stop advertising the BYOIP address range, use
-#' [WithdrawByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/).
-#' 
-#' For more information, see [Bring Your Own IP Addresses
-#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' Advertises an IPv4 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP). It can take a few minutes before traffic to the specified addresses starts routing to Amazon Web Services because of propagation delays.
 #'
-#' @usage
-#' globalaccelerator_advertise_byoip_cidr(Cidr)
+#' See [https://paws-r.github.io/docs/globalaccelerator/advertise_byoip_cidr.html](https://paws-r.github.io/docs/globalaccelerator/advertise_byoip_cidr.html) for full documentation.
 #'
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation. This must be the exact range that
 #' you provisioned. You can't advertise only a portion of the provisioned
 #' range.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ByoipCidr = list(
-#'     Cidr = "string",
-#'     State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
-#'     Events = list(
-#'       list(
-#'         Message = "string",
-#'         Timestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$advertise_byoip_cidr(
-#'   Cidr = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -152,22 +73,9 @@ globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
 #' accelerator
 #'
 #' @description
-#' Specify the Amazon EC2 instance (destination) IP addresses and ports for
-#' a VPC subnet endpoint that can receive traffic for a custom routing
-#' accelerator. You can allow traffic to all destinations in the subnet
-#' endpoint, or allow traffic to a specified list of destination IP
-#' addresses and ports in the subnet. Note that you cannot specify IP
-#' addresses or ports outside of the range that you configured for the
-#' endpoint group.
-#' 
-#' After you make changes, you can verify that the updates are complete by
-#' checking the status of your accelerator: the status changes from
-#' IN_PROGRESS to DEPLOYED.
+#' Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that can receive traffic for a custom routing accelerator. You can allow traffic to all destinations in the subnet endpoint, or allow traffic to a specified list of destination IP addresses and ports in the subnet. Note that you cannot specify IP addresses or ports outside of the range that you configured for the endpoint group.
 #'
-#' @usage
-#' globalaccelerator_allow_custom_routing_traffic(EndpointGroupArn,
-#'   EndpointId, DestinationAddresses, DestinationPorts,
-#'   AllowAllTrafficToEndpoint)
+#' See [https://paws-r.github.io/docs/globalaccelerator/allow_custom_routing_traffic.html](https://paws-r.github.io/docs/globalaccelerator/allow_custom_routing_traffic.html) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
 #' @param EndpointId &#91;required&#93; An ID for the endpoint. For custom routing accelerators, this is the
@@ -197,24 +105,6 @@ globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
 #' 
 #' The default value is FALSE.
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$allow_custom_routing_traffic(
-#'   EndpointGroupArn = "string",
-#'   EndpointId = "string",
-#'   DestinationAddresses = list(
-#'     "string"
-#'   ),
-#'   DestinationPorts = list(
-#'     123
-#'   ),
-#'   AllowAllTrafficToEndpoint = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_allow_custom_routing_traffic
@@ -238,40 +128,38 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #' Create an accelerator
 #'
 #' @description
-#' Create an accelerator. An accelerator includes one or more listeners
-#' that process inbound connections and direct traffic to one or more
-#' endpoint groups, each of which includes endpoints, such as Network Load
-#' Balancers.
-#' 
-#' Global Accelerator is a global service that supports endpoints in
-#' multiple AWS Regions but you must specify the US West (Oregon) Region to
-#' create or update accelerators.
+#' Create an accelerator. An accelerator includes one or more listeners that process inbound connections and direct traffic to one or more endpoint groups, each of which includes endpoints, such as Network Load Balancers.
 #'
-#' @usage
-#' globalaccelerator_create_accelerator(Name, IpAddressType, IpAddresses,
-#'   Enabled, IdempotencyToken, Tags)
+#' See [https://paws-r.github.io/docs/globalaccelerator/create_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/create_accelerator.html) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of an accelerator. The name can have a maximum of 32
-#' characters, must contain only alphanumeric characters or hyphens (-),
-#' and must not begin or end with a hyphen.
-#' @param IpAddressType The value for the address type must be IPv4.
+#' @param Name &#91;required&#93; The name of the accelerator. The name can have a maximum of 64
+#' characters, must contain only alphanumeric characters, periods (.), or
+#' hyphens (-), and must not begin or end with a hyphen or period.
+#' @param IpAddressType The IP address type that an accelerator supports. For a standard
+#' accelerator, the value can be IPV4 or DUAL_STACK.
 #' @param IpAddresses Optionally, if you've added your own IP address pool to Global
-#' Accelerator (BYOIP), you can choose IP addresses from your own pool to
-#' use for the accelerator's static IP addresses when you create an
-#' accelerator. You can specify one or two addresses, separated by a comma.
-#' Do not include the /32 suffix.
+#' Accelerator (BYOIP), you can choose an IPv4 address from your own pool
+#' to use for the accelerator's static IPv4 address when you create an
+#' accelerator.
 #' 
-#' Only one IP address from each of your IP address ranges can be used for
-#' each accelerator. If you specify only one IP address from your IP
-#' address range, Global Accelerator assigns a second static IP address for
-#' the accelerator from the AWS IP address pool.
+#' After you bring an address range to Amazon Web Services, it appears in
+#' your account as an address pool. When you create an accelerator, you can
+#' assign one IPv4 address from your range to it. Global Accelerator
+#' assigns you a second static IPv4 address from an Amazon IP address
+#' range. If you bring two IPv4 address ranges to Amazon Web Services, you
+#' can assign one IPv4 address from each range to your accelerator. This
+#' restriction is because Global Accelerator assigns each address range to
+#' a different network zone, for high availability.
+#' 
+#' You can specify one or two addresses, separated by a space. Do not
+#' include the /32 suffix.
 #' 
 #' Note that you can't update IP addresses for an existing accelerator. To
 #' change them, you must create a new accelerator with the new addresses.
 #' 
-#' For more information, see [Bring Your Own IP Addresses
+#' For more information, see [Bring your own IP addresses
 #' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #' @param Enabled Indicates whether an accelerator is enabled. The value is true or false.
 #' The default value is true.
 #' 
@@ -281,57 +169,9 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #' idempotency—that is, the uniqueness—of an accelerator.
 #' @param Tags Create tags for an accelerator.
 #' 
-#' For more information, see [Tagging in AWS Global
+#' For more information, see [Tagging in Global
 #' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
-#' in the *AWS Global Accelerator Developer Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Accelerator = list(
-#'     AcceleratorArn = "string",
-#'     Name = "string",
-#'     IpAddressType = "IPV4",
-#'     Enabled = TRUE|FALSE,
-#'     IpSets = list(
-#'       list(
-#'         IpFamily = "string",
-#'         IpAddresses = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     DnsName = "string",
-#'     Status = "DEPLOYED"|"IN_PROGRESS",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_accelerator(
-#'   Name = "string",
-#'   IpAddressType = "IPV4",
-#'   IpAddresses = list(
-#'     "string"
-#'   ),
-#'   Enabled = TRUE|FALSE,
-#'   IdempotencyToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -356,26 +196,38 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' Create a custom routing accelerator
 #'
 #' @description
-#' Create a custom routing accelerator. A custom routing accelerator
-#' directs traffic to one of possibly thousands of Amazon EC2 instance
-#' destinations running in a single or multiple virtual private clouds
-#' (VPC) subnet endpoints.
-#' 
-#' Be aware that, by default, all destination EC2 instances in a VPC subnet
-#' endpoint cannot receive traffic. To enable all destinations to receive
-#' traffic, or to specify individual port mappings that can receive
-#' traffic, see the
-#' [AllowCustomRoutingTraffic](https://docs.aws.amazon.com/global-accelerator/latest/api/API_AllowCustomRoutingTraffic.html)
-#' operation.
+#' Create a custom routing accelerator. A custom routing accelerator directs traffic to one of possibly thousands of Amazon EC2 instance destinations running in a single or multiple virtual private clouds (VPC) subnet endpoints.
 #'
-#' @usage
-#' globalaccelerator_create_custom_routing_accelerator(Name, IpAddressType,
-#'   Enabled, IdempotencyToken, Tags)
+#' See [https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_accelerator.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of a custom routing accelerator. The name can have a maximum of
 #' 64 characters, must contain only alphanumeric characters or hyphens (-),
 #' and must not begin or end with a hyphen.
-#' @param IpAddressType The value for the address type must be IPv4.
+#' @param IpAddressType The IP address type that an accelerator supports. For a custom routing
+#' accelerator, the value must be IPV4.
+#' @param IpAddresses Optionally, if you've added your own IP address pool to Global
+#' Accelerator (BYOIP), you can choose an IPv4 address from your own pool
+#' to use for the accelerator's static IPv4 address when you create an
+#' accelerator.
+#' 
+#' After you bring an address range to Amazon Web Services, it appears in
+#' your account as an address pool. When you create an accelerator, you can
+#' assign one IPv4 address from your range to it. Global Accelerator
+#' assigns you a second static IPv4 address from an Amazon IP address
+#' range. If you bring two IPv4 address ranges to Amazon Web Services, you
+#' can assign one IPv4 address from each range to your accelerator. This
+#' restriction is because Global Accelerator assigns each address range to
+#' a different network zone, for high availability.
+#' 
+#' You can specify one or two addresses, separated by a space. Do not
+#' include the /32 suffix.
+#' 
+#' Note that you can't update IP addresses for an existing accelerator. To
+#' change them, you must create a new accelerator with the new addresses.
+#' 
+#' For more information, see [Bring your own IP addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the *Global Accelerator Developer Guide*.
 #' @param Enabled Indicates whether an accelerator is enabled. The value is true or false.
 #' The default value is true.
 #' 
@@ -385,66 +237,21 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' idempotency—that is, the uniqueness—of the request.
 #' @param Tags Create tags for an accelerator.
 #' 
-#' For more information, see [Tagging in AWS Global
+#' For more information, see [Tagging in Global
 #' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
-#' in the *AWS Global Accelerator Developer Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Accelerator = list(
-#'     AcceleratorArn = "string",
-#'     Name = "string",
-#'     IpAddressType = "IPV4",
-#'     Enabled = TRUE|FALSE,
-#'     IpSets = list(
-#'       list(
-#'         IpFamily = "string",
-#'         IpAddresses = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     DnsName = "string",
-#'     Status = "DEPLOYED"|"IN_PROGRESS",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_custom_routing_accelerator(
-#'   Name = "string",
-#'   IpAddressType = "IPV4",
-#'   Enabled = TRUE|FALSE,
-#'   IdempotencyToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_create_custom_routing_accelerator
-globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressType = NULL, Enabled = NULL, IdempotencyToken, Tags = NULL) {
+globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressType = NULL, IpAddresses = NULL, Enabled = NULL, IdempotencyToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateCustomRoutingAccelerator",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .globalaccelerator$create_custom_routing_accelerator_input(Name = Name, IpAddressType = IpAddressType, Enabled = Enabled, IdempotencyToken = IdempotencyToken, Tags = Tags)
+  input <- .globalaccelerator$create_custom_routing_accelerator_input(Name = Name, IpAddressType = IpAddressType, IpAddresses = IpAddresses, Enabled = Enabled, IdempotencyToken = IdempotencyToken, Tags = Tags)
   output <- .globalaccelerator$create_custom_routing_accelerator_output()
   config <- get_config()
   svc <- .globalaccelerator$service(config)
@@ -458,66 +265,19 @@ globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressT
 #' accelerator
 #'
 #' @description
-#' Create an endpoint group for the specified listener for a custom routing
-#' accelerator. An endpoint group is a collection of endpoints in one AWS
-#' Region.
+#' Create an endpoint group for the specified listener for a custom routing accelerator. An endpoint group is a collection of endpoints in one Amazon Web Services Region.
 #'
-#' @usage
-#' globalaccelerator_create_custom_routing_endpoint_group(ListenerArn,
-#'   EndpointGroupRegion, DestinationConfigurations, IdempotencyToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_endpoint_group.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener for a custom routing
 #' endpoint.
-#' @param EndpointGroupRegion &#91;required&#93; The AWS Region where the endpoint group is located. A listener can have
-#' only one endpoint group in a specific Region.
+#' @param EndpointGroupRegion &#91;required&#93; The Amazon Web Services Region where the endpoint group is located. A
+#' listener can have only one endpoint group in a specific Region.
 #' @param DestinationConfigurations &#91;required&#93; Sets the port range and protocol for all endpoints (virtual private
 #' cloud subnets) in a custom routing endpoint group to accept client
 #' traffic on.
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency—that is, the uniqueness—of the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointGroup = list(
-#'     EndpointGroupArn = "string",
-#'     EndpointGroupRegion = "string",
-#'     DestinationDescriptions = list(
-#'       list(
-#'         FromPort = 123,
-#'         ToPort = 123,
-#'         Protocols = list(
-#'           "TCP"|"UDP"
-#'         )
-#'       )
-#'     ),
-#'     EndpointDescriptions = list(
-#'       list(
-#'         EndpointId = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_custom_routing_endpoint_group(
-#'   ListenerArn = "string",
-#'   EndpointGroupRegion = "string",
-#'   DestinationConfigurations = list(
-#'     list(
-#'       FromPort = 123,
-#'       ToPort = 123,
-#'       Protocols = list(
-#'         "TCP"|"UDP"
-#'       )
-#'     )
-#'   ),
-#'   IdempotencyToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -543,13 +303,9 @@ globalaccelerator_create_custom_routing_endpoint_group <- function(ListenerArn, 
 #' custom routing accelerator
 #'
 #' @description
-#' Create a listener to process inbound connections from clients to a
-#' custom routing accelerator. Connections arrive to assigned static IP
-#' addresses on the port range that you specify.
+#' Create a listener to process inbound connections from clients to a custom routing accelerator. Connections arrive to assigned static IP addresses on the port range that you specify.
 #'
-#' @usage
-#' globalaccelerator_create_custom_routing_listener(AcceleratorArn,
-#'   PortRanges, IdempotencyToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_listener.html](https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_listener.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator for a custom routing
 #' listener.
@@ -561,36 +317,6 @@ globalaccelerator_create_custom_routing_endpoint_group <- function(ListenerArn, 
 #' accelerators](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html).
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency—that is, the uniqueness—of the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listener = list(
-#'     ListenerArn = "string",
-#'     PortRanges = list(
-#'       list(
-#'         FromPort = 123,
-#'         ToPort = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_custom_routing_listener(
-#'   AcceleratorArn = "string",
-#'   PortRanges = list(
-#'     list(
-#'       FromPort = 123,
-#'       ToPort = 123
-#'     )
-#'   ),
-#'   IdempotencyToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -615,35 +341,28 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
 #' Create an endpoint group for the specified listener
 #'
 #' @description
-#' Create an endpoint group for the specified listener. An endpoint group
-#' is a collection of endpoints in one AWS Region. A resource must be valid
-#' and active when you add it as an endpoint.
+#' Create an endpoint group for the specified listener. An endpoint group is a collection of endpoints in one Amazon Web Services Region. A resource must be valid and active when you add it as an endpoint.
 #'
-#' @usage
-#' globalaccelerator_create_endpoint_group(ListenerArn,
-#'   EndpointGroupRegion, EndpointConfigurations, TrafficDialPercentage,
-#'   HealthCheckPort, HealthCheckProtocol, HealthCheckPath,
-#'   HealthCheckIntervalSeconds, ThresholdCount, IdempotencyToken,
-#'   PortOverrides)
+#' See [https://paws-r.github.io/docs/globalaccelerator/create_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/create_endpoint_group.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
-#' @param EndpointGroupRegion &#91;required&#93; The AWS Region where the endpoint group is located. A listener can have
-#' only one endpoint group in a specific Region.
+#' @param EndpointGroupRegion &#91;required&#93; The Amazon Web Services Region where the endpoint group is located. A
+#' listener can have only one endpoint group in a specific Region.
 #' @param EndpointConfigurations The list of endpoint objects.
-#' @param TrafficDialPercentage The percentage of traffic to send to an AWS Region. Additional traffic
-#' is distributed to other endpoint groups for this listener.
+#' @param TrafficDialPercentage The percentage of traffic to send to an Amazon Web Services Region.
+#' Additional traffic is distributed to other endpoint groups for this
+#' listener.
 #' 
 #' Use this action to increase (dial up) or decrease (dial down) traffic to
 #' a specific Region. The percentage is applied to the traffic that would
 #' otherwise have been routed to the Region based on optimal routing.
 #' 
 #' The default value is 100.
-#' @param HealthCheckPort The port that AWS Global Accelerator uses to check the health of
-#' endpoints that are part of this endpoint group. The default port is the
-#' listener port that this endpoint group is associated with. If listener
-#' port is a list of ports, Global Accelerator uses the first port in the
-#' list.
-#' @param HealthCheckProtocol The protocol that AWS Global Accelerator uses to check the health of
+#' @param HealthCheckPort The port that Global Accelerator uses to check the health of endpoints
+#' that are part of this endpoint group. The default port is the listener
+#' port that this endpoint group is associated with. If listener port is a
+#' list of ports, Global Accelerator uses the first port in the list.
+#' @param HealthCheckProtocol The protocol that Global Accelerator uses to check the health of
 #' endpoints that are part of this endpoint group. The default value is
 #' TCP.
 #' @param HealthCheckPath If the protocol is HTTP/S, then this specifies the path that is the
@@ -661,69 +380,9 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
 #' 443, but your accelerator routes that traffic to ports 1080 and 1443,
 #' respectively, on the endpoints.
 #' 
-#' For more information, see [Port
-#' overrides](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
-#' in the *AWS Global Accelerator Developer Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointGroup = list(
-#'     EndpointGroupArn = "string",
-#'     EndpointGroupRegion = "string",
-#'     EndpointDescriptions = list(
-#'       list(
-#'         EndpointId = "string",
-#'         Weight = 123,
-#'         HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
-#'         HealthReason = "string",
-#'         ClientIPPreservationEnabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     TrafficDialPercentage = 123.0,
-#'     HealthCheckPort = 123,
-#'     HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-#'     HealthCheckPath = "string",
-#'     HealthCheckIntervalSeconds = 123,
-#'     ThresholdCount = 123,
-#'     PortOverrides = list(
-#'       list(
-#'         ListenerPort = 123,
-#'         EndpointPort = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_endpoint_group(
-#'   ListenerArn = "string",
-#'   EndpointGroupRegion = "string",
-#'   EndpointConfigurations = list(
-#'     list(
-#'       EndpointId = "string",
-#'       Weight = 123,
-#'       ClientIPPreservationEnabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   TrafficDialPercentage = 123.0,
-#'   HealthCheckPort = 123,
-#'   HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-#'   HealthCheckPath = "string",
-#'   HealthCheckIntervalSeconds = 123,
-#'   ThresholdCount = 123,
-#'   IdempotencyToken = "string",
-#'   PortOverrides = list(
-#'     list(
-#'       ListenerPort = 123,
-#'       EndpointPort = 123
-#'     )
-#'   )
-#' )
-#' ```
+#' For more information, see [Overriding listener
+#' ports](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -749,13 +408,9 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #' accelerator
 #'
 #' @description
-#' Create a listener to process inbound connections from clients to an
-#' accelerator. Connections arrive to assigned static IP addresses on a
-#' port, port range, or list of port ranges that you specify.
+#' Create a listener to process inbound connections from clients to an accelerator. Connections arrive to assigned static IP addresses on a port, port range, or list of port ranges that you specify.
 #'
-#' @usage
-#' globalaccelerator_create_listener(AcceleratorArn, PortRanges, Protocol,
-#'   ClientAffinity, IdempotencyToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/create_listener.html](https://paws-r.github.io/docs/globalaccelerator/create_listener.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of your accelerator.
 #' @param PortRanges &#91;required&#93; The list of port ranges to support for connections from clients to your
@@ -766,15 +421,14 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #' protocol of the client request. Client affinity gives you control over
 #' whether to always route each client to the same specific endpoint.
 #' 
-#' AWS Global Accelerator uses a consistent-flow hashing algorithm to
-#' choose the optimal endpoint for a connection. If client affinity is
-#' `NONE`, Global Accelerator uses the "five-tuple" (5-tuple)
-#' properties—source IP address, source port, destination IP address,
-#' destination port, and protocol—to select the hash value, and then
-#' chooses the best endpoint. However, with this setting, if someone uses
-#' different ports to connect to Global Accelerator, their connections
-#' might not be always routed to the same endpoint because the hash value
-#' changes.
+#' Global Accelerator uses a consistent-flow hashing algorithm to choose
+#' the optimal endpoint for a connection. If client affinity is `NONE`,
+#' Global Accelerator uses the "five-tuple" (5-tuple) properties—source IP
+#' address, source port, destination IP address, destination port, and
+#' protocol—to select the hash value, and then chooses the best endpoint.
+#' However, with this setting, if someone uses different ports to connect
+#' to Global Accelerator, their connections might not be always routed to
+#' the same endpoint because the hash value changes.
 #' 
 #' If you want a given client to always be routed to the same endpoint, set
 #' client affinity to `SOURCE_IP` instead. When you use the `SOURCE_IP`
@@ -785,40 +439,6 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #' The default value is `NONE`.
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency—that is, the uniqueness—of the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listener = list(
-#'     ListenerArn = "string",
-#'     PortRanges = list(
-#'       list(
-#'         FromPort = 123,
-#'         ToPort = 123
-#'       )
-#'     ),
-#'     Protocol = "TCP"|"UDP",
-#'     ClientAffinity = "NONE"|"SOURCE_IP"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_listener(
-#'   AcceleratorArn = "string",
-#'   PortRanges = list(
-#'     list(
-#'       FromPort = 123,
-#'       ToPort = 123
-#'     )
-#'   ),
-#'   Protocol = "TCP"|"UDP",
-#'   ClientAffinity = "NONE"|"SOURCE_IP",
-#'   IdempotencyToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -843,42 +463,11 @@ globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protoc
 #' Delete an accelerator
 #'
 #' @description
-#' Delete an accelerator. Before you can delete an accelerator, you must
-#' disable it and remove all dependent resources (listeners and endpoint
-#' groups). To disable the accelerator, update the accelerator to set
-#' `Enabled` to false.
-#' 
-#' When you create an accelerator, by default, Global Accelerator provides
-#' you with a set of two static IP addresses. Alternatively, you can bring
-#' your own IP address ranges to Global Accelerator and assign IP addresses
-#' from those ranges.
-#' 
-#' The IP addresses are assigned to your accelerator for as long as it
-#' exists, even if you disable the accelerator and it no longer accepts or
-#' routes traffic. However, when you *delete* an accelerator, you lose the
-#' static IP addresses that are assigned to the accelerator, so you can no
-#' longer route traffic by using them. As a best practice, ensure that you
-#' have permissions in place to avoid inadvertently deleting accelerators.
-#' You can use IAM policies with Global Accelerator to limit the users who
-#' have permissions to delete an accelerator. For more information, see
-#' [Authentication and Access
-#' Control](https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' Delete an accelerator. Before you can delete an accelerator, you must disable it and remove all dependent resources (listeners and endpoint groups). To disable the accelerator, update the accelerator to set `Enabled` to false.
 #'
-#' @usage
-#' globalaccelerator_delete_accelerator(AcceleratorArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/delete_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/delete_accelerator.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of an accelerator.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_accelerator(
-#'   AcceleratorArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -903,41 +492,12 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
 #' Delete a custom routing accelerator
 #'
 #' @description
-#' Delete a custom routing accelerator. Before you can delete an
-#' accelerator, you must disable it and remove all dependent resources
-#' (listeners and endpoint groups). To disable the accelerator, update the
-#' accelerator to set `Enabled` to false.
-#' 
-#' When you create a custom routing accelerator, by default, Global
-#' Accelerator provides you with a set of two static IP addresses.
-#' 
-#' The IP addresses are assigned to your accelerator for as long as it
-#' exists, even if you disable the accelerator and it no longer accepts or
-#' routes traffic. However, when you *delete* an accelerator, you lose the
-#' static IP addresses that are assigned to the accelerator, so you can no
-#' longer route traffic by using them. As a best practice, ensure that you
-#' have permissions in place to avoid inadvertently deleting accelerators.
-#' You can use IAM policies with Global Accelerator to limit the users who
-#' have permissions to delete an accelerator. For more information, see
-#' [Authentication and Access
-#' Control](https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' Delete a custom routing accelerator. Before you can delete an accelerator, you must disable it and remove all dependent resources (listeners and endpoint groups). To disable the accelerator, update the accelerator to set `Enabled` to false.
 #'
-#' @usage
-#' globalaccelerator_delete_custom_routing_accelerator(AcceleratorArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_accelerator.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom routing accelerator to
 #' delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_custom_routing_accelerator(
-#'   AcceleratorArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -963,23 +523,11 @@ globalaccelerator_delete_custom_routing_accelerator <- function(AcceleratorArn) 
 #' accelerator
 #'
 #' @description
-#' Delete an endpoint group from a listener for a custom routing
-#' accelerator.
+#' Delete an endpoint group from a listener for a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_delete_custom_routing_endpoint_group(EndpointGroupArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_endpoint_group.html) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_custom_routing_endpoint_group(
-#'   EndpointGroupArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1006,20 +554,9 @@ globalaccelerator_delete_custom_routing_endpoint_group <- function(EndpointGroup
 #' @description
 #' Delete a listener for a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_delete_custom_routing_listener(ListenerArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_listener.html](https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_listener.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_custom_routing_listener(
-#'   ListenerArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1046,20 +583,9 @@ globalaccelerator_delete_custom_routing_listener <- function(ListenerArn) {
 #' @description
 #' Delete an endpoint group from a listener.
 #'
-#' @usage
-#' globalaccelerator_delete_endpoint_group(EndpointGroupArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/delete_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/delete_endpoint_group.html) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_endpoint_group(
-#'   EndpointGroupArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1086,20 +612,9 @@ globalaccelerator_delete_endpoint_group <- function(EndpointGroupArn) {
 #' @description
 #' Delete a listener from an accelerator.
 #'
-#' @usage
-#' globalaccelerator_delete_listener(ListenerArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/delete_listener.html](https://paws-r.github.io/docs/globalaccelerator/delete_listener.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_listener(
-#'   ListenerArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1126,21 +641,9 @@ globalaccelerator_delete_listener <- function(ListenerArn) {
 #' accelerator
 #'
 #' @description
-#' Specify the Amazon EC2 instance (destination) IP addresses and ports for
-#' a VPC subnet endpoint that cannot receive traffic for a custom routing
-#' accelerator. You can deny traffic to all destinations in the VPC
-#' endpoint, or deny traffic to a specified list of destination IP
-#' addresses and ports. Note that you cannot specify IP addresses or ports
-#' outside of the range that you configured for the endpoint group.
-#' 
-#' After you make changes, you can verify that the updates are complete by
-#' checking the status of your accelerator: the status changes from
-#' IN_PROGRESS to DEPLOYED.
+#' Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that cannot receive traffic for a custom routing accelerator. You can deny traffic to all destinations in the VPC endpoint, or deny traffic to a specified list of destination IP addresses and ports. Note that you cannot specify IP addresses or ports outside of the range that you configured for the endpoint group.
 #'
-#' @usage
-#' globalaccelerator_deny_custom_routing_traffic(EndpointGroupArn,
-#'   EndpointId, DestinationAddresses, DestinationPorts,
-#'   DenyAllTrafficToEndpoint)
+#' See [https://paws-r.github.io/docs/globalaccelerator/deny_custom_routing_traffic.html](https://paws-r.github.io/docs/globalaccelerator/deny_custom_routing_traffic.html) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
 #' @param EndpointId &#91;required&#93; An ID for the endpoint. For custom routing accelerators, this is the
@@ -1167,24 +670,6 @@ globalaccelerator_delete_listener <- function(ListenerArn) {
 #' 
 #' The default value is FALSE.
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deny_custom_routing_traffic(
-#'   EndpointGroupArn = "string",
-#'   EndpointId = "string",
-#'   DestinationAddresses = list(
-#'     "string"
-#'   ),
-#'   DestinationPorts = list(
-#'     123
-#'   ),
-#'   DenyAllTrafficToEndpoint = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_deny_custom_routing_traffic
@@ -1206,54 +691,16 @@ globalaccelerator_deny_custom_routing_traffic <- function(EndpointGroupArn, Endp
 .globalaccelerator$operations$deny_custom_routing_traffic <- globalaccelerator_deny_custom_routing_traffic
 
 #' Releases the specified address range that you provisioned to use with
-#' your AWS resources through bring your own IP addresses (BYOIP) and
-#' deletes the corresponding address pool
+#' your Amazon Web Services resources through bring your own IP addresses
+#' (BYOIP) and deletes the corresponding address pool
 #'
 #' @description
-#' Releases the specified address range that you provisioned to use with
-#' your AWS resources through bring your own IP addresses (BYOIP) and
-#' deletes the corresponding address pool.
-#' 
-#' Before you can release an address range, you must stop advertising it by
-#' using [`withdraw_byoip_cidr`][globalaccelerator_withdraw_byoip_cidr] and
-#' you must not have any accelerators that are using static IP addresses
-#' allocated from its address range.
-#' 
-#' For more information, see [Bring Your Own IP Addresses
-#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' Releases the specified address range that you provisioned to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool.
 #'
-#' @usage
-#' globalaccelerator_deprovision_byoip_cidr(Cidr)
+#' See [https://paws-r.github.io/docs/globalaccelerator/deprovision_byoip_cidr.html](https://paws-r.github.io/docs/globalaccelerator/deprovision_byoip_cidr.html) for full documentation.
 #'
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation. The prefix must be the same prefix
 #' that you specified when you provisioned the address range.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ByoipCidr = list(
-#'     Cidr = "string",
-#'     State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
-#'     Events = list(
-#'       list(
-#'         Message = "string",
-#'         Timestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deprovision_byoip_cidr(
-#'   Cidr = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1280,46 +727,9 @@ globalaccelerator_deprovision_byoip_cidr <- function(Cidr) {
 #' @description
 #' Describe an accelerator.
 #'
-#' @usage
-#' globalaccelerator_describe_accelerator(AcceleratorArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/describe_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/describe_accelerator.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Accelerator = list(
-#'     AcceleratorArn = "string",
-#'     Name = "string",
-#'     IpAddressType = "IPV4",
-#'     Enabled = TRUE|FALSE,
-#'     IpSets = list(
-#'       list(
-#'         IpFamily = "string",
-#'         IpAddresses = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     DnsName = "string",
-#'     Status = "DEPLOYED"|"IN_PROGRESS",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_accelerator(
-#'   AcceleratorArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1346,30 +756,10 @@ globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
 #' @description
 #' Describe the attributes of an accelerator.
 #'
-#' @usage
-#' globalaccelerator_describe_accelerator_attributes(AcceleratorArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/describe_accelerator_attributes.html](https://paws-r.github.io/docs/globalaccelerator/describe_accelerator_attributes.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator with the attributes
 #' that you want to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AcceleratorAttributes = list(
-#'     FlowLogsEnabled = TRUE|FALSE,
-#'     FlowLogsS3Bucket = "string",
-#'     FlowLogsS3Prefix = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_accelerator_attributes(
-#'   AcceleratorArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1396,46 +786,9 @@ globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
 #' @description
 #' Describe a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_describe_custom_routing_accelerator(AcceleratorArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_accelerator.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Accelerator = list(
-#'     AcceleratorArn = "string",
-#'     Name = "string",
-#'     IpAddressType = "IPV4",
-#'     Enabled = TRUE|FALSE,
-#'     IpSets = list(
-#'       list(
-#'         IpFamily = "string",
-#'         IpAddresses = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     DnsName = "string",
-#'     Status = "DEPLOYED"|"IN_PROGRESS",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_custom_routing_accelerator(
-#'   AcceleratorArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1462,31 +815,10 @@ globalaccelerator_describe_custom_routing_accelerator <- function(AcceleratorArn
 #' @description
 #' Describe the attributes of a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_describe_custom_routing_accelerator_attributes(
-#'   AcceleratorArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_accelerator_attributes.html](https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_accelerator_attributes.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom routing accelerator to
 #' describe the attributes for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AcceleratorAttributes = list(
-#'     FlowLogsEnabled = TRUE|FALSE,
-#'     FlowLogsS3Bucket = "string",
-#'     FlowLogsS3Prefix = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_custom_routing_accelerator_attributes(
-#'   AcceleratorArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1513,43 +845,9 @@ globalaccelerator_describe_custom_routing_accelerator_attributes <- function(Acc
 #' @description
 #' Describe an endpoint group for a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_describe_custom_routing_endpoint_group(
-#'   EndpointGroupArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_endpoint_group.html) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointGroup = list(
-#'     EndpointGroupArn = "string",
-#'     EndpointGroupRegion = "string",
-#'     DestinationDescriptions = list(
-#'       list(
-#'         FromPort = 123,
-#'         ToPort = 123,
-#'         Protocols = list(
-#'           "TCP"|"UDP"
-#'         )
-#'       )
-#'     ),
-#'     EndpointDescriptions = list(
-#'       list(
-#'         EndpointId = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_custom_routing_endpoint_group(
-#'   EndpointGroupArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1576,33 +874,9 @@ globalaccelerator_describe_custom_routing_endpoint_group <- function(EndpointGro
 #' @description
 #' The description of a listener for a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_describe_custom_routing_listener(ListenerArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_listener.html](https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_listener.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listener = list(
-#'     ListenerArn = "string",
-#'     PortRanges = list(
-#'       list(
-#'         FromPort = 123,
-#'         ToPort = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_custom_routing_listener(
-#'   ListenerArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1629,49 +903,9 @@ globalaccelerator_describe_custom_routing_listener <- function(ListenerArn) {
 #' @description
 #' Describe an endpoint group.
 #'
-#' @usage
-#' globalaccelerator_describe_endpoint_group(EndpointGroupArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/describe_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/describe_endpoint_group.html) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointGroup = list(
-#'     EndpointGroupArn = "string",
-#'     EndpointGroupRegion = "string",
-#'     EndpointDescriptions = list(
-#'       list(
-#'         EndpointId = "string",
-#'         Weight = 123,
-#'         HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
-#'         HealthReason = "string",
-#'         ClientIPPreservationEnabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     TrafficDialPercentage = 123.0,
-#'     HealthCheckPort = 123,
-#'     HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-#'     HealthCheckPath = "string",
-#'     HealthCheckIntervalSeconds = 123,
-#'     ThresholdCount = 123,
-#'     PortOverrides = list(
-#'       list(
-#'         ListenerPort = 123,
-#'         EndpointPort = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_endpoint_group(
-#'   EndpointGroupArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1698,35 +932,9 @@ globalaccelerator_describe_endpoint_group <- function(EndpointGroupArn) {
 #' @description
 #' Describe a listener.
 #'
-#' @usage
-#' globalaccelerator_describe_listener(ListenerArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/describe_listener.html](https://paws-r.github.io/docs/globalaccelerator/describe_listener.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listener = list(
-#'     ListenerArn = "string",
-#'     PortRanges = list(
-#'       list(
-#'         FromPort = 123,
-#'         ToPort = 123
-#'       )
-#'     ),
-#'     Protocol = "TCP"|"UDP",
-#'     ClientAffinity = "NONE"|"SOURCE_IP"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_listener(
-#'   ListenerArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1748,58 +956,17 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
 }
 .globalaccelerator$operations$describe_listener <- globalaccelerator_describe_listener
 
-#' List the accelerators for an AWS account
+#' List the accelerators for an Amazon Web Services account
 #'
 #' @description
-#' List the accelerators for an AWS account.
+#' List the accelerators for an Amazon Web Services account.
 #'
-#' @usage
-#' globalaccelerator_list_accelerators(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/list_accelerators.html](https://paws-r.github.io/docs/globalaccelerator/list_accelerators.html) for full documentation.
 #'
 #' @param MaxResults The number of Global Accelerator objects that you want to return with
 #' this call. The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Accelerators = list(
-#'     list(
-#'       AcceleratorArn = "string",
-#'       Name = "string",
-#'       IpAddressType = "IPV4",
-#'       Enabled = TRUE|FALSE,
-#'       IpSets = list(
-#'         list(
-#'           IpFamily = "string",
-#'           IpAddresses = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       DnsName = "string",
-#'       Status = "DEPLOYED"|"IN_PROGRESS",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_accelerators(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1826,47 +993,14 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
 #' changes
 #'
 #' @description
-#' Lists the IP address ranges that were specified in calls to
-#' [`provision_byoip_cidr`][globalaccelerator_provision_byoip_cidr],
-#' including the current state and a history of state changes.
+#' Lists the IP address ranges that were specified in calls to [`provision_byoip_cidr`][globalaccelerator_provision_byoip_cidr], including the current state and a history of state changes.
 #'
-#' @usage
-#' globalaccelerator_list_byoip_cidrs(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/list_byoip_cidrs.html](https://paws-r.github.io/docs/globalaccelerator/list_byoip_cidrs.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #' @param NextToken The token for the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ByoipCidrs = list(
-#'     list(
-#'       Cidr = "string",
-#'       State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
-#'       Events = list(
-#'         list(
-#'           Message = "string",
-#'           Timestamp = as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_byoip_cidrs(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1888,59 +1022,17 @@ globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NU
 }
 .globalaccelerator$operations$list_byoip_cidrs <- globalaccelerator_list_byoip_cidrs
 
-#' List the custom routing accelerators for an AWS account
+#' List the custom routing accelerators for an Amazon Web Services account
 #'
 #' @description
-#' List the custom routing accelerators for an AWS account.
+#' List the custom routing accelerators for an Amazon Web Services account.
 #'
-#' @usage
-#' globalaccelerator_list_custom_routing_accelerators(MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_accelerators.html](https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_accelerators.html) for full documentation.
 #'
 #' @param MaxResults The number of custom routing Global Accelerator objects that you want to
 #' return with this call. The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Accelerators = list(
-#'     list(
-#'       AcceleratorArn = "string",
-#'       Name = "string",
-#'       IpAddressType = "IPV4",
-#'       Enabled = TRUE|FALSE,
-#'       IpSets = list(
-#'         list(
-#'           IpFamily = "string",
-#'           IpAddresses = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       DnsName = "string",
-#'       Status = "DEPLOYED"|"IN_PROGRESS",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_custom_routing_accelerators(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1966,12 +1058,9 @@ globalaccelerator_list_custom_routing_accelerators <- function(MaxResults = NULL
 #' custom routing accelerator
 #'
 #' @description
-#' List the endpoint groups that are associated with a listener for a
-#' custom routing accelerator.
+#' List the endpoint groups that are associated with a listener for a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_list_custom_routing_endpoint_groups(ListenerArn,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_endpoint_groups.html](https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_endpoint_groups.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to list endpoint groups
 #' for.
@@ -1979,43 +1068,6 @@ globalaccelerator_list_custom_routing_accelerators <- function(MaxResults = NULL
 #' call. The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointGroups = list(
-#'     list(
-#'       EndpointGroupArn = "string",
-#'       EndpointGroupRegion = "string",
-#'       DestinationDescriptions = list(
-#'         list(
-#'           FromPort = 123,
-#'           ToPort = 123,
-#'           Protocols = list(
-#'             "TCP"|"UDP"
-#'           )
-#'         )
-#'       ),
-#'       EndpointDescriptions = list(
-#'         list(
-#'           EndpointId = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_custom_routing_endpoint_groups(
-#'   ListenerArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2042,43 +1094,13 @@ globalaccelerator_list_custom_routing_endpoint_groups <- function(ListenerArn, M
 #' @description
 #' List the listeners for a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_list_custom_routing_listeners(AcceleratorArn,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_listeners.html](https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_listeners.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to list listeners for.
 #' @param MaxResults The number of listener objects that you want to return with this call.
 #' The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listeners = list(
-#'     list(
-#'       ListenerArn = "string",
-#'       PortRanges = list(
-#'         list(
-#'           FromPort = 123,
-#'           ToPort = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_custom_routing_listeners(
-#'   AcceleratorArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2105,27 +1127,9 @@ globalaccelerator_list_custom_routing_listeners <- function(AcceleratorArn, MaxR
 #' public cloud (VPC) subnet endpoint for a custom routing accelerator
 #'
 #' @description
-#' Provides a complete mapping from the public accelerator IP address and
-#' port to destination EC2 instance IP addresses and ports in the virtual
-#' public cloud (VPC) subnet endpoint for a custom routing accelerator. For
-#' each subnet endpoint that you add, Global Accelerator creates a new
-#' static port mapping for the accelerator. The port mappings don't change
-#' after Global Accelerator generates them, so you can retrieve and cache
-#' the full mapping on your servers.
-#' 
-#' If you remove a subnet from your accelerator, Global Accelerator removes
-#' (reclaims) the port mappings. If you add a subnet to your accelerator,
-#' Global Accelerator creates new port mappings (the existing ones don't
-#' change). If you add or remove EC2 instances in your subnet, the port
-#' mappings don't change, because the mappings are created when you add the
-#' subnet to Global Accelerator.
-#' 
-#' The mappings also include a flag for each destination denoting which
-#' destination IP addresses and ports are allowed or denied traffic.
+#' Provides a complete mapping from the public accelerator IP address and port to destination EC2 instance IP addresses and ports in the virtual public cloud (VPC) subnet endpoint for a custom routing accelerator. For each subnet endpoint that you add, Global Accelerator creates a new static port mapping for the accelerator. The port mappings don't change after Global Accelerator generates them, so you can retrieve and cache the full mapping on your servers.
 #'
-#' @usage
-#' globalaccelerator_list_custom_routing_port_mappings(AcceleratorArn,
-#'   EndpointGroupArn, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings.html](https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to list the custom
 #' routing port mappings for.
@@ -2135,39 +1139,6 @@ globalaccelerator_list_custom_routing_listeners <- function(AcceleratorArn, MaxR
 #' this call. The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortMappings = list(
-#'     list(
-#'       AcceleratorPort = 123,
-#'       EndpointGroupArn = "string",
-#'       EndpointId = "string",
-#'       DestinationSocketAddress = list(
-#'         IpAddress = "string",
-#'         Port = 123
-#'       ),
-#'       Protocols = list(
-#'         "TCP"|"UDP"
-#'       ),
-#'       DestinationTrafficState = "ALLOW"|"DENY"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_custom_routing_port_mappings(
-#'   AcceleratorArn = "string",
-#'   EndpointGroupArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2193,16 +1164,9 @@ globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, 
 #' VPC subnet endpoint
 #'
 #' @description
-#' List the port mappings for a specific EC2 instance (destination) in a
-#' VPC subnet endpoint. The response is the mappings for one destination IP
-#' address. This is useful when your subnet endpoint has mappings that span
-#' multiple custom routing accelerators in your account, or for scenarios
-#' where you only want to list the port mappings for a specific destination
-#' instance.
+#' List the port mappings for a specific EC2 instance (destination) in a VPC subnet endpoint. The response is the mappings for one destination IP address. This is useful when your subnet endpoint has mappings that span multiple custom routing accelerators in your account, or for scenarios where you only want to list the port mappings for a specific destination instance.
 #'
-#' @usage
-#' globalaccelerator_list_custom_routing_port_mappings_by_destination(
-#'   EndpointId, DestinationAddress, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings_by_destination.html](https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings_by_destination.html) for full documentation.
 #'
 #' @param EndpointId &#91;required&#93; The ID for the virtual private cloud (VPC) subnet.
 #' @param DestinationAddress &#91;required&#93; The endpoint IP address in a virtual private cloud (VPC) subnet for
@@ -2211,44 +1175,6 @@ globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, 
 #' this call. The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DestinationPortMappings = list(
-#'     list(
-#'       AcceleratorArn = "string",
-#'       AcceleratorSocketAddresses = list(
-#'         list(
-#'           IpAddress = "string",
-#'           Port = 123
-#'         )
-#'       ),
-#'       EndpointGroupArn = "string",
-#'       EndpointId = "string",
-#'       EndpointGroupRegion = "string",
-#'       DestinationSocketAddress = list(
-#'         IpAddress = "string",
-#'         Port = 123
-#'       ),
-#'       IpAddressType = "IPV4",
-#'       DestinationTrafficState = "ALLOW"|"DENY"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_custom_routing_port_mappings_by_destination(
-#'   EndpointId = "string",
-#'   DestinationAddress = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2275,59 +1201,13 @@ globalaccelerator_list_custom_routing_port_mappings_by_destination <- function(E
 #' @description
 #' List the endpoint groups that are associated with a listener.
 #'
-#' @usage
-#' globalaccelerator_list_endpoint_groups(ListenerArn, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/list_endpoint_groups.html](https://paws-r.github.io/docs/globalaccelerator/list_endpoint_groups.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param MaxResults The number of endpoint group objects that you want to return with this
 #' call. The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointGroups = list(
-#'     list(
-#'       EndpointGroupArn = "string",
-#'       EndpointGroupRegion = "string",
-#'       EndpointDescriptions = list(
-#'         list(
-#'           EndpointId = "string",
-#'           Weight = 123,
-#'           HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
-#'           HealthReason = "string",
-#'           ClientIPPreservationEnabled = TRUE|FALSE
-#'         )
-#'       ),
-#'       TrafficDialPercentage = 123.0,
-#'       HealthCheckPort = 123,
-#'       HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-#'       HealthCheckPath = "string",
-#'       HealthCheckIntervalSeconds = 123,
-#'       ThresholdCount = 123,
-#'       PortOverrides = list(
-#'         list(
-#'           ListenerPort = 123,
-#'           EndpointPort = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_endpoint_groups(
-#'   ListenerArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2354,8 +1234,7 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
 #' @description
 #' List the listeners for an accelerator.
 #'
-#' @usage
-#' globalaccelerator_list_listeners(AcceleratorArn, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/globalaccelerator/list_listeners.html](https://paws-r.github.io/docs/globalaccelerator/list_listeners.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator for which you want to
 #' list listener objects.
@@ -2363,36 +1242,6 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
 #' The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listeners = list(
-#'     list(
-#'       ListenerArn = "string",
-#'       PortRanges = list(
-#'         list(
-#'           FromPort = 123,
-#'           ToPort = 123
-#'         )
-#'       ),
-#'       Protocol = "TCP"|"UDP",
-#'       ClientAffinity = "NONE"|"SOURCE_IP"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_listeners(
-#'   AcceleratorArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2418,36 +1267,11 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
 #'
 #' @description
 #' List all tags for an accelerator.
-#' 
-#' For more information, see [Tagging in AWS Global
-#' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
-#' in the *AWS Global Accelerator Developer Guide*.
 #'
-#' @usage
-#' globalaccelerator_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/list_tags_for_resource.html](https://paws-r.github.io/docs/globalaccelerator/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to list tags for. An
 #' ARN uniquely identifies an accelerator.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2469,23 +1293,14 @@ globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
 }
 .globalaccelerator$operations$list_tags_for_resource <- globalaccelerator_list_tags_for_resource
 
-#' Provisions an IP address range to use with your AWS resources through
-#' bring your own IP addresses (BYOIP) and creates a corresponding address
-#' pool
+#' Provisions an IP address range to use with your Amazon Web Services
+#' resources through bring your own IP addresses (BYOIP) and creates a
+#' corresponding address pool
 #'
 #' @description
-#' Provisions an IP address range to use with your AWS resources through
-#' bring your own IP addresses (BYOIP) and creates a corresponding address
-#' pool. After the address range is provisioned, it is ready to be
-#' advertised using
-#' [AdvertiseByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/).
-#' 
-#' For more information, see [Bring Your Own IP Addresses
-#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' Provisions an IP address range to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised using [AdvertiseByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/).
 #'
-#' @usage
-#' globalaccelerator_provision_byoip_cidr(Cidr, CidrAuthorizationContext)
+#' See [https://paws-r.github.io/docs/globalaccelerator/provision_byoip_cidr.html](https://paws-r.github.io/docs/globalaccelerator/provision_byoip_cidr.html) for full documentation.
 #'
 #' @param Cidr &#91;required&#93; The public IPv4 address range, in CIDR notation. The most specific IP
 #' prefix that you can specify is /24. The address range cannot overlap
@@ -2493,36 +1308,6 @@ globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
 #' Region.
 #' @param CidrAuthorizationContext &#91;required&#93; A signed document that proves that you are authorized to bring the
 #' specified IP address range to Amazon using BYOIP.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ByoipCidr = list(
-#'     Cidr = "string",
-#'     State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
-#'     Events = list(
-#'       list(
-#'         Message = "string",
-#'         Timestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$provision_byoip_cidr(
-#'   Cidr = "string",
-#'   CidrAuthorizationContext = list(
-#'     Message = "string",
-#'     Signature = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2549,27 +1334,12 @@ globalaccelerator_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContex
 #' @description
 #' Remove endpoints from a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_remove_custom_routing_endpoints(EndpointIds,
-#'   EndpointGroupArn)
+#' See [https://paws-r.github.io/docs/globalaccelerator/remove_custom_routing_endpoints.html](https://paws-r.github.io/docs/globalaccelerator/remove_custom_routing_endpoints.html) for full documentation.
 #'
 #' @param EndpointIds &#91;required&#93; The IDs for the endpoints. For custom routing accelerators, endpoint IDs
 #' are the virtual private cloud (VPC) subnet IDs.
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
 #' from.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_custom_routing_endpoints(
-#'   EndpointIds = list(
-#'     "string"
-#'   ),
-#'   EndpointGroupArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2595,34 +1365,13 @@ globalaccelerator_remove_custom_routing_endpoints <- function(EndpointIds, Endpo
 #'
 #' @description
 #' Add tags to an accelerator resource.
-#' 
-#' For more information, see [Tagging in AWS Global
-#' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
-#' in the *AWS Global Accelerator Developer Guide*.
 #'
-#' @usage
-#' globalaccelerator_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/globalaccelerator/tag_resource.html](https://paws-r.github.io/docs/globalaccelerator/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Global Accelerator resource to add
 #' tags to. An ARN uniquely identifies a resource.
 #' @param Tags &#91;required&#93; The tags to add to a resource. A tag consists of a key and a value that
 #' you define.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2647,34 +1396,13 @@ globalaccelerator_tag_resource <- function(ResourceArn, Tags) {
 #' Remove tags from a Global Accelerator resource
 #'
 #' @description
-#' Remove tags from a Global Accelerator resource. When you specify a tag
-#' key, the action removes both that key and its associated value. The
-#' operation succeeds even if you attempt to remove tags from an
-#' accelerator that was already removed.
-#' 
-#' For more information, see [Tagging in AWS Global
-#' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' Remove tags from a Global Accelerator resource. When you specify a tag key, the action removes both that key and its associated value. The operation succeeds even if you attempt to remove tags from an accelerator that was already removed.
 #'
-#' @usage
-#' globalaccelerator_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/globalaccelerator/untag_resource.html](https://paws-r.github.io/docs/globalaccelerator/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Global Accelerator resource to
 #' remove tags from. An ARN uniquely identifies a resource.
 #' @param TagKeys &#91;required&#93; The tag key pairs that you want to remove from the specified resources.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2700,64 +1428,20 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @description
 #' Update an accelerator.
-#' 
-#' Global Accelerator is a global service that supports endpoints in
-#' multiple AWS Regions but you must specify the US West (Oregon) Region to
-#' create or update accelerators.
 #'
-#' @usage
-#' globalaccelerator_update_accelerator(AcceleratorArn, Name,
-#'   IpAddressType, Enabled)
+#' See [https://paws-r.github.io/docs/globalaccelerator/update_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/update_accelerator.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to update.
-#' @param Name The name of the accelerator. The name can have a maximum of 32
-#' characters, must contain only alphanumeric characters or hyphens (-),
-#' and must not begin or end with a hyphen.
-#' @param IpAddressType The IP address type, which must be IPv4.
+#' @param Name The name of the accelerator. The name can have a maximum of 64
+#' characters, must contain only alphanumeric characters, periods (.), or
+#' hyphens (-), and must not begin or end with a hyphen or period.
+#' @param IpAddressType The IP address type that an accelerator supports. For a standard
+#' accelerator, the value can be IPV4 or DUAL_STACK.
 #' @param Enabled Indicates whether an accelerator is enabled. The value is true or false.
 #' The default value is true.
 #' 
 #' If the value is set to true, the accelerator cannot be deleted. If set
 #' to false, the accelerator can be deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Accelerator = list(
-#'     AcceleratorArn = "string",
-#'     Name = "string",
-#'     IpAddressType = "IPV4",
-#'     Enabled = TRUE|FALSE,
-#'     IpSets = list(
-#'       list(
-#'         IpFamily = "string",
-#'         IpAddresses = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     DnsName = "string",
-#'     Status = "DEPLOYED"|"IN_PROGRESS",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_accelerator(
-#'   AcceleratorArn = "string",
-#'   Name = "string",
-#'   IpAddressType = "IPV4",
-#'   Enabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2784,9 +1468,7 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #' @description
 #' Update the attributes for an accelerator.
 #'
-#' @usage
-#' globalaccelerator_update_accelerator_attributes(AcceleratorArn,
-#'   FlowLogsEnabled, FlowLogsS3Bucket, FlowLogsS3Prefix)
+#' See [https://paws-r.github.io/docs/globalaccelerator/update_accelerator_attributes.html](https://paws-r.github.io/docs/globalaccelerator/update_accelerator_attributes.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator that you want to
 #' update.
@@ -2796,42 +1478,18 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #' 
 #' For more information, see [Flow
 #' Logs](https://docs.aws.amazon.com/global-accelerator/latest/dg/monitoring-global-accelerator.flow-logs.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' in the *Global Accelerator Developer Guide*.
 #' @param FlowLogsS3Bucket The name of the Amazon S3 bucket for the flow logs. Attribute is
 #' required if `FlowLogsEnabled` is `true`. The bucket must exist and have
-#' a bucket policy that grants AWS Global Accelerator permission to write
-#' to the bucket.
+#' a bucket policy that grants Global Accelerator permission to write to
+#' the bucket.
 #' @param FlowLogsS3Prefix Update the prefix for the location in the Amazon S3 bucket for the flow
 #' logs. Attribute is required if `FlowLogsEnabled` is `true`.
 #' 
-#' If you don’t specify a prefix, the flow logs are stored in the root of
-#' the bucket. If you specify slash (/) for the S3 bucket prefix, the log
-#' file bucket folder structure will include a double slash (//), like the
-#' following:
+#' If you specify slash (/) for the S3 bucket prefix, the log file bucket
+#' folder structure will include a double slash (//), like the following:
 #' 
 #' s3-bucket_name//AWSLogs/aws_account_id
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AcceleratorAttributes = list(
-#'     FlowLogsEnabled = TRUE|FALSE,
-#'     FlowLogsS3Bucket = "string",
-#'     FlowLogsS3Prefix = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_accelerator_attributes(
-#'   AcceleratorArn = "string",
-#'   FlowLogsEnabled = TRUE|FALSE,
-#'   FlowLogsS3Bucket = "string",
-#'   FlowLogsS3Prefix = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2858,59 +1516,19 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 #' @description
 #' Update a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_update_custom_routing_accelerator(AcceleratorArn,
-#'   Name, IpAddressType, Enabled)
+#' See [https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_accelerator.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to update.
-#' @param Name The name of the accelerator. The name can have a maximum of 32
-#' characters, must contain only alphanumeric characters or hyphens (-),
-#' and must not begin or end with a hyphen.
-#' @param IpAddressType The value for the address type must be IPv4.
+#' @param Name The name of the accelerator. The name can have a maximum of 64
+#' characters, must contain only alphanumeric characters, periods (.), or
+#' hyphens (-), and must not begin or end with a hyphen or period.
+#' @param IpAddressType The IP address type that an accelerator supports. For a custom routing
+#' accelerator, the value must be IPV4.
 #' @param Enabled Indicates whether an accelerator is enabled. The value is true or false.
 #' The default value is true.
 #' 
 #' If the value is set to true, the accelerator cannot be deleted. If set
 #' to false, the accelerator can be deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Accelerator = list(
-#'     AcceleratorArn = "string",
-#'     Name = "string",
-#'     IpAddressType = "IPV4",
-#'     Enabled = TRUE|FALSE,
-#'     IpSets = list(
-#'       list(
-#'         IpFamily = "string",
-#'         IpAddresses = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     DnsName = "string",
-#'     Status = "DEPLOYED"|"IN_PROGRESS",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_custom_routing_accelerator(
-#'   AcceleratorArn = "string",
-#'   Name = "string",
-#'   IpAddressType = "IPV4",
-#'   Enabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2937,9 +1555,7 @@ globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, 
 #' @description
 #' Update the attributes for a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_update_custom_routing_accelerator_attributes(
-#'   AcceleratorArn, FlowLogsEnabled, FlowLogsS3Bucket, FlowLogsS3Prefix)
+#' See [https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_accelerator_attributes.html](https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_accelerator_attributes.html) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom routing accelerator to
 #' update attributes for.
@@ -2948,12 +1564,12 @@ globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, 
 #' specified.
 #' 
 #' For more information, see [Flow
-#' Logs](https://docs.aws.amazon.com/global-accelerator/latest/dg/monitoring-global-accelerator.flow-logs.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' logs](https://docs.aws.amazon.com/global-accelerator/latest/dg/monitoring-global-accelerator.flow-logs.html)
+#' in the *Global Accelerator Developer Guide*.
 #' @param FlowLogsS3Bucket The name of the Amazon S3 bucket for the flow logs. Attribute is
 #' required if `FlowLogsEnabled` is `true`. The bucket must exist and have
-#' a bucket policy that grants AWS Global Accelerator permission to write
-#' to the bucket.
+#' a bucket policy that grants Global Accelerator permission to write to
+#' the bucket.
 #' @param FlowLogsS3Prefix Update the prefix for the location in the Amazon S3 bucket for the flow
 #' logs. Attribute is required if `FlowLogsEnabled` is `true`.
 #' 
@@ -2963,28 +1579,6 @@ globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, 
 #' following:
 #' 
 #' DOC-EXAMPLE-BUCKET//AWSLogs/aws_account_id
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AcceleratorAttributes = list(
-#'     FlowLogsEnabled = TRUE|FALSE,
-#'     FlowLogsS3Bucket = "string",
-#'     FlowLogsS3Prefix = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_custom_routing_accelerator_attributes(
-#'   AcceleratorArn = "string",
-#'   FlowLogsEnabled = TRUE|FALSE,
-#'   FlowLogsS3Bucket = "string",
-#'   FlowLogsS3Prefix = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3011,9 +1605,7 @@ globalaccelerator_update_custom_routing_accelerator_attributes <- function(Accel
 #' @description
 #' Update a listener for a custom routing accelerator.
 #'
-#' @usage
-#' globalaccelerator_update_custom_routing_listener(ListenerArn,
-#'   PortRanges)
+#' See [https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_listener.html](https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_listener.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to update.
 #' @param PortRanges &#91;required&#93; The updated port range to support for connections from clients to your
@@ -3023,35 +1615,6 @@ globalaccelerator_update_custom_routing_accelerator_attributes <- function(Accel
 #' Separately, you set port ranges for endpoints. For more information, see
 #' [About endpoints for custom routing
 #' accelerators](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listener = list(
-#'     ListenerArn = "string",
-#'     PortRanges = list(
-#'       list(
-#'         FromPort = 123,
-#'         ToPort = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_custom_routing_listener(
-#'   ListenerArn = "string",
-#'   PortRanges = list(
-#'     list(
-#'       FromPort = 123,
-#'       ToPort = 123
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3076,32 +1639,27 @@ globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRa
 #' Update an endpoint group
 #'
 #' @description
-#' Update an endpoint group. A resource must be valid and active when you
-#' add it as an endpoint.
+#' Update an endpoint group. A resource must be valid and active when you add it as an endpoint.
 #'
-#' @usage
-#' globalaccelerator_update_endpoint_group(EndpointGroupArn,
-#'   EndpointConfigurations, TrafficDialPercentage, HealthCheckPort,
-#'   HealthCheckProtocol, HealthCheckPath, HealthCheckIntervalSeconds,
-#'   ThresholdCount, PortOverrides)
+#' See [https://paws-r.github.io/docs/globalaccelerator/update_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/update_endpoint_group.html) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
 #' @param EndpointConfigurations The list of endpoint objects. A resource must be valid and active when
 #' you add it as an endpoint.
-#' @param TrafficDialPercentage The percentage of traffic to send to an AWS Region. Additional traffic
-#' is distributed to other endpoint groups for this listener.
+#' @param TrafficDialPercentage The percentage of traffic to send to an Amazon Web Services Region.
+#' Additional traffic is distributed to other endpoint groups for this
+#' listener.
 #' 
 #' Use this action to increase (dial up) or decrease (dial down) traffic to
 #' a specific Region. The percentage is applied to the traffic that would
 #' otherwise have been routed to the Region based on optimal routing.
 #' 
 #' The default value is 100.
-#' @param HealthCheckPort The port that AWS Global Accelerator uses to check the health of
-#' endpoints that are part of this endpoint group. The default port is the
-#' listener port that this endpoint group is associated with. If the
-#' listener port is a list of ports, Global Accelerator uses the first port
-#' in the list.
-#' @param HealthCheckProtocol The protocol that AWS Global Accelerator uses to check the health of
+#' @param HealthCheckPort The port that Global Accelerator uses to check the health of endpoints
+#' that are part of this endpoint group. The default port is the listener
+#' port that this endpoint group is associated with. If the listener port
+#' is a list of ports, Global Accelerator uses the first port in the list.
+#' @param HealthCheckProtocol The protocol that Global Accelerator uses to check the health of
 #' endpoints that are part of this endpoint group. The default value is
 #' TCP.
 #' @param HealthCheckPath If the protocol is HTTP/S, then this specifies the path that is the
@@ -3117,67 +1675,9 @@ globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRa
 #' 443, but your accelerator routes that traffic to ports 1080 and 1443,
 #' respectively, on the endpoints.
 #' 
-#' For more information, see [Port
-#' overrides](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
-#' in the *AWS Global Accelerator Developer Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointGroup = list(
-#'     EndpointGroupArn = "string",
-#'     EndpointGroupRegion = "string",
-#'     EndpointDescriptions = list(
-#'       list(
-#'         EndpointId = "string",
-#'         Weight = 123,
-#'         HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
-#'         HealthReason = "string",
-#'         ClientIPPreservationEnabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     TrafficDialPercentage = 123.0,
-#'     HealthCheckPort = 123,
-#'     HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-#'     HealthCheckPath = "string",
-#'     HealthCheckIntervalSeconds = 123,
-#'     ThresholdCount = 123,
-#'     PortOverrides = list(
-#'       list(
-#'         ListenerPort = 123,
-#'         EndpointPort = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_endpoint_group(
-#'   EndpointGroupArn = "string",
-#'   EndpointConfigurations = list(
-#'     list(
-#'       EndpointId = "string",
-#'       Weight = 123,
-#'       ClientIPPreservationEnabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   TrafficDialPercentage = 123.0,
-#'   HealthCheckPort = 123,
-#'   HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-#'   HealthCheckPath = "string",
-#'   HealthCheckIntervalSeconds = 123,
-#'   ThresholdCount = 123,
-#'   PortOverrides = list(
-#'     list(
-#'       ListenerPort = 123,
-#'       EndpointPort = 123
-#'     )
-#'   )
-#' )
-#' ```
+#' For more information, see [Overriding listener
+#' ports](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
+#' in the *Global Accelerator Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -3204,9 +1704,7 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 #' @description
 #' Update a listener.
 #'
-#' @usage
-#' globalaccelerator_update_listener(ListenerArn, PortRanges, Protocol,
-#'   ClientAffinity)
+#' See [https://paws-r.github.io/docs/globalaccelerator/update_listener.html](https://paws-r.github.io/docs/globalaccelerator/update_listener.html) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to update.
 #' @param PortRanges The updated list of port ranges for the connections from clients to the
@@ -3218,15 +1716,14 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 #' protocol of the client request. Client affinity gives you control over
 #' whether to always route each client to the same specific endpoint.
 #' 
-#' AWS Global Accelerator uses a consistent-flow hashing algorithm to
-#' choose the optimal endpoint for a connection. If client affinity is
-#' `NONE`, Global Accelerator uses the "five-tuple" (5-tuple)
-#' properties—source IP address, source port, destination IP address,
-#' destination port, and protocol—to select the hash value, and then
-#' chooses the best endpoint. However, with this setting, if someone uses
-#' different ports to connect to Global Accelerator, their connections
-#' might not be always routed to the same endpoint because the hash value
-#' changes.
+#' Global Accelerator uses a consistent-flow hashing algorithm to choose
+#' the optimal endpoint for a connection. If client affinity is `NONE`,
+#' Global Accelerator uses the "five-tuple" (5-tuple) properties—source IP
+#' address, source port, destination IP address, destination port, and
+#' protocol—to select the hash value, and then chooses the best endpoint.
+#' However, with this setting, if someone uses different ports to connect
+#' to Global Accelerator, their connections might not be always routed to
+#' the same endpoint because the hash value changes.
 #' 
 #' If you want a given client to always be routed to the same endpoint, set
 #' client affinity to `SOURCE_IP` instead. When you use the `SOURCE_IP`
@@ -3235,39 +1732,6 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 #' value.
 #' 
 #' The default value is `NONE`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Listener = list(
-#'     ListenerArn = "string",
-#'     PortRanges = list(
-#'       list(
-#'         FromPort = 123,
-#'         ToPort = 123
-#'       )
-#'     ),
-#'     Protocol = "TCP"|"UDP",
-#'     ClientAffinity = "NONE"|"SOURCE_IP"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_listener(
-#'   ListenerArn = "string",
-#'   PortRanges = list(
-#'     list(
-#'       FromPort = 123,
-#'       ToPort = 123
-#'     )
-#'   ),
-#'   Protocol = "TCP"|"UDP",
-#'   ClientAffinity = "NONE"|"SOURCE_IP"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3293,47 +1757,11 @@ globalaccelerator_update_listener <- function(ListenerArn, PortRanges = NULL, Pr
 #' pool
 #'
 #' @description
-#' Stops advertising an address range that is provisioned as an address
-#' pool. You can perform this operation at most once every 10 seconds, even
-#' if you specify different address ranges each time.
-#' 
-#' It can take a few minutes before traffic to the specified addresses
-#' stops routing to AWS because of propagation delays.
-#' 
-#' For more information, see [Bring Your Own IP Addresses
-#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
-#' in the *AWS Global Accelerator Developer Guide*.
+#' Stops advertising an address range that is provisioned as an address pool. You can perform this operation at most once every 10 seconds, even if you specify different address ranges each time.
 #'
-#' @usage
-#' globalaccelerator_withdraw_byoip_cidr(Cidr)
+#' See [https://paws-r.github.io/docs/globalaccelerator/withdraw_byoip_cidr.html](https://paws-r.github.io/docs/globalaccelerator/withdraw_byoip_cidr.html) for full documentation.
 #'
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ByoipCidr = list(
-#'     Cidr = "string",
-#'     State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
-#'     Events = list(
-#'       list(
-#'         Message = "string",
-#'         Timestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$withdraw_byoip_cidr(
-#'   Cidr = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

@@ -4,8 +4,13 @@
 \alias{rds_describe_db_cluster_endpoints}
 \title{Returns information about endpoints for an Amazon Aurora DB cluster}
 \usage{
-rds_describe_db_cluster_endpoints(DBClusterIdentifier,
-  DBClusterEndpointIdentifier, Filters, MaxRecords, Marker)
+rds_describe_db_cluster_endpoints(
+  DBClusterIdentifier = NULL,
+  DBClusterEndpointIdentifier = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{The DB cluster identifier of the DB cluster associated with the
@@ -40,51 +45,9 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBClusterEndpoints = list(
-    list(
-      DBClusterEndpointIdentifier = "string",
-      DBClusterIdentifier = "string",
-      DBClusterEndpointResourceIdentifier = "string",
-      Endpoint = "string",
-      Status = "string",
-      EndpointType = "string",
-      CustomEndpointType = "string",
-      StaticMembers = list(
-        "string"
-      ),
-      ExcludedMembers = list(
-        "string"
-      ),
-      DBClusterEndpointArn = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns information about endpoints for an Amazon Aurora DB cluster.
 
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/describe_db_cluster_endpoints.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_cluster_endpoints(
-  DBClusterIdentifier = "string",
-  DBClusterEndpointIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

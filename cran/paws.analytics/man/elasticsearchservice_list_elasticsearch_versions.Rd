@@ -4,7 +4,10 @@
 \alias{elasticsearchservice_list_elasticsearch_versions}
 \title{List all supported Elasticsearch versions}
 \usage{
-elasticsearchservice_list_elasticsearch_versions(MaxResults, NextToken)
+elasticsearchservice_list_elasticsearch_versions(
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{MaxResults}{Set this value to limit the number of results returned. Value provided
@@ -12,24 +15,9 @@ must be greater than 10 else it wont be honored.}
 
 \item{NextToken}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ElasticsearchVersions = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 List all supported Elasticsearch versions
-}
-\section{Request syntax}{
-\preformatted{svc$list_elasticsearch_versions(
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_versions.html} for full documentation.
+}
 \keyword{internal}

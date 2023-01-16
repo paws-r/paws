@@ -4,14 +4,18 @@
 \alias{quicksight_update_data_source_permissions}
 \title{Updates the permissions to a data source}
 \usage{
-quicksight_update_data_source_permissions(AwsAccountId, DataSourceId,
-  GrantPermissions, RevokePermissions)
+quicksight_update_data_source_permissions(
+  AwsAccountId,
+  DataSourceId,
+  GrantPermissions = NULL,
+  RevokePermissions = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
-\item{DataSourceId}{[required] The ID of the data source. This ID is unique per AWS Region for each AWS
-account.}
+\item{DataSourceId}{[required] The ID of the data source. This ID is unique per Amazon Web Services
+Region for each Amazon Web Services account.}
 
 \item{GrantPermissions}{A list of resource permissions that you want to grant on the data
 source.}
@@ -19,40 +23,9 @@ source.}
 \item{RevokePermissions}{A list of resource permissions that you want to revoke on the data
 source.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DataSourceArn = "string",
-  DataSourceId = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Updates the permissions to a data source.
-}
-\section{Request syntax}{
-\preformatted{svc$update_data_source_permissions(
-  AwsAccountId = "string",
-  DataSourceId = "string",
-  GrantPermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RevokePermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_data_source_permissions.html} for full documentation.
+}
 \keyword{internal}

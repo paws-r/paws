@@ -9,17 +9,9 @@ sfn_delete_activity(activityArn)
 \arguments{
 \item{activityArn}{[required] The Amazon Resource Name (ARN) of the activity to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an activity.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_activity(
-  activityArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sfn/delete_activity.html} for full documentation.
+}
 \keyword{internal}

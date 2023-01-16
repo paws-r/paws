@@ -5,15 +5,19 @@
 \title{Create an endpoint group for the specified listener for a custom routing
 accelerator}
 \usage{
-globalaccelerator_create_custom_routing_endpoint_group(ListenerArn,
-  EndpointGroupRegion, DestinationConfigurations, IdempotencyToken)
+globalaccelerator_create_custom_routing_endpoint_group(
+  ListenerArn,
+  EndpointGroupRegion,
+  DestinationConfigurations,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener for a custom routing
 endpoint.}
 
-\item{EndpointGroupRegion}{[required] The AWS Region where the endpoint group is located. A listener can have
-only one endpoint group in a specific Region.}
+\item{EndpointGroupRegion}{[required] The Amazon Web Services Region where the endpoint group is located. A
+listener can have only one endpoint group in a specific Region.}
 
 \item{DestinationConfigurations}{[required] Sets the port range and protocol for all endpoints (virtual private
 cloud subnets) in a custom routing endpoint group to accept client
@@ -22,50 +26,9 @@ traffic on.}
 \item{IdempotencyToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency—that is, the uniqueness—of the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointGroup = list(
-    EndpointGroupArn = "string",
-    EndpointGroupRegion = "string",
-    DestinationDescriptions = list(
-      list(
-        FromPort = 123,
-        ToPort = 123,
-        Protocols = list(
-          "TCP"|"UDP"
-        )
-      )
-    ),
-    EndpointDescriptions = list(
-      list(
-        EndpointId = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Create an endpoint group for the specified listener for a custom routing
-accelerator. An endpoint group is a collection of endpoints in one AWS
-Region.
-}
-\section{Request syntax}{
-\preformatted{svc$create_custom_routing_endpoint_group(
-  ListenerArn = "string",
-  EndpointGroupRegion = "string",
-  DestinationConfigurations = list(
-    list(
-      FromPort = 123,
-      ToPort = 123,
-      Protocols = list(
-        "TCP"|"UDP"
-      )
-    )
-  ),
-  IdempotencyToken = "string"
-)
-}
-}
+Create an endpoint group for the specified listener for a custom routing accelerator. An endpoint group is a collection of endpoints in one Amazon Web Services Region.
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_endpoint_group.html} for full documentation.
+}
 \keyword{internal}

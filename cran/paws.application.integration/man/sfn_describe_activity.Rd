@@ -9,27 +9,9 @@ sfn_describe_activity(activityArn)
 \arguments{
 \item{activityArn}{[required] The Amazon Resource Name (ARN) of the activity to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  activityArn = "string",
-  name = "string",
-  creationDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Describes an activity.
 
-This operation is eventually consistent. The results are best effort and
-may not reflect very recent updates and changes.
+See \url{https://paws-r.github.io/docs/sfn/describe_activity.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_activity(
-  activityArn = "string"
-)
-}
-}
-
 \keyword{internal}

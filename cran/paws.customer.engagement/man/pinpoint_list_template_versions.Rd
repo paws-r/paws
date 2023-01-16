@@ -5,8 +5,12 @@
 \title{Retrieves information about all the versions of a specific message
 template}
 \usage{
-pinpoint_list_template_versions(NextToken, PageSize, TemplateName,
-  TemplateType)
+pinpoint_list_template_versions(
+  NextToken = NULL,
+  PageSize = NULL,
+  TemplateName,
+  TemplateType
+)
 }
 \arguments{
 \item{NextToken}{The string that specifies which page of results to return in a paginated
@@ -25,39 +29,9 @@ characters can be alphanumeric characters, underscores (_), or hyphens
 \item{TemplateType}{[required] The type of channel that the message template is designed for. Valid
 values are: EMAIL, PUSH, SMS, and VOICE.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateVersionsResponse = list(
-    Item = list(
-      list(
-        CreationDate = "string",
-        DefaultSubstitutions = "string",
-        LastModifiedDate = "string",
-        TemplateDescription = "string",
-        TemplateName = "string",
-        TemplateType = "string",
-        Version = "string"
-      )
-    ),
-    Message = "string",
-    NextToken = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Retrieves information about all the versions of a specific message
-template.
-}
-\section{Request syntax}{
-\preformatted{svc$list_template_versions(
-  NextToken = "string",
-  PageSize = "string",
-  TemplateName = "string",
-  TemplateType = "string"
-)
-}
-}
+Retrieves information about all the versions of a specific message template.
 
+See \url{https://paws-r.github.io/docs/pinpoint/list_template_versions.html} for full documentation.
+}
 \keyword{internal}

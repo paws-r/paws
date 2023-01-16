@@ -9,17 +9,9 @@ sagemaker_delete_data_quality_job_definition(JobDefinitionName)
 \arguments{
 \item{JobDefinitionName}{[required] The name of the data quality monitoring job definition to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a data quality monitoring job definition.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_data_quality_job_definition(
-  JobDefinitionName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_data_quality_job_definition.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{translate_list_terminologies}
 \title{Provides a list of custom terminologies associated with your account}
 \usage{
-translate_list_terminologies(NextToken, MaxResults)
+translate_list_terminologies(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{If the result of the request to ListTerminologies was truncated, include
@@ -12,44 +12,9 @@ the NextToken to fetch the next group of custom terminologies.}
 
 \item{MaxResults}{The maximum number of custom terminologies returned per list request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TerminologyPropertiesList = list(
-    list(
-      Name = "string",
-      Description = "string",
-      Arn = "string",
-      SourceLanguageCode = "string",
-      TargetLanguageCodes = list(
-        "string"
-      ),
-      EncryptionKey = list(
-        Type = "KMS",
-        Id = "string"
-      ),
-      SizeBytes = 123,
-      TermCount = 123,
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Provides a list of custom terminologies associated with your account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_terminologies(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/translate/list_terminologies.html} for full documentation.
+}
 \keyword{internal}

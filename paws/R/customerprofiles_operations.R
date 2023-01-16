@@ -18,7 +18,13 @@ NULL
 #' customerprofiles_add_profile_key(ProfileId, KeyName, Values, DomainName)
 #'
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
-#' @param KeyName &#91;required&#93; A searchable identifier of a customer profile.
+#' @param KeyName &#91;required&#93; A searchable identifier of a customer profile. The predefined keys you
+#' can use include: _account, _profileId, _assetId, _caseId, _orderId,
+#' _fullName, _phone, _email, _ctrContactId, _marketoLeadId,
+#' _salesforceAccountId, _salesforceContactId, _salesforceAssetId,
+#' _zendeskUserId, _zendeskExternalId, _zendeskTicketId,
+#' _serviceNowSystemId, _serviceNowIncidentId, _segmentUserId,
+#' _shopifyCustomerId, _shopifyOrderId.
 #' @param Values &#91;required&#93; A list of key values.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #'
@@ -77,10 +83,20 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' 
 #' Each Amazon Connect instance can be associated with only one domain.
 #' Multiple Amazon Connect instances can be associated with one domain.
+#' 
+#' Use this API or [`update_domain`][customerprofiles_update_domain] to
+#' enable [identity
+#' resolution](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html):
+#' set `Matching` to true.
+#' 
+#' To prevent cross-service impersonation when you call this API, see
+#' [Cross-service confused deputy
+#' prevention](https://docs.aws.amazon.com/connect/latest/adminguide/cross-service-confused-deputy-prevention.html)
+#' for sample policies that you should apply.
 #'
 #' @usage
 #' customerprofiles_create_domain(DomainName, DefaultExpirationDays,
-#'   DefaultEncryptionKey, DeadLetterQueueUrl, Tags)
+#'   DefaultEncryptionKey, DeadLetterQueueUrl, Matching, Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param DefaultExpirationDays &#91;required&#93; The default number of days until the data within the domain expires.
@@ -92,6 +108,16 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' set up a policy on the DeadLetterQueue for the SendMessage operation to
 #' enable Amazon Connect Customer Profiles to send messages to the
 #' DeadLetterQueue.
+#' @param Matching The process of matching duplicate profiles. If `Matching` = `true`,
+#' Amazon Connect Customer Profiles starts a weekly batch process called
+#' Identity Resolution Job. If you do not specify a date and time for
+#' Identity Resolution Job to run, by default it runs every Saturday at
+#' 12AM UTC to detect duplicate profiles in your domains.
+#' 
+#' After the Identity Resolution Job completes, use the
+#' [`get_matches`][customerprofiles_get_matches] API to return and review
+#' the results. Or, if you have configured `ExportingConfig` in the
+#' `MatchingRequest`, you can download the results from S3.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -102,6 +128,34 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #'   DefaultExpirationDays = 123,
 #'   DefaultEncryptionKey = "string",
 #'   DeadLetterQueueUrl = "string",
+#'   Matching = list(
+#'     Enabled = TRUE|FALSE,
+#'     JobSchedule = list(
+#'       DayOfTheWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY",
+#'       Time = "string"
+#'     ),
+#'     AutoMerging = list(
+#'       Enabled = TRUE|FALSE,
+#'       Consolidation = list(
+#'         MatchingAttributesList = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ConflictResolution = list(
+#'         ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'         SourceName = "string"
+#'       ),
+#'       MinAllowedConfidenceScoreForMerging = 123.0
+#'     ),
+#'     ExportingConfig = list(
+#'       S3Exporting = list(
+#'         S3BucketName = "string",
+#'         S3KeyName = "string"
+#'       )
+#'     )
+#'   ),
 #'   CreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -121,6 +175,34 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #'   DefaultExpirationDays = 123,
 #'   DefaultEncryptionKey = "string",
 #'   DeadLetterQueueUrl = "string",
+#'   Matching = list(
+#'     Enabled = TRUE|FALSE,
+#'     JobSchedule = list(
+#'       DayOfTheWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY",
+#'       Time = "string"
+#'     ),
+#'     AutoMerging = list(
+#'       Enabled = TRUE|FALSE,
+#'       Consolidation = list(
+#'         MatchingAttributesList = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ConflictResolution = list(
+#'         ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'         SourceName = "string"
+#'       ),
+#'       MinAllowedConfidenceScoreForMerging = 123.0
+#'     ),
+#'     ExportingConfig = list(
+#'       S3Exporting = list(
+#'         S3BucketName = "string",
+#'         S3KeyName = "string"
+#'       )
+#'     )
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -130,14 +212,14 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' @keywords internal
 #'
 #' @rdname customerprofiles_create_domain
-customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Tags = NULL) {
+customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/domains/{DomainName}",
     paginator = list()
   )
-  input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Tags = Tags)
+  input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, Tags = Tags)
   output <- .customerprofiles$create_domain_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -146,6 +228,154 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
   return(response)
 }
 .customerprofiles$operations$create_domain <- customerprofiles_create_domain
+
+#' Creates an integration workflow
+#'
+#' @description
+#' Creates an integration workflow. An integration workflow is an async
+#' process which ingests historic data and sets up an integration for
+#' ongoing updates. The supported Amazon AppFlow sources are Salesforce,
+#' ServiceNow, and Marketo.
+#'
+#' @usage
+#' customerprofiles_create_integration_workflow(DomainName, WorkflowType,
+#'   IntegrationConfig, ObjectTypeName, RoleArn, Tags)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param WorkflowType &#91;required&#93; The type of workflow. The only supported value is APPFLOW_INTEGRATION.
+#' @param IntegrationConfig &#91;required&#93; Configuration data for integration workflow.
+#' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Customer Profiles
+#' assumes this role to create resources on your behalf as part of workflow
+#' execution.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkflowId = "string",
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_integration_workflow(
+#'   DomainName = "string",
+#'   WorkflowType = "APPFLOW_INTEGRATION",
+#'   IntegrationConfig = list(
+#'     AppflowIntegration = list(
+#'       FlowDefinition = list(
+#'         Description = "string",
+#'         FlowName = "string",
+#'         KmsArn = "string",
+#'         SourceFlowConfig = list(
+#'           ConnectorProfileName = "string",
+#'           ConnectorType = "Salesforce"|"Marketo"|"Zendesk"|"Servicenow"|"S3",
+#'           IncrementalPullConfig = list(
+#'             DatetimeTypeFieldName = "string"
+#'           ),
+#'           SourceConnectorProperties = list(
+#'             Marketo = list(
+#'               Object = "string"
+#'             ),
+#'             S3 = list(
+#'               BucketName = "string",
+#'               BucketPrefix = "string"
+#'             ),
+#'             Salesforce = list(
+#'               Object = "string",
+#'               EnableDynamicFieldUpdate = TRUE|FALSE,
+#'               IncludeDeletedRecords = TRUE|FALSE
+#'             ),
+#'             ServiceNow = list(
+#'               Object = "string"
+#'             ),
+#'             Zendesk = list(
+#'               Object = "string"
+#'             )
+#'           )
+#'         ),
+#'         Tasks = list(
+#'           list(
+#'             ConnectorOperator = list(
+#'               Marketo = "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'               S3 = "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'               Salesforce = "PROJECTION"|"LESS_THAN"|"CONTAINS"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'               ServiceNow = "PROJECTION"|"CONTAINS"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'               Zendesk = "PROJECTION"|"GREATER_THAN"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP"
+#'             ),
+#'             DestinationField = "string",
+#'             SourceFields = list(
+#'               "string"
+#'             ),
+#'             TaskProperties = list(
+#'               "string"
+#'             ),
+#'             TaskType = "Arithmetic"|"Filter"|"Map"|"Mask"|"Merge"|"Truncate"|"Validate"
+#'           )
+#'         ),
+#'         TriggerConfig = list(
+#'           TriggerType = "Scheduled"|"Event"|"OnDemand",
+#'           TriggerProperties = list(
+#'             Scheduled = list(
+#'               ScheduleExpression = "string",
+#'               DataPullMode = "Incremental"|"Complete",
+#'               ScheduleStartTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               ScheduleEndTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               Timezone = "string",
+#'               ScheduleOffset = 123,
+#'               FirstExecutionFrom = as.POSIXct(
+#'                 "2015-01-01"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Batches = list(
+#'         list(
+#'           StartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           EndTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ObjectTypeName = "string",
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_integration_workflow
+customerprofiles_create_integration_workflow <- function(DomainName, WorkflowType, IntegrationConfig, ObjectTypeName, RoleArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateIntegrationWorkflow",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/workflows/integrations",
+    paginator = list()
+  )
+  input <- .customerprofiles$create_integration_workflow_input(DomainName = DomainName, WorkflowType = WorkflowType, IntegrationConfig = IntegrationConfig, ObjectTypeName = ObjectTypeName, RoleArn = RoleArn, Tags = Tags)
+  output <- .customerprofiles$create_integration_workflow_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_integration_workflow <- customerprofiles_create_integration_workflow
 
 #' Creates a standard profile
 #'
@@ -165,7 +395,7 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param AccountNumber A unique account number that you have given to the customer.
-#' @param AdditionalInformation Any additional information relevant to the customer's profile.
+#' @param AdditionalInformation Any additional information relevant to the customer’s profile.
 #' @param PartyType The type of profile used to describe the customer.
 #' @param BusinessName The name of the customer’s business.
 #' @param FirstName The customer’s first name.
@@ -173,12 +403,12 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
 #' @param LastName The customer’s last name.
 #' @param BirthDate The customer’s birth date.
 #' @param Gender The gender with which the customer identifies.
-#' @param PhoneNumber The customer's phone number, which has not been specified as a mobile,
+#' @param PhoneNumber The customer’s phone number, which has not been specified as a mobile,
 #' home, or business number.
 #' @param MobilePhoneNumber The customer’s mobile phone number.
 #' @param HomePhoneNumber The customer’s home phone number.
 #' @param BusinessPhoneNumber The customer’s business phone number.
-#' @param EmailAddress The customer's email address, which has not been specified as a personal
+#' @param EmailAddress The customer’s email address, which has not been specified as a personal
 #' or business address.
 #' @param PersonalEmailAddress The customer’s personal email address.
 #' @param BusinessEmailAddress The customer’s business email address.
@@ -347,7 +577,7 @@ customerprofiles_delete_domain <- function(DomainName) {
 #' customerprofiles_delete_integration(DomainName, Uri)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
-#' @param Uri The URI of the S3 bucket or any other type of data source.
+#' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -368,7 +598,7 @@ customerprofiles_delete_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_delete_integration
-customerprofiles_delete_integration <- function(DomainName, Uri = NULL) {
+customerprofiles_delete_integration <- function(DomainName, Uri) {
   op <- new_operation(
     name = "DeleteIntegration",
     http_method = "POST",
@@ -593,6 +823,131 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 }
 .customerprofiles$operations$delete_profile_object_type <- customerprofiles_delete_profile_object_type
 
+#' Deletes the specified workflow and all its corresponding resources
+#'
+#' @description
+#' Deletes the specified workflow and all its corresponding resources. This
+#' is an async process.
+#'
+#' @usage
+#' customerprofiles_delete_workflow(DomainName, WorkflowId)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param WorkflowId &#91;required&#93; Unique identifier for the workflow.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_workflow(
+#'   DomainName = "string",
+#'   WorkflowId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_workflow
+customerprofiles_delete_workflow <- function(DomainName, WorkflowId) {
+  op <- new_operation(
+    name = "DeleteWorkflow",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/workflows/{WorkflowId}",
+    paginator = list()
+  )
+  input <- .customerprofiles$delete_workflow_input(DomainName = DomainName, WorkflowId = WorkflowId)
+  output <- .customerprofiles$delete_workflow_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_workflow <- customerprofiles_delete_workflow
+
+#' Tests the auto-merging settings of your Identity Resolution Job without
+#' merging your data
+#'
+#' @description
+#' Tests the auto-merging settings of your Identity Resolution Job without
+#' merging your data. It randomly selects a sample of matching groups from
+#' the existing matching results, and applies the automerging settings that
+#' you provided. You can then view the number of profiles in the sample,
+#' the number of matches, and the number of profiles identified to be
+#' merged. This enables you to evaluate the accuracy of the attributes in
+#' your matching list.
+#' 
+#' You can't view which profiles are matched and would be merged.
+#' 
+#' We strongly recommend you use this API to do a dry run of the
+#' automerging process before running the Identity Resolution Job. Include
+#' **at least** two matching attributes. If your matching list includes too
+#' few attributes (such as only `FirstName` or only `LastName`), there may
+#' be a large number of matches. This increases the chances of erroneous
+#' merges.
+#'
+#' @usage
+#' customerprofiles_get_auto_merging_preview(DomainName, Consolidation,
+#'   ConflictResolution, MinAllowedConfidenceScoreForMerging)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param Consolidation &#91;required&#93; A list of matching attributes that represent matching criteria.
+#' @param ConflictResolution &#91;required&#93; How the auto-merging process should resolve conflicts between different
+#' profiles.
+#' @param MinAllowedConfidenceScoreForMerging Minimum confidence score required for profiles within a matching group
+#' to be merged during the auto-merge process.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   NumberOfMatchesInSample = 123,
+#'   NumberOfProfilesInSample = 123,
+#'   NumberOfProfilesWillBeMerged = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_auto_merging_preview(
+#'   DomainName = "string",
+#'   Consolidation = list(
+#'     MatchingAttributesList = list(
+#'       list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ConflictResolution = list(
+#'     ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'     SourceName = "string"
+#'   ),
+#'   MinAllowedConfidenceScoreForMerging = 123.0
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_auto_merging_preview
+customerprofiles_get_auto_merging_preview <- function(DomainName, Consolidation, ConflictResolution, MinAllowedConfidenceScoreForMerging = NULL) {
+  op <- new_operation(
+    name = "GetAutoMergingPreview",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/identity-resolution-jobs/auto-merging-preview",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_auto_merging_preview_input(DomainName = DomainName, Consolidation = Consolidation, ConflictResolution = ConflictResolution, MinAllowedConfidenceScoreForMerging = MinAllowedConfidenceScoreForMerging)
+  output <- .customerprofiles$get_auto_merging_preview_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_auto_merging_preview <- customerprofiles_get_auto_merging_preview
+
 #' Returns information about a specific domain
 #'
 #' @description
@@ -601,7 +956,7 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 #' @usage
 #' customerprofiles_get_domain(DomainName)
 #'
-#' @param DomainName &#91;required&#93; A unique name for the domain.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
 #'
 #' @return
 #' A list with the following syntax:
@@ -616,6 +971,34 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 #'     MeteringProfileCount = 123,
 #'     ObjectCount = 123,
 #'     TotalSize = 123
+#'   ),
+#'   Matching = list(
+#'     Enabled = TRUE|FALSE,
+#'     JobSchedule = list(
+#'       DayOfTheWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY",
+#'       Time = "string"
+#'     ),
+#'     AutoMerging = list(
+#'       Enabled = TRUE|FALSE,
+#'       Consolidation = list(
+#'         MatchingAttributesList = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ConflictResolution = list(
+#'         ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'         SourceName = "string"
+#'       ),
+#'       MinAllowedConfidenceScoreForMerging = 123.0
+#'     ),
+#'     ExportingConfig = list(
+#'       S3Exporting = list(
+#'         S3BucketName = "string",
+#'         S3KeyName = "string"
+#'       )
+#'     )
 #'   ),
 #'   CreatedAt = as.POSIXct(
 #'     "2015-01-01"
@@ -656,6 +1039,101 @@ customerprofiles_get_domain <- function(DomainName) {
 }
 .customerprofiles$operations$get_domain <- customerprofiles_get_domain
 
+#' Returns information about an Identity Resolution Job in a specific
+#' domain
+#'
+#' @description
+#' Returns information about an Identity Resolution Job in a specific
+#' domain.
+#' 
+#' Identity Resolution Jobs are set up using the Amazon Connect admin
+#' console. For more information, see [Use Identity Resolution to
+#' consolidate similar
+#' profiles](https://docs.aws.amazon.com/connect/latest/adminguide/use-identity-resolution.html).
+#'
+#' @usage
+#' customerprofiles_get_identity_resolution_job(DomainName, JobId)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param JobId &#91;required&#93; The unique identifier of the Identity Resolution Job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   JobId = "string",
+#'   Status = "PENDING"|"PREPROCESSING"|"FIND_MATCHING"|"MERGING"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED",
+#'   Message = "string",
+#'   JobStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   JobEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   JobExpirationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AutoMerging = list(
+#'     Enabled = TRUE|FALSE,
+#'     Consolidation = list(
+#'       MatchingAttributesList = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ConflictResolution = list(
+#'       ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'       SourceName = "string"
+#'     ),
+#'     MinAllowedConfidenceScoreForMerging = 123.0
+#'   ),
+#'   ExportingLocation = list(
+#'     S3Exporting = list(
+#'       S3BucketName = "string",
+#'       S3KeyName = "string"
+#'     )
+#'   ),
+#'   JobStats = list(
+#'     NumberOfProfilesReviewed = 123,
+#'     NumberOfMatchesFound = 123,
+#'     NumberOfMergesDone = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_identity_resolution_job(
+#'   DomainName = "string",
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_identity_resolution_job
+customerprofiles_get_identity_resolution_job <- function(DomainName, JobId) {
+  op <- new_operation(
+    name = "GetIdentityResolutionJob",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/identity-resolution-jobs/{JobId}",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_identity_resolution_job_input(DomainName = DomainName, JobId = JobId)
+  output <- .customerprofiles$get_identity_resolution_job_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_identity_resolution_job <- customerprofiles_get_identity_resolution_job
+
 #' Returns an integration for a domain
 #'
 #' @description
@@ -665,7 +1143,7 @@ customerprofiles_get_domain <- function(DomainName) {
 #' customerprofiles_get_integration(DomainName, Uri)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
-#' @param Uri The URI of the S3 bucket or any other type of data source.
+#' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -682,7 +1160,11 @@ customerprofiles_get_domain <- function(DomainName) {
 #'   ),
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   ObjectTypeNames = list(
+#'     "string"
+#'   ),
+#'   WorkflowId = "string"
 #' )
 #' ```
 #'
@@ -697,7 +1179,7 @@ customerprofiles_get_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_integration
-customerprofiles_get_integration <- function(DomainName, Uri = NULL) {
+customerprofiles_get_integration <- function(DomainName, Uri) {
   op <- new_operation(
     name = "GetIntegration",
     http_method = "POST",
@@ -713,6 +1195,114 @@ customerprofiles_get_integration <- function(DomainName, Uri = NULL) {
   return(response)
 }
 .customerprofiles$operations$get_integration <- customerprofiles_get_integration
+
+#' Before calling this API, use CreateDomain or UpdateDomain to enable
+#' identity resolution: set Matching to true
+#'
+#' @description
+#' Before calling this API, use
+#' [`create_domain`][customerprofiles_create_domain] or
+#' [`update_domain`][customerprofiles_update_domain] to enable identity
+#' resolution: set `Matching` to true.
+#' 
+#' GetMatches returns potentially matching profiles, based on the results
+#' of the latest run of a machine learning process.
+#' 
+#' The process of matching duplicate profiles. If `Matching` = `true`,
+#' Amazon Connect Customer Profiles starts a weekly batch process called
+#' Identity Resolution Job. If you do not specify a date and time for
+#' Identity Resolution Job to run, by default it runs every Saturday at
+#' 12AM UTC to detect duplicate profiles in your domains.
+#' 
+#' After the Identity Resolution Job completes, use the
+#' [`get_matches`][customerprofiles_get_matches] API to return and review
+#' the results. Or, if you have configured `ExportingConfig` in the
+#' `MatchingRequest`, you can download the results from S3.
+#' 
+#' Amazon Connect uses the following profile attributes to identify
+#' matches:
+#' 
+#' -   PhoneNumber
+#' 
+#' -   HomePhoneNumber
+#' 
+#' -   BusinessPhoneNumber
+#' 
+#' -   MobilePhoneNumber
+#' 
+#' -   EmailAddress
+#' 
+#' -   PersonalEmailAddress
+#' 
+#' -   BusinessEmailAddress
+#' 
+#' -   FullName
+#' 
+#' For example, two or more profiles—with spelling mistakes such as **John
+#' Doe** and **Jhn Doe**, or different casing email addresses such as
+#' **JOHN_DOE@@ANYCOMPANY.COM** and **johndoe@@anycompany.com**, or different
+#' phone number formats such as **555-010-0000** and
+#' **+1-555-010-0000**—can be detected as belonging to the same customer
+#' **John Doe** and merged into a unified profile.
+#'
+#' @usage
+#' customerprofiles_get_matches(NextToken, MaxResults, DomainName)
+#'
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MatchGenerationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   PotentialMatches = 123,
+#'   Matches = list(
+#'     list(
+#'       MatchId = "string",
+#'       ProfileIds = list(
+#'         "string"
+#'       ),
+#'       ConfidenceScore = 123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_matches(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_matches
+customerprofiles_get_matches <- function(NextToken = NULL, MaxResults = NULL, DomainName) {
+  op <- new_operation(
+    name = "GetMatches",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/matches",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_matches_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName)
+  output <- .customerprofiles$get_matches_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_matches <- customerprofiles_get_matches
 
 #' Returns the object types for a specific domain
 #'
@@ -735,6 +1325,7 @@ customerprofiles_get_integration <- function(DomainName, Uri = NULL) {
 #'   ExpirationDays = 123,
 #'   EncryptionKey = "string",
 #'   AllowProfileCreation = TRUE|FALSE,
+#'   SourceLastUpdatedTimestampFormat = "string",
 #'   Fields = list(
 #'     list(
 #'       Source = "string",
@@ -746,7 +1337,7 @@ customerprofiles_get_integration <- function(DomainName, Uri = NULL) {
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"|"ORDER"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -818,6 +1409,7 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
 #'   SourceName = "string",
 #'   SourceObject = "string",
 #'   AllowProfileCreation = TRUE|FALSE,
+#'   SourceLastUpdatedTimestampFormat = "string",
 #'   Fields = list(
 #'     list(
 #'       Source = "string",
@@ -829,7 +1421,7 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"|"ORDER"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -867,6 +1459,150 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 }
 .customerprofiles$operations$get_profile_object_type_template <- customerprofiles_get_profile_object_type_template
 
+#' Get details of specified workflow
+#'
+#' @description
+#' Get details of specified workflow.
+#'
+#' @usage
+#' customerprofiles_get_workflow(DomainName, WorkflowId)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param WorkflowId &#91;required&#93; Unique identifier for the workflow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkflowId = "string",
+#'   WorkflowType = "APPFLOW_INTEGRATION",
+#'   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"SPLIT"|"RETRY"|"CANCELLED",
+#'   ErrorDescription = "string",
+#'   StartDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Attributes = list(
+#'     AppflowIntegration = list(
+#'       SourceConnectorType = "Salesforce"|"Marketo"|"Zendesk"|"Servicenow"|"S3",
+#'       ConnectorProfileName = "string",
+#'       RoleArn = "string"
+#'     )
+#'   ),
+#'   Metrics = list(
+#'     AppflowIntegration = list(
+#'       RecordsProcessed = 123,
+#'       StepsCompleted = 123,
+#'       TotalSteps = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_workflow(
+#'   DomainName = "string",
+#'   WorkflowId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_workflow
+customerprofiles_get_workflow <- function(DomainName, WorkflowId) {
+  op <- new_operation(
+    name = "GetWorkflow",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/workflows/{WorkflowId}",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_workflow_input(DomainName = DomainName, WorkflowId = WorkflowId)
+  output <- .customerprofiles$get_workflow_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_workflow <- customerprofiles_get_workflow
+
+#' Get granular list of steps in workflow
+#'
+#' @description
+#' Get granular list of steps in workflow.
+#'
+#' @usage
+#' customerprofiles_get_workflow_steps(DomainName, WorkflowId, NextToken,
+#'   MaxResults)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param WorkflowId &#91;required&#93; Unique identifier for the workflow.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkflowId = "string",
+#'   WorkflowType = "APPFLOW_INTEGRATION",
+#'   Items = list(
+#'     list(
+#'       AppflowIntegration = list(
+#'         FlowName = "string",
+#'         Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"SPLIT"|"RETRY"|"CANCELLED",
+#'         ExecutionMessage = "string",
+#'         RecordsProcessed = 123,
+#'         BatchRecordsStartTime = "string",
+#'         BatchRecordsEndTime = "string",
+#'         CreatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastUpdatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_workflow_steps(
+#'   DomainName = "string",
+#'   WorkflowId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_workflow_steps
+customerprofiles_get_workflow_steps <- function(DomainName, WorkflowId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetWorkflowSteps",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/workflows/{WorkflowId}/steps",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_workflow_steps_input(DomainName = DomainName, WorkflowId = WorkflowId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .customerprofiles$get_workflow_steps_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_workflow_steps <- customerprofiles_get_workflow_steps
+
 #' Lists all of the integrations associated to a specific URI in the AWS
 #' account
 #'
@@ -875,11 +1611,14 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #' account.
 #'
 #' @usage
-#' customerprofiles_list_account_integrations(Uri, NextToken, MaxResults)
+#' customerprofiles_list_account_integrations(Uri, NextToken, MaxResults,
+#'   IncludeHidden)
 #'
 #' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
 #' @param NextToken The pagination token from the previous ListAccountIntegrations API call.
 #' @param MaxResults The maximum number of objects returned per page.
+#' @param IncludeHidden Boolean to indicate if hidden integration should be returned. Defaults
+#' to `False`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -898,7 +1637,11 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #'       ),
 #'       Tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       ObjectTypeNames = list(
+#'         "string"
+#'       ),
+#'       WorkflowId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -910,21 +1653,22 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #' svc$list_account_integrations(
 #'   Uri = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   IncludeHidden = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_account_integrations
-customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, MaxResults = NULL) {
+customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, MaxResults = NULL, IncludeHidden = NULL) {
   op <- new_operation(
     name = "ListAccountIntegrations",
     http_method = "POST",
     http_path = "/integrations",
     paginator = list()
   )
-  input <- .customerprofiles$list_account_integrations_input(Uri = Uri, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .customerprofiles$list_account_integrations_input(Uri = Uri, NextToken = NextToken, MaxResults = MaxResults, IncludeHidden = IncludeHidden)
   output <- .customerprofiles$list_account_integrations_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -997,17 +1741,98 @@ customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .customerprofiles$operations$list_domains <- customerprofiles_list_domains
 
+#' Lists all of the Identity Resolution Jobs in your domain
+#'
+#' @description
+#' Lists all of the Identity Resolution Jobs in your domain. The response
+#' sorts the list by `JobStartTime`.
+#'
+#' @usage
+#' customerprofiles_list_identity_resolution_jobs(DomainName, NextToken,
+#'   MaxResults)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityResolutionJobsList = list(
+#'     list(
+#'       DomainName = "string",
+#'       JobId = "string",
+#'       Status = "PENDING"|"PREPROCESSING"|"FIND_MATCHING"|"MERGING"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED",
+#'       JobStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       JobEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       JobStats = list(
+#'         NumberOfProfilesReviewed = 123,
+#'         NumberOfMatchesFound = 123,
+#'         NumberOfMergesDone = 123
+#'       ),
+#'       ExportingLocation = list(
+#'         S3Exporting = list(
+#'           S3BucketName = "string",
+#'           S3KeyName = "string"
+#'         )
+#'       ),
+#'       Message = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_identity_resolution_jobs(
+#'   DomainName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_identity_resolution_jobs
+customerprofiles_list_identity_resolution_jobs <- function(DomainName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListIdentityResolutionJobs",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/identity-resolution-jobs",
+    paginator = list()
+  )
+  input <- .customerprofiles$list_identity_resolution_jobs_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .customerprofiles$list_identity_resolution_jobs_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_identity_resolution_jobs <- customerprofiles_list_identity_resolution_jobs
+
 #' Lists all of the integrations in your domain
 #'
 #' @description
 #' Lists all of the integrations in your domain.
 #'
 #' @usage
-#' customerprofiles_list_integrations(DomainName, NextToken, MaxResults)
+#' customerprofiles_list_integrations(DomainName, NextToken, MaxResults,
+#'   IncludeHidden)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param NextToken The pagination token from the previous ListIntegrations API call.
 #' @param MaxResults The maximum number of objects returned per page.
+#' @param IncludeHidden Boolean to indicate if hidden integration should be returned. Defaults
+#' to `False`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1026,7 +1851,11 @@ customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
 #'       ),
 #'       Tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       ObjectTypeNames = list(
+#'         "string"
+#'       ),
+#'       WorkflowId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1038,21 +1867,22 @@ customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
 #' svc$list_integrations(
 #'   DomainName = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   IncludeHidden = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_integrations
-customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, MaxResults = NULL) {
+customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, MaxResults = NULL, IncludeHidden = NULL) {
   op <- new_operation(
     name = "ListIntegrations",
     http_method = "GET",
     http_path = "/domains/{DomainName}/integrations",
     paginator = list()
   )
-  input <- .customerprofiles$list_integrations_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .customerprofiles$list_integrations_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults, IncludeHidden = IncludeHidden)
   output <- .customerprofiles$list_integrations_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -1191,13 +2021,16 @@ customerprofiles_list_profile_object_types <- function(DomainName, NextToken = N
 #'
 #' @usage
 #' customerprofiles_list_profile_objects(NextToken, MaxResults, DomainName,
-#'   ObjectTypeName, ProfileId)
+#'   ObjectTypeName, ProfileId, ObjectFilter)
 #'
 #' @param NextToken The pagination token from the previous call to ListProfileObjects.
 #' @param MaxResults The maximum number of objects returned per page.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
+#' @param ObjectFilter Applies a filter to the response to include profile objects with the
+#' specified index values. This filter is only supported for ObjectTypeName
+#' _asset, _case and _order.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1221,21 +2054,27 @@ customerprofiles_list_profile_object_types <- function(DomainName, NextToken = N
 #'   MaxResults = 123,
 #'   DomainName = "string",
 #'   ObjectTypeName = "string",
-#'   ProfileId = "string"
+#'   ProfileId = "string",
+#'   ObjectFilter = list(
+#'     KeyName = "string",
+#'     Values = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_profile_objects
-customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults = NULL, DomainName, ObjectTypeName, ProfileId) {
+customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults = NULL, DomainName, ObjectTypeName, ProfileId, ObjectFilter = NULL) {
   op <- new_operation(
     name = "ListProfileObjects",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles/objects",
     paginator = list()
   )
-  input <- .customerprofiles$list_profile_objects_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ObjectTypeName = ObjectTypeName, ProfileId = ProfileId)
+  input <- .customerprofiles$list_profile_objects_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ObjectTypeName = ObjectTypeName, ProfileId = ProfileId, ObjectFilter = ObjectFilter)
   output <- .customerprofiles$list_profile_objects_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -1295,6 +2134,195 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 }
 .customerprofiles$operations$list_tags_for_resource <- customerprofiles_list_tags_for_resource
 
+#' Query to list all workflows
+#'
+#' @description
+#' Query to list all workflows.
+#'
+#' @usage
+#' customerprofiles_list_workflows(DomainName, WorkflowType, Status,
+#'   QueryStartDate, QueryEndDate, NextToken, MaxResults)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param WorkflowType The type of workflow. The only supported value is APPFLOW_INTEGRATION.
+#' @param Status Status of workflow execution.
+#' @param QueryStartDate Retrieve workflows started after timestamp.
+#' @param QueryEndDate Retrieve workflows ended after timestamp.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       WorkflowType = "APPFLOW_INTEGRATION",
+#'       WorkflowId = "string",
+#'       Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"SPLIT"|"RETRY"|"CANCELLED",
+#'       StatusDescription = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_workflows(
+#'   DomainName = "string",
+#'   WorkflowType = "APPFLOW_INTEGRATION",
+#'   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"FAILED"|"SPLIT"|"RETRY"|"CANCELLED",
+#'   QueryStartDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   QueryEndDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_workflows
+customerprofiles_list_workflows <- function(DomainName, WorkflowType = NULL, Status = NULL, QueryStartDate = NULL, QueryEndDate = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListWorkflows",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/workflows",
+    paginator = list()
+  )
+  input <- .customerprofiles$list_workflows_input(DomainName = DomainName, WorkflowType = WorkflowType, Status = Status, QueryStartDate = QueryStartDate, QueryEndDate = QueryEndDate, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .customerprofiles$list_workflows_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_workflows <- customerprofiles_list_workflows
+
+#' Runs an AWS Lambda job that does the following:
+#'
+#' @description
+#' Runs an AWS Lambda job that does the following:
+#' 
+#' 1.  All the profileKeys in the `ProfileToBeMerged` will be moved to the
+#'     main profile.
+#' 
+#' 2.  All the objects in the `ProfileToBeMerged` will be moved to the main
+#'     profile.
+#' 
+#' 3.  All the `ProfileToBeMerged` will be deleted at the end.
+#' 
+#' 4.  All the profileKeys in the `ProfileIdsToBeMerged` will be moved to
+#'     the main profile.
+#' 
+#' 5.  Standard fields are merged as follows:
+#' 
+#'     1.  Fields are always "union"-ed if there are no conflicts in
+#'         standard fields or attributeKeys.
+#' 
+#'     2.  When there are conflicting fields:
+#' 
+#'         1.  If no `SourceProfileIds` entry is specified, the main
+#'             Profile value is always taken.
+#' 
+#'         2.  If a `SourceProfileIds` entry is specified, the specified
+#'             profileId is always taken, even if it is a NULL value.
+#' 
+#' You can use MergeProfiles together with
+#' [`get_matches`][customerprofiles_get_matches], which returns potentially
+#' matching profiles, or use it with the results of another matching
+#' system. After profiles have been merged, they cannot be separated
+#' (unmerged).
+#'
+#' @usage
+#' customerprofiles_merge_profiles(DomainName, MainProfileId,
+#'   ProfileIdsToBeMerged, FieldSourceProfileIds)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param MainProfileId &#91;required&#93; The identifier of the profile to be taken.
+#' @param ProfileIdsToBeMerged &#91;required&#93; The identifier of the profile to be merged into MainProfileId.
+#' @param FieldSourceProfileIds The identifiers of the fields in the profile that has the information
+#' you want to apply to the merge. For example, say you want to merge
+#' EmailAddress from Profile1 into MainProfile. This would be the
+#' identifier of the EmailAddress field in Profile1.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$merge_profiles(
+#'   DomainName = "string",
+#'   MainProfileId = "string",
+#'   ProfileIdsToBeMerged = list(
+#'     "string"
+#'   ),
+#'   FieldSourceProfileIds = list(
+#'     AccountNumber = "string",
+#'     AdditionalInformation = "string",
+#'     PartyType = "string",
+#'     BusinessName = "string",
+#'     FirstName = "string",
+#'     MiddleName = "string",
+#'     LastName = "string",
+#'     BirthDate = "string",
+#'     Gender = "string",
+#'     PhoneNumber = "string",
+#'     MobilePhoneNumber = "string",
+#'     HomePhoneNumber = "string",
+#'     BusinessPhoneNumber = "string",
+#'     EmailAddress = "string",
+#'     PersonalEmailAddress = "string",
+#'     BusinessEmailAddress = "string",
+#'     Address = "string",
+#'     ShippingAddress = "string",
+#'     MailingAddress = "string",
+#'     BillingAddress = "string",
+#'     Attributes = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_merge_profiles
+customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileIdsToBeMerged, FieldSourceProfileIds = NULL) {
+  op <- new_operation(
+    name = "MergeProfiles",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/profiles/objects/merge",
+    paginator = list()
+  )
+  input <- .customerprofiles$merge_profiles_input(DomainName = DomainName, MainProfileId = MainProfileId, ProfileIdsToBeMerged = ProfileIdsToBeMerged, FieldSourceProfileIds = FieldSourceProfileIds)
+  output <- .customerprofiles$merge_profiles_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$merge_profiles <- customerprofiles_merge_profiles
+
 #' Adds an integration between the service and a third-party service, which
 #' includes Amazon AppFlow and Amazon Connect
 #'
@@ -1305,12 +2333,22 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #' An integration can belong to only one domain.
 #'
 #' @usage
-#' customerprofiles_put_integration(DomainName, Uri, ObjectTypeName, Tags)
+#' customerprofiles_put_integration(DomainName, Uri, ObjectTypeName, Tags,
+#'   FlowDefinition, ObjectTypeNames)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
-#' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
-#' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
+#' @param Uri The URI of the S3 bucket or any other type of data source.
+#' @param ObjectTypeName The name of the profile object type.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' @param FlowDefinition The configuration that controls how Customer Profiles retrieves data
+#' from the source.
+#' @param ObjectTypeNames A map in which each key is an event type from an external application
+#' such as Segment or Shopify, and each value is an `ObjectTypeName`
+#' (template) used to ingest the event. It supports the following event
+#' types: `SegmentIdentify`, `ShopifyCreateCustomers`,
+#' `ShopifyUpdateCustomers`, `ShopifyCreateDraftOrders`,
+#' `ShopifyUpdateDraftOrders`, `ShopifyCreateOrders`, and
+#' `ShopifyUpdatedOrders`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1327,7 +2365,11 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #'   ),
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   ObjectTypeNames = list(
+#'     "string"
+#'   ),
+#'   WorkflowId = "string"
 #' )
 #' ```
 #'
@@ -1339,6 +2381,80 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #'   ObjectTypeName = "string",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   FlowDefinition = list(
+#'     Description = "string",
+#'     FlowName = "string",
+#'     KmsArn = "string",
+#'     SourceFlowConfig = list(
+#'       ConnectorProfileName = "string",
+#'       ConnectorType = "Salesforce"|"Marketo"|"Zendesk"|"Servicenow"|"S3",
+#'       IncrementalPullConfig = list(
+#'         DatetimeTypeFieldName = "string"
+#'       ),
+#'       SourceConnectorProperties = list(
+#'         Marketo = list(
+#'           Object = "string"
+#'         ),
+#'         S3 = list(
+#'           BucketName = "string",
+#'           BucketPrefix = "string"
+#'         ),
+#'         Salesforce = list(
+#'           Object = "string",
+#'           EnableDynamicFieldUpdate = TRUE|FALSE,
+#'           IncludeDeletedRecords = TRUE|FALSE
+#'         ),
+#'         ServiceNow = list(
+#'           Object = "string"
+#'         ),
+#'         Zendesk = list(
+#'           Object = "string"
+#'         )
+#'       )
+#'     ),
+#'     Tasks = list(
+#'       list(
+#'         ConnectorOperator = list(
+#'           Marketo = "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'           S3 = "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'           Salesforce = "PROJECTION"|"LESS_THAN"|"CONTAINS"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'           ServiceNow = "PROJECTION"|"CONTAINS"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'           Zendesk = "PROJECTION"|"GREATER_THAN"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP"
+#'         ),
+#'         DestinationField = "string",
+#'         SourceFields = list(
+#'           "string"
+#'         ),
+#'         TaskProperties = list(
+#'           "string"
+#'         ),
+#'         TaskType = "Arithmetic"|"Filter"|"Map"|"Mask"|"Merge"|"Truncate"|"Validate"
+#'       )
+#'     ),
+#'     TriggerConfig = list(
+#'       TriggerType = "Scheduled"|"Event"|"OnDemand",
+#'       TriggerProperties = list(
+#'         Scheduled = list(
+#'           ScheduleExpression = "string",
+#'           DataPullMode = "Incremental"|"Complete",
+#'           ScheduleStartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ScheduleEndTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Timezone = "string",
+#'           ScheduleOffset = 123,
+#'           FirstExecutionFrom = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ObjectTypeNames = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -1346,14 +2462,14 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_put_integration
-customerprofiles_put_integration <- function(DomainName, Uri, ObjectTypeName, Tags = NULL) {
+customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeName = NULL, Tags = NULL, FlowDefinition = NULL, ObjectTypeNames = NULL) {
   op <- new_operation(
     name = "PutIntegration",
     http_method = "PUT",
     http_path = "/domains/{DomainName}/integrations",
     paginator = list()
   )
-  input <- .customerprofiles$put_integration_input(DomainName = DomainName, Uri = Uri, ObjectTypeName = ObjectTypeName, Tags = Tags)
+  input <- .customerprofiles$put_integration_input(DomainName = DomainName, Uri = Uri, ObjectTypeName = ObjectTypeName, Tags = Tags, FlowDefinition = FlowDefinition, ObjectTypeNames = ObjectTypeNames)
   output <- .customerprofiles$put_integration_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -1433,12 +2549,20 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' @usage
 #' customerprofiles_put_profile_object_type(DomainName, ObjectTypeName,
 #'   Description, TemplateId, ExpirationDays, EncryptionKey,
-#'   AllowProfileCreation, Fields, Keys, Tags)
+#'   AllowProfileCreation, SourceLastUpdatedTimestampFormat, Fields, Keys,
+#'   Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
 #' @param Description &#91;required&#93; Description of the profile object type.
-#' @param TemplateId A unique identifier for the object template.
+#' @param TemplateId A unique identifier for the object template. For some attributes in the
+#' request, the service will use the default value from the object template
+#' when TemplateId is present. If these attributes are present in the
+#' request, the service may return a `BadRequestException`. These
+#' attributes include: AllowProfileCreation,
+#' SourceLastUpdatedTimestampFormat, Fields, and Keys. For example, if
+#' AllowProfileCreation is set to true when TemplateId is set, the service
+#' may return a `BadRequestException`.
 #' @param ExpirationDays The number of days until the data in the object expires.
 #' @param EncryptionKey The customer-provided key to encrypt the profile object that will be
 #' created in this profile object type.
@@ -1448,6 +2572,8 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' to fetch a standard profile and associate this object with the profile.
 #' If it is set to `TRUE`, and if no match is found, then the service
 #' creates a new standard profile.
+#' @param SourceLastUpdatedTimestampFormat The format of your `sourceLastUpdatedTimestamp` that was previously set
+#' up.
 #' @param Fields A map of the name and ObjectType field.
 #' @param Keys A list of unique keys that can be used to map data to the profile.
 #' @param Tags The tags used to organize, track, or control access for this resource.
@@ -1462,6 +2588,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'   ExpirationDays = 123,
 #'   EncryptionKey = "string",
 #'   AllowProfileCreation = TRUE|FALSE,
+#'   SourceLastUpdatedTimestampFormat = "string",
 #'   Fields = list(
 #'     list(
 #'       Source = "string",
@@ -1473,7 +2600,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"|"ORDER"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -1503,6 +2630,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'   ExpirationDays = 123,
 #'   EncryptionKey = "string",
 #'   AllowProfileCreation = TRUE|FALSE,
+#'   SourceLastUpdatedTimestampFormat = "string",
 #'   Fields = list(
 #'     list(
 #'       Source = "string",
@@ -1514,7 +2642,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
+#'           "PROFILE"|"ASSET"|"CASE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"|"ORDER"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -1531,14 +2659,14 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' @keywords internal
 #'
 #' @rdname customerprofiles_put_profile_object_type
-customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName, Description, TemplateId = NULL, ExpirationDays = NULL, EncryptionKey = NULL, AllowProfileCreation = NULL, Fields = NULL, Keys = NULL, Tags = NULL) {
+customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName, Description, TemplateId = NULL, ExpirationDays = NULL, EncryptionKey = NULL, AllowProfileCreation = NULL, SourceLastUpdatedTimestampFormat = NULL, Fields = NULL, Keys = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutProfileObjectType",
     http_method = "PUT",
     http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}",
     paginator = list()
   )
-  input <- .customerprofiles$put_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, TemplateId = TemplateId, ExpirationDays = ExpirationDays, EncryptionKey = EncryptionKey, AllowProfileCreation = AllowProfileCreation, Fields = Fields, Keys = Keys, Tags = Tags)
+  input <- .customerprofiles$put_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, TemplateId = TemplateId, ExpirationDays = ExpirationDays, EncryptionKey = EncryptionKey, AllowProfileCreation = AllowProfileCreation, SourceLastUpdatedTimestampFormat = SourceLastUpdatedTimestampFormat, Fields = Fields, Keys = Keys, Tags = Tags)
   output <- .customerprofiles$put_profile_object_type_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -1563,10 +2691,12 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 #' @param MaxResults The maximum number of objects returned per page.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param KeyName &#91;required&#93; A searchable identifier of a customer profile. The predefined keys you
-#' can use to search include: _account, _profileId, _fullName, _phone,
-#' _email, _ctrContactId, _marketoLeadId, _salesforceAccountId,
-#' _salesforceContactId, _zendeskUserId, _zendeskExternalId,
-#' _serviceNowSystemId.
+#' can use to search include: _account, _profileId, _assetId, _caseId,
+#' _orderId, _fullName, _phone, _email, _ctrContactId,
+#' _marketoLeadId, _salesforceAccountId, _salesforceContactId,
+#' _salesforceAssetId, _zendeskUserId, _zendeskExternalId,
+#' _zendeskTicketId, _serviceNowSystemId, _serviceNowIncidentId,
+#' _segmentUserId, _shopifyCustomerId, _shopifyOrderId.
 #' @param Values &#91;required&#93; A list of key values.
 #'
 #' @return
@@ -1797,13 +2927,23 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the properties of a domain, including creating or selecting a
 #' dead letter queue or an encryption key.
 #' 
-#' Once a domain is created, the name can’t be changed.
+#' After a domain is created, the name can’t be changed.
+#' 
+#' Use this API or [`create_domain`][customerprofiles_create_domain] to
+#' enable [identity
+#' resolution](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html):
+#' set `Matching` to true.
+#' 
+#' To prevent cross-service impersonation when you call this API, see
+#' [Cross-service confused deputy
+#' prevention](https://docs.aws.amazon.com/connect/latest/adminguide/cross-service-confused-deputy-prevention.html)
+#' for sample policies that you should apply.
 #'
 #' @usage
 #' customerprofiles_update_domain(DomainName, DefaultExpirationDays,
-#'   DefaultEncryptionKey, DeadLetterQueueUrl, Tags)
+#'   DefaultEncryptionKey, DeadLetterQueueUrl, Matching, Tags)
 #'
-#' @param DomainName &#91;required&#93; The unique name for the domain.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param DefaultExpirationDays The default number of days until the data within the domain expires.
 #' @param DefaultEncryptionKey The default encryption key, which is an AWS managed key, is used when no
 #' specific type of encryption key is specified. It is used to encrypt all
@@ -1815,6 +2955,16 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' set up a policy on the DeadLetterQueue for the SendMessage operation to
 #' enable Amazon Connect Customer Profiles to send messages to the
 #' DeadLetterQueue.
+#' @param Matching The process of matching duplicate profiles. If `Matching` = `true`,
+#' Amazon Connect Customer Profiles starts a weekly batch process called
+#' Identity Resolution Job. If you do not specify a date and time for
+#' Identity Resolution Job to run, by default it runs every Saturday at
+#' 12AM UTC to detect duplicate profiles in your domains.
+#' 
+#' After the Identity Resolution Job completes, use the
+#' [`get_matches`][customerprofiles_get_matches] API to return and review
+#' the results. Or, if you have configured `ExportingConfig` in the
+#' `MatchingRequest`, you can download the results from S3.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -1825,6 +2975,34 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #'   DefaultExpirationDays = 123,
 #'   DefaultEncryptionKey = "string",
 #'   DeadLetterQueueUrl = "string",
+#'   Matching = list(
+#'     Enabled = TRUE|FALSE,
+#'     JobSchedule = list(
+#'       DayOfTheWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY",
+#'       Time = "string"
+#'     ),
+#'     AutoMerging = list(
+#'       Enabled = TRUE|FALSE,
+#'       Consolidation = list(
+#'         MatchingAttributesList = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ConflictResolution = list(
+#'         ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'         SourceName = "string"
+#'       ),
+#'       MinAllowedConfidenceScoreForMerging = 123.0
+#'     ),
+#'     ExportingConfig = list(
+#'       S3Exporting = list(
+#'         S3BucketName = "string",
+#'         S3KeyName = "string"
+#'       )
+#'     )
+#'   ),
 #'   CreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1844,6 +3022,34 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #'   DefaultExpirationDays = 123,
 #'   DefaultEncryptionKey = "string",
 #'   DeadLetterQueueUrl = "string",
+#'   Matching = list(
+#'     Enabled = TRUE|FALSE,
+#'     JobSchedule = list(
+#'       DayOfTheWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY",
+#'       Time = "string"
+#'     ),
+#'     AutoMerging = list(
+#'       Enabled = TRUE|FALSE,
+#'       Consolidation = list(
+#'         MatchingAttributesList = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ConflictResolution = list(
+#'         ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'         SourceName = "string"
+#'       ),
+#'       MinAllowedConfidenceScoreForMerging = 123.0
+#'     ),
+#'     ExportingConfig = list(
+#'       S3Exporting = list(
+#'         S3BucketName = "string",
+#'         S3KeyName = "string"
+#'       )
+#'     )
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -1853,14 +3059,14 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_update_domain
-customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Tags = NULL) {
+customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "PUT",
     http_path = "/domains/{DomainName}",
     paginator = list()
   )
-  input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Tags = Tags)
+  input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, Tags = Tags)
   output <- .customerprofiles$update_domain_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -1890,7 +3096,7 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
-#' @param AdditionalInformation Any additional information relevant to the customer's profile.
+#' @param AdditionalInformation Any additional information relevant to the customer’s profile.
 #' @param AccountNumber A unique account number that you have given to the customer.
 #' @param PartyType The type of profile used to describe the customer.
 #' @param BusinessName The name of the customer’s business.
@@ -1899,12 +3105,12 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #' @param LastName The customer’s last name.
 #' @param BirthDate The customer’s birth date.
 #' @param Gender The gender with which the customer identifies.
-#' @param PhoneNumber The customer's phone number, which has not been specified as a mobile,
+#' @param PhoneNumber The customer’s phone number, which has not been specified as a mobile,
 #' home, or business number.
 #' @param MobilePhoneNumber The customer’s mobile phone number.
 #' @param HomePhoneNumber The customer’s home phone number.
 #' @param BusinessPhoneNumber The customer’s business phone number.
-#' @param EmailAddress The customer's email address, which has not been specified as a personal
+#' @param EmailAddress The customer’s email address, which has not been specified as a personal
 #' or business address.
 #' @param PersonalEmailAddress The customer’s personal email address.
 #' @param BusinessEmailAddress The customer’s business email address.

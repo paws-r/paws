@@ -4,8 +4,11 @@
 \alias{elasticsearchservice_list_domains_for_package}
 \title{Lists all Amazon ES domains associated with the package}
 \usage{
-elasticsearchservice_list_domains_for_package(PackageID, MaxResults,
-  NextToken)
+elasticsearchservice_list_domains_for_package(
+  PackageID,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{PackageID}{[required] The package for which to list domains.}
@@ -16,40 +19,9 @@ elasticsearchservice_list_domains_for_package(PackageID, MaxResults,
 non-null NextToken value. If provided, returns results for the next
 page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainPackageDetailsList = list(
-    list(
-      PackageID = "string",
-      PackageName = "string",
-      PackageType = "TXT-DICTIONARY",
-      LastUpdated = as.POSIXct(
-        "2015-01-01"
-      ),
-      DomainName = "string",
-      DomainPackageStatus = "ASSOCIATING"|"ASSOCIATION_FAILED"|"ACTIVE"|"DISSOCIATING"|"DISSOCIATION_FAILED",
-      PackageVersion = "string",
-      ReferencePath = "string",
-      ErrorDetails = list(
-        ErrorType = "string",
-        ErrorMessage = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists all Amazon ES domains associated with the package.
-}
-\section{Request syntax}{
-\preformatted{svc$list_domains_for_package(
-  PackageID = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/list_domains_for_package.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{apigatewayv2_create_deployment}
 \title{Creates a Deployment for an API}
 \usage{
-apigatewayv2_create_deployment(ApiId, Description, StageName)
+apigatewayv2_create_deployment(ApiId, Description = NULL, StageName = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -13,29 +13,9 @@ apigatewayv2_create_deployment(ApiId, Description, StageName)
 
 \item{StageName}{The name of the Stage resource for the Deployment resource to create.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoDeployed = TRUE|FALSE,
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  DeploymentId = "string",
-  DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
-  DeploymentStatusMessage = "string",
-  Description = "string"
-)
-}
-}
 \description{
 Creates a Deployment for an API.
-}
-\section{Request syntax}{
-\preformatted{svc$create_deployment(
-  ApiId = "string",
-  Description = "string",
-  StageName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/create_deployment.html} for full documentation.
+}
 \keyword{internal}

@@ -9,38 +9,9 @@ appstream_batch_disassociate_user_stack(UserStackAssociations)
 \arguments{
 \item{UserStackAssociations}{[required] The list of UserStackAssociation objects.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  errors = list(
-    list(
-      UserStackAssociation = list(
-        StackName = "string",
-        UserName = "string",
-        AuthenticationType = "API"|"SAML"|"USERPOOL",
-        SendEmailNotification = TRUE|FALSE
-      ),
-      ErrorCode = "STACK_NOT_FOUND"|"USER_NAME_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INTERNAL_ERROR",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Disassociates the specified users from the specified stacks.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_disassociate_user_stack(
-  UserStackAssociations = list(
-    list(
-      StackName = "string",
-      UserName = "string",
-      AuthenticationType = "API"|"SAML"|"USERPOOL",
-      SendEmailNotification = TRUE|FALSE
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appstream/batch_disassociate_user_stack.html} for full documentation.
+}
 \keyword{internal}

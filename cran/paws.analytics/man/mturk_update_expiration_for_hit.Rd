@@ -12,22 +12,9 @@ mturk_update_expiration_for_hit(HITId, ExpireAt)
 
 \item{ExpireAt}{[required] The date and time at which you want the HIT to expire}
 }
-\value{
-An empty list.
-}
 \description{
-The \code{\link[=mturk_update_expiration_for_hit]{update_expiration_for_hit}}
-operation allows you update the expiration time of a HIT. If you update
-it to a time in the past, the HIT will be immediately expired.
-}
-\section{Request syntax}{
-\preformatted{svc$update_expiration_for_hit(
-  HITId = "string",
-  ExpireAt = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
+The \code{\link[=mturk_update_expiration_for_hit]{update_expiration_for_hit}} operation allows you update the expiration time of a HIT. If you update it to a time in the past, the HIT will be immediately expired.
 
+See \url{https://paws-r.github.io/docs/mturk/update_expiration_for_hit.html} for full documentation.
+}
 \keyword{internal}

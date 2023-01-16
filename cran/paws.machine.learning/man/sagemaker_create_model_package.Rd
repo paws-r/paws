@@ -2,15 +2,30 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_model_package}
 \alias{sagemaker_create_model_package}
-\title{Creates a model package that you can use to create Amazon SageMaker
-models or list on AWS Marketplace, or a versioned model that is part of
-a model group}
+\title{Creates a model package that you can use to create SageMaker models or
+list on Amazon Web Services Marketplace, or a versioned model that is
+part of a model group}
 \usage{
-sagemaker_create_model_package(ModelPackageName, ModelPackageGroupName,
-  ModelPackageDescription, InferenceSpecification,
-  ValidationSpecification, SourceAlgorithmSpecification,
-  CertifyForMarketplace, Tags, ModelApprovalStatus, MetadataProperties,
-  ModelMetrics, ClientToken)
+sagemaker_create_model_package(
+  ModelPackageName = NULL,
+  ModelPackageGroupName = NULL,
+  ModelPackageDescription = NULL,
+  InferenceSpecification = NULL,
+  ValidationSpecification = NULL,
+  SourceAlgorithmSpecification = NULL,
+  CertifyForMarketplace = NULL,
+  Tags = NULL,
+  ModelApprovalStatus = NULL,
+  MetadataProperties = NULL,
+  ModelMetrics = NULL,
+  ClientToken = NULL,
+  CustomerMetadataProperties = NULL,
+  DriftCheckBaselines = NULL,
+  Domain = NULL,
+  Task = NULL,
+  SamplePayloadUrl = NULL,
+  AdditionalInferenceSpecifications = NULL
+)
 }
 \arguments{
 \item{ModelPackageName}{The name of the model package. The name must have 1 to 63 characters.
@@ -19,7 +34,8 @@ Valid characters are a-z, A-Z, 0-9, and - (hyphen).
 This parameter is required for unversioned models. It is not applicable
 to versioned models.}
 
-\item{ModelPackageGroupName}{The name of the model group that this model version belongs to.
+\item{ModelPackageGroupName}{The name or Amazon Resource Name (ARN) of the model package group that
+this model version belongs to.
 
 This parameter is required for versioned models, and does not apply to
 unversioned models.}
@@ -37,19 +53,20 @@ jobs and real-time endpoints used for inference.
 for inference.
 }}
 
-\item{ValidationSpecification}{Specifies configurations for one or more transform jobs that Amazon
-SageMaker runs to test the model package.}
+\item{ValidationSpecification}{Specifies configurations for one or more transform jobs that SageMaker
+runs to test the model package.}
 
 \item{SourceAlgorithmSpecification}{Details about the algorithm that was used to create the model package.}
 
-\item{CertifyForMarketplace}{Whether to certify the model package for listing on AWS Marketplace.
+\item{CertifyForMarketplace}{Whether to certify the model package for listing on Amazon Web Services
+Marketplace.
 
 This parameter is optional for unversioned models, and does not apply to
 versioned models.}
 
 \item{Tags}{A list of key value pairs associated with the model. For more
-information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
-in the \emph{AWS General Reference Guide}.}
+information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+in the \emph{Amazon Web Services General Reference Guide}.}
 
 \item{ModelApprovalStatus}{Whether the model is approved for deployment.
 
@@ -64,163 +81,39 @@ For versioned models, the value of this parameter must be set to
 \item{ModelMetrics}{A structure that contains model metrics reports.}
 
 \item{ClientToken}{A unique token that guarantees that the call to this API is idempotent.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelPackageArn = "string"
-)
-}
+
+\item{CustomerMetadataProperties}{The metadata properties associated with the model package versions.}
+
+\item{DriftCheckBaselines}{Represents the drift check baselines that can be used when the model
+monitor is set using the model package. For more information, see the
+topic on \href{https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-quality-clarify-baseline-lifecycle.html#pipelines-quality-clarify-baseline-drift-detection}{Drift Detection against Previous Baselines in SageMaker Pipelines}
+in the \emph{Amazon SageMaker Developer Guide}.}
+
+\item{Domain}{The machine learning domain of your model package and its components.
+Common machine learning domains include computer vision and natural
+language processing.}
+
+\item{Task}{The machine learning task your model package accomplishes. Common
+machine learning tasks include object detection and image
+classification. The following tasks are supported by Inference
+Recommender: \code{"IMAGE_CLASSIFICATION"} | \code{"OBJECT_DETECTION"} |
+\code{"TEXT_GENERATION"} |\code{"IMAGE_SEGMENTATION"} | \code{"FILL_MASK"} |
+\code{"CLASSIFICATION"} | \code{"REGRESSION"} | \code{"OTHER"}.
+
+Specify "OTHER" if none of the tasks listed fit your use case.}
+
+\item{SamplePayloadUrl}{The Amazon Simple Storage Service (Amazon S3) path where the sample
+payload are stored. This path must point to a single gzip compressed tar
+archive (.tar.gz suffix).}
+
+\item{AdditionalInferenceSpecifications}{An array of additional Inference Specification objects. Each additional
+Inference Specification specifies artifacts based on this model package
+that can be used on inference endpoints. Generally used with SageMaker
+Neo to store the compiled artifacts.}
 }
 \description{
-Creates a model package that you can use to create Amazon SageMaker
-models or list on AWS Marketplace, or a versioned model that is part of
-a model group. Buyers can subscribe to model packages listed on AWS
-Marketplace to create models in Amazon SageMaker.
+Creates a model package that you can use to create SageMaker models or list on Amazon Web Services Marketplace, or a versioned model that is part of a model group. Buyers can subscribe to model packages listed on Amazon Web Services Marketplace to create models in SageMaker.
 
-To create a model package by specifying a Docker container that contains
-your inference code and the Amazon S3 location of your model artifacts,
-provide values for \code{InferenceSpecification}. To create a model from an
-algorithm resource that you created or subscribed to in AWS Marketplace,
-provide a value for \code{SourceAlgorithmSpecification}.
-
-There are two types of model packages:
-\itemize{
-\item Versioned - a model that is part of a model group in the model
-registry.
-\item Unversioned - a model package that is not part of a model group.
+See \url{https://paws-r.github.io/docs/sagemaker/create_model_package.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$create_model_package(
-  ModelPackageName = "string",
-  ModelPackageGroupName = "string",
-  ModelPackageDescription = "string",
-  InferenceSpecification = list(
-    Containers = list(
-      list(
-        ContainerHostname = "string",
-        Image = "string",
-        ImageDigest = "string",
-        ModelDataUrl = "string",
-        ProductId = "string"
-      )
-    ),
-    SupportedTransformInstanceTypes = list(
-      "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"
-    ),
-    SupportedRealtimeInferenceInstanceTypes = list(
-      "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"
-    ),
-    SupportedContentTypes = list(
-      "string"
-    ),
-    SupportedResponseMIMETypes = list(
-      "string"
-    )
-  ),
-  ValidationSpecification = list(
-    ValidationRole = "string",
-    ValidationProfiles = list(
-      list(
-        ProfileName = "string",
-        TransformJobDefinition = list(
-          MaxConcurrentTransforms = 123,
-          MaxPayloadInMB = 123,
-          BatchStrategy = "MultiRecord"|"SingleRecord",
-          Environment = list(
-            "string"
-          ),
-          TransformInput = list(
-            DataSource = list(
-              S3DataSource = list(
-                S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
-                S3Uri = "string"
-              )
-            ),
-            ContentType = "string",
-            CompressionType = "None"|"Gzip",
-            SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
-          ),
-          TransformOutput = list(
-            S3OutputPath = "string",
-            Accept = "string",
-            AssembleWith = "None"|"Line",
-            KmsKeyId = "string"
-          ),
-          TransformResources = list(
-            InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge",
-            InstanceCount = 123,
-            VolumeKmsKeyId = "string"
-          )
-        )
-      )
-    )
-  ),
-  SourceAlgorithmSpecification = list(
-    SourceAlgorithms = list(
-      list(
-        ModelDataUrl = "string",
-        AlgorithmName = "string"
-      )
-    )
-  ),
-  CertifyForMarketplace = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval",
-  MetadataProperties = list(
-    CommitId = "string",
-    Repository = "string",
-    GeneratedBy = "string",
-    ProjectId = "string"
-  ),
-  ModelMetrics = list(
-    ModelQuality = list(
-      Statistics = list(
-        ContentType = "string",
-        ContentDigest = "string",
-        S3Uri = "string"
-      ),
-      Constraints = list(
-        ContentType = "string",
-        ContentDigest = "string",
-        S3Uri = "string"
-      )
-    ),
-    ModelDataQuality = list(
-      Statistics = list(
-        ContentType = "string",
-        ContentDigest = "string",
-        S3Uri = "string"
-      ),
-      Constraints = list(
-        ContentType = "string",
-        ContentDigest = "string",
-        S3Uri = "string"
-      )
-    ),
-    Bias = list(
-      Report = list(
-        ContentType = "string",
-        ContentDigest = "string",
-        S3Uri = "string"
-      )
-    ),
-    Explainability = list(
-      Report = list(
-        ContentType = "string",
-        ContentDigest = "string",
-        S3Uri = "string"
-      )
-    )
-  ),
-  ClientToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Retrieves a list that describes one or more specified fleets, if the
 fleet names are provided}
 \usage{
-appstream_describe_fleets(Names, NextToken)
+appstream_describe_fleets(Names = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Names}{The names of the fleets to describe.}
@@ -13,71 +13,9 @@ appstream_describe_fleets(Names, NextToken)
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Fleets = list(
-    list(
-      Arn = "string",
-      Name = "string",
-      DisplayName = "string",
-      Description = "string",
-      ImageName = "string",
-      ImageArn = "string",
-      InstanceType = "string",
-      FleetType = "ALWAYS_ON"|"ON_DEMAND",
-      ComputeCapacityStatus = list(
-        Desired = 123,
-        Running = 123,
-        InUse = 123,
-        Available = 123
-      ),
-      MaxUserDurationInSeconds = 123,
-      DisconnectTimeoutInSeconds = 123,
-      State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED",
-      VpcConfig = list(
-        SubnetIds = list(
-          "string"
-        ),
-        SecurityGroupIds = list(
-          "string"
-        )
-      ),
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      FleetErrors = list(
-        list(
-          ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-          ErrorMessage = "string"
-        )
-      ),
-      EnableDefaultInternetAccess = TRUE|FALSE,
-      DomainJoinInfo = list(
-        DirectoryName = "string",
-        OrganizationalUnitDistinguishedName = "string"
-      ),
-      IdleDisconnectTimeoutInSeconds = 123,
-      IamRoleArn = "string",
-      StreamView = "APP"|"DESKTOP"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list that describes one or more specified fleets, if the
-fleet names are provided. Otherwise, all fleets in the account are
-described.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_fleets(
-  Names = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
+Retrieves a list that describes one or more specified fleets, if the fleet names are provided. Otherwise, all fleets in the account are described.
 
+See \url{https://paws-r.github.io/docs/appstream/describe_fleets.html} for full documentation.
+}
 \keyword{internal}

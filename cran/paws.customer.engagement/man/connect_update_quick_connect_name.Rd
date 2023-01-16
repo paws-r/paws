@@ -2,14 +2,18 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_update_quick_connect_name}
 \alias{connect_update_quick_connect_name}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Updates the name and description of a quick connect}
 \usage{
-connect_update_quick_connect_name(InstanceId, QuickConnectId, Name,
-  Description)
+connect_update_quick_connect_name(
+  InstanceId,
+  QuickConnectId,
+  Name = NULL,
+  Description = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{QuickConnectId}{[required] The identifier for the quick connect.}
 
@@ -17,25 +21,9 @@ connect_update_quick_connect_name(InstanceId, QuickConnectId, Name,
 
 \item{Description}{The description of the quick connect.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+Updates the name and description of a quick connect. The request accepts the following data in JSON format. At least \code{Name} or \code{Description} must be provided.
 
-Updates the name and description of a quick connect. The request accepts
-the following data in JSON format. At least Name or Description must be
-provided.
+See \url{https://paws-r.github.io/docs/connect/update_quick_connect_name.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_quick_connect_name(
-  InstanceId = "string",
-  QuickConnectId = "string",
-  Name = "string",
-  Description = "string"
-)
-}
-}
-
 \keyword{internal}

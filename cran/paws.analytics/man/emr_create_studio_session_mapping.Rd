@@ -2,58 +2,48 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_create_studio_session_mapping}
 \alias{emr_create_studio_session_mapping}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Maps a user or group to the Amazon EMR Studio specified by StudioId, and
+applies a session policy to refine Studio permissions for that user or
+group}
 \usage{
-emr_create_studio_session_mapping(StudioId, IdentityId, IdentityName,
-  IdentityType, SessionPolicyArn)
+emr_create_studio_session_mapping(
+  StudioId,
+  IdentityId = NULL,
+  IdentityName = NULL,
+  IdentityType,
+  SessionPolicyArn
+)
 }
 \arguments{
 \item{StudioId}{[required] The ID of the Amazon EMR Studio to which the user or group will be
 mapped.}
 
-\item{IdentityId}{The globally unique identifier (GUID) of the user or group from the AWS
-SSO Identity Store. For more information, see
+\item{IdentityId}{The globally unique identifier (GUID) of the user or group from the
+Amazon Web Services SSO Identity Store. For more information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId}{UserId}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-GroupId}{GroupId}
-in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} or
-\code{IdentityId} must be specified.}
+in the \emph{Amazon Web Services SSO Identity Store API Reference}. Either
+\code{IdentityName} or \code{IdentityId} must be specified, but not both.}
 
 \item{IdentityName}{The name of the user or group. For more information, see
-\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId}{UserName}
+\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName}{UserName}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName}{DisplayName}
-in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} or
-\code{IdentityId} must be specified.}
+in the \emph{Amazon Web Services SSO Identity Store API Reference}. Either
+\code{IdentityName} or \code{IdentityId} must be specified, but not both.}
 
-\item{IdentityType}{[required] Specifies whether the identity to map to the Studio is a user or a
-group.}
+\item{IdentityType}{[required] Specifies whether the identity to map to the Amazon EMR Studio is a user
+or a group.}
 
 \item{SessionPolicyArn}{[required] The Amazon Resource Name (ARN) for the session policy that will be
-applied to the user or group. Session policies refine Studio user
-permissions without the need to use multiple IAM user roles.}
-}
-\value{
-An empty list.
+applied to the user or group. You should specify the ARN for the session
+policy that you want to apply, not the ARN of your user role. For more
+information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Create an EMR Studio User Role with Session Policies}.}
 }
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
+Maps a user or group to the Amazon EMR Studio specified by \code{StudioId}, and applies a session policy to refine Studio permissions for that user or group. Use \code{\link[=emr_create_studio_session_mapping]{create_studio_session_mapping}} to assign users to a Studio when you use Amazon Web Services SSO authentication. For instructions on how to assign users to a Studio when you use IAM authentication, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-studio-manage-users.html#emr-studio-assign-users-groups}{Assign a user or group to your EMR Studio}.
 
-Maps a user or group to the Amazon EMR Studio specified by \code{StudioId},
-and applies a session policy to refine Studio permissions for that user
-or group.
+See \url{https://paws-r.github.io/docs/emr/create_studio_session_mapping.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_studio_session_mapping(
-  StudioId = "string",
-  IdentityId = "string",
-  IdentityName = "string",
-  IdentityType = "USER"|"GROUP",
-  SessionPolicyArn = "string"
-)
-}
-}
-
 \keyword{internal}

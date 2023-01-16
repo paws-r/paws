@@ -5,8 +5,13 @@
 \title{Retrieves (queries) pre-aggregated data for a standard execution metric
 that applies to a journey activity}
 \usage{
-pinpoint_get_journey_execution_activity_metrics(ApplicationId,
-  JourneyActivityId, JourneyId, NextToken, PageSize)
+pinpoint_get_journey_execution_activity_metrics(
+  ApplicationId,
+  JourneyActivityId,
+  JourneyId,
+  NextToken = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
@@ -24,34 +29,9 @@ journey metrics.}
 response. This parameter is not supported for application, campaign, and
 journey metrics.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JourneyExecutionActivityMetricsResponse = list(
-    ActivityType = "string",
-    ApplicationId = "string",
-    JourneyActivityId = "string",
-    JourneyId = "string",
-    LastEvaluatedTime = "string",
-    Metrics = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves (queries) pre-aggregated data for a standard execution metric
-that applies to a journey activity.
-}
-\section{Request syntax}{
-\preformatted{svc$get_journey_execution_activity_metrics(
-  ApplicationId = "string",
-  JourneyActivityId = "string",
-  JourneyId = "string",
-  NextToken = "string",
-  PageSize = "string"
-)
-}
-}
+Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity.
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_journey_execution_activity_metrics.html} for full documentation.
+}
 \keyword{internal}

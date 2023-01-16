@@ -2,25 +2,17 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_import_catalog_to_glue}
 \alias{glue_import_catalog_to_glue}
-\title{Imports an existing Amazon Athena Data Catalog to AWS Glue}
+\title{Imports an existing Amazon Athena Data Catalog to Glue}
 \usage{
-glue_import_catalog_to_glue(CatalogId)
+glue_import_catalog_to_glue(CatalogId = NULL)
 }
 \arguments{
-\item{CatalogId}{The ID of the catalog to import. Currently, this should be the AWS
-account ID.}
-}
-\value{
-An empty list.
+\item{CatalogId}{The ID of the catalog to import. Currently, this should be the Amazon
+Web Services account ID.}
 }
 \description{
-Imports an existing Amazon Athena Data Catalog to AWS Glue
-}
-\section{Request syntax}{
-\preformatted{svc$import_catalog_to_glue(
-  CatalogId = "string"
-)
-}
-}
+Imports an existing Amazon Athena Data Catalog to Glue.
 
+See \url{https://paws-r.github.io/docs/glue/import_catalog_to_glue.html} for full documentation.
+}
 \keyword{internal}

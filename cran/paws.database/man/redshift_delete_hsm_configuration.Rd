@@ -9,17 +9,9 @@ redshift_delete_hsm_configuration(HsmConfigurationIdentifier)
 \arguments{
 \item{HsmConfigurationIdentifier}{[required] The identifier of the Amazon Redshift HSM configuration to be deleted.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified Amazon Redshift HSM configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_hsm_configuration(
-  HsmConfigurationIdentifier = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/delete_hsm_configuration.html} for full documentation.
+}
 \keyword{internal}

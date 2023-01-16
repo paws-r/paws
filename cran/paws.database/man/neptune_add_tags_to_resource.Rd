@@ -13,26 +13,9 @@ Amazon Resource Name (ARN). For information about creating an ARN, see
 
 \item{Tags}{[required] The tags to be assigned to the Amazon Neptune resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds metadata tags to an Amazon Neptune resource. These tags can also be
-used with cost allocation reporting to track cost associated with Amazon
-Neptune resources, or used in a Condition statement in an IAM policy for
-Amazon Neptune.
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
-  ResourceName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Adds metadata tags to an Amazon Neptune resource. These tags can also be used with cost allocation reporting to track cost associated with Amazon Neptune resources, or used in a Condition statement in an IAM policy for Amazon Neptune.
 
+See \url{https://paws-r.github.io/docs/neptune/add_tags_to_resource.html} for full documentation.
+}
 \keyword{internal}

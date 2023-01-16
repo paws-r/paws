@@ -4,7 +4,11 @@
 \alias{cloudsearch_describe_expressions}
 \title{Gets the expressions configured for the search domain}
 \usage{
-cloudsearch_describe_expressions(DomainName, ExpressionNames, Deployed)
+cloudsearch_describe_expressions(
+  DomainName,
+  ExpressionNames = NULL,
+  Deployed = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
@@ -16,47 +20,9 @@ are shown.}
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any
 pending changes (\code{false}). Defaults to \code{false}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Expressions = list(
-    list(
-      Options = list(
-        ExpressionName = "string",
-        ExpressionValue = "string"
-      ),
-      Status = list(
-        CreationDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        UpdateDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        UpdateVersion = 123,
-        State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-        PendingDeletion = TRUE|FALSE
-      )
-    )
-  )
-)
-}
-}
 \description{
-Gets the expressions configured for the search domain. Can be limited to
-specific expressions by name. By default, shows all expressions and
-includes any pending changes to the configuration. Set the \code{Deployed}
-option to \code{true} to show the active configuration and exclude pending
-changes. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions}
-in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_expressions(
-  DomainName = "string",
-  ExpressionNames = list(
-    "string"
-  ),
-  Deployed = TRUE|FALSE
-)
-}
-}
+Gets the expressions configured for the search domain. Can be limited to specific expressions by name. By default, shows all expressions and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the \emph{Amazon CloudSearch Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/describe_expressions.html} for full documentation.
+}
 \keyword{internal}

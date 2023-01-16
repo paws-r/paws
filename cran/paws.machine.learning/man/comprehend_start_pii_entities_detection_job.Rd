@@ -5,9 +5,17 @@
 \title{Starts an asynchronous PII entity detection job for a collection of
 documents}
 \usage{
-comprehend_start_pii_entities_detection_job(InputDataConfig,
-  OutputDataConfig, Mode, RedactionConfig, DataAccessRoleArn, JobName,
-  LanguageCode, ClientRequestToken)
+comprehend_start_pii_entities_detection_job(
+  InputDataConfig,
+  OutputDataConfig,
+  Mode,
+  RedactionConfig = NULL,
+  DataAccessRoleArn,
+  JobName = NULL,
+  LanguageCode,
+  ClientRequestToken = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{InputDataConfig}{[required] The input properties for a PII entities detection job.}
@@ -29,46 +37,20 @@ definition that includes the \code{PiiEntityTypes} parameter.}
 
 \item{JobName}{The identifier of the job.}
 
-\item{LanguageCode}{[required] The language of the input documents.}
+\item{LanguageCode}{[required] The language of the input documents. Currently, English is the only
+valid language.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
 token, Amazon Comprehend generates one.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string",
-  JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-)
-}
+
+\item{Tags}{Tags to be associated with the PII entities detection job. A tag is a
+key-value pair that adds metadata to a resource used by Amazon
+Comprehend. For example, a tag with "Sales" as the key might be added to
+a resource to indicate its use by the sales department.}
 }
 \description{
-Starts an asynchronous PII entity detection job for a collection of
-documents.
-}
-\section{Request syntax}{
-\preformatted{svc$start_pii_entities_detection_job(
-  InputDataConfig = list(
-    S3Uri = "string",
-    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-  ),
-  OutputDataConfig = list(
-    S3Uri = "string",
-    KmsKeyId = "string"
-  ),
-  Mode = "ONLY_REDACTION"|"ONLY_OFFSETS",
-  RedactionConfig = list(
-    PiiEntityTypes = list(
-      "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL"
-    ),
-    MaskMode = "MASK"|"REPLACE_WITH_PII_ENTITY_TYPE",
-    MaskCharacter = "string"
-  ),
-  DataAccessRoleArn = "string",
-  JobName = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-  ClientRequestToken = "string"
-)
-}
-}
+Starts an asynchronous PII entity detection job for a collection of documents.
 
+See \url{https://paws-r.github.io/docs/comprehend/start_pii_entities_detection_job.html} for full documentation.
+}
 \keyword{internal}

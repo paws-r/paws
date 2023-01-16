@@ -4,38 +4,48 @@
 \alias{s3_list_objects}
 \title{Returns some or all (up to 1,000) of the objects in a bucket}
 \usage{
-s3_list_objects(Bucket, Delimiter, EncodingType, Marker, MaxKeys,
-  Prefix, RequestPayer, ExpectedBucketOwner)
+s3_list_objects(
+  Bucket,
+  Delimiter = NULL,
+  EncodingType = NULL,
+  Marker = NULL,
+  MaxKeys = NULL,
+  Prefix = NULL,
+  RequestPayer = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the objects.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Delimiter}{A delimiter is a character you use to group keys.}
 
 \item{EncodingType}{}
 
-\item{Marker}{Specifies the key to start with when listing objects in a bucket.}
+\item{Marker}{Marker is where you want Amazon S3 to start listing from. Amazon S3
+starts listing after this specified key. Marker can be any key in the
+bucket.}
 
 \item{MaxKeys}{Sets the maximum number of keys returned in the response. By default the
-API returns up to 1,000 key names. The response might contain fewer keys
-but will never contain more.}
+action returns up to 1,000 key names. The response might contain fewer
+keys but will never contain more.}
 
 \item{Prefix}{Limits the response to keys that begin with the specified prefix.}
 
@@ -43,87 +53,13 @@ but will never contain more.}
 list objects request. Bucket owners need not specify this parameter in
 their requests.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  IsTruncated = TRUE|FALSE,
-  Marker = "string",
-  NextMarker = "string",
-  Contents = list(
-    list(
-      Key = "string",
-      LastModified = as.POSIXct(
-        "2015-01-01"
-      ),
-      ETag = "string",
-      Size = 123,
-      StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"OUTPOSTS",
-      Owner = list(
-        DisplayName = "string",
-        ID = "string"
-      )
-    )
-  ),
-  Name = "string",
-  Prefix = "string",
-  Delimiter = "string",
-  MaxKeys = 123,
-  CommonPrefixes = list(
-    list(
-      Prefix = "string"
-    )
-  ),
-  EncodingType = "url"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns some or all (up to 1,000) of the objects in a bucket. You can
-use the request parameters as selection criteria to return a subset of
-the objects in a bucket. A 200 OK response can contain valid or invalid
-XML. Be sure to design your application to parse the contents of the
-response and handle it appropriately.
+Returns some or all (up to 1,000) of the objects in a bucket. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A 200 OK response can contain valid or invalid XML. Be sure to design your application to parse the contents of the response and handle it appropriately.
 
-This API has been revised. We recommend that you use the newer version,
-\code{\link[=s3_list_objects_v2]{list_objects_v2}}, when developing applications.
-For backward compatibility, Amazon S3 continues to support
-\code{\link[=s3_list_objects]{list_objects}}.
-
-The following operations are related to
-\code{\link[=s3_list_objects]{list_objects}}:
-\itemize{
-\item \code{\link[=s3_list_objects_v2]{list_objects_v2}}
-\item \code{\link[=s3_get_object]{get_object}}
-\item \code{\link[=s3_put_object]{put_object}}
-\item \code{\link[=s3_create_bucket]{create_bucket}}
-\item \code{\link[=s3_list_buckets]{list_buckets}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_objects(
-  Bucket = "string",
-  Delimiter = "string",
-  EncodingType = "url",
-  Marker = "string",
-  MaxKeys = 123,
-  Prefix = "string",
-  RequestPayer = "requester",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example list two objects in a bucket.
-svc$list_objects(
-  Bucket = "examplebucket",
-  MaxKeys = "2"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/list_objects.html} for full documentation.
 }
 \keyword{internal}

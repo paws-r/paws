@@ -7,7 +7,19 @@
 datapipeline(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -41,7 +53,9 @@ task runner reports the final success or failure of the task to the web
 service.
 }
 \section{Service syntax}{
-\preformatted{svc <- datapipeline(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- datapipeline(
   config = list(
     credentials = list(
       creds = list(
@@ -49,37 +63,41 @@ service.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=datapipeline_activate_pipeline]{activate_pipeline} \tab Validates the specified pipeline and starts processing pipeline tasks\cr
-\link[=datapipeline_add_tags]{add_tags} \tab Adds or modifies tags for the specified pipeline\cr
-\link[=datapipeline_create_pipeline]{create_pipeline} \tab Creates a new, empty pipeline\cr
-\link[=datapipeline_deactivate_pipeline]{deactivate_pipeline} \tab Deactivates the specified running pipeline\cr
-\link[=datapipeline_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline, its pipeline definition, and its run history\cr
-\link[=datapipeline_describe_objects]{describe_objects} \tab Gets the object definitions for a set of objects associated with the pipeline\cr
-\link[=datapipeline_describe_pipelines]{describe_pipelines} \tab Retrieves metadata about one or more pipelines\cr
-\link[=datapipeline_evaluate_expression]{evaluate_expression} \tab Task runners call EvaluateExpression to evaluate a string in the context of the specified object\cr
-\link[=datapipeline_get_pipeline_definition]{get_pipeline_definition} \tab Gets the definition of the specified pipeline\cr
-\link[=datapipeline_list_pipelines]{list_pipelines} \tab Lists the pipeline identifiers for all active pipelines that you have permission to access\cr
-\link[=datapipeline_poll_for_task]{poll_for_task} \tab Task runners call PollForTask to receive a task to perform from AWS Data Pipeline\cr
-\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition} \tab Adds tasks, schedules, and preconditions to the specified pipeline\cr
-\link[=datapipeline_query_objects]{query_objects} \tab Queries the specified pipeline for the names of objects that match the specified set of conditions\cr
-\link[=datapipeline_remove_tags]{remove_tags} \tab Removes existing tags from the specified pipeline\cr
-\link[=datapipeline_report_task_progress]{report_task_progress} \tab Task runners call ReportTaskProgress when assigned a task to acknowledge that it has the task\cr
-\link[=datapipeline_report_task_runner_heartbeat]{report_task_runner_heartbeat} \tab Task runners call ReportTaskRunnerHeartbeat every 15 minutes to indicate that they are operational\cr
-\link[=datapipeline_set_status]{set_status} \tab Requests that the status of the specified physical or logical pipeline objects be updated in the specified pipeline\cr
-\link[=datapipeline_set_task_status]{set_task_status} \tab Task runners call SetTaskStatus to notify AWS Data Pipeline that a task is completed and provide information about the final status\cr
-\link[=datapipeline_validate_pipeline_definition]{validate_pipeline_definition} \tab Validates the specified pipeline definition to ensure that it is well formed and can be run without error
+\link[paws.analytics:datapipeline_activate_pipeline]{activate_pipeline} \tab Validates the specified pipeline and starts processing pipeline tasks\cr
+\link[paws.analytics:datapipeline_add_tags]{add_tags} \tab Adds or modifies tags for the specified pipeline\cr
+\link[paws.analytics:datapipeline_create_pipeline]{create_pipeline} \tab Creates a new, empty pipeline\cr
+\link[paws.analytics:datapipeline_deactivate_pipeline]{deactivate_pipeline} \tab Deactivates the specified running pipeline\cr
+\link[paws.analytics:datapipeline_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline, its pipeline definition, and its run history\cr
+\link[paws.analytics:datapipeline_describe_objects]{describe_objects} \tab Gets the object definitions for a set of objects associated with the pipeline\cr
+\link[paws.analytics:datapipeline_describe_pipelines]{describe_pipelines} \tab Retrieves metadata about one or more pipelines\cr
+\link[paws.analytics:datapipeline_evaluate_expression]{evaluate_expression} \tab Task runners call EvaluateExpression to evaluate a string in the context of the specified object\cr
+\link[paws.analytics:datapipeline_get_pipeline_definition]{get_pipeline_definition} \tab Gets the definition of the specified pipeline\cr
+\link[paws.analytics:datapipeline_list_pipelines]{list_pipelines} \tab Lists the pipeline identifiers for all active pipelines that you have permission to access\cr
+\link[paws.analytics:datapipeline_poll_for_task]{poll_for_task} \tab Task runners call PollForTask to receive a task to perform from AWS Data Pipeline\cr
+\link[paws.analytics:datapipeline_put_pipeline_definition]{put_pipeline_definition} \tab Adds tasks, schedules, and preconditions to the specified pipeline\cr
+\link[paws.analytics:datapipeline_query_objects]{query_objects} \tab Queries the specified pipeline for the names of objects that match the specified set of conditions\cr
+\link[paws.analytics:datapipeline_remove_tags]{remove_tags} \tab Removes existing tags from the specified pipeline\cr
+\link[paws.analytics:datapipeline_report_task_progress]{report_task_progress} \tab Task runners call ReportTaskProgress when assigned a task to acknowledge that it has the task\cr
+\link[paws.analytics:datapipeline_report_task_runner_heartbeat]{report_task_runner_heartbeat} \tab Task runners call ReportTaskRunnerHeartbeat every 15 minutes to indicate that they are operational\cr
+\link[paws.analytics:datapipeline_set_status]{set_status} \tab Requests that the status of the specified physical or logical pipeline objects be updated in the specified pipeline\cr
+\link[paws.analytics:datapipeline_set_task_status]{set_task_status} \tab Task runners call SetTaskStatus to notify AWS Data Pipeline that a task is completed and provide information about the final status\cr
+\link[paws.analytics:datapipeline_validate_pipeline_definition]{validate_pipeline_definition} \tab Validates the specified pipeline definition to ensure that it is well formed and can be run without error
 }
 }
 

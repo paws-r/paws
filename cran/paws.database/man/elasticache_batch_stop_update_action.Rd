@@ -4,8 +4,11 @@
 \alias{elasticache_batch_stop_update_action}
 \title{Stop the service update}
 \usage{
-elasticache_batch_stop_update_action(ReplicationGroupIds,
-  CacheClusterIds, ServiceUpdateName)
+elasticache_batch_stop_update_action(
+  ReplicationGroupIds = NULL,
+  CacheClusterIds = NULL,
+  ServiceUpdateName
+)
 }
 \arguments{
 \item{ReplicationGroupIds}{The replication group IDs}
@@ -14,43 +17,9 @@ elasticache_batch_stop_update_action(ReplicationGroupIds,
 
 \item{ServiceUpdateName}{[required] The unique ID of the service update}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProcessedUpdateActions = list(
-    list(
-      ReplicationGroupId = "string",
-      CacheClusterId = "string",
-      ServiceUpdateName = "string",
-      UpdateActionStatus = "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete"|"scheduling"|"scheduled"|"not-applicable"
-    )
-  ),
-  UnprocessedUpdateActions = list(
-    list(
-      ReplicationGroupId = "string",
-      CacheClusterId = "string",
-      ServiceUpdateName = "string",
-      ErrorType = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Stop the service update. For more information on service updates and
-stopping them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/stopping-self-service-updates.html}{Stopping Service Updates}.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_stop_update_action(
-  ReplicationGroupIds = list(
-    "string"
-  ),
-  CacheClusterIds = list(
-    "string"
-  ),
-  ServiceUpdateName = "string"
-)
-}
-}
+Stop the service update. For more information on service updates and stopping them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/}{Stopping Service Updates}.
 
+See \url{https://paws-r.github.io/docs/elasticache/batch_stop_update_action.html} for full documentation.
+}
 \keyword{internal}

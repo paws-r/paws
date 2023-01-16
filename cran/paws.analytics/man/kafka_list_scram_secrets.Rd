@@ -5,7 +5,7 @@
 \title{Returns a list of the Scram Secrets associated with an Amazon MSK
 cluster}
 \usage{
-kafka_list_scram_secrets(ClusterArn, MaxResults, NextToken)
+kafka_list_scram_secrets(ClusterArn, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ClusterArn}{[required] The arn of the cluster.}
@@ -14,26 +14,9 @@ kafka_list_scram_secrets(ClusterArn, MaxResults, NextToken)
 
 \item{NextToken}{The nextToken of the query.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  SecretArnList = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns a list of the Scram Secrets associated with an Amazon MSK
-cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$list_scram_secrets(
-  ClusterArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns a list of the Scram Secrets associated with an Amazon MSK cluster.
 
+See \url{https://paws-r.github.io/docs/kafka/list_scram_secrets.html} for full documentation.
+}
 \keyword{internal}

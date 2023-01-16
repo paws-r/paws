@@ -4,8 +4,12 @@
 \alias{sfn_list_executions}
 \title{Lists the executions of a state machine that meet the filtering criteria}
 \usage{
-sfn_list_executions(stateMachineArn, statusFilter, maxResults,
-  nextToken)
+sfn_list_executions(
+  stateMachineArn,
+  statusFilter = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine whose executions is
@@ -28,51 +32,9 @@ arguments unchanged. Each pagination token expires after 24 hours. Using
 an expired pagination token will return an \emph{HTTP 400 InvalidToken}
 error.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  executions = list(
-    list(
-      executionArn = "string",
-      stateMachineArn = "string",
-      name = "string",
-      status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
-      startDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      stopDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the executions of a state machine that meet the filtering
-criteria. Results are sorted by time, with the most recent execution
-first.
+Lists the executions of a state machine that meet the filtering criteria. Results are sorted by time, with the most recent execution first.
 
-If \code{nextToken} is returned, there are more results available. The value
-of \code{nextToken} is a unique pagination token for each page. Make the call
-again using the returned token to retrieve the next page. Keep all other
-arguments unchanged. Each pagination token expires after 24 hours. Using
-an expired pagination token will return an \emph{HTTP 400 InvalidToken}
-error.
-
-This operation is eventually consistent. The results are best effort and
-may not reflect very recent updates and changes.
-
-This API action is not supported by \code{EXPRESS} state machines.
+See \url{https://paws-r.github.io/docs/sfn/list_executions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_executions(
-  stateMachineArn = "string",
-  statusFilter = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
-
 \keyword{internal}

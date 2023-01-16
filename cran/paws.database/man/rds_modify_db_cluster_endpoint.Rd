@@ -4,8 +4,12 @@
 \alias{rds_modify_db_cluster_endpoint}
 \title{Modifies the properties of an endpoint in an Amazon Aurora DB cluster}
 \usage{
-rds_modify_db_cluster_endpoint(DBClusterEndpointIdentifier,
-  EndpointType, StaticMembers, ExcludedMembers)
+rds_modify_db_cluster_endpoint(
+  DBClusterEndpointIdentifier,
+  EndpointType = NULL,
+  StaticMembers = NULL,
+  ExcludedMembers = NULL
+)
 }
 \arguments{
 \item{DBClusterEndpointIdentifier}{[required] The identifier of the endpoint to modify. This parameter is stored as a
@@ -20,42 +24,9 @@ group.}
 group. All other eligible instances are reachable through the custom
 endpoint. Only relevant if the list of static members is empty.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterEndpointIdentifier = "string",
-  DBClusterIdentifier = "string",
-  DBClusterEndpointResourceIdentifier = "string",
-  Endpoint = "string",
-  Status = "string",
-  EndpointType = "string",
-  CustomEndpointType = "string",
-  StaticMembers = list(
-    "string"
-  ),
-  ExcludedMembers = list(
-    "string"
-  ),
-  DBClusterEndpointArn = "string"
-)
-}
-}
 \description{
 Modifies the properties of an endpoint in an Amazon Aurora DB cluster.
 
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/modify_db_cluster_endpoint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_db_cluster_endpoint(
-  DBClusterEndpointIdentifier = "string",
-  EndpointType = "string",
-  StaticMembers = list(
-    "string"
-  ),
-  ExcludedMembers = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

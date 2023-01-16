@@ -11,45 +11,9 @@ cloudfront_create_invalidation(DistributionId, InvalidationBatch)
 
 \item{InvalidationBatch}{[required] The batch information for the invalidation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Location = "string",
-  Invalidation = list(
-    Id = "string",
-    Status = "string",
-    CreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    InvalidationBatch = list(
-      Paths = list(
-        Quantity = 123,
-        Items = list(
-          "string"
-        )
-      ),
-      CallerReference = "string"
-    )
-  )
-)
-}
-}
 \description{
 Create a new invalidation.
-}
-\section{Request syntax}{
-\preformatted{svc$create_invalidation(
-  DistributionId = "string",
-  InvalidationBatch = list(
-    Paths = list(
-      Quantity = 123,
-      Items = list(
-        "string"
-      )
-    ),
-    CallerReference = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/create_invalidation.html} for full documentation.
+}
 \keyword{internal}

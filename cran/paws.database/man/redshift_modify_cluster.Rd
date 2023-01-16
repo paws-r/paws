@@ -4,15 +4,33 @@
 \alias{redshift_modify_cluster}
 \title{Modifies the settings for a cluster}
 \usage{
-redshift_modify_cluster(ClusterIdentifier, ClusterType, NodeType,
-  NumberOfNodes, ClusterSecurityGroups, VpcSecurityGroupIds,
-  MasterUserPassword, ClusterParameterGroupName,
-  AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod,
-  PreferredMaintenanceWindow, ClusterVersion, AllowVersionUpgrade,
-  HsmClientCertificateIdentifier, HsmConfigurationIdentifier,
-  NewClusterIdentifier, PubliclyAccessible, ElasticIp, EnhancedVpcRouting,
-  MaintenanceTrackName, Encrypted, KmsKeyId, AvailabilityZoneRelocation,
-  AvailabilityZone, Port)
+redshift_modify_cluster(
+  ClusterIdentifier,
+  ClusterType = NULL,
+  NodeType = NULL,
+  NumberOfNodes = NULL,
+  ClusterSecurityGroups = NULL,
+  VpcSecurityGroupIds = NULL,
+  MasterUserPassword = NULL,
+  ClusterParameterGroupName = NULL,
+  AutomatedSnapshotRetentionPeriod = NULL,
+  ManualSnapshotRetentionPeriod = NULL,
+  PreferredMaintenanceWindow = NULL,
+  ClusterVersion = NULL,
+  AllowVersionUpgrade = NULL,
+  HsmClientCertificateIdentifier = NULL,
+  HsmConfigurationIdentifier = NULL,
+  NewClusterIdentifier = NULL,
+  PubliclyAccessible = NULL,
+  ElasticIp = NULL,
+  EnhancedVpcRouting = NULL,
+  MaintenanceTrackName = NULL,
+  Encrypted = NULL,
+  KmsKeyId = NULL,
+  AvailabilityZoneRelocation = NULL,
+  AvailabilityZone = NULL,
+  Port = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the cluster to be modified.
@@ -65,15 +83,15 @@ Constraints:
 with the cluster. This change is asynchronously applied as soon as
 possible.}
 
-\item{MasterUserPassword}{The new password for the cluster master user. This change is
+\item{MasterUserPassword}{The new password for the cluster admin user. This change is
 asynchronously applied as soon as possible. Between the time of the
 request and the completion of the request, the \code{MasterUserPassword}
 element exists in the \code{PendingModifiedValues} element of the operation
 response.
 
 Operations never return the password, so this operation provides a way
-to regain access to the master user account for a cluster if the
-password is lost.
+to regain access to the admin user account for a cluster if the password
+is lost.
 
 Default: Uses existing setting.
 
@@ -83,8 +101,8 @@ Constraints:
 \item Must contain at least one uppercase letter.
 \item Must contain at least one lowercase letter.
 \item Must contain one number.
-\item Can be any printable ASCII character (ASCII code 33 to 126) except '
-(single quote), " (double quote), \\, /, @, or space.
+\item Can be any printable ASCII character (ASCII code 33-126) except \verb{\\'}
+(single quote), \verb{\\"} (double quote), \verb{\\}, \code{/}, or \code{@}.
 }}
 
 \item{ClusterParameterGroupName}{The name of the cluster parameter group to apply to this cluster. This
@@ -104,6 +122,9 @@ disabled, you can still create manual snapshots when you want with
 If you decrease the automated snapshot retention period from its current
 value, existing automated snapshots that fall outside of the new
 retention period will be immediately deleted.
+
+You can't disable automated snapshots for RA3 node types. Set the
+automated retention period from 1-35 days.
 
 Default: Uses existing setting.
 
@@ -167,7 +188,8 @@ Constraints:
 \item Alphabetic characters must be lowercase.
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
-\item Must be unique for all clusters within an AWS account.
+\item Must be unique for all clusters within an Amazon Web Services
+account.
 }
 
 Example: \code{examplecluster}}
@@ -205,8 +227,8 @@ the cluster with the provided \code{KmsKeyId}. If you don't provide a
 
 If the value is not encrypted (false), then the cluster is decrypted.}
 
-\item{KmsKeyId}{The AWS Key Management Service (KMS) key ID of the encryption key that
-you want to use to encrypt data in the cluster.}
+\item{KmsKeyId}{The Key Management Service (KMS) key ID of the encryption key that you
+want to use to encrypt data in the cluster.}
 
 \item{AvailabilityZoneRelocation}{The option to enable relocation for an Amazon Redshift cluster between
 Availability Zones after the cluster modification is complete.}
@@ -216,214 +238,9 @@ target Availability Zone.}
 
 \item{Port}{The option to change the port of an Amazon Redshift cluster.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Cluster = list(
-    ClusterIdentifier = "string",
-    NodeType = "string",
-    ClusterStatus = "string",
-    ClusterAvailabilityStatus = "string",
-    ModifyStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      VpcEndpoints = list(
-        list(
-          VpcEndpointId = "string"
-        )
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    AutomatedSnapshotRetentionPeriod = 123,
-    ManualSnapshotRetentionPeriod = 123,
-    ClusterSecurityGroups = list(
-      list(
-        ClusterSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    ClusterParameterGroups = list(
-      list(
-        ParameterGroupName = "string",
-        ParameterApplyStatus = "string",
-        ClusterParameterStatusList = list(
-          list(
-            ParameterName = "string",
-            ParameterApplyStatus = "string",
-            ParameterApplyErrorDescription = "string"
-          )
-        )
-      )
-    ),
-    ClusterSubnetGroupName = "string",
-    VpcId = "string",
-    AvailabilityZone = "string",
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      MasterUserPassword = "string",
-      NodeType = "string",
-      NumberOfNodes = 123,
-      ClusterType = "string",
-      ClusterVersion = "string",
-      AutomatedSnapshotRetentionPeriod = 123,
-      ClusterIdentifier = "string",
-      PubliclyAccessible = TRUE|FALSE,
-      EnhancedVpcRouting = TRUE|FALSE,
-      MaintenanceTrackName = "string",
-      EncryptionType = "string"
-    ),
-    ClusterVersion = "string",
-    AllowVersionUpgrade = TRUE|FALSE,
-    NumberOfNodes = 123,
-    PubliclyAccessible = TRUE|FALSE,
-    Encrypted = TRUE|FALSE,
-    RestoreStatus = list(
-      Status = "string",
-      CurrentRestoreRateInMegaBytesPerSecond = 123.0,
-      SnapshotSizeInMegaBytes = 123,
-      ProgressInMegaBytes = 123,
-      ElapsedTimeInSeconds = 123,
-      EstimatedTimeToCompletionInSeconds = 123
-    ),
-    DataTransferProgress = list(
-      Status = "string",
-      CurrentRateInMegaBytesPerSecond = 123.0,
-      TotalDataInMegaBytes = 123,
-      DataTransferredInMegaBytes = 123,
-      EstimatedTimeToCompletionInSeconds = 123,
-      ElapsedTimeInSeconds = 123
-    ),
-    HsmStatus = list(
-      HsmClientCertificateIdentifier = "string",
-      HsmConfigurationIdentifier = "string",
-      Status = "string"
-    ),
-    ClusterSnapshotCopyStatus = list(
-      DestinationRegion = "string",
-      RetentionPeriod = 123,
-      ManualSnapshotRetentionPeriod = 123,
-      SnapshotCopyGrantName = "string"
-    ),
-    ClusterPublicKey = "string",
-    ClusterNodes = list(
-      list(
-        NodeRole = "string",
-        PrivateIPAddress = "string",
-        PublicIPAddress = "string"
-      )
-    ),
-    ElasticIpStatus = list(
-      ElasticIp = "string",
-      Status = "string"
-    ),
-    ClusterRevisionNumber = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    KmsKeyId = "string",
-    EnhancedVpcRouting = TRUE|FALSE,
-    IamRoles = list(
-      list(
-        IamRoleArn = "string",
-        ApplyStatus = "string"
-      )
-    ),
-    PendingActions = list(
-      "string"
-    ),
-    MaintenanceTrackName = "string",
-    ElasticResizeNumberOfNodeOptions = "string",
-    DeferredMaintenanceWindows = list(
-      list(
-        DeferMaintenanceIdentifier = "string",
-        DeferMaintenanceStartTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        DeferMaintenanceEndTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    SnapshotScheduleIdentifier = "string",
-    SnapshotScheduleState = "MODIFYING"|"ACTIVE"|"FAILED",
-    ExpectedNextSnapshotScheduleTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExpectedNextSnapshotScheduleTimeStatus = "string",
-    NextMaintenanceWindowStartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ResizeInfo = list(
-      ResizeType = "string",
-      AllowCancelResize = TRUE|FALSE
-    ),
-    AvailabilityZoneRelocationStatus = "string",
-    ClusterNamespaceArn = "string"
-  )
-)
-}
-}
 \description{
 Modifies the settings for a cluster.
 
-You can also change node type and the number of nodes to scale up or
-down the cluster. When resizing a cluster, you must specify both the
-number of nodes and the node type even if one of the parameters does not
-change.
-
-You can add another security or parameter group, or change the master
-user password. Resetting a cluster password or modifying the security
-groups associated with a cluster do not need a reboot. However,
-modifying a parameter group requires a reboot for parameters to take
-effect. For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/modify_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_cluster(
-  ClusterIdentifier = "string",
-  ClusterType = "string",
-  NodeType = "string",
-  NumberOfNodes = 123,
-  ClusterSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  MasterUserPassword = "string",
-  ClusterParameterGroupName = "string",
-  AutomatedSnapshotRetentionPeriod = 123,
-  ManualSnapshotRetentionPeriod = 123,
-  PreferredMaintenanceWindow = "string",
-  ClusterVersion = "string",
-  AllowVersionUpgrade = TRUE|FALSE,
-  HsmClientCertificateIdentifier = "string",
-  HsmConfigurationIdentifier = "string",
-  NewClusterIdentifier = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  ElasticIp = "string",
-  EnhancedVpcRouting = TRUE|FALSE,
-  MaintenanceTrackName = "string",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  AvailabilityZoneRelocation = TRUE|FALSE,
-  AvailabilityZone = "string",
-  Port = 123
-)
-}
-}
-
 \keyword{internal}

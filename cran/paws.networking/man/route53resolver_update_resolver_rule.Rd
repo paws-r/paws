@@ -11,52 +11,9 @@ route53resolver_update_resolver_rule(ResolverRuleId, Config)
 
 \item{Config}{[required] The new settings for the Resolver rule.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverRule = list(
-    Id = "string",
-    CreatorRequestId = "string",
-    Arn = "string",
-    DomainName = "string",
-    Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
-    StatusMessage = "string",
-    RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-    Name = "string",
-    TargetIps = list(
-      list(
-        Ip = "string",
-        Port = 123
-      )
-    ),
-    ResolverEndpointId = "string",
-    OwnerId = "string",
-    ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-    CreationTime = "string",
-    ModificationTime = "string"
-  )
-)
-}
-}
 \description{
-Updates settings for a specified Resolver rule. \code{ResolverRuleId} is
-required, and all other parameters are optional. If you don't specify a
-parameter, it retains its current value.
-}
-\section{Request syntax}{
-\preformatted{svc$update_resolver_rule(
-  ResolverRuleId = "string",
-  Config = list(
-    Name = "string",
-    TargetIps = list(
-      list(
-        Ip = "string",
-        Port = 123
-      )
-    ),
-    ResolverEndpointId = "string"
-  )
-)
-}
-}
+Updates settings for a specified Resolver rule. \code{ResolverRuleId} is required, and all other parameters are optional. If you don't specify a parameter, it retains its current value.
 
+See \url{https://paws-r.github.io/docs/route53resolver/update_resolver_rule.html} for full documentation.
+}
 \keyword{internal}

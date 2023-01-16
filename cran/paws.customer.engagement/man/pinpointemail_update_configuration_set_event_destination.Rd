@@ -5,7 +5,10 @@
 \title{Update the configuration of an event destination for a configuration set}
 \usage{
 pinpointemail_update_configuration_set_event_destination(
-  ConfigurationSetName, EventDestinationName, EventDestination)
+  ConfigurationSetName,
+  EventDestinationName,
+  EventDestination
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that contains the event destination
@@ -15,51 +18,9 @@ that you want to modify.}
 
 \item{EventDestination}{[required] An object that defines the event destination.}
 }
-\value{
-An empty list.
-}
 \description{
-Update the configuration of an event destination for a configuration
-set.
+Update the configuration of an event destination for a configuration set.
 
-In Amazon Pinpoint, \emph{events} include message sends, deliveries, opens,
-clicks, bounces, and complaints. \emph{Event destinations} are places that
-you can send information about these events to. For example, you can
-send event data to Amazon SNS to receive notifications when you receive
-bounces or complaints, or you can use Amazon Kinesis Data Firehose to
-stream data to Amazon S3 for long-term storage.
+See \url{https://paws-r.github.io/docs/pinpointemail/update_configuration_set_event_destination.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_configuration_set_event_destination(
-  ConfigurationSetName = "string",
-  EventDestinationName = "string",
-  EventDestination = list(
-    Enabled = TRUE|FALSE,
-    MatchingEventTypes = list(
-      "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"
-    ),
-    KinesisFirehoseDestination = list(
-      IamRoleArn = "string",
-      DeliveryStreamArn = "string"
-    ),
-    CloudWatchDestination = list(
-      DimensionConfigurations = list(
-        list(
-          DimensionName = "string",
-          DimensionValueSource = "MESSAGE_TAG"|"EMAIL_HEADER"|"LINK_TAG",
-          DefaultDimensionValue = "string"
-        )
-      )
-    ),
-    SnsDestination = list(
-      TopicArn = "string"
-    ),
-    PinpointDestination = list(
-      ApplicationArn = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -5,136 +5,26 @@
 \title{Adds a streaming source to your SQL-based Kinesis Data Analytics
 application}
 \usage{
-kinesisanalyticsv2_add_application_input(ApplicationName,
-  CurrentApplicationVersionId, Input)
+kinesisanalyticsv2_add_application_input(
+  ApplicationName,
+  CurrentApplicationVersionId,
+  Input
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of your existing application to which you want to add the
 streaming source.}
 
-\item{CurrentApplicationVersionId}{[required] The current version of your application. You can use the
+\item{CurrentApplicationVersionId}{[required] The current version of your application. You must provide the
+\code{ApplicationVersionID} or the \code{ConditionalToken}.You can use the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation to find the current application version.}
 
 \item{Input}{[required] The Input to add.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationARN = "string",
-  ApplicationVersionId = 123,
-  InputDescriptions = list(
-    list(
-      InputId = "string",
-      NamePrefix = "string",
-      InAppStreamNames = list(
-        "string"
-      ),
-      InputProcessingConfigurationDescription = list(
-        InputLambdaProcessorDescription = list(
-          ResourceARN = "string",
-          RoleARN = "string"
-        )
-      ),
-      KinesisStreamsInputDescription = list(
-        ResourceARN = "string",
-        RoleARN = "string"
-      ),
-      KinesisFirehoseInputDescription = list(
-        ResourceARN = "string",
-        RoleARN = "string"
-      ),
-      InputSchema = list(
-        RecordFormat = list(
-          RecordFormatType = "JSON"|"CSV",
-          MappingParameters = list(
-            JSONMappingParameters = list(
-              RecordRowPath = "string"
-            ),
-            CSVMappingParameters = list(
-              RecordRowDelimiter = "string",
-              RecordColumnDelimiter = "string"
-            )
-          )
-        ),
-        RecordEncoding = "string",
-        RecordColumns = list(
-          list(
-            Name = "string",
-            Mapping = "string",
-            SqlType = "string"
-          )
-        )
-      ),
-      InputParallelism = list(
-        Count = 123
-      ),
-      InputStartingPositionConfiguration = list(
-        InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Adds a streaming source to your SQL-based Kinesis Data Analytics
-application.
+Adds a streaming source to your SQL-based Kinesis Data Analytics application.
 
-You can add a streaming source when you create an application, or you
-can use this operation to add a streaming source after you create an
-application. For more information, see
-\code{\link[=kinesisanalyticsv2_create_application]{create_application}}.
-
-Any configuration update, including adding a streaming source using this
-operation, results in a new version of the application. You can use the
-\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
-operation to find the current application version.
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_input.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_application_input(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  Input = list(
-    NamePrefix = "string",
-    InputProcessingConfiguration = list(
-      InputLambdaProcessor = list(
-        ResourceARN = "string"
-      )
-    ),
-    KinesisStreamsInput = list(
-      ResourceARN = "string"
-    ),
-    KinesisFirehoseInput = list(
-      ResourceARN = "string"
-    ),
-    InputParallelism = list(
-      Count = 123
-    ),
-    InputSchema = list(
-      RecordFormat = list(
-        RecordFormatType = "JSON"|"CSV",
-        MappingParameters = list(
-          JSONMappingParameters = list(
-            RecordRowPath = "string"
-          ),
-          CSVMappingParameters = list(
-            RecordRowDelimiter = "string",
-            RecordColumnDelimiter = "string"
-          )
-        )
-      ),
-      RecordEncoding = "string",
-      RecordColumns = list(
-        list(
-          Name = "string",
-          Mapping = "string",
-          SqlType = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

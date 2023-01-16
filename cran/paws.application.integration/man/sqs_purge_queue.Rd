@@ -12,31 +12,9 @@ action deletes messages.
 
 Queue URLs and names are case-sensitive.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the messages in a queue specified by the \code{QueueURL} parameter.
 
-When you use the \code{\link[=sqs_purge_queue]{purge_queue}} action, you can't
-retrieve any messages deleted from a queue.
-
-The message deletion process takes up to 60 seconds. We recommend
-waiting for 60 seconds regardless of your queue's size.
-
-Messages sent to the queue \emph{before} you call
-\code{\link[=sqs_purge_queue]{purge_queue}} might be received but are deleted
-within the next minute.
-
-Messages sent to the queue \emph{after} you call
-\code{\link[=sqs_purge_queue]{purge_queue}} might be deleted while the queue is
-being purged.
+See \url{https://paws-r.github.io/docs/sqs/purge_queue.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$purge_queue(
-  QueueUrl = "string"
-)
-}
-}
-
 \keyword{internal}

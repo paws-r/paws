@@ -7,7 +7,19 @@
 elbv2(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -45,7 +57,9 @@ All Elastic Load Balancing operations are idempotent, which means that
 they complete at most one time. If you repeat an operation, it succeeds.
 }
 \section{Service syntax}{
-\preformatted{svc <- elbv2(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- elbv2(
   config = list(
     credentials = list(
       creds = list(
@@ -53,52 +67,56 @@ they complete at most one time. If you repeat an operation, it succeeds.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=elbv2_add_listener_certificates]{add_listener_certificates} \tab Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS listener\cr
-\link[=elbv2_add_tags]{add_tags} \tab Adds the specified tags to the specified Elastic Load Balancing resource\cr
-\link[=elbv2_create_listener]{create_listener} \tab Creates a listener for the specified Application Load Balancer, Network Load Balancer\cr
-\link[=elbv2_create_load_balancer]{create_load_balancer} \tab Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
-\link[=elbv2_create_rule]{create_rule} \tab Creates a rule for the specified listener\cr
-\link[=elbv2_create_target_group]{create_target_group} \tab Creates a target group\cr
-\link[=elbv2_delete_listener]{delete_listener} \tab Deletes the specified listener\cr
-\link[=elbv2_delete_load_balancer]{delete_load_balancer} \tab Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
-\link[=elbv2_delete_rule]{delete_rule} \tab Deletes the specified rule\cr
-\link[=elbv2_delete_target_group]{delete_target_group} \tab Deletes the specified target group\cr
-\link[=elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
-\link[=elbv2_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your AWS account\cr
-\link[=elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS or TLS listener\cr
-\link[=elbv2_describe_listeners]{describe_listeners} \tab Describes the specified listeners or the listeners for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
-\link[=elbv2_describe_load_balancer_attributes]{describe_load_balancer_attributes} \tab Describes the attributes for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
-\link[=elbv2_describe_load_balancers]{describe_load_balancers} \tab Describes the specified load balancers or all of your load balancers\cr
-\link[=elbv2_describe_rules]{describe_rules} \tab Describes the specified rules or the rules for the specified listener\cr
-\link[=elbv2_describe_ssl_policies]{describe_ssl_policies} \tab Describes the specified policies or all policies used for SSL negotiation\cr
-\link[=elbv2_describe_tags]{describe_tags} \tab Describes the tags for the specified Elastic Load Balancing resources\cr
-\link[=elbv2_describe_target_group_attributes]{describe_target_group_attributes} \tab Describes the attributes for the specified target group\cr
-\link[=elbv2_describe_target_groups]{describe_target_groups} \tab Describes the specified target groups or all of your target groups\cr
-\link[=elbv2_describe_target_health]{describe_target_health} \tab Describes the health of the specified targets or all of your targets\cr
-\link[=elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener\cr
-\link[=elbv2_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
-\link[=elbv2_modify_rule]{modify_rule} \tab Replaces the specified properties of the specified rule\cr
-\link[=elbv2_modify_target_group]{modify_target_group} \tab Modifies the health checks used when evaluating the health state of the targets in the specified target group\cr
-\link[=elbv2_modify_target_group_attributes]{modify_target_group_attributes} \tab Modifies the specified attributes of the specified target group\cr
-\link[=elbv2_register_targets]{register_targets} \tab Registers the specified targets with the specified target group\cr
-\link[=elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener\cr
-\link[=elbv2_remove_tags]{remove_tags} \tab Removes the specified tags from the specified Elastic Load Balancing resources\cr
-\link[=elbv2_set_ip_address_type]{set_ip_address_type} \tab Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer\cr
-\link[=elbv2_set_rule_priorities]{set_rule_priorities} \tab Sets the priorities of the specified rules\cr
-\link[=elbv2_set_security_groups]{set_security_groups} \tab Associates the specified security groups with the specified Application Load Balancer\cr
-\link[=elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer
+\link[paws.networking:elbv2_add_listener_certificates]{add_listener_certificates} \tab Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS listener\cr
+\link[paws.networking:elbv2_add_tags]{add_tags} \tab Adds the specified tags to the specified Elastic Load Balancing resource\cr
+\link[paws.networking:elbv2_create_listener]{create_listener} \tab Creates a listener for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
+\link[paws.networking:elbv2_create_load_balancer]{create_load_balancer} \tab Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
+\link[paws.networking:elbv2_create_rule]{create_rule} \tab Creates a rule for the specified listener\cr
+\link[paws.networking:elbv2_create_target_group]{create_target_group} \tab Creates a target group\cr
+\link[paws.networking:elbv2_delete_listener]{delete_listener} \tab Deletes the specified listener\cr
+\link[paws.networking:elbv2_delete_load_balancer]{delete_load_balancer} \tab Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
+\link[paws.networking:elbv2_delete_rule]{delete_rule} \tab Deletes the specified rule\cr
+\link[paws.networking:elbv2_delete_target_group]{delete_target_group} \tab Deletes the specified target group\cr
+\link[paws.networking:elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
+\link[paws.networking:elbv2_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account\cr
+\link[paws.networking:elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS or TLS listener\cr
+\link[paws.networking:elbv2_describe_listeners]{describe_listeners} \tab Describes the specified listeners or the listeners for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
+\link[paws.networking:elbv2_describe_load_balancer_attributes]{describe_load_balancer_attributes} \tab Describes the attributes for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
+\link[paws.networking:elbv2_describe_load_balancers]{describe_load_balancers} \tab Describes the specified load balancers or all of your load balancers\cr
+\link[paws.networking:elbv2_describe_rules]{describe_rules} \tab Describes the specified rules or the rules for the specified listener\cr
+\link[paws.networking:elbv2_describe_ssl_policies]{describe_ssl_policies} \tab Describes the specified policies or all policies used for SSL negotiation\cr
+\link[paws.networking:elbv2_describe_tags]{describe_tags} \tab Describes the tags for the specified Elastic Load Balancing resources\cr
+\link[paws.networking:elbv2_describe_target_group_attributes]{describe_target_group_attributes} \tab Describes the attributes for the specified target group\cr
+\link[paws.networking:elbv2_describe_target_groups]{describe_target_groups} \tab Describes the specified target groups or all of your target groups\cr
+\link[paws.networking:elbv2_describe_target_health]{describe_target_health} \tab Describes the health of the specified targets or all of your targets\cr
+\link[paws.networking:elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener\cr
+\link[paws.networking:elbv2_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
+\link[paws.networking:elbv2_modify_rule]{modify_rule} \tab Replaces the specified properties of the specified rule\cr
+\link[paws.networking:elbv2_modify_target_group]{modify_target_group} \tab Modifies the health checks used when evaluating the health state of the targets in the specified target group\cr
+\link[paws.networking:elbv2_modify_target_group_attributes]{modify_target_group_attributes} \tab Modifies the specified attributes of the specified target group\cr
+\link[paws.networking:elbv2_register_targets]{register_targets} \tab Registers the specified targets with the specified target group\cr
+\link[paws.networking:elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener\cr
+\link[paws.networking:elbv2_remove_tags]{remove_tags} \tab Removes the specified tags from the specified Elastic Load Balancing resources\cr
+\link[paws.networking:elbv2_set_ip_address_type]{set_ip_address_type} \tab Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer\cr
+\link[paws.networking:elbv2_set_rule_priorities]{set_rule_priorities} \tab Sets the priorities of the specified rules\cr
+\link[paws.networking:elbv2_set_security_groups]{set_security_groups} \tab Associates the specified security groups with the specified Application Load Balancer\cr
+\link[paws.networking:elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer
 }
 }
 

@@ -7,7 +7,19 @@
 glue(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,10 +28,14 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Defines the public endpoint for the AWS Glue service.
+Glue
+
+Defines the public endpoint for the Glue service.
 }
 \section{Service syntax}{
-\preformatted{svc <- glue(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- glue(
   config = list(
     credentials = list(
       creds = list(
@@ -27,175 +43,206 @@ Defines the public endpoint for the AWS Glue service.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=glue_batch_create_partition]{batch_create_partition} \tab Creates one or more partitions in a batch operation\cr
-\link[=glue_batch_delete_connection]{batch_delete_connection} \tab Deletes a list of connection definitions from the Data Catalog\cr
-\link[=glue_batch_delete_partition]{batch_delete_partition} \tab Deletes one or more partitions in a batch operation\cr
-\link[=glue_batch_delete_table]{batch_delete_table} \tab Deletes multiple tables at once\cr
-\link[=glue_batch_delete_table_version]{batch_delete_table_version} \tab Deletes a specified batch of versions of a table\cr
-\link[=glue_batch_get_crawlers]{batch_get_crawlers} \tab Returns a list of resource metadata for a given list of crawler names\cr
-\link[=glue_batch_get_dev_endpoints]{batch_get_dev_endpoints} \tab Returns a list of resource metadata for a given list of development endpoint names\cr
-\link[=glue_batch_get_jobs]{batch_get_jobs} \tab Returns a list of resource metadata for a given list of job names\cr
-\link[=glue_batch_get_partition]{batch_get_partition} \tab Retrieves partitions in a batch request\cr
-\link[=glue_batch_get_triggers]{batch_get_triggers} \tab Returns a list of resource metadata for a given list of trigger names\cr
-\link[=glue_batch_get_workflows]{batch_get_workflows} \tab Returns a list of resource metadata for a given list of workflow names\cr
-\link[=glue_batch_stop_job_run]{batch_stop_job_run} \tab Stops one or more job runs for a specified job definition\cr
-\link[=glue_batch_update_partition]{batch_update_partition} \tab Updates one or more partitions in a batch operation\cr
-\link[=glue_cancel_ml_task_run]{cancel_ml_task_run} \tab Cancels (stops) a task run\cr
-\link[=glue_check_schema_version_validity]{check_schema_version_validity} \tab Validates the supplied schema\cr
-\link[=glue_create_classifier]{create_classifier} \tab Creates a classifier in the user's account\cr
-\link[=glue_create_connection]{create_connection} \tab Creates a connection definition in the Data Catalog\cr
-\link[=glue_create_crawler]{create_crawler} \tab Creates a new crawler with specified targets, role, configuration, and optional schedule\cr
-\link[=glue_create_database]{create_database} \tab Creates a new database in a Data Catalog\cr
-\link[=glue_create_dev_endpoint]{create_dev_endpoint} \tab Creates a new development endpoint\cr
-\link[=glue_create_job]{create_job} \tab Creates a new job definition\cr
-\link[=glue_create_ml_transform]{create_ml_transform} \tab Creates an AWS Glue machine learning transform\cr
-\link[=glue_create_partition]{create_partition} \tab Creates a new partition\cr
-\link[=glue_create_partition_index]{create_partition_index} \tab Creates a specified partition index in an existing table\cr
-\link[=glue_create_registry]{create_registry} \tab Creates a new registry which may be used to hold a collection of schemas\cr
-\link[=glue_create_schema]{create_schema} \tab Creates a new schema set and registers the schema definition\cr
-\link[=glue_create_script]{create_script} \tab Transforms a directed acyclic graph (DAG) into code\cr
-\link[=glue_create_security_configuration]{create_security_configuration} \tab Creates a new security configuration\cr
-\link[=glue_create_table]{create_table} \tab Creates a new table definition in the Data Catalog\cr
-\link[=glue_create_trigger]{create_trigger} \tab Creates a new trigger\cr
-\link[=glue_create_user_defined_function]{create_user_defined_function} \tab Creates a new function definition in the Data Catalog\cr
-\link[=glue_create_workflow]{create_workflow} \tab Creates a new workflow\cr
-\link[=glue_delete_classifier]{delete_classifier} \tab Removes a classifier from the Data Catalog\cr
-\link[=glue_delete_column_statistics_for_partition]{delete_column_statistics_for_partition} \tab Delete the partition column statistics of a column\cr
-\link[=glue_delete_column_statistics_for_table]{delete_column_statistics_for_table} \tab Retrieves table statistics of columns\cr
-\link[=glue_delete_connection]{delete_connection} \tab Deletes a connection from the Data Catalog\cr
-\link[=glue_delete_crawler]{delete_crawler} \tab Removes a specified crawler from the AWS Glue Data Catalog, unless the crawler state is RUNNING\cr
-\link[=glue_delete_database]{delete_database} \tab Removes a specified database from a Data Catalog\cr
-\link[=glue_delete_dev_endpoint]{delete_dev_endpoint} \tab Deletes a specified development endpoint\cr
-\link[=glue_delete_job]{delete_job} \tab Deletes a specified job definition\cr
-\link[=glue_delete_ml_transform]{delete_ml_transform} \tab Deletes an AWS Glue machine learning transform\cr
-\link[=glue_delete_partition]{delete_partition} \tab Deletes a specified partition\cr
-\link[=glue_delete_partition_index]{delete_partition_index} \tab Deletes a specified partition index from an existing table\cr
-\link[=glue_delete_registry]{delete_registry} \tab Delete the entire registry including schema and all of its versions\cr
-\link[=glue_delete_resource_policy]{delete_resource_policy} \tab Deletes a specified policy\cr
-\link[=glue_delete_schema]{delete_schema} \tab Deletes the entire schema set, including the schema set and all of its versions\cr
-\link[=glue_delete_schema_versions]{delete_schema_versions} \tab Remove versions from the specified schema\cr
-\link[=glue_delete_security_configuration]{delete_security_configuration} \tab Deletes a specified security configuration\cr
-\link[=glue_delete_table]{delete_table} \tab Removes a table definition from the Data Catalog\cr
-\link[=glue_delete_table_version]{delete_table_version} \tab Deletes a specified version of a table\cr
-\link[=glue_delete_trigger]{delete_trigger} \tab Deletes a specified trigger\cr
-\link[=glue_delete_user_defined_function]{delete_user_defined_function} \tab Deletes an existing function definition from the Data Catalog\cr
-\link[=glue_delete_workflow]{delete_workflow} \tab Deletes a workflow\cr
-\link[=glue_get_catalog_import_status]{get_catalog_import_status} \tab Retrieves the status of a migration operation\cr
-\link[=glue_get_classifier]{get_classifier} \tab Retrieve a classifier by name\cr
-\link[=glue_get_classifiers]{get_classifiers} \tab Lists all classifier objects in the Data Catalog\cr
-\link[=glue_get_column_statistics_for_partition]{get_column_statistics_for_partition} \tab Retrieves partition statistics of columns\cr
-\link[=glue_get_column_statistics_for_table]{get_column_statistics_for_table} \tab Retrieves table statistics of columns\cr
-\link[=glue_get_connection]{get_connection} \tab Retrieves a connection definition from the Data Catalog\cr
-\link[=glue_get_connections]{get_connections} \tab Retrieves a list of connection definitions from the Data Catalog\cr
-\link[=glue_get_crawler]{get_crawler} \tab Retrieves metadata for a specified crawler\cr
-\link[=glue_get_crawler_metrics]{get_crawler_metrics} \tab Retrieves metrics about specified crawlers\cr
-\link[=glue_get_crawlers]{get_crawlers} \tab Retrieves metadata for all crawlers defined in the customer account\cr
-\link[=glue_get_database]{get_database} \tab Retrieves the definition of a specified database\cr
-\link[=glue_get_databases]{get_databases} \tab Retrieves all databases defined in a given Data Catalog\cr
-\link[=glue_get_data_catalog_encryption_settings]{get_data_catalog_encryption_settings} \tab Retrieves the security configuration for a specified catalog\cr
-\link[=glue_get_dataflow_graph]{get_dataflow_graph} \tab Transforms a Python script into a directed acyclic graph (DAG)\cr
-\link[=glue_get_dev_endpoint]{get_dev_endpoint} \tab Retrieves information about a specified development endpoint\cr
-\link[=glue_get_dev_endpoints]{get_dev_endpoints} \tab Retrieves all the development endpoints in this AWS account\cr
-\link[=glue_get_job]{get_job} \tab Retrieves an existing job definition\cr
-\link[=glue_get_job_bookmark]{get_job_bookmark} \tab Returns information on a job bookmark entry\cr
-\link[=glue_get_job_run]{get_job_run} \tab Retrieves the metadata for a given job run\cr
-\link[=glue_get_job_runs]{get_job_runs} \tab Retrieves metadata for all runs of a given job definition\cr
-\link[=glue_get_jobs]{get_jobs} \tab Retrieves all current job definitions\cr
-\link[=glue_get_mapping]{get_mapping} \tab Creates mappings\cr
-\link[=glue_get_ml_task_run]{get_ml_task_run} \tab Gets details for a specific task run on a machine learning transform\cr
-\link[=glue_get_ml_task_runs]{get_ml_task_runs} \tab Gets a list of runs for a machine learning transform\cr
-\link[=glue_get_ml_transform]{get_ml_transform} \tab Gets an AWS Glue machine learning transform artifact and all its corresponding metadata\cr
-\link[=glue_get_ml_transforms]{get_ml_transforms} \tab Gets a sortable, filterable list of existing AWS Glue machine learning transforms\cr
-\link[=glue_get_partition]{get_partition} \tab Retrieves information about a specified partition\cr
-\link[=glue_get_partition_indexes]{get_partition_indexes} \tab Retrieves the partition indexes associated with a table\cr
-\link[=glue_get_partitions]{get_partitions} \tab Retrieves information about the partitions in a table\cr
-\link[=glue_get_plan]{get_plan} \tab Gets code to perform a specified mapping\cr
-\link[=glue_get_registry]{get_registry} \tab Describes the specified registry in detail\cr
-\link[=glue_get_resource_policies]{get_resource_policies} \tab Retrieves the security configurations for the resource policies set on individual resources, and also the account-level policy\cr
-\link[=glue_get_resource_policy]{get_resource_policy} \tab Retrieves a specified resource policy\cr
-\link[=glue_get_schema]{get_schema} \tab Describes the specified schema in detail\cr
-\link[=glue_get_schema_by_definition]{get_schema_by_definition} \tab Retrieves a schema by the SchemaDefinition\cr
-\link[=glue_get_schema_version]{get_schema_version} \tab Get the specified schema by its unique ID assigned when a version of the schema is created or registered\cr
-\link[=glue_get_schema_versions_diff]{get_schema_versions_diff} \tab Fetches the schema version difference in the specified difference type between two stored schema versions in the Schema Registry\cr
-\link[=glue_get_security_configuration]{get_security_configuration} \tab Retrieves a specified security configuration\cr
-\link[=glue_get_security_configurations]{get_security_configurations} \tab Retrieves a list of all security configurations\cr
-\link[=glue_get_table]{get_table} \tab Retrieves the Table definition in a Data Catalog for a specified table\cr
-\link[=glue_get_tables]{get_tables} \tab Retrieves the definitions of some or all of the tables in a given Database\cr
-\link[=glue_get_table_version]{get_table_version} \tab Retrieves a specified version of a table\cr
-\link[=glue_get_table_versions]{get_table_versions} \tab Retrieves a list of strings that identify available versions of a specified table\cr
-\link[=glue_get_tags]{get_tags} \tab Retrieves a list of tags associated with a resource\cr
-\link[=glue_get_trigger]{get_trigger} \tab Retrieves the definition of a trigger\cr
-\link[=glue_get_triggers]{get_triggers} \tab Gets all the triggers associated with a job\cr
-\link[=glue_get_user_defined_function]{get_user_defined_function} \tab Retrieves a specified function definition from the Data Catalog\cr
-\link[=glue_get_user_defined_functions]{get_user_defined_functions} \tab Retrieves multiple function definitions from the Data Catalog\cr
-\link[=glue_get_workflow]{get_workflow} \tab Retrieves resource metadata for a workflow\cr
-\link[=glue_get_workflow_run]{get_workflow_run} \tab Retrieves the metadata for a given workflow run\cr
-\link[=glue_get_workflow_run_properties]{get_workflow_run_properties} \tab Retrieves the workflow run properties which were set during the run\cr
-\link[=glue_get_workflow_runs]{get_workflow_runs} \tab Retrieves metadata for all runs of a given workflow\cr
-\link[=glue_import_catalog_to_glue]{import_catalog_to_glue} \tab Imports an existing Amazon Athena Data Catalog to AWS Glue\cr
-\link[=glue_list_crawlers]{list_crawlers} \tab Retrieves the names of all crawler resources in this AWS account, or the resources with the specified tag\cr
-\link[=glue_list_dev_endpoints]{list_dev_endpoints} \tab Retrieves the names of all DevEndpoint resources in this AWS account, or the resources with the specified tag\cr
-\link[=glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this AWS account, or the resources with the specified tag\cr
-\link[=glue_list_ml_transforms]{list_ml_transforms} \tab Retrieves a sortable, filterable list of existing AWS Glue machine learning transforms in this AWS account, or the resources with the specified tag\cr
-\link[=glue_list_registries]{list_registries} \tab Returns a list of registries that you have created, with minimal registry information\cr
-\link[=glue_list_schemas]{list_schemas} \tab Returns a list of schemas with minimal details\cr
-\link[=glue_list_schema_versions]{list_schema_versions} \tab Returns a list of schema versions that you have created, with minimal information\cr
-\link[=glue_list_triggers]{list_triggers} \tab Retrieves the names of all trigger resources in this AWS account, or the resources with the specified tag\cr
-\link[=glue_list_workflows]{list_workflows} \tab Lists names of workflows created in the account\cr
-\link[=glue_put_data_catalog_encryption_settings]{put_data_catalog_encryption_settings} \tab Sets the security configuration for a specified catalog\cr
-\link[=glue_put_resource_policy]{put_resource_policy} \tab Sets the Data Catalog resource policy for access control\cr
-\link[=glue_put_schema_version_metadata]{put_schema_version_metadata} \tab Puts the metadata key value pair for a specified schema version ID\cr
-\link[=glue_put_workflow_run_properties]{put_workflow_run_properties} \tab Puts the specified workflow run properties for the given workflow run\cr
-\link[=glue_query_schema_version_metadata]{query_schema_version_metadata} \tab Queries for the schema version metadata information\cr
-\link[=glue_register_schema_version]{register_schema_version} \tab Adds a new version to the existing schema\cr
-\link[=glue_remove_schema_version_metadata]{remove_schema_version_metadata} \tab Removes a key value pair from the schema version metadata for the specified schema version ID\cr
-\link[=glue_reset_job_bookmark]{reset_job_bookmark} \tab Resets a bookmark entry\cr
-\link[=glue_resume_workflow_run]{resume_workflow_run} \tab Restarts selected nodes of a previous partially completed workflow run and resumes the workflow run\cr
-\link[=glue_search_tables]{search_tables} \tab Searches a set of tables based on properties in the table metadata as well as on the parent database\cr
-\link[=glue_start_crawler]{start_crawler} \tab Starts a crawl using the specified crawler, regardless of what is scheduled\cr
-\link[=glue_start_crawler_schedule]{start_crawler_schedule} \tab Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED\cr
-\link[=glue_start_export_labels_task_run]{start_export_labels_task_run} \tab Begins an asynchronous task to export all labeled data for a particular transform\cr
-\link[=glue_start_import_labels_task_run]{start_import_labels_task_run} \tab Enables you to provide additional labels (examples of truth) to be used to teach the machine learning transform and improve its quality\cr
-\link[=glue_start_job_run]{start_job_run} \tab Starts a job run using a job definition\cr
-\link[=glue_start_ml_evaluation_task_run]{start_ml_evaluation_task_run} \tab Starts a task to estimate the quality of the transform\cr
-\link[=glue_start_ml_labeling_set_generation_task_run]{start_ml_labeling_set_generation_task_run} \tab Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels\cr
-\link[=glue_start_trigger]{start_trigger} \tab Starts an existing trigger\cr
-\link[=glue_start_workflow_run]{start_workflow_run} \tab Starts a new run of the specified workflow\cr
-\link[=glue_stop_crawler]{stop_crawler} \tab If the specified crawler is running, stops the crawl\cr
-\link[=glue_stop_crawler_schedule]{stop_crawler_schedule} \tab Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running\cr
-\link[=glue_stop_trigger]{stop_trigger} \tab Stops a specified trigger\cr
-\link[=glue_stop_workflow_run]{stop_workflow_run} \tab Stops the execution of the specified workflow run\cr
-\link[=glue_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
-\link[=glue_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
-\link[=glue_update_classifier]{update_classifier} \tab Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a JsonClassifier, or a CsvClassifier, depending on which field is present)\cr
-\link[=glue_update_column_statistics_for_partition]{update_column_statistics_for_partition} \tab Creates or updates partition statistics of columns\cr
-\link[=glue_update_column_statistics_for_table]{update_column_statistics_for_table} \tab Creates or updates table statistics of columns\cr
-\link[=glue_update_connection]{update_connection} \tab Updates a connection definition in the Data Catalog\cr
-\link[=glue_update_crawler]{update_crawler} \tab Updates a crawler\cr
-\link[=glue_update_crawler_schedule]{update_crawler_schedule} \tab Updates the schedule of a crawler using a cron expression\cr
-\link[=glue_update_database]{update_database} \tab Updates an existing database definition in a Data Catalog\cr
-\link[=glue_update_dev_endpoint]{update_dev_endpoint} \tab Updates a specified development endpoint\cr
-\link[=glue_update_job]{update_job} \tab Updates an existing job definition\cr
-\link[=glue_update_ml_transform]{update_ml_transform} \tab Updates an existing machine learning transform\cr
-\link[=glue_update_partition]{update_partition} \tab Updates a partition\cr
-\link[=glue_update_registry]{update_registry} \tab Updates an existing registry which is used to hold a collection of schemas\cr
-\link[=glue_update_schema]{update_schema} \tab Updates the description, compatibility setting, or version checkpoint for a schema set\cr
-\link[=glue_update_table]{update_table} \tab Updates a metadata table in the Data Catalog\cr
-\link[=glue_update_trigger]{update_trigger} \tab Updates a trigger definition\cr
-\link[=glue_update_user_defined_function]{update_user_defined_function} \tab Updates an existing function definition in the Data Catalog\cr
-\link[=glue_update_workflow]{update_workflow} \tab Updates an existing workflow
+\link[paws.analytics:glue_batch_create_partition]{batch_create_partition} \tab Creates one or more partitions in a batch operation\cr
+\link[paws.analytics:glue_batch_delete_connection]{batch_delete_connection} \tab Deletes a list of connection definitions from the Data Catalog\cr
+\link[paws.analytics:glue_batch_delete_partition]{batch_delete_partition} \tab Deletes one or more partitions in a batch operation\cr
+\link[paws.analytics:glue_batch_delete_table]{batch_delete_table} \tab Deletes multiple tables at once\cr
+\link[paws.analytics:glue_batch_delete_table_version]{batch_delete_table_version} \tab Deletes a specified batch of versions of a table\cr
+\link[paws.analytics:glue_batch_get_blueprints]{batch_get_blueprints} \tab Retrieves information about a list of blueprints\cr
+\link[paws.analytics:glue_batch_get_crawlers]{batch_get_crawlers} \tab Returns a list of resource metadata for a given list of crawler names\cr
+\link[paws.analytics:glue_batch_get_custom_entity_types]{batch_get_custom_entity_types} \tab Retrieves the details for the custom patterns specified by a list of names\cr
+\link[paws.analytics:glue_batch_get_dev_endpoints]{batch_get_dev_endpoints} \tab Returns a list of resource metadata for a given list of development endpoint names\cr
+\link[paws.analytics:glue_batch_get_jobs]{batch_get_jobs} \tab Returns a list of resource metadata for a given list of job names\cr
+\link[paws.analytics:glue_batch_get_partition]{batch_get_partition} \tab Retrieves partitions in a batch request\cr
+\link[paws.analytics:glue_batch_get_triggers]{batch_get_triggers} \tab Returns a list of resource metadata for a given list of trigger names\cr
+\link[paws.analytics:glue_batch_get_workflows]{batch_get_workflows} \tab Returns a list of resource metadata for a given list of workflow names\cr
+\link[paws.analytics:glue_batch_stop_job_run]{batch_stop_job_run} \tab Stops one or more job runs for a specified job definition\cr
+\link[paws.analytics:glue_batch_update_partition]{batch_update_partition} \tab Updates one or more partitions in a batch operation\cr
+\link[paws.analytics:glue_cancel_ml_task_run]{cancel_ml_task_run} \tab Cancels (stops) a task run\cr
+\link[paws.analytics:glue_cancel_statement]{cancel_statement} \tab Cancels the statement\cr
+\link[paws.analytics:glue_check_schema_version_validity]{check_schema_version_validity} \tab Validates the supplied schema\cr
+\link[paws.analytics:glue_create_blueprint]{create_blueprint} \tab Registers a blueprint with Glue\cr
+\link[paws.analytics:glue_create_classifier]{create_classifier} \tab Creates a classifier in the user's account\cr
+\link[paws.analytics:glue_create_connection]{create_connection} \tab Creates a connection definition in the Data Catalog\cr
+\link[paws.analytics:glue_create_crawler]{create_crawler} \tab Creates a new crawler with specified targets, role, configuration, and optional schedule\cr
+\link[paws.analytics:glue_create_custom_entity_type]{create_custom_entity_type} \tab Creates a custom pattern that is used to detect sensitive data across the columns and rows of your structured data\cr
+\link[paws.analytics:glue_create_database]{create_database} \tab Creates a new database in a Data Catalog\cr
+\link[paws.analytics:glue_create_dev_endpoint]{create_dev_endpoint} \tab Creates a new development endpoint\cr
+\link[paws.analytics:glue_create_job]{create_job} \tab Creates a new job definition\cr
+\link[paws.analytics:glue_create_ml_transform]{create_ml_transform} \tab Creates an Glue machine learning transform\cr
+\link[paws.analytics:glue_create_partition]{create_partition} \tab Creates a new partition\cr
+\link[paws.analytics:glue_create_partition_index]{create_partition_index} \tab Creates a specified partition index in an existing table\cr
+\link[paws.analytics:glue_create_registry]{create_registry} \tab Creates a new registry which may be used to hold a collection of schemas\cr
+\link[paws.analytics:glue_create_schema]{create_schema} \tab Creates a new schema set and registers the schema definition\cr
+\link[paws.analytics:glue_create_script]{create_script} \tab Transforms a directed acyclic graph (DAG) into code\cr
+\link[paws.analytics:glue_create_security_configuration]{create_security_configuration} \tab Creates a new security configuration\cr
+\link[paws.analytics:glue_create_session]{create_session} \tab Creates a new session\cr
+\link[paws.analytics:glue_create_table]{create_table} \tab Creates a new table definition in the Data Catalog\cr
+\link[paws.analytics:glue_create_trigger]{create_trigger} \tab Creates a new trigger\cr
+\link[paws.analytics:glue_create_user_defined_function]{create_user_defined_function} \tab Creates a new function definition in the Data Catalog\cr
+\link[paws.analytics:glue_create_workflow]{create_workflow} \tab Creates a new workflow\cr
+\link[paws.analytics:glue_delete_blueprint]{delete_blueprint} \tab Deletes an existing blueprint\cr
+\link[paws.analytics:glue_delete_classifier]{delete_classifier} \tab Removes a classifier from the Data Catalog\cr
+\link[paws.analytics:glue_delete_column_statistics_for_partition]{delete_column_statistics_for_partition} \tab Delete the partition column statistics of a column\cr
+\link[paws.analytics:glue_delete_column_statistics_for_table]{delete_column_statistics_for_table} \tab Retrieves table statistics of columns\cr
+\link[paws.analytics:glue_delete_connection]{delete_connection} \tab Deletes a connection from the Data Catalog\cr
+\link[paws.analytics:glue_delete_crawler]{delete_crawler} \tab Removes a specified crawler from the Glue Data Catalog, unless the crawler state is RUNNING\cr
+\link[paws.analytics:glue_delete_custom_entity_type]{delete_custom_entity_type} \tab Deletes a custom pattern by specifying its name\cr
+\link[paws.analytics:glue_delete_database]{delete_database} \tab Removes a specified database from a Data Catalog\cr
+\link[paws.analytics:glue_delete_dev_endpoint]{delete_dev_endpoint} \tab Deletes a specified development endpoint\cr
+\link[paws.analytics:glue_delete_job]{delete_job} \tab Deletes a specified job definition\cr
+\link[paws.analytics:glue_delete_ml_transform]{delete_ml_transform} \tab Deletes an Glue machine learning transform\cr
+\link[paws.analytics:glue_delete_partition]{delete_partition} \tab Deletes a specified partition\cr
+\link[paws.analytics:glue_delete_partition_index]{delete_partition_index} \tab Deletes a specified partition index from an existing table\cr
+\link[paws.analytics:glue_delete_registry]{delete_registry} \tab Delete the entire registry including schema and all of its versions\cr
+\link[paws.analytics:glue_delete_resource_policy]{delete_resource_policy} \tab Deletes a specified policy\cr
+\link[paws.analytics:glue_delete_schema]{delete_schema} \tab Deletes the entire schema set, including the schema set and all of its versions\cr
+\link[paws.analytics:glue_delete_schema_versions]{delete_schema_versions} \tab Remove versions from the specified schema\cr
+\link[paws.analytics:glue_delete_security_configuration]{delete_security_configuration} \tab Deletes a specified security configuration\cr
+\link[paws.analytics:glue_delete_session]{delete_session} \tab Deletes the session\cr
+\link[paws.analytics:glue_delete_table]{delete_table} \tab Removes a table definition from the Data Catalog\cr
+\link[paws.analytics:glue_delete_table_version]{delete_table_version} \tab Deletes a specified version of a table\cr
+\link[paws.analytics:glue_delete_trigger]{delete_trigger} \tab Deletes a specified trigger\cr
+\link[paws.analytics:glue_delete_user_defined_function]{delete_user_defined_function} \tab Deletes an existing function definition from the Data Catalog\cr
+\link[paws.analytics:glue_delete_workflow]{delete_workflow} \tab Deletes a workflow\cr
+\link[paws.analytics:glue_get_blueprint]{get_blueprint} \tab Retrieves the details of a blueprint\cr
+\link[paws.analytics:glue_get_blueprint_run]{get_blueprint_run} \tab Retrieves the details of a blueprint run\cr
+\link[paws.analytics:glue_get_blueprint_runs]{get_blueprint_runs} \tab Retrieves the details of blueprint runs for a specified blueprint\cr
+\link[paws.analytics:glue_get_catalog_import_status]{get_catalog_import_status} \tab Retrieves the status of a migration operation\cr
+\link[paws.analytics:glue_get_classifier]{get_classifier} \tab Retrieve a classifier by name\cr
+\link[paws.analytics:glue_get_classifiers]{get_classifiers} \tab Lists all classifier objects in the Data Catalog\cr
+\link[paws.analytics:glue_get_column_statistics_for_partition]{get_column_statistics_for_partition} \tab Retrieves partition statistics of columns\cr
+\link[paws.analytics:glue_get_column_statistics_for_table]{get_column_statistics_for_table} \tab Retrieves table statistics of columns\cr
+\link[paws.analytics:glue_get_connection]{get_connection} \tab Retrieves a connection definition from the Data Catalog\cr
+\link[paws.analytics:glue_get_connections]{get_connections} \tab Retrieves a list of connection definitions from the Data Catalog\cr
+\link[paws.analytics:glue_get_crawler]{get_crawler} \tab Retrieves metadata for a specified crawler\cr
+\link[paws.analytics:glue_get_crawler_metrics]{get_crawler_metrics} \tab Retrieves metrics about specified crawlers\cr
+\link[paws.analytics:glue_get_crawlers]{get_crawlers} \tab Retrieves metadata for all crawlers defined in the customer account\cr
+\link[paws.analytics:glue_get_custom_entity_type]{get_custom_entity_type} \tab Retrieves the details of a custom pattern by specifying its name\cr
+\link[paws.analytics:glue_get_database]{get_database} \tab Retrieves the definition of a specified database\cr
+\link[paws.analytics:glue_get_databases]{get_databases} \tab Retrieves all databases defined in a given Data Catalog\cr
+\link[paws.analytics:glue_get_data_catalog_encryption_settings]{get_data_catalog_encryption_settings} \tab Retrieves the security configuration for a specified catalog\cr
+\link[paws.analytics:glue_get_dataflow_graph]{get_dataflow_graph} \tab Transforms a Python script into a directed acyclic graph (DAG)\cr
+\link[paws.analytics:glue_get_dev_endpoint]{get_dev_endpoint} \tab Retrieves information about a specified development endpoint\cr
+\link[paws.analytics:glue_get_dev_endpoints]{get_dev_endpoints} \tab Retrieves all the development endpoints in this AWS account\cr
+\link[paws.analytics:glue_get_job]{get_job} \tab Retrieves an existing job definition\cr
+\link[paws.analytics:glue_get_job_bookmark]{get_job_bookmark} \tab Returns information on a job bookmark entry\cr
+\link[paws.analytics:glue_get_job_run]{get_job_run} \tab Retrieves the metadata for a given job run\cr
+\link[paws.analytics:glue_get_job_runs]{get_job_runs} \tab Retrieves metadata for all runs of a given job definition\cr
+\link[paws.analytics:glue_get_jobs]{get_jobs} \tab Retrieves all current job definitions\cr
+\link[paws.analytics:glue_get_mapping]{get_mapping} \tab Creates mappings\cr
+\link[paws.analytics:glue_get_ml_task_run]{get_ml_task_run} \tab Gets details for a specific task run on a machine learning transform\cr
+\link[paws.analytics:glue_get_ml_task_runs]{get_ml_task_runs} \tab Gets a list of runs for a machine learning transform\cr
+\link[paws.analytics:glue_get_ml_transform]{get_ml_transform} \tab Gets an Glue machine learning transform artifact and all its corresponding metadata\cr
+\link[paws.analytics:glue_get_ml_transforms]{get_ml_transforms} \tab Gets a sortable, filterable list of existing Glue machine learning transforms\cr
+\link[paws.analytics:glue_get_partition]{get_partition} \tab Retrieves information about a specified partition\cr
+\link[paws.analytics:glue_get_partition_indexes]{get_partition_indexes} \tab Retrieves the partition indexes associated with a table\cr
+\link[paws.analytics:glue_get_partitions]{get_partitions} \tab Retrieves information about the partitions in a table\cr
+\link[paws.analytics:glue_get_plan]{get_plan} \tab Gets code to perform a specified mapping\cr
+\link[paws.analytics:glue_get_registry]{get_registry} \tab Describes the specified registry in detail\cr
+\link[paws.analytics:glue_get_resource_policies]{get_resource_policies} \tab Retrieves the resource policies set on individual resources by Resource Access Manager during cross-account permission grants\cr
+\link[paws.analytics:glue_get_resource_policy]{get_resource_policy} \tab Retrieves a specified resource policy\cr
+\link[paws.analytics:glue_get_schema]{get_schema} \tab Describes the specified schema in detail\cr
+\link[paws.analytics:glue_get_schema_by_definition]{get_schema_by_definition} \tab Retrieves a schema by the SchemaDefinition\cr
+\link[paws.analytics:glue_get_schema_version]{get_schema_version} \tab Get the specified schema by its unique ID assigned when a version of the schema is created or registered\cr
+\link[paws.analytics:glue_get_schema_versions_diff]{get_schema_versions_diff} \tab Fetches the schema version difference in the specified difference type between two stored schema versions in the Schema Registry\cr
+\link[paws.analytics:glue_get_security_configuration]{get_security_configuration} \tab Retrieves a specified security configuration\cr
+\link[paws.analytics:glue_get_security_configurations]{get_security_configurations} \tab Retrieves a list of all security configurations\cr
+\link[paws.analytics:glue_get_session]{get_session} \tab Retrieves the session\cr
+\link[paws.analytics:glue_get_statement]{get_statement} \tab Retrieves the statement\cr
+\link[paws.analytics:glue_get_table]{get_table} \tab Retrieves the Table definition in a Data Catalog for a specified table\cr
+\link[paws.analytics:glue_get_tables]{get_tables} \tab Retrieves the definitions of some or all of the tables in a given Database\cr
+\link[paws.analytics:glue_get_table_version]{get_table_version} \tab Retrieves a specified version of a table\cr
+\link[paws.analytics:glue_get_table_versions]{get_table_versions} \tab Retrieves a list of strings that identify available versions of a specified table\cr
+\link[paws.analytics:glue_get_tags]{get_tags} \tab Retrieves a list of tags associated with a resource\cr
+\link[paws.analytics:glue_get_trigger]{get_trigger} \tab Retrieves the definition of a trigger\cr
+\link[paws.analytics:glue_get_triggers]{get_triggers} \tab Gets all the triggers associated with a job\cr
+\link[paws.analytics:glue_get_unfiltered_partition_metadata]{get_unfiltered_partition_metadata} \tab Get unfiltered partition metadata\cr
+\link[paws.analytics:glue_get_unfiltered_partitions_metadata]{get_unfiltered_partitions_metadata} \tab Get unfiltered partitions metadata\cr
+\link[paws.analytics:glue_get_unfiltered_table_metadata]{get_unfiltered_table_metadata} \tab Get unfiltered table metadata\cr
+\link[paws.analytics:glue_get_user_defined_function]{get_user_defined_function} \tab Retrieves a specified function definition from the Data Catalog\cr
+\link[paws.analytics:glue_get_user_defined_functions]{get_user_defined_functions} \tab Retrieves multiple function definitions from the Data Catalog\cr
+\link[paws.analytics:glue_get_workflow]{get_workflow} \tab Retrieves resource metadata for a workflow\cr
+\link[paws.analytics:glue_get_workflow_run]{get_workflow_run} \tab Retrieves the metadata for a given workflow run\cr
+\link[paws.analytics:glue_get_workflow_run_properties]{get_workflow_run_properties} \tab Retrieves the workflow run properties which were set during the run\cr
+\link[paws.analytics:glue_get_workflow_runs]{get_workflow_runs} \tab Retrieves metadata for all runs of a given workflow\cr
+\link[paws.analytics:glue_import_catalog_to_glue]{import_catalog_to_glue} \tab Imports an existing Amazon Athena Data Catalog to Glue\cr
+\link[paws.analytics:glue_list_blueprints]{list_blueprints} \tab Lists all the blueprint names in an account\cr
+\link[paws.analytics:glue_list_crawlers]{list_crawlers} \tab Retrieves the names of all crawler resources in this Amazon Web Services account, or the resources with the specified tag\cr
+\link[paws.analytics:glue_list_crawls]{list_crawls} \tab Returns all the crawls of a specified crawler\cr
+\link[paws.analytics:glue_list_custom_entity_types]{list_custom_entity_types} \tab Lists all the custom patterns that have been created\cr
+\link[paws.analytics:glue_list_dev_endpoints]{list_dev_endpoints} \tab Retrieves the names of all DevEndpoint resources in this Amazon Web Services account, or the resources with the specified tag\cr
+\link[paws.analytics:glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this Amazon Web Services account, or the resources with the specified tag\cr
+\link[paws.analytics:glue_list_ml_transforms]{list_ml_transforms} \tab Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag\cr
+\link[paws.analytics:glue_list_registries]{list_registries} \tab Returns a list of registries that you have created, with minimal registry information\cr
+\link[paws.analytics:glue_list_schemas]{list_schemas} \tab Returns a list of schemas with minimal details\cr
+\link[paws.analytics:glue_list_schema_versions]{list_schema_versions} \tab Returns a list of schema versions that you have created, with minimal information\cr
+\link[paws.analytics:glue_list_sessions]{list_sessions} \tab Retrieve a list of sessions\cr
+\link[paws.analytics:glue_list_statements]{list_statements} \tab Lists statements for the session\cr
+\link[paws.analytics:glue_list_triggers]{list_triggers} \tab Retrieves the names of all trigger resources in this Amazon Web Services account, or the resources with the specified tag\cr
+\link[paws.analytics:glue_list_workflows]{list_workflows} \tab Lists names of workflows created in the account\cr
+\link[paws.analytics:glue_put_data_catalog_encryption_settings]{put_data_catalog_encryption_settings} \tab Sets the security configuration for a specified catalog\cr
+\link[paws.analytics:glue_put_resource_policy]{put_resource_policy} \tab Sets the Data Catalog resource policy for access control\cr
+\link[paws.analytics:glue_put_schema_version_metadata]{put_schema_version_metadata} \tab Puts the metadata key value pair for a specified schema version ID\cr
+\link[paws.analytics:glue_put_workflow_run_properties]{put_workflow_run_properties} \tab Puts the specified workflow run properties for the given workflow run\cr
+\link[paws.analytics:glue_query_schema_version_metadata]{query_schema_version_metadata} \tab Queries for the schema version metadata information\cr
+\link[paws.analytics:glue_register_schema_version]{register_schema_version} \tab Adds a new version to the existing schema\cr
+\link[paws.analytics:glue_remove_schema_version_metadata]{remove_schema_version_metadata} \tab Removes a key value pair from the schema version metadata for the specified schema version ID\cr
+\link[paws.analytics:glue_reset_job_bookmark]{reset_job_bookmark} \tab Resets a bookmark entry\cr
+\link[paws.analytics:glue_resume_workflow_run]{resume_workflow_run} \tab Restarts selected nodes of a previous partially completed workflow run and resumes the workflow run\cr
+\link[paws.analytics:glue_run_statement]{run_statement} \tab Executes the statement\cr
+\link[paws.analytics:glue_search_tables]{search_tables} \tab Searches a set of tables based on properties in the table metadata as well as on the parent database\cr
+\link[paws.analytics:glue_start_blueprint_run]{start_blueprint_run} \tab Starts a new run of the specified blueprint\cr
+\link[paws.analytics:glue_start_crawler]{start_crawler} \tab Starts a crawl using the specified crawler, regardless of what is scheduled\cr
+\link[paws.analytics:glue_start_crawler_schedule]{start_crawler_schedule} \tab Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED\cr
+\link[paws.analytics:glue_start_export_labels_task_run]{start_export_labels_task_run} \tab Begins an asynchronous task to export all labeled data for a particular transform\cr
+\link[paws.analytics:glue_start_import_labels_task_run]{start_import_labels_task_run} \tab Enables you to provide additional labels (examples of truth) to be used to teach the machine learning transform and improve its quality\cr
+\link[paws.analytics:glue_start_job_run]{start_job_run} \tab Starts a job run using a job definition\cr
+\link[paws.analytics:glue_start_ml_evaluation_task_run]{start_ml_evaluation_task_run} \tab Starts a task to estimate the quality of the transform\cr
+\link[paws.analytics:glue_start_ml_labeling_set_generation_task_run]{start_ml_labeling_set_generation_task_run} \tab Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels\cr
+\link[paws.analytics:glue_start_trigger]{start_trigger} \tab Starts an existing trigger\cr
+\link[paws.analytics:glue_start_workflow_run]{start_workflow_run} \tab Starts a new run of the specified workflow\cr
+\link[paws.analytics:glue_stop_crawler]{stop_crawler} \tab If the specified crawler is running, stops the crawl\cr
+\link[paws.analytics:glue_stop_crawler_schedule]{stop_crawler_schedule} \tab Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running\cr
+\link[paws.analytics:glue_stop_session]{stop_session} \tab Stops the session\cr
+\link[paws.analytics:glue_stop_trigger]{stop_trigger} \tab Stops a specified trigger\cr
+\link[paws.analytics:glue_stop_workflow_run]{stop_workflow_run} \tab Stops the execution of the specified workflow run\cr
+\link[paws.analytics:glue_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
+\link[paws.analytics:glue_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
+\link[paws.analytics:glue_update_blueprint]{update_blueprint} \tab Updates a registered blueprint\cr
+\link[paws.analytics:glue_update_classifier]{update_classifier} \tab Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a JsonClassifier, or a CsvClassifier, depending on which field is present)\cr
+\link[paws.analytics:glue_update_column_statistics_for_partition]{update_column_statistics_for_partition} \tab Creates or updates partition statistics of columns\cr
+\link[paws.analytics:glue_update_column_statistics_for_table]{update_column_statistics_for_table} \tab Creates or updates table statistics of columns\cr
+\link[paws.analytics:glue_update_connection]{update_connection} \tab Updates a connection definition in the Data Catalog\cr
+\link[paws.analytics:glue_update_crawler]{update_crawler} \tab Updates a crawler\cr
+\link[paws.analytics:glue_update_crawler_schedule]{update_crawler_schedule} \tab Updates the schedule of a crawler using a cron expression\cr
+\link[paws.analytics:glue_update_database]{update_database} \tab Updates an existing database definition in a Data Catalog\cr
+\link[paws.analytics:glue_update_dev_endpoint]{update_dev_endpoint} \tab Updates a specified development endpoint\cr
+\link[paws.analytics:glue_update_job]{update_job} \tab Updates an existing job definition\cr
+\link[paws.analytics:glue_update_ml_transform]{update_ml_transform} \tab Updates an existing machine learning transform\cr
+\link[paws.analytics:glue_update_partition]{update_partition} \tab Updates a partition\cr
+\link[paws.analytics:glue_update_registry]{update_registry} \tab Updates an existing registry which is used to hold a collection of schemas\cr
+\link[paws.analytics:glue_update_schema]{update_schema} \tab Updates the description, compatibility setting, or version checkpoint for a schema set\cr
+\link[paws.analytics:glue_update_table]{update_table} \tab Updates a metadata table in the Data Catalog\cr
+\link[paws.analytics:glue_update_trigger]{update_trigger} \tab Updates a trigger definition\cr
+\link[paws.analytics:glue_update_user_defined_function]{update_user_defined_function} \tab Updates an existing function definition in the Data Catalog\cr
+\link[paws.analytics:glue_update_workflow]{update_workflow} \tab Updates an existing workflow
 }
 }
 

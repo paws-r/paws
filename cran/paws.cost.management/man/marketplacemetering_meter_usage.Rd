@@ -4,8 +4,14 @@
 \alias{marketplacemetering_meter_usage}
 \title{API to emit metering records}
 \usage{
-marketplacemetering_meter_usage(ProductCode, Timestamp, UsageDimension,
-  UsageQuantity, DryRun, UsageAllocations)
+marketplacemetering_meter_usage(
+  ProductCode,
+  Timestamp,
+  UsageDimension,
+  UsageQuantity = NULL,
+  DryRun = NULL,
+  UsageAllocations = NULL
+)
 }
 \arguments{
 \item{ProductCode}{[required] Product code is used to uniquely identify a product in AWS Marketplace.
@@ -14,7 +20,7 @@ publishing of a new product.}
 
 \item{Timestamp}{[required] Timestamp, in UTC, for which the usage is being reported. Your
 application can meter usage for up to one hour in the past. Make sure
-the timestamp value is not before the start of the software usage.}
+the \code{timestamp} value is not before the start of the software usage.}
 
 \item{UsageDimension}{[required] It will be one of the fcp dimension name provided during the publishing
 of the product.}
@@ -23,54 +29,19 @@ of the product.}
 
 \item{DryRun}{Checks whether you have the permissions required for the action, but
 does not make the request. If you have the permissions, the request
-returns DryRunOperation; otherwise, it returns UnauthorizedException.
-Defaults to \code{false} if not specified.}
+returns \code{DryRunOperation}; otherwise, it returns
+\code{UnauthorizedException}. Defaults to \code{false} if not specified.}
 
-\item{UsageAllocations}{The set of UsageAllocations to submit.
+\item{UsageAllocations}{The set of \code{UsageAllocations} to submit.
 
-The sum of all UsageAllocation quantities must equal the UsageQuantity
-of the MeterUsage request, and each UsageAllocation must have a unique
-set of tags (include no tags).}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  MeteringRecordId = "string"
-)
-}
+The sum of all \code{UsageAllocation} quantities must equal the
+\code{UsageQuantity} of the \code{\link[=marketplacemetering_meter_usage]{meter_usage}}
+request, and each \code{UsageAllocation} must have a unique set of tags
+(include no tags).}
 }
 \description{
-API to emit metering records. For identical requests, the API is
-idempotent. It simply returns the metering record ID.
+API to emit metering records. For identical requests, the API is idempotent. It simply returns the metering record ID.
 
-MeterUsage is authenticated on the buyer's AWS account using credentials
-from the EC2 instance, ECS task, or EKS pod.
-
-MeterUsage can optionally include multiple usage allocations, to provide
-customers with usage data split into buckets by tags that you define (or
-allow the customer to define).
+See \url{https://paws-r.github.io/docs/marketplacemetering/meter_usage.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$meter_usage(
-  ProductCode = "string",
-  Timestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  UsageDimension = "string",
-  UsageQuantity = 123,
-  DryRun = TRUE|FALSE,
-  UsageAllocations = list(
-    list(
-      AllocatedUsageQuantity = 123,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

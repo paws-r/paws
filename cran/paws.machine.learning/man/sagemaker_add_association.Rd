@@ -4,7 +4,7 @@
 \alias{sagemaker_add_association}
 \title{Creates an association between the source and the destination}
 \usage{
-sagemaker_add_association(SourceArn, DestinationArn, AssociationType)
+sagemaker_add_association(SourceArn, DestinationArn, AssociationType = NULL)
 }
 \arguments{
 \item{SourceArn}{[required] The ARN of the source.}
@@ -26,26 +26,9 @@ derived from the original inputs.
 training job produced a model artifact.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SourceArn = "string",
-  DestinationArn = "string"
-)
-}
-}
 \description{
-Creates an \emph{association} between the source and the destination. A
-source can be associated with multiple destinations, and a destination
-can be associated with multiple sources. An association is a lineage
-tracking entity. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
-}
-\section{Request syntax}{
-\preformatted{svc$add_association(
-  SourceArn = "string",
-  DestinationArn = "string",
-  AssociationType = "ContributedTo"|"AssociatedWith"|"DerivedFrom"|"Produced"
-)
-}
-}
+Creates an \emph{association} between the source and the destination. A source can be associated with multiple destinations, and a destination can be associated with multiple sources. An association is a lineage tracking entity. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
 
+See \url{https://paws-r.github.io/docs/sagemaker/add_association.html} for full documentation.
+}
 \keyword{internal}

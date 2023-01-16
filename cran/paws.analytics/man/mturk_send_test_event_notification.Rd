@@ -18,31 +18,9 @@ is included in the test message even if the notification specification
 does not include the event type. The notification specification does not
 filter out the test event.}
 }
-\value{
-An empty list.
-}
 \description{
-The \code{\link[=mturk_send_test_event_notification]{send_test_event_notification}}
-operation causes Amazon Mechanical Turk to send a notification message
-as if a HIT event occurred, according to the provided notification
-specification. This allows you to test notifications without setting up
-notifications for a real HIT type and trying to trigger them using the
-website. When you call this operation, the service attempts to send the
-test notification immediately.
-}
-\section{Request syntax}{
-\preformatted{svc$send_test_event_notification(
-  Notification = list(
-    Destination = "string",
-    Transport = "Email"|"SQS"|"SNS",
-    Version = "string",
-    EventTypes = list(
-      "AssignmentAccepted"|"AssignmentAbandoned"|"AssignmentReturned"|"AssignmentSubmitted"|"AssignmentRejected"|"AssignmentApproved"|"HITCreated"|"HITExpired"|"HITReviewable"|"HITExtended"|"HITDisposed"|"Ping"
-    )
-  ),
-  TestEventType = "AssignmentAccepted"|"AssignmentAbandoned"|"AssignmentReturned"|"AssignmentSubmitted"|"AssignmentRejected"|"AssignmentApproved"|"HITCreated"|"HITExpired"|"HITReviewable"|"HITExtended"|"HITDisposed"|"Ping"
-)
-}
-}
+The \code{\link[=mturk_send_test_event_notification]{send_test_event_notification}} operation causes Amazon Mechanical Turk to send a notification message as if a HIT event occurred, according to the provided notification specification. This allows you to test notifications without setting up notifications for a real HIT type and trying to trigger them using the website. When you call this operation, the service attempts to send the test notification immediately.
 
+See \url{https://paws-r.github.io/docs/mturk/send_test_event_notification.html} for full documentation.
+}
 \keyword{internal}

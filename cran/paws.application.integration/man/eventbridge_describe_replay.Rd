@@ -9,57 +9,9 @@ eventbridge_describe_replay(ReplayName)
 \arguments{
 \item{ReplayName}{[required] The name of the replay to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReplayName = "string",
-  ReplayArn = "string",
-  Description = "string",
-  State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
-  StateReason = "string",
-  EventSourceArn = "string",
-  Destination = list(
-    Arn = "string",
-    FilterArns = list(
-      "string"
-    )
-  ),
-  EventStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EventEndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EventLastReplayedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  ReplayStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  ReplayEndTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Retrieves details about a replay. Use
-\code{\link[=eventbridge_describe_replay]{describe_replay}} to determine the
-progress of a running replay. A replay processes events to replay based
-on the time in the event, and replays them using 1 minute intervals. If
-you use \code{\link[=eventbridge_start_replay]{start_replay}} and specify an
-\code{EventStartTime} and an \code{EventEndTime} that covers a 20 minute time
-range, the events are replayed from the first minute of that 20 minute
-range first. Then the events from the second minute are replayed. You
-can use \code{\link[=eventbridge_describe_replay]{describe_replay}} to determine
-the progress of a replay. The value returned for \code{EventLastReplayedTime}
-indicates the time within the specified time range associated with the
-last event replayed.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_replay(
-  ReplayName = "string"
-)
-}
-}
+Retrieves details about a replay. Use \code{\link[=eventbridge_describe_replay]{describe_replay}} to determine the progress of a running replay. A replay processes events to replay based on the time in the event, and replays them using 1 minute intervals. If you use \code{\link[=eventbridge_start_replay]{start_replay}} and specify an \code{EventStartTime} and an \code{EventEndTime} that covers a 20 minute time range, the events are replayed from the first minute of that 20 minute range first. Then the events from the second minute are replayed. You can use \code{\link[=eventbridge_describe_replay]{describe_replay}} to determine the progress of a replay. The value returned for \code{EventLastReplayedTime} indicates the time within the specified time range associated with the last event replayed.
 
+See \url{https://paws-r.github.io/docs/eventbridge/describe_replay.html} for full documentation.
+}
 \keyword{internal}

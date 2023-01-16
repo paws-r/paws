@@ -5,7 +5,7 @@ NULL
 
 .personalize$create_batch_inference_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), solutionVersionArn = structure(logical(0), tags = list(type = "string")), filterArn = structure(logical(0), tags = list(type = "string")), numResults = structure(logical(0), tags = list(type = "integer")), jobInput = structure(list(s3DataSource = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobOutput = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), batchInferenceJobConfig = structure(list(itemExplorationConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), solutionVersionArn = structure(logical(0), tags = list(type = "string")), filterArn = structure(logical(0), tags = list(type = "string")), numResults = structure(logical(0), tags = list(type = "integer")), jobInput = structure(list(s3DataSource = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobOutput = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), batchInferenceJobConfig = structure(list(itemExplorationConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -15,9 +15,21 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$create_batch_segment_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), solutionVersionArn = structure(logical(0), tags = list(type = "string")), filterArn = structure(logical(0), tags = list(type = "string")), numResults = structure(logical(0), tags = list(type = "integer")), jobInput = structure(list(s3DataSource = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobOutput = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$create_batch_segment_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(batchSegmentJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$create_campaign_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), solutionVersionArn = structure(logical(0), tags = list(type = "string")), minProvisionedTPS = structure(logical(0), tags = list(type = "integer")), campaignConfig = structure(list(itemExplorationConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), solutionVersionArn = structure(logical(0), tags = list(type = "string")), minProvisionedTPS = structure(logical(0), tags = list(type = "integer")), campaignConfig = structure(list(itemExplorationConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,7 +41,7 @@ NULL
 
 .personalize$create_dataset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), datasetType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), datasetType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -39,21 +51,33 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$create_dataset_export_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), ingestionMode = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), jobOutput = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$create_dataset_export_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetExportJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$create_dataset_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), domain = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .personalize$create_dataset_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(datasetGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(datasetGroupArn = structure(logical(0), tags = list(type = "string")), domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .personalize$create_dataset_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), importMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,7 +89,7 @@ NULL
 
 .personalize$create_event_tracker_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -77,7 +101,7 @@ NULL
 
 .personalize$create_filter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), filterExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), filterExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -87,9 +111,21 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$create_recommender_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), recipeArn = structure(logical(0), tags = list(type = "string")), recommenderConfig = structure(list(itemExplorationConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), minRecommendationRequestsPerSecond = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$create_recommender_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommenderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$create_schema_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string")), domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -101,7 +137,7 @@ NULL
 
 .personalize$create_solution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), performHPO = structure(logical(0), tags = list(type = "boolean")), performAutoML = structure(logical(0), tags = list(type = "boolean")), recipeArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), solutionConfig = structure(list(eventValueThreshold = structure(logical(0), tags = list(type = "string")), hpoConfig = structure(list(hpoObjective = structure(list(type = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), metricRegex = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), hpoResourceConfig = structure(list(maxNumberOfTrainingJobs = structure(logical(0), tags = list(type = "string")), maxParallelTrainingJobs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), algorithmHyperParameterRanges = structure(list(integerHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "integer")), maxValue = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), continuousHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "double")), maxValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), categoricalHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), featureTransformationParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoMLConfig = structure(list(metricName = structure(logical(0), tags = list(type = "string")), recipeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), performHPO = structure(logical(0), tags = list(type = "boolean")), performAutoML = structure(logical(0), tags = list(type = "boolean")), recipeArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), solutionConfig = structure(list(eventValueThreshold = structure(logical(0), tags = list(type = "string")), hpoConfig = structure(list(hpoObjective = structure(list(type = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), metricRegex = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), hpoResourceConfig = structure(list(maxNumberOfTrainingJobs = structure(logical(0), tags = list(type = "string")), maxParallelTrainingJobs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), algorithmHyperParameterRanges = structure(list(integerHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "integer")), maxValue = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), continuousHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "double")), maxValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), categoricalHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), featureTransformationParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoMLConfig = structure(list(metricName = structure(logical(0), tags = list(type = "string")), recipeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), optimizationObjective = structure(list(itemAttribute = structure(logical(0), tags = list(type = "string")), objectiveSensitivity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -113,7 +149,7 @@ NULL
 
 .personalize$create_solution_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(solutionArn = structure(logical(0), tags = list(type = "string")), trainingMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(solutionArn = structure(logical(0), tags = list(type = "string")), trainingMode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -173,6 +209,16 @@ NULL
   list()
 }
 
+.personalize$delete_recommender_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommenderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$delete_recommender_output <- function(...) {
+  list()
+}
+
 .personalize$delete_schema_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(schemaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -217,6 +263,18 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$describe_batch_segment_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(batchSegmentJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$describe_batch_segment_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(batchSegmentJob = structure(list(jobName = structure(logical(0), tags = list(type = "string")), batchSegmentJobArn = structure(logical(0), tags = list(type = "string")), filterArn = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), solutionVersionArn = structure(logical(0), tags = list(type = "string")), numResults = structure(logical(0), tags = list(type = "integer")), jobInput = structure(list(s3DataSource = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), jobOutput = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$describe_campaign_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(campaignArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -241,6 +299,18 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$describe_dataset_export_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetExportJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$describe_dataset_export_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetExportJob = structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetExportJobArn = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), ingestionMode = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), jobOutput = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$describe_dataset_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(datasetGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -249,7 +319,7 @@ NULL
 
 .personalize$describe_dataset_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(datasetGroup = structure(list(name = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(datasetGroup = structure(list(name = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string")), domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -261,7 +331,7 @@ NULL
 
 .personalize$describe_dataset_import_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(datasetImportJob = structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetImportJobArn = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(datasetImportJob = structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetImportJobArn = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string")), importMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -313,6 +383,18 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$describe_recommender_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommenderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$describe_recommender_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommender = structure(list(recommenderArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), recipeArn = structure(logical(0), tags = list(type = "string")), recommenderConfig = structure(list(itemExplorationConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), minRecommendationRequestsPerSecond = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), latestRecommenderUpdate = structure(list(recommenderConfig = structure(list(itemExplorationConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), minRecommendationRequestsPerSecond = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), modelMetrics = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$describe_schema_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(schemaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -321,7 +403,7 @@ NULL
 
 .personalize$describe_schema_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(schema = structure(list(name = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(schema = structure(list(name = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), schema = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -333,7 +415,7 @@ NULL
 
 .personalize$describe_solution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(solution = structure(list(name = structure(logical(0), tags = list(type = "string")), solutionArn = structure(logical(0), tags = list(type = "string")), performHPO = structure(logical(0), tags = list(type = "boolean")), performAutoML = structure(logical(0), tags = list(type = "boolean")), recipeArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), solutionConfig = structure(list(eventValueThreshold = structure(logical(0), tags = list(type = "string")), hpoConfig = structure(list(hpoObjective = structure(list(type = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), metricRegex = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), hpoResourceConfig = structure(list(maxNumberOfTrainingJobs = structure(logical(0), tags = list(type = "string")), maxParallelTrainingJobs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), algorithmHyperParameterRanges = structure(list(integerHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "integer")), maxValue = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), continuousHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "double")), maxValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), categoricalHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), featureTransformationParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoMLConfig = structure(list(metricName = structure(logical(0), tags = list(type = "string")), recipeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), autoMLResult = structure(list(bestRecipeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), latestSolutionVersion = structure(list(solutionVersionArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(solution = structure(list(name = structure(logical(0), tags = list(type = "string")), solutionArn = structure(logical(0), tags = list(type = "string")), performHPO = structure(logical(0), tags = list(type = "boolean")), performAutoML = structure(logical(0), tags = list(type = "boolean")), recipeArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), solutionConfig = structure(list(eventValueThreshold = structure(logical(0), tags = list(type = "string")), hpoConfig = structure(list(hpoObjective = structure(list(type = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), metricRegex = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), hpoResourceConfig = structure(list(maxNumberOfTrainingJobs = structure(logical(0), tags = list(type = "string")), maxParallelTrainingJobs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), algorithmHyperParameterRanges = structure(list(integerHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "integer")), maxValue = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), continuousHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "double")), maxValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), categoricalHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), featureTransformationParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoMLConfig = structure(list(metricName = structure(logical(0), tags = list(type = "string")), recipeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), optimizationObjective = structure(list(itemAttribute = structure(logical(0), tags = list(type = "string")), objectiveSensitivity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), autoMLResult = structure(list(bestRecipeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), latestSolutionVersion = structure(list(solutionVersionArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -345,7 +427,7 @@ NULL
 
 .personalize$describe_solution_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(solutionVersion = structure(list(solutionVersionArn = structure(logical(0), tags = list(type = "string")), solutionArn = structure(logical(0), tags = list(type = "string")), performHPO = structure(logical(0), tags = list(type = "boolean")), performAutoML = structure(logical(0), tags = list(type = "boolean")), recipeArn = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), solutionConfig = structure(list(eventValueThreshold = structure(logical(0), tags = list(type = "string")), hpoConfig = structure(list(hpoObjective = structure(list(type = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), metricRegex = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), hpoResourceConfig = structure(list(maxNumberOfTrainingJobs = structure(logical(0), tags = list(type = "string")), maxParallelTrainingJobs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), algorithmHyperParameterRanges = structure(list(integerHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "integer")), maxValue = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), continuousHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "double")), maxValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), categoricalHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), featureTransformationParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoMLConfig = structure(list(metricName = structure(logical(0), tags = list(type = "string")), recipeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), trainingHours = structure(logical(0), tags = list(type = "double")), trainingMode = structure(logical(0), tags = list(type = "string")), tunedHPOParams = structure(list(algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(solutionVersion = structure(list(solutionVersionArn = structure(logical(0), tags = list(type = "string")), solutionArn = structure(logical(0), tags = list(type = "string")), performHPO = structure(logical(0), tags = list(type = "boolean")), performAutoML = structure(logical(0), tags = list(type = "boolean")), recipeArn = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), solutionConfig = structure(list(eventValueThreshold = structure(logical(0), tags = list(type = "string")), hpoConfig = structure(list(hpoObjective = structure(list(type = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), metricRegex = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), hpoResourceConfig = structure(list(maxNumberOfTrainingJobs = structure(logical(0), tags = list(type = "string")), maxParallelTrainingJobs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), algorithmHyperParameterRanges = structure(list(integerHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "integer")), maxValue = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), continuousHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "double")), maxValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), categoricalHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), featureTransformationParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoMLConfig = structure(list(metricName = structure(logical(0), tags = list(type = "string")), recipeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), optimizationObjective = structure(list(itemAttribute = structure(logical(0), tags = list(type = "string")), objectiveSensitivity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), trainingHours = structure(logical(0), tags = list(type = "double")), trainingMode = structure(logical(0), tags = list(type = "string")), tunedHPOParams = structure(list(algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -373,6 +455,18 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$list_batch_segment_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(solutionVersionArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$list_batch_segment_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(batchSegmentJobs = structure(list(structure(list(batchSegmentJobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string")), solutionVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$list_campaigns_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(solutionArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -385,6 +479,18 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$list_dataset_export_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$list_dataset_export_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetExportJobs = structure(list(structure(list(datasetExportJobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$list_dataset_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -393,7 +499,7 @@ NULL
 
 .personalize$list_dataset_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(datasetGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(datasetGroups = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string")), domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -405,7 +511,7 @@ NULL
 
 .personalize$list_dataset_import_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(datasetImportJobs = structure(list(structure(list(datasetImportJobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(datasetImportJobs = structure(list(structure(list(datasetImportJobArn = structure(logical(0), tags = list(type = "string")), jobName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string")), importMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -447,13 +553,25 @@ NULL
 
 .personalize$list_recipes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recipeProvider = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(recipeProvider = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .personalize$list_recipes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(recipes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), recipeArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(recipes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), recipeArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$list_recommenders_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetGroupArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$list_recommenders_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommenders = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), recommenderArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), recipeArn = structure(logical(0), tags = list(type = "string")), recommenderConfig = structure(list(itemExplorationConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), minRecommendationRequestsPerSecond = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -465,7 +583,7 @@ NULL
 
 .personalize$list_schemas_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(schemas = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(schemas = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -493,6 +611,76 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$start_recommender_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommenderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$start_recommender_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommenderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$stop_recommender_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommenderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$stop_recommender_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommenderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$stop_solution_version_creation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(solutionVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$stop_solution_version_creation_output <- function(...) {
+  list()
+}
+
+.personalize$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$update_campaign_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(campaignArn = structure(logical(0), tags = list(type = "string")), solutionVersionArn = structure(logical(0), tags = list(type = "string")), minProvisionedTPS = structure(logical(0), tags = list(type = "integer")), campaignConfig = structure(list(itemExplorationConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -502,5 +690,17 @@ NULL
 .personalize$update_campaign_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(campaignArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$update_recommender_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommenderArn = structure(logical(0), tags = list(type = "string")), recommenderConfig = structure(list(itemExplorationConfig = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), minRecommendationRequestsPerSecond = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$update_recommender_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommenderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

@@ -4,29 +4,20 @@
 \alias{glue_delete_user_defined_function}
 \title{Deletes an existing function definition from the Data Catalog}
 \usage{
-glue_delete_user_defined_function(CatalogId, DatabaseName, FunctionName)
+glue_delete_user_defined_function(CatalogId = NULL, DatabaseName, FunctionName)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the function to be deleted is located.
-If none is supplied, the AWS account ID is used by default.}
+If none is supplied, the Amazon Web Services account ID is used by
+default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the function is located.}
 
 \item{FunctionName}{[required] The name of the function definition to be deleted.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an existing function definition from the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user_defined_function(
-  CatalogId = "string",
-  DatabaseName = "string",
-  FunctionName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/delete_user_defined_function.html} for full documentation.
+}
 \keyword{internal}

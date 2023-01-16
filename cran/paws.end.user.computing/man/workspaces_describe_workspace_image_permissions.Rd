@@ -3,10 +3,13 @@
 \name{workspaces_describe_workspace_image_permissions}
 \alias{workspaces_describe_workspace_image_permissions}
 \title{Describes the permissions that the owner of an image has granted to
-other AWS accounts for an image}
+other Amazon Web Services accounts for an image}
 \usage{
-workspaces_describe_workspace_image_permissions(ImageId, NextToken,
-  MaxResults)
+workspaces_describe_workspace_image_permissions(
+  ImageId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ImageId}{[required] The identifier of the image.}
@@ -16,29 +19,9 @@ provide this token to receive the next set of results.}
 
 \item{MaxResults}{The maximum number of items to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageId = "string",
-  ImagePermissions = list(
-    list(
-      SharedAccountId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the permissions that the owner of an image has granted to
-other AWS accounts for an image.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_workspace_image_permissions(
-  ImageId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Describes the permissions that the owner of an image has granted to other Amazon Web Services accounts for an image.
 
+See \url{https://paws-r.github.io/docs/workspaces/describe_workspace_image_permissions.html} for full documentation.
+}
 \keyword{internal}

@@ -7,34 +7,15 @@ registrant contact is valid, such as registering a new domain, this
 operation returns information about whether the registrant contact has
 responded}
 \usage{
-route53domains_get_contact_reachability_status(domainName)
+route53domains_get_contact_reachability_status(domainName = NULL)
 }
 \arguments{
 \item{domainName}{The name of the domain for which you want to know whether the registrant
 contact has confirmed that the email address is valid.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  domainName = "string",
-  status = "PENDING"|"DONE"|"EXPIRED"
-)
-}
-}
 \description{
-For operations that require confirmation that the email address for the
-registrant contact is valid, such as registering a new domain, this
-operation returns information about whether the registrant contact has
-responded.
+For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation returns information about whether the registrant contact has responded.
 
-If you want us to resend the email, use the
-\code{\link[=route53domains_resend_contact_reachability_email]{resend_contact_reachability_email}}
-operation.
+See \url{https://paws-r.github.io/docs/route53domains/get_contact_reachability_status.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_contact_reachability_status(
-  domainName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -14,31 +14,9 @@ kinesisanalytics_delete_application(ApplicationName, CreateTimestamp)
 \code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to get this value.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Deletes the specified application. Amazon Kinesis Analytics halts
-application execution and deletes the application, including any
-application artifacts (such as in-application streams, reference table,
-and application code).
-
-This operation requires permissions to perform the
-\code{kinesisanalytics:DeleteApplication} action.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/delete_application.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_application(
-  ApplicationName = "string",
-  CreateTimestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
-
 \keyword{internal}

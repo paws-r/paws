@@ -7,7 +7,19 @@
 wafregional(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -39,7 +51,9 @@ the AWS WAF Classic API, see the \href{https://docs.aws.amazon.com/waf/latest/de
 in the developer guide.
 }
 \section{Service syntax}{
-\preformatted{svc <- wafregional(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- wafregional(
   config = list(
     credentials = list(
       creds = list(
@@ -47,99 +61,103 @@ in the developer guide.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=wafregional_associate_web_acl]{associate_web_acl} \tab This is AWS WAF Classic Regional documentation\cr
-\link[=wafregional_create_byte_match_set]{create_byte_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_geo_match_set]{create_geo_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_ip_set]{create_ip_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_rate_based_rule]{create_rate_based_rule} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_regex_match_set]{create_regex_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_rule]{create_rule} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_rule_group]{create_rule_group} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_size_constraint_set]{create_size_constraint_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_web_acl]{create_web_acl} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_create_web_acl_migration_stack]{create_web_acl_migration_stack} \tab Creates an AWS CloudFormation WAFV2 template for the specified web ACL in the specified Amazon S3 bucket\cr
-\link[=wafregional_create_xss_match_set]{create_xss_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_byte_match_set]{delete_byte_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_geo_match_set]{delete_geo_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_ip_set]{delete_ip_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_logging_configuration]{delete_logging_configuration} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_permission_policy]{delete_permission_policy} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_rate_based_rule]{delete_rate_based_rule} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_regex_match_set]{delete_regex_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_regex_pattern_set]{delete_regex_pattern_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_rule]{delete_rule} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_rule_group]{delete_rule_group} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_size_constraint_set]{delete_size_constraint_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_sql_injection_match_set]{delete_sql_injection_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_web_acl]{delete_web_acl} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_delete_xss_match_set]{delete_xss_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_disassociate_web_acl]{disassociate_web_acl} \tab This is AWS WAF Classic Regional documentation\cr
-\link[=wafregional_get_byte_match_set]{get_byte_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_change_token]{get_change_token} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_change_token_status]{get_change_token_status} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_geo_match_set]{get_geo_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_ip_set]{get_ip_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_logging_configuration]{get_logging_configuration} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_permission_policy]{get_permission_policy} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_rate_based_rule]{get_rate_based_rule} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_rate_based_rule_managed_keys]{get_rate_based_rule_managed_keys} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_regex_match_set]{get_regex_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_regex_pattern_set]{get_regex_pattern_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_rule]{get_rule} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_rule_group]{get_rule_group} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_sampled_requests]{get_sampled_requests} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_size_constraint_set]{get_size_constraint_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_sql_injection_match_set]{get_sql_injection_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_web_acl]{get_web_acl} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_get_web_acl_for_resource]{get_web_acl_for_resource} \tab This is AWS WAF Classic Regional documentation\cr
-\link[=wafregional_get_xss_match_set]{get_xss_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_activated_rules_in_rule_group]{list_activated_rules_in_rule_group} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_byte_match_sets]{list_byte_match_sets} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_geo_match_sets]{list_geo_match_sets} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_ip_sets]{list_ip_sets} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_logging_configurations]{list_logging_configurations} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_rate_based_rules]{list_rate_based_rules} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_regex_match_sets]{list_regex_match_sets} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_regex_pattern_sets]{list_regex_pattern_sets} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_resources_for_web_acl]{list_resources_for_web_acl} \tab This is AWS WAF Classic Regional documentation\cr
-\link[=wafregional_list_rule_groups]{list_rule_groups} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_rules]{list_rules} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_size_constraint_sets]{list_size_constraint_sets} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_subscribed_rule_groups]{list_subscribed_rule_groups} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_tags_for_resource]{list_tags_for_resource} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_web_ac_ls]{list_web_ac_ls} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_list_xss_match_sets]{list_xss_match_sets} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_put_logging_configuration]{put_logging_configuration} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_put_permission_policy]{put_permission_policy} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_tag_resource]{tag_resource} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_untag_resource]{untag_resource} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_byte_match_set]{update_byte_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_geo_match_set]{update_geo_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_ip_set]{update_ip_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_rate_based_rule]{update_rate_based_rule} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_regex_match_set]{update_regex_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_regex_pattern_set]{update_regex_pattern_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_rule]{update_rule} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_rule_group]{update_rule_group} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_size_constraint_set]{update_size_constraint_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_sql_injection_match_set]{update_sql_injection_match_set} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_web_acl]{update_web_acl} \tab This is AWS WAF Classic documentation\cr
-\link[=wafregional_update_xss_match_set]{update_xss_match_set} \tab This is AWS WAF Classic documentation
+\link[paws.security.identity.p1:wafregional_associate_web_acl]{associate_web_acl} \tab This is AWS WAF Classic Regional documentation\cr
+\link[paws.security.identity.p1:wafregional_create_byte_match_set]{create_byte_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_geo_match_set]{create_geo_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_ip_set]{create_ip_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_rate_based_rule]{create_rate_based_rule} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_regex_match_set]{create_regex_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_regex_pattern_set]{create_regex_pattern_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_rule]{create_rule} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_rule_group]{create_rule_group} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_size_constraint_set]{create_size_constraint_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_sql_injection_match_set]{create_sql_injection_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_web_acl]{create_web_acl} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_create_web_acl_migration_stack]{create_web_acl_migration_stack} \tab Creates an AWS CloudFormation WAFV2 template for the specified web ACL in the specified Amazon S3 bucket\cr
+\link[paws.security.identity.p1:wafregional_create_xss_match_set]{create_xss_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_byte_match_set]{delete_byte_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_geo_match_set]{delete_geo_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_ip_set]{delete_ip_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_logging_configuration]{delete_logging_configuration} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_permission_policy]{delete_permission_policy} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_rate_based_rule]{delete_rate_based_rule} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_regex_match_set]{delete_regex_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_regex_pattern_set]{delete_regex_pattern_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_rule]{delete_rule} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_rule_group]{delete_rule_group} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_size_constraint_set]{delete_size_constraint_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_sql_injection_match_set]{delete_sql_injection_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_web_acl]{delete_web_acl} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_delete_xss_match_set]{delete_xss_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_disassociate_web_acl]{disassociate_web_acl} \tab This is AWS WAF Classic Regional documentation\cr
+\link[paws.security.identity.p1:wafregional_get_byte_match_set]{get_byte_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_change_token]{get_change_token} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_change_token_status]{get_change_token_status} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_geo_match_set]{get_geo_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_ip_set]{get_ip_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_logging_configuration]{get_logging_configuration} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_permission_policy]{get_permission_policy} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_rate_based_rule]{get_rate_based_rule} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_rate_based_rule_managed_keys]{get_rate_based_rule_managed_keys} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_regex_match_set]{get_regex_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_regex_pattern_set]{get_regex_pattern_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_rule]{get_rule} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_rule_group]{get_rule_group} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_sampled_requests]{get_sampled_requests} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_size_constraint_set]{get_size_constraint_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_sql_injection_match_set]{get_sql_injection_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_web_acl]{get_web_acl} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_get_web_acl_for_resource]{get_web_acl_for_resource} \tab This is AWS WAF Classic Regional documentation\cr
+\link[paws.security.identity.p1:wafregional_get_xss_match_set]{get_xss_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_activated_rules_in_rule_group]{list_activated_rules_in_rule_group} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_byte_match_sets]{list_byte_match_sets} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_geo_match_sets]{list_geo_match_sets} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_ip_sets]{list_ip_sets} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_logging_configurations]{list_logging_configurations} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_rate_based_rules]{list_rate_based_rules} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_regex_match_sets]{list_regex_match_sets} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_regex_pattern_sets]{list_regex_pattern_sets} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_resources_for_web_acl]{list_resources_for_web_acl} \tab This is AWS WAF Classic Regional documentation\cr
+\link[paws.security.identity.p1:wafregional_list_rule_groups]{list_rule_groups} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_rules]{list_rules} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_size_constraint_sets]{list_size_constraint_sets} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_subscribed_rule_groups]{list_subscribed_rule_groups} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_tags_for_resource]{list_tags_for_resource} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_web_ac_ls]{list_web_ac_ls} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_list_xss_match_sets]{list_xss_match_sets} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_put_logging_configuration]{put_logging_configuration} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_put_permission_policy]{put_permission_policy} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_tag_resource]{tag_resource} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_untag_resource]{untag_resource} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_byte_match_set]{update_byte_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_geo_match_set]{update_geo_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_ip_set]{update_ip_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_rate_based_rule]{update_rate_based_rule} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_regex_match_set]{update_regex_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_regex_pattern_set]{update_regex_pattern_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_rule]{update_rule} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_rule_group]{update_rule_group} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_size_constraint_set]{update_size_constraint_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_sql_injection_match_set]{update_sql_injection_match_set} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_web_acl]{update_web_acl} \tab This is AWS WAF Classic documentation\cr
+\link[paws.security.identity.p1:wafregional_update_xss_match_set]{update_xss_match_set} \tab This is AWS WAF Classic documentation
 }
 }
 

@@ -4,11 +4,16 @@
 \alias{quicksight_search_analyses}
 \title{Searches for analyses that belong to the user specified in the filter}
 \usage{
-quicksight_search_analyses(AwsAccountId, Filters, NextToken, MaxResults)
+quicksight_search_analyses(
+  AwsAccountId,
+  Filters,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the analyses that you're
-searching for.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the analyses
+that you're searching for.}
 
 \item{Filters}{[required] The structure for the search filters that you want to apply to your
 search.}
@@ -17,45 +22,9 @@ search.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AnalysisSummaryList = list(
-    list(
-      Arn = "string",
-      AnalysisId = "string",
-      Name = "string",
-      Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Searches for analyses that belong to the user specified in the filter.
-}
-\section{Request syntax}{
-\preformatted{svc$search_analyses(
-  AwsAccountId = "string",
-  Filters = list(
-    list(
-      Operator = "StringEquals",
-      Name = "QUICKSIGHT_USER",
-      Value = "string"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/search_analyses.html} for full documentation.
+}
 \keyword{internal}

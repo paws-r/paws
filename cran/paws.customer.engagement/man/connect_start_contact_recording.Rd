@@ -2,49 +2,29 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_start_contact_recording}
 \alias{connect_start_contact_recording}
-\title{This API starts recording the contact when the agent joins the call}
+\title{Starts recording the contact:}
 \usage{
-connect_start_contact_recording(InstanceId, ContactId, InitialContactId,
-  VoiceRecordingConfiguration)
+connect_start_contact_recording(
+  InstanceId,
+  ContactId,
+  InitialContactId,
+  VoiceRecordingConfiguration
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{ContactId}{[required] The identifier of the contact.}
 
 \item{InitialContactId}{[required] The identifier of the contact. This is the identifier of the contact
 associated with the first interaction with the contact center.}
 
-\item{VoiceRecordingConfiguration}{[required] Who is being recorded.}
-}
-\value{
-An empty list.
+\item{VoiceRecordingConfiguration}{[required] The person being recorded.}
 }
 \description{
-This API starts recording the contact when the agent joins the call.
-StartContactRecording is a one-time action. For example, if you use
-StopContactRecording to stop recording an ongoing call, you can't use
-StartContactRecording to restart it. For scenarios where the recording
-has started and you want to suspend and resume it, such as when
-collecting sensitive information (for example, a credit card number),
-use SuspendContactRecording and ResumeContactRecording.
+Starts recording the contact:
 
-You can use this API to override the recording behavior configured in
-the \href{https://docs.aws.amazon.com/connect/latest/adminguide/set-recording-behavior.html}{Set recording behavior}
-block.
-
-Only voice recordings are supported at this time.
+See \url{https://paws-r.github.io/docs/connect/start_contact_recording.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_contact_recording(
-  InstanceId = "string",
-  ContactId = "string",
-  InitialContactId = "string",
-  VoiceRecordingConfiguration = list(
-    VoiceRecordingTrack = "FROM_AGENT"|"TO_AGENT"|"ALL"
-  )
-)
-}
-}
-
 \keyword{internal}

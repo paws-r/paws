@@ -5,8 +5,13 @@
 \title{Returns a list of Amazon Redshift parameter groups, including parameter
 groups you created and the default parameter group}
 \usage{
-redshift_describe_cluster_parameter_groups(ParameterGroupName,
-  MaxRecords, Marker, TagKeys, TagValues)
+redshift_describe_cluster_parameter_groups(
+  ParameterGroupName = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  TagKeys = NULL,
+  TagValues = NULL
+)
 }
 \arguments{
 \item{ParameterGroupName}{The name of a specific parameter group for which to return details. By
@@ -26,10 +31,10 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_cluster_parameter_groups]{describe_cluster_parameter_groups}}
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.}
 
 \item{TagKeys}{A tag key or keys for which you want to return all matching cluster
 parameter groups that are associated with the specified key or keys. For
@@ -47,59 +52,9 @@ these tag values in the request, Amazon Redshift returns a response with
 the parameter groups that have either or both of these tag values
 associated with them.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ParameterGroups = list(
-    list(
-      ParameterGroupName = "string",
-      ParameterGroupFamily = "string",
-      Description = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of Amazon Redshift parameter groups, including parameter
-groups you created and the default parameter group. For each parameter
-group, the response includes the parameter group name, description, and
-parameter group family name. You can optionally specify a name to
-retrieve the description of a specific parameter group.
+Returns a list of Amazon Redshift parameter groups, including parameter groups you created and the default parameter group. For each parameter group, the response includes the parameter group name, description, and parameter group family name. You can optionally specify a name to retrieve the description of a specific parameter group.
 
-For more information about parameters and parameter groups, go to
-\href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups}
-in the \emph{Amazon Redshift Cluster Management Guide}.
-
-If you specify both tag keys and tag values in the same request, Amazon
-Redshift returns all parameter groups that match any combination of the
-specified keys and values. For example, if you have \code{owner} and
-\code{environment} for tag keys, and \code{admin} and \code{test} for tag values, all
-parameter groups that have any combination of those values are returned.
-
-If both tag keys and values are omitted from the request, parameter
-groups are returned regardless of whether they have tag keys or values
-associated with them.
+See \url{https://paws-r.github.io/docs/redshift/describe_cluster_parameter_groups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_cluster_parameter_groups(
-  ParameterGroupName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

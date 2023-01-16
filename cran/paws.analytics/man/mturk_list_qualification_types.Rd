@@ -5,8 +5,13 @@
 \title{The ListQualificationTypes operation returns a list of Qualification
 types, filtered by an optional search term}
 \usage{
-mturk_list_qualification_types(Query, MustBeRequestable,
-  MustBeOwnedByCaller, NextToken, MaxResults)
+mturk_list_qualification_types(
+  Query = NULL,
+  MustBeRequestable,
+  MustBeOwnedByCaller = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Query}{A text query against all of the searchable attributes of Qualification
@@ -26,46 +31,9 @@ returned. If false, the operation returns all Qualification types.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NumResults = 123,
-  NextToken = "string",
-  QualificationTypes = list(
-    list(
-      QualificationTypeId = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Name = "string",
-      Description = "string",
-      Keywords = "string",
-      QualificationTypeStatus = "Active"|"Inactive",
-      Test = "string",
-      TestDurationInSeconds = 123,
-      AnswerKey = "string",
-      RetryDelayInSeconds = 123,
-      IsRequestable = TRUE|FALSE,
-      AutoGranted = TRUE|FALSE,
-      AutoGrantedValue = 123
-    )
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_list_qualification_types]{list_qualification_types}}
-operation returns a list of Qualification types, filtered by an optional
-search term.
-}
-\section{Request syntax}{
-\preformatted{svc$list_qualification_types(
-  Query = "string",
-  MustBeRequestable = TRUE|FALSE,
-  MustBeOwnedByCaller = TRUE|FALSE,
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+The \code{\link[=mturk_list_qualification_types]{list_qualification_types}} operation returns a list of Qualification types, filtered by an optional search term.
 
+See \url{https://paws-r.github.io/docs/mturk/list_qualification_types.html} for full documentation.
+}
 \keyword{internal}

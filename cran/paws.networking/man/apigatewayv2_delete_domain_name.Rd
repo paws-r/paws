@@ -9,17 +9,9 @@ apigatewayv2_delete_domain_name(DomainName)
 \arguments{
 \item{DomainName}{[required] The domain name.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a domain name.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_domain_name(
-  DomainName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_domain_name.html} for full documentation.
+}
 \keyword{internal}

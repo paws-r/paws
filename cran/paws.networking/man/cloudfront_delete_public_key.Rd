@@ -4,7 +4,7 @@
 \alias{cloudfront_delete_public_key}
 \title{Remove a public key you previously added to CloudFront}
 \usage{
-cloudfront_delete_public_key(Id, IfMatch)
+cloudfront_delete_public_key(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The ID of the public key you want to remove from CloudFront.}
@@ -12,18 +12,9 @@ cloudfront_delete_public_key(Id, IfMatch)
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
 public key identity to delete. For example: \code{E2QWRUHAPOMQZL}.}
 }
-\value{
-An empty list.
-}
 \description{
 Remove a public key you previously added to CloudFront.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_public_key(
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/delete_public_key.html} for full documentation.
+}
 \keyword{internal}

@@ -5,9 +5,16 @@
 \title{Creates a new session or modifies an existing session with an Amazon Lex
 bot}
 \usage{
-lexruntimeservice_put_session(botName, botAlias, userId,
-  sessionAttributes, dialogAction, recentIntentSummaryView, accept,
-  activeContexts)
+lexruntimeservice_put_session(
+  botName,
+  botAlias,
+  userId,
+  sessionAttributes = NULL,
+  dialogAction = NULL,
+  recentIntentSummaryView = NULL,
+  accept = NULL,
+  activeContexts = NULL
+)
 }
 \arguments{
 \item{botName}{[required] The name of the bot that contains the session data.}
@@ -78,76 +85,9 @@ If you don't specify a list of contexts, Amazon Lex will use the current
 list of contexts for the session. If you specify an empty list, all
 contexts for the session are cleared.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  contentType = "string",
-  intentName = "string",
-  slots = "string",
-  sessionAttributes = "string",
-  message = "string",
-  messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
-  dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
-  slotToElicit = "string",
-  audioStream = raw,
-  sessionId = "string",
-  activeContexts = "string"
-)
-}
-}
 \description{
-Creates a new session or modifies an existing session with an Amazon Lex
-bot. Use this operation to enable your application to set the state of
-the bot.
+Creates a new session or modifies an existing session with an Amazon Lex bot. Use this operation to enable your application to set the state of the bot.
 
-For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html}{Managing Sessions}.
+See \url{https://paws-r.github.io/docs/lexruntimeservice/put_session.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_session(
-  botName = "string",
-  botAlias = "string",
-  userId = "string",
-  sessionAttributes = list(
-    "string"
-  ),
-  dialogAction = list(
-    type = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
-    intentName = "string",
-    slots = list(
-      "string"
-    ),
-    slotToElicit = "string",
-    fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
-    message = "string",
-    messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite"
-  ),
-  recentIntentSummaryView = list(
-    list(
-      intentName = "string",
-      checkpointLabel = "string",
-      slots = list(
-        "string"
-      ),
-      confirmationStatus = "None"|"Confirmed"|"Denied",
-      dialogActionType = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Close"|"Delegate",
-      fulfillmentState = "Fulfilled"|"Failed"|"ReadyForFulfillment",
-      slotToElicit = "string"
-    )
-  ),
-  accept = "string",
-  activeContexts = list(
-    list(
-      name = "string",
-      timeToLive = list(
-        timeToLiveInSeconds = 123,
-        turnsToLive = 123
-      ),
-      parameters = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

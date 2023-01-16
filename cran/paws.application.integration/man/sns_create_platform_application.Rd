@@ -18,50 +18,11 @@ APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Firebase
 Cloud Messaging).}
 
 \item{Attributes}{[required] For a list of attributes, see
-\code{\link[=sns_set_platform_application_attributes]{set_platform_application_attributes}}}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PlatformApplicationArn = "string"
-)
-}
+\code{\link[=sns_set_platform_application_attributes]{set_platform_application_attributes}}.}
 }
 \description{
-Creates a platform application object for one of the supported push
-notification services, such as APNS and GCM (Firebase Cloud Messaging),
-to which devices and mobile apps may register. You must specify
-\code{PlatformPrincipal} and \code{PlatformCredential} attributes when using the
-\code{\link[=sns_create_platform_application]{create_platform_application}} action.
+Creates a platform application object for one of the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging), to which devices and mobile apps may register. You must specify \code{PlatformPrincipal} and \code{PlatformCredential} attributes when using the \code{\link[=sns_create_platform_application]{create_platform_application}} action.
 
-\code{PlatformPrincipal} and \code{PlatformCredential} are received from the
-notification service.
-\itemize{
-\item For \code{ADM}, \code{PlatformPrincipal} is \verb{client id} and
-\code{PlatformCredential} is \verb{client secret}.
-\item For \code{Baidu}, \code{PlatformPrincipal} is \verb{API key} and
-\code{PlatformCredential} is \verb{secret key}.
-\item For \code{APNS} and \code{APNS_SANDBOX}, \code{PlatformPrincipal} is
-\verb{SSL certificate} and \code{PlatformCredential} is \verb{private key}.
-\item For \code{GCM} (Firebase Cloud Messaging), there is no
-\code{PlatformPrincipal} and the \code{PlatformCredential} is \verb{API key}.
-\item For \code{MPNS}, \code{PlatformPrincipal} is \verb{TLS certificate} and
-\code{PlatformCredential} is \verb{private key}.
-\item For \code{WNS}, \code{PlatformPrincipal} is \verb{Package Security Identifier} and
-\code{PlatformCredential} is \verb{secret key}.
+See \url{https://paws-r.github.io/docs/sns/create_platform_application.html} for full documentation.
 }
-
-You can use the returned \code{PlatformApplicationArn} as an attribute for
-the \code{\link[=sns_create_platform_endpoint]{create_platform_endpoint}} action.
-}
-\section{Request syntax}{
-\preformatted{svc$create_platform_application(
-  Name = "string",
-  Platform = "string",
-  Attributes = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

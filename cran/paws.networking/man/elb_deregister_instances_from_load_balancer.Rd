@@ -11,52 +11,9 @@ elb_deregister_instances_from_load_balancer(LoadBalancerName, Instances)
 
 \item{Instances}{[required] The IDs of the instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Instances = list(
-    list(
-      InstanceId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Deregisters the specified instances from the specified load balancer.
-After the instance is deregistered, it no longer receives traffic from
-the load balancer.
+Deregisters the specified instances from the specified load balancer. After the instance is deregistered, it no longer receives traffic from the load balancer.
 
-You can use \code{\link[=elb_describe_load_balancers]{describe_load_balancers}} to
-verify that the instance is deregistered from the load balancer.
-
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html}{Register or De-Register EC2 Instances}
-in the \emph{Classic Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_instances_from_load_balancer(
-  LoadBalancerName = "string",
-  Instances = list(
-    list(
-      InstanceId = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deregisters the specified instance from the specified load
-# balancer.
-svc$deregister_instances_from_load_balancer(
-  Instances = list(
-    list(
-      InstanceId = "i-d6f6fae3"
-    )
-  ),
-  LoadBalancerName = "my-load-balancer"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/deregister_instances_from_load_balancer.html} for full documentation.
 }
 \keyword{internal}

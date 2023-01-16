@@ -4,8 +4,11 @@
 \alias{dax_describe_parameter_groups}
 \title{Returns a list of parameter group descriptions}
 \usage{
-dax_describe_parameter_groups(ParameterGroupNames, MaxResults,
-  NextToken)
+dax_describe_parameter_groups(
+  ParameterGroupNames = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ParameterGroupNames}{The names of the parameter groups.}
@@ -21,32 +24,9 @@ pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token, up to the value
 specified by \code{MaxResults}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  ParameterGroups = list(
-    list(
-      ParameterGroupName = "string",
-      Description = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of parameter group descriptions. If a parameter group
-name is specified, the list will contain only the descriptions for that
-group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_parameter_groups(
-  ParameterGroupNames = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns a list of parameter group descriptions. If a parameter group name is specified, the list will contain only the descriptions for that group.
 
+See \url{https://paws-r.github.io/docs/dax/describe_parameter_groups.html} for full documentation.
+}
 \keyword{internal}

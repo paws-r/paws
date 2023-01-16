@@ -4,86 +4,24 @@
 \alias{costexplorer_get_anomaly_monitors}
 \title{Retrieves the cost anomaly monitor definitions for your account}
 \usage{
-costexplorer_get_anomaly_monitors(MonitorArnList, NextPageToken,
-  MaxResults)
+costexplorer_get_anomaly_monitors(
+  MonitorArnList = NULL,
+  NextPageToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{MonitorArnList}{A list of cost anomaly monitor ARNs.}
 
-\item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
-when the response from a previous call has more results than the maximum
-page size.}
+\item{NextPageToken}{The token to retrieve the next set of results. Amazon Web Services
+provides the token when the response from a previous call has more
+results than the maximum page size.}
 
-\item{MaxResults}{The number of entries a paginated response contains.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AnomalyMonitors = list(
-    list(
-      MonitorArn = "string",
-      MonitorName = "string",
-      CreationDate = "string",
-      LastUpdatedDate = "string",
-      LastEvaluatedDate = "string",
-      MonitorType = "DIMENSIONAL"|"CUSTOM",
-      MonitorDimension = "SERVICE",
-      MonitorSpecification = list(
-        Or = list(
-          list()
-        ),
-        And = list(
-          list()
-        ),
-        Not = list(),
-        Dimensions = list(
-          Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-          Values = list(
-            "string"
-          ),
-          MatchOptions = list(
-            "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-          )
-        ),
-        Tags = list(
-          Key = "string",
-          Values = list(
-            "string"
-          ),
-          MatchOptions = list(
-            "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-          )
-        ),
-        CostCategories = list(
-          Key = "string",
-          Values = list(
-            "string"
-          ),
-          MatchOptions = list(
-            "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-          )
-        )
-      ),
-      DimensionalValueCount = 123
-    )
-  ),
-  NextPageToken = "string"
-)
-}
+\item{MaxResults}{The number of entries that a paginated response contains.}
 }
 \description{
-Retrieves the cost anomaly monitor definitions for your account. You can
-filter using a list of cost anomaly monitor Amazon Resource Names
-(ARNs).
-}
-\section{Request syntax}{
-\preformatted{svc$get_anomaly_monitors(
-  MonitorArnList = list(
-    "string"
-  ),
-  NextPageToken = "string",
-  MaxResults = 123
-)
-}
-}
+Retrieves the cost anomaly monitor definitions for your account. You can filter using a list of cost anomaly monitor Amazon Resource Names (ARNs).
 
+See \url{https://paws-r.github.io/docs/costexplorer/get_anomaly_monitors.html} for full documentation.
+}
 \keyword{internal}

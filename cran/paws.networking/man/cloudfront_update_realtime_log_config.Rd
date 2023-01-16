@@ -4,8 +4,13 @@
 \alias{cloudfront_update_realtime_log_config}
 \title{Updates a real-time log configuration}
 \usage{
-cloudfront_update_realtime_log_config(EndPoints, Fields, Name, ARN,
-  SamplingRate)
+cloudfront_update_realtime_log_config(
+  EndPoints = NULL,
+  Fields = NULL,
+  Name = NULL,
+  ARN = NULL,
+  SamplingRate = NULL
+)
 }
 \arguments{
 \item{EndPoints}{Contains information about the Amazon Kinesis data stream where you are
@@ -25,67 +30,9 @@ rate determines the percentage of viewer requests that are represented
 in the real-time log data. You must provide an integer between 1 and
 100, inclusive.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RealtimeLogConfig = list(
-    ARN = "string",
-    Name = "string",
-    SamplingRate = 123,
-    EndPoints = list(
-      list(
-        StreamType = "string",
-        KinesisStreamConfig = list(
-          RoleARN = "string",
-          StreamARN = "string"
-        )
-      )
-    ),
-    Fields = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Updates a real-time log configuration.
 
-When you update a real-time log configuration, all the parameters are
-updated with the values provided in the request. You cannot update some
-parameters independent of others. To update a real-time log
-configuration:
-\enumerate{
-\item Call \code{\link[=cloudfront_get_realtime_log_config]{get_realtime_log_config}}
-to get the current real-time log configuration.
-\item Locally modify the parameters in the real-time log configuration
-that you want to update.
-\item Call this API
-(\code{\link[=cloudfront_update_realtime_log_config]{update_realtime_log_config}})
-by providing the entire real-time log configuration, including the
-parameters that you modified and those that you didn’t.
+See \url{https://paws-r.github.io/docs/cloudfront/update_realtime_log_config.html} for full documentation.
 }
-
-You cannot update a real-time log configuration’s \code{Name} or \code{ARN}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_realtime_log_config(
-  EndPoints = list(
-    list(
-      StreamType = "string",
-      KinesisStreamConfig = list(
-        RoleARN = "string",
-        StreamARN = "string"
-      )
-    )
-  ),
-  Fields = list(
-    "string"
-  ),
-  Name = "string",
-  ARN = "string",
-  SamplingRate = 123
-)
-}
-}
-
 \keyword{internal}

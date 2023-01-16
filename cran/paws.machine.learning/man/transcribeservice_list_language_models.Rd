@@ -2,69 +2,39 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_list_language_models}
 \alias{transcribeservice_list_language_models}
-\title{Provides more information about the custom language models you've
-created}
+\title{Provides a list of custom language models that match the specified
+criteria}
 \usage{
-transcribeservice_list_language_models(StatusEquals, NameContains,
-  NextToken, MaxResults)
+transcribeservice_list_language_models(
+  StatusEquals = NULL,
+  NameContains = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{StatusEquals}{When specified, returns only custom language models with the specified
-status. Language models are ordered by creation date, with the newest
-models first. If you don't specify a status, Amazon Transcribe returns
-all custom language models ordered by date.}
+\item{StatusEquals}{Returns only custom language models with the specified status. Language
+models are ordered by creation date, with the newest model first. If you
+don't include \code{StatusEquals}, all custom language models are returned.}
 
-\item{NameContains}{When specified, the custom language model names returned contain the
-substring you've specified.}
+\item{NameContains}{Returns only the custom language models that contain the specified
+string. The search is not case sensitive.}
 
-\item{NextToken}{When included, fetches the next set of jobs if the result of the
-previous request was truncated.}
+\item{NextToken}{If your \code{\link[=transcribeservice_list_language_models]{list_language_models}}
+request returns more results than can be displayed, \code{NextToken} is
+displayed in the response with an associated string. To get the next
+page of results, copy this string and repeat your request, including
+\code{NextToken} with the value of the copied string. Repeat as needed to
+view all your results.}
 
-\item{MaxResults}{The maximum number of language models to return in the response. If
-there are fewer results in the list, the response contains only the
-actual results.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  Models = list(
-    list(
-      ModelName = "string",
-      CreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LanguageCode = "en-US",
-      BaseModelName = "NarrowBand"|"WideBand",
-      ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
-      UpgradeAvailability = TRUE|FALSE,
-      FailureReason = "string",
-      InputDataConfig = list(
-        S3Uri = "string",
-        TuningDataS3Uri = "string",
-        DataAccessRoleArn = "string"
-      )
-    )
-  )
-)
-}
+\item{MaxResults}{The maximum number of custom language models to return in each page of
+results. If there are fewer results than the value you specify, only the
+actual results are returned. If you don't specify a value, a default of
+5 is used.}
 }
 \description{
-Provides more information about the custom language models you've
-created. You can use the information in this list to find a specific
-custom language model. You can then use the operation to get more
-information about it.
-}
-\section{Request syntax}{
-\preformatted{svc$list_language_models(
-  StatusEquals = "IN_PROGRESS"|"FAILED"|"COMPLETED",
-  NameContains = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Provides a list of custom language models that match the specified criteria. If no criteria are specified, all language models are returned.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/list_language_models.html} for full documentation.
+}
 \keyword{internal}

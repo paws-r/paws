@@ -6,7 +6,10 @@
 API, which only supports SQL applications}
 \usage{
 kinesisanalytics_delete_application_cloud_watch_logging_option(
-  ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId)
+  ApplicationName,
+  CurrentApplicationVersionId,
+  CloudWatchLoggingOptionId
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The Kinesis Analytics application name.}
@@ -18,26 +21,9 @@ delete. You can get the \code{CloudWatchLoggingOptionId} by using the
 \code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Deletes a CloudWatch log stream from an application. For more
-information about using CloudWatch log streams with Amazon Kinesis
-Analytics applications, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html}{Working with Amazon CloudWatch Logs}.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/delete_application_cloud_watch_logging_option.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_application_cloud_watch_logging_option(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  CloudWatchLoggingOptionId = "string"
-)
-}
-}
-
 \keyword{internal}

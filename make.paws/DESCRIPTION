@@ -36,12 +36,13 @@ Suggests:
     covr,
     formatR,
     testthat,
+    paws.storage,
     withr
 Remotes:
     r-lib/cachem
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd"))
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2
 Collate: 
     'cache.R'
     'docs.R'
@@ -62,3 +63,4 @@ Collate:
     'utils.R'
     'aws_services.R'
     'sdk_helper.R'
+    'cran_sub_category.R'

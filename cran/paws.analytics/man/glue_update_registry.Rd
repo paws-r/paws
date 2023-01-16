@@ -14,27 +14,9 @@ Amazon Resource Name (ARN).}
 \item{Description}{[required] A description of the registry. If description is not provided, this
 field will not be updated.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegistryName = "string",
-  RegistryArn = "string"
-)
-}
-}
 \description{
-Updates an existing registry which is used to hold a collection of
-schemas. The updated properties relate to the registry, and do not
-modify any of the schemas within the registry.
-}
-\section{Request syntax}{
-\preformatted{svc$update_registry(
-  RegistryId = list(
-    RegistryName = "string",
-    RegistryArn = "string"
-  ),
-  Description = "string"
-)
-}
-}
+Updates an existing registry which is used to hold a collection of schemas. The updated properties relate to the registry, and do not modify any of the schemas within the registry.
 
+See \url{https://paws-r.github.io/docs/glue/update_registry.html} for full documentation.
+}
 \keyword{internal}

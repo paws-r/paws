@@ -14,26 +14,9 @@ appmesh_tag_resource(resourceArn, tags)
 Tag keys can have a maximum character length of 128 characters, and tag
 values can have a maximum length of 256 characters.}
 }
-\value{
-An empty list.
-}
 \description{
-Associates the specified tags to a resource with the specified
-\code{resourceArn}. If existing tags on a resource aren't specified in the
-request parameters, they aren't changed. When a resource is deleted, the
-tags associated with that resource are also deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
+Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags associated with that resource are also deleted.
 
+See \url{https://paws-r.github.io/docs/appmesh/tag_resource.html} for full documentation.
+}
 \keyword{internal}

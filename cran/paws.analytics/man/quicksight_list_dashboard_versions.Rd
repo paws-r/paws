@@ -2,14 +2,19 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_dashboard_versions}
 \alias{quicksight_list_dashboard_versions}
-\title{Lists all the versions of the dashboards in the QuickSight subscription}
+\title{Lists all the versions of the dashboards in the Amazon QuickSight
+subscription}
 \usage{
-quicksight_list_dashboard_versions(AwsAccountId, DashboardId, NextToken,
-  MaxResults)
+quicksight_list_dashboard_versions(
+  AwsAccountId,
+  DashboardId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you're
-listing versions for.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the dashboard
+that you're listing versions for.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
 
@@ -18,37 +23,9 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DashboardVersionSummaryList = list(
-    list(
-      Arn = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      VersionNumber = 123,
-      Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-      SourceEntityArn = "string",
-      Description = "string"
-    )
-  ),
-  NextToken = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
-Lists all the versions of the dashboards in the QuickSight subscription.
-}
-\section{Request syntax}{
-\preformatted{svc$list_dashboard_versions(
-  AwsAccountId = "string",
-  DashboardId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists all the versions of the dashboards in the Amazon QuickSight subscription.
 
+See \url{https://paws-r.github.io/docs/quicksight/list_dashboard_versions.html} for full documentation.
+}
 \keyword{internal}

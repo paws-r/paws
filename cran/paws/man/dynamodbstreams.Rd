@@ -7,7 +7,19 @@
 dynamodbstreams(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -24,7 +36,9 @@ with Streams, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/develo
 in the Amazon DynamoDB Developer Guide.
 }
 \section{Service syntax}{
-\preformatted{svc <- dynamodbstreams(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- dynamodbstreams(
   config = list(
     credentials = list(
       creds = list(
@@ -32,22 +46,26 @@ in the Amazon DynamoDB Developer Guide.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=dynamodbstreams_describe_stream]{describe_stream} \tab Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN), the composition of its shards, and its corresponding DynamoDB table\cr
-\link[=dynamodbstreams_get_records]{get_records} \tab Retrieves the stream records from a given shard\cr
-\link[=dynamodbstreams_get_shard_iterator]{get_shard_iterator} \tab Returns a shard iterator\cr
-\link[=dynamodbstreams_list_streams]{list_streams} \tab Returns an array of stream ARNs associated with the current account and endpoint
+\link[paws.database:dynamodbstreams_describe_stream]{describe_stream} \tab Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN), the composition of its shards, and its corresponding DynamoDB table\cr
+\link[paws.database:dynamodbstreams_get_records]{get_records} \tab Retrieves the stream records from a given shard\cr
+\link[paws.database:dynamodbstreams_get_shard_iterator]{get_shard_iterator} \tab Returns a shard iterator\cr
+\link[paws.database:dynamodbstreams_list_streams]{list_streams} \tab Returns an array of stream ARNs associated with the current account and endpoint
 }
 }
 

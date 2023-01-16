@@ -5,8 +5,13 @@
 \title{Gets summary information about all or the specified data lifecycle
 policies}
 \usage{
-dlm_get_lifecycle_policies(PolicyIds, State, ResourceTypes, TargetTags,
-  TagsToAdd)
+dlm_get_lifecycle_policies(
+  PolicyIds = NULL,
+  State = NULL,
+  ResourceTypes = NULL,
+  TargetTags = NULL,
+  TagsToAdd = NULL
+)
 }
 \arguments{
 \item{PolicyIds}{The identifiers of the data lifecycle policies.}
@@ -23,49 +28,12 @@ Tags are strings in the format \code{key=value}.}
 
 Tags are strings in the format \code{key=value}.
 
-These user-defined tags are added in addition to the AWS-added lifecycle
-tags.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Policies = list(
-    list(
-      PolicyId = "string",
-      Description = "string",
-      State = "ENABLED"|"DISABLED"|"ERROR",
-      Tags = list(
-        "string"
-      ),
-      PolicyType = "EBS_SNAPSHOT_MANAGEMENT"|"IMAGE_MANAGEMENT"|"EVENT_BASED_POLICY"
-    )
-  )
-)
-}
+These user-defined tags are added in addition to the Amazon Web
+Services-added lifecycle tags.}
 }
 \description{
-Gets summary information about all or the specified data lifecycle
-policies.
+Gets summary information about all or the specified data lifecycle policies.
 
-To get complete information about a policy, use
-\code{\link[=dlm_get_lifecycle_policy]{get_lifecycle_policy}}.
+See \url{https://paws-r.github.io/docs/dlm/get_lifecycle_policies.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_lifecycle_policies(
-  PolicyIds = list(
-    "string"
-  ),
-  State = "ENABLED"|"DISABLED"|"ERROR",
-  ResourceTypes = list(
-    "VOLUME"|"INSTANCE"
-  ),
-  TargetTags = list(
-    "string"
-  ),
-  TagsToAdd = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

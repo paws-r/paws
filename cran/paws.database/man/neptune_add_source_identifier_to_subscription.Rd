@@ -4,8 +4,10 @@
 \alias{neptune_add_source_identifier_to_subscription}
 \title{Adds a source identifier to an existing event notification subscription}
 \usage{
-neptune_add_source_identifier_to_subscription(SubscriptionName,
-  SourceIdentifier)
+neptune_add_source_identifier_to_subscription(
+  SubscriptionName,
+  SourceIdentifier
+)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the event notification subscription you want to add a source
@@ -25,36 +27,9 @@ must be supplied.
 be supplied.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventSubscription = list(
-    CustomerAwsId = "string",
-    CustSubscriptionId = "string",
-    SnsTopicArn = "string",
-    Status = "string",
-    SubscriptionCreationTime = "string",
-    SourceType = "string",
-    SourceIdsList = list(
-      "string"
-    ),
-    EventCategoriesList = list(
-      "string"
-    ),
-    Enabled = TRUE|FALSE,
-    EventSubscriptionArn = "string"
-  )
-)
-}
-}
 \description{
 Adds a source identifier to an existing event notification subscription.
-}
-\section{Request syntax}{
-\preformatted{svc$add_source_identifier_to_subscription(
-  SubscriptionName = "string",
-  SourceIdentifier = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/neptune/add_source_identifier_to_subscription.html} for full documentation.
+}
 \keyword{internal}

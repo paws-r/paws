@@ -9,28 +9,12 @@ backup_get_backup_vault_notifications(BackupVaultName)
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupVaultName = "string",
-  BackupVaultArn = "string",
-  SNSTopicArn = "string",
-  BackupVaultEvents = list(
-    "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"
-  )
-)
-}
+them and the Amazon Web Services Region where they are created. They
+consist of lowercase letters, numbers, and hyphens.}
 }
 \description{
 Returns event notifications for the specified backup vault.
-}
-\section{Request syntax}{
-\preformatted{svc$get_backup_vault_notifications(
-  BackupVaultName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/backup/get_backup_vault_notifications.html} for full documentation.
+}
 \keyword{internal}

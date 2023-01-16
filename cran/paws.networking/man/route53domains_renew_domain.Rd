@@ -4,8 +4,11 @@
 \alias{route53domains_renew_domain}
 \title{This operation renews a domain for the specified number of years}
 \usage{
-route53domains_renew_domain(DomainName, DurationInYears,
-  CurrentExpiryYear)
+route53domains_renew_domain(
+  DomainName,
+  DurationInYears = NULL,
+  CurrentExpiryYear
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to renew.}
@@ -20,29 +23,9 @@ Default: 1}
 \item{CurrentExpiryYear}{[required] The year when the registration for the domain is set to expire. This
 value must match the current expiration date for the domain.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
-}
 \description{
-This operation renews a domain for the specified number of years. The
-cost of renewing your domain is billed to your AWS account.
+This operation renews a domain for the specified number of years. The cost of renewing your domain is billed to your Amazon Web Services account.
 
-We recommend that you renew your domain several weeks before the
-expiration date. Some TLD registries delete domains before the
-expiration date if you haven't renewed far enough in advance. For more
-information about renewing domain registration, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html}{Renewing Registration for a Domain}
-in the \emph{Amazon Route 53 Developer Guide}.
+See \url{https://paws-r.github.io/docs/route53domains/renew_domain.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$renew_domain(
-  DomainName = "string",
-  DurationInYears = 123,
-  CurrentExpiryYear = 123
-)
-}
-}
-
 \keyword{internal}

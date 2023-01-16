@@ -7,7 +7,19 @@
 pinpointemail(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -52,7 +64,9 @@ latency. To learn more about the number of Availability Zones that are
 available in each Region, see \href{https://aws.amazon.com/about-aws/global-infrastructure/}{AWS Global Infrastructure}.
 }
 \section{Service syntax}{
-\preformatted{svc <- pinpointemail(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- pinpointemail(
   config = list(
     credentials = list(
       creds = list(
@@ -60,60 +74,64 @@ available in each Region, see \href{https://aws.amazon.com/about-aws/global-infr
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=pinpointemail_create_configuration_set]{create_configuration_set} \tab Create a configuration set\cr
-\link[=pinpointemail_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create an event destination\cr
-\link[=pinpointemail_create_dedicated_ip_pool]{create_dedicated_ip_pool} \tab Create a new pool of dedicated IP addresses\cr
-\link[=pinpointemail_create_deliverability_test_report]{create_deliverability_test_report} \tab Create a new predictive inbox placement test\cr
-\link[=pinpointemail_create_email_identity]{create_email_identity} \tab Verifies an email identity for use with Amazon Pinpoint\cr
-\link[=pinpointemail_delete_configuration_set]{delete_configuration_set} \tab Delete an existing configuration set\cr
-\link[=pinpointemail_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Delete an event destination\cr
-\link[=pinpointemail_delete_dedicated_ip_pool]{delete_dedicated_ip_pool} \tab Delete a dedicated IP pool\cr
-\link[=pinpointemail_delete_email_identity]{delete_email_identity} \tab Deletes an email identity that you previously verified for use with Amazon Pinpoint\cr
-\link[=pinpointemail_get_account]{get_account} \tab Obtain information about the email-sending status and capabilities of your Amazon Pinpoint account in the current AWS Region\cr
-\link[=pinpointemail_get_blacklist_reports]{get_blacklist_reports} \tab Retrieve a list of the blacklists that your dedicated IP addresses appear on\cr
-\link[=pinpointemail_get_configuration_set]{get_configuration_set} \tab Get information about an existing configuration set, including the dedicated IP pool that it's associated with, whether or not it's enabled for sending email, and more\cr
-\link[=pinpointemail_get_configuration_set_event_destinations]{get_configuration_set_event_destinations} \tab Retrieve a list of event destinations that are associated with a configuration set\cr
-\link[=pinpointemail_get_dedicated_ip]{get_dedicated_ip} \tab Get information about a dedicated IP address, including the name of the dedicated IP pool that it's associated with, as well information about the automatic warm-up process for the address\cr
-\link[=pinpointemail_get_dedicated_ips]{get_dedicated_ips} \tab List the dedicated IP addresses that are associated with your Amazon Pinpoint account\cr
-\link[=pinpointemail_get_deliverability_dashboard_options]{get_deliverability_dashboard_options} \tab Retrieve information about the status of the Deliverability dashboard for your Amazon Pinpoint account\cr
-\link[=pinpointemail_get_deliverability_test_report]{get_deliverability_test_report} \tab Retrieve the results of a predictive inbox placement test\cr
-\link[=pinpointemail_get_domain_deliverability_campaign]{get_domain_deliverability_campaign} \tab Retrieve all the deliverability data for a specific campaign\cr
-\link[=pinpointemail_get_domain_statistics_report]{get_domain_statistics_report} \tab Retrieve inbox placement and engagement rates for the domains that you use to send email\cr
-\link[=pinpointemail_get_email_identity]{get_email_identity} \tab Provides information about a specific identity associated with your Amazon Pinpoint account, including the identity's verification status, its DKIM authentication status, and its custom Mail-From settings\cr
-\link[=pinpointemail_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your Amazon Pinpoint account in the current region\cr
-\link[=pinpointemail_list_dedicated_ip_pools]{list_dedicated_ip_pools} \tab List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current AWS Region\cr
-\link[=pinpointemail_list_deliverability_test_reports]{list_deliverability_test_reports} \tab Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses\cr
-\link[=pinpointemail_list_domain_deliverability_campaigns]{list_domain_deliverability_campaigns} \tab Retrieve deliverability data for all the campaigns that used a specific domain to send email during a specified time range\cr
-\link[=pinpointemail_list_email_identities]{list_email_identities} \tab Returns a list of all of the email identities that are associated with your Amazon Pinpoint account\cr
-\link[=pinpointemail_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified resource\cr
-\link[=pinpointemail_put_account_dedicated_ip_warmup_attributes]{put_account_dedicated_ip_warmup_attributes} \tab Enable or disable the automatic warm-up feature for dedicated IP addresses\cr
-\link[=pinpointemail_put_account_sending_attributes]{put_account_sending_attributes} \tab Enable or disable the ability of your account to send email\cr
-\link[=pinpointemail_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Associate a configuration set with a dedicated IP pool\cr
-\link[=pinpointemail_put_configuration_set_reputation_options]{put_configuration_set_reputation_options} \tab Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific AWS Region\cr
-\link[=pinpointemail_put_configuration_set_sending_options]{put_configuration_set_sending_options} \tab Enable or disable email sending for messages that use a particular configuration set in a specific AWS Region\cr
-\link[=pinpointemail_put_configuration_set_tracking_options]{put_configuration_set_tracking_options} \tab Specify a custom domain to use for open and click tracking elements in email that you send using Amazon Pinpoint\cr
-\link[=pinpointemail_put_dedicated_ip_in_pool]{put_dedicated_ip_in_pool} \tab Move a dedicated IP address to an existing dedicated IP pool\cr
-\link[=pinpointemail_put_dedicated_ip_warmup_attributes]{put_dedicated_ip_warmup_attributes} \tab Put dedicated ip warmup attributes\cr
-\link[=pinpointemail_put_deliverability_dashboard_option]{put_deliverability_dashboard_option} \tab Enable or disable the Deliverability dashboard for your Amazon Pinpoint account\cr
-\link[=pinpointemail_put_email_identity_dkim_attributes]{put_email_identity_dkim_attributes} \tab Used to enable or disable DKIM authentication for an email identity\cr
-\link[=pinpointemail_put_email_identity_feedback_attributes]{put_email_identity_feedback_attributes} \tab Used to enable or disable feedback forwarding for an identity\cr
-\link[=pinpointemail_put_email_identity_mail_from_attributes]{put_email_identity_mail_from_attributes} \tab Used to enable or disable the custom Mail-From domain configuration for an email identity\cr
-\link[=pinpointemail_send_email]{send_email} \tab Sends an email message\cr
-\link[=pinpointemail_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to a specified resource\cr
-\link[=pinpointemail_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified resource\cr
-\link[=pinpointemail_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update the configuration of an event destination for a configuration set
+\link[paws.customer.engagement:pinpointemail_create_configuration_set]{create_configuration_set} \tab Create a configuration set\cr
+\link[paws.customer.engagement:pinpointemail_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create an event destination\cr
+\link[paws.customer.engagement:pinpointemail_create_dedicated_ip_pool]{create_dedicated_ip_pool} \tab Create a new pool of dedicated IP addresses\cr
+\link[paws.customer.engagement:pinpointemail_create_deliverability_test_report]{create_deliverability_test_report} \tab Create a new predictive inbox placement test\cr
+\link[paws.customer.engagement:pinpointemail_create_email_identity]{create_email_identity} \tab Verifies an email identity for use with Amazon Pinpoint\cr
+\link[paws.customer.engagement:pinpointemail_delete_configuration_set]{delete_configuration_set} \tab Delete an existing configuration set\cr
+\link[paws.customer.engagement:pinpointemail_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Delete an event destination\cr
+\link[paws.customer.engagement:pinpointemail_delete_dedicated_ip_pool]{delete_dedicated_ip_pool} \tab Delete a dedicated IP pool\cr
+\link[paws.customer.engagement:pinpointemail_delete_email_identity]{delete_email_identity} \tab Deletes an email identity that you previously verified for use with Amazon Pinpoint\cr
+\link[paws.customer.engagement:pinpointemail_get_account]{get_account} \tab Obtain information about the email-sending status and capabilities of your Amazon Pinpoint account in the current AWS Region\cr
+\link[paws.customer.engagement:pinpointemail_get_blacklist_reports]{get_blacklist_reports} \tab Retrieve a list of the blacklists that your dedicated IP addresses appear on\cr
+\link[paws.customer.engagement:pinpointemail_get_configuration_set]{get_configuration_set} \tab Get information about an existing configuration set, including the dedicated IP pool that it's associated with, whether or not it's enabled for sending email, and more\cr
+\link[paws.customer.engagement:pinpointemail_get_configuration_set_event_destinations]{get_configuration_set_event_destinations} \tab Retrieve a list of event destinations that are associated with a configuration set\cr
+\link[paws.customer.engagement:pinpointemail_get_dedicated_ip]{get_dedicated_ip} \tab Get information about a dedicated IP address, including the name of the dedicated IP pool that it's associated with, as well information about the automatic warm-up process for the address\cr
+\link[paws.customer.engagement:pinpointemail_get_dedicated_ips]{get_dedicated_ips} \tab List the dedicated IP addresses that are associated with your Amazon Pinpoint account\cr
+\link[paws.customer.engagement:pinpointemail_get_deliverability_dashboard_options]{get_deliverability_dashboard_options} \tab Retrieve information about the status of the Deliverability dashboard for your Amazon Pinpoint account\cr
+\link[paws.customer.engagement:pinpointemail_get_deliverability_test_report]{get_deliverability_test_report} \tab Retrieve the results of a predictive inbox placement test\cr
+\link[paws.customer.engagement:pinpointemail_get_domain_deliverability_campaign]{get_domain_deliverability_campaign} \tab Retrieve all the deliverability data for a specific campaign\cr
+\link[paws.customer.engagement:pinpointemail_get_domain_statistics_report]{get_domain_statistics_report} \tab Retrieve inbox placement and engagement rates for the domains that you use to send email\cr
+\link[paws.customer.engagement:pinpointemail_get_email_identity]{get_email_identity} \tab Provides information about a specific identity associated with your Amazon Pinpoint account, including the identity's verification status, its DKIM authentication status, and its custom Mail-From settings\cr
+\link[paws.customer.engagement:pinpointemail_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your Amazon Pinpoint account in the current region\cr
+\link[paws.customer.engagement:pinpointemail_list_dedicated_ip_pools]{list_dedicated_ip_pools} \tab List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current AWS Region\cr
+\link[paws.customer.engagement:pinpointemail_list_deliverability_test_reports]{list_deliverability_test_reports} \tab Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses\cr
+\link[paws.customer.engagement:pinpointemail_list_domain_deliverability_campaigns]{list_domain_deliverability_campaigns} \tab Retrieve deliverability data for all the campaigns that used a specific domain to send email during a specified time range\cr
+\link[paws.customer.engagement:pinpointemail_list_email_identities]{list_email_identities} \tab Returns a list of all of the email identities that are associated with your Amazon Pinpoint account\cr
+\link[paws.customer.engagement:pinpointemail_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified resource\cr
+\link[paws.customer.engagement:pinpointemail_put_account_dedicated_ip_warmup_attributes]{put_account_dedicated_ip_warmup_attributes} \tab Enable or disable the automatic warm-up feature for dedicated IP addresses\cr
+\link[paws.customer.engagement:pinpointemail_put_account_sending_attributes]{put_account_sending_attributes} \tab Enable or disable the ability of your account to send email\cr
+\link[paws.customer.engagement:pinpointemail_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Associate a configuration set with a dedicated IP pool\cr
+\link[paws.customer.engagement:pinpointemail_put_configuration_set_reputation_options]{put_configuration_set_reputation_options} \tab Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific AWS Region\cr
+\link[paws.customer.engagement:pinpointemail_put_configuration_set_sending_options]{put_configuration_set_sending_options} \tab Enable or disable email sending for messages that use a particular configuration set in a specific AWS Region\cr
+\link[paws.customer.engagement:pinpointemail_put_configuration_set_tracking_options]{put_configuration_set_tracking_options} \tab Specify a custom domain to use for open and click tracking elements in email that you send using Amazon Pinpoint\cr
+\link[paws.customer.engagement:pinpointemail_put_dedicated_ip_in_pool]{put_dedicated_ip_in_pool} \tab Move a dedicated IP address to an existing dedicated IP pool\cr
+\link[paws.customer.engagement:pinpointemail_put_dedicated_ip_warmup_attributes]{put_dedicated_ip_warmup_attributes} \tab Put dedicated ip warmup attributes\cr
+\link[paws.customer.engagement:pinpointemail_put_deliverability_dashboard_option]{put_deliverability_dashboard_option} \tab Enable or disable the Deliverability dashboard for your Amazon Pinpoint account\cr
+\link[paws.customer.engagement:pinpointemail_put_email_identity_dkim_attributes]{put_email_identity_dkim_attributes} \tab Used to enable or disable DKIM authentication for an email identity\cr
+\link[paws.customer.engagement:pinpointemail_put_email_identity_feedback_attributes]{put_email_identity_feedback_attributes} \tab Used to enable or disable feedback forwarding for an identity\cr
+\link[paws.customer.engagement:pinpointemail_put_email_identity_mail_from_attributes]{put_email_identity_mail_from_attributes} \tab Used to enable or disable the custom Mail-From domain configuration for an email identity\cr
+\link[paws.customer.engagement:pinpointemail_send_email]{send_email} \tab Sends an email message\cr
+\link[paws.customer.engagement:pinpointemail_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to a specified resource\cr
+\link[paws.customer.engagement:pinpointemail_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified resource\cr
+\link[paws.customer.engagement:pinpointemail_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update the configuration of an event destination for a configuration set
 }
 }
 

@@ -7,19 +7,11 @@
 apigateway_delete_api_key(apiKey)
 }
 \arguments{
-\item{apiKey}{[required] [Required] The identifier of the ApiKey resource to be deleted.}
-}
-\value{
-An empty list.
+\item{apiKey}{[required] The identifier of the ApiKey resource to be deleted.}
 }
 \description{
 Deletes the ApiKey resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_api_key(
-  apiKey = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_api_key.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,10 @@
 \alias{pinpoint_update_application_settings}
 \title{Updates the settings for an application}
 \usage{
-pinpoint_update_application_settings(ApplicationId,
-  WriteApplicationSettingsRequest)
+pinpoint_update_application_settings(
+  ApplicationId,
+  WriteApplicationSettingsRequest
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
@@ -13,57 +15,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{WriteApplicationSettingsRequest}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationSettingsResource = list(
-    ApplicationId = "string",
-    CampaignHook = list(
-      LambdaFunctionName = "string",
-      Mode = "DELIVERY"|"FILTER",
-      WebUrl = "string"
-    ),
-    LastModifiedDate = "string",
-    Limits = list(
-      Daily = 123,
-      MaximumDuration = 123,
-      MessagesPerSecond = 123,
-      Total = 123
-    ),
-    QuietTime = list(
-      End = "string",
-      Start = "string"
-    )
-  )
-)
-}
-}
 \description{
 Updates the settings for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$update_application_settings(
-  ApplicationId = "string",
-  WriteApplicationSettingsRequest = list(
-    CampaignHook = list(
-      LambdaFunctionName = "string",
-      Mode = "DELIVERY"|"FILTER",
-      WebUrl = "string"
-    ),
-    CloudWatchMetricsEnabled = TRUE|FALSE,
-    EventTaggingEnabled = TRUE|FALSE,
-    Limits = list(
-      Daily = 123,
-      MaximumDuration = 123,
-      MessagesPerSecond = 123,
-      Total = 123
-    ),
-    QuietTime = list(
-      End = "string",
-      Start = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_application_settings.html} for full documentation.
+}
 \keyword{internal}

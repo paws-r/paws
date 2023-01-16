@@ -4,9 +4,16 @@
 \alias{rds_describe_db_cluster_snapshots}
 \title{Returns information about DB cluster snapshots}
 \usage{
-rds_describe_db_cluster_snapshots(DBClusterIdentifier,
-  DBClusterSnapshotIdentifier, SnapshotType, Filters, MaxRecords, Marker,
-  IncludeShared, IncludePublic)
+rds_describe_db_cluster_snapshots(
+  DBClusterIdentifier = NULL,
+  DBClusterSnapshotIdentifier = NULL,
+  SnapshotType = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  IncludeShared = NULL,
+  IncludePublic = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{The ID of the DB cluster to retrieve the list of DB cluster snapshots
@@ -35,11 +42,12 @@ parameter must also be specified.
 the following values:
 \itemize{
 \item \code{automated} - Return all DB cluster snapshots that have been
-automatically taken by Amazon RDS for my AWS account.
+automatically taken by Amazon RDS for my Amazon Web Services
+account.
 \item \code{manual} - Return all DB cluster snapshots that have been taken by
-my AWS account.
+my Amazon Web Services account.
 \item \code{shared} - Return all manual DB cluster snapshots that have been
-shared to my AWS account.
+shared to my Amazon Web Services account.
 \item \code{public} - Return all DB cluster snapshots that have been marked as
 public.
 }
@@ -82,93 +90,27 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 
 \item{IncludeShared}{A value that indicates whether to include shared manual DB cluster
-snapshots from other AWS accounts that this AWS account has been given
-permission to copy or restore. By default, these snapshots are not
-included.
+snapshots from other Amazon Web Services accounts that this Amazon Web
+Services account has been given permission to copy or restore. By
+default, these snapshots are not included.
 
-You can give an AWS account permission to restore a manual DB cluster
-snapshot from another AWS account by the
+You can give an Amazon Web Services account permission to restore a
+manual DB cluster snapshot from another Amazon Web Services account by
+the
 \code{\link[=rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute}}
 API action.}
 
 \item{IncludePublic}{A value that indicates whether to include manual DB cluster snapshots
-that are public and can be copied or restored by any AWS account. By
-default, the public snapshots are not included.
+that are public and can be copied or restored by any Amazon Web Services
+account. By default, the public snapshots are not included.
 
 You can share a manual DB cluster snapshot as public by using the
 \code{\link[=rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute}}
 API action.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBClusterSnapshots = list(
-    list(
-      AvailabilityZones = list(
-        "string"
-      ),
-      DBClusterSnapshotIdentifier = "string",
-      DBClusterIdentifier = "string",
-      SnapshotCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Engine = "string",
-      AllocatedStorage = 123,
-      Status = "string",
-      Port = 123,
-      VpcId = "string",
-      ClusterCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      MasterUsername = "string",
-      EngineVersion = "string",
-      LicenseModel = "string",
-      SnapshotType = "string",
-      PercentProgress = 123,
-      StorageEncrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      DBClusterSnapshotArn = "string",
-      SourceDBClusterSnapshotArn = "string",
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-      TagList = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns information about DB cluster snapshots. This API action supports
-pagination.
+Returns information about DB cluster snapshots. This API action supports pagination.
 
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
-
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/describe_db_cluster_snapshots.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_cluster_snapshots(
-  DBClusterIdentifier = "string",
-  DBClusterSnapshotIdentifier = "string",
-  SnapshotType = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string",
-  IncludeShared = TRUE|FALSE,
-  IncludePublic = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

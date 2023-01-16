@@ -4,8 +4,14 @@
 \alias{codecommit_get_comments_for_pull_request}
 \title{Returns comments made on a pull request}
 \usage{
-codecommit_get_comments_for_pull_request(pullRequestId, repositoryName,
-  beforeCommitId, afterCommitId, nextToken, maxResults)
+codecommit_get_comments_for_pull_request(
+  pullRequestId,
+  repositoryName = NULL,
+  beforeCommitId = NULL,
+  afterCommitId = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
@@ -26,66 +32,9 @@ batch of the results.}
 results. The default is 100 comments. You can return up to 500 comments
 with a single request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commentsForPullRequestData = list(
-    list(
-      pullRequestId = "string",
-      repositoryName = "string",
-      beforeCommitId = "string",
-      afterCommitId = "string",
-      beforeBlobId = "string",
-      afterBlobId = "string",
-      location = list(
-        filePath = "string",
-        filePosition = 123,
-        relativeFileVersion = "BEFORE"|"AFTER"
-      ),
-      comments = list(
-        list(
-          commentId = "string",
-          content = "string",
-          inReplyTo = "string",
-          creationDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          lastModifiedDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          authorArn = "string",
-          deleted = TRUE|FALSE,
-          clientRequestToken = "string",
-          callerReactions = list(
-            "string"
-          ),
-          reactionCounts = list(
-            123
-          )
-        )
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Returns comments made on a pull request.
 
-Reaction counts might include numbers from user identities who were
-deleted after the reaction was made. For a count of reactions from
-active identities, use GetCommentReactions.
+See \url{https://paws-r.github.io/docs/codecommit/get_comments_for_pull_request.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_comments_for_pull_request(
-  pullRequestId = "string",
-  repositoryName = "string",
-  beforeCommitId = "string",
-  afterCommitId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
-
 \keyword{internal}

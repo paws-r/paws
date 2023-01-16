@@ -2,11 +2,14 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_delete_studio_session_mapping}
 \alias{emr_delete_studio_session_mapping}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Removes a user or group from an Amazon EMR Studio}
 \usage{
-emr_delete_studio_session_mapping(StudioId, IdentityId, IdentityName,
-  IdentityType)
+emr_delete_studio_session_mapping(
+  StudioId,
+  IdentityId = NULL,
+  IdentityName = NULL,
+  IdentityType
+)
 }
 \arguments{
 \item{StudioId}{[required] The ID of the Amazon EMR Studio.}
@@ -16,37 +19,23 @@ from the Amazon EMR Studio. For more information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId}{UserId}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-GroupId}{GroupId}
-in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} or
-\code{IdentityId} must be specified.}
+in the \emph{Amazon Web Services SSO Identity Store API Reference}. Either
+\code{IdentityName} or \code{IdentityId} must be specified.}
 
-\item{IdentityName}{The name of the user name or group to remove from the Studio. For more
-information, see
-\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId}{UserName}
+\item{IdentityName}{The name of the user name or group to remove from the Amazon EMR Studio.
+For more information, see
+\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName}{UserName}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName}{DisplayName}
-in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} or
-\code{IdentityId} must be specified.}
+in the \emph{Amazon Web Services SSO Store API Reference}. Either
+\code{IdentityName} or \code{IdentityId} must be specified.}
 
-\item{IdentityType}{[required] Specifies whether the identity to delete from the Studio is a user or a
-group.}
-}
-\value{
-An empty list.
+\item{IdentityType}{[required] Specifies whether the identity to delete from the Amazon EMR Studio is a
+user or a group.}
 }
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
-
 Removes a user or group from an Amazon EMR Studio.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_studio_session_mapping(
-  StudioId = "string",
-  IdentityId = "string",
-  IdentityName = "string",
-  IdentityType = "USER"|"GROUP"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/emr/delete_studio_session_mapping.html} for full documentation.
+}
 \keyword{internal}

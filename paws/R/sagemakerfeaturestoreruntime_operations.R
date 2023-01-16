@@ -3,6 +3,93 @@
 #' @include sagemakerfeaturestoreruntime_service.R
 NULL
 
+#' Retrieves a batch of Records from a FeatureGroup
+#'
+#' @description
+#' Retrieves a batch of `Records` from a `FeatureGroup`.
+#'
+#' @usage
+#' sagemakerfeaturestoreruntime_batch_get_record(Identifiers)
+#'
+#' @param Identifiers &#91;required&#93; A list of `FeatureGroup` names, with their corresponding
+#' `RecordIdentifier` value, and Feature name that have been requested to
+#' be retrieved in batch.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Records = list(
+#'     list(
+#'       FeatureGroupName = "string",
+#'       RecordIdentifierValueAsString = "string",
+#'       Record = list(
+#'         list(
+#'           FeatureName = "string",
+#'           ValueAsString = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       FeatureGroupName = "string",
+#'       RecordIdentifierValueAsString = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   UnprocessedIdentifiers = list(
+#'     list(
+#'       FeatureGroupName = "string",
+#'       RecordIdentifiersValueAsString = list(
+#'         "string"
+#'       ),
+#'       FeatureNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_record(
+#'   Identifiers = list(
+#'     list(
+#'       FeatureGroupName = "string",
+#'       RecordIdentifiersValueAsString = list(
+#'         "string"
+#'       ),
+#'       FeatureNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemakerfeaturestoreruntime_batch_get_record
+sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers) {
+  op <- new_operation(
+    name = "BatchGetRecord",
+    http_method = "POST",
+    http_path = "/BatchGetRecord",
+    paginator = list()
+  )
+  input <- .sagemakerfeaturestoreruntime$batch_get_record_input(Identifiers = Identifiers)
+  output <- .sagemakerfeaturestoreruntime$batch_get_record_output()
+  config <- get_config()
+  svc <- .sagemakerfeaturestoreruntime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemakerfeaturestoreruntime$operations$batch_get_record <- sagemakerfeaturestoreruntime_batch_get_record
+
 #' Deletes a Record from a FeatureGroup
 #'
 #' @description

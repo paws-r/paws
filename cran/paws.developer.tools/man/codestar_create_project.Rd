@@ -4,8 +4,15 @@
 \alias{codestar_create_project}
 \title{Creates a project, including project resources}
 \usage{
-codestar_create_project(name, id, description, clientRequestToken,
-  sourceCode, toolchain, tags)
+codestar_create_project(
+  name,
+  id,
+  description = NULL,
+  clientRequestToken = NULL,
+  sourceCode = NULL,
+  toolchain = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{[required] The display name for the project to be created in AWS CodeStar.}
@@ -28,68 +35,9 @@ the sourceCode parameter.}
 
 \item{tags}{The tags created for the project.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  arn = "string",
-  clientRequestToken = "string",
-  projectTemplateId = "string"
-)
-}
-}
 \description{
-Creates a project, including project resources. This action creates a
-project based on a submitted project request. A set of source code files
-and a toolchain template file can be included with the project request.
-If these are not provided, an empty project is created.
-}
-\section{Request syntax}{
-\preformatted{svc$create_project(
-  name = "string",
-  id = "string",
-  description = "string",
-  clientRequestToken = "string",
-  sourceCode = list(
-    list(
-      source = list(
-        s3 = list(
-          bucketName = "string",
-          bucketKey = "string"
-        )
-      ),
-      destination = list(
-        codeCommit = list(
-          name = "string"
-        ),
-        gitHub = list(
-          name = "string",
-          description = "string",
-          type = "string",
-          owner = "string",
-          privateRepository = TRUE|FALSE,
-          issuesEnabled = TRUE|FALSE,
-          token = "string"
-        )
-      )
-    )
-  ),
-  toolchain = list(
-    source = list(
-      s3 = list(
-        bucketName = "string",
-        bucketKey = "string"
-      )
-    ),
-    roleArn = "string",
-    stackParameters = list(
-      "string"
-    )
-  ),
-  tags = list(
-    "string"
-  )
-)
-}
-}
+Creates a project, including project resources. This action creates a project based on a submitted project request. A set of source code files and a toolchain template file can be included with the project request. If these are not provided, an empty project is created.
 
+See \url{https://paws-r.github.io/docs/codestar/create_project.html} for full documentation.
+}
 \keyword{internal}

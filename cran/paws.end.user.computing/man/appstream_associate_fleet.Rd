@@ -11,18 +11,9 @@ appstream_associate_fleet(FleetName, StackName)
 
 \item{StackName}{[required] The name of the stack.}
 }
-\value{
-An empty list.
-}
 \description{
 Associates the specified fleet with the specified stack.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_fleet(
-  FleetName = "string",
-  StackName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appstream/associate_fleet.html} for full documentation.
+}
 \keyword{internal}

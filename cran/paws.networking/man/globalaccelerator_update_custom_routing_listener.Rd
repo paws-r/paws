@@ -4,8 +4,7 @@
 \alias{globalaccelerator_update_custom_routing_listener}
 \title{Update a listener for a custom routing accelerator}
 \usage{
-globalaccelerator_update_custom_routing_listener(ListenerArn,
-  PortRanges)
+globalaccelerator_update_custom_routing_listener(ListenerArn, PortRanges)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener to update.}
@@ -17,34 +16,9 @@ subnet endpoint, the call fails.
 Separately, you set port ranges for endpoints. For more information, see
 \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html}{About endpoints for custom routing accelerators}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Listener = list(
-    ListenerArn = "string",
-    PortRanges = list(
-      list(
-        FromPort = 123,
-        ToPort = 123
-      )
-    )
-  )
-)
-}
-}
 \description{
 Update a listener for a custom routing accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$update_custom_routing_listener(
-  ListenerArn = "string",
-  PortRanges = list(
-    list(
-      FromPort = 123,
-      ToPort = 123
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_listener.html} for full documentation.
+}
 \keyword{internal}

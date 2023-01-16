@@ -17,36 +17,9 @@ provided.
 \code{SchemaName} and \code{RegistryName} has to be provided.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegistryName = "string",
-  RegistryArn = "string",
-  SchemaName = "string",
-  SchemaArn = "string",
-  Description = "string",
-  DataFormat = "AVRO",
-  Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
-  SchemaCheckpoint = 123,
-  LatestSchemaVersion = 123,
-  NextSchemaVersion = 123,
-  SchemaStatus = "AVAILABLE"|"PENDING"|"DELETING",
-  CreatedTime = "string",
-  UpdatedTime = "string"
-)
-}
-}
 \description{
 Describes the specified schema in detail.
-}
-\section{Request syntax}{
-\preformatted{svc$get_schema(
-  SchemaId = list(
-    SchemaArn = "string",
-    SchemaName = "string",
-    RegistryName = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_schema.html} for full documentation.
+}
 \keyword{internal}

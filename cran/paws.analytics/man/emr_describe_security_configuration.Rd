@@ -10,25 +10,9 @@ emr_describe_security_configuration(Name)
 \arguments{
 \item{Name}{[required] The name of the security configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  SecurityConfiguration = "string",
-  CreationDateTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Provides the details of a security configuration by returning the
-configuration JSON.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_security_configuration(
-  Name = "string"
-)
-}
-}
+Provides the details of a security configuration by returning the configuration JSON.
 
+See \url{https://paws-r.github.io/docs/emr/describe_security_configuration.html} for full documentation.
+}
 \keyword{internal}

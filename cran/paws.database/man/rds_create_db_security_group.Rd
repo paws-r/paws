@@ -4,8 +4,11 @@
 \alias{rds_create_db_security_group}
 \title{Creates a new DB security group}
 \usage{
-rds_create_db_security_group(DBSecurityGroupName,
-  DBSecurityGroupDescription, Tags)
+rds_create_db_security_group(
+  DBSecurityGroupName,
+  DBSecurityGroupDescription,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBSecurityGroupName}{[required] The name for the DB security group. This value is stored as a lowercase
@@ -25,51 +28,9 @@ Example: \code{mysecuritygroup}}
 
 \item{Tags}{Tags to assign to the DB security group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBSecurityGroup = list(
-    OwnerId = "string",
-    DBSecurityGroupName = "string",
-    DBSecurityGroupDescription = "string",
-    VpcId = "string",
-    EC2SecurityGroups = list(
-      list(
-        Status = "string",
-        EC2SecurityGroupName = "string",
-        EC2SecurityGroupId = "string",
-        EC2SecurityGroupOwnerId = "string"
-      )
-    ),
-    IPRanges = list(
-      list(
-        Status = "string",
-        CIDRIP = "string"
-      )
-    ),
-    DBSecurityGroupArn = "string"
-  )
-)
-}
-}
 \description{
-Creates a new DB security group. DB security groups control access to a
-DB instance.
+Creates a new DB security group. DB security groups control access to a DB instance.
 
-A DB security group controls access to EC2-Classic DB instances that are
-not in a VPC.
+See \url{https://paws-r.github.io/docs/rds/create_db_security_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_db_security_group(
-  DBSecurityGroupName = "string",
-  DBSecurityGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

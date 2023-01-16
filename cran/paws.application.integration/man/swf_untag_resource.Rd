@@ -11,20 +11,9 @@ swf_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The list of tags to remove from the Amazon SWF domain.}
 }
-\value{
-An empty list.
-}
 \description{
 Remove a tag from a Amazon SWF domain.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/swf/untag_resource.html} for full documentation.
+}
 \keyword{internal}

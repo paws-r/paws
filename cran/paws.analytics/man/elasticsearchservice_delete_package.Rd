@@ -11,37 +11,9 @@ elasticsearchservice_delete_package(PackageID)
 \code{\link[=elasticsearchservice_describe_packages]{describe_packages}} to find
 this value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PackageDetails = list(
-    PackageID = "string",
-    PackageName = "string",
-    PackageType = "TXT-DICTIONARY",
-    PackageDescription = "string",
-    PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    AvailablePackageVersion = "string",
-    ErrorDetails = list(
-      ErrorType = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Delete the package.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_package(
-  PackageID = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/delete_package.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{rekognition_list_faces}
 \title{Returns metadata for faces in the specified collection}
 \usage{
-rekognition_list_faces(CollectionId, NextToken, MaxResults)
+rekognition_list_faces(CollectionId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{CollectionId}{[required] ID of the collection from which to list the faces.}
@@ -16,54 +16,9 @@ faces.}
 
 \item{MaxResults}{Maximum number of faces to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Faces = list(
-    list(
-      FaceId = "string",
-      BoundingBox = list(
-        Width = 123.0,
-        Height = 123.0,
-        Left = 123.0,
-        Top = 123.0
-      ),
-      ImageId = "string",
-      ExternalImageId = "string",
-      Confidence = 123.0
-    )
-  ),
-  NextToken = "string",
-  FaceModelVersion = "string"
-)
-}
-}
 \description{
-Returns metadata for faces in the specified collection. This metadata
-includes information such as the bounding box coordinates, the
-confidence (that the bounding box contains a face), and face ID. For an
-example, see Listing Faces in a Collection in the Amazon Rekognition
-Developer Guide.
+Returns metadata for faces in the specified collection. This metadata includes information such as the bounding box coordinates, the confidence (that the bounding box contains a face), and face ID. For an example, see Listing Faces in a Collection in the Amazon Rekognition Developer Guide.
 
-This operation requires permissions to perform the
-\code{rekognition:ListFaces} action.
-}
-\section{Request syntax}{
-\preformatted{svc$list_faces(
-  CollectionId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation lists the faces in a Rekognition collection.
-svc$list_faces(
-  CollectionId = "myphotos",
-  MaxResults = 20L
-)
-}
-
+See \url{https://paws-r.github.io/docs/rekognition/list_faces.html} for full documentation.
 }
 \keyword{internal}

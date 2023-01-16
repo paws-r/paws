@@ -4,8 +4,12 @@
 \alias{neptune_describe_db_parameter_groups}
 \title{Returns a list of DBParameterGroup descriptions}
 \usage{
-neptune_describe_db_parameter_groups(DBParameterGroupName, Filters,
-  MaxRecords, Marker)
+neptune_describe_db_parameter_groups(
+  DBParameterGroupName = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBParameterGroupName}{The name of a specific DB parameter group to return details for.
@@ -32,40 +36,9 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBParameterGroups = list(
-    list(
-      DBParameterGroupName = "string",
-      DBParameterGroupFamily = "string",
-      Description = "string",
-      DBParameterGroupArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of \code{DBParameterGroup} descriptions. If a
-\code{DBParameterGroupName} is specified, the list will contain only the
-description of the specified DB parameter group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_parameter_groups(
-  DBParameterGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns a list of \code{DBParameterGroup} descriptions. If a \code{DBParameterGroupName} is specified, the list will contain only the description of the specified DB parameter group.
 
+See \url{https://paws-r.github.io/docs/neptune/describe_db_parameter_groups.html} for full documentation.
+}
 \keyword{internal}

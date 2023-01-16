@@ -7,8 +7,13 @@ disabled) replication group or the number of replica nodes in one or
 more node groups (shards) of a Redis (cluster mode enabled) replication
 group}
 \usage{
-elasticache_decrease_replica_count(ReplicationGroupId, NewReplicaCount,
-  ReplicaConfiguration, ReplicasToRemove, ApplyImmediately)
+elasticache_decrease_replica_count(
+  ReplicationGroupId,
+  NewReplicaCount = NULL,
+  ReplicaConfiguration = NULL,
+  ReplicasToRemove = NULL,
+  ApplyImmediately
+)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The id of the replication group from which you want to remove replica
@@ -42,122 +47,9 @@ group (shard).}
 \item{ApplyImmediately}{[required] If \code{True}, the number of replica nodes is decreased immediately.
 \code{ApplyImmediately=False} is not currently supported.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReplicationGroup = list(
-    ReplicationGroupId = "string",
-    Description = "string",
-    GlobalReplicationGroupInfo = list(
-      GlobalReplicationGroupId = "string",
-      GlobalReplicationGroupMemberRole = "string"
-    ),
-    Status = "string",
-    PendingModifiedValues = list(
-      PrimaryClusterId = "string",
-      AutomaticFailoverStatus = "enabled"|"disabled",
-      Resharding = list(
-        SlotMigration = list(
-          ProgressPercentage = 123.0
-        )
-      ),
-      AuthTokenStatus = "SETTING"|"ROTATING",
-      UserGroups = list(
-        UserGroupIdsToAdd = list(
-          "string"
-        ),
-        UserGroupIdsToRemove = list(
-          "string"
-        )
-      )
-    ),
-    MemberClusters = list(
-      "string"
-    ),
-    NodeGroups = list(
-      list(
-        NodeGroupId = "string",
-        Status = "string",
-        PrimaryEndpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        ReaderEndpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        Slots = "string",
-        NodeGroupMembers = list(
-          list(
-            CacheClusterId = "string",
-            CacheNodeId = "string",
-            ReadEndpoint = list(
-              Address = "string",
-              Port = 123
-            ),
-            PreferredAvailabilityZone = "string",
-            PreferredOutpostArn = "string",
-            CurrentRole = "string"
-          )
-        )
-      )
-    ),
-    SnapshottingClusterId = "string",
-    AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-    MultiAZ = "enabled"|"disabled",
-    ConfigurationEndpoint = list(
-      Address = "string",
-      Port = 123
-    ),
-    SnapshotRetentionLimit = 123,
-    SnapshotWindow = "string",
-    ClusterEnabled = TRUE|FALSE,
-    CacheNodeType = "string",
-    AuthTokenEnabled = TRUE|FALSE,
-    AuthTokenLastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    MemberClustersOutpostArns = list(
-      "string"
-    ),
-    KmsKeyId = "string",
-    ARN = "string",
-    UserGroupIds = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-Dynamically decreases the number of replicas in a Redis (cluster mode
-disabled) replication group or the number of replica nodes in one or
-more node groups (shards) of a Redis (cluster mode enabled) replication
-group. This operation is performed with no cluster down time.
-}
-\section{Request syntax}{
-\preformatted{svc$decrease_replica_count(
-  ReplicationGroupId = "string",
-  NewReplicaCount = 123,
-  ReplicaConfiguration = list(
-    list(
-      NodeGroupId = "string",
-      NewReplicaCount = 123,
-      PreferredAvailabilityZones = list(
-        "string"
-      ),
-      PreferredOutpostArns = list(
-        "string"
-      )
-    )
-  ),
-  ReplicasToRemove = list(
-    "string"
-  ),
-  ApplyImmediately = TRUE|FALSE
-)
-}
-}
+Dynamically decreases the number of replicas in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group. This operation is performed with no cluster down time.
 
+See \url{https://paws-r.github.io/docs/elasticache/decrease_replica_count.html} for full documentation.
+}
 \keyword{internal}

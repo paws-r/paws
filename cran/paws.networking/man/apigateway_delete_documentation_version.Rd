@@ -2,28 +2,18 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_delete_documentation_version}
 \alias{apigateway_delete_documentation_version}
-\title{Delete documentation version}
+\title{Deletes a documentation version}
 \usage{
 apigateway_delete_documentation_version(restApiId, documentationVersion)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{documentationVersion}{[required] [Required] The version identifier of a to-be-deleted documentation
-snapshot.}
-}
-\value{
-An empty list.
+\item{documentationVersion}{[required] The version identifier of a to-be-deleted documentation snapshot.}
 }
 \description{
-Delete documentation version
-}
-\section{Request syntax}{
-\preformatted{svc$delete_documentation_version(
-  restApiId = "string",
-  documentationVersion = "string"
-)
-}
-}
+Deletes a documentation version.
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_documentation_version.html} for full documentation.
+}
 \keyword{internal}

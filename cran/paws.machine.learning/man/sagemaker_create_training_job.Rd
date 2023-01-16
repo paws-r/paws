@@ -4,21 +4,38 @@
 \alias{sagemaker_create_training_job}
 \title{Starts a model training job}
 \usage{
-sagemaker_create_training_job(TrainingJobName, HyperParameters,
-  AlgorithmSpecification, RoleArn, InputDataConfig, OutputDataConfig,
-  ResourceConfig, VpcConfig, StoppingCondition, Tags,
-  EnableNetworkIsolation, EnableInterContainerTrafficEncryption,
-  EnableManagedSpotTraining, CheckpointConfig, DebugHookConfig,
-  DebugRuleConfigurations, TensorBoardOutputConfig, ExperimentConfig,
-  ProfilerConfig, ProfilerRuleConfigurations)
+sagemaker_create_training_job(
+  TrainingJobName,
+  HyperParameters = NULL,
+  AlgorithmSpecification,
+  RoleArn,
+  InputDataConfig = NULL,
+  OutputDataConfig,
+  ResourceConfig,
+  VpcConfig = NULL,
+  StoppingCondition,
+  Tags = NULL,
+  EnableNetworkIsolation = NULL,
+  EnableInterContainerTrafficEncryption = NULL,
+  EnableManagedSpotTraining = NULL,
+  CheckpointConfig = NULL,
+  DebugHookConfig = NULL,
+  DebugRuleConfigurations = NULL,
+  TensorBoardOutputConfig = NULL,
+  ExperimentConfig = NULL,
+  ProfilerConfig = NULL,
+  ProfilerRuleConfigurations = NULL,
+  Environment = NULL,
+  RetryStrategy = NULL
+)
 }
 \arguments{
-\item{TrainingJobName}{[required] The name of the training job. The name must be unique within an AWS
-Region in an AWS account.}
+\item{TrainingJobName}{[required] The name of the training job. The name must be unique within an Amazon
+Web Services Region in an Amazon Web Services account.}
 
 \item{HyperParameters}{Algorithm-specific parameters that influence the quality of the model.
 You set hyperparameters before you start the learning process. For a
-list of hyperparameters for each training algorithm provided by Amazon
+list of hyperparameters for each training algorithm provided by
 SageMaker, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
 
@@ -28,22 +45,22 @@ specified by the \verb{Length Constraint}.}
 
 \item{AlgorithmSpecification}{[required] The registry path of the Docker image that contains the training
 algorithm and algorithm-specific metadata, including the input mode. For
-more information about algorithms provided by Amazon SageMaker, see
+more information about algorithms provided by SageMaker, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
 For information about providing your own algorithms, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html}{Using Your Own Algorithms with Amazon SageMaker}.}
 
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
-assume to perform tasks on your behalf.
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that SageMaker can assume
+to perform tasks on your behalf.
 
-During model training, Amazon SageMaker needs your permission to read
-input data from an S3 bucket, download a Docker image that contains
-training code, write model artifacts to an S3 bucket, write logs to
-Amazon CloudWatch Logs, and publish metrics to Amazon CloudWatch. You
-grant permissions for all of these tasks to an IAM role. For more
-information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
+During model training, SageMaker needs your permission to read input
+data from an S3 bucket, download a Docker image that contains training
+code, write model artifacts to an S3 bucket, write logs to Amazon
+CloudWatch Logs, and publish metrics to Amazon CloudWatch. You grant
+permissions for all of these tasks to an IAM role. For more information,
+see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker Roles}.
 
-To be able to pass this role to Amazon SageMaker, the caller of this API
-must have the \code{iam:PassRole} permission.}
+To be able to pass this role to SageMaker, the caller of this API must
+have the \code{iam:PassRole} permission.}
 
 \item{InputDataConfig}{An array of \code{Channel} objects. Each channel is a named input source.
 \code{InputDataConfig} describes the input data and its location.
@@ -55,23 +72,22 @@ EFS, or FSx location where the input data is stored. It also provides
 information about the stored data: the MIME type, compression method,
 and whether the data is wrapped in RecordIO format.
 
-Depending on the input mode that the algorithm supports, Amazon
-SageMaker either copies input data files from an S3 bucket to a local
-directory in the Docker container, or makes it available as input
-streams. For example, if you specify an EFS location, input data files
-will be made available as input streams. They do not need to be
-downloaded.}
+Depending on the input mode that the algorithm supports, SageMaker
+either copies input data files from an S3 bucket to a local directory in
+the Docker container, or makes it available as input streams. For
+example, if you specify an EFS location, input data files are available
+as input streams. They do not need to be downloaded.}
 
 \item{OutputDataConfig}{[required] Specifies the path to the S3 location where you want to store model
-artifacts. Amazon SageMaker creates subfolders for the artifacts.}
+artifacts. SageMaker creates subfolders for the artifacts.}
 
 \item{ResourceConfig}{[required] The resources, including the ML compute instances and ML storage
 volumes, to use for model training.
 
 ML storage volumes store model artifacts and incremental states.
 Training algorithms might also use ML storage volumes for scratch space.
-If you want Amazon SageMaker to use the ML storage volume to store the
-training data, choose \code{File} as the \code{TrainingInputMode} in the algorithm
+If you want SageMaker to use the ML storage volume to store the training
+data, choose \code{File} as the \code{TrainingInputMode} in the algorithm
 specification. For distributed training algorithms, specify an instance
 count greater than 1.}
 
@@ -79,25 +95,26 @@ count greater than 1.}
 job to connect to. Control access to and from your training container by
 configuring the VPC. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html}{Protect Training Jobs by Using an Amazon Virtual Private Cloud}.}
 
-\item{StoppingCondition}{[required] Specifies a limit to how long a model training job can run. When the job
-reaches the time limit, Amazon SageMaker ends the training job. Use this
+\item{StoppingCondition}{[required] Specifies a limit to how long a model training job can run. It also
+specifies how long a managed Spot training job has to complete. When the
+job reaches the time limit, SageMaker ends the training job. Use this
 API to cap model training costs.
 
-To stop a job, Amazon SageMaker sends the algorithm the \code{SIGTERM}
-signal, which delays job termination for 120 seconds. Algorithms can use
-this 120-second window to save the model artifacts, so the results of
+To stop a job, SageMaker sends the algorithm the \code{SIGTERM} signal, which
+delays job termination for 120 seconds. Algorithms can use this
+120-second window to save the model artifacts, so the results of
 training are not lost.}
 
-\item{Tags}{An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
+\item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
 
 \item{EnableNetworkIsolation}{Isolates the training container. No inbound or outbound network calls
 can be made, except for calls between peers within a training cluster
 for distributed training. If you enable network isolation for training
-jobs that are configured to use a VPC, Amazon SageMaker downloads and
-uploads customer data and model artifacts through the specified VPC, but
-the training container does not have network access.}
+jobs that are configured to use a VPC, SageMaker downloads and uploads
+customer data and model artifacts through the specified VPC, but the
+training container does not have network access.}
 
 \item{EnableInterContainerTrafficEncryption}{To encrypt all communications between ML compute instances in
 distributed training, choose \code{True}. Encryption provides greater
@@ -134,196 +151,15 @@ tensors.}
 
 \item{ProfilerRuleConfigurations}{Configuration information for Debugger rules for profiling system and
 framework metrics.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TrainingJobArn = "string"
-)
-}
+
+\item{Environment}{The environment variables to set in the Docker container.}
+
+\item{RetryStrategy}{The number of times to retry the job when the job fails due to an
+\code{InternalServerError}.}
 }
 \description{
-Starts a model training job. After training completes, Amazon SageMaker
-saves the resulting model artifacts to an Amazon S3 location that you
-specify.
+Starts a model training job. After training completes, SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.
 
-If you choose to host your model using Amazon SageMaker hosting
-services, you can use the resulting model artifacts as part of the
-model. You can also use the artifacts in a machine learning service
-other than Amazon SageMaker, provided that you know how to use them for
-inference.
-
-In the request body, you provide the following:
-\itemize{
-\item \code{AlgorithmSpecification} - Identifies the training algorithm to use.
-\item \code{HyperParameters} - Specify these algorithm-specific parameters to
-enable the estimation of model parameters during training.
-Hyperparameters can be tuned to optimize this learning process. For
-a list of hyperparameters for each training algorithm provided by
-Amazon SageMaker, see
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
-\item \code{InputDataConfig} - Describes the training dataset and the Amazon
-S3, EFS, or FSx location where it is stored.
-\item \code{OutputDataConfig} - Identifies the Amazon S3 bucket where you want
-Amazon SageMaker to save the results of model training.
-\item \code{ResourceConfig} - Identifies the resources, ML compute instances,
-and ML storage volumes to deploy for model training. In distributed
-training, you specify more than one instance.
-\item \code{EnableManagedSpotTraining} - Optimize the cost of training machine
-learning models by up to 80\% by using Amazon EC2 Spot instances. For
-more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html}{Managed Spot Training}.
-\item \code{RoleArn} - The Amazon Resource Number (ARN) that Amazon SageMaker
-assumes to perform tasks on your behalf during model training. You
-must grant this role the necessary permissions so that Amazon
-SageMaker can successfully complete model training.
-\item \code{StoppingCondition} - To help cap training costs, use
-\code{MaxRuntimeInSeconds} to set a time limit for training. Use
-\code{MaxWaitTimeInSeconds} to specify how long you are willing to wait
-for a managed spot training job to complete.
+See \url{https://paws-r.github.io/docs/sagemaker/create_training_job.html} for full documentation.
 }
-
-For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{How It Works}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_training_job(
-  TrainingJobName = "string",
-  HyperParameters = list(
-    "string"
-  ),
-  AlgorithmSpecification = list(
-    TrainingImage = "string",
-    AlgorithmName = "string",
-    TrainingInputMode = "Pipe"|"File",
-    MetricDefinitions = list(
-      list(
-        Name = "string",
-        Regex = "string"
-      )
-    ),
-    EnableSageMakerMetricsTimeSeries = TRUE|FALSE
-  ),
-  RoleArn = "string",
-  InputDataConfig = list(
-    list(
-      ChannelName = "string",
-      DataSource = list(
-        S3DataSource = list(
-          S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
-          S3Uri = "string",
-          S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
-          AttributeNames = list(
-            "string"
-          )
-        ),
-        FileSystemDataSource = list(
-          FileSystemId = "string",
-          FileSystemAccessMode = "rw"|"ro",
-          FileSystemType = "EFS"|"FSxLustre",
-          DirectoryPath = "string"
-        )
-      ),
-      ContentType = "string",
-      CompressionType = "None"|"Gzip",
-      RecordWrapperType = "None"|"RecordIO",
-      InputMode = "Pipe"|"File",
-      ShuffleConfig = list(
-        Seed = 123
-      )
-    )
-  ),
-  OutputDataConfig = list(
-    KmsKeyId = "string",
-    S3OutputPath = "string"
-  ),
-  ResourceConfig = list(
-    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
-    InstanceCount = 123,
-    VolumeSizeInGB = 123,
-    VolumeKmsKeyId = "string"
-  ),
-  VpcConfig = list(
-    SecurityGroupIds = list(
-      "string"
-    ),
-    Subnets = list(
-      "string"
-    )
-  ),
-  StoppingCondition = list(
-    MaxRuntimeInSeconds = 123,
-    MaxWaitTimeInSeconds = 123
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  EnableNetworkIsolation = TRUE|FALSE,
-  EnableInterContainerTrafficEncryption = TRUE|FALSE,
-  EnableManagedSpotTraining = TRUE|FALSE,
-  CheckpointConfig = list(
-    S3Uri = "string",
-    LocalPath = "string"
-  ),
-  DebugHookConfig = list(
-    LocalPath = "string",
-    S3OutputPath = "string",
-    HookParameters = list(
-      "string"
-    ),
-    CollectionConfigurations = list(
-      list(
-        CollectionName = "string",
-        CollectionParameters = list(
-          "string"
-        )
-      )
-    )
-  ),
-  DebugRuleConfigurations = list(
-    list(
-      RuleConfigurationName = "string",
-      LocalPath = "string",
-      S3OutputPath = "string",
-      RuleEvaluatorImage = "string",
-      InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
-      VolumeSizeInGB = 123,
-      RuleParameters = list(
-        "string"
-      )
-    )
-  ),
-  TensorBoardOutputConfig = list(
-    LocalPath = "string",
-    S3OutputPath = "string"
-  ),
-  ExperimentConfig = list(
-    ExperimentName = "string",
-    TrialName = "string",
-    TrialComponentDisplayName = "string"
-  ),
-  ProfilerConfig = list(
-    S3OutputPath = "string",
-    ProfilingIntervalInMilliseconds = 123,
-    ProfilingParameters = list(
-      "string"
-    )
-  ),
-  ProfilerRuleConfigurations = list(
-    list(
-      RuleConfigurationName = "string",
-      LocalPath = "string",
-      S3OutputPath = "string",
-      RuleEvaluatorImage = "string",
-      InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
-      VolumeSizeInGB = 123,
-      RuleParameters = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

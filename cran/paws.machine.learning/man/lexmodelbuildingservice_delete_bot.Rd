@@ -9,38 +9,9 @@ lexmodelbuildingservice_delete_bot(name)
 \arguments{
 \item{name}{[required] The name of the bot. The name is case sensitive.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes all versions of the bot, including the \verb{$LATEST} version. To
-delete a specific version of the bot, use the
-\code{\link[=lexmodelbuildingservice_delete_bot_version]{delete_bot_version}}
-operation. The \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}}
-operation doesn't immediately remove the bot schema. Instead, it is
-marked for deletion and removed later.
+Deletes all versions of the bot, including the \verb{$LATEST} version. To delete a specific version of the bot, use the \code{\link[=lexmodelbuildingservice_delete_bot_version]{delete_bot_version}} operation. The \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}} operation doesn't immediately remove the bot schema. Instead, it is marked for deletion and removed later.
 
-Amazon Lex stores utterances indefinitely for improving the ability of
-your bot to respond to user inputs. These utterances are not removed
-when the bot is deleted. To remove the utterances, use the
-\code{\link[=lexmodelbuildingservice_delete_utterances]{delete_utterances}}
-operation.
-
-If a bot has an alias, you can't delete it. Instead, the
-\code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}} operation returns a
-\code{ResourceInUseException} exception that includes a reference to the
-alias that refers to the bot. To remove the reference to the bot, delete
-the alias. If you get the same exception again, delete the referring
-alias until the \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}}
-operation is successful.
-
-This operation requires permissions for the \code{lex:DeleteBot} action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_bot(
-  name = "string"
-)
-}
-}
-
 \keyword{internal}

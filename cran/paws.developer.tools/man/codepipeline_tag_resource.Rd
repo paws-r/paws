@@ -11,24 +11,9 @@ codepipeline_tag_resource(resourceArn, tags)
 
 \item{tags}{[required] The tags you want to modify or add to the resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds to or modifies the tags of the given resource. Tags are metadata
-that can be used to manage a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
+Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a resource.
 
+See \url{https://paws-r.github.io/docs/codepipeline/tag_resource.html} for full documentation.
+}
 \keyword{internal}

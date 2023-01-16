@@ -2,11 +2,18 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_create_connection}
 \alias{directconnect_create_connection}
-\title{Creates a connection between a customer network and a specific AWS
-Direct Connect location}
+\title{Creates a connection between a customer network and a specific Direct
+Connect location}
 \usage{
-directconnect_create_connection(location, bandwidth, connectionName,
-  lagId, tags, providerName)
+directconnect_create_connection(
+  location,
+  bandwidth,
+  connectionName,
+  lagId = NULL,
+  tags = NULL,
+  providerName = NULL,
+  requestMACSec = NULL
+)
 }
 \arguments{
 \item{location}{[required] The location of the connection.}
@@ -21,69 +28,17 @@ directconnect_create_connection(location, bandwidth, connectionName,
 
 \item{providerName}{The name of the service provider associated with the requested
 connection.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ownerAccount = "string",
-  connectionId = "string",
-  connectionName = "string",
-  connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-  region = "string",
-  location = "string",
-  bandwidth = "string",
-  vlan = 123,
-  partnerName = "string",
-  loaIssueTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  lagId = "string",
-  awsDevice = "string",
-  jumboFrameCapable = TRUE|FALSE,
-  awsDeviceV2 = "string",
-  hasLogicalRedundancy = "unknown"|"yes"|"no",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
+
+\item{requestMACSec}{Indicates whether you want the connection to support MAC Security
+(MACsec).
+
+MAC Security (MACsec) is only available on dedicated connections. For
+information about MAC Security (MACsec) prerequisties, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites}{MACsec prerequisties}
+in the \emph{Direct Connect User Guide}.}
 }
 \description{
-Creates a connection between a customer network and a specific AWS
-Direct Connect location.
+Creates a connection between a customer network and a specific Direct Connect location.
 
-A connection links your internal network to an AWS Direct Connect
-location over a standard Ethernet fiber-optic cable. One end of the
-cable is connected to your router, the other to an AWS Direct Connect
-router.
-
-To find the locations for your Region, use
-\code{\link[=directconnect_describe_locations]{describe_locations}}.
-
-You can automatically add the new connection to a link aggregation group
-(LAG) by specifying a LAG ID in the request. This ensures that the new
-connection is allocated on the same AWS Direct Connect endpoint that
-hosts the specified LAG. If there are no available ports on the
-endpoint, the request fails and no connection is created.
+See \url{https://paws-r.github.io/docs/directconnect/create_connection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_connection(
-  location = "string",
-  bandwidth = "string",
-  connectionName = "string",
-  lagId = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
-}
-
 \keyword{internal}

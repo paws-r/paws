@@ -9,37 +9,9 @@ codedeploy_get_on_premises_instance(instanceName)
 \arguments{
 \item{instanceName}{[required] The name of the on-premises instance about which to get information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  instanceInfo = list(
-    instanceName = "string",
-    iamSessionArn = "string",
-    iamUserArn = "string",
-    instanceArn = "string",
-    registerTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    deregisterTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets information about an on-premises instance.
-}
-\section{Request syntax}{
-\preformatted{svc$get_on_premises_instance(
-  instanceName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/get_on_premises_instance.html} for full documentation.
+}
 \keyword{internal}

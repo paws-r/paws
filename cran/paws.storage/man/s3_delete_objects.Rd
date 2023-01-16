@@ -2,31 +2,38 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_objects}
 \alias{s3_delete_objects}
-\title{This operation enables you to delete multiple objects from a bucket
-using a single HTTP request}
+\title{This action enables you to delete multiple objects from a bucket using a
+single HTTP request}
 \usage{
-s3_delete_objects(Bucket, Delete, MFA, RequestPayer,
-  BypassGovernanceRetention, ExpectedBucketOwner)
+s3_delete_objects(
+  Bucket,
+  Delete,
+  MFA = NULL,
+  RequestPayer = NULL,
+  BypassGovernanceRetention = NULL,
+  ExpectedBucketOwner = NULL,
+  ChecksumAlgorithm = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name containing the objects to delete.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Delete}{[required] Container for the request.}
 
@@ -38,139 +45,31 @@ with MFA delete enabled.}
 \item{RequestPayer}{}
 
 \item{BypassGovernanceRetention}{Specifies whether you want to delete this object even if it has a
-Governance-type Object Lock in place. You must have sufficient
-permissions to perform this operation.}
+Governance-type Object Lock in place. To use this header, you must have
+the \code{s3:BypassGovernanceRetention} permission.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Deleted = list(
-    list(
-      Key = "string",
-      VersionId = "string",
-      DeleteMarker = TRUE|FALSE,
-      DeleteMarkerVersionId = "string"
-    )
-  ),
-  RequestCharged = "requester",
-  Errors = list(
-    list(
-      Key = "string",
-      VersionId = "string",
-      Code = "string",
-      Message = "string"
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.
+
+This checksum algorithm must be the same for all parts and it match the
+checksum value supplied in the
+\code{\link[=s3_create_multipart_upload]{create_multipart_upload}} request.}
 }
 \description{
-This operation enables you to delete multiple objects from a bucket
-using a single HTTP request. If you know the object keys that you want
-to delete, then this operation provides a suitable alternative to
-sending individual delete requests, reducing per-request overhead.
+This action enables you to delete multiple objects from a bucket using a single HTTP request. If you know the object keys that you want to delete, then this action provides a suitable alternative to sending individual delete requests, reducing per-request overhead.
 
-The request contains a list of up to 1000 keys that you want to delete.
-In the XML, you provide the object key names, and optionally, version
-IDs if you want to delete a specific version of the object from a
-versioning-enabled bucket. For each key, Amazon S3 performs a delete
-operation and returns the result of that delete, success, or failure, in
-the response. Note that if the object specified in the request is not
-found, Amazon S3 returns the result as deleted.
-
-The operation supports two modes for the response: verbose and quiet. By
-default, the operation uses verbose mode in which the response includes
-the result of deletion of each key in your request. In quiet mode the
-response includes only keys where the delete operation encountered an
-error. For a successful deletion, the operation does not return any
-information about the delete in the response body.
-
-When performing this operation on an MFA Delete enabled bucket, that
-attempts to delete any versioned objects, you must include an MFA token.
-If you do not provide one, the entire request will fail, even if there
-are non-versioned objects you are trying to delete. If you provide an
-invalid token, whether there are versioned keys in the request or not,
-the entire Multi-Object Delete request will fail. For information about
-MFA Delete, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html#MultiFactorAuthenticationDelete}{MFA Delete}.
-
-Finally, the Content-MD5 header is required for all Multi-Object Delete
-requests. Amazon S3 uses the header value to ensure that your request
-body has not been altered in transit.
-
-The following operations are related to
-\code{\link[=s3_delete_objects]{delete_objects}}:
-\itemize{
-\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
-\item \code{\link[=s3_upload_part]{upload_part}}
-\item \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
-\item \code{\link[=s3_list_parts]{list_parts}}
-\item \code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_objects(
-  Bucket = "string",
-  Delete = list(
-    Objects = list(
-      list(
-        Key = "string",
-        VersionId = "string"
-      )
-    ),
-    Quiet = TRUE|FALSE
-  ),
-  MFA = "string",
-  RequestPayer = "requester",
-  BypassGovernanceRetention = TRUE|FALSE,
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes objects from a bucket. The request
-# specifies object versions. S3 deletes specific object versions and
-# returns the key and versions of deleted objects in the response.
-svc$delete_objects(
-  Bucket = "examplebucket",
-  Delete = list(
-    Objects = list(
-      list(
-        Key = "HappyFace.jpg",
-        VersionId = "2LWg7lQLnY41.maGB5Z6SWW.dcq0vx7b"
-      ),
-      list(
-        Key = "HappyFace.jpg",
-        VersionId = "yoz3HB.ZhCS_tKVEmIOr7qYyyAaZSKVd"
-      )
-    ),
-    Quiet = FALSE
-  )
-)
-
-# The following example deletes objects from a bucket. The bucket is
-# versioned, and the request does not specify the object version to
-# delete. In this case, all versions remain in the bucket and S3 adds a
-# delete marker.
-svc$delete_objects(
-  Bucket = "examplebucket",
-  Delete = list(
-    Objects = list(
-      list(
-        Key = "objectkey1"
-      ),
-      list(
-        Key = "objectkey2"
-      )
-    ),
-    Quiet = FALSE
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/delete_objects.html} for full documentation.
 }
 \keyword{internal}

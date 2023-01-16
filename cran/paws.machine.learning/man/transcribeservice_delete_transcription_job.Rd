@@ -2,26 +2,17 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_delete_transcription_job}
 \alias{transcribeservice_delete_transcription_job}
-\title{Deletes a previously submitted transcription job along with any other
-generated results such as the transcription, models, and so on}
+\title{Deletes a transcription job}
 \usage{
 transcribeservice_delete_transcription_job(TranscriptionJobName)
 }
 \arguments{
-\item{TranscriptionJobName}{[required] The name of the transcription job to be deleted.}
-}
-\value{
-An empty list.
+\item{TranscriptionJobName}{[required] The name of the transcription job you want to delete. Job names are case
+sensitive.}
 }
 \description{
-Deletes a previously submitted transcription job along with any other
-generated results such as the transcription, models, and so on.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_transcription_job(
-  TranscriptionJobName = "string"
-)
-}
-}
+Deletes a transcription job. To use this operation, specify the name of the job you want to delete using \code{TranscriptionJobName}. Job names are case sensitive.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/delete_transcription_job.html} for full documentation.
+}
 \keyword{internal}

@@ -4,11 +4,25 @@
 \alias{elbv2_create_target_group}
 \title{Creates a target group}
 \usage{
-elbv2_create_target_group(Name, Protocol, ProtocolVersion, Port, VpcId,
-  HealthCheckProtocol, HealthCheckPort, HealthCheckEnabled,
-  HealthCheckPath, HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds,
-  HealthyThresholdCount, UnhealthyThresholdCount, Matcher, TargetType,
-  Tags)
+elbv2_create_target_group(
+  Name,
+  Protocol = NULL,
+  ProtocolVersion = NULL,
+  Port = NULL,
+  VpcId = NULL,
+  HealthCheckProtocol = NULL,
+  HealthCheckPort = NULL,
+  HealthCheckEnabled = NULL,
+  HealthCheckPath = NULL,
+  HealthCheckIntervalSeconds = NULL,
+  HealthCheckTimeoutSeconds = NULL,
+  HealthyThresholdCount = NULL,
+  UnhealthyThresholdCount = NULL,
+  Matcher = NULL,
+  TargetType = NULL,
+  Tags = NULL,
+  IpAddressType = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the target group.
@@ -53,8 +67,8 @@ default is port 80.}
 
 \item{HealthCheckEnabled}{Indicates whether health checks are enabled. If the target type is
 \code{lambda}, health checks are disabled by default but can be enabled. If
-the target type is \code{instance} or \code{ip}, health checks are always enabled
-and cannot be disabled.}
+the target type is \code{instance}, \code{ip}, or \code{alb}, health checks are always
+enabled and cannot be disabled.}
 
 \item{HealthCheckPath}{[HTTP/HTTPS health checks] The destination for health checks on the
 targets.
@@ -62,11 +76,13 @@ targets.
 [HTTP1 or HTTP2 protocol version] The ping path. The default is /.
 
 [GRPC protocol version] The path of a custom health check method with
-the format /package.service/method. The default is /AWS.ALB/healthcheck.}
+the format /package.service/method. The default is /Amazon Web
+Services.ALB/healthcheck.}
 
 \item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an
-individual target. For TCP health checks, the supported values are 10
-and 30 seconds. If the target type is \code{instance} or \code{ip}, the default is
+individual target. If the target group protocol is HTTP or HTTPS, the
+default is 30 seconds. If the target group protocol is TCP, TLS, UDP, or
+TCP_UDP, the supported values are 10 and 30 seconds and the default is
 30 seconds. If the target group protocol is GENEVE, the default is 10
 seconds. If the target type is \code{lambda}, the default is 35 seconds.}
 
@@ -105,97 +121,18 @@ group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and
 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't
 specify publicly routable IP addresses.
 \item \code{lambda} - Register a single Lambda function as a target.
+\item \code{alb} - Register a single Application Load Balancer as a target.
 }}
 
 \item{Tags}{The tags to assign to the target group.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TargetGroups = list(
-    list(
-      TargetGroupArn = "string",
-      TargetGroupName = "string",
-      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-      Port = 123,
-      VpcId = "string",
-      HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-      HealthCheckPort = "string",
-      HealthCheckEnabled = TRUE|FALSE,
-      HealthCheckIntervalSeconds = 123,
-      HealthCheckTimeoutSeconds = 123,
-      HealthyThresholdCount = 123,
-      UnhealthyThresholdCount = 123,
-      HealthCheckPath = "string",
-      Matcher = list(
-        HttpCode = "string",
-        GrpcCode = "string"
-      ),
-      LoadBalancerArns = list(
-        "string"
-      ),
-      TargetType = "instance"|"ip"|"lambda",
-      ProtocolVersion = "string"
-    )
-  )
-)
-}
+
+\item{IpAddressType}{The type of IP address used for this target group. The possible values
+are \code{ipv4} and \code{ipv6}. This is an optional parameter. If not specified,
+the IP address type defaults to \code{ipv4}.}
 }
 \description{
 Creates a target group.
 
-For more information, see the following:
-\itemize{
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html}{Target groups for your Application Load Balancers}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html}{Target groups for your Network Load Balancers}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html}{Target groups for your Gateway Load Balancers}
-}
-
-This operation is idempotent, which means that it completes at most one
-time. If you attempt to create multiple target groups with the same
-settings, each call succeeds.
-}
-\section{Request syntax}{
-\preformatted{svc$create_target_group(
-  Name = "string",
-  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-  ProtocolVersion = "string",
-  Port = 123,
-  VpcId = "string",
-  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-  HealthCheckPort = "string",
-  HealthCheckEnabled = TRUE|FALSE,
-  HealthCheckPath = "string",
-  HealthCheckIntervalSeconds = 123,
-  HealthCheckTimeoutSeconds = 123,
-  HealthyThresholdCount = 123,
-  UnhealthyThresholdCount = 123,
-  Matcher = list(
-    HttpCode = "string",
-    GrpcCode = "string"
-  ),
-  TargetType = "instance"|"ip"|"lambda",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a target group that you can use to route traffic to
-# targets using HTTP on port 80. This target group uses the default health
-# check configuration.
-svc$create_target_group(
-  Name = "my-targets",
-  Port = 80L,
-  Protocol = "HTTP",
-  VpcId = "vpc-3ac0fb5f"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/create_target_group.html} for full documentation.
 }
 \keyword{internal}

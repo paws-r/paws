@@ -11,20 +11,9 @@ workspaces_modify_client_properties(ResourceId, ClientProperties)
 
 \item{ClientProperties}{[required] Information about the Amazon WorkSpaces client.}
 }
-\value{
-An empty list.
-}
 \description{
 Modifies the properties of the specified Amazon WorkSpaces clients.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_client_properties(
-  ResourceId = "string",
-  ClientProperties = list(
-    ReconnectEnabled = "ENABLED"|"DISABLED"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workspaces/modify_client_properties.html} for full documentation.
+}
 \keyword{internal}

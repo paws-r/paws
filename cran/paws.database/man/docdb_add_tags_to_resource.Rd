@@ -12,26 +12,9 @@ an Amazon Resource Name .}
 
 \item{Tags}{[required] The tags to be assigned to the Amazon DocumentDB resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds metadata tags to an Amazon DocumentDB resource. You can use these
-tags with cost allocation reporting to track costs that are associated
-with Amazon DocumentDB resources. or in a \code{Condition} statement in an
-AWS Identity and Access Management (IAM) policy for Amazon DocumentDB.
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
-  ResourceName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Adds metadata tags to an Amazon DocumentDB resource. You can use these tags with cost allocation reporting to track costs that are associated with Amazon DocumentDB resources or in a \code{Condition} statement in an Identity and Access Management (IAM) policy for Amazon DocumentDB.
 
+See \url{https://paws-r.github.io/docs/docdb/add_tags_to_resource.html} for full documentation.
+}
 \keyword{internal}

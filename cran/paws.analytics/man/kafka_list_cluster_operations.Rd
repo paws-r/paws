@@ -5,7 +5,7 @@
 \title{Returns a list of all the operations that have been performed on the
 specified MSK cluster}
 \usage{
-kafka_list_cluster_operations(ClusterArn, MaxResults, NextToken)
+kafka_list_cluster_operations(ClusterArn, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
@@ -17,134 +17,9 @@ more results, the response includes a NextToken parameter.}
 truncated, the call returns NextToken in the response. To get the next
 batch, provide this token in your next request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterOperationInfoList = list(
-    list(
-      ClientRequestId = "string",
-      ClusterArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ErrorInfo = list(
-        ErrorCode = "string",
-        ErrorString = "string"
-      ),
-      OperationArn = "string",
-      OperationState = "string",
-      OperationSteps = list(
-        list(
-          StepInfo = list(
-            StepStatus = "string"
-          ),
-          StepName = "string"
-        )
-      ),
-      OperationType = "string",
-      SourceClusterInfo = list(
-        BrokerEBSVolumeInfo = list(
-          list(
-            KafkaBrokerNodeId = "string",
-            VolumeSizeGB = 123
-          )
-        ),
-        ConfigurationInfo = list(
-          Arn = "string",
-          Revision = 123
-        ),
-        NumberOfBrokerNodes = 123,
-        EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
-        OpenMonitoring = list(
-          Prometheus = list(
-            JmxExporter = list(
-              EnabledInBroker = TRUE|FALSE
-            ),
-            NodeExporter = list(
-              EnabledInBroker = TRUE|FALSE
-            )
-          )
-        ),
-        KafkaVersion = "string",
-        LoggingInfo = list(
-          BrokerLogs = list(
-            CloudWatchLogs = list(
-              Enabled = TRUE|FALSE,
-              LogGroup = "string"
-            ),
-            Firehose = list(
-              DeliveryStream = "string",
-              Enabled = TRUE|FALSE
-            ),
-            S3 = list(
-              Bucket = "string",
-              Enabled = TRUE|FALSE,
-              Prefix = "string"
-            )
-          )
-        )
-      ),
-      TargetClusterInfo = list(
-        BrokerEBSVolumeInfo = list(
-          list(
-            KafkaBrokerNodeId = "string",
-            VolumeSizeGB = 123
-          )
-        ),
-        ConfigurationInfo = list(
-          Arn = "string",
-          Revision = 123
-        ),
-        NumberOfBrokerNodes = 123,
-        EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
-        OpenMonitoring = list(
-          Prometheus = list(
-            JmxExporter = list(
-              EnabledInBroker = TRUE|FALSE
-            ),
-            NodeExporter = list(
-              EnabledInBroker = TRUE|FALSE
-            )
-          )
-        ),
-        KafkaVersion = "string",
-        LoggingInfo = list(
-          BrokerLogs = list(
-            CloudWatchLogs = list(
-              Enabled = TRUE|FALSE,
-              LogGroup = "string"
-            ),
-            Firehose = list(
-              DeliveryStream = "string",
-              Enabled = TRUE|FALSE
-            ),
-            S3 = list(
-              Bucket = "string",
-              Enabled = TRUE|FALSE,
-              Prefix = "string"
-            )
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of all the operations that have been performed on the
-specified MSK cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$list_cluster_operations(
-  ClusterArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns a list of all the operations that have been performed on the specified MSK cluster.
 
+See \url{https://paws-r.github.io/docs/kafka/list_cluster_operations.html} for full documentation.
+}
 \keyword{internal}

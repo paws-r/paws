@@ -7,56 +7,11 @@
 backup_describe_backup_job(BackupJobId)
 }
 \arguments{
-\item{BackupJobId}{[required] Uniquely identifies a request to AWS Backup to back up a resource.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountId = "string",
-  BackupJobId = "string",
-  BackupVaultName = "string",
-  BackupVaultArn = "string",
-  RecoveryPointArn = "string",
-  ResourceArn = "string",
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  CompletionDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  State = "CREATED"|"PENDING"|"RUNNING"|"ABORTING"|"ABORTED"|"COMPLETED"|"FAILED"|"EXPIRED",
-  StatusMessage = "string",
-  PercentDone = "string",
-  BackupSizeInBytes = 123,
-  IamRoleArn = "string",
-  CreatedBy = list(
-    BackupPlanId = "string",
-    BackupPlanArn = "string",
-    BackupPlanVersion = "string",
-    BackupRuleId = "string"
-  ),
-  ResourceType = "string",
-  BytesTransferred = 123,
-  ExpectedCompletionDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  StartBy = as.POSIXct(
-    "2015-01-01"
-  ),
-  BackupOptions = list(
-    "string"
-  ),
-  BackupType = "string"
-)
-}
+\item{BackupJobId}{[required] Uniquely identifies a request to Backup to back up a resource.}
 }
 \description{
 Returns backup job details for the specified \code{BackupJobId}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_backup_job(
-  BackupJobId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/backup/describe_backup_job.html} for full documentation.
+}
 \keyword{internal}

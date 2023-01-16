@@ -14,23 +14,9 @@ in the \emph{Amazon RDS User Guide.}}
 
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes metadata tags from an Amazon RDS resource.
 
-For an overview on tagging an Amazon RDS resource, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}
-in the \emph{Amazon RDS User Guide.}
+See \url{https://paws-r.github.io/docs/rds/remove_tags_from_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$remove_tags_from_resource(
-  ResourceName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

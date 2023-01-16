@@ -2,220 +2,36 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_create_backup}
 \alias{fsx_create_backup}
-\title{Creates a backup of an existing Amazon FSx file system}
+\title{Creates a backup of an existing Amazon FSx for Windows File Server file
+system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP
+volume, or Amazon FSx for OpenZFS file system}
 \usage{
-fsx_create_backup(FileSystemId, ClientRequestToken, Tags)
+fsx_create_backup(
+  FileSystemId = NULL,
+  ClientRequestToken = NULL,
+  Tags = NULL,
+  VolumeId = NULL
+)
 }
 \arguments{
-\item{FileSystemId}{[required] The ID of the file system to back up.}
+\item{FileSystemId}{The ID of the file system to back up.}
 
 \item{ClientRequestToken}{(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
 ensure idempotent creation. This string is automatically filled on your
-behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
-SDK.}
+behalf when you use the Command Line Interface (CLI) or an Amazon Web
+Services SDK.}
 
 \item{Tags}{(Optional) The tags to apply to the backup at backup creation. The key
 value of the \code{Name} tag appears in the console as the backup name. If
-you have set \code{CopyTagsToBackups} to true, and you specify one or more
-tags using the \code{\link[=fsx_create_backup]{create_backup}} action, no existing
-file system tags are copied from the file system to the backup.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Backup = list(
-    BackupId = "string",
-    Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
-    FailureDetails = list(
-      Message = "string"
-    ),
-    Type = "AUTOMATIC"|"USER_INITIATED"|"AWS_BACKUP",
-    ProgressPercent = 123,
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    KmsKeyId = "string",
-    ResourceARN = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    FileSystem = list(
-      OwnerId = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      FileSystemId = "string",
-      FileSystemType = "WINDOWS"|"LUSTRE",
-      Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-      FailureDetails = list(
-        Message = "string"
-      ),
-      StorageCapacity = 123,
-      StorageType = "SSD"|"HDD",
-      VpcId = "string",
-      SubnetIds = list(
-        "string"
-      ),
-      NetworkInterfaceIds = list(
-        "string"
-      ),
-      DNSName = "string",
-      KmsKeyId = "string",
-      ResourceARN = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      WindowsConfiguration = list(
-        ActiveDirectoryId = "string",
-        SelfManagedActiveDirectoryConfiguration = list(
-          DomainName = "string",
-          OrganizationalUnitDistinguishedName = "string",
-          FileSystemAdministratorsGroup = "string",
-          UserName = "string",
-          DnsIps = list(
-            "string"
-          )
-        ),
-        DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-        RemoteAdministrationEndpoint = "string",
-        PreferredSubnetId = "string",
-        PreferredFileServerIp = "string",
-        ThroughputCapacity = 123,
-        MaintenanceOperationsInProgress = list(
-          "PATCHING"|"BACKING_UP"
-        ),
-        WeeklyMaintenanceStartTime = "string",
-        DailyAutomaticBackupStartTime = "string",
-        AutomaticBackupRetentionDays = 123,
-        CopyTagsToBackups = TRUE|FALSE,
-        Aliases = list(
-          list(
-            Name = "string",
-            Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-          )
-        )
-      ),
-      LustreConfiguration = list(
-        WeeklyMaintenanceStartTime = "string",
-        DataRepositoryConfiguration = list(
-          Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-          ImportPath = "string",
-          ExportPath = "string",
-          ImportedFileChunkSize = 123,
-          AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-          FailureDetails = list(
-            Message = "string"
-          )
-        ),
-        DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-        PerUnitStorageThroughput = 123,
-        MountName = "string",
-        DailyAutomaticBackupStartTime = "string",
-        AutomaticBackupRetentionDays = 123,
-        CopyTagsToBackups = TRUE|FALSE,
-        DriveCacheType = "NONE"|"READ"
-      ),
-      AdministrativeActions = list(
-        list(
-          AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-          ProgressPercent = 123,
-          RequestTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-          TargetFileSystemValues = list(),
-          FailureDetails = list(
-            Message = "string"
-          )
-        )
-      )
-    ),
-    DirectoryInformation = list(
-      DomainName = "string",
-      ActiveDirectoryId = "string"
-    )
-  )
-)
-}
+you have set \code{CopyTagsToBackups} to \code{true}, and you specify one or more
+tags using the \code{\link[=fsx_create_backup]{create_backup}} operation, no
+existing file system tags are copied from the file system to the backup.}
+
+\item{VolumeId}{(Optional) The ID of the FSx for ONTAP volume to back up.}
 }
 \description{
-Creates a backup of an existing Amazon FSx file system. Creating regular
-backups for your file system is a best practice, enabling you to restore
-a file system from a backup if an issue arises with the original file
-system.
+Creates a backup of an existing Amazon FSx for Windows File Server file system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP volume, or Amazon FSx for OpenZFS file system. We recommend creating regular backups so that you can restore a file system or volume from a backup if an issue arises with the original file system or volume.
 
-For Amazon FSx for Lustre file systems, you can create a backup only for
-file systems with the following configuration:
-\itemize{
-\item a Persistent deployment type
-\item is \emph{not} linked to a data respository.
-}
-
-For more information about backing up Amazon FSx for Lustre file
-systems, see \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html}{Working with FSx for Lustre backups}.
-
-For more information about backing up Amazon FSx for Windows file
-systems, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html}{Working with FSx for Windows backups}.
-
-If a backup with the specified client request token exists, and the
-parameters match, this operation returns the description of the existing
-backup. If a backup specified client request token exists, and the
-parameters don't match, this operation returns
-\code{IncompatibleParameterError}. If a backup with the specified client
-request token doesn't exist, \code{\link[=fsx_create_backup]{create_backup}} does
-the following:
-\itemize{
-\item Creates a new Amazon FSx backup with an assigned ID, and an initial
-lifecycle state of \code{CREATING}.
-\item Returns the description of the backup.
-}
-
-By using the idempotent operation, you can retry a
-\code{\link[=fsx_create_backup]{create_backup}} operation without the risk of
-creating an extra backup. This approach can be useful when an initial
-call fails in a way that makes it unclear whether a backup was created.
-If you use the same client request token and the initial call created a
-backup, the operation returns a successful result because all the
-parameters are the same.
-
-The \code{\link[=fsx_create_backup]{create_backup}} operation returns while the
-backup's lifecycle state is still \code{CREATING}. You can check the backup
-creation status by calling the
-\code{\link[=fsx_describe_backups]{describe_backups}} operation, which returns the
-backup state along with other information.
-}
-\section{Request syntax}{
-\preformatted{svc$create_backup(
-  FileSystemId = "string",
-  ClientRequestToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation creates a new backup.
-svc$create_backup(
-  FileSystemId = "fs-0498eed5fe91001ec",
-  Tags = list(
-    list(
-      Key = "Name",
-      Value = "MyBackup"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/fsx/create_backup.html} for full documentation.
 }
 \keyword{internal}

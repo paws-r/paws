@@ -5,8 +5,12 @@
 \title{The newer BatchGetDeploymentTargets should be used instead because it
 works with all compute types}
 \usage{
-codedeploy_list_deployment_instances(deploymentId, nextToken,
-  instanceStatusFilter, instanceTypeFilter)
+codedeploy_list_deployment_instances(
+  deploymentId,
+  nextToken = NULL,
+  instanceStatusFilter = NULL,
+  instanceTypeFilter = NULL
+)
 }
 \arguments{
 \item{deploymentId}{[required] The unique ID of a deployment.}
@@ -31,38 +35,9 @@ state.
 original environment ("BLUE") or those in the replacement environment
 ("GREEN"), for which you want to view instance information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  instancesList = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-The newer
-\code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}}
-should be used instead because it works with all compute types.
-\code{\link[=codedeploy_list_deployment_instances]{list_deployment_instances}}
-throws an exception if it is used with a compute platform other than
-EC2/On-premises or AWS Lambda.
+The newer \code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}} should be used instead because it works with all compute types. \code{\link[=codedeploy_list_deployment_instances]{list_deployment_instances}} throws an exception if it is used with a compute platform other than EC2/On-premises or AWS Lambda.
 
-Lists the instance for a deployment associated with the IAM user or AWS
-account.
+See \url{https://paws-r.github.io/docs/codedeploy/list_deployment_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_deployment_instances(
-  deploymentId = "string",
-  nextToken = "string",
-  instanceStatusFilter = list(
-    "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready"
-  ),
-  instanceTypeFilter = list(
-    "Blue"|"Green"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -2,67 +2,37 @@
 % Please edit documentation in R/servicediscovery_operations.R
 \name{servicediscovery_create_public_dns_namespace}
 \alias{servicediscovery_create_public_dns_namespace}
-\title{Creates a public namespace based on DNS, which will be visible on the
+\title{Creates a public namespace based on DNS, which is visible on the
 internet}
 \usage{
-servicediscovery_create_public_dns_namespace(Name, CreatorRequestId,
-  Description, Tags)
+servicediscovery_create_public_dns_namespace(
+  Name,
+  CreatorRequestId = NULL,
+  Description = NULL,
+  Tags = NULL,
+  Properties = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name that you want to assign to this namespace.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed
 \code{\link[=servicediscovery_create_public_dns_namespace]{create_public_dns_namespace}}
-requests to be retried without the risk of executing the operation
-twice. \code{CreatorRequestId} can be any unique string, for example, a
-date/time stamp.}
+requests to be retried without the risk of running the operation twice.
+\code{CreatorRequestId} can be any unique string (for example, a
+date/timestamp).}
 
 \item{Description}{A description for the namespace.}
 
 \item{Tags}{The tags to add to the namespace. Each tag consists of a key and an
-optional value, both of which you define. Tag keys can have a maximum
-character length of 128 characters, and tag values can have a maximum
-length of 256 characters.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
+optional value that you define. Tags keys can be up to 128 characters in
+length, and tag values can be up to 256 characters in length.}
+
+\item{Properties}{Properties for the public DNS namespace.}
 }
 \description{
-Creates a public namespace based on DNS, which will be visible on the
-internet. The namespace defines your service naming scheme. For example,
-if you name your namespace \code{example.com} and name your service
-\code{backend}, the resulting DNS name for the service will be
-\code{backend.example.com}. For the current quota on the number of namespaces
-that you can create using the same AWS account, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
-in the \emph{AWS Cloud Map Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_public_dns_namespace(
-  Name = "string",
-  CreatorRequestId = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a public namespace based on DNS, which is visible on the internet. The namespace defines your service naming scheme. For example, if you name your namespace \code{example.com} and name your service \code{backend}, the resulting DNS name for the service is \code{backend.example.com}. You can discover instances that were registered with a public DNS namespace by using either a \code{\link[=servicediscovery_discover_instances]{discover_instances}} request or using DNS. For the current quota on the number of namespaces that you can create using the same account, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{Cloud Map quotas} in the \emph{Cloud Map Developer Guide}.
 
-\examples{
-\dontrun{
-# This example creates a public namespace based on DNS.
-svc$create_public_dns_namespace(
-  CreatorRequestId = "example-creator-request-id-0003",
-  Description = "Example.com AWS Cloud Map Public DNS Namespace",
-  Name = "example-public-dns.com"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/create_public_dns_namespace.html} for full documentation.
 }
 \keyword{internal}

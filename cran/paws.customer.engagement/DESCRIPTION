@@ -1,10 +1,10 @@
 Package: paws.customer.engagement
 Title: 'Amazon Web Services' Customer Engagement Services
-Version: 0.1.13
+Version: 0.2.0
 Authors@R: c(
-    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut")),
+    person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
-    person("Dyfan", "Jones", email = "dyfan.r.jones@gmail.com", role = "cre"),
+    person("Dyfan", "Jones", , "dyfan.r.jones@gmail.com", role = "cre"),
     person("Amazon.com, Inc.", role = "cph")
   )
 Description: Interface to 'Amazon Web Services' customer engagement
@@ -14,16 +14,31 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.common (>= 0.3.0)
+    paws.common (>= 0.5.4)
 Suggests: 
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.2
 Collate: 
     'connect_service.R'
     'connect_interfaces.R'
     'connect_operations.R'
+    'connectcampaignservice_service.R'
+    'connectcampaignservice_interfaces.R'
+    'connectcampaignservice_operations.R'
+    'connectcontactlens_service.R'
+    'connectcontactlens_interfaces.R'
+    'connectcontactlens_operations.R'
+    'connectparticipant_service.R'
+    'connectparticipant_interfaces.R'
+    'connectparticipant_operations.R'
+    'connectwisdomservice_service.R'
+    'connectwisdomservice_interfaces.R'
+    'connectwisdomservice_operations.R'
+    'customerprofiles_service.R'
+    'customerprofiles_interfaces.R'
+    'customerprofiles_operations.R'
     'pinpoint_service.R'
     'pinpoint_interfaces.R'
     'pinpoint_operations.R'
@@ -33,6 +48,12 @@ Collate:
     'pinpointsmsvoice_service.R'
     'pinpointsmsvoice_interfaces.R'
     'pinpointsmsvoice_operations.R'
+    'pinpointsmsvoicev2_service.R'
+    'pinpointsmsvoicev2_interfaces.R'
+    'pinpointsmsvoicev2_operations.R'
     'ses_service.R'
     'ses_interfaces.R'
     'ses_operations.R'
+    'sesv2_service.R'
+    'sesv2_interfaces.R'
+    'sesv2_operations.R'

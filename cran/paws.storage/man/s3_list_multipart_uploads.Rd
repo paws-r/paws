@@ -2,30 +2,38 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_list_multipart_uploads}
 \alias{s3_list_multipart_uploads}
-\title{This operation lists in-progress multipart uploads}
+\title{This action lists in-progress multipart uploads}
 \usage{
-s3_list_multipart_uploads(Bucket, Delimiter, EncodingType, KeyMarker,
-  MaxUploads, Prefix, UploadIdMarker, ExpectedBucketOwner)
+s3_list_multipart_uploads(
+  Bucket,
+  Delimiter = NULL,
+  EncodingType = NULL,
+  KeyMarker = NULL,
+  MaxUploads = NULL,
+  Prefix = NULL,
+  UploadIdMarker = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket to which the multipart upload was initiated.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Delimiter}{Character you use to group keys.
 
@@ -65,115 +73,13 @@ for a key equal to the key-marker might be included in the list only if
 they have an upload ID lexicographically greater than the specified
 \code{upload-id-marker}.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Bucket = "string",
-  KeyMarker = "string",
-  UploadIdMarker = "string",
-  NextKeyMarker = "string",
-  Prefix = "string",
-  Delimiter = "string",
-  NextUploadIdMarker = "string",
-  MaxUploads = 123,
-  IsTruncated = TRUE|FALSE,
-  Uploads = list(
-    list(
-      UploadId = "string",
-      Key = "string",
-      Initiated = as.POSIXct(
-        "2015-01-01"
-      ),
-      StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
-      Owner = list(
-        DisplayName = "string",
-        ID = "string"
-      ),
-      Initiator = list(
-        ID = "string",
-        DisplayName = "string"
-      )
-    )
-  ),
-  CommonPrefixes = list(
-    list(
-      Prefix = "string"
-    )
-  ),
-  EncodingType = "url"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-This operation lists in-progress multipart uploads. An in-progress
-multipart upload is a multipart upload that has been initiated using the
-Initiate Multipart Upload request, but has not yet been completed or
-aborted.
+This action lists in-progress multipart uploads. An in-progress multipart upload is a multipart upload that has been initiated using the Initiate Multipart Upload request, but has not yet been completed or aborted.
 
-This operation returns at most 1,000 multipart uploads in the response.
-1,000 multipart uploads is the maximum number of uploads a response can
-include, which is also the default value. You can further limit the
-number of uploads in a response by specifying the \code{max-uploads}
-parameter in the response. If additional multipart uploads satisfy the
-list criteria, the response will contain an \code{IsTruncated} element with
-the value true. To list the additional multipart uploads, use the
-\code{key-marker} and \code{upload-id-marker} request parameters.
-
-In the response, the uploads are sorted by key. If your application has
-initiated more than one multipart upload using the same object key, then
-uploads in the response are first sorted by key. Additionally, uploads
-are sorted in ascending order within each key by the upload initiation
-time.
-
-For more information on multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading Objects Using Multipart Upload}.
-
-For information on permissions required to use the multipart upload API,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}.
-
-The following operations are related to
-\code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}:
-\itemize{
-\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
-\item \code{\link[=s3_upload_part]{upload_part}}
-\item \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
-\item \code{\link[=s3_list_parts]{list_parts}}
-\item \code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_multipart_uploads(
-  Bucket = "string",
-  Delimiter = "string",
-  EncodingType = "url",
-  KeyMarker = "string",
-  MaxUploads = 123,
-  Prefix = "string",
-  UploadIdMarker = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example specifies the upload-id-marker and key-marker from
-# previous truncated response to retrieve next setup of multipart uploads.
-svc$list_multipart_uploads(
-  Bucket = "examplebucket",
-  KeyMarker = "nextkeyfrompreviousresponse",
-  MaxUploads = "2",
-  UploadIdMarker = "valuefrompreviousresponse"
-)
-
-# The following example lists in-progress multipart uploads on a specific
-# bucket.
-svc$list_multipart_uploads(
-  Bucket = "examplebucket"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/list_multipart_uploads.html} for full documentation.
 }
 \keyword{internal}

@@ -2,39 +2,22 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_stop_contact_recording}
 \alias{connect_stop_contact_recording}
-\title{When a contact is being recorded, this API stops recording the call}
+\title{Stops recording a call when a contact is being recorded}
 \usage{
 connect_stop_contact_recording(InstanceId, ContactId, InitialContactId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{ContactId}{[required] The identifier of the contact.}
 
 \item{InitialContactId}{[required] The identifier of the contact. This is the identifier of the contact
 associated with the first interaction with the contact center.}
 }
-\value{
-An empty list.
-}
 \description{
-When a contact is being recorded, this API stops recording the call.
-StopContactRecording is a one-time action. If you use
-StopContactRecording to stop recording an ongoing call, you can't use
-StartContactRecording to restart it. For scenarios where the recording
-has started and you want to suspend it for sensitive information (for
-example, to collect a credit card number), and then restart it, use
-SuspendContactRecording and ResumeContactRecording.
+Stops recording a call when a contact is being recorded. StopContactRecording is a one-time action. If you use StopContactRecording to stop recording an ongoing call, you can't use StartContactRecording to restart it. For scenarios where the recording has started and you want to suspend it for sensitive information (for example, to collect a credit card number), and then restart it, use SuspendContactRecording and ResumeContactRecording.
 
-Only voice recordings are supported at this time.
+See \url{https://paws-r.github.io/docs/connect/stop_contact_recording.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_contact_recording(
-  InstanceId = "string",
-  ContactId = "string",
-  InitialContactId = "string"
-)
-}
-}
-
 \keyword{internal}

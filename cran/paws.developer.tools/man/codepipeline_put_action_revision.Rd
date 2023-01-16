@@ -4,8 +4,12 @@
 \alias{codepipeline_put_action_revision}
 \title{Provides information to AWS CodePipeline about new revisions to a source}
 \usage{
-codepipeline_put_action_revision(pipelineName, stageName, actionName,
-  actionRevision)
+codepipeline_put_action_revision(
+  pipelineName,
+  stageName,
+  actionName,
+  actionRevision
+)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline that starts processing the revision to the
@@ -18,31 +22,9 @@ revision.}
 
 \item{actionRevision}{[required] Represents information about the version (or revision) of an action.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  newRevision = TRUE|FALSE,
-  pipelineExecutionId = "string"
-)
-}
-}
 \description{
-Provides information to AWS CodePipeline about new revisions to a
-source.
-}
-\section{Request syntax}{
-\preformatted{svc$put_action_revision(
-  pipelineName = "string",
-  stageName = "string",
-  actionName = "string",
-  actionRevision = list(
-    revisionId = "string",
-    revisionChangeId = "string",
-    created = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
+Provides information to AWS CodePipeline about new revisions to a source.
 
+See \url{https://paws-r.github.io/docs/codepipeline/put_action_revision.html} for full documentation.
+}
 \keyword{internal}

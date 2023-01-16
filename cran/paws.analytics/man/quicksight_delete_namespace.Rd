@@ -8,30 +8,14 @@ the namespace}
 quicksight_delete_namespace(AwsAccountId, Namespace)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account that you want to delete the QuickSight
-namespace from.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to delete the
+Amazon QuickSight namespace from.}
 
 \item{Namespace}{[required] The namespace that you want to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-Deletes a namespace and the users and groups that are associated with
-the namespace. This is an asynchronous process. Assets including
-dashboards, analyses, datasets and data sources are not deleted. To
-delete these assets, you use the API operations for the relevant asset.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_namespace(
-  AwsAccountId = "string",
-  Namespace = "string"
-)
-}
-}
+Deletes a namespace and the users and groups that are associated with the namespace. This is an asynchronous process. Assets including dashboards, analyses, datasets and data sources are not deleted. To delete these assets, you use the API operations for the relevant asset.
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_namespace.html} for full documentation.
+}
 \keyword{internal}

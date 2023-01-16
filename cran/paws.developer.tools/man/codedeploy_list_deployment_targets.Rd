@@ -4,8 +4,11 @@
 \alias{codedeploy_list_deployment_targets}
 \title{Returns an array of target IDs that are associated a deployment}
 \usage{
-codedeploy_list_deployment_targets(deploymentId, nextToken,
-  targetFilters)
+codedeploy_list_deployment_targets(
+  deploymentId = NULL,
+  nextToken = NULL,
+  targetFilters = NULL
+)
 }
 \arguments{
 \item{deploymentId}{The unique ID of a deployment.}
@@ -23,29 +26,9 @@ can be used to return the next set of deployment targets in the list.}
 \code{Blue} or \code{Green}.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  targetIds = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Returns an array of target IDs that are associated a deployment.
-}
-\section{Request syntax}{
-\preformatted{svc$list_deployment_targets(
-  deploymentId = "string",
-  nextToken = "string",
-  targetFilters = list(
-    list(
-      "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/list_deployment_targets.html} for full documentation.
+}
 \keyword{internal}

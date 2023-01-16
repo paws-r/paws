@@ -11,34 +11,12 @@ connect_update_user_identity_info(IdentityInfo, UserId, InstanceId)
 
 \item{UserId}{[required] The identifier of the user account.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-An empty list.
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
 Updates the identity information for the specified user.
 
-Someone with the ability to invoke \code{UpdateUserIndentityInfo} can change
-the login credentials of other users by changing their email address.
-This poses a security risk to your organization. They can change the
-email address of a user to the attacker's email address, and then reset
-the password through email. We strongly recommend limiting who has the
-ability to invoke \code{UpdateUserIndentityInfo}. For more information, see
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html}{Best Practices for Security Profiles}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/update_user_identity_info.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_user_identity_info(
-  IdentityInfo = list(
-    FirstName = "string",
-    LastName = "string",
-    Email = "string"
-  ),
-  UserId = "string",
-  InstanceId = "string"
-)
-}
-}
-
 \keyword{internal}

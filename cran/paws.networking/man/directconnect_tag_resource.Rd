@@ -2,7 +2,7 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_tag_resource}
 \alias{directconnect_tag_resource}
-\title{Adds the specified tags to the specified AWS Direct Connect resource}
+\title{Adds the specified tags to the specified Direct Connect resource}
 \usage{
 directconnect_tag_resource(resourceArn, tags)
 }
@@ -11,28 +11,9 @@ directconnect_tag_resource(resourceArn, tags)
 
 \item{tags}{[required] The tags to add.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds the specified tags to the specified AWS Direct Connect resource.
-Each resource can have a maximum of 50 tags.
+Adds the specified tags to the specified Direct Connect resource. Each resource can have a maximum of 50 tags.
 
-Each tag consists of a key and an optional value. If a tag with the same
-key is already associated with the resource, this action updates its
-value.
+See \url{https://paws-r.github.io/docs/directconnect/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

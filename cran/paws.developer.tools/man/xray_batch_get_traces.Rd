@@ -4,49 +4,16 @@
 \alias{xray_batch_get_traces}
 \title{Retrieves a list of traces specified by ID}
 \usage{
-xray_batch_get_traces(TraceIds, NextToken)
+xray_batch_get_traces(TraceIds, NextToken = NULL)
 }
 \arguments{
 \item{TraceIds}{[required] Specify the trace IDs of requests for which to retrieve segments.}
 
 \item{NextToken}{Pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Traces = list(
-    list(
-      Id = "string",
-      Duration = 123.0,
-      LimitExceeded = TRUE|FALSE,
-      Segments = list(
-        list(
-          Id = "string",
-          Document = "string"
-        )
-      )
-    )
-  ),
-  UnprocessedTraceIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list of traces specified by ID. Each trace is a collection
-of segment documents that originates from a single request. Use
-\code{\link[=xray_get_trace_summaries]{get_trace_summaries}} to get a list of trace
-IDs.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_get_traces(
-  TraceIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
+Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request. Use \code{\link[=xray_get_trace_summaries]{get_trace_summaries}} to get a list of trace IDs.
 
+See \url{https://paws-r.github.io/docs/xray/batch_get_traces.html} for full documentation.
+}
 \keyword{internal}

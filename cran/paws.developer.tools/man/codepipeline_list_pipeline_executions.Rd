@@ -4,8 +4,11 @@
 \alias{codepipeline_list_pipeline_executions}
 \title{Gets a summary of the most recent executions for a pipeline}
 \usage{
-codepipeline_list_pipeline_executions(pipelineName, maxResults,
-  nextToken)
+codepipeline_list_pipeline_executions(
+  pipelineName,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline for which you want to get execution summary
@@ -21,49 +24,9 @@ on pipeline execution start times. Default value is 100.}
 call, which can be used to return the next set of pipeline executions in
 the list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelineExecutionSummaries = list(
-    list(
-      pipelineExecutionId = "string",
-      status = "Cancelled"|"InProgress"|"Stopped"|"Stopping"|"Succeeded"|"Superseded"|"Failed",
-      startTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      sourceRevisions = list(
-        list(
-          actionName = "string",
-          revisionId = "string",
-          revisionSummary = "string",
-          revisionUrl = "string"
-        )
-      ),
-      trigger = list(
-        triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision",
-        triggerDetail = "string"
-      ),
-      stopTrigger = list(
-        reason = "string"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Gets a summary of the most recent executions for a pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$list_pipeline_executions(
-  pipelineName = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codepipeline/list_pipeline_executions.html} for full documentation.
+}
 \keyword{internal}

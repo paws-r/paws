@@ -4,12 +4,22 @@
 \alias{apigateway_create_rest_api}
 \title{Creates a new RestApi resource}
 \usage{
-apigateway_create_rest_api(name, description, version, cloneFrom,
-  binaryMediaTypes, minimumCompressionSize, apiKeySource,
-  endpointConfiguration, policy, tags, disableExecuteApiEndpoint)
+apigateway_create_rest_api(
+  name,
+  description = NULL,
+  version = NULL,
+  cloneFrom = NULL,
+  binaryMediaTypes = NULL,
+  minimumCompressionSize = NULL,
+  apiKeySource = NULL,
+  endpointConfiguration = NULL,
+  policy = NULL,
+  tags = NULL,
+  disableExecuteApiEndpoint = NULL
+)
 }
 \arguments{
-\item{name}{[required] [Required] The name of the RestApi.}
+\item{name}{[required] The name of the RestApi.}
 
 \item{description}{The description of the RestApi.}
 
@@ -28,13 +38,9 @@ smaller than this value. Setting it to zero allows compression for any
 payload size.}
 
 \item{apiKeySource}{The source of the API key for metering requests according to a usage
-plan. Valid values are:
-\itemize{
-\item \code{HEADER} to read the API key from the \code{X-API-Key} header of a
-request.
-\item \code{AUTHORIZER} to read the API key from the \code{UsageIdentifierKey} from
-a custom authorizer.
-}}
+plan. Valid values are: \>\code{HEADER} to read the API key from the
+\code{X-API-Key} header of a request. \code{AUTHORIZER} to read the API key from
+the \code{UsageIdentifierKey} from a custom authorizer.}
 
 \item{endpointConfiguration}{The endpoint configuration of this RestApi showing the endpoint types of
 the API.}
@@ -48,72 +54,13 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 
 \item{disableExecuteApiEndpoint}{Specifies whether clients can invoke your API by using the default
 \code{execute-api} endpoint. By default, clients can invoke your API with the
-default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
-endpoint. To require that clients use a custom domain name to invoke
-your API, disable the default endpoint.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  version = "string",
-  warnings = list(
-    "string"
-  ),
-  binaryMediaTypes = list(
-    "string"
-  ),
-  minimumCompressionSize = 123,
-  apiKeySource = "HEADER"|"AUTHORIZER",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    ),
-    vpcEndpointIds = list(
-      "string"
-    )
-  ),
-  policy = "string",
-  tags = list(
-    "string"
-  ),
-  disableExecuteApiEndpoint = TRUE|FALSE
-)
-}
+default \verb{https://\{api_id\}.execute-api.\{region\}.amazonaws.com} endpoint.
+To require that clients use a custom domain name to invoke your API,
+disable the default endpoint}
 }
 \description{
 Creates a new RestApi resource.
-}
-\section{Request syntax}{
-\preformatted{svc$create_rest_api(
-  name = "string",
-  description = "string",
-  version = "string",
-  cloneFrom = "string",
-  binaryMediaTypes = list(
-    "string"
-  ),
-  minimumCompressionSize = 123,
-  apiKeySource = "HEADER"|"AUTHORIZER",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    ),
-    vpcEndpointIds = list(
-      "string"
-    )
-  ),
-  policy = "string",
-  tags = list(
-    "string"
-  ),
-  disableExecuteApiEndpoint = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/create_rest_api.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,15 @@
 \alias{sqs_send_message}
 \title{Delivers a message to the specified queue}
 \usage{
-sqs_send_message(QueueUrl, MessageBody, DelaySeconds, MessageAttributes,
-  MessageSystemAttributes, MessageDeduplicationId, MessageGroupId)
+sqs_send_message(
+  QueueUrl,
+  MessageBody,
+  DelaySeconds = NULL,
+  MessageAttributes = NULL,
+  MessageSystemAttributes = NULL,
+  MessageDeduplicationId = NULL,
+  MessageGroupId = NULL
+)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue to which a message is sent.
@@ -22,7 +29,7 @@ following Unicode characters are allowed:
 \verb{#x10000} to \verb{#x10FFFF}
 
 Any characters not included in this list will be rejected. For more
-information, see the \href{http://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.}
+information, see the \href{https://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.}
 
 \item{DelaySeconds}{The length of time, in seconds, for which to delay a specific message.
 Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive
@@ -34,15 +41,15 @@ When you set \code{FifoQueue}, you can't set \code{DelaySeconds} per message. Yo
 can set this parameter only on a queue level.}
 
 \item{MessageAttributes}{Each message attribute consists of a \code{Name}, \code{Type}, and \code{Value}. For
-more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes}{Amazon SQS Message Attributes}
-in the \emph{Amazon Simple Queue Service Developer Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes}{Amazon SQS message attributes}
+in the \emph{Amazon SQS Developer Guide}.}
 
 \item{MessageSystemAttributes}{The message system attribute to send. Each message system attribute
 consists of a \code{Name}, \code{Type}, and \code{Value}.
 \itemize{
 \item Currently, the only supported message system attribute is
 \code{AWSTraceHeader}. Its type must be \code{String} and its value must be a
-correctly formatted AWS X-Ray trace header string.
+correctly formatted X-Ray trace header string.
 \item The size of a message system attribute doesn't count towards the
 total size of a message.
 }}
@@ -53,8 +60,8 @@ The token used for deduplication of sent messages. If a message with a
 particular \code{MessageDeduplicationId} is sent successfully, any messages
 sent with the same \code{MessageDeduplicationId} are accepted successfully
 but aren't delivered during the 5-minute deduplication interval. For
-more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html}{Exactly-once processing}
+in the \emph{Amazon SQS Developer Guide}.
 \itemize{
 \item Every message must have a unique \code{MessageDeduplicationId},
 \itemize{
@@ -96,7 +103,7 @@ The maximum length of \code{MessageDeduplicationId} is 128 characters.
 (\verb{!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~}).
 
 For best practices of using \code{MessageDeduplicationId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html}{Using the MessageDeduplicationId Property}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon SQS Developer Guide}.
 
 []: R:\%5C
 [Using the
@@ -126,7 +133,7 @@ alphanumeric characters and punctuation
 \verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
 
 For best practices of using \code{MessageGroupId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html}{Using the MessageGroupId Property}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon SQS Developer Guide}.
 
 \code{MessageGroupId} is required for FIFO queues. You can't use it for
 Standard queues.
@@ -136,63 +143,9 @@ Standard queues.
 MessageGroupId
 Property]: R:Using\%20the\%0AMessageGroupId\%0AProperty}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MD5OfMessageBody = "string",
-  MD5OfMessageAttributes = "string",
-  MD5OfMessageSystemAttributes = "string",
-  MessageId = "string",
-  SequenceNumber = "string"
-)
-}
-}
 \description{
 Delivers a message to the specified queue.
 
-A message can include only XML, JSON, and unformatted text. The
-following Unicode characters are allowed:
-
-\verb{#x9} | \verb{#xA} | \verb{#xD} | \verb{#x20} to \verb{#xD7FF} | \verb{#xE000} to \verb{#xFFFD} |
-\verb{#x10000} to \verb{#x10FFFF}
-
-Any characters not included in this list will be rejected. For more
-information, see the \href{http://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.
+See \url{https://paws-r.github.io/docs/sqs/send_message.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$send_message(
-  QueueUrl = "string",
-  MessageBody = "string",
-  DelaySeconds = 123,
-  MessageAttributes = list(
-    list(
-      StringValue = "string",
-      BinaryValue = raw,
-      StringListValues = list(
-        "string"
-      ),
-      BinaryListValues = list(
-        raw
-      ),
-      DataType = "string"
-    )
-  ),
-  MessageSystemAttributes = list(
-    list(
-      StringValue = "string",
-      BinaryValue = raw,
-      StringListValues = list(
-        "string"
-      ),
-      BinaryListValues = list(
-        raw
-      ),
-      DataType = "string"
-    )
-  ),
-  MessageDeduplicationId = "string",
-  MessageGroupId = "string"
-)
-}
-}
-
 \keyword{internal}

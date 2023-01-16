@@ -10,9 +10,10 @@ NULL
 #'
 #' @usage
 #' applicationinsights_create_application(ResourceGroupName,
-#'   OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, Tags)
+#'   OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, Tags,
+#'   AutoConfigEnabled, AutoCreate, GroupingType)
 #'
-#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ResourceGroupName The name of the resource group.
 #' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
 #' application.
 #' @param CWEMonitorEnabled Indicates whether Application Insights can listen to CloudWatch events
@@ -24,6 +25,13 @@ NULL
 #' @param Tags List of tags to add to the application. tag key (`Key`) and an
 #' associated tag value (`Value`). The maximum length of a tag key is 128
 #' characters. The maximum length of a tag value is 256 characters.
+#' @param AutoConfigEnabled Indicates whether Application Insights automatically configures
+#' unmonitored resources in the resource group.
+#' @param AutoCreate Configures all of the resources in the resource group by applying the
+#' recommended configurations.
+#' @param GroupingType Application Insights can create applications based on a resource group
+#' or on an account. To create an account-based application using all of
+#' the resources in the account, set this parameter to `ACCOUNT_BASED`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -35,7 +43,9 @@ NULL
 #'     OpsItemSNSTopicArn = "string",
 #'     OpsCenterEnabled = TRUE|FALSE,
 #'     CWEMonitorEnabled = TRUE|FALSE,
-#'     Remarks = "string"
+#'     Remarks = "string",
+#'     AutoConfigEnabled = TRUE|FALSE,
+#'     DiscoveryType = "RESOURCE_GROUP_BASED"|"ACCOUNT_BASED"
 #'   )
 #' )
 #' ```
@@ -52,21 +62,24 @@ NULL
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   AutoConfigEnabled = TRUE|FALSE,
+#'   AutoCreate = TRUE|FALSE,
+#'   GroupingType = "ACCOUNT_BASED"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_create_application
-applicationinsights_create_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL) {
+applicationinsights_create_application <- function(ResourceGroupName = NULL, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL, AutoConfigEnabled = NULL, AutoCreate = NULL, GroupingType = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags)
+  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags, AutoConfigEnabled = AutoConfigEnabled, AutoCreate = AutoCreate, GroupingType = GroupingType)
   output <- .applicationinsights$create_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -346,7 +359,9 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
 #'     OpsItemSNSTopicArn = "string",
 #'     OpsCenterEnabled = TRUE|FALSE,
 #'     CWEMonitorEnabled = TRUE|FALSE,
-#'     Remarks = "string"
+#'     Remarks = "string",
+#'     AutoConfigEnabled = TRUE|FALSE,
+#'     DiscoveryType = "RESOURCE_GROUP_BASED"|"ACCOUNT_BASED"
 #'   )
 #' )
 #' ```
@@ -400,7 +415,7 @@ applicationinsights_describe_application <- function(ResourceGroupName) {
 #'     ComponentRemarks = "string",
 #'     ResourceType = "string",
 #'     OsType = "WINDOWS"|"LINUX",
-#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
+#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY",
 #'     Monitor = TRUE|FALSE,
 #'     DetectedWorkload = list(
 #'       list(
@@ -459,7 +474,7 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
 #' ```
 #' list(
 #'   Monitor = TRUE|FALSE,
-#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY",
 #'   ComponentConfiguration = "string"
 #' )
 #' ```
@@ -503,9 +518,7 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
-#' @param Tier &#91;required&#93; The tier of the application component. Supported tiers include
-#' `DOT_NET_CORE`, `DOT_NET_WORKER`, `DOT_NET_WEB`, `SQL_SERVER`, and
-#' `DEFAULT`.
+#' @param Tier &#91;required&#93; The tier of the application component.
 #'
 #' @return
 #' A list with the following syntax:
@@ -520,7 +533,7 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' svc$describe_component_configuration_recommendation(
 #'   ResourceGroupName = "string",
 #'   ComponentName = "string",
-#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"
 #' )
 #' ```
 #'
@@ -715,7 +728,7 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #'     Id = "string",
 #'     Title = "string",
 #'     Insights = "string",
-#'     Status = "IGNORE"|"RESOLVED"|"PENDING",
+#'     Status = "IGNORE"|"RESOLVED"|"PENDING"|"RECURRING",
 #'     AffectedResource = "string",
 #'     StartTime = as.POSIXct(
 #'       "2015-01-01"
@@ -723,10 +736,14 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #'     EndTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     SeverityLevel = "Low"|"Medium"|"High",
+#'     SeverityLevel = "Informative"|"Low"|"Medium"|"High",
 #'     ResourceGroupName = "string",
 #'     Feedback = list(
 #'       "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
+#'     ),
+#'     RecurringCount = 123,
+#'     LastRecurrenceTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -884,7 +901,9 @@ applicationinsights_describe_problem_observations <- function(ProblemId) {
 #'       OpsItemSNSTopicArn = "string",
 #'       OpsCenterEnabled = TRUE|FALSE,
 #'       CWEMonitorEnabled = TRUE|FALSE,
-#'       Remarks = "string"
+#'       Remarks = "string",
+#'       AutoConfigEnabled = TRUE|FALSE,
+#'       DiscoveryType = "RESOURCE_GROUP_BASED"|"ACCOUNT_BASED"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -946,7 +965,7 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #'       ComponentRemarks = "string",
 #'       ResourceType = "string",
 #'       OsType = "WINDOWS"|"LINUX",
-#'       Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
+#'       Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY",
 #'       Monitor = TRUE|FALSE,
 #'       DetectedWorkload = list(
 #'         list(
@@ -1214,7 +1233,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'
 #' @usage
 #' applicationinsights_list_problems(ResourceGroupName, StartTime, EndTime,
-#'   MaxResults, NextToken)
+#'   MaxResults, NextToken, ComponentName)
 #'
 #' @param ResourceGroupName The name of the resource group.
 #' @param StartTime The time when the problem was detected, in epoch seconds. If you don't
@@ -1226,6 +1245,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#' @param ComponentName The name of the component.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1236,7 +1256,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'       Id = "string",
 #'       Title = "string",
 #'       Insights = "string",
-#'       Status = "IGNORE"|"RESOLVED"|"PENDING",
+#'       Status = "IGNORE"|"RESOLVED"|"PENDING"|"RECURRING",
 #'       AffectedResource = "string",
 #'       StartTime = as.POSIXct(
 #'         "2015-01-01"
@@ -1244,14 +1264,19 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'       EndTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       SeverityLevel = "Low"|"Medium"|"High",
+#'       SeverityLevel = "Informative"|"Low"|"Medium"|"High",
 #'       ResourceGroupName = "string",
 #'       Feedback = list(
 #'         "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
+#'       ),
+#'       RecurringCount = 123,
+#'       LastRecurrenceTime = as.POSIXct(
+#'         "2015-01-01"
 #'       )
 #'     )
 #'   ),
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   ResourceGroupName = "string"
 #' )
 #' ```
 #'
@@ -1266,21 +1291,22 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'     "2015-01-01"
 #'   ),
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   ComponentName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_problems
-applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL, ComponentName = NULL) {
   op <- new_operation(
     name = "ListProblems",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$list_problems_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_problems_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, ComponentName = ComponentName)
   output <- .applicationinsights$list_problems_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -1465,7 +1491,8 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' @usage
 #' applicationinsights_update_application(ResourceGroupName,
-#'   OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, RemoveSNSTopic)
+#'   OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, RemoveSNSTopic,
+#'   AutoConfigEnabled)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
@@ -1478,6 +1505,7 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' opsItem.
 #' @param RemoveSNSTopic Disassociates the SNS topic from the opsItem created for detected
 #' problems.
+#' @param AutoConfigEnabled Turns auto-configuration on or off.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1489,7 +1517,9 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #'     OpsItemSNSTopicArn = "string",
 #'     OpsCenterEnabled = TRUE|FALSE,
 #'     CWEMonitorEnabled = TRUE|FALSE,
-#'     Remarks = "string"
+#'     Remarks = "string",
+#'     AutoConfigEnabled = TRUE|FALSE,
+#'     DiscoveryType = "RESOURCE_GROUP_BASED"|"ACCOUNT_BASED"
 #'   )
 #' )
 #' ```
@@ -1501,21 +1531,22 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #'   OpsCenterEnabled = TRUE|FALSE,
 #'   CWEMonitorEnabled = TRUE|FALSE,
 #'   OpsItemSNSTopicArn = "string",
-#'   RemoveSNSTopic = TRUE|FALSE
+#'   RemoveSNSTopic = TRUE|FALSE,
+#'   AutoConfigEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_application
-applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL) {
+applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL, AutoConfigEnabled = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic)
+  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic, AutoConfigEnabled = AutoConfigEnabled)
   output <- .applicationinsights$update_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -1586,14 +1617,12 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #'
 #' @usage
 #' applicationinsights_update_component_configuration(ResourceGroupName,
-#'   ComponentName, Monitor, Tier, ComponentConfiguration)
+#'   ComponentName, Monitor, Tier, ComponentConfiguration, AutoConfigEnabled)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param Monitor Indicates whether the application component is monitored.
-#' @param Tier The tier of the application component. Supported tiers include
-#' `DOT_NET_WORKER`, `DOT_NET_WEB`, `DOT_NET_CORE`, `SQL_SERVER`, and
-#' `DEFAULT`.
+#' @param Tier The tier of the application component.
 #' @param ComponentConfiguration The configuration settings of the component. The value is the escaped
 #' JSON of the configuration. For more information about the JSON format,
 #' see [Working with
@@ -1603,6 +1632,8 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #' to see the recommended configuration for a component. For the complete
 #' format of the component configuration file, see [Component
 #' Configuration](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html).
+#' @param AutoConfigEnabled Automatically configures the component by applying the recommended
+#' configurations.
 #'
 #' @return
 #' An empty list.
@@ -1613,22 +1644,23 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #'   ResourceGroupName = "string",
 #'   ComponentName = "string",
 #'   Monitor = TRUE|FALSE,
-#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
-#'   ComponentConfiguration = "string"
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY",
+#'   ComponentConfiguration = "string",
+#'   AutoConfigEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_component_configuration
-applicationinsights_update_component_configuration <- function(ResourceGroupName, ComponentName, Monitor = NULL, Tier = NULL, ComponentConfiguration = NULL) {
+applicationinsights_update_component_configuration <- function(ResourceGroupName, ComponentName, Monitor = NULL, Tier = NULL, ComponentConfiguration = NULL, AutoConfigEnabled = NULL) {
   op <- new_operation(
     name = "UpdateComponentConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$update_component_configuration_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Monitor = Monitor, Tier = Tier, ComponentConfiguration = ComponentConfiguration)
+  input <- .applicationinsights$update_component_configuration_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Monitor = Monitor, Tier = Tier, ComponentConfiguration = ComponentConfiguration, AutoConfigEnabled = AutoConfigEnabled)
   output <- .applicationinsights$update_component_configuration_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)

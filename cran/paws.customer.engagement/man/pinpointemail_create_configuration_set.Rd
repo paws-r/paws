@@ -4,9 +4,14 @@
 \alias{pinpointemail_create_configuration_set}
 \title{Create a configuration set}
 \usage{
-pinpointemail_create_configuration_set(ConfigurationSetName,
-  TrackingOptions, DeliveryOptions, ReputationOptions, SendingOptions,
-  Tags)
+pinpointemail_create_configuration_set(
+  ConfigurationSetName,
+  TrackingOptions = NULL,
+  DeliveryOptions = NULL,
+  ReputationOptions = NULL,
+  SendingOptions = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set.}
@@ -27,44 +32,9 @@ that you send using the configuration set.}
 \item{Tags}{An array of objects that define the tags (keys and values) that you want
 to associate with the configuration set.}
 }
-\value{
-An empty list.
-}
 \description{
-Create a configuration set. \emph{Configuration sets} are groups of rules
-that you can apply to the emails you send using Amazon Pinpoint. You
-apply a configuration set to an email by including a reference to the
-configuration set in the headers of the email. When you apply a
-configuration set to an email, all of the rules in that configuration
-set are applied to the email.
-}
-\section{Request syntax}{
-\preformatted{svc$create_configuration_set(
-  ConfigurationSetName = "string",
-  TrackingOptions = list(
-    CustomRedirectDomain = "string"
-  ),
-  DeliveryOptions = list(
-    TlsPolicy = "REQUIRE"|"OPTIONAL",
-    SendingPoolName = "string"
-  ),
-  ReputationOptions = list(
-    ReputationMetricsEnabled = TRUE|FALSE,
-    LastFreshStart = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  SendingOptions = list(
-    SendingEnabled = TRUE|FALSE
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Create a configuration set. \emph{Configuration sets} are groups of rules that you can apply to the emails you send using Amazon Pinpoint. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/create_configuration_set.html} for full documentation.
+}
 \keyword{internal}

@@ -5,10 +5,18 @@
 \title{Registers a new workflow type and its configuration settings in the
 specified domain}
 \usage{
-swf_register_workflow_type(domain, name, version, description,
-  defaultTaskStartToCloseTimeout, defaultExecutionStartToCloseTimeout,
-  defaultTaskList, defaultTaskPriority, defaultChildPolicy,
-  defaultLambdaRole)
+swf_register_workflow_type(
+  domain,
+  name,
+  version,
+  description = NULL,
+  defaultTaskStartToCloseTimeout = NULL,
+  defaultExecutionStartToCloseTimeout = NULL,
+  defaultTaskList = NULL,
+  defaultTaskPriority = NULL,
+  defaultChildPolicy = NULL,
+  defaultLambdaRole = NULL
+)
 }
 \arguments{
 \item{domain}{[required] The name of the domain in which to register the workflow type.}
@@ -17,7 +25,7 @@ swf_register_workflow_type(domain, name, version, description,
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{\\u0000-\\u001f} | \verb{\\u007f-\\u009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{version}{[required] The version of the workflow type.
@@ -29,7 +37,7 @@ registered workflow types, use the
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{\\u0000-\\u001f} | \verb{\\u007f-\\u009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{description}{Textual description of the workflow type.}
@@ -98,62 +106,9 @@ information, see
 \url{https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html}
 in the \emph{Amazon SWF Developer Guide}.}
 }
-\value{
-An empty list.
-}
 \description{
-Registers a new \emph{workflow type} and its configuration settings in the
-specified domain.
+Registers a new \emph{workflow type} and its configuration settings in the specified domain.
 
-The retention period for the workflow history is set by the
-\code{\link[=swf_register_domain]{register_domain}} action.
-
-If the type already exists, then a \code{TypeAlreadyExists} fault is
-returned. You cannot change the configuration settings of a workflow
-type once it is registered and it must be registered as a new version.
-
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item Constrain the following parameters by using a \code{Condition} element
-with the appropriate keys.
-\itemize{
-\item \code{defaultTaskList.name}: String constraint. The key is
-\code{swf:defaultTaskList.name}.
-\item \code{name}: String constraint. The key is \code{swf:name}.
-\item \code{version}: String constraint. The key is \code{swf:version}.
+See \url{https://paws-r.github.io/docs/swf/register_workflow_type.html} for full documentation.
 }
-}
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$register_workflow_type(
-  domain = "string",
-  name = "string",
-  version = "string",
-  description = "string",
-  defaultTaskStartToCloseTimeout = "string",
-  defaultExecutionStartToCloseTimeout = "string",
-  defaultTaskList = list(
-    name = "string"
-  ),
-  defaultTaskPriority = "string",
-  defaultChildPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-  defaultLambdaRole = "string"
-)
-}
-}
-
 \keyword{internal}

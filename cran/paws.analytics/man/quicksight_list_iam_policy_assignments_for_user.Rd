@@ -6,11 +6,16 @@
 Names (ARNs) for the IAM policies assigned to the specified user and
 group or groups that the user belongs to}
 \usage{
-quicksight_list_iam_policy_assignments_for_user(AwsAccountId, UserName,
-  NextToken, MaxResults, Namespace)
+quicksight_list_iam_policy_assignments_for_user(
+  AwsAccountId,
+  UserName,
+  NextToken = NULL,
+  MaxResults = NULL,
+  Namespace
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the assignments.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the assignments.}
 
 \item{UserName}{[required] The name of the user.}
 
@@ -21,34 +26,9 @@ results.}
 
 \item{Namespace}{[required] The namespace of the assignment.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActiveAssignments = list(
-    list(
-      AssignmentName = "string",
-      PolicyArn = "string"
-    )
-  ),
-  RequestId = "string",
-  NextToken = "string",
-  Status = 123
-)
-}
-}
 \description{
-Lists all the IAM policy assignments, including the Amazon Resource
-Names (ARNs) for the IAM policies assigned to the specified user and
-group or groups that the user belongs to.
-}
-\section{Request syntax}{
-\preformatted{svc$list_iam_policy_assignments_for_user(
-  AwsAccountId = "string",
-  UserName = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  Namespace = "string"
-)
-}
-}
+Lists all the IAM policy assignments, including the Amazon Resource Names (ARNs) for the IAM policies assigned to the specified user and group or groups that the user belongs to.
 
+See \url{https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments_for_user.html} for full documentation.
+}
 \keyword{internal}

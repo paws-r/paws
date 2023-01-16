@@ -2,10 +2,15 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_modify_current_db_cluster_capacity}
 \alias{rds_modify_current_db_cluster_capacity}
-\title{Set the capacity of an Aurora Serverless DB cluster to a specific value}
+\title{Set the capacity of an Aurora Serverless v1 DB cluster to a specific
+value}
 \usage{
-rds_modify_current_db_cluster_capacity(DBClusterIdentifier, Capacity,
-  SecondsBeforeTimeout, TimeoutAction)
+rds_modify_current_db_cluster_capacity(
+  DBClusterIdentifier,
+  Capacity = NULL,
+  SecondsBeforeTimeout = NULL,
+  TimeoutAction = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter
@@ -18,8 +23,8 @@ Constraints:
 
 \item{Capacity}{The DB cluster capacity.
 
-When you change the capacity of a paused Aurora Serverless DB cluster,
-it automatically resumes.
+When you change the capacity of a paused Aurora Serverless v1 DB
+cluster, it automatically resumes.
 
 Constraints:
 \itemize{
@@ -29,12 +34,11 @@ Constraints:
 \code{16}, \code{32}, \code{64}, \code{192}, and \code{384}.
 }}
 
-\item{SecondsBeforeTimeout}{The amount of time, in seconds, that Aurora Serverless tries to find a
-scaling point to perform seamless scaling before enforcing the timeout
+\item{SecondsBeforeTimeout}{The amount of time, in seconds, that Aurora Serverless v1 tries to find
+a scaling point to perform seamless scaling before enforcing the timeout
 action. The default is 300.
-\itemize{
-\item Value must be from 10 through 600.
-}}
+
+Specify a value between 10 and 600 seconds.}
 
 \item{TimeoutAction}{The action to take when the timeout is reached, either
 \code{ForceApplyCapacityChange} or \code{RollbackCapacityChange}.
@@ -45,50 +49,9 @@ specified value as soon as possible.
 \code{RollbackCapacityChange} ignores the capacity change if a scaling point
 isn't found in the timeout period.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterIdentifier = "string",
-  PendingCapacity = 123,
-  CurrentCapacity = 123,
-  SecondsBeforeTimeout = 123,
-  TimeoutAction = "string"
-)
-}
-}
 \description{
-Set the capacity of an Aurora Serverless DB cluster to a specific value.
+Set the capacity of an Aurora Serverless v1 DB cluster to a specific value.
 
-Aurora Serverless scales seamlessly based on the workload on the DB
-cluster. In some cases, the capacity might not scale fast enough to meet
-a sudden change in workload, such as a large number of new transactions.
-Call
-\code{\link[=rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity}}
-to set the capacity explicitly.
-
-After this call sets the DB cluster capacity, Aurora Serverless can
-automatically scale the DB cluster based on the cooldown period for
-scaling up and the cooldown period for scaling down.
-
-For more information about Aurora Serverless, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html}{Using Amazon Aurora Serverless}
-in the \emph{Amazon Aurora User Guide}.
-
-If you call
-\code{\link[=rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity}}
-with the default \code{TimeoutAction}, connections that prevent Aurora
-Serverless from finding a scaling point might be dropped. For more
-information about scaling points, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling}{Autoscaling for Aurora Serverless}
-in the \emph{Amazon Aurora User Guide}.
-
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/modify_current_db_cluster_capacity.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_current_db_cluster_capacity(
-  DBClusterIdentifier = "string",
-  Capacity = 123,
-  SecondsBeforeTimeout = 123,
-  TimeoutAction = "string"
-)
-}
-}
-
 \keyword{internal}

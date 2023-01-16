@@ -6,7 +6,10 @@
 Analytics application}
 \usage{
 kinesisanalyticsv2_add_application_reference_data_source(
-  ApplicationName, CurrentApplicationVersionId, ReferenceDataSource)
+  ApplicationName,
+  CurrentApplicationVersionId,
+  ReferenceDataSource
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
@@ -23,92 +26,9 @@ Kinesis Data Analytics reads the object and copies the data into the
 in-application table that is created. You provide an S3 bucket, object
 key name, and the resulting in-application table that is created.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationARN = "string",
-  ApplicationVersionId = 123,
-  ReferenceDataSourceDescriptions = list(
-    list(
-      ReferenceId = "string",
-      TableName = "string",
-      S3ReferenceDataSourceDescription = list(
-        BucketARN = "string",
-        FileKey = "string",
-        ReferenceRoleARN = "string"
-      ),
-      ReferenceSchema = list(
-        RecordFormat = list(
-          RecordFormatType = "JSON"|"CSV",
-          MappingParameters = list(
-            JSONMappingParameters = list(
-              RecordRowPath = "string"
-            ),
-            CSVMappingParameters = list(
-              RecordRowDelimiter = "string",
-              RecordColumnDelimiter = "string"
-            )
-          )
-        ),
-        RecordEncoding = "string",
-        RecordColumns = list(
-          list(
-            Name = "string",
-            Mapping = "string",
-            SqlType = "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Adds a reference data source to an existing SQL-based Kinesis Data
-Analytics application.
+Adds a reference data source to an existing SQL-based Kinesis Data Analytics application.
 
-Kinesis Data Analytics reads reference data (that is, an Amazon S3
-object) and creates an in-application table within your application. In
-the request, you provide the source (S3 bucket name and object key
-name), name of the in-application table to create, and the necessary
-mapping information that describes how data in an Amazon S3 object maps
-to columns in the resulting in-application table.
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_reference_data_source.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_application_reference_data_source(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  ReferenceDataSource = list(
-    TableName = "string",
-    S3ReferenceDataSource = list(
-      BucketARN = "string",
-      FileKey = "string"
-    ),
-    ReferenceSchema = list(
-      RecordFormat = list(
-        RecordFormatType = "JSON"|"CSV",
-        MappingParameters = list(
-          JSONMappingParameters = list(
-            RecordRowPath = "string"
-          ),
-          CSVMappingParameters = list(
-            RecordRowDelimiter = "string",
-            RecordColumnDelimiter = "string"
-          )
-        )
-      ),
-      RecordEncoding = "string",
-      RecordColumns = list(
-        list(
-          Name = "string",
-          Mapping = "string",
-          SqlType = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

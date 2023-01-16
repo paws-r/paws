@@ -4,8 +4,12 @@
 \alias{s3_put_bucket_ownership_controls}
 \title{Creates or modifies OwnershipControls for an Amazon S3 bucket}
 \usage{
-s3_put_bucket_ownership_controls(Bucket, ContentMD5,
-  ExpectedBucketOwner, OwnershipControls)
+s3_put_bucket_ownership_controls(
+  Bucket,
+  ContentMD5 = NULL,
+  ExpectedBucketOwner = NULL,
+  OwnershipControls
+)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose \code{OwnershipControls} you want to
@@ -13,48 +17,20 @@ set.}
 
 \item{ContentMD5}{The MD5 hash of the \code{OwnershipControls} request body.
 
-For requests made using the AWS Command Line Interface (CLI) or AWS
-SDKs, this field is calculated automatically.}
+For requests made using the Amazon Web Services Command Line Interface
+(CLI) or Amazon Web Services SDKs, this field is calculated
+automatically.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 
-\item{OwnershipControls}{[required] The \code{OwnershipControls} (BucketOwnerPreferred or ObjectWriter) that you
-want to apply to this Amazon S3 bucket.}
-}
-\value{
-An empty list.
+\item{OwnershipControls}{[required] The \code{OwnershipControls} (BucketOwnerEnforced, BucketOwnerPreferred, or
+ObjectWriter) that you want to apply to this Amazon S3 bucket.}
 }
 \description{
-Creates or modifies \code{OwnershipControls} for an Amazon S3 bucket. To use
-this operation, you must have the \code{s3:PutBucketOwnershipControls}
-permission. For more information about Amazon S3 permissions, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
+Creates or modifies \code{OwnershipControls} for an Amazon S3 bucket. To use this operation, you must have the \code{s3:PutBucketOwnershipControls} permission. For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide//using-with-s3-actions.html}{Specifying permissions in a policy}.
 
-For information about Amazon S3 Object Ownership, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html}{Using Object Ownership}.
-
-The following operations are related to
-\code{\link[=s3_put_bucket_ownership_controls]{put_bucket_ownership_controls}}:
-\itemize{
-\item \code{\link[=s3_get_bucket_ownership_controls]{get_bucket_ownership_controls}}
-\item \code{\link[=s3_delete_bucket_ownership_controls]{delete_bucket_ownership_controls}}
+See \url{https://paws-r.github.io/docs/s3/put_bucket_ownership_controls.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$put_bucket_ownership_controls(
-  Bucket = "string",
-  ContentMD5 = "string",
-  ExpectedBucketOwner = "string",
-  OwnershipControls = list(
-    Rules = list(
-      list(
-        ObjectOwnership = "BucketOwnerPreferred"|"ObjectWriter"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

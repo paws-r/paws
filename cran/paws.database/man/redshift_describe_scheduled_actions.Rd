@@ -4,9 +4,16 @@
 \alias{redshift_describe_scheduled_actions}
 \title{Describes properties of scheduled actions}
 \usage{
-redshift_describe_scheduled_actions(ScheduledActionName,
-  TargetActionType, StartTime, EndTime, Active, Filters, Marker,
-  MaxRecords)
+redshift_describe_scheduled_actions(
+  ScheduledActionName = NULL,
+  TargetActionType = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  Active = NULL,
+  Filters = NULL,
+  Marker = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{ScheduledActionName}{The name of the scheduled action to retrieve.}
@@ -27,10 +34,10 @@ disabled scheduled actions.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_scheduled_actions]{describe_scheduled_actions}}
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.}
 
 \item{MaxRecords}{The maximum number of response records to return in each call. If the
 number of remaining response records exceeds the specified \code{MaxRecords}
@@ -42,73 +49,9 @@ Default: \code{100}
 
 Constraints: minimum 20, maximum 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ScheduledActions = list(
-    list(
-      ScheduledActionName = "string",
-      TargetAction = list(
-        ResizeCluster = list(
-          ClusterIdentifier = "string",
-          ClusterType = "string",
-          NodeType = "string",
-          NumberOfNodes = 123,
-          Classic = TRUE|FALSE
-        ),
-        PauseCluster = list(
-          ClusterIdentifier = "string"
-        ),
-        ResumeCluster = list(
-          ClusterIdentifier = "string"
-        )
-      ),
-      Schedule = "string",
-      IamRole = "string",
-      ScheduledActionDescription = "string",
-      State = "ACTIVE"|"DISABLED",
-      NextInvocations = list(
-        as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Describes properties of scheduled actions.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_scheduled_actions(
-  ScheduledActionName = "string",
-  TargetActionType = "ResizeCluster"|"PauseCluster"|"ResumeCluster",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Active = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "cluster-identifier"|"iam-role",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string",
-  MaxRecords = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/describe_scheduled_actions.html} for full documentation.
+}
 \keyword{internal}

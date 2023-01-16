@@ -5,8 +5,12 @@
 \title{Copies the image within the same region or to a new region within the
 same AWS account}
 \usage{
-appstream_copy_image(SourceImageName, DestinationImageName,
-  DestinationRegion, DestinationImageDescription)
+appstream_copy_image(
+  SourceImageName,
+  DestinationImageName,
+  DestinationRegion,
+  DestinationImageDescription = NULL
+)
 }
 \arguments{
 \item{SourceImageName}{[required] The name of the image to copy.}
@@ -19,25 +23,9 @@ is required, even if you are copying an image within the same region.}
 \item{DestinationImageDescription}{The description that the image will have when it is copied to the
 destination.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DestinationImageName = "string"
-)
-}
-}
 \description{
-Copies the image within the same region or to a new region within the
-same AWS account. Note that any tags you added to the image will not be
-copied.
-}
-\section{Request syntax}{
-\preformatted{svc$copy_image(
-  SourceImageName = "string",
-  DestinationImageName = "string",
-  DestinationRegion = "string",
-  DestinationImageDescription = "string"
-)
-}
-}
+Copies the image within the same region or to a new region within the same AWS account. Note that any tags you added to the image will not be copied.
 
+See \url{https://paws-r.github.io/docs/appstream/copy_image.html} for full documentation.
+}
 \keyword{internal}

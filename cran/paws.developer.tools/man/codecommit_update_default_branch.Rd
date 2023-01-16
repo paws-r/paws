@@ -11,22 +11,9 @@ codecommit_update_default_branch(repositoryName, defaultBranchName)
 
 \item{defaultBranchName}{[required] The name of the branch to set as the default.}
 }
-\value{
-An empty list.
-}
 \description{
 Sets or changes the default branch name for the specified repository.
 
-If you use this operation to change the default branch name to the
-current default branch name, a success message is returned even though
-the default branch did not change.
+See \url{https://paws-r.github.io/docs/codecommit/update_default_branch.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_default_branch(
-  repositoryName = "string",
-  defaultBranchName = "string"
-)
-}
-}
-
 \keyword{internal}

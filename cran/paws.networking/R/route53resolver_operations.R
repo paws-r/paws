@@ -3,61 +3,73 @@
 #' @include route53resolver_service.R
 NULL
 
+#' Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for
+#' the VPC
+#'
+#' @description
+#' Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for the VPC.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/associate_firewall_rule_group.html](https://paws-r.github.io/docs/route53resolver/associate_firewall_rule_group.html) for full documentation.
+#'
+#' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
+#' requests to be retried without the risk of running the operation twice.
+#' `CreatorRequestId` can be any unique string, for example, a date/time
+#' stamp.
+#' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group.
+#' @param VpcId &#91;required&#93; The unique identifier of the VPC that you want to associate with the
+#' rule group.
+#' @param Priority &#91;required&#93; The setting that determines the processing order of the rule group among
+#' the rule groups that you associate with the specified VPC. DNS Firewall
+#' filters VPC traffic starting from the rule group with the lowest numeric
+#' priority setting.
+#' 
+#' You must specify a unique priority for each rule group that you
+#' associate with a single VPC. To make it easier to insert rule groups
+#' later, leave space between the numbers, for example, use 101, 200, and
+#' so on. You can change the priority setting for a rule group association
+#' after you create it.
+#' 
+#' The allowed values for `Priority` are between 100 and 9900.
+#' @param Name &#91;required&#93; A name that lets you identify the association, to manage and use it.
+#' @param MutationProtection If enabled, this setting disallows modification or removal of the
+#' association, to help prevent against accidentally altering DNS firewall
+#' protections. When you create the association, the default setting is
+#' `DISABLED`.
+#' @param Tags A list of the tag keys and values that you want to associate with the
+#' rule group association.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_associate_firewall_rule_group
+route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, FirewallRuleGroupId, VpcId, Priority, Name, MutationProtection = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "AssociateFirewallRuleGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$associate_firewall_rule_group_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, VpcId = VpcId, Priority = Priority, Name = Name, MutationProtection = MutationProtection, Tags = Tags)
+  output <- .route53resolver$associate_firewall_rule_group_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$associate_firewall_rule_group <- route53resolver_associate_firewall_rule_group
+
 #' Adds IP addresses to an inbound or an outbound Resolver endpoint
 #'
 #' @description
-#' Adds IP addresses to an inbound or an outbound Resolver endpoint. If you
-#' want to add more than one IP address, submit one
-#' [`associate_resolver_endpoint_ip_address`][route53resolver_associate_resolver_endpoint_ip_address]
-#' request for each IP address.
-#' 
-#' To remove an IP address from an endpoint, see
-#' [`disassociate_resolver_endpoint_ip_address`][route53resolver_disassociate_resolver_endpoint_ip_address].
+#' Adds IP addresses to an inbound or an outbound Resolver endpoint. If you want to add more than one IP address, submit one [`associate_resolver_endpoint_ip_address`][route53resolver_associate_resolver_endpoint_ip_address] request for each IP address.
 #'
-#' @usage
-#' route53resolver_associate_resolver_endpoint_ip_address(
-#'   ResolverEndpointId, IpAddress)
+#' See [https://paws-r.github.io/docs/route53resolver/associate_resolver_endpoint_ip_address.html](https://paws-r.github.io/docs/route53resolver/associate_resolver_endpoint_ip_address.html) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to associate IP addresses
 #' with.
 #' @param IpAddress &#91;required&#93; Either the IPv4 address that you want to add to a Resolver endpoint or a
 #' subnet ID. If you specify a subnet ID, Resolver chooses an IP address
 #' for you from the available IPs in the specified subnet.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverEndpoint = list(
-#'     Id = "string",
-#'     CreatorRequestId = "string",
-#'     Arn = "string",
-#'     Name = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
-#'     IpAddressCount = 123,
-#'     HostVPCId = "string",
-#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-#'     StatusMessage = "string",
-#'     CreationTime = "string",
-#'     ModificationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_resolver_endpoint_ip_address(
-#'   ResolverEndpointId = "string",
-#'   IpAddress = list(
-#'     IpId = "string",
-#'     SubnetId = "string",
-#'     Ip = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -82,22 +94,9 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
 #' Associates an Amazon VPC with a specified query logging configuration
 #'
 #' @description
-#' Associates an Amazon VPC with a specified query logging configuration.
-#' Route 53 Resolver logs DNS queries that originate in all of the Amazon
-#' VPCs that are associated with a specified query logging configuration.
-#' To associate more than one VPC with a configuration, submit one
-#' [`associate_resolver_query_log_config`][route53resolver_associate_resolver_query_log_config]
-#' request for each VPC.
-#' 
-#' The VPCs that you associate with a query logging configuration must be
-#' in the same Region as the configuration.
-#' 
-#' To remove a VPC from a query logging configuration, see
-#' [`disassociate_resolver_query_log_config`][route53resolver_disassociate_resolver_query_log_config].
+#' Associates an Amazon VPC with a specified query logging configuration. Route 53 Resolver logs DNS queries that originate in all of the Amazon VPCs that are associated with a specified query logging configuration. To associate more than one VPC with a configuration, submit one [`associate_resolver_query_log_config`][route53resolver_associate_resolver_query_log_config] request for each VPC.
 #'
-#' @usage
-#' route53resolver_associate_resolver_query_log_config(
-#'   ResolverQueryLogConfigId, ResourceId)
+#' See [https://paws-r.github.io/docs/route53resolver/associate_resolver_query_log_config.html](https://paws-r.github.io/docs/route53resolver/associate_resolver_query_log_config.html) for full documentation.
 #'
 #' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the query logging configuration that you want to associate a
 #' VPC with.
@@ -105,30 +104,6 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
 #' to log queries for.
 #' 
 #' The VPCs and the query logging configuration must be in the same Region.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverQueryLogConfigAssociation = list(
-#'     Id = "string",
-#'     ResolverQueryLogConfigId = "string",
-#'     ResourceId = "string",
-#'     Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
-#'     Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
-#'     ErrorMessage = "string",
-#'     CreationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_resolver_query_log_config(
-#'   ResolverQueryLogConfigId = "string",
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -153,15 +128,9 @@ route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLog
 #' Associates a Resolver rule with a VPC
 #'
 #' @description
-#' Associates a Resolver rule with a VPC. When you associate a rule with a
-#' VPC, Resolver forwards all DNS queries for the domain name that is
-#' specified in the rule and that originate in the VPC. The queries are
-#' forwarded to the IP addresses for the DNS resolvers that are specified
-#' in the rule. For more information about rules, see
-#' [`create_resolver_rule`][route53resolver_create_resolver_rule].
+#' Associates a Resolver rule with a VPC. When you associate a rule with a VPC, Resolver forwards all DNS queries for the domain name that is specified in the rule and that originate in the VPC. The queries are forwarded to the IP addresses for the DNS resolvers that are specified in the rule. For more information about rules, see [`create_resolver_rule`][route53resolver_create_resolver_rule].
 #'
-#' @usage
-#' route53resolver_associate_resolver_rule(ResolverRuleId, Name, VPCId)
+#' See [https://paws-r.github.io/docs/route53resolver/associate_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/associate_resolver_rule.html) for full documentation.
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to associate with the VPC. To
 #' list the existing Resolver rules, use
@@ -169,30 +138,6 @@ route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLog
 #' @param Name A name for the association that you're creating between a Resolver rule
 #' and a VPC.
 #' @param VPCId &#91;required&#93; The ID of the VPC that you want to associate the Resolver rule with.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverRuleAssociation = list(
-#'     Id = "string",
-#'     ResolverRuleId = "string",
-#'     Name = "string",
-#'     VPCId = "string",
-#'     Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
-#'     StatusMessage = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_resolver_rule(
-#'   ResolverRuleId = "string",
-#'   Name = "string",
-#'   VPCId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -214,26 +159,170 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
 }
 .route53resolver$operations$associate_resolver_rule <- route53resolver_associate_resolver_rule
 
+#' Creates an empty firewall domain list for use in DNS Firewall rules
+#'
+#' @description
+#' Creates an empty firewall domain list for use in DNS Firewall rules. You can populate the domains for the new list with a file, using [`import_firewall_domains`][route53resolver_import_firewall_domains], or with domain strings, using [`update_firewall_domains`][route53resolver_update_firewall_domains].
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/create_firewall_domain_list.html](https://paws-r.github.io/docs/route53resolver/create_firewall_domain_list.html) for full documentation.
+#'
+#' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows you to retry
+#' failed requests without the risk of running the operation twice.
+#' `CreatorRequestId` can be any unique string, for example, a date/time
+#' stamp.
+#' @param Name &#91;required&#93; A name that lets you identify the domain list to manage and use it.
+#' @param Tags A list of the tag keys and values that you want to associate with the
+#' domain list.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_create_firewall_domain_list
+route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateFirewallDomainList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$create_firewall_domain_list_input(CreatorRequestId = CreatorRequestId, Name = Name, Tags = Tags)
+  output <- .route53resolver$create_firewall_domain_list_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$create_firewall_domain_list <- route53resolver_create_firewall_domain_list
+
+#' Creates a single DNS Firewall rule in the specified rule group, using
+#' the specified domain list
+#'
+#' @description
+#' Creates a single DNS Firewall rule in the specified rule group, using the specified domain list.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/create_firewall_rule.html](https://paws-r.github.io/docs/route53resolver/create_firewall_rule.html) for full documentation.
+#'
+#' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows you to retry
+#' failed requests without the risk of running the operation twice.
+#' `CreatorRequestId` can be any unique string, for example, a date/time
+#' stamp.
+#' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group where you want to
+#' create the rule.
+#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list that you want to use in the rule.
+#' @param Priority &#91;required&#93; The setting that determines the processing order of the rule in the rule
+#' group. DNS Firewall processes the rules in a rule group by order of
+#' priority, starting from the lowest setting.
+#' 
+#' You must specify a unique priority for each rule in a rule group. To
+#' make it easier to insert rules later, leave space between the numbers,
+#' for example, use 100, 200, and so on. You can change the priority
+#' setting for the rules in a rule group at any time.
+#' @param Action &#91;required&#93; The action that DNS Firewall should take on a DNS query when it matches
+#' one of the domains in the rule's domain list:
+#' 
+#' -   `ALLOW` - Permit the request to go through.
+#' 
+#' -   `ALERT` - Permit the request and send metrics and logs to Cloud
+#'     Watch.
+#' 
+#' -   `BLOCK` - Disallow the request. This option requires additional
+#'     details in the rule's `BlockResponse`.
+#' @param BlockResponse The way that you want DNS Firewall to block the request, used with the
+#' rule action setting `BLOCK`.
+#' 
+#' -   `NODATA` - Respond indicating that the query was successful, but no
+#'     response is available for it.
+#' 
+#' -   `NXDOMAIN` - Respond indicating that the domain name that's in the
+#'     query doesn't exist.
+#' 
+#' -   `OVERRIDE` - Provide a custom override in the response. This option
+#'     requires custom handling details in the rule's `BlockOverride*`
+#'     settings.
+#' 
+#' This setting is required if the rule action setting is `BLOCK`.
+#' @param BlockOverrideDomain The custom DNS record to send back in response to the query. Used for
+#' the rule action `BLOCK` with a `BlockResponse` setting of `OVERRIDE`.
+#' 
+#' This setting is required if the `BlockResponse` setting is `OVERRIDE`.
+#' @param BlockOverrideDnsType The DNS record's type. This determines the format of the record value
+#' that you provided in `BlockOverrideDomain`. Used for the rule action
+#' `BLOCK` with a `BlockResponse` setting of `OVERRIDE`.
+#' 
+#' This setting is required if the `BlockResponse` setting is `OVERRIDE`.
+#' @param BlockOverrideTtl The recommended amount of time, in seconds, for the DNS resolver or web
+#' browser to cache the provided override record. Used for the rule action
+#' `BLOCK` with a `BlockResponse` setting of `OVERRIDE`.
+#' 
+#' This setting is required if the `BlockResponse` setting is `OVERRIDE`.
+#' @param Name &#91;required&#93; A name that lets you identify the rule in the rule group.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_create_firewall_rule
+route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleGroupId, FirewallDomainListId, Priority, Action, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name) {
+  op <- new_operation(
+    name = "CreateFirewallRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$create_firewall_rule_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name)
+  output <- .route53resolver$create_firewall_rule_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$create_firewall_rule <- route53resolver_create_firewall_rule
+
+#' Creates an empty DNS Firewall rule group for filtering DNS network
+#' traffic in a VPC
+#'
+#' @description
+#' Creates an empty DNS Firewall rule group for filtering DNS network traffic in a VPC. You can add rules to the new rule group by calling [`create_firewall_rule`][route53resolver_create_firewall_rule].
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/create_firewall_rule_group.html](https://paws-r.github.io/docs/route53resolver/create_firewall_rule_group.html) for full documentation.
+#'
+#' @param CreatorRequestId &#91;required&#93; A unique string defined by you to identify the request. This allows you
+#' to retry failed requests without the risk of running the operation
+#' twice. This can be any unique string, for example, a timestamp.
+#' @param Name &#91;required&#93; A name that lets you identify the rule group, to manage and use it.
+#' @param Tags A list of the tag keys and values that you want to associate with the
+#' rule group.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_create_firewall_rule_group
+route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateFirewallRuleGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$create_firewall_rule_group_input(CreatorRequestId = CreatorRequestId, Name = Name, Tags = Tags)
+  output <- .route53resolver$create_firewall_rule_group_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$create_firewall_rule_group <- route53resolver_create_firewall_rule_group
+
 #' Creates a Resolver endpoint
 #'
 #' @description
-#' Creates a Resolver endpoint. There are two types of Resolver endpoints,
-#' inbound and outbound:
-#' 
-#' -   An *inbound Resolver endpoint* forwards DNS queries to the DNS
-#'     service for a VPC from your network.
-#' 
-#' -   An *outbound Resolver endpoint* forwards DNS queries from the DNS
-#'     service for a VPC to your network.
+#' Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:
 #'
-#' @usage
-#' route53resolver_create_resolver_endpoint(CreatorRequestId, Name,
-#'   SecurityGroupIds, Direction, IpAddresses, Tags)
+#' See [https://paws-r.github.io/docs/route53resolver/create_resolver_endpoint.html](https://paws-r.github.io/docs/route53resolver/create_resolver_endpoint.html) for full documentation.
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
-#' requests to be retried without the risk of executing the operation
-#' twice. `CreatorRequestId` can be any unique string, for example, a
-#' date/time stamp.
+#' requests to be retried without the risk of running the operation twice.
+#' `CreatorRequestId` can be any unique string, for example, a date/time
+#' stamp.
 #' @param Name A friendly name that lets you easily find a configuration in the
 #' Resolver dashboard in the Route 53 console.
 #' @param SecurityGroupIds &#91;required&#93; The ID of one or more security groups that you want to use to control
@@ -254,53 +343,6 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
 #' endpoints). The subnet ID uniquely identifies a VPC.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverEndpoint = list(
-#'     Id = "string",
-#'     CreatorRequestId = "string",
-#'     Arn = "string",
-#'     Name = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
-#'     IpAddressCount = 123,
-#'     HostVPCId = "string",
-#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-#'     StatusMessage = "string",
-#'     CreationTime = "string",
-#'     ModificationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_resolver_endpoint(
-#'   CreatorRequestId = "string",
-#'   Name = "string",
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Direction = "INBOUND"|"OUTBOUND",
-#'   IpAddresses = list(
-#'     list(
-#'       SubnetId = "string",
-#'       Ip = "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -326,27 +368,11 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #' want Resolver to save DNS query logs that originate in your VPCs
 #'
 #' @description
-#' Creates a Resolver query logging configuration, which defines where you
-#' want Resolver to save DNS query logs that originate in your VPCs.
-#' Resolver can log queries only for VPCs that are in the same Region as
-#' the query logging configuration.
-#' 
-#' To specify which VPCs you want to log queries for, you use
-#' [`associate_resolver_query_log_config`][route53resolver_associate_resolver_query_log_config].
-#' For more information, see
-#' [`associate_resolver_query_log_config`][route53resolver_associate_resolver_query_log_config].
-#' 
-#' You can optionally use AWS Resource Access Manager (AWS RAM) to share a
-#' query logging configuration with other AWS accounts. The other accounts
-#' can then associate VPCs with the configuration. The query logs that
-#' Resolver creates for a configuration include all DNS queries that
-#' originate in all VPCs that are associated with the configuration.
+#' Creates a Resolver query logging configuration, which defines where you want Resolver to save DNS query logs that originate in your VPCs. Resolver can log queries only for VPCs that are in the same Region as the query logging configuration.
 #'
-#' @usage
-#' route53resolver_create_resolver_query_log_config(Name, DestinationArn,
-#'   CreatorRequestId, Tags)
+#' See [https://paws-r.github.io/docs/route53resolver/create_resolver_query_log_config.html](https://paws-r.github.io/docs/route53resolver/create_resolver_query_log_config.html) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name that you want to give the query logging configuration
+#' @param Name &#91;required&#93; The name that you want to give the query logging configuration.
 #' @param DestinationArn &#91;required&#93; The ARN of the resource that you want Resolver to send query logs. You
 #' can send query logs to an S3 bucket, a CloudWatch Logs log group, or a
 #' Kinesis Data Firehose delivery stream. Examples of valid values include
@@ -368,45 +394,11 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #' 
 #'     `arn:aws:kinesis:us-east-2:0123456789:stream/my_stream_name`
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
-#' requests to be retried without the risk of executing the operation
-#' twice. `CreatorRequestId` can be any unique string, for example, a
-#' date/time stamp.
+#' requests to be retried without the risk of running the operation twice.
+#' `CreatorRequestId` can be any unique string, for example, a date/time
+#' stamp.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' query logging configuration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverQueryLogConfig = list(
-#'     Id = "string",
-#'     OwnerId = "string",
-#'     Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
-#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-#'     AssociationCount = 123,
-#'     Arn = "string",
-#'     Name = "string",
-#'     DestinationArn = "string",
-#'     CreatorRequestId = "string",
-#'     CreationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_resolver_query_log_config(
-#'   Name = "string",
-#'   DestinationArn = "string",
-#'   CreatorRequestId = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -434,19 +426,14 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' your network
 #'
 #' @description
-#' For DNS queries that originate in your VPCs, specifies which Resolver
-#' endpoint the queries pass through, one domain name that you want to
-#' forward to your network, and the IP addresses of the DNS resolvers in
-#' your network.
+#' For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.
 #'
-#' @usage
-#' route53resolver_create_resolver_rule(CreatorRequestId, Name, RuleType,
-#'   DomainName, TargetIps, ResolverEndpointId, Tags)
+#' See [https://paws-r.github.io/docs/route53resolver/create_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/create_resolver_rule.html) for full documentation.
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
-#' requests to be retried without the risk of executing the operation
-#' twice. `CreatorRequestId` can be any unique string, for example, a
-#' date/time stamp.
+#' requests to be retried without the risk of running the operation twice.
+#' `CreatorRequestId` can be any unique string, for example, a date/time
+#' stamp.
 #' @param Name A friendly name that lets you easily find a rule in the Resolver
 #' dashboard in the Route 53 console.
 #' @param RuleType &#91;required&#93; When you want to forward DNS queries for specified domain name to
@@ -469,7 +456,7 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' the Resolver rule that contains the most specific domain name
 #' (www.example.com).
 #' @param TargetIps The IPs that you want Resolver to forward DNS queries to. You can
-#' specify only IPv4 addresses. Separate IP addresses with a comma.
+#' specify only IPv4 addresses. Separate IP addresses with a space.
 #' 
 #' `TargetIps` is available only when the value of `Rule type` is
 #' `FORWARD`.
@@ -477,57 +464,6 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' DNS queries to the IP addresses that you specify in `TargetIps`.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverRule = list(
-#'     Id = "string",
-#'     CreatorRequestId = "string",
-#'     Arn = "string",
-#'     DomainName = "string",
-#'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
-#'     StatusMessage = "string",
-#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-#'     Name = "string",
-#'     TargetIps = list(
-#'       list(
-#'         Ip = "string",
-#'         Port = 123
-#'       )
-#'     ),
-#'     ResolverEndpointId = "string",
-#'     OwnerId = "string",
-#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-#'     CreationTime = "string",
-#'     ModificationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_resolver_rule(
-#'   CreatorRequestId = "string",
-#'   Name = "string",
-#'   RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-#'   DomainName = "string",
-#'   TargetIps = list(
-#'     list(
-#'       Ip = "string",
-#'       Port = 123
-#'     )
-#'   ),
-#'   ResolverEndpointId = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -549,52 +485,104 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
 }
 .route53resolver$operations$create_resolver_rule <- route53resolver_create_resolver_rule
 
+#' Deletes the specified domain list
+#'
+#' @description
+#' Deletes the specified domain list.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/delete_firewall_domain_list.html](https://paws-r.github.io/docs/route53resolver/delete_firewall_domain_list.html) for full documentation.
+#'
+#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_delete_firewall_domain_list
+route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
+  op <- new_operation(
+    name = "DeleteFirewallDomainList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$delete_firewall_domain_list_input(FirewallDomainListId = FirewallDomainListId)
+  output <- .route53resolver$delete_firewall_domain_list_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$delete_firewall_domain_list <- route53resolver_delete_firewall_domain_list
+
+#' Deletes the specified firewall rule
+#'
+#' @description
+#' Deletes the specified firewall rule.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/delete_firewall_rule.html](https://paws-r.github.io/docs/route53resolver/delete_firewall_rule.html) for full documentation.
+#'
+#' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group that you want to delete
+#' the rule from.
+#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list that's used in the rule.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_delete_firewall_rule
+route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId) {
+  op <- new_operation(
+    name = "DeleteFirewallRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$delete_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId)
+  output <- .route53resolver$delete_firewall_rule_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$delete_firewall_rule <- route53resolver_delete_firewall_rule
+
+#' Deletes the specified firewall rule group
+#'
+#' @description
+#' Deletes the specified firewall rule group.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/delete_firewall_rule_group.html](https://paws-r.github.io/docs/route53resolver/delete_firewall_rule_group.html) for full documentation.
+#'
+#' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group that you want to
+#' delete.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_delete_firewall_rule_group
+route53resolver_delete_firewall_rule_group <- function(FirewallRuleGroupId) {
+  op <- new_operation(
+    name = "DeleteFirewallRuleGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$delete_firewall_rule_group_input(FirewallRuleGroupId = FirewallRuleGroupId)
+  output <- .route53resolver$delete_firewall_rule_group_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$delete_firewall_rule_group <- route53resolver_delete_firewall_rule_group
+
 #' Deletes a Resolver endpoint
 #'
 #' @description
-#' Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint
-#' depends on whether it's an inbound or an outbound Resolver endpoint:
-#' 
-#' -   **Inbound**: DNS queries from your network are no longer routed to
-#'     the DNS service for the specified VPC.
-#' 
-#' -   **Outbound**: DNS queries from a VPC are no longer routed to your
-#'     network.
+#' Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint depends on whether it's an inbound or an outbound Resolver endpoint:
 #'
-#' @usage
-#' route53resolver_delete_resolver_endpoint(ResolverEndpointId)
+#' See [https://paws-r.github.io/docs/route53resolver/delete_resolver_endpoint.html](https://paws-r.github.io/docs/route53resolver/delete_resolver_endpoint.html) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverEndpoint = list(
-#'     Id = "string",
-#'     CreatorRequestId = "string",
-#'     Arn = "string",
-#'     Name = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
-#'     IpAddressCount = 123,
-#'     HostVPCId = "string",
-#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-#'     StatusMessage = "string",
-#'     CreationTime = "string",
-#'     ModificationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_resolver_endpoint(
-#'   ResolverEndpointId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -619,55 +607,11 @@ route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
 #' Deletes a query logging configuration
 #'
 #' @description
-#' Deletes a query logging configuration. When you delete a configuration,
-#' Resolver stops logging DNS queries for all of the Amazon VPCs that are
-#' associated with the configuration. This also applies if the query
-#' logging configuration is shared with other AWS accounts, and the other
-#' accounts have associated VPCs with the shared configuration.
-#' 
-#' Before you can delete a query logging configuration, you must first
-#' disassociate all VPCs from the configuration. See
-#' [`disassociate_resolver_query_log_config`][route53resolver_disassociate_resolver_query_log_config].
-#' 
-#' If you used Resource Access Manager (RAM) to share a query logging
-#' configuration with other accounts, you must stop sharing the
-#' configuration before you can delete a configuration. The accounts that
-#' you shared the configuration with can first disassociate VPCs that they
-#' associated with the configuration, but that's not necessary. If you stop
-#' sharing the configuration, those VPCs are automatically disassociated
-#' from the configuration.
+#' Deletes a query logging configuration. When you delete a configuration, Resolver stops logging DNS queries for all of the Amazon VPCs that are associated with the configuration. This also applies if the query logging configuration is shared with other Amazon Web Services accounts, and the other accounts have associated VPCs with the shared configuration.
 #'
-#' @usage
-#' route53resolver_delete_resolver_query_log_config(
-#'   ResolverQueryLogConfigId)
+#' See [https://paws-r.github.io/docs/route53resolver/delete_resolver_query_log_config.html](https://paws-r.github.io/docs/route53resolver/delete_resolver_query_log_config.html) for full documentation.
 #'
 #' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the query logging configuration that you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverQueryLogConfig = list(
-#'     Id = "string",
-#'     OwnerId = "string",
-#'     Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
-#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-#'     AssociationCount = 123,
-#'     Arn = "string",
-#'     Name = "string",
-#'     DestinationArn = "string",
-#'     CreatorRequestId = "string",
-#'     CreationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_resolver_query_log_config(
-#'   ResolverQueryLogConfigId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -692,50 +636,11 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
 #' Deletes a Resolver rule
 #'
 #' @description
-#' Deletes a Resolver rule. Before you can delete a Resolver rule, you must
-#' disassociate it from all the VPCs that you associated the Resolver rule
-#' with. For more information, see
-#' [`disassociate_resolver_rule`][route53resolver_disassociate_resolver_rule].
+#' Deletes a Resolver rule. Before you can delete a Resolver rule, you must disassociate it from all the VPCs that you associated the Resolver rule with. For more information, see [`disassociate_resolver_rule`][route53resolver_disassociate_resolver_rule].
 #'
-#' @usage
-#' route53resolver_delete_resolver_rule(ResolverRuleId)
+#' See [https://paws-r.github.io/docs/route53resolver/delete_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/delete_resolver_rule.html) for full documentation.
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverRule = list(
-#'     Id = "string",
-#'     CreatorRequestId = "string",
-#'     Arn = "string",
-#'     DomainName = "string",
-#'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
-#'     StatusMessage = "string",
-#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-#'     Name = "string",
-#'     TargetIps = list(
-#'       list(
-#'         Ip = "string",
-#'         Port = 123
-#'       )
-#'     ),
-#'     ResolverEndpointId = "string",
-#'     OwnerId = "string",
-#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-#'     CreationTime = "string",
-#'     ModificationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_resolver_rule(
-#'   ResolverRuleId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -757,59 +662,46 @@ route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
 }
 .route53resolver$operations$delete_resolver_rule <- route53resolver_delete_resolver_rule
 
+#' Disassociates a FirewallRuleGroup from a VPC, to remove DNS filtering
+#' from the VPC
+#'
+#' @description
+#' Disassociates a FirewallRuleGroup from a VPC, to remove DNS filtering from the VPC.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/disassociate_firewall_rule_group.html](https://paws-r.github.io/docs/route53resolver/disassociate_firewall_rule_group.html) for full documentation.
+#'
+#' @param FirewallRuleGroupAssociationId &#91;required&#93; The identifier of the FirewallRuleGroupAssociation.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_disassociate_firewall_rule_group
+route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAssociationId) {
+  op <- new_operation(
+    name = "DisassociateFirewallRuleGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$disassociate_firewall_rule_group_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId)
+  output <- .route53resolver$disassociate_firewall_rule_group_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$disassociate_firewall_rule_group <- route53resolver_disassociate_firewall_rule_group
+
 #' Removes IP addresses from an inbound or an outbound Resolver endpoint
 #'
 #' @description
-#' Removes IP addresses from an inbound or an outbound Resolver endpoint.
-#' If you want to remove more than one IP address, submit one
-#' [`disassociate_resolver_endpoint_ip_address`][route53resolver_disassociate_resolver_endpoint_ip_address]
-#' request for each IP address.
-#' 
-#' To add an IP address to an endpoint, see
-#' [`associate_resolver_endpoint_ip_address`][route53resolver_associate_resolver_endpoint_ip_address].
+#' Removes IP addresses from an inbound or an outbound Resolver endpoint. If you want to remove more than one IP address, submit one [`disassociate_resolver_endpoint_ip_address`][route53resolver_disassociate_resolver_endpoint_ip_address] request for each IP address.
 #'
-#' @usage
-#' route53resolver_disassociate_resolver_endpoint_ip_address(
-#'   ResolverEndpointId, IpAddress)
+#' See [https://paws-r.github.io/docs/route53resolver/disassociate_resolver_endpoint_ip_address.html](https://paws-r.github.io/docs/route53resolver/disassociate_resolver_endpoint_ip_address.html) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to disassociate an IP
 #' address from.
 #' @param IpAddress &#91;required&#93; The IPv4 address that you want to remove from a Resolver endpoint.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverEndpoint = list(
-#'     Id = "string",
-#'     CreatorRequestId = "string",
-#'     Arn = "string",
-#'     Name = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
-#'     IpAddressCount = 123,
-#'     HostVPCId = "string",
-#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-#'     StatusMessage = "string",
-#'     CreationTime = "string",
-#'     ModificationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_resolver_endpoint_ip_address(
-#'   ResolverEndpointId = "string",
-#'   IpAddress = list(
-#'     IpId = "string",
-#'     SubnetId = "string",
-#'     Ip = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -835,50 +727,13 @@ route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEn
 #'
 #' @description
 #' Disassociates a VPC from a query logging configuration.
-#' 
-#' Before you can delete a query logging configuration, you must first
-#' disassociate all VPCs from the configuration. If you used Resource
-#' Access Manager (RAM) to share a query logging configuration with other
-#' accounts, VPCs can be disassociated from the configuration in the
-#' following ways:
-#' 
-#' -   The accounts that you shared the configuration with can disassociate
-#'     VPCs from the configuration.
-#' 
-#' -   You can stop sharing the configuration.
 #'
-#' @usage
-#' route53resolver_disassociate_resolver_query_log_config(
-#'   ResolverQueryLogConfigId, ResourceId)
+#' See [https://paws-r.github.io/docs/route53resolver/disassociate_resolver_query_log_config.html](https://paws-r.github.io/docs/route53resolver/disassociate_resolver_query_log_config.html) for full documentation.
 #'
 #' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the query logging configuration that you want to disassociate
 #' a specified VPC from.
 #' @param ResourceId &#91;required&#93; The ID of the Amazon VPC that you want to disassociate from a specified
 #' query logging configuration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverQueryLogConfigAssociation = list(
-#'     Id = "string",
-#'     ResolverQueryLogConfigId = "string",
-#'     ResourceId = "string",
-#'     Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
-#'     Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
-#'     ErrorMessage = "string",
-#'     CreationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_resolver_query_log_config(
-#'   ResolverQueryLogConfigId = "string",
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -904,42 +759,13 @@ route53resolver_disassociate_resolver_query_log_config <- function(ResolverQuery
 #' specified VPC
 #'
 #' @description
-#' Removes the association between a specified Resolver rule and a
-#' specified VPC.
-#' 
-#' If you disassociate a Resolver rule from a VPC, Resolver stops
-#' forwarding DNS queries for the domain name that you specified in the
-#' Resolver rule.
+#' Removes the association between a specified Resolver rule and a specified VPC.
 #'
-#' @usage
-#' route53resolver_disassociate_resolver_rule(VPCId, ResolverRuleId)
+#' See [https://paws-r.github.io/docs/route53resolver/disassociate_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/disassociate_resolver_rule.html) for full documentation.
 #'
 #' @param VPCId &#91;required&#93; The ID of the VPC that you want to disassociate the Resolver rule from.
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to disassociate from the
 #' specified VPC.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverRuleAssociation = list(
-#'     Id = "string",
-#'     ResolverRuleId = "string",
-#'     Name = "string",
-#'     VPCId = "string",
-#'     Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
-#'     StatusMessage = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_resolver_rule(
-#'   VPCId = "string",
-#'   ResolverRuleId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -961,36 +787,193 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
 }
 .route53resolver$operations$disassociate_resolver_rule <- route53resolver_disassociate_resolver_rule
 
+#' Retrieves the configuration of the firewall behavior provided by DNS
+#' Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon VPC)
+#'
+#' @description
+#' Retrieves the configuration of the firewall behavior provided by DNS Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon VPC).
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/get_firewall_config.html](https://paws-r.github.io/docs/route53resolver/get_firewall_config.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; The ID of the VPC from Amazon VPC that the configuration is for.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_firewall_config
+route53resolver_get_firewall_config <- function(ResourceId) {
+  op <- new_operation(
+    name = "GetFirewallConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_firewall_config_input(ResourceId = ResourceId)
+  output <- .route53resolver$get_firewall_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_firewall_config <- route53resolver_get_firewall_config
+
+#' Retrieves the specified firewall domain list
+#'
+#' @description
+#' Retrieves the specified firewall domain list.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/get_firewall_domain_list.html](https://paws-r.github.io/docs/route53resolver/get_firewall_domain_list.html) for full documentation.
+#'
+#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_firewall_domain_list
+route53resolver_get_firewall_domain_list <- function(FirewallDomainListId) {
+  op <- new_operation(
+    name = "GetFirewallDomainList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_firewall_domain_list_input(FirewallDomainListId = FirewallDomainListId)
+  output <- .route53resolver$get_firewall_domain_list_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_firewall_domain_list <- route53resolver_get_firewall_domain_list
+
+#' Retrieves the specified firewall rule group
+#'
+#' @description
+#' Retrieves the specified firewall rule group.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group.html](https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group.html) for full documentation.
+#'
+#' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_firewall_rule_group
+route53resolver_get_firewall_rule_group <- function(FirewallRuleGroupId) {
+  op <- new_operation(
+    name = "GetFirewallRuleGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_firewall_rule_group_input(FirewallRuleGroupId = FirewallRuleGroupId)
+  output <- .route53resolver$get_firewall_rule_group_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_firewall_rule_group <- route53resolver_get_firewall_rule_group
+
+#' Retrieves a firewall rule group association, which enables DNS filtering
+#' for a VPC with one rule group
+#'
+#' @description
+#' Retrieves a firewall rule group association, which enables DNS filtering for a VPC with one rule group. A VPC can have more than one firewall rule group association, and a rule group can be associated with more than one VPC.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group_association.html](https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group_association.html) for full documentation.
+#'
+#' @param FirewallRuleGroupAssociationId &#91;required&#93; The identifier of the FirewallRuleGroupAssociation.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_firewall_rule_group_association
+route53resolver_get_firewall_rule_group_association <- function(FirewallRuleGroupAssociationId) {
+  op <- new_operation(
+    name = "GetFirewallRuleGroupAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_firewall_rule_group_association_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId)
+  output <- .route53resolver$get_firewall_rule_group_association_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_firewall_rule_group_association <- route53resolver_get_firewall_rule_group_association
+
+#' Returns the Identity and Access Management (Amazon Web Services IAM)
+#' policy for sharing the specified rule group
+#'
+#' @description
+#' Returns the Identity and Access Management (Amazon Web Services IAM) policy for sharing the specified rule group. You can use the policy to share the rule group using Resource Access Manager (RAM).
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group_policy.html](https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group_policy.html) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The ARN (Amazon Resource Name) for the rule group.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_firewall_rule_group_policy
+route53resolver_get_firewall_rule_group_policy <- function(Arn) {
+  op <- new_operation(
+    name = "GetFirewallRuleGroupPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_firewall_rule_group_policy_input(Arn = Arn)
+  output <- .route53resolver$get_firewall_rule_group_policy_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_firewall_rule_group_policy <- route53resolver_get_firewall_rule_group_policy
+
+#' Retrieves the behavior configuration of Route 53 Resolver behavior for a
+#' single VPC from Amazon Virtual Private Cloud
+#'
+#' @description
+#' Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_config.html](https://paws-r.github.io/docs/route53resolver/get_resolver_config.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; Resource ID of the Amazon VPC that you want to get information about.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_resolver_config
+route53resolver_get_resolver_config <- function(ResourceId) {
+  op <- new_operation(
+    name = "GetResolverConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_resolver_config_input(ResourceId = ResourceId)
+  output <- .route53resolver$get_resolver_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_resolver_config <- route53resolver_get_resolver_config
+
 #' Gets DNSSEC validation information for a specified resource
 #'
 #' @description
 #' Gets DNSSEC validation information for a specified resource.
 #'
-#' @usage
-#' route53resolver_get_resolver_dnssec_config(ResourceId)
+#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_dnssec_config.html](https://paws-r.github.io/docs/route53resolver/get_resolver_dnssec_config.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the virtual private cloud (VPC) for the DNSSEC validation
 #' status.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverDNSSECConfig = list(
-#'     Id = "string",
-#'     OwnerId = "string",
-#'     ResourceId = "string",
-#'     ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resolver_dnssec_config(
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1017,44 +1000,11 @@ route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
 #' of the endpoint
 #'
 #' @description
-#' Gets information about a specified Resolver endpoint, such as whether
-#' it's an inbound or an outbound Resolver endpoint, and the current status
-#' of the endpoint.
+#' Gets information about a specified Resolver endpoint, such as whether it's an inbound or an outbound Resolver endpoint, and the current status of the endpoint.
 #'
-#' @usage
-#' route53resolver_get_resolver_endpoint(ResolverEndpointId)
+#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_endpoint.html](https://paws-r.github.io/docs/route53resolver/get_resolver_endpoint.html) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to get information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverEndpoint = list(
-#'     Id = "string",
-#'     CreatorRequestId = "string",
-#'     Arn = "string",
-#'     Name = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
-#'     IpAddressCount = 123,
-#'     HostVPCId = "string",
-#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-#'     StatusMessage = "string",
-#'     CreationTime = "string",
-#'     ModificationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resolver_endpoint(
-#'   ResolverEndpointId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1081,41 +1031,12 @@ route53resolver_get_resolver_endpoint <- function(ResolverEndpointId) {
 #' and the location that logs are sent to
 #'
 #' @description
-#' Gets information about a specified Resolver query logging configuration,
-#' such as the number of VPCs that the configuration is logging queries for
-#' and the location that logs are sent to.
+#' Gets information about a specified Resolver query logging configuration, such as the number of VPCs that the configuration is logging queries for and the location that logs are sent to.
 #'
-#' @usage
-#' route53resolver_get_resolver_query_log_config(ResolverQueryLogConfigId)
+#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config.html](https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config.html) for full documentation.
 #'
 #' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the Resolver query logging configuration that you want to get
 #' information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverQueryLogConfig = list(
-#'     Id = "string",
-#'     OwnerId = "string",
-#'     Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
-#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-#'     AssociationCount = 123,
-#'     Arn = "string",
-#'     Name = "string",
-#'     DestinationArn = "string",
-#'     CreatorRequestId = "string",
-#'     CreationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resolver_query_log_config(
-#'   ResolverQueryLogConfigId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1141,40 +1062,12 @@ route53resolver_get_resolver_query_log_config <- function(ResolverQueryLogConfig
 #' logging configuration and an Amazon VPC
 #'
 #' @description
-#' Gets information about a specified association between a Resolver query
-#' logging configuration and an Amazon VPC. When you associate a VPC with a
-#' query logging configuration, Resolver logs DNS queries that originate in
-#' that VPC.
+#' Gets information about a specified association between a Resolver query logging configuration and an Amazon VPC. When you associate a VPC with a query logging configuration, Resolver logs DNS queries that originate in that VPC.
 #'
-#' @usage
-#' route53resolver_get_resolver_query_log_config_association(
-#'   ResolverQueryLogConfigAssociationId)
+#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_association.html](https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_association.html) for full documentation.
 #'
 #' @param ResolverQueryLogConfigAssociationId &#91;required&#93; The ID of the Resolver query logging configuration association that you
 #' want to get information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverQueryLogConfigAssociation = list(
-#'     Id = "string",
-#'     ResolverQueryLogConfigId = "string",
-#'     ResourceId = "string",
-#'     Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
-#'     Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
-#'     ErrorMessage = "string",
-#'     CreationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resolver_query_log_config_association(
-#'   ResolverQueryLogConfigAssociationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1199,30 +1092,12 @@ route53resolver_get_resolver_query_log_config_association <- function(ResolverQu
 #' Gets information about a query logging policy
 #'
 #' @description
-#' Gets information about a query logging policy. A query logging policy
-#' specifies the Resolver query logging operations and resources that you
-#' want to allow another AWS account to be able to use.
+#' Gets information about a query logging policy. A query logging policy specifies the Resolver query logging operations and resources that you want to allow another Amazon Web Services account to be able to use.
 #'
-#' @usage
-#' route53resolver_get_resolver_query_log_config_policy(Arn)
+#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_policy.html](https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_policy.html) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the query logging configuration that you want to get the
 #' query logging policy for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverQueryLogConfigPolicy = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resolver_query_log_config_policy(
-#'   Arn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1249,49 +1124,11 @@ route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
 #' Resolver endpoint that the rule is associated with
 #'
 #' @description
-#' Gets information about a specified Resolver rule, such as the domain
-#' name that the rule forwards DNS queries for and the ID of the outbound
-#' Resolver endpoint that the rule is associated with.
+#' Gets information about a specified Resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound Resolver endpoint that the rule is associated with.
 #'
-#' @usage
-#' route53resolver_get_resolver_rule(ResolverRuleId)
+#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/get_resolver_rule.html) for full documentation.
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to get information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverRule = list(
-#'     Id = "string",
-#'     CreatorRequestId = "string",
-#'     Arn = "string",
-#'     DomainName = "string",
-#'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
-#'     StatusMessage = "string",
-#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-#'     Name = "string",
-#'     TargetIps = list(
-#'       list(
-#'         Ip = "string",
-#'         Port = 123
-#'       )
-#'     ),
-#'     ResolverEndpointId = "string",
-#'     OwnerId = "string",
-#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-#'     CreationTime = "string",
-#'     ModificationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resolver_rule(
-#'   ResolverRuleId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1317,37 +1154,12 @@ route53resolver_get_resolver_rule <- function(ResolverRuleId) {
 #' and a VPC
 #'
 #' @description
-#' Gets information about an association between a specified Resolver rule
-#' and a VPC. You associate a Resolver rule and a VPC using
-#' [`associate_resolver_rule`][route53resolver_associate_resolver_rule].
+#' Gets information about an association between a specified Resolver rule and a VPC. You associate a Resolver rule and a VPC using [`associate_resolver_rule`][route53resolver_associate_resolver_rule].
 #'
-#' @usage
-#' route53resolver_get_resolver_rule_association(ResolverRuleAssociationId)
+#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_rule_association.html](https://paws-r.github.io/docs/route53resolver/get_resolver_rule_association.html) for full documentation.
 #'
 #' @param ResolverRuleAssociationId &#91;required&#93; The ID of the Resolver rule association that you want to get information
 #' about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverRuleAssociation = list(
-#'     Id = "string",
-#'     ResolverRuleId = "string",
-#'     Name = "string",
-#'     VPCId = "string",
-#'     Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
-#'     StatusMessage = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resolver_rule_association(
-#'   ResolverRuleAssociationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1372,31 +1184,12 @@ route53resolver_get_resolver_rule_association <- function(ResolverRuleAssociatio
 #' Gets information about the Resolver rule policy for a specified rule
 #'
 #' @description
-#' Gets information about the Resolver rule policy for a specified rule. A
-#' Resolver rule policy includes the rule that you want to share with
-#' another account, the account that you want to share the rule with, and
-#' the Resolver operations that you want to allow the account to use.
+#' Gets information about the Resolver rule policy for a specified rule. A Resolver rule policy includes the rule that you want to share with another account, the account that you want to share the rule with, and the Resolver operations that you want to allow the account to use.
 #'
-#' @usage
-#' route53resolver_get_resolver_rule_policy(Arn)
+#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_rule_policy.html](https://paws-r.github.io/docs/route53resolver/get_resolver_rule_policy.html) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ID of the Resolver rule that you want to get the Resolver rule
 #' policy for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverRulePolicy = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resolver_rule_policy(
-#'   Arn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1418,24 +1211,392 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 }
 .route53resolver$operations$get_resolver_rule_policy <- route53resolver_get_resolver_rule_policy
 
-#' Lists the configurations for DNSSEC validation that are associated with
-#' the current AWS account
+#' Imports domain names from a file into a domain list, for use in a DNS
+#' firewall rule group
 #'
 #' @description
-#' Lists the configurations for DNSSEC validation that are associated with
-#' the current AWS account.
+#' Imports domain names from a file into a domain list, for use in a DNS firewall rule group.
 #'
-#' @usage
-#' route53resolver_list_resolver_dnssec_configs(MaxResults, NextToken,
-#'   Filters)
+#' See [https://paws-r.github.io/docs/route53resolver/import_firewall_domains.html](https://paws-r.github.io/docs/route53resolver/import_firewall_domains.html) for full documentation.
+#'
+#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list that you want to modify with the import
+#' operation.
+#' @param Operation &#91;required&#93; What you want DNS Firewall to do with the domains that are listed in the
+#' file. This must be set to `REPLACE`, which updates the domain list to
+#' exactly match the list in the file.
+#' @param DomainFileUrl &#91;required&#93; The fully qualified URL or URI of the file stored in Amazon Simple
+#' Storage Service (Amazon S3) that contains the list of domains to import.
+#' 
+#' The file must be in an S3 bucket that's in the same Region as your DNS
+#' Firewall. The file must be a text file and must contain a single domain
+#' per line.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_import_firewall_domains
+route53resolver_import_firewall_domains <- function(FirewallDomainListId, Operation, DomainFileUrl) {
+  op <- new_operation(
+    name = "ImportFirewallDomains",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$import_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, Operation = Operation, DomainFileUrl = DomainFileUrl)
+  output <- .route53resolver$import_firewall_domains_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$import_firewall_domains <- route53resolver_import_firewall_domains
+
+#' Retrieves the firewall configurations that you have defined
+#'
+#' @description
+#' Retrieves the firewall configurations that you have defined. DNS Firewall uses the configurations to manage firewall behavior for your VPCs.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_configs.html](https://paws-r.github.io/docs/route53resolver/list_firewall_configs.html) for full documentation.
+#'
+#' @param MaxResults The maximum number of objects that you want Resolver to return for this
+#' request. If more objects are available, in the response, Resolver
+#' provides a `NextToken` value that you can use in a subsequent call to
+#' get the next batch of objects.
+#' 
+#' If you don't specify a value for `MaxResults`, Resolver returns up to
+#' 100 objects.
+#' @param NextToken For the first call to this list request, omit this value.
+#' 
+#' When you request a list of objects, Resolver returns at most the number
+#' of objects specified in `MaxResults`. If more objects are available for
+#' retrieval, Resolver returns a `NextToken` value in the response. To
+#' retrieve the next batch of objects, use the token that was returned for
+#' the prior request in your next request.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_firewall_configs
+route53resolver_list_firewall_configs <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFirewallConfigs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$list_firewall_configs_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .route53resolver$list_firewall_configs_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_firewall_configs <- route53resolver_list_firewall_configs
+
+#' Retrieves the firewall domain lists that you have defined
+#'
+#' @description
+#' Retrieves the firewall domain lists that you have defined. For each firewall domain list, you can retrieve the domains that are defined for a list by calling [`list_firewall_domains`][route53resolver_list_firewall_domains].
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_domain_lists.html](https://paws-r.github.io/docs/route53resolver/list_firewall_domain_lists.html) for full documentation.
+#'
+#' @param MaxResults The maximum number of objects that you want Resolver to return for this
+#' request. If more objects are available, in the response, Resolver
+#' provides a `NextToken` value that you can use in a subsequent call to
+#' get the next batch of objects.
+#' 
+#' If you don't specify a value for `MaxResults`, Resolver returns up to
+#' 100 objects.
+#' @param NextToken For the first call to this list request, omit this value.
+#' 
+#' When you request a list of objects, Resolver returns at most the number
+#' of objects specified in `MaxResults`. If more objects are available for
+#' retrieval, Resolver returns a `NextToken` value in the response. To
+#' retrieve the next batch of objects, use the token that was returned for
+#' the prior request in your next request.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_firewall_domain_lists
+route53resolver_list_firewall_domain_lists <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFirewallDomainLists",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$list_firewall_domain_lists_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .route53resolver$list_firewall_domain_lists_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_firewall_domain_lists <- route53resolver_list_firewall_domain_lists
+
+#' Retrieves the domains that you have defined for the specified firewall
+#' domain list
+#'
+#' @description
+#' Retrieves the domains that you have defined for the specified firewall domain list.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_domains.html](https://paws-r.github.io/docs/route53resolver/list_firewall_domains.html) for full documentation.
+#'
+#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list whose domains you want to retrieve.
+#' @param MaxResults The maximum number of objects that you want Resolver to return for this
+#' request. If more objects are available, in the response, Resolver
+#' provides a `NextToken` value that you can use in a subsequent call to
+#' get the next batch of objects.
+#' 
+#' If you don't specify a value for `MaxResults`, Resolver returns up to
+#' 100 objects.
+#' @param NextToken For the first call to this list request, omit this value.
+#' 
+#' When you request a list of objects, Resolver returns at most the number
+#' of objects specified in `MaxResults`. If more objects are available for
+#' retrieval, Resolver returns a `NextToken` value in the response. To
+#' retrieve the next batch of objects, use the token that was returned for
+#' the prior request in your next request.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_firewall_domains
+route53resolver_list_firewall_domains <- function(FirewallDomainListId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFirewallDomains",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$list_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .route53resolver$list_firewall_domains_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_firewall_domains <- route53resolver_list_firewall_domains
+
+#' Retrieves the firewall rule group associations that you have defined
+#'
+#' @description
+#' Retrieves the firewall rule group associations that you have defined. Each association enables DNS filtering for a VPC with one rule group.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_rule_group_associations.html](https://paws-r.github.io/docs/route53resolver/list_firewall_rule_group_associations.html) for full documentation.
+#'
+#' @param FirewallRuleGroupId The unique identifier of the firewall rule group that you want to
+#' retrieve the associations for. Leave this blank to retrieve associations
+#' for any rule group.
+#' @param VpcId The unique identifier of the VPC that you want to retrieve the
+#' associations for. Leave this blank to retrieve associations for any VPC.
+#' @param Priority The setting that determines the processing order of the rule group among
+#' the rule groups that are associated with a single VPC. DNS Firewall
+#' filters VPC traffic starting from the rule group with the lowest numeric
+#' priority setting.
+#' @param Status The association `Status` setting that you want DNS Firewall to filter on
+#' for the list. If you don't specify this, then DNS Firewall returns all
+#' associations, regardless of status.
+#' @param MaxResults The maximum number of objects that you want Resolver to return for this
+#' request. If more objects are available, in the response, Resolver
+#' provides a `NextToken` value that you can use in a subsequent call to
+#' get the next batch of objects.
+#' 
+#' If you don't specify a value for `MaxResults`, Resolver returns up to
+#' 100 objects.
+#' @param NextToken For the first call to this list request, omit this value.
+#' 
+#' When you request a list of objects, Resolver returns at most the number
+#' of objects specified in `MaxResults`. If more objects are available for
+#' retrieval, Resolver returns a `NextToken` value in the response. To
+#' retrieve the next batch of objects, use the token that was returned for
+#' the prior request in your next request.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_firewall_rule_group_associations
+route53resolver_list_firewall_rule_group_associations <- function(FirewallRuleGroupId = NULL, VpcId = NULL, Priority = NULL, Status = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFirewallRuleGroupAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$list_firewall_rule_group_associations_input(FirewallRuleGroupId = FirewallRuleGroupId, VpcId = VpcId, Priority = Priority, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .route53resolver$list_firewall_rule_group_associations_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_firewall_rule_group_associations <- route53resolver_list_firewall_rule_group_associations
+
+#' Retrieves the minimal high-level information for the rule groups that
+#' you have defined
+#'
+#' @description
+#' Retrieves the minimal high-level information for the rule groups that you have defined.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_rule_groups.html](https://paws-r.github.io/docs/route53resolver/list_firewall_rule_groups.html) for full documentation.
+#'
+#' @param MaxResults The maximum number of objects that you want Resolver to return for this
+#' request. If more objects are available, in the response, Resolver
+#' provides a `NextToken` value that you can use in a subsequent call to
+#' get the next batch of objects.
+#' 
+#' If you don't specify a value for `MaxResults`, Resolver returns up to
+#' 100 objects.
+#' @param NextToken For the first call to this list request, omit this value.
+#' 
+#' When you request a list of objects, Resolver returns at most the number
+#' of objects specified in `MaxResults`. If more objects are available for
+#' retrieval, Resolver returns a `NextToken` value in the response. To
+#' retrieve the next batch of objects, use the token that was returned for
+#' the prior request in your next request.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_firewall_rule_groups
+route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFirewallRuleGroups",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$list_firewall_rule_groups_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .route53resolver$list_firewall_rule_groups_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_firewall_rule_groups <- route53resolver_list_firewall_rule_groups
+
+#' Retrieves the firewall rules that you have defined for the specified
+#' firewall rule group
+#'
+#' @description
+#' Retrieves the firewall rules that you have defined for the specified firewall rule group. DNS Firewall uses the rules in a rule group to filter DNS network traffic for a VPC.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_rules.html](https://paws-r.github.io/docs/route53resolver/list_firewall_rules.html) for full documentation.
+#'
+#' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group that you want to
+#' retrieve the rules for.
+#' @param Priority Optional additional filter for the rules to retrieve.
+#' 
+#' The setting that determines the processing order of the rules in a rule
+#' group. DNS Firewall processes the rules in a rule group by order of
+#' priority, starting from the lowest setting.
+#' @param Action Optional additional filter for the rules to retrieve.
+#' 
+#' The action that DNS Firewall should take on a DNS query when it matches
+#' one of the domains in the rule's domain list:
+#' 
+#' -   `ALLOW` - Permit the request to go through.
+#' 
+#' -   `ALERT` - Permit the request to go through but send an alert to the
+#'     logs.
+#' 
+#' -   `BLOCK` - Disallow the request. If this is specified, additional
+#'     handling details are provided in the rule's `BlockResponse` setting.
+#' @param MaxResults The maximum number of objects that you want Resolver to return for this
+#' request. If more objects are available, in the response, Resolver
+#' provides a `NextToken` value that you can use in a subsequent call to
+#' get the next batch of objects.
+#' 
+#' If you don't specify a value for `MaxResults`, Resolver returns up to
+#' 100 objects.
+#' @param NextToken For the first call to this list request, omit this value.
+#' 
+#' When you request a list of objects, Resolver returns at most the number
+#' of objects specified in `MaxResults`. If more objects are available for
+#' retrieval, Resolver returns a `NextToken` value in the response. To
+#' retrieve the next batch of objects, use the token that was returned for
+#' the prior request in your next request.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_firewall_rules
+route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = NULL, Action = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFirewallRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$list_firewall_rules_input(FirewallRuleGroupId = FirewallRuleGroupId, Priority = Priority, Action = Action, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .route53resolver$list_firewall_rules_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_firewall_rules <- route53resolver_list_firewall_rules
+
+#' Retrieves the Resolver configurations that you have defined
+#'
+#' @description
+#' Retrieves the Resolver configurations that you have defined. Route 53 Resolver uses the configurations to manage DNS resolution behavior for your VPCs.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_configs.html](https://paws-r.github.io/docs/route53resolver/list_resolver_configs.html) for full documentation.
+#'
+#' @param MaxResults The maximum number of Resolver configurations that you want to return in
+#' the response to a
+#' [`list_resolver_configs`][route53resolver_list_resolver_configs]
+#' request. If you don't specify a value for `MaxResults`, up to 100
+#' Resolver configurations are returned.
+#' @param NextToken (Optional) If the current Amazon Web Services account has more than
+#' `MaxResults` Resolver configurations, use `NextToken` to get the second
+#' and subsequent pages of results.
+#' 
+#' For the first
+#' [`list_resolver_configs`][route53resolver_list_resolver_configs]
+#' request, omit this value.
+#' 
+#' For the second and subsequent requests, get the value of `NextToken`
+#' from the previous response and specify that value for `NextToken` in the
+#' request.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_resolver_configs
+route53resolver_list_resolver_configs <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListResolverConfigs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$list_resolver_configs_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .route53resolver$list_resolver_configs_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_resolver_configs <- route53resolver_list_resolver_configs
+
+#' Lists the configurations for DNSSEC validation that are associated with
+#' the current Amazon Web Services account
+#'
+#' @description
+#' Lists the configurations for DNSSEC validation that are associated with the current Amazon Web Services account.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_dnssec_configs.html](https://paws-r.github.io/docs/route53resolver/list_resolver_dnssec_configs.html) for full documentation.
 #'
 #' @param MaxResults *Optional*: An integer that specifies the maximum number of DNSSEC
 #' configuration results that you want Amazon Route 53 to return. If you
 #' don't specify a value for `MaxResults`, Route 53 returns up to 100
 #' configuration per page.
-#' @param NextToken (Optional) If the current AWS account has more than `MaxResults` DNSSEC
-#' configurations, use `NextToken` to get the second and subsequent pages
-#' of results.
+#' @param NextToken (Optional) If the current Amazon Web Services account has more than
+#' `MaxResults` DNSSEC configurations, use `NextToken` to get the second
+#' and subsequent pages of results.
 #' 
 #' For the first
 #' [`list_resolver_dnssec_configs`][route53resolver_list_resolver_dnssec_configs]
@@ -1445,38 +1606,6 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 #' from the previous response and specify that value for `NextToken` in the
 #' request.
 #' @param Filters An optional specification to return a subset of objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   ResolverDnssecConfigs = list(
-#'     list(
-#'       Id = "string",
-#'       OwnerId = "string",
-#'       ResourceId = "string",
-#'       ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resolver_dnssec_configs(
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1503,9 +1632,7 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
 #' @description
 #' Gets the IP addresses for a specified Resolver endpoint.
 #'
-#' @usage
-#' route53resolver_list_resolver_endpoint_ip_addresses(ResolverEndpointId,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_endpoint_ip_addresses.html](https://paws-r.github.io/docs/route53resolver/list_resolver_endpoint_ip_addresses.html) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to get IP addresses for.
 #' @param MaxResults The maximum number of IP addresses that you want to return in the
@@ -1522,35 +1649,6 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
 #' [`list_resolver_endpoint_ip_addresses`][route53resolver_list_resolver_endpoint_ip_addresses]
 #' request to get the next group of IP addresses. In the next request,
 #' specify the value of `NextToken` from the previous response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   IpAddresses = list(
-#'     list(
-#'       IpId = "string",
-#'       SubnetId = "string",
-#'       Ip = "string",
-#'       Status = "CREATING"|"FAILED_CREATION"|"ATTACHING"|"ATTACHED"|"REMAP_DETACHING"|"REMAP_ATTACHING"|"DETACHING"|"FAILED_RESOURCE_GONE"|"DELETING"|"DELETE_FAILED_FAS_EXPIRED",
-#'       StatusMessage = "string",
-#'       CreationTime = "string",
-#'       ModificationTime = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resolver_endpoint_ip_addresses(
-#'   ResolverEndpointId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1572,15 +1670,13 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 }
 .route53resolver$operations$list_resolver_endpoint_ip_addresses <- route53resolver_list_resolver_endpoint_ip_addresses
 
-#' Lists all the Resolver endpoints that were created using the current AWS
-#' account
+#' Lists all the Resolver endpoints that were created using the current
+#' Amazon Web Services account
 #'
 #' @description
-#' Lists all the Resolver endpoints that were created using the current AWS
-#' account.
+#' Lists all the Resolver endpoints that were created using the current Amazon Web Services account.
 #'
-#' @usage
-#' route53resolver_list_resolver_endpoints(MaxResults, NextToken, Filters)
+#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_endpoints.html](https://paws-r.github.io/docs/route53resolver/list_resolver_endpoints.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of Resolver endpoints that you want to return in the
 #' response to a
@@ -1603,49 +1699,6 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 #' [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
 #' request and specify the `NextToken` parameter, you must use the same
 #' values for `Filters`, if any, as in the previous request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   ResolverEndpoints = list(
-#'     list(
-#'       Id = "string",
-#'       CreatorRequestId = "string",
-#'       Arn = "string",
-#'       Name = "string",
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       Direction = "INBOUND"|"OUTBOUND",
-#'       IpAddressCount = 123,
-#'       HostVPCId = "string",
-#'       Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-#'       StatusMessage = "string",
-#'       CreationTime = "string",
-#'       ModificationTime = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resolver_endpoints(
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1671,12 +1724,9 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #' logging configurations
 #'
 #' @description
-#' Lists information about associations between Amazon VPCs and query
-#' logging configurations.
+#' Lists information about associations between Amazon VPCs and query logging configurations.
 #'
-#' @usage
-#' route53resolver_list_resolver_query_log_config_associations(MaxResults,
-#'   NextToken, Filters, SortBy, SortOrder)
+#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_config_associations.html](https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_config_associations.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of query logging associations that you want to return
 #' in the response to a
@@ -1757,45 +1807,6 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #' request and specify the `NextToken` parameter, you must use the same
 #' value for `SortOrder`, if any, as in the previous request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   TotalCount = 123,
-#'   TotalFilteredCount = 123,
-#'   ResolverQueryLogConfigAssociations = list(
-#'     list(
-#'       Id = "string",
-#'       ResolverQueryLogConfigId = "string",
-#'       ResourceId = "string",
-#'       Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
-#'       Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
-#'       ErrorMessage = "string",
-#'       CreationTime = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resolver_query_log_config_associations(
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   SortBy = "string",
-#'   SortOrder = "ASCENDING"|"DESCENDING"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_resolver_query_log_config_associations
@@ -1819,13 +1830,9 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
 #' Lists information about the specified query logging configurations
 #'
 #' @description
-#' Lists information about the specified query logging configurations. Each
-#' configuration defines where you want Resolver to save DNS query logs and
-#' specifies the VPCs that you want to log queries for.
+#' Lists information about the specified query logging configurations. Each configuration defines where you want Resolver to save DNS query logs and specifies the VPCs that you want to log queries for.
 #'
-#' @usage
-#' route53resolver_list_resolver_query_log_configs(MaxResults, NextToken,
-#'   Filters, SortBy, SortOrder)
+#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_configs.html](https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_configs.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of query logging configurations that you want to
 #' return in the response to a
@@ -1875,12 +1882,13 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
 #' 
 #' -   `Name`: The name of the configuration
 #' 
-#' -   `OwnerId`: The AWS account number of the account that created the
-#'     configuration
+#' -   `OwnerId`: The Amazon Web Services account number of the account
+#'     that created the configuration
 #' 
-#' -   `ShareStatus`: Whether the configuration is shared with other AWS
-#'     accounts or shared with the current account by another AWS account.
-#'     Sharing is configured through AWS Resource Access Manager (AWS RAM).
+#' -   `ShareStatus`: Whether the configuration is shared with other Amazon
+#'     Web Services accounts or shared with the current account by another
+#'     Amazon Web Services account. Sharing is configured through Resource
+#'     Access Manager (RAM).
 #' 
 #' -   `Status`: The current status of the configuration. Valid values
 #'     include the following:
@@ -1910,48 +1918,6 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
 #' request and specify the `NextToken` parameter, you must use the same
 #' value for `SortOrder`, if any, as in the previous request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   TotalCount = 123,
-#'   TotalFilteredCount = 123,
-#'   ResolverQueryLogConfigs = list(
-#'     list(
-#'       Id = "string",
-#'       OwnerId = "string",
-#'       Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
-#'       ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-#'       AssociationCount = 123,
-#'       Arn = "string",
-#'       Name = "string",
-#'       DestinationArn = "string",
-#'       CreatorRequestId = "string",
-#'       CreationTime = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resolver_query_log_configs(
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   SortBy = "string",
-#'   SortOrder = "ASCENDING"|"DESCENDING"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_resolver_query_log_configs
@@ -1973,15 +1939,12 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
 .route53resolver$operations$list_resolver_query_log_configs <- route53resolver_list_resolver_query_log_configs
 
 #' Lists the associations that were created between Resolver rules and VPCs
-#' using the current AWS account
+#' using the current Amazon Web Services account
 #'
 #' @description
-#' Lists the associations that were created between Resolver rules and VPCs
-#' using the current AWS account.
+#' Lists the associations that were created between Resolver rules and VPCs using the current Amazon Web Services account.
 #'
-#' @usage
-#' route53resolver_list_resolver_rule_associations(MaxResults, NextToken,
-#'   Filters)
+#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_rule_associations.html](https://paws-r.github.io/docs/route53resolver/list_resolver_rule_associations.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of rule associations that you want to return in the
 #' response to a
@@ -2001,41 +1964,6 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
 #' [`list_resolver_rule_associations`][route53resolver_list_resolver_rule_associations]
 #' request and specify the `NextToken` parameter, you must use the same
 #' values for `Filters`, if any, as in the previous request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   ResolverRuleAssociations = list(
-#'     list(
-#'       Id = "string",
-#'       ResolverRuleId = "string",
-#'       Name = "string",
-#'       VPCId = "string",
-#'       Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
-#'       StatusMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resolver_rule_associations(
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2057,14 +1985,13 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 }
 .route53resolver$operations$list_resolver_rule_associations <- route53resolver_list_resolver_rule_associations
 
-#' Lists the Resolver rules that were created using the current AWS account
+#' Lists the Resolver rules that were created using the current Amazon Web
+#' Services account
 #'
 #' @description
-#' Lists the Resolver rules that were created using the current AWS
-#' account.
+#' Lists the Resolver rules that were created using the current Amazon Web Services account.
 #'
-#' @usage
-#' route53resolver_list_resolver_rules(MaxResults, NextToken, Filters)
+#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_rules.html](https://paws-r.github.io/docs/route53resolver/list_resolver_rules.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of Resolver rules that you want to return in the
 #' response to a
@@ -2086,54 +2013,6 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 #' [`list_resolver_rules`][route53resolver_list_resolver_rules] request and
 #' specify the `NextToken` parameter, you must use the same values for
 #' `Filters`, if any, as in the previous request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   ResolverRules = list(
-#'     list(
-#'       Id = "string",
-#'       CreatorRequestId = "string",
-#'       Arn = "string",
-#'       DomainName = "string",
-#'       Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
-#'       StatusMessage = "string",
-#'       RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-#'       Name = "string",
-#'       TargetIps = list(
-#'         list(
-#'           Ip = "string",
-#'           Port = 123
-#'         )
-#'       ),
-#'       ResolverEndpointId = "string",
-#'       OwnerId = "string",
-#'       ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-#'       CreationTime = "string",
-#'       ModificationTime = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resolver_rules(
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2160,9 +2039,7 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
 #' @description
 #' Lists the tags that you associated with the specified resource.
 #'
-#' @usage
-#' route53resolver_list_tags_for_resource(ResourceArn, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/route53resolver/list_tags_for_resource.html](https://paws-r.github.io/docs/route53resolver/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that you want to list
 #' tags for.
@@ -2178,29 +2055,6 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
 #' [`list_tags_for_resource`][route53resolver_list_tags_for_resource]
 #' request to get the next group of tags for the resource. In the next
 #' request, specify the value of `NextToken` from the previous response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2222,27 +2076,55 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
 }
 .route53resolver$operations$list_tags_for_resource <- route53resolver_list_tags_for_resource
 
-#' Specifies an AWS account that you want to share a query logging
-#' configuration with, the query logging configuration that you want to
-#' share, and the operations that you want the account to be able to
-#' perform on the configuration
+#' Attaches an Identity and Access Management (Amazon Web Services IAM)
+#' policy for sharing the rule group
 #'
 #' @description
-#' Specifies an AWS account that you want to share a query logging
-#' configuration with, the query logging configuration that you want to
-#' share, and the operations that you want the account to be able to
-#' perform on the configuration.
+#' Attaches an Identity and Access Management (Amazon Web Services IAM) policy for sharing the rule group. You can use the policy to share the rule group using Resource Access Manager (RAM).
 #'
-#' @usage
-#' route53resolver_put_resolver_query_log_config_policy(Arn,
-#'   ResolverQueryLogConfigPolicy)
+#' See [https://paws-r.github.io/docs/route53resolver/put_firewall_rule_group_policy.html](https://paws-r.github.io/docs/route53resolver/put_firewall_rule_group_policy.html) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The ARN (Amazon Resource Name) for the rule group that you want to
+#' share.
+#' @param FirewallRuleGroupPolicy &#91;required&#93; The Identity and Access Management (Amazon Web Services IAM) policy to
+#' attach to the rule group.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_put_firewall_rule_group_policy
+route53resolver_put_firewall_rule_group_policy <- function(Arn, FirewallRuleGroupPolicy) {
+  op <- new_operation(
+    name = "PutFirewallRuleGroupPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$put_firewall_rule_group_policy_input(Arn = Arn, FirewallRuleGroupPolicy = FirewallRuleGroupPolicy)
+  output <- .route53resolver$put_firewall_rule_group_policy_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$put_firewall_rule_group_policy <- route53resolver_put_firewall_rule_group_policy
+
+#' Specifies an Amazon Web Services account that you want to share a query
+#' logging configuration with, the query logging configuration that you
+#' want to share, and the operations that you want the account to be able
+#' to perform on the configuration
+#'
+#' @description
+#' Specifies an Amazon Web Services account that you want to share a query logging configuration with, the query logging configuration that you want to share, and the operations that you want the account to be able to perform on the configuration.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/put_resolver_query_log_config_policy.html](https://paws-r.github.io/docs/route53resolver/put_resolver_query_log_config_policy.html) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the account that you want to share
 #' rules with.
-#' @param ResolverQueryLogConfigPolicy &#91;required&#93; An AWS Identity and Access Management policy statement that lists the
-#' query logging configurations that you want to share with another AWS
-#' account and the operations that you want the account to be able to
-#' perform. You can specify the following operations in the `Actions`
+#' @param ResolverQueryLogConfigPolicy &#91;required&#93; An Identity and Access Management policy statement that lists the query
+#' logging configurations that you want to share with another Amazon Web
+#' Services account and the operations that you want the account to be able
+#' to perform. You can specify the following operations in the `Actions`
 #' section of the statement:
 #' 
 #' -   `route53resolver:AssociateResolverQueryLogConfig`
@@ -2256,22 +2138,6 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
 #' In the `Resource` section of the statement, you specify the ARNs for the
 #' query logging configurations that you want to share with the account
 #' that you specified in `Arn`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReturnValue = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_resolver_query_log_config_policy(
-#'   Arn = "string",
-#'   ResolverQueryLogConfigPolicy = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2293,24 +2159,23 @@ route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQu
 }
 .route53resolver$operations$put_resolver_query_log_config_policy <- route53resolver_put_resolver_query_log_config_policy
 
-#' Specifies an AWS rule that you want to share with another account, the
-#' account that you want to share the rule with, and the operations that
-#' you want the account to be able to perform on the rule
+#' Specifies an Amazon Web Services rule that you want to share with
+#' another account, the account that you want to share the rule with, and
+#' the operations that you want the account to be able to perform on the
+#' rule
 #'
 #' @description
-#' Specifies an AWS rule that you want to share with another account, the
-#' account that you want to share the rule with, and the operations that
-#' you want the account to be able to perform on the rule.
+#' Specifies an Amazon Web Services rule that you want to share with another account, the account that you want to share the rule with, and the operations that you want the account to be able to perform on the rule.
 #'
-#' @usage
-#' route53resolver_put_resolver_rule_policy(Arn, ResolverRulePolicy)
+#' See [https://paws-r.github.io/docs/route53resolver/put_resolver_rule_policy.html](https://paws-r.github.io/docs/route53resolver/put_resolver_rule_policy.html) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the rule that you want to share with
 #' another account.
-#' @param ResolverRulePolicy &#91;required&#93; An AWS Identity and Access Management policy statement that lists the
-#' rules that you want to share with another AWS account and the operations
-#' that you want the account to be able to perform. You can specify the
-#' following operations in the `Action` section of the statement:
+#' @param ResolverRulePolicy &#91;required&#93; An Identity and Access Management policy statement that lists the rules
+#' that you want to share with another Amazon Web Services account and the
+#' operations that you want the account to be able to perform. You can
+#' specify the following operations in the `Action` section of the
+#' statement:
 #' 
 #' -   `route53resolver:GetResolverRule`
 #' 
@@ -2325,22 +2190,6 @@ route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQu
 #' In the `Resource` section of the statement, specify the ARN for the rule
 #' that you want to share with another account. Specify the same ARN that
 #' you specified in `Arn`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReturnValue = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_resolver_rule_policy(
-#'   Arn = "string",
-#'   ResolverRulePolicy = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2367,8 +2216,7 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
 #' @description
 #' Adds one or more tags to a specified resource.
 #'
-#' @usage
-#' route53resolver_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/route53resolver/tag_resource.html](https://paws-r.github.io/docs/route53resolver/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that you want to add
 #' tags to. To get the ARN for a resource, use the applicable `Get` or
@@ -2386,22 +2234,6 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
 #' 
 #' -   [`list_resolver_rules`][route53resolver_list_resolver_rules]
 #' @param Tags &#91;required&#93; The tags that you want to add to the specified resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2428,8 +2260,7 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes one or more tags from a specified resource.
 #'
-#' @usage
-#' route53resolver_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/route53resolver/untag_resource.html](https://paws-r.github.io/docs/route53resolver/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that you want to remove
 #' tags from. To get the ARN for a resource, use the applicable `Get` or
@@ -2447,19 +2278,6 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
 #' 
 #' -   [`list_resolver_rules`][route53resolver_list_resolver_rules]
 #' @param TagKeys &#91;required&#93; The tags that you want to remove to the specified resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2481,41 +2299,264 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .route53resolver$operations$untag_resource <- route53resolver_untag_resource
 
+#' Updates the configuration of the firewall behavior provided by DNS
+#' Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon VPC)
+#'
+#' @description
+#' Updates the configuration of the firewall behavior provided by DNS Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon VPC).
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/update_firewall_config.html](https://paws-r.github.io/docs/route53resolver/update_firewall_config.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; The ID of the VPC that the configuration is for.
+#' @param FirewallFailOpen &#91;required&#93; Determines how Route 53 Resolver handles queries during failures, for
+#' example when all traffic that is sent to DNS Firewall fails to receive a
+#' reply.
+#' 
+#' -   By default, fail open is disabled, which means the failure mode is
+#'     closed. This approach favors security over availability. DNS
+#'     Firewall blocks queries that it is unable to evaluate properly.
+#' 
+#' -   If you enable this option, the failure mode is open. This approach
+#'     favors availability over security. DNS Firewall allows queries to
+#'     proceed if it is unable to properly evaluate them.
+#' 
+#' This behavior is only enforced for VPCs that have at least one DNS
+#' Firewall rule group association.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_update_firewall_config
+route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen) {
+  op <- new_operation(
+    name = "UpdateFirewallConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$update_firewall_config_input(ResourceId = ResourceId, FirewallFailOpen = FirewallFailOpen)
+  output <- .route53resolver$update_firewall_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$update_firewall_config <- route53resolver_update_firewall_config
+
+#' Updates the firewall domain list from an array of domain specifications
+#'
+#' @description
+#' Updates the firewall domain list from an array of domain specifications.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/update_firewall_domains.html](https://paws-r.github.io/docs/route53resolver/update_firewall_domains.html) for full documentation.
+#'
+#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list whose domains you want to update.
+#' @param Operation &#91;required&#93; What you want DNS Firewall to do with the domains that you are
+#' providing:
+#' 
+#' -   `ADD` - Add the domains to the ones that are already in the domain
+#'     list.
+#' 
+#' -   `REMOVE` - Search the domain list for the domains and remove them
+#'     from the list.
+#' 
+#' -   `REPLACE` - Update the domain list to exactly match the list that
+#'     you are providing.
+#' @param Domains &#91;required&#93; A list of domains to use in the update operation.
+#' 
+#' Each domain specification in your domain list must satisfy the following
+#' requirements:
+#' 
+#' -   It can optionally start with `*` (asterisk).
+#' 
+#' -   With the exception of the optional starting asterisk, it must only
+#'     contain the following characters: `A-Z`, `a-z`, `0-9`, `-` (hyphen).
+#' 
+#' -   It must be from 1-255 characters in length.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_update_firewall_domains
+route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operation, Domains) {
+  op <- new_operation(
+    name = "UpdateFirewallDomains",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$update_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, Operation = Operation, Domains = Domains)
+  output <- .route53resolver$update_firewall_domains_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$update_firewall_domains <- route53resolver_update_firewall_domains
+
+#' Updates the specified firewall rule
+#'
+#' @description
+#' Updates the specified firewall rule.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/update_firewall_rule.html](https://paws-r.github.io/docs/route53resolver/update_firewall_rule.html) for full documentation.
+#'
+#' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group for the rule.
+#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list to use in the rule.
+#' @param Priority The setting that determines the processing order of the rule in the rule
+#' group. DNS Firewall processes the rules in a rule group by order of
+#' priority, starting from the lowest setting.
+#' 
+#' You must specify a unique priority for each rule in a rule group. To
+#' make it easier to insert rules later, leave space between the numbers,
+#' for example, use 100, 200, and so on. You can change the priority
+#' setting for the rules in a rule group at any time.
+#' @param Action The action that DNS Firewall should take on a DNS query when it matches
+#' one of the domains in the rule's domain list:
+#' 
+#' -   `ALLOW` - Permit the request to go through.
+#' 
+#' -   `ALERT` - Permit the request to go through but send an alert to the
+#'     logs.
+#' 
+#' -   `BLOCK` - Disallow the request. This option requires additional
+#'     details in the rule's `BlockResponse`.
+#' @param BlockResponse The way that you want DNS Firewall to block the request. Used for the
+#' rule action setting `BLOCK`.
+#' 
+#' -   `NODATA` - Respond indicating that the query was successful, but no
+#'     response is available for it.
+#' 
+#' -   `NXDOMAIN` - Respond indicating that the domain name that's in the
+#'     query doesn't exist.
+#' 
+#' -   `OVERRIDE` - Provide a custom override in the response. This option
+#'     requires custom handling details in the rule's `BlockOverride*`
+#'     settings.
+#' @param BlockOverrideDomain The custom DNS record to send back in response to the query. Used for
+#' the rule action `BLOCK` with a `BlockResponse` setting of `OVERRIDE`.
+#' @param BlockOverrideDnsType The DNS record's type. This determines the format of the record value
+#' that you provided in `BlockOverrideDomain`. Used for the rule action
+#' `BLOCK` with a `BlockResponse` setting of `OVERRIDE`.
+#' @param BlockOverrideTtl The recommended amount of time, in seconds, for the DNS resolver or web
+#' browser to cache the provided override record. Used for the rule action
+#' `BLOCK` with a `BlockResponse` setting of `OVERRIDE`.
+#' @param Name The name of the rule.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_update_firewall_rule
+route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId, Priority = NULL, Action = NULL, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name = NULL) {
+  op <- new_operation(
+    name = "UpdateFirewallRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$update_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name)
+  output <- .route53resolver$update_firewall_rule_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$update_firewall_rule <- route53resolver_update_firewall_rule
+
+#' Changes the association of a FirewallRuleGroup with a VPC
+#'
+#' @description
+#' Changes the association of a FirewallRuleGroup with a VPC. The association enables DNS filtering for the VPC.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/update_firewall_rule_group_association.html](https://paws-r.github.io/docs/route53resolver/update_firewall_rule_group_association.html) for full documentation.
+#'
+#' @param FirewallRuleGroupAssociationId &#91;required&#93; The identifier of the FirewallRuleGroupAssociation.
+#' @param Priority The setting that determines the processing order of the rule group among
+#' the rule groups that you associate with the specified VPC. DNS Firewall
+#' filters VPC traffic starting from the rule group with the lowest numeric
+#' priority setting.
+#' 
+#' You must specify a unique priority for each rule group that you
+#' associate with a single VPC. To make it easier to insert rule groups
+#' later, leave space between the numbers, for example, use 100, 200, and
+#' so on. You can change the priority setting for a rule group association
+#' after you create it.
+#' @param MutationProtection If enabled, this setting disallows modification or removal of the
+#' association, to help prevent against accidentally altering DNS firewall
+#' protections.
+#' @param Name The name of the rule group association.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_update_firewall_rule_group_association
+route53resolver_update_firewall_rule_group_association <- function(FirewallRuleGroupAssociationId, Priority = NULL, MutationProtection = NULL, Name = NULL) {
+  op <- new_operation(
+    name = "UpdateFirewallRuleGroupAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$update_firewall_rule_group_association_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId, Priority = Priority, MutationProtection = MutationProtection, Name = Name)
+  output <- .route53resolver$update_firewall_rule_group_association_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$update_firewall_rule_group_association <- route53resolver_update_firewall_rule_group_association
+
+#' Updates the behavior configuration of Route 53 Resolver behavior for a
+#' single VPC from Amazon Virtual Private Cloud
+#'
+#' @description
+#' Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
+#'
+#' See [https://paws-r.github.io/docs/route53resolver/update_resolver_config.html](https://paws-r.github.io/docs/route53resolver/update_resolver_config.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; Resource ID of the Amazon VPC that you want to update the Resolver
+#' configuration for.
+#' @param AutodefinedReverseFlag &#91;required&#93; Indicates whether or not the Resolver will create autodefined rules for
+#' reverse DNS lookups. This is enabled by default. Disabling this option
+#' will also affect EC2-Classic instances using ClassicLink. For more
+#' information, see
+#' [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+#' in the *Amazon EC2 guide*.
+#' 
+#' It can take some time for the status change to be completed.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_update_resolver_config
+route53resolver_update_resolver_config <- function(ResourceId, AutodefinedReverseFlag) {
+  op <- new_operation(
+    name = "UpdateResolverConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$update_resolver_config_input(ResourceId = ResourceId, AutodefinedReverseFlag = AutodefinedReverseFlag)
+  output <- .route53resolver$update_resolver_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$update_resolver_config <- route53resolver_update_resolver_config
+
 #' Updates an existing DNSSEC validation configuration
 #'
 #' @description
-#' Updates an existing DNSSEC validation configuration. If there is no
-#' existing DNSSEC validation configuration, one is created.
+#' Updates an existing DNSSEC validation configuration. If there is no existing DNSSEC validation configuration, one is created.
 #'
-#' @usage
-#' route53resolver_update_resolver_dnssec_config(ResourceId, Validation)
+#' See [https://paws-r.github.io/docs/route53resolver/update_resolver_dnssec_config.html](https://paws-r.github.io/docs/route53resolver/update_resolver_dnssec_config.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the virtual private cloud (VPC) that you're updating the
 #' DNSSEC validation status for.
 #' @param Validation &#91;required&#93; The new value that you are specifying for DNSSEC validation for the VPC.
 #' The value can be `ENABLE` or `DISABLE`. Be aware that it can take time
 #' for a validation status change to be completed.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverDNSSECConfig = list(
-#'     Id = "string",
-#'     OwnerId = "string",
-#'     ResourceId = "string",
-#'     ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_resolver_dnssec_config(
-#'   ResourceId = "string",
-#'   Validation = "ENABLE"|"DISABLE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2542,42 +2583,10 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' @description
 #' Updates the name of an inbound or an outbound Resolver endpoint.
 #'
-#' @usage
-#' route53resolver_update_resolver_endpoint(ResolverEndpointId, Name)
+#' See [https://paws-r.github.io/docs/route53resolver/update_resolver_endpoint.html](https://paws-r.github.io/docs/route53resolver/update_resolver_endpoint.html) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to update.
 #' @param Name The name of the Resolver endpoint that you want to update.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverEndpoint = list(
-#'     Id = "string",
-#'     CreatorRequestId = "string",
-#'     Arn = "string",
-#'     Name = "string",
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Direction = "INBOUND"|"OUTBOUND",
-#'     IpAddressCount = 123,
-#'     HostVPCId = "string",
-#'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-#'     StatusMessage = "string",
-#'     CreationTime = "string",
-#'     ModificationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_resolver_endpoint(
-#'   ResolverEndpointId = "string",
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2602,60 +2611,12 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 #' Updates settings for a specified Resolver rule
 #'
 #' @description
-#' Updates settings for a specified Resolver rule. `ResolverRuleId` is
-#' required, and all other parameters are optional. If you don't specify a
-#' parameter, it retains its current value.
+#' Updates settings for a specified Resolver rule. `ResolverRuleId` is required, and all other parameters are optional. If you don't specify a parameter, it retains its current value.
 #'
-#' @usage
-#' route53resolver_update_resolver_rule(ResolverRuleId, Config)
+#' See [https://paws-r.github.io/docs/route53resolver/update_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/update_resolver_rule.html) for full documentation.
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to update.
 #' @param Config &#91;required&#93; The new settings for the Resolver rule.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResolverRule = list(
-#'     Id = "string",
-#'     CreatorRequestId = "string",
-#'     Arn = "string",
-#'     DomainName = "string",
-#'     Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
-#'     StatusMessage = "string",
-#'     RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-#'     Name = "string",
-#'     TargetIps = list(
-#'       list(
-#'         Ip = "string",
-#'         Port = 123
-#'       )
-#'     ),
-#'     ResolverEndpointId = "string",
-#'     OwnerId = "string",
-#'     ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-#'     CreationTime = "string",
-#'     ModificationTime = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_resolver_rule(
-#'   ResolverRuleId = "string",
-#'   Config = list(
-#'     Name = "string",
-#'     TargetIps = list(
-#'       list(
-#'         Ip = "string",
-#'         Port = 123
-#'       )
-#'     ),
-#'     ResolverEndpointId = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

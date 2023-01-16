@@ -4,8 +4,12 @@
 \alias{rds_copy_option_group}
 \title{Copies the specified option group}
 \usage{
-rds_copy_option_group(SourceOptionGroupIdentifier,
-  TargetOptionGroupIdentifier, TargetOptionGroupDescription, Tags)
+rds_copy_option_group(
+  SourceOptionGroupIdentifier,
+  TargetOptionGroupIdentifier,
+  TargetOptionGroupDescription,
+  Tags = NULL
+)
 }
 \arguments{
 \item{SourceOptionGroupIdentifier}{[required] The identifier for the source option group.
@@ -31,71 +35,9 @@ Example: \code{my-option-group}}
 
 \item{Tags}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OptionGroup = list(
-    OptionGroupName = "string",
-    OptionGroupDescription = "string",
-    EngineName = "string",
-    MajorEngineVersion = "string",
-    Options = list(
-      list(
-        OptionName = "string",
-        OptionDescription = "string",
-        Persistent = TRUE|FALSE,
-        Permanent = TRUE|FALSE,
-        Port = 123,
-        OptionVersion = "string",
-        OptionSettings = list(
-          list(
-            Name = "string",
-            Value = "string",
-            DefaultValue = "string",
-            Description = "string",
-            ApplyType = "string",
-            DataType = "string",
-            AllowedValues = "string",
-            IsModifiable = TRUE|FALSE,
-            IsCollection = TRUE|FALSE
-          )
-        ),
-        DBSecurityGroupMemberships = list(
-          list(
-            DBSecurityGroupName = "string",
-            Status = "string"
-          )
-        ),
-        VpcSecurityGroupMemberships = list(
-          list(
-            VpcSecurityGroupId = "string",
-            Status = "string"
-          )
-        )
-      )
-    ),
-    AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
-    VpcId = "string",
-    OptionGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Copies the specified option group.
-}
-\section{Request syntax}{
-\preformatted{svc$copy_option_group(
-  SourceOptionGroupIdentifier = "string",
-  TargetOptionGroupIdentifier = "string",
-  TargetOptionGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/copy_option_group.html} for full documentation.
+}
 \keyword{internal}

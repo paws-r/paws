@@ -7,7 +7,19 @@
 cloudsearch(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -27,10 +39,14 @@ named Action.
 The endpoint for configuration service requests is region-specific:
 cloudsearch.\emph{region}.amazonaws.com. For example,
 cloudsearch.us-east-1.amazonaws.com. For a current list of supported
-regions and endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region}{Regions and Endpoints}.
+regions and endpoints, see <a
+href="https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region"
+target="_blank">Regions and Endpoints</a>.
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudsearch(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudsearch(
   config = list(
     credentials = list(
       creds = list(
@@ -38,44 +54,48 @@ regions and endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/r
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=cloudsearch_build_suggesters]{build_suggesters} \tab Indexes the search suggestions\cr
-\link[=cloudsearch_create_domain]{create_domain} \tab Creates a new search domain\cr
-\link[=cloudsearch_define_analysis_scheme]{define_analysis_scheme} \tab Configures an analysis scheme that can be applied to a text or text-array field to define language-specific text processing options\cr
-\link[=cloudsearch_define_expression]{define_expression} \tab Configures an Expression for the search domain\cr
-\link[=cloudsearch_define_index_field]{define_index_field} \tab Configures an IndexField for the search domain\cr
-\link[=cloudsearch_define_suggester]{define_suggester} \tab Configures a suggester for a domain\cr
-\link[=cloudsearch_delete_analysis_scheme]{delete_analysis_scheme} \tab Deletes an analysis scheme\cr
-\link[=cloudsearch_delete_domain]{delete_domain} \tab Permanently deletes a search domain and all of its data\cr
-\link[=cloudsearch_delete_expression]{delete_expression} \tab Removes an Expression from the search domain\cr
-\link[=cloudsearch_delete_index_field]{delete_index_field} \tab Removes an IndexField from the search domain\cr
-\link[=cloudsearch_delete_suggester]{delete_suggester} \tab Deletes a suggester\cr
-\link[=cloudsearch_describe_analysis_schemes]{describe_analysis_schemes} \tab Gets the analysis schemes configured for a domain\cr
-\link[=cloudsearch_describe_availability_options]{describe_availability_options} \tab Gets the availability options configured for a domain\cr
-\link[=cloudsearch_describe_domain_endpoint_options]{describe_domain_endpoint_options} \tab Returns the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS\cr
-\link[=cloudsearch_describe_domains]{describe_domains} \tab Gets information about the search domains owned by this account\cr
-\link[=cloudsearch_describe_expressions]{describe_expressions} \tab Gets the expressions configured for the search domain\cr
-\link[=cloudsearch_describe_index_fields]{describe_index_fields} \tab Gets information about the index fields configured for the search domain\cr
-\link[=cloudsearch_describe_scaling_parameters]{describe_scaling_parameters} \tab Gets the scaling parameters configured for a domain\cr
-\link[=cloudsearch_describe_service_access_policies]{describe_service_access_policies} \tab Gets information about the access policies that control access to the domain's document and search endpoints\cr
-\link[=cloudsearch_describe_suggesters]{describe_suggesters} \tab Gets the suggesters configured for a domain\cr
-\link[=cloudsearch_index_documents]{index_documents} \tab Tells the search domain to start indexing its documents using the latest indexing options\cr
-\link[=cloudsearch_list_domain_names]{list_domain_names} \tab Lists all search domains owned by an account\cr
-\link[=cloudsearch_update_availability_options]{update_availability_options} \tab Configures the availability options for a domain\cr
-\link[=cloudsearch_update_domain_endpoint_options]{update_domain_endpoint_options} \tab Updates the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS\cr
-\link[=cloudsearch_update_scaling_parameters]{update_scaling_parameters} \tab Configures scaling parameters for a domain\cr
-\link[=cloudsearch_update_service_access_policies]{update_service_access_policies} \tab Configures the access rules that control access to the domain's document and search endpoints
+\link[paws.analytics:cloudsearch_build_suggesters]{build_suggesters} \tab Indexes the search suggestions\cr
+\link[paws.analytics:cloudsearch_create_domain]{create_domain} \tab Creates a new search domain\cr
+\link[paws.analytics:cloudsearch_define_analysis_scheme]{define_analysis_scheme} \tab Configures an analysis scheme that can be applied to a text or text-array field to define language-specific text processing options\cr
+\link[paws.analytics:cloudsearch_define_expression]{define_expression} \tab Configures an Expression for the search domain\cr
+\link[paws.analytics:cloudsearch_define_index_field]{define_index_field} \tab Configures an IndexField for the search domain\cr
+\link[paws.analytics:cloudsearch_define_suggester]{define_suggester} \tab Configures a suggester for a domain\cr
+\link[paws.analytics:cloudsearch_delete_analysis_scheme]{delete_analysis_scheme} \tab Deletes an analysis scheme\cr
+\link[paws.analytics:cloudsearch_delete_domain]{delete_domain} \tab Permanently deletes a search domain and all of its data\cr
+\link[paws.analytics:cloudsearch_delete_expression]{delete_expression} \tab Removes an Expression from the search domain\cr
+\link[paws.analytics:cloudsearch_delete_index_field]{delete_index_field} \tab Removes an IndexField from the search domain\cr
+\link[paws.analytics:cloudsearch_delete_suggester]{delete_suggester} \tab Deletes a suggester\cr
+\link[paws.analytics:cloudsearch_describe_analysis_schemes]{describe_analysis_schemes} \tab Gets the analysis schemes configured for a domain\cr
+\link[paws.analytics:cloudsearch_describe_availability_options]{describe_availability_options} \tab Gets the availability options configured for a domain\cr
+\link[paws.analytics:cloudsearch_describe_domain_endpoint_options]{describe_domain_endpoint_options} \tab Returns the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS\cr
+\link[paws.analytics:cloudsearch_describe_domains]{describe_domains} \tab Gets information about the search domains owned by this account\cr
+\link[paws.analytics:cloudsearch_describe_expressions]{describe_expressions} \tab Gets the expressions configured for the search domain\cr
+\link[paws.analytics:cloudsearch_describe_index_fields]{describe_index_fields} \tab Gets information about the index fields configured for the search domain\cr
+\link[paws.analytics:cloudsearch_describe_scaling_parameters]{describe_scaling_parameters} \tab Gets the scaling parameters configured for a domain\cr
+\link[paws.analytics:cloudsearch_describe_service_access_policies]{describe_service_access_policies} \tab Gets information about the access policies that control access to the domain's document and search endpoints\cr
+\link[paws.analytics:cloudsearch_describe_suggesters]{describe_suggesters} \tab Gets the suggesters configured for a domain\cr
+\link[paws.analytics:cloudsearch_index_documents]{index_documents} \tab Tells the search domain to start indexing its documents using the latest indexing options\cr
+\link[paws.analytics:cloudsearch_list_domain_names]{list_domain_names} \tab Lists all search domains owned by an account\cr
+\link[paws.analytics:cloudsearch_update_availability_options]{update_availability_options} \tab Configures the availability options for a domain\cr
+\link[paws.analytics:cloudsearch_update_domain_endpoint_options]{update_domain_endpoint_options} \tab Updates the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS\cr
+\link[paws.analytics:cloudsearch_update_scaling_parameters]{update_scaling_parameters} \tab Configures scaling parameters for a domain\cr
+\link[paws.analytics:cloudsearch_update_service_access_policies]{update_service_access_policies} \tab Configures the access rules that control access to the domain's document and search endpoints
 }
 }
 

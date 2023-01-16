@@ -10,6 +10,18 @@ NULL
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -21,10 +33,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -44,6 +60,7 @@ NULL
 #'  \link[=pinpoint_create_email_template]{create_email_template} \tab Creates a message template for messages that are sent through the email channel\cr
 #'  \link[=pinpoint_create_export_job]{create_export_job} \tab Creates an export job for an application\cr
 #'  \link[=pinpoint_create_import_job]{create_import_job} \tab Creates an import job for an application\cr
+#'  \link[=pinpoint_create_in_app_template]{create_in_app_template} \tab Creates a new message template for messages using the in-app message channel\cr
 #'  \link[=pinpoint_create_journey]{create_journey} \tab Creates a journey for an application\cr
 #'  \link[=pinpoint_create_push_template]{create_push_template} \tab Creates a message template for messages that are sent through a push notification channel\cr
 #'  \link[=pinpoint_create_recommender_configuration]{create_recommender_configuration} \tab Creates an Amazon Pinpoint configuration for a recommender model\cr
@@ -63,6 +80,7 @@ NULL
 #'  \link[=pinpoint_delete_endpoint]{delete_endpoint} \tab Deletes an endpoint from an application\cr
 #'  \link[=pinpoint_delete_event_stream]{delete_event_stream} \tab Deletes the event stream for an application\cr
 #'  \link[=pinpoint_delete_gcm_channel]{delete_gcm_channel} \tab Disables the GCM channel for an application and deletes any existing settings for the channel\cr
+#'  \link[=pinpoint_delete_in_app_template]{delete_in_app_template} \tab Deletes a message template for messages sent using the in-app message channel\cr
 #'  \link[=pinpoint_delete_journey]{delete_journey} \tab Deletes a journey from an application\cr
 #'  \link[=pinpoint_delete_push_template]{delete_push_template} \tab Deletes a message template for messages that were sent through a push notification channel\cr
 #'  \link[=pinpoint_delete_recommender_configuration]{delete_recommender_configuration} \tab Deletes an Amazon Pinpoint configuration for a recommender model\cr
@@ -98,6 +116,8 @@ NULL
 #'  \link[=pinpoint_get_gcm_channel]{get_gcm_channel} \tab Retrieves information about the status and settings of the GCM channel for an application\cr
 #'  \link[=pinpoint_get_import_job]{get_import_job} \tab Retrieves information about the status and settings of a specific import job for an application\cr
 #'  \link[=pinpoint_get_import_jobs]{get_import_jobs} \tab Retrieves information about the status and settings of all the import jobs for an application\cr
+#'  \link[=pinpoint_get_in_app_messages]{get_in_app_messages} \tab Retrieves the in-app messages targeted for the provided endpoint ID\cr
+#'  \link[=pinpoint_get_in_app_template]{get_in_app_template} \tab Retrieves the content and settings of a message template for messages sent through the in-app channel\cr
 #'  \link[=pinpoint_get_journey]{get_journey} \tab Retrieves information about the status, configuration, and other settings for a journey\cr
 #'  \link[=pinpoint_get_journey_date_range_kpi]{get_journey_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey\cr
 #'  \link[=pinpoint_get_journey_execution_activity_metrics]{get_journey_execution_activity_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity\cr
@@ -125,6 +145,7 @@ NULL
 #'  \link[=pinpoint_put_event_stream]{put_event_stream} \tab Creates a new event stream for an application or updates the settings of an existing event stream for an application\cr
 #'  \link[=pinpoint_remove_attributes]{remove_attributes} \tab Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application\cr
 #'  \link[=pinpoint_send_messages]{send_messages} \tab Creates and sends a direct message\cr
+#'  \link[=pinpoint_send_otp_message]{send_otp_message} \tab Send an OTP message\cr
 #'  \link[=pinpoint_send_users_messages]{send_users_messages} \tab Creates and sends a message to a list of users\cr
 #'  \link[=pinpoint_tag_resource]{tag_resource} \tab Adds one or more tags (keys and values) to an application, campaign, message template, or segment\cr
 #'  \link[=pinpoint_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an application, campaign, message template, or segment\cr
@@ -141,6 +162,7 @@ NULL
 #'  \link[=pinpoint_update_endpoint]{update_endpoint} \tab Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an application\cr
 #'  \link[=pinpoint_update_endpoints_batch]{update_endpoints_batch} \tab Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application\cr
 #'  \link[=pinpoint_update_gcm_channel]{update_gcm_channel} \tab Enables the GCM channel for an application or updates the status and settings of the GCM channel for an application\cr
+#'  \link[=pinpoint_update_in_app_template]{update_in_app_template} \tab Updates an existing message template for messages sent through the in-app message channel\cr
 #'  \link[=pinpoint_update_journey]{update_journey} \tab Updates the configuration and other settings for a journey\cr
 #'  \link[=pinpoint_update_journey_state]{update_journey_state} \tab Cancels (stops) an active journey\cr
 #'  \link[=pinpoint_update_push_template]{update_push_template} \tab Updates an existing message template for messages that are sent through a push notification channel\cr
@@ -150,7 +172,8 @@ NULL
 #'  \link[=pinpoint_update_sms_template]{update_sms_template} \tab Updates an existing message template for messages that are sent through the SMS channel\cr
 #'  \link[=pinpoint_update_template_active_version]{update_template_active_version} \tab Changes the status of a specific version of a message template to active\cr
 #'  \link[=pinpoint_update_voice_channel]{update_voice_channel} \tab Enables the voice channel for an application or updates the status and settings of the voice channel for an application\cr
-#'  \link[=pinpoint_update_voice_template]{update_voice_template} \tab Updates an existing message template for messages that are sent through the voice channel
+#'  \link[=pinpoint_update_voice_template]{update_voice_template} \tab Updates an existing message template for messages that are sent through the voice channel\cr
+#'  \link[=pinpoint_verify_otp_message]{verify_otp_message} \tab Verify an OTP
 #' }
 #'
 #' @return

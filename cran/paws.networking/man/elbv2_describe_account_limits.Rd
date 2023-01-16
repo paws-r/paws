@@ -3,9 +3,9 @@
 \name{elbv2_describe_account_limits}
 \alias{elbv2_describe_account_limits}
 \title{Describes the current Elastic Load Balancing resource limits for your
-AWS account}
+Amazon Web Services account}
 \usage{
-elbv2_describe_account_limits(Marker, PageSize)
+elbv2_describe_account_limits(Marker = NULL, PageSize = NULL)
 }
 \arguments{
 \item{Marker}{The marker for the next set of results. (You received this marker from a
@@ -13,35 +13,9 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Limits = list(
-    list(
-      Name = "string",
-      Max = "string"
-    )
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-Describes the current Elastic Load Balancing resource limits for your
-AWS account.
+Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account.
 
-For more information, see the following:
-\itemize{
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html}{Quotas for your Application Load Balancers}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html}{Quotas for your Network Load Balancers}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/quotas-limits.html}{Quotas for your Gateway Load Balancers}
+See \url{https://paws-r.github.io/docs/elbv2/describe_account_limits.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$describe_account_limits(
-  Marker = "string",
-  PageSize = 123
-)
-}
-}
-
 \keyword{internal}

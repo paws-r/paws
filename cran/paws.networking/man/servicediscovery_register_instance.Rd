@@ -5,8 +5,12 @@
 \title{Creates or updates one or more records and, optionally, creates a health
 check based on the settings in a specified service}
 \usage{
-servicediscovery_register_instance(ServiceId, InstanceId,
-  CreatorRequestId, Attributes)
+servicediscovery_register_instance(
+  ServiceId,
+  InstanceId,
+  CreatorRequestId = NULL,
+  Attributes
+)
 }
 \arguments{
 \item{ServiceId}{[required] The ID of the service that you want to use for settings for the
@@ -15,17 +19,17 @@ instance.}
 \item{InstanceId}{[required] An identifier that you want to associate with the instance. Note the
 following:
 \itemize{
-\item If the service that is specified by \code{ServiceId} includes settings
-for an \code{SRV} record, the value of \code{InstanceId} is automatically
-included as part of the value for the \code{SRV} record. For more
-information, see \href{https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type}{DnsRecord > Type}.
+\item If the service that's specified by \code{ServiceId} includes settings for
+an \code{SRV} record, the value of \code{InstanceId} is automatically included
+as part of the value for the \code{SRV} record. For more information, see
+\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type}{DnsRecord \> Type}.
 \item You can use this value to update an existing instance.
-\item To register a new instance, you must specify a value that is unique
+\item To register a new instance, you must specify a value that's unique
 among instances that you register by using the same service.
-\item If you specify an existing \code{InstanceId} and \code{ServiceId}, AWS Cloud
-Map updates the existing DNS records, if any. If there's also an
-existing health check, AWS Cloud Map deletes the old health check
-and creates a new one.
+\item If you specify an existing \code{InstanceId} and \code{ServiceId}, Cloud Map
+updates the existing DNS records, if any. If there's also an
+existing health check, Cloud Map deletes the old health check and
+creates a new one.
 
 The health check isn't deleted immediately, so it will still appear
 for a while if you submit a \code{ListHealthChecks} request, for example.
@@ -37,8 +41,8 @@ retried without the risk of executing the operation twice. You must use
 a unique \code{CreatorRequestId} string every time you submit a
 \code{\link[=servicediscovery_register_instance]{register_instance}} request if
 you're registering additional instances for the same namespace and
-service. \code{CreatorRequestId} can be any unique string, for example, a
-date/time stamp.}
+service. \code{CreatorRequestId} can be any unique string (for example, a
+date/time stamp).}
 
 \item{Attributes}{[required] A string map that contains the following information for the service
 that you specify in \code{ServiceId}:
@@ -52,26 +56,26 @@ Supported attribute keys include the following:
 
 \strong{AWS_ALIAS_DNS_NAME}
 
-If you want AWS Cloud Map to create an Amazon Route 53 alias record that
+If you want Cloud Map to create an Amazon Route 53 alias record that
 routes traffic to an Elastic Load Balancing load balancer, specify the
-DNS name that is associated with the load balancer. For information
-about how to get the DNS name, see "DNSName" in the topic
+DNS name that's associated with the load balancer. For information about
+how to get the DNS name, see "DNSName" in the topic
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html}{AliasTarget}
-in the \emph{Route 53 API Reference}.
+in the \emph{Route 53 API Reference}.
 
 Note the following:
 \itemize{
-\item The configuration for the service that is specified by \code{ServiceId}
+\item The configuration for the service that's specified by \code{ServiceId}
 must include settings for an \code{A} record, an \code{AAAA} record, or both.
-\item In the service that is specified by \code{ServiceId}, the value of
+\item In the service that's specified by \code{ServiceId}, the value of
 \code{RoutingPolicy} must be \code{WEIGHTED}.
-\item If the service that is specified by \code{ServiceId} includes
-\code{HealthCheckConfig} settings, AWS Cloud Map will create the Route 53
-health check, but it won't associate the health check with the alias
-record.
+\item If the service that's specified by \code{ServiceId} includes
+\code{HealthCheckConfig} settings, Cloud Map will create the Route 53
+health check, but it doesn't associate the health check with the
+alias record.
 \item Auto naming currently doesn't support creating alias records that
-route traffic to AWS resources other than Elastic Load Balancing
-load balancers.
+route traffic to Amazon Web Services resources other than Elastic
+Load Balancing load balancers.
 \item If you specify a value for \code{AWS_ALIAS_DNS_NAME}, don't specify
 values for any of the \code{AWS_INSTANCE} attributes.
 }
@@ -95,8 +99,8 @@ a value for \code{AWS_INIT_HEALTH_STATUS}, the initial status is \code{HEALTHY}.
 \strong{AWS_INSTANCE_CNAME}
 
 If the service configuration includes a \code{CNAME} record, the domain name
-that you want Route 53 to return in response to DNS queries, for
-example, \code{example.com}.
+that you want Route 53 to return in response to DNS queries (for
+example, \code{example.com}).
 
 This value is required if the service specified by \code{ServiceId} includes
 settings for an \code{CNAME} record.
@@ -104,8 +108,8 @@ settings for an \code{CNAME} record.
 \strong{AWS_INSTANCE_IPV4}
 
 If the service configuration includes an \code{A} record, the IPv4 address
-that you want Route 53 to return in response to DNS queries, for
-example, \verb{192.0.2.44}.
+that you want Route 53 to return in response to DNS queries (for
+example, \verb{192.0.2.44}).
 
 This value is required if the service specified by \code{ServiceId} includes
 settings for an \code{A} record. If the service includes settings for an
@@ -115,8 +119,8 @@ settings for an \code{A} record. If the service includes settings for an
 \strong{AWS_INSTANCE_IPV6}
 
 If the service configuration includes an \code{AAAA} record, the IPv6 address
-that you want Route 53 to return in response to DNS queries, for
-example, \verb{2001:0db8:85a3:0000:0000:abcd:0001:2345}.
+that you want Route 53 to return in response to DNS queries (for
+example, \verb{2001:0db8:85a3:0000:0000:abcd:0001:2345}).
 
 This value is required if the service specified by \code{ServiceId} includes
 settings for an \code{AAAA} record. If the service includes settings for an
@@ -125,14 +129,14 @@ settings for an \code{AAAA} record. If the service includes settings for an
 
 \strong{AWS_INSTANCE_PORT}
 
-If the service includes an \code{SRV} record, the value that you want
-Route 53 to return for the port.
+If the service includes an \code{SRV} record, the value that you want Route
+53 to return for the port.
 
 If the service includes \code{HealthCheckConfig}, the port on the endpoint
-that you want Route 53 to send requests to.
+that you want Route 53 to send requests to.
 
 This value is required if you specified settings for an \code{SRV} record or
-a Route 53 health check when you created the service.
+a Route 53 health check when you created the service.
 
 \strong{Custom attributes}
 
@@ -142,73 +146,9 @@ length of the attribute value is 1,024 characters. The total size of all
 provided attributes (sum of all keys and values) must not exceed 5,000
 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
-}
 \description{
-Creates or updates one or more records and, optionally, creates a health
-check based on the settings in a specified service. When you submit a
-\code{\link[=servicediscovery_register_instance]{register_instance}} request, the
-following occurs:
-\itemize{
-\item For each DNS record that you define in the service that is specified
-by \code{ServiceId}, a record is created or updated in the hosted zone
-that is associated with the corresponding namespace.
-\item If the service includes \code{HealthCheckConfig}, a health check is
-created based on the settings in the health check configuration.
-\item The health check, if any, is associated with each of the new or
-updated records.
-}
+Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service. When you submit a \code{\link[=servicediscovery_register_instance]{register_instance}} request, the following occurs:
 
-One \code{\link[=servicediscovery_register_instance]{register_instance}} request
-must complete before you can submit another request and specify the same
-service ID and instance ID.
-
-For more information, see
-\code{\link[=servicediscovery_create_service]{create_service}}.
-
-When AWS Cloud Map receives a DNS query for the specified DNS name, it
-returns the applicable value:
-\itemize{
-\item \strong{If the health check is healthy}: returns all the records
-\item \strong{If the health check is unhealthy}: returns the applicable value
-for the last healthy instance
-\item \strong{If you didn't specify a health check configuration}: returns all
-the records
-}
-
-For the current quota on the number of instances that you can register
-using the same namespace and using the same service, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
-in the \emph{AWS Cloud Map Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$register_instance(
-  ServiceId = "string",
-  InstanceId = "string",
-  CreatorRequestId = "string",
-  Attributes = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# Example: Register Instance
-svc$register_instance(
-  Attributes = list(
-    AWS_INSTANCE_IPV4 = "172.2.1.3",
-    AWS_INSTANCE_PORT = "808"
-  ),
-  CreatorRequestId = "7a48a98a-72e6-4849-bfa7-1a458e030d7b",
-  InstanceId = "myservice-53",
-  ServiceId = "srv-p5zdwlg5uvvzjita"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/register_instance.html} for full documentation.
 }
 \keyword{internal}

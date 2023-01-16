@@ -4,10 +4,15 @@
 \alias{dynamodb_restore_table_from_backup}
 \title{Creates a new table from an existing backup}
 \usage{
-dynamodb_restore_table_from_backup(TargetTableName, BackupArn,
-  BillingModeOverride, GlobalSecondaryIndexOverride,
-  LocalSecondaryIndexOverride, ProvisionedThroughputOverride,
-  SSESpecificationOverride)
+dynamodb_restore_table_from_backup(
+  TargetTableName,
+  BackupArn,
+  BillingModeOverride = NULL,
+  GlobalSecondaryIndexOverride = NULL,
+  LocalSecondaryIndexOverride = NULL,
+  ProvisionedThroughputOverride = NULL,
+  SSESpecificationOverride = NULL
+)
 }
 \arguments{
 \item{TargetTableName}{[required] The name of the new table to which the backup must be restored.}
@@ -28,230 +33,9 @@ exclude some or all of the indexes at the time of restore.}
 
 \item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TableDescription = list(
-    AttributeDefinitions = list(
-      list(
-        AttributeName = "string",
-        AttributeType = "S"|"N"|"B"
-      )
-    ),
-    TableName = "string",
-    KeySchema = list(
-      list(
-        AttributeName = "string",
-        KeyType = "HASH"|"RANGE"
-      )
-    ),
-    TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-    CreationDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProvisionedThroughput = list(
-      LastIncreaseDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastDecreaseDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      NumberOfDecreasesToday = 123,
-      ReadCapacityUnits = 123,
-      WriteCapacityUnits = 123
-    ),
-    TableSizeBytes = 123,
-    ItemCount = 123,
-    TableArn = "string",
-    TableId = "string",
-    BillingModeSummary = list(
-      BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-      LastUpdateToPayPerRequestDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    LocalSecondaryIndexes = list(
-      list(
-        IndexName = "string",
-        KeySchema = list(
-          list(
-            AttributeName = "string",
-            KeyType = "HASH"|"RANGE"
-          )
-        ),
-        Projection = list(
-          ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-          NonKeyAttributes = list(
-            "string"
-          )
-        ),
-        IndexSizeBytes = 123,
-        ItemCount = 123,
-        IndexArn = "string"
-      )
-    ),
-    GlobalSecondaryIndexes = list(
-      list(
-        IndexName = "string",
-        KeySchema = list(
-          list(
-            AttributeName = "string",
-            KeyType = "HASH"|"RANGE"
-          )
-        ),
-        Projection = list(
-          ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-          NonKeyAttributes = list(
-            "string"
-          )
-        ),
-        IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-        Backfilling = TRUE|FALSE,
-        ProvisionedThroughput = list(
-          LastIncreaseDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          LastDecreaseDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          NumberOfDecreasesToday = 123,
-          ReadCapacityUnits = 123,
-          WriteCapacityUnits = 123
-        ),
-        IndexSizeBytes = 123,
-        ItemCount = 123,
-        IndexArn = "string"
-      )
-    ),
-    StreamSpecification = list(
-      StreamEnabled = TRUE|FALSE,
-      StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-    ),
-    LatestStreamLabel = "string",
-    LatestStreamArn = "string",
-    GlobalTableVersion = "string",
-    Replicas = list(
-      list(
-        RegionName = "string",
-        ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-        ReplicaStatusDescription = "string",
-        ReplicaStatusPercentProgress = "string",
-        KMSMasterKeyId = "string",
-        ProvisionedThroughputOverride = list(
-          ReadCapacityUnits = 123
-        ),
-        GlobalSecondaryIndexes = list(
-          list(
-            IndexName = "string",
-            ProvisionedThroughputOverride = list(
-              ReadCapacityUnits = 123
-            )
-          )
-        ),
-        ReplicaInaccessibleDateTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    RestoreSummary = list(
-      SourceBackupArn = "string",
-      SourceTableArn = "string",
-      RestoreDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      RestoreInProgress = TRUE|FALSE
-    ),
-    SSEDescription = list(
-      Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-      SSEType = "AES256"|"KMS",
-      KMSMasterKeyArn = "string",
-      InaccessibleEncryptionDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    ArchivalSummary = list(
-      ArchivalDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ArchivalReason = "string",
-      ArchivalBackupArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a new table from an existing backup. Any number of users can
-execute up to 4 concurrent restores (any type of restore) in a given
-account.
+Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
 
-You can call
-\code{\link[=dynamodb_restore_table_from_backup]{restore_table_from_backup}} at a
-maximum rate of 10 times per second.
-
-You must manually set up the following on the restored table:
-\itemize{
-\item Auto scaling policies
-\item IAM policies
-\item Amazon CloudWatch metrics and alarms
-\item Tags
-\item Stream settings
-\item Time to Live (TTL) settings
+See \url{https://paws-r.github.io/docs/dynamodb/restore_table_from_backup.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$restore_table_from_backup(
-  TargetTableName = "string",
-  BackupArn = "string",
-  BillingModeOverride = "PROVISIONED"|"PAY_PER_REQUEST",
-  GlobalSecondaryIndexOverride = list(
-    list(
-      IndexName = "string",
-      KeySchema = list(
-        list(
-          AttributeName = "string",
-          KeyType = "HASH"|"RANGE"
-        )
-      ),
-      Projection = list(
-        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-        NonKeyAttributes = list(
-          "string"
-        )
-      ),
-      ProvisionedThroughput = list(
-        ReadCapacityUnits = 123,
-        WriteCapacityUnits = 123
-      )
-    )
-  ),
-  LocalSecondaryIndexOverride = list(
-    list(
-      IndexName = "string",
-      KeySchema = list(
-        list(
-          AttributeName = "string",
-          KeyType = "HASH"|"RANGE"
-        )
-      ),
-      Projection = list(
-        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-        NonKeyAttributes = list(
-          "string"
-        )
-      )
-    )
-  ),
-  ProvisionedThroughputOverride = list(
-    ReadCapacityUnits = 123,
-    WriteCapacityUnits = 123
-  ),
-  SSESpecificationOverride = list(
-    Enabled = TRUE|FALSE,
-    SSEType = "AES256"|"KMS",
-    KMSMasterKeyId = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

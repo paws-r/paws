@@ -5,12 +5,16 @@
 \title{(Enterprise edition only) Creates a new namespace for you to use with
 Amazon QuickSight}
 \usage{
-quicksight_create_namespace(AwsAccountId, Namespace, IdentityStore,
-  Tags)
+quicksight_create_namespace(
+  AwsAccountId,
+  Namespace,
+  IdentityStore,
+  Tags = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account that you want to create the QuickSight
-namespace in.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to create the
+Amazon QuickSight namespace in.}
 
 \item{Namespace}{[required] The name that you want to use to describe the new namespace.}
 
@@ -20,44 +24,9 @@ supports users with an identity type of \code{QUICKSIGHT}.}
 \item{Tags}{The tags that you want to associate with the namespace that you're
 creating.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  Name = "string",
-  CapacityRegion = "string",
-  CreationStatus = "CREATED"|"CREATING"|"DELETING"|"RETRYABLE_FAILURE"|"NON_RETRYABLE_FAILURE",
-  IdentityStore = "QUICKSIGHT",
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-(Enterprise edition only) Creates a new namespace for you to use with
-Amazon QuickSight.
+(Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight.
 
-A namespace allows you to isolate the QuickSight users and groups that
-are registered for that namespace. Users that access the namespace can
-share assets only with other users or groups in the same namespace. They
-can't see users and groups in other namespaces. You can create a
-namespace after your AWS account is subscribed to QuickSight. The
-namespace must be unique within the AWS account. By default, there is a
-limit of 100 namespaces per AWS account. To increase your limit, create
-a ticket with AWS Support.
+See \url{https://paws-r.github.io/docs/quicksight/create_namespace.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_namespace(
-  AwsAccountId = "string",
-  Namespace = "string",
-  IdentityStore = "QUICKSIGHT",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

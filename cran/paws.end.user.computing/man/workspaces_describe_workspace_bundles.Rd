@@ -4,7 +4,11 @@
 \alias{workspaces_describe_workspace_bundles}
 \title{Retrieves a list that describes the available WorkSpace bundles}
 \usage{
-workspaces_describe_workspace_bundles(BundleIds, Owner, NextToken)
+workspaces_describe_workspace_bundles(
+  BundleIds = NULL,
+  Owner = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{BundleIds}{The identifiers of the bundles. You cannot combine this parameter with
@@ -13,54 +17,16 @@ any other filter.}
 \item{Owner}{The owner of the bundles. You cannot combine this parameter with any
 other filter.
 
-Specify \code{AMAZON} to describe the bundles provided by AWS or null to
-describe the bundles that belong to your account.}
+To describe the bundles provided by Amazon Web Services, specify
+\code{AMAZON}. To describe the bundles that belong to your account, don't
+specify a value.}
 
 \item{NextToken}{The token for the next set of results. (You received this token from a
 previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Bundles = list(
-    list(
-      BundleId = "string",
-      Name = "string",
-      Owner = "string",
-      Description = "string",
-      ImageId = "string",
-      RootStorage = list(
-        Capacity = "string"
-      ),
-      UserStorage = list(
-        Capacity = "string"
-      ),
-      ComputeType = list(
-        Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves a list that describes the available WorkSpace bundles.
 
-You can filter the results using either bundle ID or owner, but not
-both.
+See \url{https://paws-r.github.io/docs/workspaces/describe_workspace_bundles.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_workspace_bundles(
-  BundleIds = list(
-    "string"
-  ),
-  Owner = "string",
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

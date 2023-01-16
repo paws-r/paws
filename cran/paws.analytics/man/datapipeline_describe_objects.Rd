@@ -5,8 +5,12 @@
 \title{Gets the object definitions for a set of objects associated with the
 pipeline}
 \usage{
-datapipeline_describe_objects(pipelineId, objectIds,
-  evaluateExpressions, marker)
+datapipeline_describe_objects(
+  pipelineId,
+  objectIds,
+  evaluateExpressions = NULL,
+  marker = NULL
+)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline that contains the object definitions.}
@@ -23,41 +27,9 @@ this value should be empty. As long as there are more results, continue
 to call \code{\link[=datapipeline_describe_objects]{describe_objects}} with the
 marker value from the previous call to retrieve the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelineObjects = list(
-    list(
-      id = "string",
-      name = "string",
-      fields = list(
-        list(
-          key = "string",
-          stringValue = "string",
-          refValue = "string"
-        )
-      )
-    )
-  ),
-  marker = "string",
-  hasMoreResults = TRUE|FALSE
-)
-}
-}
 \description{
-Gets the object definitions for a set of objects associated with the
-pipeline. Object definitions are composed of a set of fields that define
-the properties of the object.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_objects(
-  pipelineId = "string",
-  objectIds = list(
-    "string"
-  ),
-  evaluateExpressions = TRUE|FALSE,
-  marker = "string"
-)
-}
-}
+Gets the object definitions for a set of objects associated with the pipeline. Object definitions are composed of a set of fields that define the properties of the object.
 
+See \url{https://paws-r.github.io/docs/datapipeline/describe_objects.html} for full documentation.
+}
 \keyword{internal}

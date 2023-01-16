@@ -4,8 +4,11 @@
 \alias{kinesisanalyticsv2_list_application_snapshots}
 \title{Lists information about the current application snapshots}
 \usage{
-kinesisanalyticsv2_list_application_snapshots(ApplicationName, Limit,
-  NextToken)
+kinesisanalyticsv2_list_application_snapshots(
+  ApplicationName,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
@@ -17,32 +20,9 @@ request that indicates that there is more output available. Set it to
 the value of the previous call's \code{NextToken} response to indicate where
 the output should continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SnapshotSummaries = list(
-    list(
-      SnapshotName = "string",
-      SnapshotStatus = "CREATING"|"READY"|"DELETING"|"FAILED",
-      ApplicationVersionId = 123,
-      SnapshotCreationTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists information about the current application snapshots.
-}
-\section{Request syntax}{
-\preformatted{svc$list_application_snapshots(
-  ApplicationName = "string",
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/list_application_snapshots.html} for full documentation.
+}
 \keyword{internal}

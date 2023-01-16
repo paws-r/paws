@@ -8,32 +8,13 @@ NULL
 #' @description
 #' Adds tags to on-premises instances.
 #'
-#' @usage
-#' codedeploy_add_tags_to_on_premises_instances(tags, instanceNames)
+#' See [https://paws-r.github.io/docs/codedeploy/add_tags_to_on_premises_instances.html](https://paws-r.github.io/docs/codedeploy/add_tags_to_on_premises_instances.html) for full documentation.
 #'
 #' @param tags &#91;required&#93; The tag key-value pairs to add to the on-premises instances.
 #' 
 #' Keys and values are both required. Keys cannot be null or empty strings.
 #' Value-only tags are not allowed.
 #' @param instanceNames &#91;required&#93; The names of the on-premises instances to which to add tags.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_tags_to_on_premises_instances(
-#'   tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   instanceNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -58,98 +39,15 @@ codedeploy_add_tags_to_on_premises_instances <- function(tags, instanceNames) {
 #' Gets information about one or more application revisions
 #'
 #' @description
-#' Gets information about one or more application revisions. The maximum
-#' number of application revisions that can be returned is 25.
+#' Gets information about one or more application revisions. The maximum number of application revisions that can be returned is 25.
 #'
-#' @usage
-#' codedeploy_batch_get_application_revisions(applicationName, revisions)
+#' See [https://paws-r.github.io/docs/codedeploy/batch_get_application_revisions.html](https://paws-r.github.io/docs/codedeploy/batch_get_application_revisions.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application about which to get revision
 #' information.
 #' @param revisions &#91;required&#93; An array of `RevisionLocation` objects that specify information to get
 #' about the application revisions, including type and location. The
 #' maximum number of `RevisionLocation` objects you can specify is 25.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   applicationName = "string",
-#'   errorMessage = "string",
-#'   revisions = list(
-#'     list(
-#'       revisionLocation = list(
-#'         revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'         s3Location = list(
-#'           bucket = "string",
-#'           key = "string",
-#'           bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'           version = "string",
-#'           eTag = "string"
-#'         ),
-#'         gitHubLocation = list(
-#'           repository = "string",
-#'           commitId = "string"
-#'         ),
-#'         string = list(
-#'           content = "string",
-#'           sha256 = "string"
-#'         ),
-#'         appSpecContent = list(
-#'           content = "string",
-#'           sha256 = "string"
-#'         )
-#'       ),
-#'       genericRevisionInfo = list(
-#'         description = "string",
-#'         deploymentGroups = list(
-#'           "string"
-#'         ),
-#'         firstUsedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastUsedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         registerTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_application_revisions(
-#'   applicationName = "string",
-#'   revisions = list(
-#'     list(
-#'       revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'       s3Location = list(
-#'         bucket = "string",
-#'         key = "string",
-#'         bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'         version = "string",
-#'         eTag = "string"
-#'       ),
-#'       gitHubLocation = list(
-#'         repository = "string",
-#'         commitId = "string"
-#'       ),
-#'       string = list(
-#'         content = "string",
-#'         sha256 = "string"
-#'       ),
-#'       appSpecContent = list(
-#'         content = "string",
-#'         sha256 = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -174,42 +72,12 @@ codedeploy_batch_get_application_revisions <- function(applicationName, revision
 #' Gets information about one or more applications
 #'
 #' @description
-#' Gets information about one or more applications. The maximum number of
-#' applications that can be returned is 100.
+#' Gets information about one or more applications. The maximum number of applications that can be returned is 100.
 #'
-#' @usage
-#' codedeploy_batch_get_applications(applicationNames)
+#' See [https://paws-r.github.io/docs/codedeploy/batch_get_applications.html](https://paws-r.github.io/docs/codedeploy/batch_get_applications.html) for full documentation.
 #'
 #' @param applicationNames &#91;required&#93; A list of application names separated by spaces. The maximum number of
 #' application names you can specify is 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   applicationsInfo = list(
-#'     list(
-#'       applicationId = "string",
-#'       applicationName = "string",
-#'       createTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       linkedToGitHub = TRUE|FALSE,
-#'       gitHubAccountName = "string",
-#'       computePlatform = "Server"|"Lambda"|"ECS"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_applications(
-#'   applicationNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -236,203 +104,11 @@ codedeploy_batch_get_applications <- function(applicationNames) {
 #' @description
 #' Gets information about one or more deployment groups.
 #'
-#' @usage
-#' codedeploy_batch_get_deployment_groups(applicationName,
-#'   deploymentGroupNames)
+#' See [https://paws-r.github.io/docs/codedeploy/batch_get_deployment_groups.html](https://paws-r.github.io/docs/codedeploy/batch_get_deployment_groups.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the applicable
 #' IAM user or AWS account.
 #' @param deploymentGroupNames &#91;required&#93; The names of the deployment groups.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentGroupsInfo = list(
-#'     list(
-#'       applicationName = "string",
-#'       deploymentGroupId = "string",
-#'       deploymentGroupName = "string",
-#'       deploymentConfigName = "string",
-#'       ec2TagFilters = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string",
-#'           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'         )
-#'       ),
-#'       onPremisesInstanceTagFilters = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string",
-#'           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'         )
-#'       ),
-#'       autoScalingGroups = list(
-#'         list(
-#'           name = "string",
-#'           hook = "string"
-#'         )
-#'       ),
-#'       serviceRoleArn = "string",
-#'       targetRevision = list(
-#'         revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'         s3Location = list(
-#'           bucket = "string",
-#'           key = "string",
-#'           bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'           version = "string",
-#'           eTag = "string"
-#'         ),
-#'         gitHubLocation = list(
-#'           repository = "string",
-#'           commitId = "string"
-#'         ),
-#'         string = list(
-#'           content = "string",
-#'           sha256 = "string"
-#'         ),
-#'         appSpecContent = list(
-#'           content = "string",
-#'           sha256 = "string"
-#'         )
-#'       ),
-#'       triggerConfigurations = list(
-#'         list(
-#'           triggerName = "string",
-#'           triggerTargetArn = "string",
-#'           triggerEvents = list(
-#'             "DeploymentStart"|"DeploymentSuccess"|"DeploymentFailure"|"DeploymentStop"|"DeploymentRollback"|"DeploymentReady"|"InstanceStart"|"InstanceSuccess"|"InstanceFailure"|"InstanceReady"
-#'           )
-#'         )
-#'       ),
-#'       alarmConfiguration = list(
-#'         enabled = TRUE|FALSE,
-#'         ignorePollAlarmFailure = TRUE|FALSE,
-#'         alarms = list(
-#'           list(
-#'             name = "string"
-#'           )
-#'         )
-#'       ),
-#'       autoRollbackConfiguration = list(
-#'         enabled = TRUE|FALSE,
-#'         events = list(
-#'           "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
-#'         )
-#'       ),
-#'       deploymentStyle = list(
-#'         deploymentType = "IN_PLACE"|"BLUE_GREEN",
-#'         deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
-#'       ),
-#'       blueGreenDeploymentConfiguration = list(
-#'         terminateBlueInstancesOnDeploymentSuccess = list(
-#'           action = "TERMINATE"|"KEEP_ALIVE",
-#'           terminationWaitTimeInMinutes = 123
-#'         ),
-#'         deploymentReadyOption = list(
-#'           actionOnTimeout = "CONTINUE_DEPLOYMENT"|"STOP_DEPLOYMENT",
-#'           waitTimeInMinutes = 123
-#'         ),
-#'         greenFleetProvisioningOption = list(
-#'           action = "DISCOVER_EXISTING"|"COPY_AUTO_SCALING_GROUP"
-#'         )
-#'       ),
-#'       loadBalancerInfo = list(
-#'         elbInfoList = list(
-#'           list(
-#'             name = "string"
-#'           )
-#'         ),
-#'         targetGroupInfoList = list(
-#'           list(
-#'             name = "string"
-#'           )
-#'         ),
-#'         targetGroupPairInfoList = list(
-#'           list(
-#'             targetGroups = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             prodTrafficRoute = list(
-#'               listenerArns = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             testTrafficRoute = list(
-#'               listenerArns = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       lastSuccessfulDeployment = list(
-#'         deploymentId = "string",
-#'         status = "Created"|"Queued"|"InProgress"|"Baking"|"Succeeded"|"Failed"|"Stopped"|"Ready",
-#'         endTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         createTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       lastAttemptedDeployment = list(
-#'         deploymentId = "string",
-#'         status = "Created"|"Queued"|"InProgress"|"Baking"|"Succeeded"|"Failed"|"Stopped"|"Ready",
-#'         endTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         createTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       ec2TagSet = list(
-#'         ec2TagSetList = list(
-#'           list(
-#'             list(
-#'               Key = "string",
-#'               Value = "string",
-#'               Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       onPremisesTagSet = list(
-#'         onPremisesTagSetList = list(
-#'           list(
-#'             list(
-#'               Key = "string",
-#'               Value = "string",
-#'               Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       computePlatform = "Server"|"Lambda"|"ECS",
-#'       ecsServices = list(
-#'         list(
-#'           serviceName = "string",
-#'           clusterName = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   errorMessage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_deployment_groups(
-#'   applicationName = "string",
-#'   deploymentGroupNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -457,70 +133,13 @@ codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGr
 #' This method works, but is deprecated
 #'
 #' @description
-#' This method works, but is deprecated. Use
-#' [`batch_get_deployment_targets`][codedeploy_batch_get_deployment_targets]
-#' instead.
-#' 
-#' Returns an array of one or more instances associated with a deployment.
-#' This method works with EC2/On-premises and AWS Lambda compute platforms.
-#' The newer
-#' [`batch_get_deployment_targets`][codedeploy_batch_get_deployment_targets]
-#' works with all compute platforms. The maximum number of instances that
-#' can be returned is 25.
+#' This method works, but is deprecated. Use [`batch_get_deployment_targets`][codedeploy_batch_get_deployment_targets] instead.
 #'
-#' @usage
-#' codedeploy_batch_get_deployment_instances(deploymentId, instanceIds)
+#' See [https://paws-r.github.io/docs/codedeploy/batch_get_deployment_instances.html](https://paws-r.github.io/docs/codedeploy/batch_get_deployment_instances.html) for full documentation.
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment.
 #' @param instanceIds &#91;required&#93; The unique IDs of instances used in the deployment. The maximum number
 #' of instance IDs you can specify is 25.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   instancesSummary = list(
-#'     list(
-#'       deploymentId = "string",
-#'       instanceId = "string",
-#'       status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lifecycleEvents = list(
-#'         list(
-#'           lifecycleEventName = "string",
-#'           diagnostics = list(
-#'             errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-#'             scriptName = "string",
-#'             message = "string",
-#'             logTail = "string"
-#'           ),
-#'           startTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           endTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#'         )
-#'       ),
-#'       instanceType = "Blue"|"Green"
-#'     )
-#'   ),
-#'   errorMessage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_deployment_instances(
-#'   deploymentId = "string",
-#'   instanceIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -545,26 +164,9 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' Returns an array of one or more targets associated with a deployment
 #'
 #' @description
-#' Returns an array of one or more targets associated with a deployment.
-#' This method works with all compute types and should be used instead of
-#' the deprecated
-#' [`batch_get_deployment_instances`][codedeploy_batch_get_deployment_instances].
-#' The maximum number of targets that can be returned is 25.
-#' 
-#' The type of targets returned depends on the deployment's compute
-#' platform or deployment method:
-#' 
-#' -   **EC2/On-premises**: Information about EC2 instance targets.
-#' 
-#' -   **AWS Lambda**: Information about Lambda functions targets.
-#' 
-#' -   **Amazon ECS**: Information about Amazon ECS service targets.
-#' 
-#' -   **CloudFormation**: Information about targets of blue/green
-#'     deployments initiated by a CloudFormation stack update.
+#' Returns an array of one or more targets associated with a deployment. This method works with all compute types and should be used instead of the deprecated [`batch_get_deployment_instances`][codedeploy_batch_get_deployment_instances]. The maximum number of targets that can be returned is 25.
 #'
-#' @usage
-#' codedeploy_batch_get_deployment_targets(deploymentId, targetIds)
+#' See [https://paws-r.github.io/docs/codedeploy/batch_get_deployment_targets.html](https://paws-r.github.io/docs/codedeploy/batch_get_deployment_targets.html) for full documentation.
 #'
 #' @param deploymentId The unique ID of a deployment.
 #' @param targetIds The unique IDs of the deployment targets. The compute platform of the
@@ -587,159 +189,6 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' -   For deployments that are deployed with AWS CloudFormation, the
 #'     target IDs are CloudFormation stack IDs. Their target type is
 #'     `cloudFormationTarget`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentTargets = list(
-#'     list(
-#'       deploymentTargetType = "InstanceTarget"|"LambdaTarget"|"ECSTarget"|"CloudFormationTarget",
-#'       instanceTarget = list(
-#'         deploymentId = "string",
-#'         targetId = "string",
-#'         targetArn = "string",
-#'         status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-#'         lastUpdatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lifecycleEvents = list(
-#'           list(
-#'             lifecycleEventName = "string",
-#'             diagnostics = list(
-#'               errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-#'               scriptName = "string",
-#'               message = "string",
-#'               logTail = "string"
-#'             ),
-#'             startTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             endTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#'           )
-#'         ),
-#'         instanceLabel = "Blue"|"Green"
-#'       ),
-#'       lambdaTarget = list(
-#'         deploymentId = "string",
-#'         targetId = "string",
-#'         targetArn = "string",
-#'         status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-#'         lastUpdatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lifecycleEvents = list(
-#'           list(
-#'             lifecycleEventName = "string",
-#'             diagnostics = list(
-#'               errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-#'               scriptName = "string",
-#'               message = "string",
-#'               logTail = "string"
-#'             ),
-#'             startTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             endTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#'           )
-#'         ),
-#'         lambdaFunctionInfo = list(
-#'           functionName = "string",
-#'           functionAlias = "string",
-#'           currentVersion = "string",
-#'           targetVersion = "string",
-#'           targetVersionWeight = 123.0
-#'         )
-#'       ),
-#'       ecsTarget = list(
-#'         deploymentId = "string",
-#'         targetId = "string",
-#'         targetArn = "string",
-#'         lastUpdatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lifecycleEvents = list(
-#'           list(
-#'             lifecycleEventName = "string",
-#'             diagnostics = list(
-#'               errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-#'               scriptName = "string",
-#'               message = "string",
-#'               logTail = "string"
-#'             ),
-#'             startTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             endTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#'           )
-#'         ),
-#'         status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-#'         taskSetsInfo = list(
-#'           list(
-#'             identifer = "string",
-#'             desiredCount = 123,
-#'             pendingCount = 123,
-#'             runningCount = 123,
-#'             status = "string",
-#'             trafficWeight = 123.0,
-#'             targetGroup = list(
-#'               name = "string"
-#'             ),
-#'             taskSetLabel = "Blue"|"Green"
-#'           )
-#'         )
-#'       ),
-#'       cloudFormationTarget = list(
-#'         deploymentId = "string",
-#'         targetId = "string",
-#'         lastUpdatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lifecycleEvents = list(
-#'           list(
-#'             lifecycleEventName = "string",
-#'             diagnostics = list(
-#'               errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-#'               scriptName = "string",
-#'               message = "string",
-#'               logTail = "string"
-#'             ),
-#'             startTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             endTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#'           )
-#'         ),
-#'         status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-#'         resourceType = "string",
-#'         targetVersionWeight = 123.0
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_deployment_targets(
-#'   deploymentId = "string",
-#'   targetIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -764,198 +213,12 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId = NULL, targetI
 #' Gets information about one or more deployments
 #'
 #' @description
-#' Gets information about one or more deployments. The maximum number of
-#' deployments that can be returned is 25.
+#' Gets information about one or more deployments. The maximum number of deployments that can be returned is 25.
 #'
-#' @usage
-#' codedeploy_batch_get_deployments(deploymentIds)
+#' See [https://paws-r.github.io/docs/codedeploy/batch_get_deployments.html](https://paws-r.github.io/docs/codedeploy/batch_get_deployments.html) for full documentation.
 #'
 #' @param deploymentIds &#91;required&#93; A list of deployment IDs, separated by spaces. The maximum number of
 #' deployment IDs you can specify is 25.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentsInfo = list(
-#'     list(
-#'       applicationName = "string",
-#'       deploymentGroupName = "string",
-#'       deploymentConfigName = "string",
-#'       deploymentId = "string",
-#'       previousRevision = list(
-#'         revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'         s3Location = list(
-#'           bucket = "string",
-#'           key = "string",
-#'           bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'           version = "string",
-#'           eTag = "string"
-#'         ),
-#'         gitHubLocation = list(
-#'           repository = "string",
-#'           commitId = "string"
-#'         ),
-#'         string = list(
-#'           content = "string",
-#'           sha256 = "string"
-#'         ),
-#'         appSpecContent = list(
-#'           content = "string",
-#'           sha256 = "string"
-#'         )
-#'       ),
-#'       revision = list(
-#'         revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'         s3Location = list(
-#'           bucket = "string",
-#'           key = "string",
-#'           bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'           version = "string",
-#'           eTag = "string"
-#'         ),
-#'         gitHubLocation = list(
-#'           repository = "string",
-#'           commitId = "string"
-#'         ),
-#'         string = list(
-#'           content = "string",
-#'           sha256 = "string"
-#'         ),
-#'         appSpecContent = list(
-#'           content = "string",
-#'           sha256 = "string"
-#'         )
-#'       ),
-#'       status = "Created"|"Queued"|"InProgress"|"Baking"|"Succeeded"|"Failed"|"Stopped"|"Ready",
-#'       errorInformation = list(
-#'         code = "AGENT_ISSUE"|"ALARM_ACTIVE"|"APPLICATION_MISSING"|"AUTOSCALING_VALIDATION_ERROR"|"AUTO_SCALING_CONFIGURATION"|"AUTO_SCALING_IAM_ROLE_PERMISSIONS"|"CODEDEPLOY_RESOURCE_CANNOT_BE_FOUND"|"CUSTOMER_APPLICATION_UNHEALTHY"|"DEPLOYMENT_GROUP_MISSING"|"ECS_UPDATE_ERROR"|"ELASTIC_LOAD_BALANCING_INVALID"|"ELB_INVALID_INSTANCE"|"HEALTH_CONSTRAINTS"|"HEALTH_CONSTRAINTS_INVALID"|"HOOK_EXECUTION_FAILURE"|"IAM_ROLE_MISSING"|"IAM_ROLE_PERMISSIONS"|"INTERNAL_ERROR"|"INVALID_ECS_SERVICE"|"INVALID_LAMBDA_CONFIGURATION"|"INVALID_LAMBDA_FUNCTION"|"INVALID_REVISION"|"MANUAL_STOP"|"MISSING_BLUE_GREEN_DEPLOYMENT_CONFIGURATION"|"MISSING_ELB_INFORMATION"|"MISSING_GITHUB_TOKEN"|"NO_EC2_SUBSCRIPTION"|"NO_INSTANCES"|"OVER_MAX_INSTANCES"|"RESOURCE_LIMIT_EXCEEDED"|"REVISION_MISSING"|"THROTTLED"|"TIMEOUT"|"CLOUDFORMATION_STACK_FAILURE",
-#'         message = "string"
-#'       ),
-#'       createTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       startTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       completeTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       deploymentOverview = list(
-#'         Pending = 123,
-#'         InProgress = 123,
-#'         Succeeded = 123,
-#'         Failed = 123,
-#'         Skipped = 123,
-#'         Ready = 123
-#'       ),
-#'       description = "string",
-#'       creator = "user"|"autoscaling"|"codeDeployRollback"|"CodeDeploy"|"CloudFormation"|"CloudFormationRollback",
-#'       ignoreApplicationStopFailures = TRUE|FALSE,
-#'       autoRollbackConfiguration = list(
-#'         enabled = TRUE|FALSE,
-#'         events = list(
-#'           "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
-#'         )
-#'       ),
-#'       updateOutdatedInstancesOnly = TRUE|FALSE,
-#'       rollbackInfo = list(
-#'         rollbackDeploymentId = "string",
-#'         rollbackTriggeringDeploymentId = "string",
-#'         rollbackMessage = "string"
-#'       ),
-#'       deploymentStyle = list(
-#'         deploymentType = "IN_PLACE"|"BLUE_GREEN",
-#'         deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
-#'       ),
-#'       targetInstances = list(
-#'         tagFilters = list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string",
-#'             Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'           )
-#'         ),
-#'         autoScalingGroups = list(
-#'           "string"
-#'         ),
-#'         ec2TagSet = list(
-#'           ec2TagSetList = list(
-#'             list(
-#'               list(
-#'                 Key = "string",
-#'                 Value = "string",
-#'                 Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       instanceTerminationWaitTimeStarted = TRUE|FALSE,
-#'       blueGreenDeploymentConfiguration = list(
-#'         terminateBlueInstancesOnDeploymentSuccess = list(
-#'           action = "TERMINATE"|"KEEP_ALIVE",
-#'           terminationWaitTimeInMinutes = 123
-#'         ),
-#'         deploymentReadyOption = list(
-#'           actionOnTimeout = "CONTINUE_DEPLOYMENT"|"STOP_DEPLOYMENT",
-#'           waitTimeInMinutes = 123
-#'         ),
-#'         greenFleetProvisioningOption = list(
-#'           action = "DISCOVER_EXISTING"|"COPY_AUTO_SCALING_GROUP"
-#'         )
-#'       ),
-#'       loadBalancerInfo = list(
-#'         elbInfoList = list(
-#'           list(
-#'             name = "string"
-#'           )
-#'         ),
-#'         targetGroupInfoList = list(
-#'           list(
-#'             name = "string"
-#'           )
-#'         ),
-#'         targetGroupPairInfoList = list(
-#'           list(
-#'             targetGroups = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             prodTrafficRoute = list(
-#'               listenerArns = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             testTrafficRoute = list(
-#'               listenerArns = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       additionalDeploymentStatusInfo = "string",
-#'       fileExistsBehavior = "DISALLOW"|"OVERWRITE"|"RETAIN",
-#'       deploymentStatusMessages = list(
-#'         "string"
-#'       ),
-#'       computePlatform = "Server"|"Lambda"|"ECS",
-#'       externalId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_deployments(
-#'   deploymentIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -980,50 +243,12 @@ codedeploy_batch_get_deployments <- function(deploymentIds) {
 #' Gets information about one or more on-premises instances
 #'
 #' @description
-#' Gets information about one or more on-premises instances. The maximum
-#' number of on-premises instances that can be returned is 25.
+#' Gets information about one or more on-premises instances. The maximum number of on-premises instances that can be returned is 25.
 #'
-#' @usage
-#' codedeploy_batch_get_on_premises_instances(instanceNames)
+#' See [https://paws-r.github.io/docs/codedeploy/batch_get_on_premises_instances.html](https://paws-r.github.io/docs/codedeploy/batch_get_on_premises_instances.html) for full documentation.
 #'
 #' @param instanceNames &#91;required&#93; The names of the on-premises instances about which to get information.
 #' The maximum number of instance names you can specify is 25.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   instanceInfos = list(
-#'     list(
-#'       instanceName = "string",
-#'       iamSessionArn = "string",
-#'       iamUserArn = "string",
-#'       instanceArn = "string",
-#'       registerTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       deregisterTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_on_premises_instances(
-#'   instanceNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1051,15 +276,9 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
 #' elapse
 #'
 #' @description
-#' For a blue/green deployment, starts the process of rerouting traffic
-#' from instances in the original environment to instances in the
-#' replacement environment without waiting for a specified wait time to
-#' elapse. (Traffic rerouting, which is achieved by registering instances
-#' in the replacement environment with the load balancer, can start as soon
-#' as all instances have a status of Ready.)
+#' For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse. (Traffic rerouting, which is achieved by registering instances in the replacement environment with the load balancer, can start as soon as all instances have a status of Ready.)
 #'
-#' @usage
-#' codedeploy_continue_deployment(deploymentId, deploymentWaitType)
+#' See [https://paws-r.github.io/docs/codedeploy/continue_deployment.html](https://paws-r.github.io/docs/codedeploy/continue_deployment.html) for full documentation.
 #'
 #' @param deploymentId The unique ID of a blue/green deployment for which you want to start
 #' rerouting traffic to the replacement environment.
@@ -1067,17 +286,6 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
 #' that the deployment is ready to start shifting traffic.
 #' `TERMINATION_WAIT` indicates that the traffic is shifted, but the
 #' original target is not terminated.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$continue_deployment(
-#'   deploymentId = "string",
-#'   deploymentWaitType = "READY_WAIT"|"TERMINATION_WAIT"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1104,8 +312,7 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
 #' @description
 #' Creates an application.
 #'
-#' @usage
-#' codedeploy_create_application(applicationName, computePlatform, tags)
+#' See [https://paws-r.github.io/docs/codedeploy/create_application.html](https://paws-r.github.io/docs/codedeploy/create_application.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of the application. This name must be unique with the
 #' applicable IAM user or AWS account.
@@ -1114,28 +321,6 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
 #' @param tags The metadata that you apply to CodeDeploy applications to help you
 #' organize and categorize them. Each tag consists of a key and an optional
 #' value, both of which you define.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   applicationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_application(
-#'   applicationName = "string",
-#'   computePlatform = "Server"|"Lambda"|"ECS",
-#'   tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1162,12 +347,7 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #' @description
 #' Deploys an application revision through the specified deployment group.
 #'
-#' @usage
-#' codedeploy_create_deployment(applicationName, deploymentGroupName,
-#'   revision, deploymentConfigName, description,
-#'   ignoreApplicationStopFailures, targetInstances,
-#'   autoRollbackConfiguration, updateOutdatedInstancesOnly,
-#'   fileExistsBehavior)
+#' See [https://paws-r.github.io/docs/codedeploy/create_deployment.html](https://paws-r.github.io/docs/codedeploy/create_deployment.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
@@ -1229,78 +409,6 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #' -   RETAIN: The version of the file already on the instance is kept and
 #'     used as part of the new deployment.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_deployment(
-#'   applicationName = "string",
-#'   deploymentGroupName = "string",
-#'   revision = list(
-#'     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'     s3Location = list(
-#'       bucket = "string",
-#'       key = "string",
-#'       bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'       version = "string",
-#'       eTag = "string"
-#'     ),
-#'     gitHubLocation = list(
-#'       repository = "string",
-#'       commitId = "string"
-#'     ),
-#'     string = list(
-#'       content = "string",
-#'       sha256 = "string"
-#'     ),
-#'     appSpecContent = list(
-#'       content = "string",
-#'       sha256 = "string"
-#'     )
-#'   ),
-#'   deploymentConfigName = "string",
-#'   description = "string",
-#'   ignoreApplicationStopFailures = TRUE|FALSE,
-#'   targetInstances = list(
-#'     tagFilters = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string",
-#'         Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'       )
-#'     ),
-#'     autoScalingGroups = list(
-#'       "string"
-#'     ),
-#'     ec2TagSet = list(
-#'       ec2TagSetList = list(
-#'         list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string",
-#'             Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   autoRollbackConfiguration = list(
-#'     enabled = TRUE|FALSE,
-#'     events = list(
-#'       "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
-#'     )
-#'   ),
-#'   updateOutdatedInstancesOnly = TRUE|FALSE,
-#'   fileExistsBehavior = "DISALLOW"|"OVERWRITE"|"RETAIN"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_deployment
@@ -1326,9 +434,7 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' @description
 #' Creates a deployment configuration.
 #'
-#' @usage
-#' codedeploy_create_deployment_config(deploymentConfigName,
-#'   minimumHealthyHosts, trafficRoutingConfig, computePlatform)
+#' See [https://paws-r.github.io/docs/codedeploy/create_deployment_config.html](https://paws-r.github.io/docs/codedeploy/create_deployment_config.html) for full documentation.
 #'
 #' @param deploymentConfigName &#91;required&#93; The name of the deployment configuration to create.
 #' @param minimumHealthyHosts The minimum number of healthy instances that should be available at any
@@ -1342,9 +448,9 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' 
 #' -   FLEET_PERCENT: The value parameter represents the minimum number of
 #'     healthy instances as a percentage of the total number of instances
-#'     in the deployment. If you specify FLEET_PERCENT, at the start of
-#'     the deployment, AWS CodeDeploy converts the percentage to the
-#'     equivalent number of instances and rounds up fractional instances.
+#'     in the deployment. If you specify FLEET_PERCENT, at the start of the
+#'     deployment, AWS CodeDeploy converts the percentage to the equivalent
+#'     number of instances and rounds up fractional instances.
 #' 
 #' The value parameter takes an integer.
 #' 
@@ -1353,37 +459,6 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' @param trafficRoutingConfig The configuration that specifies how the deployment traffic is routed.
 #' @param computePlatform The destination platform type for the deployment (`Lambda`, `Server`, or
 #' `ECS`).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentConfigId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_deployment_config(
-#'   deploymentConfigName = "string",
-#'   minimumHealthyHosts = list(
-#'     value = 123,
-#'     type = "HOST_COUNT"|"FLEET_PERCENT"
-#'   ),
-#'   trafficRoutingConfig = list(
-#'     type = "TimeBasedCanary"|"TimeBasedLinear"|"AllAtOnce",
-#'     timeBasedCanary = list(
-#'       canaryPercentage = 123,
-#'       canaryInterval = 123
-#'     ),
-#'     timeBasedLinear = list(
-#'       linearPercentage = 123,
-#'       linearInterval = 123
-#'     )
-#'   ),
-#'   computePlatform = "Server"|"Lambda"|"ECS"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1410,13 +485,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' @description
 #' Creates a deployment group to which application revisions are deployed.
 #'
-#' @usage
-#' codedeploy_create_deployment_group(applicationName, deploymentGroupName,
-#'   deploymentConfigName, ec2TagFilters, onPremisesInstanceTagFilters,
-#'   autoScalingGroups, serviceRoleArn, triggerConfigurations,
-#'   alarmConfiguration, autoRollbackConfiguration, deploymentStyle,
-#'   blueGreenDeploymentConfiguration, loadBalancerInfo, ec2TagSet,
-#'   ecsServices, onPremisesTagSet, tags)
+#' See [https://paws-r.github.io/docs/codedeploy/create_deployment_group.html](https://paws-r.github.io/docs/codedeploy/create_deployment_group.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
@@ -1451,6 +520,16 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' group is created.
 #' @param autoRollbackConfiguration Configuration information for an automatic rollback that is added when a
 #' deployment group is created.
+#' @param outdatedInstancesStrategy Indicates what happens when new EC2 instances are launched
+#' mid-deployment and do not receive the deployed application revision.
+#' 
+#' If this option is set to `UPDATE` or is unspecified, CodeDeploy
+#' initiates one or more 'auto-update outdated instances' deployments to
+#' apply the deployed application revision to the new EC2 instances.
+#' 
+#' If this option is set to `IGNORE`, CodeDeploy does not initiate a
+#' deployment to update the new EC2 instances. This may result in instances
+#' having different revisions.
 #' @param deploymentStyle Information about the type of deployment, in-place or blue/green, that
 #' you want to run and whether to route deployment traffic behind a load
 #' balancer.
@@ -1471,158 +550,17 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' organize and categorize them. Each tag consists of a key and an optional
 #' value, both of which you define.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentGroupId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_deployment_group(
-#'   applicationName = "string",
-#'   deploymentGroupName = "string",
-#'   deploymentConfigName = "string",
-#'   ec2TagFilters = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'     )
-#'   ),
-#'   onPremisesInstanceTagFilters = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'     )
-#'   ),
-#'   autoScalingGroups = list(
-#'     "string"
-#'   ),
-#'   serviceRoleArn = "string",
-#'   triggerConfigurations = list(
-#'     list(
-#'       triggerName = "string",
-#'       triggerTargetArn = "string",
-#'       triggerEvents = list(
-#'         "DeploymentStart"|"DeploymentSuccess"|"DeploymentFailure"|"DeploymentStop"|"DeploymentRollback"|"DeploymentReady"|"InstanceStart"|"InstanceSuccess"|"InstanceFailure"|"InstanceReady"
-#'       )
-#'     )
-#'   ),
-#'   alarmConfiguration = list(
-#'     enabled = TRUE|FALSE,
-#'     ignorePollAlarmFailure = TRUE|FALSE,
-#'     alarms = list(
-#'       list(
-#'         name = "string"
-#'       )
-#'     )
-#'   ),
-#'   autoRollbackConfiguration = list(
-#'     enabled = TRUE|FALSE,
-#'     events = list(
-#'       "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
-#'     )
-#'   ),
-#'   deploymentStyle = list(
-#'     deploymentType = "IN_PLACE"|"BLUE_GREEN",
-#'     deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
-#'   ),
-#'   blueGreenDeploymentConfiguration = list(
-#'     terminateBlueInstancesOnDeploymentSuccess = list(
-#'       action = "TERMINATE"|"KEEP_ALIVE",
-#'       terminationWaitTimeInMinutes = 123
-#'     ),
-#'     deploymentReadyOption = list(
-#'       actionOnTimeout = "CONTINUE_DEPLOYMENT"|"STOP_DEPLOYMENT",
-#'       waitTimeInMinutes = 123
-#'     ),
-#'     greenFleetProvisioningOption = list(
-#'       action = "DISCOVER_EXISTING"|"COPY_AUTO_SCALING_GROUP"
-#'     )
-#'   ),
-#'   loadBalancerInfo = list(
-#'     elbInfoList = list(
-#'       list(
-#'         name = "string"
-#'       )
-#'     ),
-#'     targetGroupInfoList = list(
-#'       list(
-#'         name = "string"
-#'       )
-#'     ),
-#'     targetGroupPairInfoList = list(
-#'       list(
-#'         targetGroups = list(
-#'           list(
-#'             name = "string"
-#'           )
-#'         ),
-#'         prodTrafficRoute = list(
-#'           listenerArns = list(
-#'             "string"
-#'           )
-#'         ),
-#'         testTrafficRoute = list(
-#'           listenerArns = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ec2TagSet = list(
-#'     ec2TagSetList = list(
-#'       list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string",
-#'           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ecsServices = list(
-#'     list(
-#'       serviceName = "string",
-#'       clusterName = "string"
-#'     )
-#'   ),
-#'   onPremisesTagSet = list(
-#'     onPremisesTagSetList = list(
-#'       list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string",
-#'           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_deployment_group
-codedeploy_create_deployment_group <- function(applicationName, deploymentGroupName, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL, tags = NULL) {
+codedeploy_create_deployment_group <- function(applicationName, deploymentGroupName, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, outdatedInstancesStrategy = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDeploymentGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, tags = tags)
+  input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, tags = tags)
   output <- .codedeploy$create_deployment_group_output()
   config <- get_config()
   svc <- .codedeploy$service(config)
@@ -1637,21 +575,10 @@ codedeploy_create_deployment_group <- function(applicationName, deploymentGroupN
 #' @description
 #' Deletes an application.
 #'
-#' @usage
-#' codedeploy_delete_application(applicationName)
+#' See [https://paws-r.github.io/docs/codedeploy/delete_application.html](https://paws-r.github.io/docs/codedeploy/delete_application.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_application(
-#'   applicationName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1677,25 +604,11 @@ codedeploy_delete_application <- function(applicationName) {
 #'
 #' @description
 #' Deletes a deployment configuration.
-#' 
-#' A deployment configuration cannot be deleted if it is currently in use.
-#' Predefined configurations cannot be deleted.
 #'
-#' @usage
-#' codedeploy_delete_deployment_config(deploymentConfigName)
+#' See [https://paws-r.github.io/docs/codedeploy/delete_deployment_config.html](https://paws-r.github.io/docs/codedeploy/delete_deployment_config.html) for full documentation.
 #'
 #' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the IAM user or
 #' AWS account.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_deployment_config(
-#'   deploymentConfigName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1722,33 +635,11 @@ codedeploy_delete_deployment_config <- function(deploymentConfigName) {
 #' @description
 #' Deletes a deployment group.
 #'
-#' @usage
-#' codedeploy_delete_deployment_group(applicationName, deploymentGroupName)
+#' See [https://paws-r.github.io/docs/codedeploy/delete_deployment_group.html](https://paws-r.github.io/docs/codedeploy/delete_deployment_group.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
 #' @param deploymentGroupName &#91;required&#93; The name of a deployment group for the specified application.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   hooksNotCleanedUp = list(
-#'     list(
-#'       name = "string",
-#'       hook = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_deployment_group(
-#'   applicationName = "string",
-#'   deploymentGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1775,25 +666,9 @@ codedeploy_delete_deployment_group <- function(applicationName, deploymentGroupN
 #' @description
 #' Deletes a GitHub account connection.
 #'
-#' @usage
-#' codedeploy_delete_git_hub_account_token(tokenName)
+#' See [https://paws-r.github.io/docs/codedeploy/delete_git_hub_account_token.html](https://paws-r.github.io/docs/codedeploy/delete_git_hub_account_token.html) for full documentation.
 #'
 #' @param tokenName The name of the GitHub account connection to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tokenName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_git_hub_account_token(
-#'   tokenName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1820,21 +695,10 @@ codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
 #' @description
 #' Deletes resources linked to an external ID.
 #'
-#' @usage
-#' codedeploy_delete_resources_by_external_id(externalId)
+#' See [https://paws-r.github.io/docs/codedeploy/delete_resources_by_external_id.html](https://paws-r.github.io/docs/codedeploy/delete_resources_by_external_id.html) for full documentation.
 #'
 #' @param externalId The unique ID of an external resource (for example, a CloudFormation
 #' stack ID) that is linked to one or more CodeDeploy resources.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_resources_by_external_id(
-#'   externalId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1861,20 +725,9 @@ codedeploy_delete_resources_by_external_id <- function(externalId = NULL) {
 #' @description
 #' Deregisters an on-premises instance.
 #'
-#' @usage
-#' codedeploy_deregister_on_premises_instance(instanceName)
+#' See [https://paws-r.github.io/docs/codedeploy/deregister_on_premises_instance.html](https://paws-r.github.io/docs/codedeploy/deregister_on_premises_instance.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the on-premises instance to deregister.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_on_premises_instance(
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1901,35 +754,10 @@ codedeploy_deregister_on_premises_instance <- function(instanceName) {
 #' @description
 #' Gets information about an application.
 #'
-#' @usage
-#' codedeploy_get_application(applicationName)
+#' See [https://paws-r.github.io/docs/codedeploy/get_application.html](https://paws-r.github.io/docs/codedeploy/get_application.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   application = list(
-#'     applicationId = "string",
-#'     applicationName = "string",
-#'     createTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     linkedToGitHub = TRUE|FALSE,
-#'     gitHubAccountName = "string",
-#'     computePlatform = "Server"|"Lambda"|"ECS"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_application(
-#'   applicationName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1956,86 +784,11 @@ codedeploy_get_application <- function(applicationName) {
 #' @description
 #' Gets information about an application revision.
 #'
-#' @usage
-#' codedeploy_get_application_revision(applicationName, revision)
+#' See [https://paws-r.github.io/docs/codedeploy/get_application_revision.html](https://paws-r.github.io/docs/codedeploy/get_application_revision.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of the application that corresponds to the revision.
 #' @param revision &#91;required&#93; Information about the application revision to get, including type and
 #' location.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   applicationName = "string",
-#'   revision = list(
-#'     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'     s3Location = list(
-#'       bucket = "string",
-#'       key = "string",
-#'       bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'       version = "string",
-#'       eTag = "string"
-#'     ),
-#'     gitHubLocation = list(
-#'       repository = "string",
-#'       commitId = "string"
-#'     ),
-#'     string = list(
-#'       content = "string",
-#'       sha256 = "string"
-#'     ),
-#'     appSpecContent = list(
-#'       content = "string",
-#'       sha256 = "string"
-#'     )
-#'   ),
-#'   revisionInfo = list(
-#'     description = "string",
-#'     deploymentGroups = list(
-#'       "string"
-#'     ),
-#'     firstUsedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastUsedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     registerTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_application_revision(
-#'   applicationName = "string",
-#'   revision = list(
-#'     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'     s3Location = list(
-#'       bucket = "string",
-#'       key = "string",
-#'       bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'       version = "string",
-#'       eTag = "string"
-#'     ),
-#'     gitHubLocation = list(
-#'       repository = "string",
-#'       commitId = "string"
-#'     ),
-#'     string = list(
-#'       content = "string",
-#'       sha256 = "string"
-#'     ),
-#'     appSpecContent = list(
-#'       content = "string",
-#'       sha256 = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2061,198 +814,11 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 #'
 #' @description
 #' Gets information about a deployment.
-#' 
-#' The `content` property of the `appSpecContent` object in the returned
-#' revision is always null. Use
-#' [`get_application_revision`][codedeploy_get_application_revision] and
-#' the `sha256` property of the returned `appSpecContent` object to get the
-#' content of the deployment’s AppSpec file.
 #'
-#' @usage
-#' codedeploy_get_deployment(deploymentId)
+#' See [https://paws-r.github.io/docs/codedeploy/get_deployment.html](https://paws-r.github.io/docs/codedeploy/get_deployment.html) for full documentation.
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment associated with the IAM user or AWS
 #' account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentInfo = list(
-#'     applicationName = "string",
-#'     deploymentGroupName = "string",
-#'     deploymentConfigName = "string",
-#'     deploymentId = "string",
-#'     previousRevision = list(
-#'       revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'       s3Location = list(
-#'         bucket = "string",
-#'         key = "string",
-#'         bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'         version = "string",
-#'         eTag = "string"
-#'       ),
-#'       gitHubLocation = list(
-#'         repository = "string",
-#'         commitId = "string"
-#'       ),
-#'       string = list(
-#'         content = "string",
-#'         sha256 = "string"
-#'       ),
-#'       appSpecContent = list(
-#'         content = "string",
-#'         sha256 = "string"
-#'       )
-#'     ),
-#'     revision = list(
-#'       revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'       s3Location = list(
-#'         bucket = "string",
-#'         key = "string",
-#'         bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'         version = "string",
-#'         eTag = "string"
-#'       ),
-#'       gitHubLocation = list(
-#'         repository = "string",
-#'         commitId = "string"
-#'       ),
-#'       string = list(
-#'         content = "string",
-#'         sha256 = "string"
-#'       ),
-#'       appSpecContent = list(
-#'         content = "string",
-#'         sha256 = "string"
-#'       )
-#'     ),
-#'     status = "Created"|"Queued"|"InProgress"|"Baking"|"Succeeded"|"Failed"|"Stopped"|"Ready",
-#'     errorInformation = list(
-#'       code = "AGENT_ISSUE"|"ALARM_ACTIVE"|"APPLICATION_MISSING"|"AUTOSCALING_VALIDATION_ERROR"|"AUTO_SCALING_CONFIGURATION"|"AUTO_SCALING_IAM_ROLE_PERMISSIONS"|"CODEDEPLOY_RESOURCE_CANNOT_BE_FOUND"|"CUSTOMER_APPLICATION_UNHEALTHY"|"DEPLOYMENT_GROUP_MISSING"|"ECS_UPDATE_ERROR"|"ELASTIC_LOAD_BALANCING_INVALID"|"ELB_INVALID_INSTANCE"|"HEALTH_CONSTRAINTS"|"HEALTH_CONSTRAINTS_INVALID"|"HOOK_EXECUTION_FAILURE"|"IAM_ROLE_MISSING"|"IAM_ROLE_PERMISSIONS"|"INTERNAL_ERROR"|"INVALID_ECS_SERVICE"|"INVALID_LAMBDA_CONFIGURATION"|"INVALID_LAMBDA_FUNCTION"|"INVALID_REVISION"|"MANUAL_STOP"|"MISSING_BLUE_GREEN_DEPLOYMENT_CONFIGURATION"|"MISSING_ELB_INFORMATION"|"MISSING_GITHUB_TOKEN"|"NO_EC2_SUBSCRIPTION"|"NO_INSTANCES"|"OVER_MAX_INSTANCES"|"RESOURCE_LIMIT_EXCEEDED"|"REVISION_MISSING"|"THROTTLED"|"TIMEOUT"|"CLOUDFORMATION_STACK_FAILURE",
-#'       message = "string"
-#'     ),
-#'     createTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     startTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     completeTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     deploymentOverview = list(
-#'       Pending = 123,
-#'       InProgress = 123,
-#'       Succeeded = 123,
-#'       Failed = 123,
-#'       Skipped = 123,
-#'       Ready = 123
-#'     ),
-#'     description = "string",
-#'     creator = "user"|"autoscaling"|"codeDeployRollback"|"CodeDeploy"|"CloudFormation"|"CloudFormationRollback",
-#'     ignoreApplicationStopFailures = TRUE|FALSE,
-#'     autoRollbackConfiguration = list(
-#'       enabled = TRUE|FALSE,
-#'       events = list(
-#'         "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
-#'       )
-#'     ),
-#'     updateOutdatedInstancesOnly = TRUE|FALSE,
-#'     rollbackInfo = list(
-#'       rollbackDeploymentId = "string",
-#'       rollbackTriggeringDeploymentId = "string",
-#'       rollbackMessage = "string"
-#'     ),
-#'     deploymentStyle = list(
-#'       deploymentType = "IN_PLACE"|"BLUE_GREEN",
-#'       deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
-#'     ),
-#'     targetInstances = list(
-#'       tagFilters = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string",
-#'           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'         )
-#'       ),
-#'       autoScalingGroups = list(
-#'         "string"
-#'       ),
-#'       ec2TagSet = list(
-#'         ec2TagSetList = list(
-#'           list(
-#'             list(
-#'               Key = "string",
-#'               Value = "string",
-#'               Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     instanceTerminationWaitTimeStarted = TRUE|FALSE,
-#'     blueGreenDeploymentConfiguration = list(
-#'       terminateBlueInstancesOnDeploymentSuccess = list(
-#'         action = "TERMINATE"|"KEEP_ALIVE",
-#'         terminationWaitTimeInMinutes = 123
-#'       ),
-#'       deploymentReadyOption = list(
-#'         actionOnTimeout = "CONTINUE_DEPLOYMENT"|"STOP_DEPLOYMENT",
-#'         waitTimeInMinutes = 123
-#'       ),
-#'       greenFleetProvisioningOption = list(
-#'         action = "DISCOVER_EXISTING"|"COPY_AUTO_SCALING_GROUP"
-#'       )
-#'     ),
-#'     loadBalancerInfo = list(
-#'       elbInfoList = list(
-#'         list(
-#'           name = "string"
-#'         )
-#'       ),
-#'       targetGroupInfoList = list(
-#'         list(
-#'           name = "string"
-#'         )
-#'       ),
-#'       targetGroupPairInfoList = list(
-#'         list(
-#'           targetGroups = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           prodTrafficRoute = list(
-#'             listenerArns = list(
-#'               "string"
-#'             )
-#'           ),
-#'           testTrafficRoute = list(
-#'             listenerArns = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     additionalDeploymentStatusInfo = "string",
-#'     fileExistsBehavior = "DISALLOW"|"OVERWRITE"|"RETAIN",
-#'     deploymentStatusMessages = list(
-#'       "string"
-#'     ),
-#'     computePlatform = "Server"|"Lambda"|"ECS",
-#'     externalId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deployment(
-#'   deploymentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2279,48 +845,10 @@ codedeploy_get_deployment <- function(deploymentId) {
 #' @description
 #' Gets information about a deployment configuration.
 #'
-#' @usage
-#' codedeploy_get_deployment_config(deploymentConfigName)
+#' See [https://paws-r.github.io/docs/codedeploy/get_deployment_config.html](https://paws-r.github.io/docs/codedeploy/get_deployment_config.html) for full documentation.
 #'
 #' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the IAM user or
 #' AWS account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentConfigInfo = list(
-#'     deploymentConfigId = "string",
-#'     deploymentConfigName = "string",
-#'     minimumHealthyHosts = list(
-#'       value = 123,
-#'       type = "HOST_COUNT"|"FLEET_PERCENT"
-#'     ),
-#'     createTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     computePlatform = "Server"|"Lambda"|"ECS",
-#'     trafficRoutingConfig = list(
-#'       type = "TimeBasedCanary"|"TimeBasedLinear"|"AllAtOnce",
-#'       timeBasedCanary = list(
-#'         canaryPercentage = 123,
-#'         canaryInterval = 123
-#'       ),
-#'       timeBasedLinear = list(
-#'         linearPercentage = 123,
-#'         linearInterval = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deployment_config(
-#'   deploymentConfigName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2347,197 +875,11 @@ codedeploy_get_deployment_config <- function(deploymentConfigName) {
 #' @description
 #' Gets information about a deployment group.
 #'
-#' @usage
-#' codedeploy_get_deployment_group(applicationName, deploymentGroupName)
+#' See [https://paws-r.github.io/docs/codedeploy/get_deployment_group.html](https://paws-r.github.io/docs/codedeploy/get_deployment_group.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
 #' @param deploymentGroupName &#91;required&#93; The name of a deployment group for the specified application.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentGroupInfo = list(
-#'     applicationName = "string",
-#'     deploymentGroupId = "string",
-#'     deploymentGroupName = "string",
-#'     deploymentConfigName = "string",
-#'     ec2TagFilters = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string",
-#'         Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'       )
-#'     ),
-#'     onPremisesInstanceTagFilters = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string",
-#'         Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'       )
-#'     ),
-#'     autoScalingGroups = list(
-#'       list(
-#'         name = "string",
-#'         hook = "string"
-#'       )
-#'     ),
-#'     serviceRoleArn = "string",
-#'     targetRevision = list(
-#'       revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'       s3Location = list(
-#'         bucket = "string",
-#'         key = "string",
-#'         bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'         version = "string",
-#'         eTag = "string"
-#'       ),
-#'       gitHubLocation = list(
-#'         repository = "string",
-#'         commitId = "string"
-#'       ),
-#'       string = list(
-#'         content = "string",
-#'         sha256 = "string"
-#'       ),
-#'       appSpecContent = list(
-#'         content = "string",
-#'         sha256 = "string"
-#'       )
-#'     ),
-#'     triggerConfigurations = list(
-#'       list(
-#'         triggerName = "string",
-#'         triggerTargetArn = "string",
-#'         triggerEvents = list(
-#'           "DeploymentStart"|"DeploymentSuccess"|"DeploymentFailure"|"DeploymentStop"|"DeploymentRollback"|"DeploymentReady"|"InstanceStart"|"InstanceSuccess"|"InstanceFailure"|"InstanceReady"
-#'         )
-#'       )
-#'     ),
-#'     alarmConfiguration = list(
-#'       enabled = TRUE|FALSE,
-#'       ignorePollAlarmFailure = TRUE|FALSE,
-#'       alarms = list(
-#'         list(
-#'           name = "string"
-#'         )
-#'       )
-#'     ),
-#'     autoRollbackConfiguration = list(
-#'       enabled = TRUE|FALSE,
-#'       events = list(
-#'         "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
-#'       )
-#'     ),
-#'     deploymentStyle = list(
-#'       deploymentType = "IN_PLACE"|"BLUE_GREEN",
-#'       deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
-#'     ),
-#'     blueGreenDeploymentConfiguration = list(
-#'       terminateBlueInstancesOnDeploymentSuccess = list(
-#'         action = "TERMINATE"|"KEEP_ALIVE",
-#'         terminationWaitTimeInMinutes = 123
-#'       ),
-#'       deploymentReadyOption = list(
-#'         actionOnTimeout = "CONTINUE_DEPLOYMENT"|"STOP_DEPLOYMENT",
-#'         waitTimeInMinutes = 123
-#'       ),
-#'       greenFleetProvisioningOption = list(
-#'         action = "DISCOVER_EXISTING"|"COPY_AUTO_SCALING_GROUP"
-#'       )
-#'     ),
-#'     loadBalancerInfo = list(
-#'       elbInfoList = list(
-#'         list(
-#'           name = "string"
-#'         )
-#'       ),
-#'       targetGroupInfoList = list(
-#'         list(
-#'           name = "string"
-#'         )
-#'       ),
-#'       targetGroupPairInfoList = list(
-#'         list(
-#'           targetGroups = list(
-#'             list(
-#'               name = "string"
-#'             )
-#'           ),
-#'           prodTrafficRoute = list(
-#'             listenerArns = list(
-#'               "string"
-#'             )
-#'           ),
-#'           testTrafficRoute = list(
-#'             listenerArns = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     lastSuccessfulDeployment = list(
-#'       deploymentId = "string",
-#'       status = "Created"|"Queued"|"InProgress"|"Baking"|"Succeeded"|"Failed"|"Stopped"|"Ready",
-#'       endTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     lastAttemptedDeployment = list(
-#'       deploymentId = "string",
-#'       status = "Created"|"Queued"|"InProgress"|"Baking"|"Succeeded"|"Failed"|"Stopped"|"Ready",
-#'       endTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     ec2TagSet = list(
-#'       ec2TagSetList = list(
-#'         list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string",
-#'             Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     onPremisesTagSet = list(
-#'       onPremisesTagSetList = list(
-#'         list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string",
-#'             Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     computePlatform = "Server"|"Lambda"|"ECS",
-#'     ecsServices = list(
-#'       list(
-#'         serviceName = "string",
-#'         clusterName = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deployment_group(
-#'   applicationName = "string",
-#'   deploymentGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2564,53 +906,10 @@ codedeploy_get_deployment_group <- function(applicationName, deploymentGroupName
 #' @description
 #' Gets information about an instance as part of a deployment.
 #'
-#' @usage
-#' codedeploy_get_deployment_instance(deploymentId, instanceId)
+#' See [https://paws-r.github.io/docs/codedeploy/get_deployment_instance.html](https://paws-r.github.io/docs/codedeploy/get_deployment_instance.html) for full documentation.
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment.
 #' @param instanceId &#91;required&#93; The unique ID of an instance in the deployment group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   instanceSummary = list(
-#'     deploymentId = "string",
-#'     instanceId = "string",
-#'     status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-#'     lastUpdatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lifecycleEvents = list(
-#'       list(
-#'         lifecycleEventName = "string",
-#'         diagnostics = list(
-#'           errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-#'           scriptName = "string",
-#'           message = "string",
-#'           logTail = "string"
-#'         ),
-#'         startTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         endTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#'       )
-#'     ),
-#'     instanceType = "Blue"|"Green"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deployment_instance(
-#'   deploymentId = "string",
-#'   instanceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2637,160 +936,10 @@ codedeploy_get_deployment_instance <- function(deploymentId, instanceId) {
 #' @description
 #' Returns information about a deployment target.
 #'
-#' @usage
-#' codedeploy_get_deployment_target(deploymentId, targetId)
+#' See [https://paws-r.github.io/docs/codedeploy/get_deployment_target.html](https://paws-r.github.io/docs/codedeploy/get_deployment_target.html) for full documentation.
 #'
 #' @param deploymentId The unique ID of a deployment.
 #' @param targetId The unique ID of a deployment target.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentTarget = list(
-#'     deploymentTargetType = "InstanceTarget"|"LambdaTarget"|"ECSTarget"|"CloudFormationTarget",
-#'     instanceTarget = list(
-#'       deploymentId = "string",
-#'       targetId = "string",
-#'       targetArn = "string",
-#'       status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lifecycleEvents = list(
-#'         list(
-#'           lifecycleEventName = "string",
-#'           diagnostics = list(
-#'             errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-#'             scriptName = "string",
-#'             message = "string",
-#'             logTail = "string"
-#'           ),
-#'           startTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           endTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#'         )
-#'       ),
-#'       instanceLabel = "Blue"|"Green"
-#'     ),
-#'     lambdaTarget = list(
-#'       deploymentId = "string",
-#'       targetId = "string",
-#'       targetArn = "string",
-#'       status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lifecycleEvents = list(
-#'         list(
-#'           lifecycleEventName = "string",
-#'           diagnostics = list(
-#'             errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-#'             scriptName = "string",
-#'             message = "string",
-#'             logTail = "string"
-#'           ),
-#'           startTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           endTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#'         )
-#'       ),
-#'       lambdaFunctionInfo = list(
-#'         functionName = "string",
-#'         functionAlias = "string",
-#'         currentVersion = "string",
-#'         targetVersion = "string",
-#'         targetVersionWeight = 123.0
-#'       )
-#'     ),
-#'     ecsTarget = list(
-#'       deploymentId = "string",
-#'       targetId = "string",
-#'       targetArn = "string",
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lifecycleEvents = list(
-#'         list(
-#'           lifecycleEventName = "string",
-#'           diagnostics = list(
-#'             errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-#'             scriptName = "string",
-#'             message = "string",
-#'             logTail = "string"
-#'           ),
-#'           startTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           endTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#'         )
-#'       ),
-#'       status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-#'       taskSetsInfo = list(
-#'         list(
-#'           identifer = "string",
-#'           desiredCount = 123,
-#'           pendingCount = 123,
-#'           runningCount = 123,
-#'           status = "string",
-#'           trafficWeight = 123.0,
-#'           targetGroup = list(
-#'             name = "string"
-#'           ),
-#'           taskSetLabel = "Blue"|"Green"
-#'         )
-#'       )
-#'     ),
-#'     cloudFormationTarget = list(
-#'       deploymentId = "string",
-#'       targetId = "string",
-#'       lastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lifecycleEvents = list(
-#'         list(
-#'           lifecycleEventName = "string",
-#'           diagnostics = list(
-#'             errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-#'             scriptName = "string",
-#'             message = "string",
-#'             logTail = "string"
-#'           ),
-#'           startTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           endTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#'         )
-#'       ),
-#'       status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-#'       resourceType = "string",
-#'       targetVersionWeight = 123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deployment_target(
-#'   deploymentId = "string",
-#'   targetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2817,42 +966,9 @@ codedeploy_get_deployment_target <- function(deploymentId = NULL, targetId = NUL
 #' @description
 #' Gets information about an on-premises instance.
 #'
-#' @usage
-#' codedeploy_get_on_premises_instance(instanceName)
+#' See [https://paws-r.github.io/docs/codedeploy/get_on_premises_instance.html](https://paws-r.github.io/docs/codedeploy/get_on_premises_instance.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the on-premises instance about which to get information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   instanceInfo = list(
-#'     instanceName = "string",
-#'     iamSessionArn = "string",
-#'     iamUserArn = "string",
-#'     instanceArn = "string",
-#'     registerTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     deregisterTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_on_premises_instance(
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2879,9 +995,7 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #' @description
 #' Lists information about revisions for an application.
 #'
-#' @usage
-#' codedeploy_list_application_revisions(applicationName, sortBy,
-#'   sortOrder, s3Bucket, s3KeyPrefix, deployed, nextToken)
+#' See [https://paws-r.github.io/docs/codedeploy/list_application_revisions.html](https://paws-r.github.io/docs/codedeploy/list_application_revisions.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
@@ -2926,51 +1040,6 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #' [`list_application_revisions`][codedeploy_list_application_revisions]
 #' call. It can be used to return the next set of applications in the list.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   revisions = list(
-#'     list(
-#'       revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'       s3Location = list(
-#'         bucket = "string",
-#'         key = "string",
-#'         bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'         version = "string",
-#'         eTag = "string"
-#'       ),
-#'       gitHubLocation = list(
-#'         repository = "string",
-#'         commitId = "string"
-#'       ),
-#'       string = list(
-#'         content = "string",
-#'         sha256 = "string"
-#'       ),
-#'       appSpecContent = list(
-#'         content = "string",
-#'         sha256 = "string"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_application_revisions(
-#'   applicationName = "string",
-#'   sortBy = "registerTime"|"firstUsedTime"|"lastUsedTime",
-#'   sortOrder = "ascending"|"descending",
-#'   s3Bucket = "string",
-#'   s3KeyPrefix = "string",
-#'   deployed = "include"|"exclude"|"ignore",
-#'   nextToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_application_revisions
@@ -2996,29 +1065,10 @@ codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL
 #' @description
 #' Lists the applications registered with the IAM user or AWS account.
 #'
-#' @usage
-#' codedeploy_list_applications(nextToken)
+#' See [https://paws-r.github.io/docs/codedeploy/list_applications.html](https://paws-r.github.io/docs/codedeploy/list_applications.html) for full documentation.
 #'
 #' @param nextToken An identifier returned from the previous list applications call. It can
 #' be used to return the next set of applications in the list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   applications = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_applications(
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3045,31 +1095,12 @@ codedeploy_list_applications <- function(nextToken = NULL) {
 #' @description
 #' Lists the deployment configurations with the IAM user or AWS account.
 #'
-#' @usage
-#' codedeploy_list_deployment_configs(nextToken)
+#' See [https://paws-r.github.io/docs/codedeploy/list_deployment_configs.html](https://paws-r.github.io/docs/codedeploy/list_deployment_configs.html) for full documentation.
 #'
 #' @param nextToken An identifier returned from the previous
 #' [`list_deployment_configs`][codedeploy_list_deployment_configs] call. It
 #' can be used to return the next set of deployment configurations in the
 #' list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentConfigsList = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_deployment_configs(
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3095,36 +1126,14 @@ codedeploy_list_deployment_configs <- function(nextToken = NULL) {
 #' user or AWS account
 #'
 #' @description
-#' Lists the deployment groups for an application registered with the IAM
-#' user or AWS account.
+#' Lists the deployment groups for an application registered with the IAM user or AWS account.
 #'
-#' @usage
-#' codedeploy_list_deployment_groups(applicationName, nextToken)
+#' See [https://paws-r.github.io/docs/codedeploy/list_deployment_groups.html](https://paws-r.github.io/docs/codedeploy/list_deployment_groups.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
 #' @param nextToken An identifier returned from the previous list deployment groups call. It
 #' can be used to return the next set of deployment groups in the list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   applicationName = "string",
-#'   deploymentGroups = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_deployment_groups(
-#'   applicationName = "string",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3150,19 +1159,9 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' works with all compute types
 #'
 #' @description
-#' The newer
-#' [`batch_get_deployment_targets`][codedeploy_batch_get_deployment_targets]
-#' should be used instead because it works with all compute types.
-#' [`list_deployment_instances`][codedeploy_list_deployment_instances]
-#' throws an exception if it is used with a compute platform other than
-#' EC2/On-premises or AWS Lambda.
-#' 
-#' Lists the instance for a deployment associated with the IAM user or AWS
-#' account.
+#' The newer [`batch_get_deployment_targets`][codedeploy_batch_get_deployment_targets] should be used instead because it works with all compute types. [`list_deployment_instances`][codedeploy_list_deployment_instances] throws an exception if it is used with a compute platform other than EC2/On-premises or AWS Lambda.
 #'
-#' @usage
-#' codedeploy_list_deployment_instances(deploymentId, nextToken,
-#'   instanceStatusFilter, instanceTypeFilter)
+#' See [https://paws-r.github.io/docs/codedeploy/list_deployment_instances.html](https://paws-r.github.io/docs/codedeploy/list_deployment_instances.html) for full documentation.
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment.
 #' @param nextToken An identifier returned from the previous list deployment instances call.
@@ -3186,31 +1185,6 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' @param instanceTypeFilter The set of instances in a blue/green deployment, either those in the
 #' original environment ("BLUE") or those in the replacement environment
 #' ("GREEN"), for which you want to view instance information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   instancesList = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_deployment_instances(
-#'   deploymentId = "string",
-#'   nextToken = "string",
-#'   instanceStatusFilter = list(
-#'     "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready"
-#'   ),
-#'   instanceTypeFilter = list(
-#'     "Blue"|"Green"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3237,9 +1211,7 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 #' @description
 #' Returns an array of target IDs that are associated a deployment.
 #'
-#' @usage
-#' codedeploy_list_deployment_targets(deploymentId, nextToken,
-#'   targetFilters)
+#' See [https://paws-r.github.io/docs/codedeploy/list_deployment_targets.html](https://paws-r.github.io/docs/codedeploy/list_deployment_targets.html) for full documentation.
 #'
 #' @param deploymentId The unique ID of a deployment.
 #' @param nextToken A token identifier returned from the previous
@@ -3253,30 +1225,6 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 #' 
 #' -   `ServerInstanceLabel` - A `ServerInstanceLabel` filter string can be
 #'     `Blue` or `Green`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   targetIds = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_deployment_targets(
-#'   deploymentId = "string",
-#'   nextToken = "string",
-#'   targetFilters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3302,12 +1250,9 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #' registered with the IAM user or AWS account
 #'
 #' @description
-#' Lists the deployments in a deployment group for an application
-#' registered with the IAM user or AWS account.
+#' Lists the deployments in a deployment group for an application registered with the IAM user or AWS account.
 #'
-#' @usage
-#' codedeploy_list_deployments(applicationName, deploymentGroupName,
-#'   externalId, includeOnlyStatuses, createTimeRange, nextToken)
+#' See [https://paws-r.github.io/docs/codedeploy/list_deployments.html](https://paws-r.github.io/docs/codedeploy/list_deployments.html) for full documentation.
 #'
 #' @param applicationName The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
@@ -3341,38 +1286,6 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #' @param nextToken An identifier returned from the previous list deployments call. It can
 #' be used to return the next set of deployments in the list.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deployments = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_deployments(
-#'   applicationName = "string",
-#'   deploymentGroupName = "string",
-#'   externalId = "string",
-#'   includeOnlyStatuses = list(
-#'     "Created"|"Queued"|"InProgress"|"Baking"|"Succeeded"|"Failed"|"Stopped"|"Ready"
-#'   ),
-#'   createTimeRange = list(
-#'     start = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     end = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_deployments
@@ -3398,30 +1311,11 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
 #' @description
 #' Lists the names of stored connections to GitHub accounts.
 #'
-#' @usage
-#' codedeploy_list_git_hub_account_token_names(nextToken)
+#' See [https://paws-r.github.io/docs/codedeploy/list_git_hub_account_token_names.html](https://paws-r.github.io/docs/codedeploy/list_git_hub_account_token_names.html) for full documentation.
 #'
 #' @param nextToken An identifier returned from the previous
 #' [`list_git_hub_account_token_names`][codedeploy_list_git_hub_account_token_names]
 #' call. It can be used to return the next set of names in the list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tokenNameList = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_git_hub_account_token_names(
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3447,14 +1341,8 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
 #'
 #' @description
 #' Gets a list of names for one or more on-premises instances.
-#' 
-#' Unless otherwise specified, both registered and deregistered on-premises
-#' instance names are listed. To list only registered or deregistered
-#' on-premises instance names, use the registration status parameter.
 #'
-#' @usage
-#' codedeploy_list_on_premises_instances(registrationStatus, tagFilters,
-#'   nextToken)
+#' See [https://paws-r.github.io/docs/codedeploy/list_on_premises_instances.html](https://paws-r.github.io/docs/codedeploy/list_on_premises_instances.html) for full documentation.
 #'
 #' @param registrationStatus The registration status of the on-premises instances:
 #' 
@@ -3468,32 +1356,6 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
 #' @param nextToken An identifier returned from the previous list on-premises instances
 #' call. It can be used to return the next set of on-premises instances in
 #' the list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   instanceNames = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_on_premises_instances(
-#'   registrationStatus = "Registered"|"Deregistered",
-#'   tagFilters = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3519,12 +1381,9 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
 #' Resource Name (ARN)
 #'
 #' @description
-#' Returns a list of tags for the resource identified by a specified Amazon
-#' Resource Name (ARN). Tags are used to organize and categorize your
-#' CodeDeploy resources.
+#' Returns a list of tags for the resource identified by a specified Amazon Resource Name (ARN). Tags are used to organize and categorize your CodeDeploy resources.
 #'
-#' @usage
-#' codedeploy_list_tags_for_resource(ResourceArn, NextToken)
+#' See [https://paws-r.github.io/docs/codedeploy/list_tags_for_resource.html](https://paws-r.github.io/docs/codedeploy/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of a CodeDeploy resource.
 #' [`list_tags_for_resource`][codedeploy_list_tags_for_resource] returns
@@ -3533,28 +1392,6 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
 #' @param NextToken An identifier returned from the previous
 #' [`list_tags_for_resource`][codedeploy_list_tags_for_resource] call. It
 #' can be used to return the next set of applications in the list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3579,46 +1416,16 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
 #' Sets the result of a Lambda validation function
 #'
 #' @description
-#' Sets the result of a Lambda validation function. The function validates
-#' lifecycle hooks during a deployment that uses the AWS Lambda or Amazon
-#' ECS compute platform. For AWS Lambda deployments, the available
-#' lifecycle hooks are `BeforeAllowTraffic` and `AfterAllowTraffic`. For
-#' Amazon ECS deployments, the available lifecycle hooks are
-#' `BeforeInstall`, `AfterInstall`, `AfterAllowTestTraffic`,
-#' `BeforeAllowTraffic`, and `AfterAllowTraffic`. Lambda validation
-#' functions return `Succeeded` or `Failed`. For more information, see
-#' [AppSpec 'hooks' Section for an AWS Lambda
-#' Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda)
-#' and [AppSpec 'hooks' Section for an Amazon ECS
-#' Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs).
+#' Sets the result of a Lambda validation function. The function validates lifecycle hooks during a deployment that uses the AWS Lambda or Amazon ECS compute platform. For AWS Lambda deployments, the available lifecycle hooks are `BeforeAllowTraffic` and `AfterAllowTraffic`. For Amazon ECS deployments, the available lifecycle hooks are `BeforeInstall`, `AfterInstall`, `AfterAllowTestTraffic`, `BeforeAllowTraffic`, and `AfterAllowTraffic`. Lambda validation functions return `Succeeded` or `Failed`. For more information, see [AppSpec 'hooks' Section for an AWS Lambda Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda) and [AppSpec 'hooks' Section for an Amazon ECS Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs).
 #'
-#' @usage
-#' codedeploy_put_lifecycle_event_hook_execution_status(deploymentId,
-#'   lifecycleEventHookExecutionId, status)
+#' See [https://paws-r.github.io/docs/codedeploy/put_lifecycle_event_hook_execution_status.html](https://paws-r.github.io/docs/codedeploy/put_lifecycle_event_hook_execution_status.html) for full documentation.
 #'
 #' @param deploymentId The unique ID of a deployment. Pass this ID to a Lambda function that
 #' validates a deployment lifecycle event.
 #' @param lifecycleEventHookExecutionId The execution ID of a deployment's lifecycle hook. A deployment
 #' lifecycle hook is specified in the `hooks` section of the AppSpec file.
 #' @param status The result of a Lambda function that validates a deployment lifecycle
-#' event (`Succeeded` or `Failed`).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   lifecycleEventHookExecutionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_lifecycle_event_hook_execution_status(
-#'   deploymentId = "string",
-#'   lifecycleEventHookExecutionId = "string",
-#'   status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-#' )
-#' ```
+#' event. `Succeeded` and `Failed` are the only valid values for `status`.
 #'
 #' @keywords internal
 #'
@@ -3645,48 +1452,13 @@ codedeploy_put_lifecycle_event_hook_execution_status <- function(deploymentId = 
 #' @description
 #' Registers with AWS CodeDeploy a revision for the specified application.
 #'
-#' @usage
-#' codedeploy_register_application_revision(applicationName, description,
-#'   revision)
+#' See [https://paws-r.github.io/docs/codedeploy/register_application_revision.html](https://paws-r.github.io/docs/codedeploy/register_application_revision.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
 #' @param description A comment about the revision.
 #' @param revision &#91;required&#93; Information about the application revision to register, including type
 #' and location.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_application_revision(
-#'   applicationName = "string",
-#'   description = "string",
-#'   revision = list(
-#'     revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-#'     s3Location = list(
-#'       bucket = "string",
-#'       key = "string",
-#'       bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-#'       version = "string",
-#'       eTag = "string"
-#'     ),
-#'     gitHubLocation = list(
-#'       repository = "string",
-#'       commitId = "string"
-#'     ),
-#'     string = list(
-#'       content = "string",
-#'       sha256 = "string"
-#'     ),
-#'     appSpecContent = list(
-#'       content = "string",
-#'       sha256 = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3712,29 +1484,12 @@ codedeploy_register_application_revision <- function(applicationName, descriptio
 #'
 #' @description
 #' Registers an on-premises instance.
-#' 
-#' Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in
-#' the request. You cannot use both.
 #'
-#' @usage
-#' codedeploy_register_on_premises_instance(instanceName, iamSessionArn,
-#'   iamUserArn)
+#' See [https://paws-r.github.io/docs/codedeploy/register_on_premises_instance.html](https://paws-r.github.io/docs/codedeploy/register_on_premises_instance.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the on-premises instance to register.
 #' @param iamSessionArn The ARN of the IAM session to associate with the on-premises instance.
 #' @param iamUserArn The ARN of the IAM user to associate with the on-premises instance.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_on_premises_instance(
-#'   instanceName = "string",
-#'   iamSessionArn = "string",
-#'   iamUserArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3761,29 +1516,10 @@ codedeploy_register_on_premises_instance <- function(instanceName, iamSessionArn
 #' @description
 #' Removes one or more tags from one or more on-premises instances.
 #'
-#' @usage
-#' codedeploy_remove_tags_from_on_premises_instances(tags, instanceNames)
+#' See [https://paws-r.github.io/docs/codedeploy/remove_tags_from_on_premises_instances.html](https://paws-r.github.io/docs/codedeploy/remove_tags_from_on_premises_instances.html) for full documentation.
 #'
 #' @param tags &#91;required&#93; The tag key-value pairs to remove from the on-premises instances.
 #' @param instanceNames &#91;required&#93; The names of the on-premises instances from which to remove tags.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_tags_from_on_premises_instances(
-#'   tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   instanceNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3809,24 +1545,12 @@ codedeploy_remove_tags_from_on_premises_instances <- function(tags, instanceName
 #' terminating instances immediately after the traffic routing is complete
 #'
 #' @description
-#' In a blue/green deployment, overrides any specified wait time and starts
-#' terminating instances immediately after the traffic routing is complete.
+#' In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete.
 #'
-#' @usage
-#' codedeploy_skip_wait_time_for_instance_termination(deploymentId)
+#' See [https://paws-r.github.io/docs/codedeploy/skip_wait_time_for_instance_termination.html](https://paws-r.github.io/docs/codedeploy/skip_wait_time_for_instance_termination.html) for full documentation.
 #'
 #' @param deploymentId The unique ID of a blue/green deployment for which you want to skip the
 #' instance termination wait time.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$skip_wait_time_for_instance_termination(
-#'   deploymentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3853,30 +1577,12 @@ codedeploy_skip_wait_time_for_instance_termination <- function(deploymentId = NU
 #' @description
 #' Attempts to stop an ongoing deployment.
 #'
-#' @usage
-#' codedeploy_stop_deployment(deploymentId, autoRollbackEnabled)
+#' See [https://paws-r.github.io/docs/codedeploy/stop_deployment.html](https://paws-r.github.io/docs/codedeploy/stop_deployment.html) for full documentation.
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment.
 #' @param autoRollbackEnabled Indicates, when a deployment is stopped, whether instances that have
 #' been updated should be rolled back to the previous version of the
 #' application revision.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   status = "Pending"|"Succeeded",
-#'   statusMessage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_deployment(
-#'   deploymentId = "string",
-#'   autoRollbackEnabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3902,33 +1608,15 @@ codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL)
 #' resource identified by the ResourceArn input parameter
 #'
 #' @description
-#' Associates the list of tags in the input `Tags` parameter with the
-#' resource identified by the `ResourceArn` input parameter.
+#' Associates the list of tags in the input `Tags` parameter with the resource identified by the `ResourceArn` input parameter.
 #'
-#' @usage
-#' codedeploy_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/codedeploy/tag_resource.html](https://paws-r.github.io/docs/codedeploy/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of a resource, such as a CodeDeploy application or deployment
 #' group.
 #' @param Tags &#91;required&#93; A list of tags that [`tag_resource`][codedeploy_tag_resource] associates
 #' with a resource. The resource is identified by the `ResourceArn` input
 #' parameter.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3953,31 +1641,15 @@ codedeploy_tag_resource <- function(ResourceArn, Tags) {
 #' Disassociates a resource from a list of tags
 #'
 #' @description
-#' Disassociates a resource from a list of tags. The resource is identified
-#' by the `ResourceArn` input parameter. The tags are identified by the
-#' list of keys in the `TagKeys` input parameter.
+#' Disassociates a resource from a list of tags. The resource is identified by the `ResourceArn` input parameter. The tags are identified by the list of keys in the `TagKeys` input parameter.
 #'
-#' @usage
-#' codedeploy_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/codedeploy/untag_resource.html](https://paws-r.github.io/docs/codedeploy/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that specifies from which resource to
 #' disassociate the tags with the keys in the `TagKeys` input parameter.
 #' @param TagKeys &#91;required&#93; A list of keys of `Tag` objects. The `Tag` objects identified by the
 #' keys are disassociated from the resource specified by the `ResourceArn`
 #' input parameter.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4004,22 +1676,10 @@ codedeploy_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Changes the name of an application.
 #'
-#' @usage
-#' codedeploy_update_application(applicationName, newApplicationName)
+#' See [https://paws-r.github.io/docs/codedeploy/update_application.html](https://paws-r.github.io/docs/codedeploy/update_application.html) for full documentation.
 #'
 #' @param applicationName The current name of the application you want to change.
 #' @param newApplicationName The new name to give the application.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_application(
-#'   applicationName = "string",
-#'   newApplicationName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4046,14 +1706,7 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' @description
 #' Changes information about a deployment group.
 #'
-#' @usage
-#' codedeploy_update_deployment_group(applicationName,
-#'   currentDeploymentGroupName, newDeploymentGroupName,
-#'   deploymentConfigName, ec2TagFilters, onPremisesInstanceTagFilters,
-#'   autoScalingGroups, serviceRoleArn, triggerConfigurations,
-#'   alarmConfiguration, autoRollbackConfiguration, deploymentStyle,
-#'   blueGreenDeploymentConfiguration, loadBalancerInfo, ec2TagSet,
-#'   ecsServices, onPremisesTagSet)
+#' See [https://paws-r.github.io/docs/codedeploy/update_deployment_group.html](https://paws-r.github.io/docs/codedeploy/update_deployment_group.html) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The application name that corresponds to the deployment group to update.
 #' @param currentDeploymentGroupName &#91;required&#93; The current name of the deployment group.
@@ -4079,6 +1732,16 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' deployment group is updated.
 #' @param autoRollbackConfiguration Information for an automatic rollback configuration that is added or
 #' changed when a deployment group is updated.
+#' @param outdatedInstancesStrategy Indicates what happens when new EC2 instances are launched
+#' mid-deployment and do not receive the deployed application revision.
+#' 
+#' If this option is set to `UPDATE` or is unspecified, CodeDeploy
+#' initiates one or more 'auto-update outdated instances' deployments to
+#' apply the deployed application revision to the new EC2 instances.
+#' 
+#' If this option is set to `IGNORE`, CodeDeploy does not initiate a
+#' deployment to update the new EC2 instances. This may result in instances
+#' having different revisions.
 #' @param deploymentStyle Information about the type of deployment, either in-place or blue/green,
 #' you want to run and whether to route deployment traffic behind a load
 #' balancer.
@@ -4094,158 +1757,17 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' @param onPremisesTagSet Information about an on-premises instance tag set. The deployment group
 #' includes only on-premises instances identified by all the tag groups.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   hooksNotCleanedUp = list(
-#'     list(
-#'       name = "string",
-#'       hook = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_deployment_group(
-#'   applicationName = "string",
-#'   currentDeploymentGroupName = "string",
-#'   newDeploymentGroupName = "string",
-#'   deploymentConfigName = "string",
-#'   ec2TagFilters = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'     )
-#'   ),
-#'   onPremisesInstanceTagFilters = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'     )
-#'   ),
-#'   autoScalingGroups = list(
-#'     "string"
-#'   ),
-#'   serviceRoleArn = "string",
-#'   triggerConfigurations = list(
-#'     list(
-#'       triggerName = "string",
-#'       triggerTargetArn = "string",
-#'       triggerEvents = list(
-#'         "DeploymentStart"|"DeploymentSuccess"|"DeploymentFailure"|"DeploymentStop"|"DeploymentRollback"|"DeploymentReady"|"InstanceStart"|"InstanceSuccess"|"InstanceFailure"|"InstanceReady"
-#'       )
-#'     )
-#'   ),
-#'   alarmConfiguration = list(
-#'     enabled = TRUE|FALSE,
-#'     ignorePollAlarmFailure = TRUE|FALSE,
-#'     alarms = list(
-#'       list(
-#'         name = "string"
-#'       )
-#'     )
-#'   ),
-#'   autoRollbackConfiguration = list(
-#'     enabled = TRUE|FALSE,
-#'     events = list(
-#'       "DEPLOYMENT_FAILURE"|"DEPLOYMENT_STOP_ON_ALARM"|"DEPLOYMENT_STOP_ON_REQUEST"
-#'     )
-#'   ),
-#'   deploymentStyle = list(
-#'     deploymentType = "IN_PLACE"|"BLUE_GREEN",
-#'     deploymentOption = "WITH_TRAFFIC_CONTROL"|"WITHOUT_TRAFFIC_CONTROL"
-#'   ),
-#'   blueGreenDeploymentConfiguration = list(
-#'     terminateBlueInstancesOnDeploymentSuccess = list(
-#'       action = "TERMINATE"|"KEEP_ALIVE",
-#'       terminationWaitTimeInMinutes = 123
-#'     ),
-#'     deploymentReadyOption = list(
-#'       actionOnTimeout = "CONTINUE_DEPLOYMENT"|"STOP_DEPLOYMENT",
-#'       waitTimeInMinutes = 123
-#'     ),
-#'     greenFleetProvisioningOption = list(
-#'       action = "DISCOVER_EXISTING"|"COPY_AUTO_SCALING_GROUP"
-#'     )
-#'   ),
-#'   loadBalancerInfo = list(
-#'     elbInfoList = list(
-#'       list(
-#'         name = "string"
-#'       )
-#'     ),
-#'     targetGroupInfoList = list(
-#'       list(
-#'         name = "string"
-#'       )
-#'     ),
-#'     targetGroupPairInfoList = list(
-#'       list(
-#'         targetGroups = list(
-#'           list(
-#'             name = "string"
-#'           )
-#'         ),
-#'         prodTrafficRoute = list(
-#'           listenerArns = list(
-#'             "string"
-#'           )
-#'         ),
-#'         testTrafficRoute = list(
-#'           listenerArns = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ec2TagSet = list(
-#'     ec2TagSetList = list(
-#'       list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string",
-#'           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ecsServices = list(
-#'     list(
-#'       serviceName = "string",
-#'       clusterName = "string"
-#'     )
-#'   ),
-#'   onPremisesTagSet = list(
-#'     onPremisesTagSetList = list(
-#'       list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string",
-#'           Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codedeploy_update_deployment_group
-codedeploy_update_deployment_group <- function(applicationName, currentDeploymentGroupName, newDeploymentGroupName = NULL, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn = NULL, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL) {
+codedeploy_update_deployment_group <- function(applicationName, currentDeploymentGroupName, newDeploymentGroupName = NULL, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn = NULL, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, outdatedInstancesStrategy = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL) {
   op <- new_operation(
     name = "UpdateDeploymentGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codedeploy$update_deployment_group_input(applicationName = applicationName, currentDeploymentGroupName = currentDeploymentGroupName, newDeploymentGroupName = newDeploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet)
+  input <- .codedeploy$update_deployment_group_input(applicationName = applicationName, currentDeploymentGroupName = currentDeploymentGroupName, newDeploymentGroupName = newDeploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet)
   output <- .codedeploy$update_deployment_group_output()
   config <- get_config()
   svc <- .codedeploy$service(config)

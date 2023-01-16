@@ -9,25 +9,9 @@ workspaces_disassociate_connection_alias(AliasId)
 \arguments{
 \item{AliasId}{[required] The identifier of the connection alias to disassociate.}
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates a connection alias from a directory. Disassociating a
-connection alias disables cross-Region redirection between two
-directories in different AWS Regions. For more information, see
-\href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
+Disassociates a connection alias from a directory. Disassociating a connection alias disables cross-Region redirection between two directories in different Regions. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 
-Before performing this operation, call
-\href{https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html}{DescribeConnectionAliases}
-to make sure that the current state of the connection alias is
-\code{CREATED}.
+See \url{https://paws-r.github.io/docs/workspaces/disassociate_connection_alias.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_connection_alias(
-  AliasId = "string"
-)
-}
-}
-
 \keyword{internal}

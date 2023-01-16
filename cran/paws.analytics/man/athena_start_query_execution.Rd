@@ -4,8 +4,14 @@
 \alias{athena_start_query_execution}
 \title{Runs the SQL query statements contained in the Query}
 \usage{
-athena_start_query_execution(QueryString, ClientRequestToken,
-  QueryExecutionContext, ResultConfiguration, WorkGroup)
+athena_start_query_execution(
+  QueryString,
+  ClientRequestToken = NULL,
+  QueryExecutionContext = NULL,
+  ResultConfiguration = NULL,
+  WorkGroup = NULL,
+  ExecutionParameters = NULL
+)
 }
 \arguments{
 \item{QueryString}{[required] The SQL query statements to be executed.}
@@ -17,10 +23,11 @@ received, the same response is returned and another query is not
 created. If a parameter has changed, for example, the \code{QueryString}, an
 error is returned.
 
-This token is listed as not required because AWS SDKs (for example the
-AWS SDK for Java) auto-generate the token for users. If you are not
-using the AWS SDK or the AWS CLI, you must provide this token or the
-action will fail.}
+This token is listed as not required because Amazon Web Services SDKs
+(for example the Amazon Web Services SDK for Java) auto-generate the
+token for users. If you are not using the Amazon Web Services SDK or the
+Amazon Web Services CLI, you must provide this token or the action will
+fail.}
 
 \item{QueryExecutionContext}{The database within which the query executes.}
 
@@ -33,39 +40,14 @@ WorkGroupConfiguration. See
 WorkGroupConfiguration$EnforceWorkGroupConfiguration.}
 
 \item{WorkGroup}{The name of the workgroup in which the query is being started.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  QueryExecutionId = "string"
-)
-}
+
+\item{ExecutionParameters}{A list of values for the parameters in a query. The values are applied
+sequentially to the parameters in the query in the order in which the
+parameters occur.}
 }
 \description{
-Runs the SQL query statements contained in the \code{Query}. Requires you to
-have access to the workgroup in which the query ran. Running queries
-against an external catalog requires
-\code{\link[=athena_get_data_catalog]{get_data_catalog}} permission to the catalog.
-For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
-in the \emph{Amazon Athena User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$start_query_execution(
-  QueryString = "string",
-  ClientRequestToken = "string",
-  QueryExecutionContext = list(
-    Database = "string",
-    Catalog = "string"
-  ),
-  ResultConfiguration = list(
-    OutputLocation = "string",
-    EncryptionConfiguration = list(
-      EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-      KmsKey = "string"
-    )
-  ),
-  WorkGroup = "string"
-)
-}
-}
+Runs the SQL query statements contained in the \code{Query}. Requires you to have access to the workgroup in which the query ran. Running queries against an external catalog requires \code{\link[=athena_get_data_catalog]{get_data_catalog}} permission to the catalog. For code samples using the Amazon Web Services SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples} in the \emph{Amazon Athena User Guide}.
 
+See \url{https://paws-r.github.io/docs/athena/start_query_execution.html} for full documentation.
+}
 \keyword{internal}

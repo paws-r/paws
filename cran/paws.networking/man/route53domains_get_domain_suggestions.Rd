@@ -5,8 +5,11 @@
 \title{The GetDomainSuggestions operation returns a list of suggested domain
 names}
 \usage{
-route53domains_get_domain_suggestions(DomainName, SuggestionCount,
-  OnlyAvailable)
+route53domains_get_domain_suggestions(
+  DomainName,
+  SuggestionCount,
+  OnlyAvailable
+)
 }
 \arguments{
 \item{DomainName}{[required] A domain name that you want to use as the basis for a list of possible
@@ -37,28 +40,9 @@ names without checking whether they're available to be registered. To
 determine whether the domain is available, you can call
 \code{checkDomainAvailability} for each suggestion.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SuggestionsList = list(
-    list(
-      DomainName = "string",
-      Availability = "string"
-    )
-  )
-)
-}
-}
 \description{
-The GetDomainSuggestions operation returns a list of suggested domain
-names.
-}
-\section{Request syntax}{
-\preformatted{svc$get_domain_suggestions(
-  DomainName = "string",
-  SuggestionCount = 123,
-  OnlyAvailable = TRUE|FALSE
-)
-}
-}
+The GetDomainSuggestions operation returns a list of suggested domain names.
 
+See \url{https://paws-r.github.io/docs/route53domains/get_domain_suggestions.html} for full documentation.
+}
 \keyword{internal}

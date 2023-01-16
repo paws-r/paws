@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Use this action to associate one or more Domain Name Server (DNS)
 #' aliases with an existing Amazon FSx for Windows File Server file system.
-#' A file systen can have a maximum of 50 DNS aliases associated with it at
+#' A file system can have a maximum of 50 DNS aliases associated with it at
 #' any one time. If you try to associate a DNS alias that is already
 #' associated with the file system, FSx takes no action on that alias in
 #' the request. For more information, see [Working with DNS
@@ -34,8 +34,8 @@ NULL
 #' system. The alias name has to comply with the following formatting
 #' requirements:
 #' 
-#' -   Formatted as a fully-qualified domain name (FQDN),
-#'     *`hostname.domain`* , for example, `accounting.corp.example.com`.
+#' -   Formatted as a fully-qualified domain name (FQDN), *hostname.domain*
+#'     , for example, `accounting.corp.example.com`.
 #' 
 #' -   Can contain alphanumeric characters and the hyphen (-).
 #' 
@@ -148,69 +148,69 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 }
 .fsx$operations$cancel_data_repository_task <- fsx_cancel_data_repository_task
 
-#' Creates a backup of an existing Amazon FSx file system
+#' Copies an existing backup within the same Amazon Web Services account to
+#' another Amazon Web Services Region (cross-Region copy) or within the
+#' same Amazon Web Services Region (in-Region copy)
 #'
 #' @description
-#' Creates a backup of an existing Amazon FSx file system. Creating regular
-#' backups for your file system is a best practice, enabling you to restore
-#' a file system from a backup if an issue arises with the original file
-#' system.
+#' Copies an existing backup within the same Amazon Web Services account to
+#' another Amazon Web Services Region (cross-Region copy) or within the
+#' same Amazon Web Services Region (in-Region copy). You can have up to
+#' five backup copy requests in progress to a single destination Region per
+#' account.
 #' 
-#' For Amazon FSx for Lustre file systems, you can create a backup only for
-#' file systems with the following configuration:
+#' You can use cross-Region backup copies for cross-Region disaster
+#' recovery. You can periodically take backups and copy them to another
+#' Region so that in the event of a disaster in the primary Region, you can
+#' restore from backup and recover availability quickly in the other
+#' Region. You can make cross-Region copies only within your Amazon Web
+#' Services partition. A partition is a grouping of Regions. Amazon Web
+#' Services currently has three partitions: `aws` (Standard Regions),
+#' `aws-cn` (China Regions), and `aws-us-gov` (Amazon Web Services GovCloud
+#' \[US\] Regions).
 #' 
-#' -   a Persistent deployment type
+#' You can also use backup copies to clone your file dataset to another
+#' Region or within the same Region.
 #' 
-#' -   is *not* linked to a data respository.
+#' You can use the `SourceRegion` parameter to specify the Amazon Web
+#' Services Region from which the backup will be copied. For example, if
+#' you make the call from the `us-west-1` Region and want to copy a backup
+#' from the `us-east-2` Region, you specify `us-east-2` in the
+#' `SourceRegion` parameter to make a cross-Region copy. If you don't
+#' specify a Region, the backup copy is created in the same Region where
+#' the request is sent from (in-Region copy).
 #' 
-#' For more information about backing up Amazon FSx for Lustre file
-#' systems, see [Working with FSx for Lustre
-#' backups](https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html).
-#' 
-#' For more information about backing up Amazon FSx for Windows file
-#' systems, see [Working with FSx for Windows
-#' backups](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html).
-#' 
-#' If a backup with the specified client request token exists, and the
-#' parameters match, this operation returns the description of the existing
-#' backup. If a backup specified client request token exists, and the
-#' parameters don't match, this operation returns
-#' `IncompatibleParameterError`. If a backup with the specified client
-#' request token doesn't exist, [`create_backup`][fsx_create_backup] does
-#' the following:
-#' 
-#' -   Creates a new Amazon FSx backup with an assigned ID, and an initial
-#'     lifecycle state of `CREATING`.
-#' 
-#' -   Returns the description of the backup.
-#' 
-#' By using the idempotent operation, you can retry a
-#' [`create_backup`][fsx_create_backup] operation without the risk of
-#' creating an extra backup. This approach can be useful when an initial
-#' call fails in a way that makes it unclear whether a backup was created.
-#' If you use the same client request token and the initial call created a
-#' backup, the operation returns a successful result because all the
-#' parameters are the same.
-#' 
-#' The [`create_backup`][fsx_create_backup] operation returns while the
-#' backup's lifecycle state is still `CREATING`. You can check the backup
-#' creation status by calling the
-#' [`describe_backups`][fsx_describe_backups] operation, which returns the
-#' backup state along with other information.
+#' For more information about creating backup copies, see [Copying
+#' backups](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html#copy-backups)
+#' in the *Amazon FSx for Windows User Guide*, [Copying
+#' backups](https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html#copy-backups)
+#' in the *Amazon FSx for Lustre User Guide*, and [Copying
+#' backups](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/using-backups.html#copy-backups)
+#' in the *Amazon FSx for OpenZFS User Guide*.
 #'
 #' @usage
-#' fsx_create_backup(FileSystemId, ClientRequestToken, Tags)
+#' fsx_copy_backup(ClientRequestToken, SourceBackupId, SourceRegion,
+#'   KmsKeyId, CopyTags, Tags)
 #'
-#' @param FileSystemId &#91;required&#93; The ID of the file system to back up.
-#' @param ClientRequestToken (Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
-#' ensure idempotent creation. This string is automatically filled on your
-#' behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
-#' SDK.
-#' @param Tags (Optional) The tags to apply to the backup at backup creation. The key
-#' value of the `Name` tag appears in the console as the backup name. If
-#' you have set `CopyTagsToBackups` to true, and you specify one or more
-#' tags using the [`create_backup`][fsx_create_backup] action, no existing
-#' file system tags are copied from the file system to the backup.
+#' @param ClientRequestToken 
+#' @param SourceBackupId &#91;required&#93; The ID of the source backup. Specifies the ID of the backup that's being
+#' copied.
+#' @param SourceRegion The source Amazon Web Services Region of the backup. Specifies the
+#' Amazon Web Services Region from which the backup is being copied. The
+#' source and destination Regions must be in the same Amazon Web Services
+#' partition. If you don't specify a Region, `SourceRegion` defaults to the
+#' Region where the request is sent from (in-Region copy).
+#' @param KmsKeyId 
+#' @param CopyTags A Boolean flag indicating whether tags from the source backup should be
+#' copied to the backup copy. This value defaults to `false`.
+#' 
+#' If you set `CopyTags` to `true` and the source backup has existing tags,
+#' you can use the `Tags` parameter to create new tags, provided that the
+#' sum of the source backup tags and the new tags doesn't exceed 50. Both
+#' sets of tags are merged. If there are tag conflicts (for example, two
+#' tags with the same key but different values), the tags created with the
+#' `Tags` parameter take precedence.
+#' @param Tags 
 #'
 #' @return
 #' A list with the following syntax:
@@ -218,7 +218,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #' list(
 #'   Backup = list(
 #'     BackupId = "string",
-#'     Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
+#'     Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"|"COPYING",
 #'     FailureDetails = list(
 #'       Message = "string"
 #'     ),
@@ -241,8 +241,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         "2015-01-01"
 #'       ),
 #'       FileSystemId = "string",
-#'       FileSystemType = "WINDOWS"|"LUSTRE",
-#'       Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
+#'       FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'       Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
 #'       FailureDetails = list(
 #'         Message = "string"
 #'       ),
@@ -292,31 +292,47 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'             Name = "string",
 #'             Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
 #'           )
+#'         ),
+#'         AuditLogConfiguration = list(
+#'           FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'           FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'           AuditLogDestination = "string"
 #'         )
 #'       ),
 #'       LustreConfiguration = list(
 #'         WeeklyMaintenanceStartTime = "string",
 #'         DataRepositoryConfiguration = list(
-#'           Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
+#'           Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
 #'           ImportPath = "string",
 #'           ExportPath = "string",
 #'           ImportedFileChunkSize = 123,
-#'           AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
+#'           AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
 #'           FailureDetails = list(
 #'             Message = "string"
 #'           )
 #'         ),
-#'         DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+#'         DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
 #'         PerUnitStorageThroughput = 123,
 #'         MountName = "string",
 #'         DailyAutomaticBackupStartTime = "string",
 #'         AutomaticBackupRetentionDays = 123,
 #'         CopyTagsToBackups = TRUE|FALSE,
-#'         DriveCacheType = "NONE"|"READ"
+#'         DriveCacheType = "NONE"|"READ",
+#'         DataCompressionType = "NONE"|"LZ4",
+#'         LogConfiguration = list(
+#'           Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'           Destination = "string"
+#'         ),
+#'         RootSquashConfiguration = list(
+#'           RootSquash = "string",
+#'           NoSquashNids = list(
+#'             "string"
+#'           )
+#'         )
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -325,13 +341,1041 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'           TargetFileSystemValues = list(),
 #'           FailureDetails = list(
 #'             Message = "string"
+#'           ),
+#'           TargetVolumeValues = list(
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             FileSystemId = "string",
+#'             Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'             Name = "string",
+#'             OntapConfiguration = list(
+#'               FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'               JunctionPath = "string",
+#'               SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'               SizeInMegabytes = 123,
+#'               StorageEfficiencyEnabled = TRUE|FALSE,
+#'               StorageVirtualMachineId = "string",
+#'               StorageVirtualMachineRoot = TRUE|FALSE,
+#'               TieringPolicy = list(
+#'                 CoolingPeriod = 123,
+#'                 Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'               ),
+#'               UUID = "string",
+#'               OntapVolumeType = "RW"|"DP"|"LS"
+#'             ),
+#'             ResourceARN = "string",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             VolumeId = "string",
+#'             VolumeType = "ONTAP"|"OPENZFS",
+#'             LifecycleTransitionReason = list(
+#'               Message = "string"
+#'             ),
+#'             AdministrativeActions = list(),
+#'             OpenZFSConfiguration = list(
+#'               ParentVolumeId = "string",
+#'               VolumePath = "string",
+#'               StorageCapacityReservationGiB = 123,
+#'               StorageCapacityQuotaGiB = 123,
+#'               RecordSizeKiB = 123,
+#'               DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'               CopyTagsToSnapshots = TRUE|FALSE,
+#'               OriginSnapshot = list(
+#'                 SnapshotARN = "string",
+#'                 CopyStrategy = "CLONE"|"FULL_COPY"
+#'               ),
+#'               ReadOnly = TRUE|FALSE,
+#'               NfsExports = list(
+#'                 list(
+#'                   ClientConfigurations = list(
+#'                     list(
+#'                       Clients = "string",
+#'                       Options = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               UserAndGroupQuotas = list(
+#'                 list(
+#'                   Type = "USER"|"GROUP",
+#'                   Id = 123,
+#'                   StorageCapacityQuotaGiB = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           TargetSnapshotValues = list(
+#'             ResourceARN = "string",
+#'             SnapshotId = "string",
+#'             Name = "string",
+#'             VolumeId = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'             LifecycleTransitionReason = list(
+#'               Message = "string"
+#'             ),
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             AdministrativeActions = list()
 #'           )
 #'         )
+#'       ),
+#'       OntapConfiguration = list(
+#'         AutomaticBackupRetentionDays = 123,
+#'         DailyAutomaticBackupStartTime = "string",
+#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'         EndpointIpAddressRange = "string",
+#'         Endpoints = list(
+#'           Intercluster = list(
+#'             DNSName = "string",
+#'             IpAddresses = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Management = list(
+#'             DNSName = "string",
+#'             IpAddresses = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         DiskIopsConfiguration = list(
+#'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'           Iops = 123
+#'         ),
+#'         PreferredSubnetId = "string",
+#'         RouteTableIds = list(
+#'           "string"
+#'         ),
+#'         ThroughputCapacity = 123,
+#'         WeeklyMaintenanceStartTime = "string"
+#'       ),
+#'       FileSystemTypeVersion = "string",
+#'       OpenZFSConfiguration = list(
+#'         AutomaticBackupRetentionDays = 123,
+#'         CopyTagsToBackups = TRUE|FALSE,
+#'         CopyTagsToVolumes = TRUE|FALSE,
+#'         DailyAutomaticBackupStartTime = "string",
+#'         DeploymentType = "SINGLE_AZ_1",
+#'         ThroughputCapacity = 123,
+#'         WeeklyMaintenanceStartTime = "string",
+#'         DiskIopsConfiguration = list(
+#'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'           Iops = 123
+#'         ),
+#'         RootVolumeId = "string"
 #'       )
 #'     ),
 #'     DirectoryInformation = list(
 #'       DomainName = "string",
-#'       ActiveDirectoryId = "string"
+#'       ActiveDirectoryId = "string",
+#'       ResourceARN = "string"
+#'     ),
+#'     OwnerId = "string",
+#'     SourceBackupId = "string",
+#'     SourceBackupRegion = "string",
+#'     ResourceType = "FILE_SYSTEM"|"VOLUME",
+#'     Volume = list(
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FileSystemId = "string",
+#'       Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'       Name = "string",
+#'       OntapConfiguration = list(
+#'         FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'         JunctionPath = "string",
+#'         SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'         SizeInMegabytes = 123,
+#'         StorageEfficiencyEnabled = TRUE|FALSE,
+#'         StorageVirtualMachineId = "string",
+#'         StorageVirtualMachineRoot = TRUE|FALSE,
+#'         TieringPolicy = list(
+#'           CoolingPeriod = 123,
+#'           Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'         ),
+#'         UUID = "string",
+#'         OntapVolumeType = "RW"|"DP"|"LS"
+#'       ),
+#'       ResourceARN = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VolumeId = "string",
+#'       VolumeType = "ONTAP"|"OPENZFS",
+#'       LifecycleTransitionReason = list(
+#'         Message = "string"
+#'       ),
+#'       AdministrativeActions = list(
+#'         list(
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'           ProgressPercent = 123,
+#'           RequestTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'           TargetFileSystemValues = list(
+#'             OwnerId = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             FileSystemId = "string",
+#'             FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'             Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'             FailureDetails = list(
+#'               Message = "string"
+#'             ),
+#'             StorageCapacity = 123,
+#'             StorageType = "SSD"|"HDD",
+#'             VpcId = "string",
+#'             SubnetIds = list(
+#'               "string"
+#'             ),
+#'             NetworkInterfaceIds = list(
+#'               "string"
+#'             ),
+#'             DNSName = "string",
+#'             KmsKeyId = "string",
+#'             ResourceARN = "string",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             WindowsConfiguration = list(
+#'               ActiveDirectoryId = "string",
+#'               SelfManagedActiveDirectoryConfiguration = list(
+#'                 DomainName = "string",
+#'                 OrganizationalUnitDistinguishedName = "string",
+#'                 FileSystemAdministratorsGroup = "string",
+#'                 UserName = "string",
+#'                 DnsIps = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'               RemoteAdministrationEndpoint = "string",
+#'               PreferredSubnetId = "string",
+#'               PreferredFileServerIp = "string",
+#'               ThroughputCapacity = 123,
+#'               MaintenanceOperationsInProgress = list(
+#'                 "PATCHING"|"BACKING_UP"
+#'               ),
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DailyAutomaticBackupStartTime = "string",
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               Aliases = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'                 )
+#'               ),
+#'               AuditLogConfiguration = list(
+#'                 FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'                 FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'                 AuditLogDestination = "string"
+#'               )
+#'             ),
+#'             LustreConfiguration = list(
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DataRepositoryConfiguration = list(
+#'                 Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'                 ImportPath = "string",
+#'                 ExportPath = "string",
+#'                 ImportedFileChunkSize = 123,
+#'                 AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'                 FailureDetails = list(
+#'                   Message = "string"
+#'                 )
+#'               ),
+#'               DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'               PerUnitStorageThroughput = 123,
+#'               MountName = "string",
+#'               DailyAutomaticBackupStartTime = "string",
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               DriveCacheType = "NONE"|"READ",
+#'               DataCompressionType = "NONE"|"LZ4",
+#'               LogConfiguration = list(
+#'                 Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'                 Destination = "string"
+#'               ),
+#'               RootSquashConfiguration = list(
+#'                 RootSquash = "string",
+#'                 NoSquashNids = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             AdministrativeActions = list(),
+#'             OntapConfiguration = list(
+#'               AutomaticBackupRetentionDays = 123,
+#'               DailyAutomaticBackupStartTime = "string",
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'               EndpointIpAddressRange = "string",
+#'               Endpoints = list(
+#'                 Intercluster = list(
+#'                   DNSName = "string",
+#'                   IpAddresses = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Management = list(
+#'                   DNSName = "string",
+#'                   IpAddresses = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
+#'               ),
+#'               PreferredSubnetId = "string",
+#'               RouteTableIds = list(
+#'                 "string"
+#'               ),
+#'               ThroughputCapacity = 123,
+#'               WeeklyMaintenanceStartTime = "string"
+#'             ),
+#'             FileSystemTypeVersion = "string",
+#'             OpenZFSConfiguration = list(
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               CopyTagsToVolumes = TRUE|FALSE,
+#'               DailyAutomaticBackupStartTime = "string",
+#'               DeploymentType = "SINGLE_AZ_1",
+#'               ThroughputCapacity = 123,
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
+#'               ),
+#'               RootVolumeId = "string"
+#'             )
+#'           ),
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           ),
+#'           TargetVolumeValues = list(),
+#'           TargetSnapshotValues = list(
+#'             ResourceARN = "string",
+#'             SnapshotId = "string",
+#'             Name = "string",
+#'             VolumeId = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'             LifecycleTransitionReason = list(
+#'               Message = "string"
+#'             ),
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             AdministrativeActions = list()
+#'           )
+#'         )
+#'       ),
+#'       OpenZFSConfiguration = list(
+#'         ParentVolumeId = "string",
+#'         VolumePath = "string",
+#'         StorageCapacityReservationGiB = 123,
+#'         StorageCapacityQuotaGiB = 123,
+#'         RecordSizeKiB = 123,
+#'         DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'         CopyTagsToSnapshots = TRUE|FALSE,
+#'         OriginSnapshot = list(
+#'           SnapshotARN = "string",
+#'           CopyStrategy = "CLONE"|"FULL_COPY"
+#'         ),
+#'         ReadOnly = TRUE|FALSE,
+#'         NfsExports = list(
+#'           list(
+#'             ClientConfigurations = list(
+#'               list(
+#'                 Clients = "string",
+#'                 Options = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         UserAndGroupQuotas = list(
+#'           list(
+#'             Type = "USER"|"GROUP",
+#'             Id = 123,
+#'             StorageCapacityQuotaGiB = 123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$copy_backup(
+#'   ClientRequestToken = "string",
+#'   SourceBackupId = "string",
+#'   SourceRegion = "string",
+#'   KmsKeyId = "string",
+#'   CopyTags = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation copies an Amazon FSx backup.
+#' svc$copy_backup(
+#'   SourceBackupId = "backup-03e3c82e0183b7b6b",
+#'   SourceRegion = "us-east-2"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_copy_backup
+fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceRegion = NULL, KmsKeyId = NULL, CopyTags = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CopyBackup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$copy_backup_input(ClientRequestToken = ClientRequestToken, SourceBackupId = SourceBackupId, SourceRegion = SourceRegion, KmsKeyId = KmsKeyId, CopyTags = CopyTags, Tags = Tags)
+  output <- .fsx$copy_backup_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$copy_backup <- fsx_copy_backup
+
+#' Creates a backup of an existing Amazon FSx for Windows File Server file
+#' system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP
+#' volume, or Amazon FSx for OpenZFS file system
+#'
+#' @description
+#' Creates a backup of an existing Amazon FSx for Windows File Server file
+#' system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP
+#' volume, or Amazon FSx for OpenZFS file system. We recommend creating
+#' regular backups so that you can restore a file system or volume from a
+#' backup if an issue arises with the original file system or volume.
+#' 
+#' For Amazon FSx for Lustre file systems, you can create a backup only for
+#' file systems that have the following configuration:
+#' 
+#' -   A Persistent deployment type
+#' 
+#' -   Are *not* linked to a data repository
+#' 
+#' For more information about backups, see the following:
+#' 
+#' -   For Amazon FSx for Lustre, see [Working with FSx for Lustre
+#'     backups](https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html).
+#' 
+#' -   For Amazon FSx for Windows, see [Working with FSx for Windows
+#'     backups](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html).
+#' 
+#' -   For Amazon FSx for NetApp ONTAP, see [Working with FSx for NetApp
+#'     ONTAP
+#'     backups](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/using-backups.html).
+#' 
+#' -   For Amazon FSx for OpenZFS, see [Working with FSx for OpenZFS
+#'     backups](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/using-backups.html).
+#' 
+#' If a backup with the specified client request token exists and the
+#' parameters match, this operation returns the description of the existing
+#' backup. If a backup with the specified client request token exists and
+#' the parameters don't match, this operation returns
+#' `IncompatibleParameterError`. If a backup with the specified client
+#' request token doesn't exist, [`create_backup`][fsx_create_backup] does
+#' the following:
+#' 
+#' -   Creates a new Amazon FSx backup with an assigned ID, and an initial
+#'     lifecycle state of `CREATING`.
+#' 
+#' -   Returns the description of the backup.
+#' 
+#' By using the idempotent operation, you can retry a
+#' [`create_backup`][fsx_create_backup] operation without the risk of
+#' creating an extra backup. This approach can be useful when an initial
+#' call fails in a way that makes it unclear whether a backup was created.
+#' If you use the same client request token and the initial call created a
+#' backup, the operation returns a successful result because all the
+#' parameters are the same.
+#' 
+#' The [`create_backup`][fsx_create_backup] operation returns while the
+#' backup's lifecycle state is still `CREATING`. You can check the backup
+#' creation status by calling the
+#' [`describe_backups`][fsx_describe_backups] operation, which returns the
+#' backup state along with other information.
+#'
+#' @usage
+#' fsx_create_backup(FileSystemId, ClientRequestToken, Tags, VolumeId)
+#'
+#' @param FileSystemId The ID of the file system to back up.
+#' @param ClientRequestToken (Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
+#' ensure idempotent creation. This string is automatically filled on your
+#' behalf when you use the Command Line Interface (CLI) or an Amazon Web
+#' Services SDK.
+#' @param Tags (Optional) The tags to apply to the backup at backup creation. The key
+#' value of the `Name` tag appears in the console as the backup name. If
+#' you have set `CopyTagsToBackups` to `true`, and you specify one or more
+#' tags using the [`create_backup`][fsx_create_backup] operation, no
+#' existing file system tags are copied from the file system to the backup.
+#' @param VolumeId (Optional) The ID of the FSx for ONTAP volume to back up.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Backup = list(
+#'     BackupId = "string",
+#'     Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"|"COPYING",
+#'     FailureDetails = list(
+#'       Message = "string"
+#'     ),
+#'     Type = "AUTOMATIC"|"USER_INITIATED"|"AWS_BACKUP",
+#'     ProgressPercent = 123,
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     KmsKeyId = "string",
+#'     ResourceARN = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     FileSystem = list(
+#'       OwnerId = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FileSystemId = "string",
+#'       FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'       Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'       FailureDetails = list(
+#'         Message = "string"
+#'       ),
+#'       StorageCapacity = 123,
+#'       StorageType = "SSD"|"HDD",
+#'       VpcId = "string",
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       NetworkInterfaceIds = list(
+#'         "string"
+#'       ),
+#'       DNSName = "string",
+#'       KmsKeyId = "string",
+#'       ResourceARN = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       WindowsConfiguration = list(
+#'         ActiveDirectoryId = "string",
+#'         SelfManagedActiveDirectoryConfiguration = list(
+#'           DomainName = "string",
+#'           OrganizationalUnitDistinguishedName = "string",
+#'           FileSystemAdministratorsGroup = "string",
+#'           UserName = "string",
+#'           DnsIps = list(
+#'             "string"
+#'           )
+#'         ),
+#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'         RemoteAdministrationEndpoint = "string",
+#'         PreferredSubnetId = "string",
+#'         PreferredFileServerIp = "string",
+#'         ThroughputCapacity = 123,
+#'         MaintenanceOperationsInProgress = list(
+#'           "PATCHING"|"BACKING_UP"
+#'         ),
+#'         WeeklyMaintenanceStartTime = "string",
+#'         DailyAutomaticBackupStartTime = "string",
+#'         AutomaticBackupRetentionDays = 123,
+#'         CopyTagsToBackups = TRUE|FALSE,
+#'         Aliases = list(
+#'           list(
+#'             Name = "string",
+#'             Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'           )
+#'         ),
+#'         AuditLogConfiguration = list(
+#'           FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'           FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'           AuditLogDestination = "string"
+#'         )
+#'       ),
+#'       LustreConfiguration = list(
+#'         WeeklyMaintenanceStartTime = "string",
+#'         DataRepositoryConfiguration = list(
+#'           Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'           ImportPath = "string",
+#'           ExportPath = "string",
+#'           ImportedFileChunkSize = 123,
+#'           AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           )
+#'         ),
+#'         DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'         PerUnitStorageThroughput = 123,
+#'         MountName = "string",
+#'         DailyAutomaticBackupStartTime = "string",
+#'         AutomaticBackupRetentionDays = 123,
+#'         CopyTagsToBackups = TRUE|FALSE,
+#'         DriveCacheType = "NONE"|"READ",
+#'         DataCompressionType = "NONE"|"LZ4",
+#'         LogConfiguration = list(
+#'           Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'           Destination = "string"
+#'         ),
+#'         RootSquashConfiguration = list(
+#'           RootSquash = "string",
+#'           NoSquashNids = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       AdministrativeActions = list(
+#'         list(
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'           ProgressPercent = 123,
+#'           RequestTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'           TargetFileSystemValues = list(),
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           ),
+#'           TargetVolumeValues = list(
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             FileSystemId = "string",
+#'             Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'             Name = "string",
+#'             OntapConfiguration = list(
+#'               FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'               JunctionPath = "string",
+#'               SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'               SizeInMegabytes = 123,
+#'               StorageEfficiencyEnabled = TRUE|FALSE,
+#'               StorageVirtualMachineId = "string",
+#'               StorageVirtualMachineRoot = TRUE|FALSE,
+#'               TieringPolicy = list(
+#'                 CoolingPeriod = 123,
+#'                 Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'               ),
+#'               UUID = "string",
+#'               OntapVolumeType = "RW"|"DP"|"LS"
+#'             ),
+#'             ResourceARN = "string",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             VolumeId = "string",
+#'             VolumeType = "ONTAP"|"OPENZFS",
+#'             LifecycleTransitionReason = list(
+#'               Message = "string"
+#'             ),
+#'             AdministrativeActions = list(),
+#'             OpenZFSConfiguration = list(
+#'               ParentVolumeId = "string",
+#'               VolumePath = "string",
+#'               StorageCapacityReservationGiB = 123,
+#'               StorageCapacityQuotaGiB = 123,
+#'               RecordSizeKiB = 123,
+#'               DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'               CopyTagsToSnapshots = TRUE|FALSE,
+#'               OriginSnapshot = list(
+#'                 SnapshotARN = "string",
+#'                 CopyStrategy = "CLONE"|"FULL_COPY"
+#'               ),
+#'               ReadOnly = TRUE|FALSE,
+#'               NfsExports = list(
+#'                 list(
+#'                   ClientConfigurations = list(
+#'                     list(
+#'                       Clients = "string",
+#'                       Options = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               UserAndGroupQuotas = list(
+#'                 list(
+#'                   Type = "USER"|"GROUP",
+#'                   Id = 123,
+#'                   StorageCapacityQuotaGiB = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           TargetSnapshotValues = list(
+#'             ResourceARN = "string",
+#'             SnapshotId = "string",
+#'             Name = "string",
+#'             VolumeId = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'             LifecycleTransitionReason = list(
+#'               Message = "string"
+#'             ),
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             AdministrativeActions = list()
+#'           )
+#'         )
+#'       ),
+#'       OntapConfiguration = list(
+#'         AutomaticBackupRetentionDays = 123,
+#'         DailyAutomaticBackupStartTime = "string",
+#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'         EndpointIpAddressRange = "string",
+#'         Endpoints = list(
+#'           Intercluster = list(
+#'             DNSName = "string",
+#'             IpAddresses = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Management = list(
+#'             DNSName = "string",
+#'             IpAddresses = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         DiskIopsConfiguration = list(
+#'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'           Iops = 123
+#'         ),
+#'         PreferredSubnetId = "string",
+#'         RouteTableIds = list(
+#'           "string"
+#'         ),
+#'         ThroughputCapacity = 123,
+#'         WeeklyMaintenanceStartTime = "string"
+#'       ),
+#'       FileSystemTypeVersion = "string",
+#'       OpenZFSConfiguration = list(
+#'         AutomaticBackupRetentionDays = 123,
+#'         CopyTagsToBackups = TRUE|FALSE,
+#'         CopyTagsToVolumes = TRUE|FALSE,
+#'         DailyAutomaticBackupStartTime = "string",
+#'         DeploymentType = "SINGLE_AZ_1",
+#'         ThroughputCapacity = 123,
+#'         WeeklyMaintenanceStartTime = "string",
+#'         DiskIopsConfiguration = list(
+#'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'           Iops = 123
+#'         ),
+#'         RootVolumeId = "string"
+#'       )
+#'     ),
+#'     DirectoryInformation = list(
+#'       DomainName = "string",
+#'       ActiveDirectoryId = "string",
+#'       ResourceARN = "string"
+#'     ),
+#'     OwnerId = "string",
+#'     SourceBackupId = "string",
+#'     SourceBackupRegion = "string",
+#'     ResourceType = "FILE_SYSTEM"|"VOLUME",
+#'     Volume = list(
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FileSystemId = "string",
+#'       Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'       Name = "string",
+#'       OntapConfiguration = list(
+#'         FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'         JunctionPath = "string",
+#'         SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'         SizeInMegabytes = 123,
+#'         StorageEfficiencyEnabled = TRUE|FALSE,
+#'         StorageVirtualMachineId = "string",
+#'         StorageVirtualMachineRoot = TRUE|FALSE,
+#'         TieringPolicy = list(
+#'           CoolingPeriod = 123,
+#'           Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'         ),
+#'         UUID = "string",
+#'         OntapVolumeType = "RW"|"DP"|"LS"
+#'       ),
+#'       ResourceARN = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VolumeId = "string",
+#'       VolumeType = "ONTAP"|"OPENZFS",
+#'       LifecycleTransitionReason = list(
+#'         Message = "string"
+#'       ),
+#'       AdministrativeActions = list(
+#'         list(
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'           ProgressPercent = 123,
+#'           RequestTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'           TargetFileSystemValues = list(
+#'             OwnerId = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             FileSystemId = "string",
+#'             FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'             Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'             FailureDetails = list(
+#'               Message = "string"
+#'             ),
+#'             StorageCapacity = 123,
+#'             StorageType = "SSD"|"HDD",
+#'             VpcId = "string",
+#'             SubnetIds = list(
+#'               "string"
+#'             ),
+#'             NetworkInterfaceIds = list(
+#'               "string"
+#'             ),
+#'             DNSName = "string",
+#'             KmsKeyId = "string",
+#'             ResourceARN = "string",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             WindowsConfiguration = list(
+#'               ActiveDirectoryId = "string",
+#'               SelfManagedActiveDirectoryConfiguration = list(
+#'                 DomainName = "string",
+#'                 OrganizationalUnitDistinguishedName = "string",
+#'                 FileSystemAdministratorsGroup = "string",
+#'                 UserName = "string",
+#'                 DnsIps = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'               RemoteAdministrationEndpoint = "string",
+#'               PreferredSubnetId = "string",
+#'               PreferredFileServerIp = "string",
+#'               ThroughputCapacity = 123,
+#'               MaintenanceOperationsInProgress = list(
+#'                 "PATCHING"|"BACKING_UP"
+#'               ),
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DailyAutomaticBackupStartTime = "string",
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               Aliases = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'                 )
+#'               ),
+#'               AuditLogConfiguration = list(
+#'                 FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'                 FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'                 AuditLogDestination = "string"
+#'               )
+#'             ),
+#'             LustreConfiguration = list(
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DataRepositoryConfiguration = list(
+#'                 Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'                 ImportPath = "string",
+#'                 ExportPath = "string",
+#'                 ImportedFileChunkSize = 123,
+#'                 AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'                 FailureDetails = list(
+#'                   Message = "string"
+#'                 )
+#'               ),
+#'               DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'               PerUnitStorageThroughput = 123,
+#'               MountName = "string",
+#'               DailyAutomaticBackupStartTime = "string",
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               DriveCacheType = "NONE"|"READ",
+#'               DataCompressionType = "NONE"|"LZ4",
+#'               LogConfiguration = list(
+#'                 Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'                 Destination = "string"
+#'               ),
+#'               RootSquashConfiguration = list(
+#'                 RootSquash = "string",
+#'                 NoSquashNids = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             AdministrativeActions = list(),
+#'             OntapConfiguration = list(
+#'               AutomaticBackupRetentionDays = 123,
+#'               DailyAutomaticBackupStartTime = "string",
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'               EndpointIpAddressRange = "string",
+#'               Endpoints = list(
+#'                 Intercluster = list(
+#'                   DNSName = "string",
+#'                   IpAddresses = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Management = list(
+#'                   DNSName = "string",
+#'                   IpAddresses = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
+#'               ),
+#'               PreferredSubnetId = "string",
+#'               RouteTableIds = list(
+#'                 "string"
+#'               ),
+#'               ThroughputCapacity = 123,
+#'               WeeklyMaintenanceStartTime = "string"
+#'             ),
+#'             FileSystemTypeVersion = "string",
+#'             OpenZFSConfiguration = list(
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               CopyTagsToVolumes = TRUE|FALSE,
+#'               DailyAutomaticBackupStartTime = "string",
+#'               DeploymentType = "SINGLE_AZ_1",
+#'               ThroughputCapacity = 123,
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
+#'               ),
+#'               RootVolumeId = "string"
+#'             )
+#'           ),
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           ),
+#'           TargetVolumeValues = list(),
+#'           TargetSnapshotValues = list(
+#'             ResourceARN = "string",
+#'             SnapshotId = "string",
+#'             Name = "string",
+#'             VolumeId = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'             LifecycleTransitionReason = list(
+#'               Message = "string"
+#'             ),
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             AdministrativeActions = list()
+#'           )
+#'         )
+#'       ),
+#'       OpenZFSConfiguration = list(
+#'         ParentVolumeId = "string",
+#'         VolumePath = "string",
+#'         StorageCapacityReservationGiB = 123,
+#'         StorageCapacityQuotaGiB = 123,
+#'         RecordSizeKiB = 123,
+#'         DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'         CopyTagsToSnapshots = TRUE|FALSE,
+#'         OriginSnapshot = list(
+#'           SnapshotARN = "string",
+#'           CopyStrategy = "CLONE"|"FULL_COPY"
+#'         ),
+#'         ReadOnly = TRUE|FALSE,
+#'         NfsExports = list(
+#'           list(
+#'             ClientConfigurations = list(
+#'               list(
+#'                 Clients = "string",
+#'                 Options = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         UserAndGroupQuotas = list(
+#'           list(
+#'             Type = "USER"|"GROUP",
+#'             Id = 123,
+#'             StorageCapacityQuotaGiB = 123
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -347,7 +1391,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   VolumeId = "string"
 #' )
 #' ```
 #'
@@ -368,14 +1413,14 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #' @keywords internal
 #'
 #' @rdname fsx_create_backup
-fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NULL) {
+fsx_create_backup <- function(FileSystemId = NULL, ClientRequestToken = NULL, Tags = NULL, VolumeId = NULL) {
   op <- new_operation(
     name = "CreateBackup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$create_backup_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  input <- .fsx$create_backup_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, Tags = Tags, VolumeId = VolumeId)
   output <- .fsx$create_backup_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -385,35 +1430,199 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 }
 .fsx$operations$create_backup <- fsx_create_backup
 
+#' Creates an Amazon FSx for Lustre data repository association (DRA)
+#'
+#' @description
+#' Creates an Amazon FSx for Lustre data repository association (DRA). A
+#' data repository association is a link between a directory on the file
+#' system and an Amazon S3 bucket or prefix. You can have a maximum of 8
+#' data repository associations on a file system. Data repository
+#' associations are supported only for file systems with the `Persistent_2`
+#' deployment type.
+#' 
+#' Each data repository association must have a unique Amazon FSx file
+#' system directory and a unique S3 bucket or prefix associated with it.
+#' You can configure a data repository association for automatic import
+#' only, for automatic export only, or for both. To learn more about
+#' linking a data repository to your file system, see [Linking your file
+#' system to an S3
+#' bucket](https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html).
+#'
+#' @usage
+#' fsx_create_data_repository_association(FileSystemId, FileSystemPath,
+#'   DataRepositoryPath, BatchImportMetaDataOnCreate, ImportedFileChunkSize,
+#'   S3, ClientRequestToken, Tags)
+#'
+#' @param FileSystemId &#91;required&#93; 
+#' @param FileSystemPath &#91;required&#93; A path on the file system that points to a high-level directory (such as
+#' `/ns1/`) or subdirectory (such as `/ns1/subdir/`) that will be mapped
+#' 1-1 with `DataRepositoryPath`. The leading forward slash in the name is
+#' required. Two data repository associations cannot have overlapping file
+#' system paths. For example, if a data repository is associated with file
+#' system path `/ns1/`, then you cannot link another data repository with
+#' file system path `/ns1/ns2`.
+#' 
+#' This path specifies where in your file system files will be exported
+#' from or imported to. This file system directory can be linked to only
+#' one Amazon S3 bucket, and no other S3 bucket can be linked to the
+#' directory.
+#' 
+#' If you specify only a forward slash (`/`) as the file system path, you
+#' can link only 1 data repository to the file system. You can only specify
+#' "/" as the file system path for the first data repository associated
+#' with a file system.
+#' @param DataRepositoryPath &#91;required&#93; The path to the Amazon S3 data repository that will be linked to the
+#' file system. The path can be an S3 bucket or prefix in the format
+#' `s3://myBucket/myPrefix/`. This path specifies where in the S3 data
+#' repository files will be imported from or exported to.
+#' @param BatchImportMetaDataOnCreate Set to `true` to run an import data repository task to import metadata
+#' from the data repository to the file system after the data repository
+#' association is created. Default is `false`.
+#' @param ImportedFileChunkSize For files imported from a data repository, this value determines the
+#' stripe count and maximum amount of data per file (in MiB) stored on a
+#' single physical disk. The maximum number of disks that a single file can
+#' be striped across is limited by the total number of disks that make up
+#' the file system.
+#' 
+#' The default chunk size is 1,024 MiB (1 GiB) and can go as high as
+#' 512,000 MiB (500 GiB). Amazon S3 objects have a maximum size of 5 TB.
+#' @param S3 The configuration for an Amazon S3 data repository linked to an Amazon
+#' FSx Lustre file system with a data repository association. The
+#' configuration defines which file events (new, changed, or deleted files
+#' or directories) are automatically imported from the linked data
+#' repository to the file system or automatically exported from the file
+#' system to the data repository.
+#' @param ClientRequestToken 
+#' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Association = list(
+#'     AssociationId = "string",
+#'     ResourceARN = "string",
+#'     FileSystemId = "string",
+#'     Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'     FailureDetails = list(
+#'       Message = "string"
+#'     ),
+#'     FileSystemPath = "string",
+#'     DataRepositoryPath = "string",
+#'     BatchImportMetaDataOnCreate = TRUE|FALSE,
+#'     ImportedFileChunkSize = 123,
+#'     S3 = list(
+#'       AutoImportPolicy = list(
+#'         Events = list(
+#'           "NEW"|"CHANGED"|"DELETED"
+#'         )
+#'       ),
+#'       AutoExportPolicy = list(
+#'         Events = list(
+#'           "NEW"|"CHANGED"|"DELETED"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_data_repository_association(
+#'   FileSystemId = "string",
+#'   FileSystemPath = "string",
+#'   DataRepositoryPath = "string",
+#'   BatchImportMetaDataOnCreate = TRUE|FALSE,
+#'   ImportedFileChunkSize = 123,
+#'   S3 = list(
+#'     AutoImportPolicy = list(
+#'       Events = list(
+#'         "NEW"|"CHANGED"|"DELETED"
+#'       )
+#'     ),
+#'     AutoExportPolicy = list(
+#'       Events = list(
+#'         "NEW"|"CHANGED"|"DELETED"
+#'       )
+#'     )
+#'   ),
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_data_repository_association
+fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath, DataRepositoryPath, BatchImportMetaDataOnCreate = NULL, ImportedFileChunkSize = NULL, S3 = NULL, ClientRequestToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateDataRepositoryAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$create_data_repository_association_input(FileSystemId = FileSystemId, FileSystemPath = FileSystemPath, DataRepositoryPath = DataRepositoryPath, BatchImportMetaDataOnCreate = BatchImportMetaDataOnCreate, ImportedFileChunkSize = ImportedFileChunkSize, S3 = S3, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  output <- .fsx$create_data_repository_association_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_data_repository_association <- fsx_create_data_repository_association
+
 #' Creates an Amazon FSx for Lustre data repository task
 #'
 #' @description
 #' Creates an Amazon FSx for Lustre data repository task. You use data
 #' repository tasks to perform bulk operations between your Amazon FSx file
-#' system and its linked data repository. An example of a data repository
+#' system and its linked data repositories. An example of a data repository
 #' task is exporting any data and metadata changes, including POSIX
 #' metadata, to files, directories, and symbolic links (symlinks) from your
-#' FSx file system to its linked data repository. A
+#' FSx file system to a linked data repository. A
 #' [`create_data_repository_task`][fsx_create_data_repository_task]
 #' operation will fail if a data repository is not linked to the FSx file
 #' system. To learn more about data repository tasks, see [Data Repository
 #' Tasks](https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html).
 #' To learn more about linking a data repository to your file system, see
 #' [Linking your file system to an S3
-#' bucket](https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-fs-linked-data-repo.html).
+#' bucket](https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html).
 #'
 #' @usage
 #' fsx_create_data_repository_task(Type, Paths, FileSystemId, Report,
 #'   ClientRequestToken, Tags)
 #'
 #' @param Type &#91;required&#93; Specifies the type of data repository task to create.
-#' @param Paths (Optional) The path or paths on the Amazon FSx file system to use when
-#' the data repository task is processed. The default path is the file
-#' system root directory. The paths you provide need to be relative to the
-#' mount point of the file system. If the mount point is `/mnt/fsx` and
-#' `/mnt/fsx/path1` is a directory or file on the file system you want to
-#' export, then the path to provide is `path1`. If a path that you provide
-#' isn't valid, the task fails.
+#' @param Paths A list of paths for the data repository task to use when the task is
+#' processed. If a path that you provide isn't valid, the task fails.
+#' 
+#' -   For export tasks, the list contains paths on the Amazon FSx file
+#'     system from which the files are exported to the Amazon S3 bucket.
+#'     The default path is the file system root directory. The paths you
+#'     provide need to be relative to the mount point of the file system.
+#'     If the mount point is `/mnt/fsx` and `/mnt/fsx/path1` is a directory
+#'     or file on the file system you want to export, then the path to
+#'     provide is `path1`.
+#' 
+#' -   For import tasks, the list contains paths in the Amazon S3 bucket
+#'     from which POSIX metadata changes are imported to the Amazon FSx
+#'     file system. The path can be an S3 bucket or prefix in the format
+#'     `s3://myBucket/myPrefix` (where `myPrefix` is optional).
 #' @param FileSystemId &#91;required&#93; 
 #' @param Report &#91;required&#93; Defines whether or not Amazon FSx provides a CompletionReport once the
 #' task has completed. A CompletionReport provides a detailed report on the
@@ -431,7 +1640,7 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 #'   DataRepositoryTask = list(
 #'     TaskId = "string",
 #'     Lifecycle = "PENDING"|"EXECUTING"|"FAILED"|"SUCCEEDED"|"CANCELED"|"CANCELING",
-#'     Type = "EXPORT_TO_REPOSITORY",
+#'     Type = "EXPORT_TO_REPOSITORY"|"IMPORT_METADATA_FROM_REPOSITORY",
 #'     CreationTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -476,7 +1685,7 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 #' @section Request syntax:
 #' ```
 #' svc$create_data_repository_task(
-#'   Type = "EXPORT_TO_REPOSITORY",
+#'   Type = "EXPORT_TO_REPOSITORY"|"IMPORT_METADATA_FROM_REPOSITORY",
 #'   Paths = list(
 #'     "string"
 #'   ),
@@ -520,20 +1729,17 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' Creates a new, empty Amazon FSx file system
 #'
 #' @description
-#' Creates a new, empty Amazon FSx file system.
+#' Creates a new, empty Amazon FSx file system. You can create the
+#' following supported Amazon FSx file systems using the
+#' [`create_file_system`][fsx_create_file_system] API operation:
 #' 
-#' If a file system with the specified client request token exists and the
-#' parameters match, [`create_file_system`][fsx_create_file_system] returns
-#' the description of the existing file system. If a file system specified
-#' client request token exists and the parameters don't match, this call
-#' returns `IncompatibleParameterError`. If a file system with the
-#' specified client request token doesn't exist,
-#' [`create_file_system`][fsx_create_file_system] does the following:
+#' -   Amazon FSx for Lustre
 #' 
-#' -   Creates a new, empty Amazon FSx file system with an assigned ID, and
-#'     an initial lifecycle state of `CREATING`.
+#' -   Amazon FSx for NetApp ONTAP
 #' 
-#' -   Returns the description of the file system.
+#' -   Amazon FSx for OpenZFS
+#' 
+#' -   Amazon FSx for Windows File Server
 #' 
 #' This operation requires a client request token in the request that
 #' Amazon FSx uses to ensure idempotent creation. This means that calling
@@ -547,6 +1753,31 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' and the initial call created a file system, the client receives success
 #' as long as the parameters are the same.
 #' 
+#' If a file system with the specified client request token exists and the
+#' parameters match, [`create_file_system`][fsx_create_file_system] returns
+#' the description of the existing file system. If a file system with the
+#' specified client request token exists and the parameters don't match,
+#' this call returns `IncompatibleParameterError`. If a file system with
+#' the specified client request token doesn't exist,
+#' [`create_file_system`][fsx_create_file_system] does the following:
+#' 
+#' -   Creates a new, empty Amazon FSx file system with an assigned ID, and
+#'     an initial lifecycle state of `CREATING`.
+#' 
+#' -   Returns the description of the file system in JSON format.
+#' 
+#' This operation requires a client request token in the request that
+#' Amazon FSx uses to ensure idempotent creation. This means that calling
+#' the operation multiple times with the same client request token has no
+#' effect. By using the idempotent operation, you can retry a
+#' [`create_file_system`][fsx_create_file_system] operation without the
+#' risk of creating an extra file system. This approach can be useful when
+#' an initial call fails in a way that makes it unclear whether a file
+#' system was created. Examples are if a transport-level timeout occurred,
+#' or your connection was reset. If you use the same client request token
+#' and the initial call created a file system, the client receives a
+#' success message as long as the parameters are the same.
+#' 
 #' The [`create_file_system`][fsx_create_file_system] call returns while
 #' the file system's lifecycle state is still `CREATING`. You can check the
 #' file-system creation status by calling the
@@ -556,66 +1787,104 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' @usage
 #' fsx_create_file_system(ClientRequestToken, FileSystemType,
 #'   StorageCapacity, StorageType, SubnetIds, SecurityGroupIds, Tags,
-#'   KmsKeyId, WindowsConfiguration, LustreConfiguration)
+#'   KmsKeyId, WindowsConfiguration, LustreConfiguration, OntapConfiguration,
+#'   FileSystemTypeVersion, OpenZFSConfiguration)
 #'
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
 #' idempotent creation. This string is automatically filled on your behalf
-#' when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
-#' @param FileSystemType &#91;required&#93; The type of Amazon FSx file system to create, either `WINDOWS` or
-#' `LUSTRE`.
-#' @param StorageCapacity &#91;required&#93; Sets the storage capacity of the file system that you're creating.
+#' when you use the Command Line Interface (CLI) or an Amazon Web Services
+#' SDK.
+#' @param FileSystemType &#91;required&#93; The type of Amazon FSx file system to create. Valid values are
+#' `WINDOWS`, `LUSTRE`, `ONTAP`, and `OPENZFS`.
+#' @param StorageCapacity &#91;required&#93; Sets the storage capacity of the file system that you're creating, in
+#' gibibytes (GiB).
 #' 
-#' For Lustre file systems:
+#' **FSx for Lustre file systems** - The amount of storage capacity that
+#' you can configure depends on the value that you set for `StorageType`
+#' and the Lustre `DeploymentType`, as follows:
 #' 
-#' -   For `SCRATCH_2` and `PERSISTENT_1 SSD` deployment types, valid
-#'     values are 1200 GiB, 2400 GiB, and increments of 2400 GiB.
+#' -   For `SCRATCH_2`, `PERSISTENT_2` and `PERSISTENT_1` deployment types
+#'     using SSD storage type, the valid values are 1200 GiB, 2400 GiB, and
+#'     increments of 2400 GiB.
 #' 
-#' -   For `PERSISTENT HDD` file systems, valid values are increments of
+#' -   For `PERSISTENT_1` HDD file systems, valid values are increments of
 #'     6000 GiB for 12 MB/s/TiB file systems and increments of 1800 GiB for
 #'     40 MB/s/TiB file systems.
 #' 
 #' -   For `SCRATCH_1` deployment type, valid values are 1200 GiB, 2400
 #'     GiB, and increments of 3600 GiB.
 #' 
-#' For Windows file systems:
+#' **FSx for ONTAP file systems** - The amount of storage capacity that you
+#' can configure is from 1024 GiB up to 196,608 GiB (192 TiB).
 #' 
-#' -   If `StorageType=SSD`, valid values are 32 GiB - 65,536 GiB (64 TiB).
+#' **FSx for OpenZFS file systems** - The amount of storage capacity that
+#' you can configure is from 64 GiB up to 524,288 GiB (512 TiB).
 #' 
-#' -   If `StorageType=HDD`, valid values are 2000 GiB - 65,536 GiB (64
-#'     TiB).
-#' @param StorageType Sets the storage type for the file system you're creating. Valid values
-#' are `SSD` and `HDD`.
+#' **FSx for Windows File Server file systems** - The amount of storage
+#' capacity that you can configure depends on the value that you set for
+#' `StorageType` as follows:
+#' 
+#' -   For SSD storage, valid values are 32 GiB-65,536 GiB (64 TiB).
+#' 
+#' -   For HDD storage, valid values are 2000 GiB-65,536 GiB (64 TiB).
+#' @param StorageType Sets the storage type for the file system that you're creating. Valid
+#' values are `SSD` and `HDD`.
 #' 
 #' -   Set to `SSD` to use solid state drive storage. SSD is supported on
-#'     all Windows and Lustre deployment types.
+#'     all Windows, Lustre, ONTAP, and OpenZFS deployment types.
 #' 
 #' -   Set to `HDD` to use hard disk drive storage. HDD is supported on
 #'     `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types,
-#'     and on `PERSISTENT` Lustre file system deployment types.
+#'     and on `PERSISTENT_1` Lustre file system deployment types.
 #' 
-#' Default value is `SSD`. For more information, see [Storage Type
-#' Options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options)
-#' in the *Amazon FSx for Windows User Guide* and [Multiple Storage
-#' Options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
-#' in the *Amazon FSx for Lustre User Guide*.
+#' Default value is `SSD`. For more information, see [Storage type
+#' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options)
+#' in the *FSx for Windows File Server User Guide* and [Multiple storage
+#' options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
+#' in the *FSx for Lustre User Guide*.
 #' @param SubnetIds &#91;required&#93; Specifies the IDs of the subnets that the file system will be accessible
-#' from. For Windows `MULTI_AZ_1` file system deployment types, provide
+#' from. For Windows and ONTAP `MULTI_AZ_1` deployment types,provide
 #' exactly two subnet IDs, one for the preferred file server and one for
 #' the standby file server. You specify one of these subnets as the
-#' preferred subnet using the `WindowsConfiguration > PreferredSubnetID`
-#' property.
+#' preferred subnet using the `WindowsConfiguration > PreferredSubnetID` or
+#' `OntapConfiguration > PreferredSubnetID` properties. For more
+#' information about Multi-AZ file system configuration, see [Availability
+#' and durability: Single-AZ and Multi-AZ file
+#' systems](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html)
+#' in the *Amazon FSx for Windows User Guide* and [Availability and
+#' durability](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/) in the
+#' *Amazon FSx for ONTAP User Guide*.
 #' 
-#' For Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` file system deployment types
-#' and Lustre file systems, provide exactly one subnet ID. The file server
-#' is launched in that subnet's Availability Zone.
+#' For Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` and all Lustre deployment
+#' types, provide exactly one subnet ID. The file server is launched in
+#' that subnet's Availability Zone.
 #' @param SecurityGroupIds A list of IDs specifying the security groups to apply to all network
 #' interfaces created for file system access. This list isn't returned in
 #' later requests to describe the file system.
-#' @param Tags The tags to apply to the file system being created. The key value of the
-#' `Name` tag appears in the console as the file system name.
+#' @param Tags The tags to apply to the file system that's being created. The key value
+#' of the `Name` tag appears in the console as the file system name.
 #' @param KmsKeyId 
-#' @param WindowsConfiguration The Microsoft Windows configuration for the file system being created.
+#' @param WindowsConfiguration The Microsoft Windows configuration for the file system that's being
+#' created.
 #' @param LustreConfiguration 
+#' @param OntapConfiguration 
+#' @param FileSystemTypeVersion (Optional) For FSx for Lustre file systems, sets the Lustre version for
+#' the file system that you're creating. Valid values are `2.10` and
+#' `2.12`:
+#' 
+#' -   2.10 is supported by the Scratch and Persistent_1 Lustre deployment
+#'     types.
+#' 
+#' -   2.12 is supported by all Lustre deployment types. `2.12` is required
+#'     when setting FSx for Lustre `DeploymentType` to `PERSISTENT_2`.
+#' 
+#' Default value = `2.10`, except when `DeploymentType` is set to
+#' `PERSISTENT_2`, then the default is `2.12`.
+#' 
+#' If you set `FileSystemTypeVersion` to `2.10` for a `PERSISTENT_2` Lustre
+#' deployment type, the [`create_file_system`][fsx_create_file_system]
+#' operation fails.
+#' @param OpenZFSConfiguration The OpenZFS configuration for the file system that's being created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -627,8 +1896,8 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #'       "2015-01-01"
 #'     ),
 #'     FileSystemId = "string",
-#'     FileSystemType = "WINDOWS"|"LUSTRE",
-#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
+#'     FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
 #'     FailureDetails = list(
 #'       Message = "string"
 #'     ),
@@ -678,31 +1947,47 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #'           Name = "string",
 #'           Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
 #'         )
+#'       ),
+#'       AuditLogConfiguration = list(
+#'         FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'         FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'         AuditLogDestination = "string"
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
 #'       WeeklyMaintenanceStartTime = "string",
 #'       DataRepositoryConfiguration = list(
-#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
+#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
 #'         ImportPath = "string",
 #'         ExportPath = "string",
 #'         ImportedFileChunkSize = 123,
-#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
+#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
 #'         FailureDetails = list(
 #'           Message = "string"
 #'         )
 #'       ),
-#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
 #'       PerUnitStorageThroughput = 123,
 #'       MountName = "string",
 #'       DailyAutomaticBackupStartTime = "string",
 #'       AutomaticBackupRetentionDays = 123,
 #'       CopyTagsToBackups = TRUE|FALSE,
-#'       DriveCacheType = "NONE"|"READ"
+#'       DriveCacheType = "NONE"|"READ",
+#'       DataCompressionType = "NONE"|"LZ4",
+#'       LogConfiguration = list(
+#'         Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'         Destination = "string"
+#'       ),
+#'       RootSquashConfiguration = list(
+#'         RootSquash = "string",
+#'         NoSquashNids = list(
+#'           "string"
+#'         )
+#'       )
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -711,8 +1996,142 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #'         TargetFileSystemValues = list(),
 #'         FailureDetails = list(
 #'           Message = "string"
+#'         ),
+#'         TargetVolumeValues = list(
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'           Name = "string",
+#'           OntapConfiguration = list(
+#'             FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'             JunctionPath = "string",
+#'             SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'             SizeInMegabytes = 123,
+#'             StorageEfficiencyEnabled = TRUE|FALSE,
+#'             StorageVirtualMachineId = "string",
+#'             StorageVirtualMachineRoot = TRUE|FALSE,
+#'             TieringPolicy = list(
+#'               CoolingPeriod = 123,
+#'               Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'             ),
+#'             UUID = "string",
+#'             OntapVolumeType = "RW"|"DP"|"LS"
+#'           ),
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           VolumeId = "string",
+#'           VolumeType = "ONTAP"|"OPENZFS",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OpenZFSConfiguration = list(
+#'             ParentVolumeId = "string",
+#'             VolumePath = "string",
+#'             StorageCapacityReservationGiB = 123,
+#'             StorageCapacityQuotaGiB = 123,
+#'             RecordSizeKiB = 123,
+#'             DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'             CopyTagsToSnapshots = TRUE|FALSE,
+#'             OriginSnapshot = list(
+#'               SnapshotARN = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'             ),
+#'             ReadOnly = TRUE|FALSE,
+#'             NfsExports = list(
+#'               list(
+#'                 ClientConfigurations = list(
+#'                   list(
+#'                     Clients = "string",
+#'                     Options = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             UserAndGroupQuotas = list(
+#'               list(
+#'                 Type = "USER"|"GROUP",
+#'                 Id = 123,
+#'                 StorageCapacityQuotaGiB = 123
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         TargetSnapshotValues = list(
+#'           ResourceARN = "string",
+#'           SnapshotId = "string",
+#'           Name = "string",
+#'           VolumeId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           AdministrativeActions = list()
 #'         )
 #'       )
+#'     ),
+#'     OntapConfiguration = list(
+#'       AutomaticBackupRetentionDays = 123,
+#'       DailyAutomaticBackupStartTime = "string",
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'       EndpointIpAddressRange = "string",
+#'       Endpoints = list(
+#'         Intercluster = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Management = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       ),
+#'       PreferredSubnetId = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       ThroughputCapacity = 123,
+#'       WeeklyMaintenanceStartTime = "string"
+#'     ),
+#'     FileSystemTypeVersion = "string",
+#'     OpenZFSConfiguration = list(
+#'       AutomaticBackupRetentionDays = 123,
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       CopyTagsToVolumes = TRUE|FALSE,
+#'       DailyAutomaticBackupStartTime = "string",
+#'       DeploymentType = "SINGLE_AZ_1",
+#'       ThroughputCapacity = 123,
+#'       WeeklyMaintenanceStartTime = "string",
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       ),
+#'       RootVolumeId = "string"
 #'     )
 #'   )
 #' )
@@ -722,7 +2141,7 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' ```
 #' svc$create_file_system(
 #'   ClientRequestToken = "string",
-#'   FileSystemType = "WINDOWS"|"LUSTRE",
+#'   FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
 #'   StorageCapacity = 123,
 #'   StorageType = "SSD"|"HDD",
 #'   SubnetIds = list(
@@ -759,6 +2178,11 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #'     CopyTagsToBackups = TRUE|FALSE,
 #'     Aliases = list(
 #'       "string"
+#'     ),
+#'     AuditLogConfiguration = list(
+#'       FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'       FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'       AuditLogDestination = "string"
 #'     )
 #'   ),
 #'   LustreConfiguration = list(
@@ -766,13 +2190,80 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #'     ImportPath = "string",
 #'     ExportPath = "string",
 #'     ImportedFileChunkSize = 123,
-#'     DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-#'     AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
+#'     DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'     AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
 #'     PerUnitStorageThroughput = 123,
 #'     DailyAutomaticBackupStartTime = "string",
 #'     AutomaticBackupRetentionDays = 123,
 #'     CopyTagsToBackups = TRUE|FALSE,
-#'     DriveCacheType = "NONE"|"READ"
+#'     DriveCacheType = "NONE"|"READ",
+#'     DataCompressionType = "NONE"|"LZ4",
+#'     LogConfiguration = list(
+#'       Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'       Destination = "string"
+#'     ),
+#'     RootSquashConfiguration = list(
+#'       RootSquash = "string",
+#'       NoSquashNids = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   OntapConfiguration = list(
+#'     AutomaticBackupRetentionDays = 123,
+#'     DailyAutomaticBackupStartTime = "string",
+#'     DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'     EndpointIpAddressRange = "string",
+#'     FsxAdminPassword = "string",
+#'     DiskIopsConfiguration = list(
+#'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'       Iops = 123
+#'     ),
+#'     PreferredSubnetId = "string",
+#'     RouteTableIds = list(
+#'       "string"
+#'     ),
+#'     ThroughputCapacity = 123,
+#'     WeeklyMaintenanceStartTime = "string"
+#'   ),
+#'   FileSystemTypeVersion = "string",
+#'   OpenZFSConfiguration = list(
+#'     AutomaticBackupRetentionDays = 123,
+#'     CopyTagsToBackups = TRUE|FALSE,
+#'     CopyTagsToVolumes = TRUE|FALSE,
+#'     DailyAutomaticBackupStartTime = "string",
+#'     DeploymentType = "SINGLE_AZ_1",
+#'     ThroughputCapacity = 123,
+#'     WeeklyMaintenanceStartTime = "string",
+#'     DiskIopsConfiguration = list(
+#'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'       Iops = 123
+#'     ),
+#'     RootVolumeConfiguration = list(
+#'       RecordSizeKiB = 123,
+#'       DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'       NfsExports = list(
+#'         list(
+#'           ClientConfigurations = list(
+#'             list(
+#'               Clients = "string",
+#'               Options = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       UserAndGroupQuotas = list(
+#'         list(
+#'           Type = "USER"|"GROUP",
+#'           Id = 123,
+#'           StorageCapacityQuotaGiB = 123
+#'         )
+#'       ),
+#'       CopyTagsToSnapshots = TRUE|FALSE,
+#'       ReadOnly = TRUE|FALSE
+#'     )
 #'   )
 #' )
 #' ```
@@ -815,14 +2306,14 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' @keywords internal
 #'
 #' @rdname fsx_create_file_system
-fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL) {
+fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFileSystem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$create_file_system_input(ClientRequestToken = ClientRequestToken, FileSystemType = FileSystemType, StorageCapacity = StorageCapacity, StorageType = StorageType, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration)
+  input <- .fsx$create_file_system_input(ClientRequestToken = ClientRequestToken, FileSystemType = FileSystemType, StorageCapacity = StorageCapacity, StorageType = StorageType, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration)
   output <- .fsx$create_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -832,15 +2323,18 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 }
 .fsx$operations$create_file_system <- fsx_create_file_system
 
-#' Creates a new Amazon FSx file system from an existing Amazon FSx backup
+#' Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server,
+#' or Amazon FSx for OpenZFS file system from an existing Amazon FSx backup
 #'
 #' @description
-#' Creates a new Amazon FSx file system from an existing Amazon FSx backup.
+#' Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server,
+#' or Amazon FSx for OpenZFS file system from an existing Amazon FSx
+#' backup.
 #' 
 #' If a file system with the specified client request token exists and the
 #' parameters match, this operation returns the description of the file
-#' system. If a client request token specified by the file system exists
-#' and the parameters don't match, this call returns
+#' system. If a file system with the specified client request token exists
+#' but the parameters don't match, this call returns
 #' `IncompatibleParameterError`. If a file system with the specified client
 #' request token doesn't exist, this operation does the following:
 #' 
@@ -849,9 +2343,9 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' 
 #' -   Returns the description of the file system.
 #' 
-#' Parameters like Active Directory, default share name, automatic backup,
-#' and backup settings default to the parameters of the file system that
-#' was backed up, unless overridden. You can explicitly supply other
+#' Parameters like the Active Directory, default share name, automatic
+#' backup, and backup settings default to the parameters of the file system
+#' that was backed up, unless overridden. You can explicitly supply other
 #' settings.
 #' 
 #' By using the idempotent operation, you can retry a
@@ -861,24 +2355,28 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' whether a file system was created. Examples are if a transport level
 #' timeout occurred, or your connection was reset. If you use the same
 #' client request token and the initial call created a file system, the
-#' client receives success as long as the parameters are the same.
+#' client receives a success message as long as the parameters are the
+#' same.
 #' 
 #' The
 #' [`create_file_system_from_backup`][fsx_create_file_system_from_backup]
 #' call returns while the file system's lifecycle state is still
 #' `CREATING`. You can check the file-system creation status by calling the
-#' [`describe_file_systems`][fsx_describe_file_systems] operation, which
-#' returns the file system state along with other information.
+#' [DescribeFileSystems](https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileSystems.html)
+#' operation, which returns the file system state along with other
+#' information.
 #'
 #' @usage
 #' fsx_create_file_system_from_backup(BackupId, ClientRequestToken,
 #'   SubnetIds, SecurityGroupIds, Tags, WindowsConfiguration,
-#'   LustreConfiguration, StorageType)
+#'   LustreConfiguration, StorageType, KmsKeyId, FileSystemTypeVersion,
+#'   OpenZFSConfiguration)
 #'
 #' @param BackupId &#91;required&#93; 
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
 #' idempotent creation. This string is automatically filled on your behalf
-#' when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
+#' when you use the Command Line Interface (CLI) or an Amazon Web Services
+#' SDK.
 #' @param SubnetIds &#91;required&#93; Specifies the IDs of the subnets that the file system will be accessible
 #' from. For Windows `MULTI_AZ_1` file system deployment types, provide
 #' exactly two subnet IDs, one for the preferred file server and one for
@@ -886,35 +2384,44 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' preferred subnet using the `WindowsConfiguration > PreferredSubnetID`
 #' property.
 #' 
-#' For Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` deployment types and Lustre
-#' file systems, provide exactly one subnet ID. The file server is launched
-#' in that subnet's Availability Zone.
+#' Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` file system deployment types,
+#' Lustre file systems, and OpenZFS file systems provide exactly one subnet
+#' ID. The file server is launched in that subnet's Availability Zone.
 #' @param SecurityGroupIds A list of IDs for the security groups that apply to the specified
 #' network interfaces created for file system access. These security groups
 #' apply to all network interfaces. This value isn't returned in later
-#' DescribeFileSystem requests.
+#' `DescribeFileSystem` requests.
 #' @param Tags The tags to be applied to the file system at file system creation. The
 #' key value of the `Name` tag appears in the console as the file system
 #' name.
 #' @param WindowsConfiguration The configuration for this Microsoft Windows file system.
 #' @param LustreConfiguration 
-#' @param StorageType Sets the storage type for the Windows file system you're creating from a
-#' backup. Valid values are `SSD` and `HDD`.
+#' @param StorageType Sets the storage type for the Windows or OpenZFS file system that you're
+#' creating from a backup. Valid values are `SSD` and `HDD`.
 #' 
-#' -   Set to `SSD` to use solid state drive storage. Supported on all
-#'     Windows deployment types.
+#' -   Set to `SSD` to use solid state drive storage. SSD is supported on
+#'     all Windows and OpenZFS deployment types.
 #' 
-#' -   Set to `HDD` to use hard disk drive storage. Supported on
-#'     `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types.
+#' -   Set to `HDD` to use hard disk drive storage. HDD is supported on
+#'     `SINGLE_AZ_2` and `MULTI_AZ_1` FSx for Windows File Server file
+#'     system deployment types.
 #' 
-#' Default value is `SSD`.
+#' The default value is `SSD`.
 #' 
 #' HDD and SSD storage types have different minimum storage capacity
 #' requirements. A restored file system's storage capacity is tied to the
 #' file system that was backed up. You can create a file system that uses
-#' HDD storage from a backup of a file system that used SSD storage only if
-#' the original SSD file system had a storage capacity of at least 2000
-#' GiB.
+#' HDD storage from a backup of a file system that used SSD storage if the
+#' original SSD file system had a storage capacity of at least 2000 GiB.
+#' @param KmsKeyId 
+#' @param FileSystemTypeVersion Sets the version for the Amazon FSx for Lustre file system that you're
+#' creating from a backup. Valid values are `2.10` and `2.12`.
+#' 
+#' You don't need to specify `FileSystemTypeVersion` because it will be
+#' applied using the backup's `FileSystemTypeVersion` setting. If you
+#' choose to specify `FileSystemTypeVersion` when creating from backup, the
+#' value must match the backup's `FileSystemTypeVersion` setting.
+#' @param OpenZFSConfiguration The OpenZFS configuration for the file system that's being created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -926,8 +2433,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       "2015-01-01"
 #'     ),
 #'     FileSystemId = "string",
-#'     FileSystemType = "WINDOWS"|"LUSTRE",
-#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
+#'     FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
 #'     FailureDetails = list(
 #'       Message = "string"
 #'     ),
@@ -977,31 +2484,47 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'           Name = "string",
 #'           Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
 #'         )
+#'       ),
+#'       AuditLogConfiguration = list(
+#'         FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'         FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'         AuditLogDestination = "string"
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
 #'       WeeklyMaintenanceStartTime = "string",
 #'       DataRepositoryConfiguration = list(
-#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
+#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
 #'         ImportPath = "string",
 #'         ExportPath = "string",
 #'         ImportedFileChunkSize = 123,
-#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
+#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
 #'         FailureDetails = list(
 #'           Message = "string"
 #'         )
 #'       ),
-#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
 #'       PerUnitStorageThroughput = 123,
 #'       MountName = "string",
 #'       DailyAutomaticBackupStartTime = "string",
 #'       AutomaticBackupRetentionDays = 123,
 #'       CopyTagsToBackups = TRUE|FALSE,
-#'       DriveCacheType = "NONE"|"READ"
+#'       DriveCacheType = "NONE"|"READ",
+#'       DataCompressionType = "NONE"|"LZ4",
+#'       LogConfiguration = list(
+#'         Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'         Destination = "string"
+#'       ),
+#'       RootSquashConfiguration = list(
+#'         RootSquash = "string",
+#'         NoSquashNids = list(
+#'           "string"
+#'         )
+#'       )
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -1010,8 +2533,142 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'         TargetFileSystemValues = list(),
 #'         FailureDetails = list(
 #'           Message = "string"
+#'         ),
+#'         TargetVolumeValues = list(
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'           Name = "string",
+#'           OntapConfiguration = list(
+#'             FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'             JunctionPath = "string",
+#'             SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'             SizeInMegabytes = 123,
+#'             StorageEfficiencyEnabled = TRUE|FALSE,
+#'             StorageVirtualMachineId = "string",
+#'             StorageVirtualMachineRoot = TRUE|FALSE,
+#'             TieringPolicy = list(
+#'               CoolingPeriod = 123,
+#'               Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'             ),
+#'             UUID = "string",
+#'             OntapVolumeType = "RW"|"DP"|"LS"
+#'           ),
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           VolumeId = "string",
+#'           VolumeType = "ONTAP"|"OPENZFS",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OpenZFSConfiguration = list(
+#'             ParentVolumeId = "string",
+#'             VolumePath = "string",
+#'             StorageCapacityReservationGiB = 123,
+#'             StorageCapacityQuotaGiB = 123,
+#'             RecordSizeKiB = 123,
+#'             DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'             CopyTagsToSnapshots = TRUE|FALSE,
+#'             OriginSnapshot = list(
+#'               SnapshotARN = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'             ),
+#'             ReadOnly = TRUE|FALSE,
+#'             NfsExports = list(
+#'               list(
+#'                 ClientConfigurations = list(
+#'                   list(
+#'                     Clients = "string",
+#'                     Options = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             UserAndGroupQuotas = list(
+#'               list(
+#'                 Type = "USER"|"GROUP",
+#'                 Id = 123,
+#'                 StorageCapacityQuotaGiB = 123
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         TargetSnapshotValues = list(
+#'           ResourceARN = "string",
+#'           SnapshotId = "string",
+#'           Name = "string",
+#'           VolumeId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           AdministrativeActions = list()
 #'         )
 #'       )
+#'     ),
+#'     OntapConfiguration = list(
+#'       AutomaticBackupRetentionDays = 123,
+#'       DailyAutomaticBackupStartTime = "string",
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'       EndpointIpAddressRange = "string",
+#'       Endpoints = list(
+#'         Intercluster = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Management = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       ),
+#'       PreferredSubnetId = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       ThroughputCapacity = 123,
+#'       WeeklyMaintenanceStartTime = "string"
+#'     ),
+#'     FileSystemTypeVersion = "string",
+#'     OpenZFSConfiguration = list(
+#'       AutomaticBackupRetentionDays = 123,
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       CopyTagsToVolumes = TRUE|FALSE,
+#'       DailyAutomaticBackupStartTime = "string",
+#'       DeploymentType = "SINGLE_AZ_1",
+#'       ThroughputCapacity = 123,
+#'       WeeklyMaintenanceStartTime = "string",
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       ),
+#'       RootVolumeId = "string"
 #'     )
 #'   )
 #' )
@@ -1055,6 +2712,11 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     CopyTagsToBackups = TRUE|FALSE,
 #'     Aliases = list(
 #'       "string"
+#'     ),
+#'     AuditLogConfiguration = list(
+#'       FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'       FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'       AuditLogDestination = "string"
 #'     )
 #'   ),
 #'   LustreConfiguration = list(
@@ -1062,15 +2724,66 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     ImportPath = "string",
 #'     ExportPath = "string",
 #'     ImportedFileChunkSize = 123,
-#'     DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-#'     AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
+#'     DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'     AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
 #'     PerUnitStorageThroughput = 123,
 #'     DailyAutomaticBackupStartTime = "string",
 #'     AutomaticBackupRetentionDays = 123,
 #'     CopyTagsToBackups = TRUE|FALSE,
-#'     DriveCacheType = "NONE"|"READ"
+#'     DriveCacheType = "NONE"|"READ",
+#'     DataCompressionType = "NONE"|"LZ4",
+#'     LogConfiguration = list(
+#'       Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'       Destination = "string"
+#'     ),
+#'     RootSquashConfiguration = list(
+#'       RootSquash = "string",
+#'       NoSquashNids = list(
+#'         "string"
+#'       )
+#'     )
 #'   ),
-#'   StorageType = "SSD"|"HDD"
+#'   StorageType = "SSD"|"HDD",
+#'   KmsKeyId = "string",
+#'   FileSystemTypeVersion = "string",
+#'   OpenZFSConfiguration = list(
+#'     AutomaticBackupRetentionDays = 123,
+#'     CopyTagsToBackups = TRUE|FALSE,
+#'     CopyTagsToVolumes = TRUE|FALSE,
+#'     DailyAutomaticBackupStartTime = "string",
+#'     DeploymentType = "SINGLE_AZ_1",
+#'     ThroughputCapacity = 123,
+#'     WeeklyMaintenanceStartTime = "string",
+#'     DiskIopsConfiguration = list(
+#'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'       Iops = 123
+#'     ),
+#'     RootVolumeConfiguration = list(
+#'       RecordSizeKiB = 123,
+#'       DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'       NfsExports = list(
+#'         list(
+#'           ClientConfigurations = list(
+#'             list(
+#'               Clients = "string",
+#'               Options = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       UserAndGroupQuotas = list(
+#'         list(
+#'           Type = "USER"|"GROUP",
+#'           Id = 123,
+#'           StorageCapacityQuotaGiB = 123
+#'         )
+#'       ),
+#'       CopyTagsToSnapshots = TRUE|FALSE,
+#'       ReadOnly = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1101,14 +2814,14 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' @keywords internal
 #'
 #' @rdname fsx_create_file_system_from_backup
-fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL) {
+fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL, KmsKeyId = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFileSystemFromBackup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$create_file_system_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, StorageType = StorageType)
+  input <- .fsx$create_file_system_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, StorageType = StorageType, KmsKeyId = KmsKeyId, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration)
   output <- .fsx$create_file_system_from_backup_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -1118,15 +2831,1157 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 }
 .fsx$operations$create_file_system_from_backup <- fsx_create_file_system_from_backup
 
-#' Deletes an Amazon FSx backup, deleting its contents
+#' Creates a snapshot of an existing Amazon FSx for OpenZFS volume
 #'
 #' @description
-#' Deletes an Amazon FSx backup, deleting its contents. After deletion, the
-#' backup no longer exists, and its data is gone.
+#' Creates a snapshot of an existing Amazon FSx for OpenZFS volume. With
+#' snapshots, you can easily undo file changes and compare file versions by
+#' restoring the volume to a previous version.
+#' 
+#' If a snapshot with the specified client request token exists, and the
+#' parameters match, this operation returns the description of the existing
+#' snapshot. If a snapshot with the specified client request token exists,
+#' and the parameters don't match, this operation returns
+#' `IncompatibleParameterError`. If a snapshot with the specified client
+#' request token doesn't exist, [`create_snapshot`][fsx_create_snapshot]
+#' does the following:
+#' 
+#' -   Creates a new OpenZFS snapshot with an assigned ID, and an initial
+#'     lifecycle state of `CREATING`.
+#' 
+#' -   Returns the description of the snapshot.
+#' 
+#' By using the idempotent operation, you can retry a
+#' [`create_snapshot`][fsx_create_snapshot] operation without the risk of
+#' creating an extra snapshot. This approach can be useful when an initial
+#' call fails in a way that makes it unclear whether a snapshot was
+#' created. If you use the same client request token and the initial call
+#' created a snapshot, the operation returns a successful result because
+#' all the parameters are the same.
+#' 
+#' The [`create_snapshot`][fsx_create_snapshot] operation returns while the
+#' snapshot's lifecycle state is still `CREATING`. You can check the
+#' snapshot creation status by calling the
+#' [`describe_snapshots`][fsx_describe_snapshots] operation, which returns
+#' the snapshot state along with other information.
+#'
+#' @usage
+#' fsx_create_snapshot(ClientRequestToken, Name, VolumeId, Tags)
+#'
+#' @param ClientRequestToken 
+#' @param Name &#91;required&#93; The name of the snapshot.
+#' @param VolumeId &#91;required&#93; The ID of the volume that you are taking a snapshot of.
+#' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Snapshot = list(
+#'     ResourceARN = "string",
+#'     SnapshotId = "string",
+#'     Name = "string",
+#'     VolumeId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'     LifecycleTransitionReason = list(
+#'       Message = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     AdministrativeActions = list(
+#'       list(
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'         ProgressPercent = 123,
+#'         RequestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'         TargetFileSystemValues = list(
+#'           OwnerId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'           Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           ),
+#'           StorageCapacity = 123,
+#'           StorageType = "SSD"|"HDD",
+#'           VpcId = "string",
+#'           SubnetIds = list(
+#'             "string"
+#'           ),
+#'           NetworkInterfaceIds = list(
+#'             "string"
+#'           ),
+#'           DNSName = "string",
+#'           KmsKeyId = "string",
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           WindowsConfiguration = list(
+#'             ActiveDirectoryId = "string",
+#'             SelfManagedActiveDirectoryConfiguration = list(
+#'               DomainName = "string",
+#'               OrganizationalUnitDistinguishedName = "string",
+#'               FileSystemAdministratorsGroup = "string",
+#'               UserName = "string",
+#'               DnsIps = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'             RemoteAdministrationEndpoint = "string",
+#'             PreferredSubnetId = "string",
+#'             PreferredFileServerIp = "string",
+#'             ThroughputCapacity = 123,
+#'             MaintenanceOperationsInProgress = list(
+#'               "PATCHING"|"BACKING_UP"
+#'             ),
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DailyAutomaticBackupStartTime = "string",
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             Aliases = list(
+#'               list(
+#'                 Name = "string",
+#'                 Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'               )
+#'             ),
+#'             AuditLogConfiguration = list(
+#'               FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'               FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'               AuditLogDestination = "string"
+#'             )
+#'           ),
+#'           LustreConfiguration = list(
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DataRepositoryConfiguration = list(
+#'               Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'               ImportPath = "string",
+#'               ExportPath = "string",
+#'               ImportedFileChunkSize = 123,
+#'               AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'               FailureDetails = list(
+#'                 Message = "string"
+#'               )
+#'             ),
+#'             DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'             PerUnitStorageThroughput = 123,
+#'             MountName = "string",
+#'             DailyAutomaticBackupStartTime = "string",
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             DriveCacheType = "NONE"|"READ",
+#'             DataCompressionType = "NONE"|"LZ4",
+#'             LogConfiguration = list(
+#'               Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'               Destination = "string"
+#'             ),
+#'             RootSquashConfiguration = list(
+#'               RootSquash = "string",
+#'               NoSquashNids = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OntapConfiguration = list(
+#'             AutomaticBackupRetentionDays = 123,
+#'             DailyAutomaticBackupStartTime = "string",
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'             EndpointIpAddressRange = "string",
+#'             Endpoints = list(
+#'               Intercluster = list(
+#'                 DNSName = "string",
+#'                 IpAddresses = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Management = list(
+#'                 DNSName = "string",
+#'                 IpAddresses = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
+#'             ),
+#'             PreferredSubnetId = "string",
+#'             RouteTableIds = list(
+#'               "string"
+#'             ),
+#'             ThroughputCapacity = 123,
+#'             WeeklyMaintenanceStartTime = "string"
+#'           ),
+#'           FileSystemTypeVersion = "string",
+#'           OpenZFSConfiguration = list(
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             CopyTagsToVolumes = TRUE|FALSE,
+#'             DailyAutomaticBackupStartTime = "string",
+#'             DeploymentType = "SINGLE_AZ_1",
+#'             ThroughputCapacity = 123,
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
+#'             ),
+#'             RootVolumeId = "string"
+#'           )
+#'         ),
+#'         FailureDetails = list(
+#'           Message = "string"
+#'         ),
+#'         TargetVolumeValues = list(
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'           Name = "string",
+#'           OntapConfiguration = list(
+#'             FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'             JunctionPath = "string",
+#'             SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'             SizeInMegabytes = 123,
+#'             StorageEfficiencyEnabled = TRUE|FALSE,
+#'             StorageVirtualMachineId = "string",
+#'             StorageVirtualMachineRoot = TRUE|FALSE,
+#'             TieringPolicy = list(
+#'               CoolingPeriod = 123,
+#'               Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'             ),
+#'             UUID = "string",
+#'             OntapVolumeType = "RW"|"DP"|"LS"
+#'           ),
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           VolumeId = "string",
+#'           VolumeType = "ONTAP"|"OPENZFS",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OpenZFSConfiguration = list(
+#'             ParentVolumeId = "string",
+#'             VolumePath = "string",
+#'             StorageCapacityReservationGiB = 123,
+#'             StorageCapacityQuotaGiB = 123,
+#'             RecordSizeKiB = 123,
+#'             DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'             CopyTagsToSnapshots = TRUE|FALSE,
+#'             OriginSnapshot = list(
+#'               SnapshotARN = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'             ),
+#'             ReadOnly = TRUE|FALSE,
+#'             NfsExports = list(
+#'               list(
+#'                 ClientConfigurations = list(
+#'                   list(
+#'                     Clients = "string",
+#'                     Options = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             UserAndGroupQuotas = list(
+#'               list(
+#'                 Type = "USER"|"GROUP",
+#'                 Id = 123,
+#'                 StorageCapacityQuotaGiB = 123
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         TargetSnapshotValues = list()
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_snapshot(
+#'   ClientRequestToken = "string",
+#'   Name = "string",
+#'   VolumeId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_snapshot
+fsx_create_snapshot <- function(ClientRequestToken = NULL, Name, VolumeId, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$create_snapshot_input(ClientRequestToken = ClientRequestToken, Name = Name, VolumeId = VolumeId, Tags = Tags)
+  output <- .fsx$create_snapshot_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_snapshot <- fsx_create_snapshot
+
+#' Creates a storage virtual machine (SVM) for an Amazon FSx for ONTAP file
+#' system
+#'
+#' @description
+#' Creates a storage virtual machine (SVM) for an Amazon FSx for ONTAP file
+#' system.
+#'
+#' @usage
+#' fsx_create_storage_virtual_machine(ActiveDirectoryConfiguration,
+#'   ClientRequestToken, FileSystemId, Name, SvmAdminPassword, Tags,
+#'   RootVolumeSecurityStyle)
+#'
+#' @param ActiveDirectoryConfiguration Describes the self-managed Microsoft Active Directory to which you want
+#' to join the SVM. Joining an Active Directory provides user
+#' authentication and access control for SMB clients, including Microsoft
+#' Windows and macOS client accessing the file system.
+#' @param ClientRequestToken 
+#' @param FileSystemId &#91;required&#93; 
+#' @param Name &#91;required&#93; The name of the SVM.
+#' @param SvmAdminPassword The password to use when managing the SVM using the NetApp ONTAP CLI or
+#' REST API. If you do not specify a password, you can still use the file
+#' system's `fsxadmin` user to manage the SVM.
+#' @param Tags 
+#' @param RootVolumeSecurityStyle The security style of the root volume of the SVM. Specify one of the
+#' following values:
+#' 
+#' -   `UNIX` if the file system is managed by a UNIX administrator, the
+#'     majority of users are NFS clients, and an application accessing the
+#'     data uses a UNIX user as the service account.
+#' 
+#' -   `NTFS` if the file system is managed by a Windows administrator, the
+#'     majority of users are SMB clients, and an application accessing the
+#'     data uses a Windows user as the service account.
+#' 
+#' -   `MIXED` if the file system is managed by both UNIX and Windows
+#'     administrators and users consist of both NFS and SMB clients.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StorageVirtualMachine = list(
+#'     ActiveDirectoryConfiguration = list(
+#'       NetBiosName = "string",
+#'       SelfManagedActiveDirectoryConfiguration = list(
+#'         DomainName = "string",
+#'         OrganizationalUnitDistinguishedName = "string",
+#'         FileSystemAdministratorsGroup = "string",
+#'         UserName = "string",
+#'         DnsIps = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoints = list(
+#'       Iscsi = list(
+#'         DNSName = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Management = list(
+#'         DNSName = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Nfs = list(
+#'         DNSName = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Smb = list(
+#'         DNSName = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     FileSystemId = "string",
+#'     Lifecycle = "CREATED"|"CREATING"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING",
+#'     Name = "string",
+#'     ResourceARN = "string",
+#'     StorageVirtualMachineId = "string",
+#'     Subtype = "DEFAULT"|"DP_DESTINATION"|"SYNC_DESTINATION"|"SYNC_SOURCE",
+#'     UUID = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     LifecycleTransitionReason = list(
+#'       Message = "string"
+#'     ),
+#'     RootVolumeSecurityStyle = "UNIX"|"NTFS"|"MIXED"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_storage_virtual_machine(
+#'   ActiveDirectoryConfiguration = list(
+#'     NetBiosName = "string",
+#'     SelfManagedActiveDirectoryConfiguration = list(
+#'       DomainName = "string",
+#'       OrganizationalUnitDistinguishedName = "string",
+#'       FileSystemAdministratorsGroup = "string",
+#'       UserName = "string",
+#'       Password = "string",
+#'       DnsIps = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientRequestToken = "string",
+#'   FileSystemId = "string",
+#'   Name = "string",
+#'   SvmAdminPassword = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   RootVolumeSecurityStyle = "UNIX"|"NTFS"|"MIXED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_storage_virtual_machine
+fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NULL, ClientRequestToken = NULL, FileSystemId, Name, SvmAdminPassword = NULL, Tags = NULL, RootVolumeSecurityStyle = NULL) {
+  op <- new_operation(
+    name = "CreateStorageVirtualMachine",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$create_storage_virtual_machine_input(ActiveDirectoryConfiguration = ActiveDirectoryConfiguration, ClientRequestToken = ClientRequestToken, FileSystemId = FileSystemId, Name = Name, SvmAdminPassword = SvmAdminPassword, Tags = Tags, RootVolumeSecurityStyle = RootVolumeSecurityStyle)
+  output <- .fsx$create_storage_virtual_machine_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_storage_virtual_machine <- fsx_create_storage_virtual_machine
+
+#' Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume
+#'
+#' @description
+#' Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
+#'
+#' @usage
+#' fsx_create_volume(ClientRequestToken, VolumeType, Name,
+#'   OntapConfiguration, Tags, OpenZFSConfiguration)
+#'
+#' @param ClientRequestToken 
+#' @param VolumeType &#91;required&#93; Specifies the type of volume to create; `ONTAP` and `OPENZFS` are the
+#' only valid volume types.
+#' @param Name &#91;required&#93; Specifies the name of the volume that you're creating.
+#' @param OntapConfiguration Specifies the configuration to use when creating the ONTAP volume.
+#' @param Tags 
+#' @param OpenZFSConfiguration Specifies the configuration to use when creating the OpenZFS volume.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Volume = list(
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FileSystemId = "string",
+#'     Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'     Name = "string",
+#'     OntapConfiguration = list(
+#'       FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'       JunctionPath = "string",
+#'       SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'       SizeInMegabytes = 123,
+#'       StorageEfficiencyEnabled = TRUE|FALSE,
+#'       StorageVirtualMachineId = "string",
+#'       StorageVirtualMachineRoot = TRUE|FALSE,
+#'       TieringPolicy = list(
+#'         CoolingPeriod = 123,
+#'         Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'       ),
+#'       UUID = "string",
+#'       OntapVolumeType = "RW"|"DP"|"LS"
+#'     ),
+#'     ResourceARN = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VolumeId = "string",
+#'     VolumeType = "ONTAP"|"OPENZFS",
+#'     LifecycleTransitionReason = list(
+#'       Message = "string"
+#'     ),
+#'     AdministrativeActions = list(
+#'       list(
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'         ProgressPercent = 123,
+#'         RequestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'         TargetFileSystemValues = list(
+#'           OwnerId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'           Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           ),
+#'           StorageCapacity = 123,
+#'           StorageType = "SSD"|"HDD",
+#'           VpcId = "string",
+#'           SubnetIds = list(
+#'             "string"
+#'           ),
+#'           NetworkInterfaceIds = list(
+#'             "string"
+#'           ),
+#'           DNSName = "string",
+#'           KmsKeyId = "string",
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           WindowsConfiguration = list(
+#'             ActiveDirectoryId = "string",
+#'             SelfManagedActiveDirectoryConfiguration = list(
+#'               DomainName = "string",
+#'               OrganizationalUnitDistinguishedName = "string",
+#'               FileSystemAdministratorsGroup = "string",
+#'               UserName = "string",
+#'               DnsIps = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'             RemoteAdministrationEndpoint = "string",
+#'             PreferredSubnetId = "string",
+#'             PreferredFileServerIp = "string",
+#'             ThroughputCapacity = 123,
+#'             MaintenanceOperationsInProgress = list(
+#'               "PATCHING"|"BACKING_UP"
+#'             ),
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DailyAutomaticBackupStartTime = "string",
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             Aliases = list(
+#'               list(
+#'                 Name = "string",
+#'                 Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'               )
+#'             ),
+#'             AuditLogConfiguration = list(
+#'               FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'               FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'               AuditLogDestination = "string"
+#'             )
+#'           ),
+#'           LustreConfiguration = list(
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DataRepositoryConfiguration = list(
+#'               Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'               ImportPath = "string",
+#'               ExportPath = "string",
+#'               ImportedFileChunkSize = 123,
+#'               AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'               FailureDetails = list(
+#'                 Message = "string"
+#'               )
+#'             ),
+#'             DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'             PerUnitStorageThroughput = 123,
+#'             MountName = "string",
+#'             DailyAutomaticBackupStartTime = "string",
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             DriveCacheType = "NONE"|"READ",
+#'             DataCompressionType = "NONE"|"LZ4",
+#'             LogConfiguration = list(
+#'               Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'               Destination = "string"
+#'             ),
+#'             RootSquashConfiguration = list(
+#'               RootSquash = "string",
+#'               NoSquashNids = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OntapConfiguration = list(
+#'             AutomaticBackupRetentionDays = 123,
+#'             DailyAutomaticBackupStartTime = "string",
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'             EndpointIpAddressRange = "string",
+#'             Endpoints = list(
+#'               Intercluster = list(
+#'                 DNSName = "string",
+#'                 IpAddresses = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Management = list(
+#'                 DNSName = "string",
+#'                 IpAddresses = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
+#'             ),
+#'             PreferredSubnetId = "string",
+#'             RouteTableIds = list(
+#'               "string"
+#'             ),
+#'             ThroughputCapacity = 123,
+#'             WeeklyMaintenanceStartTime = "string"
+#'           ),
+#'           FileSystemTypeVersion = "string",
+#'           OpenZFSConfiguration = list(
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             CopyTagsToVolumes = TRUE|FALSE,
+#'             DailyAutomaticBackupStartTime = "string",
+#'             DeploymentType = "SINGLE_AZ_1",
+#'             ThroughputCapacity = 123,
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
+#'             ),
+#'             RootVolumeId = "string"
+#'           )
+#'         ),
+#'         FailureDetails = list(
+#'           Message = "string"
+#'         ),
+#'         TargetVolumeValues = list(),
+#'         TargetSnapshotValues = list(
+#'           ResourceARN = "string",
+#'           SnapshotId = "string",
+#'           Name = "string",
+#'           VolumeId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           AdministrativeActions = list()
+#'         )
+#'       )
+#'     ),
+#'     OpenZFSConfiguration = list(
+#'       ParentVolumeId = "string",
+#'       VolumePath = "string",
+#'       StorageCapacityReservationGiB = 123,
+#'       StorageCapacityQuotaGiB = 123,
+#'       RecordSizeKiB = 123,
+#'       DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'       CopyTagsToSnapshots = TRUE|FALSE,
+#'       OriginSnapshot = list(
+#'         SnapshotARN = "string",
+#'         CopyStrategy = "CLONE"|"FULL_COPY"
+#'       ),
+#'       ReadOnly = TRUE|FALSE,
+#'       NfsExports = list(
+#'         list(
+#'           ClientConfigurations = list(
+#'             list(
+#'               Clients = "string",
+#'               Options = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       UserAndGroupQuotas = list(
+#'         list(
+#'           Type = "USER"|"GROUP",
+#'           Id = 123,
+#'           StorageCapacityQuotaGiB = 123
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_volume(
+#'   ClientRequestToken = "string",
+#'   VolumeType = "ONTAP"|"OPENZFS",
+#'   Name = "string",
+#'   OntapConfiguration = list(
+#'     JunctionPath = "string",
+#'     SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'     SizeInMegabytes = 123,
+#'     StorageEfficiencyEnabled = TRUE|FALSE,
+#'     StorageVirtualMachineId = "string",
+#'     TieringPolicy = list(
+#'       CoolingPeriod = 123,
+#'       Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   OpenZFSConfiguration = list(
+#'     ParentVolumeId = "string",
+#'     StorageCapacityReservationGiB = 123,
+#'     StorageCapacityQuotaGiB = 123,
+#'     RecordSizeKiB = 123,
+#'     DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'     CopyTagsToSnapshots = TRUE|FALSE,
+#'     OriginSnapshot = list(
+#'       SnapshotARN = "string",
+#'       CopyStrategy = "CLONE"|"FULL_COPY"
+#'     ),
+#'     ReadOnly = TRUE|FALSE,
+#'     NfsExports = list(
+#'       list(
+#'         ClientConfigurations = list(
+#'           list(
+#'             Clients = "string",
+#'             Options = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     UserAndGroupQuotas = list(
+#'       list(
+#'         Type = "USER"|"GROUP",
+#'         Id = 123,
+#'         StorageCapacityQuotaGiB = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_volume
+fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, OntapConfiguration = NULL, Tags = NULL, OpenZFSConfiguration = NULL) {
+  op <- new_operation(
+    name = "CreateVolume",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$create_volume_input(ClientRequestToken = ClientRequestToken, VolumeType = VolumeType, Name = Name, OntapConfiguration = OntapConfiguration, Tags = Tags, OpenZFSConfiguration = OpenZFSConfiguration)
+  output <- .fsx$create_volume_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_volume <- fsx_create_volume
+
+#' Creates a new Amazon FSx for NetApp ONTAP volume from an existing Amazon
+#' FSx volume backup
+#'
+#' @description
+#' Creates a new Amazon FSx for NetApp ONTAP volume from an existing Amazon
+#' FSx volume backup.
+#'
+#' @usage
+#' fsx_create_volume_from_backup(BackupId, ClientRequestToken, Name,
+#'   OntapConfiguration, Tags)
+#'
+#' @param BackupId &#91;required&#93; 
+#' @param ClientRequestToken 
+#' @param Name &#91;required&#93; The name of the new volume you're creating.
+#' @param OntapConfiguration Specifies the configuration of the ONTAP volume that you are creating.
+#' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Volume = list(
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FileSystemId = "string",
+#'     Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'     Name = "string",
+#'     OntapConfiguration = list(
+#'       FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'       JunctionPath = "string",
+#'       SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'       SizeInMegabytes = 123,
+#'       StorageEfficiencyEnabled = TRUE|FALSE,
+#'       StorageVirtualMachineId = "string",
+#'       StorageVirtualMachineRoot = TRUE|FALSE,
+#'       TieringPolicy = list(
+#'         CoolingPeriod = 123,
+#'         Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'       ),
+#'       UUID = "string",
+#'       OntapVolumeType = "RW"|"DP"|"LS"
+#'     ),
+#'     ResourceARN = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VolumeId = "string",
+#'     VolumeType = "ONTAP"|"OPENZFS",
+#'     LifecycleTransitionReason = list(
+#'       Message = "string"
+#'     ),
+#'     AdministrativeActions = list(
+#'       list(
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'         ProgressPercent = 123,
+#'         RequestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'         TargetFileSystemValues = list(
+#'           OwnerId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'           Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           ),
+#'           StorageCapacity = 123,
+#'           StorageType = "SSD"|"HDD",
+#'           VpcId = "string",
+#'           SubnetIds = list(
+#'             "string"
+#'           ),
+#'           NetworkInterfaceIds = list(
+#'             "string"
+#'           ),
+#'           DNSName = "string",
+#'           KmsKeyId = "string",
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           WindowsConfiguration = list(
+#'             ActiveDirectoryId = "string",
+#'             SelfManagedActiveDirectoryConfiguration = list(
+#'               DomainName = "string",
+#'               OrganizationalUnitDistinguishedName = "string",
+#'               FileSystemAdministratorsGroup = "string",
+#'               UserName = "string",
+#'               DnsIps = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'             RemoteAdministrationEndpoint = "string",
+#'             PreferredSubnetId = "string",
+#'             PreferredFileServerIp = "string",
+#'             ThroughputCapacity = 123,
+#'             MaintenanceOperationsInProgress = list(
+#'               "PATCHING"|"BACKING_UP"
+#'             ),
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DailyAutomaticBackupStartTime = "string",
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             Aliases = list(
+#'               list(
+#'                 Name = "string",
+#'                 Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'               )
+#'             ),
+#'             AuditLogConfiguration = list(
+#'               FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'               FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'               AuditLogDestination = "string"
+#'             )
+#'           ),
+#'           LustreConfiguration = list(
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DataRepositoryConfiguration = list(
+#'               Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'               ImportPath = "string",
+#'               ExportPath = "string",
+#'               ImportedFileChunkSize = 123,
+#'               AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'               FailureDetails = list(
+#'                 Message = "string"
+#'               )
+#'             ),
+#'             DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'             PerUnitStorageThroughput = 123,
+#'             MountName = "string",
+#'             DailyAutomaticBackupStartTime = "string",
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             DriveCacheType = "NONE"|"READ",
+#'             DataCompressionType = "NONE"|"LZ4",
+#'             LogConfiguration = list(
+#'               Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'               Destination = "string"
+#'             ),
+#'             RootSquashConfiguration = list(
+#'               RootSquash = "string",
+#'               NoSquashNids = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OntapConfiguration = list(
+#'             AutomaticBackupRetentionDays = 123,
+#'             DailyAutomaticBackupStartTime = "string",
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'             EndpointIpAddressRange = "string",
+#'             Endpoints = list(
+#'               Intercluster = list(
+#'                 DNSName = "string",
+#'                 IpAddresses = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Management = list(
+#'                 DNSName = "string",
+#'                 IpAddresses = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
+#'             ),
+#'             PreferredSubnetId = "string",
+#'             RouteTableIds = list(
+#'               "string"
+#'             ),
+#'             ThroughputCapacity = 123,
+#'             WeeklyMaintenanceStartTime = "string"
+#'           ),
+#'           FileSystemTypeVersion = "string",
+#'           OpenZFSConfiguration = list(
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             CopyTagsToVolumes = TRUE|FALSE,
+#'             DailyAutomaticBackupStartTime = "string",
+#'             DeploymentType = "SINGLE_AZ_1",
+#'             ThroughputCapacity = 123,
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
+#'             ),
+#'             RootVolumeId = "string"
+#'           )
+#'         ),
+#'         FailureDetails = list(
+#'           Message = "string"
+#'         ),
+#'         TargetVolumeValues = list(),
+#'         TargetSnapshotValues = list(
+#'           ResourceARN = "string",
+#'           SnapshotId = "string",
+#'           Name = "string",
+#'           VolumeId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           AdministrativeActions = list()
+#'         )
+#'       )
+#'     ),
+#'     OpenZFSConfiguration = list(
+#'       ParentVolumeId = "string",
+#'       VolumePath = "string",
+#'       StorageCapacityReservationGiB = 123,
+#'       StorageCapacityQuotaGiB = 123,
+#'       RecordSizeKiB = 123,
+#'       DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'       CopyTagsToSnapshots = TRUE|FALSE,
+#'       OriginSnapshot = list(
+#'         SnapshotARN = "string",
+#'         CopyStrategy = "CLONE"|"FULL_COPY"
+#'       ),
+#'       ReadOnly = TRUE|FALSE,
+#'       NfsExports = list(
+#'         list(
+#'           ClientConfigurations = list(
+#'             list(
+#'               Clients = "string",
+#'               Options = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       UserAndGroupQuotas = list(
+#'         list(
+#'           Type = "USER"|"GROUP",
+#'           Id = 123,
+#'           StorageCapacityQuotaGiB = 123
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_volume_from_backup(
+#'   BackupId = "string",
+#'   ClientRequestToken = "string",
+#'   Name = "string",
+#'   OntapConfiguration = list(
+#'     JunctionPath = "string",
+#'     SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'     SizeInMegabytes = 123,
+#'     StorageEfficiencyEnabled = TRUE|FALSE,
+#'     StorageVirtualMachineId = "string",
+#'     TieringPolicy = list(
+#'       CoolingPeriod = 123,
+#'       Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_volume_from_backup
+fsx_create_volume_from_backup <- function(BackupId, ClientRequestToken = NULL, Name, OntapConfiguration = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateVolumeFromBackup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$create_volume_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, Name = Name, OntapConfiguration = OntapConfiguration, Tags = Tags)
+  output <- .fsx$create_volume_from_backup_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_volume_from_backup <- fsx_create_volume_from_backup
+
+#' Deletes an Amazon FSx backup
+#'
+#' @description
+#' Deletes an Amazon FSx backup. After deletion, the backup no longer
+#' exists, and its data is gone.
 #' 
 #' The [`delete_backup`][fsx_delete_backup] call returns instantly. The
-#' backup will not show up in later
-#' [`describe_backups`][fsx_describe_backups] calls.
+#' backup won't show up in later [`describe_backups`][fsx_describe_backups]
+#' calls.
 #' 
 #' The data in a deleted backup is also deleted and can't be recovered by
 #' any means.
@@ -1134,17 +3989,17 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #' @usage
 #' fsx_delete_backup(BackupId, ClientRequestToken)
 #'
-#' @param BackupId &#91;required&#93; The ID of the backup you want to delete.
+#' @param BackupId &#91;required&#93; The ID of the backup that you want to delete.
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
-#' idempotent deletion. This is automatically filled on your behalf when
-#' using the AWS CLI or SDK.
+#' idempotent deletion. This parameter is automatically filled on your
+#' behalf when using the CLI or SDK.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   BackupId = "string",
-#'   Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"
+#'   Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"|"COPYING"
 #' )
 #' ```
 #'
@@ -1184,51 +4039,118 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 }
 .fsx$operations$delete_backup <- fsx_delete_backup
 
-#' Deletes a file system, deleting its contents
+#' Deletes a data repository association on an Amazon FSx for Lustre file
+#' system
 #'
 #' @description
-#' Deletes a file system, deleting its contents. After deletion, the file
-#' system no longer exists, and its data is gone. Any existing automatic
-#' backups will also be deleted.
+#' Deletes a data repository association on an Amazon FSx for Lustre file
+#' system. Deleting the data repository association unlinks the file system
+#' from the Amazon S3 bucket. When deleting a data repository association,
+#' you have the option of deleting the data in the file system that
+#' corresponds to the data repository association. Data repository
+#' associations are supported only for file systems with the `Persistent_2`
+#' deployment type.
+#'
+#' @usage
+#' fsx_delete_data_repository_association(AssociationId,
+#'   ClientRequestToken, DeleteDataInFileSystem)
+#'
+#' @param AssociationId &#91;required&#93; The ID of the data repository association that you want to delete.
+#' @param ClientRequestToken 
+#' @param DeleteDataInFileSystem &#91;required&#93; Set to `true` to delete the data in the file system that corresponds to
+#' the data repository association.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationId = "string",
+#'   Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'   DeleteDataInFileSystem = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_data_repository_association(
+#'   AssociationId = "string",
+#'   ClientRequestToken = "string",
+#'   DeleteDataInFileSystem = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_delete_data_repository_association
+fsx_delete_data_repository_association <- function(AssociationId, ClientRequestToken = NULL, DeleteDataInFileSystem) {
+  op <- new_operation(
+    name = "DeleteDataRepositoryAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$delete_data_repository_association_input(AssociationId = AssociationId, ClientRequestToken = ClientRequestToken, DeleteDataInFileSystem = DeleteDataInFileSystem)
+  output <- .fsx$delete_data_repository_association_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$delete_data_repository_association <- fsx_delete_data_repository_association
+
+#' Deletes a file system
+#'
+#' @description
+#' Deletes a file system. After deletion, the file system no longer exists,
+#' and its data is gone. Any existing automatic backups and snapshots are
+#' also deleted.
+#' 
+#' To delete an Amazon FSx for NetApp ONTAP file system, first delete all
+#' the volumes and storage virtual machines (SVMs) on the file system. Then
+#' provide a `FileSystemId` value to the `DeleFileSystem` operation.
 #' 
 #' By default, when you delete an Amazon FSx for Windows File Server file
-#' system, a final backup is created upon deletion. This final backup is
-#' not subject to the file system's retention policy, and must be manually
+#' system, a final backup is created upon deletion. This final backup isn't
+#' subject to the file system's retention policy, and must be manually
 #' deleted.
 #' 
-#' The [`delete_file_system`][fsx_delete_file_system] action returns while
-#' the file system has the `DELETING` status. You can check the file system
-#' deletion status by calling the
-#' [`describe_file_systems`][fsx_describe_file_systems] action, which
+#' The [`delete_file_system`][fsx_delete_file_system] operation returns
+#' while the file system has the `DELETING` status. You can check the file
+#' system deletion status by calling the
+#' [`describe_file_systems`][fsx_describe_file_systems] operation, which
 #' returns a list of file systems in your account. If you pass the file
 #' system ID for a deleted file system, the
-#' [`describe_file_systems`][fsx_describe_file_systems] returns a
+#' [`describe_file_systems`][fsx_describe_file_systems] operation returns a
 #' `FileSystemNotFound` error.
 #' 
-#' Deleting an Amazon FSx for Lustre file system will fail with a 400
-#' BadRequest if a data repository task is in a `PENDING` or `EXECUTING`
-#' state.
+#' If a data repository task is in a `PENDING` or `EXECUTING` state,
+#' deleting an Amazon FSx for Lustre file system will fail with an HTTP
+#' status code 400 (Bad Request).
 #' 
 #' The data in a deleted file system is also deleted and can't be recovered
 #' by any means.
 #'
 #' @usage
 #' fsx_delete_file_system(FileSystemId, ClientRequestToken,
-#'   WindowsConfiguration, LustreConfiguration)
+#'   WindowsConfiguration, LustreConfiguration, OpenZFSConfiguration)
 #'
-#' @param FileSystemId &#91;required&#93; The ID of the file system you want to delete.
+#' @param FileSystemId &#91;required&#93; The ID of the file system that you want to delete.
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
-#' idempotent deletion. This is automatically filled on your behalf when
-#' using the AWS CLI or SDK.
+#' idempotent deletion. This token is automatically filled on your behalf
+#' when using the Command Line Interface (CLI) or an Amazon Web Services
+#' SDK.
 #' @param WindowsConfiguration 
 #' @param LustreConfiguration 
+#' @param OpenZFSConfiguration The configuration object for the OpenZFS file system used in the
+#' [`delete_file_system`][fsx_delete_file_system] operation.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   FileSystemId = "string",
-#'   Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
+#'   Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
 #'   WindowsResponse = list(
 #'     FinalBackupId = "string",
 #'     FinalBackupTags = list(
@@ -1239,6 +4161,15 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 #'     )
 #'   ),
 #'   LustreResponse = list(
+#'     FinalBackupId = "string",
+#'     FinalBackupTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   OpenZFSResponse = list(
 #'     FinalBackupId = "string",
 #'     FinalBackupTags = list(
 #'       list(
@@ -1272,6 +4203,18 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 #'         Value = "string"
 #'       )
 #'     )
+#'   ),
+#'   OpenZFSConfiguration = list(
+#'     SkipFinalBackup = TRUE|FALSE,
+#'     FinalBackupTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     Options = list(
+#'       "DELETE_CHILD_VOLUMES_AND_SNAPSHOTS"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1287,14 +4230,14 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname fsx_delete_file_system
-fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL) {
+fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "DeleteFileSystem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$delete_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration)
+  input <- .fsx$delete_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OpenZFSConfiguration = OpenZFSConfiguration)
   output <- .fsx$delete_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -1304,51 +4247,235 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 }
 .fsx$operations$delete_file_system <- fsx_delete_file_system
 
-#' Returns the description of specific Amazon FSx backups, if a BackupIds
+#' Deletes an Amazon FSx for OpenZFS snapshot
+#'
+#' @description
+#' Deletes an Amazon FSx for OpenZFS snapshot. After deletion, the snapshot
+#' no longer exists, and its data is gone. Deleting a snapshot doesn't
+#' affect snapshots stored in a file system backup.
+#' 
+#' The [`delete_snapshot`][fsx_delete_snapshot] operation returns
+#' instantly. The snapshot appears with the lifecycle status of `DELETING`
+#' until the deletion is complete.
+#'
+#' @usage
+#' fsx_delete_snapshot(ClientRequestToken, SnapshotId)
+#'
+#' @param ClientRequestToken 
+#' @param SnapshotId &#91;required&#93; The ID of the snapshot that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SnapshotId = "string",
+#'   Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_snapshot(
+#'   ClientRequestToken = "string",
+#'   SnapshotId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_delete_snapshot
+fsx_delete_snapshot <- function(ClientRequestToken = NULL, SnapshotId) {
+  op <- new_operation(
+    name = "DeleteSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$delete_snapshot_input(ClientRequestToken = ClientRequestToken, SnapshotId = SnapshotId)
+  output <- .fsx$delete_snapshot_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$delete_snapshot <- fsx_delete_snapshot
+
+#' Deletes an existing Amazon FSx for ONTAP storage virtual machine (SVM)
+#'
+#' @description
+#' Deletes an existing Amazon FSx for ONTAP storage virtual machine (SVM).
+#' Prior to deleting an SVM, you must delete all non-root volumes in the
+#' SVM, otherwise the operation will fail.
+#'
+#' @usage
+#' fsx_delete_storage_virtual_machine(ClientRequestToken,
+#'   StorageVirtualMachineId)
+#'
+#' @param ClientRequestToken 
+#' @param StorageVirtualMachineId &#91;required&#93; The ID of the SVM that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StorageVirtualMachineId = "string",
+#'   Lifecycle = "CREATED"|"CREATING"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_storage_virtual_machine(
+#'   ClientRequestToken = "string",
+#'   StorageVirtualMachineId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_delete_storage_virtual_machine
+fsx_delete_storage_virtual_machine <- function(ClientRequestToken = NULL, StorageVirtualMachineId) {
+  op <- new_operation(
+    name = "DeleteStorageVirtualMachine",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$delete_storage_virtual_machine_input(ClientRequestToken = ClientRequestToken, StorageVirtualMachineId = StorageVirtualMachineId)
+  output <- .fsx$delete_storage_virtual_machine_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$delete_storage_virtual_machine <- fsx_delete_storage_virtual_machine
+
+#' Deletes an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume
+#'
+#' @description
+#' Deletes an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume.
+#'
+#' @usage
+#' fsx_delete_volume(ClientRequestToken, VolumeId, OntapConfiguration,
+#'   OpenZFSConfiguration)
+#'
+#' @param ClientRequestToken 
+#' @param VolumeId &#91;required&#93; The ID of the volume that you are deleting.
+#' @param OntapConfiguration For Amazon FSx for ONTAP volumes, specify whether to take a final backup
+#' of the volume and apply tags to the backup. To apply tags to the backup,
+#' you must have the `fsx:TagResource` permission.
+#' @param OpenZFSConfiguration For Amazon FSx for OpenZFS volumes, specify whether to delete all child
+#' volumes and snapshots.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeId = "string",
+#'   Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'   OntapResponse = list(
+#'     FinalBackupId = "string",
+#'     FinalBackupTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_volume(
+#'   ClientRequestToken = "string",
+#'   VolumeId = "string",
+#'   OntapConfiguration = list(
+#'     SkipFinalBackup = TRUE|FALSE,
+#'     FinalBackupTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   OpenZFSConfiguration = list(
+#'     Options = list(
+#'       "DELETE_CHILD_VOLUMES_AND_SNAPSHOTS"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_delete_volume
+fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfiguration = NULL, OpenZFSConfiguration = NULL) {
+  op <- new_operation(
+    name = "DeleteVolume",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$delete_volume_input(ClientRequestToken = ClientRequestToken, VolumeId = VolumeId, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration)
+  output <- .fsx$delete_volume_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$delete_volume <- fsx_delete_volume
+
+#' Returns the description of a specific Amazon FSx backup, if a BackupIds
 #' value is provided for that backup
 #'
 #' @description
-#' Returns the description of specific Amazon FSx backups, if a `BackupIds`
-#' value is provided for that backup. Otherwise, it returns all backups
-#' owned by your AWS account in the AWS Region of the endpoint that you're
-#' calling.
+#' Returns the description of a specific Amazon FSx backup, if a
+#' `BackupIds` value is provided for that backup. Otherwise, it returns all
+#' backups owned by your Amazon Web Services account in the Amazon Web
+#' Services Region of the endpoint that you're calling.
 #' 
 #' When retrieving all backups, you can optionally specify the `MaxResults`
 #' parameter to limit the number of backups in a response. If more backups
 #' remain, Amazon FSx returns a `NextToken` value in the response. In this
 #' case, send a later request with the `NextToken` request parameter set to
-#' the value of `NextToken` from the last response.
+#' the value of the `NextToken` value from the last response.
 #' 
-#' This action is used in an iterative process to retrieve a list of your
-#' backups. [`describe_backups`][fsx_describe_backups] is called first
-#' without a `NextToken`value. Then the action continues to be called with
-#' the `NextToken` parameter set to the value of the last `NextToken` value
-#' until a response has no `NextToken`.
+#' This operation is used in an iterative process to retrieve a list of
+#' your backups. [`describe_backups`][fsx_describe_backups] is called first
+#' without a `NextToken` value. Then the operation continues to be called
+#' with the `NextToken` parameter set to the value of the last `NextToken`
+#' value until a response has no `NextToken` value.
 #' 
-#' When using this action, keep the following in mind:
+#' When using this operation, keep the following in mind:
 #' 
-#' -   The implementation might return fewer than `MaxResults` file system
-#'     descriptions while still including a `NextToken` value.
+#' -   The operation might return fewer than the `MaxResults` value of
+#'     backup descriptions while still including a `NextToken` value.
 #' 
-#' -   The order of backups returned in the response of one
-#'     [`describe_backups`][fsx_describe_backups] call and the order of
+#' -   The order of the backups returned in the response of one
+#'     [`describe_backups`][fsx_describe_backups] call and the order of the
 #'     backups returned across the responses of a multi-call iteration is
 #'     unspecified.
 #'
 #' @usage
 #' fsx_describe_backups(BackupIds, Filters, MaxResults, NextToken)
 #'
-#' @param BackupIds IDs of the backups you want to retrieve (String). This overrides any
-#' filters. If any IDs are not found, BackupNotFound will be thrown.
-#' @param Filters Filters structure. Supported names are file-system-id and backup-type.
-#' @param MaxResults Maximum number of backups to return in the response (integer). This
-#' parameter value must be greater than 0. The number of items that Amazon
-#' FSx returns is the minimum of the `MaxResults` parameter specified in
-#' the request and the service's internal maximum number of items per page.
-#' @param NextToken Opaque pagination token returned from a previous
-#' [`describe_backups`][fsx_describe_backups] operation (String). If a
-#' token present, the action continues the list from where the returning
-#' call left off.
+#' @param BackupIds The IDs of the backups that you want to retrieve. This parameter value
+#' overrides any filters. If any IDs aren't found, a `BackupNotFound` error
+#' occurs.
+#' @param Filters The filters structure. The supported names are `file-system-id`,
+#' `backup-type`, `file-system-type`, and `volume-id`.
+#' @param MaxResults Maximum number of backups to return in the response. This parameter
+#' value must be greater than 0. The number of items that Amazon FSx
+#' returns is the minimum of the `MaxResults` parameter specified in the
+#' request and the service's internal maximum number of items per page.
+#' @param NextToken An opaque pagination token returned from a previous
+#' [`describe_backups`][fsx_describe_backups] operation. If a token is
+#' present, the operation continues the list from where the returning call
+#' left off.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1357,7 +4484,7 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #'   Backups = list(
 #'     list(
 #'       BackupId = "string",
-#'       Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
+#'       Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"|"COPYING",
 #'       FailureDetails = list(
 #'         Message = "string"
 #'       ),
@@ -1380,8 +4507,8 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #'           "2015-01-01"
 #'         ),
 #'         FileSystemId = "string",
-#'         FileSystemType = "WINDOWS"|"LUSTRE",
-#'         Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
+#'         FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'         Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
 #'         FailureDetails = list(
 #'           Message = "string"
 #'         ),
@@ -1431,31 +4558,47 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #'               Name = "string",
 #'               Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
 #'             )
+#'           ),
+#'           AuditLogConfiguration = list(
+#'             FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'             FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'             AuditLogDestination = "string"
 #'           )
 #'         ),
 #'         LustreConfiguration = list(
 #'           WeeklyMaintenanceStartTime = "string",
 #'           DataRepositoryConfiguration = list(
-#'             Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
+#'             Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
 #'             ImportPath = "string",
 #'             ExportPath = "string",
 #'             ImportedFileChunkSize = 123,
-#'             AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
+#'             AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
 #'             FailureDetails = list(
 #'               Message = "string"
 #'             )
 #'           ),
-#'           DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+#'           DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
 #'           PerUnitStorageThroughput = 123,
 #'           MountName = "string",
 #'           DailyAutomaticBackupStartTime = "string",
 #'           AutomaticBackupRetentionDays = 123,
 #'           CopyTagsToBackups = TRUE|FALSE,
-#'           DriveCacheType = "NONE"|"READ"
+#'           DriveCacheType = "NONE"|"READ",
+#'           DataCompressionType = "NONE"|"LZ4",
+#'           LogConfiguration = list(
+#'             Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'             Destination = "string"
+#'           ),
+#'           RootSquashConfiguration = list(
+#'             RootSquash = "string",
+#'             NoSquashNids = list(
+#'               "string"
+#'             )
+#'           )
 #'         ),
 #'         AdministrativeActions = list(
 #'           list(
-#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
+#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
 #'             ProgressPercent = 123,
 #'             RequestTime = as.POSIXct(
 #'               "2015-01-01"
@@ -1464,13 +4607,396 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #'             TargetFileSystemValues = list(),
 #'             FailureDetails = list(
 #'               Message = "string"
+#'             ),
+#'             TargetVolumeValues = list(
+#'               CreationTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               FileSystemId = "string",
+#'               Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'               Name = "string",
+#'               OntapConfiguration = list(
+#'                 FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'                 JunctionPath = "string",
+#'                 SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'                 SizeInMegabytes = 123,
+#'                 StorageEfficiencyEnabled = TRUE|FALSE,
+#'                 StorageVirtualMachineId = "string",
+#'                 StorageVirtualMachineRoot = TRUE|FALSE,
+#'                 TieringPolicy = list(
+#'                   CoolingPeriod = 123,
+#'                   Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'                 ),
+#'                 UUID = "string",
+#'                 OntapVolumeType = "RW"|"DP"|"LS"
+#'               ),
+#'               ResourceARN = "string",
+#'               Tags = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               VolumeId = "string",
+#'               VolumeType = "ONTAP"|"OPENZFS",
+#'               LifecycleTransitionReason = list(
+#'                 Message = "string"
+#'               ),
+#'               AdministrativeActions = list(),
+#'               OpenZFSConfiguration = list(
+#'                 ParentVolumeId = "string",
+#'                 VolumePath = "string",
+#'                 StorageCapacityReservationGiB = 123,
+#'                 StorageCapacityQuotaGiB = 123,
+#'                 RecordSizeKiB = 123,
+#'                 DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'                 CopyTagsToSnapshots = TRUE|FALSE,
+#'                 OriginSnapshot = list(
+#'                   SnapshotARN = "string",
+#'                   CopyStrategy = "CLONE"|"FULL_COPY"
+#'                 ),
+#'                 ReadOnly = TRUE|FALSE,
+#'                 NfsExports = list(
+#'                   list(
+#'                     ClientConfigurations = list(
+#'                       list(
+#'                         Clients = "string",
+#'                         Options = list(
+#'                           "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 UserAndGroupQuotas = list(
+#'                   list(
+#'                     Type = "USER"|"GROUP",
+#'                     Id = 123,
+#'                     StorageCapacityQuotaGiB = 123
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             TargetSnapshotValues = list(
+#'               ResourceARN = "string",
+#'               SnapshotId = "string",
+#'               Name = "string",
+#'               VolumeId = "string",
+#'               CreationTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'               LifecycleTransitionReason = list(
+#'                 Message = "string"
+#'               ),
+#'               Tags = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               AdministrativeActions = list()
 #'             )
 #'           )
+#'         ),
+#'         OntapConfiguration = list(
+#'           AutomaticBackupRetentionDays = 123,
+#'           DailyAutomaticBackupStartTime = "string",
+#'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'           EndpointIpAddressRange = "string",
+#'           Endpoints = list(
+#'             Intercluster = list(
+#'               DNSName = "string",
+#'               IpAddresses = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Management = list(
+#'               DNSName = "string",
+#'               IpAddresses = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           DiskIopsConfiguration = list(
+#'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'             Iops = 123
+#'           ),
+#'           PreferredSubnetId = "string",
+#'           RouteTableIds = list(
+#'             "string"
+#'           ),
+#'           ThroughputCapacity = 123,
+#'           WeeklyMaintenanceStartTime = "string"
+#'         ),
+#'         FileSystemTypeVersion = "string",
+#'         OpenZFSConfiguration = list(
+#'           AutomaticBackupRetentionDays = 123,
+#'           CopyTagsToBackups = TRUE|FALSE,
+#'           CopyTagsToVolumes = TRUE|FALSE,
+#'           DailyAutomaticBackupStartTime = "string",
+#'           DeploymentType = "SINGLE_AZ_1",
+#'           ThroughputCapacity = 123,
+#'           WeeklyMaintenanceStartTime = "string",
+#'           DiskIopsConfiguration = list(
+#'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'             Iops = 123
+#'           ),
+#'           RootVolumeId = "string"
 #'         )
 #'       ),
 #'       DirectoryInformation = list(
 #'         DomainName = "string",
-#'         ActiveDirectoryId = "string"
+#'         ActiveDirectoryId = "string",
+#'         ResourceARN = "string"
+#'       ),
+#'       OwnerId = "string",
+#'       SourceBackupId = "string",
+#'       SourceBackupRegion = "string",
+#'       ResourceType = "FILE_SYSTEM"|"VOLUME",
+#'       Volume = list(
+#'         CreationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         FileSystemId = "string",
+#'         Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'         Name = "string",
+#'         OntapConfiguration = list(
+#'           FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'           JunctionPath = "string",
+#'           SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'           SizeInMegabytes = 123,
+#'           StorageEfficiencyEnabled = TRUE|FALSE,
+#'           StorageVirtualMachineId = "string",
+#'           StorageVirtualMachineRoot = TRUE|FALSE,
+#'           TieringPolicy = list(
+#'             CoolingPeriod = 123,
+#'             Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'           ),
+#'           UUID = "string",
+#'           OntapVolumeType = "RW"|"DP"|"LS"
+#'         ),
+#'         ResourceARN = "string",
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         VolumeId = "string",
+#'         VolumeType = "ONTAP"|"OPENZFS",
+#'         LifecycleTransitionReason = list(
+#'           Message = "string"
+#'         ),
+#'         AdministrativeActions = list(
+#'           list(
+#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'             ProgressPercent = 123,
+#'             RequestTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'             TargetFileSystemValues = list(
+#'               OwnerId = "string",
+#'               CreationTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               FileSystemId = "string",
+#'               FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'               Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'               FailureDetails = list(
+#'                 Message = "string"
+#'               ),
+#'               StorageCapacity = 123,
+#'               StorageType = "SSD"|"HDD",
+#'               VpcId = "string",
+#'               SubnetIds = list(
+#'                 "string"
+#'               ),
+#'               NetworkInterfaceIds = list(
+#'                 "string"
+#'               ),
+#'               DNSName = "string",
+#'               KmsKeyId = "string",
+#'               ResourceARN = "string",
+#'               Tags = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               WindowsConfiguration = list(
+#'                 ActiveDirectoryId = "string",
+#'                 SelfManagedActiveDirectoryConfiguration = list(
+#'                   DomainName = "string",
+#'                   OrganizationalUnitDistinguishedName = "string",
+#'                   FileSystemAdministratorsGroup = "string",
+#'                   UserName = "string",
+#'                   DnsIps = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'                 RemoteAdministrationEndpoint = "string",
+#'                 PreferredSubnetId = "string",
+#'                 PreferredFileServerIp = "string",
+#'                 ThroughputCapacity = 123,
+#'                 MaintenanceOperationsInProgress = list(
+#'                   "PATCHING"|"BACKING_UP"
+#'                 ),
+#'                 WeeklyMaintenanceStartTime = "string",
+#'                 DailyAutomaticBackupStartTime = "string",
+#'                 AutomaticBackupRetentionDays = 123,
+#'                 CopyTagsToBackups = TRUE|FALSE,
+#'                 Aliases = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'                   )
+#'                 ),
+#'                 AuditLogConfiguration = list(
+#'                   FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'                   FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'                   AuditLogDestination = "string"
+#'                 )
+#'               ),
+#'               LustreConfiguration = list(
+#'                 WeeklyMaintenanceStartTime = "string",
+#'                 DataRepositoryConfiguration = list(
+#'                   Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'                   ImportPath = "string",
+#'                   ExportPath = "string",
+#'                   ImportedFileChunkSize = 123,
+#'                   AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'                   FailureDetails = list(
+#'                     Message = "string"
+#'                   )
+#'                 ),
+#'                 DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'                 PerUnitStorageThroughput = 123,
+#'                 MountName = "string",
+#'                 DailyAutomaticBackupStartTime = "string",
+#'                 AutomaticBackupRetentionDays = 123,
+#'                 CopyTagsToBackups = TRUE|FALSE,
+#'                 DriveCacheType = "NONE"|"READ",
+#'                 DataCompressionType = "NONE"|"LZ4",
+#'                 LogConfiguration = list(
+#'                   Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'                   Destination = "string"
+#'                 ),
+#'                 RootSquashConfiguration = list(
+#'                   RootSquash = "string",
+#'                   NoSquashNids = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AdministrativeActions = list(),
+#'               OntapConfiguration = list(
+#'                 AutomaticBackupRetentionDays = 123,
+#'                 DailyAutomaticBackupStartTime = "string",
+#'                 DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'                 EndpointIpAddressRange = "string",
+#'                 Endpoints = list(
+#'                   Intercluster = list(
+#'                     DNSName = "string",
+#'                     IpAddresses = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   Management = list(
+#'                     DNSName = "string",
+#'                     IpAddresses = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 DiskIopsConfiguration = list(
+#'                   Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                   Iops = 123
+#'                 ),
+#'                 PreferredSubnetId = "string",
+#'                 RouteTableIds = list(
+#'                   "string"
+#'                 ),
+#'                 ThroughputCapacity = 123,
+#'                 WeeklyMaintenanceStartTime = "string"
+#'               ),
+#'               FileSystemTypeVersion = "string",
+#'               OpenZFSConfiguration = list(
+#'                 AutomaticBackupRetentionDays = 123,
+#'                 CopyTagsToBackups = TRUE|FALSE,
+#'                 CopyTagsToVolumes = TRUE|FALSE,
+#'                 DailyAutomaticBackupStartTime = "string",
+#'                 DeploymentType = "SINGLE_AZ_1",
+#'                 ThroughputCapacity = 123,
+#'                 WeeklyMaintenanceStartTime = "string",
+#'                 DiskIopsConfiguration = list(
+#'                   Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                   Iops = 123
+#'                 ),
+#'                 RootVolumeId = "string"
+#'               )
+#'             ),
+#'             FailureDetails = list(
+#'               Message = "string"
+#'             ),
+#'             TargetVolumeValues = list(),
+#'             TargetSnapshotValues = list(
+#'               ResourceARN = "string",
+#'               SnapshotId = "string",
+#'               Name = "string",
+#'               VolumeId = "string",
+#'               CreationTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'               LifecycleTransitionReason = list(
+#'                 Message = "string"
+#'               ),
+#'               Tags = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               AdministrativeActions = list()
+#'             )
+#'           )
+#'         ),
+#'         OpenZFSConfiguration = list(
+#'           ParentVolumeId = "string",
+#'           VolumePath = "string",
+#'           StorageCapacityReservationGiB = 123,
+#'           StorageCapacityQuotaGiB = 123,
+#'           RecordSizeKiB = 123,
+#'           DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'           CopyTagsToSnapshots = TRUE|FALSE,
+#'           OriginSnapshot = list(
+#'             SnapshotARN = "string",
+#'             CopyStrategy = "CLONE"|"FULL_COPY"
+#'           ),
+#'           ReadOnly = TRUE|FALSE,
+#'           NfsExports = list(
+#'             list(
+#'               ClientConfigurations = list(
+#'                 list(
+#'                   Clients = "string",
+#'                   Options = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           UserAndGroupQuotas = list(
+#'             list(
+#'               Type = "USER"|"GROUP",
+#'               Id = 123,
+#'               StorageCapacityQuotaGiB = 123
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1486,7 +5012,7 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #'   ),
 #'   Filters = list(
 #'     list(
-#'       Name = "file-system-id"|"backup-type"|"file-system-type",
+#'       Name = "file-system-id"|"backup-type"|"file-system-type"|"volume-id"|"data-repository-type",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -1524,6 +5050,128 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 .fsx$operations$describe_backups <- fsx_describe_backups
 
 #' Returns the description of specific Amazon FSx for Lustre data
+#' repository associations, if one or more AssociationIds values are
+#' provided in the request, or if filters are used in the request
+#'
+#' @description
+#' Returns the description of specific Amazon FSx for Lustre data
+#' repository associations, if one or more `AssociationIds` values are
+#' provided in the request, or if filters are used in the request. Data
+#' repository associations are supported only for file systems with the
+#' `Persistent_2` deployment type.
+#' 
+#' You can use filters to narrow the response to include just data
+#' repository associations for specific file systems (use the
+#' `file-system-id` filter with the ID of the file system) or data
+#' repository associations for a specific repository type (use the
+#' `data-repository-type` filter with a value of `S3`). If you don't use
+#' filters, the response returns all data repository associations owned by
+#' your Amazon Web Services account in the Amazon Web Services Region of
+#' the endpoint that you're calling.
+#' 
+#' When retrieving all data repository associations, you can paginate the
+#' response by using the optional `MaxResults` parameter to limit the
+#' number of data repository associations returned in a response. If more
+#' data repository associations remain, Amazon FSx returns a `NextToken`
+#' value in the response. In this case, send a later request with the
+#' `NextToken` request parameter set to the value of `NextToken` from the
+#' last response.
+#'
+#' @usage
+#' fsx_describe_data_repository_associations(AssociationIds, Filters,
+#'   MaxResults, NextToken)
+#'
+#' @param AssociationIds IDs of the data repository associations whose descriptions you want to
+#' retrieve (String).
+#' @param Filters 
+#' @param MaxResults The maximum number of resources to return in the response. This value
+#' must be an integer greater than zero.
+#' @param NextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     list(
+#'       AssociationId = "string",
+#'       ResourceARN = "string",
+#'       FileSystemId = "string",
+#'       Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'       FailureDetails = list(
+#'         Message = "string"
+#'       ),
+#'       FileSystemPath = "string",
+#'       DataRepositoryPath = "string",
+#'       BatchImportMetaDataOnCreate = TRUE|FALSE,
+#'       ImportedFileChunkSize = 123,
+#'       S3 = list(
+#'         AutoImportPolicy = list(
+#'           Events = list(
+#'             "NEW"|"CHANGED"|"DELETED"
+#'           )
+#'         ),
+#'         AutoExportPolicy = list(
+#'           Events = list(
+#'             "NEW"|"CHANGED"|"DELETED"
+#'           )
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_data_repository_associations(
+#'   AssociationIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "file-system-id"|"backup-type"|"file-system-type"|"volume-id"|"data-repository-type",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_data_repository_associations
+fsx_describe_data_repository_associations <- function(AssociationIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeDataRepositoryAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$describe_data_repository_associations_input(AssociationIds = AssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fsx$describe_data_repository_associations_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_data_repository_associations <- fsx_describe_data_repository_associations
+
+#' Returns the description of specific Amazon FSx for Lustre data
 #' repository tasks, if one or more TaskIds values are provided in the
 #' request, or if filters are used in the request
 #'
@@ -1533,8 +5181,8 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 #' request, or if filters are used in the request. You can use filters to
 #' narrow the response to include just tasks for specific file systems, or
 #' tasks in a specific lifecycle state. Otherwise, it returns all data
-#' repository tasks owned by your AWS account in the AWS Region of the
-#' endpoint that you're calling.
+#' repository tasks owned by your Amazon Web Services account in the Amazon
+#' Web Services Region of the endpoint that you're calling.
 #' 
 #' When retrieving all tasks, you can paginate the response by using the
 #' optional `MaxResults` parameter to limit the number of tasks returned in
@@ -1564,7 +5212,7 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 #'     list(
 #'       TaskId = "string",
 #'       Lifecycle = "PENDING"|"EXECUTING"|"FAILED"|"SUCCEEDED"|"CANCELED"|"CANCELING",
-#'       Type = "EXPORT_TO_REPOSITORY",
+#'       Type = "EXPORT_TO_REPOSITORY"|"IMPORT_METADATA_FROM_REPOSITORY",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1616,7 +5264,7 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 #'   ),
 #'   Filters = list(
 #'     list(
-#'       Name = "file-system-id"|"task-lifecycle",
+#'       Name = "file-system-id"|"task-lifecycle"|"data-repository-association-id",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -1723,8 +5371,9 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #' @description
 #' Returns the description of specific Amazon FSx file systems, if a
 #' `FileSystemIds` value is provided for that file system. Otherwise, it
-#' returns descriptions of all file systems owned by your AWS account in
-#' the AWS Region of the endpoint that you're calling.
+#' returns descriptions of all file systems owned by your Amazon Web
+#' Services account in the Amazon Web Services Region of the endpoint that
+#' you're calling.
 #' 
 #' When retrieving all file system descriptions, you can optionally specify
 #' the `MaxResults` parameter to limit the number of descriptions in a
@@ -1733,14 +5382,14 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #' with the `NextToken` request parameter set to the value of `NextToken`
 #' from the last response.
 #' 
-#' This action is used in an iterative process to retrieve a list of your
-#' file system descriptions.
+#' This operation is used in an iterative process to retrieve a list of
+#' your file system descriptions.
 #' [`describe_file_systems`][fsx_describe_file_systems] is called first
-#' without a `NextToken`value. Then the action continues to be called with
-#' the `NextToken` parameter set to the value of the last `NextToken` value
-#' until a response has no `NextToken`.
+#' without a `NextToken`value. Then the operation continues to be called
+#' with the `NextToken` parameter set to the value of the last `NextToken`
+#' value until a response has no `NextToken`.
 #' 
-#' When using this action, keep the following in mind:
+#' When using this operation, keep the following in mind:
 #' 
 #' -   The implementation might return fewer than `MaxResults` file system
 #'     descriptions while still including a `NextToken` value.
@@ -1761,7 +5410,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #' the request and the service's internal maximum number of items per page.
 #' @param NextToken Opaque pagination token returned from a previous
 #' [`describe_file_systems`][fsx_describe_file_systems] operation (String).
-#' If a token present, the action continues the list from where the
+#' If a token present, the operation continues the list from where the
 #' returning call left off.
 #'
 #' @return
@@ -1775,8 +5424,8 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'         "2015-01-01"
 #'       ),
 #'       FileSystemId = "string",
-#'       FileSystemType = "WINDOWS"|"LUSTRE",
-#'       Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
+#'       FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'       Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
 #'       FailureDetails = list(
 #'         Message = "string"
 #'       ),
@@ -1826,31 +5475,47 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'             Name = "string",
 #'             Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
 #'           )
+#'         ),
+#'         AuditLogConfiguration = list(
+#'           FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'           FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'           AuditLogDestination = "string"
 #'         )
 #'       ),
 #'       LustreConfiguration = list(
 #'         WeeklyMaintenanceStartTime = "string",
 #'         DataRepositoryConfiguration = list(
-#'           Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
+#'           Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
 #'           ImportPath = "string",
 #'           ExportPath = "string",
 #'           ImportedFileChunkSize = 123,
-#'           AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
+#'           AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
 #'           FailureDetails = list(
 #'             Message = "string"
 #'           )
 #'         ),
-#'         DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+#'         DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
 #'         PerUnitStorageThroughput = 123,
 #'         MountName = "string",
 #'         DailyAutomaticBackupStartTime = "string",
 #'         AutomaticBackupRetentionDays = 123,
 #'         CopyTagsToBackups = TRUE|FALSE,
-#'         DriveCacheType = "NONE"|"READ"
+#'         DriveCacheType = "NONE"|"READ",
+#'         DataCompressionType = "NONE"|"LZ4",
+#'         LogConfiguration = list(
+#'           Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'           Destination = "string"
+#'         ),
+#'         RootSquashConfiguration = list(
+#'           RootSquash = "string",
+#'           NoSquashNids = list(
+#'             "string"
+#'           )
+#'         )
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -1859,8 +5524,142 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'           TargetFileSystemValues = list(),
 #'           FailureDetails = list(
 #'             Message = "string"
+#'           ),
+#'           TargetVolumeValues = list(
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             FileSystemId = "string",
+#'             Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'             Name = "string",
+#'             OntapConfiguration = list(
+#'               FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'               JunctionPath = "string",
+#'               SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'               SizeInMegabytes = 123,
+#'               StorageEfficiencyEnabled = TRUE|FALSE,
+#'               StorageVirtualMachineId = "string",
+#'               StorageVirtualMachineRoot = TRUE|FALSE,
+#'               TieringPolicy = list(
+#'                 CoolingPeriod = 123,
+#'                 Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'               ),
+#'               UUID = "string",
+#'               OntapVolumeType = "RW"|"DP"|"LS"
+#'             ),
+#'             ResourceARN = "string",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             VolumeId = "string",
+#'             VolumeType = "ONTAP"|"OPENZFS",
+#'             LifecycleTransitionReason = list(
+#'               Message = "string"
+#'             ),
+#'             AdministrativeActions = list(),
+#'             OpenZFSConfiguration = list(
+#'               ParentVolumeId = "string",
+#'               VolumePath = "string",
+#'               StorageCapacityReservationGiB = 123,
+#'               StorageCapacityQuotaGiB = 123,
+#'               RecordSizeKiB = 123,
+#'               DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'               CopyTagsToSnapshots = TRUE|FALSE,
+#'               OriginSnapshot = list(
+#'                 SnapshotARN = "string",
+#'                 CopyStrategy = "CLONE"|"FULL_COPY"
+#'               ),
+#'               ReadOnly = TRUE|FALSE,
+#'               NfsExports = list(
+#'                 list(
+#'                   ClientConfigurations = list(
+#'                     list(
+#'                       Clients = "string",
+#'                       Options = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               UserAndGroupQuotas = list(
+#'                 list(
+#'                   Type = "USER"|"GROUP",
+#'                   Id = 123,
+#'                   StorageCapacityQuotaGiB = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           TargetSnapshotValues = list(
+#'             ResourceARN = "string",
+#'             SnapshotId = "string",
+#'             Name = "string",
+#'             VolumeId = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'             LifecycleTransitionReason = list(
+#'               Message = "string"
+#'             ),
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             AdministrativeActions = list()
 #'           )
 #'         )
+#'       ),
+#'       OntapConfiguration = list(
+#'         AutomaticBackupRetentionDays = 123,
+#'         DailyAutomaticBackupStartTime = "string",
+#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'         EndpointIpAddressRange = "string",
+#'         Endpoints = list(
+#'           Intercluster = list(
+#'             DNSName = "string",
+#'             IpAddresses = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Management = list(
+#'             DNSName = "string",
+#'             IpAddresses = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         DiskIopsConfiguration = list(
+#'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'           Iops = 123
+#'         ),
+#'         PreferredSubnetId = "string",
+#'         RouteTableIds = list(
+#'           "string"
+#'         ),
+#'         ThroughputCapacity = 123,
+#'         WeeklyMaintenanceStartTime = "string"
+#'       ),
+#'       FileSystemTypeVersion = "string",
+#'       OpenZFSConfiguration = list(
+#'         AutomaticBackupRetentionDays = 123,
+#'         CopyTagsToBackups = TRUE|FALSE,
+#'         CopyTagsToVolumes = TRUE|FALSE,
+#'         DailyAutomaticBackupStartTime = "string",
+#'         DeploymentType = "SINGLE_AZ_1",
+#'         ThroughputCapacity = 123,
+#'         WeeklyMaintenanceStartTime = "string",
+#'         DiskIopsConfiguration = list(
+#'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'           Iops = 123
+#'         ),
+#'         RootVolumeId = "string"
 #'       )
 #'     )
 #'   ),
@@ -1905,6 +5704,775 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
   return(response)
 }
 .fsx$operations$describe_file_systems <- fsx_describe_file_systems
+
+#' Returns the description of specific Amazon FSx for OpenZFS snapshots, if
+#' a SnapshotIds value is provided
+#'
+#' @description
+#' Returns the description of specific Amazon FSx for OpenZFS snapshots, if
+#' a `SnapshotIds` value is provided. Otherwise, this operation returns all
+#' snapshots owned by your Amazon Web Services account in the Amazon Web
+#' Services Region of the endpoint that you're calling.
+#' 
+#' When retrieving all snapshots, you can optionally specify the
+#' `MaxResults` parameter to limit the number of snapshots in a response.
+#' If more backups remain, Amazon FSx returns a `NextToken` value in the
+#' response. In this case, send a later request with the `NextToken`
+#' request parameter set to the value of `NextToken` from the last
+#' response.
+#' 
+#' Use this operation in an iterative process to retrieve a list of your
+#' snapshots. [`describe_snapshots`][fsx_describe_snapshots] is called
+#' first without a `NextToken` value. Then the operation continues to be
+#' called with the `NextToken` parameter set to the value of the last
+#' `NextToken` value until a response has no `NextToken` value.
+#' 
+#' When using this operation, keep the following in mind:
+#' 
+#' -   The operation might return fewer than the `MaxResults` value of
+#'     snapshot descriptions while still including a `NextToken` value.
+#' 
+#' -   The order of snapshots returned in the response of one
+#'     [`describe_snapshots`][fsx_describe_snapshots] call and the order of
+#'     backups returned across the responses of a multi-call iteration is
+#'     unspecified.
+#'
+#' @usage
+#' fsx_describe_snapshots(SnapshotIds, Filters, MaxResults, NextToken)
+#'
+#' @param SnapshotIds The IDs of the snapshots that you want to retrieve. This parameter value
+#' overrides any filters. If any IDs aren't found, a `SnapshotNotFound`
+#' error occurs.
+#' @param Filters The filters structure. The supported names are `file-system-id` or
+#' `volume-id`.
+#' @param MaxResults 
+#' @param NextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Snapshots = list(
+#'     list(
+#'       ResourceARN = "string",
+#'       SnapshotId = "string",
+#'       Name = "string",
+#'       VolumeId = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'       LifecycleTransitionReason = list(
+#'         Message = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       AdministrativeActions = list(
+#'         list(
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'           ProgressPercent = 123,
+#'           RequestTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'           TargetFileSystemValues = list(
+#'             OwnerId = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             FileSystemId = "string",
+#'             FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'             Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'             FailureDetails = list(
+#'               Message = "string"
+#'             ),
+#'             StorageCapacity = 123,
+#'             StorageType = "SSD"|"HDD",
+#'             VpcId = "string",
+#'             SubnetIds = list(
+#'               "string"
+#'             ),
+#'             NetworkInterfaceIds = list(
+#'               "string"
+#'             ),
+#'             DNSName = "string",
+#'             KmsKeyId = "string",
+#'             ResourceARN = "string",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             WindowsConfiguration = list(
+#'               ActiveDirectoryId = "string",
+#'               SelfManagedActiveDirectoryConfiguration = list(
+#'                 DomainName = "string",
+#'                 OrganizationalUnitDistinguishedName = "string",
+#'                 FileSystemAdministratorsGroup = "string",
+#'                 UserName = "string",
+#'                 DnsIps = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'               RemoteAdministrationEndpoint = "string",
+#'               PreferredSubnetId = "string",
+#'               PreferredFileServerIp = "string",
+#'               ThroughputCapacity = 123,
+#'               MaintenanceOperationsInProgress = list(
+#'                 "PATCHING"|"BACKING_UP"
+#'               ),
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DailyAutomaticBackupStartTime = "string",
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               Aliases = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'                 )
+#'               ),
+#'               AuditLogConfiguration = list(
+#'                 FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'                 FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'                 AuditLogDestination = "string"
+#'               )
+#'             ),
+#'             LustreConfiguration = list(
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DataRepositoryConfiguration = list(
+#'                 Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'                 ImportPath = "string",
+#'                 ExportPath = "string",
+#'                 ImportedFileChunkSize = 123,
+#'                 AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'                 FailureDetails = list(
+#'                   Message = "string"
+#'                 )
+#'               ),
+#'               DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'               PerUnitStorageThroughput = 123,
+#'               MountName = "string",
+#'               DailyAutomaticBackupStartTime = "string",
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               DriveCacheType = "NONE"|"READ",
+#'               DataCompressionType = "NONE"|"LZ4",
+#'               LogConfiguration = list(
+#'                 Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'                 Destination = "string"
+#'               ),
+#'               RootSquashConfiguration = list(
+#'                 RootSquash = "string",
+#'                 NoSquashNids = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             AdministrativeActions = list(),
+#'             OntapConfiguration = list(
+#'               AutomaticBackupRetentionDays = 123,
+#'               DailyAutomaticBackupStartTime = "string",
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'               EndpointIpAddressRange = "string",
+#'               Endpoints = list(
+#'                 Intercluster = list(
+#'                   DNSName = "string",
+#'                   IpAddresses = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Management = list(
+#'                   DNSName = "string",
+#'                   IpAddresses = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
+#'               ),
+#'               PreferredSubnetId = "string",
+#'               RouteTableIds = list(
+#'                 "string"
+#'               ),
+#'               ThroughputCapacity = 123,
+#'               WeeklyMaintenanceStartTime = "string"
+#'             ),
+#'             FileSystemTypeVersion = "string",
+#'             OpenZFSConfiguration = list(
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               CopyTagsToVolumes = TRUE|FALSE,
+#'               DailyAutomaticBackupStartTime = "string",
+#'               DeploymentType = "SINGLE_AZ_1",
+#'               ThroughputCapacity = 123,
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
+#'               ),
+#'               RootVolumeId = "string"
+#'             )
+#'           ),
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           ),
+#'           TargetVolumeValues = list(
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             FileSystemId = "string",
+#'             Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'             Name = "string",
+#'             OntapConfiguration = list(
+#'               FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'               JunctionPath = "string",
+#'               SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'               SizeInMegabytes = 123,
+#'               StorageEfficiencyEnabled = TRUE|FALSE,
+#'               StorageVirtualMachineId = "string",
+#'               StorageVirtualMachineRoot = TRUE|FALSE,
+#'               TieringPolicy = list(
+#'                 CoolingPeriod = 123,
+#'                 Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'               ),
+#'               UUID = "string",
+#'               OntapVolumeType = "RW"|"DP"|"LS"
+#'             ),
+#'             ResourceARN = "string",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             VolumeId = "string",
+#'             VolumeType = "ONTAP"|"OPENZFS",
+#'             LifecycleTransitionReason = list(
+#'               Message = "string"
+#'             ),
+#'             AdministrativeActions = list(),
+#'             OpenZFSConfiguration = list(
+#'               ParentVolumeId = "string",
+#'               VolumePath = "string",
+#'               StorageCapacityReservationGiB = 123,
+#'               StorageCapacityQuotaGiB = 123,
+#'               RecordSizeKiB = 123,
+#'               DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'               CopyTagsToSnapshots = TRUE|FALSE,
+#'               OriginSnapshot = list(
+#'                 SnapshotARN = "string",
+#'                 CopyStrategy = "CLONE"|"FULL_COPY"
+#'               ),
+#'               ReadOnly = TRUE|FALSE,
+#'               NfsExports = list(
+#'                 list(
+#'                   ClientConfigurations = list(
+#'                     list(
+#'                       Clients = "string",
+#'                       Options = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               UserAndGroupQuotas = list(
+#'                 list(
+#'                   Type = "USER"|"GROUP",
+#'                   Id = 123,
+#'                   StorageCapacityQuotaGiB = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           TargetSnapshotValues = list()
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_snapshots(
+#'   SnapshotIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "file-system-id"|"volume-id",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_snapshots
+fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeSnapshots",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$describe_snapshots_input(SnapshotIds = SnapshotIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fsx$describe_snapshots_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_snapshots <- fsx_describe_snapshots
+
+#' Describes one or more Amazon FSx for NetApp ONTAP storage virtual
+#' machines (SVMs)
+#'
+#' @description
+#' Describes one or more Amazon FSx for NetApp ONTAP storage virtual
+#' machines (SVMs).
+#'
+#' @usage
+#' fsx_describe_storage_virtual_machines(StorageVirtualMachineIds, Filters,
+#'   MaxResults, NextToken)
+#'
+#' @param StorageVirtualMachineIds Enter the ID of one or more SVMs that you want to view.
+#' @param Filters Enter a filter name:value pair to view a select set of SVMs.
+#' @param MaxResults 
+#' @param NextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StorageVirtualMachines = list(
+#'     list(
+#'       ActiveDirectoryConfiguration = list(
+#'         NetBiosName = "string",
+#'         SelfManagedActiveDirectoryConfiguration = list(
+#'           DomainName = "string",
+#'           OrganizationalUnitDistinguishedName = "string",
+#'           FileSystemAdministratorsGroup = "string",
+#'           UserName = "string",
+#'           DnsIps = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Endpoints = list(
+#'         Iscsi = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Management = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Nfs = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Smb = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       FileSystemId = "string",
+#'       Lifecycle = "CREATED"|"CREATING"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING",
+#'       Name = "string",
+#'       ResourceARN = "string",
+#'       StorageVirtualMachineId = "string",
+#'       Subtype = "DEFAULT"|"DP_DESTINATION"|"SYNC_DESTINATION"|"SYNC_SOURCE",
+#'       UUID = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       LifecycleTransitionReason = list(
+#'         Message = "string"
+#'       ),
+#'       RootVolumeSecurityStyle = "UNIX"|"NTFS"|"MIXED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_storage_virtual_machines(
+#'   StorageVirtualMachineIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "file-system-id",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_storage_virtual_machines
+fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeStorageVirtualMachines",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$describe_storage_virtual_machines_input(StorageVirtualMachineIds = StorageVirtualMachineIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fsx$describe_storage_virtual_machines_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_storage_virtual_machines <- fsx_describe_storage_virtual_machines
+
+#' Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for
+#' OpenZFS volumes
+#'
+#' @description
+#' Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for
+#' OpenZFS volumes.
+#'
+#' @usage
+#' fsx_describe_volumes(VolumeIds, Filters, MaxResults, NextToken)
+#'
+#' @param VolumeIds The IDs of the volumes whose descriptions you want to retrieve.
+#' @param Filters Enter a filter `Name` and `Values` pair to view a select set of volumes.
+#' @param MaxResults 
+#' @param NextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Volumes = list(
+#'     list(
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FileSystemId = "string",
+#'       Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'       Name = "string",
+#'       OntapConfiguration = list(
+#'         FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'         JunctionPath = "string",
+#'         SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'         SizeInMegabytes = 123,
+#'         StorageEfficiencyEnabled = TRUE|FALSE,
+#'         StorageVirtualMachineId = "string",
+#'         StorageVirtualMachineRoot = TRUE|FALSE,
+#'         TieringPolicy = list(
+#'           CoolingPeriod = 123,
+#'           Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'         ),
+#'         UUID = "string",
+#'         OntapVolumeType = "RW"|"DP"|"LS"
+#'       ),
+#'       ResourceARN = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VolumeId = "string",
+#'       VolumeType = "ONTAP"|"OPENZFS",
+#'       LifecycleTransitionReason = list(
+#'         Message = "string"
+#'       ),
+#'       AdministrativeActions = list(
+#'         list(
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'           ProgressPercent = 123,
+#'           RequestTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'           TargetFileSystemValues = list(
+#'             OwnerId = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             FileSystemId = "string",
+#'             FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'             Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'             FailureDetails = list(
+#'               Message = "string"
+#'             ),
+#'             StorageCapacity = 123,
+#'             StorageType = "SSD"|"HDD",
+#'             VpcId = "string",
+#'             SubnetIds = list(
+#'               "string"
+#'             ),
+#'             NetworkInterfaceIds = list(
+#'               "string"
+#'             ),
+#'             DNSName = "string",
+#'             KmsKeyId = "string",
+#'             ResourceARN = "string",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             WindowsConfiguration = list(
+#'               ActiveDirectoryId = "string",
+#'               SelfManagedActiveDirectoryConfiguration = list(
+#'                 DomainName = "string",
+#'                 OrganizationalUnitDistinguishedName = "string",
+#'                 FileSystemAdministratorsGroup = "string",
+#'                 UserName = "string",
+#'                 DnsIps = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'               RemoteAdministrationEndpoint = "string",
+#'               PreferredSubnetId = "string",
+#'               PreferredFileServerIp = "string",
+#'               ThroughputCapacity = 123,
+#'               MaintenanceOperationsInProgress = list(
+#'                 "PATCHING"|"BACKING_UP"
+#'               ),
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DailyAutomaticBackupStartTime = "string",
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               Aliases = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'                 )
+#'               ),
+#'               AuditLogConfiguration = list(
+#'                 FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'                 FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'                 AuditLogDestination = "string"
+#'               )
+#'             ),
+#'             LustreConfiguration = list(
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DataRepositoryConfiguration = list(
+#'                 Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'                 ImportPath = "string",
+#'                 ExportPath = "string",
+#'                 ImportedFileChunkSize = 123,
+#'                 AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'                 FailureDetails = list(
+#'                   Message = "string"
+#'                 )
+#'               ),
+#'               DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'               PerUnitStorageThroughput = 123,
+#'               MountName = "string",
+#'               DailyAutomaticBackupStartTime = "string",
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               DriveCacheType = "NONE"|"READ",
+#'               DataCompressionType = "NONE"|"LZ4",
+#'               LogConfiguration = list(
+#'                 Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'                 Destination = "string"
+#'               ),
+#'               RootSquashConfiguration = list(
+#'                 RootSquash = "string",
+#'                 NoSquashNids = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             AdministrativeActions = list(),
+#'             OntapConfiguration = list(
+#'               AutomaticBackupRetentionDays = 123,
+#'               DailyAutomaticBackupStartTime = "string",
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'               EndpointIpAddressRange = "string",
+#'               Endpoints = list(
+#'                 Intercluster = list(
+#'                   DNSName = "string",
+#'                   IpAddresses = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Management = list(
+#'                   DNSName = "string",
+#'                   IpAddresses = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
+#'               ),
+#'               PreferredSubnetId = "string",
+#'               RouteTableIds = list(
+#'                 "string"
+#'               ),
+#'               ThroughputCapacity = 123,
+#'               WeeklyMaintenanceStartTime = "string"
+#'             ),
+#'             FileSystemTypeVersion = "string",
+#'             OpenZFSConfiguration = list(
+#'               AutomaticBackupRetentionDays = 123,
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               CopyTagsToVolumes = TRUE|FALSE,
+#'               DailyAutomaticBackupStartTime = "string",
+#'               DeploymentType = "SINGLE_AZ_1",
+#'               ThroughputCapacity = 123,
+#'               WeeklyMaintenanceStartTime = "string",
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
+#'               ),
+#'               RootVolumeId = "string"
+#'             )
+#'           ),
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           ),
+#'           TargetVolumeValues = list(),
+#'           TargetSnapshotValues = list(
+#'             ResourceARN = "string",
+#'             SnapshotId = "string",
+#'             Name = "string",
+#'             VolumeId = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'             LifecycleTransitionReason = list(
+#'               Message = "string"
+#'             ),
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             AdministrativeActions = list()
+#'           )
+#'         )
+#'       ),
+#'       OpenZFSConfiguration = list(
+#'         ParentVolumeId = "string",
+#'         VolumePath = "string",
+#'         StorageCapacityReservationGiB = 123,
+#'         StorageCapacityQuotaGiB = 123,
+#'         RecordSizeKiB = 123,
+#'         DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'         CopyTagsToSnapshots = TRUE|FALSE,
+#'         OriginSnapshot = list(
+#'           SnapshotARN = "string",
+#'           CopyStrategy = "CLONE"|"FULL_COPY"
+#'         ),
+#'         ReadOnly = TRUE|FALSE,
+#'         NfsExports = list(
+#'           list(
+#'             ClientConfigurations = list(
+#'               list(
+#'                 Clients = "string",
+#'                 Options = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         UserAndGroupQuotas = list(
+#'           list(
+#'             Type = "USER"|"GROUP",
+#'             Id = 123,
+#'             StorageCapacityQuotaGiB = 123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_volumes(
+#'   VolumeIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "file-system-id"|"storage-virtual-machine-id",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_volumes
+fsx_describe_volumes <- function(VolumeIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeVolumes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$describe_volumes_input(VolumeIds = VolumeIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fsx$describe_volumes_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_volumes <- fsx_describe_volumes
 
 #' Use this action to disassociate, or remove, one or more Domain Name
 #' Service (DNS) aliases from an Amazon FSx for Windows File Server file
@@ -1976,12 +6544,10 @@ fsx_disassociate_file_system_aliases <- function(ClientRequestToken = NULL, File
 }
 .fsx$operations$disassociate_file_system_aliases <- fsx_disassociate_file_system_aliases
 
-#' Lists tags for an Amazon FSx file systems and backups in the case of
-#' Amazon FSx for Windows File Server
+#' Lists tags for Amazon FSx resources
 #'
 #' @description
-#' Lists tags for an Amazon FSx file systems and backups in the case of
-#' Amazon FSx for Windows File Server.
+#' Lists tags for Amazon FSx resources.
 #' 
 #' When retrieving all tags, you can optionally specify the `MaxResults`
 #' parameter to limit the number of tags in a response. If more tags
@@ -2068,6 +6634,367 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
   return(response)
 }
 .fsx$operations$list_tags_for_resource <- fsx_list_tags_for_resource
+
+#' Releases the file system lock from an Amazon FSx for OpenZFS file system
+#'
+#' @description
+#' Releases the file system lock from an Amazon FSx for OpenZFS file
+#' system.
+#'
+#' @usage
+#' fsx_release_file_system_nfs_v3_locks(FileSystemId, ClientRequestToken)
+#'
+#' @param FileSystemId &#91;required&#93; 
+#' @param ClientRequestToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystem = list(
+#'     OwnerId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FileSystemId = "string",
+#'     FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'     FailureDetails = list(
+#'       Message = "string"
+#'     ),
+#'     StorageCapacity = 123,
+#'     StorageType = "SSD"|"HDD",
+#'     VpcId = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     NetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     DNSName = "string",
+#'     KmsKeyId = "string",
+#'     ResourceARN = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     WindowsConfiguration = list(
+#'       ActiveDirectoryId = "string",
+#'       SelfManagedActiveDirectoryConfiguration = list(
+#'         DomainName = "string",
+#'         OrganizationalUnitDistinguishedName = "string",
+#'         FileSystemAdministratorsGroup = "string",
+#'         UserName = "string",
+#'         DnsIps = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'       RemoteAdministrationEndpoint = "string",
+#'       PreferredSubnetId = "string",
+#'       PreferredFileServerIp = "string",
+#'       ThroughputCapacity = 123,
+#'       MaintenanceOperationsInProgress = list(
+#'         "PATCHING"|"BACKING_UP"
+#'       ),
+#'       WeeklyMaintenanceStartTime = "string",
+#'       DailyAutomaticBackupStartTime = "string",
+#'       AutomaticBackupRetentionDays = 123,
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       Aliases = list(
+#'         list(
+#'           Name = "string",
+#'           Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'         )
+#'       ),
+#'       AuditLogConfiguration = list(
+#'         FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'         FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'         AuditLogDestination = "string"
+#'       )
+#'     ),
+#'     LustreConfiguration = list(
+#'       WeeklyMaintenanceStartTime = "string",
+#'       DataRepositoryConfiguration = list(
+#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'         ImportPath = "string",
+#'         ExportPath = "string",
+#'         ImportedFileChunkSize = 123,
+#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'         FailureDetails = list(
+#'           Message = "string"
+#'         )
+#'       ),
+#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'       PerUnitStorageThroughput = 123,
+#'       MountName = "string",
+#'       DailyAutomaticBackupStartTime = "string",
+#'       AutomaticBackupRetentionDays = 123,
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       DriveCacheType = "NONE"|"READ",
+#'       DataCompressionType = "NONE"|"LZ4",
+#'       LogConfiguration = list(
+#'         Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'         Destination = "string"
+#'       ),
+#'       RootSquashConfiguration = list(
+#'         RootSquash = "string",
+#'         NoSquashNids = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     AdministrativeActions = list(
+#'       list(
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'         ProgressPercent = 123,
+#'         RequestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'         TargetFileSystemValues = list(),
+#'         FailureDetails = list(
+#'           Message = "string"
+#'         ),
+#'         TargetVolumeValues = list(
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'           Name = "string",
+#'           OntapConfiguration = list(
+#'             FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'             JunctionPath = "string",
+#'             SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'             SizeInMegabytes = 123,
+#'             StorageEfficiencyEnabled = TRUE|FALSE,
+#'             StorageVirtualMachineId = "string",
+#'             StorageVirtualMachineRoot = TRUE|FALSE,
+#'             TieringPolicy = list(
+#'               CoolingPeriod = 123,
+#'               Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'             ),
+#'             UUID = "string",
+#'             OntapVolumeType = "RW"|"DP"|"LS"
+#'           ),
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           VolumeId = "string",
+#'           VolumeType = "ONTAP"|"OPENZFS",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OpenZFSConfiguration = list(
+#'             ParentVolumeId = "string",
+#'             VolumePath = "string",
+#'             StorageCapacityReservationGiB = 123,
+#'             StorageCapacityQuotaGiB = 123,
+#'             RecordSizeKiB = 123,
+#'             DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'             CopyTagsToSnapshots = TRUE|FALSE,
+#'             OriginSnapshot = list(
+#'               SnapshotARN = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'             ),
+#'             ReadOnly = TRUE|FALSE,
+#'             NfsExports = list(
+#'               list(
+#'                 ClientConfigurations = list(
+#'                   list(
+#'                     Clients = "string",
+#'                     Options = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             UserAndGroupQuotas = list(
+#'               list(
+#'                 Type = "USER"|"GROUP",
+#'                 Id = 123,
+#'                 StorageCapacityQuotaGiB = 123
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         TargetSnapshotValues = list(
+#'           ResourceARN = "string",
+#'           SnapshotId = "string",
+#'           Name = "string",
+#'           VolumeId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           AdministrativeActions = list()
+#'         )
+#'       )
+#'     ),
+#'     OntapConfiguration = list(
+#'       AutomaticBackupRetentionDays = 123,
+#'       DailyAutomaticBackupStartTime = "string",
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'       EndpointIpAddressRange = "string",
+#'       Endpoints = list(
+#'         Intercluster = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Management = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       ),
+#'       PreferredSubnetId = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       ThroughputCapacity = 123,
+#'       WeeklyMaintenanceStartTime = "string"
+#'     ),
+#'     FileSystemTypeVersion = "string",
+#'     OpenZFSConfiguration = list(
+#'       AutomaticBackupRetentionDays = 123,
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       CopyTagsToVolumes = TRUE|FALSE,
+#'       DailyAutomaticBackupStartTime = "string",
+#'       DeploymentType = "SINGLE_AZ_1",
+#'       ThroughputCapacity = 123,
+#'       WeeklyMaintenanceStartTime = "string",
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       ),
+#'       RootVolumeId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$release_file_system_nfs_v3_locks(
+#'   FileSystemId = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_release_file_system_nfs_v3_locks
+fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "ReleaseFileSystemNfsV3Locks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$release_file_system_nfs_v3_locks_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken)
+  output <- .fsx$release_file_system_nfs_v3_locks_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$release_file_system_nfs_v3_locks <- fsx_release_file_system_nfs_v3_locks
+
+#' Returns an Amazon FSx for OpenZFS volume to the state saved by the
+#' specified snapshot
+#'
+#' @description
+#' Returns an Amazon FSx for OpenZFS volume to the state saved by the
+#' specified snapshot.
+#'
+#' @usage
+#' fsx_restore_volume_from_snapshot(ClientRequestToken, VolumeId,
+#'   SnapshotId, Options)
+#'
+#' @param ClientRequestToken 
+#' @param VolumeId &#91;required&#93; The ID of the volume that you are restoring.
+#' @param SnapshotId &#91;required&#93; The ID of the source snapshot. Specifies the snapshot that you are
+#' restoring from.
+#' @param Options The settings used when restoring the specified volume from snapshot.
+#' 
+#' -   `DELETE_INTERMEDIATE_SNAPSHOTS` - Deletes snapshots between the
+#'     current state and the specified snapshot. If there are intermediate
+#'     snapshots and this option isn't used,
+#'     [`restore_volume_from_snapshot`][fsx_restore_volume_from_snapshot]
+#'     fails.
+#' 
+#' -   `DELETE_CLONED_VOLUMES` - Deletes any dependent clone volumes
+#'     created from intermediate snapshots. If there are any dependent
+#'     clone volumes and this option isn't used,
+#'     [`restore_volume_from_snapshot`][fsx_restore_volume_from_snapshot]
+#'     fails.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeId = "string",
+#'   Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$restore_volume_from_snapshot(
+#'   ClientRequestToken = "string",
+#'   VolumeId = "string",
+#'   SnapshotId = "string",
+#'   Options = list(
+#'     "DELETE_INTERMEDIATE_SNAPSHOTS"|"DELETE_CLONED_VOLUMES"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_restore_volume_from_snapshot
+fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId, SnapshotId, Options = NULL) {
+  op <- new_operation(
+    name = "RestoreVolumeFromSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$restore_volume_from_snapshot_input(ClientRequestToken = ClientRequestToken, VolumeId = VolumeId, SnapshotId = SnapshotId, Options = Options)
+  output <- .fsx$restore_volume_from_snapshot_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$restore_volume_from_snapshot <- fsx_restore_volume_from_snapshot
 
 #' Tags an Amazon FSx resource
 #'
@@ -2188,6 +7115,117 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .fsx$operations$untag_resource <- fsx_untag_resource
 
+#' Updates the configuration of an existing data repository association on
+#' an Amazon FSx for Lustre file system
+#'
+#' @description
+#' Updates the configuration of an existing data repository association on
+#' an Amazon FSx for Lustre file system. Data repository associations are
+#' supported only for file systems with the `Persistent_2` deployment type.
+#'
+#' @usage
+#' fsx_update_data_repository_association(AssociationId,
+#'   ClientRequestToken, ImportedFileChunkSize, S3)
+#'
+#' @param AssociationId &#91;required&#93; The ID of the data repository association that you are updating.
+#' @param ClientRequestToken 
+#' @param ImportedFileChunkSize For files imported from a data repository, this value determines the
+#' stripe count and maximum amount of data per file (in MiB) stored on a
+#' single physical disk. The maximum number of disks that a single file can
+#' be striped across is limited by the total number of disks that make up
+#' the file system.
+#' 
+#' The default chunk size is 1,024 MiB (1 GiB) and can go as high as
+#' 512,000 MiB (500 GiB). Amazon S3 objects have a maximum size of 5 TB.
+#' @param S3 The configuration for an Amazon S3 data repository linked to an Amazon
+#' FSx Lustre file system with a data repository association. The
+#' configuration defines which file events (new, changed, or deleted files
+#' or directories) are automatically imported from the linked data
+#' repository to the file system or automatically exported from the file
+#' system to the data repository.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Association = list(
+#'     AssociationId = "string",
+#'     ResourceARN = "string",
+#'     FileSystemId = "string",
+#'     Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'     FailureDetails = list(
+#'       Message = "string"
+#'     ),
+#'     FileSystemPath = "string",
+#'     DataRepositoryPath = "string",
+#'     BatchImportMetaDataOnCreate = TRUE|FALSE,
+#'     ImportedFileChunkSize = 123,
+#'     S3 = list(
+#'       AutoImportPolicy = list(
+#'         Events = list(
+#'           "NEW"|"CHANGED"|"DELETED"
+#'         )
+#'       ),
+#'       AutoExportPolicy = list(
+#'         Events = list(
+#'           "NEW"|"CHANGED"|"DELETED"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_data_repository_association(
+#'   AssociationId = "string",
+#'   ClientRequestToken = "string",
+#'   ImportedFileChunkSize = 123,
+#'   S3 = list(
+#'     AutoImportPolicy = list(
+#'       Events = list(
+#'         "NEW"|"CHANGED"|"DELETED"
+#'       )
+#'     ),
+#'     AutoExportPolicy = list(
+#'       Events = list(
+#'         "NEW"|"CHANGED"|"DELETED"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_update_data_repository_association
+fsx_update_data_repository_association <- function(AssociationId, ClientRequestToken = NULL, ImportedFileChunkSize = NULL, S3 = NULL) {
+  op <- new_operation(
+    name = "UpdateDataRepositoryAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$update_data_repository_association_input(AssociationId = AssociationId, ClientRequestToken = ClientRequestToken, ImportedFileChunkSize = ImportedFileChunkSize, S3 = S3)
+  output <- .fsx$update_data_repository_association_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$update_data_repository_association <- fsx_update_data_repository_association
+
 #' Use this operation to update the configuration of an existing Amazon FSx
 #' file system
 #'
@@ -2198,74 +7236,124 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #' For Amazon FSx for Windows File Server file systems, you can update the
 #' following properties:
 #' 
-#' -   AutomaticBackupRetentionDays
+#' -   `AuditLogConfiguration`
 #' 
-#' -   DailyAutomaticBackupStartTime
+#' -   `AutomaticBackupRetentionDays`
 #' 
-#' -   SelfManagedActiveDirectoryConfiguration
+#' -   `DailyAutomaticBackupStartTime`
 #' 
-#' -   StorageCapacity
+#' -   `SelfManagedActiveDirectoryConfiguration`
 #' 
-#' -   ThroughputCapacity
+#' -   `StorageCapacity`
 #' 
-#' -   WeeklyMaintenanceStartTime
+#' -   `ThroughputCapacity`
+#' 
+#' -   `WeeklyMaintenanceStartTime`
 #' 
 #' For Amazon FSx for Lustre file systems, you can update the following
 #' properties:
 #' 
-#' -   AutoImportPolicy
+#' -   `AutoImportPolicy`
 #' 
-#' -   AutomaticBackupRetentionDays
+#' -   `AutomaticBackupRetentionDays`
 #' 
-#' -   DailyAutomaticBackupStartTime
+#' -   `DailyAutomaticBackupStartTime`
 #' 
-#' -   StorageCapacity
+#' -   `DataCompressionType`
 #' 
-#' -   WeeklyMaintenanceStartTime
+#' -   `LustreRootSquashConfiguration`
+#' 
+#' -   `StorageCapacity`
+#' 
+#' -   `WeeklyMaintenanceStartTime`
+#' 
+#' For Amazon FSx for NetApp ONTAP file systems, you can update the
+#' following properties:
+#' 
+#' -   `AutomaticBackupRetentionDays`
+#' 
+#' -   `DailyAutomaticBackupStartTime`
+#' 
+#' -   `DiskIopsConfiguration`
+#' 
+#' -   `FsxAdminPassword`
+#' 
+#' -   `StorageCapacity`
+#' 
+#' -   `ThroughputCapacity`
+#' 
+#' -   `WeeklyMaintenanceStartTime`
+#' 
+#' For the Amazon FSx for OpenZFS file systems, you can update the
+#' following properties:
+#' 
+#' -   `AutomaticBackupRetentionDays`
+#' 
+#' -   `CopyTagsToBackups`
+#' 
+#' -   `CopyTagsToVolumes`
+#' 
+#' -   `DailyAutomaticBackupStartTime`
+#' 
+#' -   `ThroughputCapacity`
+#' 
+#' -   `WeeklyMaintenanceStartTime`
 #'
 #' @usage
 #' fsx_update_file_system(FileSystemId, ClientRequestToken,
-#'   StorageCapacity, WindowsConfiguration, LustreConfiguration)
+#'   StorageCapacity, WindowsConfiguration, LustreConfiguration,
+#'   OntapConfiguration, OpenZFSConfiguration)
 #'
-#' @param FileSystemId &#91;required&#93; Identifies the file system that you are updating.
+#' @param FileSystemId &#91;required&#93; The ID of the file system that you are updating.
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
 #' idempotent updates. This string is automatically filled on your behalf
-#' when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
-#' @param StorageCapacity Use this parameter to increase the storage capacity of an Amazon FSx
-#' file system. Specifies the storage capacity target value, GiB, to
-#' increase the storage capacity for the file system that you're updating.
-#' You cannot make a storage capacity increase request if there is an
+#' when you use the Command Line Interface (CLI) or an Amazon Web Services
+#' SDK.
+#' @param StorageCapacity Use this parameter to increase the storage capacity of an Amazon FSx for
+#' Windows File Server, Amazon FSx for Lustre, or Amazon FSx for NetApp
+#' ONTAP file system. Specifies the storage capacity target value, in GiB,
+#' to increase the storage capacity for the file system that you're
+#' updating.
+#' 
+#' You can't make a storage capacity increase request if there is an
 #' existing storage capacity increase request in progress.
 #' 
 #' For Windows file systems, the storage capacity target value must be at
-#' least 10 percent (%) greater than the current storage capacity value. In
-#' order to increase storage capacity, the file system must have at least
-#' 16 MB/s of throughput capacity.
+#' least 10 percent greater than the current storage capacity value. To
+#' increase storage capacity, the file system must have at least 16 MBps of
+#' throughput capacity. For more information, see [Managing storage
+#' capacity](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html)
+#' in the *Amazon FSx for Windows File Server User Guide*.
 #' 
 #' For Lustre file systems, the storage capacity target value can be the
 #' following:
 #' 
-#' -   For `SCRATCH_2` and `PERSISTENT_1 SSD` deployment types, valid
-#'     values are in multiples of 2400 GiB. The value must be greater than
-#'     the current storage capacity.
+#' -   For `SCRATCH_2`, `PERSISTENT_1`, and `PERSISTENT_2 SSD` deployment
+#'     types, valid values are in multiples of 2400 GiB. The value must be
+#'     greater than the current storage capacity.
 #' 
 #' -   For `PERSISTENT HDD` file systems, valid values are multiples of
-#'     6000 GiB for 12 MB/s/TiB file systems and multiples of 1800 GiB for
-#'     40 MB/s/TiB file systems. The values must be greater than the
-#'     current storage capacity.
+#'     6000 GiB for 12-MBps throughput per TiB file systems and multiples
+#'     of 1800 GiB for 40-MBps throughput per TiB file systems. The values
+#'     must be greater than the current storage capacity.
 #' 
-#' -   For `SCRATCH_1` file systems, you cannot increase the storage
+#' -   For `SCRATCH_1` file systems, you can't increase the storage
 #'     capacity.
 #' 
-#' For more information, see [Managing storage
-#' capacity](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html)
-#' in the *Amazon FSx for Windows File Server User Guide* and [Managing
-#' storage and throughput
+#' For more information, see [Managing storage and throughput
 #' capacity](https://docs.aws.amazon.com/fsx/latest/LustreGuide/managing-storage-capacity.html)
 #' in the *Amazon FSx for Lustre User Guide*.
+#' 
+#' For ONTAP file systems, the storage capacity target value must be at
+#' least 10 percent greater than the current storage capacity value. For
+#' more information, see [Managing storage capacity and provisioned
+#' IOPS](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-storage-capacity.html)
+#' in the *Amazon FSx for NetApp ONTAP User Guide*.
 #' @param WindowsConfiguration The configuration updates for an Amazon FSx for Windows File Server file
 #' system.
 #' @param LustreConfiguration 
+#' @param OntapConfiguration 
+#' @param OpenZFSConfiguration The configuration updates for an Amazon FSx for OpenZFS file system.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2277,8 +7365,8 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #'       "2015-01-01"
 #'     ),
 #'     FileSystemId = "string",
-#'     FileSystemType = "WINDOWS"|"LUSTRE",
-#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
+#'     FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
 #'     FailureDetails = list(
 #'       Message = "string"
 #'     ),
@@ -2328,31 +7416,47 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #'           Name = "string",
 #'           Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
 #'         )
+#'       ),
+#'       AuditLogConfiguration = list(
+#'         FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'         FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'         AuditLogDestination = "string"
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
 #'       WeeklyMaintenanceStartTime = "string",
 #'       DataRepositoryConfiguration = list(
-#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
+#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
 #'         ImportPath = "string",
 #'         ExportPath = "string",
 #'         ImportedFileChunkSize = 123,
-#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
+#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
 #'         FailureDetails = list(
 #'           Message = "string"
 #'         )
 #'       ),
-#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
 #'       PerUnitStorageThroughput = 123,
 #'       MountName = "string",
 #'       DailyAutomaticBackupStartTime = "string",
 #'       AutomaticBackupRetentionDays = 123,
 #'       CopyTagsToBackups = TRUE|FALSE,
-#'       DriveCacheType = "NONE"|"READ"
+#'       DriveCacheType = "NONE"|"READ",
+#'       DataCompressionType = "NONE"|"LZ4",
+#'       LogConfiguration = list(
+#'         Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'         Destination = "string"
+#'       ),
+#'       RootSquashConfiguration = list(
+#'         RootSquash = "string",
+#'         NoSquashNids = list(
+#'           "string"
+#'         )
+#'       )
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -2361,8 +7465,142 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #'         TargetFileSystemValues = list(),
 #'         FailureDetails = list(
 #'           Message = "string"
+#'         ),
+#'         TargetVolumeValues = list(
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'           Name = "string",
+#'           OntapConfiguration = list(
+#'             FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'             JunctionPath = "string",
+#'             SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'             SizeInMegabytes = 123,
+#'             StorageEfficiencyEnabled = TRUE|FALSE,
+#'             StorageVirtualMachineId = "string",
+#'             StorageVirtualMachineRoot = TRUE|FALSE,
+#'             TieringPolicy = list(
+#'               CoolingPeriod = 123,
+#'               Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'             ),
+#'             UUID = "string",
+#'             OntapVolumeType = "RW"|"DP"|"LS"
+#'           ),
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           VolumeId = "string",
+#'           VolumeType = "ONTAP"|"OPENZFS",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OpenZFSConfiguration = list(
+#'             ParentVolumeId = "string",
+#'             VolumePath = "string",
+#'             StorageCapacityReservationGiB = 123,
+#'             StorageCapacityQuotaGiB = 123,
+#'             RecordSizeKiB = 123,
+#'             DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'             CopyTagsToSnapshots = TRUE|FALSE,
+#'             OriginSnapshot = list(
+#'               SnapshotARN = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'             ),
+#'             ReadOnly = TRUE|FALSE,
+#'             NfsExports = list(
+#'               list(
+#'                 ClientConfigurations = list(
+#'                   list(
+#'                     Clients = "string",
+#'                     Options = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             UserAndGroupQuotas = list(
+#'               list(
+#'                 Type = "USER"|"GROUP",
+#'                 Id = 123,
+#'                 StorageCapacityQuotaGiB = 123
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         TargetSnapshotValues = list(
+#'           ResourceARN = "string",
+#'           SnapshotId = "string",
+#'           Name = "string",
+#'           VolumeId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           AdministrativeActions = list()
 #'         )
 #'       )
+#'     ),
+#'     OntapConfiguration = list(
+#'       AutomaticBackupRetentionDays = 123,
+#'       DailyAutomaticBackupStartTime = "string",
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'       EndpointIpAddressRange = "string",
+#'       Endpoints = list(
+#'         Intercluster = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Management = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       ),
+#'       PreferredSubnetId = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       ThroughputCapacity = 123,
+#'       WeeklyMaintenanceStartTime = "string"
+#'     ),
+#'     FileSystemTypeVersion = "string",
+#'     OpenZFSConfiguration = list(
+#'       AutomaticBackupRetentionDays = 123,
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       CopyTagsToVolumes = TRUE|FALSE,
+#'       DailyAutomaticBackupStartTime = "string",
+#'       DeploymentType = "SINGLE_AZ_1",
+#'       ThroughputCapacity = 123,
+#'       WeeklyMaintenanceStartTime = "string",
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       ),
+#'       RootVolumeId = "string"
 #'     )
 #'   )
 #' )
@@ -2385,13 +7623,52 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #'       DnsIps = list(
 #'         "string"
 #'       )
+#'     ),
+#'     AuditLogConfiguration = list(
+#'       FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'       FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'       AuditLogDestination = "string"
 #'     )
 #'   ),
 #'   LustreConfiguration = list(
 #'     WeeklyMaintenanceStartTime = "string",
 #'     DailyAutomaticBackupStartTime = "string",
 #'     AutomaticBackupRetentionDays = 123,
-#'     AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"
+#'     AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'     DataCompressionType = "NONE"|"LZ4",
+#'     LogConfiguration = list(
+#'       Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'       Destination = "string"
+#'     ),
+#'     RootSquashConfiguration = list(
+#'       RootSquash = "string",
+#'       NoSquashNids = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   OntapConfiguration = list(
+#'     AutomaticBackupRetentionDays = 123,
+#'     DailyAutomaticBackupStartTime = "string",
+#'     FsxAdminPassword = "string",
+#'     WeeklyMaintenanceStartTime = "string",
+#'     DiskIopsConfiguration = list(
+#'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'       Iops = 123
+#'     ),
+#'     ThroughputCapacity = 123
+#'   ),
+#'   OpenZFSConfiguration = list(
+#'     AutomaticBackupRetentionDays = 123,
+#'     CopyTagsToBackups = TRUE|FALSE,
+#'     CopyTagsToVolumes = TRUE|FALSE,
+#'     DailyAutomaticBackupStartTime = "string",
+#'     ThroughputCapacity = 123,
+#'     WeeklyMaintenanceStartTime = "string",
+#'     DiskIopsConfiguration = list(
+#'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'       Iops = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -2412,14 +7689,14 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname fsx_update_file_system
-fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL) {
+fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateFileSystem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration)
+  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration)
   output <- .fsx$update_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -2428,3 +7705,754 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
   return(response)
 }
 .fsx$operations$update_file_system <- fsx_update_file_system
+
+#' Updates the name of an Amazon FSx for OpenZFS snapshot
+#'
+#' @description
+#' Updates the name of an Amazon FSx for OpenZFS snapshot.
+#'
+#' @usage
+#' fsx_update_snapshot(ClientRequestToken, Name, SnapshotId)
+#'
+#' @param ClientRequestToken 
+#' @param Name &#91;required&#93; The name of the snapshot to update.
+#' @param SnapshotId &#91;required&#93; The ID of the snapshot that you want to update, in the format
+#' `fsvolsnap-0123456789abcdef0`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Snapshot = list(
+#'     ResourceARN = "string",
+#'     SnapshotId = "string",
+#'     Name = "string",
+#'     VolumeId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'     LifecycleTransitionReason = list(
+#'       Message = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     AdministrativeActions = list(
+#'       list(
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'         ProgressPercent = 123,
+#'         RequestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'         TargetFileSystemValues = list(
+#'           OwnerId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'           Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           ),
+#'           StorageCapacity = 123,
+#'           StorageType = "SSD"|"HDD",
+#'           VpcId = "string",
+#'           SubnetIds = list(
+#'             "string"
+#'           ),
+#'           NetworkInterfaceIds = list(
+#'             "string"
+#'           ),
+#'           DNSName = "string",
+#'           KmsKeyId = "string",
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           WindowsConfiguration = list(
+#'             ActiveDirectoryId = "string",
+#'             SelfManagedActiveDirectoryConfiguration = list(
+#'               DomainName = "string",
+#'               OrganizationalUnitDistinguishedName = "string",
+#'               FileSystemAdministratorsGroup = "string",
+#'               UserName = "string",
+#'               DnsIps = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'             RemoteAdministrationEndpoint = "string",
+#'             PreferredSubnetId = "string",
+#'             PreferredFileServerIp = "string",
+#'             ThroughputCapacity = 123,
+#'             MaintenanceOperationsInProgress = list(
+#'               "PATCHING"|"BACKING_UP"
+#'             ),
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DailyAutomaticBackupStartTime = "string",
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             Aliases = list(
+#'               list(
+#'                 Name = "string",
+#'                 Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'               )
+#'             ),
+#'             AuditLogConfiguration = list(
+#'               FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'               FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'               AuditLogDestination = "string"
+#'             )
+#'           ),
+#'           LustreConfiguration = list(
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DataRepositoryConfiguration = list(
+#'               Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'               ImportPath = "string",
+#'               ExportPath = "string",
+#'               ImportedFileChunkSize = 123,
+#'               AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'               FailureDetails = list(
+#'                 Message = "string"
+#'               )
+#'             ),
+#'             DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'             PerUnitStorageThroughput = 123,
+#'             MountName = "string",
+#'             DailyAutomaticBackupStartTime = "string",
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             DriveCacheType = "NONE"|"READ",
+#'             DataCompressionType = "NONE"|"LZ4",
+#'             LogConfiguration = list(
+#'               Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'               Destination = "string"
+#'             ),
+#'             RootSquashConfiguration = list(
+#'               RootSquash = "string",
+#'               NoSquashNids = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OntapConfiguration = list(
+#'             AutomaticBackupRetentionDays = 123,
+#'             DailyAutomaticBackupStartTime = "string",
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'             EndpointIpAddressRange = "string",
+#'             Endpoints = list(
+#'               Intercluster = list(
+#'                 DNSName = "string",
+#'                 IpAddresses = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Management = list(
+#'                 DNSName = "string",
+#'                 IpAddresses = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
+#'             ),
+#'             PreferredSubnetId = "string",
+#'             RouteTableIds = list(
+#'               "string"
+#'             ),
+#'             ThroughputCapacity = 123,
+#'             WeeklyMaintenanceStartTime = "string"
+#'           ),
+#'           FileSystemTypeVersion = "string",
+#'           OpenZFSConfiguration = list(
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             CopyTagsToVolumes = TRUE|FALSE,
+#'             DailyAutomaticBackupStartTime = "string",
+#'             DeploymentType = "SINGLE_AZ_1",
+#'             ThroughputCapacity = 123,
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
+#'             ),
+#'             RootVolumeId = "string"
+#'           )
+#'         ),
+#'         FailureDetails = list(
+#'           Message = "string"
+#'         ),
+#'         TargetVolumeValues = list(
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'           Name = "string",
+#'           OntapConfiguration = list(
+#'             FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'             JunctionPath = "string",
+#'             SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'             SizeInMegabytes = 123,
+#'             StorageEfficiencyEnabled = TRUE|FALSE,
+#'             StorageVirtualMachineId = "string",
+#'             StorageVirtualMachineRoot = TRUE|FALSE,
+#'             TieringPolicy = list(
+#'               CoolingPeriod = 123,
+#'               Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'             ),
+#'             UUID = "string",
+#'             OntapVolumeType = "RW"|"DP"|"LS"
+#'           ),
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           VolumeId = "string",
+#'           VolumeType = "ONTAP"|"OPENZFS",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OpenZFSConfiguration = list(
+#'             ParentVolumeId = "string",
+#'             VolumePath = "string",
+#'             StorageCapacityReservationGiB = 123,
+#'             StorageCapacityQuotaGiB = 123,
+#'             RecordSizeKiB = 123,
+#'             DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'             CopyTagsToSnapshots = TRUE|FALSE,
+#'             OriginSnapshot = list(
+#'               SnapshotARN = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'             ),
+#'             ReadOnly = TRUE|FALSE,
+#'             NfsExports = list(
+#'               list(
+#'                 ClientConfigurations = list(
+#'                   list(
+#'                     Clients = "string",
+#'                     Options = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             UserAndGroupQuotas = list(
+#'               list(
+#'                 Type = "USER"|"GROUP",
+#'                 Id = 123,
+#'                 StorageCapacityQuotaGiB = 123
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         TargetSnapshotValues = list()
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_snapshot(
+#'   ClientRequestToken = "string",
+#'   Name = "string",
+#'   SnapshotId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_update_snapshot
+fsx_update_snapshot <- function(ClientRequestToken = NULL, Name, SnapshotId) {
+  op <- new_operation(
+    name = "UpdateSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$update_snapshot_input(ClientRequestToken = ClientRequestToken, Name = Name, SnapshotId = SnapshotId)
+  output <- .fsx$update_snapshot_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$update_snapshot <- fsx_update_snapshot
+
+#' Updates an Amazon FSx for ONTAP storage virtual machine (SVM)
+#'
+#' @description
+#' Updates an Amazon FSx for ONTAP storage virtual machine (SVM).
+#'
+#' @usage
+#' fsx_update_storage_virtual_machine(ActiveDirectoryConfiguration,
+#'   ClientRequestToken, StorageVirtualMachineId, SvmAdminPassword)
+#'
+#' @param ActiveDirectoryConfiguration Updates the Microsoft Active Directory (AD) configuration for an SVM
+#' that is joined to an AD.
+#' @param ClientRequestToken 
+#' @param StorageVirtualMachineId &#91;required&#93; The ID of the SVM that you want to update, in the format
+#' `svm-0123456789abcdef0`.
+#' @param SvmAdminPassword Enter a new SvmAdminPassword if you are updating it.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StorageVirtualMachine = list(
+#'     ActiveDirectoryConfiguration = list(
+#'       NetBiosName = "string",
+#'       SelfManagedActiveDirectoryConfiguration = list(
+#'         DomainName = "string",
+#'         OrganizationalUnitDistinguishedName = "string",
+#'         FileSystemAdministratorsGroup = "string",
+#'         UserName = "string",
+#'         DnsIps = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Endpoints = list(
+#'       Iscsi = list(
+#'         DNSName = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Management = list(
+#'         DNSName = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Nfs = list(
+#'         DNSName = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Smb = list(
+#'         DNSName = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     FileSystemId = "string",
+#'     Lifecycle = "CREATED"|"CREATING"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING",
+#'     Name = "string",
+#'     ResourceARN = "string",
+#'     StorageVirtualMachineId = "string",
+#'     Subtype = "DEFAULT"|"DP_DESTINATION"|"SYNC_DESTINATION"|"SYNC_SOURCE",
+#'     UUID = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     LifecycleTransitionReason = list(
+#'       Message = "string"
+#'     ),
+#'     RootVolumeSecurityStyle = "UNIX"|"NTFS"|"MIXED"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_storage_virtual_machine(
+#'   ActiveDirectoryConfiguration = list(
+#'     SelfManagedActiveDirectoryConfiguration = list(
+#'       UserName = "string",
+#'       Password = "string",
+#'       DnsIps = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientRequestToken = "string",
+#'   StorageVirtualMachineId = "string",
+#'   SvmAdminPassword = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_update_storage_virtual_machine
+fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NULL, ClientRequestToken = NULL, StorageVirtualMachineId, SvmAdminPassword = NULL) {
+  op <- new_operation(
+    name = "UpdateStorageVirtualMachine",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$update_storage_virtual_machine_input(ActiveDirectoryConfiguration = ActiveDirectoryConfiguration, ClientRequestToken = ClientRequestToken, StorageVirtualMachineId = StorageVirtualMachineId, SvmAdminPassword = SvmAdminPassword)
+  output <- .fsx$update_storage_virtual_machine_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$update_storage_virtual_machine <- fsx_update_storage_virtual_machine
+
+#' Updates the configuration of an Amazon FSx for NetApp ONTAP or Amazon
+#' FSx for OpenZFS volume
+#'
+#' @description
+#' Updates the configuration of an Amazon FSx for NetApp ONTAP or Amazon
+#' FSx for OpenZFS volume.
+#'
+#' @usage
+#' fsx_update_volume(ClientRequestToken, VolumeId, OntapConfiguration,
+#'   Name, OpenZFSConfiguration)
+#'
+#' @param ClientRequestToken 
+#' @param VolumeId &#91;required&#93; The ID of the volume that you want to update, in the format
+#' `fsvol-0123456789abcdef0`.
+#' @param OntapConfiguration The configuration of the ONTAP volume that you are updating.
+#' @param Name The name of the OpenZFS volume. OpenZFS root volumes are automatically
+#' named `FSX`. Child volume names must be unique among their parent
+#' volume's children. The name of the volume is part of the mount string
+#' for the OpenZFS volume.
+#' @param OpenZFSConfiguration The configuration of the OpenZFS volume that you are updating.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Volume = list(
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FileSystemId = "string",
+#'     Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'     Name = "string",
+#'     OntapConfiguration = list(
+#'       FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'       JunctionPath = "string",
+#'       SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'       SizeInMegabytes = 123,
+#'       StorageEfficiencyEnabled = TRUE|FALSE,
+#'       StorageVirtualMachineId = "string",
+#'       StorageVirtualMachineRoot = TRUE|FALSE,
+#'       TieringPolicy = list(
+#'         CoolingPeriod = 123,
+#'         Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'       ),
+#'       UUID = "string",
+#'       OntapVolumeType = "RW"|"DP"|"LS"
+#'     ),
+#'     ResourceARN = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VolumeId = "string",
+#'     VolumeType = "ONTAP"|"OPENZFS",
+#'     LifecycleTransitionReason = list(
+#'       Message = "string"
+#'     ),
+#'     AdministrativeActions = list(
+#'       list(
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS",
+#'         ProgressPercent = 123,
+#'         RequestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'         TargetFileSystemValues = list(
+#'           OwnerId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'           Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'           FailureDetails = list(
+#'             Message = "string"
+#'           ),
+#'           StorageCapacity = 123,
+#'           StorageType = "SSD"|"HDD",
+#'           VpcId = "string",
+#'           SubnetIds = list(
+#'             "string"
+#'           ),
+#'           NetworkInterfaceIds = list(
+#'             "string"
+#'           ),
+#'           DNSName = "string",
+#'           KmsKeyId = "string",
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           WindowsConfiguration = list(
+#'             ActiveDirectoryId = "string",
+#'             SelfManagedActiveDirectoryConfiguration = list(
+#'               DomainName = "string",
+#'               OrganizationalUnitDistinguishedName = "string",
+#'               FileSystemAdministratorsGroup = "string",
+#'               UserName = "string",
+#'               DnsIps = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'             RemoteAdministrationEndpoint = "string",
+#'             PreferredSubnetId = "string",
+#'             PreferredFileServerIp = "string",
+#'             ThroughputCapacity = 123,
+#'             MaintenanceOperationsInProgress = list(
+#'               "PATCHING"|"BACKING_UP"
+#'             ),
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DailyAutomaticBackupStartTime = "string",
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             Aliases = list(
+#'               list(
+#'                 Name = "string",
+#'                 Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'               )
+#'             ),
+#'             AuditLogConfiguration = list(
+#'               FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'               FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'               AuditLogDestination = "string"
+#'             )
+#'           ),
+#'           LustreConfiguration = list(
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DataRepositoryConfiguration = list(
+#'               Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'               ImportPath = "string",
+#'               ExportPath = "string",
+#'               ImportedFileChunkSize = 123,
+#'               AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'               FailureDetails = list(
+#'                 Message = "string"
+#'               )
+#'             ),
+#'             DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'             PerUnitStorageThroughput = 123,
+#'             MountName = "string",
+#'             DailyAutomaticBackupStartTime = "string",
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             DriveCacheType = "NONE"|"READ",
+#'             DataCompressionType = "NONE"|"LZ4",
+#'             LogConfiguration = list(
+#'               Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'               Destination = "string"
+#'             ),
+#'             RootSquashConfiguration = list(
+#'               RootSquash = "string",
+#'               NoSquashNids = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OntapConfiguration = list(
+#'             AutomaticBackupRetentionDays = 123,
+#'             DailyAutomaticBackupStartTime = "string",
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'             EndpointIpAddressRange = "string",
+#'             Endpoints = list(
+#'               Intercluster = list(
+#'                 DNSName = "string",
+#'                 IpAddresses = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Management = list(
+#'                 DNSName = "string",
+#'                 IpAddresses = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
+#'             ),
+#'             PreferredSubnetId = "string",
+#'             RouteTableIds = list(
+#'               "string"
+#'             ),
+#'             ThroughputCapacity = 123,
+#'             WeeklyMaintenanceStartTime = "string"
+#'           ),
+#'           FileSystemTypeVersion = "string",
+#'           OpenZFSConfiguration = list(
+#'             AutomaticBackupRetentionDays = 123,
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             CopyTagsToVolumes = TRUE|FALSE,
+#'             DailyAutomaticBackupStartTime = "string",
+#'             DeploymentType = "SINGLE_AZ_1",
+#'             ThroughputCapacity = 123,
+#'             WeeklyMaintenanceStartTime = "string",
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
+#'             ),
+#'             RootVolumeId = "string"
+#'           )
+#'         ),
+#'         FailureDetails = list(
+#'           Message = "string"
+#'         ),
+#'         TargetVolumeValues = list(),
+#'         TargetSnapshotValues = list(
+#'           ResourceARN = "string",
+#'           SnapshotId = "string",
+#'           Name = "string",
+#'           VolumeId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           AdministrativeActions = list()
+#'         )
+#'       )
+#'     ),
+#'     OpenZFSConfiguration = list(
+#'       ParentVolumeId = "string",
+#'       VolumePath = "string",
+#'       StorageCapacityReservationGiB = 123,
+#'       StorageCapacityQuotaGiB = 123,
+#'       RecordSizeKiB = 123,
+#'       DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'       CopyTagsToSnapshots = TRUE|FALSE,
+#'       OriginSnapshot = list(
+#'         SnapshotARN = "string",
+#'         CopyStrategy = "CLONE"|"FULL_COPY"
+#'       ),
+#'       ReadOnly = TRUE|FALSE,
+#'       NfsExports = list(
+#'         list(
+#'           ClientConfigurations = list(
+#'             list(
+#'               Clients = "string",
+#'               Options = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       UserAndGroupQuotas = list(
+#'         list(
+#'           Type = "USER"|"GROUP",
+#'           Id = 123,
+#'           StorageCapacityQuotaGiB = 123
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_volume(
+#'   ClientRequestToken = "string",
+#'   VolumeId = "string",
+#'   OntapConfiguration = list(
+#'     JunctionPath = "string",
+#'     SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'     SizeInMegabytes = 123,
+#'     StorageEfficiencyEnabled = TRUE|FALSE,
+#'     TieringPolicy = list(
+#'       CoolingPeriod = 123,
+#'       Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'     )
+#'   ),
+#'   Name = "string",
+#'   OpenZFSConfiguration = list(
+#'     StorageCapacityReservationGiB = 123,
+#'     StorageCapacityQuotaGiB = 123,
+#'     RecordSizeKiB = 123,
+#'     DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'     NfsExports = list(
+#'       list(
+#'         ClientConfigurations = list(
+#'           list(
+#'             Clients = "string",
+#'             Options = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     UserAndGroupQuotas = list(
+#'       list(
+#'         Type = "USER"|"GROUP",
+#'         Id = 123,
+#'         StorageCapacityQuotaGiB = 123
+#'       )
+#'     ),
+#'     ReadOnly = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_update_volume
+fsx_update_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfiguration = NULL, Name = NULL, OpenZFSConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateVolume",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$update_volume_input(ClientRequestToken = ClientRequestToken, VolumeId = VolumeId, OntapConfiguration = OntapConfiguration, Name = Name, OpenZFSConfiguration = OpenZFSConfiguration)
+  output <- .fsx$update_volume_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$update_volume <- fsx_update_volume

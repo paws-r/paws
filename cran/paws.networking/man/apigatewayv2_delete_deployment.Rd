@@ -11,18 +11,9 @@ apigatewayv2_delete_deployment(ApiId, DeploymentId)
 
 \item{DeploymentId}{[required] The deployment ID.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a Deployment.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_deployment(
-  ApiId = "string",
-  DeploymentId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_deployment.html} for full documentation.
+}
 \keyword{internal}

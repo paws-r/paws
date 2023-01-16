@@ -4,7 +4,7 @@
 \alias{codestar_list_resources}
 \title{Lists resources associated with a project in AWS CodeStar}
 \usage{
-codestar_list_resources(projectId, nextToken, maxResults)
+codestar_list_resources(projectId, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{projectId}{[required] The ID of the project.}
@@ -15,27 +15,9 @@ cannot be returned in one response.}
 \item{maxResults}{The maximum amount of data that can be contained in a single set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  resources = list(
-    list(
-      id = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists resources associated with a project in AWS CodeStar.
-}
-\section{Request syntax}{
-\preformatted{svc$list_resources(
-  projectId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codestar/list_resources.html} for full documentation.
+}
 \keyword{internal}

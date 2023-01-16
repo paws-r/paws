@@ -2,62 +2,70 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_create_vocabulary_filter}
 \alias{transcribeservice_create_vocabulary_filter}
-\title{Creates a new vocabulary filter that you can use to filter words, such
-as profane words, from the output of a transcription job}
+\title{Creates a new custom vocabulary filter}
 \usage{
-transcribeservice_create_vocabulary_filter(VocabularyFilterName,
-  LanguageCode, Words, VocabularyFilterFileUri)
+transcribeservice_create_vocabulary_filter(
+  VocabularyFilterName,
+  LanguageCode,
+  Words = NULL,
+  VocabularyFilterFileUri = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{VocabularyFilterName}{[required] The vocabulary filter name. The name must be unique within the account
-that contains it. If you try to create a vocabulary filter with the same
-name as another vocabulary filter, you get a \code{ConflictException} error.}
+\item{VocabularyFilterName}{[required] A unique name, chosen by you, for your new custom vocabulary filter.
 
-\item{LanguageCode}{[required] The language code of the words in the vocabulary filter. All words in
-the filter must be in the same language. The vocabulary filter can only
-be used with transcription jobs in the specified language.}
+This name is case sensitive, cannot contain spaces, and must be unique
+within an Amazon Web Services account. If you try to create a new
+vocabulary filter with the same name as an existing vocabulary filter,
+you get a \code{ConflictException} error.}
 
-\item{Words}{The words to use in the vocabulary filter. Only use characters from the
-character set defined for custom vocabularies. For a list of character
-sets, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets}{Character Sets for Custom Vocabularies}.
+\item{LanguageCode}{[required] The language code that represents the language of the entries in your
+vocabulary filter. Each vocabulary filter must contain terms in only one
+language.
 
-If you provide a list of words in the \code{Words} parameter, you can't use
-the \code{VocabularyFilterFileUri} parameter.}
+A vocabulary filter can only be used to transcribe files in the same
+language as the filter. For example, if you create a vocabulary filter
+using US English (\code{en-US}), you can only apply this filter to files that
+contain English audio.
 
-\item{VocabularyFilterFileUri}{The Amazon S3 location of a text file used as input to create the
-vocabulary filter. Only use characters from the character set defined
-for custom vocabularies. For a list of character sets, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets}{Character Sets for Custom Vocabularies}.
+For a list of supported languages and their associated language codes,
+refer to the \href{https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html}{Supported languages}
+table.}
 
-The specified file must be less than 50 KB of UTF-8 characters.
+\item{Words}{Use this parameter if you want to create your vocabulary filter by
+including all desired terms, as comma-separated values, within your
+request. The other option for creating your vocabulary filter is to save
+your entries in a text file and upload them to an Amazon S3 bucket, then
+specify the location of your file using the \code{VocabularyFilterFileUri}
+parameter.
 
-If you provide the location of a list of words in the
-\code{VocabularyFilterFileUri} parameter, you can't use the \code{Words}
-parameter.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  VocabularyFilterName = "string",
-  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+Note that if you include \code{Words} in your request, you cannot use
+\code{VocabularyFilterFileUri}; you must choose one or the other.
+
+Each language has a character set that contains all allowed characters
+for that specific language. If you use unsupported characters, your
+vocabulary filter request fails. Refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html}{Character Sets for Custom Vocabularies}
+to get the character set for your language.}
+
+\item{VocabularyFilterFileUri}{The Amazon S3 location of the text file that contains your custom
+vocabulary filter terms. The URI must be located in the same Amazon Web
+Services Region as the resource you're calling.
+
+Here's an example URI path:
+\verb{s3://DOC-EXAMPLE-BUCKET/my-vocab-filter-file.txt}
+
+Note that if you include \code{VocabularyFilterFileUri} in your request, you
+cannot use \code{Words}; you must choose one or the other.}
+
+\item{Tags}{Adds one or more custom tags, each in the form of a key:value pair, to a
+new custom vocabulary filter at the time you create this new filter.
+
+To learn more about using tags with Amazon Transcribe, refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html}{Tagging resources}.}
 }
 \description{
-Creates a new vocabulary filter that you can use to filter words, such
-as profane words, from the output of a transcription job.
-}
-\section{Request syntax}{
-\preformatted{svc$create_vocabulary_filter(
-  VocabularyFilterName = "string",
-  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-  Words = list(
-    "string"
-  ),
-  VocabularyFilterFileUri = "string"
-)
-}
-}
+Creates a new custom vocabulary filter.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/create_vocabulary_filter.html} for full documentation.
+}
 \keyword{internal}

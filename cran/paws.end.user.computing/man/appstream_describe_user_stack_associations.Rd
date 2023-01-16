@@ -4,8 +4,13 @@
 \alias{appstream_describe_user_stack_associations}
 \title{Retrieves a list that describes the UserStackAssociation objects}
 \usage{
-appstream_describe_user_stack_associations(StackName, UserName,
-  AuthenticationType, MaxResults, NextToken)
+appstream_describe_user_stack_associations(
+  StackName = NULL,
+  UserName = NULL,
+  AuthenticationType = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{StackName}{The name of the stack that is associated with the user.}
@@ -22,38 +27,9 @@ You must specify USERPOOL.}
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserStackAssociations = list(
-    list(
-      StackName = "string",
-      UserName = "string",
-      AuthenticationType = "API"|"SAML"|"USERPOOL",
-      SendEmailNotification = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list that describes the UserStackAssociation objects. You
-must specify either or both of the following:
-\itemize{
-\item The stack name
-\item The user name (email address of the user associated with the stack)
-and the authentication type for the user
-}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_user_stack_associations(
-  StackName = "string",
-  UserName = "string",
-  AuthenticationType = "API"|"SAML"|"USERPOOL",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Retrieves a list that describes the UserStackAssociation objects. You must specify either or both of the following:
 
+See \url{https://paws-r.github.io/docs/appstream/describe_user_stack_associations.html} for full documentation.
+}
 \keyword{internal}

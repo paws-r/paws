@@ -10,34 +10,9 @@ globalaccelerator_delete_custom_routing_accelerator(AcceleratorArn)
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the custom routing accelerator to
 delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Delete a custom routing accelerator. Before you can delete an
-accelerator, you must disable it and remove all dependent resources
-(listeners and endpoint groups). To disable the accelerator, update the
-accelerator to set \code{Enabled} to false.
+Delete a custom routing accelerator. Before you can delete an accelerator, you must disable it and remove all dependent resources (listeners and endpoint groups). To disable the accelerator, update the accelerator to set \code{Enabled} to false.
 
-When you create a custom routing accelerator, by default, Global
-Accelerator provides you with a set of two static IP addresses.
-
-The IP addresses are assigned to your accelerator for as long as it
-exists, even if you disable the accelerator and it no longer accepts or
-routes traffic. However, when you \emph{delete} an accelerator, you lose the
-static IP addresses that are assigned to the accelerator, so you can no
-longer route traffic by using them. As a best practice, ensure that you
-have permissions in place to avoid inadvertently deleting accelerators.
-You can use IAM policies with Global Accelerator to limit the users who
-have permissions to delete an accelerator. For more information, see
-\href{https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html}{Authentication and Access Control}
-in the \emph{AWS Global Accelerator Developer Guide}.
+See \url{https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_accelerator.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_custom_routing_accelerator(
-  AcceleratorArn = "string"
-)
-}
-}
-
 \keyword{internal}

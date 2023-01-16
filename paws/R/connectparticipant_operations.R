@@ -9,6 +9,10 @@ NULL
 #' @description
 #' Allows you to confirm that the attachment has been uploaded using the
 #' pre-signed URL provided in StartAttachmentUpload API.
+#' 
+#' The Amazon Connect Participant Service APIs do not use [Signature
+#' Version 4
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_complete_attachment_upload(AttachmentIds,
@@ -75,19 +79,37 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' parameter, clients need to call this API again to obtain a new websocket
 #' URL and perform the same steps as before.
 #' 
+#' **Message streaming support**: This API can also be used together with
+#' the
+#' [StartContactStreaming](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactStreaming.html)
+#' API to create a participant connection for chat contacts that are not
+#' using a websocket. For more information about message streaming, [Enable
+#' real-time chat message
+#' streaming](https://docs.aws.amazon.com/connect/latest/adminguide/chat-message-streaming.html)
+#' in the *Amazon Connect Administrator Guide*.
+#' 
+#' **Feature specifications**: For information about feature
+#' specifications, such as the allowed number of open websocket connections
+#' per participant, see [Feature
+#' specifications](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits)
+#' in the *Amazon Connect Administrator Guide*.
+#' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
-#' connectparticipant_create_participant_connection(Type, ParticipantToken)
+#' connectparticipant_create_participant_connection(Type, ParticipantToken,
+#'   ConnectParticipant)
 #'
 #' @param Type &#91;required&#93; Type of connection information required.
 #' @param ParticipantToken &#91;required&#93; This is a header parameter.
 #' 
-#' The Participant Token as obtained from
+#' The ParticipantToken as obtained from
 #' [StartChatContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContact.html)
 #' API response.
+#' @param ConnectParticipant Amazon Connect Participant is used to mark the participant as connected
+#' for message streaming.
 #'
 #' @return
 #' A list with the following syntax:
@@ -110,21 +132,22 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #'   Type = list(
 #'     "WEBSOCKET"|"CONNECTION_CREDENTIALS"
 #'   ),
-#'   ParticipantToken = "string"
+#'   ParticipantToken = "string",
+#'   ConnectParticipant = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname connectparticipant_create_participant_connection
-connectparticipant_create_participant_connection <- function(Type, ParticipantToken) {
+connectparticipant_create_participant_connection <- function(Type, ParticipantToken, ConnectParticipant = NULL) {
   op <- new_operation(
     name = "CreateParticipantConnection",
     http_method = "POST",
     http_path = "/participant/connection",
     paginator = list()
   )
-  input <- .connectparticipant$create_participant_connection_input(Type = Type, ParticipantToken = ParticipantToken)
+  input <- .connectparticipant$create_participant_connection_input(Type = Type, ParticipantToken = ParticipantToken, ConnectParticipant = ConnectParticipant)
   output <- .connectparticipant$create_participant_connection_output()
   config <- get_config()
   svc <- .connectparticipant$service(config)
@@ -142,7 +165,7 @@ connectparticipant_create_participant_connection <- function(Type, ParticipantTo
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_disconnect_participant(ClientToken, ConnectionToken)
@@ -187,6 +210,10 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' @description
 #' Provides a pre-signed URL for download of a completed attachment. This
 #' is an asynchronous API for use with active contacts.
+#' 
+#' The Amazon Connect Participant Service APIs do not use [Signature
+#' Version 4
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_get_attachment(AttachmentId, ConnectionToken)
@@ -241,7 +268,7 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_get_transcript(ContactId, MaxResults, NextToken,
@@ -333,7 +360,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_send_event(ContentType, Content, ClientToken,
@@ -397,7 +424,7 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_send_message(ContentType, Content, ClientToken,
@@ -454,6 +481,10 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
 #' @description
 #' Provides a pre-signed Amazon S3 URL in response for uploading the file
 #' directly to S3.
+#' 
+#' The Amazon Connect Participant Service APIs do not use [Signature
+#' Version 4
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_start_attachment_upload(ContentType,

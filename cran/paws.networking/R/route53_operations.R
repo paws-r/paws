@@ -3,41 +3,18 @@
 #' @include route53_service.R
 NULL
 
-#' Activates a key signing key (KSK) so that it can be used for signing by
+#' Activates a key-signing key (KSK) so that it can be used for signing by
 #' DNSSEC
 #'
 #' @description
-#' Activates a key signing key (KSK) so that it can be used for signing by
-#' DNSSEC. This operation changes the KSK status to `ACTIVE`.
+#' Activates a key-signing key (KSK) so that it can be used for signing by DNSSEC. This operation changes the KSK status to `ACTIVE`.
 #'
-#' @usage
-#' route53_activate_key_signing_key(HostedZoneId, Name)
+#' See [https://paws-r.github.io/docs/route53/activate_key_signing_key.html](https://paws-r.github.io/docs/route53/activate_key_signing_key.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$activate_key_signing_key(
-#'   HostedZoneId = "string",
-#'   Name = "string"
-#' )
-#' ```
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK). `Name` can include
+#' numbers, letters, and underscores (_). `Name` must be unique for each
+#' key-signing key in the same hosted zone.
 #'
 #' @keywords internal
 #'
@@ -63,22 +40,8 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #'
 #' @description
 #' Associates an Amazon VPC with a private hosted zone.
-#' 
-#' To perform the association, the VPC and the private hosted zone must
-#' already exist. You can't convert a public hosted zone into a private
-#' hosted zone.
-#' 
-#' If you want to associate a VPC that was created by using one AWS account
-#' with a private hosted zone that was created by using a different
-#' account, the AWS account that created the private hosted zone must first
-#' submit a
-#' [`create_vpc_association_authorization`][route53_create_vpc_association_authorization]
-#' request. Then the account that created the VPC must submit an
-#' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
-#' request.
 #'
-#' @usage
-#' route53_associate_vpc_with_hosted_zone(HostedZoneId, VPC, Comment)
+#' See [https://paws-r.github.io/docs/route53/associate_vpc_with_hosted_zone.html](https://paws-r.github.io/docs/route53/associate_vpc_with_hosted_zone.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the private hosted zone that you want to associate an Amazon
 #' VPC with.
@@ -88,47 +51,6 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' @param VPC &#91;required&#93; A complex type that contains information about the VPC that you want to
 #' associate with a private hosted zone.
 #' @param Comment *Optional:* A comment about the association request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_vpc_with_hosted_zone(
-#'   HostedZoneId = "string",
-#'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-#'     VPCId = "string"
-#'   ),
-#'   Comment = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example associates the VPC with ID vpc-1a2b3c4d with the
-#' # hosted zone with ID Z3M3LMPEXAMPLE.
-#' svc$associate_vpc_with_hosted_zone(
-#'   Comment = "",
-#'   HostedZoneId = "Z3M3LMPEXAMPLE",
-#'   VPC = list(
-#'     VPCId = "vpc-1a2b3c4d",
-#'     VPCRegion = "us-east-2"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -150,639 +72,64 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 }
 .route53$operations$associate_vpc_with_hosted_zone <- route53_associate_vpc_with_hosted_zone
 
+#' Creates, changes, or deletes CIDR blocks within a collection
+#'
+#' @description
+#' Creates, changes, or deletes CIDR blocks within a collection. Contains authoritative IP information mapping blocks to one or multiple locations.
+#'
+#' See [https://paws-r.github.io/docs/route53/change_cidr_collection.html](https://paws-r.github.io/docs/route53/change_cidr_collection.html) for full documentation.
+#'
+#' @param Id &#91;required&#93; The UUID of the CIDR collection to update.
+#' @param CollectionVersion A sequential counter that Amazon Route 53 sets to 1 when you create a
+#' collection and increments it by 1 each time you update the collection.
+#' 
+#' We recommend that you use `ListCidrCollection` to get the current value
+#' of `CollectionVersion` for the collection that you want to update, and
+#' then include that value with the change request. This prevents Route 53
+#' from overwriting an intervening update:
+#' 
+#' -   If the value in the request matches the value of `CollectionVersion`
+#'     in the collection, Route 53 updates the collection.
+#' 
+#' -   If the value of `CollectionVersion` in the collection is greater
+#'     than the value in the request, the collection was changed after you
+#'     got the version number. Route 53 does not update the collection, and
+#'     it returns a `CidrCollectionVersionMismatch` error.
+#' @param Changes &#91;required&#93; Information about changes to a CIDR collection.
+#'
+#' @keywords internal
+#'
+#' @rdname route53_change_cidr_collection
+route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes) {
+  op <- new_operation(
+    name = "ChangeCidrCollection",
+    http_method = "POST",
+    http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
+    paginator = list()
+  )
+  input <- .route53$change_cidr_collection_input(Id = Id, CollectionVersion = CollectionVersion, Changes = Changes)
+  output <- .route53$change_cidr_collection_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$change_cidr_collection <- route53_change_cidr_collection
+
 #' Creates, changes, or deletes a resource record set, which contains
 #' authoritative DNS information for a specified domain name or subdomain
 #' name
 #'
 #' @description
-#' Creates, changes, or deletes a resource record set, which contains
-#' authoritative DNS information for a specified domain name or subdomain
-#' name. For example, you can use
-#' [`change_resource_record_sets`][route53_change_resource_record_sets] to
-#' create a resource record set that routes traffic for test.example.com to
-#' a web server that has an IP address of 192.0.2.44.
-#' 
-#' **Deleting Resource Record Sets**
-#' 
-#' To delete a resource record set, you must specify all the same values
-#' that you specified when you created it.
-#' 
-#' **Change Batches and Transactional Changes**
-#' 
-#' The request body must include a document with a
-#' `ChangeResourceRecordSetsRequest` element. The request body contains a
-#' list of change items, known as a change batch. Change batches are
-#' considered transactional changes. Route 53 validates the changes in the
-#' request and then either makes all or none of the changes in the change
-#' batch request. This ensures that DNS routing isn't adversely affected by
-#' partial changes to the resource record sets in a hosted zone.
-#' 
-#' For example, suppose a change batch request contains two changes: it
-#' deletes the `CNAME` resource record set for www.example.com and creates
-#' an alias resource record set for www.example.com. If validation for both
-#' records succeeds, Route 53 deletes the first resource record set and
-#' creates the second resource record set in a single operation. If
-#' validation for either the `DELETE` or the `CREATE` action fails, then
-#' the request is canceled, and the original `CNAME` record continues to
-#' exist.
-#' 
-#' If you try to delete the same resource record set more than once in a
-#' single change batch, Route 53 returns an `InvalidChangeBatch` error.
-#' 
-#' **Traffic Flow**
-#' 
-#' To create resource record sets for complex routing configurations, use
-#' either the traffic flow visual editor in the Route 53 console or the API
-#' actions for traffic policies and traffic policy instances. Save the
-#' configuration as a traffic policy, then associate the traffic policy
-#' with one or more domain names (such as example.com) or subdomain names
-#' (such as www.example.com), in the same hosted zone or in multiple hosted
-#' zones. You can roll back the updates if the new configuration isn't
-#' performing as expected. For more information, see [Using Traffic Flow to
-#' Route DNS
-#' Traffic](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html)
-#' in the *Amazon Route 53 Developer Guide*.
-#' 
-#' **Create, Delete, and Upsert**
-#' 
-#' Use `ChangeResourceRecordsSetsRequest` to perform the following actions:
-#' 
-#' -   `CREATE`: Creates a resource record set that has the specified
-#'     values.
-#' 
-#' -   `DELETE`: Deletes an existing resource record set that has the
-#'     specified values.
-#' 
-#' -   `UPSERT`: If a resource record set does not already exist, AWS
-#'     creates it. If a resource set does exist, Route 53 updates it with
-#'     the values in the request.
-#' 
-#' **Syntaxes for Creating, Updating, and Deleting Resource Record Sets**
-#' 
-#' The syntax for a request depends on the type of resource record set that
-#' you want to create, delete, or update, such as weighted, alias, or
-#' failover. The XML elements in your request must appear in the order
-#' listed in the syntax.
-#' 
-#' For an example for each type of resource record set, see "Examples."
-#' 
-#' Don't refer to the syntax in the "Parameter Syntax" section, which
-#' includes all of the elements for every kind of resource record set that
-#' you can create, delete, or update by using
-#' [`change_resource_record_sets`][route53_change_resource_record_sets].
-#' 
-#' **Change Propagation to Route 53 DNS Servers**
-#' 
-#' When you submit a
-#' [`change_resource_record_sets`][route53_change_resource_record_sets]
-#' request, Route 53 propagates your changes to all of the Route 53
-#' authoritative DNS servers. While your changes are propagating,
-#' [`get_change`][route53_get_change] returns a status of `PENDING`. When
-#' propagation is complete, [`get_change`][route53_get_change] returns a
-#' status of `INSYNC`. Changes generally propagate to all Route 53 name
-#' servers within 60 seconds. For more information, see
-#' [`get_change`][route53_get_change].
-#' 
-#' **Limits on ChangeResourceRecordSets Requests**
-#' 
-#' For information about the limits on a
-#' [`change_resource_record_sets`][route53_change_resource_record_sets]
-#' request, see
-#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' Creates, changes, or deletes a resource record set, which contains authoritative DNS information for a specified domain name or subdomain name. For example, you can use [`change_resource_record_sets`][route53_change_resource_record_sets] to create a resource record set that routes traffic for test.example.com to a web server that has an IP address of 192.0.2.44.
 #'
-#' @usage
-#' route53_change_resource_record_sets(HostedZoneId, ChangeBatch)
+#' See [https://paws-r.github.io/docs/route53/change_resource_record_sets.html](https://paws-r.github.io/docs/route53/change_resource_record_sets.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that contains the resource record sets that
 #' you want to change.
 #' @param ChangeBatch &#91;required&#93; A complex type that contains an optional comment and the `Changes`
 #' element.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$change_resource_record_sets(
-#'   HostedZoneId = "string",
-#'   ChangeBatch = list(
-#'     Comment = "string",
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE"|"DELETE"|"UPSERT",
-#'         ResourceRecordSet = list(
-#'           Name = "string",
-#'           Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'           SetIdentifier = "string",
-#'           Weight = 123,
-#'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1"|"af-south-1"|"eu-south-1",
-#'           GeoLocation = list(
-#'             ContinentCode = "string",
-#'             CountryCode = "string",
-#'             SubdivisionCode = "string"
-#'           ),
-#'           Failover = "PRIMARY"|"SECONDARY",
-#'           MultiValueAnswer = TRUE|FALSE,
-#'           TTL = 123,
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "string"
-#'             )
-#'           ),
-#'           AliasTarget = list(
-#'             HostedZoneId = "string",
-#'             DNSName = "string",
-#'             EvaluateTargetHealth = TRUE|FALSE
-#'           ),
-#'           HealthCheckId = "string",
-#'           TrafficPolicyInstanceId = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a resource record set that routes Internet
-#' # traffic to a resource with an IP address of 192.0.2.44.
-#' svc$change_resource_record_sets(
-#'   ChangeBatch = list(
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           Name = "example.com",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.44"
-#'             )
-#'           ),
-#'           TTL = 60L,
-#'           Type = "A"
-#'         )
-#'       )
-#'     ),
-#'     Comment = "Web server for example.com"
-#'   ),
-#'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )
-#' 
-#' # The following example creates two weighted resource record sets. The
-#' # resource with a Weight of 100 will get 1/3rd of traffic (100/100+200),
-#' # and the other resource will get the rest of the traffic for example.com.
-#' svc$change_resource_record_sets(
-#'   ChangeBatch = list(
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           HealthCheckId = "abcdef11-2222-3333-4444-555555fedcba",
-#'           Name = "example.com",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.44"
-#'             )
-#'           ),
-#'           SetIdentifier = "Seattle data center",
-#'           TTL = 60L,
-#'           Type = "A",
-#'           Weight = 100L
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           HealthCheckId = "abcdef66-7777-8888-9999-000000fedcba",
-#'           Name = "example.com",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.45"
-#'             )
-#'           ),
-#'           SetIdentifier = "Portland data center",
-#'           TTL = 60L,
-#'           Type = "A",
-#'           Weight = 200L
-#'         )
-#'       )
-#'     ),
-#'     Comment = "Web servers for example.com"
-#'   ),
-#'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )
-#' 
-#' # The following example creates an alias resource record set that routes
-#' # traffic to a CloudFront distribution.
-#' svc$change_resource_record_sets(
-#'   ChangeBatch = list(
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "d123rk29d0stfj.cloudfront.net",
-#'             EvaluateTargetHealth = FALSE,
-#'             HostedZoneId = "Z2FDTNDATAQYW2"
-#'           ),
-#'           Name = "example.com",
-#'           Type = "A"
-#'         )
-#'       )
-#'     ),
-#'     Comment = "CloudFront distribution for example.com"
-#'   ),
-#'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )
-#' 
-#' # The following example creates two weighted alias resource record sets
-#' # that route traffic to ELB load balancers. The resource with a Weight of
-#' # 100 will get 1/3rd of traffic (100/100+200), and the other resource will
-#' # get the rest of the traffic for example.com.
-#' svc$change_resource_record_sets(
-#'   ChangeBatch = list(
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "example-com-123456789.us-east-2.elb.amazonaws.com ",
-#'             EvaluateTargetHealth = TRUE,
-#'             HostedZoneId = "Z3AADJGX6KTTL2"
-#'           ),
-#'           Name = "example.com",
-#'           SetIdentifier = "Ohio region",
-#'           Type = "A",
-#'           Weight = 100L
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "example-com-987654321.us-west-2.elb.amazonaws.com ",
-#'             EvaluateTargetHealth = TRUE,
-#'             HostedZoneId = "Z1H1FL5HABSF5"
-#'           ),
-#'           Name = "example.com",
-#'           SetIdentifier = "Oregon region",
-#'           Type = "A",
-#'           Weight = 200L
-#'         )
-#'       )
-#'     ),
-#'     Comment = "ELB load balancers for example.com"
-#'   ),
-#'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )
-#' 
-#' # The following example creates two latency resource record sets that
-#' # route traffic to EC2 instances. Traffic for example.com is routed either
-#' # to the Ohio region or the Oregon region, depending on the latency
-#' # between the user and those regions.
-#' svc$change_resource_record_sets(
-#'   ChangeBatch = list(
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           HealthCheckId = "abcdef11-2222-3333-4444-555555fedcba",
-#'           Name = "example.com",
-#'           Region = "us-east-2",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.44"
-#'             )
-#'           ),
-#'           SetIdentifier = "Ohio region",
-#'           TTL = 60L,
-#'           Type = "A"
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           HealthCheckId = "abcdef66-7777-8888-9999-000000fedcba",
-#'           Name = "example.com",
-#'           Region = "us-west-2",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.45"
-#'             )
-#'           ),
-#'           SetIdentifier = "Oregon region",
-#'           TTL = 60L,
-#'           Type = "A"
-#'         )
-#'       )
-#'     ),
-#'     Comment = "EC2 instances for example.com"
-#'   ),
-#'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )
-#' 
-#' # The following example creates two latency alias resource record sets
-#' # that route traffic for example.com to ELB load balancers. Requests are
-#' # routed either to the Ohio region or the Oregon region, depending on the
-#' # latency between the user and those regions.
-#' svc$change_resource_record_sets(
-#'   ChangeBatch = list(
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "example-com-123456789.us-east-2.elb.amazonaws.com ",
-#'             EvaluateTargetHealth = TRUE,
-#'             HostedZoneId = "Z3AADJGX6KTTL2"
-#'           ),
-#'           Name = "example.com",
-#'           Region = "us-east-2",
-#'           SetIdentifier = "Ohio region",
-#'           Type = "A"
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "example-com-987654321.us-west-2.elb.amazonaws.com ",
-#'             EvaluateTargetHealth = TRUE,
-#'             HostedZoneId = "Z1H1FL5HABSF5"
-#'           ),
-#'           Name = "example.com",
-#'           Region = "us-west-2",
-#'           SetIdentifier = "Oregon region",
-#'           Type = "A"
-#'         )
-#'       )
-#'     ),
-#'     Comment = "ELB load balancers for example.com"
-#'   ),
-#'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )
-#' 
-#' # The following example creates primary and secondary failover resource
-#' # record sets that route traffic to EC2 instances. Traffic is generally
-#' # routed to the primary resource, in the Ohio region. If that resource is
-#' # unavailable, traffic is routed to the secondary resource, in the Oregon
-#' # region.
-#' svc$change_resource_record_sets(
-#'   ChangeBatch = list(
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           Failover = "PRIMARY",
-#'           HealthCheckId = "abcdef11-2222-3333-4444-555555fedcba",
-#'           Name = "example.com",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.44"
-#'             )
-#'           ),
-#'           SetIdentifier = "Ohio region",
-#'           TTL = 60L,
-#'           Type = "A"
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           Failover = "SECONDARY",
-#'           HealthCheckId = "abcdef66-7777-8888-9999-000000fedcba",
-#'           Name = "example.com",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.45"
-#'             )
-#'           ),
-#'           SetIdentifier = "Oregon region",
-#'           TTL = 60L,
-#'           Type = "A"
-#'         )
-#'       )
-#'     ),
-#'     Comment = "Failover configuration for example.com"
-#'   ),
-#'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )
-#' 
-#' # The following example creates primary and secondary failover alias
-#' # resource record sets that route traffic to ELB load balancers. Traffic
-#' # is generally routed to the primary resource, in the Ohio region. If that
-#' # resource is unavailable, traffic is routed to the secondary resource, in
-#' # the Oregon region.
-#' svc$change_resource_record_sets(
-#'   ChangeBatch = list(
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "example-com-123456789.us-east-2.elb.amazonaws.com ",
-#'             EvaluateTargetHealth = TRUE,
-#'             HostedZoneId = "Z3AADJGX6KTTL2"
-#'           ),
-#'           Failover = "PRIMARY",
-#'           Name = "example.com",
-#'           SetIdentifier = "Ohio region",
-#'           Type = "A"
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "example-com-987654321.us-west-2.elb.amazonaws.com ",
-#'             EvaluateTargetHealth = TRUE,
-#'             HostedZoneId = "Z1H1FL5HABSF5"
-#'           ),
-#'           Failover = "SECONDARY",
-#'           Name = "example.com",
-#'           SetIdentifier = "Oregon region",
-#'           Type = "A"
-#'         )
-#'       )
-#'     ),
-#'     Comment = "Failover alias configuration for example.com"
-#'   ),
-#'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )
-#' 
-#' # The following example creates four geolocation resource record sets that
-#' # use IPv4 addresses to route traffic to resources such as web servers
-#' # running on EC2 instances. Traffic is routed to one of four IP addresses,
-#' # for North America (NA), for South America (SA), for Europe (EU), and for
-#' # all other locations (*).
-#' svc$change_resource_record_sets(
-#'   ChangeBatch = list(
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           GeoLocation = list(
-#'             ContinentCode = "NA"
-#'           ),
-#'           Name = "example.com",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.44"
-#'             )
-#'           ),
-#'           SetIdentifier = "North America",
-#'           TTL = 60L,
-#'           Type = "A"
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           GeoLocation = list(
-#'             ContinentCode = "SA"
-#'           ),
-#'           Name = "example.com",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.45"
-#'             )
-#'           ),
-#'           SetIdentifier = "South America",
-#'           TTL = 60L,
-#'           Type = "A"
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           GeoLocation = list(
-#'             ContinentCode = "EU"
-#'           ),
-#'           Name = "example.com",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.46"
-#'             )
-#'           ),
-#'           SetIdentifier = "Europe",
-#'           TTL = 60L,
-#'           Type = "A"
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           GeoLocation = list(
-#'             CountryCode = "*"
-#'           ),
-#'           Name = "example.com",
-#'           ResourceRecords = list(
-#'             list(
-#'               Value = "192.0.2.47"
-#'             )
-#'           ),
-#'           SetIdentifier = "Other locations",
-#'           TTL = 60L,
-#'           Type = "A"
-#'         )
-#'       )
-#'     ),
-#'     Comment = "Geolocation configuration for example.com"
-#'   ),
-#'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )
-#' 
-#' # The following example creates four geolocation alias resource record
-#' # sets that route traffic to ELB load balancers. Traffic is routed to one
-#' # of four IP addresses, for North America (NA), for South America (SA),
-#' # for Europe (EU), and for all other locations (*).
-#' svc$change_resource_record_sets(
-#'   ChangeBatch = list(
-#'     Changes = list(
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "example-com-123456789.us-east-2.elb.amazonaws.com ",
-#'             EvaluateTargetHealth = TRUE,
-#'             HostedZoneId = "Z3AADJGX6KTTL2"
-#'           ),
-#'           GeoLocation = list(
-#'             ContinentCode = "NA"
-#'           ),
-#'           Name = "example.com",
-#'           SetIdentifier = "North America",
-#'           Type = "A"
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "example-com-234567890.sa-east-1.elb.amazonaws.com ",
-#'             EvaluateTargetHealth = TRUE,
-#'             HostedZoneId = "Z2P70J7HTTTPLU"
-#'           ),
-#'           GeoLocation = list(
-#'             ContinentCode = "SA"
-#'           ),
-#'           Name = "example.com",
-#'           SetIdentifier = "South America",
-#'           Type = "A"
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "example-com-234567890.eu-central-1.elb.amazonaws.com ",
-#'             EvaluateTargetHealth = TRUE,
-#'             HostedZoneId = "Z215JYRZR1TBD5"
-#'           ),
-#'           GeoLocation = list(
-#'             ContinentCode = "EU"
-#'           ),
-#'           Name = "example.com",
-#'           SetIdentifier = "Europe",
-#'           Type = "A"
-#'         )
-#'       ),
-#'       list(
-#'         Action = "CREATE",
-#'         ResourceRecordSet = list(
-#'           AliasTarget = list(
-#'             DNSName = "example-com-234567890.ap-southeast-1.elb.amazonaws.com ",
-#'             EvaluateTargetHealth = TRUE,
-#'             HostedZoneId = "Z1LMS91P8CMLE5"
-#'           ),
-#'           GeoLocation = list(
-#'             CountryCode = "*"
-#'           ),
-#'           Name = "example.com",
-#'           SetIdentifier = "Other locations",
-#'           Type = "A"
-#'         )
-#'       )
-#'     ),
-#'     Comment = "Geolocation alias configuration for example.com"
-#'   ),
-#'   HostedZoneId = "Z3M3LMPEXAMPLE"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -808,15 +155,8 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #'
 #' @description
 #' Adds, edits, or deletes tags for a health check or a hosted zone.
-#' 
-#' For information about using tags for cost allocation, see [Using Cost
-#' Allocation
-#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*.
 #'
-#' @usage
-#' route53_change_tags_for_resource(ResourceType, ResourceId, AddTags,
-#'   RemoveTagKeys)
+#' See [https://paws-r.github.io/docs/route53/change_tags_for_resource.html](https://paws-r.github.io/docs/route53/change_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of the resource.
 #' 
@@ -833,49 +173,6 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #' @param RemoveTagKeys A complex type that contains a list of the tags that you want to delete
 #' from the specified health check or hosted zone. You can specify up to 10
 #' keys.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$change_tags_for_resource(
-#'   ResourceType = "healthcheck"|"hostedzone",
-#'   ResourceId = "string",
-#'   AddTags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   RemoveTagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example adds two tags and removes one tag from the hosted
-#' # zone with ID Z3M3LMPEXAMPLE.
-#' svc$change_tags_for_resource(
-#'   AddTags = list(
-#'     list(
-#'       Key = "apex",
-#'       Value = "3874"
-#'     ),
-#'     list(
-#'       Key = "acme",
-#'       Value = "4938"
-#'     )
-#'   ),
-#'   RemoveTagKeys = list(
-#'     "Nadir"
-#'   ),
-#'   ResourceId = "Z3M3LMPEXAMPLE",
-#'   ResourceType = "hostedzone"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -897,48 +194,45 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 }
 .route53$operations$change_tags_for_resource <- route53_change_tags_for_resource
 
+#' Creates a CIDR collection in the current Amazon Web Services account
+#'
+#' @description
+#' Creates a CIDR collection in the current Amazon Web Services account.
+#'
+#' See [https://paws-r.github.io/docs/route53/create_cidr_collection.html](https://paws-r.github.io/docs/route53/create_cidr_collection.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; A unique identifier for the account that can be used to reference the
+#' collection from other API calls.
+#' @param CallerReference &#91;required&#93; A client-specific token that allows requests to be securely retried so
+#' that the intended outcome will only occur once, retries receive a
+#' similar response, and there are no additional edge cases to handle.
+#'
+#' @keywords internal
+#'
+#' @rdname route53_create_cidr_collection
+route53_create_cidr_collection <- function(Name, CallerReference) {
+  op <- new_operation(
+    name = "CreateCidrCollection",
+    http_method = "POST",
+    http_path = "/2013-04-01/cidrcollection",
+    paginator = list()
+  )
+  input <- .route53$create_cidr_collection_input(Name = Name, CallerReference = CallerReference)
+  output <- .route53$create_cidr_collection_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$create_cidr_collection <- route53_create_cidr_collection
+
 #' Creates a new health check
 #'
 #' @description
 #' Creates a new health check.
-#' 
-#' For information about adding health checks to resource record sets, see
-#' [HealthCheckId](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId)
-#' in [`change_resource_record_sets`][route53_change_resource_record_sets].
-#' 
-#' **ELB Load Balancers**
-#' 
-#' If you're registering EC2 instances with an Elastic Load Balancing (ELB)
-#' load balancer, do not create Amazon Route 53 health checks for the EC2
-#' instances. When you register an EC2 instance with a load balancer, you
-#' configure settings for an ELB health check, which performs a similar
-#' function to a Route 53 health check.
-#' 
-#' **Private Hosted Zones**
-#' 
-#' You can associate health checks with failover resource record sets in a
-#' private hosted zone. Note the following:
-#' 
-#' -   Route 53 health checkers are outside the VPC. To check the health of
-#'     an endpoint within a VPC by IP address, you must assign a public IP
-#'     address to the instance in the VPC.
-#' 
-#' -   You can configure a health checker to check the health of an
-#'     external resource that the instance relies on, such as a database
-#'     server.
-#' 
-#' -   You can create a CloudWatch metric, associate an alarm with the
-#'     metric, and then create a health check that is based on the state of
-#'     the alarm. For example, you might create a CloudWatch metric that
-#'     checks the status of the Amazon EC2 `StatusCheckFailed` metric, add
-#'     an alarm to the metric, and then create a health check that is based
-#'     on the state of the alarm. For information about creating CloudWatch
-#'     metrics and alarms by using the CloudWatch console, see the [Amazon
-#'     CloudWatch User
-#'     Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
 #'
-#' @usage
-#' route53_create_health_check(CallerReference, HealthCheckConfig)
+#' See [https://paws-r.github.io/docs/route53/create_health_check.html](https://paws-r.github.io/docs/route53/create_health_check.html) for full documentation.
 #'
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request and that allows you to retry
 #' a failed [`create_health_check`][route53_create_health_check] request
@@ -965,97 +259,6 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #'     existing health check, Route 53 creates the health check.
 #' @param HealthCheckConfig &#91;required&#93; A complex type that contains settings for a new health check.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HealthCheck = list(
-#'     Id = "string",
-#'     CallerReference = "string",
-#'     LinkedService = list(
-#'       ServicePrincipal = "string",
-#'       Description = "string"
-#'     ),
-#'     HealthCheckConfig = list(
-#'       IPAddress = "string",
-#'       Port = 123,
-#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
-#'       ResourcePath = "string",
-#'       FullyQualifiedDomainName = "string",
-#'       SearchString = "string",
-#'       RequestInterval = 123,
-#'       FailureThreshold = 123,
-#'       MeasureLatency = TRUE|FALSE,
-#'       Inverted = TRUE|FALSE,
-#'       Disabled = TRUE|FALSE,
-#'       HealthThreshold = 123,
-#'       ChildHealthChecks = list(
-#'         "string"
-#'       ),
-#'       EnableSNI = TRUE|FALSE,
-#'       Regions = list(
-#'         "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
-#'       ),
-#'       AlarmIdentifier = list(
-#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
-#'         Name = "string"
-#'       ),
-#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
-#'     ),
-#'     HealthCheckVersion = 123,
-#'     CloudWatchAlarmConfiguration = list(
-#'       EvaluationPeriods = 123,
-#'       Threshold = 123.0,
-#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-#'       Period = 123,
-#'       MetricName = "string",
-#'       Namespace = "string",
-#'       Statistic = "Average"|"Sum"|"SampleCount"|"Maximum"|"Minimum",
-#'       Dimensions = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Location = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_health_check(
-#'   CallerReference = "string",
-#'   HealthCheckConfig = list(
-#'     IPAddress = "string",
-#'     Port = 123,
-#'     Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
-#'     ResourcePath = "string",
-#'     FullyQualifiedDomainName = "string",
-#'     SearchString = "string",
-#'     RequestInterval = 123,
-#'     FailureThreshold = 123,
-#'     MeasureLatency = TRUE|FALSE,
-#'     Inverted = TRUE|FALSE,
-#'     Disabled = TRUE|FALSE,
-#'     HealthThreshold = 123,
-#'     ChildHealthChecks = list(
-#'       "string"
-#'     ),
-#'     EnableSNI = TRUE|FALSE,
-#'     Regions = list(
-#'       "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
-#'     ),
-#'     AlarmIdentifier = list(
-#'       Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
-#'       Name = "string"
-#'     ),
-#'     InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname route53_create_health_check
@@ -1079,63 +282,19 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' Creates a new public or private hosted zone
 #'
 #' @description
-#' Creates a new public or private hosted zone. You create records in a
-#' public hosted zone to define how you want to route traffic on the
-#' internet for a domain, such as example.com, and its subdomains
-#' (apex.example.com, acme.example.com). You create records in a private
-#' hosted zone to define how you want to route traffic for a domain and its
-#' subdomains within one or more Amazon Virtual Private Clouds (Amazon
-#' VPCs).
-#' 
-#' You can't convert a public hosted zone to a private hosted zone or vice
-#' versa. Instead, you must create a new hosted zone with the same name and
-#' create new resource record sets.
-#' 
-#' For more information about charges for hosted zones, see [Amazon Route
-#' 53 Pricing](https://aws.amazon.com/route53/pricing/).
-#' 
-#' Note the following:
-#' 
-#' -   You can't create a hosted zone for a top-level domain (TLD) such as
-#'     .com.
-#' 
-#' -   For public hosted zones, Route 53 automatically creates a default
-#'     SOA record and four NS records for the zone. For more information
-#'     about SOA and NS records, see [NS and SOA Records that Route 53
-#'     Creates for a Hosted
-#'     Zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html)
-#'     in the *Amazon Route 53 Developer Guide*.
-#' 
-#'     If you want to use the same name servers for multiple public hosted
-#'     zones, you can optionally associate a reusable delegation set with
-#'     the hosted zone. See the `DelegationSetId` element.
-#' 
-#' -   If your domain is registered with a registrar other than Route 53,
-#'     you must update the name servers with your registrar to make Route
-#'     53 the DNS service for the domain. For more information, see
-#'     [Migrating DNS Service for an Existing Domain to Amazon Route
-#'     53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html)
-#'     in the *Amazon Route 53 Developer Guide*.
-#' 
-#' When you submit a [`create_hosted_zone`][route53_create_hosted_zone]
-#' request, the initial status of the hosted zone is `PENDING`. For public
-#' hosted zones, this means that the NS and SOA records are not yet
-#' available on all Route 53 DNS servers. When the NS and SOA records are
-#' available, the status of the zone changes to `INSYNC`.
+#' Creates a new public or private hosted zone. You create records in a public hosted zone to define how you want to route traffic on the internet for a domain, such as example.com, and its subdomains (apex.example.com, acme.example.com). You create records in a private hosted zone to define how you want to route traffic for a domain and its subdomains within one or more Amazon Virtual Private Clouds (Amazon VPCs).
 #'
-#' @usage
-#' route53_create_hosted_zone(Name, VPC, CallerReference, HostedZoneConfig,
-#'   DelegationSetId)
+#' See [https://paws-r.github.io/docs/route53/create_hosted_zone.html](https://paws-r.github.io/docs/route53/create_hosted_zone.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the domain. Specify a fully qualified domain name, for
-#' example, *www.example.com*. The trailing dot is optional; Amazon Route
-#' 53 assumes that the domain name is fully qualified. This means that
-#' Route 53 treats *www.example.com* (without a trailing dot) and
+#' example, *www.example.com*. The trailing dot is optional; Amazon
+#' Route 53 assumes that the domain name is fully qualified. This means
+#' that Route 53 treats *www.example.com* (without a trailing dot) and
 #' *www.example.com.* (with a trailing dot) as identical.
 #' 
 #' If you're creating a public hosted zone, this is the name you have
 #' registered with your DNS registrar. If your domain name is registered
-#' with a registrar other than Route 53, change the name servers for your
+#' with a registrar other than Route 53, change the name servers for your
 #' domain to the set of `NameServers` that
 #' [`create_hosted_zone`][route53_create_hosted_zone] returns in
 #' `DelegationSet`.
@@ -1143,7 +302,10 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' about the Amazon VPC that you're associating with this hosted zone.
 #' 
 #' You can specify only one Amazon VPC when you create a private hosted
-#' zone. To associate additional Amazon VPCs with the hosted zone, use
+#' zone. If you are associating a VPC with a hosted zone with this request,
+#' the paramaters `VPCId` and `VPCRegion` are also required.
+#' 
+#' To associate additional Amazon VPCs with the hosted zone, use
 #' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
 #' after you create a hosted zone.
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request and that allows failed
@@ -1162,68 +324,10 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' If you don't specify a comment or the `PrivateZone` element, omit
 #' `HostedZoneConfig` and the other elements.
 #' @param DelegationSetId If you want to associate a reusable delegation set with this hosted
-#' zone, the ID that Amazon Route 53 assigned to the reusable delegation
+#' zone, the ID that Amazon Route 53 assigned to the reusable delegation
 #' set when you created it. For more information about reusable delegation
 #' sets, see
 #' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HostedZone = list(
-#'     Id = "string",
-#'     Name = "string",
-#'     CallerReference = "string",
-#'     Config = list(
-#'       Comment = "string",
-#'       PrivateZone = TRUE|FALSE
-#'     ),
-#'     ResourceRecordSetCount = 123,
-#'     LinkedService = list(
-#'       ServicePrincipal = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   ),
-#'   DelegationSet = list(
-#'     Id = "string",
-#'     CallerReference = "string",
-#'     NameServers = list(
-#'       "string"
-#'     )
-#'   ),
-#'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-#'     VPCId = "string"
-#'   ),
-#'   Location = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_hosted_zone(
-#'   Name = "string",
-#'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-#'     VPCId = "string"
-#'   ),
-#'   CallerReference = "string",
-#'   HostedZoneConfig = list(
-#'     Comment = "string",
-#'     PrivateZone = TRUE|FALSE
-#'   ),
-#'   DelegationSetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1245,39 +349,36 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 }
 .route53$operations$create_hosted_zone <- route53_create_hosted_zone
 
-#' Creates a new key signing key (KSK) associated with a hosted zone
+#' Creates a new key-signing key (KSK) associated with a hosted zone
 #'
 #' @description
-#' Creates a new key signing key (KSK) associated with a hosted zone. You
-#' can only have two KSKs per hosted zone.
+#' Creates a new key-signing key (KSK) associated with a hosted zone. You can only have two KSKs per hosted zone.
 #'
-#' @usage
-#' route53_create_key_signing_key(CallerReference, HostedZoneId,
-#'   KeyManagementServiceArn, Name, Status)
+#' See [https://paws-r.github.io/docs/route53/create_key_signing_key.html](https://paws-r.github.io/docs/route53/create_key_signing_key.html) for full documentation.
 #'
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request.
 #' @param HostedZoneId &#91;required&#93; The unique string (ID) used to identify a hosted zone.
-#' @param KeyManagementServiceArn &#91;required&#93; The Amazon resource name (ARN) for a customer managed key (CMK) in AWS
-#' Key Management Service (KMS). The `KeyManagementServiceArn` must be
-#' unique for each key signing key (KSK) in a single hosted zone. To see an
+#' @param KeyManagementServiceArn &#91;required&#93; The Amazon resource name (ARN) for a customer managed key in Key
+#' Management Service (KMS). The `KeyManagementServiceArn` must be unique
+#' for each key-signing key (KSK) in a single hosted zone. To see an
 #' example of `KeyManagementServiceArn` that grants the correct permissions
 #' for DNSSEC, scroll down to **Example**.
 #' 
-#' You must configure the CMK as follows:
+#' You must configure the customer managed customer managed key as follows:
 #' 
-#' ### Status
+#' **Status**
 #' 
 #' Enabled
 #' 
-#' ### Key spec
+#' **Key spec**
 #' 
 #' ECC_NIST_P256
 #' 
-#' ### Key usage
+#' **Key usage**
 #' 
 #' Sign and verify
 #' 
-#' ### Key policy
+#' **Key policy**
 #' 
 #' The key policy must give permission for the following actions:
 #' 
@@ -1290,64 +391,16 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' The key policy must also include the Amazon Route 53 service in the
 #' principal for your account. Specify the following:
 #' 
-#' -   `"Service": "api-service.dnssec.route53.aws.internal"`
+#' -   `"Service": "dnssec-route53.amazonaws.com"`
 #' 
-#' For more information about working with CMK in KMS, see [AWS Key
-#' Management Service
+#' For more information about working with a customer managed key in KMS,
+#' see [Key Management Service
 #' concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html).
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK). `Name`
-#' must be unique for each key signing key in the same hosted zone.
-#' @param Status &#91;required&#93; A string specifying the initial status of the key signing key (KSK). You
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK). `Name` can include
+#' numbers, letters, and underscores (_). `Name` must be unique for each
+#' key-signing key in the same hosted zone.
+#' @param Status &#91;required&#93; A string specifying the initial status of the key-signing key (KSK). You
 #' can set the value to `ACTIVE` or `INACTIVE`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   ),
-#'   KeySigningKey = list(
-#'     Name = "string",
-#'     KmsArn = "string",
-#'     Flag = 123,
-#'     SigningAlgorithmMnemonic = "string",
-#'     SigningAlgorithmType = 123,
-#'     DigestAlgorithmMnemonic = "string",
-#'     DigestAlgorithmType = 123,
-#'     KeyTag = 123,
-#'     DigestValue = "string",
-#'     PublicKey = "string",
-#'     DSRecord = "string",
-#'     DNSKEYRecord = "string",
-#'     Status = "string",
-#'     StatusMessage = "string",
-#'     CreatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   Location = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_key_signing_key(
-#'   CallerReference = "string",
-#'   HostedZoneId = "string",
-#'   KeyManagementServiceArn = "string",
-#'   Name = "string",
-#'   Status = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1372,126 +425,9 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' Creates a configuration for DNS query logging
 #'
 #' @description
-#' Creates a configuration for DNS query logging. After you create a query
-#' logging configuration, Amazon Route 53 begins to publish log data to an
-#' Amazon CloudWatch Logs log group.
-#' 
-#' DNS query logs contain information about the queries that Route 53
-#' receives for a specified public hosted zone, such as the following:
-#' 
-#' -   Route 53 edge location that responded to the DNS query
-#' 
-#' -   Domain or subdomain that was requested
-#' 
-#' -   DNS record type, such as A or AAAA
-#' 
-#' -   DNS response code, such as `NoError` or `ServFail`
-#' 
-#' ### Log Group and Resource Policy
-#' 
-#' Before you create a query logging configuration, perform the following
-#' operations.
-#' 
-#' If you create a query logging configuration using the Route 53 console,
-#' Route 53 performs these operations automatically.
-#' 
-#' 1.  Create a CloudWatch Logs log group, and make note of the ARN, which
-#'     you specify when you create a query logging configuration. Note the
-#'     following:
-#' 
-#'     -   You must create the log group in the us-east-1 region.
-#' 
-#'     -   You must use the same AWS account to create the log group and
-#'         the hosted zone that you want to configure query logging for.
-#' 
-#'     -   When you create log groups for query logging, we recommend that
-#'         you use a consistent prefix, for example:
-#' 
-#'         `/aws/route53/hosted zone name `
-#' 
-#'         In the next step, you'll create a resource policy, which
-#'         controls access to one or more log groups and the associated AWS
-#'         resources, such as Route 53 hosted zones. There's a limit on the
-#'         number of resource policies that you can create, so we recommend
-#'         that you use a consistent prefix so you can use the same
-#'         resource policy for all the log groups that you create for query
-#'         logging.
-#' 
-#' 2.  Create a CloudWatch Logs resource policy, and give it the
-#'     permissions that Route 53 needs to create log streams and to send
-#'     query logs to log streams. For the value of `Resource`, specify the
-#'     ARN for the log group that you created in the previous step. To use
-#'     the same resource policy for all the CloudWatch Logs log groups that
-#'     you created for query logging configurations, replace the hosted
-#'     zone name with `*`, for example:
-#' 
-#'     `arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*`
-#' 
-#'     You can't use the CloudWatch console to create or edit a resource
-#'     policy. You must use the CloudWatch API, one of the AWS SDKs, or the
-#'     AWS CLI.
-#' 
-#' ### Log Streams and Edge Locations
-#' 
-#' When Route 53 finishes creating the configuration for DNS query logging,
-#' it does the following:
-#' 
-#' -   Creates a log stream for an edge location the first time that the
-#'     edge location responds to DNS queries for the specified hosted zone.
-#'     That log stream is used to log all queries that Route 53 responds to
-#'     for that edge location.
-#' 
-#' -   Begins to send query logs to the applicable log stream.
-#' 
-#' The name of each log stream is in the following format:
-#' 
-#' ` hosted zone ID/edge location code `
-#' 
-#' The edge location code is a three-letter code and an arbitrarily
-#' assigned number, for example, DFW3. The three-letter code typically
-#' corresponds with the International Air Transport Association airport
-#' code for an airport near the edge location. (These abbreviations might
-#' change in the future.) For a list of edge locations, see "The Route 53
-#' Global Network" on the [Route 53 Product
-#' Details](https://aws.amazon.com/route53/features/) page.
-#' 
-#' ### Queries That Are Logged
-#' 
-#' Query logs contain only the queries that DNS resolvers forward to Route
-#' 53. If a DNS resolver has already cached the response to a query (such
-#' as the IP address for a load balancer for example.com), the resolver
-#' will continue to return the cached response. It doesn't forward another
-#' query to Route 53 until the TTL for the corresponding resource record
-#' set expires. Depending on how many DNS queries are submitted for a
-#' resource record set, and depending on the TTL for that resource record
-#' set, query logs might contain information about only one query out of
-#' every several thousand queries that are submitted to DNS. For more
-#' information about how DNS works, see [Routing Internet Traffic to Your
-#' Website or Web
-#' Application](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html)
-#' in the *Amazon Route 53 Developer Guide*.
-#' 
-#' ### Log File Format
-#' 
-#' For a list of the values in each query log and the format of each value,
-#' see [Logging DNS
-#' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
-#' in the *Amazon Route 53 Developer Guide*.
-#' 
-#' ### Pricing
-#' 
-#' For information about charges for query logs, see [Amazon CloudWatch
-#' Pricing](https://aws.amazon.com/cloudwatch/pricing/).
-#' 
-#' ### How to Stop Logging
-#' 
-#' If you want Route 53 to stop sending query logs to CloudWatch Logs,
-#' delete the query logging configuration. For more information, see
-#' [`delete_query_logging_config`][route53_delete_query_logging_config].
+#' Creates a configuration for DNS query logging. After you create a query logging configuration, Amazon Route 53 begins to publish log data to an Amazon CloudWatch Logs log group.
 #'
-#' @usage
-#' route53_create_query_logging_config(HostedZoneId,
-#'   CloudWatchLogsLogGroupArn)
+#' See [https://paws-r.github.io/docs/route53/create_query_logging_config.html](https://paws-r.github.io/docs/route53/create_query_logging_config.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want to log queries for. You can log
 #' queries only for public hosted zones.
@@ -1504,28 +440,8 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' [DescribeLogGroups](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html)
 #' API action, the
 #' [describe-log-groups](https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html)
-#' command, or the applicable command in one of the AWS SDKs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   QueryLoggingConfig = list(
-#'     Id = "string",
-#'     HostedZoneId = "string",
-#'     CloudWatchLogsLogGroupArn = "string"
-#'   ),
-#'   Location = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_query_logging_config(
-#'   HostedZoneId = "string",
-#'   CloudWatchLogsLogGroupArn = "string"
-#' )
-#' ```
+#' command, or the applicable command in one of the Amazon Web Services
+#' SDKs.
 #'
 #' @keywords internal
 #'
@@ -1548,65 +464,13 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 .route53$operations$create_query_logging_config <- route53_create_query_logging_config
 
 #' Creates a delegation set (a group of four name servers) that can be
-#' reused by multiple hosted zones that were created by the same AWS
-#' account
+#' reused by multiple hosted zones that were created by the same Amazon Web
+#' Services account
 #'
 #' @description
-#' Creates a delegation set (a group of four name servers) that can be
-#' reused by multiple hosted zones that were created by the same AWS
-#' account.
-#' 
-#' You can also create a reusable delegation set that uses the four name
-#' servers that are associated with an existing hosted zone. Specify the
-#' hosted zone ID in the
-#' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set]
-#' request.
-#' 
-#' You can't associate a reusable delegation set with a private hosted
-#' zone.
-#' 
-#' For information about using a reusable delegation set to configure white
-#' label name servers, see [Configuring White Label Name
-#' Servers](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html).
-#' 
-#' The process for migrating existing hosted zones to use a reusable
-#' delegation set is comparable to the process for configuring white label
-#' name servers. You need to perform the following steps:
-#' 
-#' 1.  Create a reusable delegation set.
-#' 
-#' 2.  Recreate hosted zones, and reduce the TTL to 60 seconds or less.
-#' 
-#' 3.  Recreate resource record sets in the new hosted zones.
-#' 
-#' 4.  Change the registrar's name servers to use the name servers for the
-#'     new hosted zones.
-#' 
-#' 5.  Monitor traffic for the website or application.
-#' 
-#' 6.  Change TTLs back to their original values.
-#' 
-#' If you want to migrate existing hosted zones to use a reusable
-#' delegation set, the existing hosted zones can't use any of the name
-#' servers that are assigned to the reusable delegation set. If one or more
-#' hosted zones do use one or more name servers that are assigned to the
-#' reusable delegation set, you can do one of the following:
-#' 
-#' -   For small numbers of hosted zones—up to a few hundred—it's
-#'     relatively easy to create reusable delegation sets until you get one
-#'     that has four name servers that don't overlap with any of the name
-#'     servers in your hosted zones.
-#' 
-#' -   For larger numbers of hosted zones, the easiest solution is to use
-#'     more than one reusable delegation set.
-#' 
-#' -   For larger numbers of hosted zones, you can also migrate hosted
-#'     zones that have overlapping name servers to hosted zones that don't
-#'     have overlapping name servers, then migrate the hosted zones again
-#'     to use the reusable delegation set.
+#' Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones that were created by the same Amazon Web Services account.
 #'
-#' @usage
-#' route53_create_reusable_delegation_set(CallerReference, HostedZoneId)
+#' See [https://paws-r.github.io/docs/route53/create_reusable_delegation_set.html](https://paws-r.github.io/docs/route53/create_reusable_delegation_set.html) for full documentation.
 #'
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request, and that allows you to
 #' retry failed
@@ -1618,29 +482,6 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #' date/time stamp.
 #' @param HostedZoneId If you want to mark the delegation set for an existing hosted zone as
 #' reusable, the ID for that hosted zone.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DelegationSet = list(
-#'     Id = "string",
-#'     CallerReference = "string",
-#'     NameServers = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Location = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_reusable_delegation_set(
-#'   CallerReference = "string",
-#'   HostedZoneId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1666,12 +507,9 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #' record sets for one domain name (such as example
 #'
 #' @description
-#' Creates a traffic policy, which you use to create multiple DNS resource
-#' record sets for one domain name (such as example.com) or one subdomain
-#' name (such as www.example.com).
+#' Creates a traffic policy, which you use to create multiple DNS resource record sets for one domain name (such as example.com) or one subdomain name (such as www.example.com).
 #'
-#' @usage
-#' route53_create_traffic_policy(Name, Document, Comment)
+#' See [https://paws-r.github.io/docs/route53/create_traffic_policy.html](https://paws-r.github.io/docs/route53/create_traffic_policy.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the traffic policy.
 #' @param Document &#91;required&#93; The definition of this traffic policy in JSON format. For more
@@ -1679,31 +517,6 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #' Format](https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
 #' @param Comment (Optional) Any comments that you want to include about the traffic
 #' policy.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicy = list(
-#'     Id = "string",
-#'     Version = 123,
-#'     Name = "string",
-#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'     Document = "string",
-#'     Comment = "string"
-#'   ),
-#'   Location = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_traffic_policy(
-#'   Name = "string",
-#'   Document = "string",
-#'   Comment = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1729,19 +542,9 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
 #' settings in a specified traffic policy version
 #'
 #' @description
-#' Creates resource record sets in a specified hosted zone based on the
-#' settings in a specified traffic policy version. In addition,
-#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
-#' associates the resource record sets with a specified domain name (such
-#' as example.com) or subdomain name (such as www.example.com). Amazon
-#' Route 53 responds to DNS queries for the domain or subdomain name by
-#' using the resource record sets that
-#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
-#' created.
+#' Creates resource record sets in a specified hosted zone based on the settings in a specified traffic policy version. In addition, [`create_traffic_policy_instance`][route53_create_traffic_policy_instance] associates the resource record sets with a specified domain name (such as example.com) or subdomain name (such as www.example.com). Amazon Route 53 responds to DNS queries for the domain or subdomain name by using the resource record sets that [`create_traffic_policy_instance`][route53_create_traffic_policy_instance] created.
 #'
-#' @usage
-#' route53_create_traffic_policy_instance(HostedZoneId, Name, TTL,
-#'   TrafficPolicyId, TrafficPolicyVersion)
+#' See [https://paws-r.github.io/docs/route53/create_traffic_policy_instance.html](https://paws-r.github.io/docs/route53/create_traffic_policy_instance.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want Amazon Route 53 to create
 #' resource record sets in by using the configuration in a traffic policy.
@@ -1755,36 +558,6 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
 #' record sets in the specified hosted zone.
 #' @param TrafficPolicyVersion &#91;required&#93; The version of the traffic policy that you want to use to create
 #' resource record sets in the specified hosted zone.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicyInstance = list(
-#'     Id = "string",
-#'     HostedZoneId = "string",
-#'     Name = "string",
-#'     TTL = 123,
-#'     State = "string",
-#'     Message = "string",
-#'     TrafficPolicyId = "string",
-#'     TrafficPolicyVersion = 123,
-#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
-#'   ),
-#'   Location = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_traffic_policy_instance(
-#'   HostedZoneId = "string",
-#'   Name = "string",
-#'   TTL = 123,
-#'   TrafficPolicyId = "string",
-#'   TrafficPolicyVersion = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1809,17 +582,9 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
 #' Creates a new version of an existing traffic policy
 #'
 #' @description
-#' Creates a new version of an existing traffic policy. When you create a
-#' new version of a traffic policy, you specify the ID of the traffic
-#' policy that you want to update and a JSON-formatted document that
-#' describes the new version. You use traffic policies to create multiple
-#' DNS resource record sets for one domain name (such as example.com) or
-#' one subdomain name (such as www.example.com). You can create a maximum
-#' of 1000 versions of a traffic policy. If you reach the limit and need to
-#' create another version, you'll need to start a new traffic policy.
+#' Creates a new version of an existing traffic policy. When you create a new version of a traffic policy, you specify the ID of the traffic policy that you want to update and a JSON-formatted document that describes the new version. You use traffic policies to create multiple DNS resource record sets for one domain name (such as example.com) or one subdomain name (such as www.example.com). You can create a maximum of 1000 versions of a traffic policy. If you reach the limit and need to create another version, you'll need to start a new traffic policy.
 #'
-#' @usage
-#' route53_create_traffic_policy_version(Id, Document, Comment)
+#' See [https://paws-r.github.io/docs/route53/create_traffic_policy_version.html](https://paws-r.github.io/docs/route53/create_traffic_policy_version.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy for which you want to create a new version.
 #' @param Document &#91;required&#93; The definition of this version of the traffic policy, in JSON format.
@@ -1830,31 +595,6 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
 #' @param Comment The comment that you specified in the
 #' [`create_traffic_policy_version`][route53_create_traffic_policy_version]
 #' request, if any.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicy = list(
-#'     Id = "string",
-#'     Version = 123,
-#'     Name = "string",
-#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'     Document = "string",
-#'     Comment = "string"
-#'   ),
-#'   Location = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_traffic_policy_version(
-#'   Id = "string",
-#'   Document = "string",
-#'   Comment = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1876,56 +616,19 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 }
 .route53$operations$create_traffic_policy_version <- route53_create_traffic_policy_version
 
-#' Authorizes the AWS account that created a specified VPC to submit an
-#' AssociateVPCWithHostedZone request to associate the VPC with a specified
-#' hosted zone that was created by a different account
+#' Authorizes the Amazon Web Services account that created a specified VPC
+#' to submit an AssociateVPCWithHostedZone request to associate the VPC
+#' with a specified hosted zone that was created by a different account
 #'
 #' @description
-#' Authorizes the AWS account that created a specified VPC to submit an
-#' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
-#' request to associate the VPC with a specified hosted zone that was
-#' created by a different account. To submit a
-#' [`create_vpc_association_authorization`][route53_create_vpc_association_authorization]
-#' request, you must use the account that created the hosted zone. After
-#' you authorize the association, use the account that created the VPC to
-#' submit an
-#' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
-#' request.
-#' 
-#' If you want to associate multiple VPCs that you created by using one
-#' account with a hosted zone that you created by using a different
-#' account, you must submit one authorization request for each VPC.
+#' Authorizes the Amazon Web Services account that created a specified VPC to submit an [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone] request to associate the VPC with a specified hosted zone that was created by a different account. To submit a [`create_vpc_association_authorization`][route53_create_vpc_association_authorization] request, you must use the account that created the hosted zone. After you authorize the association, use the account that created the VPC to submit an [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone] request.
 #'
-#' @usage
-#' route53_create_vpc_association_authorization(HostedZoneId, VPC)
+#' See [https://paws-r.github.io/docs/route53/create_vpc_association_authorization.html](https://paws-r.github.io/docs/route53/create_vpc_association_authorization.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the private hosted zone that you want to authorize associating
 #' a VPC with.
 #' @param VPC &#91;required&#93; A complex type that contains the VPC ID and region for the VPC that you
 #' want to authorize associating with your hosted zone.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HostedZoneId = "string",
-#'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-#'     VPCId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_vpc_association_authorization(
-#'   HostedZoneId = "string",
-#'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-#'     VPCId = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1947,41 +650,16 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
 }
 .route53$operations$create_vpc_association_authorization <- route53_create_vpc_association_authorization
 
-#' Deactivates a key signing key (KSK) so that it will not be used for
+#' Deactivates a key-signing key (KSK) so that it will not be used for
 #' signing by DNSSEC
 #'
 #' @description
-#' Deactivates a key signing key (KSK) so that it will not be used for
-#' signing by DNSSEC. This operation changes the KSK status to `INACTIVE`.
+#' Deactivates a key-signing key (KSK) so that it will not be used for signing by DNSSEC. This operation changes the KSK status to `INACTIVE`.
 #'
-#' @usage
-#' route53_deactivate_key_signing_key(HostedZoneId, Name)
+#' See [https://paws-r.github.io/docs/route53/deactivate_key_signing_key.html](https://paws-r.github.io/docs/route53/deactivate_key_signing_key.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deactivate_key_signing_key(
-#'   HostedZoneId = "string",
-#'   Name = "string"
-#' )
-#' ```
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK).
 #'
 #' @keywords internal
 #'
@@ -2003,42 +681,43 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
 }
 .route53$operations$deactivate_key_signing_key <- route53_deactivate_key_signing_key
 
+#' Deletes a CIDR collection in the current Amazon Web Services account
+#'
+#' @description
+#' Deletes a CIDR collection in the current Amazon Web Services account. The collection must be empty before it can be deleted.
+#'
+#' See [https://paws-r.github.io/docs/route53/delete_cidr_collection.html](https://paws-r.github.io/docs/route53/delete_cidr_collection.html) for full documentation.
+#'
+#' @param Id &#91;required&#93; The UUID of the collection to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname route53_delete_cidr_collection
+route53_delete_cidr_collection <- function(Id) {
+  op <- new_operation(
+    name = "DeleteCidrCollection",
+    http_method = "DELETE",
+    http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
+    paginator = list()
+  )
+  input <- .route53$delete_cidr_collection_input(Id = Id)
+  output <- .route53$delete_cidr_collection_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$delete_cidr_collection <- route53_delete_cidr_collection
+
 #' Deletes a health check
 #'
 #' @description
 #' Deletes a health check.
-#' 
-#' Amazon Route 53 does not prevent you from deleting a health check even
-#' if the health check is associated with one or more resource record sets.
-#' If you delete a health check and you don't update the associated
-#' resource record sets, the future status of the health check can't be
-#' predicted and may change. This will affect the routing of DNS queries
-#' for your DNS failover configuration. For more information, see
-#' [Replacing and Deleting Health
-#' Checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html)
-#' in the *Amazon Route 53 Developer Guide*.
-#' 
-#' If you're using AWS Cloud Map and you configured Cloud Map to create a
-#' Route 53 health check when you register an instance, you can't use the
-#' Route 53 [`delete_health_check`][route53_delete_health_check] command to
-#' delete the health check. The health check is deleted automatically when
-#' you deregister the instance; there can be a delay of several hours
-#' before the health check is deleted from Route 53.
 #'
-#' @usage
-#' route53_delete_health_check(HealthCheckId)
+#' See [https://paws-r.github.io/docs/route53/delete_health_check.html](https://paws-r.github.io/docs/route53/delete_health_check.html) for full documentation.
 #'
 #' @param HealthCheckId &#91;required&#93; The ID of the health check that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_health_check(
-#'   HealthCheckId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2064,84 +743,10 @@ route53_delete_health_check <- function(HealthCheckId) {
 #'
 #' @description
 #' Deletes a hosted zone.
-#' 
-#' If the hosted zone was created by another service, such as AWS Cloud
-#' Map, see [Deleting Public Hosted Zones That Were Created by Another
-#' Service](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html#delete-public-hosted-zone-created-by-another-service)
-#' in the *Amazon Route 53 Developer Guide* for information about how to
-#' delete it. (The process is the same for public and private hosted zones
-#' that were created by another service.)
-#' 
-#' If you want to keep your domain registration but you want to stop
-#' routing internet traffic to your website or web application, we
-#' recommend that you delete resource record sets in the hosted zone
-#' instead of deleting the hosted zone.
-#' 
-#' If you delete a hosted zone, you can't undelete it. You must create a
-#' new hosted zone and update the name servers for your domain
-#' registration, which can require up to 48 hours to take effect. (If you
-#' delegated responsibility for a subdomain to a hosted zone and you delete
-#' the child hosted zone, you must update the name servers in the parent
-#' hosted zone.) In addition, if you delete a hosted zone, someone could
-#' hijack the domain and route traffic to their own resources using your
-#' domain name.
-#' 
-#' If you want to avoid the monthly charge for the hosted zone, you can
-#' transfer DNS service for the domain to a free DNS service. When you
-#' transfer DNS service, you have to update the name servers for the domain
-#' registration. If the domain is registered with Route 53, see
-#' [UpdateDomainNameservers](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainNameservers.html)
-#' for information about how to replace Route 53 name servers with name
-#' servers for the new DNS service. If the domain is registered with
-#' another registrar, use the method provided by the registrar to update
-#' name servers for the domain registration. For more information, perform
-#' an internet search on "free DNS service."
-#' 
-#' You can delete a hosted zone only if it contains only the default SOA
-#' record and NS resource record sets. If the hosted zone contains other
-#' resource record sets, you must delete them before you can delete the
-#' hosted zone. If you try to delete a hosted zone that contains other
-#' resource record sets, the request fails, and Route 53 returns a
-#' `HostedZoneNotEmpty` error. For information about deleting records from
-#' your hosted zone, see
-#' [`change_resource_record_sets`][route53_change_resource_record_sets].
-#' 
-#' To verify that the hosted zone has been deleted, do one of the
-#' following:
-#' 
-#' -   Use the [`get_hosted_zone`][route53_get_hosted_zone] action to
-#'     request information about the hosted zone.
-#' 
-#' -   Use the [`list_hosted_zones`][route53_list_hosted_zones] action to
-#'     get a list of the hosted zones associated with the current AWS
-#'     account.
 #'
-#' @usage
-#' route53_delete_hosted_zone(Id)
+#' See [https://paws-r.github.io/docs/route53/delete_hosted_zone.html](https://paws-r.github.io/docs/route53/delete_hosted_zone.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the hosted zone you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_hosted_zone(
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2163,41 +768,15 @@ route53_delete_hosted_zone <- function(Id) {
 }
 .route53$operations$delete_hosted_zone <- route53_delete_hosted_zone
 
-#' Deletes a key signing key (KSK)
+#' Deletes a key-signing key (KSK)
 #'
 #' @description
-#' Deletes a key signing key (KSK). Before you can delete a KSK, you must
-#' deactivate it. The KSK must be deactived before you can delete it
-#' regardless of whether the hosted zone is enabled for DNSSEC signing.
+#' Deletes a key-signing key (KSK). Before you can delete a KSK, you must deactivate it. The KSK must be deactivated before you can delete it regardless of whether the hosted zone is enabled for DNSSEC signing.
 #'
-#' @usage
-#' route53_delete_key_signing_key(HostedZoneId, Name)
+#' See [https://paws-r.github.io/docs/route53/delete_key_signing_key.html](https://paws-r.github.io/docs/route53/delete_key_signing_key.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_key_signing_key(
-#'   HostedZoneId = "string",
-#'   Name = "string"
-#' )
-#' ```
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK).
 #'
 #' @keywords internal
 #'
@@ -2222,28 +801,11 @@ route53_delete_key_signing_key <- function(HostedZoneId, Name) {
 #' Deletes a configuration for DNS query logging
 #'
 #' @description
-#' Deletes a configuration for DNS query logging. If you delete a
-#' configuration, Amazon Route 53 stops sending query logs to CloudWatch
-#' Logs. Route 53 doesn't delete any logs that are already in CloudWatch
-#' Logs.
-#' 
-#' For more information about DNS query logs, see
-#' [`create_query_logging_config`][route53_create_query_logging_config].
+#' Deletes a configuration for DNS query logging. If you delete a configuration, Amazon Route 53 stops sending query logs to CloudWatch Logs. Route 53 doesn't delete any logs that are already in CloudWatch Logs.
 #'
-#' @usage
-#' route53_delete_query_logging_config(Id)
+#' See [https://paws-r.github.io/docs/route53/delete_query_logging_config.html](https://paws-r.github.io/docs/route53/delete_query_logging_config.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the configuration that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_query_logging_config(
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2269,30 +831,10 @@ route53_delete_query_logging_config <- function(Id) {
 #'
 #' @description
 #' Deletes a reusable delegation set.
-#' 
-#' You can delete a reusable delegation set only if it isn't associated
-#' with any hosted zones.
-#' 
-#' To verify that the reusable delegation set is not associated with any
-#' hosted zones, submit a
-#' [`get_reusable_delegation_set`][route53_get_reusable_delegation_set]
-#' request and specify the ID of the reusable delegation set that you want
-#' to delete.
 #'
-#' @usage
-#' route53_delete_reusable_delegation_set(Id)
+#' See [https://paws-r.github.io/docs/route53/delete_reusable_delegation_set.html](https://paws-r.github.io/docs/route53/delete_reusable_delegation_set.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the reusable delegation set that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_reusable_delegation_set(
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2318,36 +860,11 @@ route53_delete_reusable_delegation_set <- function(Id) {
 #'
 #' @description
 #' Deletes a traffic policy.
-#' 
-#' When you delete a traffic policy, Route 53 sets a flag on the policy to
-#' indicate that it has been deleted. However, Route 53 never fully deletes
-#' the traffic policy. Note the following:
-#' 
-#' -   Deleted traffic policies aren't listed if you run
-#'     [`list_traffic_policies`][route53_list_traffic_policies].
-#' 
-#' -   There's no way to get a list of deleted policies.
-#' 
-#' -   If you retain the ID of the policy, you can get information about
-#'     the policy, including the traffic policy document, by running
-#'     [`get_traffic_policy`][route53_get_traffic_policy].
 #'
-#' @usage
-#' route53_delete_traffic_policy(Id, Version)
+#' See [https://paws-r.github.io/docs/route53/delete_traffic_policy.html](https://paws-r.github.io/docs/route53/delete_traffic_policy.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy that you want to delete.
 #' @param Version &#91;required&#93; The version number of the traffic policy that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_traffic_policy(
-#'   Id = "string",
-#'   Version = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2373,30 +890,15 @@ route53_delete_traffic_policy <- function(Id, Version) {
 #' that Amazon Route 53 created when you created the instance
 #'
 #' @description
-#' Deletes a traffic policy instance and all of the resource record sets
-#' that Amazon Route 53 created when you created the instance.
-#' 
-#' In the Route 53 console, traffic policy instances are known as policy
-#' records.
+#' Deletes a traffic policy instance and all of the resource record sets that Amazon Route 53 created when you created the instance.
 #'
-#' @usage
-#' route53_delete_traffic_policy_instance(Id)
+#' See [https://paws-r.github.io/docs/route53/delete_traffic_policy_instance.html](https://paws-r.github.io/docs/route53/delete_traffic_policy_instance.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy instance that you want to delete.
 #' 
 #' When you delete a traffic policy instance, Amazon Route 53 also deletes
 #' all of the resource record sets that were created when you created the
 #' traffic policy instance.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_traffic_policy_instance(
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2423,45 +925,17 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #' different account
 #'
 #' @description
-#' Removes authorization to submit an
-#' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
-#' request to associate a specified VPC with a hosted zone that was created
-#' by a different account. You must use the account that created the hosted
-#' zone to submit a
-#' [`delete_vpc_association_authorization`][route53_delete_vpc_association_authorization]
-#' request.
-#' 
-#' Sending this request only prevents the AWS account that created the VPC
-#' from associating the VPC with the Amazon Route 53 hosted zone in the
-#' future. If the VPC is already associated with the hosted zone,
-#' [`delete_vpc_association_authorization`][route53_delete_vpc_association_authorization]
-#' won't disassociate the VPC from the hosted zone. If you want to delete
-#' an existing association, use
-#' [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
+#' Removes authorization to submit an [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone] request to associate a specified VPC with a hosted zone that was created by a different account. You must use the account that created the hosted zone to submit a [`delete_vpc_association_authorization`][route53_delete_vpc_association_authorization] request.
 #'
-#' @usage
-#' route53_delete_vpc_association_authorization(HostedZoneId, VPC)
+#' See [https://paws-r.github.io/docs/route53/delete_vpc_association_authorization.html](https://paws-r.github.io/docs/route53/delete_vpc_association_authorization.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; When removing authorization to associate a VPC that was created by one
-#' AWS account with a hosted zone that was created with a different AWS
-#' account, the ID of the hosted zone.
+#' Amazon Web Services account with a hosted zone that was created with a
+#' different Amazon Web Services account, the ID of the hosted zone.
 #' @param VPC &#91;required&#93; When removing authorization to associate a VPC that was created by one
-#' AWS account with a hosted zone that was created with a different AWS
-#' account, a complex type that includes the ID and region of the VPC.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_vpc_association_authorization(
-#'   HostedZoneId = "string",
-#'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-#'     VPCId = "string"
-#'   )
-#' )
-#' ```
+#' Amazon Web Services account with a hosted zone that was created with a
+#' different Amazon Web Services account, a complex type that includes the
+#' ID and region of the VPC.
 #'
 #' @keywords internal
 #'
@@ -2486,36 +960,11 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #' Disables DNSSEC signing in a specific hosted zone
 #'
 #' @description
-#' Disables DNSSEC signing in a specific hosted zone. This action does not
-#' deactivate any key signing keys (KSKs) that are active in the hosted
-#' zone.
+#' Disables DNSSEC signing in a specific hosted zone. This action does not deactivate any key-signing keys (KSKs) that are active in the hosted zone.
 #'
-#' @usage
-#' route53_disable_hosted_zone_dnssec(HostedZoneId)
+#' See [https://paws-r.github.io/docs/route53/disable_hosted_zone_dnssec.html](https://paws-r.github.io/docs/route53/disable_hosted_zone_dnssec.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disable_hosted_zone_dnssec(
-#'   HostedZoneId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2541,68 +990,15 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' Amazon Route 53 private hosted zone
 #'
 #' @description
-#' Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
-#' Amazon Route 53 private hosted zone. Note the following:
-#' 
-#' -   You can't disassociate the last Amazon VPC from a private hosted
-#'     zone.
-#' 
-#' -   You can't convert a private hosted zone into a public hosted zone.
-#' 
-#' -   You can submit a
-#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone]
-#'     request using either the account that created the hosted zone or the
-#'     account that created the Amazon VPC.
-#' 
-#' -   Some services, such as AWS Cloud Map and Amazon Elastic File System
-#'     (Amazon EFS) automatically create hosted zones and associate VPCs
-#'     with the hosted zones. A service can create a hosted zone using your
-#'     account or using its own account. You can disassociate a VPC from a
-#'     hosted zone only if the service created the hosted zone using your
-#'     account.
-#' 
-#'     When you run
-#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone],
-#'     if the hosted zone has a value for `OwningAccount`, you can use
-#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
-#'     If the hosted zone has a value for `OwningService`, you can't use
-#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
+#' Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an Amazon Route 53 private hosted zone. Note the following:
 #'
-#' @usage
-#' route53_disassociate_vpc_from_hosted_zone(HostedZoneId, VPC, Comment)
+#' See [https://paws-r.github.io/docs/route53/disassociate_vpc_from_hosted_zone.html](https://paws-r.github.io/docs/route53/disassociate_vpc_from_hosted_zone.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the private hosted zone that you want to disassociate a VPC
 #' from.
 #' @param VPC &#91;required&#93; A complex type that contains information about the VPC that you're
 #' disassociating from the specified hosted zone.
 #' @param Comment *Optional:* A comment about the disassociation request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_vpc_from_hosted_zone(
-#'   HostedZoneId = "string",
-#'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-#'     VPCId = "string"
-#'   ),
-#'   Comment = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2629,32 +1025,9 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
 #' @description
 #' Enables DNSSEC signing in a specific hosted zone.
 #'
-#' @usage
-#' route53_enable_hosted_zone_dnssec(HostedZoneId)
+#' See [https://paws-r.github.io/docs/route53/enable_hosted_zone_dnssec.html](https://paws-r.github.io/docs/route53/enable_hosted_zone_dnssec.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$enable_hosted_zone_dnssec(
-#'   HostedZoneId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2680,60 +1053,29 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' maximum number of health checks that you can create using the account
 #'
 #' @description
-#' Gets the specified limit for the current account, for example, the
-#' maximum number of health checks that you can create using the account.
-#' 
-#' For the default limit, see
-#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
-#' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' open a case.
-#' 
-#' You can also view account limits in AWS Trusted Advisor. Sign in to the
-#' AWS Management Console and open the Trusted Advisor console at
-#' https://console.aws.amazon.com/trustedadvisor/. Then choose **Service
-#' limits** in the navigation pane.
+#' Gets the specified limit for the current account, for example, the maximum number of health checks that you can create using the account.
 #'
-#' @usage
-#' route53_get_account_limit(Type)
+#' See [https://paws-r.github.io/docs/route53/get_account_limit.html](https://paws-r.github.io/docs/route53/get_account_limit.html) for full documentation.
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
-#' -   **MAX_HEALTH_CHECKS_BY_OWNER**: The maximum number of health
-#'     checks that you can create using the current account.
+#' -   **MAX_HEALTH_CHECKS_BY_OWNER**: The maximum number of health checks
+#'     that you can create using the current account.
 #' 
-#' -   **MAX_HOSTED_ZONES_BY_OWNER**: The maximum number of hosted
-#'     zones that you can create using the current account.
+#' -   **MAX_HOSTED_ZONES_BY_OWNER**: The maximum number of hosted zones
+#'     that you can create using the current account.
 #' 
-#' -   **MAX_REUSABLE_DELEGATION_SETS_BY_OWNER**: The maximum number
-#'     of reusable delegation sets that you can create using the current
+#' -   **MAX_REUSABLE_DELEGATION_SETS_BY_OWNER**: The maximum number of
+#'     reusable delegation sets that you can create using the current
 #'     account.
 #' 
 #' -   **MAX_TRAFFIC_POLICIES_BY_OWNER**: The maximum number of traffic
 #'     policies that you can create using the current account.
 #' 
-#' -   **MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER**: The maximum number
-#'     of traffic policy instances that you can create using the current
+#' -   **MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER**: The maximum number of
+#'     traffic policy instances that you can create using the current
 #'     account. (Traffic policy instances are referred to as traffic flow
 #'     policy records in the Amazon Route 53 console.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Limit = list(
-#'     Type = "MAX_HEALTH_CHECKS_BY_OWNER"|"MAX_HOSTED_ZONES_BY_OWNER"|"MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"|"MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"|"MAX_TRAFFIC_POLICIES_BY_OWNER",
-#'     Value = 123
-#'   ),
-#'   Count = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_account_limit(
-#'   Type = "MAX_HEALTH_CHECKS_BY_OWNER"|"MAX_HOSTED_ZONES_BY_OWNER"|"MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"|"MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"|"MAX_TRAFFIC_POLICIES_BY_OWNER"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2758,45 +1100,14 @@ route53_get_account_limit <- function(Type) {
 #' Returns the current status of a change batch request
 #'
 #' @description
-#' Returns the current status of a change batch request. The status is one
-#' of the following values:
-#' 
-#' -   `PENDING` indicates that the changes in this request have not
-#'     propagated to all Amazon Route 53 DNS servers. This is the initial
-#'     status of all change batch requests.
-#' 
-#' -   `INSYNC` indicates that the changes have propagated to all Route 53
-#'     DNS servers.
+#' Returns the current status of a change batch request. The status is one of the following values:
 #'
-#' @usage
-#' route53_get_change(Id)
+#' See [https://paws-r.github.io/docs/route53/get_change.html](https://paws-r.github.io/docs/route53/get_change.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the change batch request. The value that you specify here is
 #' the value that
 #' [`change_resource_record_sets`][route53_change_resource_record_sets]
 #' returned in the `Id` element when you submitted the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ChangeInfo = list(
-#'     Id = "string",
-#'     Status = "PENDING"|"INSYNC",
-#'     SubmittedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_change(
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2818,34 +1129,13 @@ route53_get_change <- function(Id) {
 }
 .route53$operations$get_change <- route53_get_change
 
-#' GetCheckerIpRanges still works, but we recommend that you download
-#' ip-ranges
+#' Route 53 does not perform authorization for this API because it
+#' retrieves information that is already available to the public
 #'
 #' @description
-#' [`get_checker_ip_ranges`][route53_get_checker_ip_ranges] still works,
-#' but we recommend that you download ip-ranges.json, which includes IP
-#' address ranges for all AWS services. For more information, see [IP
-#' Address Ranges of Amazon Route 53
-#' Servers](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' Route 53 does not perform authorization for this API because it retrieves information that is already available to the public.
 #'
-#' @usage
-#' route53_get_checker_ip_ranges()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CheckerIpRanges = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_checker_ip_ranges()
-#' ```
+#' See [https://paws-r.github.io/docs/route53/get_checker_ip_ranges.html](https://paws-r.github.io/docs/route53/get_checker_ip_ranges.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -2868,60 +1158,14 @@ route53_get_checker_ip_ranges <- function() {
 .route53$operations$get_checker_ip_ranges <- route53_get_checker_ip_ranges
 
 #' Returns information about DNSSEC for a specific hosted zone, including
-#' the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
-#' zone
+#' the key-signing keys (KSKs) in the hosted zone
 #'
 #' @description
-#' Returns information about DNSSEC for a specific hosted zone, including
-#' the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
-#' zone.
+#' Returns information about DNSSEC for a specific hosted zone, including the key-signing keys (KSKs) in the hosted zone.
 #'
-#' @usage
-#' route53_get_dnssec(HostedZoneId)
+#' See [https://paws-r.github.io/docs/route53/get_dnssec.html](https://paws-r.github.io/docs/route53/get_dnssec.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = list(
-#'     ServeSignature = "string",
-#'     StatusMessage = "string"
-#'   ),
-#'   KeySigningKeys = list(
-#'     list(
-#'       Name = "string",
-#'       KmsArn = "string",
-#'       Flag = 123,
-#'       SigningAlgorithmMnemonic = "string",
-#'       SigningAlgorithmType = 123,
-#'       DigestAlgorithmMnemonic = "string",
-#'       DigestAlgorithmType = 123,
-#'       KeyTag = 123,
-#'       DigestValue = "string",
-#'       PublicKey = "string",
-#'       DSRecord = "string",
-#'       DNSKEYRecord = "string",
-#'       Status = "string",
-#'       StatusMessage = "string",
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_dnssec(
-#'   HostedZoneId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2947,26 +1191,9 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' supported for Amazon Route 53 geolocation resource record sets
 #'
 #' @description
-#' Gets information about whether a specified geographic location is
-#' supported for Amazon Route 53 geolocation resource record sets.
-#' 
-#' Use the following syntax to determine whether a continent is supported
-#' for geolocation:
-#' 
-#' `GET /2013-04-01/geolocation?continentcode=two-letter abbreviation for a continent `
-#' 
-#' Use the following syntax to determine whether a country is supported for
-#' geolocation:
-#' 
-#' `GET /2013-04-01/geolocation?countrycode=two-character country code `
-#' 
-#' Use the following syntax to determine whether a subdivision of a country
-#' is supported for geolocation:
-#' 
-#' `GET /2013-04-01/geolocation?countrycode=two-character country code&subdivisioncode=subdivision code `
+#' Gets information about whether a specified geographic location is supported for Amazon Route 53 geolocation resource record sets.
 #'
-#' @usage
-#' route53_get_geo_location(ContinentCode, CountryCode, SubdivisionCode)
+#' See [https://paws-r.github.io/docs/route53/get_geo_location.html](https://paws-r.github.io/docs/route53/get_geo_location.html) for full documentation.
 #'
 #' @param ContinentCode For geolocation resource record sets, a two-letter abbreviation that
 #' identifies a continent. Amazon Route 53 supports the following continent
@@ -2988,37 +1215,11 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' @param CountryCode Amazon Route 53 uses the two-letter country codes that are specified in
 #' [ISO standard 3166-1
 #' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-#' @param SubdivisionCode For `SubdivisionCode`, Amazon Route 53 supports only states of the
-#' United States. For a list of state abbreviations, see Appendix B:
+#' @param SubdivisionCode The code for the subdivision, such as a particular state within the
+#' United States. For a list of US state abbreviations, see Appendix B:
 #' Two–Letter State and Possession Abbreviations on the United States
-#' Postal Service website.
-#' 
-#' If you specify `subdivisioncode`, you must also specify `US` for
-#' `CountryCode`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GeoLocationDetails = list(
-#'     ContinentCode = "string",
-#'     ContinentName = "string",
-#'     CountryCode = "string",
-#'     CountryName = "string",
-#'     SubdivisionCode = "string",
-#'     SubdivisionName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_geo_location(
-#'   ContinentCode = "string",
-#'   CountryCode = "string",
-#'   SubdivisionCode = "string"
-#' )
-#' ```
+#' Postal Service website. For a list of all supported subdivision codes,
+#' use the [`list_geo_locations`][route53_list_geo_locations] API.
 #'
 #' @keywords internal
 #'
@@ -3045,77 +1246,12 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
 #' @description
 #' Gets information about a specified health check.
 #'
-#' @usage
-#' route53_get_health_check(HealthCheckId)
+#' See [https://paws-r.github.io/docs/route53/get_health_check.html](https://paws-r.github.io/docs/route53/get_health_check.html) for full documentation.
 #'
 #' @param HealthCheckId &#91;required&#93; The identifier that Amazon Route 53 assigned to the health check when
 #' you created it. When you add or update a resource record set, you use
 #' this value to specify which health check to use. The value can be up to
 #' 64 characters long.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HealthCheck = list(
-#'     Id = "string",
-#'     CallerReference = "string",
-#'     LinkedService = list(
-#'       ServicePrincipal = "string",
-#'       Description = "string"
-#'     ),
-#'     HealthCheckConfig = list(
-#'       IPAddress = "string",
-#'       Port = 123,
-#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
-#'       ResourcePath = "string",
-#'       FullyQualifiedDomainName = "string",
-#'       SearchString = "string",
-#'       RequestInterval = 123,
-#'       FailureThreshold = 123,
-#'       MeasureLatency = TRUE|FALSE,
-#'       Inverted = TRUE|FALSE,
-#'       Disabled = TRUE|FALSE,
-#'       HealthThreshold = 123,
-#'       ChildHealthChecks = list(
-#'         "string"
-#'       ),
-#'       EnableSNI = TRUE|FALSE,
-#'       Regions = list(
-#'         "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
-#'       ),
-#'       AlarmIdentifier = list(
-#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
-#'         Name = "string"
-#'       ),
-#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
-#'     ),
-#'     HealthCheckVersion = 123,
-#'     CloudWatchAlarmConfiguration = list(
-#'       EvaluationPeriods = 123,
-#'       Threshold = 123.0,
-#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-#'       Period = 123,
-#'       MetricName = "string",
-#'       Namespace = "string",
-#'       Statistic = "Average"|"Sum"|"SampleCount"|"Maximum"|"Minimum",
-#'       Dimensions = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_health_check(
-#'   HealthCheckId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3138,27 +1274,12 @@ route53_get_health_check <- function(HealthCheckId) {
 .route53$operations$get_health_check <- route53_get_health_check
 
 #' Retrieves the number of health checks that are associated with the
-#' current AWS account
+#' current Amazon Web Services account
 #'
 #' @description
-#' Retrieves the number of health checks that are associated with the
-#' current AWS account.
+#' Retrieves the number of health checks that are associated with the current Amazon Web Services account.
 #'
-#' @usage
-#' route53_get_health_check_count()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HealthCheckCount = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_health_check_count()
-#' ```
+#' See [https://paws-r.github.io/docs/route53/get_health_check_count.html](https://paws-r.github.io/docs/route53/get_health_check_count.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3185,8 +1306,7 @@ route53_get_health_check_count <- function() {
 #' @description
 #' Gets the reason that a specified health check failed most recently.
 #'
-#' @usage
-#' route53_get_health_check_last_failure_reason(HealthCheckId)
+#' See [https://paws-r.github.io/docs/route53/get_health_check_last_failure_reason.html](https://paws-r.github.io/docs/route53/get_health_check_last_failure_reason.html) for full documentation.
 #'
 #' @param HealthCheckId &#91;required&#93; The ID for the health check for which you want the last failure reason.
 #' When you created the health check,
@@ -3198,32 +1318,6 @@ route53_get_health_check_count <- function() {
 #' console. You can't use
 #' [`get_health_check_last_failure_reason`][route53_get_health_check_last_failure_reason]
 #' for a calculated health check.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HealthCheckObservations = list(
-#'     list(
-#'       Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1",
-#'       IPAddress = "string",
-#'       StatusReport = list(
-#'         Status = "string",
-#'         CheckedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_health_check_last_failure_reason(
-#'   HealthCheckId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3250,8 +1344,7 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
 #' @description
 #' Gets status of a specified health check.
 #'
-#' @usage
-#' route53_get_health_check_status(HealthCheckId)
+#' See [https://paws-r.github.io/docs/route53/get_health_check_status.html](https://paws-r.github.io/docs/route53/get_health_check_status.html) for full documentation.
 #'
 #' @param HealthCheckId &#91;required&#93; The ID for the health check that you want the current status for. When
 #' you created the health check,
@@ -3262,32 +1355,6 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
 #' use the Amazon Route 53 console or the CloudWatch console. You can't use
 #' [`get_health_check_status`][route53_get_health_check_status] to get the
 #' status of a calculated health check.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HealthCheckObservations = list(
-#'     list(
-#'       Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1",
-#'       IPAddress = "string",
-#'       StatusReport = list(
-#'         Status = "string",
-#'         CheckedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_health_check_status(
-#'   HealthCheckId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3313,63 +1380,11 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #' servers assigned to the hosted zone
 #'
 #' @description
-#' Gets information about a specified hosted zone including the four name
-#' servers assigned to the hosted zone.
+#' Gets information about a specified hosted zone including the four name servers assigned to the hosted zone.
 #'
-#' @usage
-#' route53_get_hosted_zone(Id)
+#' See [https://paws-r.github.io/docs/route53/get_hosted_zone.html](https://paws-r.github.io/docs/route53/get_hosted_zone.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the hosted zone that you want to get information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HostedZone = list(
-#'     Id = "string",
-#'     Name = "string",
-#'     CallerReference = "string",
-#'     Config = list(
-#'       Comment = "string",
-#'       PrivateZone = TRUE|FALSE
-#'     ),
-#'     ResourceRecordSetCount = 123,
-#'     LinkedService = list(
-#'       ServicePrincipal = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   DelegationSet = list(
-#'     Id = "string",
-#'     CallerReference = "string",
-#'     NameServers = list(
-#'       "string"
-#'     )
-#'   ),
-#'   VPCs = list(
-#'     list(
-#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-#'       VPCId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_hosted_zone(
-#'   Id = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example gets information about the Z3M3LMPEXAMPLE hosted
-#' # zone.
-#' svc$get_hosted_zone(
-#'   Id = "Z3M3LMPEXAMPLE"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3392,27 +1407,12 @@ route53_get_hosted_zone <- function(Id) {
 .route53$operations$get_hosted_zone <- route53_get_hosted_zone
 
 #' Retrieves the number of hosted zones that are associated with the
-#' current AWS account
+#' current Amazon Web Services account
 #'
 #' @description
-#' Retrieves the number of hosted zones that are associated with the
-#' current AWS account.
+#' Retrieves the number of hosted zones that are associated with the current Amazon Web Services account.
 #'
-#' @usage
-#' route53_get_hosted_zone_count()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HostedZoneCount = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_hosted_zone_count()
-#' ```
+#' See [https://paws-r.github.io/docs/route53/get_hosted_zone_count.html](https://paws-r.github.io/docs/route53/get_hosted_zone_count.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3438,45 +1438,18 @@ route53_get_hosted_zone_count <- function() {
 #' maximum number of records that you can create in the hosted zone
 #'
 #' @description
-#' Gets the specified limit for a specified hosted zone, for example, the
-#' maximum number of records that you can create in the hosted zone.
-#' 
-#' For the default limit, see
-#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
-#' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' open a case.
+#' Gets the specified limit for a specified hosted zone, for example, the maximum number of records that you can create in the hosted zone.
 #'
-#' @usage
-#' route53_get_hosted_zone_limit(Type, HostedZoneId)
+#' See [https://paws-r.github.io/docs/route53/get_hosted_zone_limit.html](https://paws-r.github.io/docs/route53/get_hosted_zone_limit.html) for full documentation.
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
-#' -   **MAX_RRSETS_BY_ZONE**: The maximum number of records that you
-#'     can create in the specified hosted zone.
+#' -   **MAX_RRSETS_BY_ZONE**: The maximum number of records that you can
+#'     create in the specified hosted zone.
 #' 
-#' -   **MAX_VPCS_ASSOCIATED_BY_ZONE**: The maximum number of Amazon
-#'     VPCs that you can associate with the specified private hosted zone.
+#' -   **MAX_VPCS_ASSOCIATED_BY_ZONE**: The maximum number of Amazon VPCs
+#'     that you can associate with the specified private hosted zone.
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want to get a limit for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Limit = list(
-#'     Type = "MAX_RRSETS_BY_ZONE"|"MAX_VPCS_ASSOCIATED_BY_ZONE",
-#'     Value = 123
-#'   ),
-#'   Count = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_hosted_zone_limit(
-#'   Type = "MAX_RRSETS_BY_ZONE"|"MAX_VPCS_ASSOCIATED_BY_ZONE",
-#'   HostedZoneId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3502,36 +1475,11 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
 #'
 #' @description
 #' Gets information about a specified configuration for DNS query logging.
-#' 
-#' For more information about DNS query logs, see
-#' [`create_query_logging_config`][route53_create_query_logging_config] and
-#' [Logging DNS
-#' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
 #'
-#' @usage
-#' route53_get_query_logging_config(Id)
+#' See [https://paws-r.github.io/docs/route53/get_query_logging_config.html](https://paws-r.github.io/docs/route53/get_query_logging_config.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the configuration for DNS query logging that you want to get
 #' information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   QueryLoggingConfig = list(
-#'     Id = "string",
-#'     HostedZoneId = "string",
-#'     CloudWatchLogsLogGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_query_logging_config(
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3557,35 +1505,12 @@ route53_get_query_logging_config <- function(Id) {
 #' including the four name servers that are assigned to the delegation set
 #'
 #' @description
-#' Retrieves information about a specified reusable delegation set,
-#' including the four name servers that are assigned to the delegation set.
+#' Retrieves information about a specified reusable delegation set, including the four name servers that are assigned to the delegation set.
 #'
-#' @usage
-#' route53_get_reusable_delegation_set(Id)
+#' See [https://paws-r.github.io/docs/route53/get_reusable_delegation_set.html](https://paws-r.github.io/docs/route53/get_reusable_delegation_set.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the reusable delegation set that you want to get a list of
 #' name servers for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DelegationSet = list(
-#'     Id = "string",
-#'     CallerReference = "string",
-#'     NameServers = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_reusable_delegation_set(
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3611,41 +1536,14 @@ route53_get_reusable_delegation_set <- function(Id) {
 #' specified reusable delegation set
 #'
 #' @description
-#' Gets the maximum number of hosted zones that you can associate with the
-#' specified reusable delegation set.
-#' 
-#' For the default limit, see
-#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
-#' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' open a case.
+#' Gets the maximum number of hosted zones that you can associate with the specified reusable delegation set.
 #'
-#' @usage
-#' route53_get_reusable_delegation_set_limit(Type, DelegationSetId)
+#' See [https://paws-r.github.io/docs/route53/get_reusable_delegation_set_limit.html](https://paws-r.github.io/docs/route53/get_reusable_delegation_set_limit.html) for full documentation.
 #'
 #' @param Type &#91;required&#93; Specify `MAX_ZONES_BY_REUSABLE_DELEGATION_SET` to get the maximum number
 #' of hosted zones that you can associate with the specified reusable
 #' delegation set.
 #' @param DelegationSetId &#91;required&#93; The ID of the delegation set that you want to get the limit for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Limit = list(
-#'     Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
-#'     Value = 123
-#'   ),
-#'   Count = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_reusable_delegation_set_limit(
-#'   Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
-#'   DelegationSetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3671,40 +1569,12 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
 #'
 #' @description
 #' Gets information about a specific traffic policy version.
-#' 
-#' For information about how of deleting a traffic policy affects the
-#' response from [`get_traffic_policy`][route53_get_traffic_policy], see
-#' [`delete_traffic_policy`][route53_delete_traffic_policy].
 #'
-#' @usage
-#' route53_get_traffic_policy(Id, Version)
+#' See [https://paws-r.github.io/docs/route53/get_traffic_policy.html](https://paws-r.github.io/docs/route53/get_traffic_policy.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy that you want to get information about.
 #' @param Version &#91;required&#93; The version number of the traffic policy that you want to get
 #' information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicy = list(
-#'     Id = "string",
-#'     Version = 123,
-#'     Name = "string",
-#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'     Document = "string",
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_traffic_policy(
-#'   Id = "string",
-#'   Version = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3730,48 +1600,11 @@ route53_get_traffic_policy <- function(Id, Version) {
 #'
 #' @description
 #' Gets information about a specified traffic policy instance.
-#' 
-#' After you submit a
-#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
-#' or an
-#' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
-#' request, there's a brief delay while Amazon Route 53 creates the
-#' resource record sets that are specified in the traffic policy
-#' definition. For more information, see the `State` response element.
-#' 
-#' In the Route 53 console, traffic policy instances are known as policy
-#' records.
 #'
-#' @usage
-#' route53_get_traffic_policy_instance(Id)
+#' See [https://paws-r.github.io/docs/route53/get_traffic_policy_instance.html](https://paws-r.github.io/docs/route53/get_traffic_policy_instance.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy instance that you want to get information
 #' about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicyInstance = list(
-#'     Id = "string",
-#'     HostedZoneId = "string",
-#'     Name = "string",
-#'     TTL = 123,
-#'     State = "string",
-#'     Message = "string",
-#'     TrafficPolicyId = "string",
-#'     TrafficPolicyVersion = 123,
-#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_traffic_policy_instance(
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3794,27 +1627,12 @@ route53_get_traffic_policy_instance <- function(Id) {
 .route53$operations$get_traffic_policy_instance <- route53_get_traffic_policy_instance
 
 #' Gets the number of traffic policy instances that are associated with the
-#' current AWS account
+#' current Amazon Web Services account
 #'
 #' @description
-#' Gets the number of traffic policy instances that are associated with the
-#' current AWS account.
+#' Gets the number of traffic policy instances that are associated with the current Amazon Web Services account.
 #'
-#' @usage
-#' route53_get_traffic_policy_instance_count()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicyInstanceCount = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_traffic_policy_instance_count()
-#' ```
+#' See [https://paws-r.github.io/docs/route53/get_traffic_policy_instance_count.html](https://paws-r.github.io/docs/route53/get_traffic_policy_instance_count.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3836,23 +1654,117 @@ route53_get_traffic_policy_instance_count <- function() {
 }
 .route53$operations$get_traffic_policy_instance_count <- route53_get_traffic_policy_instance_count
 
+#' Returns a paginated list of location objects and their CIDR blocks
+#'
+#' @description
+#' Returns a paginated list of location objects and their CIDR blocks.
+#'
+#' See [https://paws-r.github.io/docs/route53/list_cidr_blocks.html](https://paws-r.github.io/docs/route53/list_cidr_blocks.html) for full documentation.
+#'
+#' @param CollectionId &#91;required&#93; The UUID of the CIDR collection.
+#' @param LocationName The name of the CIDR collection location.
+#' @param NextToken An opaque pagination token to indicate where the service is to begin
+#' enumerating results.
+#' @param MaxResults Maximum number of results you want returned.
+#'
+#' @keywords internal
+#'
+#' @rdname route53_list_cidr_blocks
+route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCidrBlocks",
+    http_method = "GET",
+    http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}/cidrblocks",
+    paginator = list()
+  )
+  input <- .route53$list_cidr_blocks_input(CollectionId = CollectionId, LocationName = LocationName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .route53$list_cidr_blocks_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$list_cidr_blocks <- route53_list_cidr_blocks
+
+#' Returns a paginated list of CIDR collections in the Amazon Web Services
+#' account (metadata only)
+#'
+#' @description
+#' Returns a paginated list of CIDR collections in the Amazon Web Services account (metadata only).
+#'
+#' See [https://paws-r.github.io/docs/route53/list_cidr_collections.html](https://paws-r.github.io/docs/route53/list_cidr_collections.html) for full documentation.
+#'
+#' @param NextToken An opaque pagination token to indicate where the service is to begin
+#' enumerating results.
+#' 
+#' If no value is provided, the listing of results starts from the
+#' beginning.
+#' @param MaxResults The maximum number of CIDR collections to return in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname route53_list_cidr_collections
+route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCidrCollections",
+    http_method = "GET",
+    http_path = "/2013-04-01/cidrcollection",
+    paginator = list()
+  )
+  input <- .route53$list_cidr_collections_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .route53$list_cidr_collections_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$list_cidr_collections <- route53_list_cidr_collections
+
+#' Returns a paginated list of CIDR locations for the given collection
+#' (metadata only, does not include CIDR blocks)
+#'
+#' @description
+#' Returns a paginated list of CIDR locations for the given collection (metadata only, does not include CIDR blocks).
+#'
+#' See [https://paws-r.github.io/docs/route53/list_cidr_locations.html](https://paws-r.github.io/docs/route53/list_cidr_locations.html) for full documentation.
+#'
+#' @param CollectionId &#91;required&#93; The CIDR collection ID.
+#' @param NextToken An opaque pagination token to indicate where the service is to begin
+#' enumerating results.
+#' 
+#' If no value is provided, the listing of results starts from the
+#' beginning.
+#' @param MaxResults The maximum number of CIDR collection locations to return in the
+#' response.
+#'
+#' @keywords internal
+#'
+#' @rdname route53_list_cidr_locations
+route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCidrLocations",
+    http_method = "GET",
+    http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
+    paginator = list()
+  )
+  input <- .route53$list_cidr_locations_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .route53$list_cidr_locations_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$list_cidr_locations <- route53_list_cidr_locations
+
 #' Retrieves a list of supported geographic locations
 #'
 #' @description
 #' Retrieves a list of supported geographic locations.
-#' 
-#' Countries are listed first, and continents are listed last. If Amazon
-#' Route 53 supports subdivisions for a country (for example, states or
-#' provinces), the subdivisions for that country are listed in alphabetical
-#' order immediately after the corresponding country.
-#' 
-#' For a list of supported geolocation codes, see the
-#' [GeoLocation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html)
-#' data type.
 #'
-#' @usage
-#' route53_list_geo_locations(StartContinentCode, StartCountryCode,
-#'   StartSubdivisionCode, MaxItems)
+#' See [https://paws-r.github.io/docs/route53/list_geo_locations.html](https://paws-r.github.io/docs/route53/list_geo_locations.html) for full documentation.
 #'
 #' @param StartContinentCode The code for the continent with which you want to start listing
 #' locations that Amazon Route 53 supports for geolocation. If Route 53 has
@@ -3882,38 +1794,6 @@ route53_get_traffic_policy_instance_count <- function() {
 #' remain to be listed, then the value of the `IsTruncated` element in the
 #' response is `true`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GeoLocationDetailsList = list(
-#'     list(
-#'       ContinentCode = "string",
-#'       ContinentName = "string",
-#'       CountryCode = "string",
-#'       CountryName = "string",
-#'       SubdivisionCode = "string",
-#'       SubdivisionName = "string"
-#'     )
-#'   ),
-#'   IsTruncated = TRUE|FALSE,
-#'   NextContinentCode = "string",
-#'   NextCountryCode = "string",
-#'   NextSubdivisionCode = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_geo_locations(
-#'   StartContinentCode = "string",
-#'   StartCountryCode = "string",
-#'   StartSubdivisionCode = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname route53_list_geo_locations
@@ -3935,14 +1815,12 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 .route53$operations$list_geo_locations <- route53_list_geo_locations
 
 #' Retrieve a list of the health checks that are associated with the
-#' current AWS account
+#' current Amazon Web Services account
 #'
 #' @description
-#' Retrieve a list of the health checks that are associated with the
-#' current AWS account.
+#' Retrieve a list of the health checks that are associated with the current Amazon Web Services account.
 #'
-#' @usage
-#' route53_list_health_checks(Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/route53/list_health_checks.html](https://paws-r.github.io/docs/route53/list_health_checks.html) for full documentation.
 #'
 #' @param Marker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more health checks. To get another group, submit another
@@ -3959,77 +1837,6 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #' to the current request. Amazon Route 53 returns a maximum of 100 items.
 #' If you set `MaxItems` to a value greater than 100, Route 53 returns only
 #' the first 100 health checks.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HealthChecks = list(
-#'     list(
-#'       Id = "string",
-#'       CallerReference = "string",
-#'       LinkedService = list(
-#'         ServicePrincipal = "string",
-#'         Description = "string"
-#'       ),
-#'       HealthCheckConfig = list(
-#'         IPAddress = "string",
-#'         Port = 123,
-#'         Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
-#'         ResourcePath = "string",
-#'         FullyQualifiedDomainName = "string",
-#'         SearchString = "string",
-#'         RequestInterval = 123,
-#'         FailureThreshold = 123,
-#'         MeasureLatency = TRUE|FALSE,
-#'         Inverted = TRUE|FALSE,
-#'         Disabled = TRUE|FALSE,
-#'         HealthThreshold = 123,
-#'         ChildHealthChecks = list(
-#'           "string"
-#'         ),
-#'         EnableSNI = TRUE|FALSE,
-#'         Regions = list(
-#'           "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
-#'         ),
-#'         AlarmIdentifier = list(
-#'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
-#'           Name = "string"
-#'         ),
-#'         InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
-#'       ),
-#'       HealthCheckVersion = 123,
-#'       CloudWatchAlarmConfiguration = list(
-#'         EvaluationPeriods = 123,
-#'         Threshold = 123.0,
-#'         ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-#'         Period = 123,
-#'         MetricName = "string",
-#'         Namespace = "string",
-#'         Statistic = "Average"|"Sum"|"SampleCount"|"Maximum"|"Minimum",
-#'         Dimensions = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   IsTruncated = TRUE|FALSE,
-#'   NextMarker = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_health_checks(
-#'   Marker = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4052,19 +1859,12 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
 .route53$operations$list_health_checks <- route53_list_health_checks
 
 #' Retrieves a list of the public and private hosted zones that are
-#' associated with the current AWS account
+#' associated with the current Amazon Web Services account
 #'
 #' @description
-#' Retrieves a list of the public and private hosted zones that are
-#' associated with the current AWS account. The response includes a
-#' `HostedZones` child element for each hosted zone.
-#' 
-#' Amazon Route 53 returns a maximum of 100 items in each response. If you
-#' have a lot of hosted zones, you can use the `maxitems` parameter to list
-#' them in groups of up to 100.
+#' Retrieves a list of the public and private hosted zones that are associated with the current Amazon Web Services account. The response includes a `HostedZones` child element for each hosted zone.
 #'
-#' @usage
-#' route53_list_hosted_zones(Marker, MaxItems, DelegationSetId)
+#' See [https://paws-r.github.io/docs/route53/list_hosted_zones.html](https://paws-r.github.io/docs/route53/list_hosted_zones.html) for full documentation.
 #'
 #' @param Marker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more hosted zones. To get more hosted zones, submit another
@@ -4084,42 +1884,6 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
 #' @param DelegationSetId If you're using reusable delegation sets and you want to list all of the
 #' hosted zones that are associated with a reusable delegation set, specify
 #' the ID of that reusable delegation set.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HostedZones = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       CallerReference = "string",
-#'       Config = list(
-#'         Comment = "string",
-#'         PrivateZone = TRUE|FALSE
-#'       ),
-#'       ResourceRecordSetCount = 123,
-#'       LinkedService = list(
-#'         ServicePrincipal = "string",
-#'         Description = "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   IsTruncated = TRUE|FALSE,
-#'   NextMarker = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_hosted_zones(
-#'   Marker = "string",
-#'   MaxItems = "string",
-#'   DelegationSetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4144,76 +1908,19 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' Retrieves a list of your hosted zones in lexicographic order
 #'
 #' @description
-#' Retrieves a list of your hosted zones in lexicographic order. The
-#' response includes a `HostedZones` child element for each hosted zone
-#' created by the current AWS account.
-#' 
-#' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name] sorts
-#' hosted zones by name with the labels reversed. For example:
-#' 
-#' `com.example.www.`
-#' 
-#' Note the trailing dot, which can change the sort order in some
-#' circumstances.
-#' 
-#' If the domain name includes escape characters or Punycode,
-#' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
-#' alphabetizes the domain name using the escaped or Punycoded value, which
-#' is the format that Amazon Route 53 saves in its database. For example,
-#' to create a hosted zone for exämple.com, you specify ex\\344mple.com for
-#' the domain name.
-#' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
-#' alphabetizes it as:
-#' 
-#' `com.ex\344mple.`
-#' 
-#' The labels are reversed and alphabetized using the escaped value. For
-#' more information about valid domain name formats, including
-#' internationalized domain names, see [DNS Domain Name
-#' Format](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
-#' in the *Amazon Route 53 Developer Guide*.
-#' 
-#' Route 53 returns up to 100 items in each response. If you have a lot of
-#' hosted zones, use the `MaxItems` parameter to list them in groups of up
-#' to 100. The response includes values that help navigate from one group
-#' of `MaxItems` hosted zones to the next:
-#' 
-#' -   The `DNSName` and `HostedZoneId` elements in the response contain
-#'     the values, if any, specified for the `dnsname` and `hostedzoneid`
-#'     parameters in the request that produced the current response.
-#' 
-#' -   The `MaxItems` element in the response contains the value, if any,
-#'     that you specified for the `maxitems` parameter in the request that
-#'     produced the current response.
-#' 
-#' -   If the value of `IsTruncated` in the response is true, there are
-#'     more hosted zones associated with the current AWS account.
-#' 
-#'     If `IsTruncated` is false, this response includes the last hosted
-#'     zone that is associated with the current account. The `NextDNSName`
-#'     element and `NextHostedZoneId` elements are omitted from the
-#'     response.
-#' 
-#' -   The `NextDNSName` and `NextHostedZoneId` elements in the response
-#'     contain the domain name and the hosted zone ID of the next hosted
-#'     zone that is associated with the current AWS account. If you want to
-#'     list more hosted zones, make another call to
-#'     [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name],
-#'     and specify the value of `NextDNSName` and `NextHostedZoneId` in the
-#'     `dnsname` and `hostedzoneid` parameters, respectively.
+#' Retrieves a list of your hosted zones in lexicographic order. The response includes a `HostedZones` child element for each hosted zone created by the current Amazon Web Services account.
 #'
-#' @usage
-#' route53_list_hosted_zones_by_name(DNSName, HostedZoneId, MaxItems)
+#' See [https://paws-r.github.io/docs/route53/list_hosted_zones_by_name.html](https://paws-r.github.io/docs/route53/list_hosted_zones_by_name.html) for full documentation.
 #'
 #' @param DNSName (Optional) For your first request to
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name],
 #' include the `dnsname` parameter only if you want to specify the name of
 #' the first hosted zone in the response. If you don't include the
 #' `dnsname` parameter, Amazon Route 53 returns all of the hosted zones
-#' that were created by the current AWS account, in ASCII order. For
-#' subsequent requests, include both `dnsname` and `hostedzoneid`
-#' parameters. For `dnsname`, specify the value of `NextDNSName` from the
-#' previous response.
+#' that were created by the current Amazon Web Services account, in ASCII
+#' order. For subsequent requests, include both `dnsname` and
+#' `hostedzoneid` parameters. For `dnsname`, specify the value of
+#' `NextDNSName` from the previous response.
 #' @param HostedZoneId (Optional) For your first request to
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name], do not
 #' include the `hostedzoneid` parameter.
@@ -4231,44 +1938,6 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' the value of the `IsTruncated` element in the response is true, and the
 #' values of `NextDNSName` and `NextHostedZoneId` specify the first hosted
 #' zone in the next group of `maxitems` hosted zones.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HostedZones = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       CallerReference = "string",
-#'       Config = list(
-#'         Comment = "string",
-#'         PrivateZone = TRUE|FALSE
-#'       ),
-#'       ResourceRecordSetCount = 123,
-#'       LinkedService = list(
-#'         ServicePrincipal = "string",
-#'         Description = "string"
-#'       )
-#'     )
-#'   ),
-#'   DNSName = "string",
-#'   HostedZoneId = "string",
-#'   IsTruncated = TRUE|FALSE,
-#'   NextDNSName = "string",
-#'   NextHostedZoneId = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_hosted_zones_by_name(
-#'   DNSName = "string",
-#'   HostedZoneId = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4291,31 +1960,17 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 .route53$operations$list_hosted_zones_by_name <- route53_list_hosted_zones_by_name
 
 #' Lists all the private hosted zones that a specified VPC is associated
-#' with, regardless of which AWS account or AWS service owns the hosted
-#' zones
+#' with, regardless of which Amazon Web Services account or Amazon Web
+#' Services service owns the hosted zones
 #'
 #' @description
-#' Lists all the private hosted zones that a specified VPC is associated
-#' with, regardless of which AWS account or AWS service owns the hosted
-#' zones. The `HostedZoneOwner` structure in the response contains one of
-#' the following values:
-#' 
-#' -   An `OwningAccount` element, which contains the account number of
-#'     either the current AWS account or another AWS account. Some
-#'     services, such as AWS Cloud Map, create hosted zones using the
-#'     current account.
-#' 
-#' -   An `OwningService` element, which identifies the AWS service that
-#'     created and owns the hosted zone. For example, if a hosted zone was
-#'     created by Amazon Elastic File System (Amazon EFS), the value of
-#'     `Owner` is `efs.amazonaws.com`.
+#' Lists all the private hosted zones that a specified VPC is associated with, regardless of which Amazon Web Services account or Amazon Web Services service owns the hosted zones. The `HostedZoneOwner` structure in the response contains one of the following values:
 #'
-#' @usage
-#' route53_list_hosted_zones_by_vpc(VPCId, VPCRegion, MaxItems, NextToken)
+#' See [https://paws-r.github.io/docs/route53/list_hosted_zones_by_vpc.html](https://paws-r.github.io/docs/route53/list_hosted_zones_by_vpc.html) for full documentation.
 #'
 #' @param VPCId &#91;required&#93; The ID of the Amazon VPC that you want to list hosted zones for.
-#' @param VPCRegion &#91;required&#93; For the Amazon VPC that you specified for `VPCId`, the AWS Region that
-#' you created the VPC in.
+#' @param VPCRegion &#91;required&#93; For the Amazon VPC that you specified for `VPCId`, the Amazon Web
+#' Services Region that you created the VPC in.
 #' @param MaxItems (Optional) The maximum number of hosted zones that you want Amazon Route
 #' 53 to return. If the specified VPC is associated with more than
 #' `MaxItems` hosted zones, the response includes a `NextToken` element.
@@ -4331,35 +1986,6 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' 
 #' If the previous response didn't include a `NextToken` element, there are
 #' no more hosted zones to get.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HostedZoneSummaries = list(
-#'     list(
-#'       HostedZoneId = "string",
-#'       Name = "string",
-#'       Owner = list(
-#'         OwningAccount = "string",
-#'         OwningService = "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxItems = "string",
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_hosted_zones_by_vpc(
-#'   VPCId = "string",
-#'   VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-#'   MaxItems = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4382,23 +2008,13 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 .route53$operations$list_hosted_zones_by_vpc <- route53_list_hosted_zones_by_vpc
 
 #' Lists the configurations for DNS query logging that are associated with
-#' the current AWS account or the configuration that is associated with a
-#' specified hosted zone
+#' the current Amazon Web Services account or the configuration that is
+#' associated with a specified hosted zone
 #'
 #' @description
-#' Lists the configurations for DNS query logging that are associated with
-#' the current AWS account or the configuration that is associated with a
-#' specified hosted zone.
-#' 
-#' For more information about DNS query logs, see
-#' [`create_query_logging_config`][route53_create_query_logging_config].
-#' Additional information, including the format of DNS query logs, appears
-#' in [Logging DNS
-#' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' Lists the configurations for DNS query logging that are associated with the current Amazon Web Services account or the configuration that is associated with a specified hosted zone.
 #'
-#' @usage
-#' route53_list_query_logging_configs(HostedZoneId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/route53/list_query_logging_configs.html](https://paws-r.github.io/docs/route53/list_query_logging_configs.html) for full documentation.
 #'
 #' @param HostedZoneId (Optional) If you want to list the query logging configuration that is
 #' associated with a hosted zone, specify the ID in `HostedZoneId`.
@@ -4406,10 +2022,10 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' If you don't specify a hosted zone ID,
 #' [`list_query_logging_configs`][route53_list_query_logging_configs]
 #' returns all of the configurations that are associated with the current
-#' AWS account.
-#' @param NextToken (Optional) If the current AWS account has more than `MaxResults` query
-#' logging configurations, use `NextToken` to get the second and subsequent
-#' pages of results.
+#' Amazon Web Services account.
+#' @param NextToken (Optional) If the current Amazon Web Services account has more than
+#' `MaxResults` query logging configurations, use `NextToken` to get the
+#' second and subsequent pages of results.
 #' 
 #' For the first
 #' [`list_query_logging_configs`][route53_list_query_logging_configs]
@@ -4420,37 +2036,13 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' request.
 #' @param MaxResults (Optional) The maximum number of query logging configurations that you
 #' want Amazon Route 53 to return in response to the current request. If
-#' the current AWS account has more than `MaxResults` configurations, use
-#' the value of
+#' the current Amazon Web Services account has more than `MaxResults`
+#' configurations, use the value of
 #' [NextToken](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html#API_ListQueryLoggingConfigs_RequestSyntax)
 #' in the response to get the next page of results.
 #' 
 #' If you don't specify a value for `MaxResults`, Route 53 returns up to
 #' 100 configurations.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   QueryLoggingConfigs = list(
-#'     list(
-#'       Id = "string",
-#'       HostedZoneId = "string",
-#'       CloudWatchLogsLogGroupArn = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_query_logging_configs(
-#'   HostedZoneId = "string",
-#'   NextToken = "string",
-#'   MaxResults = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4476,82 +2068,8 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #'
 #' @description
 #' Lists the resource record sets in a specified hosted zone.
-#' 
-#' [`list_resource_record_sets`][route53_list_resource_record_sets] returns
-#' up to 100 resource record sets at a time in ASCII order, beginning at a
-#' position specified by the `name` and `type` elements.
-#' 
-#' **Sort order**
-#' 
-#' [`list_resource_record_sets`][route53_list_resource_record_sets] sorts
-#' results first by DNS name with the labels reversed, for example:
-#' 
-#' `com.example.www.`
-#' 
-#' Note the trailing dot, which can change the sort order when the record
-#' name contains characters that appear before `.` (decimal 46) in the
-#' ASCII table. These characters include the following:
-#' `! \" # $ % & \' ( ) * + , -`
-#' 
-#' When multiple records have the same DNS name,
-#' [`list_resource_record_sets`][route53_list_resource_record_sets] sorts
-#' results by the record type.
-#' 
-#' **Specifying where to start listing records**
-#' 
-#' You can use the name and type elements to specify the resource record
-#' set that the list begins with:
-#' 
-#' ### If you do not specify Name or Type
-#' 
-#' The results begin with the first resource record set that the hosted
-#' zone contains.
-#' 
-#' ### If you specify Name but not Type
-#' 
-#' The results begin with the first resource record set in the list whose
-#' name is greater than or equal to `Name`.
-#' 
-#' ### If you specify Type but not Name
-#' 
-#' Amazon Route 53 returns the `InvalidInput` error.
-#' 
-#' ### If you specify both Name and Type
-#' 
-#' The results begin with the first resource record set in the list whose
-#' name is greater than or equal to `Name`, and whose type is greater than
-#' or equal to `Type`.
-#' 
-#' **Resource record sets that are PENDING**
-#' 
-#' This action returns the most current version of the records. This
-#' includes records that are `PENDING`, and that are not yet available on
-#' all Route 53 DNS servers.
-#' 
-#' **Changing resource record sets**
-#' 
-#' To ensure that you get an accurate listing of the resource record sets
-#' for a hosted zone at a point in time, do not submit a
-#' [`change_resource_record_sets`][route53_change_resource_record_sets]
-#' request while you're paging through the results of a
-#' [`list_resource_record_sets`][route53_list_resource_record_sets]
-#' request. If you do, some pages may display results without the latest
-#' changes while other pages display results with the latest changes.
-#' 
-#' **Displaying the next page of results**
-#' 
-#' If a [`list_resource_record_sets`][route53_list_resource_record_sets]
-#' command returns more than one page of results, the value of
-#' `IsTruncated` is `true`. To display the next page of results, get the
-#' values of `NextRecordName`, `NextRecordType`, and `NextRecordIdentifier`
-#' (if any) from the response. Then submit another
-#' [`list_resource_record_sets`][route53_list_resource_record_sets]
-#' request, and specify those values for `StartRecordName`,
-#' `StartRecordType`, and `StartRecordIdentifier`.
 #'
-#' @usage
-#' route53_list_resource_record_sets(HostedZoneId, StartRecordName,
-#'   StartRecordType, StartRecordIdentifier, MaxItems)
+#' See [https://paws-r.github.io/docs/route53/list_resource_record_sets.html](https://paws-r.github.io/docs/route53/list_resource_record_sets.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that contains the resource record sets that
 #' you want to list.
@@ -4599,58 +2117,6 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' `NextRecordType` elements in the response identify the first resource
 #' record set in the next group of `maxitems` resource record sets.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceRecordSets = list(
-#'     list(
-#'       Name = "string",
-#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'       SetIdentifier = "string",
-#'       Weight = 123,
-#'       Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1"|"af-south-1"|"eu-south-1",
-#'       GeoLocation = list(
-#'         ContinentCode = "string",
-#'         CountryCode = "string",
-#'         SubdivisionCode = "string"
-#'       ),
-#'       Failover = "PRIMARY"|"SECONDARY",
-#'       MultiValueAnswer = TRUE|FALSE,
-#'       TTL = 123,
-#'       ResourceRecords = list(
-#'         list(
-#'           Value = "string"
-#'         )
-#'       ),
-#'       AliasTarget = list(
-#'         HostedZoneId = "string",
-#'         DNSName = "string",
-#'         EvaluateTargetHealth = TRUE|FALSE
-#'       ),
-#'       HealthCheckId = "string",
-#'       TrafficPolicyInstanceId = "string"
-#'     )
-#'   ),
-#'   IsTruncated = TRUE|FALSE,
-#'   NextRecordName = "string",
-#'   NextRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'   NextRecordIdentifier = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resource_record_sets(
-#'   HostedZoneId = "string",
-#'   StartRecordName = "string",
-#'   StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'   StartRecordIdentifier = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname route53_list_resource_record_sets
@@ -4672,14 +2138,12 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
 .route53$operations$list_resource_record_sets <- route53_list_resource_record_sets
 
 #' Retrieves a list of the reusable delegation sets that are associated
-#' with the current AWS account
+#' with the current Amazon Web Services account
 #'
 #' @description
-#' Retrieves a list of the reusable delegation sets that are associated
-#' with the current AWS account.
+#' Retrieves a list of the reusable delegation sets that are associated with the current Amazon Web Services account.
 #'
-#' @usage
-#' route53_list_reusable_delegation_sets(Marker, MaxItems)
+#' See [https://paws-r.github.io/docs/route53/list_reusable_delegation_sets.html](https://paws-r.github.io/docs/route53/list_reusable_delegation_sets.html) for full documentation.
 #'
 #' @param Marker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more reusable delegation sets. To get another group, submit another
@@ -4695,34 +2159,6 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
 #' @param MaxItems The number of reusable delegation sets that you want Amazon Route 53 to
 #' return in the response to this request. If you specify a value greater
 #' than 100, Route 53 returns only the first 100 reusable delegation sets.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DelegationSets = list(
-#'     list(
-#'       Id = "string",
-#'       CallerReference = "string",
-#'       NameServers = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   IsTruncated = TRUE|FALSE,
-#'   NextMarker = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_reusable_delegation_sets(
-#'   Marker = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4748,14 +2184,8 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
 #'
 #' @description
 #' Lists tags for one health check or hosted zone.
-#' 
-#' For information about using tags for cost allocation, see [Using Cost
-#' Allocation
-#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*.
 #'
-#' @usage
-#' route53_list_tags_for_resource(ResourceType, ResourceId)
+#' See [https://paws-r.github.io/docs/route53/list_tags_for_resource.html](https://paws-r.github.io/docs/route53/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of the resource.
 #' 
@@ -4763,31 +2193,6 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
 #' 
 #' -   The resource type for hosted zones is `hostedzone`.
 #' @param ResourceId &#91;required&#93; The ID of the resource for which you want to retrieve tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceTagSet = list(
-#'     ResourceType = "healthcheck"|"hostedzone",
-#'     ResourceId = "string",
-#'     Tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceType = "healthcheck"|"hostedzone",
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4813,14 +2218,8 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #'
 #' @description
 #' Lists tags for up to 10 health checks or hosted zones.
-#' 
-#' For information about using tags for cost allocation, see [Using Cost
-#' Allocation
-#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*.
 #'
-#' @usage
-#' route53_list_tags_for_resources(ResourceType, ResourceIds)
+#' See [https://paws-r.github.io/docs/route53/list_tags_for_resources.html](https://paws-r.github.io/docs/route53/list_tags_for_resources.html) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of the resources.
 #' 
@@ -4829,35 +2228,6 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #' -   The resource type for hosted zones is `hostedzone`.
 #' @param ResourceIds &#91;required&#93; A complex type that contains the ResourceId element for each resource
 #' for which you want to get a list of tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceTagSets = list(
-#'     list(
-#'       ResourceType = "healthcheck"|"hostedzone",
-#'       ResourceId = "string",
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resources(
-#'   ResourceType = "healthcheck"|"hostedzone",
-#'   ResourceIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4880,19 +2250,12 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 .route53$operations$list_tags_for_resources <- route53_list_tags_for_resources
 
 #' Gets information about the latest version for every traffic policy that
-#' is associated with the current AWS account
+#' is associated with the current Amazon Web Services account
 #'
 #' @description
-#' Gets information about the latest version for every traffic policy that
-#' is associated with the current AWS account. Policies are listed in the
-#' order that they were created in.
-#' 
-#' For information about how of deleting a traffic policy affects the
-#' response from [`list_traffic_policies`][route53_list_traffic_policies],
-#' see [`delete_traffic_policy`][route53_delete_traffic_policy].
+#' Gets information about the latest version for every traffic policy that is associated with the current Amazon Web Services account. Policies are listed in the order that they were created in.
 #'
-#' @usage
-#' route53_list_traffic_policies(TrafficPolicyIdMarker, MaxItems)
+#' See [https://paws-r.github.io/docs/route53/list_traffic_policies.html](https://paws-r.github.io/docs/route53/list_traffic_policies.html) for full documentation.
 #'
 #' @param TrafficPolicyIdMarker (Conditional) For your first request to
 #' [`list_traffic_policies`][route53_list_traffic_policies], don't include
@@ -4911,33 +2274,6 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 #' is `true`, and the value of `TrafficPolicyIdMarker` is the ID of the
 #' first traffic policy that Route 53 will return if you submit another
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicySummaries = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'       LatestVersion = 123,
-#'       TrafficPolicyCount = 123
-#'     )
-#'   ),
-#'   IsTruncated = TRUE|FALSE,
-#'   TrafficPolicyIdMarker = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_traffic_policies(
-#'   TrafficPolicyIdMarker = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4960,26 +2296,12 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 .route53$operations$list_traffic_policies <- route53_list_traffic_policies
 
 #' Gets information about the traffic policy instances that you created by
-#' using the current AWS account
+#' using the current Amazon Web Services account
 #'
 #' @description
-#' Gets information about the traffic policy instances that you created by
-#' using the current AWS account.
-#' 
-#' After you submit an
-#' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
-#' request, there's a brief delay while Amazon Route 53 creates the
-#' resource record sets that are specified in the traffic policy
-#' definition. For more information, see the `State` response element.
-#' 
-#' Route 53 returns a maximum of 100 items in each response. If you have a
-#' lot of traffic policy instances, you can use the `MaxItems` parameter to
-#' list them in groups of up to 100.
+#' Gets information about the traffic policy instances that you created by using the current Amazon Web Services account.
 #'
-#' @usage
-#' route53_list_traffic_policy_instances(HostedZoneIdMarker,
-#'   TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker,
-#'   MaxItems)
+#' See [https://paws-r.github.io/docs/route53/list_traffic_policy_instances.html](https://paws-r.github.io/docs/route53/list_traffic_policy_instances.html) for full documentation.
 #'
 #' @param HostedZoneIdMarker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more traffic policy instances. To get more traffic policy
@@ -5023,41 +2345,6 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #' `TrafficPolicyInstanceTypeMarker` represent the first traffic policy
 #' instance in the next group of `MaxItems` traffic policy instances.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicyInstances = list(
-#'     list(
-#'       Id = "string",
-#'       HostedZoneId = "string",
-#'       Name = "string",
-#'       TTL = 123,
-#'       State = "string",
-#'       Message = "string",
-#'       TrafficPolicyId = "string",
-#'       TrafficPolicyVersion = 123,
-#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
-#'     )
-#'   ),
-#'   HostedZoneIdMarker = "string",
-#'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'   IsTruncated = TRUE|FALSE,
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_traffic_policy_instances(
-#'   HostedZoneIdMarker = "string",
-#'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname route53_list_traffic_policy_instances
@@ -5082,25 +2369,9 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #' a specified hosted zone
 #'
 #' @description
-#' Gets information about the traffic policy instances that you created in
-#' a specified hosted zone.
-#' 
-#' After you submit a
-#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
-#' or an
-#' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
-#' request, there's a brief delay while Amazon Route 53 creates the
-#' resource record sets that are specified in the traffic policy
-#' definition. For more information, see the `State` response element.
-#' 
-#' Route 53 returns a maximum of 100 items in each response. If you have a
-#' lot of traffic policy instances, you can use the `MaxItems` parameter to
-#' list them in groups of up to 100.
+#' Gets information about the traffic policy instances that you created in a specified hosted zone.
 #'
-#' @usage
-#' route53_list_traffic_policy_instances_by_hosted_zone(HostedZoneId,
-#'   TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker,
-#'   MaxItems)
+#' See [https://paws-r.github.io/docs/route53/list_traffic_policy_instances_by_hosted_zone.html](https://paws-r.github.io/docs/route53/list_traffic_policy_instances_by_hosted_zone.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want to list traffic policy instances
 #' for.
@@ -5134,40 +2405,6 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #' represent the first traffic policy instance that Amazon Route 53 will
 #' return if you submit another request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicyInstances = list(
-#'     list(
-#'       Id = "string",
-#'       HostedZoneId = "string",
-#'       Name = "string",
-#'       TTL = 123,
-#'       State = "string",
-#'       Message = "string",
-#'       TrafficPolicyId = "string",
-#'       TrafficPolicyVersion = 123,
-#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
-#'     )
-#'   ),
-#'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'   IsTruncated = TRUE|FALSE,
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_traffic_policy_instances_by_hosted_zone(
-#'   HostedZoneId = "string",
-#'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname route53_list_traffic_policy_instances_by_hosted_zone
@@ -5192,26 +2429,9 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #' using a specify traffic policy version
 #'
 #' @description
-#' Gets information about the traffic policy instances that you created by
-#' using a specify traffic policy version.
-#' 
-#' After you submit a
-#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
-#' or an
-#' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
-#' request, there's a brief delay while Amazon Route 53 creates the
-#' resource record sets that are specified in the traffic policy
-#' definition. For more information, see the `State` response element.
-#' 
-#' Route 53 returns a maximum of 100 items in each response. If you have a
-#' lot of traffic policy instances, you can use the `MaxItems` parameter to
-#' list them in groups of up to 100.
+#' Gets information about the traffic policy instances that you created by using a specify traffic policy version.
 #'
-#' @usage
-#' route53_list_traffic_policy_instances_by_policy(TrafficPolicyId,
-#'   TrafficPolicyVersion, HostedZoneIdMarker,
-#'   TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker,
-#'   MaxItems)
+#' See [https://paws-r.github.io/docs/route53/list_traffic_policy_instances_by_policy.html](https://paws-r.github.io/docs/route53/list_traffic_policy_instances_by_policy.html) for full documentation.
 #'
 #' @param TrafficPolicyId &#91;required&#93; The ID of the traffic policy for which you want to list traffic policy
 #' instances.
@@ -5265,43 +2485,6 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #' represent the first traffic policy instance that Amazon Route 53 will
 #' return if you submit another request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicyInstances = list(
-#'     list(
-#'       Id = "string",
-#'       HostedZoneId = "string",
-#'       Name = "string",
-#'       TTL = 123,
-#'       State = "string",
-#'       Message = "string",
-#'       TrafficPolicyId = "string",
-#'       TrafficPolicyVersion = 123,
-#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
-#'     )
-#'   ),
-#'   HostedZoneIdMarker = "string",
-#'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'   IsTruncated = TRUE|FALSE,
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_traffic_policy_instances_by_policy(
-#'   TrafficPolicyId = "string",
-#'   TrafficPolicyVersion = 123,
-#'   HostedZoneIdMarker = "string",
-#'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname route53_list_traffic_policy_instances_by_policy
@@ -5326,15 +2509,9 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
 #' policy
 #'
 #' @description
-#' Gets information about all of the versions for a specified traffic
-#' policy.
-#' 
-#' Traffic policy versions are listed in numerical order by
-#' `VersionNumber`.
+#' Gets information about all of the versions for a specified traffic policy.
 #'
-#' @usage
-#' route53_list_traffic_policy_versions(Id, TrafficPolicyVersionMarker,
-#'   MaxItems)
+#' See [https://paws-r.github.io/docs/route53/list_traffic_policy_versions.html](https://paws-r.github.io/docs/route53/list_traffic_policy_versions.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; Specify the value of `Id` of the traffic policy for which you want to
 #' list all versions.
@@ -5355,35 +2532,6 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
 #' `IsTruncated` in the response is `true`, and the value of the
 #' `TrafficPolicyVersionMarker` element is the ID of the first version that
 #' Route 53 will return if you submit another request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicies = list(
-#'     list(
-#'       Id = "string",
-#'       Version = 123,
-#'       Name = "string",
-#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'       Document = "string",
-#'       Comment = "string"
-#'     )
-#'   ),
-#'   IsTruncated = TRUE|FALSE,
-#'   TrafficPolicyVersionMarker = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_traffic_policy_versions(
-#'   Id = "string",
-#'   TrafficPolicyVersionMarker = "string",
-#'   MaxItems = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5410,18 +2558,9 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #' or more CreateVPCAssociationAuthorization requests
 #'
 #' @description
-#' Gets a list of the VPCs that were created by other accounts and that can
-#' be associated with a specified hosted zone because you've submitted one
-#' or more
-#' [`create_vpc_association_authorization`][route53_create_vpc_association_authorization]
-#' requests.
-#' 
-#' The response includes a `VPCs` element with a `VPC` child element for
-#' each VPC that can be associated with the hosted zone.
+#' Gets a list of the VPCs that were created by other accounts and that can be associated with a specified hosted zone because you've submitted one or more [`create_vpc_association_authorization`][route53_create_vpc_association_authorization] requests.
 #'
-#' @usage
-#' route53_list_vpc_association_authorizations(HostedZoneId, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/route53/list_vpc_association_authorizations.html](https://paws-r.github.io/docs/route53/list_vpc_association_authorizations.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone for which you want a list of VPCs that can be
 #' associated with the hosted zone.
@@ -5434,30 +2573,6 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #' @param MaxResults *Optional*: An integer that specifies the maximum number of VPCs that
 #' you want Amazon Route 53 to return. If you don't specify a value for
 #' `MaxResults`, Route 53 returns up to 50 VPCs per page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HostedZoneId = "string",
-#'   NextToken = "string",
-#'   VPCs = list(
-#'     list(
-#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-#'       VPCId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_vpc_association_authorizations(
-#'   HostedZoneId = "string",
-#'   NextToken = "string",
-#'   MaxResults = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5483,14 +2598,9 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' for a specified record name and type
 #'
 #' @description
-#' Gets the value that Amazon Route 53 returns in response to a DNS request
-#' for a specified record name and type. You can optionally specify the IP
-#' address of a DNS resolver, an EDNS0 client subnet IP address, and a
-#' subnet mask.
+#' Gets the value that Amazon Route 53 returns in response to a DNS request for a specified record name and type. You can optionally specify the IP address of a DNS resolver, an EDNS0 client subnet IP address, and a subnet mask.
 #'
-#' @usage
-#' route53_test_dns_answer(HostedZoneId, RecordName, RecordType,
-#'   ResolverIP, EDNS0ClientSubnetIP, EDNS0ClientSubnetMask)
+#' See [https://paws-r.github.io/docs/route53/test_dns_answer.html](https://paws-r.github.io/docs/route53/test_dns_answer.html) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want Amazon Route 53 to simulate a
 #' query for.
@@ -5499,8 +2609,8 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' @param RecordType &#91;required&#93; The type of the resource record set.
 #' @param ResolverIP If you want to simulate a request from a specific DNS resolver, specify
 #' the IP address for that resolver. If you omit this value,
-#' `TestDnsAnswer` uses the IP address of a DNS resolver in the AWS US East
-#' (N. Virginia) Region (`us-east-1`).
+#' `TestDnsAnswer` uses the IP address of a DNS resolver in the Amazon Web
+#' Services US East (N. Virginia) Region (`us-east-1`).
 #' @param EDNS0ClientSubnetIP If the resolver that you specified for resolverip supports EDNS0,
 #' specify the IPv4 or IPv6 address of a client in the applicable location,
 #' for example, `192.0.2.44` or `2001:db8:85a3::8a2e:370:7334`.
@@ -5518,33 +2628,6 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' -   **IPv4**: Specify a value between 0 and 32
 #' 
 #' -   **IPv6**: Specify a value between 0 and 128
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Nameserver = "string",
-#'   RecordName = "string",
-#'   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'   RecordData = list(
-#'     "string"
-#'   ),
-#'   ResponseCode = "string",
-#'   Protocol = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$test_dns_answer(
-#'   HostedZoneId = "string",
-#'   RecordName = "string",
-#'   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'   ResolverIP = "string",
-#'   EDNS0ClientSubnetIP = "string",
-#'   EDNS0ClientSubnetMask = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5569,20 +2652,9 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' Updates an existing health check
 #'
 #' @description
-#' Updates an existing health check. Note that some values can't be
-#' updated.
-#' 
-#' For more information about updating health checks, see [Creating,
-#' Updating, and Deleting Health
-#' Checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' Updates an existing health check. Note that some values can't be updated.
 #'
-#' @usage
-#' route53_update_health_check(HealthCheckId, HealthCheckVersion,
-#'   IPAddress, Port, ResourcePath, FullyQualifiedDomainName, SearchString,
-#'   FailureThreshold, Inverted, Disabled, HealthThreshold,
-#'   ChildHealthChecks, EnableSNI, Regions, AlarmIdentifier,
-#'   InsufficientDataHealthStatus, ResetElements)
+#' See [https://paws-r.github.io/docs/route53/update_health_check.html](https://paws-r.github.io/docs/route53/update_health_check.html) for full documentation.
 #'
 #' @param HealthCheckId &#91;required&#93; The ID for the health check for which you want detailed information.
 #' When you created the health check,
@@ -5653,13 +2725,13 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' checks, see the following documents:
 #' 
 #' -   [RFC 5735, Special Use IPv4
-#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5735)
+#'     Addresses](https://www.rfc-editor.org/rfc/rfc5735)
 #' 
 #' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
-#'     Space](https://datatracker.ietf.org/doc/html/rfc6598)
+#'     Space](https://www.rfc-editor.org/rfc/rfc6598)
 #' 
 #' -   [RFC 5156, Special-Use IPv6
-#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5156)
+#'     Addresses](https://www.rfc-editor.org/rfc/rfc5156)
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health
 #' checks on.
 #' 
@@ -5699,8 +2771,8 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'     `FullyQualifiedDomainName` to the endpoint in the `Host` header.
 #' 
 #' -   If you specify another value for `Port` and any value except `TCP`
-#'     for `Type`, Route 53 passes *`FullyQualifiedDomainName`:`Port`* to
-#'     the endpoint in the `Host` header.
+#'     for `Type`, Route 53 passes *FullyQualifiedDomainName:Port* to the
+#'     endpoint in the `Host` header.
 #' 
 #' If you don't specify a value for `FullyQualifiedDomainName`, Route 53
 #' substitutes the value of `IPAddress` in the `Host` header in each of the
@@ -5829,10 +2901,10 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' 
 #' -   `Unhealthy`: Route 53 considers the health check to be unhealthy.
 #' 
-#' -   `LastKnownStatus`: Route 53 uses the status of the health check from
-#'     the last time CloudWatch had sufficient data to determine the alarm
-#'     state. For new health checks that have no last known status, the
-#'     default status for the health check is healthy.
+#' -   `LastKnownStatus`: By default, Route 53 uses the status of the
+#'     health check from the last time CloudWatch had sufficient data to
+#'     determine the alarm state. For new health checks that have no last
+#'     known status, the status for the health check is healthy.
 #' @param ResetElements A complex type that contains one `ResettableElementName` element for
 #' each element that you want to reset to the default value. Valid values
 #' for `ResettableElementName` include the following:
@@ -5852,95 +2924,6 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' -   `ResourcePath`: Route 53 resets
 #'     [ResourcePath](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath)
 #'     to null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HealthCheck = list(
-#'     Id = "string",
-#'     CallerReference = "string",
-#'     LinkedService = list(
-#'       ServicePrincipal = "string",
-#'       Description = "string"
-#'     ),
-#'     HealthCheckConfig = list(
-#'       IPAddress = "string",
-#'       Port = 123,
-#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
-#'       ResourcePath = "string",
-#'       FullyQualifiedDomainName = "string",
-#'       SearchString = "string",
-#'       RequestInterval = 123,
-#'       FailureThreshold = 123,
-#'       MeasureLatency = TRUE|FALSE,
-#'       Inverted = TRUE|FALSE,
-#'       Disabled = TRUE|FALSE,
-#'       HealthThreshold = 123,
-#'       ChildHealthChecks = list(
-#'         "string"
-#'       ),
-#'       EnableSNI = TRUE|FALSE,
-#'       Regions = list(
-#'         "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
-#'       ),
-#'       AlarmIdentifier = list(
-#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
-#'         Name = "string"
-#'       ),
-#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
-#'     ),
-#'     HealthCheckVersion = 123,
-#'     CloudWatchAlarmConfiguration = list(
-#'       EvaluationPeriods = 123,
-#'       Threshold = 123.0,
-#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-#'       Period = 123,
-#'       MetricName = "string",
-#'       Namespace = "string",
-#'       Statistic = "Average"|"Sum"|"SampleCount"|"Maximum"|"Minimum",
-#'       Dimensions = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_health_check(
-#'   HealthCheckId = "string",
-#'   HealthCheckVersion = 123,
-#'   IPAddress = "string",
-#'   Port = 123,
-#'   ResourcePath = "string",
-#'   FullyQualifiedDomainName = "string",
-#'   SearchString = "string",
-#'   FailureThreshold = 123,
-#'   Inverted = TRUE|FALSE,
-#'   Disabled = TRUE|FALSE,
-#'   HealthThreshold = 123,
-#'   ChildHealthChecks = list(
-#'     "string"
-#'   ),
-#'   EnableSNI = TRUE|FALSE,
-#'   Regions = list(
-#'     "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
-#'   ),
-#'   AlarmIdentifier = list(
-#'     Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
-#'     Name = "string"
-#'   ),
-#'   InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",
-#'   ResetElements = list(
-#'     "FullyQualifiedDomainName"|"Regions"|"ResourcePath"|"ChildHealthChecks"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5967,42 +2950,12 @@ route53_update_health_check <- function(HealthCheckId, HealthCheckVersion = NULL
 #' @description
 #' Updates the comment for a specified hosted zone.
 #'
-#' @usage
-#' route53_update_hosted_zone_comment(Id, Comment)
+#' See [https://paws-r.github.io/docs/route53/update_hosted_zone_comment.html](https://paws-r.github.io/docs/route53/update_hosted_zone_comment.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID for the hosted zone that you want to update the comment for.
 #' @param Comment The new comment for the hosted zone. If you don't specify a value for
 #' `Comment`, Amazon Route 53 deletes the existing value of the `Comment`
 #' element, if any.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HostedZone = list(
-#'     Id = "string",
-#'     Name = "string",
-#'     CallerReference = "string",
-#'     Config = list(
-#'       Comment = "string",
-#'       PrivateZone = TRUE|FALSE
-#'     ),
-#'     ResourceRecordSetCount = 123,
-#'     LinkedService = list(
-#'       ServicePrincipal = "string",
-#'       Description = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_hosted_zone_comment(
-#'   Id = "string",
-#'   Comment = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6029,38 +2982,13 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
 #' @description
 #' Updates the comment for a specified traffic policy version.
 #'
-#' @usage
-#' route53_update_traffic_policy_comment(Id, Version, Comment)
+#' See [https://paws-r.github.io/docs/route53/update_traffic_policy_comment.html](https://paws-r.github.io/docs/route53/update_traffic_policy_comment.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The value of `Id` for the traffic policy that you want to update the
 #' comment for.
 #' @param Version &#91;required&#93; The value of `Version` for the traffic policy that you want to update
 #' the comment for.
 #' @param Comment &#91;required&#93; The new comment for the specified traffic policy and version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicy = list(
-#'     Id = "string",
-#'     Version = 123,
-#'     Name = "string",
-#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-#'     Document = "string",
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_traffic_policy_comment(
-#'   Id = "string",
-#'   Version = 123,
-#'   Comment = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6086,29 +3014,9 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 #' created based on the settings in a specified traffic policy version
 #'
 #' @description
-#' Updates the resource record sets in a specified hosted zone that were
-#' created based on the settings in a specified traffic policy version.
-#' 
-#' When you update a traffic policy instance, Amazon Route 53 continues to
-#' respond to DNS queries for the root resource record set name (such as
-#' example.com) while it replaces one group of resource record sets with
-#' another. Route 53 performs the following operations:
-#' 
-#' 1.  Route 53 creates a new group of resource record sets based on the
-#'     specified traffic policy. This is true regardless of how significant
-#'     the differences are between the existing resource record sets and
-#'     the new resource record sets.
-#' 
-#' 2.  When all of the new resource record sets have been created, Route 53
-#'     starts to respond to DNS queries for the root resource record set
-#'     name (such as example.com) by using the new resource record sets.
-#' 
-#' 3.  Route 53 deletes the old group of resource record sets that are
-#'     associated with the root resource record set name.
+#' Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version.
 #'
-#' @usage
-#' route53_update_traffic_policy_instance(Id, TTL, TrafficPolicyId,
-#'   TrafficPolicyVersion)
+#' See [https://paws-r.github.io/docs/route53/update_traffic_policy_instance.html](https://paws-r.github.io/docs/route53/update_traffic_policy_instance.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy instance that you want to update.
 #' @param TTL &#91;required&#93; The TTL that you want Amazon Route 53 to assign to all of the updated
@@ -6118,34 +3026,6 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 #' @param TrafficPolicyVersion &#91;required&#93; The version of the traffic policy that you want Amazon Route 53 to use
 #' to update resource record sets for the specified traffic policy
 #' instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TrafficPolicyInstance = list(
-#'     Id = "string",
-#'     HostedZoneId = "string",
-#'     Name = "string",
-#'     TTL = 123,
-#'     State = "string",
-#'     Message = "string",
-#'     TrafficPolicyId = "string",
-#'     TrafficPolicyVersion = 123,
-#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_traffic_policy_instance(
-#'   Id = "string",
-#'   TTL = 123,
-#'   TrafficPolicyId = "string",
-#'   TrafficPolicyVersion = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

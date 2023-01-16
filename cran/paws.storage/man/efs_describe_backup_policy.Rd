@@ -9,22 +9,9 @@ efs_describe_backup_policy(FileSystemId)
 \arguments{
 \item{FileSystemId}{[required] Specifies which EFS file system to retrieve the \code{BackupPolicy} for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupPolicy = list(
-    Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
-  )
-)
-}
-}
 \description{
 Returns the backup policy for the specified EFS file system.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_backup_policy(
-  FileSystemId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/efs/describe_backup_policy.html} for full documentation.
+}
 \keyword{internal}

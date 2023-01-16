@@ -5,7 +5,7 @@
 \title{Lists all approval rule templates in the specified AWS Region in your
 AWS account}
 \usage{
-codecommit_list_approval_rule_templates(nextToken, maxResults)
+codecommit_list_approval_rule_templates(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{An enumeration token that, when provided in a request, returns the next
@@ -14,26 +14,9 @@ batch of the results.}
 \item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  approvalRuleTemplateNames = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists all approval rule templates in the specified AWS Region in your
-AWS account. If an AWS Region is not specified, the AWS Region where you
-are signed in is used.
-}
-\section{Request syntax}{
-\preformatted{svc$list_approval_rule_templates(
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists all approval rule templates in the specified AWS Region in your AWS account. If an AWS Region is not specified, the AWS Region where you are signed in is used.
 
+See \url{https://paws-r.github.io/docs/codecommit/list_approval_rule_templates.html} for full documentation.
+}
 \keyword{internal}

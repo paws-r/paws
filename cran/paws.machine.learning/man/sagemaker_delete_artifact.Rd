@@ -4,36 +4,16 @@
 \alias{sagemaker_delete_artifact}
 \title{Deletes an artifact}
 \usage{
-sagemaker_delete_artifact(ArtifactArn, Source)
+sagemaker_delete_artifact(ArtifactArn = NULL, Source = NULL)
 }
 \arguments{
 \item{ArtifactArn}{The Amazon Resource Name (ARN) of the artifact to delete.}
 
 \item{Source}{The URI of the source.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ArtifactArn = "string"
-)
-}
-}
 \description{
 Deletes an artifact. Either \code{ArtifactArn} or \code{Source} must be specified.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_artifact(
-  ArtifactArn = "string",
-  Source = list(
-    SourceUri = "string",
-    SourceTypes = list(
-      list(
-        SourceIdType = "MD5Hash"|"S3ETag"|"S3Version"|"Custom",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_artifact.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{cloudfront_delete_streaming_distribution}
 \title{Delete a streaming distribution}
 \usage{
-cloudfront_delete_streaming_distribution(Id, IfMatch)
+cloudfront_delete_streaming_distribution(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The distribution ID.}
@@ -12,50 +12,9 @@ cloudfront_delete_streaming_distribution(Id, IfMatch)
 \item{IfMatch}{The value of the \code{ETag} header that you received when you disabled the
 streaming distribution. For example: \code{E2QWRUHAPOMQZL}.}
 }
-\value{
-An empty list.
-}
 \description{
-Delete a streaming distribution. To delete an RTMP distribution using
-the CloudFront API, perform the following steps.
+Delete a streaming distribution. To delete an RTMP distribution using the CloudFront API, perform the following steps.
 
-\strong{To delete an RTMP distribution using the CloudFront API}:
-\enumerate{
-\item Disable the RTMP distribution.
-\item Submit a \verb{GET Streaming Distribution Config} request to get the
-current configuration and the \code{Etag} header for the distribution.
-\item Update the XML document that was returned in the response to your
-\verb{GET Streaming Distribution Config} request to change the value of
-\code{Enabled} to \code{false}.
-\item Submit a \verb{PUT Streaming Distribution Config} request to update the
-configuration for your distribution. In the request body, include
-the XML document that you updated in Step 3. Then set the value of
-the HTTP \code{If-Match} header to the value of the \code{ETag} header that
-CloudFront returned when you submitted the
-\verb{GET Streaming Distribution Config} request in Step 2.
-\item Review the response to the \verb{PUT Streaming Distribution Config}
-request to confirm that the distribution was successfully disabled.
-\item Submit a \verb{GET Streaming Distribution Config} request to confirm that
-your changes have propagated. When propagation is complete, the
-value of \code{Status} is \code{Deployed}.
-\item Submit a \verb{DELETE Streaming Distribution} request. Set the value of
-the HTTP \code{If-Match} header to the value of the \code{ETag} header that
-CloudFront returned when you submitted the
-\verb{GET Streaming Distribution Config} request in Step 2.
-\item Review the response to your \verb{DELETE Streaming Distribution} request
-to confirm that the distribution was successfully deleted.
+See \url{https://paws-r.github.io/docs/cloudfront/delete_streaming_distribution.html} for full documentation.
 }
-
-For information about deleting a distribution using the CloudFront
-console, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html}{Deleting a Distribution}
-in the \emph{Amazon CloudFront Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_streaming_distribution(
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
-
 \keyword{internal}

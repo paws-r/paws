@@ -2,57 +2,68 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_create_vocabulary}
 \alias{transcribeservice_create_vocabulary}
-\title{Creates a new custom vocabulary that you can use to change the way
-Amazon Transcribe handles transcription of an audio file}
+\title{Creates a new custom vocabulary}
 \usage{
-transcribeservice_create_vocabulary(VocabularyName, LanguageCode,
-  Phrases, VocabularyFileUri)
+transcribeservice_create_vocabulary(
+  VocabularyName,
+  LanguageCode,
+  Phrases = NULL,
+  VocabularyFileUri = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the vocabulary. The name must be unique within an AWS
-account. The name is case sensitive. If you try to create a vocabulary
-with the same name as a previous vocabulary you will receive a
+\item{VocabularyName}{[required] A unique name, chosen by you, for your new custom vocabulary.
+
+This name is case sensitive, cannot contain spaces, and must be unique
+within an Amazon Web Services account. If you try to create a new
+vocabulary with the same name as an existing vocabulary, you get a
 \code{ConflictException} error.}
 
-\item{LanguageCode}{[required] The language code of the vocabulary entries.}
+\item{LanguageCode}{[required] The language code that represents the language of the entries in your
+custom vocabulary. Each vocabulary must contain terms in only one
+language.
 
-\item{Phrases}{An array of strings that contains the vocabulary entries.}
+A custom vocabulary can only be used to transcribe files in the same
+language as the vocabulary. For example, if you create a vocabulary
+using US English (\code{en-US}), you can only apply this vocabulary to files
+that contain English audio.
 
-\item{VocabularyFileUri}{The S3 location of the text file that contains the definition of the
-custom vocabulary. The URI must be in the same region as the API
-endpoint that you are calling. The general form is
+For a list of supported languages and their associated language codes,
+refer to the \href{https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html}{Supported languages}
+table.}
 
-For more information about S3 object names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys}{Object Keys}
-in the \emph{Amazon S3 Developer Guide}.
+\item{Phrases}{Use this parameter if you want to create your vocabulary by including
+all desired terms, as comma-separated values, within your request. The
+other option for creating your vocabulary is to save your entries in a
+text file and upload them to an Amazon S3 bucket, then specify the
+location of your file using the \code{VocabularyFileUri} parameter.
 
-For more information about custom vocabularies, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary}{Custom Vocabularies}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  VocabularyName = "string",
-  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-  VocabularyState = "PENDING"|"READY"|"FAILED",
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  FailureReason = "string"
-)
-}
+Note that if you include \code{Phrases} in your request, you cannot use
+\code{VocabularyFileUri}; you must choose one or the other.
+
+Each language has a character set that contains all allowed characters
+for that specific language. If you use unsupported characters, your
+vocabulary filter request fails. Refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html}{Character Sets for Custom Vocabularies}
+to get the character set for your language.}
+
+\item{VocabularyFileUri}{The Amazon S3 location of the text file that contains your custom
+vocabulary. The URI must be located in the same Amazon Web Services
+Region as the resource you're calling.
+
+Here's an example URI path: \verb{s3://DOC-EXAMPLE-BUCKET/my-vocab-file.txt}
+
+Note that if you include \code{VocabularyFileUri} in your request, you cannot
+use the \code{Phrases} flag; you must choose one or the other.}
+
+\item{Tags}{Adds one or more custom tags, each in the form of a key:value pair, to a
+new custom vocabulary at the time you create this new vocabulary.
+
+To learn more about using tags with Amazon Transcribe, refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html}{Tagging resources}.}
 }
 \description{
-Creates a new custom vocabulary that you can use to change the way
-Amazon Transcribe handles transcription of an audio file.
-}
-\section{Request syntax}{
-\preformatted{svc$create_vocabulary(
-  VocabularyName = "string",
-  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-  Phrases = list(
-    "string"
-  ),
-  VocabularyFileUri = "string"
-)
-}
-}
+Creates a new custom vocabulary.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/create_vocabulary.html} for full documentation.
+}
 \keyword{internal}

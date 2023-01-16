@@ -14,50 +14,69 @@ NULL
 #' usage dimensions.
 #' 
 #' For information on the permissions you need to use this API, see [AWS
-#' Marketing metering and entitlement API
+#' Marketplace metering and entitlement API
 #' permissions](https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html)
 #' in the *AWS Marketplace Seller Guide.*
 #' 
 #' **Submitting Metering Records**
 #' 
-#' -   *MeterUsage*- Submits the metering record for a Marketplace product.
-#'     MeterUsage is called from an EC2 instance or a container running on
-#'     EKS or ECS.
+#' -   *MeterUsage* - Submits the metering record for an AWS Marketplace
+#'     product. [`meter_usage`][marketplacemetering_meter_usage] is called
+#'     from an EC2 instance or a container running on EKS or ECS.
 #' 
-#' -   *BatchMeterUsage*- Submits the metering record for a set of
-#'     customers. BatchMeterUsage is called from a software-as-a-service
-#'     (SaaS) application.
+#' -   *BatchMeterUsage* - Submits the metering record for a set of
+#'     customers.
+#'     [`batch_meter_usage`][marketplacemetering_batch_meter_usage] is
+#'     called from a software-as-a-service (SaaS) application.
 #' 
 #' **Accepting New Customers**
 #' 
-#' -   *ResolveCustomer*- Called by a SaaS application during the
+#' -   *ResolveCustomer* - Called by a SaaS application during the
 #'     registration process. When a buyer visits your website during the
 #'     registration process, the buyer submits a Registration Token through
 #'     the browser. The Registration Token is resolved through this API to
-#'     obtain a CustomerIdentifier and Product Code.
+#'     obtain a `CustomerIdentifier` along with the `CustomerAWSAccountId`
+#'     and `ProductCode`.
 #' 
 #' **Entitlement and Metering for Paid Container Products**
 #' 
 #' -   Paid container software products sold through AWS Marketplace must
 #'     integrate with the AWS Marketplace Metering Service and call the
-#'     RegisterUsage operation for software entitlement and metering. Free
-#'     and BYOL products for Amazon ECS or Amazon EKS aren't required to
-#'     call RegisterUsage, but you can do so if you want to receive usage
-#'     data in your seller reports. For more information on using the
-#'     RegisterUsage operation, see [Container-Based
+#'     [`register_usage`][marketplacemetering_register_usage] operation for
+#'     software entitlement and metering. Free and BYOL products for Amazon
+#'     ECS or Amazon EKS aren't required to call
+#'     [`register_usage`][marketplacemetering_register_usage], but you can
+#'     do so if you want to receive usage data in your seller reports. For
+#'     more information on using the
+#'     [`register_usage`][marketplacemetering_register_usage] operation,
+#'     see [Container-Based
 #'     Products](https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html).
 #' 
-#' BatchMeterUsage API calls are captured by AWS CloudTrail. You can use
-#' Cloudtrail to verify that the SaaS metering records that you sent are
-#' accurate by searching for records with the eventName of BatchMeterUsage.
-#' You can also use CloudTrail to audit records over time. For more
-#' information, see the *[AWS CloudTrail User
-#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html)*
-#' .
+#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] API calls
+#' are captured by AWS CloudTrail. You can use Cloudtrail to verify that
+#' the SaaS metering records that you sent are accurate by searching for
+#' records with the `eventName` of
+#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage]. You can
+#' also use CloudTrail to audit records over time. For more information,
+#' see the *<span
+#' href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html">AWS
+#' CloudTrail User Guide</span>.*
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -69,10 +88,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -87,7 +110,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab BatchMeterUsage is called from a SaaS application listed on the AWS Marketplace to post metering records for a set of customers\cr
+#'  \link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab BatchMeterUsage is called from a SaaS application listed on AWS Marketplace to post metering records for a set of customers\cr
 #'  \link[=marketplacemetering_meter_usage]{meter_usage} \tab API to emit metering records\cr
 #'  \link[=marketplacemetering_register_usage]{register_usage} \tab Paid container software products sold through AWS Marketplace must integrate with the AWS Marketplace Metering Service and call the RegisterUsage operation for software entitlement and metering\cr
 #'  \link[=marketplacemetering_resolve_customer]{resolve_customer} \tab ResolveCustomer is called by a SaaS application during the registration process

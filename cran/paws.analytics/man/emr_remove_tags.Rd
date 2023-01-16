@@ -2,36 +2,20 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_remove_tags}
 \alias{emr_remove_tags}
-\title{Removes tags from an Amazon EMR resource}
+\title{Removes tags from an Amazon EMR resource, such as a cluster or Amazon
+EMR Studio}
 \usage{
 emr_remove_tags(ResourceId, TagKeys)
 }
 \arguments{
-\item{ResourceId}{[required] The Amazon EMR resource identifier from which tags will be removed. This
-value must be a cluster identifier.}
+\item{ResourceId}{[required] The Amazon EMR resource identifier from which tags will be removed. For
+example, a cluster identifier or an Amazon EMR Studio ID.}
 
-\item{TagKeys}{[required] A list of tag keys to remove from a resource.}
-}
-\value{
-An empty list.
+\item{TagKeys}{[required] A list of tag keys to remove from the resource.}
 }
 \description{
-Removes tags from an Amazon EMR resource. Tags make it easier to
-associate clusters in various ways, such as grouping clusters to track
-your Amazon EMR resource allocation costs. For more information, see
-\href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
+Removes tags from an Amazon EMR resource, such as a cluster or Amazon EMR Studio. Tags make it easier to associate resources in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
 
-The following example removes the stack tag with value Prod from a
-cluster:
+See \url{https://paws-r.github.io/docs/emr/remove_tags.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$remove_tags(
-  ResourceId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

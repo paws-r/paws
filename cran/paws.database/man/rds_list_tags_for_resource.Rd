@@ -4,7 +4,7 @@
 \alias{rds_list_tags_for_resource}
 \title{Lists all tags on an Amazon RDS resource}
 \usage{
-rds_list_tags_for_resource(ResourceName, Filters)
+rds_list_tags_for_resource(ResourceName, Filters = NULL)
 }
 \arguments{
 \item{ResourceName}{[required] The Amazon RDS resource with tags to be listed. This value is an Amazon
@@ -14,36 +14,9 @@ in the \emph{Amazon RDS User Guide}.}
 
 \item{Filters}{This parameter isn't currently supported.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Lists all tags on an Amazon RDS resource.
 
-For an overview on tagging an Amazon RDS resource, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}
-in the \emph{Amazon RDS User Guide}.
+See \url{https://paws-r.github.io/docs/rds/list_tags_for_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

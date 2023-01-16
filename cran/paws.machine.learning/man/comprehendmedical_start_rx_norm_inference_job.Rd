@@ -5,9 +5,15 @@
 \title{Starts an asynchronous job to detect medication entities and link them
 to the RxNorm ontology}
 \usage{
-comprehendmedical_start_rx_norm_inference_job(InputDataConfig,
-  OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
-  KMSKey, LanguageCode)
+comprehendmedical_start_rx_norm_inference_job(
+  InputDataConfig,
+  OutputDataConfig,
+  DataAccessRoleArn,
+  JobName = NULL,
+  ClientRequestToken = NULL,
+  KMSKey = NULL,
+  LanguageCode
+)
 }
 \arguments{
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
@@ -15,13 +21,13 @@ comprehendmedical_start_rx_norm_inference_job(InputDataConfig,
 \item{OutputDataConfig}{[required] Specifies where to send the output files.}
 
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-(IAM) role that grants Amazon Comprehend Medical read access to your
-input data. For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med}{Role-Based Permissions Required for Asynchronous Operations}.}
+(IAM) role that grants Comprehend Medical; read access to your input
+data. For more information, see \href{https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med}{Role-Based Permissions Required for Asynchronous Operations}.}
 
 \item{JobName}{The identifier of the job.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
-token, Amazon Comprehend Medical generates one.}
+token, Comprehend Medical; generates one.}
 
 \item{KMSKey}{An AWS Key Management Service key to encrypt your output files. If you
 do not specify a key, the files are written in plain text.}
@@ -29,35 +35,9 @@ do not specify a key, the files are written in plain text.}
 \item{LanguageCode}{[required] The language of the input documents. All documents must be in the same
 language.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
-}
 \description{
-Starts an asynchronous job to detect medication entities and link them
-to the RxNorm ontology. Use the
-\code{\link[=comprehendmedical_describe_rx_norm_inference_job]{describe_rx_norm_inference_job}}
-operation to track the status of a job.
-}
-\section{Request syntax}{
-\preformatted{svc$start_rx_norm_inference_job(
-  InputDataConfig = list(
-    S3Bucket = "string",
-    S3Key = "string"
-  ),
-  OutputDataConfig = list(
-    S3Bucket = "string",
-    S3Key = "string"
-  ),
-  DataAccessRoleArn = "string",
-  JobName = "string",
-  ClientRequestToken = "string",
-  KMSKey = "string",
-  LanguageCode = "en"
-)
-}
-}
+Starts an asynchronous job to detect medication entities and link them to the RxNorm ontology. Use the \code{\link[=comprehendmedical_describe_rx_norm_inference_job]{describe_rx_norm_inference_job}} operation to track the status of a job.
 
+See \url{https://paws-r.github.io/docs/comprehendmedical/start_rx_norm_inference_job.html} for full documentation.
+}
 \keyword{internal}

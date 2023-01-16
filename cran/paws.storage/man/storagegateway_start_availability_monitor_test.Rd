@@ -10,29 +10,9 @@ storagegateway_start_availability_monitor_test(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Start a test that verifies that the specified gateway is configured for
-High Availability monitoring in your host environment. This request only
-initiates the test and that a successful response only indicates that
-the test was started. It doesn't indicate that the test passed. For the
-status of the test, invoke the
-\code{\link[=storagegateway_describe_availability_monitor_test]{describe_availability_monitor_test}}
-API.
+Start a test that verifies that the specified gateway is configured for High Availability monitoring in your host environment. This request only initiates the test and that a successful response only indicates that the test was started. It doesn't indicate that the test passed. For the status of the test, invoke the \code{\link[=storagegateway_describe_availability_monitor_test]{describe_availability_monitor_test}} API.
 
-Starting this test will cause your gateway to go offline for a brief
-period.
+See \url{https://paws-r.github.io/docs/storagegateway/start_availability_monitor_test.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_availability_monitor_test(
-  GatewayARN = "string"
-)
-}
-}
-
 \keyword{internal}

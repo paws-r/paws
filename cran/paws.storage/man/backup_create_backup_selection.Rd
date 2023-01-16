@@ -5,8 +5,11 @@
 \title{Creates a JSON document that specifies a set of resources to assign to a
 backup plan}
 \usage{
-backup_create_backup_selection(BackupPlanId, BackupSelection,
-  CreatorRequestId)
+backup_create_backup_selection(
+  BackupPlanId,
+  BackupSelection,
+  CreatorRequestId = NULL
+)
 }
 \arguments{
 \item{BackupPlanId}{[required] Uniquely identifies the backup plan to be associated with the selection
@@ -16,69 +19,15 @@ of resources.}
 plan.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and allows failed requests
-to be retried without the risk of running the operation twice.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SelectionId = "string",
-  BackupPlanId = "string",
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+to be retried without the risk of running the operation twice. This
+parameter is optional.
+
+If used, this parameter must contain 1 to 50 alphanumeric or '-_.'
+characters.}
 }
 \description{
-Creates a JSON document that specifies a set of resources to assign to a
-backup plan. Resources can be included by specifying patterns for a
-\code{ListOfTags} and selected \code{Resources}.
+Creates a JSON document that specifies a set of resources to assign to a backup plan. For examples, see \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/assigning-resources.html#assigning-resources-json}{Assigning resources programmatically}.
 
-For example, consider the following patterns:
-\itemize{
-\item \code{Resources: "arn:aws:ec2:region:account-id:volume/volume-id"}
-\item \code{ConditionKey:"department"}
-
-\code{ConditionValue:"finance"}
-
-\code{ConditionType:"StringEquals"}
-\item \code{ConditionKey:"importance"}
-
-\code{ConditionValue:"critical"}
-
-\code{ConditionType:"StringEquals"}
+See \url{https://paws-r.github.io/docs/backup/create_backup_selection.html} for full documentation.
 }
-
-Using these patterns would back up all Amazon Elastic Block Store
-(Amazon EBS) volumes that are tagged as \code{"department=finance"},
-\code{"importance=critical"}, in addition to an EBS volume with the specified
-volume ID.
-
-Resources and conditions are additive in that all resources that match
-the pattern are selected. This shouldn't be confused with a logical AND,
-where all conditions must match. The matching patterns are logically put
-together using the OR operator. In other words, all patterns that match
-are selected for backup.
-}
-\section{Request syntax}{
-\preformatted{svc$create_backup_selection(
-  BackupPlanId = "string",
-  BackupSelection = list(
-    SelectionName = "string",
-    IamRoleArn = "string",
-    Resources = list(
-      "string"
-    ),
-    ListOfTags = list(
-      list(
-        ConditionType = "STRINGEQUALS",
-        ConditionKey = "string",
-        ConditionValue = "string"
-      )
-    )
-  ),
-  CreatorRequestId = "string"
-)
-}
-}
-
 \keyword{internal}

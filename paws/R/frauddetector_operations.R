@@ -136,6 +136,208 @@ frauddetector_batch_get_variable <- function(names) {
 }
 .frauddetector$operations$batch_get_variable <- frauddetector_batch_get_variable
 
+#' Cancels an in-progress batch import job
+#'
+#' @description
+#' Cancels an in-progress batch import job.
+#'
+#' @usage
+#' frauddetector_cancel_batch_import_job(jobId)
+#'
+#' @param jobId &#91;required&#93; The ID of an in-progress batch import job to cancel.
+#' 
+#' Amazon Fraud Detector will throw an error if the batch import job is in
+#' `FAILED`, `CANCELED`, or `COMPLETED` state.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_batch_import_job(
+#'   jobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_cancel_batch_import_job
+frauddetector_cancel_batch_import_job <- function(jobId) {
+  op <- new_operation(
+    name = "CancelBatchImportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$cancel_batch_import_job_input(jobId = jobId)
+  output <- .frauddetector$cancel_batch_import_job_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$cancel_batch_import_job <- frauddetector_cancel_batch_import_job
+
+#' Cancels the specified batch prediction job
+#'
+#' @description
+#' Cancels the specified batch prediction job.
+#'
+#' @usage
+#' frauddetector_cancel_batch_prediction_job(jobId)
+#'
+#' @param jobId &#91;required&#93; The ID of the batch prediction job to cancel.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_batch_prediction_job(
+#'   jobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_cancel_batch_prediction_job
+frauddetector_cancel_batch_prediction_job <- function(jobId) {
+  op <- new_operation(
+    name = "CancelBatchPredictionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$cancel_batch_prediction_job_input(jobId = jobId)
+  output <- .frauddetector$cancel_batch_prediction_job_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$cancel_batch_prediction_job <- frauddetector_cancel_batch_prediction_job
+
+#' Creates a batch import job
+#'
+#' @description
+#' Creates a batch import job.
+#'
+#' @usage
+#' frauddetector_create_batch_import_job(jobId, inputPath, outputPath,
+#'   eventTypeName, iamRoleArn, tags)
+#'
+#' @param jobId &#91;required&#93; The ID of the batch import job. The ID cannot be of a past job, unless
+#' the job exists in `CREATE_FAILED` state.
+#' @param inputPath &#91;required&#93; The URI that points to the Amazon S3 location of your data file.
+#' @param outputPath &#91;required&#93; The URI that points to the Amazon S3 location for storing your results.
+#' @param eventTypeName &#91;required&#93; The name of the event type.
+#' @param iamRoleArn &#91;required&#93; The ARN of the IAM role created for Amazon S3 bucket that holds your
+#' data file. The IAM role must have read and write permissions to both
+#' input and output S3 buckets.
+#' @param tags A collection of key-value pairs associated with this request.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_batch_import_job(
+#'   jobId = "string",
+#'   inputPath = "string",
+#'   outputPath = "string",
+#'   eventTypeName = "string",
+#'   iamRoleArn = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_create_batch_import_job
+frauddetector_create_batch_import_job <- function(jobId, inputPath, outputPath, eventTypeName, iamRoleArn, tags = NULL) {
+  op <- new_operation(
+    name = "CreateBatchImportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$create_batch_import_job_input(jobId = jobId, inputPath = inputPath, outputPath = outputPath, eventTypeName = eventTypeName, iamRoleArn = iamRoleArn, tags = tags)
+  output <- .frauddetector$create_batch_import_job_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$create_batch_import_job <- frauddetector_create_batch_import_job
+
+#' Creates a batch prediction job
+#'
+#' @description
+#' Creates a batch prediction job.
+#'
+#' @usage
+#' frauddetector_create_batch_prediction_job(jobId, inputPath, outputPath,
+#'   eventTypeName, detectorName, detectorVersion, iamRoleArn, tags)
+#'
+#' @param jobId &#91;required&#93; The ID of the batch prediction job.
+#' @param inputPath &#91;required&#93; The Amazon S3 location of your training file.
+#' @param outputPath &#91;required&#93; The Amazon S3 location of your output file.
+#' @param eventTypeName &#91;required&#93; The name of the event type.
+#' @param detectorName &#91;required&#93; The name of the detector.
+#' @param detectorVersion The detector version.
+#' @param iamRoleArn &#91;required&#93; The ARN of the IAM role to use for this job request.
+#' @param tags A collection of key and value pairs.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_batch_prediction_job(
+#'   jobId = "string",
+#'   inputPath = "string",
+#'   outputPath = "string",
+#'   eventTypeName = "string",
+#'   detectorName = "string",
+#'   detectorVersion = "string",
+#'   iamRoleArn = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_create_batch_prediction_job
+frauddetector_create_batch_prediction_job <- function(jobId, inputPath, outputPath, eventTypeName, detectorName, detectorVersion = NULL, iamRoleArn, tags = NULL) {
+  op <- new_operation(
+    name = "CreateBatchPredictionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$create_batch_prediction_job_input(jobId = jobId, inputPath = inputPath, outputPath = outputPath, eventTypeName = eventTypeName, detectorName = detectorName, detectorVersion = detectorVersion, iamRoleArn = iamRoleArn, tags = tags)
+  output <- .frauddetector$create_batch_prediction_job_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$create_batch_prediction_job <- frauddetector_create_batch_prediction_job
+
 #' Creates a detector version
 #'
 #' @description
@@ -194,7 +396,7 @@ frauddetector_batch_get_variable <- function(names) {
 #'   modelVersions = list(
 #'     list(
 #'       modelId = "string",
-#'       modelType = "ONLINE_FRAUD_INSIGHTS",
+#'       modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'       modelVersionNumber = "string",
 #'       arn = "string"
 #'     )
@@ -251,7 +453,7 @@ frauddetector_create_detector_version <- function(detectorId, description = NULL
 #' ```
 #' svc$create_model(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   description = "string",
 #'   eventTypeName = "string",
 #'   tags = list(
@@ -292,14 +494,17 @@ frauddetector_create_model <- function(modelId, modelType, description = NULL, e
 #'
 #' @usage
 #' frauddetector_create_model_version(modelId, modelType,
-#'   trainingDataSource, trainingDataSchema, externalEventsDetail, tags)
+#'   trainingDataSource, trainingDataSchema, externalEventsDetail,
+#'   ingestedEventsDetail, tags)
 #'
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
 #' @param trainingDataSource &#91;required&#93; The training data source location in Amazon S3.
 #' @param trainingDataSchema &#91;required&#93; The training data schema.
-#' @param externalEventsDetail Details for the external events data used for model version training.
+#' @param externalEventsDetail Details of the external events data used for model version training.
 #' Required if `trainingDataSource` is `EXTERNAL_EVENTS`.
+#' @param ingestedEventsDetail Details of the ingested events data used for model version training.
+#' Required if `trainingDataSource` is `INGESTED_EVENTS`.
 #' @param tags A collection of key and value pairs.
 #'
 #' @return
@@ -307,7 +512,7 @@ frauddetector_create_model <- function(modelId, modelType, description = NULL, e
 #' ```
 #' list(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   modelVersionNumber = "string",
 #'   status = "string"
 #' )
@@ -317,8 +522,8 @@ frauddetector_create_model <- function(modelId, modelType, description = NULL, e
 #' ```
 #' svc$create_model_version(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
-#'   trainingDataSource = "EXTERNAL_EVENTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
+#'   trainingDataSource = "EXTERNAL_EVENTS"|"INGESTED_EVENTS",
 #'   trainingDataSchema = list(
 #'     modelVariables = list(
 #'       "string"
@@ -328,12 +533,19 @@ frauddetector_create_model <- function(modelId, modelType, description = NULL, e
 #'         list(
 #'           "string"
 #'         )
-#'       )
+#'       ),
+#'       unlabeledEventsTreatment = "IGNORE"|"FRAUD"|"LEGIT"
 #'     )
 #'   ),
 #'   externalEventsDetail = list(
 #'     dataLocation = "string",
 #'     dataAccessRoleArn = "string"
+#'   ),
+#'   ingestedEventsDetail = list(
+#'     ingestedEventsTimeWindow = list(
+#'       startTime = "string",
+#'       endTime = "string"
+#'     )
 #'   ),
 #'   tags = list(
 #'     list(
@@ -347,14 +559,14 @@ frauddetector_create_model <- function(modelId, modelType, description = NULL, e
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_model_version
-frauddetector_create_model_version <- function(modelId, modelType, trainingDataSource, trainingDataSchema, externalEventsDetail = NULL, tags = NULL) {
+frauddetector_create_model_version <- function(modelId, modelType, trainingDataSource, trainingDataSchema, externalEventsDetail = NULL, ingestedEventsDetail = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateModelVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$create_model_version_input(modelId = modelId, modelType = modelType, trainingDataSource = trainingDataSource, trainingDataSchema = trainingDataSchema, externalEventsDetail = externalEventsDetail, tags = tags)
+  input <- .frauddetector$create_model_version_input(modelId = modelId, modelType = modelType, trainingDataSource = trainingDataSource, trainingDataSchema = trainingDataSchema, externalEventsDetail = externalEventsDetail, ingestedEventsDetail = ingestedEventsDetail, tags = tags)
   output <- .frauddetector$create_model_version_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -495,6 +707,87 @@ frauddetector_create_variable <- function(name, dataType, dataSource, defaultVal
 }
 .frauddetector$operations$create_variable <- frauddetector_create_variable
 
+#' Deletes the specified batch import job ID record
+#'
+#' @description
+#' Deletes the specified batch import job ID record. This action does not
+#' delete the data that was batch imported.
+#'
+#' @usage
+#' frauddetector_delete_batch_import_job(jobId)
+#'
+#' @param jobId &#91;required&#93; The ID of the batch import job to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_batch_import_job(
+#'   jobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_batch_import_job
+frauddetector_delete_batch_import_job <- function(jobId) {
+  op <- new_operation(
+    name = "DeleteBatchImportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_batch_import_job_input(jobId = jobId)
+  output <- .frauddetector$delete_batch_import_job_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_batch_import_job <- frauddetector_delete_batch_import_job
+
+#' Deletes a batch prediction job
+#'
+#' @description
+#' Deletes a batch prediction job.
+#'
+#' @usage
+#' frauddetector_delete_batch_prediction_job(jobId)
+#'
+#' @param jobId &#91;required&#93; The ID of the batch prediction job to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_batch_prediction_job(
+#'   jobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_batch_prediction_job
+frauddetector_delete_batch_prediction_job <- function(jobId) {
+  op <- new_operation(
+    name = "DeleteBatchPredictionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_batch_prediction_job_input(jobId = jobId)
+  output <- .frauddetector$delete_batch_prediction_job_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_batch_prediction_job <- frauddetector_delete_batch_prediction_job
+
 #' Deletes the detector
 #'
 #' @description
@@ -594,8 +887,8 @@ frauddetector_delete_detector_version <- function(detectorId, detectorVersionId)
 #' You cannot delete an entity type that is included in an event type.
 #' 
 #' When you delete an entity type, Amazon Fraud Detector permanently
-#' deletes that entity type from the evaluation history, and the data is no
-#' longer stored in Amazon Fraud Detector.
+#' deletes that entity type and the data is no longer stored in Amazon
+#' Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_entity_type(name)
@@ -638,14 +931,15 @@ frauddetector_delete_entity_type <- function(name) {
 #' Deletes the specified event.
 #' 
 #' When you delete an event, Amazon Fraud Detector permanently deletes that
-#' event from the evaluation history, and the event data is no longer
-#' stored in Amazon Fraud Detector.
+#' event and the event data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
-#' frauddetector_delete_event(eventId, eventTypeName)
+#' frauddetector_delete_event(eventId, eventTypeName, deleteAuditHistory)
 #'
 #' @param eventId &#91;required&#93; The ID of the event to delete.
 #' @param eventTypeName &#91;required&#93; The name of the event type.
+#' @param deleteAuditHistory Specifies whether or not to delete any predictions associated with the
+#' event.
 #'
 #' @return
 #' An empty list.
@@ -654,21 +948,22 @@ frauddetector_delete_entity_type <- function(name) {
 #' ```
 #' svc$delete_event(
 #'   eventId = "string",
-#'   eventTypeName = "string"
+#'   eventTypeName = "string",
+#'   deleteAuditHistory = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_event
-frauddetector_delete_event <- function(eventId, eventTypeName) {
+frauddetector_delete_event <- function(eventId, eventTypeName, deleteAuditHistory = NULL) {
   op <- new_operation(
     name = "DeleteEvent",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$delete_event_input(eventId = eventId, eventTypeName = eventTypeName)
+  input <- .frauddetector$delete_event_input(eventId = eventId, eventTypeName = eventTypeName, deleteAuditHistory = deleteAuditHistory)
   output <- .frauddetector$delete_event_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -685,9 +980,9 @@ frauddetector_delete_event <- function(eventId, eventTypeName) {
 #' 
 #' You cannot delete an event type that is used in a detector or a model.
 #' 
-#' When you delete an entity type, Amazon Fraud Detector permanently
-#' deletes that entity type from the evaluation history, and the data is no
-#' longer stored in Amazon Fraud Detector.
+#' When you delete an event type, Amazon Fraud Detector permanently deletes
+#' that event type and the data is no longer stored in Amazon Fraud
+#' Detector.
 #'
 #' @usage
 #' frauddetector_delete_event_type(name)
@@ -723,6 +1018,52 @@ frauddetector_delete_event_type <- function(name) {
   return(response)
 }
 .frauddetector$operations$delete_event_type <- frauddetector_delete_event_type
+
+#' Deletes all events of a particular event type
+#'
+#' @description
+#' Deletes all events of a particular event type.
+#'
+#' @usage
+#' frauddetector_delete_events_by_event_type(eventTypeName)
+#'
+#' @param eventTypeName &#91;required&#93; The name of the event type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventTypeName = "string",
+#'   eventsDeletionStatus = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_events_by_event_type(
+#'   eventTypeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_events_by_event_type
+frauddetector_delete_events_by_event_type <- function(eventTypeName) {
+  op <- new_operation(
+    name = "DeleteEventsByEventType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_events_by_event_type_input(eventTypeName = eventTypeName)
+  output <- .frauddetector$delete_events_by_event_type_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_events_by_event_type <- frauddetector_delete_events_by_event_type
 
 #' Removes a SageMaker model from Amazon Fraud Detector
 #'
@@ -780,8 +1121,7 @@ frauddetector_delete_external_model <- function(modelEndpoint) {
 #' the relevant event ID.
 #' 
 #' When you delete a label, Amazon Fraud Detector permanently deletes that
-#' label from the evaluation history, and the data is no longer stored in
-#' Amazon Fraud Detector.
+#' label and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_label(name)
@@ -827,8 +1167,7 @@ frauddetector_delete_label <- function(name) {
 #' provided that they are not associated with a detector version.
 #' 
 #' When you delete a model, Amazon Fraud Detector permanently deletes that
-#' model from the evaluation history, and the data is no longer stored in
-#' Amazon Fraud Detector.
+#' model and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_model(modelId, modelType)
@@ -843,7 +1182,7 @@ frauddetector_delete_label <- function(name) {
 #' ```
 #' svc$delete_model(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS"
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS"
 #' )
 #' ```
 #'
@@ -876,8 +1215,8 @@ frauddetector_delete_model <- function(modelId, modelType) {
 #' provided that they are not associated with a detector version.
 #' 
 #' When you delete a model version, Amazon Fraud Detector permanently
-#' deletes that model version from the evaluation history, and the data is
-#' no longer stored in Amazon Fraud Detector.
+#' deletes that model version and the data is no longer stored in Amazon
+#' Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_model_version(modelId, modelType,
@@ -894,7 +1233,7 @@ frauddetector_delete_model <- function(modelId, modelType) {
 #' ```
 #' svc$delete_model_version(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   modelVersionNumber = "string"
 #' )
 #' ```
@@ -927,8 +1266,7 @@ frauddetector_delete_model_version <- function(modelId, modelType, modelVersionN
 #' You cannot delete an outcome that is used in a rule version.
 #' 
 #' When you delete an outcome, Amazon Fraud Detector permanently deletes
-#' that outcome from the evaluation history, and the data is no longer
-#' stored in Amazon Fraud Detector.
+#' that outcome and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_outcome(name)
@@ -972,8 +1310,7 @@ frauddetector_delete_outcome <- function(name) {
 #' or `INACTIVE` detector version.
 #' 
 #' When you delete a rule, Amazon Fraud Detector permanently deletes that
-#' rule from the evaluation history, and the data is no longer stored in
-#' Amazon Fraud Detector.
+#' rule and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_rule(rule)
@@ -1027,8 +1364,7 @@ frauddetector_delete_rule <- function(rule) {
 #' delete these variables manually.
 #' 
 #' When you delete a variable, Amazon Fraud Detector permanently deletes
-#' that variable from the evaluation history, and the data is no longer
-#' stored in Amazon Fraud Detector.
+#' that variable and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_variable(name)
@@ -1149,10 +1485,10 @@ frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxRes
 #'   modelVersionDetails = list(
 #'     list(
 #'       modelId = "string",
-#'       modelType = "ONLINE_FRAUD_INSIGHTS",
+#'       modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'       modelVersionNumber = "string",
 #'       status = "string",
-#'       trainingDataSource = "EXTERNAL_EVENTS",
+#'       trainingDataSource = "EXTERNAL_EVENTS"|"INGESTED_EVENTS",
 #'       trainingDataSchema = list(
 #'         modelVariables = list(
 #'           "string"
@@ -1162,12 +1498,19 @@ frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxRes
 #'             list(
 #'               "string"
 #'             )
-#'           )
+#'           ),
+#'           unlabeledEventsTreatment = "IGNORE"|"FRAUD"|"LEGIT"
 #'         )
 #'       ),
 #'       externalEventsDetail = list(
 #'         dataLocation = "string",
 #'         dataAccessRoleArn = "string"
+#'       ),
+#'       ingestedEventsDetail = list(
+#'         ingestedEventsTimeWindow = list(
+#'           startTime = "string",
+#'           endTime = "string"
+#'         )
 #'       ),
 #'       trainingResult = list(
 #'         dataValidationMetrics = list(
@@ -1198,11 +1541,100 @@ frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxRes
 #'               threshold = 123.0
 #'             )
 #'           )
+#'         ),
+#'         variableImportanceMetrics = list(
+#'           logOddsMetrics = list(
+#'             list(
+#'               variableName = "string",
+#'               variableType = "string",
+#'               variableImportance = 123.0
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       lastUpdatedTime = "string",
 #'       createdTime = "string",
-#'       arn = "string"
+#'       arn = "string",
+#'       trainingResultV2 = list(
+#'         dataValidationMetrics = list(
+#'           fileLevelMessages = list(
+#'             list(
+#'               title = "string",
+#'               content = "string",
+#'               type = "string"
+#'             )
+#'           ),
+#'           fieldLevelMessages = list(
+#'             list(
+#'               fieldName = "string",
+#'               identifier = "string",
+#'               title = "string",
+#'               content = "string",
+#'               type = "string"
+#'             )
+#'           )
+#'         ),
+#'         trainingMetricsV2 = list(
+#'           ofi = list(
+#'             metricDataPoints = list(
+#'               list(
+#'                 fpr = 123.0,
+#'                 precision = 123.0,
+#'                 tpr = 123.0,
+#'                 threshold = 123.0
+#'               )
+#'             ),
+#'             modelPerformance = list(
+#'               auc = 123.0
+#'             )
+#'           ),
+#'           tfi = list(
+#'             metricDataPoints = list(
+#'               list(
+#'                 fpr = 123.0,
+#'                 precision = 123.0,
+#'                 tpr = 123.0,
+#'                 threshold = 123.0
+#'               )
+#'             ),
+#'             modelPerformance = list(
+#'               auc = 123.0
+#'             )
+#'           ),
+#'           ati = list(
+#'             metricDataPoints = list(
+#'               list(
+#'                 cr = 123.0,
+#'                 adr = 123.0,
+#'                 threshold = 123.0,
+#'                 atodr = 123.0
+#'               )
+#'             ),
+#'             modelPerformance = list(
+#'               asi = 123.0
+#'             )
+#'           )
+#'         ),
+#'         variableImportanceMetrics = list(
+#'           logOddsMetrics = list(
+#'             list(
+#'               variableName = "string",
+#'               variableType = "string",
+#'               variableImportance = 123.0
+#'             )
+#'           )
+#'         ),
+#'         aggregatedVariablesImportanceMetrics = list(
+#'           logOddsMetrics = list(
+#'             list(
+#'               variableNames = list(
+#'                 "string"
+#'               ),
+#'               aggregatedVariablesImportance = 123.0
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1214,7 +1646,7 @@ frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxRes
 #' svc$describe_model_versions(
 #'   modelId = "string",
 #'   modelVersionNumber = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -1240,6 +1672,200 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
 }
 .frauddetector$operations$describe_model_versions <- frauddetector_describe_model_versions
 
+#' Gets all batch import jobs or a specific job of the specified ID
+#'
+#' @description
+#' Gets all batch import jobs or a specific job of the specified ID. This
+#' is a paginated API. If you provide a null `maxResults`, this action
+#' retrieves a maximum of 50 records per page. If you provide a
+#' `maxResults`, the value must be between 1 and 50. To get the next page
+#' results, provide the pagination token from the
+#' `GetBatchImportJobsResponse` as part of your request. A null pagination
+#' token fetches the records from the beginning.
+#'
+#' @usage
+#' frauddetector_get_batch_import_jobs(jobId, maxResults, nextToken)
+#'
+#' @param jobId The ID of the batch import job to get.
+#' @param maxResults The maximum number of objects to return for request.
+#' @param nextToken The next token from the previous request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   batchImports = list(
+#'     list(
+#'       jobId = "string",
+#'       status = "IN_PROGRESS_INITIALIZING"|"IN_PROGRESS"|"CANCEL_IN_PROGRESS"|"CANCELED"|"COMPLETE"|"FAILED",
+#'       failureReason = "string",
+#'       startTime = "string",
+#'       completionTime = "string",
+#'       inputPath = "string",
+#'       outputPath = "string",
+#'       eventTypeName = "string",
+#'       iamRoleArn = "string",
+#'       arn = "string",
+#'       processedRecordsCount = 123,
+#'       failedRecordsCount = 123,
+#'       totalRecordsCount = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_batch_import_jobs(
+#'   jobId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_batch_import_jobs
+frauddetector_get_batch_import_jobs <- function(jobId = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetBatchImportJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_batch_import_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
+  output <- .frauddetector$get_batch_import_jobs_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_batch_import_jobs <- frauddetector_get_batch_import_jobs
+
+#' Gets all batch prediction jobs or a specific job if you specify a job ID
+#'
+#' @description
+#' Gets all batch prediction jobs or a specific job if you specify a job
+#' ID. This is a paginated API. If you provide a null maxResults, this
+#' action retrieves a maximum of 50 records per page. If you provide a
+#' maxResults, the value must be between 1 and 50. To get the next page
+#' results, provide the pagination token from the
+#' GetBatchPredictionJobsResponse as part of your request. A null
+#' pagination token fetches the records from the beginning.
+#'
+#' @usage
+#' frauddetector_get_batch_prediction_jobs(jobId, maxResults, nextToken)
+#'
+#' @param jobId The batch prediction job for which to get the details.
+#' @param maxResults The maximum number of objects to return for the request.
+#' @param nextToken The next token from the previous request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   batchPredictions = list(
+#'     list(
+#'       jobId = "string",
+#'       status = "IN_PROGRESS_INITIALIZING"|"IN_PROGRESS"|"CANCEL_IN_PROGRESS"|"CANCELED"|"COMPLETE"|"FAILED",
+#'       failureReason = "string",
+#'       startTime = "string",
+#'       completionTime = "string",
+#'       lastHeartbeatTime = "string",
+#'       inputPath = "string",
+#'       outputPath = "string",
+#'       eventTypeName = "string",
+#'       detectorName = "string",
+#'       detectorVersion = "string",
+#'       iamRoleArn = "string",
+#'       arn = "string",
+#'       processedRecordsCount = 123,
+#'       totalRecordsCount = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_batch_prediction_jobs(
+#'   jobId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_batch_prediction_jobs
+frauddetector_get_batch_prediction_jobs <- function(jobId = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetBatchPredictionJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_batch_prediction_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
+  output <- .frauddetector$get_batch_prediction_jobs_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_batch_prediction_jobs <- frauddetector_get_batch_prediction_jobs
+
+#' Retrieves the status of a DeleteEventsByEventType action
+#'
+#' @description
+#' Retrieves the status of a
+#' [`delete_events_by_event_type`][frauddetector_delete_events_by_event_type]
+#' action.
+#'
+#' @usage
+#' frauddetector_get_delete_events_by_event_type_status(eventTypeName)
+#'
+#' @param eventTypeName &#91;required&#93; Name of event type for which to get the deletion status.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventTypeName = "string",
+#'   eventsDeletionStatus = "IN_PROGRESS_INITIALIZING"|"IN_PROGRESS"|"CANCEL_IN_PROGRESS"|"CANCELED"|"COMPLETE"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_delete_events_by_event_type_status(
+#'   eventTypeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_delete_events_by_event_type_status
+frauddetector_get_delete_events_by_event_type_status <- function(eventTypeName) {
+  op <- new_operation(
+    name = "GetDeleteEventsByEventTypeStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_delete_events_by_event_type_status_input(eventTypeName = eventTypeName)
+  output <- .frauddetector$get_delete_events_by_event_type_status_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_delete_events_by_event_type_status <- frauddetector_get_delete_events_by_event_type_status
+
 #' Gets a particular detector version
 #'
 #' @description
@@ -1264,7 +1890,7 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
 #'   modelVersions = list(
 #'     list(
 #'       modelId = "string",
-#'       modelType = "ONLINE_FRAUD_INSIGHTS",
+#'       modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'       modelVersionNumber = "string",
 #'       arn = "string"
 #'     )
@@ -1441,6 +2067,69 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
 }
 .frauddetector$operations$get_entity_types <- frauddetector_get_entity_types
 
+#' Retrieves details of events stored with Amazon Fraud Detector
+#'
+#' @description
+#' Retrieves details of events stored with Amazon Fraud Detector. This
+#' action does not retrieve prediction results.
+#'
+#' @usage
+#' frauddetector_get_event(eventId, eventTypeName)
+#'
+#' @param eventId &#91;required&#93; The ID of the event to retrieve.
+#' @param eventTypeName &#91;required&#93; The event type of the event to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   event = list(
+#'     eventId = "string",
+#'     eventTypeName = "string",
+#'     eventTimestamp = "string",
+#'     eventVariables = list(
+#'       "string"
+#'     ),
+#'     currentLabel = "string",
+#'     labelTimestamp = "string",
+#'     entities = list(
+#'       list(
+#'         entityType = "string",
+#'         entityId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_event(
+#'   eventId = "string",
+#'   eventTypeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_event
+frauddetector_get_event <- function(eventId, eventTypeName) {
+  op <- new_operation(
+    name = "GetEvent",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_event_input(eventId = eventId, eventTypeName = eventTypeName)
+  output <- .frauddetector$get_event_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_event <- frauddetector_get_event
+
 #' Evaluates an event against a detector version
 #'
 #' @description
@@ -1460,10 +2149,32 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
 #' @param entities &#91;required&#93; The entity type (associated with the detector's event type) and specific
 #' entity ID representing who performed the event. If an entity id is not
 #' available, use "UNKNOWN."
-#' @param eventTimestamp &#91;required&#93; Timestamp that defines when the event under evaluation occurred.
+#' @param eventTimestamp &#91;required&#93; Timestamp that defines when the event under evaluation occurred. The
+#' timestamp must be specified using ISO 8601 standard in UTC.
 #' @param eventVariables &#91;required&#93; Names of the event type's variables you defined in Amazon Fraud Detector
 #' to represent data elements and their corresponding values for the event
 #' you are sending for evaluation.
+#' 
+#' You must provide at least one eventVariable
+#' 
+#' To ensure most accurate fraud prediction and to simplify your data
+#' preparation, Amazon Fraud Detector will replace all missing variables or
+#' values as follows:
+#' 
+#' **For Amazon Fraud Detector trained models:**
+#' 
+#' If a null value is provided explicitly for a variable or if a variable
+#' is missing, model will replace the null value or the missing variable
+#' (no variable name in the eventVariables map) with calculated default
+#' mean/medians for numeric variables and with special values for
+#' categorical variables.
+#' 
+#' **For imported SageMaker models:**
+#' 
+#' If a null value is provided explicitly for a variable, the model and
+#' rules will use “null” as the value. If a variable is not provided (no
+#' variable name in the eventVariables map), model and rules will use the
+#' default value that is provided for the variable.
 #' @param externalModelEndpointDataBlobs The Amazon SageMaker model endpoint input data blobs.
 #'
 #' @return
@@ -1474,7 +2185,7 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
 #'     list(
 #'       modelVersion = list(
 #'         modelId = "string",
-#'         modelType = "ONLINE_FRAUD_INSIGHTS",
+#'         modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'         modelVersionNumber = "string",
 #'         arn = "string"
 #'       ),
@@ -1487,6 +2198,17 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
 #'     list(
 #'       ruleId = "string",
 #'       outcomes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   externalModelOutputs = list(
+#'     list(
+#'       externalModel = list(
+#'         modelEndpoint = "string",
+#'         modelSource = "SAGEMAKER"
+#'       ),
+#'       outputs = list(
 #'         "string"
 #'       )
 #'     )
@@ -1540,6 +2262,146 @@ frauddetector_get_event_prediction <- function(detectorId, detectorVersionId = N
 }
 .frauddetector$operations$get_event_prediction <- frauddetector_get_event_prediction
 
+#' Gets details of the past fraud predictions for the specified event ID,
+#' event type, detector ID, and detector version ID that was generated in
+#' the specified time period
+#'
+#' @description
+#' Gets details of the past fraud predictions for the specified event ID,
+#' event type, detector ID, and detector version ID that was generated in
+#' the specified time period.
+#'
+#' @usage
+#' frauddetector_get_event_prediction_metadata(eventId, eventTypeName,
+#'   detectorId, detectorVersionId, predictionTimestamp)
+#'
+#' @param eventId &#91;required&#93; The event ID.
+#' @param eventTypeName &#91;required&#93; The event type associated with the detector specified for the
+#' prediction.
+#' @param detectorId &#91;required&#93; The detector ID.
+#' @param detectorVersionId &#91;required&#93; The detector version ID.
+#' @param predictionTimestamp &#91;required&#93; The timestamp that defines when the prediction was generated. The
+#' timestamp must be specified using ISO 8601 standard in UTC.
+#' 
+#' We recommend calling
+#' [`list_event_predictions`][frauddetector_list_event_predictions] first,
+#' and using the `predictionTimestamp` value in the response to provide an
+#' accurate prediction timestamp value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventId = "string",
+#'   eventTypeName = "string",
+#'   entityId = "string",
+#'   entityType = "string",
+#'   eventTimestamp = "string",
+#'   detectorId = "string",
+#'   detectorVersionId = "string",
+#'   detectorVersionStatus = "string",
+#'   eventVariables = list(
+#'     list(
+#'       name = "string",
+#'       value = "string",
+#'       source = "string"
+#'     )
+#'   ),
+#'   rules = list(
+#'     list(
+#'       ruleId = "string",
+#'       ruleVersion = "string",
+#'       expression = "string",
+#'       expressionWithValues = "string",
+#'       outcomes = list(
+#'         "string"
+#'       ),
+#'       evaluated = TRUE|FALSE,
+#'       matched = TRUE|FALSE
+#'     )
+#'   ),
+#'   ruleExecutionMode = "ALL_MATCHED"|"FIRST_MATCHED",
+#'   outcomes = list(
+#'     "string"
+#'   ),
+#'   evaluatedModelVersions = list(
+#'     list(
+#'       modelId = "string",
+#'       modelVersion = "string",
+#'       modelType = "string",
+#'       evaluations = list(
+#'         list(
+#'           outputVariableName = "string",
+#'           evaluationScore = "string",
+#'           predictionExplanations = list(
+#'             variableImpactExplanations = list(
+#'               list(
+#'                 eventVariableName = "string",
+#'                 relativeImpact = "string",
+#'                 logOddsImpact = 123.0
+#'               )
+#'             ),
+#'             aggregatedVariablesImpactExplanations = list(
+#'               list(
+#'                 eventVariableNames = list(
+#'                   "string"
+#'                 ),
+#'                 relativeImpact = "string",
+#'                 logOddsImpact = 123.0
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   evaluatedExternalModels = list(
+#'     list(
+#'       modelEndpoint = "string",
+#'       useEventVariables = TRUE|FALSE,
+#'       inputVariables = list(
+#'         "string"
+#'       ),
+#'       outputVariables = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   predictionTimestamp = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_event_prediction_metadata(
+#'   eventId = "string",
+#'   eventTypeName = "string",
+#'   detectorId = "string",
+#'   detectorVersionId = "string",
+#'   predictionTimestamp = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_event_prediction_metadata
+frauddetector_get_event_prediction_metadata <- function(eventId, eventTypeName, detectorId, detectorVersionId, predictionTimestamp) {
+  op <- new_operation(
+    name = "GetEventPredictionMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_event_prediction_metadata_input(eventId = eventId, eventTypeName = eventTypeName, detectorId = detectorId, detectorVersionId = detectorVersionId, predictionTimestamp = predictionTimestamp)
+  output <- .frauddetector$get_event_prediction_metadata_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_event_prediction_metadata <- frauddetector_get_event_prediction_metadata
+
 #' Gets all event types or a specific event type if name is provided
 #'
 #' @description
@@ -1574,6 +2436,14 @@ frauddetector_get_event_prediction <- function(detectorId, detectorVersionId = N
 #'       ),
 #'       entityTypes = list(
 #'         "string"
+#'       ),
+#'       eventIngestion = "ENABLED"|"DISABLED",
+#'       ingestedEventStatistics = list(
+#'         numberOfEvents = 123,
+#'         eventDataSizeInBytes = 123,
+#'         leastRecentEvent = "string",
+#'         mostRecentEvent = "string",
+#'         lastUpdatedTime = "string"
 #'       ),
 #'       lastUpdatedTime = "string",
 #'       createdTime = "string",
@@ -1696,14 +2566,12 @@ frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = 
 }
 .frauddetector$operations$get_external_models <- frauddetector_get_external_models
 
-#' Gets the encryption key if a Key Management Service (KMS) customer
-#' master key (CMK) has been specified to be used to encrypt content in
-#' Amazon Fraud Detector
+#' Gets the encryption key if a KMS key has been specified to be used to
+#' encrypt content in Amazon Fraud Detector
 #'
 #' @description
-#' Gets the encryption key if a Key Management Service (KMS) customer
-#' master key (CMK) has been specified to be used to encrypt content in
-#' Amazon Fraud Detector.
+#' Gets the encryption key if a KMS key has been specified to be used to
+#' encrypt content in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_get_kms_encryption_key()
@@ -1822,9 +2690,9 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
 #' ```
 #' list(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   modelVersionNumber = "string",
-#'   trainingDataSource = "EXTERNAL_EVENTS",
+#'   trainingDataSource = "EXTERNAL_EVENTS"|"INGESTED_EVENTS",
 #'   trainingDataSchema = list(
 #'     modelVariables = list(
 #'       "string"
@@ -1834,12 +2702,19 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
 #'         list(
 #'           "string"
 #'         )
-#'       )
+#'       ),
+#'       unlabeledEventsTreatment = "IGNORE"|"FRAUD"|"LEGIT"
 #'     )
 #'   ),
 #'   externalEventsDetail = list(
 #'     dataLocation = "string",
 #'     dataAccessRoleArn = "string"
+#'   ),
+#'   ingestedEventsDetail = list(
+#'     ingestedEventsTimeWindow = list(
+#'       startTime = "string",
+#'       endTime = "string"
+#'     )
 #'   ),
 #'   status = "string",
 #'   arn = "string"
@@ -1850,7 +2725,7 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
 #' ```
 #' svc$get_model_version(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   modelVersionNumber = "string"
 #' )
 #' ```
@@ -1878,10 +2753,11 @@ frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumb
 #' Gets one or more models
 #'
 #' @description
-#' Gets one or more models. Gets all models for the AWS account if no model
-#' type and no model id provided. Gets all models for the AWS account and
-#' model type, if the model type is specified but model id is not provided.
-#' Gets a specific model if (model type, model id) tuple is specified.
+#' Gets one or more models. Gets all models for the Amazon Web Services
+#' account if no model type and no model id provided. Gets all models for
+#' the Amazon Web Services account and model type, if the model type is
+#' specified but model id is not provided. Gets a specific model if (model
+#' type, model id) tuple is specified.
 #' 
 #' This is a paginated API. If you provide a null `maxResults`, this action
 #' retrieves a maximum of 10 records per page. If you provide a
@@ -1905,7 +2781,7 @@ frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumb
 #'   models = list(
 #'     list(
 #'       modelId = "string",
-#'       modelType = "ONLINE_FRAUD_INSIGHTS",
+#'       modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'       description = "string",
 #'       eventTypeName = "string",
 #'       createdTime = "string",
@@ -1920,7 +2796,7 @@ frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumb
 #' ```
 #' svc$get_models(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -2156,6 +3032,99 @@ frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResult
 }
 .frauddetector$operations$get_variables <- frauddetector_get_variables
 
+#' Gets a list of past predictions
+#'
+#' @description
+#' Gets a list of past predictions. The list can be filtered by detector
+#' ID, detector version ID, event ID, event type, or by specifying a time
+#' period. If filter is not specified, the most recent prediction is
+#' returned.
+#' 
+#' For example, the following filter lists all past predictions for `xyz`
+#' event type - `{ "eventType":{ "value": "xyz" }” } `
+#' 
+#' This is a paginated API. If you provide a null `maxResults`, this action
+#' will retrieve a maximum of 10 records per page. If you provide a
+#' `maxResults`, the value must be between 50 and 100. To get the next page
+#' results, provide the `nextToken` from the response as part of your
+#' request. A null `nextToken` fetches the records from the beginning.
+#'
+#' @usage
+#' frauddetector_list_event_predictions(eventId, eventType, detectorId,
+#'   detectorVersionId, predictionTimeRange, nextToken, maxResults)
+#'
+#' @param eventId The event ID.
+#' @param eventType The event type associated with the detector.
+#' @param detectorId The detector ID.
+#' @param detectorVersionId The detector version ID.
+#' @param predictionTimeRange The time period for when the predictions were generated.
+#' @param nextToken Identifies the next page of results to return. Use the token to make the
+#' call again to retrieve the next page. Keep all other arguments
+#' unchanged. Each pagination token expires after 24 hours.
+#' @param maxResults The maximum number of predictions to return for the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventPredictionSummaries = list(
+#'     list(
+#'       eventId = "string",
+#'       eventTypeName = "string",
+#'       eventTimestamp = "string",
+#'       predictionTimestamp = "string",
+#'       detectorId = "string",
+#'       detectorVersionId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_event_predictions(
+#'   eventId = list(
+#'     value = "string"
+#'   ),
+#'   eventType = list(
+#'     value = "string"
+#'   ),
+#'   detectorId = list(
+#'     value = "string"
+#'   ),
+#'   detectorVersionId = list(
+#'     value = "string"
+#'   ),
+#'   predictionTimeRange = list(
+#'     startTime = "string",
+#'     endTime = "string"
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_list_event_predictions
+frauddetector_list_event_predictions <- function(eventId = NULL, eventType = NULL, detectorId = NULL, detectorVersionId = NULL, predictionTimeRange = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListEventPredictions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$list_event_predictions_input(eventId = eventId, eventType = eventType, detectorId = detectorId, detectorVersionId = detectorVersionId, predictionTimeRange = predictionTimeRange, nextToken = nextToken, maxResults = maxResults)
+  output <- .frauddetector$list_event_predictions_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$list_event_predictions <- frauddetector_list_event_predictions
+
 #' Lists all tags associated with the resource
 #'
 #' @description
@@ -2331,7 +3300,7 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #'
 #' @usage
 #' frauddetector_put_event_type(name, description, eventVariables, labels,
-#'   entityTypes, tags)
+#'   entityTypes, eventIngestion, tags)
 #'
 #' @param name &#91;required&#93; The name.
 #' @param description The description of the event type.
@@ -2339,6 +3308,7 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #' @param labels The event type labels.
 #' @param entityTypes &#91;required&#93; The entity type for the event type. Example entity types: customer,
 #' merchant, account.
+#' @param eventIngestion Specifies if ingenstion is enabled or disabled.
 #' @param tags A collection of key and value pairs.
 #'
 #' @return
@@ -2358,6 +3328,7 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #'   entityTypes = list(
 #'     "string"
 #'   ),
+#'   eventIngestion = "ENABLED"|"DISABLED",
 #'   tags = list(
 #'     list(
 #'       key = "string",
@@ -2370,14 +3341,14 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_event_type
-frauddetector_put_event_type <- function(name, description = NULL, eventVariables, labels = NULL, entityTypes, tags = NULL) {
+frauddetector_put_event_type <- function(name, description = NULL, eventVariables, labels = NULL, entityTypes, eventIngestion = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutEventType",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$put_event_type_input(name = name, description = description, eventVariables = eventVariables, labels = labels, entityTypes = entityTypes, tags = tags)
+  input <- .frauddetector$put_event_type_input(name = name, description = description, eventVariables = eventVariables, labels = labels, entityTypes = entityTypes, eventIngestion = eventIngestion, tags = tags)
   output <- .frauddetector$put_event_type_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -2462,12 +3433,12 @@ frauddetector_put_external_model <- function(modelEndpoint, modelSource, invokeM
 }
 .frauddetector$operations$put_external_model <- frauddetector_put_external_model
 
-#' Specifies the Key Management Service (KMS) customer master key (CMK) to
-#' be used to encrypt content in Amazon Fraud Detector
+#' Specifies the KMS key to be used to encrypt content in Amazon Fraud
+#' Detector
 #'
 #' @description
-#' Specifies the Key Management Service (KMS) customer master key (CMK) to
-#' be used to encrypt content in Amazon Fraud Detector.
+#' Specifies the KMS key to be used to encrypt content in Amazon Fraud
+#' Detector.
 #'
 #' @usage
 #' frauddetector_put_kms_encryption_key(kmsEncryptionKeyArn)
@@ -2603,6 +3574,75 @@ frauddetector_put_outcome <- function(name, description = NULL, tags = NULL) {
   return(response)
 }
 .frauddetector$operations$put_outcome <- frauddetector_put_outcome
+
+#' Stores events in Amazon Fraud Detector without generating fraud
+#' predictions for those events
+#'
+#' @description
+#' Stores events in Amazon Fraud Detector without generating fraud
+#' predictions for those events. For example, you can use
+#' [`send_event`][frauddetector_send_event] to upload a historical dataset,
+#' which you can then later use to train a model.
+#'
+#' @usage
+#' frauddetector_send_event(eventId, eventTypeName, eventTimestamp,
+#'   eventVariables, assignedLabel, labelTimestamp, entities)
+#'
+#' @param eventId &#91;required&#93; The event ID to upload.
+#' @param eventTypeName &#91;required&#93; The event type name of the event.
+#' @param eventTimestamp &#91;required&#93; The timestamp that defines when the event under evaluation occurred. The
+#' timestamp must be specified using ISO 8601 standard in UTC.
+#' @param eventVariables &#91;required&#93; Names of the event type's variables you defined in Amazon Fraud Detector
+#' to represent data elements and their corresponding values for the event
+#' you are sending for evaluation.
+#' @param assignedLabel The label to associate with the event. Required if specifying
+#' `labelTimestamp`.
+#' @param labelTimestamp The timestamp associated with the label. Required if specifying
+#' `assignedLabel`.
+#' @param entities &#91;required&#93; An array of entities.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_event(
+#'   eventId = "string",
+#'   eventTypeName = "string",
+#'   eventTimestamp = "string",
+#'   eventVariables = list(
+#'     "string"
+#'   ),
+#'   assignedLabel = "string",
+#'   labelTimestamp = "string",
+#'   entities = list(
+#'     list(
+#'       entityType = "string",
+#'       entityId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_send_event
+frauddetector_send_event <- function(eventId, eventTypeName, eventTimestamp, eventVariables, assignedLabel = NULL, labelTimestamp = NULL, entities) {
+  op <- new_operation(
+    name = "SendEvent",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$send_event_input(eventId = eventId, eventTypeName = eventTypeName, eventTimestamp = eventTimestamp, eventVariables = eventVariables, assignedLabel = assignedLabel, labelTimestamp = labelTimestamp, entities = entities)
+  output <- .frauddetector$send_event_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$send_event <- frauddetector_send_event
 
 #' Assigns tags to a resource
 #'
@@ -2747,7 +3787,7 @@ frauddetector_untag_resource <- function(resourceARN, tagKeys) {
 #'   modelVersions = list(
 #'     list(
 #'       modelId = "string",
-#'       modelType = "ONLINE_FRAUD_INSIGHTS",
+#'       modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'       modelVersionNumber = "string",
 #'       arn = "string"
 #'     )
@@ -2870,11 +3910,58 @@ frauddetector_update_detector_version_status <- function(detectorId, detectorVer
 }
 .frauddetector$operations$update_detector_version_status <- frauddetector_update_detector_version_status
 
-#' Updates a model
+#' Updates the specified event with a new label
 #'
 #' @description
-#' Updates a model. You can update the description attribute using this
-#' action.
+#' Updates the specified event with a new label.
+#'
+#' @usage
+#' frauddetector_update_event_label(eventId, eventTypeName, assignedLabel,
+#'   labelTimestamp)
+#'
+#' @param eventId &#91;required&#93; The ID of the event associated with the label to update.
+#' @param eventTypeName &#91;required&#93; The event type of the event associated with the label to update.
+#' @param assignedLabel &#91;required&#93; The new label to assign to the event.
+#' @param labelTimestamp &#91;required&#93; The timestamp associated with the label. The timestamp must be specified
+#' using ISO 8601 standard in UTC.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_event_label(
+#'   eventId = "string",
+#'   eventTypeName = "string",
+#'   assignedLabel = "string",
+#'   labelTimestamp = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_update_event_label
+frauddetector_update_event_label <- function(eventId, eventTypeName, assignedLabel, labelTimestamp) {
+  op <- new_operation(
+    name = "UpdateEventLabel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$update_event_label_input(eventId = eventId, eventTypeName = eventTypeName, assignedLabel = assignedLabel, labelTimestamp = labelTimestamp)
+  output <- .frauddetector$update_event_label_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$update_event_label <- frauddetector_update_event_label
+
+#' Updates model description
+#'
+#' @description
+#' Updates model description.
 #'
 #' @usage
 #' frauddetector_update_model(modelId, modelType, description)
@@ -2890,7 +3977,7 @@ frauddetector_update_detector_version_status <- function(detectorId, detectorVer
 #' ```
 #' svc$update_model(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   description = "string"
 #' )
 #' ```
@@ -2927,12 +4014,15 @@ frauddetector_update_model <- function(modelId, modelType, description = NULL) {
 #'
 #' @usage
 #' frauddetector_update_model_version(modelId, modelType,
-#'   majorVersionNumber, externalEventsDetail, tags)
+#'   majorVersionNumber, externalEventsDetail, ingestedEventsDetail, tags)
 #'
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
 #' @param majorVersionNumber &#91;required&#93; The major version number.
-#' @param externalEventsDetail The event details.
+#' @param externalEventsDetail The details of the external events data used for training the model
+#' version. Required if `trainingDataSource` is `EXTERNAL_EVENTS`.
+#' @param ingestedEventsDetail The details of the ingested event used for training the model version.
+#' Required if your `trainingDataSource` is `INGESTED_EVENTS`.
 #' @param tags A collection of key and value pairs.
 #'
 #' @return
@@ -2940,7 +4030,7 @@ frauddetector_update_model <- function(modelId, modelType, description = NULL) {
 #' ```
 #' list(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   modelVersionNumber = "string",
 #'   status = "string"
 #' )
@@ -2950,11 +4040,17 @@ frauddetector_update_model <- function(modelId, modelType, description = NULL) {
 #' ```
 #' svc$update_model_version(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   majorVersionNumber = "string",
 #'   externalEventsDetail = list(
 #'     dataLocation = "string",
 #'     dataAccessRoleArn = "string"
+#'   ),
+#'   ingestedEventsDetail = list(
+#'     ingestedEventsTimeWindow = list(
+#'       startTime = "string",
+#'       endTime = "string"
+#'     )
 #'   ),
 #'   tags = list(
 #'     list(
@@ -2968,14 +4064,14 @@ frauddetector_update_model <- function(modelId, modelType, description = NULL) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_model_version
-frauddetector_update_model_version <- function(modelId, modelType, majorVersionNumber, externalEventsDetail = NULL, tags = NULL) {
+frauddetector_update_model_version <- function(modelId, modelType, majorVersionNumber, externalEventsDetail = NULL, ingestedEventsDetail = NULL, tags = NULL) {
   op <- new_operation(
     name = "UpdateModelVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$update_model_version_input(modelId = modelId, modelType = modelType, majorVersionNumber = majorVersionNumber, externalEventsDetail = externalEventsDetail, tags = tags)
+  input <- .frauddetector$update_model_version_input(modelId = modelId, modelType = modelType, majorVersionNumber = majorVersionNumber, externalEventsDetail = externalEventsDetail, ingestedEventsDetail = ingestedEventsDetail, tags = tags)
   output <- .frauddetector$update_model_version_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -2992,9 +4088,11 @@ frauddetector_update_model_version <- function(modelId, modelType, majorVersionN
 #' 
 #' You can perform the following status updates:
 #' 
-#' 1.  Change the `TRAINING_COMPLETE` status to `ACTIVE`.
+#' 1.  Change the `TRAINING_IN_PROGRESS` status to `TRAINING_CANCELLED`.
 #' 
-#' 2.  Change `ACTIVE`to `INACTIVE`.
+#' 2.  Change the `TRAINING_COMPLETE` status to `ACTIVE`.
+#' 
+#' 3.  Change `ACTIVE` to `INACTIVE`.
 #'
 #' @usage
 #' frauddetector_update_model_version_status(modelId, modelType,
@@ -3012,9 +4110,9 @@ frauddetector_update_model_version <- function(modelId, modelType, majorVersionN
 #' ```
 #' svc$update_model_version_status(
 #'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"|"TRANSACTION_FRAUD_INSIGHTS"|"ACCOUNT_TAKEOVER_INSIGHTS",
 #'   modelVersionNumber = "string",
-#'   status = "ACTIVE"|"INACTIVE"
+#'   status = "ACTIVE"|"INACTIVE"|"TRAINING_CANCELLED"
 #' )
 #' ```
 #'

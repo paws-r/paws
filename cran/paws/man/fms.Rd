@@ -7,7 +7,19 @@
 fms(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,18 +28,18 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Firewall Manager
-
-This is the \emph{AWS Firewall Manager API Reference}. This guide is for
-developers who need detailed information about the AWS Firewall Manager
-API actions, data types, and errors. For detailed information about AWS
-Firewall Manager features, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html}{AWS Firewall Manager Developer Guide}.
+This is the \emph{Firewall Manager API Reference}. This guide is for
+developers who need detailed information about the Firewall Manager API
+actions, data types, and errors. For detailed information about Firewall
+Manager features, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html}{Firewall Manager Developer Guide}.
 
 Some API actions require explicit resource permissions. For information,
 see the developer guide topic \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-api-permissions-ref.html}{Firewall Manager required permissions for API actions}.
 }
 \section{Service syntax}{
-\preformatted{svc <- fms(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- fms(
   config = list(
     credentials = list(
       creds = list(
@@ -35,44 +47,52 @@ see the developer guide topic \href{https://docs.aws.amazon.com/waf/latest/devel
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=fms_associate_admin_account]{associate_admin_account} \tab Sets the AWS Firewall Manager administrator account\cr
-\link[=fms_delete_apps_list]{delete_apps_list} \tab Permanently deletes an AWS Firewall Manager applications list\cr
-\link[=fms_delete_notification_channel]{delete_notification_channel} \tab Deletes an AWS Firewall Manager association with the IAM role and the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs\cr
-\link[=fms_delete_policy]{delete_policy} \tab Permanently deletes an AWS Firewall Manager policy\cr
-\link[=fms_delete_protocols_list]{delete_protocols_list} \tab Permanently deletes an AWS Firewall Manager protocols list\cr
-\link[=fms_disassociate_admin_account]{disassociate_admin_account} \tab Disassociates the account that has been set as the AWS Firewall Manager administrator account\cr
-\link[=fms_get_admin_account]{get_admin_account} \tab Returns the AWS Organizations master account that is associated with AWS Firewall Manager as the AWS Firewall Manager administrator\cr
-\link[=fms_get_apps_list]{get_apps_list} \tab Returns information about the specified AWS Firewall Manager applications list\cr
-\link[=fms_get_compliance_detail]{get_compliance_detail} \tab Returns detailed compliance information about the specified member account\cr
-\link[=fms_get_notification_channel]{get_notification_channel} \tab Information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager SNS logs\cr
-\link[=fms_get_policy]{get_policy} \tab Returns information about the specified AWS Firewall Manager policy\cr
-\link[=fms_get_protection_status]{get_protection_status} \tab If you created a Shield Advanced policy, returns policy-level attack summary information in the event of a potential DDoS attack\cr
-\link[=fms_get_protocols_list]{get_protocols_list} \tab Returns information about the specified AWS Firewall Manager protocols list\cr
-\link[=fms_get_violation_details]{get_violation_details} \tab Retrieves violations for a resource based on the specified AWS Firewall Manager policy and AWS account\cr
-\link[=fms_list_apps_lists]{list_apps_lists} \tab Returns an array of AppsListDataSummary objects\cr
-\link[=fms_list_compliance_status]{list_compliance_status} \tab Returns an array of PolicyComplianceStatus objects\cr
-\link[=fms_list_member_accounts]{list_member_accounts} \tab Returns a MemberAccounts object that lists the member accounts in the administrator's AWS organization\cr
-\link[=fms_list_policies]{list_policies} \tab Returns an array of PolicySummary objects\cr
-\link[=fms_list_protocols_lists]{list_protocols_lists} \tab Returns an array of ProtocolsListDataSummary objects\cr
-\link[=fms_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of tags for the specified AWS resource\cr
-\link[=fms_put_apps_list]{put_apps_list} \tab Creates an AWS Firewall Manager applications list\cr
-\link[=fms_put_notification_channel]{put_notification_channel} \tab Designates the IAM role and Amazon Simple Notification Service (SNS) topic that AWS Firewall Manager uses to record SNS logs\cr
-\link[=fms_put_policy]{put_policy} \tab Creates an AWS Firewall Manager policy\cr
-\link[=fms_put_protocols_list]{put_protocols_list} \tab Creates an AWS Firewall Manager protocols list\cr
-\link[=fms_tag_resource]{tag_resource} \tab Adds one or more tags to an AWS resource\cr
-\link[=fms_untag_resource]{untag_resource} \tab Removes one or more tags from an AWS resource
+\link[paws.security.identity.p2:fms_associate_admin_account]{associate_admin_account} \tab Sets the Firewall Manager administrator account\cr
+\link[paws.security.identity.p2:fms_associate_third_party_firewall]{associate_third_party_firewall} \tab Sets the Firewall Manager policy administrator as a tenant administrator of a third-party firewall service\cr
+\link[paws.security.identity.p2:fms_delete_apps_list]{delete_apps_list} \tab Permanently deletes an Firewall Manager applications list\cr
+\link[paws.security.identity.p2:fms_delete_notification_channel]{delete_notification_channel} \tab Deletes an Firewall Manager association with the IAM role and the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs\cr
+\link[paws.security.identity.p2:fms_delete_policy]{delete_policy} \tab Permanently deletes an Firewall Manager policy\cr
+\link[paws.security.identity.p2:fms_delete_protocols_list]{delete_protocols_list} \tab Permanently deletes an Firewall Manager protocols list\cr
+\link[paws.security.identity.p2:fms_disassociate_admin_account]{disassociate_admin_account} \tab Disassociates the account that has been set as the Firewall Manager administrator account\cr
+\link[paws.security.identity.p2:fms_disassociate_third_party_firewall]{disassociate_third_party_firewall} \tab Disassociates a Firewall Manager policy administrator from a third-party firewall tenant\cr
+\link[paws.security.identity.p2:fms_get_admin_account]{get_admin_account} \tab Returns the Organizations account that is associated with Firewall Manager as the Firewall Manager administrator\cr
+\link[paws.security.identity.p2:fms_get_apps_list]{get_apps_list} \tab Returns information about the specified Firewall Manager applications list\cr
+\link[paws.security.identity.p2:fms_get_compliance_detail]{get_compliance_detail} \tab Returns detailed compliance information about the specified member account\cr
+\link[paws.security.identity.p2:fms_get_notification_channel]{get_notification_channel} \tab Information about the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs\cr
+\link[paws.security.identity.p2:fms_get_policy]{get_policy} \tab Returns information about the specified Firewall Manager policy\cr
+\link[paws.security.identity.p2:fms_get_protection_status]{get_protection_status} \tab If you created a Shield Advanced policy, returns policy-level attack summary information in the event of a potential DDoS attack\cr
+\link[paws.security.identity.p2:fms_get_protocols_list]{get_protocols_list} \tab Returns information about the specified Firewall Manager protocols list\cr
+\link[paws.security.identity.p2:fms_get_third_party_firewall_association_status]{get_third_party_firewall_association_status} \tab The onboarding status of a Firewall Manager admin account to third-party firewall vendor tenant\cr
+\link[paws.security.identity.p2:fms_get_violation_details]{get_violation_details} \tab Retrieves violations for a resource based on the specified Firewall Manager policy and Amazon Web Services account\cr
+\link[paws.security.identity.p2:fms_list_apps_lists]{list_apps_lists} \tab Returns an array of AppsListDataSummary objects\cr
+\link[paws.security.identity.p2:fms_list_compliance_status]{list_compliance_status} \tab Returns an array of PolicyComplianceStatus objects\cr
+\link[paws.security.identity.p2:fms_list_member_accounts]{list_member_accounts} \tab Returns a MemberAccounts object that lists the member accounts in the administrator's Amazon Web Services organization\cr
+\link[paws.security.identity.p2:fms_list_policies]{list_policies} \tab Returns an array of PolicySummary objects\cr
+\link[paws.security.identity.p2:fms_list_protocols_lists]{list_protocols_lists} \tab Returns an array of ProtocolsListDataSummary objects\cr
+\link[paws.security.identity.p2:fms_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of tags for the specified Amazon Web Services resource\cr
+\link[paws.security.identity.p2:fms_list_third_party_firewall_firewall_policies]{list_third_party_firewall_firewall_policies} \tab Retrieves a list of all of the third-party firewall policies that are associated with the third-party firewall administrator's account\cr
+\link[paws.security.identity.p2:fms_put_apps_list]{put_apps_list} \tab Creates an Firewall Manager applications list\cr
+\link[paws.security.identity.p2:fms_put_notification_channel]{put_notification_channel} \tab Designates the IAM role and Amazon Simple Notification Service (SNS) topic that Firewall Manager uses to record SNS logs\cr
+\link[paws.security.identity.p2:fms_put_policy]{put_policy} \tab Creates an Firewall Manager policy\cr
+\link[paws.security.identity.p2:fms_put_protocols_list]{put_protocols_list} \tab Creates an Firewall Manager protocols list\cr
+\link[paws.security.identity.p2:fms_tag_resource]{tag_resource} \tab Adds one or more tags to an Amazon Web Services resource\cr
+\link[paws.security.identity.p2:fms_untag_resource]{untag_resource} \tab Removes one or more tags from an Amazon Web Services resource
 }
 }
 

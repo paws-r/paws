@@ -4,9 +4,16 @@
 \alias{sagemaker_list_data_quality_job_definitions}
 \title{Lists the data quality job definitions in your account}
 \usage{
-sagemaker_list_data_quality_job_definitions(EndpointName, SortBy,
-  SortOrder, NextToken, MaxResults, NameContains, CreationTimeBefore,
-  CreationTimeAfter)
+sagemaker_list_data_quality_job_definitions(
+  EndpointName = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL
+)
 }
 \arguments{
 \item{EndpointName}{A filter that lists the data quality job definitions associated with the
@@ -19,7 +26,7 @@ specified endpoint.}
 \item{NextToken}{If the result of the previous
 \code{\link[=sagemaker_list_data_quality_job_definitions]{list_data_quality_job_definitions}}
 request was truncated, the response includes a \code{NextToken}. To retrieve
-the next set of transform jobs, use the token in the next request.>}
+the next set of transform jobs, use the token in the next request.\>}
 
 \item{MaxResults}{The maximum number of data quality monitoring job definitions to return
 in the response.}
@@ -34,41 +41,9 @@ created before the specified time.}
 \item{CreationTimeAfter}{A filter that returns only data quality monitoring job definitions
 created after the specified time.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobDefinitionSummaries = list(
-    list(
-      MonitoringJobDefinitionName = "string",
-      MonitoringJobDefinitionArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndpointName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the data quality job definitions in your account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_data_quality_job_definitions(
-  EndpointName = "string",
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123,
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_data_quality_job_definitions.html} for full documentation.
+}
 \keyword{internal}

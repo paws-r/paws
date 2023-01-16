@@ -4,8 +4,13 @@
 \alias{rekognition_start_label_detection}
 \title{Starts asynchronous detection of labels in a stored video}
 \usage{
-rekognition_start_label_detection(Video, ClientRequestToken,
-  MinConfidence, NotificationChannel, JobTag)
+rekognition_start_label_detection(
+  Video,
+  ClientRequestToken = NULL,
+  MinConfidence = NULL,
+  NotificationChannel = NULL,
+  JobTag = NULL
+)
 }
 \arguments{
 \item{Video}{[required] The video in which you want to detect labels. The video must be stored
@@ -28,60 +33,18 @@ If you don't specify \code{MinConfidence}, the operation returns labels with
 confidence values greater than or equal to 50 percent.}
 
 \item{NotificationChannel}{The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
-the completion status of the label detection operation to.}
+the completion status of the label detection operation to. The Amazon
+SNS topic must have a topic name that begins with \emph{AmazonRekognition} if
+you are using the AmazonRekognitionServiceRole permissions policy.}
 
 \item{JobTag}{An identifier you specify that's returned in the completion notification
 that's published to your Amazon Simple Notification Service topic. For
 example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
-}
 \description{
 Starts asynchronous detection of labels in a stored video.
 
-Amazon Rekognition Video can detect labels in a video. Labels are
-instances of real-world entities. This includes objects like flower,
-tree, and table; events like wedding, graduation, and birthday party;
-concepts like landscape, evening, and nature; and activities like a
-person getting out of a car or a person skiing.
-
-The video must be stored in an Amazon S3 bucket. Use Video to specify
-the bucket name and the filename of the video.
-\code{\link[=rekognition_start_label_detection]{start_label_detection}} returns a
-job identifier (\code{JobId}) which you use to get the results of the
-operation. When label detection is finished, Amazon Rekognition Video
-publishes a completion status to the Amazon Simple Notification Service
-topic that you specify in \code{NotificationChannel}.
-
-To get the results of the label detection operation, first check that
-the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If
-so, call \code{\link[=rekognition_get_label_detection]{get_label_detection}} and
-pass the job identifier (\code{JobId}) from the initial call to
-\code{\link[=rekognition_start_label_detection]{start_label_detection}}.
+See \url{https://paws-r.github.io/docs/rekognition/start_label_detection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_label_detection(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  MinConfidence = 123.0,
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  JobTag = "string"
-)
-}
-}
-
 \keyword{internal}

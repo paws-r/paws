@@ -9,39 +9,9 @@ mq_describe_configuration(ConfigurationId)
 \arguments{
 \item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  AuthenticationStrategy = "SIMPLE"|"LDAP",
-  Created = as.POSIXct(
-    "2015-01-01"
-  ),
-  Description = "string",
-  EngineType = "ACTIVEMQ"|"RABBITMQ",
-  EngineVersion = "string",
-  Id = "string",
-  LatestRevision = list(
-    Created = as.POSIXct(
-      "2015-01-01"
-    ),
-    Description = "string",
-    Revision = 123
-  ),
-  Name = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Returns information about the specified configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_configuration(
-  ConfigurationId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/describe_configuration.html} for full documentation.
+}
 \keyword{internal}

@@ -7,7 +7,19 @@
 batch(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,26 +28,30 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Using AWS Batch, you can run batch computing workloads on the AWS Cloud.
-Batch computing is a common means for developers, scientists, and
-engineers to access large amounts of compute resources. AWS Batch
-utilizes the advantages of this computing workload to remove the
-undifferentiated heavy lifting of configuring and managing required
-infrastructure, while also adopting a familiar batch computing software
-approach. Given these advantages, AWS Batch can help you to efficiently
-provision resources in response to jobs submitted, thus effectively
-helping to eliminate capacity constraints, reduce compute costs, and
-deliver your results more quickly.
+Batch
 
-As a fully managed service, AWS Batch can run batch computing workloads
-of any scale. AWS Batch automatically provisions compute resources and
+Using Batch, you can run batch computing workloads on the Amazon Web
+Services Cloud. Batch computing is a common means for developers,
+scientists, and engineers to access large amounts of compute resources.
+Batch uses the advantages of this computing workload to remove the
+undifferentiated heavy lifting of configuring and managing required
+infrastructure. At the same time, it also adopts a familiar batch
+computing software approach. Given these advantages, Batch can help you
+to efficiently provision resources in response to jobs submitted, thus
+effectively helping you to eliminate capacity constraints, reduce
+compute costs, and deliver your results more quickly.
+
+As a fully managed service, Batch can run batch computing workloads of
+any scale. Batch automatically provisions compute resources and
 optimizes workload distribution based on the quantity and scale of your
-specific workloads. With AWS Batch, there's no need to install or manage
+specific workloads. With Batch, there's no need to install or manage
 batch computing software. This means that you can focus your time and
 energy on analyzing results and solving your specific problems.
 }
 \section{Service syntax}{
-\preformatted{svc <- batch(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- batch(
   config = list(
     credentials = list(
       creds = list(
@@ -43,37 +59,46 @@ energy on analyzing results and solving your specific problems.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=batch_cancel_job]{cancel_job} \tab Cancels a job in an AWS Batch job queue\cr
-\link[=batch_create_compute_environment]{create_compute_environment} \tab Creates an AWS Batch compute environment\cr
-\link[=batch_create_job_queue]{create_job_queue} \tab Creates an AWS Batch job queue\cr
-\link[=batch_delete_compute_environment]{delete_compute_environment} \tab Deletes an AWS Batch compute environment\cr
-\link[=batch_delete_job_queue]{delete_job_queue} \tab Deletes the specified job queue\cr
-\link[=batch_deregister_job_definition]{deregister_job_definition} \tab Deregisters an AWS Batch job definition\cr
-\link[=batch_describe_compute_environments]{describe_compute_environments} \tab Describes one or more of your compute environments\cr
-\link[=batch_describe_job_definitions]{describe_job_definitions} \tab Describes a list of job definitions\cr
-\link[=batch_describe_job_queues]{describe_job_queues} \tab Describes one or more of your job queues\cr
-\link[=batch_describe_jobs]{describe_jobs} \tab Describes a list of AWS Batch jobs\cr
-\link[=batch_list_jobs]{list_jobs} \tab Returns a list of AWS Batch jobs\cr
-\link[=batch_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an AWS Batch resource\cr
-\link[=batch_register_job_definition]{register_job_definition} \tab Registers an AWS Batch job definition\cr
-\link[=batch_submit_job]{submit_job} \tab Submits an AWS Batch job from a job definition\cr
-\link[=batch_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
-\link[=batch_terminate_job]{terminate_job} \tab Terminates a job in a job queue\cr
-\link[=batch_untag_resource]{untag_resource} \tab Deletes specified tags from an AWS Batch resource\cr
-\link[=batch_update_compute_environment]{update_compute_environment} \tab Updates an AWS Batch compute environment\cr
-\link[=batch_update_job_queue]{update_job_queue} \tab Updates a job queue
+\link[paws.compute.p2:batch_cancel_job]{cancel_job} \tab Cancels a job in an Batch job queue\cr
+\link[paws.compute.p2:batch_create_compute_environment]{create_compute_environment} \tab Creates an Batch compute environment\cr
+\link[paws.compute.p2:batch_create_job_queue]{create_job_queue} \tab Creates an Batch job queue\cr
+\link[paws.compute.p2:batch_create_scheduling_policy]{create_scheduling_policy} \tab Creates an Batch scheduling policy\cr
+\link[paws.compute.p2:batch_delete_compute_environment]{delete_compute_environment} \tab Deletes an Batch compute environment\cr
+\link[paws.compute.p2:batch_delete_job_queue]{delete_job_queue} \tab Deletes the specified job queue\cr
+\link[paws.compute.p2:batch_delete_scheduling_policy]{delete_scheduling_policy} \tab Deletes the specified scheduling policy\cr
+\link[paws.compute.p2:batch_deregister_job_definition]{deregister_job_definition} \tab Deregisters an Batch job definition\cr
+\link[paws.compute.p2:batch_describe_compute_environments]{describe_compute_environments} \tab Describes one or more of your compute environments\cr
+\link[paws.compute.p2:batch_describe_job_definitions]{describe_job_definitions} \tab Describes a list of job definitions\cr
+\link[paws.compute.p2:batch_describe_job_queues]{describe_job_queues} \tab Describes one or more of your job queues\cr
+\link[paws.compute.p2:batch_describe_jobs]{describe_jobs} \tab Describes a list of Batch jobs\cr
+\link[paws.compute.p2:batch_describe_scheduling_policies]{describe_scheduling_policies} \tab Describes one or more of your scheduling policies\cr
+\link[paws.compute.p2:batch_list_jobs]{list_jobs} \tab Returns a list of Batch jobs\cr
+\link[paws.compute.p2:batch_list_scheduling_policies]{list_scheduling_policies} \tab Returns a list of Batch scheduling policies\cr
+\link[paws.compute.p2:batch_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Batch resource\cr
+\link[paws.compute.p2:batch_register_job_definition]{register_job_definition} \tab Registers an Batch job definition\cr
+\link[paws.compute.p2:batch_submit_job]{submit_job} \tab Submits an Batch job from a job definition\cr
+\link[paws.compute.p2:batch_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
+\link[paws.compute.p2:batch_terminate_job]{terminate_job} \tab Terminates a job in a job queue\cr
+\link[paws.compute.p2:batch_untag_resource]{untag_resource} \tab Deletes specified tags from an Batch resource\cr
+\link[paws.compute.p2:batch_update_compute_environment]{update_compute_environment} \tab Updates an Batch compute environment\cr
+\link[paws.compute.p2:batch_update_job_queue]{update_job_queue} \tab Updates a job queue\cr
+\link[paws.compute.p2:batch_update_scheduling_policy]{update_scheduling_policy} \tab Updates a scheduling policy
 }
 }
 

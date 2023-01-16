@@ -5,9 +5,14 @@
 \title{Creates a new custom endpoint and associates it with an Amazon Aurora DB
 cluster}
 \usage{
-rds_create_db_cluster_endpoint(DBClusterIdentifier,
-  DBClusterEndpointIdentifier, EndpointType, StaticMembers,
-  ExcludedMembers, Tags)
+rds_create_db_cluster_endpoint(
+  DBClusterIdentifier,
+  DBClusterEndpointIdentifier,
+  EndpointType,
+  StaticMembers = NULL,
+  ExcludedMembers = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier of the DB cluster associated with the
@@ -16,61 +21,21 @@ endpoint. This parameter is stored as a lowercase string.}
 \item{DBClusterEndpointIdentifier}{[required] The identifier to use for the new endpoint. This parameter is stored as
 a lowercase string.}
 
-\item{EndpointType}{[required] The type of the endpoint. One of: \code{READER}, \code{WRITER}, \code{ANY}.}
+\item{EndpointType}{[required] The type of the endpoint, one of: \code{READER}, \code{WRITER}, \code{ANY}.}
 
 \item{StaticMembers}{List of DB instance identifiers that are part of the custom endpoint
 group.}
 
 \item{ExcludedMembers}{List of DB instance identifiers that aren't part of the custom endpoint
 group. All other eligible instances are reachable through the custom
-endpoint. Only relevant if the list of static members is empty.}
+endpoint. This parameter is relevant only if the list of static members
+is empty.}
 
 \item{Tags}{The tags to be assigned to the Amazon RDS resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterEndpointIdentifier = "string",
-  DBClusterIdentifier = "string",
-  DBClusterEndpointResourceIdentifier = "string",
-  Endpoint = "string",
-  Status = "string",
-  EndpointType = "string",
-  CustomEndpointType = "string",
-  StaticMembers = list(
-    "string"
-  ),
-  ExcludedMembers = list(
-    "string"
-  ),
-  DBClusterEndpointArn = "string"
-)
-}
-}
 \description{
-Creates a new custom endpoint and associates it with an Amazon Aurora DB
-cluster.
+Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster.
 
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/create_db_cluster_endpoint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_db_cluster_endpoint(
-  DBClusterIdentifier = "string",
-  DBClusterEndpointIdentifier = "string",
-  EndpointType = "string",
-  StaticMembers = list(
-    "string"
-  ),
-  ExcludedMembers = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

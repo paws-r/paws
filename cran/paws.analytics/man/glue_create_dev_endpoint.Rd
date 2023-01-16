@@ -4,10 +4,23 @@
 \alias{glue_create_dev_endpoint}
 \title{Creates a new development endpoint}
 \usage{
-glue_create_dev_endpoint(EndpointName, RoleArn, SecurityGroupIds,
-  SubnetId, PublicKey, PublicKeys, NumberOfNodes, WorkerType, GlueVersion,
-  NumberOfWorkers, ExtraPythonLibsS3Path, ExtraJarsS3Path,
-  SecurityConfiguration, Tags, Arguments)
+glue_create_dev_endpoint(
+  EndpointName,
+  RoleArn,
+  SecurityGroupIds = NULL,
+  SubnetId = NULL,
+  PublicKey = NULL,
+  PublicKeys = NULL,
+  NumberOfNodes = NULL,
+  WorkerType = NULL,
+  GlueVersion = NULL,
+  NumberOfWorkers = NULL,
+  ExtraPythonLibsS3Path = NULL,
+  ExtraJarsS3Path = NULL,
+  SecurityConfiguration = NULL,
+  Tags = NULL,
+  Arguments = NULL
+)
 }
 \arguments{
 \item{EndpointName}{[required] The name to be assigned to the new \code{DevEndpoint}.}
@@ -34,7 +47,7 @@ that key to be able to set a list of public keys. Call the
 key content in the \code{deletePublicKeys} attribute, and the list of new
 keys in the \code{addPublicKeys} attribute.}
 
-\item{NumberOfNodes}{The number of AWS Glue Data Processing Units (DPUs) to allocate to this
+\item{NumberOfNodes}{The number of Glue Data Processing Units (DPUs) to allocate to this
 \code{DevEndpoint}.}
 
 \item{WorkerType}{The type of predefined worker that is allocated to the development
@@ -54,12 +67,12 @@ Known issue: when a development endpoint is created with the \code{G.2X}
 \code{WorkerType} configuration, the Spark drivers for the development
 endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB disk.}
 
-\item{GlueVersion}{Glue version determines the versions of Apache Spark and Python that AWS
+\item{GlueVersion}{Glue version determines the versions of Apache Spark and Python that
 Glue supports. The Python version indicates the version supported for
 running your ETL scripts on development endpoints.
 
-For more information about the available AWS Glue versions and
-corresponding Spark and Python versions, see \href{https://docs.aws.amazon.com/glue/latest/dg/add-job.html}{Glue version} in the
+For more information about the available Glue versions and corresponding
+Spark and Python versions, see \href{https://docs.aws.amazon.com/glue/latest/dg/add-job.html}{Glue version} in the
 developer guide.
 
 Development endpoints that are created without specifying a Glue version
@@ -83,7 +96,7 @@ paths separated by a comma.
 
 You can only use pure Python libraries with a \code{DevEndpoint}. Libraries
 that rely on C extensions, such as the
-\href{https://pandas.pydata.org/}{pandas} Python data analysis library, are
+\href{http://pandas.pydata.org/}{pandas} Python data analysis library, are
 not yet supported.}
 
 \item{ExtraJarsS3Path}{The path to one or more Java \code{.jar} files in an S3 bucket that should be
@@ -93,72 +106,14 @@ loaded in your \code{DevEndpoint}.}
 \code{DevEndpoint}.}
 
 \item{Tags}{The tags to use with this DevEndpoint. You may use tags to limit access
-to the DevEndpoint. For more information about tags in AWS Glue, see
-\href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+to the DevEndpoint. For more information about tags in Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{Amazon Web Services Tags in Glue} in
 the developer guide.}
 
 \item{Arguments}{A map of arguments used to configure the \code{DevEndpoint}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointName = "string",
-  Status = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  SubnetId = "string",
-  RoleArn = "string",
-  YarnEndpointAddress = "string",
-  ZeppelinRemoteSparkInterpreterPort = 123,
-  NumberOfNodes = 123,
-  WorkerType = "Standard"|"G.1X"|"G.2X",
-  GlueVersion = "string",
-  NumberOfWorkers = 123,
-  AvailabilityZone = "string",
-  VpcId = "string",
-  ExtraPythonLibsS3Path = "string",
-  ExtraJarsS3Path = "string",
-  FailureReason = "string",
-  SecurityConfiguration = "string",
-  CreatedTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  Arguments = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Creates a new development endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$create_dev_endpoint(
-  EndpointName = "string",
-  RoleArn = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  SubnetId = "string",
-  PublicKey = "string",
-  PublicKeys = list(
-    "string"
-  ),
-  NumberOfNodes = 123,
-  WorkerType = "Standard"|"G.1X"|"G.2X",
-  GlueVersion = "string",
-  NumberOfWorkers = 123,
-  ExtraPythonLibsS3Path = "string",
-  ExtraJarsS3Path = "string",
-  SecurityConfiguration = "string",
-  Tags = list(
-    "string"
-  ),
-  Arguments = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/create_dev_endpoint.html} for full documentation.
+}
 \keyword{internal}

@@ -17,14 +17,14 @@ NULL
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
 #' @param proposalId &#91;required&#93; The ID of the request proposal.
-#' @param associatedGatewayOwnerAccount &#91;required&#93; The ID of the AWS account that owns the virtual private gateway or
-#' transit gateway.
+#' @param associatedGatewayOwnerAccount &#91;required&#93; The ID of the Amazon Web Services account that owns the virtual private
+#' gateway or transit gateway.
 #' @param overrideAllowedPrefixesToDirectConnectGateway Overrides the Amazon VPC prefixes advertised to the Direct Connect
 #' gateway.
 #' 
 #' For information about how to set the prefixes, see [Allowed
 #' Prefixes](https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes)
-#' in the *AWS Direct Connect User Guide*.
+#' in the *Direct Connect User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -100,7 +100,7 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #' Allocates a VLAN number and a specified amount of bandwidth for use by a
 #' hosted connection on the specified interconnect.
 #' 
-#' Intended for use by AWS Direct Connect Partners only.
+#' Intended for use by Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_allocate_connection_on_interconnect(bandwidth,
@@ -108,12 +108,12 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #'
 #' @param bandwidth &#91;required&#93; The bandwidth of the connection. The possible values are 50Mbps,
 #' 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
-#' 10Gbps. Note that only those AWS Direct Connect Partners who have met
+#' 10Gbps. Note that only those Direct Connect Partners who have met
 #' specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
 #' 10Gbps hosted connection.
 #' @param connectionName &#91;required&#93; The name of the provisioned connection.
-#' @param ownerAccount &#91;required&#93; The ID of the AWS account of the customer for whom the connection will
-#' be provisioned.
+#' @param ownerAccount &#91;required&#93; The ID of the Amazon Web Services account of the customer for whom the
+#' connection will be provisioned.
 #' @param interconnectId &#91;required&#93; The ID of the interconnect on which the connection will be provisioned.
 #' @param vlan &#91;required&#93; The dedicated VLAN provisioned to the connection.
 #'
@@ -137,6 +137,7 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #'   awsDevice = "string",
 #'   jumboFrameCapable = TRUE|FALSE,
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'   tags = list(
 #'     list(
@@ -144,7 +145,18 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -188,21 +200,22 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #' 
 #' Allocates a VLAN number and a specified amount of capacity (bandwidth)
 #' for use by a hosted connection on the specified interconnect or LAG of
-#' interconnects. AWS polices the hosted connection for the specified
-#' capacity and the AWS Direct Connect Partner must also police the hosted
-#' connection for the specified capacity.
+#' interconnects. Amazon Web Services polices the hosted connection for the
+#' specified capacity and the Direct Connect Partner must also police the
+#' hosted connection for the specified capacity.
 #' 
-#' Intended for use by AWS Direct Connect Partners only.
+#' Intended for use by Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_allocate_hosted_connection(connectionId, ownerAccount,
 #'   bandwidth, connectionName, vlan, tags)
 #'
 #' @param connectionId &#91;required&#93; The ID of the interconnect or LAG.
-#' @param ownerAccount &#91;required&#93; The ID of the AWS account ID of the customer for the connection.
+#' @param ownerAccount &#91;required&#93; The ID of the Amazon Web Services account ID of the customer for the
+#' connection.
 #' @param bandwidth &#91;required&#93; The bandwidth of the connection. The possible values are 50Mbps,
 #' 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
-#' 10Gbps. Note that only those AWS Direct Connect Partners who have met
+#' 10Gbps. Note that only those Direct Connect Partners who have met
 #' specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
 #' 10Gbps hosted connection.
 #' @param connectionName &#91;required&#93; The name of the hosted connection.
@@ -229,6 +242,7 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #'   awsDevice = "string",
 #'   jumboFrameCapable = TRUE|FALSE,
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'   tags = list(
 #'     list(
@@ -236,7 +250,18 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -277,12 +302,12 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 }
 .directconnect$operations$allocate_hosted_connection <- directconnect_allocate_hosted_connection
 
-#' Provisions a private virtual interface to be owned by the specified AWS
-#' account
+#' Provisions a private virtual interface to be owned by the specified
+#' Amazon Web Services account
 #'
 #' @description
-#' Provisions a private virtual interface to be owned by the specified AWS
-#' account.
+#' Provisions a private virtual interface to be owned by the specified
+#' Amazon Web Services account.
 #' 
 #' Virtual interfaces created using this action must be confirmed by the
 #' owner using
@@ -296,7 +321,8 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection on which the private virtual interface is
 #' provisioned.
-#' @param ownerAccount &#91;required&#93; The ID of the AWS account that owns the virtual private interface.
+#' @param ownerAccount &#91;required&#93; The ID of the Amazon Web Services account that owns the virtual private
+#' interface.
 #' @param newPrivateVirtualInterfaceAllocation &#91;required&#93; Information about the private virtual interface.
 #'
 #' @return
@@ -337,17 +363,20 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #'       customerAddress = "string",
 #'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'       bgpStatus = "up"|"down"|"unknown",
-#'       awsDeviceV2 = "string"
+#'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string"
 #'     )
 #'   ),
 #'   region = "string",
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   tags = list(
 #'     list(
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   siteLinkEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -395,15 +424,16 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 }
 .directconnect$operations$allocate_private_virtual_interface <- directconnect_allocate_private_virtual_interface
 
-#' Provisions a public virtual interface to be owned by the specified AWS
-#' account
+#' Provisions a public virtual interface to be owned by the specified
+#' Amazon Web Services account
 #'
 #' @description
-#' Provisions a public virtual interface to be owned by the specified AWS
-#' account.
+#' Provisions a public virtual interface to be owned by the specified
+#' Amazon Web Services account.
 #' 
 #' The owner of a connection calls this function to provision a public
-#' virtual interface to be owned by the specified AWS account.
+#' virtual interface to be owned by the specified Amazon Web Services
+#' account.
 #' 
 #' Virtual interfaces created using this function must be confirmed by the
 #' owner using
@@ -421,7 +451,8 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection on which the public virtual interface is
 #' provisioned.
-#' @param ownerAccount &#91;required&#93; The ID of the AWS account that owns the public virtual interface.
+#' @param ownerAccount &#91;required&#93; The ID of the Amazon Web Services account that owns the public virtual
+#' interface.
 #' @param newPublicVirtualInterfaceAllocation &#91;required&#93; Information about the public virtual interface.
 #'
 #' @return
@@ -462,17 +493,20 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #'       customerAddress = "string",
 #'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'       bgpStatus = "up"|"down"|"unknown",
-#'       awsDeviceV2 = "string"
+#'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string"
 #'     )
 #'   ),
 #'   region = "string",
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   tags = list(
 #'     list(
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   siteLinkEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -524,16 +558,16 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 }
 .directconnect$operations$allocate_public_virtual_interface <- directconnect_allocate_public_virtual_interface
 
-#' Provisions a transit virtual interface to be owned by the specified AWS
-#' account
+#' Provisions a transit virtual interface to be owned by the specified
+#' Amazon Web Services account
 #'
 #' @description
-#' Provisions a transit virtual interface to be owned by the specified AWS
-#' account. Use this type of interface to connect a transit gateway to your
-#' Direct Connect gateway.
+#' Provisions a transit virtual interface to be owned by the specified
+#' Amazon Web Services account. Use this type of interface to connect a
+#' transit gateway to your Direct Connect gateway.
 #' 
 #' The owner of a connection provisions a transit virtual interface to be
-#' owned by the specified AWS account.
+#' owned by the specified Amazon Web Services account.
 #' 
 #' After you create a transit virtual interface, it must be confirmed by
 #' the owner using
@@ -547,7 +581,8 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection on which the transit virtual interface is
 #' provisioned.
-#' @param ownerAccount &#91;required&#93; The ID of the AWS account that owns the transit virtual interface.
+#' @param ownerAccount &#91;required&#93; The ID of the Amazon Web Services account that owns the transit virtual
+#' interface.
 #' @param newTransitVirtualInterfaceAllocation &#91;required&#93; Information about the transit virtual interface.
 #'
 #' @return
@@ -589,17 +624,20 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #'         customerAddress = "string",
 #'         bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'         bgpStatus = "up"|"down"|"unknown",
-#'         awsDeviceV2 = "string"
+#'         awsDeviceV2 = "string",
+#'         awsLogicalDeviceId = "string"
 #'       )
 #'     ),
 #'     region = "string",
 #'     awsDeviceV2 = "string",
+#'     awsLogicalDeviceId = "string",
 #'     tags = list(
 #'       list(
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     siteLinkEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -653,12 +691,13 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 #' @description
 #' Associates an existing connection with a link aggregation group (LAG).
 #' The connection is interrupted and re-established as a member of the LAG
-#' (connectivity to AWS is interrupted). The connection must be hosted on
-#' the same AWS Direct Connect endpoint as the LAG, and its bandwidth must
-#' match the bandwidth for the LAG. You can re-associate a connection
-#' that's currently associated with a different LAG; however, if removing
-#' the connection would cause the original LAG to fall below its setting
-#' for minimum number of operational connections, the request fails.
+#' (connectivity to Amazon Web Services is interrupted). The connection
+#' must be hosted on the same Direct Connect endpoint as the LAG, and its
+#' bandwidth must match the bandwidth for the LAG. You can re-associate a
+#' connection that's currently associated with a different LAG; however, if
+#' removing the connection would cause the original LAG to fall below its
+#' setting for minimum number of operational connections, the request
+#' fails.
 #' 
 #' Any virtual interfaces that are directly associated with the connection
 #' are automatically re-associated with the LAG. If the connection was
@@ -696,6 +735,7 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 #'   awsDevice = "string",
 #'   jumboFrameCapable = TRUE|FALSE,
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'   tags = list(
 #'     list(
@@ -703,7 +743,18 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -743,9 +794,10 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #' aggregation group (LAG) or interconnect. If the target interconnect or
 #' LAG has an existing hosted connection with a conflicting VLAN number or
 #' IP address, the operation fails. This action temporarily interrupts the
-#' hosted connection's connectivity to AWS as it is being migrated.
+#' hosted connection's connectivity to Amazon Web Services as it is being
+#' migrated.
 #' 
-#' Intended for use by AWS Direct Connect Partners only.
+#' Intended for use by Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_associate_hosted_connection(connectionId,
@@ -774,6 +826,7 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #'   awsDevice = "string",
 #'   jumboFrameCapable = TRUE|FALSE,
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'   tags = list(
 #'     list(
@@ -781,7 +834,18 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -813,15 +877,115 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 }
 .directconnect$operations$associate_hosted_connection <- directconnect_associate_hosted_connection
 
+#' Associates a MAC Security (MACsec) Connection Key Name (CKN)/
+#' Connectivity Association Key (CAK) pair with an Direct Connect dedicated
+#' connection
+#'
+#' @description
+#' Associates a MAC Security (MACsec) Connection Key Name (CKN)/
+#' Connectivity Association Key (CAK) pair with an Direct Connect dedicated
+#' connection.
+#' 
+#' You must supply either the `secretARN,` or the CKN/CAK (`ckn` and `cak`)
+#' pair in the request.
+#' 
+#' For information about MAC Security (MACsec) key considerations, see
+#' [MACsec pre-shared CKN/CAK key
+#' considerations](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-key-consideration)
+#' in the *Direct Connect User Guide*.
+#'
+#' @usage
+#' directconnect_associate_mac_sec_key(connectionId, secretARN, ckn, cak)
+#'
+#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), or the ID of the LAG
+#' (dxlag-xxxx).
+#' 
+#' You can use [`describe_connections`][directconnect_describe_connections]
+#' or [`describe_lags`][directconnect_describe_lags] to retrieve connection
+#' ID.
+#' @param secretARN The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key
+#' to associate with the dedicated connection.
+#' 
+#' You can use [`describe_connections`][directconnect_describe_connections]
+#' or [`describe_lags`][directconnect_describe_lags] to retrieve the MAC
+#' Security (MACsec) secret key.
+#' 
+#' If you use this request parameter, you do not use the `ckn` and `cak`
+#' request parameters.
+#' @param ckn The MAC Security (MACsec) CKN to associate with the dedicated
+#' connection.
+#' 
+#' You can create the CKN/CAK pair using an industry standard tool.
+#' 
+#' The valid values are 64 hexadecimal characters (0-9, A-E).
+#' 
+#' If you use this request parameter, you must use the `cak` request
+#' parameter and not use the `secretARN` request parameter.
+#' @param cak The MAC Security (MACsec) CAK to associate with the dedicated
+#' connection.
+#' 
+#' You can create the CKN/CAK pair using an industry standard tool.
+#' 
+#' The valid values are 64 hexadecimal characters (0-9, A-E).
+#' 
+#' If you use this request parameter, you must use the `ckn` request
+#' parameter and not use the `secretARN` request parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionId = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_mac_sec_key(
+#'   connectionId = "string",
+#'   secretARN = "string",
+#'   ckn = "string",
+#'   cak = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_associate_mac_sec_key
+directconnect_associate_mac_sec_key <- function(connectionId, secretARN = NULL, ckn = NULL, cak = NULL) {
+  op <- new_operation(
+    name = "AssociateMacSecKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$associate_mac_sec_key_input(connectionId = connectionId, secretARN = secretARN, ckn = ckn, cak = cak)
+  output <- .directconnect$associate_mac_sec_key_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$associate_mac_sec_key <- directconnect_associate_mac_sec_key
+
 #' Associates a virtual interface with a specified link aggregation group
 #' (LAG) or connection
 #'
 #' @description
 #' Associates a virtual interface with a specified link aggregation group
-#' (LAG) or connection. Connectivity to AWS is temporarily interrupted as
-#' the virtual interface is being migrated. If the target connection or LAG
-#' has an associated virtual interface with a conflicting VLAN number or a
-#' conflicting IP address, the operation fails.
+#' (LAG) or connection. Connectivity to Amazon Web Services is temporarily
+#' interrupted as the virtual interface is being migrated. If the target
+#' connection or LAG has an associated virtual interface with a conflicting
+#' VLAN number or a conflicting IP address, the operation fails.
 #' 
 #' Virtual interfaces associated with a hosted connection cannot be
 #' associated with a LAG; hosted connections must be migrated along with
@@ -878,17 +1042,20 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #'       customerAddress = "string",
 #'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'       bgpStatus = "up"|"down"|"unknown",
-#'       awsDeviceV2 = "string"
+#'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string"
 #'     )
 #'   ),
 #'   region = "string",
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   tags = list(
 #'     list(
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   siteLinkEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -971,12 +1138,59 @@ directconnect_confirm_connection <- function(connectionId) {
 }
 .directconnect$operations$confirm_connection <- directconnect_confirm_connection
 
-#' Accepts ownership of a private virtual interface created by another AWS
-#' account
+#' The confirmation of the terms of agreement when creating the
+#' connection/link aggregation group (LAG)
 #'
 #' @description
-#' Accepts ownership of a private virtual interface created by another AWS
-#' account.
+#' The confirmation of the terms of agreement when creating the
+#' connection/link aggregation group (LAG).
+#'
+#' @usage
+#' directconnect_confirm_customer_agreement(agreementName)
+#'
+#' @param agreementName The name of the customer agreement.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$confirm_customer_agreement(
+#'   agreementName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_confirm_customer_agreement
+directconnect_confirm_customer_agreement <- function(agreementName = NULL) {
+  op <- new_operation(
+    name = "ConfirmCustomerAgreement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$confirm_customer_agreement_input(agreementName = agreementName)
+  output <- .directconnect$confirm_customer_agreement_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$confirm_customer_agreement <- directconnect_confirm_customer_agreement
+
+#' Accepts ownership of a private virtual interface created by another
+#' Amazon Web Services account
+#'
+#' @description
+#' Accepts ownership of a private virtual interface created by another
+#' Amazon Web Services account.
 #' 
 #' After the virtual interface owner makes this call, the virtual interface
 #' is created and attached to the specified virtual private gateway or
@@ -1027,12 +1241,12 @@ directconnect_confirm_private_virtual_interface <- function(virtualInterfaceId, 
 }
 .directconnect$operations$confirm_private_virtual_interface <- directconnect_confirm_private_virtual_interface
 
-#' Accepts ownership of a public virtual interface created by another AWS
-#' account
+#' Accepts ownership of a public virtual interface created by another
+#' Amazon Web Services account
 #'
 #' @description
-#' Accepts ownership of a public virtual interface created by another AWS
-#' account.
+#' Accepts ownership of a public virtual interface created by another
+#' Amazon Web Services account.
 #' 
 #' After the virtual interface owner makes this call, the specified virtual
 #' interface is created and made available to handle traffic.
@@ -1077,12 +1291,12 @@ directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
 }
 .directconnect$operations$confirm_public_virtual_interface <- directconnect_confirm_public_virtual_interface
 
-#' Accepts ownership of a transit virtual interface created by another AWS
-#' account
+#' Accepts ownership of a transit virtual interface created by another
+#' Amazon Web Services account
 #'
 #' @description
-#' Accepts ownership of a transit virtual interface created by another AWS
-#' account.
+#' Accepts ownership of a transit virtual interface created by another
+#' Amazon Web Services account.
 #' 
 #' After the owner of the transit virtual interface makes this call, the
 #' specified transit virtual interface is created and made available to
@@ -1137,8 +1351,8 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #' Creates a BGP peer on the specified virtual interface.
 #' 
 #' You must create a BGP peer for the corresponding address family
-#' (IPv4/IPv6) in order to access AWS resources that also use that address
-#' family.
+#' (IPv4/IPv6) in order to access Amazon Web Services resources that also
+#' use that address family.
 #' 
 #' If logical redundancy is not supported by the connection, interconnect,
 #' or LAG, the BGP peer cannot be in the same address family as an existing
@@ -1149,7 +1363,7 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #' of IPv6 addresses; you cannot specify custom IPv6 addresses.
 #' 
 #' For a public virtual interface, the Autonomous System Number (ASN) must
-#' be private or already whitelisted for the virtual interface.
+#' be private or already on the allow list for the virtual interface.
 #'
 #' @usage
 #' directconnect_create_bgp_peer(virtualInterfaceId, newBGPPeer)
@@ -1196,17 +1410,20 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #'         customerAddress = "string",
 #'         bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'         bgpStatus = "up"|"down"|"unknown",
-#'         awsDeviceV2 = "string"
+#'         awsDeviceV2 = "string",
+#'         awsLogicalDeviceId = "string"
 #'       )
 #'     ),
 #'     region = "string",
 #'     awsDeviceV2 = "string",
+#'     awsLogicalDeviceId = "string",
 #'     tags = list(
 #'       list(
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     siteLinkEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1245,30 +1462,29 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 }
 .directconnect$operations$create_bgp_peer <- directconnect_create_bgp_peer
 
-#' Creates a connection between a customer network and a specific AWS
-#' Direct Connect location
+#' Creates a connection between a customer network and a specific Direct
+#' Connect location
 #'
 #' @description
-#' Creates a connection between a customer network and a specific AWS
-#' Direct Connect location.
+#' Creates a connection between a customer network and a specific Direct
+#' Connect location.
 #' 
-#' A connection links your internal network to an AWS Direct Connect
-#' location over a standard Ethernet fiber-optic cable. One end of the
-#' cable is connected to your router, the other to an AWS Direct Connect
-#' router.
+#' A connection links your internal network to an Direct Connect location
+#' over a standard Ethernet fiber-optic cable. One end of the cable is
+#' connected to your router, the other to an Direct Connect router.
 #' 
 #' To find the locations for your Region, use
 #' [`describe_locations`][directconnect_describe_locations].
 #' 
 #' You can automatically add the new connection to a link aggregation group
 #' (LAG) by specifying a LAG ID in the request. This ensures that the new
-#' connection is allocated on the same AWS Direct Connect endpoint that
-#' hosts the specified LAG. If there are no available ports on the
-#' endpoint, the request fails and no connection is created.
+#' connection is allocated on the same Direct Connect endpoint that hosts
+#' the specified LAG. If there are no available ports on the endpoint, the
+#' request fails and no connection is created.
 #'
 #' @usage
 #' directconnect_create_connection(location, bandwidth, connectionName,
-#'   lagId, tags, providerName)
+#'   lagId, tags, providerName, requestMACSec)
 #'
 #' @param location &#91;required&#93; The location of the connection.
 #' @param bandwidth &#91;required&#93; The bandwidth of the connection.
@@ -1277,6 +1493,13 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' @param tags The tags to associate with the lag.
 #' @param providerName The name of the service provider associated with the requested
 #' connection.
+#' @param requestMACSec Indicates whether you want the connection to support MAC Security
+#' (MACsec).
+#' 
+#' MAC Security (MACsec) is only available on dedicated connections. For
+#' information about MAC Security (MACsec) prerequisties, see [MACsec
+#' prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites)
+#' in the *Direct Connect User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1298,6 +1521,7 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'   awsDevice = "string",
 #'   jumboFrameCapable = TRUE|FALSE,
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'   tags = list(
 #'     list(
@@ -1305,7 +1529,18 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1322,21 +1557,22 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   requestMACSec = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_create_connection
-directconnect_create_connection <- function(location, bandwidth, connectionName, lagId = NULL, tags = NULL, providerName = NULL) {
+directconnect_create_connection <- function(location, bandwidth, connectionName, lagId = NULL, tags = NULL, providerName = NULL, requestMACSec = NULL) {
   op <- new_operation(
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$create_connection_input(location = location, bandwidth = bandwidth, connectionName = connectionName, lagId = lagId, tags = tags, providerName = providerName)
+  input <- .directconnect$create_connection_input(location = location, bandwidth = bandwidth, connectionName = connectionName, lagId = lagId, tags = tags, providerName = providerName, requestMACSec = requestMACSec)
   output <- .directconnect$create_connection_output()
   config <- get_config()
   svc <- .directconnect$service(config)
@@ -1353,12 +1589,12 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #' @description
 #' Creates a Direct Connect gateway, which is an intermediate object that
 #' enables you to connect a set of virtual interfaces and virtual private
-#' gateways. A Direct Connect gateway is global and visible in any AWS
-#' Region after it is created. The virtual interfaces and virtual private
-#' gateways that are connected through a Direct Connect gateway can be in
-#' different AWS Regions. This enables you to connect to a VPC in any
-#' Region, regardless of the Region in which the virtual interfaces are
-#' located, and pass traffic between them.
+#' gateways. A Direct Connect gateway is global and visible in any Amazon
+#' Web Services Region after it is created. The virtual interfaces and
+#' virtual private gateways that are connected through a Direct Connect
+#' gateway can be in different Amazon Web Services Regions. This enables
+#' you to connect to a VPC in any Region, regardless of the Region in which
+#' the virtual interfaces are located, and pass traffic between them.
 #'
 #' @usage
 #' directconnect_create_direct_connect_gateway(directConnectGatewayName,
@@ -1435,7 +1671,7 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #' 
 #' For information about how to set the prefixes, see [Allowed
 #' Prefixes](https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes)
-#' in the *AWS Direct Connect User Guide*.
+#' in the *Direct Connect User Guide*.
 #' @param virtualGatewayId The ID of the virtual private gateway.
 #'
 #' @return
@@ -1508,7 +1744,7 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #' transit gateway with the specified Direct Connect gateway.
 #' 
 #' You can associate a Direct Connect gateway and virtual private gateway
-#' or transit gateway that is owned by any AWS account.
+#' or transit gateway that is owned by any Amazon Web Services account.
 #'
 #' @usage
 #' directconnect_create_direct_connect_gateway_association_proposal(
@@ -1517,7 +1753,8 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #'   removeAllowedPrefixesToDirectConnectGateway)
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
-#' @param directConnectGatewayOwnerAccount &#91;required&#93; The ID of the AWS account that owns the Direct Connect gateway.
+#' @param directConnectGatewayOwnerAccount &#91;required&#93; The ID of the Amazon Web Services account that owns the Direct Connect
+#' gateway.
 #' @param gatewayId &#91;required&#93; The ID of the virtual private gateway or transit gateway.
 #' @param addAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to advertise to the Direct Connect gateway.
 #' @param removeAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to no longer advertise to the Direct Connect
@@ -1591,35 +1828,35 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 }
 .directconnect$operations$create_direct_connect_gateway_association_proposal <- directconnect_create_direct_connect_gateway_association_proposal
 
-#' Creates an interconnect between an AWS Direct Connect Partner's network
-#' and a specific AWS Direct Connect location
+#' Creates an interconnect between an Direct Connect Partner's network and
+#' a specific Direct Connect location
 #'
 #' @description
-#' Creates an interconnect between an AWS Direct Connect Partner's network
-#' and a specific AWS Direct Connect location.
+#' Creates an interconnect between an Direct Connect Partner's network and
+#' a specific Direct Connect location.
 #' 
 #' An interconnect is a connection that is capable of hosting other
-#' connections. The AWS Direct Connect partner can use an interconnect to
-#' provide AWS Direct Connect hosted connections to customers through their
-#' own network services. Like a standard connection, an interconnect links
-#' the partner's network to an AWS Direct Connect location over a standard
-#' Ethernet fiber-optic cable. One end is connected to the partner's
-#' router, the other to an AWS Direct Connect router.
+#' connections. The Direct Connect Partner can use an interconnect to
+#' provide Direct Connect hosted connections to customers through their own
+#' network services. Like a standard connection, an interconnect links the
+#' partner's network to an Direct Connect location over a standard Ethernet
+#' fiber-optic cable. One end is connected to the partner's router, the
+#' other to an Direct Connect router.
 #' 
 #' You can automatically add the new interconnect to a link aggregation
 #' group (LAG) by specifying a LAG ID in the request. This ensures that the
-#' new interconnect is allocated on the same AWS Direct Connect endpoint
-#' that hosts the specified LAG. If there are no available ports on the
+#' new interconnect is allocated on the same Direct Connect endpoint that
+#' hosts the specified LAG. If there are no available ports on the
 #' endpoint, the request fails and no interconnect is created.
 #' 
-#' For each end customer, the AWS Direct Connect Partner provisions a
+#' For each end customer, the Direct Connect Partner provisions a
 #' connection on their interconnect by calling
 #' [`allocate_hosted_connection`][directconnect_allocate_hosted_connection].
-#' The end customer can then connect to AWS resources by creating a virtual
-#' interface on their connection, using the VLAN assigned to them by the
-#' AWS Direct Connect Partner.
+#' The end customer can then connect to Amazon Web Services resources by
+#' creating a virtual interface on their connection, using the VLAN
+#' assigned to them by the Direct Connect Partner.
 #' 
-#' Intended for use by AWS Direct Connect Partners only.
+#' Intended for use by Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_create_interconnect(interconnectName, bandwidth, location,
@@ -1649,6 +1886,7 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #'   awsDevice = "string",
 #'   jumboFrameCapable = TRUE|FALSE,
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'   tags = list(
 #'     list(
@@ -1699,40 +1937,40 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 
 #' Creates a link aggregation group (LAG) with the specified number of
 #' bundled physical dedicated connections between the customer network and
-#' a specific AWS Direct Connect location
+#' a specific Direct Connect location
 #'
 #' @description
 #' Creates a link aggregation group (LAG) with the specified number of
 #' bundled physical dedicated connections between the customer network and
-#' a specific AWS Direct Connect location. A LAG is a logical interface
-#' that uses the Link Aggregation Control Protocol (LACP) to aggregate
-#' multiple interfaces, enabling you to treat them as a single interface.
+#' a specific Direct Connect location. A LAG is a logical interface that
+#' uses the Link Aggregation Control Protocol (LACP) to aggregate multiple
+#' interfaces, enabling you to treat them as a single interface.
 #' 
 #' All connections in a LAG must use the same bandwidth (either 1Gbps or
-#' 10Gbps) and must terminate at the same AWS Direct Connect endpoint.
+#' 10Gbps) and must terminate at the same Direct Connect endpoint.
 #' 
 #' You can have up to 10 dedicated connections per LAG. Regardless of this
-#' limit, if you request more connections for the LAG than AWS Direct
-#' Connect can allocate on a single endpoint, no LAG is created.
+#' limit, if you request more connections for the LAG than Direct Connect
+#' can allocate on a single endpoint, no LAG is created.
 #' 
 #' You can specify an existing physical dedicated connection or
 #' interconnect to include in the LAG (which counts towards the total
 #' number of connections). Doing so interrupts the current physical
 #' dedicated connection, and re-establishes them as a member of the LAG.
-#' The LAG will be created on the same AWS Direct Connect endpoint to which
-#' the dedicated connection terminates. Any virtual interfaces associated
-#' with the dedicated connection are automatically disassociated and
+#' The LAG will be created on the same Direct Connect endpoint to which the
+#' dedicated connection terminates. Any virtual interfaces associated with
+#' the dedicated connection are automatically disassociated and
 #' re-associated with the LAG. The connection ID does not change.
 #' 
-#' If the AWS account used to create a LAG is a registered AWS Direct
-#' Connect Partner, the LAG is automatically enabled to host
+#' If the Amazon Web Services account used to create a LAG is a registered
+#' Direct Connect Partner, the LAG is automatically enabled to host
 #' sub-connections. For a LAG owned by a partner, any associated virtual
 #' interfaces cannot be directly configured.
 #'
 #' @usage
 #' directconnect_create_lag(numberOfConnections, location,
 #'   connectionsBandwidth, lagName, connectionId, tags, childConnectionTags,
-#'   providerName)
+#'   providerName, requestMACSec)
 #'
 #' @param numberOfConnections &#91;required&#93; The number of physical dedicated connections initially provisioned and
 #' bundled by the LAG.
@@ -1744,6 +1982,13 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' @param tags The tags to associate with the LAG.
 #' @param childConnectionTags The tags to associate with the automtically created LAGs.
 #' @param providerName The name of the service provider associated with the LAG.
+#' @param requestMACSec Indicates whether the connection will support MAC Security (MACsec).
+#' 
+#' All connections in the LAG must be capable of supporting MAC Security
+#' (MACsec). For information about MAC Security (MACsec) prerequisties, see
+#' [MACsec
+#' prerequisties](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites)
+#' in the *Direct Connect User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1760,6 +2005,7 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'   minimumLinks = 123,
 #'   awsDevice = "string",
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   connections = list(
 #'     list(
 #'       ownerAccount = "string",
@@ -1778,6 +2024,7 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'       awsDevice = "string",
 #'       jumboFrameCapable = TRUE|FALSE,
 #'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string",
 #'       hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'       tags = list(
 #'         list(
@@ -1785,7 +2032,18 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -1797,7 +2055,17 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1821,21 +2089,22 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   requestMACSec = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_create_lag
-directconnect_create_lag <- function(numberOfConnections, location, connectionsBandwidth, lagName, connectionId = NULL, tags = NULL, childConnectionTags = NULL, providerName = NULL) {
+directconnect_create_lag <- function(numberOfConnections, location, connectionsBandwidth, lagName, connectionId = NULL, tags = NULL, childConnectionTags = NULL, providerName = NULL, requestMACSec = NULL) {
   op <- new_operation(
     name = "CreateLag",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$create_lag_input(numberOfConnections = numberOfConnections, location = location, connectionsBandwidth = connectionsBandwidth, lagName = lagName, connectionId = connectionId, tags = tags, childConnectionTags = childConnectionTags, providerName = providerName)
+  input <- .directconnect$create_lag_input(numberOfConnections = numberOfConnections, location = location, connectionsBandwidth = connectionsBandwidth, lagName = lagName, connectionId = connectionId, tags = tags, childConnectionTags = childConnectionTags, providerName = providerName, requestMACSec = requestMACSec)
   output <- .directconnect$create_lag_output()
   config <- get_config()
   svc <- .directconnect$service(config)
@@ -1849,13 +2118,13 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #'
 #' @description
 #' Creates a private virtual interface. A virtual interface is the VLAN
-#' that transports AWS Direct Connect traffic. A private virtual interface
-#' can be connected to either a Direct Connect gateway or a Virtual Private
+#' that transports Direct Connect traffic. A private virtual interface can
+#' be connected to either a Direct Connect gateway or a Virtual Private
 #' Gateway (VGW). Connecting the private virtual interface to a Direct
 #' Connect gateway enables the possibility for connecting to multiple VPCs,
-#' including VPCs in different AWS Regions. Connecting the private virtual
-#' interface to a VGW only provides access to a single VPC within the same
-#' Region.
+#' including VPCs in different Amazon Web Services Regions. Connecting the
+#' private virtual interface to a VGW only provides access to a single VPC
+#' within the same Region.
 #' 
 #' Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause
 #' an update to the underlying physical connection if it wasn't updated to
@@ -1912,17 +2181,20 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #'       customerAddress = "string",
 #'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'       bgpStatus = "up"|"down"|"unknown",
-#'       awsDeviceV2 = "string"
+#'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string"
 #'     )
 #'   ),
 #'   region = "string",
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   tags = list(
 #'     list(
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   siteLinkEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1946,7 +2218,8 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     enableSiteLink = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1975,8 +2248,9 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #'
 #' @description
 #' Creates a public virtual interface. A virtual interface is the VLAN that
-#' transports AWS Direct Connect traffic. A public virtual interface
-#' supports sending traffic to public services of AWS such as Amazon S3.
+#' transports Direct Connect traffic. A public virtual interface supports
+#' sending traffic to public services of Amazon Web Services such as Amazon
+#' S3.
 #' 
 #' When creating an IPv6 public virtual interface (`addressFamily` is
 #' `ipv6`), leave the `customer` and `amazon` address fields blank to use
@@ -2027,17 +2301,20 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #'       customerAddress = "string",
 #'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'       bgpStatus = "up"|"down"|"unknown",
-#'       awsDeviceV2 = "string"
+#'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string"
 #'     )
 #'   ),
 #'   region = "string",
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   tags = list(
 #'     list(
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   siteLinkEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2158,17 +2435,20 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #'         customerAddress = "string",
 #'         bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'         bgpStatus = "up"|"down"|"unknown",
-#'         awsDeviceV2 = "string"
+#'         awsDeviceV2 = "string",
+#'         awsLogicalDeviceId = "string"
 #'       )
 #'     ),
 #'     region = "string",
 #'     awsDeviceV2 = "string",
+#'     awsLogicalDeviceId = "string",
 #'     tags = list(
 #'       list(
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     siteLinkEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2192,7 +2472,8 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     enableSiteLink = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2275,17 +2556,20 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #'         customerAddress = "string",
 #'         bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'         bgpStatus = "up"|"down"|"unknown",
-#'         awsDeviceV2 = "string"
+#'         awsDeviceV2 = "string",
+#'         awsLogicalDeviceId = "string"
 #'       )
 #'     ),
 #'     region = "string",
 #'     awsDeviceV2 = "string",
+#'     awsLogicalDeviceId = "string",
 #'     tags = list(
 #'       list(
 #'         key = "string",
 #'         value = "string"
 #'       )
-#'     )
+#'     ),
+#'     siteLinkEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2325,10 +2609,10 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 #' @description
 #' Deletes the specified connection.
 #' 
-#' Deleting a connection only stops the AWS Direct Connect port hour and
-#' data transfer charges. If you are partnering with any third parties to
-#' connect with the AWS Direct Connect location, you must cancel your
-#' service with them separately.
+#' Deleting a connection only stops the Direct Connect port hour and data
+#' transfer charges. If you are partnering with any third parties to
+#' connect with the Direct Connect location, you must cancel your service
+#' with them separately.
 #'
 #' @usage
 #' directconnect_delete_connection(connectionId)
@@ -2355,6 +2639,7 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 #'   awsDevice = "string",
 #'   jumboFrameCapable = TRUE|FALSE,
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'   tags = list(
 #'     list(
@@ -2362,7 +2647,18 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2599,7 +2895,7 @@ directconnect_delete_direct_connect_gateway_association_proposal <- function(pro
 #' @description
 #' Deletes the specified interconnect.
 #' 
-#' Intended for use by AWS Direct Connect Partners only.
+#' Intended for use by Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_delete_interconnect(interconnectId)
@@ -2667,6 +2963,7 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'   minimumLinks = 123,
 #'   awsDevice = "string",
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   connections = list(
 #'     list(
 #'       ownerAccount = "string",
@@ -2685,6 +2982,7 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'       awsDevice = "string",
 #'       jumboFrameCapable = TRUE|FALSE,
 #'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string",
 #'       hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'       tags = list(
 #'         list(
@@ -2692,7 +2990,18 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -2704,7 +3013,17 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2789,10 +3108,11 @@ directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
 #' 
 #' The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
 #' is a document that your APN partner or service provider uses when
-#' establishing your cross connect to AWS at the colocation facility. For
-#' more information, see [Requesting Cross Connects at AWS Direct Connect
+#' establishing your cross connect to Amazon Web Services at the colocation
+#' facility. For more information, see [Requesting Cross Connects at Direct
+#' Connect
 #' Locations](https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
-#' in the *AWS Direct Connect User Guide*.
+#' in the *Direct Connect User Guide*.
 #'
 #' @usage
 #' directconnect_describe_connection_loa(connectionId, providerName,
@@ -2878,6 +3198,7 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #'       awsDevice = "string",
 #'       jumboFrameCapable = TRUE|FALSE,
 #'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string",
 #'       hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'       tags = list(
 #'         list(
@@ -2885,7 +3206,18 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2928,7 +3260,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #' Lists the connections that have been provisioned on the specified
 #' interconnect.
 #' 
-#' Intended for use by AWS Direct Connect Partners only.
+#' Intended for use by Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_describe_connections_on_interconnect(interconnectId)
@@ -2957,6 +3289,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #'       awsDevice = "string",
 #'       jumboFrameCapable = TRUE|FALSE,
 #'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string",
 #'       hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'       tags = list(
 #'         list(
@@ -2964,7 +3297,18 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2996,6 +3340,56 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
   return(response)
 }
 .directconnect$operations$describe_connections_on_interconnect <- directconnect_describe_connections_on_interconnect
+
+#' Get and view a list of customer agreements, along with their signed
+#' status and whether the customer is an NNIPartner, NNIPartnerV2, or a
+#' nonPartner
+#'
+#' @description
+#' Get and view a list of customer agreements, along with their signed
+#' status and whether the customer is an NNIPartner, NNIPartnerV2, or a
+#' nonPartner.
+#'
+#' @usage
+#' directconnect_describe_customer_metadata()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   agreements = list(
+#'     list(
+#'       agreementName = "string",
+#'       status = "string"
+#'     )
+#'   ),
+#'   nniPartnerType = "v1"|"v2"|"nonPartner"
+#' )
+#' ```
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_describe_customer_metadata
+directconnect_describe_customer_metadata <- function() {
+  op <- new_operation(
+    name = "DescribeCustomerMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$describe_customer_metadata_input()
+  output <- .directconnect$describe_customer_metadata_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$describe_customer_metadata <- directconnect_describe_customer_metadata
 
 #' Describes one or more association proposals for connection between a
 #' virtual private gateway or transit gateway and a Direct Connect gateway
@@ -3084,18 +3478,35 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 .directconnect$operations$describe_direct_connect_gateway_association_proposals <- directconnect_describe_direct_connect_gateway_association_proposals
 
 #' Lists the associations between your Direct Connect gateways and virtual
-#' private gateways
+#' private gateways and transit gateways
 #'
 #' @description
 #' Lists the associations between your Direct Connect gateways and virtual
-#' private gateways. You must specify a Direct Connect gateway, a virtual
-#' private gateway, or both. If you specify a Direct Connect gateway, the
-#' response contains all virtual private gateways associated with the
-#' Direct Connect gateway. If you specify a virtual private gateway, the
-#' response contains all Direct Connect gateways associated with the
-#' virtual private gateway. If you specify both, the response contains the
-#' association between the Direct Connect gateway and the virtual private
-#' gateway.
+#' private gateways and transit gateways. You must specify one of the
+#' following:
+#' 
+#' -   A Direct Connect gateway
+#' 
+#'     The response contains all virtual private gateways and transit
+#'     gateways associated with the Direct Connect gateway.
+#' 
+#' -   A virtual private gateway
+#' 
+#'     The response contains the Direct Connect gateway.
+#' 
+#' -   A transit gateway
+#' 
+#'     The response contains the Direct Connect gateway.
+#' 
+#' -   A Direct Connect gateway and a virtual private gateway
+#' 
+#'     The response contains the association between the Direct Connect
+#'     gateway and virtual private gateway.
+#' 
+#' -   A Direct Connect gateway and a transit gateway
+#' 
+#'     The response contains the association between the Direct Connect
+#'     gateway and transit gateway.
 #'
 #' @usage
 #' directconnect_describe_direct_connect_gateway_associations(
@@ -3112,7 +3523,7 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 #' If `MaxResults` is given a value larger than 100, only 100 results are
 #' returned.
 #' @param nextToken The token provided in the previous call to retrieve the next page.
-#' @param virtualGatewayId The ID of the virtual private gateway.
+#' @param virtualGatewayId The ID of the virtual private gateway or transit gateway.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3327,7 +3738,7 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #' Lists the hosted connections that have been provisioned on the specified
 #' interconnect or link aggregation group (LAG).
 #' 
-#' Intended for use by AWS Direct Connect Partners only.
+#' Intended for use by Direct Connect Partners only.
 #'
 #' @usage
 #' directconnect_describe_hosted_connections(connectionId)
@@ -3356,6 +3767,7 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #'       awsDevice = "string",
 #'       jumboFrameCapable = TRUE|FALSE,
 #'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string",
 #'       hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'       tags = list(
 #'         list(
@@ -3363,7 +3775,18 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3404,11 +3827,11 @@ directconnect_describe_hosted_connections <- function(connectionId) {
 #' Gets the LOA-CFA for the specified interconnect.
 #' 
 #' The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
-#' is a document that is used when establishing your cross connect to AWS
-#' at the colocation facility. For more information, see [Requesting Cross
-#' Connects at AWS Direct Connect
+#' is a document that is used when establishing your cross connect to
+#' Amazon Web Services at the colocation facility. For more information,
+#' see [Requesting Cross Connects at Direct Connect
 #' Locations](https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
-#' in the *AWS Direct Connect User Guide*.
+#' in the *Direct Connect User Guide*.
 #'
 #' @usage
 #' directconnect_describe_interconnect_loa(interconnectId, providerName,
@@ -3461,12 +3884,12 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 }
 .directconnect$operations$describe_interconnect_loa <- directconnect_describe_interconnect_loa
 
-#' Lists the interconnects owned by the AWS account or only the specified
-#' interconnect
+#' Lists the interconnects owned by the Amazon Web Services account or only
+#' the specified interconnect
 #'
 #' @description
-#' Lists the interconnects owned by the AWS account or only the specified
-#' interconnect.
+#' Lists the interconnects owned by the Amazon Web Services account or only
+#' the specified interconnect.
 #'
 #' @usage
 #' directconnect_describe_interconnects(interconnectId)
@@ -3492,6 +3915,7 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 #'       awsDevice = "string",
 #'       jumboFrameCapable = TRUE|FALSE,
 #'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string",
 #'       hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'       tags = list(
 #'         list(
@@ -3559,6 +3983,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #'       minimumLinks = 123,
 #'       awsDevice = "string",
 #'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string",
 #'       connections = list(
 #'         list(
 #'           ownerAccount = "string",
@@ -3577,6 +4002,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #'           awsDevice = "string",
 #'           jumboFrameCapable = TRUE|FALSE,
 #'           awsDeviceV2 = "string",
+#'           awsLogicalDeviceId = "string",
 #'           hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'           tags = list(
 #'             list(
@@ -3584,7 +4010,18 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #'               value = "string"
 #'             )
 #'           ),
-#'           providerName = "string"
+#'           providerName = "string",
+#'           macSecCapable = TRUE|FALSE,
+#'           portEncryptionStatus = "string",
+#'           encryptionMode = "string",
+#'           macSecKeys = list(
+#'             list(
+#'               secretARN = "string",
+#'               ckn = "string",
+#'               state = "string",
+#'               startOn = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       allowsHostedConnections = TRUE|FALSE,
@@ -3596,7 +4033,17 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3637,11 +4084,11 @@ directconnect_describe_lags <- function(lagId = NULL) {
 #' group (LAG).
 #' 
 #' The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
-#' is a document that is used when establishing your cross connect to AWS
-#' at the colocation facility. For more information, see [Requesting Cross
-#' Connects at AWS Direct Connect
+#' is a document that is used when establishing your cross connect to
+#' Amazon Web Services at the colocation facility. For more information,
+#' see [Requesting Cross Connects at Direct Connect
 #' Locations](https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html)
-#' in the *AWS Direct Connect User Guide*.
+#' in the *Direct Connect User Guide*.
 #'
 #' @usage
 #' directconnect_describe_loa(connectionId, providerName, loaContentType)
@@ -3691,11 +4138,12 @@ directconnect_describe_loa <- function(connectionId, providerName = NULL, loaCon
 }
 .directconnect$operations$describe_loa <- directconnect_describe_loa
 
-#' Lists the AWS Direct Connect locations in the current AWS Region
+#' Lists the Direct Connect locations in the current Amazon Web Services
+#' Region
 #'
 #' @description
-#' Lists the AWS Direct Connect locations in the current AWS Region. These
-#' are the locations that can be selected when calling
+#' Lists the Direct Connect locations in the current Amazon Web Services
+#' Region. These are the locations that can be selected when calling
 #' [`create_connection`][directconnect_create_connection] or
 #' [`create_interconnect`][directconnect_create_interconnect].
 #'
@@ -3717,6 +4165,9 @@ directconnect_describe_loa <- function(connectionId, providerName = NULL, loaCon
 #'         "string"
 #'       ),
 #'       availableProviders = list(
+#'         "string"
+#'       ),
+#'       availableMacSecPortSpeeds = list(
 #'         "string"
 #'       )
 #'     )
@@ -3746,11 +4197,70 @@ directconnect_describe_locations <- function() {
 }
 .directconnect$operations$describe_locations <- directconnect_describe_locations
 
-#' Describes the tags associated with the specified AWS Direct Connect
+#' Details about the router
+#'
+#' @description
+#' Details about the router.
+#'
+#' @usage
+#' directconnect_describe_router_configuration(virtualInterfaceId,
+#'   routerTypeIdentifier)
+#'
+#' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
+#' @param routerTypeIdentifier Identifies the router by a combination of vendor, platform, and software
+#' version. For example, `CiscoSystemsInc-2900SeriesRouters-IOS124`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   customerRouterConfig = "string",
+#'   router = list(
+#'     vendor = "string",
+#'     platform = "string",
+#'     software = "string",
+#'     xsltTemplateName = "string",
+#'     xsltTemplateNameForMacSec = "string",
+#'     routerTypeIdentifier = "string"
+#'   ),
+#'   virtualInterfaceId = "string",
+#'   virtualInterfaceName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_router_configuration(
+#'   virtualInterfaceId = "string",
+#'   routerTypeIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_describe_router_configuration
+directconnect_describe_router_configuration <- function(virtualInterfaceId, routerTypeIdentifier = NULL) {
+  op <- new_operation(
+    name = "DescribeRouterConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$describe_router_configuration_input(virtualInterfaceId = virtualInterfaceId, routerTypeIdentifier = routerTypeIdentifier)
+  output <- .directconnect$describe_router_configuration_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$describe_router_configuration <- directconnect_describe_router_configuration
+
+#' Describes the tags associated with the specified Direct Connect
 #' resources
 #'
 #' @description
-#' Describes the tags associated with the specified AWS Direct Connect
+#' Describes the tags associated with the specified Direct Connect
 #' resources.
 #'
 #' @usage
@@ -3805,12 +4315,14 @@ directconnect_describe_tags <- function(resourceArns) {
 }
 .directconnect$operations$describe_tags <- directconnect_describe_tags
 
-#' Lists the virtual private gateways owned by the AWS account
+#' Lists the virtual private gateways owned by the Amazon Web Services
+#' account
 #'
 #' @description
-#' Lists the virtual private gateways owned by the AWS account.
+#' Lists the virtual private gateways owned by the Amazon Web Services
+#' account.
 #' 
-#' You can create one or more AWS Direct Connect private virtual interfaces
+#' You can create one or more Direct Connect private virtual interfaces
 #' linked to a virtual private gateway.
 #'
 #' @usage
@@ -3853,16 +4365,17 @@ directconnect_describe_virtual_gateways <- function() {
 }
 .directconnect$operations$describe_virtual_gateways <- directconnect_describe_virtual_gateways
 
-#' Displays all virtual interfaces for an AWS account
+#' Displays all virtual interfaces for an Amazon Web Services account
 #'
 #' @description
-#' Displays all virtual interfaces for an AWS account. Virtual interfaces
-#' deleted fewer than 15 minutes before you make the request are also
-#' returned. If you specify a connection ID, only the virtual interfaces
-#' associated with the connection are returned. If you specify a virtual
-#' interface ID, then only a single virtual interface is returned.
+#' Displays all virtual interfaces for an Amazon Web Services account.
+#' Virtual interfaces deleted fewer than 15 minutes before you make the
+#' request are also returned. If you specify a connection ID, only the
+#' virtual interfaces associated with the connection are returned. If you
+#' specify a virtual interface ID, then only a single virtual interface is
+#' returned.
 #' 
-#' A virtual interface (VLAN) transmits the traffic between the AWS Direct
+#' A virtual interface (VLAN) transmits the traffic between the Direct
 #' Connect location and the customer network.
 #'
 #' @usage
@@ -3912,17 +4425,20 @@ directconnect_describe_virtual_gateways <- function() {
 #'           customerAddress = "string",
 #'           bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'           bgpStatus = "up"|"down"|"unknown",
-#'           awsDeviceV2 = "string"
+#'           awsDeviceV2 = "string",
+#'           awsLogicalDeviceId = "string"
 #'         )
 #'       ),
 #'       region = "string",
 #'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string",
 #'       tags = list(
 #'         list(
 #'           key = "string",
 #'           value = "string"
 #'         )
-#'       )
+#'       ),
+#'       siteLinkEnabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -3964,8 +4480,8 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #' (the connection is not deleted; to delete the connection, use the
 #' [`delete_connection`][directconnect_delete_connection] request). If the
 #' LAG has associated virtual interfaces or hosted connections, they remain
-#' associated with the LAG. A disassociated connection owned by an AWS
-#' Direct Connect Partner is automatically converted to an interconnect.
+#' associated with the LAG. A disassociated connection owned by an Direct
+#' Connect Partner is automatically converted to an interconnect.
 #' 
 #' If disassociating the connection would cause the LAG to fall below its
 #' setting for minimum number of operational connections, the request
@@ -3999,6 +4515,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #'   awsDevice = "string",
 #'   jumboFrameCapable = TRUE|FALSE,
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'   tags = list(
 #'     list(
@@ -4006,7 +4523,18 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4037,6 +4565,71 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
   return(response)
 }
 .directconnect$operations$disassociate_connection_from_lag <- directconnect_disassociate_connection_from_lag
+
+#' Removes the association between a MAC Security (MACsec) security key and
+#' an Direct Connect dedicated connection
+#'
+#' @description
+#' Removes the association between a MAC Security (MACsec) security key and
+#' an Direct Connect dedicated connection.
+#'
+#' @usage
+#' directconnect_disassociate_mac_sec_key(connectionId, secretARN)
+#'
+#' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), or the ID of the LAG
+#' (dxlag-xxxx).
+#' 
+#' You can use [`describe_connections`][directconnect_describe_connections]
+#' or [`describe_lags`][directconnect_describe_lags] to retrieve connection
+#' ID.
+#' @param secretARN &#91;required&#93; The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key.
+#' 
+#' You can use [`describe_connections`][directconnect_describe_connections]
+#' to retrieve the ARN of the MAC Security (MACsec) secret key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionId = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_mac_sec_key(
+#'   connectionId = "string",
+#'   secretARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_disassociate_mac_sec_key
+directconnect_disassociate_mac_sec_key <- function(connectionId, secretARN) {
+  op <- new_operation(
+    name = "DisassociateMacSecKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$disassociate_mac_sec_key_input(connectionId = connectionId, secretARN = secretARN)
+  output <- .directconnect$disassociate_mac_sec_key_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$disassociate_mac_sec_key <- directconnect_disassociate_mac_sec_key
 
 #' Lists the virtual interface failover test history
 #'
@@ -4266,11 +4859,11 @@ directconnect_stop_bgp_failover_test <- function(virtualInterfaceId) {
 }
 .directconnect$operations$stop_bgp_failover_test <- directconnect_stop_bgp_failover_test
 
-#' Adds the specified tags to the specified AWS Direct Connect resource
+#' Adds the specified tags to the specified Direct Connect resource
 #'
 #' @description
-#' Adds the specified tags to the specified AWS Direct Connect resource.
-#' Each resource can have a maximum of 50 tags.
+#' Adds the specified tags to the specified Direct Connect resource. Each
+#' resource can have a maximum of 50 tags.
 #' 
 #' Each tag consists of a key and an optional value. If a tag with the same
 #' key is already associated with the resource, this action updates its
@@ -4318,10 +4911,10 @@ directconnect_tag_resource <- function(resourceArn, tags) {
 }
 .directconnect$operations$tag_resource <- directconnect_tag_resource
 
-#' Removes one or more tags from the specified AWS Direct Connect resource
+#' Removes one or more tags from the specified Direct Connect resource
 #'
 #' @description
-#' Removes one or more tags from the specified AWS Direct Connect resource.
+#' Removes one or more tags from the specified Direct Connect resource.
 #'
 #' @usage
 #' directconnect_untag_resource(resourceArn, tagKeys)
@@ -4361,6 +4954,157 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .directconnect$operations$untag_resource <- directconnect_untag_resource
+
+#' Updates the Direct Connect dedicated connection configuration
+#'
+#' @description
+#' Updates the Direct Connect dedicated connection configuration.
+#' 
+#' You can update the following parameters for a connection:
+#' 
+#' -   The connection name
+#' 
+#' -   The connection's MAC Security (MACsec) encryption mode.
+#'
+#' @usage
+#' directconnect_update_connection(connectionId, connectionName,
+#'   encryptionMode)
+#'
+#' @param connectionId &#91;required&#93; The ID of the dedicated connection.
+#' 
+#' You can use [`describe_connections`][directconnect_describe_connections]
+#' to retrieve the connection ID.
+#' @param connectionName The name of the connection.
+#' @param encryptionMode The connection MAC Security (MACsec) encryption mode.
+#' 
+#' The valid values are `no_encrypt`, `should_encrypt`, and `must_encrypt`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ownerAccount = "string",
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+#'   region = "string",
+#'   location = "string",
+#'   bandwidth = "string",
+#'   vlan = 123,
+#'   partnerName = "string",
+#'   loaIssueTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lagId = "string",
+#'   awsDevice = "string",
+#'   jumboFrameCapable = TRUE|FALSE,
+#'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
+#'   hasLogicalRedundancy = "unknown"|"yes"|"no",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   portEncryptionStatus = "string",
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connection(
+#'   connectionId = "string",
+#'   connectionName = "string",
+#'   encryptionMode = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_update_connection
+directconnect_update_connection <- function(connectionId, connectionName = NULL, encryptionMode = NULL) {
+  op <- new_operation(
+    name = "UpdateConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$update_connection_input(connectionId = connectionId, connectionName = connectionName, encryptionMode = encryptionMode)
+  output <- .directconnect$update_connection_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$update_connection <- directconnect_update_connection
+
+#' Updates the name of a current Direct Connect gateway
+#'
+#' @description
+#' Updates the name of a current Direct Connect gateway.
+#'
+#' @usage
+#' directconnect_update_direct_connect_gateway(directConnectGatewayId,
+#'   newDirectConnectGatewayName)
+#'
+#' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway to update.
+#' @param newDirectConnectGatewayName &#91;required&#93; The new name for the Direct Connect gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   directConnectGateway = list(
+#'     directConnectGatewayId = "string",
+#'     directConnectGatewayName = "string",
+#'     amazonSideAsn = 123,
+#'     ownerAccount = "string",
+#'     directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
+#'     stateChangeError = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_direct_connect_gateway(
+#'   directConnectGatewayId = "string",
+#'   newDirectConnectGatewayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_update_direct_connect_gateway
+directconnect_update_direct_connect_gateway <- function(directConnectGatewayId, newDirectConnectGatewayName) {
+  op <- new_operation(
+    name = "UpdateDirectConnectGateway",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$update_direct_connect_gateway_input(directConnectGatewayId = directConnectGatewayId, newDirectConnectGatewayName = newDirectConnectGatewayName)
+  output <- .directconnect$update_direct_connect_gateway_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$update_direct_connect_gateway <- directconnect_update_direct_connect_gateway
 
 #' Updates the specified attributes of the Direct Connect gateway
 #' association
@@ -4451,27 +5195,35 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #' @description
 #' Updates the attributes of the specified link aggregation group (LAG).
 #' 
-#' You can update the following attributes:
+#' You can update the following LAG attributes:
 #' 
 #' -   The name of the LAG.
 #' 
 #' -   The value for the minimum number of connections that must be
 #'     operational for the LAG itself to be operational.
 #' 
-#' When you create a LAG, the default value for the minimum number of
-#' operational connections is zero (0). If you update this value and the
-#' number of operational connections falls below the specified value, the
-#' LAG automatically goes down to avoid over-utilization of the remaining
-#' connections. Adjust this value with care, as it could force the LAG down
-#' if it is set higher than the current number of operational connections.
+#' -   The LAG's MACsec encryption mode.
+#' 
+#'     Amazon Web Services assigns this value to each connection which is
+#'     part of the LAG.
+#' 
+#' -   The tags
+#' 
+#' If you adjust the threshold value for the minimum number of operational
+#' connections, ensure that the new value does not cause the LAG to fall
+#' below the threshold and become non-operational.
 #'
 #' @usage
-#' directconnect_update_lag(lagId, lagName, minimumLinks)
+#' directconnect_update_lag(lagId, lagName, minimumLinks, encryptionMode)
 #'
 #' @param lagId &#91;required&#93; The ID of the LAG.
 #' @param lagName The name of the LAG.
 #' @param minimumLinks The minimum number of physical connections that must be operational for
 #' the LAG itself to be operational.
+#' @param encryptionMode The LAG MAC Security (MACsec) encryption mode.
+#' 
+#' Amazon Web Services applies the value to all connections which are part
+#' of the LAG.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4488,6 +5240,7 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #'   minimumLinks = 123,
 #'   awsDevice = "string",
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   connections = list(
 #'     list(
 #'       ownerAccount = "string",
@@ -4506,6 +5259,7 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #'       awsDevice = "string",
 #'       jumboFrameCapable = TRUE|FALSE,
 #'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string",
 #'       hasLogicalRedundancy = "unknown"|"yes"|"no",
 #'       tags = list(
 #'         list(
@@ -4513,7 +5267,18 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #'           value = "string"
 #'         )
 #'       ),
-#'       providerName = "string"
+#'       providerName = "string",
+#'       macSecCapable = TRUE|FALSE,
+#'       portEncryptionStatus = "string",
+#'       encryptionMode = "string",
+#'       macSecKeys = list(
+#'         list(
+#'           secretARN = "string",
+#'           ckn = "string",
+#'           state = "string",
+#'           startOn = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   allowsHostedConnections = TRUE|FALSE,
@@ -4525,7 +5290,17 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #'       value = "string"
 #'     )
 #'   ),
-#'   providerName = "string"
+#'   providerName = "string",
+#'   macSecCapable = TRUE|FALSE,
+#'   encryptionMode = "string",
+#'   macSecKeys = list(
+#'     list(
+#'       secretARN = "string",
+#'       ckn = "string",
+#'       state = "string",
+#'       startOn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4534,21 +5309,22 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #' svc$update_lag(
 #'   lagId = "string",
 #'   lagName = "string",
-#'   minimumLinks = 123
+#'   minimumLinks = 123,
+#'   encryptionMode = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_update_lag
-directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL) {
+directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL, encryptionMode = NULL) {
   op <- new_operation(
     name = "UpdateLag",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$update_lag_input(lagId = lagId, lagName = lagName, minimumLinks = minimumLinks)
+  input <- .directconnect$update_lag_input(lagId = lagId, lagName = lagName, minimumLinks = minimumLinks, encryptionMode = encryptionMode)
   output <- .directconnect$update_lag_output()
   config <- get_config()
   svc <- .directconnect$service(config)
@@ -4577,11 +5353,13 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL)
 #'
 #' @usage
 #' directconnect_update_virtual_interface_attributes(virtualInterfaceId,
-#'   mtu)
+#'   mtu, enableSiteLink, virtualInterfaceName)
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual private interface.
 #' @param mtu The maximum transmission unit (MTU), in bytes. The supported values are
 #' 1500 and 9001. The default value is 1500.
+#' @param enableSiteLink Indicates whether to enable or disable SiteLink.
+#' @param virtualInterfaceName The name of the virtual private interface.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4621,17 +5399,20 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL)
 #'       customerAddress = "string",
 #'       bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
 #'       bgpStatus = "up"|"down"|"unknown",
-#'       awsDeviceV2 = "string"
+#'       awsDeviceV2 = "string",
+#'       awsLogicalDeviceId = "string"
 #'     )
 #'   ),
 #'   region = "string",
 #'   awsDeviceV2 = "string",
+#'   awsLogicalDeviceId = "string",
 #'   tags = list(
 #'     list(
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   siteLinkEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4639,21 +5420,23 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL)
 #' ```
 #' svc$update_virtual_interface_attributes(
 #'   virtualInterfaceId = "string",
-#'   mtu = 123
+#'   mtu = 123,
+#'   enableSiteLink = TRUE|FALSE,
+#'   virtualInterfaceName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directconnect_update_virtual_interface_attributes
-directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId, mtu = NULL) {
+directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId, mtu = NULL, enableSiteLink = NULL, virtualInterfaceName = NULL) {
   op <- new_operation(
     name = "UpdateVirtualInterfaceAttributes",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directconnect$update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, mtu = mtu)
+  input <- .directconnect$update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, mtu = mtu, enableSiteLink = enableSiteLink, virtualInterfaceName = virtualInterfaceName)
   output <- .directconnect$update_virtual_interface_attributes_output()
   config <- get_config()
   svc <- .directconnect$service(config)

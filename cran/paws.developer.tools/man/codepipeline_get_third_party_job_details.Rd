@@ -13,91 +13,9 @@ codepipeline_get_third_party_job_details(jobId, clientToken)
 verify that the calling entity is allowed access to the job and its
 details.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  jobDetails = list(
-    id = "string",
-    data = list(
-      actionTypeId = list(
-        category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-        owner = "AWS"|"ThirdParty"|"Custom",
-        provider = "string",
-        version = "string"
-      ),
-      actionConfiguration = list(
-        configuration = list(
-          "string"
-        )
-      ),
-      pipelineContext = list(
-        pipelineName = "string",
-        stage = list(
-          name = "string"
-        ),
-        action = list(
-          name = "string",
-          actionExecutionId = "string"
-        ),
-        pipelineArn = "string",
-        pipelineExecutionId = "string"
-      ),
-      inputArtifacts = list(
-        list(
-          name = "string",
-          revision = "string",
-          location = list(
-            type = "S3",
-            s3Location = list(
-              bucketName = "string",
-              objectKey = "string"
-            )
-          )
-        )
-      ),
-      outputArtifacts = list(
-        list(
-          name = "string",
-          revision = "string",
-          location = list(
-            type = "S3",
-            s3Location = list(
-              bucketName = "string",
-              objectKey = "string"
-            )
-          )
-        )
-      ),
-      artifactCredentials = list(
-        accessKeyId = "string",
-        secretAccessKey = "string",
-        sessionToken = "string"
-      ),
-      continuationToken = "string",
-      encryptionKey = list(
-        id = "string",
-        type = "KMS"
-      )
-    ),
-    nonce = "string"
-  )
-)
-}
-}
 \description{
-Requests the details of a job for a third party action. Used for partner
-actions only.
+Requests the details of a job for a third party action. Used for partner actions only.
 
-When this API is called, AWS CodePipeline returns temporary credentials
-for the S3 bucket used to store artifacts for the pipeline, if the
-action requires access to that S3 bucket for input or output artifacts.
-This API also returns any secret values defined for the action.
+See \url{https://paws-r.github.io/docs/codepipeline/get_third_party_job_details.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_third_party_job_details(
-  jobId = "string",
-  clientToken = "string"
-)
-}
-}
-
 \keyword{internal}

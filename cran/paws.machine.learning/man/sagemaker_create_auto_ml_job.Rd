@@ -4,106 +4,56 @@
 \alias{sagemaker_create_auto_ml_job}
 \title{Creates an Autopilot job}
 \usage{
-sagemaker_create_auto_ml_job(AutoMLJobName, InputDataConfig,
-  OutputDataConfig, ProblemType, AutoMLJobObjective, AutoMLJobConfig,
-  RoleArn, GenerateCandidateDefinitionsOnly, Tags)
+sagemaker_create_auto_ml_job(
+  AutoMLJobName,
+  InputDataConfig,
+  OutputDataConfig,
+  ProblemType = NULL,
+  AutoMLJobObjective = NULL,
+  AutoMLJobConfig = NULL,
+  RoleArn,
+  GenerateCandidateDefinitionsOnly = NULL,
+  Tags = NULL,
+  ModelDeployConfig = NULL
+)
 }
 \arguments{
-\item{AutoMLJobName}{[required] Identifies an Autopilot job. Must be unique to your account and is
-case-insensitive.}
+\item{AutoMLJobName}{[required] Identifies an Autopilot job. The name must be unique to your account and
+is case-insensitive.}
 
-\item{InputDataConfig}{[required] Similar to InputDataConfig supported by Tuning. Format(s) supported:
-CSV. Minimum of 500 rows.}
+\item{InputDataConfig}{[required] An array of channel objects that describes the input data and its
+location. Each channel is a named input source. Similar to
+\code{InputDataConfig} supported by . Format(s) supported: CSV, Parquet. A
+minimum of 500 rows is required for the training dataset. There is not a
+minimum number of rows required for the validation dataset.}
 
-\item{OutputDataConfig}{[required] Similar to OutputDataConfig supported by Tuning. Format(s) supported:
-CSV.}
+\item{OutputDataConfig}{[required] Provides information about encryption and the Amazon S3 output path
+needed to store artifacts from an AutoML job. Format(s) supported: CSV.}
 
-\item{ProblemType}{Defines the kind of preprocessing and algorithms intended for the
-candidates. Options include: BinaryClassification,
-MulticlassClassification, and Regression.}
+\item{ProblemType}{Defines the type of supervised learning available for the candidates.
+For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{Amazon SageMaker Autopilot problem types and algorithm support}.}
 
-\item{AutoMLJobObjective}{Defines the objective of a an AutoML job. You provide a
-AutoMLJobObjective$MetricName and Autopilot infers whether to minimize
-or maximize it. If a metric is not specified, the most commonly used
-ObjectiveMetric for problem type is automaically selected.}
+\item{AutoMLJobObjective}{Defines the objective metric used to measure the predictive quality of
+an AutoML job. You provide an AutoMLJobObjective$MetricName and
+Autopilot infers whether to minimize or maximize it.}
 
-\item{AutoMLJobConfig}{Contains CompletionCriteria and SecurityConfig.}
+\item{AutoMLJobConfig}{A collection of settings used to configure an AutoML job.}
 
 \item{RoleArn}{[required] The ARN of the role that is used to access the data.}
 
-\item{GenerateCandidateDefinitionsOnly}{Generates possible candidates without training a model. A candidate is a
-combination of data preprocessors, algorithms, and algorithm parameter
-settings.}
+\item{GenerateCandidateDefinitionsOnly}{Generates possible candidates without training the models. A candidate
+is a combination of data preprocessors, algorithms, and algorithm
+parameter settings.}
 
 \item{Tags}{Each tag consists of a key and an optional value. Tag keys must be
 unique per resource.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoMLJobArn = "string"
-)
-}
+
+\item{ModelDeployConfig}{Specifies how to generate the endpoint name for an automatic one-click
+Autopilot model deployment.}
 }
 \description{
 Creates an Autopilot job.
 
-Find the best performing model after you run an Autopilot job by calling
-. Deploy that model by following the steps described in \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{Step 6.1: Deploy the Model to Amazon SageMaker Hosting Services}.
-
-For information about how to use Autopilot, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html}{Automate Model Development with Amazon SageMaker Autopilot}.
+See \url{https://paws-r.github.io/docs/sagemaker/create_auto_ml_job.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_auto_ml_job(
-  AutoMLJobName = "string",
-  InputDataConfig = list(
-    list(
-      DataSource = list(
-        S3DataSource = list(
-          S3DataType = "ManifestFile"|"S3Prefix",
-          S3Uri = "string"
-        )
-      ),
-      CompressionType = "None"|"Gzip",
-      TargetAttributeName = "string"
-    )
-  ),
-  OutputDataConfig = list(
-    KmsKeyId = "string",
-    S3OutputPath = "string"
-  ),
-  ProblemType = "BinaryClassification"|"MulticlassClassification"|"Regression",
-  AutoMLJobObjective = list(
-    MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"
-  ),
-  AutoMLJobConfig = list(
-    CompletionCriteria = list(
-      MaxCandidates = 123,
-      MaxRuntimePerTrainingJobInSeconds = 123,
-      MaxAutoMLJobRuntimeInSeconds = 123
-    ),
-    SecurityConfig = list(
-      VolumeKmsKeyId = "string",
-      EnableInterContainerTrafficEncryption = TRUE|FALSE,
-      VpcConfig = list(
-        SecurityGroupIds = list(
-          "string"
-        ),
-        Subnets = list(
-          "string"
-        )
-      )
-    )
-  ),
-  RoleArn = "string",
-  GenerateCandidateDefinitionsOnly = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

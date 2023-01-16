@@ -4,8 +4,15 @@
 \alias{costexplorer_get_tags}
 \title{Queries for available tag keys and tag values for a specified period}
 \usage{
-costexplorer_get_tags(SearchString, TimePeriod, TagKey, Filter, SortBy,
-  MaxResults, NextPageToken)
+costexplorer_get_tags(
+  SearchString = NULL,
+  TimePeriod,
+  TagKey = NULL,
+  Filter = NULL,
+  SortBy = NULL,
+  MaxResults = NULL,
+  NextPageToken = NULL
+)
 }
 \arguments{
 \item{SearchString}{The value that you want to search for.}
@@ -20,7 +27,7 @@ usage data is retrieved from \code{2017-01-01} up to and including
 
 \item{Filter}{}
 
-\item{SortBy}{The value by which you want to sort the data.
+\item{SortBy}{The value that you want to sort the data by.
 
 The key represents cost and usage metrics. The following values are
 supported:
@@ -34,89 +41,26 @@ supported:
 \item \code{NormalizedUsageAmount}
 }
 
-Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.
+The supported values for \code{SortOrder} are \code{ASCENDING} and \code{DESCENDING}.
 
-When using \code{SortBy}, \code{NextPageToken} and \code{SearchString} are not
+When you use \code{SortBy}, \code{NextPageToken} and \code{SearchString} aren't
 supported.}
 
 \item{MaxResults}{This field is only used when SortBy is provided in the request. The
-maximum number of objects that to be returned for this request. If
-MaxResults is not specified with SortBy, the request will return 1000
-results as the default value for this parameter.}
+maximum number of objects that are returned for this request. If
+MaxResults isn't specified with SortBy, the request returns 1000 results
+as the default value for this parameter.
 
-\item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
-when the response from a previous call has more results than the maximum
-page size.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NextPageToken = "string",
-  Tags = list(
-    "string"
-  ),
-  ReturnSize = 123,
-  TotalSize = 123
-)
-}
+For \code{\link[=costexplorer_get_tags]{get_tags}}, MaxResults has an upper quota
+of 1000.}
+
+\item{NextPageToken}{The token to retrieve the next set of results. Amazon Web Services
+provides the token when the response from a previous call has more
+results than the maximum page size.}
 }
 \description{
-Queries for available tag keys and tag values for a specified period.
-You can search the tag values for an arbitrary string.
-}
-\section{Request syntax}{
-\preformatted{svc$get_tags(
-  SearchString = "string",
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  TagKey = "string",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  SortBy = list(
-    list(
-      Key = "string",
-      SortOrder = "ASCENDING"|"DESCENDING"
-    )
-  ),
-  MaxResults = 123,
-  NextPageToken = "string"
-)
-}
-}
+Queries for available tag keys and tag values for a specified period. You can search the tag values for an arbitrary string.
 
+See \url{https://paws-r.github.io/docs/costexplorer/get_tags.html} for full documentation.
+}
 \keyword{internal}

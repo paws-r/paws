@@ -5,8 +5,13 @@
 \title{Lists descriptions of all the Amazon Redshift event notification
 subscriptions for a customer account}
 \usage{
-redshift_describe_event_subscriptions(SubscriptionName, MaxRecords,
-  Marker, TagKeys, TagValues)
+redshift_describe_event_subscriptions(
+  SubscriptionName = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  TagKeys = NULL,
+  TagValues = NULL
+)
 }
 \arguments{
 \item{SubscriptionName}{The name of the Amazon Redshift event notification subscription to be
@@ -24,10 +29,10 @@ Constraints: minimum 20, maximum 100.}
 
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a DescribeEventSubscriptions
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.}
 
 \item{TagKeys}{A tag key or keys for which you want to return all matching event
 notification subscriptions that are associated with the specified key or
@@ -45,67 +50,9 @@ these tag values in the request, Amazon Redshift returns a response with
 the subscriptions that have either or both of these tag values
 associated with them.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  EventSubscriptionsList = list(
-    list(
-      CustomerAwsId = "string",
-      CustSubscriptionId = "string",
-      SnsTopicArn = "string",
-      Status = "string",
-      SubscriptionCreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      SourceType = "string",
-      SourceIdsList = list(
-        "string"
-      ),
-      EventCategoriesList = list(
-        "string"
-      ),
-      Severity = "string",
-      Enabled = TRUE|FALSE,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Lists descriptions of all the Amazon Redshift event notification
-subscriptions for a customer account. If you specify a subscription
-name, lists the description for that subscription.
+Lists descriptions of all the Amazon Redshift event notification subscriptions for a customer account. If you specify a subscription name, lists the description for that subscription.
 
-If you specify both tag keys and tag values in the same request, Amazon
-Redshift returns all event notification subscriptions that match any
-combination of the specified keys and values. For example, if you have
-\code{owner} and \code{environment} for tag keys, and \code{admin} and \code{test} for tag
-values, all subscriptions that have any combination of those values are
-returned.
-
-If both tag keys and values are omitted from the request, subscriptions
-are returned regardless of whether they have tag keys or values
-associated with them.
+See \url{https://paws-r.github.io/docs/redshift/describe_event_subscriptions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_event_subscriptions(
-  SubscriptionName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -5,11 +5,18 @@
 \title{Gets the real-time metric data from the specified Amazon Connect
 instance}
 \usage{
-connect_get_current_metric_data(InstanceId, Filters, Groupings,
-  CurrentMetrics, NextToken, MaxResults)
+connect_get_current_metric_data(
+  InstanceId,
+  Filters,
+  Groupings = NULL,
+  CurrentMetrics,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{Filters}{[required] The queues, up to 100, or channels, to use to filter the metrics
 returned. Metric data is retrieved only for the resources associated
@@ -29,88 +36,82 @@ returned.}
 following metrics are available. For a description of all the metrics,
 see \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html}{Real-time Metrics Definitions}
 in the \emph{Amazon Connect Administrator Guide}.
-\subsection{AGENTS_AFTER_CONTACT_WORK}{
+
+\strong{AGENTS_AFTER_CONTACT_WORK}
 
 Unit: COUNT
 
 Name in real-time metrics report:
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#aftercallwork-real-time}{ACW}
-}
 
-\subsection{AGENTS_AVAILABLE}{
+\strong{AGENTS_AVAILABLE}
 
 Unit: COUNT
 
 Name in real-time metrics report:
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#available-real-time}{Available}
-}
 
-\subsection{AGENTS_ERROR}{
+\strong{AGENTS_ERROR}
 
 Unit: COUNT
 
 Name in real-time metrics report:
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#error-real-time}{Error}
-}
 
-\subsection{AGENTS_NON_PRODUCTIVE}{
+\strong{AGENTS_NON_PRODUCTIVE}
 
 Unit: COUNT
 
 Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#non-productive-time-real-time}{NPT (Non-Productive Time)}
-}
 
-\subsection{AGENTS_ON_CALL}{
-
-Unit: COUNT
-
-Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time}{On contact}
-}
-
-\subsection{AGENTS_ON_CONTACT}{
+\strong{AGENTS_ON_CALL}
 
 Unit: COUNT
 
 Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time}{On contact}
-}
 
-\subsection{AGENTS_ONLINE}{
+\strong{AGENTS_ON_CONTACT}
+
+Unit: COUNT
+
+Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#on-call-real-time}{On contact}
+
+\strong{AGENTS_ONLINE}
 
 Unit: COUNT
 
 Name in real-time metrics report:
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#online-real-time}{Online}
-}
 
-\subsection{AGENTS_STAFFED}{
+\strong{AGENTS_STAFFED}
 
 Unit: COUNT
 
 Name in real-time metrics report:
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#staffed-real-time}{Staffed}
-}
 
-\subsection{CONTACTS_IN_QUEUE}{
+\strong{CONTACTS_IN_QUEUE}
 
 Unit: COUNT
 
 Name in real-time metrics report: \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#in-queue-real-time}{In queue}
-}
 
-\subsection{CONTACTS_SCHEDULED}{
+\strong{CONTACTS_SCHEDULED}
 
 Unit: COUNT
 
 Name in real-time metrics report:
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#scheduled-real-time}{Scheduled}
-}
 
-\subsection{OLDEST_CONTACT_AGE}{
+\strong{OLDEST_CONTACT_AGE}
 
 Unit: SECONDS
 
-When you use groupings, Unit says SECONDS but the Value is returned in
-MILLISECONDS. For example, if you get a response like this:
+When you use groupings, Unit says SECONDS and the Value is returned in
+SECONDS.
+
+When you do not use groupings, Unit says SECONDS but the Value is
+returned in MILLISECONDS. For example, if you get a response like this:
 
 \verb{\\\{ "Metric": \\\{ "Name": "OLDEST_CONTACT_AGE", "Unit": "SECONDS" \\\}, "Value": 24113.0 }\}
 
@@ -118,23 +119,20 @@ The actual OLDEST_CONTACT_AGE is 24 seconds.
 
 Name in real-time metrics report:
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#oldest-real-time}{Oldest}
-}
 
-\subsection{SLOTS_ACTIVE}{
+\strong{SLOTS_ACTIVE}
 
 Unit: COUNT
 
 Name in real-time metrics report:
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#active-real-time}{Active}
-}
 
-\subsection{SLOTS_AVAILABLE}{
+\strong{SLOTS_AVAILABLE}
 
 Unit: COUNT
 
 Name in real-time metrics report:
-\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#availability-real-time}{Availability}
-}}
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#availability-real-time}{Availability}}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
@@ -144,68 +142,11 @@ The token expires after 5 minutes from the time it is created.
 Subsequent requests that use the token must use the same request
 parameters as the request that generated the token.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  MetricResults = list(
-    list(
-      Dimensions = list(
-        Queue = list(
-          Id = "string",
-          Arn = "string"
-        ),
-        Channel = "VOICE"|"CHAT"|"TASK"
-      ),
-      Collections = list(
-        list(
-          Metric = list(
-            Name = "AGENTS_ONLINE"|"AGENTS_AVAILABLE"|"AGENTS_ON_CALL"|"AGENTS_NON_PRODUCTIVE"|"AGENTS_AFTER_CONTACT_WORK"|"AGENTS_ERROR"|"AGENTS_STAFFED"|"CONTACTS_IN_QUEUE"|"OLDEST_CONTACT_AGE"|"CONTACTS_SCHEDULED"|"AGENTS_ON_CONTACT"|"SLOTS_ACTIVE"|"SLOTS_AVAILABLE",
-            Unit = "SECONDS"|"COUNT"|"PERCENT"
-          ),
-          Value = 123.0
-        )
-      )
-    )
-  ),
-  DataSnapshotTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-Gets the real-time metric data from the specified Amazon Connect
-instance.
+Gets the real-time metric data from the specified Amazon Connect instance.
 
-For a description of each metric, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html}{Real-time Metrics Definitions}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/get_current_metric_data.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_current_metric_data(
-  InstanceId = "string",
-  Filters = list(
-    Queues = list(
-      "string"
-    ),
-    Channels = list(
-      "VOICE"|"CHAT"|"TASK"
-    )
-  ),
-  Groupings = list(
-    "QUEUE"|"CHANNEL"
-  ),
-  CurrentMetrics = list(
-    list(
-      Name = "AGENTS_ONLINE"|"AGENTS_AVAILABLE"|"AGENTS_ON_CALL"|"AGENTS_NON_PRODUCTIVE"|"AGENTS_AFTER_CONTACT_WORK"|"AGENTS_ERROR"|"AGENTS_STAFFED"|"CONTACTS_IN_QUEUE"|"OLDEST_CONTACT_AGE"|"CONTACTS_SCHEDULED"|"AGENTS_ON_CONTACT"|"SLOTS_ACTIVE"|"SLOTS_AVAILABLE",
-      Unit = "SECONDS"|"COUNT"|"PERCENT"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

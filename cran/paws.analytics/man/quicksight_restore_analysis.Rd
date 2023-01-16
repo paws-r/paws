@@ -7,28 +7,13 @@
 quicksight_restore_analysis(AwsAccountId, AnalysisId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the analysis.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the analysis.}
 
 \item{AnalysisId}{[required] The ID of the analysis that you're restoring.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = 123,
-  Arn = "string",
-  AnalysisId = "string",
-  RequestId = "string"
-)
-}
-}
 \description{
 Restores an analysis.
-}
-\section{Request syntax}{
-\preformatted{svc$restore_analysis(
-  AwsAccountId = "string",
-  AnalysisId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/restore_analysis.html} for full documentation.
+}
 \keyword{internal}

@@ -7,7 +7,19 @@
 elasticache(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -30,7 +42,9 @@ enhanced visibility into the key performance statistics associated with
 their cache and can receive alarms if a part of their cache runs hot.
 }
 \section{Service syntax}{
-\preformatted{svc <- elasticache(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- elasticache(
   config = list(
     credentials = list(
       creds = list(
@@ -38,83 +52,87 @@ their cache and can receive alarms if a part of their cache runs hot.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=elasticache_add_tags_to_resource]{add_tags_to_resource} \tab Adds up to 50 cost allocation tags to the named resource\cr
-\link[=elasticache_authorize_cache_security_group_ingress]{authorize_cache_security_group_ingress} \tab Allows network ingress to a cache security group\cr
-\link[=elasticache_batch_apply_update_action]{batch_apply_update_action} \tab Apply the service update\cr
-\link[=elasticache_batch_stop_update_action]{batch_stop_update_action} \tab Stop the service update\cr
-\link[=elasticache_complete_migration]{complete_migration} \tab Complete the migration of data\cr
-\link[=elasticache_copy_snapshot]{copy_snapshot} \tab Makes a copy of an existing snapshot\cr
-\link[=elasticache_create_cache_cluster]{create_cache_cluster} \tab Creates a cluster\cr
-\link[=elasticache_create_cache_parameter_group]{create_cache_parameter_group} \tab Creates a new Amazon ElastiCache cache parameter group\cr
-\link[=elasticache_create_cache_security_group]{create_cache_security_group} \tab Creates a new cache security group\cr
-\link[=elasticache_create_cache_subnet_group]{create_cache_subnet_group} \tab Creates a new cache subnet group\cr
-\link[=elasticache_create_global_replication_group]{create_global_replication_group} \tab Global Datastore for Redis offers fully managed, fast, reliable and secure cross-region replication\cr
-\link[=elasticache_create_replication_group]{create_replication_group} \tab Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group\cr
-\link[=elasticache_create_snapshot]{create_snapshot} \tab Creates a copy of an entire cluster or replication group at a specific moment in time\cr
-\link[=elasticache_create_user]{create_user} \tab For Redis engine version 6\cr
-\link[=elasticache_create_user_group]{create_user_group} \tab For Redis engine version 6\cr
-\link[=elasticache_decrease_node_groups_in_global_replication_group]{decrease_node_groups_in_global_replication_group} \tab Decreases the number of node groups in a Global Datastore\cr
-\link[=elasticache_decrease_replica_count]{decrease_replica_count} \tab Dynamically decreases the number of replicas in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group\cr
-\link[=elasticache_delete_cache_cluster]{delete_cache_cluster} \tab Deletes a previously provisioned cluster\cr
-\link[=elasticache_delete_cache_parameter_group]{delete_cache_parameter_group} \tab Deletes the specified cache parameter group\cr
-\link[=elasticache_delete_cache_security_group]{delete_cache_security_group} \tab Deletes a cache security group\cr
-\link[=elasticache_delete_cache_subnet_group]{delete_cache_subnet_group} \tab Deletes a cache subnet group\cr
-\link[=elasticache_delete_global_replication_group]{delete_global_replication_group} \tab Deleting a Global Datastore is a two-step process:\cr
-\link[=elasticache_delete_replication_group]{delete_replication_group} \tab Deletes an existing replication group\cr
-\link[=elasticache_delete_snapshot]{delete_snapshot} \tab Deletes an existing snapshot\cr
-\link[=elasticache_delete_user]{delete_user} \tab For Redis engine version 6\cr
-\link[=elasticache_delete_user_group]{delete_user_group} \tab For Redis engine version 6\cr
-\link[=elasticache_describe_cache_clusters]{describe_cache_clusters} \tab Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cache cluster if a cluster identifier is supplied\cr
-\link[=elasticache_describe_cache_engine_versions]{describe_cache_engine_versions} \tab Returns a list of the available cache engines and their versions\cr
-\link[=elasticache_describe_cache_parameter_groups]{describe_cache_parameter_groups} \tab Returns a list of cache parameter group descriptions\cr
-\link[=elasticache_describe_cache_parameters]{describe_cache_parameters} \tab Returns the detailed parameter list for a particular cache parameter group\cr
-\link[=elasticache_describe_cache_security_groups]{describe_cache_security_groups} \tab Returns a list of cache security group descriptions\cr
-\link[=elasticache_describe_cache_subnet_groups]{describe_cache_subnet_groups} \tab Returns a list of cache subnet group descriptions\cr
-\link[=elasticache_describe_engine_default_parameters]{describe_engine_default_parameters} \tab Returns the default engine and system parameter information for the specified cache engine\cr
-\link[=elasticache_describe_events]{describe_events} \tab Returns events related to clusters, cache security groups, and cache parameter groups\cr
-\link[=elasticache_describe_global_replication_groups]{describe_global_replication_groups} \tab Returns information about a particular global replication group\cr
-\link[=elasticache_describe_replication_groups]{describe_replication_groups} \tab Returns information about a particular replication group\cr
-\link[=elasticache_describe_reserved_cache_nodes]{describe_reserved_cache_nodes} \tab Returns information about reserved cache nodes for this account, or about a specified reserved cache node\cr
-\link[=elasticache_describe_reserved_cache_nodes_offerings]{describe_reserved_cache_nodes_offerings} \tab Lists available reserved cache node offerings\cr
-\link[=elasticache_describe_service_updates]{describe_service_updates} \tab Returns details of the service updates\cr
-\link[=elasticache_describe_snapshots]{describe_snapshots} \tab Returns information about cluster or replication group snapshots\cr
-\link[=elasticache_describe_update_actions]{describe_update_actions} \tab Returns details of the update actions\cr
-\link[=elasticache_describe_user_groups]{describe_user_groups} \tab Returns a list of user groups\cr
-\link[=elasticache_describe_users]{describe_users} \tab Returns a list of users\cr
-\link[=elasticache_disassociate_global_replication_group]{disassociate_global_replication_group} \tab Remove a secondary cluster from the Global Datastore using the Global Datastore name\cr
-\link[=elasticache_failover_global_replication_group]{failover_global_replication_group} \tab Used to failover the primary region to a selected secondary region\cr
-\link[=elasticache_increase_node_groups_in_global_replication_group]{increase_node_groups_in_global_replication_group} \tab Increase the number of node groups in the Global Datastore\cr
-\link[=elasticache_increase_replica_count]{increase_replica_count} \tab Dynamically increases the number of replics in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group\cr
-\link[=elasticache_list_allowed_node_type_modifications]{list_allowed_node_type_modifications} \tab Lists all available node types that you can scale your Redis cluster's or replication group's current node type\cr
-\link[=elasticache_list_tags_for_resource]{list_tags_for_resource} \tab Lists all cost allocation tags currently on the named resource\cr
-\link[=elasticache_modify_cache_cluster]{modify_cache_cluster} \tab Modifies the settings for a cluster\cr
-\link[=elasticache_modify_cache_parameter_group]{modify_cache_parameter_group} \tab Modifies the parameters of a cache parameter group\cr
-\link[=elasticache_modify_cache_subnet_group]{modify_cache_subnet_group} \tab Modifies an existing cache subnet group\cr
-\link[=elasticache_modify_global_replication_group]{modify_global_replication_group} \tab Modifies the settings for a Global Datastore\cr
-\link[=elasticache_modify_replication_group]{modify_replication_group} \tab Modifies the settings for a replication group\cr
-\link[=elasticache_modify_replication_group_shard_configuration]{modify_replication_group_shard_configuration} \tab Modifies a replication group's shards (node groups) by allowing you to add shards, remove shards, or rebalance the keyspaces among exisiting shards\cr
-\link[=elasticache_modify_user]{modify_user} \tab Changes user password(s) and/or access string\cr
-\link[=elasticache_modify_user_group]{modify_user_group} \tab Changes the list of users that belong to the user group\cr
-\link[=elasticache_purchase_reserved_cache_nodes_offering]{purchase_reserved_cache_nodes_offering} \tab Allows you to purchase a reserved cache node offering\cr
-\link[=elasticache_rebalance_slots_in_global_replication_group]{rebalance_slots_in_global_replication_group} \tab Redistribute slots to ensure uniform distribution across existing shards in the cluster\cr
-\link[=elasticache_reboot_cache_cluster]{reboot_cache_cluster} \tab Reboots some, or all, of the cache nodes within a provisioned cluster\cr
-\link[=elasticache_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes the tags identified by the TagKeys list from the named resource\cr
-\link[=elasticache_reset_cache_parameter_group]{reset_cache_parameter_group} \tab Modifies the parameters of a cache parameter group to the engine or system default value\cr
-\link[=elasticache_revoke_cache_security_group_ingress]{revoke_cache_security_group_ingress} \tab Revokes ingress from a cache security group\cr
-\link[=elasticache_start_migration]{start_migration} \tab Start the migration of data\cr
-\link[=elasticache_test_failover]{test_failover} \tab Represents the input of a TestFailover operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console)
+\link[paws.database:elasticache_add_tags_to_resource]{add_tags_to_resource} \tab A tag is a key-value pair where the key and value are case-sensitive\cr
+\link[paws.database:elasticache_authorize_cache_security_group_ingress]{authorize_cache_security_group_ingress} \tab Allows network ingress to a cache security group\cr
+\link[paws.database:elasticache_batch_apply_update_action]{batch_apply_update_action} \tab Apply the service update\cr
+\link[paws.database:elasticache_batch_stop_update_action]{batch_stop_update_action} \tab Stop the service update\cr
+\link[paws.database:elasticache_complete_migration]{complete_migration} \tab Complete the migration of data\cr
+\link[paws.database:elasticache_copy_snapshot]{copy_snapshot} \tab Makes a copy of an existing snapshot\cr
+\link[paws.database:elasticache_create_cache_cluster]{create_cache_cluster} \tab Creates a cluster\cr
+\link[paws.database:elasticache_create_cache_parameter_group]{create_cache_parameter_group} \tab Creates a new Amazon ElastiCache cache parameter group\cr
+\link[paws.database:elasticache_create_cache_security_group]{create_cache_security_group} \tab Creates a new cache security group\cr
+\link[paws.database:elasticache_create_cache_subnet_group]{create_cache_subnet_group} \tab Creates a new cache subnet group\cr
+\link[paws.database:elasticache_create_global_replication_group]{create_global_replication_group} \tab Global Datastore for Redis offers fully managed, fast, reliable and secure cross-region replication\cr
+\link[paws.database:elasticache_create_replication_group]{create_replication_group} \tab Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group\cr
+\link[paws.database:elasticache_create_snapshot]{create_snapshot} \tab Creates a copy of an entire cluster or replication group at a specific moment in time\cr
+\link[paws.database:elasticache_create_user]{create_user} \tab For Redis engine version 6\cr
+\link[paws.database:elasticache_create_user_group]{create_user_group} \tab For Redis engine version 6\cr
+\link[paws.database:elasticache_decrease_node_groups_in_global_replication_group]{decrease_node_groups_in_global_replication_group} \tab Decreases the number of node groups in a Global datastore\cr
+\link[paws.database:elasticache_decrease_replica_count]{decrease_replica_count} \tab Dynamically decreases the number of replicas in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group\cr
+\link[paws.database:elasticache_delete_cache_cluster]{delete_cache_cluster} \tab Deletes a previously provisioned cluster\cr
+\link[paws.database:elasticache_delete_cache_parameter_group]{delete_cache_parameter_group} \tab Deletes the specified cache parameter group\cr
+\link[paws.database:elasticache_delete_cache_security_group]{delete_cache_security_group} \tab Deletes a cache security group\cr
+\link[paws.database:elasticache_delete_cache_subnet_group]{delete_cache_subnet_group} \tab Deletes a cache subnet group\cr
+\link[paws.database:elasticache_delete_global_replication_group]{delete_global_replication_group} \tab Deleting a Global datastore is a two-step process:\cr
+\link[paws.database:elasticache_delete_replication_group]{delete_replication_group} \tab Deletes an existing replication group\cr
+\link[paws.database:elasticache_delete_snapshot]{delete_snapshot} \tab Deletes an existing snapshot\cr
+\link[paws.database:elasticache_delete_user]{delete_user} \tab For Redis engine version 6\cr
+\link[paws.database:elasticache_delete_user_group]{delete_user_group} \tab For Redis engine version 6\cr
+\link[paws.database:elasticache_describe_cache_clusters]{describe_cache_clusters} \tab Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cache cluster if a cluster identifier is supplied\cr
+\link[paws.database:elasticache_describe_cache_engine_versions]{describe_cache_engine_versions} \tab Returns a list of the available cache engines and their versions\cr
+\link[paws.database:elasticache_describe_cache_parameter_groups]{describe_cache_parameter_groups} \tab Returns a list of cache parameter group descriptions\cr
+\link[paws.database:elasticache_describe_cache_parameters]{describe_cache_parameters} \tab Returns the detailed parameter list for a particular cache parameter group\cr
+\link[paws.database:elasticache_describe_cache_security_groups]{describe_cache_security_groups} \tab Returns a list of cache security group descriptions\cr
+\link[paws.database:elasticache_describe_cache_subnet_groups]{describe_cache_subnet_groups} \tab Returns a list of cache subnet group descriptions\cr
+\link[paws.database:elasticache_describe_engine_default_parameters]{describe_engine_default_parameters} \tab Returns the default engine and system parameter information for the specified cache engine\cr
+\link[paws.database:elasticache_describe_events]{describe_events} \tab Returns events related to clusters, cache security groups, and cache parameter groups\cr
+\link[paws.database:elasticache_describe_global_replication_groups]{describe_global_replication_groups} \tab Returns information about a particular global replication group\cr
+\link[paws.database:elasticache_describe_replication_groups]{describe_replication_groups} \tab Returns information about a particular replication group\cr
+\link[paws.database:elasticache_describe_reserved_cache_nodes]{describe_reserved_cache_nodes} \tab Returns information about reserved cache nodes for this account, or about a specified reserved cache node\cr
+\link[paws.database:elasticache_describe_reserved_cache_nodes_offerings]{describe_reserved_cache_nodes_offerings} \tab Lists available reserved cache node offerings\cr
+\link[paws.database:elasticache_describe_service_updates]{describe_service_updates} \tab Returns details of the service updates\cr
+\link[paws.database:elasticache_describe_snapshots]{describe_snapshots} \tab Returns information about cluster or replication group snapshots\cr
+\link[paws.database:elasticache_describe_update_actions]{describe_update_actions} \tab Returns details of the update actions\cr
+\link[paws.database:elasticache_describe_user_groups]{describe_user_groups} \tab Returns a list of user groups\cr
+\link[paws.database:elasticache_describe_users]{describe_users} \tab Returns a list of users\cr
+\link[paws.database:elasticache_disassociate_global_replication_group]{disassociate_global_replication_group} \tab Remove a secondary cluster from the Global datastore using the Global datastore name\cr
+\link[paws.database:elasticache_failover_global_replication_group]{failover_global_replication_group} \tab Used to failover the primary region to a selected secondary region\cr
+\link[paws.database:elasticache_increase_node_groups_in_global_replication_group]{increase_node_groups_in_global_replication_group} \tab Increase the number of node groups in the Global datastore\cr
+\link[paws.database:elasticache_increase_replica_count]{increase_replica_count} \tab Dynamically increases the number of replicas in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group\cr
+\link[paws.database:elasticache_list_allowed_node_type_modifications]{list_allowed_node_type_modifications} \tab Lists all available node types that you can scale your Redis cluster's or replication group's current node type\cr
+\link[paws.database:elasticache_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags currently on a named resource\cr
+\link[paws.database:elasticache_modify_cache_cluster]{modify_cache_cluster} \tab Modifies the settings for a cluster\cr
+\link[paws.database:elasticache_modify_cache_parameter_group]{modify_cache_parameter_group} \tab Modifies the parameters of a cache parameter group\cr
+\link[paws.database:elasticache_modify_cache_subnet_group]{modify_cache_subnet_group} \tab Modifies an existing cache subnet group\cr
+\link[paws.database:elasticache_modify_global_replication_group]{modify_global_replication_group} \tab Modifies the settings for a Global datastore\cr
+\link[paws.database:elasticache_modify_replication_group]{modify_replication_group} \tab Modifies the settings for a replication group\cr
+\link[paws.database:elasticache_modify_replication_group_shard_configuration]{modify_replication_group_shard_configuration} \tab Modifies a replication group's shards (node groups) by allowing you to add shards, remove shards, or rebalance the keyspaces among existing shards\cr
+\link[paws.database:elasticache_modify_user]{modify_user} \tab Changes user password(s) and/or access string\cr
+\link[paws.database:elasticache_modify_user_group]{modify_user_group} \tab Changes the list of users that belong to the user group\cr
+\link[paws.database:elasticache_purchase_reserved_cache_nodes_offering]{purchase_reserved_cache_nodes_offering} \tab Allows you to purchase a reserved cache node offering\cr
+\link[paws.database:elasticache_rebalance_slots_in_global_replication_group]{rebalance_slots_in_global_replication_group} \tab Redistribute slots to ensure uniform distribution across existing shards in the cluster\cr
+\link[paws.database:elasticache_reboot_cache_cluster]{reboot_cache_cluster} \tab Reboots some, or all, of the cache nodes within a provisioned cluster\cr
+\link[paws.database:elasticache_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes the tags identified by the TagKeys list from the named resource\cr
+\link[paws.database:elasticache_reset_cache_parameter_group]{reset_cache_parameter_group} \tab Modifies the parameters of a cache parameter group to the engine or system default value\cr
+\link[paws.database:elasticache_revoke_cache_security_group_ingress]{revoke_cache_security_group_ingress} \tab Revokes ingress from a cache security group\cr
+\link[paws.database:elasticache_start_migration]{start_migration} \tab Start the migration of data\cr
+\link[paws.database:elasticache_test_failover]{test_failover} \tab Represents the input of a TestFailover operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console)
 }
 }
 

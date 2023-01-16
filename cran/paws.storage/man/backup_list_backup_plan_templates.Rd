@@ -5,7 +5,7 @@
 \title{Returns metadata of your saved backup plan templates, including the
 template ID, name, and the creation and deletion dates}
 \usage{
-backup_list_backup_plan_templates(NextToken, MaxResults)
+backup_list_backup_plan_templates(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The next item following a partial list of returned items. For example,
@@ -15,28 +15,9 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  BackupPlanTemplatesList = list(
-    list(
-      BackupPlanTemplateId = "string",
-      BackupPlanTemplateName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns metadata of your saved backup plan templates, including the
-template ID, name, and the creation and deletion dates.
-}
-\section{Request syntax}{
-\preformatted{svc$list_backup_plan_templates(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns metadata of your saved backup plan templates, including the template ID, name, and the creation and deletion dates.
 
+See \url{https://paws-r.github.io/docs/backup/list_backup_plan_templates.html} for full documentation.
+}
 \keyword{internal}

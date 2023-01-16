@@ -12,20 +12,9 @@ that's associated with the tags.}
 
 \item{Tags}{[required] The key-value pair for the resource tag.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds tags to the specified MSK resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/tag_resource.html} for full documentation.
+}
 \keyword{internal}

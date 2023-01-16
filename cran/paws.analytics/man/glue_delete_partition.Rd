@@ -4,12 +4,16 @@
 \alias{glue_delete_partition}
 \title{Deletes a specified partition}
 \usage{
-glue_delete_partition(CatalogId, DatabaseName, TableName,
-  PartitionValues)
+glue_delete_partition(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  PartitionValues
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partition to be deleted resides. If
-none is provided, the AWS account ID is used by default.}
+none is provided, the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database in which the table in question resides.}
 
@@ -17,22 +21,9 @@ none is provided, the AWS account ID is used by default.}
 
 \item{PartitionValues}{[required] The values that define the partition.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a specified partition.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_partition(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  PartitionValues = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/delete_partition.html} for full documentation.
+}
 \keyword{internal}

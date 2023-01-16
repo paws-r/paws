@@ -2,10 +2,15 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_list_triggers}
 \alias{glue_list_triggers}
-\title{Retrieves the names of all trigger resources in this AWS account, or the
-resources with the specified tag}
+\title{Retrieves the names of all trigger resources in this Amazon Web Services
+account, or the resources with the specified tag}
 \usage{
-glue_list_triggers(NextToken, DependentJobName, MaxResults, Tags)
+glue_list_triggers(
+  NextToken = NULL,
+  DependentJobName = NULL,
+  MaxResults = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{NextToken}{A continuation token, if this is a continuation request.}
@@ -18,35 +23,9 @@ are returned.}
 
 \item{Tags}{Specifies to return only these tagged resources.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TriggerNames = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the names of all trigger resources in this AWS account, or the
-resources with the specified tag. This operation allows you to see which
-resources are available in your account, and their names.
+Retrieves the names of all trigger resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
 
-This operation takes the optional \code{Tags} field, which you can use as a
-filter on the response so that tagged resources can be retrieved as a
-group. If you choose to use tags filtering, only resources with the tag
-are retrieved.
+See \url{https://paws-r.github.io/docs/glue/list_triggers.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_triggers(
-  NextToken = "string",
-  DependentJobName = "string",
-  MaxResults = 123,
-  Tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

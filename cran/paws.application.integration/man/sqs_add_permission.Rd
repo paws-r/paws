@@ -15,18 +15,17 @@ Queue URLs and names are case-sensitive.}
 \code{AliceSendMessage}). Maximum 80 characters. Allowed characters include
 alphanumeric characters, hyphens (\code{-}), and underscores (\verb{_}).}
 
-\item{AWSAccountIds}{[required] The AWS account number of the
-\href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principal}
-who is given permission. The principal must have an AWS account, but
-does not need to be signed up for Amazon SQS. For information about
-locating the AWS account identification, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication}{Your AWS Identifiers}
-in the \emph{Amazon Simple Queue Service Developer Guide}.}
+\item{AWSAccountIds}{[required] The Amazon Web Services account numbers of the
+\href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principals}
+who are to receive permission. For information about locating the Amazon
+Web Services account identification, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication}{Your Amazon Web Services Identifiers}
+in the \emph{Amazon SQS Developer Guide}.}
 
 \item{Actions}{[required] The action the client wants to allow for the specified principal. Valid
 values: the name of any action or \code{*}.
 
 For more information about these actions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-overview-of-managing-access.html}{Overview of Managing Access Permissions to Your Amazon Simple Queue Service Resource}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon SQS Developer Guide}.
 
 Specifying \code{\link[=sqs_send_message]{send_message}},
 \code{\link[=sqs_delete_message]{delete_message}}, or
@@ -37,55 +36,9 @@ versions of those actions:
 \code{\link[=sqs_delete_message_batch]{delete_message_batch}}, and
 \code{\link[=sqs_change_message_visibility_batch]{change_message_visibility_batch}}.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds a permission to a queue for a specific
-\href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principal}.
-This allows sharing access to the queue.
+Adds a permission to a queue for a specific \href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principal}. This allows sharing access to the queue.
 
-When you create a queue, you have full control access rights for the
-queue. Only you, the owner of the queue, can grant or deny permissions
-to the queue. For more information about these permissions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-iam-policies.html#write-messages-to-shared-queue}{Allow Developers to Write Messages to a Shared Queue}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
-\itemize{
-\item \code{\link[=sqs_add_permission]{add_permission}} generates a policy for you.
-You can use \code{\link[=sqs_set_queue_attributes]{set_queue_attributes}} to
-upload your policy. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies.html}{Using Custom Policies with the Amazon SQS Access Policy Language}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
-\item An Amazon SQS policy can have a maximum of 7 actions.
-\item To remove the ability to change queue permissions, you must deny
-permission to the \code{\link[=sqs_add_permission]{add_permission}},
-\code{\link[=sqs_remove_permission]{remove_permission}}, and
-\code{\link[=sqs_set_queue_attributes]{set_queue_attributes}} actions in your
-IAM policy.
+See \url{https://paws-r.github.io/docs/sqs/add_permission.html} for full documentation.
 }
-
-Some actions take lists of parameters. These lists are specified using
-the \code{param.n} notation. Values of \code{n} are integers starting from 1. For
-example, a parameter list with two elements looks like this:
-
-\verb{&AttributeName.1=first}
-
-\verb{&AttributeName.2=second}
-
-Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$add_permission(
-  QueueUrl = "string",
-  Label = "string",
-  AWSAccountIds = list(
-    "string"
-  ),
-  Actions = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

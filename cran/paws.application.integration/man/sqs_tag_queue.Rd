@@ -11,39 +11,9 @@ sqs_tag_queue(QueueUrl, Tags)
 
 \item{Tags}{[required] The list of tags to be added to the specified queue.}
 }
-\value{
-An empty list.
-}
 \description{
-Add cost allocation tags to the specified Amazon SQS queue. For an
-overview, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+Add cost allocation tags to the specified Amazon SQS queue. For an overview, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues} in the \emph{Amazon SQS Developer Guide}.
 
-When you use queue tags, keep the following guidelines in mind:
-\itemize{
-\item Adding more than 50 tags to a queue isn't recommended.
-\item Tags don't have any semantic meaning. Amazon SQS interprets tags as
-character strings.
-\item Tags are case-sensitive.
-\item A new tag with a key identical to that of an existing tag overwrites
-the existing tag.
+See \url{https://paws-r.github.io/docs/sqs/tag_queue.html} for full documentation.
 }
-
-For a full list of tag restrictions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-quotas.html#limits-queues}{Limits Related to Queues}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
-
-Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_queue(
-  QueueUrl = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

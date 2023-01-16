@@ -11,18 +11,9 @@ worklink_revoke_domain_access(FleetArn, DomainName)
 
 \item{DomainName}{[required] The name of the domain.}
 }
-\value{
-An empty list.
-}
 \description{
 Moves a domain to INACTIVE status if it was in the ACTIVE status.
-}
-\section{Request syntax}{
-\preformatted{svc$revoke_domain_access(
-  FleetArn = "string",
-  DomainName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/revoke_domain_access.html} for full documentation.
+}
 \keyword{internal}

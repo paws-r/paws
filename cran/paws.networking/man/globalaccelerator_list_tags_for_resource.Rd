@@ -10,28 +10,9 @@ globalaccelerator_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the accelerator to list tags for. An
 ARN uniquely identifies an accelerator.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 List all tags for an accelerator.
 
-For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}
-in the \emph{AWS Global Accelerator Developer Guide}.
+See \url{https://paws-r.github.io/docs/globalaccelerator/list_tags_for_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
-
 \keyword{internal}

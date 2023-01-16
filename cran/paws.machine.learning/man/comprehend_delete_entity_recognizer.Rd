@@ -9,26 +9,9 @@ comprehend_delete_entity_recognizer(EntityRecognizerArn)
 \arguments{
 \item{EntityRecognizerArn}{[required] The Amazon Resource Name (ARN) that identifies the entity recognizer.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an entity recognizer.
 
-Only those recognizers that are in terminated states (IN_ERROR,
-TRAINED) will be deleted. If an active inference job is using the model,
-a \code{ResourceInUseException} will be returned.
-
-This is an asynchronous action that puts the recognizer into a DELETING
-state, and it is then removed by a background job. Once removed, the
-recognizer disappears from your account and is no longer available for
-use.
+See \url{https://paws-r.github.io/docs/comprehend/delete_entity_recognizer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_entity_recognizer(
-  EntityRecognizerArn = "string"
-)
-}
-}
-
 \keyword{internal}

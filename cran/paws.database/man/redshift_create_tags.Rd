@@ -17,30 +17,9 @@ and \code{Value} parameters are separated by a comma (,). Separate multiple
 tags with a space. For example,
 \verb{--tags "Key"="owner","Value"="admin" "Key"="environment","Value"="test" "Key"="version","Value"="1.0"}.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds tags to a cluster.
 
-A resource can have up to 50 tags. If you try to create more than 50
-tags for a resource, you will receive an error and the attempt will
-fail.
-
-If you specify a key that already exists for the resource, the value for
-that key will be updated with the new value.
+See \url{https://paws-r.github.io/docs/redshift/create_tags.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_tags(
-  ResourceName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,12 +4,18 @@
 \alias{sagemaker_create_context}
 \title{Creates a context}
 \usage{
-sagemaker_create_context(ContextName, Source, ContextType, Description,
-  Properties, Tags)
+sagemaker_create_context(
+  ContextName,
+  Source,
+  ContextType,
+  Description = NULL,
+  Properties = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{ContextName}{[required] The name of the context. Must be unique to your account in an AWS
-Region.}
+\item{ContextName}{[required] The name of the context. Must be unique to your account in an Amazon Web
+Services Region.}
 
 \item{Source}{[required] The source type, ID, and URI.}
 
@@ -21,39 +27,9 @@ Region.}
 
 \item{Tags}{A list of tags to apply to the context.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContextArn = "string"
-)
-}
-}
 \description{
-Creates a \emph{context}. A context is a lineage tracking entity that
-represents a logical grouping of other tracking or experiment entities.
-Some examples are an endpoint and a model package. For more information,
-see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_context(
-  ContextName = "string",
-  Source = list(
-    SourceUri = "string",
-    SourceType = "string",
-    SourceId = "string"
-  ),
-  ContextType = "string",
-  Description = "string",
-  Properties = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a \emph{context}. A context is a lineage tracking entity that represents a logical grouping of other tracking or experiment entities. Some examples are an endpoint and a model package. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_context.html} for full documentation.
+}
 \keyword{internal}

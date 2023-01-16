@@ -5,39 +5,21 @@
 \title{Returns a set of metadata key-value pairs that were used to create the
 backup}
 \usage{
-backup_get_recovery_point_restore_metadata(BackupVaultName,
-  RecoveryPointArn)
+backup_get_recovery_point_restore_metadata(BackupVaultName, RecoveryPointArn)
 }
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
+them and the Amazon Web Services Region where they are created. They
+consist of lowercase letters, numbers, and hyphens.}
 
 \item{RecoveryPointArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies a recovery point;
 for example,
 \verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupVaultArn = "string",
-  RecoveryPointArn = "string",
-  RestoreMetadata = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns a set of metadata key-value pairs that were used to create the
-backup.
-}
-\section{Request syntax}{
-\preformatted{svc$get_recovery_point_restore_metadata(
-  BackupVaultName = "string",
-  RecoveryPointArn = "string"
-)
-}
-}
+Returns a set of metadata key-value pairs that were used to create the backup.
 
+See \url{https://paws-r.github.io/docs/backup/get_recovery_point_restore_metadata.html} for full documentation.
+}
 \keyword{internal}

@@ -5,9 +5,19 @@
 \title{Starts an execution of the workflow type in the specified domain using
 the provided workflowId and input data}
 \usage{
-swf_start_workflow_execution(domain, workflowId, workflowType, taskList,
-  taskPriority, input, executionStartToCloseTimeout, tagList,
-  taskStartToCloseTimeout, childPolicy, lambdaRole)
+swf_start_workflow_execution(
+  domain,
+  workflowId,
+  workflowType,
+  taskList = NULL,
+  taskPriority = NULL,
+  input = NULL,
+  executionStartToCloseTimeout = NULL,
+  tagList = NULL,
+  taskStartToCloseTimeout = NULL,
+  childPolicy = NULL,
+  lambdaRole = NULL
+)
 }
 \arguments{
 \item{domain}{[required] The name of the domain in which the workflow execution is created.}
@@ -21,7 +31,7 @@ within the same domain.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{\\u0000-\\u001f} | \verb{\\u007f-\\u009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{workflowType}{[required] The type of the workflow to start.}
@@ -37,7 +47,7 @@ time then a fault is returned.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{\\u0000-\\u001f} | \verb{\\u007f-\\u009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{taskPriority}{The task priority to use for this workflow execution. This overrides any
@@ -123,72 +133,9 @@ history event. For more information, see
 \url{https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html}
 in the \emph{Amazon SWF Developer Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  runId = "string"
-)
-}
-}
 \description{
-Starts an execution of the workflow type in the specified domain using
-the provided \code{workflowId} and input data.
+Starts an execution of the workflow type in the specified domain using the provided \code{workflowId} and input data.
 
-This action returns the newly started workflow execution.
-
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item Constrain the following parameters by using a \code{Condition} element
-with the appropriate keys.
-\itemize{
-\item \code{tagList.member.0}: The key is \code{swf:tagList.member.0}.
-\item \code{tagList.member.1}: The key is \code{swf:tagList.member.1}.
-\item \code{tagList.member.2}: The key is \code{swf:tagList.member.2}.
-\item \code{tagList.member.3}: The key is \code{swf:tagList.member.3}.
-\item \code{tagList.member.4}: The key is \code{swf:tagList.member.4}.
-\item \code{taskList}: String constraint. The key is \code{swf:taskList.name}.
-\item \code{workflowType.name}: String constraint. The key is
-\code{swf:workflowType.name}.
-\item \code{workflowType.version}: String constraint. The key is
-\code{swf:workflowType.version}.
+See \url{https://paws-r.github.io/docs/swf/start_workflow_execution.html} for full documentation.
 }
-}
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$start_workflow_execution(
-  domain = "string",
-  workflowId = "string",
-  workflowType = list(
-    name = "string",
-    version = "string"
-  ),
-  taskList = list(
-    name = "string"
-  ),
-  taskPriority = "string",
-  input = "string",
-  executionStartToCloseTimeout = "string",
-  tagList = list(
-    "string"
-  ),
-  taskStartToCloseTimeout = "string",
-  childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-  lambdaRole = "string"
-)
-}
-}
-
 \keyword{internal}

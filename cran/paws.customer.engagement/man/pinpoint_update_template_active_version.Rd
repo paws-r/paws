@@ -4,8 +4,11 @@
 \alias{pinpoint_update_template_active_version}
 \title{Changes the status of a specific version of a message template to active}
 \usage{
-pinpoint_update_template_active_version(TemplateActiveVersionRequest,
-  TemplateName, TemplateType)
+pinpoint_update_template_active_version(
+  TemplateActiveVersionRequest,
+  TemplateName,
+  TemplateType
+)
 }
 \arguments{
 \item{TemplateActiveVersionRequest}{[required]}
@@ -18,28 +21,9 @@ characters can be alphanumeric characters, underscores (_), or hyphens
 \item{TemplateType}{[required] The type of channel that the message template is designed for. Valid
 values are: EMAIL, PUSH, SMS, and VOICE.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageBody = list(
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Changes the status of a specific version of a message template to
-\emph{active}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_template_active_version(
-  TemplateActiveVersionRequest = list(
-    Version = "string"
-  ),
-  TemplateName = "string",
-  TemplateType = "string"
-)
-}
-}
+Changes the status of a specific version of a message template to \emph{active}.
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_template_active_version.html} for full documentation.
+}
 \keyword{internal}

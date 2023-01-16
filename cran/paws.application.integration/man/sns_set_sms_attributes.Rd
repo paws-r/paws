@@ -8,8 +8,8 @@ and receiving daily SMS usage reports}
 sns_set_sms_attributes(attributes)
 }
 \arguments{
-\item{attributes}{[required] The default settings for sending SMS messages from your account. You can
-set values for the following attribute names:
+\item{attributes}{[required] The default settings for sending SMS messages from your Amazon Web
+Services account. You can set values for the following attribute names:
 
 \code{MonthlySpendLimit} – The maximum amount in USD that you are willing to
 spend each month to send SMS messages. When Amazon SNS determines that
@@ -59,7 +59,7 @@ the highest reliability.
 daily SMS usage reports from Amazon SNS. Each day, Amazon SNS will
 deliver a usage report as a CSV file to the bucket. The report includes
 the following information for each SMS message that was successfully
-delivered by your account:
+delivered by your Amazon Web Services account:
 \itemize{
 \item Time that the message was published (in UTC)
 \item Message ID
@@ -73,32 +73,15 @@ long for a single message)
 }
 
 To receive the report, the bucket must have a policy that allows the
-Amazon SNS service principle to perform the \code{s3:PutObject} and
+Amazon SNS service principal to perform the \code{s3:PutObject} and
 \code{s3:GetBucketLocation} actions.
 
 For an example bucket policy and usage report, see \href{https://docs.aws.amazon.com/sns/latest/dg/sms_stats.html}{Monitoring SMS Activity} in
 the \emph{Amazon SNS Developer Guide}.}
 }
-\value{
-An empty list.
-}
 \description{
-Use this request to set the default settings for sending SMS messages
-and receiving daily SMS usage reports.
+Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports.
 
-You can override some of these settings for a single message when you
-use the \code{\link[=sns_publish]{publish}} action with the
-\code{MessageAttributes.entry.N} parameter. For more information, see
-\href{https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html}{Publishing to a mobile phone}
-in the \emph{Amazon SNS Developer Guide}.
+See \url{https://paws-r.github.io/docs/sns/set_sms_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$set_sms_attributes(
-  attributes = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -5,8 +5,10 @@
 \title{Removes a source identifier from an existing RDS event notification
 subscription}
 \usage{
-rds_remove_source_identifier_from_subscription(SubscriptionName,
-  SourceIdentifier)
+rds_remove_source_identifier_from_subscription(
+  SubscriptionName,
+  SourceIdentifier
+)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the RDS event notification subscription you want to remove a
@@ -16,37 +18,9 @@ source identifier from.}
 \strong{DB instance identifier} for a DB instance or the name of a security
 group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventSubscription = list(
-    CustomerAwsId = "string",
-    CustSubscriptionId = "string",
-    SnsTopicArn = "string",
-    Status = "string",
-    SubscriptionCreationTime = "string",
-    SourceType = "string",
-    SourceIdsList = list(
-      "string"
-    ),
-    EventCategoriesList = list(
-      "string"
-    ),
-    Enabled = TRUE|FALSE,
-    EventSubscriptionArn = "string"
-  )
-)
-}
-}
 \description{
-Removes a source identifier from an existing RDS event notification
-subscription.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_source_identifier_from_subscription(
-  SubscriptionName = "string",
-  SourceIdentifier = "string"
-)
-}
-}
+Removes a source identifier from an existing RDS event notification subscription.
 
+See \url{https://paws-r.github.io/docs/rds/remove_source_identifier_from_subscription.html} for full documentation.
+}
 \keyword{internal}

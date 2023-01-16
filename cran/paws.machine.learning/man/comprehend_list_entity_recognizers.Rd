@@ -5,7 +5,11 @@
 \title{Gets a list of the properties of all entity recognizers that you
 created, including recognizers currently in training}
 \usage{
-comprehend_list_entity_recognizers(Filter, NextToken, MaxResults)
+comprehend_list_entity_recognizers(
+  Filter = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filter}{Filters the list of entities returned. You can filter on \code{Status},
@@ -17,112 +21,9 @@ a time.}
 \item{MaxResults}{The maximum number of results to return on each page. The default is
 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EntityRecognizerPropertiesList = list(
-    list(
-      EntityRecognizerArn = "string",
-      LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-      Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-      Message = "string",
-      SubmitTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TrainingStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TrainingEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      InputDataConfig = list(
-        DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
-        EntityTypes = list(
-          list(
-            Type = "string"
-          )
-        ),
-        Documents = list(
-          S3Uri = "string"
-        ),
-        Annotations = list(
-          S3Uri = "string"
-        ),
-        EntityList = list(
-          S3Uri = "string"
-        ),
-        AugmentedManifests = list(
-          list(
-            S3Uri = "string",
-            AttributeNames = list(
-              "string"
-            )
-          )
-        )
-      ),
-      RecognizerMetadata = list(
-        NumberOfTrainedDocuments = 123,
-        NumberOfTestDocuments = 123,
-        EvaluationMetrics = list(
-          Precision = 123.0,
-          Recall = 123.0,
-          F1Score = 123.0
-        ),
-        EntityTypes = list(
-          list(
-            Type = "string",
-            EvaluationMetrics = list(
-              Precision = 123.0,
-              Recall = 123.0,
-              F1Score = 123.0
-            ),
-            NumberOfTrainMentions = 123
-          )
-        )
-      ),
-      DataAccessRoleArn = "string",
-      VolumeKmsKeyId = "string",
-      VpcConfig = list(
-        SecurityGroupIds = list(
-          "string"
-        ),
-        Subnets = list(
-          "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets a list of the properties of all entity recognizers that you
-created, including recognizers currently in training. Allows you to
-filter the list of recognizers based on criteria such as status and
-submission time. This call returns up to 500 entity recognizers in the
-list, with a default number of 100 recognizers in the list.
+Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training. Allows you to filter the list of recognizers based on criteria such as status and submission time. This call returns up to 500 entity recognizers in the list, with a default number of 100 recognizers in the list.
 
-The results of this list are not in any particular order. Please get the
-list and sort locally if needed.
+See \url{https://paws-r.github.io/docs/comprehend/list_entity_recognizers.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_entity_recognizers(
-  Filter = list(
-    Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-    SubmitTimeBefore = as.POSIXct(
-      "2015-01-01"
-    ),
-    SubmitTimeAfter = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

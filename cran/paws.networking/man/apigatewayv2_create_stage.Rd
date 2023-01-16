@@ -4,9 +4,19 @@
 \alias{apigatewayv2_create_stage}
 \title{Creates a Stage for an API}
 \usage{
-apigatewayv2_create_stage(AccessLogSettings, ApiId, AutoDeploy,
-  ClientCertificateId, DefaultRouteSettings, DeploymentId, Description,
-  RouteSettings, StageName, StageVariables, Tags)
+apigatewayv2_create_stage(
+  AccessLogSettings = NULL,
+  ApiId,
+  AutoDeploy = NULL,
+  ClientCertificateId = NULL,
+  DefaultRouteSettings = NULL,
+  DeploymentId = NULL,
+  Description = NULL,
+  RouteSettings = NULL,
+  StageName,
+  StageVariables = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{AccessLogSettings}{Settings for logging access in this stage.}
@@ -36,89 +46,9 @@ have alphanumeric and underscore characters, and the values must match
 \item{Tags}{The collection of tags. Each tag element is associated with a given
 resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccessLogSettings = list(
-    DestinationArn = "string",
-    Format = "string"
-  ),
-  ApiGatewayManaged = TRUE|FALSE,
-  AutoDeploy = TRUE|FALSE,
-  ClientCertificateId = "string",
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  DefaultRouteSettings = list(
-    DataTraceEnabled = TRUE|FALSE,
-    DetailedMetricsEnabled = TRUE|FALSE,
-    LoggingLevel = "ERROR"|"INFO"|"OFF",
-    ThrottlingBurstLimit = 123,
-    ThrottlingRateLimit = 123.0
-  ),
-  DeploymentId = "string",
-  Description = "string",
-  LastDeploymentStatusMessage = "string",
-  LastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  RouteSettings = list(
-    list(
-      DataTraceEnabled = TRUE|FALSE,
-      DetailedMetricsEnabled = TRUE|FALSE,
-      LoggingLevel = "ERROR"|"INFO"|"OFF",
-      ThrottlingBurstLimit = 123,
-      ThrottlingRateLimit = 123.0
-    )
-  ),
-  StageName = "string",
-  StageVariables = list(
-    "string"
-  ),
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Creates a Stage for an API.
-}
-\section{Request syntax}{
-\preformatted{svc$create_stage(
-  AccessLogSettings = list(
-    DestinationArn = "string",
-    Format = "string"
-  ),
-  ApiId = "string",
-  AutoDeploy = TRUE|FALSE,
-  ClientCertificateId = "string",
-  DefaultRouteSettings = list(
-    DataTraceEnabled = TRUE|FALSE,
-    DetailedMetricsEnabled = TRUE|FALSE,
-    LoggingLevel = "ERROR"|"INFO"|"OFF",
-    ThrottlingBurstLimit = 123,
-    ThrottlingRateLimit = 123.0
-  ),
-  DeploymentId = "string",
-  Description = "string",
-  RouteSettings = list(
-    list(
-      DataTraceEnabled = TRUE|FALSE,
-      DetailedMetricsEnabled = TRUE|FALSE,
-      LoggingLevel = "ERROR"|"INFO"|"OFF",
-      ThrottlingBurstLimit = 123,
-      ThrottlingRateLimit = 123.0
-    )
-  ),
-  StageName = "string",
-  StageVariables = list(
-    "string"
-  ),
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/create_stage.html} for full documentation.
+}
 \keyword{internal}

@@ -5,41 +5,15 @@
 \title{Creates a new origin access identity}
 \usage{
 cloudfront_create_cloud_front_origin_access_identity(
-  CloudFrontOriginAccessIdentityConfig)
+  CloudFrontOriginAccessIdentityConfig
+)
 }
 \arguments{
 \item{CloudFrontOriginAccessIdentityConfig}{[required] The current configuration information for the identity.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CloudFrontOriginAccessIdentity = list(
-    Id = "string",
-    S3CanonicalUserId = "string",
-    CloudFrontOriginAccessIdentityConfig = list(
-      CallerReference = "string",
-      Comment = "string"
-    )
-  ),
-  Location = "string",
-  ETag = "string"
-)
-}
-}
 \description{
-Creates a new origin access identity. If you're using Amazon S3 for your
-origin, you can use an origin access identity to require users to access
-your content using a CloudFront URL instead of the Amazon S3 URL. For
-more information about how to use origin access identities, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{Serving Private Content through CloudFront}
-in the \emph{Amazon CloudFront Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_cloud_front_origin_access_identity(
-  CloudFrontOriginAccessIdentityConfig = list(
-    CallerReference = "string",
-    Comment = "string"
-  )
-)
-}
-}
+Creates a new origin access identity. If you're using Amazon S3 for your origin, you can use an origin access identity to require users to access your content using a CloudFront URL instead of the Amazon S3 URL. For more information about how to use origin access identities, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{Serving Private Content through CloudFront} in the \emph{Amazon CloudFront Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudfront/create_cloud_front_origin_access_identity.html} for full documentation.
+}
 \keyword{internal}

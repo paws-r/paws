@@ -21,48 +21,9 @@ your account ID, do not include any hyphens ('-') in the ID.}
 \item{lockId}{[required] The \code{lockId} value is the lock ID obtained from a
 \code{\link[=glacier_initiate_vault_lock]{initiate_vault_lock}} request.}
 }
-\value{
-An empty list.
-}
 \description{
-This operation completes the vault locking process by transitioning the
-vault lock from the \code{InProgress} state to the \code{Locked} state, which
-causes the vault lock policy to become unchangeable. A vault lock is put
-into the \code{InProgress} state by calling
-\code{\link[=glacier_initiate_vault_lock]{initiate_vault_lock}}. You can obtain the
-state of the vault lock by calling
-\code{\link[=glacier_get_vault_lock]{get_vault_lock}}. For more information about
-the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
+This operation completes the vault locking process by transitioning the vault lock from the \code{InProgress} state to the \code{Locked} state, which causes the vault lock policy to become unchangeable. A vault lock is put into the \code{InProgress} state by calling \code{\link[=glacier_initiate_vault_lock]{initiate_vault_lock}}. You can obtain the state of the vault lock by calling \code{\link[=glacier_get_vault_lock]{get_vault_lock}}. For more information about the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
 
-This operation is idempotent. This request is always successful if the
-vault lock is in the \code{Locked} state and the provided lock ID matches the
-lock ID originally used to lock the vault.
-
-If an invalid lock ID is passed in the request when the vault lock is in
-the \code{Locked} state, the operation returns an \code{AccessDeniedException}
-error. If an invalid lock ID is passed in the request when the vault
-lock is in the \code{InProgress} state, the operation throws an
-\code{InvalidParameter} error.
-}
-\section{Request syntax}{
-\preformatted{svc$complete_vault_lock(
-  accountId = "string",
-  vaultName = "string",
-  lockId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The example completes the vault locking process by transitioning the
-# vault lock from the InProgress state to the Locked state.
-svc$complete_vault_lock(
-  accountId = "-",
-  lockId = "AE863rKkWZU53SLW5be4DUcW",
-  vaultName = "example-vault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/complete_vault_lock.html} for full documentation.
 }
 \keyword{internal}

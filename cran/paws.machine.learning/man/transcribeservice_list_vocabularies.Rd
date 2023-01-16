@@ -2,58 +2,39 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_list_vocabularies}
 \alias{transcribeservice_list_vocabularies}
-\title{Returns a list of vocabularies that match the specified criteria}
+\title{Provides a list of custom vocabularies that match the specified criteria}
 \usage{
-transcribeservice_list_vocabularies(NextToken, MaxResults, StateEquals,
-  NameContains)
+transcribeservice_list_vocabularies(
+  NextToken = NULL,
+  MaxResults = NULL,
+  StateEquals = NULL,
+  NameContains = NULL
+)
 }
 \arguments{
-\item{NextToken}{If the result of the previous request to
-\code{\link[=transcribeservice_list_vocabularies]{list_vocabularies}} was
-truncated, include the \code{NextToken} to fetch the next set of jobs.}
+\item{NextToken}{If your \code{\link[=transcribeservice_list_vocabularies]{list_vocabularies}}
+request returns more results than can be displayed, \code{NextToken} is
+displayed in the response with an associated string. To get the next
+page of results, copy this string and repeat your request, including
+\code{NextToken} with the value of the copied string. Repeat as needed to
+view all your results.}
 
-\item{MaxResults}{The maximum number of vocabularies to return in the response. If there
-are fewer results in the list, this response contains only the actual
-results.}
+\item{MaxResults}{The maximum number of custom vocabularies to return in each page of
+results. If there are fewer results than the value you specify, only the
+actual results are returned. If you don't specify a value, a default of
+5 is used.}
 
-\item{StateEquals}{When specified, only returns vocabularies with the \code{VocabularyState}
-field equal to the specified state.}
+\item{StateEquals}{Returns only custom vocabularies with the specified state. Vocabularies
+are ordered by creation date, with the newest vocabulary first. If you
+don't include \code{StateEquals}, all custom medical vocabularies are
+returned.}
 
-\item{NameContains}{When specified, the vocabularies returned in the list are limited to
-vocabularies whose name contains the specified string. The search is not
-case sensitive,
-\code{\link[=transcribeservice_list_vocabularies]{list_vocabularies}} returns both
-"vocabularyname" and "VocabularyName" in the response list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "PENDING"|"READY"|"FAILED",
-  NextToken = "string",
-  Vocabularies = list(
-    list(
-      VocabularyName = "string",
-      LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      VocabularyState = "PENDING"|"READY"|"FAILED"
-    )
-  )
-)
-}
+\item{NameContains}{Returns only the custom vocabularies that contain the specified string.
+The search is not case sensitive.}
 }
 \description{
-Returns a list of vocabularies that match the specified criteria. If no
-criteria are specified, returns the entire list of vocabularies.
-}
-\section{Request syntax}{
-\preformatted{svc$list_vocabularies(
-  NextToken = "string",
-  MaxResults = 123,
-  StateEquals = "PENDING"|"READY"|"FAILED",
-  NameContains = "string"
-)
-}
-}
+Provides a list of custom vocabularies that match the specified criteria. If no criteria are specified, all custom vocabularies are returned.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/list_vocabularies.html} for full documentation.
+}
 \keyword{internal}

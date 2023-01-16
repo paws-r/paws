@@ -4,8 +4,7 @@
 \alias{redshift_modify_snapshot_schedule}
 \title{Modifies a snapshot schedule}
 \usage{
-redshift_modify_snapshot_schedule(ScheduleIdentifier,
-  ScheduleDefinitions)
+redshift_modify_snapshot_schedule(ScheduleIdentifier, ScheduleDefinitions)
 }
 \arguments{
 \item{ScheduleIdentifier}{[required] A unique alphanumeric identifier of the schedule to modify.}
@@ -14,46 +13,9 @@ redshift_modify_snapshot_schedule(ScheduleIdentifier,
 up of schedule expressions, for example, "cron(30 12 *)" or "rate(12
 hours)".}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScheduleDefinitions = list(
-    "string"
-  ),
-  ScheduleIdentifier = "string",
-  ScheduleDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextInvocations = list(
-    as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  AssociatedClusterCount = 123,
-  AssociatedClusters = list(
-    list(
-      ClusterIdentifier = "string",
-      ScheduleAssociationState = "MODIFYING"|"ACTIVE"|"FAILED"
-    )
-  )
-)
-}
-}
 \description{
-Modifies a snapshot schedule. Any schedule associated with a cluster is
-modified asynchronously.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_snapshot_schedule(
-  ScheduleIdentifier = "string",
-  ScheduleDefinitions = list(
-    "string"
-  )
-)
-}
-}
+Modifies a snapshot schedule. Any schedule associated with a cluster is modified asynchronously.
 
+See \url{https://paws-r.github.io/docs/redshift/modify_snapshot_schedule.html} for full documentation.
+}
 \keyword{internal}

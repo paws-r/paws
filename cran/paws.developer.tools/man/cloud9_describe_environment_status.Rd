@@ -2,37 +2,16 @@
 % Please edit documentation in R/cloud9_operations.R
 \name{cloud9_describe_environment_status}
 \alias{cloud9_describe_environment_status}
-\title{Gets status information for an AWS Cloud9 development environment}
+\title{Gets status information for an Cloud9 development environment}
 \usage{
 cloud9_describe_environment_status(environmentId)
 }
 \arguments{
 \item{environmentId}{[required] The ID of the environment to get status information about.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  status = "error"|"creating"|"connecting"|"ready"|"stopping"|"stopped"|"deleting",
-  message = "string"
-)
-}
-}
 \description{
-Gets status information for an AWS Cloud9 development environment.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_environment_status(
-  environmentId = "string"
-)
-}
-}
+Gets status information for an Cloud9 development environment.
 
-\examples{
-\dontrun{
-# 
-svc$describe_environment_status(
-  environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-)
-}
-
+See \url{https://paws-r.github.io/docs/cloud9/describe_environment_status.html} for full documentation.
 }
 \keyword{internal}

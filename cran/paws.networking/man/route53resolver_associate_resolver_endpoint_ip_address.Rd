@@ -5,7 +5,9 @@
 \title{Adds IP addresses to an inbound or an outbound Resolver endpoint}
 \usage{
 route53resolver_associate_resolver_endpoint_ip_address(
-  ResolverEndpointId, IpAddress)
+  ResolverEndpointId,
+  IpAddress
+)
 }
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the Resolver endpoint that you want to associate IP addresses
@@ -15,46 +17,9 @@ with.}
 subnet ID. If you specify a subnet ID, Resolver chooses an IP address
 for you from the available IPs in the specified subnet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverEndpoint = list(
-    Id = "string",
-    CreatorRequestId = "string",
-    Arn = "string",
-    Name = "string",
-    SecurityGroupIds = list(
-      "string"
-    ),
-    Direction = "INBOUND"|"OUTBOUND",
-    IpAddressCount = 123,
-    HostVPCId = "string",
-    Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-    StatusMessage = "string",
-    CreationTime = "string",
-    ModificationTime = "string"
-  )
-)
-}
-}
 \description{
-Adds IP addresses to an inbound or an outbound Resolver endpoint. If you
-want to add more than one IP address, submit one
-\code{\link[=route53resolver_associate_resolver_endpoint_ip_address]{associate_resolver_endpoint_ip_address}}
-request for each IP address.
+Adds IP addresses to an inbound or an outbound Resolver endpoint. If you want to add more than one IP address, submit one \code{\link[=route53resolver_associate_resolver_endpoint_ip_address]{associate_resolver_endpoint_ip_address}} request for each IP address.
 
-To remove an IP address from an endpoint, see
-\code{\link[=route53resolver_disassociate_resolver_endpoint_ip_address]{disassociate_resolver_endpoint_ip_address}}.
+See \url{https://paws-r.github.io/docs/route53resolver/associate_resolver_endpoint_ip_address.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_resolver_endpoint_ip_address(
-  ResolverEndpointId = "string",
-  IpAddress = list(
-    IpId = "string",
-    SubnetId = "string",
-    Ip = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

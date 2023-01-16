@@ -4,75 +4,33 @@
 \alias{directconnect_allocate_connection_on_interconnect}
 \title{Deprecated}
 \usage{
-directconnect_allocate_connection_on_interconnect(bandwidth,
-  connectionName, ownerAccount, interconnectId, vlan)
+directconnect_allocate_connection_on_interconnect(
+  bandwidth,
+  connectionName,
+  ownerAccount,
+  interconnectId,
+  vlan
+)
 }
 \arguments{
 \item{bandwidth}{[required] The bandwidth of the connection. The possible values are 50Mbps,
 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
-10Gbps. Note that only those AWS Direct Connect Partners who have met
+10Gbps. Note that only those Direct Connect Partners who have met
 specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
 10Gbps hosted connection.}
 
 \item{connectionName}{[required] The name of the provisioned connection.}
 
-\item{ownerAccount}{[required] The ID of the AWS account of the customer for whom the connection will
-be provisioned.}
+\item{ownerAccount}{[required] The ID of the Amazon Web Services account of the customer for whom the
+connection will be provisioned.}
 
 \item{interconnectId}{[required] The ID of the interconnect on which the connection will be provisioned.}
 
 \item{vlan}{[required] The dedicated VLAN provisioned to the connection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ownerAccount = "string",
-  connectionId = "string",
-  connectionName = "string",
-  connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-  region = "string",
-  location = "string",
-  bandwidth = "string",
-  vlan = 123,
-  partnerName = "string",
-  loaIssueTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  lagId = "string",
-  awsDevice = "string",
-  jumboFrameCapable = TRUE|FALSE,
-  awsDeviceV2 = "string",
-  hasLogicalRedundancy = "unknown"|"yes"|"no",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
-}
 \description{
-Deprecated. Use
-\code{\link[=directconnect_allocate_hosted_connection]{allocate_hosted_connection}}
-instead.
+Deprecated. Use \code{\link[=directconnect_allocate_hosted_connection]{allocate_hosted_connection}} instead.
 
-Creates a hosted connection on an interconnect.
-
-Allocates a VLAN number and a specified amount of bandwidth for use by a
-hosted connection on the specified interconnect.
-
-Intended for use by AWS Direct Connect Partners only.
+See \url{https://paws-r.github.io/docs/directconnect/allocate_connection_on_interconnect.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$allocate_connection_on_interconnect(
-  bandwidth = "string",
-  connectionName = "string",
-  ownerAccount = "string",
-  interconnectId = "string",
-  vlan = 123
-)
-}
-}
-
 \keyword{internal}

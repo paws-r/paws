@@ -13,7 +13,7 @@ NULL
 #' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
 #' For more information about service configurations, see [Service
 #' configurations for resource
-#' groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+#' groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
 #' 
 #' **Minimum permissions**
 #' 
@@ -46,7 +46,7 @@ NULL
 #' A configuration is an array of GroupConfigurationItem elements. For
 #' details about the syntax of service configurations, see [Service
 #' configurations for resource
-#' groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+#' groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
 #' 
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
@@ -271,7 +271,7 @@ resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
 #' Returns the service configuration associated with the specified resource
 #' group. For details about the service configuration syntax, see [Service
 #' configurations for resource
-#' groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+#' groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
 #' 
 #' **Minimum permissions**
 #' 
@@ -548,13 +548,19 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' To run this command, you must have the following permissions:
 #' 
 #' -   `resource-groups:ListGroupResources`
+#' 
+#' -   `cloudformation:DescribeStacks`
+#' 
+#' -   `cloudformation:ListStackResources`
+#' 
+#' -   `tag:GetResources`
 #'
 #' @usage
 #' resourcegroups_list_group_resources(GroupName, Group, Filters,
 #'   MaxResults, NextToken)
 #'
-#' @param GroupName ***Deprecated - don't use this parameter. Use the `Group` request field
-#' instead.***
+#' @param GroupName *Deprecated - don't use this parameter. Use the Group request field
+#' instead.*
 #' @param Group The name or the ARN of the resource group
 #' @param Filters Filters, formatted as ResourceFilter objects, that you want to apply to
 #' a [`list_group_resources`][resourcegroups_list_group_resources]
@@ -797,7 +803,7 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' 
 #' For information about the syntax of a service configuration, see
 #' [Service configurations for resource
-#' groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+#' groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
 #' 
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
@@ -858,6 +864,12 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 #' To run this command, you must have the following permissions:
 #' 
 #' -   `resource-groups:SearchResources`
+#' 
+#' -   `cloudformation:DescribeStacks`
+#' 
+#' -   `cloudformation:ListStackResources`
+#' 
+#' -   `tag:GetResources`
 #'
 #' @usage
 #' resourcegroups_search_resources(ResourceQuery, MaxResults, NextToken)

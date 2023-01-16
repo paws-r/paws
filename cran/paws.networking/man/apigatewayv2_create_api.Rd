@@ -4,10 +4,21 @@
 \alias{apigatewayv2_create_api}
 \title{Creates an Api resource}
 \usage{
-apigatewayv2_create_api(ApiKeySelectionExpression, CorsConfiguration,
-  CredentialsArn, Description, DisableSchemaValidation,
-  DisableExecuteApiEndpoint, Name, ProtocolType, RouteKey,
-  RouteSelectionExpression, Tags, Target, Version)
+apigatewayv2_create_api(
+  ApiKeySelectionExpression = NULL,
+  CorsConfiguration = NULL,
+  CredentialsArn = NULL,
+  Description = NULL,
+  DisableSchemaValidation = NULL,
+  DisableExecuteApiEndpoint = NULL,
+  Name,
+  ProtocolType,
+  RouteKey = NULL,
+  RouteSelectionExpression = NULL,
+  Tags = NULL,
+  Target = NULL,
+  Version = NULL
+)
 }
 \arguments{
 \item{ApiKeySelectionExpression}{An API key selection expression. Supported only for WebSocket APIs. See
@@ -64,87 +75,9 @@ AWS_PROXY, respectively. Supported only for HTTP APIs.}
 
 \item{Version}{A version identifier for the API.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApiEndpoint = "string",
-  ApiGatewayManaged = TRUE|FALSE,
-  ApiId = "string",
-  ApiKeySelectionExpression = "string",
-  CorsConfiguration = list(
-    AllowCredentials = TRUE|FALSE,
-    AllowHeaders = list(
-      "string"
-    ),
-    AllowMethods = list(
-      "string"
-    ),
-    AllowOrigins = list(
-      "string"
-    ),
-    ExposeHeaders = list(
-      "string"
-    ),
-    MaxAge = 123
-  ),
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  Description = "string",
-  DisableSchemaValidation = TRUE|FALSE,
-  DisableExecuteApiEndpoint = TRUE|FALSE,
-  ImportInfo = list(
-    "string"
-  ),
-  Name = "string",
-  ProtocolType = "WEBSOCKET"|"HTTP",
-  RouteSelectionExpression = "string",
-  Tags = list(
-    "string"
-  ),
-  Version = "string",
-  Warnings = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Creates an Api resource.
-}
-\section{Request syntax}{
-\preformatted{svc$create_api(
-  ApiKeySelectionExpression = "string",
-  CorsConfiguration = list(
-    AllowCredentials = TRUE|FALSE,
-    AllowHeaders = list(
-      "string"
-    ),
-    AllowMethods = list(
-      "string"
-    ),
-    AllowOrigins = list(
-      "string"
-    ),
-    ExposeHeaders = list(
-      "string"
-    ),
-    MaxAge = 123
-  ),
-  CredentialsArn = "string",
-  Description = "string",
-  DisableSchemaValidation = TRUE|FALSE,
-  DisableExecuteApiEndpoint = TRUE|FALSE,
-  Name = "string",
-  ProtocolType = "WEBSOCKET"|"HTTP",
-  RouteKey = "string",
-  RouteSelectionExpression = "string",
-  Tags = list(
-    "string"
-  ),
-  Target = "string",
-  Version = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/create_api.html} for full documentation.
+}
 \keyword{internal}

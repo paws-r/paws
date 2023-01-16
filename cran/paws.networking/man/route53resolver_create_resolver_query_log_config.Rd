@@ -5,11 +5,15 @@
 \title{Creates a Resolver query logging configuration, which defines where you
 want Resolver to save DNS query logs that originate in your VPCs}
 \usage{
-route53resolver_create_resolver_query_log_config(Name, DestinationArn,
-  CreatorRequestId, Tags)
+route53resolver_create_resolver_query_log_config(
+  Name,
+  DestinationArn,
+  CreatorRequestId,
+  Tags = NULL
+)
 }
 \arguments{
-\item{Name}{[required] The name that you want to give the query logging configuration}
+\item{Name}{[required] The name that you want to give the query logging configuration.}
 
 \item{DestinationArn}{[required] The ARN of the resource that you want Resolver to send query logs. You
 can send query logs to an S3 bucket, a CloudWatch Logs log group, or a
@@ -32,60 +36,16 @@ You can optionally append a file prefix to the end of the ARN.
 }}
 
 \item{CreatorRequestId}{[required] A unique string that identifies the request and that allows failed
-requests to be retried without the risk of executing the operation
-twice. \code{CreatorRequestId} can be any unique string, for example, a
-date/time stamp.}
+requests to be retried without the risk of running the operation twice.
+\code{CreatorRequestId} can be any unique string, for example, a date/time
+stamp.}
 
 \item{Tags}{A list of the tag keys and values that you want to associate with the
 query logging configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverQueryLogConfig = list(
-    Id = "string",
-    OwnerId = "string",
-    Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
-    ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-    AssociationCount = 123,
-    Arn = "string",
-    Name = "string",
-    DestinationArn = "string",
-    CreatorRequestId = "string",
-    CreationTime = "string"
-  )
-)
-}
-}
 \description{
-Creates a Resolver query logging configuration, which defines where you
-want Resolver to save DNS query logs that originate in your VPCs.
-Resolver can log queries only for VPCs that are in the same Region as
-the query logging configuration.
+Creates a Resolver query logging configuration, which defines where you want Resolver to save DNS query logs that originate in your VPCs. Resolver can log queries only for VPCs that are in the same Region as the query logging configuration.
 
-To specify which VPCs you want to log queries for, you use
-\code{\link[=route53resolver_associate_resolver_query_log_config]{associate_resolver_query_log_config}}.
-For more information, see
-\code{\link[=route53resolver_associate_resolver_query_log_config]{associate_resolver_query_log_config}}.
-
-You can optionally use AWS Resource Access Manager (AWS RAM) to share a
-query logging configuration with other AWS accounts. The other accounts
-can then associate VPCs with the configuration. The query logs that
-Resolver creates for a configuration include all DNS queries that
-originate in all VPCs that are associated with the configuration.
+See \url{https://paws-r.github.io/docs/route53resolver/create_resolver_query_log_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_resolver_query_log_config(
-  Name = "string",
-  DestinationArn = "string",
-  CreatorRequestId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

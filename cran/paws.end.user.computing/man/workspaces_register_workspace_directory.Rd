@@ -4,8 +4,14 @@
 \alias{workspaces_register_workspace_directory}
 \title{Registers the specified directory}
 \usage{
-workspaces_register_workspace_directory(DirectoryId, SubnetIds,
-  EnableWorkDocs, EnableSelfService, Tenancy, Tags)
+workspaces_register_workspace_directory(
+  DirectoryId,
+  SubnetIds = NULL,
+  EnableWorkDocs,
+  EnableSelfService = NULL,
+  Tenancy = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory. You cannot register a directory if it
@@ -30,40 +36,16 @@ will receive an OperationNotSupportedException error. Set
 
 \item{Tenancy}{Indicates whether your WorkSpace directory is dedicated or shared. To
 use Bring Your Own License (BYOL) images, this value must be set to
-\code{DEDICATED} and your AWS account must be enabled for BYOL. If your
-account has not been enabled for BYOL, you will receive an
+\code{DEDICATED} and your Amazon Web Services account must be enabled for
+BYOL. If your account has not been enabled for BYOL, you will receive an
 InvalidParameterValuesException error. For more information about BYOL
 images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Images}.}
 
 \item{Tags}{The tags associated with the directory.}
 }
-\value{
-An empty list.
-}
 \description{
-Registers the specified directory. This operation is asynchronous and
-returns before the WorkSpace directory is registered. If this is the
-first time you are registering a directory, you will need to create the
-workspaces_DefaultRole role before you can register a directory. For
-more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role}{Creating the workspaces_DefaultRole Role}.
-}
-\section{Request syntax}{
-\preformatted{svc$register_workspace_directory(
-  DirectoryId = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  EnableWorkDocs = TRUE|FALSE,
-  EnableSelfService = TRUE|FALSE,
-  Tenancy = "DEDICATED"|"SHARED",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Registers the specified directory. This operation is asynchronous and returns before the WorkSpace directory is registered. If this is the first time you are registering a directory, you will need to create the workspaces_DefaultRole role before you can register a directory. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role}{Creating the workspaces_DefaultRole Role}.
 
+See \url{https://paws-r.github.io/docs/workspaces/register_workspace_directory.html} for full documentation.
+}
 \keyword{internal}

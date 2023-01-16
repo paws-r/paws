@@ -7,24 +7,14 @@
 sagemaker_delete_model_package(ModelPackageName)
 }
 \arguments{
-\item{ModelPackageName}{[required] The name of the model package. The name must have 1 to 63 characters.
-Valid characters are a-z, A-Z, 0-9, and - (hyphen).}
-}
-\value{
-An empty list.
+\item{ModelPackageName}{[required] The name or Amazon Resource Name (ARN) of the model package to delete.
+
+When you specify a name, the name must have 1 to 63 characters. Valid
+characters are a-z, A-Z, 0-9, and - (hyphen).}
 }
 \description{
 Deletes a model package.
 
-A model package is used to create Amazon SageMaker models or list on AWS
-Marketplace. Buyers can subscribe to model packages listed on AWS
-Marketplace to create models in Amazon SageMaker.
+See \url{https://paws-r.github.io/docs/sagemaker/delete_model_package.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_model_package(
-  ModelPackageName = "string"
-)
-}
-}
-
 \keyword{internal}

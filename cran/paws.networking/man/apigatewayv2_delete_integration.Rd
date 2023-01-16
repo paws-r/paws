@@ -11,18 +11,9 @@ apigatewayv2_delete_integration(ApiId, IntegrationId)
 
 \item{IntegrationId}{[required] The integration ID.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an Integration.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_integration(
-  ApiId = "string",
-  IntegrationId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_integration.html} for full documentation.
+}
 \keyword{internal}

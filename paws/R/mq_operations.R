@@ -7,6 +7,45 @@ NULL
 #'
 #' @description
 #' Creates a broker. Note: This API is asynchronous.
+#' 
+#' To create a broker, you must either use the AmazonMQFullAccess IAM
+#' policy or include the following EC2 permissions in your IAM policy.
+#' 
+#' -   ec2:CreateNetworkInterface
+#' 
+#'     This permission is required to allow Amazon MQ to create an elastic
+#'     network interface (ENI) on behalf of your account.
+#' 
+#' -   ec2:CreateNetworkInterfacePermission
+#' 
+#'     This permission is required to attach the ENI to the broker
+#'     instance.
+#' 
+#' -   ec2:DeleteNetworkInterface
+#' 
+#' -   ec2:DeleteNetworkInterfacePermission
+#' 
+#' -   ec2:DetachNetworkInterface
+#' 
+#' -   ec2:DescribeInternetGateways
+#' 
+#' -   ec2:DescribeNetworkInterfaces
+#' 
+#' -   ec2:DescribeNetworkInterfacePermissions
+#' 
+#' -   ec2:DescribeRouteTables
+#' 
+#' -   ec2:DescribeSecurityGroups
+#' 
+#' -   ec2:DescribeSubnets
+#' 
+#' -   ec2:DescribeVpcs
+#' 
+#' For more information, see [Create an IAM User and Get Your AWS
+#' Credentials](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-setting-up.html#create-iam-user)
+#' and [Never Modify or Delete the Amazon MQ Elastic Network
+#' Interface](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/connecting-to-amazon-mq.html#never-modify-delete-elastic-network-interface)
+#' in the *Amazon MQ Developer Guide*.
 #'
 #' @usage
 #' mq_create_broker(AuthenticationStrategy, AutoMinorVersionUpgrade,
@@ -15,13 +54,15 @@ NULL
 #'   LdapServerMetadata, Logs, MaintenanceWindowStartTime,
 #'   PubliclyAccessible, SecurityGroups, StorageType, SubnetIds, Tags, Users)
 #'
-#' @param AuthenticationStrategy The authentication strategy used to secure the broker.
-#' @param AutoMinorVersionUpgrade Required. Enables automatic upgrades to new minor versions for brokers,
-#' as Apache releases the versions. The automatic upgrades occur during the
-#' maintenance window of the broker or after a manual broker reboot.
-#' @param BrokerName Required. The name of the broker. This value must be unique in your AWS
+#' @param AuthenticationStrategy Optional. The authentication strategy used to secure the broker. The
+#' default is SIMPLE.
+#' @param AutoMinorVersionUpgrade &#91;required&#93; Enables automatic upgrades to new minor versions for brokers, as new
+#' versions are released and supported by Amazon MQ. Automatic upgrades
+#' occur during the scheduled maintenance window of the broker or after a
+#' manual broker reboot. Set to true by default, if no value is specified.
+#' @param BrokerName &#91;required&#93; Required. The broker's name. This value must be unique in your AWS
 #' account, 1-50 characters long, must contain only letters, numbers,
-#' dashes, and underscores, and must not contain whitespaces, brackets,
+#' dashes, and underscores, and must not contain white spaces, brackets,
 #' wildcard characters, or special characters.
 #' @param Configuration A list of information about the configuration.
 #' @param CreatorRequestId The unique ID that the requester receives for the created broker. Amazon
@@ -29,39 +70,51 @@ NULL
 #' Universally Unique Identifier (UUID) for the creatorRequestId. You may
 #' omit the creatorRequestId if your application doesn't require
 #' idempotency.
-#' @param DeploymentMode Required. The deployment mode of the broker.
-#' @param EncryptionOptions Encryption options for the broker.
-#' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports
+#' @param DeploymentMode &#91;required&#93; Required. The broker's deployment mode.
+#' @param EncryptionOptions Encryption options for the broker. Does not apply to RabbitMQ brokers.
+#' @param EngineType &#91;required&#93; Required. The type of broker engine. Currently, Amazon MQ supports
 #' ACTIVEMQ and RABBITMQ.
-#' @param EngineVersion Required. The version of the broker engine. For a list of supported
-#' engine versions, see
-#' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
-#' @param HostInstanceType Required. The broker's instance type.
-#' @param LdapServerMetadata The metadata of the LDAP server used to authenticate and authorize
-#' connections to the broker.
+#' @param EngineVersion &#91;required&#93; Required. The broker engine's version. For a list of supported engine
+#' versions, see [Supported
+#' engines](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/).
+#' @param HostInstanceType &#91;required&#93; Required. The broker's instance type.
+#' @param LdapServerMetadata Optional. The metadata of the LDAP server used to authenticate and
+#' authorize connections to the broker. Does not apply to RabbitMQ brokers.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
 #' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
-#' @param PubliclyAccessible Required. Enables connections from applications outside of the VPC that
-#' hosts the broker's subnets.
-#' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes
-#' connections to brokers.
+#' @param PubliclyAccessible &#91;required&#93; Enables connections from applications outside of the VPC that hosts the
+#' broker's subnets. Set to false by default, if no value is provided.
+#' @param SecurityGroups The list of rules (1 minimum, 125 maximum) that authorize connections to
+#' brokers.
 #' @param StorageType The broker's storage type.
 #' @param SubnetIds The list of groups that define which subnets and IP ranges the broker
-#' can use from different Availability Zones. A SINGLE_INSTANCE deployment
+#' can use from different Availability Zones. If you specify more than one
+#' subnet, the subnets must be in different Availability Zones. Amazon MQ
+#' will not be able to create VPC endpoints for your broker with multiple
+#' subnets in the same Availability Zone. A SINGLE_INSTANCE deployment
 #' requires one subnet (for example, the default subnet). An
-#' ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A
-#' CLUSTER_MULTI_AZ deployment (RABBITMQ) has no subnet requirements when
-#' deployed with public accessibility, deployment without public
-#' accessibility requires at least one subnet.
+#' ACTIVE_STANDBY_MULTI_AZ Amazon MQ for ActiveMQ deployment requires two
+#' subnets. A CLUSTER_MULTI_AZ Amazon MQ for RabbitMQ deployment has no
+#' subnet requirements when deployed with public accessibility. Deployment
+#' without public accessibility requires at least one subnet.
+#' 
+#' If you specify subnets in a [shared
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html)
+#' for a RabbitMQ broker, the associated VPC to which the specified subnets
+#' belong must be owned by your AWS account. Amazon MQ will not be able to
+#' create VPC endpoints in VPCs that are not owned by your AWS account.
 #' @param Tags Create tags when creating the broker.
-#' @param Users Required. The list of broker users (persons or applications) who can
-#' access queues and topics. For RabbitMQ brokers, one and only one
+#' @param Users &#91;required&#93; Required. The list of broker users (persons or applications) who can
+#' access queues and topics. This value can contain only alphanumeric
+#' characters, dashes, periods, underscores, and tildes (- . _ ~). This
+#' value must be 2-100 characters long.
+#' 
+#' Amazon MQ for RabbitMQ
+#' 
+#' When you create an Amazon MQ for RabbitMQ broker, one and only one
 #' administrative user is accepted and created when a broker is first
 #' provisioned. All subsequent broker users are created by making RabbitMQ
-#' API calls directly to brokers or via the RabbitMQ Web Console. This
-#' value can contain only alphanumeric characters, dashes, periods,
-#' underscores, and tildes (- . _ ~). This value must be 2-100 characters
-#' long.
+#' API calls directly to brokers or via the RabbitMQ web console.
 #'
 #' @return
 #' A list with the following syntax:
@@ -142,7 +195,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname mq_create_broker
-mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerName = NULL, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode = NULL, EncryptionOptions = NULL, EngineType = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible = NULL, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL) {
+mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users) {
   op <- new_operation(
     name = "CreateBroker",
     http_method = "POST",
@@ -169,13 +222,14 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' mq_create_configuration(AuthenticationStrategy, EngineType,
 #'   EngineVersion, Name, Tags)
 #'
-#' @param AuthenticationStrategy The authentication strategy associated with the configuration.
-#' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports
+#' @param AuthenticationStrategy Optional. The authentication strategy associated with the configuration.
+#' The default is SIMPLE.
+#' @param EngineType &#91;required&#93; Required. The type of broker engine. Currently, Amazon MQ supports
 #' ACTIVEMQ and RABBITMQ.
-#' @param EngineVersion Required. The version of the broker engine. For a list of supported
-#' engine versions, see
-#' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
-#' @param Name Required. The name of the configuration. This value can contain only
+#' @param EngineVersion &#91;required&#93; Required. The broker engine's version. For a list of supported engine
+#' versions, see [Supported
+#' engines](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/).
+#' @param Name &#91;required&#93; Required. The name of the configuration. This value can contain only
 #' alphanumeric characters, dashes, periods, underscores, and tildes (- .
 #' _ ~). This value must be 1-150 characters long.
 #' @param Tags Create tags when creating the configuration.
@@ -217,7 +271,7 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @keywords internal
 #'
 #' @rdname mq_create_configuration
-mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType = NULL, EngineVersion = NULL, Name = NULL, Tags = NULL) {
+mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType, EngineVersion, Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateConfiguration",
     http_method = "POST",
@@ -287,14 +341,14 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
 #' mq_create_user(BrokerId, ConsoleAccess, Groups, Password, Username)
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
-#' @param ConsoleAccess Enables access to the the ActiveMQ Web Console for the ActiveMQ user.
+#' @param ConsoleAccess Enables access to the ActiveMQ Web Console for the ActiveMQ user.
 #' @param Groups The list of groups (20 maximum) to which the ActiveMQ user belongs. This
 #' value can contain only alphanumeric characters, dashes, periods,
 #' underscores, and tildes (- . _ ~). This value must be 2-100 characters
 #' long.
-#' @param Password Required. The password of the user. This value must be at least 12
+#' @param Password &#91;required&#93; Required. The password of the user. This value must be at least 12
 #' characters long, must contain at least 4 unique characters, and must not
-#' contain commas.
+#' contain commas, colons, or equal signs (,:=).
 #' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
 #' alphanumeric characters, dashes, periods, underscores, and tildes (- .
 #' _ ~). This value must be 2-100 characters long.
@@ -318,7 +372,7 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname mq_create_user
-mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password = NULL, Username) {
+mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password, Username) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
@@ -476,15 +530,18 @@ mq_delete_user <- function(BrokerId, Username) {
 #' @usage
 #' mq_describe_broker(BrokerId)
 #'
-#' @param BrokerId &#91;required&#93; The name of the broker. This value must be unique in your AWS account,
-#' 1-50 characters long, must contain only letters, numbers, dashes, and
-#' underscores, and must not contain whitespaces, brackets, wildcard
-#' characters, or special characters.
+#' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   ActionsRequired = list(
+#'     list(
+#'       ActionRequiredCode = "string",
+#'       ActionRequiredInfo = "string"
+#'     )
+#'   ),
 #'   AuthenticationStrategy = "SIMPLE"|"LDAP",
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   BrokerArn = "string",
@@ -499,7 +556,7 @@ mq_delete_user <- function(BrokerId, Username) {
 #'     )
 #'   ),
 #'   BrokerName = "string",
-#'   BrokerState = "CREATION_IN_PROGRESS"|"CREATION_FAILED"|"DELETION_IN_PROGRESS"|"RUNNING"|"REBOOT_IN_PROGRESS",
+#'   BrokerState = "CREATION_IN_PROGRESS"|"CREATION_FAILED"|"DELETION_IN_PROGRESS"|"RUNNING"|"REBOOT_IN_PROGRESS"|"CRITICAL_ACTION_REQUIRED",
 #'   Configurations = list(
 #'     Current = list(
 #'       Id = "string",
@@ -632,8 +689,8 @@ mq_describe_broker <- function(BrokerId) {
 #' mq_describe_broker_engine_types(EngineType, MaxResults, NextToken)
 #'
 #' @param EngineType Filter response by engine type.
-#' @param MaxResults The maximum number of engine types that Amazon MQ can return per page
-#' (20 by default). This value must be an integer from 5 to 100.
+#' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
+#' default). This value must be an integer from 5 to 100.
 #' @param NextToken The token that specifies the next page of results Amazon MQ should
 #' return. To request the first page, leave nextToken empty.
 #'
@@ -696,8 +753,8 @@ mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL
 #'
 #' @param EngineType Filter response by engine type.
 #' @param HostInstanceType Filter response by host instance type.
-#' @param MaxResults The maximum number of instance options that Amazon MQ can return per
-#' page (20 by default). This value must be an integer from 5 to 100.
+#' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
+#' default). This value must be an integer from 5 to 100.
 #' @param NextToken The token that specifies the next page of results Amazon MQ should
 #' return. To request the first page, leave nextToken empty.
 #' @param StorageType Filter response by storage type.
@@ -962,7 +1019,7 @@ mq_describe_user <- function(BrokerId, Username) {
 #'       BrokerArn = "string",
 #'       BrokerId = "string",
 #'       BrokerName = "string",
-#'       BrokerState = "CREATION_IN_PROGRESS"|"CREATION_FAILED"|"DELETION_IN_PROGRESS"|"RUNNING"|"REBOOT_IN_PROGRESS",
+#'       BrokerState = "CREATION_IN_PROGRESS"|"CREATION_FAILED"|"DELETION_IN_PROGRESS"|"RUNNING"|"REBOOT_IN_PROGRESS"|"CRITICAL_ACTION_REQUIRED",
 #'       Created = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1012,8 +1069,8 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
 #' mq_list_configuration_revisions(ConfigurationId, MaxResults, NextToken)
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
-#' @param MaxResults The maximum number of configurations that Amazon MQ can return per page
-#' (20 by default). This value must be an integer from 5 to 100.
+#' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
+#' default). This value must be an integer from 5 to 100.
 #' @param NextToken The token that specifies the next page of results Amazon MQ should
 #' return. To request the first page, leave nextToken empty.
 #'
@@ -1073,8 +1130,8 @@ mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, 
 #' @usage
 #' mq_list_configurations(MaxResults, NextToken)
 #'
-#' @param MaxResults The maximum number of configurations that Amazon MQ can return per page
-#' (20 by default). This value must be an integer from 5 to 100.
+#' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
+#' default). This value must be an integer from 5 to 100.
 #' @param NextToken The token that specifies the next page of results Amazon MQ should
 #' return. To request the first page, leave nextToken empty.
 #'
@@ -1195,8 +1252,8 @@ mq_list_tags <- function(ResourceArn) {
 #' mq_list_users(BrokerId, MaxResults, NextToken)
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
-#' @param MaxResults The maximum number of ActiveMQ users that can be returned per page (20
-#' by default). This value must be an integer from 5 to 100.
+#' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
+#' default). This value must be an integer from 5 to 100.
 #' @param NextToken The token that specifies the next page of results Amazon MQ should
 #' return. To request the first page, leave nextToken empty.
 #'
@@ -1293,23 +1350,26 @@ mq_reboot_broker <- function(BrokerId) {
 #' @usage
 #' mq_update_broker(AuthenticationStrategy, AutoMinorVersionUpgrade,
 #'   BrokerId, Configuration, EngineVersion, HostInstanceType,
-#'   LdapServerMetadata, Logs, SecurityGroups)
+#'   LdapServerMetadata, Logs, MaintenanceWindowStartTime, SecurityGroups)
 #'
-#' @param AuthenticationStrategy The authentication strategy used to secure the broker.
-#' @param AutoMinorVersionUpgrade Enables automatic upgrades to new minor versions for brokers, as Apache
-#' releases the versions. The automatic upgrades occur during the
-#' maintenance window of the broker or after a manual broker reboot.
+#' @param AuthenticationStrategy Optional. The authentication strategy used to secure the broker. The
+#' default is SIMPLE.
+#' @param AutoMinorVersionUpgrade Enables automatic upgrades to new minor versions for brokers, as new
+#' versions are released and supported by Amazon MQ. Automatic upgrades
+#' occur during the scheduled maintenance window of the broker or after a
+#' manual broker reboot.
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param Configuration A list of information about the configuration.
-#' @param EngineVersion The version of the broker engine. For a list of supported engine
-#' versions, see
-#' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
-#' @param HostInstanceType The host instance type of the broker to upgrade to. For a list of
-#' supported instance types, see
-#' https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html\#broker-instance-types
-#' @param LdapServerMetadata The metadata of the LDAP server used to authenticate and authorize
-#' connections to the broker.
+#' @param EngineVersion The broker engine version. For a list of supported engine versions, see
+#' [Supported
+#' engines](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/).
+#' @param HostInstanceType The broker's host instance type to upgrade to. For a list of supported
+#' instance types, see [Broker instance
+#' types](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker.html#broker-instance-types).
+#' @param LdapServerMetadata Optional. The metadata of the LDAP server used to authenticate and
+#' authorize connections to the broker. Does not apply to RabbitMQ brokers.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
+#' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
 #' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes
 #' connections to brokers.
 #'
@@ -1343,6 +1403,11 @@ mq_reboot_broker <- function(BrokerId) {
 #'   Logs = list(
 #'     Audit = TRUE|FALSE,
 #'     General = TRUE|FALSE
+#'   ),
+#'   MaintenanceWindowStartTime = list(
+#'     DayOfWeek = "MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"|"SUNDAY",
+#'     TimeOfDay = "string",
+#'     TimeZone = "string"
 #'   ),
 #'   SecurityGroups = list(
 #'     "string"
@@ -1381,6 +1446,11 @@ mq_reboot_broker <- function(BrokerId) {
 #'     Audit = TRUE|FALSE,
 #'     General = TRUE|FALSE
 #'   ),
+#'   MaintenanceWindowStartTime = list(
+#'     DayOfWeek = "MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"|"SUNDAY",
+#'     TimeOfDay = "string",
+#'     TimeZone = "string"
+#'   ),
 #'   SecurityGroups = list(
 #'     "string"
 #'   )
@@ -1390,14 +1460,14 @@ mq_reboot_broker <- function(BrokerId) {
 #' @keywords internal
 #'
 #' @rdname mq_update_broker
-mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, SecurityGroups = NULL) {
+mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, SecurityGroups = NULL) {
   op <- new_operation(
     name = "UpdateBroker",
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}",
     paginator = list()
   )
-  input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, SecurityGroups = SecurityGroups)
+  input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, SecurityGroups = SecurityGroups)
   output <- .mq$update_broker_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -1416,7 +1486,7 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' mq_update_configuration(ConfigurationId, Data, Description)
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
-#' @param Data Required. The base64-encoded XML configuration.
+#' @param Data &#91;required&#93; Required. The base64-encoded XML configuration.
 #' @param Description The description of the configuration.
 #'
 #' @return
@@ -1458,7 +1528,7 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @keywords internal
 #'
 #' @rdname mq_update_configuration
-mq_update_configuration <- function(ConfigurationId, Data = NULL, Description = NULL) {
+mq_update_configuration <- function(ConfigurationId, Data, Description = NULL) {
   op <- new_operation(
     name = "UpdateConfiguration",
     http_method = "PUT",
@@ -1491,8 +1561,8 @@ mq_update_configuration <- function(ConfigurationId, Data = NULL, Description = 
 #' long.
 #' @param Password The password of the user. This value must be at least 12 characters
 #' long, must contain at least 4 unique characters, and must not contain
-#' commas.
-#' @param Username &#91;required&#93; Required. The username of the ActiveMQ user. This value can contain only
+#' commas, colons, or equal signs (,:=).
+#' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
 #' alphanumeric characters, dashes, periods, underscores, and tildes (- .
 #' _ ~). This value must be 2-100 characters long.
 #'

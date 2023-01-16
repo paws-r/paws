@@ -5,42 +5,25 @@
 \title{This API is in preview release for Amazon Connect and is subject to
 change}
 \usage{
-connect_list_instance_attributes(InstanceId, NextToken, MaxResults)
+connect_list_instance_attributes(
+  InstanceId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Returns a paginated list of all attribute types for the given instance.
+See \url{https://paws-r.github.io/docs/connect/list_instance_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_instance_attributes(
-  InstanceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

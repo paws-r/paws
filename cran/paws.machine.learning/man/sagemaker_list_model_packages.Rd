@@ -4,9 +4,18 @@
 \alias{sagemaker_list_model_packages}
 \title{Lists the model packages that have been created}
 \usage{
-sagemaker_list_model_packages(CreationTimeAfter, CreationTimeBefore,
-  MaxResults, NameContains, ModelApprovalStatus, ModelPackageGroupName,
-  ModelPackageType, NextToken, SortBy, SortOrder)
+sagemaker_list_model_packages(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  ModelApprovalStatus = NULL,
+  ModelPackageGroupName = NULL,
+  ModelPackageType = NULL,
+  NextToken = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only model packages created after the specified
@@ -26,11 +35,12 @@ approval status.}
 \item{ModelPackageGroupName}{A filter that returns only model versions that belong to the specified
 model group.}
 
-\item{ModelPackageType}{A filter that returns onlyl the model packages of the specified type.
+\item{ModelPackageType}{A filter that returns only the model packages of the specified type.
 This can be one of the following values.
 \itemize{
+\item \code{UNVERSIONED} - List only unversioined models. This is the default
+value if no \code{ModelPackageType} is specified.
 \item \code{VERSIONED} - List only versioned models.
-\item \code{UNVERSIONED} - List only unversioined models.
 \item \code{BOTH} - List both versioned and unversioned models.
 }}
 
@@ -44,47 +54,9 @@ of model packages, use the token in the next request.}
 
 \item{SortOrder}{The sort order for the results. The default is \code{Ascending}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelPackageSummaryList = list(
-    list(
-      ModelPackageName = "string",
-      ModelPackageGroupName = "string",
-      ModelPackageVersion = 123,
-      ModelPackageArn = "string",
-      ModelPackageDescription = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ModelPackageStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting",
-      ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the model packages that have been created.
-}
-\section{Request syntax}{
-\preformatted{svc$list_model_packages(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxResults = 123,
-  NameContains = "string",
-  ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval",
-  ModelPackageGroupName = "string",
-  ModelPackageType = "Versioned"|"Unversioned"|"Both",
-  NextToken = "string",
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_model_packages.html} for full documentation.
+}
 \keyword{internal}

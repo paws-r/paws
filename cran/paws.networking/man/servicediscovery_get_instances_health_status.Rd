@@ -5,8 +5,12 @@
 \title{Gets the current health status (Healthy, Unhealthy, or Unknown) of one
 or more instances that are associated with a specified service}
 \usage{
-servicediscovery_get_instances_health_status(ServiceId, Instances,
-  MaxResults, NextToken)
+servicediscovery_get_instances_health_status(
+  ServiceId,
+  Instances = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ServiceId}{[required] The ID of the service that the instance is associated with.}
@@ -14,17 +18,17 @@ servicediscovery_get_instances_health_status(ServiceId, Instances,
 \item{Instances}{An array that contains the IDs of all the instances that you want to get
 the health status for.
 
-If you omit \code{Instances}, AWS Cloud Map returns the health status for all
-the instances that are associated with the specified service.
+If you omit \code{Instances}, Cloud Map returns the health status for all the
+instances that are associated with the specified service.
 
 To get the IDs for the instances that you've registered by using a
 specified service, submit a
 \code{\link[=servicediscovery_list_instances]{list_instances}} request.}
 
-\item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in
-the response to a
+\item{MaxResults}{The maximum number of instances that you want Cloud Map to return in the
+response to a
 \code{\link[=servicediscovery_get_instances_health_status]{get_instances_health_status}}
-request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map
+request. If you don't specify a value for \code{MaxResults}, Cloud Map
 returns up to 100 instances.}
 
 \item{NextToken}{For the first
@@ -37,42 +41,9 @@ can submit another
 request to get the next group of results. Specify the value of
 \code{NextToken} from the previous response in the next request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = list(
-    "HEALTHY"|"UNHEALTHY"|"UNKNOWN"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unknown}) of
-one or more instances that are associated with a specified service.
+Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unknown}) of one or more instances that are associated with a specified service.
 
-There is a brief delay between when you register an instance and when
-the health status for the instance is available.
-}
-\section{Request syntax}{
-\preformatted{svc$get_instances_health_status(
-  ServiceId = "string",
-  Instances = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example gets the current health status of one or more instances
-# that are associate with a specified service.
-svc$get_instances_health_status(
-  ServiceId = "srv-e4anhexample0004"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/get_instances_health_status.html} for full documentation.
 }
 \keyword{internal}

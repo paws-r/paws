@@ -2,7 +2,7 @@
 NULL
 
 # Make an operation's Roxygen documentation.
-make_docs <- function(operation, api) {
+make_docs_long <- function(operation, api) {
   title <- make_doc_title(operation)
   description <- make_doc_desc(operation, api)
   usage <- make_doc_usage(operation, api)
@@ -26,6 +26,25 @@ make_docs <- function(operation, api) {
   return(as.character(docs))
 }
 
+# Make a short version of the documentation for CRAN.
+make_docs_short <- function(operation, api) {
+  title <- make_doc_title(operation)
+  description <- make_doc_desc_short(operation, api)
+  link_to_web_docs <- make_doc_link_to_web_docs(operation, api)
+  params <- make_doc_params(operation, api)
+  rdname <- make_doc_rdname(operation, api)
+  docs <- glue::glue_collapse(
+    c(title,
+      description,
+      link_to_web_docs,
+      params,
+      "#' @keywords internal",
+      rdname),
+    sep = "\n#'\n"
+  )
+  return(as.character(docs))
+}
+
 # Make the documentation title.
 make_doc_title <- function(operation) {
   title <- get_operation_title(operation)
@@ -41,6 +60,27 @@ make_doc_desc <- function(operation, api) {
   description <- glue::glue_collapse(description, sep = "\n")
   description <- paste("#' @description", description, sep = "\n")
   return(as.character(description))
+}
+
+# Make a short description of the operation with only the first paragraph.
+make_doc_desc_short <- function(operation, api) {
+  docs <- convert(operation$documentation, package_name(api), links = get_links(api))
+  if (length(docs) == 1 && docs == "") docs <- get_operation_title(operation)
+  else docs <- first_paragraph(docs)
+  description <- glue::glue("#' {docs}")
+  description <- glue::glue_collapse(description, sep = "\n")
+  description <- paste("#' @description", description, sep = "\n")
+  return(as.character(description))
+}
+
+# Make a link to the web documentation.
+make_doc_link_to_web_docs <- function(operation, api) {
+  service <- package_name(api)
+  operation <- get_operation_name(operation)
+  url <- sprintf("https://paws-r.github.io/docs/%s/%s.html", service, operation)
+  result <- sprintf("See [%s](%s) for full documentation.", url, url)
+  result <- comment(result, "#'")
+  return(result)
 }
 
 # Make the usage section.
@@ -74,6 +114,7 @@ make_doc_params <- function(operation, api) {
       param <- input$member_name
       required <- input$required
       documentation <- convert(input$documentation, package_name(api), links = get_links(api))
+      documentation <- convert_headings_to_bold(documentation)
       documentation <- glue::glue_collapse(documentation, sep = "\n")
       if (required) {
         documentation <- glue::glue("&#91;required&#93; {documentation}")
@@ -197,6 +238,15 @@ make_doc_rdname <- function(operation, api) {
 
 #-------------------------------------------------------------------------------
 
+# Get the first paragraph from a block of text.
+first_paragraph <- function(x) {
+  blank_line <- which(x == "")
+  first_paragraph <- ifelse(length(blank_line) >= 1, blank_line[1] - 1, length(x))
+  paragraph <- paste(x[1:first_paragraph], collapse = " ")
+  paragraph <- gsub(" +", " ", paragraph)
+  return(paragraph)
+}
+
 # Get the first sentence from a block of text.
 first_sentence <- function(x) {
   if (is.list(x)) x <- as.character(x)
@@ -210,6 +260,15 @@ break_lines <- function(s, chars = 72, at = "\\s") {
   regex <- sprintf("(.{1,%i})(%s|$)", chars, paste(at, collapse = "|"))
   result <- gsub(regex, "\\1\\2\n", s)
   result <- gsub(" +\n", "\n", result)
+  return(result)
+}
+
+# Convert headings (the # at the beginning of lines) to bold.
+# This is done because R CMD check gives warnings when there are headings
+# without bodies, and the easiest way of removing these is to convert them to
+# bold.
+convert_headings_to_bold <- function(s) {
+  result <- gsub("^#+ (.*)", "\\*\\*\\1\\*\\*", s)
   return(result)
 }
 
@@ -300,6 +359,7 @@ clean_html_node <- function(node, links = c()) {
     code = clean_html_code(node, links),
     dt = clean_html_dt(node),
     dd = clean_html_dd(node),
+    i = clean_html_i(node),
     text = clean_html_text(node)
   )
   for (child in xml2::xml_contents(node)) {
@@ -403,6 +463,21 @@ clean_html_dd <- function(node) {
   xml2::xml_name(node) <- "p"
 }
 
+# Remove all nested <i> nodes, by changing them to nodes with no formatting.
+# CRAN does not allow nested <i> in R documentation.
+# We arbitrarily remove all the inner <i> nodes because it's easier.
+clean_html_i <- function(node) {
+  remove_html_i <- function(x) {
+    xml2::xml_name(x) <- "span" # Use node type that gets no formatting.
+    for (child in xml2::xml_contents(x)) {
+      remove_html_i(child)
+    }
+  }
+  for (child in xml2::xml_contents(node)) {
+    remove_html_i(child)
+  }
+}
+
 clean_html_text <- function(node) {
   # Mask { and } to avoid problems in Roxygen LaTeX.
   text <- xml2::xml_text(node)
@@ -443,7 +518,11 @@ clean_markdown <- function(markdown) {
   result <- markdown[keep]
 
   # Unicode character codes: \\uxxxx to `U+xxxx`
-  result <- gsub("\\\\\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
+  result <- gsub("\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
+
+  # Escape backslashes followed by characters so LaTeX doesn't interpret them
+  # as escape sequences.
+  result <- gsub("\\\\([a-zA-Z])", "\\\\\\\\\\1", result)
 
   # Remove certain characters not allowed by LaTeX.
   result <- gsub("\U2028", "", result)
@@ -457,6 +536,9 @@ clean_markdown <- function(markdown) {
 
   # Convert \_ to _. Pandoc adds an \.
   result <- gsub("\\_", "_", result, fixed = TRUE)
+
+  # Convert 2+ backslashes to \\.
+  result <- gsub("\\\\{2,}", "\\\\\\\\", result, perl = TRUE)
 
   result <- fix_internal_links(result)
 
@@ -500,10 +582,7 @@ list_to_string <- function(x, quote = TRUE) {
 # Returns the title of an operation (the first sentence of its description).
 get_operation_title <- function(operation) {
   docs <- html_to_text(operation$documentation)
-  blank_line <- which(docs == "")
-  first_paragraph <- ifelse(length(blank_line) >= 1, blank_line[1] - 1, length(docs))
-  paragraph <- paste(docs[1:first_paragraph], collapse = " ")
-  paragraph <- gsub(" +", " ", paragraph)
+  paragraph <- first_paragraph(docs)
   title <- first_sentence(paragraph)
   title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
   if (length(title) == 0 || title == "") {

@@ -4,9 +4,16 @@
 \alias{comprehend_start_events_detection_job}
 \title{Starts an asynchronous event detection job for a collection of documents}
 \usage{
-comprehend_start_events_detection_job(InputDataConfig, OutputDataConfig,
-  DataAccessRoleArn, JobName, LanguageCode, ClientRequestToken,
-  TargetEventTypes)
+comprehend_start_events_detection_job(
+  InputDataConfig,
+  OutputDataConfig,
+  DataAccessRoleArn,
+  JobName = NULL,
+  LanguageCode,
+  ClientRequestToken = NULL,
+  TargetEventTypes,
+  Tags = NULL
+)
 }
 \arguments{
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
@@ -24,37 +31,15 @@ comprehend_start_events_detection_job(InputDataConfig, OutputDataConfig,
 request token, Amazon Comprehend generates one.}
 
 \item{TargetEventTypes}{[required] The types of events to detect in the input documents.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string",
-  JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-)
-}
+
+\item{Tags}{Tags to be associated with the events detection job. A tag is a
+key-value pair that adds metadata to a resource used by Amazon
+Comprehend. For example, a tag with "Sales" as the key might be added to
+a resource to indicate its use by the sales department.}
 }
 \description{
-Starts an asynchronous event detection job for a collection of
-documents.
-}
-\section{Request syntax}{
-\preformatted{svc$start_events_detection_job(
-  InputDataConfig = list(
-    S3Uri = "string",
-    InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-  ),
-  OutputDataConfig = list(
-    S3Uri = "string",
-    KmsKeyId = "string"
-  ),
-  DataAccessRoleArn = "string",
-  JobName = "string",
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-  ClientRequestToken = "string",
-  TargetEventTypes = list(
-    "string"
-  )
-)
-}
-}
+Starts an asynchronous event detection job for a collection of documents.
 
+See \url{https://paws-r.github.io/docs/comprehend/start_events_detection_job.html} for full documentation.
+}
 \keyword{internal}

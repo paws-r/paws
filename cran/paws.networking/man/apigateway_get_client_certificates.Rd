@@ -4,7 +4,7 @@
 \alias{apigateway_get_client_certificates}
 \title{Gets a collection of ClientCertificate resources}
 \usage{
-apigateway_get_client_certificates(position, limit)
+apigateway_get_client_certificates(position = NULL, limit = NULL)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}
@@ -12,37 +12,9 @@ apigateway_get_client_certificates(position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  position = "string",
-  items = list(
-    list(
-      clientCertificateId = "string",
-      description = "string",
-      pemEncodedCertificate = "string",
-      createdDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      expirationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      tags = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets a collection of ClientCertificate resources.
-}
-\section{Request syntax}{
-\preformatted{svc$get_client_certificates(
-  position = "string",
-  limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_client_certificates.html} for full documentation.
+}
 \keyword{internal}

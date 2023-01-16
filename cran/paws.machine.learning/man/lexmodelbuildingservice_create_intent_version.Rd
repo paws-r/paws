@@ -5,7 +5,7 @@
 \title{Creates a new version of an intent based on the $LATEST version of the
 intent}
 \usage{
-lexmodelbuildingservice_create_intent_version(name, checksum)
+lexmodelbuildingservice_create_intent_version(name, checksum = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the intent that you want to create a new version of. The
@@ -18,166 +18,9 @@ version of the intent has a different checksum, Amazon Lex returns a
 version. If you don't specify a checksum, Amazon Lex publishes the
 \verb{$LATEST} version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  description = "string",
-  slots = list(
-    list(
-      name = "string",
-      description = "string",
-      slotConstraint = "Required"|"Optional",
-      slotType = "string",
-      slotTypeVersion = "string",
-      valueElicitationPrompt = list(
-        messages = list(
-          list(
-            contentType = "PlainText"|"SSML"|"CustomPayload",
-            content = "string",
-            groupNumber = 123
-          )
-        ),
-        maxAttempts = 123,
-        responseCard = "string"
-      ),
-      priority = 123,
-      sampleUtterances = list(
-        "string"
-      ),
-      responseCard = "string",
-      obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
-      defaultValueSpec = list(
-        defaultValueList = list(
-          list(
-            defaultValue = "string"
-          )
-        )
-      )
-    )
-  ),
-  sampleUtterances = list(
-    "string"
-  ),
-  confirmationPrompt = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    maxAttempts = 123,
-    responseCard = "string"
-  ),
-  rejectionStatement = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    responseCard = "string"
-  ),
-  followUpPrompt = list(
-    prompt = list(
-      messages = list(
-        list(
-          contentType = "PlainText"|"SSML"|"CustomPayload",
-          content = "string",
-          groupNumber = 123
-        )
-      ),
-      maxAttempts = 123,
-      responseCard = "string"
-    ),
-    rejectionStatement = list(
-      messages = list(
-        list(
-          contentType = "PlainText"|"SSML"|"CustomPayload",
-          content = "string",
-          groupNumber = 123
-        )
-      ),
-      responseCard = "string"
-    )
-  ),
-  conclusionStatement = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    responseCard = "string"
-  ),
-  dialogCodeHook = list(
-    uri = "string",
-    messageVersion = "string"
-  ),
-  fulfillmentActivity = list(
-    type = "ReturnIntent"|"CodeHook",
-    codeHook = list(
-      uri = "string",
-      messageVersion = "string"
-    )
-  ),
-  parentIntentSignature = "string",
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  version = "string",
-  checksum = "string",
-  kendraConfiguration = list(
-    kendraIndex = "string",
-    queryFilterString = "string",
-    role = "string"
-  ),
-  inputContexts = list(
-    list(
-      name = "string"
-    )
-  ),
-  outputContexts = list(
-    list(
-      name = "string",
-      timeToLiveInSeconds = 123,
-      turnsToLive = 123
-    )
-  )
-)
-}
-}
 \description{
-Creates a new version of an intent based on the \verb{$LATEST} version of the
-intent. If the \verb{$LATEST} version of this intent hasn't changed since you
-last updated it, Amazon Lex doesn't create a new version. It returns the
-last version you created.
+Creates a new version of an intent based on the \verb{$LATEST} version of the intent. If the \verb{$LATEST} version of this intent hasn't changed since you last updated it, Amazon Lex doesn't create a new version. It returns the last version you created.
 
-You can update only the \verb{$LATEST} version of the intent. You can't
-update the numbered versions that you create with the
-\code{\link[=lexmodelbuildingservice_create_intent_version]{create_intent_version}}
-operation.
-
-When you create a version of an intent, Amazon Lex sets the version to
-\enumerate{
-\item Subsequent versions increment by 1. For more information, see
-versioning-intro.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/create_intent_version.html} for full documentation.
 }
-
-This operation requires permissions to perform the
-\code{lex:CreateIntentVersion} action.
-}
-\section{Request syntax}{
-\preformatted{svc$create_intent_version(
-  name = "string",
-  checksum = "string"
-)
-}
-}
-
 \keyword{internal}

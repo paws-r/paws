@@ -5,8 +5,11 @@
 \title{Used by deciders to tell the service that the DecisionTask identified by
 the taskToken has successfully completed}
 \usage{
-swf_respond_decision_task_completed(taskToken, decisions,
-  executionContext)
+swf_respond_decision_task_completed(
+  taskToken,
+  decisions = NULL,
+  executionContext = NULL
+)
 }
 \arguments{
 \item{taskToken}{[required] The \code{taskToken} from the DecisionTask.
@@ -22,137 +25,9 @@ for details.}
 
 \item{executionContext}{User defined context to add to workflow execution.}
 }
-\value{
-An empty list.
-}
 \description{
-Used by deciders to tell the service that the DecisionTask identified by
-the \code{taskToken} has successfully completed. The \code{decisions} argument
-specifies the list of decisions made while processing the task.
+Used by deciders to tell the service that the DecisionTask identified by the \code{taskToken} has successfully completed. The \code{decisions} argument specifies the list of decisions made while processing the task.
 
-A \code{DecisionTaskCompleted} event is added to the workflow history. The
-\code{executionContext} specified is attached to the event in the workflow
-execution history.
-
-\strong{Access Control}
-
-If an IAM policy grants permission to use
-\code{\link[=swf_respond_decision_task_completed]{respond_decision_task_completed}},
-it can express permissions for the list of decisions in the \code{decisions}
-parameter. Each of the decisions has one or more parameters, much like a
-regular API call. To allow for policies to be as readable as possible,
-you can express permissions on decisions as if they were actual API
-calls, including applying conditions to some parameters. For more
-information, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
+See \url{https://paws-r.github.io/docs/swf/respond_decision_task_completed.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$respond_decision_task_completed(
-  taskToken = "string",
-  decisions = list(
-    list(
-      decisionType = "ScheduleActivityTask"|"RequestCancelActivityTask"|"CompleteWorkflowExecution"|"FailWorkflowExecution"|"CancelWorkflowExecution"|"ContinueAsNewWorkflowExecution"|"RecordMarker"|"StartTimer"|"CancelTimer"|"SignalExternalWorkflowExecution"|"RequestCancelExternalWorkflowExecution"|"StartChildWorkflowExecution"|"ScheduleLambdaFunction",
-      scheduleActivityTaskDecisionAttributes = list(
-        activityType = list(
-          name = "string",
-          version = "string"
-        ),
-        activityId = "string",
-        control = "string",
-        input = "string",
-        scheduleToCloseTimeout = "string",
-        taskList = list(
-          name = "string"
-        ),
-        taskPriority = "string",
-        scheduleToStartTimeout = "string",
-        startToCloseTimeout = "string",
-        heartbeatTimeout = "string"
-      ),
-      requestCancelActivityTaskDecisionAttributes = list(
-        activityId = "string"
-      ),
-      completeWorkflowExecutionDecisionAttributes = list(
-        result = "string"
-      ),
-      failWorkflowExecutionDecisionAttributes = list(
-        reason = "string",
-        details = "string"
-      ),
-      cancelWorkflowExecutionDecisionAttributes = list(
-        details = "string"
-      ),
-      continueAsNewWorkflowExecutionDecisionAttributes = list(
-        input = "string",
-        executionStartToCloseTimeout = "string",
-        taskList = list(
-          name = "string"
-        ),
-        taskPriority = "string",
-        taskStartToCloseTimeout = "string",
-        childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-        tagList = list(
-          "string"
-        ),
-        workflowTypeVersion = "string",
-        lambdaRole = "string"
-      ),
-      recordMarkerDecisionAttributes = list(
-        markerName = "string",
-        details = "string"
-      ),
-      startTimerDecisionAttributes = list(
-        timerId = "string",
-        control = "string",
-        startToFireTimeout = "string"
-      ),
-      cancelTimerDecisionAttributes = list(
-        timerId = "string"
-      ),
-      signalExternalWorkflowExecutionDecisionAttributes = list(
-        workflowId = "string",
-        runId = "string",
-        signalName = "string",
-        input = "string",
-        control = "string"
-      ),
-      requestCancelExternalWorkflowExecutionDecisionAttributes = list(
-        workflowId = "string",
-        runId = "string",
-        control = "string"
-      ),
-      startChildWorkflowExecutionDecisionAttributes = list(
-        workflowType = list(
-          name = "string",
-          version = "string"
-        ),
-        workflowId = "string",
-        control = "string",
-        input = "string",
-        executionStartToCloseTimeout = "string",
-        taskList = list(
-          name = "string"
-        ),
-        taskPriority = "string",
-        taskStartToCloseTimeout = "string",
-        childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-        tagList = list(
-          "string"
-        ),
-        lambdaRole = "string"
-      ),
-      scheduleLambdaFunctionDecisionAttributes = list(
-        id = "string",
-        name = "string",
-        control = "string",
-        input = "string",
-        startToCloseTimeout = "string"
-      )
-    )
-  ),
-  executionContext = "string"
-)
-}
-}
-
 \keyword{internal}

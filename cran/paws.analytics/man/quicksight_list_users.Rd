@@ -5,11 +5,17 @@
 \title{Returns a list of all of the Amazon QuickSight users belonging to this
 account}
 \usage{
-quicksight_list_users(AwsAccountId, NextToken, MaxResults, Namespace)
+quicksight_list_users(
+  AwsAccountId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  Namespace
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account that the user is in. Currently, you use the
-ID for the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the user is in.
+Currently, you use the ID for the Amazon Web Services account that
+contains your Amazon QuickSight account.}
 
 \item{NextToken}{A pagination token that can be used in a subsequent request.}
 
@@ -17,38 +23,9 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserList = list(
-    list(
-      Arn = "string",
-      UserName = "string",
-      Email = "string",
-      Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-      IdentityType = "IAM"|"QUICKSIGHT",
-      Active = TRUE|FALSE,
-      PrincipalId = "string",
-      CustomPermissionsName = "string"
-    )
-  ),
-  NextToken = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-Returns a list of all of the Amazon QuickSight users belonging to this
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_users(
-  AwsAccountId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  Namespace = "string"
-)
-}
-}
+Returns a list of all of the Amazon QuickSight users belonging to this account.
 
+See \url{https://paws-r.github.io/docs/quicksight/list_users.html} for full documentation.
+}
 \keyword{internal}

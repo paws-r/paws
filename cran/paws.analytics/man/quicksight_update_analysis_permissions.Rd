@@ -4,13 +4,17 @@
 \alias{quicksight_update_analysis_permissions}
 \title{Updates the read and write permissions for an analysis}
 \usage{
-quicksight_update_analysis_permissions(AwsAccountId, AnalysisId,
-  GrantPermissions, RevokePermissions)
+quicksight_update_analysis_permissions(
+  AwsAccountId,
+  AnalysisId,
+  GrantPermissions = NULL,
+  RevokePermissions = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the analysis whose permissions
-you're updating. You must be using the AWS account that the analysis is
-in.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the analysis
+whose permissions you're updating. You must be using the Amazon Web
+Services account that the analysis is in.}
 
 \item{AnalysisId}{[required] The ID of the analysis whose permissions you're updating. The ID is part
 of the analysis URL.}
@@ -21,48 +25,9 @@ add them to.}
 \item{RevokePermissions}{A structure that describes the permissions to remove and the principal
 to remove them from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AnalysisArn = "string",
-  AnalysisId = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Updates the read and write permissions for an analysis.
-}
-\section{Request syntax}{
-\preformatted{svc$update_analysis_permissions(
-  AwsAccountId = "string",
-  AnalysisId = "string",
-  GrantPermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RevokePermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_analysis_permissions.html} for full documentation.
+}
 \keyword{internal}

@@ -11,30 +11,9 @@ workspaces_deregister_workspace_directory(DirectoryId)
 this directory, you must remove them before you deregister the
 directory, or you will receive an OperationNotSupportedException error.}
 }
-\value{
-An empty list.
-}
 \description{
-Deregisters the specified directory. This operation is asynchronous and
-returns before the WorkSpace directory is deregistered. If any
-WorkSpaces are registered to this directory, you must remove them before
-you can deregister the directory.
+Deregisters the specified directory. This operation is asynchronous and returns before the WorkSpace directory is deregistered. If any WorkSpaces are registered to this directory, you must remove them before you can deregister the directory.
 
-Simple AD and AD Connector are made available to you free of charge to
-use with WorkSpaces. If there are no WorkSpaces being used with your
-Simple AD or AD Connector directory for 30 consecutive days, this
-directory will be automatically deregistered for use with Amazon
-WorkSpaces, and you will be charged for this directory as per the \href{https://aws.amazon.com/directoryservice/pricing/}{AWS Directory Services pricing terms}.
-
-To delete empty directories, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/delete-workspaces-directory.html}{Delete the Directory for Your WorkSpaces}.
-If you delete your Simple AD or AD Connector directory, you can always
-create a new one when you want to start using WorkSpaces again.
+See \url{https://paws-r.github.io/docs/workspaces/deregister_workspace_directory.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$deregister_workspace_directory(
-  DirectoryId = "string"
-)
-}
-}
-
 \keyword{internal}

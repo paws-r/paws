@@ -4,68 +4,16 @@
 \alias{apigateway_update_domain_name}
 \title{Changes information about the DomainName resource}
 \usage{
-apigateway_update_domain_name(domainName, patchOperations)
+apigateway_update_domain_name(domainName, patchOperations = NULL)
 }
 \arguments{
-\item{domainName}{[required] [Required] The name of the DomainName resource to be changed.}
+\item{domainName}{[required] The name of the DomainName resource to be changed.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  domainName = "string",
-  certificateName = "string",
-  certificateArn = "string",
-  certificateUploadDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  regionalDomainName = "string",
-  regionalHostedZoneId = "string",
-  regionalCertificateName = "string",
-  regionalCertificateArn = "string",
-  distributionDomainName = "string",
-  distributionHostedZoneId = "string",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    ),
-    vpcEndpointIds = list(
-      "string"
-    )
-  ),
-  domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
-  domainNameStatusMessage = "string",
-  securityPolicy = "TLS_1_0"|"TLS_1_2",
-  tags = list(
-    "string"
-  ),
-  mutualTlsAuthentication = list(
-    truststoreUri = "string",
-    truststoreVersion = "string",
-    truststoreWarnings = list(
-      "string"
-    )
-  )
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Changes information about the DomainName resource.
-}
-\section{Request syntax}{
-\preformatted{svc$update_domain_name(
-  domainName = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_domain_name.html} for full documentation.
+}
 \keyword{internal}

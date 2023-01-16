@@ -5,7 +5,11 @@
 \title{Retrieves a list that describes one or more specified users in the user
 pool}
 \usage{
-appstream_describe_users(AuthenticationType, MaxResults, NextToken)
+appstream_describe_users(
+  AuthenticationType,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AuthenticationType}{[required] The authentication type for the users in the user pool to describe. You
@@ -16,37 +20,9 @@ must specify USERPOOL.}
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Users = list(
-    list(
-      Arn = "string",
-      UserName = "string",
-      Enabled = TRUE|FALSE,
-      Status = "string",
-      FirstName = "string",
-      LastName = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      AuthenticationType = "API"|"SAML"|"USERPOOL"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list that describes one or more specified users in the user
-pool.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_users(
-  AuthenticationType = "API"|"SAML"|"USERPOOL",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Retrieves a list that describes one or more specified users in the user pool.
 
+See \url{https://paws-r.github.io/docs/appstream/describe_users.html} for full documentation.
+}
 \keyword{internal}

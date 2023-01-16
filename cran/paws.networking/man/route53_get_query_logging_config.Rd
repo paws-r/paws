@@ -10,28 +10,9 @@ route53_get_query_logging_config(Id)
 \item{Id}{[required] The ID of the configuration for DNS query logging that you want to get
 information about.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  QueryLoggingConfig = list(
-    Id = "string",
-    HostedZoneId = "string",
-    CloudWatchLogsLogGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Gets information about a specified configuration for DNS query logging.
 
-For more information about DNS query logs, see
-\code{\link[=route53_create_query_logging_config]{create_query_logging_config}} and
-\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}.
+See \url{https://paws-r.github.io/docs/route53/get_query_logging_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_query_logging_config(
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

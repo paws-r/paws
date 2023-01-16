@@ -5,58 +5,16 @@
 \title{Associates a hosted connection and its virtual interfaces with a link
 aggregation group (LAG) or interconnect}
 \usage{
-directconnect_associate_hosted_connection(connectionId,
-  parentConnectionId)
+directconnect_associate_hosted_connection(connectionId, parentConnectionId)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the hosted connection.}
 
 \item{parentConnectionId}{[required] The ID of the interconnect or the LAG.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ownerAccount = "string",
-  connectionId = "string",
-  connectionName = "string",
-  connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-  region = "string",
-  location = "string",
-  bandwidth = "string",
-  vlan = 123,
-  partnerName = "string",
-  loaIssueTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  lagId = "string",
-  awsDevice = "string",
-  jumboFrameCapable = TRUE|FALSE,
-  awsDeviceV2 = "string",
-  hasLogicalRedundancy = "unknown"|"yes"|"no",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
-}
 \description{
-Associates a hosted connection and its virtual interfaces with a link
-aggregation group (LAG) or interconnect. If the target interconnect or
-LAG has an existing hosted connection with a conflicting VLAN number or
-IP address, the operation fails. This action temporarily interrupts the
-hosted connection's connectivity to AWS as it is being migrated.
+Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect. If the target interconnect or LAG has an existing hosted connection with a conflicting VLAN number or IP address, the operation fails. This action temporarily interrupts the hosted connection's connectivity to Amazon Web Services as it is being migrated.
 
-Intended for use by AWS Direct Connect Partners only.
+See \url{https://paws-r.github.io/docs/directconnect/associate_hosted_connection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_hosted_connection(
-  connectionId = "string",
-  parentConnectionId = "string"
-)
-}
-}
-
 \keyword{internal}

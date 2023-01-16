@@ -8,55 +8,11 @@ URL that can be called}
 apigateway_get_domain_name(domainName)
 }
 \arguments{
-\item{domainName}{[required] [Required] The name of the DomainName resource.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  domainName = "string",
-  certificateName = "string",
-  certificateArn = "string",
-  certificateUploadDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  regionalDomainName = "string",
-  regionalHostedZoneId = "string",
-  regionalCertificateName = "string",
-  regionalCertificateArn = "string",
-  distributionDomainName = "string",
-  distributionHostedZoneId = "string",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    ),
-    vpcEndpointIds = list(
-      "string"
-    )
-  ),
-  domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
-  domainNameStatusMessage = "string",
-  securityPolicy = "TLS_1_0"|"TLS_1_2",
-  tags = list(
-    "string"
-  ),
-  mutualTlsAuthentication = list(
-    truststoreUri = "string",
-    truststoreVersion = "string",
-    truststoreWarnings = list(
-      "string"
-    )
-  )
-)
-}
+\item{domainName}{[required] The name of the DomainName resource.}
 }
 \description{
-Represents a domain name that is contained in a simpler, more intuitive
-URL that can be called.
-}
-\section{Request syntax}{
-\preformatted{svc$get_domain_name(
-  domainName = "string"
-)
-}
-}
+Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
 
+See \url{https://paws-r.github.io/docs/apigateway/get_domain_name.html} for full documentation.
+}
 \keyword{internal}

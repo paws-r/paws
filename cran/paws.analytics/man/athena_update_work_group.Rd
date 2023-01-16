@@ -4,8 +4,12 @@
 \alias{athena_update_work_group}
 \title{Updates the workgroup with the specified name}
 \usage{
-athena_update_work_group(WorkGroup, Description, ConfigurationUpdates,
-  State)
+athena_update_work_group(
+  WorkGroup,
+  Description = NULL,
+  ConfigurationUpdates = NULL,
+  State = NULL
+)
 }
 \arguments{
 \item{WorkGroup}{[required] The specified workgroup that will be updated.}
@@ -17,36 +21,9 @@ workgroup.}
 
 \item{State}{The workgroup state that will be updated for the given workgroup.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the workgroup with the specified name. The workgroup's name
-cannot be changed.
-}
-\section{Request syntax}{
-\preformatted{svc$update_work_group(
-  WorkGroup = "string",
-  Description = "string",
-  ConfigurationUpdates = list(
-    EnforceWorkGroupConfiguration = TRUE|FALSE,
-    ResultConfigurationUpdates = list(
-      OutputLocation = "string",
-      RemoveOutputLocation = TRUE|FALSE,
-      EncryptionConfiguration = list(
-        EncryptionOption = "SSE_S3"|"SSE_KMS"|"CSE_KMS",
-        KmsKey = "string"
-      ),
-      RemoveEncryptionConfiguration = TRUE|FALSE
-    ),
-    PublishCloudWatchMetricsEnabled = TRUE|FALSE,
-    BytesScannedCutoffPerQuery = 123,
-    RemoveBytesScannedCutoffPerQuery = TRUE|FALSE,
-    RequesterPaysEnabled = TRUE|FALSE
-  ),
-  State = "ENABLED"|"DISABLED"
-)
-}
-}
+Updates the workgroup with the specified name. The workgroup's name cannot be changed.
 
+See \url{https://paws-r.github.io/docs/athena/update_work_group.html} for full documentation.
+}
 \keyword{internal}

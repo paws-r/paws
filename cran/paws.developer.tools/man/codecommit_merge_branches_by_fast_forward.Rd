@@ -4,8 +4,12 @@
 \alias{codecommit_merge_branches_by_fast_forward}
 \title{Merges two branches using the fast-forward merge strategy}
 \usage{
-codecommit_merge_branches_by_fast_forward(repositoryName,
-  sourceCommitSpecifier, destinationCommitSpecifier, targetBranch)
+codecommit_merge_branches_by_fast_forward(
+  repositoryName,
+  sourceCommitSpecifier,
+  destinationCommitSpecifier,
+  targetBranch = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you want to merge two branches.}
@@ -18,24 +22,9 @@ identify a commit (for example, a branch name or a full commit ID).}
 
 \item{targetBranch}{The branch where the merge is applied.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commitId = "string",
-  treeId = "string"
-)
-}
-}
 \description{
 Merges two branches using the fast-forward merge strategy.
-}
-\section{Request syntax}{
-\preformatted{svc$merge_branches_by_fast_forward(
-  repositoryName = "string",
-  sourceCommitSpecifier = "string",
-  destinationCommitSpecifier = "string",
-  targetBranch = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/merge_branches_by_fast_forward.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,7 @@
 \title{Deletes the association between an Amazon Lex bot and a messaging
 platform}
 \usage{
-lexmodelbuildingservice_delete_bot_channel_association(name, botName,
-  botAlias)
+lexmodelbuildingservice_delete_bot_channel_association(name, botName, botAlias)
 }
 \arguments{
 \item{name}{[required] The name of the association. The name is case sensitive.}
@@ -16,23 +15,9 @@ lexmodelbuildingservice_delete_bot_channel_association(name, botName,
 \item{botAlias}{[required] An alias that points to the specific version of the Amazon Lex bot to
 which this association is being made.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the association between an Amazon Lex bot and a messaging
-platform.
+Deletes the association between an Amazon Lex bot and a messaging platform.
 
-This operation requires permission for the
-\code{lex:DeleteBotChannelAssociation} action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_channel_association.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_bot_channel_association(
-  name = "string",
-  botName = "string",
-  botAlias = "string"
-)
-}
-}
-
 \keyword{internal}

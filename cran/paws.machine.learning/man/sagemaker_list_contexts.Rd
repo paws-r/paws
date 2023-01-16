@@ -4,8 +4,16 @@
 \alias{sagemaker_list_contexts}
 \title{Lists the contexts in your account and their properties}
 \usage{
-sagemaker_list_contexts(SourceUri, ContextType, CreatedAfter,
-  CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
+sagemaker_list_contexts(
+  SourceUri = NULL,
+  ContextType = NULL,
+  CreatedAfter = NULL,
+  CreatedBefore = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SourceUri}{A filter that returns only contexts with the specified source URI.}
@@ -29,49 +37,9 @@ getting the next set of contexts.}
 \item{MaxResults}{The maximum number of contexts to return in the response. The default
 value is 10.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContextSummaries = list(
-    list(
-      ContextArn = "string",
-      ContextName = "string",
-      Source = list(
-        SourceUri = "string",
-        SourceType = "string",
-        SourceId = "string"
-      ),
-      ContextType = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the contexts in your account and their properties.
-}
-\section{Request syntax}{
-\preformatted{svc$list_contexts(
-  SourceUri = "string",
-  ContextType = "string",
-  CreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_contexts.html} for full documentation.
+}
 \keyword{internal}

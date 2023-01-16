@@ -4,14 +4,36 @@
 \alias{elasticache_create_cache_cluster}
 \title{Creates a cluster}
 \usage{
-elasticache_create_cache_cluster(CacheClusterId, ReplicationGroupId,
-  AZMode, PreferredAvailabilityZone, PreferredAvailabilityZones,
-  NumCacheNodes, CacheNodeType, Engine, EngineVersion,
-  CacheParameterGroupName, CacheSubnetGroupName, CacheSecurityGroupNames,
-  SecurityGroupIds, Tags, SnapshotArns, SnapshotName,
-  PreferredMaintenanceWindow, Port, NotificationTopicArn,
-  AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
-  AuthToken, OutpostMode, PreferredOutpostArn, PreferredOutpostArns)
+elasticache_create_cache_cluster(
+  CacheClusterId,
+  ReplicationGroupId = NULL,
+  AZMode = NULL,
+  PreferredAvailabilityZone = NULL,
+  PreferredAvailabilityZones = NULL,
+  NumCacheNodes = NULL,
+  CacheNodeType = NULL,
+  Engine = NULL,
+  EngineVersion = NULL,
+  CacheParameterGroupName = NULL,
+  CacheSubnetGroupName = NULL,
+  CacheSecurityGroupNames = NULL,
+  SecurityGroupIds = NULL,
+  Tags = NULL,
+  SnapshotArns = NULL,
+  SnapshotName = NULL,
+  PreferredMaintenanceWindow = NULL,
+  Port = NULL,
+  NotificationTopicArn = NULL,
+  AutoMinorVersionUpgrade = NULL,
+  SnapshotRetentionLimit = NULL,
+  SnapshotWindow = NULL,
+  AuthToken = NULL,
+  OutpostMode = NULL,
+  PreferredOutpostArn = NULL,
+  PreferredOutpostArns = NULL,
+  LogDeliveryConfigurations = NULL,
+  TransitEncryptionEnabled = NULL
+)
 }
 \arguments{
 \item{CacheClusterId}{[required] The node group (shard) identifier. This parameter is stored as a
@@ -74,9 +96,9 @@ Default: System chosen Availability Zones.}
 \item{NumCacheNodes}{The initial number of cache nodes that the cluster has.
 
 For clusters running Redis, this value must be 1. For clusters running
-Memcached, this value must be between 1 and 20.
+Memcached, this value must be between 1 and 40.
 
-If you need more than 20 nodes for your Memcached cluster, please fill
+If you need more than 40 nodes for your Memcached cluster, please fill
 out the ElastiCache Limit Increase Request form at
 http://aws.amazon.com/contact-us/elasticache-node-limit-request/.}
 
@@ -92,15 +114,12 @@ previous generation counterparts.
 \item Current generation:
 
 \strong{M6g node types} (available only for Redis engine version
-5.0.6 onward and for Memcached engine version 1.5.16 onward).
-
+5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.m6g.large}, \code{cache.m6g.xlarge}, \code{cache.m6g.2xlarge},
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
 \code{cache.m6g.16xlarge}
 
-At this time, M6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{M5 node types:} \code{cache.m5.large}, \code{cache.m5.xlarge},
 \code{cache.m5.2xlarge}, \code{cache.m5.4xlarge}, \code{cache.m5.12xlarge},
@@ -109,12 +128,18 @@ eu-west-1 and ap-northeast-1.
 \strong{M4 node types:} \code{cache.m4.large}, \code{cache.m4.xlarge},
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
 
+\strong{T4g node types} (available only for Redis engine version
+5.0.6 onward and Memcached engine version 1.5.16 onward):
+\code{cache.t4g.micro}, \code{cache.t4g.small}, \code{cache.t4g.medium}
+
 \strong{T3 node types:} \code{cache.t3.micro}, \code{cache.t3.small},
 \code{cache.t3.medium}
 
 \strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
 \code{cache.t2.medium}
-\item Previous generation: (not recommended)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{T1 node types:} \code{cache.t1.micro}
 
@@ -126,7 +151,9 @@ eu-west-1 and ap-northeast-1.
 }
 \item Compute optimized:
 \itemize{
-\item Previous generation: (not recommended)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{C1 node types:} \code{cache.c1.xlarge}
 }
@@ -141,9 +168,7 @@ eu-west-1 and ap-northeast-1.
 \code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
 \code{cache.r6g.16xlarge}
 
-At this time, R6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{R5 node types:} \code{cache.r5.large}, \code{cache.r5.xlarge},
 \code{cache.r5.2xlarge}, \code{cache.r5.4xlarge}, \code{cache.r5.12xlarge},
@@ -152,7 +177,9 @@ eu-west-1 and ap-northeast-1.
 \strong{R4 node types:} \code{cache.r4.large}, \code{cache.r4.xlarge},
 \code{cache.r4.2xlarge}, \code{cache.r4.4xlarge}, \code{cache.r4.8xlarge},
 \code{cache.r4.16xlarge}
-\item Previous generation: (not recommended)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{M2 node types:} \code{cache.m2.xlarge}, \code{cache.m2.2xlarge},
 \code{cache.m2.4xlarge}
@@ -211,7 +238,7 @@ Amazon Virtual Private Cloud (Amazon VPC).}
 Use this parameter only when you are creating a cluster in an Amazon
 Virtual Private Cloud (Amazon VPC).}
 
-\item{Tags}{A list of cost allocation tags to be added to this resource.}
+\item{Tags}{A list of tags to be added to this resource.}
 
 \item{SnapshotArns}{A single-element string list containing an Amazon Resource Name (ARN)
 that uniquely identifies a Redis RDB snapshot file stored in Amazon S3.
@@ -231,25 +258,7 @@ This parameter is only valid if the \code{Engine} parameter is \code{redis}.}
 \item{PreferredMaintenanceWindow}{Specifies the weekly time range during which maintenance on the cluster
 is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-is a 60 minute period. Valid values for \code{ddd} are:
-
-Specifies the weekly time range during which maintenance on the cluster
-is performed. It is specified as a range in the format
-ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-is a 60 minute period.
-
-Valid values for \code{ddd} are:
-\itemize{
-\item \code{sun}
-\item \code{mon}
-\item \code{tue}
-\item \code{wed}
-\item \code{thu}
-\item \code{fri}
-\item \code{sat}
-}
-
-Example: \code{sun:23:00-mon:01:30}}
+is a 60 minute period.}
 
 \item{Port}{The port number on which each of the cache nodes accepts connections.}
 
@@ -258,7 +267,9 @@ Example: \code{sun:23:00-mon:01:30}}
 
 The Amazon SNS topic owner must be the same as the cluster owner.}
 
-\item{AutoMinorVersionUpgrade}{This parameter is currently disabled.}
+\item{AutoMinorVersionUpgrade}{If you are running Redis engine version 6.0 or later, set this
+parameter to yes if you want to opt-in to the next auto minor version
+upgrade campaign. This parameter is disabled for previous versions.}
 
 \item{SnapshotRetentionLimit}{The number of days for which ElastiCache retains automatic snapshots
 before deleting them. For example, if you set \code{SnapshotRetentionLimit}
@@ -288,12 +299,12 @@ Password constraints:
 \item Must be only printable ASCII characters.
 \item Must be at least 16 characters and no more than 128 characters in
 length.
-\item The only permitted printable special characters are !, &, #, $, ^,
-<, >, and -. Other printable special characters cannot be used
-in the AUTH token.
+\item The only permitted printable special characters are !, &, \#, $, ^,
+\<, \>, and -. Other printable special characters cannot be used in
+the AUTH token.
 }
 
-For more information, see AUTH password at
+For more information, see \href{https://redis.io/commands/auth/}{AUTH password} at
 http://redis.io/commands/AUTH.}
 
 \item{OutpostMode}{Specifies whether the nodes in the cluster are created in a single
@@ -302,144 +313,20 @@ outpost or across multiple outposts.}
 \item{PreferredOutpostArn}{The outpost ARN in which the cache cluster is created.}
 
 \item{PreferredOutpostArns}{The outpost ARNs in which the cache cluster is created.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CacheCluster = list(
-    CacheClusterId = "string",
-    ConfigurationEndpoint = list(
-      Address = "string",
-      Port = 123
-    ),
-    ClientDownloadLandingPage = "string",
-    CacheNodeType = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    CacheClusterStatus = "string",
-    NumCacheNodes = 123,
-    PreferredAvailabilityZone = "string",
-    PreferredOutpostArn = "string",
-    CacheClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      NumCacheNodes = 123,
-      CacheNodeIdsToRemove = list(
-        "string"
-      ),
-      EngineVersion = "string",
-      CacheNodeType = "string",
-      AuthTokenStatus = "SETTING"|"ROTATING"
-    ),
-    NotificationConfiguration = list(
-      TopicArn = "string",
-      TopicStatus = "string"
-    ),
-    CacheSecurityGroups = list(
-      list(
-        CacheSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    CacheParameterGroup = list(
-      CacheParameterGroupName = "string",
-      ParameterApplyStatus = "string",
-      CacheNodeIdsToReboot = list(
-        "string"
-      )
-    ),
-    CacheSubnetGroupName = "string",
-    CacheNodes = list(
-      list(
-        CacheNodeId = "string",
-        CacheNodeStatus = "string",
-        CacheNodeCreateTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        Endpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        ParameterGroupStatus = "string",
-        SourceCacheNodeId = "string",
-        CustomerAvailabilityZone = "string",
-        CustomerOutpostArn = "string"
-      )
-    ),
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    SecurityGroups = list(
-      list(
-        SecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    ReplicationGroupId = "string",
-    SnapshotRetentionLimit = 123,
-    SnapshotWindow = "string",
-    AuthTokenEnabled = TRUE|FALSE,
-    AuthTokenLastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    ARN = "string"
-  )
-)
-}
+
+\item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
+
+\item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to true. You cannot
+modify the value of \code{TransitEncryptionEnabled} after the cluster is
+created. To enable in-transit encryption on a cluster you must set
+\code{TransitEncryptionEnabled} to true when you create a cluster.
+
+\strong{Required:} Only available when creating a cache cluster in an Amazon
+VPC using Memcached version \verb{1.6.12} or later.}
 }
 \description{
-Creates a cluster. All nodes in the cluster run the same
-protocol-compliant cache engine software, either Memcached or Redis.
+Creates a cluster. All nodes in the cluster run the same protocol-compliant cache engine software, either Memcached or Redis.
 
-This operation is not supported for Redis (cluster mode enabled)
-clusters.
+See \url{https://paws-r.github.io/docs/elasticache/create_cache_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_cache_cluster(
-  CacheClusterId = "string",
-  ReplicationGroupId = "string",
-  AZMode = "single-az"|"cross-az",
-  PreferredAvailabilityZone = "string",
-  PreferredAvailabilityZones = list(
-    "string"
-  ),
-  NumCacheNodes = 123,
-  CacheNodeType = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  CacheParameterGroupName = "string",
-  CacheSubnetGroupName = "string",
-  CacheSecurityGroupNames = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  SnapshotArns = list(
-    "string"
-  ),
-  SnapshotName = "string",
-  PreferredMaintenanceWindow = "string",
-  Port = 123,
-  NotificationTopicArn = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  SnapshotRetentionLimit = 123,
-  SnapshotWindow = "string",
-  AuthToken = "string",
-  OutpostMode = "single-outpost"|"cross-outpost",
-  PreferredOutpostArn = "string",
-  PreferredOutpostArns = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

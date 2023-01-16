@@ -4,15 +4,27 @@
 \alias{connect_start_task_contact}
 \title{Initiates a contact flow to start a new task}
 \usage{
-connect_start_task_contact(InstanceId, PreviousContactId, ContactFlowId,
-  Attributes, Name, References, Description, ClientToken)
+connect_start_task_contact(
+  InstanceId,
+  PreviousContactId = NULL,
+  ContactFlowId = NULL,
+  Attributes = NULL,
+  Name,
+  References = NULL,
+  Description = NULL,
+  ClientToken = NULL,
+  ScheduledTime = NULL,
+  TaskTemplateId = NULL,
+  QuickConnectId = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{PreviousContactId}{The identifier of the previous chat, voice, or task contact.}
 
-\item{ContactFlowId}{[required] The identifier of the contact flow for initiating the tasks. To see the
+\item{ContactFlowId}{The identifier of the contact flow for initiating the tasks. To see the
 ContactFlowId in the Amazon Connect console user interface, on the
 navigation menu go to \strong{Routing}, \strong{Contact Flows}. Choose the contact
 flow. On the contact flow page, under the name of the contact flow,
@@ -40,35 +52,18 @@ Control Panel (CCP).}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ContactId = "string"
-)
-}
+
+\item{ScheduledTime}{The timestamp, in Unix Epoch seconds format, at which to start running
+the inbound contact flow. The scheduled time cannot be in the past. It
+must be within up to 6 days in future.}
+
+\item{TaskTemplateId}{A unique identifier for the task template.}
+
+\item{QuickConnectId}{The identifier for the quick connect.}
 }
 \description{
 Initiates a contact flow to start a new task.
-}
-\section{Request syntax}{
-\preformatted{svc$start_task_contact(
-  InstanceId = "string",
-  PreviousContactId = "string",
-  ContactFlowId = "string",
-  Attributes = list(
-    "string"
-  ),
-  Name = "string",
-  References = list(
-    list(
-      Value = "string",
-      Type = "URL"
-    )
-  ),
-  Description = "string",
-  ClientToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/start_task_contact.html} for full documentation.
+}
 \keyword{internal}

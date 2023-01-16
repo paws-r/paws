@@ -11,25 +11,9 @@ worklink_describe_website_certificate_authority(FleetArn, WebsiteCaId)
 
 \item{WebsiteCaId}{[required] A unique identifier for the certificate authority.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Certificate = "string",
-  CreatedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  DisplayName = "string"
-)
-}
-}
 \description{
 Provides information about the certificate authority.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_website_certificate_authority(
-  FleetArn = "string",
-  WebsiteCaId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/describe_website_certificate_authority.html} for full documentation.
+}
 \keyword{internal}

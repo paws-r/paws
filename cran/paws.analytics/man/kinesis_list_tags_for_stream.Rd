@@ -4,7 +4,11 @@
 \alias{kinesis_list_tags_for_stream}
 \title{Lists the tags for the specified Kinesis data stream}
 \usage{
-kinesis_list_tags_for_stream(StreamName, ExclusiveStartTagKey, Limit)
+kinesis_list_tags_for_stream(
+  StreamName,
+  ExclusiveStartTagKey = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream.}
@@ -18,29 +22,9 @@ number of tags associated with the stream, \code{HasMoreTags} is set to
 \code{true}. To list additional tags, set \code{ExclusiveStartTagKey} to the last
 key in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  HasMoreTags = TRUE|FALSE
-)
-}
-}
 \description{
-Lists the tags for the specified Kinesis data stream. This operation has
-a limit of five transactions per second per account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_stream(
-  StreamName = "string",
-  ExclusiveStartTagKey = "string",
-  Limit = 123
-)
-}
-}
+Lists the tags for the specified Kinesis data stream. This operation has a limit of five transactions per second per account.
 
+See \url{https://paws-r.github.io/docs/kinesis/list_tags_for_stream.html} for full documentation.
+}
 \keyword{internal}

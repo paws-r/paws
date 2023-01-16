@@ -4,11 +4,24 @@
 \alias{lexmodelbuildingservice_put_bot}
 \title{Creates an Amazon Lex conversational bot or replaces an existing bot}
 \usage{
-lexmodelbuildingservice_put_bot(name, description, intents,
-  enableModelImprovements, nluIntentConfidenceThreshold,
-  clarificationPrompt, abortStatement, idleSessionTTLInSeconds, voiceId,
-  checksum, processBehavior, locale, childDirected, detectSentiment,
-  createVersion, tags)
+lexmodelbuildingservice_put_bot(
+  name,
+  description = NULL,
+  intents = NULL,
+  enableModelImprovements = NULL,
+  nluIntentConfidenceThreshold = NULL,
+  clarificationPrompt = NULL,
+  abortStatement = NULL,
+  idleSessionTTLInSeconds = NULL,
+  voiceId = NULL,
+  checksum = NULL,
+  processBehavior = NULL,
+  locale,
+  childDirected,
+  detectSentiment = NULL,
+  createVersion = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the bot. The name is \emph{not} case sensitive.}
@@ -216,178 +229,9 @@ a bot, you can't use the \code{\link[=lexmodelbuildingservice_put_bot]{put_bot}}
 operation to update the tags on a bot. To update tags, use the
 \code{\link[=lexmodelbuildingservice_tag_resource]{tag_resource}} operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  description = "string",
-  intents = list(
-    list(
-      intentName = "string",
-      intentVersion = "string"
-    )
-  ),
-  enableModelImprovements = TRUE|FALSE,
-  nluIntentConfidenceThreshold = 123.0,
-  clarificationPrompt = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    maxAttempts = 123,
-    responseCard = "string"
-  ),
-  abortStatement = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    responseCard = "string"
-  ),
-  status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
-  failureReason = "string",
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  idleSessionTTLInSeconds = 123,
-  voiceId = "string",
-  checksum = "string",
-  version = "string",
-  locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-  childDirected = TRUE|FALSE,
-  createVersion = TRUE|FALSE,
-  detectSentiment = TRUE|FALSE,
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates an Amazon Lex conversational bot or replaces an existing bot.
-When you create or update a bot you are only required to specify a name,
-a locale, and whether the bot is directed toward children under age 13.
-You can use this to add intents later, or to remove intents from an
-existing bot. When you create a bot with the minimum information, the
-bot is created or updated but Amazon Lex returns the `` response
-\code{FAILED}. You can build the bot after you add one or more intents. For
-more information about Amazon Lex bots, see how-it-works.
+Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the `` response \code{FAILED}. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see how-it-works.
 
-If you specify the name of an existing bot, the fields in the request
-replace the existing values in the \verb{$LATEST} version of the bot. Amazon
-Lex removes any fields that you don't provide values for in the request,
-except for the \code{idleTTLInSeconds} and \code{privacySettings} fields, which
-are set to their default values. If you don't specify values for
-required fields, Amazon Lex throws an exception.
-
-This operation requires permissions for the \code{lex:PutBot} action. For
-more information, see security-iam.
-}
-\section{Request syntax}{
-\preformatted{svc$put_bot(
-  name = "string",
-  description = "string",
-  intents = list(
-    list(
-      intentName = "string",
-      intentVersion = "string"
-    )
-  ),
-  enableModelImprovements = TRUE|FALSE,
-  nluIntentConfidenceThreshold = 123.0,
-  clarificationPrompt = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    maxAttempts = 123,
-    responseCard = "string"
-  ),
-  abortStatement = list(
-    messages = list(
-      list(
-        contentType = "PlainText"|"SSML"|"CustomPayload",
-        content = "string",
-        groupNumber = 123
-      )
-    ),
-    responseCard = "string"
-  ),
-  idleSessionTTLInSeconds = 123,
-  voiceId = "string",
-  checksum = "string",
-  processBehavior = "SAVE"|"BUILD",
-  locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-  childDirected = TRUE|FALSE,
-  detectSentiment = TRUE|FALSE,
-  createVersion = TRUE|FALSE,
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example shows how to create a bot for ordering pizzas.
-svc$put_bot(
-  name = "DocOrderPizzaBot",
-  abortStatement = list(
-    messages = list(
-      list(
-        content = "I don't understand. Can you try again?",
-        contentType = "PlainText"
-      ),
-      list(
-        content = "I'm sorry, I don't understand.",
-        contentType = "PlainText"
-      )
-    )
-  ),
-  childDirected = TRUE,
-  clarificationPrompt = list(
-    maxAttempts = 1L,
-    messages = list(
-      list(
-        content = "I'm sorry, I didn't hear that. Can you repeat what you just said?",
-        contentType = "PlainText"
-      ),
-      list(
-        content = "Can you say that again?",
-        contentType = "PlainText"
-      )
-    )
-  ),
-  description = "Orders a pizza from a local pizzeria.",
-  idleSessionTTLInSeconds = 300L,
-  intents = list(
-    list(
-      intentName = "DocOrderPizza",
-      intentVersion = "$LATEST"
-    )
-  ),
-  locale = "en-US",
-  processBehavior = "SAVE"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot.html} for full documentation.
 }
 \keyword{internal}

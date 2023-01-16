@@ -2,14 +2,20 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_get_content_moderation}
 \alias{rekognition_get_content_moderation}
-\title{Gets the unsafe content analysis results for a Amazon Rekognition Video
-analysis started by StartContentModeration}
+\title{Gets the inappropriate, unwanted, or offensive content analysis results
+for a Amazon Rekognition Video analysis started by
+StartContentModeration}
 \usage{
-rekognition_get_content_moderation(JobId, MaxResults, NextToken, SortBy)
+rekognition_get_content_moderation(
+  JobId,
+  MaxResults = NULL,
+  NextToken = NULL,
+  SortBy = NULL
+)
 }
 \arguments{
-\item{JobId}{[required] The identifier for the unsafe content job. Use \code{JobId} to identify the
-job in a subsequent call to
+\item{JobId}{[required] The identifier for the inappropriate, unwanted, or offensive content
+moderation job. Use \code{JobId} to identify the job in a subsequent call to
 \code{\link[=rekognition_get_content_moderation]{get_content_moderation}}.}
 
 \item{MaxResults}{Maximum number of results to return per paginated call. The largest
@@ -19,7 +25,7 @@ a maximum of 1000 results is returned. The default value is 1000.}
 \item{NextToken}{If the previous response was incomplete (because there is more data to
 retrieve), Amazon Rekognition returns a pagination token in the
 response. You can use this pagination token to retrieve the next set of
-unsafe content labels.}
+content moderation labels.}
 
 \item{SortBy}{Sort to use for elements in the \code{ModerationLabelDetections} array. Use
 \code{TIMESTAMP} to sort array elements by the time labels are detected. Use
@@ -27,85 +33,9 @@ unsafe content labels.}
 each label group, the array element are sorted by detection confidence.
 The default sort is by \code{TIMESTAMP}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
-  StatusMessage = "string",
-  VideoMetadata = list(
-    Codec = "string",
-    DurationMillis = 123,
-    Format = "string",
-    FrameRate = 123.0,
-    FrameHeight = 123,
-    FrameWidth = 123
-  ),
-  ModerationLabels = list(
-    list(
-      Timestamp = 123,
-      ModerationLabel = list(
-        Confidence = 123.0,
-        Name = "string",
-        ParentName = "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  ModerationModelVersion = "string"
-)
-}
-}
 \description{
-Gets the unsafe content analysis results for a Amazon Rekognition Video
-analysis started by
-\code{\link[=rekognition_start_content_moderation]{start_content_moderation}}.
+Gets the inappropriate, unwanted, or offensive content analysis results for a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_content_moderation]{start_content_moderation}}. For a list of moderation labels in Amazon Rekognition, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html#moderation-api}{Using the image and video moderation APIs}.
 
-Unsafe content analysis of a video is an asynchronous operation. You
-start analysis by calling
-\code{\link[=rekognition_start_content_moderation]{start_content_moderation}} which
-returns a job identifier (\code{JobId}). When analysis finishes, Amazon
-Rekognition Video publishes a completion status to the Amazon Simple
-Notification Service topic registered in the initial call to
-\code{\link[=rekognition_start_content_moderation]{start_content_moderation}}. To
-get the results of the unsafe content analysis, first check that the
-status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so,
-call \code{\link[=rekognition_get_content_moderation]{get_content_moderation}} and
-pass the job identifier (\code{JobId}) from the initial call to
-\code{\link[=rekognition_start_content_moderation]{start_content_moderation}}.
-
-For more information, see Working with Stored Videos in the Amazon
-Rekognition Devlopers Guide.
-
-\code{\link[=rekognition_get_content_moderation]{get_content_moderation}} returns
-detected unsafe content labels, and the time they are detected, in an
-array, \code{ModerationLabels}, of ContentModerationDetection objects.
-
-By default, the moderated labels are returned sorted by time, in
-milliseconds from the start of the video. You can also sort them by
-moderated label by specifying \code{NAME} for the \code{SortBy} input parameter.
-
-Since video analysis can return a large number of results, use the
-\code{MaxResults} parameter to limit the number of labels returned in a
-single call to
-\code{\link[=rekognition_get_content_moderation]{get_content_moderation}}. If there
-are more results than specified in \code{MaxResults}, the value of
-\code{NextToken} in the operation response contains a pagination token for
-getting the next set of results. To get the next page of results, call
-\code{\link[=rekognition_get_content_moderation]{get_content_moderation}} and
-populate the \code{NextToken} request parameter with the value of \code{NextToken}
-returned from the previous call to
-\code{\link[=rekognition_get_content_moderation]{get_content_moderation}}.
-
-For more information, see Detecting Unsafe Content in the Amazon
-Rekognition Developer Guide.
+See \url{https://paws-r.github.io/docs/rekognition/get_content_moderation.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_content_moderation(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "NAME"|"TIMESTAMP"
-)
-}
-}
-
 \keyword{internal}

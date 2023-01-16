@@ -5,7 +5,10 @@
 \title{Lists the existing custom verification email templates for your account
 in the current AWS Region}
 \usage{
-ses_list_custom_verification_email_templates(NextToken, MaxResults)
+ses_list_custom_verification_email_templates(
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{NextToken}{An array the contains the name and creation time stamp for each template
@@ -16,37 +19,9 @@ This value must be at least 1 and less than or equal to 50. If you do
 not specify a value, or if you specify a value less than 1 or greater
 than 50, the operation will return up to 50 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CustomVerificationEmailTemplates = list(
-    list(
-      TemplateName = "string",
-      FromEmailAddress = "string",
-      TemplateSubject = "string",
-      SuccessRedirectionURL = "string",
-      FailureRedirectionURL = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the existing custom verification email templates for your account
-in the current AWS Region.
+Lists the existing custom verification email templates for your account in the current AWS Region.
 
-For more information about custom verification email templates, see
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}
-in the \emph{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/list_custom_verification_email_templates.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_custom_verification_email_templates(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

@@ -4,12 +4,16 @@
 \alias{quicksight_list_template_aliases}
 \title{Lists all the aliases of a template}
 \usage{
-quicksight_list_template_aliases(AwsAccountId, TemplateId, NextToken,
-  MaxResults)
+quicksight_list_template_aliases(
+  AwsAccountId,
+  TemplateId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template aliases that you're
-listing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the template
+aliases that you're listing.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
@@ -18,32 +22,9 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateAliasList = list(
-    list(
-      AliasName = "string",
-      Arn = "string",
-      TemplateVersionNumber = 123
-    )
-  ),
-  Status = 123,
-  RequestId = "string",
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists all the aliases of a template.
-}
-\section{Request syntax}{
-\preformatted{svc$list_template_aliases(
-  AwsAccountId = "string",
-  TemplateId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/list_template_aliases.html} for full documentation.
+}
 \keyword{internal}

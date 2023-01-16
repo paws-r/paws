@@ -2,11 +2,23 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_create_ml_transform}
 \alias{glue_create_ml_transform}
-\title{Creates an AWS Glue machine learning transform}
+\title{Creates an Glue machine learning transform}
 \usage{
-glue_create_ml_transform(Name, Description, InputRecordTables,
-  Parameters, Role, GlueVersion, MaxCapacity, WorkerType, NumberOfWorkers,
-  Timeout, MaxRetries, Tags, TransformEncryption)
+glue_create_ml_transform(
+  Name,
+  Description = NULL,
+  InputRecordTables,
+  Parameters,
+  Role,
+  GlueVersion = NULL,
+  MaxCapacity = NULL,
+  WorkerType = NULL,
+  NumberOfWorkers = NULL,
+  Timeout = NULL,
+  MaxRetries = NULL,
+  Tags = NULL,
+  TransformEncryption = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The unique name that you give the transform when you create it.}
@@ -14,34 +26,34 @@ glue_create_ml_transform(Name, Description, InputRecordTables,
 \item{Description}{A description of the machine learning transform that is being defined.
 The default is an empty string.}
 
-\item{InputRecordTables}{[required] A list of AWS Glue table definitions used by the transform.}
+\item{InputRecordTables}{[required] A list of Glue table definitions used by the transform.}
 
 \item{Parameters}{[required] The algorithmic parameters that are specific to the transform type used.
 Conditionally dependent on the transform type.}
 
 \item{Role}{[required] The name or Amazon Resource Name (ARN) of the IAM role with the required
-permissions. The required permissions include both AWS Glue service role
-permissions to AWS Glue resources, and Amazon S3 permissions required by
-the transform.
+permissions. The required permissions include both Glue service role
+permissions to Glue resources, and Amazon S3 permissions required by the
+transform.
 \itemize{
-\item This role needs AWS Glue service role permissions to allow access to
-resources in AWS Glue. See \href{https://docs.aws.amazon.com/glue/latest/dg/attach-policy-iam-user.html}{Attach a Policy to IAM Users That Access AWS Glue}.
+\item This role needs Glue service role permissions to allow access to
+resources in Glue. See \href{https://docs.aws.amazon.com/glue/latest/dg/attach-policy-iam-user.html}{Attach a Policy to IAM Users That Access Glue}.
 \item This role needs permission to your Amazon Simple Storage Service
 (Amazon S3) sources, targets, temporary directory, scripts, and any
 libraries used by the task run for this transform.
 }}
 
-\item{GlueVersion}{This value determines which version of AWS Glue this machine learning
+\item{GlueVersion}{This value determines which version of Glue this machine learning
 transform is compatible with. Glue 1.0 is recommended for most
 customers. If the value is not set, the Glue compatibility defaults to
-Glue 0.9. For more information, see \href{https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions}{AWS Glue Versions}
+Glue 0.9. For more information, see \href{https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions}{Glue Versions}
 in the developer guide.}
 
-\item{MaxCapacity}{The number of AWS Glue data processing units (DPUs) that are allocated
-to task runs for this transform. You can allocate from 2 to 100 DPUs;
-the default is 10. A DPU is a relative measure of processing power that
+\item{MaxCapacity}{The number of Glue data processing units (DPUs) that are allocated to
+task runs for this transform. You can allocate from 2 to 100 DPUs; the
+default is 10. A DPU is a relative measure of processing power that
 consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
-information, see the \href{https://aws.amazon.com/glue/pricing/}{AWS Glue pricing page}.
+information, see the \href{https://aws.amazon.com/glue/pricing/}{Glue pricing page}.
 
 \code{MaxCapacity} is a mutually exclusive option with \code{NumberOfWorkers} and
 \code{WorkerType}.
@@ -100,75 +112,16 @@ task run fails.}
 
 \item{Tags}{The tags to use with this machine learning transform. You may use tags
 to limit access to the machine learning transform. For more information
-about tags in AWS Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+about tags in Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{Amazon Web Services Tags in Glue} in
 the developer guide.}
 
 \item{TransformEncryption}{The encryption-at-rest settings of the transform that apply to accessing
 user data. Machine learning transforms can access user data encrypted in
 Amazon S3 using KMS.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransformId = "string"
-)
-}
-}
 \description{
-Creates an AWS Glue machine learning transform. This operation creates
-the transform and all the necessary parameters to train it.
+Creates an Glue machine learning transform. This operation creates the transform and all the necessary parameters to train it.
 
-Call this operation as the first step in the process of using a machine
-learning transform (such as the \code{FindMatches} transform) for
-deduplicating data. You can provide an optional \code{Description}, in
-addition to the parameters that you want to use for your algorithm.
-
-You must also specify certain parameters for the tasks that AWS Glue
-runs on your behalf as part of learning from your data and creating a
-high-quality machine learning transform. These parameters include
-\code{Role}, and optionally, \code{AllocatedCapacity}, \code{Timeout}, and
-\code{MaxRetries}. For more information, see
-\href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html}{Jobs}.
+See \url{https://paws-r.github.io/docs/glue/create_ml_transform.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_ml_transform(
-  Name = "string",
-  Description = "string",
-  InputRecordTables = list(
-    list(
-      DatabaseName = "string",
-      TableName = "string",
-      CatalogId = "string",
-      ConnectionName = "string"
-    )
-  ),
-  Parameters = list(
-    TransformType = "FIND_MATCHES",
-    FindMatchesParameters = list(
-      PrimaryKeyColumnName = "string",
-      PrecisionRecallTradeoff = 123.0,
-      AccuracyCostTradeoff = 123.0,
-      EnforceProvidedLabels = TRUE|FALSE
-    )
-  ),
-  Role = "string",
-  GlueVersion = "string",
-  MaxCapacity = 123.0,
-  WorkerType = "Standard"|"G.1X"|"G.2X",
-  NumberOfWorkers = 123,
-  Timeout = 123,
-  MaxRetries = 123,
-  Tags = list(
-    "string"
-  ),
-  TransformEncryption = list(
-    MlUserDataEncryption = list(
-      MlUserDataEncryptionMode = "DISABLED"|"SSE-KMS",
-      KmsKeyId = "string"
-    ),
-    TaskRunSecurityConfigurationName = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

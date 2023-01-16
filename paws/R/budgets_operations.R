@@ -24,7 +24,7 @@ NULL
 #' have up to five notifications, and each notification can have one SNS
 #' subscriber and up to 10 email subscribers. If you include notifications
 #' and subscribers in your [`create_budget`][budgets_create_budget] call,
-#' AWS creates the notifications and subscribers for you.
+#' Amazon Web Services creates the notifications and subscribers for you.
 #'
 #' @return
 #' An empty list.
@@ -85,6 +85,16 @@ NULL
 #'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     AutoAdjustData = list(
+#'       AutoAdjustType = "HISTORICAL"|"FORECAST",
+#'       HistoricalOptions = list(
+#'         BudgetAdjustmentPeriod = 123,
+#'         LookBackAvailablePeriods = 123
+#'       ),
+#'       LastAutoAdjustTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   NotificationsWithSubscribers = list(
@@ -241,8 +251,8 @@ budgets_create_budget_action <- function(AccountId, BudgetName, NotificationType
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to
 #' create a notification for.
-#' @param BudgetName &#91;required&#93; The name of the budget that you want AWS to notify you about. Budget
-#' names must be unique within an account.
+#' @param BudgetName &#91;required&#93; The name of the budget that you want Amazon Web Services to notify you
+#' about. Budget names must be unique within an account.
 #' @param Notification &#91;required&#93; The notification that you want to create.
 #' @param Subscribers &#91;required&#93; A list of subscribers that you want to associate with the notification.
 #' Each notification can have one SNS subscriber and up to 10 email
@@ -680,6 +690,16 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     AutoAdjustData = list(
+#'       AutoAdjustType = "HISTORICAL"|"FORECAST",
+#'       HistoricalOptions = list(
+#'         BudgetAdjustmentPeriod = 123,
+#'         LookBackAvailablePeriods = 123
+#'       ),
+#'       LastAutoAdjustTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1128,6 +1148,73 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
 }
 .budgets$operations$describe_budget_actions_for_budget <- budgets_describe_budget_actions_for_budget
 
+#' Lists the budget names and notifications that are associated with an
+#' account
+#'
+#' @description
+#' Lists the budget names and notifications that are associated with an
+#' account.
+#'
+#' @usage
+#' budgets_describe_budget_notifications_for_account(AccountId, MaxResults,
+#'   NextToken)
+#'
+#' @param AccountId &#91;required&#93; 
+#' @param MaxResults An integer that shows how many budget name entries a paginated response
+#' contains.
+#' @param NextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BudgetNotificationsForAccount = list(
+#'     list(
+#'       Notifications = list(
+#'         list(
+#'           NotificationType = "ACTUAL"|"FORECASTED",
+#'           ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+#'           Threshold = 123.0,
+#'           ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'           NotificationState = "OK"|"ALARM"
+#'         )
+#'       ),
+#'       BudgetName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_budget_notifications_for_account(
+#'   AccountId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname budgets_describe_budget_notifications_for_account
+budgets_describe_budget_notifications_for_account <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeBudgetNotificationsForAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .budgets$describe_budget_notifications_for_account_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .budgets$describe_budget_notifications_for_account_output()
+  config <- get_config()
+  svc <- .budgets$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.budgets$operations$describe_budget_notifications_for_account <- budgets_describe_budget_notifications_for_account
+
 #' Describes the history for DAILY, MONTHLY, and QUARTERLY budgets
 #'
 #' @description
@@ -1311,6 +1398,16 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #'       BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
 #'       LastUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       AutoAdjustData = list(
+#'         AutoAdjustType = "HISTORICAL"|"FORECAST",
+#'         HistoricalOptions = list(
+#'           BudgetAdjustmentPeriod = 123,
+#'           LookBackAvailablePeriods = 123
+#'         ),
+#'         LastAutoAdjustTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1540,8 +1637,8 @@ budgets_execute_budget_action <- function(AccountId, BudgetName, ActionId, Execu
 #' @description
 #' Updates a budget. You can change every part of a budget except for the
 #' `budgetName` and the `calculatedSpend`. When you modify a budget, the
-#' `calculatedSpend` drops to zero until AWS has new usage data to use for
-#' forecasting.
+#' `calculatedSpend` drops to zero until Amazon Web Services has new usage
+#' data to use for forecasting.
 #' 
 #' Only one of `BudgetLimit` or `PlannedBudgetLimits` can be present in the
 #' syntax at one time. Use the syntax that matches your case. The Request
@@ -1616,6 +1713,16 @@ budgets_execute_budget_action <- function(AccountId, BudgetName, ActionId, Execu
 #'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     AutoAdjustData = list(
+#'       AutoAdjustType = "HISTORICAL"|"FORECAST",
+#'       HistoricalOptions = list(
+#'         BudgetAdjustmentPeriod = 123,
+#'         LookBackAvailablePeriods = 123
+#'       ),
+#'       LastAutoAdjustTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )

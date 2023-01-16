@@ -9,27 +9,9 @@ sagemaker_describe_subscribed_workteam(WorkteamArn)
 \arguments{
 \item{WorkteamArn}{[required] The Amazon Resource Name (ARN) of the subscribed work team to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SubscribedWorkteam = list(
-    WorkteamArn = "string",
-    MarketplaceTitle = "string",
-    SellerName = "string",
-    MarketplaceDescription = "string",
-    ListingId = "string"
-  )
-)
-}
-}
 \description{
-Gets information about a work team provided by a vendor. It returns
-details about the subscription with a vendor in the AWS Marketplace.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_subscribed_workteam(
-  WorkteamArn = "string"
-)
-}
-}
+Gets information about a work team provided by a vendor. It returns details about the subscription with a vendor in the Amazon Web Services Marketplace.
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_subscribed_workteam.html} for full documentation.
+}
 \keyword{internal}

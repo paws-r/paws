@@ -6,8 +6,7 @@
 length of time data records are accessible after they are added to the
 stream}
 \usage{
-kinesis_decrease_stream_retention_period(StreamName,
-  RetentionPeriodHours)
+kinesis_decrease_stream_retention_period(StreamName, RetentionPeriodHours)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream to modify.}
@@ -15,24 +14,9 @@ kinesis_decrease_stream_retention_period(StreamName,
 \item{RetentionPeriodHours}{[required] The new retention period of the stream, in hours. Must be less than the
 current retention period.}
 }
-\value{
-An empty list.
-}
 \description{
-Decreases the Kinesis data stream's retention period, which is the
-length of time data records are accessible after they are added to the
-stream. The minimum value of a stream's retention period is 24 hours.
+Decreases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream. The minimum value of a stream's retention period is 24 hours.
 
-This operation may result in lost data. For example, if the stream's
-retention period is 48 hours and is decreased to 24 hours, any data
-already in the stream that is older than 24 hours is inaccessible.
+See \url{https://paws-r.github.io/docs/kinesis/decrease_stream_retention_period.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$decrease_stream_retention_period(
-  StreamName = "string",
-  RetentionPeriodHours = 123
-)
-}
-}
-
 \keyword{internal}

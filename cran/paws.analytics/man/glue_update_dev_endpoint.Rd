@@ -4,9 +4,16 @@
 \alias{glue_update_dev_endpoint}
 \title{Updates a specified development endpoint}
 \usage{
-glue_update_dev_endpoint(EndpointName, PublicKey, AddPublicKeys,
-  DeletePublicKeys, CustomLibraries, UpdateEtlLibraries, DeleteArguments,
-  AddArguments)
+glue_update_dev_endpoint(
+  EndpointName,
+  PublicKey = NULL,
+  AddPublicKeys = NULL,
+  DeletePublicKeys = NULL,
+  CustomLibraries = NULL,
+  UpdateEtlLibraries = NULL,
+  DeleteArguments = NULL,
+  AddArguments = NULL
+)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the \code{DevEndpoint} to be updated.}
@@ -31,8 +38,6 @@ to configure the \code{DevEndpoint}.}
 Valid arguments are:
 \itemize{
 \item \code{"--enable-glue-datacatalog": ""}
-\item \code{"GLUE_PYTHON_VERSION": "3"}
-\item \code{"GLUE_PYTHON_VERSION": "2"}
 }
 
 You can specify a version of Python support for development endpoints by
@@ -41,35 +46,9 @@ using the \code{Arguments} parameter in the
 \code{\link[=glue_update_dev_endpoint]{update_dev_endpoint}} APIs. If no arguments
 are provided, the version defaults to Python 2.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a specified development endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$update_dev_endpoint(
-  EndpointName = "string",
-  PublicKey = "string",
-  AddPublicKeys = list(
-    "string"
-  ),
-  DeletePublicKeys = list(
-    "string"
-  ),
-  CustomLibraries = list(
-    ExtraPythonLibsS3Path = "string",
-    ExtraJarsS3Path = "string"
-  ),
-  UpdateEtlLibraries = TRUE|FALSE,
-  DeleteArguments = list(
-    "string"
-  ),
-  AddArguments = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/update_dev_endpoint.html} for full documentation.
+}
 \keyword{internal}

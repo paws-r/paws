@@ -10,38 +10,9 @@ pinpoint_get_application_settings(ApplicationId)
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationSettingsResource = list(
-    ApplicationId = "string",
-    CampaignHook = list(
-      LambdaFunctionName = "string",
-      Mode = "DELIVERY"|"FILTER",
-      WebUrl = "string"
-    ),
-    LastModifiedDate = "string",
-    Limits = list(
-      Daily = 123,
-      MaximumDuration = 123,
-      MessagesPerSecond = 123,
-      Total = 123
-    ),
-    QuietTime = list(
-      End = "string",
-      Start = "string"
-    )
-  )
-)
-}
-}
 \description{
 Retrieves information about the settings for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$get_application_settings(
-  ApplicationId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_application_settings.html} for full documentation.
+}
 \keyword{internal}

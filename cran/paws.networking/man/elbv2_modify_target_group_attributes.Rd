@@ -11,47 +11,9 @@ elbv2_modify_target_group_attributes(TargetGroupArn, Attributes)
 
 \item{Attributes}{[required] The attributes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Modifies the specified attributes of the specified target group.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_target_group_attributes(
-  TargetGroupArn = "string",
-  Attributes = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example sets the deregistration delay timeout to the specified
-# value for the specified target group.
-svc$modify_target_group_attributes(
-  Attributes = list(
-    list(
-      Key = "deregistration_delay.timeout_seconds",
-      Value = "600"
-    )
-  ),
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/modify_target_group_attributes.html} for full documentation.
 }
 \keyword{internal}

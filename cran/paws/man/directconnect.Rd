@@ -7,7 +7,19 @@
 directconnect(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,19 +28,21 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Direct Connect links your internal network to an AWS Direct Connect
-location over a standard Ethernet fiber-optic cable. One end of the
-cable is connected to your router, the other to an AWS Direct Connect
-router. With this connection in place, you can create virtual interfaces
-directly to the AWS cloud (for example, to Amazon EC2 and Amazon S3) and
-to Amazon VPC, bypassing Internet service providers in your network
-path. A connection provides access to all AWS Regions except the China
-(Beijing) and (China) Ningxia Regions. AWS resources in the China
-Regions can only be accessed through locations associated with those
-Regions.
+Direct Connect links your internal network to an Direct Connect location
+over a standard Ethernet fiber-optic cable. One end of the cable is
+connected to your router, the other to an Direct Connect router. With
+this connection in place, you can create virtual interfaces directly to
+the Amazon Web Services Cloud (for example, to Amazon EC2 and Amazon S3)
+and to Amazon VPC, bypassing Internet service providers in your network
+path. A connection provides access to all Amazon Web Services Regions
+except the China (Beijing) and (China) Ningxia Regions. Amazon Web
+Services resources in the China Regions can only be accessed through
+locations associated with those Regions.
 }
 \section{Service syntax}{
-\preformatted{svc <- directconnect(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- directconnect(
   config = list(
     credentials = list(
       creds = list(
@@ -36,74 +50,85 @@ Regions.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=directconnect_accept_direct_connect_gateway_association_proposal]{accept_direct_connect_gateway_association_proposal} \tab Accepts a proposal request to attach a virtual private gateway or transit gateway to a Direct Connect gateway\cr
-\link[=directconnect_allocate_connection_on_interconnect]{allocate_connection_on_interconnect} \tab Deprecated\cr
-\link[=directconnect_allocate_hosted_connection]{allocate_hosted_connection} \tab Creates a hosted connection on the specified interconnect or a link aggregation group (LAG) of interconnects\cr
-\link[=directconnect_allocate_private_virtual_interface]{allocate_private_virtual_interface} \tab Provisions a private virtual interface to be owned by the specified AWS account\cr
-\link[=directconnect_allocate_public_virtual_interface]{allocate_public_virtual_interface} \tab Provisions a public virtual interface to be owned by the specified AWS account\cr
-\link[=directconnect_allocate_transit_virtual_interface]{allocate_transit_virtual_interface} \tab Provisions a transit virtual interface to be owned by the specified AWS account\cr
-\link[=directconnect_associate_connection_with_lag]{associate_connection_with_lag} \tab Associates an existing connection with a link aggregation group (LAG)\cr
-\link[=directconnect_associate_hosted_connection]{associate_hosted_connection} \tab Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect\cr
-\link[=directconnect_associate_virtual_interface]{associate_virtual_interface} \tab Associates a virtual interface with a specified link aggregation group (LAG) or connection\cr
-\link[=directconnect_confirm_connection]{confirm_connection} \tab Confirms the creation of the specified hosted connection on an interconnect\cr
-\link[=directconnect_confirm_private_virtual_interface]{confirm_private_virtual_interface} \tab Accepts ownership of a private virtual interface created by another AWS account\cr
-\link[=directconnect_confirm_public_virtual_interface]{confirm_public_virtual_interface} \tab Accepts ownership of a public virtual interface created by another AWS account\cr
-\link[=directconnect_confirm_transit_virtual_interface]{confirm_transit_virtual_interface} \tab Accepts ownership of a transit virtual interface created by another AWS account\cr
-\link[=directconnect_create_bgp_peer]{create_bgp_peer} \tab Creates a BGP peer on the specified virtual interface\cr
-\link[=directconnect_create_connection]{create_connection} \tab Creates a connection between a customer network and a specific AWS Direct Connect location\cr
-\link[=directconnect_create_direct_connect_gateway]{create_direct_connect_gateway} \tab Creates a Direct Connect gateway, which is an intermediate object that enables you to connect a set of virtual interfaces and virtual private gateways\cr
-\link[=directconnect_create_direct_connect_gateway_association]{create_direct_connect_gateway_association} \tab Creates an association between a Direct Connect gateway and a virtual private gateway\cr
-\link[=directconnect_create_direct_connect_gateway_association_proposal]{create_direct_connect_gateway_association_proposal} \tab Creates a proposal to associate the specified virtual private gateway or transit gateway with the specified Direct Connect gateway\cr
-\link[=directconnect_create_interconnect]{create_interconnect} \tab Creates an interconnect between an AWS Direct Connect Partner's network and a specific AWS Direct Connect location\cr
-\link[=directconnect_create_lag]{create_lag} \tab Creates a link aggregation group (LAG) with the specified number of bundled physical dedicated connections between the customer network and a specific AWS Direct Connect location\cr
-\link[=directconnect_create_private_virtual_interface]{create_private_virtual_interface} \tab Creates a private virtual interface\cr
-\link[=directconnect_create_public_virtual_interface]{create_public_virtual_interface} \tab Creates a public virtual interface\cr
-\link[=directconnect_create_transit_virtual_interface]{create_transit_virtual_interface} \tab Creates a transit virtual interface\cr
-\link[=directconnect_delete_bgp_peer]{delete_bgp_peer} \tab Deletes the specified BGP peer on the specified virtual interface with the specified customer address and ASN\cr
-\link[=directconnect_delete_connection]{delete_connection} \tab Deletes the specified connection\cr
-\link[=directconnect_delete_direct_connect_gateway]{delete_direct_connect_gateway} \tab Deletes the specified Direct Connect gateway\cr
-\link[=directconnect_delete_direct_connect_gateway_association]{delete_direct_connect_gateway_association} \tab Deletes the association between the specified Direct Connect gateway and virtual private gateway\cr
-\link[=directconnect_delete_direct_connect_gateway_association_proposal]{delete_direct_connect_gateway_association_proposal} \tab Deletes the association proposal request between the specified Direct Connect gateway and virtual private gateway or transit gateway\cr
-\link[=directconnect_delete_interconnect]{delete_interconnect} \tab Deletes the specified interconnect\cr
-\link[=directconnect_delete_lag]{delete_lag} \tab Deletes the specified link aggregation group (LAG)\cr
-\link[=directconnect_delete_virtual_interface]{delete_virtual_interface} \tab Deletes a virtual interface\cr
-\link[=directconnect_describe_connection_loa]{describe_connection_loa} \tab Deprecated\cr
-\link[=directconnect_describe_connections]{describe_connections} \tab Displays the specified connection or all connections in this Region\cr
-\link[=directconnect_describe_connections_on_interconnect]{describe_connections_on_interconnect} \tab Deprecated\cr
-\link[=directconnect_describe_direct_connect_gateway_association_proposals]{describe_direct_connect_gateway_association_proposals} \tab Describes one or more association proposals for connection between a virtual private gateway or transit gateway and a Direct Connect gateway\cr
-\link[=directconnect_describe_direct_connect_gateway_associations]{describe_direct_connect_gateway_associations} \tab Lists the associations between your Direct Connect gateways and virtual private gateways\cr
-\link[=directconnect_describe_direct_connect_gateway_attachments]{describe_direct_connect_gateway_attachments} \tab Lists the attachments between your Direct Connect gateways and virtual interfaces\cr
-\link[=directconnect_describe_direct_connect_gateways]{describe_direct_connect_gateways} \tab Lists all your Direct Connect gateways or only the specified Direct Connect gateway\cr
-\link[=directconnect_describe_hosted_connections]{describe_hosted_connections} \tab Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG)\cr
-\link[=directconnect_describe_interconnect_loa]{describe_interconnect_loa} \tab Deprecated\cr
-\link[=directconnect_describe_interconnects]{describe_interconnects} \tab Lists the interconnects owned by the AWS account or only the specified interconnect\cr
-\link[=directconnect_describe_lags]{describe_lags} \tab Describes all your link aggregation groups (LAG) or the specified LAG\cr
-\link[=directconnect_describe_loa]{describe_loa} \tab Gets the LOA-CFA for a connection, interconnect, or link aggregation group (LAG)\cr
-\link[=directconnect_describe_locations]{describe_locations} \tab Lists the AWS Direct Connect locations in the current AWS Region\cr
-\link[=directconnect_describe_tags]{describe_tags} \tab Describes the tags associated with the specified AWS Direct Connect resources\cr
-\link[=directconnect_describe_virtual_gateways]{describe_virtual_gateways} \tab Lists the virtual private gateways owned by the AWS account\cr
-\link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces} \tab Displays all virtual interfaces for an AWS account\cr
-\link[=directconnect_disassociate_connection_from_lag]{disassociate_connection_from_lag} \tab Disassociates a connection from a link aggregation group (LAG)\cr
-\link[=directconnect_list_virtual_interface_test_history]{list_virtual_interface_test_history} \tab Lists the virtual interface failover test history\cr
-\link[=directconnect_start_bgp_failover_test]{start_bgp_failover_test} \tab Starts the virtual interface failover test that verifies your configuration meets your resiliency requirements by placing the BGP peering session in the DOWN state\cr
-\link[=directconnect_stop_bgp_failover_test]{stop_bgp_failover_test} \tab Stops the virtual interface failover test\cr
-\link[=directconnect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified AWS Direct Connect resource\cr
-\link[=directconnect_untag_resource]{untag_resource} \tab Removes one or more tags from the specified AWS Direct Connect resource\cr
-\link[=directconnect_update_direct_connect_gateway_association]{update_direct_connect_gateway_association} \tab Updates the specified attributes of the Direct Connect gateway association\cr
-\link[=directconnect_update_lag]{update_lag} \tab Updates the attributes of the specified link aggregation group (LAG)\cr
-\link[=directconnect_update_virtual_interface_attributes]{update_virtual_interface_attributes} \tab Updates the specified attributes of the specified virtual private interface
+\link[paws.networking:directconnect_accept_direct_connect_gateway_association_proposal]{accept_direct_connect_gateway_association_proposal} \tab Accepts a proposal request to attach a virtual private gateway or transit gateway to a Direct Connect gateway\cr
+\link[paws.networking:directconnect_allocate_connection_on_interconnect]{allocate_connection_on_interconnect} \tab Deprecated\cr
+\link[paws.networking:directconnect_allocate_hosted_connection]{allocate_hosted_connection} \tab Creates a hosted connection on the specified interconnect or a link aggregation group (LAG) of interconnects\cr
+\link[paws.networking:directconnect_allocate_private_virtual_interface]{allocate_private_virtual_interface} \tab Provisions a private virtual interface to be owned by the specified Amazon Web Services account\cr
+\link[paws.networking:directconnect_allocate_public_virtual_interface]{allocate_public_virtual_interface} \tab Provisions a public virtual interface to be owned by the specified Amazon Web Services account\cr
+\link[paws.networking:directconnect_allocate_transit_virtual_interface]{allocate_transit_virtual_interface} \tab Provisions a transit virtual interface to be owned by the specified Amazon Web Services account\cr
+\link[paws.networking:directconnect_associate_connection_with_lag]{associate_connection_with_lag} \tab Associates an existing connection with a link aggregation group (LAG)\cr
+\link[paws.networking:directconnect_associate_hosted_connection]{associate_hosted_connection} \tab Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect\cr
+\link[paws.networking:directconnect_associate_mac_sec_key]{associate_mac_sec_key} \tab Associates a MAC Security (MACsec) Connection Key Name (CKN)/ Connectivity Association Key (CAK) pair with an Direct Connect dedicated connection\cr
+\link[paws.networking:directconnect_associate_virtual_interface]{associate_virtual_interface} \tab Associates a virtual interface with a specified link aggregation group (LAG) or connection\cr
+\link[paws.networking:directconnect_confirm_connection]{confirm_connection} \tab Confirms the creation of the specified hosted connection on an interconnect\cr
+\link[paws.networking:directconnect_confirm_customer_agreement]{confirm_customer_agreement} \tab The confirmation of the terms of agreement when creating the connection/link aggregation group (LAG)\cr
+\link[paws.networking:directconnect_confirm_private_virtual_interface]{confirm_private_virtual_interface} \tab Accepts ownership of a private virtual interface created by another Amazon Web Services account\cr
+\link[paws.networking:directconnect_confirm_public_virtual_interface]{confirm_public_virtual_interface} \tab Accepts ownership of a public virtual interface created by another Amazon Web Services account\cr
+\link[paws.networking:directconnect_confirm_transit_virtual_interface]{confirm_transit_virtual_interface} \tab Accepts ownership of a transit virtual interface created by another Amazon Web Services account\cr
+\link[paws.networking:directconnect_create_bgp_peer]{create_bgp_peer} \tab Creates a BGP peer on the specified virtual interface\cr
+\link[paws.networking:directconnect_create_connection]{create_connection} \tab Creates a connection between a customer network and a specific Direct Connect location\cr
+\link[paws.networking:directconnect_create_direct_connect_gateway]{create_direct_connect_gateway} \tab Creates a Direct Connect gateway, which is an intermediate object that enables you to connect a set of virtual interfaces and virtual private gateways\cr
+\link[paws.networking:directconnect_create_direct_connect_gateway_association]{create_direct_connect_gateway_association} \tab Creates an association between a Direct Connect gateway and a virtual private gateway\cr
+\link[paws.networking:directconnect_create_direct_connect_gateway_association_proposal]{create_direct_connect_gateway_association_proposal} \tab Creates a proposal to associate the specified virtual private gateway or transit gateway with the specified Direct Connect gateway\cr
+\link[paws.networking:directconnect_create_interconnect]{create_interconnect} \tab Creates an interconnect between an Direct Connect Partner's network and a specific Direct Connect location\cr
+\link[paws.networking:directconnect_create_lag]{create_lag} \tab Creates a link aggregation group (LAG) with the specified number of bundled physical dedicated connections between the customer network and a specific Direct Connect location\cr
+\link[paws.networking:directconnect_create_private_virtual_interface]{create_private_virtual_interface} \tab Creates a private virtual interface\cr
+\link[paws.networking:directconnect_create_public_virtual_interface]{create_public_virtual_interface} \tab Creates a public virtual interface\cr
+\link[paws.networking:directconnect_create_transit_virtual_interface]{create_transit_virtual_interface} \tab Creates a transit virtual interface\cr
+\link[paws.networking:directconnect_delete_bgp_peer]{delete_bgp_peer} \tab Deletes the specified BGP peer on the specified virtual interface with the specified customer address and ASN\cr
+\link[paws.networking:directconnect_delete_connection]{delete_connection} \tab Deletes the specified connection\cr
+\link[paws.networking:directconnect_delete_direct_connect_gateway]{delete_direct_connect_gateway} \tab Deletes the specified Direct Connect gateway\cr
+\link[paws.networking:directconnect_delete_direct_connect_gateway_association]{delete_direct_connect_gateway_association} \tab Deletes the association between the specified Direct Connect gateway and virtual private gateway\cr
+\link[paws.networking:directconnect_delete_direct_connect_gateway_association_proposal]{delete_direct_connect_gateway_association_proposal} \tab Deletes the association proposal request between the specified Direct Connect gateway and virtual private gateway or transit gateway\cr
+\link[paws.networking:directconnect_delete_interconnect]{delete_interconnect} \tab Deletes the specified interconnect\cr
+\link[paws.networking:directconnect_delete_lag]{delete_lag} \tab Deletes the specified link aggregation group (LAG)\cr
+\link[paws.networking:directconnect_delete_virtual_interface]{delete_virtual_interface} \tab Deletes a virtual interface\cr
+\link[paws.networking:directconnect_describe_connection_loa]{describe_connection_loa} \tab Deprecated\cr
+\link[paws.networking:directconnect_describe_connections]{describe_connections} \tab Displays the specified connection or all connections in this Region\cr
+\link[paws.networking:directconnect_describe_connections_on_interconnect]{describe_connections_on_interconnect} \tab Deprecated\cr
+\link[paws.networking:directconnect_describe_customer_metadata]{describe_customer_metadata} \tab Get and view a list of customer agreements, along with their signed status and whether the customer is an NNIPartner, NNIPartnerV2, or a nonPartner\cr
+\link[paws.networking:directconnect_describe_direct_connect_gateway_association_proposals]{describe_direct_connect_gateway_association_proposals} \tab Describes one or more association proposals for connection between a virtual private gateway or transit gateway and a Direct Connect gateway\cr
+\link[paws.networking:directconnect_describe_direct_connect_gateway_associations]{describe_direct_connect_gateway_associations} \tab Lists the associations between your Direct Connect gateways and virtual private gateways and transit gateways\cr
+\link[paws.networking:directconnect_describe_direct_connect_gateway_attachments]{describe_direct_connect_gateway_attachments} \tab Lists the attachments between your Direct Connect gateways and virtual interfaces\cr
+\link[paws.networking:directconnect_describe_direct_connect_gateways]{describe_direct_connect_gateways} \tab Lists all your Direct Connect gateways or only the specified Direct Connect gateway\cr
+\link[paws.networking:directconnect_describe_hosted_connections]{describe_hosted_connections} \tab Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG)\cr
+\link[paws.networking:directconnect_describe_interconnect_loa]{describe_interconnect_loa} \tab Deprecated\cr
+\link[paws.networking:directconnect_describe_interconnects]{describe_interconnects} \tab Lists the interconnects owned by the Amazon Web Services account or only the specified interconnect\cr
+\link[paws.networking:directconnect_describe_lags]{describe_lags} \tab Describes all your link aggregation groups (LAG) or the specified LAG\cr
+\link[paws.networking:directconnect_describe_loa]{describe_loa} \tab Gets the LOA-CFA for a connection, interconnect, or link aggregation group (LAG)\cr
+\link[paws.networking:directconnect_describe_locations]{describe_locations} \tab Lists the Direct Connect locations in the current Amazon Web Services Region\cr
+\link[paws.networking:directconnect_describe_router_configuration]{describe_router_configuration} \tab Details about the router\cr
+\link[paws.networking:directconnect_describe_tags]{describe_tags} \tab Describes the tags associated with the specified Direct Connect resources\cr
+\link[paws.networking:directconnect_describe_virtual_gateways]{describe_virtual_gateways} \tab Lists the virtual private gateways owned by the Amazon Web Services account\cr
+\link[paws.networking:directconnect_describe_virtual_interfaces]{describe_virtual_interfaces} \tab Displays all virtual interfaces for an Amazon Web Services account\cr
+\link[paws.networking:directconnect_disassociate_connection_from_lag]{disassociate_connection_from_lag} \tab Disassociates a connection from a link aggregation group (LAG)\cr
+\link[paws.networking:directconnect_disassociate_mac_sec_key]{disassociate_mac_sec_key} \tab Removes the association between a MAC Security (MACsec) security key and an Direct Connect dedicated connection\cr
+\link[paws.networking:directconnect_list_virtual_interface_test_history]{list_virtual_interface_test_history} \tab Lists the virtual interface failover test history\cr
+\link[paws.networking:directconnect_start_bgp_failover_test]{start_bgp_failover_test} \tab Starts the virtual interface failover test that verifies your configuration meets your resiliency requirements by placing the BGP peering session in the DOWN state\cr
+\link[paws.networking:directconnect_stop_bgp_failover_test]{stop_bgp_failover_test} \tab Stops the virtual interface failover test\cr
+\link[paws.networking:directconnect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified Direct Connect resource\cr
+\link[paws.networking:directconnect_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Direct Connect resource\cr
+\link[paws.networking:directconnect_update_connection]{update_connection} \tab Updates the Direct Connect dedicated connection configuration\cr
+\link[paws.networking:directconnect_update_direct_connect_gateway]{update_direct_connect_gateway} \tab Updates the name of a current Direct Connect gateway\cr
+\link[paws.networking:directconnect_update_direct_connect_gateway_association]{update_direct_connect_gateway_association} \tab Updates the specified attributes of the Direct Connect gateway association\cr
+\link[paws.networking:directconnect_update_lag]{update_lag} \tab Updates the attributes of the specified link aggregation group (LAG)\cr
+\link[paws.networking:directconnect_update_virtual_interface_attributes]{update_virtual_interface_attributes} \tab Updates the specified attributes of the specified virtual private interface
 }
 }
 

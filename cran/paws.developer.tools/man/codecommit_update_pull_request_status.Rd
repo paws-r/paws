@@ -14,70 +14,9 @@ codecommit_update_pull_request_status(pullRequestId, pullRequestStatus)
 the status from \code{OPEN} to \code{OPEN}, \code{OPEN} to \code{CLOSED} or from \code{CLOSED} to
 \code{CLOSED}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pullRequest = list(
-    pullRequestId = "string",
-    title = "string",
-    description = "string",
-    lastActivityDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    pullRequestStatus = "OPEN"|"CLOSED",
-    authorArn = "string",
-    pullRequestTargets = list(
-      list(
-        repositoryName = "string",
-        sourceReference = "string",
-        destinationReference = "string",
-        destinationCommit = "string",
-        sourceCommit = "string",
-        mergeBase = "string",
-        mergeMetadata = list(
-          isMerged = TRUE|FALSE,
-          mergedBy = "string",
-          mergeCommitId = "string",
-          mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-        )
-      )
-    ),
-    clientRequestToken = "string",
-    revisionId = "string",
-    approvalRules = list(
-      list(
-        approvalRuleId = "string",
-        approvalRuleName = "string",
-        approvalRuleContent = "string",
-        ruleContentSha256 = "string",
-        lastModifiedDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        creationDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        lastModifiedUser = "string",
-        originApprovalRuleTemplate = list(
-          approvalRuleTemplateId = "string",
-          approvalRuleTemplateName = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Updates the status of a pull request.
-}
-\section{Request syntax}{
-\preformatted{svc$update_pull_request_status(
-  pullRequestId = "string",
-  pullRequestStatus = "OPEN"|"CLOSED"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/update_pull_request_status.html} for full documentation.
+}
 \keyword{internal}

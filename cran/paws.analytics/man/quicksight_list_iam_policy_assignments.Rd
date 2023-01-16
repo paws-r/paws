@@ -4,11 +4,17 @@
 \alias{quicksight_list_iam_policy_assignments}
 \title{Lists IAM policy assignments in the current Amazon QuickSight account}
 \usage{
-quicksight_list_iam_policy_assignments(AwsAccountId, AssignmentStatus,
-  Namespace, NextToken, MaxResults)
+quicksight_list_iam_policy_assignments(
+  AwsAccountId,
+  AssignmentStatus = NULL,
+  Namespace,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains these IAM policy assignments.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains these IAM policy
+assignments.}
 
 \item{AssignmentStatus}{The status of the assignments.}
 
@@ -19,32 +25,9 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IAMPolicyAssignments = list(
-    list(
-      AssignmentName = "string",
-      AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED"
-    )
-  ),
-  NextToken = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Lists IAM policy assignments in the current Amazon QuickSight account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_iam_policy_assignments(
-  AwsAccountId = "string",
-  AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
-  Namespace = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments.html} for full documentation.
+}
 \keyword{internal}

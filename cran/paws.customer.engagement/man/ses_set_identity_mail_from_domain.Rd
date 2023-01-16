@@ -5,8 +5,11 @@
 \title{Enables or disables the custom MAIL FROM domain setup for a verified
 identity (an email address or a domain)}
 \usage{
-ses_set_identity_mail_from_domain(Identity, MailFromDomain,
-  BehaviorOnMXFailure)
+ses_set_identity_mail_from_domain(
+  Identity,
+  MailFromDomain = NULL,
+  BehaviorOnMXFailure = NULL
+)
 }
 \arguments{
 \item{Identity}{[required] The verified identity for which you want to enable or disable the
@@ -16,9 +19,9 @@ specified custom MAIL FROM domain.}
 The MAIL FROM domain must 1) be a subdomain of the verified identity, 2)
 not be used in a "From" address if the MAIL FROM domain is the
 destination of email feedback forwarding (for more information, see the
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html}{Amazon SES Developer Guide}),
-and 3) not be used to receive emails. A value of \code{null} disables the
-custom MAIL FROM setting for the identity.}
+\href{https://docs.aws.amazon.com/ses/latest/dg/mail-from.html}{Amazon SES Developer Guide}), and
+3) not be used to receive emails. A value of \code{null} disables the custom
+MAIL FROM setting for the identity.}
 
 \item{BehaviorOnMXFailure}{The action that you want Amazon SES to take if it cannot successfully
 read the required MX record when you send an email. If you choose
@@ -30,39 +33,9 @@ The action specified in \code{BehaviorOnMXFailure} is taken when the custom
 MAIL FROM domain setup is in the \code{Pending}, \code{Failed}, and
 \code{TemporaryFailure} states.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables or disables the custom MAIL FROM domain setup for a verified
-identity (an email address or a domain).
+Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain).
 
-To send emails using the specified MAIL FROM domain, you must add an MX
-record to your MAIL FROM domain's DNS settings. If you want your emails
-to pass Sender Policy Framework (SPF) checks, you must also add or
-update an SPF record. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$set_identity_mail_from_domain(
-  Identity = "string",
-  MailFromDomain = "string",
-  BehaviorOnMXFailure = "UseDefaultValue"|"RejectMessage"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example configures Amazon SES to use a custom MAIL FROM
-# domain for an identity:
-svc$set_identity_mail_from_domain(
-  BehaviorOnMXFailure = "UseDefaultValue",
-  Identity = "user@example.com",
-  MailFromDomain = "bounces.example.com"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/set_identity_mail_from_domain.html} for full documentation.
 }
 \keyword{internal}

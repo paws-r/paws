@@ -7,17 +7,8 @@ NULL
 #'
 #' @description
 #' Create an ApiKey resource.
-#' 
-#' <div class="seeAlso">
-#' 
-#' [AWS
-#' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html)
-#' 
-#' </div>
 #'
-#' @usage
-#' apigateway_create_api_key(name, description, enabled,
-#'   generateDistinctId, value, stageKeys, customerId, tags)
+#' See [https://paws-r.github.io/docs/apigateway/create_api_key.html](https://paws-r.github.io/docs/apigateway/create_api_key.html) for full documentation.
 #'
 #' @param name The name of the ApiKey.
 #' @param description The description of the ApiKey.
@@ -33,52 +24,6 @@ NULL
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   value = "string",
-#'   name = "string",
-#'   customerId = "string",
-#'   description = "string",
-#'   enabled = TRUE|FALSE,
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   stageKeys = list(
-#'     "string"
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_api_key(
-#'   name = "string",
-#'   description = "string",
-#'   enabled = TRUE|FALSE,
-#'   generateDistinctId = TRUE|FALSE,
-#'   value = "string",
-#'   stageKeys = list(
-#'     list(
-#'       restApiId = "string",
-#'       stageName = "string"
-#'     )
-#'   ),
-#'   customerId = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -104,26 +49,15 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 #'
 #' @description
 #' Adds a new Authorizer resource to an existing RestApi resource.
-#' 
-#' <div class="seeAlso">
-#' 
-#' [AWS
-#' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html)
-#' 
-#' </div>
 #'
-#' @usage
-#' apigateway_create_authorizer(restApiId, name, type, providerARNs,
-#'   authType, authorizerUri, authorizerCredentials, identitySource,
-#'   identityValidationExpression, authorizerResultTtlInSeconds)
+#' See [https://paws-r.github.io/docs/apigateway/create_authorizer.html](https://paws-r.github.io/docs/apigateway/create_authorizer.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param name &#91;required&#93; \[Required\] The name of the authorizer.
-#' @param type &#91;required&#93; \[Required\] The authorizer type. Valid values are `TOKEN` for a Lambda
-#' function using a single authorization token submitted in a custom
-#' header, `REQUEST` for a Lambda function using incoming request
-#' parameters, and `COGNITO_USER_POOLS` for using an Amazon Cognito user
-#' pool.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param name &#91;required&#93; The name of the authorizer.
+#' @param type &#91;required&#93; The authorizer type. Valid values are `TOKEN` for a Lambda function
+#' using a single authorization token submitted in a custom header,
+#' `REQUEST` for a Lambda function using incoming request parameters, and
+#' `COGNITO_USER_POOLS` for using an Amazon Cognito user pool.
 #' @param providerARNs A list of the Amazon Cognito user pool ARNs for the `COGNITO_USER_POOLS`
 #' authorizer. Each element is of this format:
 #' `arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}`. For
@@ -145,28 +79,26 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 #' invoke the authorizer. To specify an IAM role for API Gateway to assume,
 #' use the role's Amazon Resource Name (ARN). To use resource-based
 #' permissions on the Lambda function, specify null.
-#' @param identitySource The identity source for which authorization is requested.
-#' 
-#' -   For a `TOKEN` or `COGNITO_USER_POOLS` authorizer, this is required
-#'     and specifies the request header mapping expression for the custom
-#'     header holding the authorization token submitted by the client. For
-#'     example, if the token header name is `Auth`, the header mapping
-#'     expression is `method.request.header.Auth`.
-#' -   For the `REQUEST` authorizer, this is required when authorization
-#'     caching is enabled. The value is a comma-separated string of one or
-#'     more mapping expressions of the specified request parameters. For
-#'     example, if an `Auth` header, a `Name` query string parameter are
-#'     defined as identity sources, this value is
-#'     `method.request.header.Auth, method.request.querystring.Name`. These
-#'     parameters will be used to derive the authorization caching key and
-#'     to perform runtime validation of the `REQUEST` authorizer by
-#'     verifying all of the identity-related request parameters are
-#'     present, not null and non-empty. Only when this is true does the
-#'     authorizer invoke the authorizer Lambda function, otherwise, it
-#'     returns a 401 Unauthorized response without calling the Lambda
-#'     function. The valid value is a string of comma-separated mapping
-#'     expressions of the specified request parameters. When the
-#'     authorization caching is not enabled, this property is optional.
+#' @param identitySource The identity source for which authorization is requested. For a `TOKEN`
+#' or `COGNITO_USER_POOLS` authorizer, this is required and specifies the
+#' request header mapping expression for the custom header holding the
+#' authorization token submitted by the client. For example, if the token
+#' header name is `Auth`, the header mapping expression is
+#' `method.request.header.Auth`. For the `REQUEST` authorizer, this is
+#' required when authorization caching is enabled. The value is a
+#' comma-separated string of one or more mapping expressions of the
+#' specified request parameters. For example, if an `Auth` header, a `Name`
+#' query string parameter are defined as identity sources, this value is
+#' `method.request.header.Auth, method.request.querystring.Name`. These
+#' parameters will be used to derive the authorization caching key and to
+#' perform runtime validation of the `REQUEST` authorizer by verifying all
+#' of the identity-related request parameters are present, not null and
+#' non-empty. Only when this is true does the authorizer invoke the
+#' authorizer Lambda function, otherwise, it returns a 401 Unauthorized
+#' response without calling the Lambda function. The valid value is a
+#' string of comma-separated mapping expressions of the specified request
+#' parameters. When the authorization caching is not enabled, this property
+#' is optional.
 #' @param identityValidationExpression A validation expression for the incoming identity token. For `TOKEN`
 #' authorizers, this value is a regular expression. For
 #' `COGNITO_USER_POOLS` authorizers, API Gateway will match the `aud` field
@@ -179,43 +111,6 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 #' authorization caching is disabled. If it is greater than 0, API Gateway
 #' will cache authorizer responses. If this field is not set, the default
 #' value is 300. The maximum value is 3600, or 1 hour.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-#'   providerARNs = list(
-#'     "string"
-#'   ),
-#'   authType = "string",
-#'   authorizerUri = "string",
-#'   authorizerCredentials = "string",
-#'   identitySource = "string",
-#'   identityValidationExpression = "string",
-#'   authorizerResultTtlInSeconds = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_authorizer(
-#'   restApiId = "string",
-#'   name = "string",
-#'   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-#'   providerARNs = list(
-#'     "string"
-#'   ),
-#'   authType = "string",
-#'   authorizerUri = "string",
-#'   authorizerCredentials = "string",
-#'   identitySource = "string",
-#'   identityValidationExpression = "string",
-#'   authorizerResultTtlInSeconds = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -242,39 +137,17 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 #' @description
 #' Creates a new BasePathMapping resource.
 #'
-#' @usage
-#' apigateway_create_base_path_mapping(domainName, basePath, restApiId,
-#'   stage)
+#' See [https://paws-r.github.io/docs/apigateway/create_base_path_mapping.html](https://paws-r.github.io/docs/apigateway/create_base_path_mapping.html) for full documentation.
 #'
-#' @param domainName &#91;required&#93; \[Required\] The domain name of the BasePathMapping resource to create.
+#' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to create.
 #' @param basePath The base path name that callers of the API must provide as part of the
 #' URL after the domain name. This value must be unique for all of the
 #' mappings across a single API. Specify '(none)' if you do not want
 #' callers to specify a base path name after the domain name.
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stage The name of the API's stage that you want to use for this mapping.
 #' Specify '(none)' if you want callers to explicitly specify the stage
 #' name after any base path name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   basePath = "string",
-#'   restApiId = "string",
-#'   stage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_base_path_mapping(
-#'   domainName = "string",
-#'   basePath = "string",
-#'   restApiId = "string",
-#'   stage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -300,15 +173,11 @@ apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, res
 #' over the internet
 #'
 #' @description
-#' Creates a Deployment resource, which makes a specified RestApi callable
-#' over the internet.
+#' Creates a Deployment resource, which makes a specified RestApi callable over the internet.
 #'
-#' @usage
-#' apigateway_create_deployment(restApiId, stageName, stageDescription,
-#'   description, cacheClusterEnabled, cacheClusterSize, variables,
-#'   canarySettings, tracingEnabled)
+#' See [https://paws-r.github.io/docs/apigateway/create_deployment.html](https://paws-r.github.io/docs/apigateway/create_deployment.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName The name of the Stage resource for the Deployment resource to create.
 #' @param stageDescription The description of the Stage resource for the Deployment resource to
 #' create.
@@ -323,49 +192,6 @@ apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, res
 #' @param canarySettings The input configuration for the canary deployment when the deployment is
 #' a canary release deployment.
 #' @param tracingEnabled Specifies whether active tracing with X-ray is enabled for the Stage.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   description = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   apiSummary = list(
-#'     list(
-#'       list(
-#'         authorizationType = "string",
-#'         apiKeyRequired = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_deployment(
-#'   restApiId = "string",
-#'   stageName = "string",
-#'   stageDescription = "string",
-#'   description = "string",
-#'   cacheClusterEnabled = TRUE|FALSE,
-#'   cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
-#'   variables = list(
-#'     "string"
-#'   ),
-#'   canarySettings = list(
-#'     percentTraffic = 123.0,
-#'     stageVariableOverrides = list(
-#'       "string"
-#'     ),
-#'     useStageCache = TRUE|FALSE
-#'   ),
-#'   tracingEnabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -387,51 +213,19 @@ apigateway_create_deployment <- function(restApiId, stageName = NULL, stageDescr
 }
 .apigateway$operations$create_deployment <- apigateway_create_deployment
 
-#' Create documentation part
+#' Creates a documentation part
 #'
 #' @description
-#' Create documentation part
+#' Creates a documentation part.
 #'
-#' @usage
-#' apigateway_create_documentation_part(restApiId, location, properties)
+#' See [https://paws-r.github.io/docs/apigateway/create_documentation_part.html](https://paws-r.github.io/docs/apigateway/create_documentation_part.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param location &#91;required&#93; \[Required\] The location of the targeted API entity of the
-#' to-be-created documentation part.
-#' @param properties &#91;required&#93; \[Required\] The new documentation content map of the targeted API
-#' entity. Enclosed key-value pairs are API-specific, but only
-#' OpenAPI-compliant key-value pairs can be exported and, hence, published.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   location = list(
-#'     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-#'     path = "string",
-#'     method = "string",
-#'     statusCode = "string",
-#'     name = "string"
-#'   ),
-#'   properties = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_documentation_part(
-#'   restApiId = "string",
-#'   location = list(
-#'     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-#'     path = "string",
-#'     method = "string",
-#'     statusCode = "string",
-#'     name = "string"
-#'   ),
-#'   properties = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param location &#91;required&#93; The location of the targeted API entity of the to-be-created
+#' documentation part.
+#' @param properties &#91;required&#93; The new documentation content map of the targeted API entity. Enclosed
+#' key-value pairs are API-specific, but only OpenAPI-compliant key-value
+#' pairs can be exported and, hence, published.
 #'
 #' @keywords internal
 #'
@@ -453,41 +247,17 @@ apigateway_create_documentation_part <- function(restApiId, location, properties
 }
 .apigateway$operations$create_documentation_part <- apigateway_create_documentation_part
 
-#' Create documentation version
+#' Creates a documentation version
 #'
 #' @description
-#' Create documentation version
+#' Creates a documentation version
 #'
-#' @usage
-#' apigateway_create_documentation_version(restApiId, documentationVersion,
-#'   stageName, description)
+#' See [https://paws-r.github.io/docs/apigateway/create_documentation_version.html](https://paws-r.github.io/docs/apigateway/create_documentation_version.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param documentationVersion &#91;required&#93; \[Required\] The version identifier of the new snapshot.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param documentationVersion &#91;required&#93; The version identifier of the new snapshot.
 #' @param stageName The stage name to be associated with the new documentation snapshot.
 #' @param description A description about the new documentation snapshot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   version = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   description = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_documentation_version(
-#'   restApiId = "string",
-#'   documentationVersion = "string",
-#'   stageName = "string",
-#'   description = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -514,13 +284,9 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' @description
 #' Creates a new domain name.
 #'
-#' @usage
-#' apigateway_create_domain_name(domainName, certificateName,
-#'   certificateBody, certificatePrivateKey, certificateChain,
-#'   certificateArn, regionalCertificateName, regionalCertificateArn,
-#'   endpointConfiguration, tags, securityPolicy, mutualTlsAuthentication)
+#' See [https://paws-r.github.io/docs/apigateway/create_domain_name.html](https://paws-r.github.io/docs/apigateway/create_domain_name.html) for full documentation.
 #'
-#' @param domainName &#91;required&#93; \[Required\] The name of the DomainName resource.
+#' @param domainName &#91;required&#93; The name of the DomainName resource.
 #' @param certificateName The user-friendly name of the certificate that will be used by
 #' edge-optimized endpoint for this domain name.
 #' @param certificateBody \[Deprecated\] The body of the server certificate that will be used by
@@ -551,88 +317,22 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' @param securityPolicy The Transport Layer Security (TLS) version + cipher suite for this
 #' DomainName. The valid values are `TLS_1_0` and `TLS_1_2`.
 #' @param mutualTlsAuthentication 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   domainName = "string",
-#'   certificateName = "string",
-#'   certificateArn = "string",
-#'   certificateUploadDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   regionalDomainName = "string",
-#'   regionalHostedZoneId = "string",
-#'   regionalCertificateName = "string",
-#'   regionalCertificateArn = "string",
-#'   distributionDomainName = "string",
-#'   distributionHostedZoneId = "string",
-#'   endpointConfiguration = list(
-#'     types = list(
-#'       "REGIONAL"|"EDGE"|"PRIVATE"
-#'     ),
-#'     vpcEndpointIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
-#'   domainNameStatusMessage = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   mutualTlsAuthentication = list(
-#'     truststoreUri = "string",
-#'     truststoreVersion = "string",
-#'     truststoreWarnings = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_domain_name(
-#'   domainName = "string",
-#'   certificateName = "string",
-#'   certificateBody = "string",
-#'   certificatePrivateKey = "string",
-#'   certificateChain = "string",
-#'   certificateArn = "string",
-#'   regionalCertificateName = "string",
-#'   regionalCertificateArn = "string",
-#'   endpointConfiguration = list(
-#'     types = list(
-#'       "REGIONAL"|"EDGE"|"PRIVATE"
-#'     ),
-#'     vpcEndpointIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
-#'   mutualTlsAuthentication = list(
-#'     truststoreUri = "string",
-#'     truststoreVersion = "string"
-#'   )
-#' )
-#' ```
+#' @param ownershipVerificationCertificateArn The ARN of the public certificate issued by ACM to validate ownership of
+#' your custom domain. Only required when configuring mutual TLS and using
+#' an ACM imported or private CA certificate ARN as the
+#' regionalCertificateArn.
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_create_domain_name
-apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL, mutualTlsAuthentication = NULL) {
+apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL, mutualTlsAuthentication = NULL, ownershipVerificationCertificateArn = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
     http_method = "POST",
     http_path = "/domainnames",
     paginator = list()
   )
-  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy, mutualTlsAuthentication = mutualTlsAuthentication)
+  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy, mutualTlsAuthentication = mutualTlsAuthentication, ownershipVerificationCertificateArn = ownershipVerificationCertificateArn)
   output <- .apigateway$create_domain_name_output()
   config <- get_config()
   svc <- .apigateway$service(config)
@@ -647,42 +347,14 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 #' @description
 #' Adds a new Model resource to an existing RestApi resource.
 #'
-#' @usage
-#' apigateway_create_model(restApiId, name, description, schema,
-#'   contentType)
+#' See [https://paws-r.github.io/docs/apigateway/create_model.html](https://paws-r.github.io/docs/apigateway/create_model.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The RestApi identifier under which the Model will be
-#' created.
-#' @param name &#91;required&#93; \[Required\] The name of the model. Must be alphanumeric.
+#' @param restApiId &#91;required&#93; The RestApi identifier under which the Model will be created.
+#' @param name &#91;required&#93; The name of the model. Must be alphanumeric.
 #' @param description The description of the model.
 #' @param schema The schema for the model. For `application/json` models, this should be
-#' [JSON schema draft
-#' 4](https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04)
-#' model.
-#' @param contentType &#91;required&#93; \[Required\] The content-type for the model.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   schema = "string",
-#'   contentType = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_model(
-#'   restApiId = "string",
-#'   name = "string",
-#'   description = "string",
-#'   schema = "string",
-#'   contentType = "string"
-#' )
-#' ```
+#' JSON schema draft 4 model.
+#' @param contentType &#91;required&#93; The content-type for the model.
 #'
 #' @keywords internal
 #'
@@ -704,42 +376,19 @@ apigateway_create_model <- function(restApiId, name, description = NULL, schema 
 }
 .apigateway$operations$create_model <- apigateway_create_model
 
-#' Creates a ReqeustValidator of a given RestApi
+#' Creates a RequestValidator of a given RestApi
 #'
 #' @description
-#' Creates a ReqeustValidator of a given RestApi.
+#' Creates a RequestValidator of a given RestApi.
 #'
-#' @usage
-#' apigateway_create_request_validator(restApiId, name,
-#'   validateRequestBody, validateRequestParameters)
+#' See [https://paws-r.github.io/docs/apigateway/create_request_validator.html](https://paws-r.github.io/docs/apigateway/create_request_validator.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param name The name of the to-be-created RequestValidator.
 #' @param validateRequestBody A Boolean flag to indicate whether to validate request body according to
 #' the configured model schema for the method (`true`) or not (`false`).
 #' @param validateRequestParameters A Boolean flag to indicate whether to validate request parameters,
 #' `true`, or not `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   validateRequestBody = TRUE|FALSE,
-#'   validateRequestParameters = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_request_validator(
-#'   restApiId = "string",
-#'   name = "string",
-#'   validateRequestBody = TRUE|FALSE,
-#'   validateRequestParameters = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -766,99 +415,11 @@ apigateway_create_request_validator <- function(restApiId, name = NULL, validate
 #' @description
 #' Creates a Resource resource.
 #'
-#' @usage
-#' apigateway_create_resource(restApiId, parentId, pathPart)
+#' See [https://paws-r.github.io/docs/apigateway/create_resource.html](https://paws-r.github.io/docs/apigateway/create_resource.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param parentId &#91;required&#93; \[Required\] The parent resource's identifier.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param parentId &#91;required&#93; The parent resource's identifier.
 #' @param pathPart &#91;required&#93; The last path segment for this resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   parentId = "string",
-#'   pathPart = "string",
-#'   path = "string",
-#'   resourceMethods = list(
-#'     list(
-#'       httpMethod = "string",
-#'       authorizationType = "string",
-#'       authorizerId = "string",
-#'       apiKeyRequired = TRUE|FALSE,
-#'       requestValidatorId = "string",
-#'       operationName = "string",
-#'       requestParameters = list(
-#'         TRUE|FALSE
-#'       ),
-#'       requestModels = list(
-#'         "string"
-#'       ),
-#'       methodResponses = list(
-#'         list(
-#'           statusCode = "string",
-#'           responseParameters = list(
-#'             TRUE|FALSE
-#'           ),
-#'           responseModels = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       methodIntegration = list(
-#'         type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'         httpMethod = "string",
-#'         uri = "string",
-#'         connectionType = "INTERNET"|"VPC_LINK",
-#'         connectionId = "string",
-#'         credentials = "string",
-#'         requestParameters = list(
-#'           "string"
-#'         ),
-#'         requestTemplates = list(
-#'           "string"
-#'         ),
-#'         passthroughBehavior = "string",
-#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'         timeoutInMillis = 123,
-#'         cacheNamespace = "string",
-#'         cacheKeyParameters = list(
-#'           "string"
-#'         ),
-#'         integrationResponses = list(
-#'           list(
-#'             statusCode = "string",
-#'             selectionPattern = "string",
-#'             responseParameters = list(
-#'               "string"
-#'             ),
-#'             responseTemplates = list(
-#'               "string"
-#'             ),
-#'             contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#'           )
-#'         ),
-#'         tlsConfig = list(
-#'           insecureSkipVerification = TRUE|FALSE
-#'         )
-#'       ),
-#'       authorizationScopes = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_resource(
-#'   restApiId = "string",
-#'   parentId = "string",
-#'   pathPart = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -885,12 +446,9 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' @description
 #' Creates a new RestApi resource.
 #'
-#' @usage
-#' apigateway_create_rest_api(name, description, version, cloneFrom,
-#'   binaryMediaTypes, minimumCompressionSize, apiKeySource,
-#'   endpointConfiguration, policy, tags, disableExecuteApiEndpoint)
+#' See [https://paws-r.github.io/docs/apigateway/create_rest_api.html](https://paws-r.github.io/docs/apigateway/create_rest_api.html) for full documentation.
 #'
-#' @param name &#91;required&#93; \[Required\] The name of the RestApi.
+#' @param name &#91;required&#93; The name of the RestApi.
 #' @param description The description of the RestApi.
 #' @param version A version identifier for the API.
 #' @param cloneFrom The ID of the RestApi that you want to clone from.
@@ -903,12 +461,9 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' smaller than this value. Setting it to zero allows compression for any
 #' payload size.
 #' @param apiKeySource The source of the API key for metering requests according to a usage
-#' plan. Valid values are:
-#' 
-#' -   `HEADER` to read the API key from the `X-API-Key` header of a
-#'     request.
-#' -   `AUTHORIZER` to read the API key from the `UsageIdentifierKey` from
-#'     a custom authorizer.
+#' plan. Valid values are: \>`HEADER` to read the API key from the
+#' `X-API-Key` header of a request. `AUTHORIZER` to read the API key from
+#' the `UsageIdentifierKey` from a custom authorizer.
 #' @param endpointConfiguration The endpoint configuration of this RestApi showing the endpoint types of
 #' the API.
 #' @param policy A stringified JSON policy document that applies to this RestApi
@@ -918,72 +473,9 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' start with `aws:`. The tag value can be up to 256 characters.
 #' @param disableExecuteApiEndpoint Specifies whether clients can invoke your API by using the default
 #' `execute-api` endpoint. By default, clients can invoke your API with the
-#' default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
-#' endpoint. To require that clients use a custom domain name to invoke
-#' your API, disable the default endpoint.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   warnings = list(
-#'     "string"
-#'   ),
-#'   binaryMediaTypes = list(
-#'     "string"
-#'   ),
-#'   minimumCompressionSize = 123,
-#'   apiKeySource = "HEADER"|"AUTHORIZER",
-#'   endpointConfiguration = list(
-#'     types = list(
-#'       "REGIONAL"|"EDGE"|"PRIVATE"
-#'     ),
-#'     vpcEndpointIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   policy = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   disableExecuteApiEndpoint = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_rest_api(
-#'   name = "string",
-#'   description = "string",
-#'   version = "string",
-#'   cloneFrom = "string",
-#'   binaryMediaTypes = list(
-#'     "string"
-#'   ),
-#'   minimumCompressionSize = 123,
-#'   apiKeySource = "HEADER"|"AUTHORIZER",
-#'   endpointConfiguration = list(
-#'     types = list(
-#'       "REGIONAL"|"EDGE"|"PRIVATE"
-#'     ),
-#'     vpcEndpointIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   policy = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   disableExecuteApiEndpoint = TRUE|FALSE
-#' )
-#' ```
+#' default `https://{api_id}.execute-api.{region}.amazonaws.com` endpoint.
+#' To require that clients use a custom domain name to invoke your API,
+#' disable the default endpoint
 #'
 #' @keywords internal
 #'
@@ -1009,20 +501,15 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
 #' for the API
 #'
 #' @description
-#' Creates a new Stage resource that references a pre-existing Deployment
-#' for the API.
+#' Creates a new Stage resource that references a pre-existing Deployment for the API.
 #'
-#' @usage
-#' apigateway_create_stage(restApiId, stageName, deploymentId, description,
-#'   cacheClusterEnabled, cacheClusterSize, variables, documentationVersion,
-#'   canarySettings, tracingEnabled, tags)
+#' See [https://paws-r.github.io/docs/apigateway/create_stage.html](https://paws-r.github.io/docs/apigateway/create_stage.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param stageName &#91;required&#93; \[Required\] The name for the Stage resource. Stage names can only
-#' contain alphanumeric characters, hyphens, and underscores. Maximum
-#' length is 128 characters.
-#' @param deploymentId &#91;required&#93; \[Required\] The identifier of the Deployment resource for the Stage
-#' resource.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param stageName &#91;required&#93; The name for the Stage resource. Stage names can only contain
+#' alphanumeric characters, hyphens, and underscores. Maximum length is 128
+#' characters.
+#' @param deploymentId &#91;required&#93; The identifier of the Deployment resource for the Stage resource.
 #' @param description The description of the Stage resource.
 #' @param cacheClusterEnabled Whether cache clustering is enabled for the stage.
 #' @param cacheClusterSize The stage's cache cluster size.
@@ -1035,89 +522,6 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentId = "string",
-#'   clientCertificateId = "string",
-#'   stageName = "string",
-#'   description = "string",
-#'   cacheClusterEnabled = TRUE|FALSE,
-#'   cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
-#'   cacheClusterStatus = "CREATE_IN_PROGRESS"|"AVAILABLE"|"DELETE_IN_PROGRESS"|"NOT_AVAILABLE"|"FLUSH_IN_PROGRESS",
-#'   methodSettings = list(
-#'     list(
-#'       metricsEnabled = TRUE|FALSE,
-#'       loggingLevel = "string",
-#'       dataTraceEnabled = TRUE|FALSE,
-#'       throttlingBurstLimit = 123,
-#'       throttlingRateLimit = 123.0,
-#'       cachingEnabled = TRUE|FALSE,
-#'       cacheTtlInSeconds = 123,
-#'       cacheDataEncrypted = TRUE|FALSE,
-#'       requireAuthorizationForCacheControl = TRUE|FALSE,
-#'       unauthorizedCacheControlHeaderStrategy = "FAIL_WITH_403"|"SUCCEED_WITH_RESPONSE_HEADER"|"SUCCEED_WITHOUT_RESPONSE_HEADER"
-#'     )
-#'   ),
-#'   variables = list(
-#'     "string"
-#'   ),
-#'   documentationVersion = "string",
-#'   accessLogSettings = list(
-#'     format = "string",
-#'     destinationArn = "string"
-#'   ),
-#'   canarySettings = list(
-#'     percentTraffic = 123.0,
-#'     deploymentId = "string",
-#'     stageVariableOverrides = list(
-#'       "string"
-#'     ),
-#'     useStageCache = TRUE|FALSE
-#'   ),
-#'   tracingEnabled = TRUE|FALSE,
-#'   webAclArn = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_stage(
-#'   restApiId = "string",
-#'   stageName = "string",
-#'   deploymentId = "string",
-#'   description = "string",
-#'   cacheClusterEnabled = TRUE|FALSE,
-#'   cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
-#'   variables = list(
-#'     "string"
-#'   ),
-#'   documentationVersion = "string",
-#'   canarySettings = list(
-#'     percentTraffic = 123.0,
-#'     deploymentId = "string",
-#'     stageVariableOverrides = list(
-#'       "string"
-#'     ),
-#'     useStageCache = TRUE|FALSE
-#'   ),
-#'   tracingEnabled = TRUE|FALSE,
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1143,14 +547,11 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
 #' associated API stages, specified in the payload
 #'
 #' @description
-#' Creates a usage plan with the throttle and quota limits, as well as the
-#' associated API stages, specified in the payload.
+#' Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload.
 #'
-#' @usage
-#' apigateway_create_usage_plan(name, description, apiStages, throttle,
-#'   quota, tags)
+#' See [https://paws-r.github.io/docs/apigateway/create_usage_plan.html](https://paws-r.github.io/docs/apigateway/create_usage_plan.html) for full documentation.
 #'
-#' @param name &#91;required&#93; \[Required\] The name of the usage plan.
+#' @param name &#91;required&#93; The name of the usage plan.
 #' @param description The description of the usage plan.
 #' @param apiStages The associated API stages of the usage plan.
 #' @param throttle The throttling limits of the usage plan.
@@ -1158,73 +559,6 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   apiStages = list(
-#'     list(
-#'       apiId = "string",
-#'       stage = "string",
-#'       throttle = list(
-#'         list(
-#'           burstLimit = 123,
-#'           rateLimit = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   throttle = list(
-#'     burstLimit = 123,
-#'     rateLimit = 123.0
-#'   ),
-#'   quota = list(
-#'     limit = 123,
-#'     offset = 123,
-#'     period = "DAY"|"WEEK"|"MONTH"
-#'   ),
-#'   productCode = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_usage_plan(
-#'   name = "string",
-#'   description = "string",
-#'   apiStages = list(
-#'     list(
-#'       apiId = "string",
-#'       stage = "string",
-#'       throttle = list(
-#'         list(
-#'           burstLimit = 123,
-#'           rateLimit = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   throttle = list(
-#'     burstLimit = 123,
-#'     rateLimit = 123.0
-#'   ),
-#'   quota = list(
-#'     limit = 123,
-#'     offset = 123,
-#'     period = "DAY"|"WEEK"|"MONTH"
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1251,35 +585,12 @@ apigateway_create_usage_plan <- function(name, description = NULL, apiStages = N
 #' @description
 #' Creates a usage plan key for adding an existing API key to a usage plan.
 #'
-#' @usage
-#' apigateway_create_usage_plan_key(usagePlanId, keyId, keyType)
+#' See [https://paws-r.github.io/docs/apigateway/create_usage_plan_key.html](https://paws-r.github.io/docs/apigateway/create_usage_plan_key.html) for full documentation.
 #'
-#' @param usagePlanId &#91;required&#93; \[Required\] The Id of the UsagePlan resource representing the usage
-#' plan containing the to-be-created UsagePlanKey resource representing a
-#' plan customer.
-#' @param keyId &#91;required&#93; \[Required\] The identifier of a UsagePlanKey resource for a plan
-#' customer.
-#' @param keyType &#91;required&#93; \[Required\] The type of a UsagePlanKey resource for a plan customer.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   type = "string",
-#'   value = "string",
-#'   name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_usage_plan_key(
-#'   usagePlanId = "string",
-#'   keyId = "string",
-#'   keyType = "string"
-#' )
-#' ```
+#' @param usagePlanId &#91;required&#93; The Id of the UsagePlan resource representing the usage plan containing
+#' the to-be-created UsagePlanKey resource representing a plan customer.
+#' @param keyId &#91;required&#93; The identifier of a UsagePlanKey resource for a plan customer.
+#' @param keyType &#91;required&#93; The type of a UsagePlanKey resource for a plan customer.
 #'
 #' @keywords internal
 #'
@@ -1306,54 +617,18 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #' and become operational
 #'
 #' @description
-#' Creates a VPC link, under the caller's account in a selected region, in
-#' an asynchronous operation that typically takes 2-4 minutes to complete
-#' and become operational. The caller must have permissions to create and
-#' update VPC Endpoint services.
+#' Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational. The caller must have permissions to create and update VPC Endpoint services.
 #'
-#' @usage
-#' apigateway_create_vpc_link(name, description, targetArns, tags)
+#' See [https://paws-r.github.io/docs/apigateway/create_vpc_link.html](https://paws-r.github.io/docs/apigateway/create_vpc_link.html) for full documentation.
 #'
-#' @param name &#91;required&#93; \[Required\] The name used to label and identify the VPC link.
+#' @param name &#91;required&#93; The name used to label and identify the VPC link.
 #' @param description The description of the VPC link.
-#' @param targetArns &#91;required&#93; \[Required\] The ARN of the network load balancer of the VPC targeted by
-#' the VPC link. The network load balancer must be owned by the same AWS
-#' account of the API owner.
+#' @param targetArns &#91;required&#93; The ARN of the network load balancer of the VPC targeted by the VPC
+#' link. The network load balancer must be owned by the same AWS account of
+#' the API owner.
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   targetArns = list(
-#'     "string"
-#'   ),
-#'   status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
-#'   statusMessage = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_vpc_link(
-#'   name = "string",
-#'   description = "string",
-#'   targetArns = list(
-#'     "string"
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1380,20 +655,9 @@ apigateway_create_vpc_link <- function(name, description = NULL, targetArns, tag
 #' @description
 #' Deletes the ApiKey resource.
 #'
-#' @usage
-#' apigateway_delete_api_key(apiKey)
+#' See [https://paws-r.github.io/docs/apigateway/delete_api_key.html](https://paws-r.github.io/docs/apigateway/delete_api_key.html) for full documentation.
 #'
-#' @param apiKey &#91;required&#93; \[Required\] The identifier of the ApiKey resource to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_api_key(
-#'   apiKey = "string"
-#' )
-#' ```
+#' @param apiKey &#91;required&#93; The identifier of the ApiKey resource to be deleted.
 #'
 #' @keywords internal
 #'
@@ -1419,30 +683,11 @@ apigateway_delete_api_key <- function(apiKey) {
 #'
 #' @description
 #' Deletes an existing Authorizer resource.
-#' 
-#' <div class="seeAlso">
-#' 
-#' [AWS
-#' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html)
-#' 
-#' </div>
 #'
-#' @usage
-#' apigateway_delete_authorizer(restApiId, authorizerId)
+#' See [https://paws-r.github.io/docs/apigateway/delete_authorizer.html](https://paws-r.github.io/docs/apigateway/delete_authorizer.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param authorizerId &#91;required&#93; \[Required\] The identifier of the Authorizer resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_authorizer(
-#'   restApiId = "string",
-#'   authorizerId = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param authorizerId &#91;required&#93; The identifier of the Authorizer resource.
 #'
 #' @keywords internal
 #'
@@ -1469,25 +714,12 @@ apigateway_delete_authorizer <- function(restApiId, authorizerId) {
 #' @description
 #' Deletes the BasePathMapping resource.
 #'
-#' @usage
-#' apigateway_delete_base_path_mapping(domainName, basePath)
+#' See [https://paws-r.github.io/docs/apigateway/delete_base_path_mapping.html](https://paws-r.github.io/docs/apigateway/delete_base_path_mapping.html) for full documentation.
 #'
-#' @param domainName &#91;required&#93; \[Required\] The domain name of the BasePathMapping resource to delete.
-#' @param basePath &#91;required&#93; \[Required\] The base path name of the BasePathMapping resource to
-#' delete.
+#' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to delete.
+#' @param basePath &#91;required&#93; The base path name of the BasePathMapping resource to delete.
 #' 
 #' To specify an empty base path, set this parameter to `'(none)'`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_base_path_mapping(
-#'   domainName = "string",
-#'   basePath = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1514,21 +746,9 @@ apigateway_delete_base_path_mapping <- function(domainName, basePath) {
 #' @description
 #' Deletes the ClientCertificate resource.
 #'
-#' @usage
-#' apigateway_delete_client_certificate(clientCertificateId)
+#' See [https://paws-r.github.io/docs/apigateway/delete_client_certificate.html](https://paws-r.github.io/docs/apigateway/delete_client_certificate.html) for full documentation.
 #'
-#' @param clientCertificateId &#91;required&#93; \[Required\] The identifier of the ClientCertificate resource to be
-#' deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_client_certificate(
-#'   clientCertificateId = "string"
-#' )
-#' ```
+#' @param clientCertificateId &#91;required&#93; The identifier of the ClientCertificate resource to be deleted.
 #'
 #' @keywords internal
 #'
@@ -1553,25 +773,12 @@ apigateway_delete_client_certificate <- function(clientCertificateId) {
 #' Deletes a Deployment resource
 #'
 #' @description
-#' Deletes a Deployment resource. Deleting a deployment will only succeed
-#' if there are no Stage resources associated with it.
+#' Deletes a Deployment resource. Deleting a deployment will only succeed if there are no Stage resources associated with it.
 #'
-#' @usage
-#' apigateway_delete_deployment(restApiId, deploymentId)
+#' See [https://paws-r.github.io/docs/apigateway/delete_deployment.html](https://paws-r.github.io/docs/apigateway/delete_deployment.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param deploymentId &#91;required&#93; \[Required\] The identifier of the Deployment resource to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_deployment(
-#'   restApiId = "string",
-#'   deploymentId = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param deploymentId &#91;required&#93; The identifier of the Deployment resource to delete.
 #'
 #' @keywords internal
 #'
@@ -1593,27 +800,15 @@ apigateway_delete_deployment <- function(restApiId, deploymentId) {
 }
 .apigateway$operations$delete_deployment <- apigateway_delete_deployment
 
-#' Delete documentation part
+#' Deletes a documentation part
 #'
 #' @description
-#' Delete documentation part
+#' Deletes a documentation part
 #'
-#' @usage
-#' apigateway_delete_documentation_part(restApiId, documentationPartId)
+#' See [https://paws-r.github.io/docs/apigateway/delete_documentation_part.html](https://paws-r.github.io/docs/apigateway/delete_documentation_part.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param documentationPartId &#91;required&#93; \[Required\] The identifier of the to-be-deleted documentation part.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_documentation_part(
-#'   restApiId = "string",
-#'   documentationPartId = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param documentationPartId &#91;required&#93; The identifier of the to-be-deleted documentation part.
 #'
 #' @keywords internal
 #'
@@ -1635,28 +830,15 @@ apigateway_delete_documentation_part <- function(restApiId, documentationPartId)
 }
 .apigateway$operations$delete_documentation_part <- apigateway_delete_documentation_part
 
-#' Delete documentation version
+#' Deletes a documentation version
 #'
 #' @description
-#' Delete documentation version
+#' Deletes a documentation version.
 #'
-#' @usage
-#' apigateway_delete_documentation_version(restApiId, documentationVersion)
+#' See [https://paws-r.github.io/docs/apigateway/delete_documentation_version.html](https://paws-r.github.io/docs/apigateway/delete_documentation_version.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param documentationVersion &#91;required&#93; \[Required\] The version identifier of a to-be-deleted documentation
-#' snapshot.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_documentation_version(
-#'   restApiId = "string",
-#'   documentationVersion = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param documentationVersion &#91;required&#93; The version identifier of a to-be-deleted documentation snapshot.
 #'
 #' @keywords internal
 #'
@@ -1683,20 +865,9 @@ apigateway_delete_documentation_version <- function(restApiId, documentationVers
 #' @description
 #' Deletes the DomainName resource.
 #'
-#' @usage
-#' apigateway_delete_domain_name(domainName)
+#' See [https://paws-r.github.io/docs/apigateway/delete_domain_name.html](https://paws-r.github.io/docs/apigateway/delete_domain_name.html) for full documentation.
 #'
-#' @param domainName &#91;required&#93; \[Required\] The name of the DomainName resource to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_domain_name(
-#'   domainName = "string"
-#' )
-#' ```
+#' @param domainName &#91;required&#93; The name of the DomainName resource to be deleted.
 #'
 #' @keywords internal
 #'
@@ -1722,48 +893,12 @@ apigateway_delete_domain_name <- function(domainName) {
 #' type on the given RestApi and resets it with the default settings
 #'
 #' @description
-#' Clears any customization of a GatewayResponse of a specified response
-#' type on the given RestApi and resets it with the default settings.
+#' Clears any customization of a GatewayResponse of a specified response type on the given RestApi and resets it with the default settings.
 #'
-#' @usage
-#' apigateway_delete_gateway_response(restApiId, responseType)
+#' See [https://paws-r.github.io/docs/apigateway/delete_gateway_response.html](https://paws-r.github.io/docs/apigateway/delete_gateway_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param responseType &#91;required&#93; \[Required\]
-#' 
-#' The response type of the associated GatewayResponse. Valid values are
-#' 
-#' -   ACCESS_DENIED
-#' -   API_CONFIGURATION_ERROR
-#' -   AUTHORIZER_FAILURE
-#' -   AUTHORIZER_CONFIGURATION_ERROR
-#' -   BAD_REQUEST_PARAMETERS
-#' -   BAD_REQUEST_BODY
-#' -   DEFAULT_4XX
-#' -   DEFAULT_5XX
-#' -   EXPIRED_TOKEN
-#' -   INVALID_SIGNATURE
-#' -   INTEGRATION_FAILURE
-#' -   INTEGRATION_TIMEOUT
-#' -   INVALID_API_KEY
-#' -   MISSING_AUTHENTICATION_TOKEN
-#' -   QUOTA_EXCEEDED
-#' -   REQUEST_TOO_LARGE
-#' -   RESOURCE_NOT_FOUND
-#' -   THROTTLED
-#' -   UNAUTHORIZED
-#' -   UNSUPPORTED_MEDIA_TYPE
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_gateway_response(
-#'   restApiId = "string",
-#'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param responseType &#91;required&#93; The response type of the associated GatewayResponse.
 #'
 #' @keywords internal
 #'
@@ -1790,25 +925,11 @@ apigateway_delete_gateway_response <- function(restApiId, responseType) {
 #' @description
 #' Represents a delete integration.
 #'
-#' @usage
-#' apigateway_delete_integration(restApiId, resourceId, httpMethod)
+#' See [https://paws-r.github.io/docs/apigateway/delete_integration.html](https://paws-r.github.io/docs/apigateway/delete_integration.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] Specifies a delete integration request's resource
-#' identifier.
-#' @param httpMethod &#91;required&#93; \[Required\] Specifies a delete integration request's HTTP method.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_integration(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; Specifies a delete integration request's resource identifier.
+#' @param httpMethod &#91;required&#93; Specifies a delete integration request's HTTP method.
 #'
 #' @keywords internal
 #'
@@ -1835,30 +956,12 @@ apigateway_delete_integration <- function(restApiId, resourceId, httpMethod) {
 #' @description
 #' Represents a delete integration response.
 #'
-#' @usage
-#' apigateway_delete_integration_response(restApiId, resourceId,
-#'   httpMethod, statusCode)
+#' See [https://paws-r.github.io/docs/apigateway/delete_integration_response.html](https://paws-r.github.io/docs/apigateway/delete_integration_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] Specifies a delete integration response request's resource
-#' identifier.
-#' @param httpMethod &#91;required&#93; \[Required\] Specifies a delete integration response request's HTTP
-#' method.
-#' @param statusCode &#91;required&#93; \[Required\] Specifies a delete integration response request's status
-#' code.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_integration_response(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   statusCode = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; Specifies a delete integration response request's resource identifier.
+#' @param httpMethod &#91;required&#93; Specifies a delete integration response request's HTTP method.
+#' @param statusCode &#91;required&#93; Specifies a delete integration response request's status code.
 #'
 #' @keywords internal
 #'
@@ -1885,24 +988,11 @@ apigateway_delete_integration_response <- function(restApiId, resourceId, httpMe
 #' @description
 #' Deletes an existing Method resource.
 #'
-#' @usage
-#' apigateway_delete_method(restApiId, resourceId, httpMethod)
+#' See [https://paws-r.github.io/docs/apigateway/delete_method.html](https://paws-r.github.io/docs/apigateway/delete_method.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the Method resource.
-#' @param httpMethod &#91;required&#93; \[Required\] The HTTP verb of the Method resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_method(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The Resource identifier for the Method resource.
+#' @param httpMethod &#91;required&#93; The HTTP verb of the Method resource.
 #'
 #' @keywords internal
 #'
@@ -1929,27 +1019,12 @@ apigateway_delete_method <- function(restApiId, resourceId, httpMethod) {
 #' @description
 #' Deletes an existing MethodResponse resource.
 #'
-#' @usage
-#' apigateway_delete_method_response(restApiId, resourceId, httpMethod,
-#'   statusCode)
+#' See [https://paws-r.github.io/docs/apigateway/delete_method_response.html](https://paws-r.github.io/docs/apigateway/delete_method_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the MethodResponse resource.
-#' @param httpMethod &#91;required&#93; \[Required\] The HTTP verb of the Method resource.
-#' @param statusCode &#91;required&#93; \[Required\] The status code identifier for the MethodResponse resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_method_response(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   statusCode = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The Resource identifier for the MethodResponse resource.
+#' @param httpMethod &#91;required&#93; The HTTP verb of the Method resource.
+#' @param statusCode &#91;required&#93; The status code identifier for the MethodResponse resource.
 #'
 #' @keywords internal
 #'
@@ -1976,22 +1051,10 @@ apigateway_delete_method_response <- function(restApiId, resourceId, httpMethod,
 #' @description
 #' Deletes a model.
 #'
-#' @usage
-#' apigateway_delete_model(restApiId, modelName)
+#' See [https://paws-r.github.io/docs/apigateway/delete_model.html](https://paws-r.github.io/docs/apigateway/delete_model.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param modelName &#91;required&#93; \[Required\] The name of the model to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_model(
-#'   restApiId = "string",
-#'   modelName = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param modelName &#91;required&#93; The name of the model to delete.
 #'
 #' @keywords internal
 #'
@@ -2018,22 +1081,10 @@ apigateway_delete_model <- function(restApiId, modelName) {
 #' @description
 #' Deletes a RequestValidator of a given RestApi.
 #'
-#' @usage
-#' apigateway_delete_request_validator(restApiId, requestValidatorId)
+#' See [https://paws-r.github.io/docs/apigateway/delete_request_validator.html](https://paws-r.github.io/docs/apigateway/delete_request_validator.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param requestValidatorId &#91;required&#93; \[Required\] The identifier of the RequestValidator to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_request_validator(
-#'   restApiId = "string",
-#'   requestValidatorId = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param requestValidatorId &#91;required&#93; The identifier of the RequestValidator to be deleted.
 #'
 #' @keywords internal
 #'
@@ -2060,22 +1111,10 @@ apigateway_delete_request_validator <- function(restApiId, requestValidatorId) {
 #' @description
 #' Deletes a Resource resource.
 #'
-#' @usage
-#' apigateway_delete_resource(restApiId, resourceId)
+#' See [https://paws-r.github.io/docs/apigateway/delete_resource.html](https://paws-r.github.io/docs/apigateway/delete_resource.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The identifier of the Resource resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_resource(
-#'   restApiId = "string",
-#'   resourceId = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The identifier of the Resource resource.
 #'
 #' @keywords internal
 #'
@@ -2102,20 +1141,9 @@ apigateway_delete_resource <- function(restApiId, resourceId) {
 #' @description
 #' Deletes the specified API.
 #'
-#' @usage
-#' apigateway_delete_rest_api(restApiId)
+#' See [https://paws-r.github.io/docs/apigateway/delete_rest_api.html](https://paws-r.github.io/docs/apigateway/delete_rest_api.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_rest_api(
-#'   restApiId = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #'
 #' @keywords internal
 #'
@@ -2142,22 +1170,10 @@ apigateway_delete_rest_api <- function(restApiId) {
 #' @description
 #' Deletes a Stage resource.
 #'
-#' @usage
-#' apigateway_delete_stage(restApiId, stageName)
+#' See [https://paws-r.github.io/docs/apigateway/delete_stage.html](https://paws-r.github.io/docs/apigateway/delete_stage.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param stageName &#91;required&#93; \[Required\] The name of the Stage resource to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_stage(
-#'   restApiId = "string",
-#'   stageName = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param stageName &#91;required&#93; The name of the Stage resource to delete.
 #'
 #' @keywords internal
 #'
@@ -2184,20 +1200,9 @@ apigateway_delete_stage <- function(restApiId, stageName) {
 #' @description
 #' Deletes a usage plan of a given plan Id.
 #'
-#' @usage
-#' apigateway_delete_usage_plan(usagePlanId)
+#' See [https://paws-r.github.io/docs/apigateway/delete_usage_plan.html](https://paws-r.github.io/docs/apigateway/delete_usage_plan.html) for full documentation.
 #'
-#' @param usagePlanId &#91;required&#93; \[Required\] The Id of the to-be-deleted usage plan.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_usage_plan(
-#'   usagePlanId = "string"
-#' )
-#' ```
+#' @param usagePlanId &#91;required&#93; The Id of the to-be-deleted usage plan.
 #'
 #' @keywords internal
 #'
@@ -2223,27 +1228,13 @@ apigateway_delete_usage_plan <- function(usagePlanId) {
 #' associated usage plan
 #'
 #' @description
-#' Deletes a usage plan key and remove the underlying API key from the
-#' associated usage plan.
+#' Deletes a usage plan key and remove the underlying API key from the associated usage plan.
 #'
-#' @usage
-#' apigateway_delete_usage_plan_key(usagePlanId, keyId)
+#' See [https://paws-r.github.io/docs/apigateway/delete_usage_plan_key.html](https://paws-r.github.io/docs/apigateway/delete_usage_plan_key.html) for full documentation.
 #'
-#' @param usagePlanId &#91;required&#93; \[Required\] The Id of the UsagePlan resource representing the usage
-#' plan containing the to-be-deleted UsagePlanKey resource representing a
-#' plan customer.
-#' @param keyId &#91;required&#93; \[Required\] The Id of the UsagePlanKey resource to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_usage_plan_key(
-#'   usagePlanId = "string",
-#'   keyId = "string"
-#' )
-#' ```
+#' @param usagePlanId &#91;required&#93; The Id of the UsagePlan resource representing the usage plan containing
+#' the to-be-deleted UsagePlanKey resource representing a plan customer.
+#' @param keyId &#91;required&#93; The Id of the UsagePlanKey resource to be deleted.
 #'
 #' @keywords internal
 #'
@@ -2270,21 +1261,10 @@ apigateway_delete_usage_plan_key <- function(usagePlanId, keyId) {
 #' @description
 #' Deletes an existing VpcLink of a specified identifier.
 #'
-#' @usage
-#' apigateway_delete_vpc_link(vpcLinkId)
+#' See [https://paws-r.github.io/docs/apigateway/delete_vpc_link.html](https://paws-r.github.io/docs/apigateway/delete_vpc_link.html) for full documentation.
 #'
-#' @param vpcLinkId &#91;required&#93; \[Required\] The identifier of the VpcLink. It is used in an Integration
-#' to reference this VpcLink.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_vpc_link(
-#'   vpcLinkId = "string"
-#' )
-#' ```
+#' @param vpcLinkId &#91;required&#93; The identifier of the VpcLink. It is used in an Integration to reference
+#' this VpcLink.
 #'
 #' @keywords internal
 #'
@@ -2311,22 +1291,10 @@ apigateway_delete_vpc_link <- function(vpcLinkId) {
 #' @description
 #' Flushes all authorizer cache entries on a stage.
 #'
-#' @usage
-#' apigateway_flush_stage_authorizers_cache(restApiId, stageName)
+#' See [https://paws-r.github.io/docs/apigateway/flush_stage_authorizers_cache.html](https://paws-r.github.io/docs/apigateway/flush_stage_authorizers_cache.html) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; The name of the stage to flush.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$flush_stage_authorizers_cache(
-#'   restApiId = "string",
-#'   stageName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2353,22 +1321,10 @@ apigateway_flush_stage_authorizers_cache <- function(restApiId, stageName) {
 #' @description
 #' Flushes a stage's cache.
 #'
-#' @usage
-#' apigateway_flush_stage_cache(restApiId, stageName)
+#' See [https://paws-r.github.io/docs/apigateway/flush_stage_cache.html](https://paws-r.github.io/docs/apigateway/flush_stage_cache.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param stageName &#91;required&#93; \[Required\] The name of the stage to flush its cache.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$flush_stage_cache(
-#'   restApiId = "string",
-#'   stageName = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param stageName &#91;required&#93; The name of the stage to flush its cache.
 #'
 #' @keywords internal
 #'
@@ -2395,42 +1351,12 @@ apigateway_flush_stage_cache <- function(restApiId, stageName) {
 #' @description
 #' Generates a ClientCertificate resource.
 #'
-#' @usage
-#' apigateway_generate_client_certificate(description, tags)
+#' See [https://paws-r.github.io/docs/apigateway/generate_client_certificate.html](https://paws-r.github.io/docs/apigateway/generate_client_certificate.html) for full documentation.
 #'
 #' @param description The description of the ClientCertificate.
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   clientCertificateId = "string",
-#'   description = "string",
-#'   pemEncodedCertificate = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   expirationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$generate_client_certificate(
-#'   description = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2457,29 +1383,7 @@ apigateway_generate_client_certificate <- function(description = NULL, tags = NU
 #' @description
 #' Gets information about the current Account resource.
 #'
-#' @usage
-#' apigateway_get_account()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cloudwatchRoleArn = "string",
-#'   throttleSettings = list(
-#'     burstLimit = 123,
-#'     rateLimit = 123.0
-#'   ),
-#'   features = list(
-#'     "string"
-#'   ),
-#'   apiKeyVersion = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_account()
-#' ```
+#' See [https://paws-r.github.io/docs/apigateway/get_account.html](https://paws-r.github.io/docs/apigateway/get_account.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -2506,45 +1410,11 @@ apigateway_get_account <- function() {
 #' @description
 #' Gets information about the current ApiKey resource.
 #'
-#' @usage
-#' apigateway_get_api_key(apiKey, includeValue)
+#' See [https://paws-r.github.io/docs/apigateway/get_api_key.html](https://paws-r.github.io/docs/apigateway/get_api_key.html) for full documentation.
 #'
-#' @param apiKey &#91;required&#93; \[Required\] The identifier of the ApiKey resource.
+#' @param apiKey &#91;required&#93; The identifier of the ApiKey resource.
 #' @param includeValue A boolean flag to specify whether (`true`) or not (`false`) the result
 #' contains the key value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   value = "string",
-#'   name = "string",
-#'   customerId = "string",
-#'   description = "string",
-#'   enabled = TRUE|FALSE,
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   stageKeys = list(
-#'     "string"
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_api_key(
-#'   apiKey = "string",
-#'   includeValue = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2571,9 +1441,7 @@ apigateway_get_api_key <- function(apiKey, includeValue = NULL) {
 #' @description
 #' Gets information about the current ApiKeys resource.
 #'
-#' @usage
-#' apigateway_get_api_keys(position, limit, nameQuery, customerId,
-#'   includeValues)
+#' See [https://paws-r.github.io/docs/apigateway/get_api_keys.html](https://paws-r.github.io/docs/apigateway/get_api_keys.html) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
@@ -2583,50 +1451,6 @@ apigateway_get_api_key <- function(apiKey, includeValue = NULL) {
 #' such as a developer portal.
 #' @param includeValues A boolean flag to specify whether (`true`) or not (`false`) the result
 #' contains key values.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   warnings = list(
-#'     "string"
-#'   ),
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       value = "string",
-#'       name = "string",
-#'       customerId = "string",
-#'       description = "string",
-#'       enabled = TRUE|FALSE,
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       stageKeys = list(
-#'         "string"
-#'       ),
-#'       tags = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_api_keys(
-#'   position = "string",
-#'   limit = 123,
-#'   nameQuery = "string",
-#'   customerId = "string",
-#'   includeValues = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2652,46 +1476,11 @@ apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = N
 #'
 #' @description
 #' Describe an existing Authorizer resource.
-#' 
-#' <div class="seeAlso">
-#' 
-#' [AWS
-#' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html)
-#' 
-#' </div>
 #'
-#' @usage
-#' apigateway_get_authorizer(restApiId, authorizerId)
+#' See [https://paws-r.github.io/docs/apigateway/get_authorizer.html](https://paws-r.github.io/docs/apigateway/get_authorizer.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param authorizerId &#91;required&#93; \[Required\] The identifier of the Authorizer resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-#'   providerARNs = list(
-#'     "string"
-#'   ),
-#'   authType = "string",
-#'   authorizerUri = "string",
-#'   authorizerCredentials = "string",
-#'   identitySource = "string",
-#'   identityValidationExpression = "string",
-#'   authorizerResultTtlInSeconds = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_authorizer(
-#'   restApiId = "string",
-#'   authorizerId = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param authorizerId &#91;required&#93; The identifier of the Authorizer resource.
 #'
 #' @keywords internal
 #'
@@ -2717,54 +1506,13 @@ apigateway_get_authorizer <- function(restApiId, authorizerId) {
 #'
 #' @description
 #' Describe an existing Authorizers resource.
-#' 
-#' <div class="seeAlso">
-#' 
-#' [AWS
-#' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html)
-#' 
-#' </div>
 #'
-#' @usage
-#' apigateway_get_authorizers(restApiId, position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_authorizers.html](https://paws-r.github.io/docs/apigateway/get_authorizers.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       name = "string",
-#'       type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-#'       providerARNs = list(
-#'         "string"
-#'       ),
-#'       authType = "string",
-#'       authorizerUri = "string",
-#'       authorizerCredentials = "string",
-#'       identitySource = "string",
-#'       identityValidationExpression = "string",
-#'       authorizerResultTtlInSeconds = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_authorizers(
-#'   restApiId = "string",
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2791,33 +1539,13 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
 #' @description
 #' Describe a BasePathMapping resource.
 #'
-#' @usage
-#' apigateway_get_base_path_mapping(domainName, basePath)
+#' See [https://paws-r.github.io/docs/apigateway/get_base_path_mapping.html](https://paws-r.github.io/docs/apigateway/get_base_path_mapping.html) for full documentation.
 #'
-#' @param domainName &#91;required&#93; \[Required\] The domain name of the BasePathMapping resource to be
-#' described.
-#' @param basePath &#91;required&#93; \[Required\] The base path name that callers of the API must provide as
-#' part of the URL after the domain name. This value must be unique for all
-#' of the mappings across a single API. Specify '(none)' if you do not want
+#' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to be described.
+#' @param basePath &#91;required&#93; The base path name that callers of the API must provide as part of the
+#' URL after the domain name. This value must be unique for all of the
+#' mappings across a single API. Specify '(none)' if you do not want
 #' callers to specify any base path name after the domain name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   basePath = "string",
-#'   restApiId = "string",
-#'   stage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_base_path_mapping(
-#'   domainName = "string",
-#'   basePath = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2844,37 +1572,12 @@ apigateway_get_base_path_mapping <- function(domainName, basePath) {
 #' @description
 #' Represents a collection of BasePathMapping resources.
 #'
-#' @usage
-#' apigateway_get_base_path_mappings(domainName, position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_base_path_mappings.html](https://paws-r.github.io/docs/apigateway/get_base_path_mappings.html) for full documentation.
 #'
-#' @param domainName &#91;required&#93; \[Required\] The domain name of a BasePathMapping resource.
+#' @param domainName &#91;required&#93; The domain name of a BasePathMapping resource.
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       basePath = "string",
-#'       restApiId = "string",
-#'       stage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_base_path_mappings(
-#'   domainName = "string",
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2901,37 +1604,9 @@ apigateway_get_base_path_mappings <- function(domainName, position = NULL, limit
 #' @description
 #' Gets information about the current ClientCertificate resource.
 #'
-#' @usage
-#' apigateway_get_client_certificate(clientCertificateId)
+#' See [https://paws-r.github.io/docs/apigateway/get_client_certificate.html](https://paws-r.github.io/docs/apigateway/get_client_certificate.html) for full documentation.
 #'
-#' @param clientCertificateId &#91;required&#93; \[Required\] The identifier of the ClientCertificate resource to be
-#' described.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   clientCertificateId = "string",
-#'   description = "string",
-#'   pemEncodedCertificate = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   expirationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_client_certificate(
-#'   clientCertificateId = "string"
-#' )
-#' ```
+#' @param clientCertificateId &#91;required&#93; The identifier of the ClientCertificate resource to be described.
 #'
 #' @keywords internal
 #'
@@ -2958,44 +1633,11 @@ apigateway_get_client_certificate <- function(clientCertificateId) {
 #' @description
 #' Gets a collection of ClientCertificate resources.
 #'
-#' @usage
-#' apigateway_get_client_certificates(position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_client_certificates.html](https://paws-r.github.io/docs/apigateway/get_client_certificates.html) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       clientCertificateId = "string",
-#'       description = "string",
-#'       pemEncodedCertificate = "string",
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       expirationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       tags = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_client_certificates(
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3022,12 +1664,10 @@ apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
 #' @description
 #' Gets information about a Deployment resource.
 #'
-#' @usage
-#' apigateway_get_deployment(restApiId, deploymentId, embed)
+#' See [https://paws-r.github.io/docs/apigateway/get_deployment.html](https://paws-r.github.io/docs/apigateway/get_deployment.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param deploymentId &#91;required&#93; \[Required\] The identifier of the Deployment resource to get
-#' information about.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param deploymentId &#91;required&#93; The identifier of the Deployment resource to get information about.
 #' @param embed A query parameter to retrieve the specified embedded resources of the
 #' returned Deployment resource in the response. In a REST API call, this
 #' `embed` parameter value is a list of comma-separated strings, as in
@@ -3038,37 +1678,6 @@ apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
 #' single-valued list containing only the `"apisummary"` string. For
 #' example,
 #' `GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=apisummary`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   description = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   apiSummary = list(
-#'     list(
-#'       list(
-#'         authorizationType = "string",
-#'         apiKeyRequired = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deployment(
-#'   restApiId = "string",
-#'   deploymentId = "string",
-#'   embed = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3095,47 +1704,12 @@ apigateway_get_deployment <- function(restApiId, deploymentId, embed = NULL) {
 #' @description
 #' Gets information about a Deployments collection.
 #'
-#' @usage
-#' apigateway_get_deployments(restApiId, position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_deployments.html](https://paws-r.github.io/docs/apigateway/get_deployments.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       description = "string",
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       apiSummary = list(
-#'         list(
-#'           list(
-#'             authorizationType = "string",
-#'             apiKeyRequired = TRUE|FALSE
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deployments(
-#'   restApiId = "string",
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3157,40 +1731,15 @@ apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL)
 }
 .apigateway$operations$get_deployments <- apigateway_get_deployments
 
-#' Get documentation part
+#' Gets a documentation part
 #'
 #' @description
-#' Get documentation part
+#' Gets a documentation part.
 #'
-#' @usage
-#' apigateway_get_documentation_part(restApiId, documentationPartId)
+#' See [https://paws-r.github.io/docs/apigateway/get_documentation_part.html](https://paws-r.github.io/docs/apigateway/get_documentation_part.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param documentationPartId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   location = list(
-#'     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-#'     path = "string",
-#'     method = "string",
-#'     statusCode = "string",
-#'     name = "string"
-#'   ),
-#'   properties = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_documentation_part(
-#'   restApiId = "string",
-#'   documentationPartId = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param documentationPartId &#91;required&#93; The string identifier of the associated RestApi.
 #'
 #' @keywords internal
 #'
@@ -3212,16 +1761,14 @@ apigateway_get_documentation_part <- function(restApiId, documentationPartId) {
 }
 .apigateway$operations$get_documentation_part <- apigateway_get_documentation_part
 
-#' Get documentation parts
+#' Gets documentation parts
 #'
 #' @description
-#' Get documentation parts
+#' Gets documentation parts.
 #'
-#' @usage
-#' apigateway_get_documentation_parts(restApiId, type, nameQuery, path,
-#'   position, limit, locationStatus)
+#' See [https://paws-r.github.io/docs/apigateway/get_documentation_parts.html](https://paws-r.github.io/docs/apigateway/get_documentation_parts.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param type The type of API entities of the to-be-retrieved documentation parts.
 #' @param nameQuery The name of API entities of the to-be-retrieved documentation parts.
 #' @param path The path of API entities of the to-be-retrieved documentation parts.
@@ -3231,40 +1778,6 @@ apigateway_get_documentation_part <- function(restApiId, documentationPartId) {
 #' @param locationStatus The status of the API documentation parts to retrieve. Valid values are
 #' `DOCUMENTED` for retrieving DocumentationPart resources with content and
 #' `UNDOCUMENTED` for DocumentationPart resources without content.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       location = list(
-#'         type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-#'         path = "string",
-#'         method = "string",
-#'         statusCode = "string",
-#'         name = "string"
-#'       ),
-#'       properties = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_documentation_parts(
-#'   restApiId = "string",
-#'   type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-#'   nameQuery = "string",
-#'   path = "string",
-#'   position = "string",
-#'   limit = 123,
-#'   locationStatus = "DOCUMENTED"|"UNDOCUMENTED"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3286,37 +1799,15 @@ apigateway_get_documentation_parts <- function(restApiId, type = NULL, nameQuery
 }
 .apigateway$operations$get_documentation_parts <- apigateway_get_documentation_parts
 
-#' Get documentation version
+#' Gets a documentation version
 #'
 #' @description
-#' Get documentation version
+#' Gets a documentation version.
 #'
-#' @usage
-#' apigateway_get_documentation_version(restApiId, documentationVersion)
+#' See [https://paws-r.github.io/docs/apigateway/get_documentation_version.html](https://paws-r.github.io/docs/apigateway/get_documentation_version.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param documentationVersion &#91;required&#93; \[Required\] The version identifier of the to-be-retrieved documentation
-#' snapshot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   version = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   description = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_documentation_version(
-#'   restApiId = "string",
-#'   documentationVersion = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param documentationVersion &#91;required&#93; The version identifier of the to-be-retrieved documentation snapshot.
 #'
 #' @keywords internal
 #'
@@ -3338,44 +1829,17 @@ apigateway_get_documentation_version <- function(restApiId, documentationVersion
 }
 .apigateway$operations$get_documentation_version <- apigateway_get_documentation_version
 
-#' Get documentation versions
+#' Gets documentation versions
 #'
 #' @description
-#' Get documentation versions
+#' Gets documentation versions.
 #'
-#' @usage
-#' apigateway_get_documentation_versions(restApiId, position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_documentation_versions.html](https://paws-r.github.io/docs/apigateway/get_documentation_versions.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       version = "string",
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       description = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_documentation_versions(
-#'   restApiId = "string",
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3401,60 +1865,11 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #' URL that can be called
 #'
 #' @description
-#' Represents a domain name that is contained in a simpler, more intuitive
-#' URL that can be called.
+#' Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
 #'
-#' @usage
-#' apigateway_get_domain_name(domainName)
+#' See [https://paws-r.github.io/docs/apigateway/get_domain_name.html](https://paws-r.github.io/docs/apigateway/get_domain_name.html) for full documentation.
 #'
-#' @param domainName &#91;required&#93; \[Required\] The name of the DomainName resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   domainName = "string",
-#'   certificateName = "string",
-#'   certificateArn = "string",
-#'   certificateUploadDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   regionalDomainName = "string",
-#'   regionalHostedZoneId = "string",
-#'   regionalCertificateName = "string",
-#'   regionalCertificateArn = "string",
-#'   distributionDomainName = "string",
-#'   distributionHostedZoneId = "string",
-#'   endpointConfiguration = list(
-#'     types = list(
-#'       "REGIONAL"|"EDGE"|"PRIVATE"
-#'     ),
-#'     vpcEndpointIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
-#'   domainNameStatusMessage = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   mutualTlsAuthentication = list(
-#'     truststoreUri = "string",
-#'     truststoreVersion = "string",
-#'     truststoreWarnings = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_domain_name(
-#'   domainName = "string"
-#' )
-#' ```
+#' @param domainName &#91;required&#93; The name of the DomainName resource.
 #'
 #' @keywords internal
 #'
@@ -3481,65 +1896,11 @@ apigateway_get_domain_name <- function(domainName) {
 #' @description
 #' Represents a collection of DomainName resources.
 #'
-#' @usage
-#' apigateway_get_domain_names(position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_domain_names.html](https://paws-r.github.io/docs/apigateway/get_domain_names.html) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       domainName = "string",
-#'       certificateName = "string",
-#'       certificateArn = "string",
-#'       certificateUploadDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       regionalDomainName = "string",
-#'       regionalHostedZoneId = "string",
-#'       regionalCertificateName = "string",
-#'       regionalCertificateArn = "string",
-#'       distributionDomainName = "string",
-#'       distributionHostedZoneId = "string",
-#'       endpointConfiguration = list(
-#'         types = list(
-#'           "REGIONAL"|"EDGE"|"PRIVATE"
-#'         ),
-#'         vpcEndpointIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
-#'       domainNameStatusMessage = "string",
-#'       securityPolicy = "TLS_1_0"|"TLS_1_2",
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       mutualTlsAuthentication = list(
-#'         truststoreUri = "string",
-#'         truststoreVersion = "string",
-#'         truststoreWarnings = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_domain_names(
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3566,14 +1927,12 @@ apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
 #' @description
 #' Exports a deployed version of a RestApi in a specified format.
 #'
-#' @usage
-#' apigateway_get_export(restApiId, stageName, exportType, parameters,
-#'   accepts)
+#' See [https://paws-r.github.io/docs/apigateway/get_export.html](https://paws-r.github.io/docs/apigateway/get_export.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param stageName &#91;required&#93; \[Required\] The name of the Stage that will be exported.
-#' @param exportType &#91;required&#93; \[Required\] The type of export. Acceptable values are 'oas30' for
-#' OpenAPI 3.0.x and 'swagger' for Swagger/OpenAPI 2.0.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param stageName &#91;required&#93; The name of the Stage that will be exported.
+#' @param exportType &#91;required&#93; The type of export. Acceptable values are 'oas30' for OpenAPI 3.0.x and
+#' 'swagger' for Swagger/OpenAPI 2.0.
 #' @param parameters A key-value map of query string parameters that specify properties of
 #' the export, depending on the requested `exportType`. For `exportType`
 #' `oas30` and `swagger`, any combination of the following parameters are
@@ -3586,29 +1945,6 @@ apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
 #' Currently `application/json` and `application/yaml` are supported for
 #' `exportType` of`oas30` and `swagger`. This should be specified in the
 #' `Accept` header for direct API requests.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   contentType = "string",
-#'   contentDisposition = "string",
-#'   body = raw
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_export(
-#'   restApiId = "string",
-#'   stageName = "string",
-#'   exportType = "string",
-#'   parameters = list(
-#'     "string"
-#'   ),
-#'   accepts = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3633,61 +1969,12 @@ apigateway_get_export <- function(restApiId, stageName, exportType, parameters =
 #' Gets a GatewayResponse of a specified response type on the given RestApi
 #'
 #' @description
-#' Gets a GatewayResponse of a specified response type on the given
-#' RestApi.
+#' Gets a GatewayResponse of a specified response type on the given RestApi.
 #'
-#' @usage
-#' apigateway_get_gateway_response(restApiId, responseType)
+#' See [https://paws-r.github.io/docs/apigateway/get_gateway_response.html](https://paws-r.github.io/docs/apigateway/get_gateway_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param responseType &#91;required&#93; \[Required\]
-#' 
-#' The response type of the associated GatewayResponse. Valid values are
-#' 
-#' -   ACCESS_DENIED
-#' -   API_CONFIGURATION_ERROR
-#' -   AUTHORIZER_FAILURE
-#' -   AUTHORIZER_CONFIGURATION_ERROR
-#' -   BAD_REQUEST_PARAMETERS
-#' -   BAD_REQUEST_BODY
-#' -   DEFAULT_4XX
-#' -   DEFAULT_5XX
-#' -   EXPIRED_TOKEN
-#' -   INVALID_SIGNATURE
-#' -   INTEGRATION_FAILURE
-#' -   INTEGRATION_TIMEOUT
-#' -   INVALID_API_KEY
-#' -   MISSING_AUTHENTICATION_TOKEN
-#' -   QUOTA_EXCEEDED
-#' -   REQUEST_TOO_LARGE
-#' -   RESOURCE_NOT_FOUND
-#' -   THROTTLED
-#' -   UNAUTHORIZED
-#' -   UNSUPPORTED_MEDIA_TYPE
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
-#'   statusCode = "string",
-#'   responseParameters = list(
-#'     "string"
-#'   ),
-#'   responseTemplates = list(
-#'     "string"
-#'   ),
-#'   defaultResponse = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_gateway_response(
-#'   restApiId = "string",
-#'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param responseType &#91;required&#93; The response type of the associated GatewayResponse.
 #'
 #' @keywords internal
 #'
@@ -3712,51 +1999,17 @@ apigateway_get_gateway_response <- function(restApiId, responseType) {
 #' Gets the GatewayResponses collection on the given RestApi
 #'
 #' @description
-#' Gets the GatewayResponses collection on the given RestApi. If an API
-#' developer has not added any definitions for gateway responses, the
-#' result will be the API Gateway-generated default GatewayResponses
-#' collection for the supported response types.
+#' Gets the GatewayResponses collection on the given RestApi. If an API developer has not added any definitions for gateway responses, the result will be the API Gateway-generated default GatewayResponses collection for the supported response types.
 #'
-#' @usage
-#' apigateway_get_gateway_responses(restApiId, position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_gateway_responses.html](https://paws-r.github.io/docs/apigateway/get_gateway_responses.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set. The
 #' GatewayResponse collection does not support pagination and the position
 #' does not apply here.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500. The GatewayResponses collection does not
 #' support pagination and the limit does not apply here.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
-#'       statusCode = "string",
-#'       responseParameters = list(
-#'         "string"
-#'       ),
-#'       responseTemplates = list(
-#'         "string"
-#'       ),
-#'       defaultResponse = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_gateway_responses(
-#'   restApiId = "string",
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3783,63 +2036,11 @@ apigateway_get_gateway_responses <- function(restApiId, position = NULL, limit =
 #' @description
 #' Get the integration settings.
 #'
-#' @usage
-#' apigateway_get_integration(restApiId, resourceId, httpMethod)
+#' See [https://paws-r.github.io/docs/apigateway/get_integration.html](https://paws-r.github.io/docs/apigateway/get_integration.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] Specifies a get integration request's resource identifier
-#' @param httpMethod &#91;required&#93; \[Required\] Specifies a get integration request's HTTP method.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'   httpMethod = "string",
-#'   uri = "string",
-#'   connectionType = "INTERNET"|"VPC_LINK",
-#'   connectionId = "string",
-#'   credentials = "string",
-#'   requestParameters = list(
-#'     "string"
-#'   ),
-#'   requestTemplates = list(
-#'     "string"
-#'   ),
-#'   passthroughBehavior = "string",
-#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   timeoutInMillis = 123,
-#'   cacheNamespace = "string",
-#'   cacheKeyParameters = list(
-#'     "string"
-#'   ),
-#'   integrationResponses = list(
-#'     list(
-#'       statusCode = "string",
-#'       selectionPattern = "string",
-#'       responseParameters = list(
-#'         "string"
-#'       ),
-#'       responseTemplates = list(
-#'         "string"
-#'       ),
-#'       contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#'     )
-#'   ),
-#'   tlsConfig = list(
-#'     insecureSkipVerification = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_integration(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; Specifies a get integration request's resource identifier
+#' @param httpMethod &#91;required&#93; Specifies a get integration request's HTTP method.
 #'
 #' @keywords internal
 #'
@@ -3866,41 +2067,12 @@ apigateway_get_integration <- function(restApiId, resourceId, httpMethod) {
 #' @description
 #' Represents a get integration response.
 #'
-#' @usage
-#' apigateway_get_integration_response(restApiId, resourceId, httpMethod,
-#'   statusCode)
+#' See [https://paws-r.github.io/docs/apigateway/get_integration_response.html](https://paws-r.github.io/docs/apigateway/get_integration_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] Specifies a get integration response request's resource
-#' identifier.
-#' @param httpMethod &#91;required&#93; \[Required\] Specifies a get integration response request's HTTP method.
-#' @param statusCode &#91;required&#93; \[Required\] Specifies a get integration response request's status code.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   statusCode = "string",
-#'   selectionPattern = "string",
-#'   responseParameters = list(
-#'     "string"
-#'   ),
-#'   responseTemplates = list(
-#'     "string"
-#'   ),
-#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_integration_response(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   statusCode = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; Specifies a get integration response request's resource identifier.
+#' @param httpMethod &#91;required&#93; Specifies a get integration response request's HTTP method.
+#' @param statusCode &#91;required&#93; Specifies a get integration response request's status code.
 #'
 #' @keywords internal
 #'
@@ -3927,91 +2099,11 @@ apigateway_get_integration_response <- function(restApiId, resourceId, httpMetho
 #' @description
 #' Describe an existing Method resource.
 #'
-#' @usage
-#' apigateway_get_method(restApiId, resourceId, httpMethod)
+#' See [https://paws-r.github.io/docs/apigateway/get_method.html](https://paws-r.github.io/docs/apigateway/get_method.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the Method resource.
-#' @param httpMethod &#91;required&#93; \[Required\] Specifies the method request's HTTP method type.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   httpMethod = "string",
-#'   authorizationType = "string",
-#'   authorizerId = "string",
-#'   apiKeyRequired = TRUE|FALSE,
-#'   requestValidatorId = "string",
-#'   operationName = "string",
-#'   requestParameters = list(
-#'     TRUE|FALSE
-#'   ),
-#'   requestModels = list(
-#'     "string"
-#'   ),
-#'   methodResponses = list(
-#'     list(
-#'       statusCode = "string",
-#'       responseParameters = list(
-#'         TRUE|FALSE
-#'       ),
-#'       responseModels = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   methodIntegration = list(
-#'     type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'     httpMethod = "string",
-#'     uri = "string",
-#'     connectionType = "INTERNET"|"VPC_LINK",
-#'     connectionId = "string",
-#'     credentials = "string",
-#'     requestParameters = list(
-#'       "string"
-#'     ),
-#'     requestTemplates = list(
-#'       "string"
-#'     ),
-#'     passthroughBehavior = "string",
-#'     contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'     timeoutInMillis = 123,
-#'     cacheNamespace = "string",
-#'     cacheKeyParameters = list(
-#'       "string"
-#'     ),
-#'     integrationResponses = list(
-#'       list(
-#'         statusCode = "string",
-#'         selectionPattern = "string",
-#'         responseParameters = list(
-#'           "string"
-#'         ),
-#'         responseTemplates = list(
-#'           "string"
-#'         ),
-#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#'       )
-#'     ),
-#'     tlsConfig = list(
-#'       insecureSkipVerification = TRUE|FALSE
-#'     )
-#'   ),
-#'   authorizationScopes = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_method(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The Resource identifier for the Method resource.
+#' @param httpMethod &#91;required&#93; Specifies the method request's HTTP method type.
 #'
 #' @keywords internal
 #'
@@ -4038,38 +2130,12 @@ apigateway_get_method <- function(restApiId, resourceId, httpMethod) {
 #' @description
 #' Describes a MethodResponse resource.
 #'
-#' @usage
-#' apigateway_get_method_response(restApiId, resourceId, httpMethod,
-#'   statusCode)
+#' See [https://paws-r.github.io/docs/apigateway/get_method_response.html](https://paws-r.github.io/docs/apigateway/get_method_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the MethodResponse resource.
-#' @param httpMethod &#91;required&#93; \[Required\] The HTTP verb of the Method resource.
-#' @param statusCode &#91;required&#93; \[Required\] The status code for the MethodResponse resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   statusCode = "string",
-#'   responseParameters = list(
-#'     TRUE|FALSE
-#'   ),
-#'   responseModels = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_method_response(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   statusCode = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The Resource identifier for the MethodResponse resource.
+#' @param httpMethod &#91;required&#93; The HTTP verb of the Method resource.
+#' @param statusCode &#91;required&#93; The status code for the MethodResponse resource.
 #'
 #' @keywords internal
 #'
@@ -4096,35 +2162,13 @@ apigateway_get_method_response <- function(restApiId, resourceId, httpMethod, st
 #' @description
 #' Describes an existing model defined for a RestApi resource.
 #'
-#' @usage
-#' apigateway_get_model(restApiId, modelName, flatten)
+#' See [https://paws-r.github.io/docs/apigateway/get_model.html](https://paws-r.github.io/docs/apigateway/get_model.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The RestApi identifier under which the Model exists.
-#' @param modelName &#91;required&#93; \[Required\] The name of the model as an identifier.
+#' @param restApiId &#91;required&#93; The RestApi identifier under which the Model exists.
+#' @param modelName &#91;required&#93; The name of the model as an identifier.
 #' @param flatten A query parameter of a Boolean value to resolve (`true`) all external
 #' model references and returns a flattened model schema or not (`false`)
 #' The default is `false`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   schema = "string",
-#'   contentType = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_model(
-#'   restApiId = "string",
-#'   modelName = "string",
-#'   flatten = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4150,30 +2194,12 @@ apigateway_get_model <- function(restApiId, modelName, flatten = NULL) {
 #' payload into the structure of a model
 #'
 #' @description
-#' Generates a sample mapping template that can be used to transform a
-#' payload into the structure of a model.
+#' Generates a sample mapping template that can be used to transform a payload into the structure of a model.
 #'
-#' @usage
-#' apigateway_get_model_template(restApiId, modelName)
+#' See [https://paws-r.github.io/docs/apigateway/get_model_template.html](https://paws-r.github.io/docs/apigateway/get_model_template.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param modelName &#91;required&#93; \[Required\] The name of the model for which to generate a template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   value = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_model_template(
-#'   restApiId = "string",
-#'   modelName = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param modelName &#91;required&#93; The name of the model for which to generate a template.
 #'
 #' @keywords internal
 #'
@@ -4200,39 +2226,12 @@ apigateway_get_model_template <- function(restApiId, modelName) {
 #' @description
 #' Describes existing Models defined for a RestApi resource.
 #'
-#' @usage
-#' apigateway_get_models(restApiId, position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_models.html](https://paws-r.github.io/docs/apigateway/get_models.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       name = "string",
-#'       description = "string",
-#'       schema = "string",
-#'       contentType = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_models(
-#'   restApiId = "string",
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4259,30 +2258,10 @@ apigateway_get_models <- function(restApiId, position = NULL, limit = NULL) {
 #' @description
 #' Gets a RequestValidator of a given RestApi.
 #'
-#' @usage
-#' apigateway_get_request_validator(restApiId, requestValidatorId)
+#' See [https://paws-r.github.io/docs/apigateway/get_request_validator.html](https://paws-r.github.io/docs/apigateway/get_request_validator.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param requestValidatorId &#91;required&#93; \[Required\] The identifier of the RequestValidator to be retrieved.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   validateRequestBody = TRUE|FALSE,
-#'   validateRequestParameters = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_request_validator(
-#'   restApiId = "string",
-#'   requestValidatorId = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param requestValidatorId &#91;required&#93; The identifier of the RequestValidator to be retrieved.
 #'
 #' @keywords internal
 #'
@@ -4309,38 +2288,12 @@ apigateway_get_request_validator <- function(restApiId, requestValidatorId) {
 #' @description
 #' Gets the RequestValidators collection of a given RestApi.
 #'
-#' @usage
-#' apigateway_get_request_validators(restApiId, position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_request_validators.html](https://paws-r.github.io/docs/apigateway/get_request_validators.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       name = "string",
-#'       validateRequestBody = TRUE|FALSE,
-#'       validateRequestParameters = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_request_validators(
-#'   restApiId = "string",
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4367,11 +2320,10 @@ apigateway_get_request_validators <- function(restApiId, position = NULL, limit 
 #' @description
 #' Lists information about a resource.
 #'
-#' @usage
-#' apigateway_get_resource(restApiId, resourceId, embed)
+#' See [https://paws-r.github.io/docs/apigateway/get_resource.html](https://paws-r.github.io/docs/apigateway/get_resource.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The identifier for the Resource resource.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The identifier for the Resource resource.
 #' @param embed A query parameter to retrieve the specified resources embedded in the
 #' returned Resource representation in the response. This `embed` parameter
 #' value is a list of comma-separated strings. Currently, the request
@@ -4379,95 +2331,6 @@ apigateway_get_request_validators <- function(restApiId, position = NULL, limit 
 #' query parameter value must be a single-valued list and contain the
 #' `"methods"` string. For example,
 #' `GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   parentId = "string",
-#'   pathPart = "string",
-#'   path = "string",
-#'   resourceMethods = list(
-#'     list(
-#'       httpMethod = "string",
-#'       authorizationType = "string",
-#'       authorizerId = "string",
-#'       apiKeyRequired = TRUE|FALSE,
-#'       requestValidatorId = "string",
-#'       operationName = "string",
-#'       requestParameters = list(
-#'         TRUE|FALSE
-#'       ),
-#'       requestModels = list(
-#'         "string"
-#'       ),
-#'       methodResponses = list(
-#'         list(
-#'           statusCode = "string",
-#'           responseParameters = list(
-#'             TRUE|FALSE
-#'           ),
-#'           responseModels = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       methodIntegration = list(
-#'         type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'         httpMethod = "string",
-#'         uri = "string",
-#'         connectionType = "INTERNET"|"VPC_LINK",
-#'         connectionId = "string",
-#'         credentials = "string",
-#'         requestParameters = list(
-#'           "string"
-#'         ),
-#'         requestTemplates = list(
-#'           "string"
-#'         ),
-#'         passthroughBehavior = "string",
-#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'         timeoutInMillis = 123,
-#'         cacheNamespace = "string",
-#'         cacheKeyParameters = list(
-#'           "string"
-#'         ),
-#'         integrationResponses = list(
-#'           list(
-#'             statusCode = "string",
-#'             selectionPattern = "string",
-#'             responseParameters = list(
-#'               "string"
-#'             ),
-#'             responseTemplates = list(
-#'               "string"
-#'             ),
-#'             contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#'           )
-#'         ),
-#'         tlsConfig = list(
-#'           insecureSkipVerification = TRUE|FALSE
-#'         )
-#'       ),
-#'       authorizationScopes = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resource(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   embed = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4494,10 +2357,9 @@ apigateway_get_resource <- function(restApiId, resourceId, embed = NULL) {
 #' @description
 #' Lists information about a collection of Resource resources.
 #'
-#' @usage
-#' apigateway_get_resources(restApiId, position, limit, embed)
+#' See [https://paws-r.github.io/docs/apigateway/get_resources.html](https://paws-r.github.io/docs/apigateway/get_resources.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
@@ -4508,101 +2370,6 @@ apigateway_get_resource <- function(restApiId, resourceId, embed = NULL) {
 #' query parameter value must be a single-valued list and contain the
 #' `"methods"` string. For example,
 #' `GET /restapis/{restapi_id}/resources?embed=methods`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       parentId = "string",
-#'       pathPart = "string",
-#'       path = "string",
-#'       resourceMethods = list(
-#'         list(
-#'           httpMethod = "string",
-#'           authorizationType = "string",
-#'           authorizerId = "string",
-#'           apiKeyRequired = TRUE|FALSE,
-#'           requestValidatorId = "string",
-#'           operationName = "string",
-#'           requestParameters = list(
-#'             TRUE|FALSE
-#'           ),
-#'           requestModels = list(
-#'             "string"
-#'           ),
-#'           methodResponses = list(
-#'             list(
-#'               statusCode = "string",
-#'               responseParameters = list(
-#'                 TRUE|FALSE
-#'               ),
-#'               responseModels = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           methodIntegration = list(
-#'             type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'             httpMethod = "string",
-#'             uri = "string",
-#'             connectionType = "INTERNET"|"VPC_LINK",
-#'             connectionId = "string",
-#'             credentials = "string",
-#'             requestParameters = list(
-#'               "string"
-#'             ),
-#'             requestTemplates = list(
-#'               "string"
-#'             ),
-#'             passthroughBehavior = "string",
-#'             contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'             timeoutInMillis = 123,
-#'             cacheNamespace = "string",
-#'             cacheKeyParameters = list(
-#'               "string"
-#'             ),
-#'             integrationResponses = list(
-#'               list(
-#'                 statusCode = "string",
-#'                 selectionPattern = "string",
-#'                 responseParameters = list(
-#'                   "string"
-#'                 ),
-#'                 responseTemplates = list(
-#'                   "string"
-#'                 ),
-#'                 contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#'               )
-#'             ),
-#'             tlsConfig = list(
-#'               insecureSkipVerification = TRUE|FALSE
-#'             )
-#'           ),
-#'           authorizationScopes = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resources(
-#'   restApiId = "string",
-#'   position = "string",
-#'   limit = 123,
-#'   embed = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4629,52 +2396,9 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
 #' @description
 #' Lists the RestApi resource in the collection.
 #'
-#' @usage
-#' apigateway_get_rest_api(restApiId)
+#' See [https://paws-r.github.io/docs/apigateway/get_rest_api.html](https://paws-r.github.io/docs/apigateway/get_rest_api.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   warnings = list(
-#'     "string"
-#'   ),
-#'   binaryMediaTypes = list(
-#'     "string"
-#'   ),
-#'   minimumCompressionSize = 123,
-#'   apiKeySource = "HEADER"|"AUTHORIZER",
-#'   endpointConfiguration = list(
-#'     types = list(
-#'       "REGIONAL"|"EDGE"|"PRIVATE"
-#'     ),
-#'     vpcEndpointIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   policy = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   disableExecuteApiEndpoint = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_rest_api(
-#'   restApiId = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #'
 #' @keywords internal
 #'
@@ -4701,60 +2425,11 @@ apigateway_get_rest_api <- function(restApiId) {
 #' @description
 #' Lists the RestApis resources for your collection.
 #'
-#' @usage
-#' apigateway_get_rest_apis(position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_rest_apis.html](https://paws-r.github.io/docs/apigateway/get_rest_apis.html) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       name = "string",
-#'       description = "string",
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       version = "string",
-#'       warnings = list(
-#'         "string"
-#'       ),
-#'       binaryMediaTypes = list(
-#'         "string"
-#'       ),
-#'       minimumCompressionSize = 123,
-#'       apiKeySource = "HEADER"|"AUTHORIZER",
-#'       endpointConfiguration = list(
-#'         types = list(
-#'           "REGIONAL"|"EDGE"|"PRIVATE"
-#'         ),
-#'         vpcEndpointIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       policy = "string",
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       disableExecuteApiEndpoint = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_rest_apis(
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4781,42 +2456,19 @@ apigateway_get_rest_apis <- function(position = NULL, limit = NULL) {
 #' @description
 #' Generates a client SDK for a RestApi and Stage.
 #'
-#' @usage
-#' apigateway_get_sdk(restApiId, stageName, sdkType, parameters)
+#' See [https://paws-r.github.io/docs/apigateway/get_sdk.html](https://paws-r.github.io/docs/apigateway/get_sdk.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param stageName &#91;required&#93; \[Required\] The name of the Stage that the SDK will use.
-#' @param sdkType &#91;required&#93; \[Required\] The language for the generated SDK. Currently `java`,
-#' `javascript`, `android`, `objectivec` (for iOS), `swift` (for iOS), and
-#' `ruby` are supported.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param stageName &#91;required&#93; The name of the Stage that the SDK will use.
+#' @param sdkType &#91;required&#93; The language for the generated SDK. Currently `java`, `javascript`,
+#' `android`, `objectivec` (for iOS), `swift` (for iOS), and `ruby` are
+#' supported.
 #' @param parameters A string-to-string key-value map of query parameters `sdkType`-dependent
 #' properties of the SDK. For `sdkType` of `objectivec` or `swift`, a
 #' parameter named `classPrefix` is required. For `sdkType` of `android`,
 #' parameters named `groupId`, `artifactId`, `artifactVersion`, and
 #' `invokerPackage` are required. For `sdkType` of `java`, parameters named
 #' `serviceName` and `javaPackageName` are required.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   contentType = "string",
-#'   contentDisposition = "string",
-#'   body = raw
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_sdk(
-#'   restApiId = "string",
-#'   stageName = "string",
-#'   sdkType = "string",
-#'   parameters = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4838,41 +2490,14 @@ apigateway_get_sdk <- function(restApiId, stageName, sdkType, parameters = NULL)
 }
 .apigateway$operations$get_sdk <- apigateway_get_sdk
 
-#' Get sdk type
+#' Gets an SDK type
 #'
 #' @description
-#' Get sdk type
+#' Gets an SDK type.
 #'
-#' @usage
-#' apigateway_get_sdk_type(id)
+#' See [https://paws-r.github.io/docs/apigateway/get_sdk_type.html](https://paws-r.github.io/docs/apigateway/get_sdk_type.html) for full documentation.
 #'
-#' @param id &#91;required&#93; \[Required\] The identifier of the queried SdkType instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   friendlyName = "string",
-#'   description = "string",
-#'   configurationProperties = list(
-#'     list(
-#'       name = "string",
-#'       friendlyName = "string",
-#'       description = "string",
-#'       required = TRUE|FALSE,
-#'       defaultValue = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_sdk_type(
-#'   id = "string"
-#' )
-#' ```
+#' @param id &#91;required&#93; The identifier of the queried SdkType instance.
 #'
 #' @keywords internal
 #'
@@ -4894,49 +2519,16 @@ apigateway_get_sdk_type <- function(id) {
 }
 .apigateway$operations$get_sdk_type <- apigateway_get_sdk_type
 
-#' Get sdk types
+#' Gets SDK types
 #'
 #' @description
-#' Get sdk types
+#' Gets SDK types
 #'
-#' @usage
-#' apigateway_get_sdk_types(position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_sdk_types.html](https://paws-r.github.io/docs/apigateway/get_sdk_types.html) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       friendlyName = "string",
-#'       description = "string",
-#'       configurationProperties = list(
-#'         list(
-#'           name = "string",
-#'           friendlyName = "string",
-#'           description = "string",
-#'           required = TRUE|FALSE,
-#'           defaultValue = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_sdk_types(
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4963,74 +2555,10 @@ apigateway_get_sdk_types <- function(position = NULL, limit = NULL) {
 #' @description
 #' Gets information about a Stage resource.
 #'
-#' @usage
-#' apigateway_get_stage(restApiId, stageName)
+#' See [https://paws-r.github.io/docs/apigateway/get_stage.html](https://paws-r.github.io/docs/apigateway/get_stage.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param stageName &#91;required&#93; \[Required\] The name of the Stage resource to get information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentId = "string",
-#'   clientCertificateId = "string",
-#'   stageName = "string",
-#'   description = "string",
-#'   cacheClusterEnabled = TRUE|FALSE,
-#'   cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
-#'   cacheClusterStatus = "CREATE_IN_PROGRESS"|"AVAILABLE"|"DELETE_IN_PROGRESS"|"NOT_AVAILABLE"|"FLUSH_IN_PROGRESS",
-#'   methodSettings = list(
-#'     list(
-#'       metricsEnabled = TRUE|FALSE,
-#'       loggingLevel = "string",
-#'       dataTraceEnabled = TRUE|FALSE,
-#'       throttlingBurstLimit = 123,
-#'       throttlingRateLimit = 123.0,
-#'       cachingEnabled = TRUE|FALSE,
-#'       cacheTtlInSeconds = 123,
-#'       cacheDataEncrypted = TRUE|FALSE,
-#'       requireAuthorizationForCacheControl = TRUE|FALSE,
-#'       unauthorizedCacheControlHeaderStrategy = "FAIL_WITH_403"|"SUCCEED_WITH_RESPONSE_HEADER"|"SUCCEED_WITHOUT_RESPONSE_HEADER"
-#'     )
-#'   ),
-#'   variables = list(
-#'     "string"
-#'   ),
-#'   documentationVersion = "string",
-#'   accessLogSettings = list(
-#'     format = "string",
-#'     destinationArn = "string"
-#'   ),
-#'   canarySettings = list(
-#'     percentTraffic = 123.0,
-#'     deploymentId = "string",
-#'     stageVariableOverrides = list(
-#'       "string"
-#'     ),
-#'     useStageCache = TRUE|FALSE
-#'   ),
-#'   tracingEnabled = TRUE|FALSE,
-#'   webAclArn = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_stage(
-#'   restApiId = "string",
-#'   stageName = "string"
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param stageName &#91;required&#93; The name of the Stage resource to get information about.
 #'
 #' @keywords internal
 #'
@@ -5057,78 +2585,10 @@ apigateway_get_stage <- function(restApiId, stageName) {
 #' @description
 #' Gets information about one or more Stage resources.
 #'
-#' @usage
-#' apigateway_get_stages(restApiId, deploymentId)
+#' See [https://paws-r.github.io/docs/apigateway/get_stages.html](https://paws-r.github.io/docs/apigateway/get_stages.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param deploymentId The stages' deployment identifiers.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   item = list(
-#'     list(
-#'       deploymentId = "string",
-#'       clientCertificateId = "string",
-#'       stageName = "string",
-#'       description = "string",
-#'       cacheClusterEnabled = TRUE|FALSE,
-#'       cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
-#'       cacheClusterStatus = "CREATE_IN_PROGRESS"|"AVAILABLE"|"DELETE_IN_PROGRESS"|"NOT_AVAILABLE"|"FLUSH_IN_PROGRESS",
-#'       methodSettings = list(
-#'         list(
-#'           metricsEnabled = TRUE|FALSE,
-#'           loggingLevel = "string",
-#'           dataTraceEnabled = TRUE|FALSE,
-#'           throttlingBurstLimit = 123,
-#'           throttlingRateLimit = 123.0,
-#'           cachingEnabled = TRUE|FALSE,
-#'           cacheTtlInSeconds = 123,
-#'           cacheDataEncrypted = TRUE|FALSE,
-#'           requireAuthorizationForCacheControl = TRUE|FALSE,
-#'           unauthorizedCacheControlHeaderStrategy = "FAIL_WITH_403"|"SUCCEED_WITH_RESPONSE_HEADER"|"SUCCEED_WITHOUT_RESPONSE_HEADER"
-#'         )
-#'       ),
-#'       variables = list(
-#'         "string"
-#'       ),
-#'       documentationVersion = "string",
-#'       accessLogSettings = list(
-#'         format = "string",
-#'         destinationArn = "string"
-#'       ),
-#'       canarySettings = list(
-#'         percentTraffic = 123.0,
-#'         deploymentId = "string",
-#'         stageVariableOverrides = list(
-#'           "string"
-#'         ),
-#'         useStageCache = TRUE|FALSE
-#'       ),
-#'       tracingEnabled = TRUE|FALSE,
-#'       webAclArn = "string",
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_stages(
-#'   restApiId = "string",
-#'   deploymentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5155,33 +2615,13 @@ apigateway_get_stages <- function(restApiId, deploymentId = NULL) {
 #' @description
 #' Gets the Tags collection for a given resource.
 #'
-#' @usage
-#' apigateway_get_tags(resourceArn, position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_tags.html](https://paws-r.github.io/docs/apigateway/get_tags.html) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged.
+#' @param resourceArn &#91;required&#93; The ARN of a resource that can be tagged.
 #' @param position (Not currently supported) The current pagination position in the paged
 #' result set.
 #' @param limit (Not currently supported) The maximum number of returned results per
 #' page. The default value is 25 and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_tags(
-#'   resourceArn = "string",
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5208,47 +2648,15 @@ apigateway_get_tags <- function(resourceArn, position = NULL, limit = NULL) {
 #' @description
 #' Gets the usage data of a usage plan in a specified time interval.
 #'
-#' @usage
-#' apigateway_get_usage(usagePlanId, keyId, startDate, endDate, position,
-#'   limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_usage.html](https://paws-r.github.io/docs/apigateway/get_usage.html) for full documentation.
 #'
-#' @param usagePlanId &#91;required&#93; \[Required\] The Id of the usage plan associated with the usage data.
+#' @param usagePlanId &#91;required&#93; The Id of the usage plan associated with the usage data.
 #' @param keyId The Id of the API key associated with the resultant usage data.
-#' @param startDate &#91;required&#93; \[Required\] The starting date (e.g., 2016-01-01) of the usage data.
-#' @param endDate &#91;required&#93; \[Required\] The ending date (e.g., 2016-12-31) of the usage data.
+#' @param startDate &#91;required&#93; The starting date (e.g., 2016-01-01) of the usage data.
+#' @param endDate &#91;required&#93; The ending date (e.g., 2016-12-31) of the usage data.
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   usagePlanId = "string",
-#'   startDate = "string",
-#'   endDate = "string",
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       list(
-#'         123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_usage(
-#'   usagePlanId = "string",
-#'   keyId = "string",
-#'   startDate = "string",
-#'   endDate = "string",
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5275,52 +2683,9 @@ apigateway_get_usage <- function(usagePlanId, keyId = NULL, startDate, endDate, 
 #' @description
 #' Gets a usage plan of a given plan identifier.
 #'
-#' @usage
-#' apigateway_get_usage_plan(usagePlanId)
+#' See [https://paws-r.github.io/docs/apigateway/get_usage_plan.html](https://paws-r.github.io/docs/apigateway/get_usage_plan.html) for full documentation.
 #'
-#' @param usagePlanId &#91;required&#93; \[Required\] The identifier of the UsagePlan resource to be retrieved.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   apiStages = list(
-#'     list(
-#'       apiId = "string",
-#'       stage = "string",
-#'       throttle = list(
-#'         list(
-#'           burstLimit = 123,
-#'           rateLimit = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   throttle = list(
-#'     burstLimit = 123,
-#'     rateLimit = 123.0
-#'   ),
-#'   quota = list(
-#'     limit = 123,
-#'     offset = 123,
-#'     period = "DAY"|"WEEK"|"MONTH"
-#'   ),
-#'   productCode = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_usage_plan(
-#'   usagePlanId = "string"
-#' )
-#' ```
+#' @param usagePlanId &#91;required&#93; The identifier of the UsagePlan resource to be retrieved.
 #'
 #' @keywords internal
 #'
@@ -5347,33 +2712,12 @@ apigateway_get_usage_plan <- function(usagePlanId) {
 #' @description
 #' Gets a usage plan key of a given key identifier.
 #'
-#' @usage
-#' apigateway_get_usage_plan_key(usagePlanId, keyId)
+#' See [https://paws-r.github.io/docs/apigateway/get_usage_plan_key.html](https://paws-r.github.io/docs/apigateway/get_usage_plan_key.html) for full documentation.
 #'
-#' @param usagePlanId &#91;required&#93; \[Required\] The Id of the UsagePlan resource representing the usage
-#' plan containing the to-be-retrieved UsagePlanKey resource representing a
+#' @param usagePlanId &#91;required&#93; The Id of the UsagePlan resource representing the usage plan containing
+#' the to-be-retrieved UsagePlanKey resource representing a plan customer.
+#' @param keyId &#91;required&#93; The key Id of the to-be-retrieved UsagePlanKey resource representing a
 #' plan customer.
-#' @param keyId &#91;required&#93; \[Required\] The key Id of the to-be-retrieved UsagePlanKey resource
-#' representing a plan customer.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   type = "string",
-#'   value = "string",
-#'   name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_usage_plan_key(
-#'   usagePlanId = "string",
-#'   keyId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5399,46 +2743,17 @@ apigateway_get_usage_plan_key <- function(usagePlanId, keyId) {
 #' specified usage plan
 #'
 #' @description
-#' Gets all the usage plan keys representing the API keys added to a
-#' specified usage plan.
+#' Gets all the usage plan keys representing the API keys added to a specified usage plan.
 #'
-#' @usage
-#' apigateway_get_usage_plan_keys(usagePlanId, position, limit, nameQuery)
+#' See [https://paws-r.github.io/docs/apigateway/get_usage_plan_keys.html](https://paws-r.github.io/docs/apigateway/get_usage_plan_keys.html) for full documentation.
 #'
-#' @param usagePlanId &#91;required&#93; \[Required\] The Id of the UsagePlan resource representing the usage
-#' plan containing the to-be-retrieved UsagePlanKey resource representing a
-#' plan customer.
+#' @param usagePlanId &#91;required&#93; The Id of the UsagePlan resource representing the usage plan containing
+#' the to-be-retrieved UsagePlanKey resource representing a plan customer.
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
 #' @param nameQuery A query parameter specifying the name of the to-be-returned usage plan
 #' keys.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       type = "string",
-#'       value = "string",
-#'       name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_usage_plan_keys(
-#'   usagePlanId = "string",
-#'   position = "string",
-#'   limit = 123,
-#'   nameQuery = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5465,62 +2780,12 @@ apigateway_get_usage_plan_keys <- function(usagePlanId, position = NULL, limit =
 #' @description
 #' Gets all the usage plans of the caller's account.
 #'
-#' @usage
-#' apigateway_get_usage_plans(position, keyId, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_usage_plans.html](https://paws-r.github.io/docs/apigateway/get_usage_plans.html) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param keyId The identifier of the API key associated with the usage plans.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       name = "string",
-#'       description = "string",
-#'       apiStages = list(
-#'         list(
-#'           apiId = "string",
-#'           stage = "string",
-#'           throttle = list(
-#'             list(
-#'               burstLimit = 123,
-#'               rateLimit = 123.0
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       throttle = list(
-#'         burstLimit = 123,
-#'         rateLimit = 123.0
-#'       ),
-#'       quota = list(
-#'         limit = 123,
-#'         offset = 123,
-#'         period = "DAY"|"WEEK"|"MONTH"
-#'       ),
-#'       productCode = "string",
-#'       tags = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_usage_plans(
-#'   position = "string",
-#'   keyId = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5547,36 +2812,10 @@ apigateway_get_usage_plans <- function(position = NULL, keyId = NULL, limit = NU
 #' @description
 #' Gets a specified VPC link under the caller's account in a region.
 #'
-#' @usage
-#' apigateway_get_vpc_link(vpcLinkId)
+#' See [https://paws-r.github.io/docs/apigateway/get_vpc_link.html](https://paws-r.github.io/docs/apigateway/get_vpc_link.html) for full documentation.
 #'
-#' @param vpcLinkId &#91;required&#93; \[Required\] The identifier of the VpcLink. It is used in an Integration
-#' to reference this VpcLink.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   targetArns = list(
-#'     "string"
-#'   ),
-#'   status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
-#'   statusMessage = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_vpc_link(
-#'   vpcLinkId = "string"
-#' )
-#' ```
+#' @param vpcLinkId &#91;required&#93; The identifier of the VpcLink. It is used in an Integration to reference
+#' this VpcLink.
 #'
 #' @keywords internal
 #'
@@ -5602,46 +2841,13 @@ apigateway_get_vpc_link <- function(vpcLinkId) {
 #' region
 #'
 #' @description
-#' Gets the VpcLinks collection under the caller's account in a selected
-#' region.
+#' Gets the VpcLinks collection under the caller's account in a selected region.
 #'
-#' @usage
-#' apigateway_get_vpc_links(position, limit)
+#' See [https://paws-r.github.io/docs/apigateway/get_vpc_links.html](https://paws-r.github.io/docs/apigateway/get_vpc_links.html) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       id = "string",
-#'       name = "string",
-#'       description = "string",
-#'       targetArns = list(
-#'         "string"
-#'       ),
-#'       status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
-#'       statusMessage = "string",
-#'       tags = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_vpc_links(
-#'   position = "string",
-#'   limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5668,38 +2874,14 @@ apigateway_get_vpc_links <- function(position = NULL, limit = NULL) {
 #' @description
 #' Import API keys from an external source, such as a CSV-formatted file.
 #'
-#' @usage
-#' apigateway_import_api_keys(body, format, failOnWarnings)
+#' See [https://paws-r.github.io/docs/apigateway/import_api_keys.html](https://paws-r.github.io/docs/apigateway/import_api_keys.html) for full documentation.
 #'
 #' @param body &#91;required&#93; The payload of the POST request to import API keys. For the payload
-#' format, see [API Key File
-#' Format](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html).
+#' format, see API Key File Format.
 #' @param format &#91;required&#93; A query parameter to specify the input format to imported API keys.
 #' Currently, only the `csv` format is supported.
 #' @param failOnWarnings A query parameter to indicate whether to rollback ApiKey importation
 #' (`true`) or not (`false`) when error is encountered.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ids = list(
-#'     "string"
-#'   ),
-#'   warnings = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_api_keys(
-#'   body = raw,
-#'   format = "csv",
-#'   failOnWarnings = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5721,48 +2903,22 @@ apigateway_import_api_keys <- function(body, format, failOnWarnings = NULL) {
 }
 .apigateway$operations$import_api_keys <- apigateway_import_api_keys
 
-#' Import documentation parts
+#' Imports documentation parts
 #'
 #' @description
-#' Import documentation parts
+#' Imports documentation parts
 #'
-#' @usage
-#' apigateway_import_documentation_parts(restApiId, mode, failOnWarnings,
-#'   body)
+#' See [https://paws-r.github.io/docs/apigateway/import_documentation_parts.html](https://paws-r.github.io/docs/apigateway/import_documentation_parts.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param mode A query parameter to indicate whether to overwrite (`OVERWRITE`) any
 #' existing DocumentationParts definition or to merge (`MERGE`) the new
 #' definition into the existing one. The default value is `MERGE`.
 #' @param failOnWarnings A query parameter to specify whether to rollback the documentation
 #' importation (`true`) or not (`false`) when a warning is encountered. The
 #' default value is `false`.
-#' @param body &#91;required&#93; \[Required\] Raw byte array representing the to-be-imported
-#' documentation parts. To import from an OpenAPI file, this is a JSON
-#' object.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ids = list(
-#'     "string"
-#'   ),
-#'   warnings = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_documentation_parts(
-#'   restApiId = "string",
-#'   mode = "merge"|"overwrite",
-#'   failOnWarnings = TRUE|FALSE,
-#'   body = raw
-#' )
-#' ```
+#' @param body &#91;required&#93; Raw byte array representing the to-be-imported documentation parts. To
+#' import from an OpenAPI file, this is a JSON object.
 #'
 #' @keywords internal
 #'
@@ -5788,11 +2944,9 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #' an external API definition file
 #'
 #' @description
-#' A feature of the API Gateway control service for creating a new API from
-#' an external API definition file.
+#' A feature of the API Gateway control service for creating a new API from an external API definition file.
 #'
-#' @usage
-#' apigateway_import_rest_api(failOnWarnings, parameters, body)
+#' See [https://paws-r.github.io/docs/apigateway/import_rest_api.html](https://paws-r.github.io/docs/apigateway/import_rest_api.html) for full documentation.
 #'
 #' @param failOnWarnings A query parameter to indicate whether to rollback the API creation
 #' (`true`) or not (`false`) when a warning is encountered. The default
@@ -5816,60 +2970,10 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #' For example, the AWS CLI command to exclude documentation from the
 #' imported API is:
 #' 
-#'     aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'
-#' 
 #' The AWS CLI command to set the regional endpoint on the imported API is:
-#' 
-#'     aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'
-#' @param body &#91;required&#93; \[Required\] The POST request body containing external API definitions.
-#' Currently, only OpenAPI definition JSON/YAML files are supported. The
-#' maximum size of the API definition file is 6MB.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   warnings = list(
-#'     "string"
-#'   ),
-#'   binaryMediaTypes = list(
-#'     "string"
-#'   ),
-#'   minimumCompressionSize = 123,
-#'   apiKeySource = "HEADER"|"AUTHORIZER",
-#'   endpointConfiguration = list(
-#'     types = list(
-#'       "REGIONAL"|"EDGE"|"PRIVATE"
-#'     ),
-#'     vpcEndpointIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   policy = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   disableExecuteApiEndpoint = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_rest_api(
-#'   failOnWarnings = TRUE|FALSE,
-#'   parameters = list(
-#'     "string"
-#'   ),
-#'   body = raw
-#' )
-#' ```
+#' @param body &#91;required&#93; The POST request body containing external API definitions. Currently,
+#' only OpenAPI definition JSON/YAML files are supported. The maximum size
+#' of the API definition file is 6MB.
 #'
 #' @keywords internal
 #'
@@ -5895,74 +2999,17 @@ apigateway_import_rest_api <- function(failOnWarnings = NULL, parameters = NULL,
 #' type and status code on the given RestApi
 #'
 #' @description
-#' Creates a customization of a GatewayResponse of a specified response
-#' type and status code on the given RestApi.
+#' Creates a customization of a GatewayResponse of a specified response type and status code on the given RestApi.
 #'
-#' @usage
-#' apigateway_put_gateway_response(restApiId, responseType, statusCode,
-#'   responseParameters, responseTemplates)
+#' See [https://paws-r.github.io/docs/apigateway/put_gateway_response.html](https://paws-r.github.io/docs/apigateway/put_gateway_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param responseType &#91;required&#93; \[Required\]
-#' 
-#' The response type of the associated GatewayResponse. Valid values are
-#' 
-#' -   ACCESS_DENIED
-#' -   API_CONFIGURATION_ERROR
-#' -   AUTHORIZER_FAILURE
-#' -   AUTHORIZER_CONFIGURATION_ERROR
-#' -   BAD_REQUEST_PARAMETERS
-#' -   BAD_REQUEST_BODY
-#' -   DEFAULT_4XX
-#' -   DEFAULT_5XX
-#' -   EXPIRED_TOKEN
-#' -   INVALID_SIGNATURE
-#' -   INTEGRATION_FAILURE
-#' -   INTEGRATION_TIMEOUT
-#' -   INVALID_API_KEY
-#' -   MISSING_AUTHENTICATION_TOKEN
-#' -   QUOTA_EXCEEDED
-#' -   REQUEST_TOO_LARGE
-#' -   RESOURCE_NOT_FOUND
-#' -   THROTTLED
-#' -   UNAUTHORIZED
-#' -   UNSUPPORTED_MEDIA_TYPE
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param responseType &#91;required&#93; The response type of the associated GatewayResponse
 #' @param statusCode The HTTP status code of the GatewayResponse.
 #' @param responseParameters Response parameters (paths, query strings and headers) of the
 #' GatewayResponse as a string-to-string map of key-value pairs.
 #' @param responseTemplates Response templates of the GatewayResponse as a string-to-string map of
 #' key-value pairs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
-#'   statusCode = "string",
-#'   responseParameters = list(
-#'     "string"
-#'   ),
-#'   responseTemplates = list(
-#'     "string"
-#'   ),
-#'   defaultResponse = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_gateway_response(
-#'   restApiId = "string",
-#'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
-#'   statusCode = "string",
-#'   responseParameters = list(
-#'     "string"
-#'   ),
-#'   responseTemplates = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5989,53 +3036,42 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' @description
 #' Sets up a method's integration.
 #'
-#' @usage
-#' apigateway_put_integration(restApiId, resourceId, httpMethod, type,
-#'   integrationHttpMethod, uri, connectionType, connectionId, credentials,
-#'   requestParameters, requestTemplates, passthroughBehavior,
-#'   cacheNamespace, cacheKeyParameters, contentHandling, timeoutInMillis,
-#'   tlsConfig)
+#' See [https://paws-r.github.io/docs/apigateway/put_integration.html](https://paws-r.github.io/docs/apigateway/put_integration.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] Specifies a put integration request's resource ID.
-#' @param httpMethod &#91;required&#93; \[Required\] Specifies a put integration request's HTTP method.
-#' @param type &#91;required&#93; \[Required\] Specifies a put integration input's type.
-#' @param integrationHttpMethod Specifies a put integration HTTP method. When the integration type is
-#' HTTP or AWS, this field is required.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; Specifies a put integration request's resource ID.
+#' @param httpMethod &#91;required&#93; Specifies the HTTP method for the integration.
+#' @param type &#91;required&#93; Specifies a put integration input's type.
+#' @param integrationHttpMethod The HTTP method for the integration.
 #' @param uri Specifies Uniform Resource Identifier (URI) of the integration endpoint.
-#' 
-#' -   For `HTTP` or `HTTP_PROXY` integrations, the URI must be a fully
-#'     formed, encoded HTTP(S) URL according to the [RFC-3986
-#'     specification](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier),
-#'     for either standard integration, where `connectionType` is not
-#'     `VPC_LINK`, or private integration, where `connectionType` is
-#'     `VPC_LINK`. For a private HTTP integration, the URI is not used for
-#'     routing.
-#' 
-#' -   For `AWS` or `AWS_PROXY` integrations, the URI is of the form
-#'     `arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}`.
-#'     Here, `{Region}` is the API Gateway region (e.g., `us-east-1`);
-#'     `{service}` is the name of the integrated AWS service (e.g., `s3`);
-#'     and `{subdomain}` is a designated subdomain supported by certain AWS
-#'     service for fast host-name lookup. `action` can be used for an AWS
-#'     service action-based API, using an
-#'     `Action={name}&{p1}={v1}&p2={v2}...` query string. The ensuing
-#'     `{service_api}` refers to a supported action `{name}` plus any
-#'     required input parameters. Alternatively, `path` can be used for an
-#'     AWS service path-based API. The ensuing `service_api` refers to the
-#'     path to an AWS service resource, including the region of the
-#'     integrated AWS service, if applicable. For example, for integration
-#'     with the S3 API of `GetObject`, the `uri` can be either
-#'     `arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}`
-#'     or `arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}`
+#' For HTTP or `HTTP_PROXY` integrations, the URI must be a fully formed,
+#' encoded HTTP(S) URL according to the RFC-3986 specification, for either
+#' standard integration, where `connectionType` is not `VPC_LINK`, or
+#' private integration, where `connectionType` is `VPC_LINK`. For a private
+#' HTTP integration, the URI is not used for routing. For `AWS` or
+#' `AWS_PROXY` integrations, the URI is of the form
+#' `arn:aws:apigateway:\{region\}:\{subdomain.service|service\}:path|action/\{service_api`\}.
+#' Here, \{Region\} is the API Gateway region (e.g., us-east-1);
+#' \{service\} is the name of the integrated Amazon Web Services service
+#' (e.g., s3); and \{subdomain\} is a designated subdomain supported by
+#' certain Amazon Web Services service for fast host-name lookup. action
+#' can be used for an Amazon Web Services service action-based API, using
+#' an Action=\{name\}&\{p1\}=\{v1\}&p2=\{v2\}... query string. The
+#' ensuing \{service_api\} refers to a supported action \{name\} plus
+#' any required input parameters. Alternatively, path can be used for an
+#' Amazon Web Services service path-based API. The ensuing service_api
+#' refers to the path to an Amazon Web Services service resource, including
+#' the region of the integrated Amazon Web Services service, if applicable.
+#' For example, for integration with the S3 API of `GetObject`, the `uri`
+#' can be either
+#' `arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}`
+#' or `arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}`.
 #' @param connectionType The type of the network connection to the integration endpoint. The
 #' valid value is `INTERNET` for connections through the public routable
 #' internet or `VPC_LINK` for private connections between API Gateway and a
 #' network load balancer in a VPC. The default value is `INTERNET`.
-#' @param connectionId The
-#' ([`id`](https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id))
-#' of the VpcLink used for the integration when `connectionType=VPC_LINK`
-#' and undefined, otherwise.
+#' @param connectionId The ID of the VpcLink used for the integration. Specify this value only
+#' if you specify `VPC_LINK` as the connection type.
 #' @param credentials Specifies whether credentials are required for a put integration.
 #' @param requestParameters A key-value map specifying request parameters that are passed from the
 #' method request to the back end. The key is an integration request
@@ -6054,17 +3090,6 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' specified as the `requestTemplates` property on the Integration
 #' resource. There are three valid values: `WHEN_NO_MATCH`,
 #' `WHEN_NO_TEMPLATES`, and `NEVER`.
-#' 
-#' -   `WHEN_NO_MATCH` passes the request body for unmapped content types
-#'     through to the integration back end without transformation.
-#' 
-#' -   `NEVER` rejects unmapped content types with an HTTP 415 'Unsupported
-#'     Media Type' response.
-#' 
-#' -   `WHEN_NO_TEMPLATES` allows pass-through when the integration has NO
-#'     content types mapped to templates. However if there is at least one
-#'     content type defined, unmapped content types will be rejected with
-#'     the same 415 response.
 #' @param cacheNamespace Specifies a group of related cached parameters. By default, API Gateway
 #' uses the resource ID as the `cacheNamespace`. You can specify the same
 #' `cacheNamespace` across resources to return the same cached data for
@@ -6076,12 +3101,6 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' Supported values are `CONVERT_TO_BINARY` and `CONVERT_TO_TEXT`, with the
 #' following behaviors:
 #' 
-#' -   `CONVERT_TO_BINARY`: Converts a request payload from a
-#'     Base64-encoded string to the corresponding binary blob.
-#' 
-#' -   `CONVERT_TO_TEXT`: Converts a request payload from a binary blob to
-#'     a Base64-encoded string.
-#' 
 #' If this property is not defined, the request payload will be passed
 #' through from the method request to integration request without
 #' modification, provided that the `passthroughBehavior` is configured to
@@ -6089,79 +3108,6 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' @param timeoutInMillis Custom timeout between 50 and 29,000 milliseconds. The default value is
 #' 29,000 milliseconds or 29 seconds.
 #' @param tlsConfig 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'   httpMethod = "string",
-#'   uri = "string",
-#'   connectionType = "INTERNET"|"VPC_LINK",
-#'   connectionId = "string",
-#'   credentials = "string",
-#'   requestParameters = list(
-#'     "string"
-#'   ),
-#'   requestTemplates = list(
-#'     "string"
-#'   ),
-#'   passthroughBehavior = "string",
-#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   timeoutInMillis = 123,
-#'   cacheNamespace = "string",
-#'   cacheKeyParameters = list(
-#'     "string"
-#'   ),
-#'   integrationResponses = list(
-#'     list(
-#'       statusCode = "string",
-#'       selectionPattern = "string",
-#'       responseParameters = list(
-#'         "string"
-#'       ),
-#'       responseTemplates = list(
-#'         "string"
-#'       ),
-#'       contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#'     )
-#'   ),
-#'   tlsConfig = list(
-#'     insecureSkipVerification = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_integration(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'   integrationHttpMethod = "string",
-#'   uri = "string",
-#'   connectionType = "INTERNET"|"VPC_LINK",
-#'   connectionId = "string",
-#'   credentials = "string",
-#'   requestParameters = list(
-#'     "string"
-#'   ),
-#'   requestTemplates = list(
-#'     "string"
-#'   ),
-#'   passthroughBehavior = "string",
-#'   cacheNamespace = "string",
-#'   cacheKeyParameters = list(
-#'     "string"
-#'   ),
-#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   timeoutInMillis = 123,
-#'   tlsConfig = list(
-#'     insecureSkipVerification = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6188,17 +3134,13 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
 #' @description
 #' Represents a put integration.
 #'
-#' @usage
-#' apigateway_put_integration_response(restApiId, resourceId, httpMethod,
-#'   statusCode, selectionPattern, responseParameters, responseTemplates,
-#'   contentHandling)
+#' See [https://paws-r.github.io/docs/apigateway/put_integration_response.html](https://paws-r.github.io/docs/apigateway/put_integration_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] Specifies a put integration response request's resource
-#' identifier.
-#' @param httpMethod &#91;required&#93; \[Required\] Specifies a put integration response request's HTTP method.
-#' @param statusCode &#91;required&#93; \[Required\] Specifies the status code that is used to map the
-#' integration response to an existing MethodResponse.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; Specifies a put integration response request's resource identifier.
+#' @param httpMethod &#91;required&#93; Specifies a put integration response request's HTTP method.
+#' @param statusCode &#91;required&#93; Specifies the status code that is used to map the integration response
+#' to an existing MethodResponse.
 #' @param selectionPattern Specifies the selection pattern of a put integration response.
 #' @param responseParameters A key-value map specifying response parameters that are passed to the
 #' method response from the back end. The key is a method response header
@@ -6216,49 +3158,9 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
 #' Supported values are `CONVERT_TO_BINARY` and `CONVERT_TO_TEXT`, with the
 #' following behaviors:
 #' 
-#' -   `CONVERT_TO_BINARY`: Converts a response payload from a
-#'     Base64-encoded string to the corresponding binary blob.
-#' 
-#' -   `CONVERT_TO_TEXT`: Converts a response payload from a binary blob to
-#'     a Base64-encoded string.
-#' 
 #' If this property is not defined, the response payload will be passed
 #' through from the integration response to the method response without
 #' modification.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   statusCode = "string",
-#'   selectionPattern = "string",
-#'   responseParameters = list(
-#'     "string"
-#'   ),
-#'   responseTemplates = list(
-#'     "string"
-#'   ),
-#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_integration_response(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   statusCode = "string",
-#'   selectionPattern = "string",
-#'   responseParameters = list(
-#'     "string"
-#'   ),
-#'   responseTemplates = list(
-#'     "string"
-#'   ),
-#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6285,19 +3187,15 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #' @description
 #' Add a method to an existing Resource resource.
 #'
-#' @usage
-#' apigateway_put_method(restApiId, resourceId, httpMethod,
-#'   authorizationType, authorizerId, apiKeyRequired, operationName,
-#'   requestParameters, requestModels, requestValidatorId,
-#'   authorizationScopes)
+#' See [https://paws-r.github.io/docs/apigateway/put_method.html](https://paws-r.github.io/docs/apigateway/put_method.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the new Method resource.
-#' @param httpMethod &#91;required&#93; \[Required\] Specifies the method request's HTTP method type.
-#' @param authorizationType &#91;required&#93; \[Required\] The method's authorization type. Valid values are `NONE`
-#' for open access, `AWS_IAM` for using AWS IAM permissions, `CUSTOM` for
-#' using a custom authorizer, or `COGNITO_USER_POOLS` for using a Cognito
-#' user pool.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The Resource identifier for the new Method resource.
+#' @param httpMethod &#91;required&#93; Specifies the method request's HTTP method type.
+#' @param authorizationType &#91;required&#93; The method's authorization type. Valid values are `NONE` for open
+#' access, `AWS_IAM` for using AWS IAM permissions, `CUSTOM` for using a
+#' custom authorizer, or `COGNITO_USER_POOLS` for using a Cognito user
+#' pool.
 #' @param authorizerId Specifies the identifier of an Authorizer to use on this Method, if the
 #' type is CUSTOM or COGNITO_USER_POOLS. The authorizer identifier is
 #' generated by API Gateway when you created the authorizer.
@@ -6327,99 +3225,6 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #' authorized. When the method scope is configured, the client must provide
 #' an access token instead of an identity token for authorization purposes.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   httpMethod = "string",
-#'   authorizationType = "string",
-#'   authorizerId = "string",
-#'   apiKeyRequired = TRUE|FALSE,
-#'   requestValidatorId = "string",
-#'   operationName = "string",
-#'   requestParameters = list(
-#'     TRUE|FALSE
-#'   ),
-#'   requestModels = list(
-#'     "string"
-#'   ),
-#'   methodResponses = list(
-#'     list(
-#'       statusCode = "string",
-#'       responseParameters = list(
-#'         TRUE|FALSE
-#'       ),
-#'       responseModels = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   methodIntegration = list(
-#'     type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'     httpMethod = "string",
-#'     uri = "string",
-#'     connectionType = "INTERNET"|"VPC_LINK",
-#'     connectionId = "string",
-#'     credentials = "string",
-#'     requestParameters = list(
-#'       "string"
-#'     ),
-#'     requestTemplates = list(
-#'       "string"
-#'     ),
-#'     passthroughBehavior = "string",
-#'     contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'     timeoutInMillis = 123,
-#'     cacheNamespace = "string",
-#'     cacheKeyParameters = list(
-#'       "string"
-#'     ),
-#'     integrationResponses = list(
-#'       list(
-#'         statusCode = "string",
-#'         selectionPattern = "string",
-#'         responseParameters = list(
-#'           "string"
-#'         ),
-#'         responseTemplates = list(
-#'           "string"
-#'         ),
-#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#'       )
-#'     ),
-#'     tlsConfig = list(
-#'       insecureSkipVerification = TRUE|FALSE
-#'     )
-#'   ),
-#'   authorizationScopes = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_method(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   authorizationType = "string",
-#'   authorizerId = "string",
-#'   apiKeyRequired = TRUE|FALSE,
-#'   operationName = "string",
-#'   requestParameters = list(
-#'     TRUE|FALSE
-#'   ),
-#'   requestModels = list(
-#'     "string"
-#'   ),
-#'   requestValidatorId = "string",
-#'   authorizationScopes = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname apigateway_put_method
@@ -6445,14 +3250,12 @@ apigateway_put_method <- function(restApiId, resourceId, httpMethod, authorizati
 #' @description
 #' Adds a MethodResponse to an existing Method resource.
 #'
-#' @usage
-#' apigateway_put_method_response(restApiId, resourceId, httpMethod,
-#'   statusCode, responseParameters, responseModels)
+#' See [https://paws-r.github.io/docs/apigateway/put_method_response.html](https://paws-r.github.io/docs/apigateway/put_method_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the Method resource.
-#' @param httpMethod &#91;required&#93; \[Required\] The HTTP verb of the Method resource.
-#' @param statusCode &#91;required&#93; \[Required\] The method response's status code.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The Resource identifier for the Method resource.
+#' @param httpMethod &#91;required&#93; The HTTP verb of the Method resource.
+#' @param statusCode &#91;required&#93; The method response's status code.
 #' @param responseParameters A key-value map specifying required or optional response parameters that
 #' API Gateway can send back to the caller. A key defines a method response
 #' header name and the associated value is a Boolean flag indicating
@@ -6469,36 +3272,6 @@ apigateway_put_method <- function(restApiId, resourceId, httpMethod, authorizati
 #' @param responseModels Specifies the Model resources used for the response's content type.
 #' Response models are represented as a key/value map, with a content type
 #' as the key and a Model name as the value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   statusCode = "string",
-#'   responseParameters = list(
-#'     TRUE|FALSE
-#'   ),
-#'   responseModels = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_method_response(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   statusCode = "string",
-#'   responseParameters = list(
-#'     TRUE|FALSE
-#'   ),
-#'   responseModels = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6524,16 +3297,11 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #' API with an input of external API definitions
 #'
 #' @description
-#' A feature of the API Gateway control service for updating an existing
-#' API with an input of external API definitions. The update can take the
-#' form of merging the supplied definition into the existing API or
-#' overwriting the existing API.
+#' A feature of the API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.
 #'
-#' @usage
-#' apigateway_put_rest_api(restApiId, mode, failOnWarnings, parameters,
-#'   body)
+#' See [https://paws-r.github.io/docs/apigateway/put_rest_api.html](https://paws-r.github.io/docs/apigateway/put_rest_api.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param mode The `mode` query parameter to specify the update mode. Valid values are
 #' "merge" and "overwrite". By default, the update mode is "merge".
 #' @param failOnWarnings A query parameter to indicate whether to rollback the API update
@@ -6543,57 +3311,9 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #' DocumentationParts from an imported API, set `ignore=documentation` as a
 #' `parameters` value, as in the AWS CLI command of
 #' `aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'`.
-#' @param body &#91;required&#93; \[Required\] The PUT request body containing external API definitions.
-#' Currently, only OpenAPI definition JSON/YAML files are supported. The
-#' maximum size of the API definition file is 6MB.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   warnings = list(
-#'     "string"
-#'   ),
-#'   binaryMediaTypes = list(
-#'     "string"
-#'   ),
-#'   minimumCompressionSize = 123,
-#'   apiKeySource = "HEADER"|"AUTHORIZER",
-#'   endpointConfiguration = list(
-#'     types = list(
-#'       "REGIONAL"|"EDGE"|"PRIVATE"
-#'     ),
-#'     vpcEndpointIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   policy = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   disableExecuteApiEndpoint = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_rest_api(
-#'   restApiId = "string",
-#'   mode = "merge"|"overwrite",
-#'   failOnWarnings = TRUE|FALSE,
-#'   parameters = list(
-#'     "string"
-#'   ),
-#'   body = raw
-#' )
-#' ```
+#' @param body &#91;required&#93; The PUT request body containing external API definitions. Currently,
+#' only OpenAPI definition JSON/YAML files are supported. The maximum size
+#' of the API definition file is 6MB.
 #'
 #' @keywords internal
 #'
@@ -6620,26 +3340,12 @@ apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NUL
 #' @description
 #' Adds or updates a tag on a given resource.
 #'
-#' @usage
-#' apigateway_tag_resource(resourceArn, tags)
+#' See [https://paws-r.github.io/docs/apigateway/tag_resource.html](https://paws-r.github.io/docs/apigateway/tag_resource.html) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged.
-#' @param tags &#91;required&#93; \[Required\] The key-value map of strings. The valid character set is
+#' @param resourceArn &#91;required&#93; The ARN of a resource that can be tagged.
+#' @param tags &#91;required&#93; The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceArn = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6665,83 +3371,25 @@ apigateway_tag_resource <- function(resourceArn, tags) {
 #' parameters, and an incoming request body
 #'
 #' @description
-#' Simulate the execution of an Authorizer in your RestApi with headers,
-#' parameters, and an incoming request body.
-#' 
-#' <div class="seeAlso">
-#' 
-#' [Use Lambda Function as
-#' Authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html)
-#' [Use Cognito User Pool as
-#' Authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html)
-#' 
-#' </div>
+#' Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body.
 #'
-#' @usage
-#' apigateway_test_invoke_authorizer(restApiId, authorizerId, headers,
-#'   multiValueHeaders, pathWithQueryString, body, stageVariables,
-#'   additionalContext)
+#' See [https://paws-r.github.io/docs/apigateway/test_invoke_authorizer.html](https://paws-r.github.io/docs/apigateway/test_invoke_authorizer.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param authorizerId &#91;required&#93; \[Required\] Specifies a test invoke authorizer request's Authorizer ID.
-#' @param headers \[Required\] A key-value map of headers to simulate an incoming
-#' invocation request. This is where the incoming authorization token, or
-#' identity source, should be specified.
-#' @param multiValueHeaders \[Optional\] The headers as a map from string to list of values to
-#' simulate an incoming invocation request. This is where the incoming
-#' authorization token, or identity source, may be specified.
-#' @param pathWithQueryString \[Optional\] The URI path, including query string, of the simulated
-#' invocation request. Use this to specify path parameters and query string
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param authorizerId &#91;required&#93; Specifies a test invoke authorizer request's Authorizer ID.
+#' @param headers A key-value map of headers to simulate an incoming invocation request.
+#' This is where the incoming authorization token, or identity source,
+#' should be specified.
+#' @param multiValueHeaders The headers as a map from string to list of values to simulate an
+#' incoming invocation request. This is where the incoming authorization
+#' token, or identity source, may be specified.
+#' @param pathWithQueryString The URI path, including query string, of the simulated invocation
+#' request. Use this to specify path parameters and query string
 #' parameters.
-#' @param body \[Optional\] The simulated request body of an incoming invocation
-#' request.
+#' @param body The simulated request body of an incoming invocation request.
 #' @param stageVariables A key-value map of stage variables to simulate an invocation on a
 #' deployed Stage.
-#' @param additionalContext \[Optional\] A key-value map of additional context variables.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   clientStatus = 123,
-#'   log = "string",
-#'   latency = 123,
-#'   principalId = "string",
-#'   policy = "string",
-#'   authorization = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   claims = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$test_invoke_authorizer(
-#'   restApiId = "string",
-#'   authorizerId = "string",
-#'   headers = list(
-#'     "string"
-#'   ),
-#'   multiValueHeaders = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   pathWithQueryString = "string",
-#'   body = "string",
-#'   stageVariables = list(
-#'     "string"
-#'   ),
-#'   additionalContext = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param additionalContext A key-value map of additional context variables.
 #'
 #' @keywords internal
 #'
@@ -6763,21 +3411,17 @@ apigateway_test_invoke_authorizer <- function(restApiId, authorizerId, headers =
 }
 .apigateway$operations$test_invoke_authorizer <- apigateway_test_invoke_authorizer
 
-#' Simulate the execution of a Method in your RestApi with headers,
+#' Simulate the invocation of a Method in your RestApi with headers,
 #' parameters, and an incoming request body
 #'
 #' @description
-#' Simulate the execution of a Method in your RestApi with headers,
-#' parameters, and an incoming request body.
+#' Simulate the invocation of a Method in your RestApi with headers, parameters, and an incoming request body.
 #'
-#' @usage
-#' apigateway_test_invoke_method(restApiId, resourceId, httpMethod,
-#'   pathWithQueryString, body, headers, multiValueHeaders,
-#'   clientCertificateId, stageVariables)
+#' See [https://paws-r.github.io/docs/apigateway/test_invoke_method.html](https://paws-r.github.io/docs/apigateway/test_invoke_method.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] Specifies a test invoke method request's resource ID.
-#' @param httpMethod &#91;required&#93; \[Required\] Specifies a test invoke method request's HTTP method.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; Specifies a test invoke method request's resource ID.
+#' @param httpMethod &#91;required&#93; Specifies a test invoke method request's HTTP method.
 #' @param pathWithQueryString The URI path, including query string, of the simulated invocation
 #' request. Use this to specify path parameters and query string
 #' parameters.
@@ -6790,48 +3434,6 @@ apigateway_test_invoke_authorizer <- function(restApiId, authorizerId, headers =
 #' defined back-end endpoint.
 #' @param stageVariables A key-value map of stage variables to simulate an invocation on a
 #' deployed Stage.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   status = 123,
-#'   body = "string",
-#'   headers = list(
-#'     "string"
-#'   ),
-#'   multiValueHeaders = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   log = "string",
-#'   latency = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$test_invoke_method(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   pathWithQueryString = "string",
-#'   body = "string",
-#'   headers = list(
-#'     "string"
-#'   ),
-#'   multiValueHeaders = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   clientCertificateId = "string",
-#'   stageVariables = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6858,24 +3460,10 @@ apigateway_test_invoke_method <- function(restApiId, resourceId, httpMethod, pat
 #' @description
 #' Removes a tag from a given resource.
 #'
-#' @usage
-#' apigateway_untag_resource(resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/apigateway/untag_resource.html](https://paws-r.github.io/docs/apigateway/untag_resource.html) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged.
-#' @param tagKeys &#91;required&#93; \[Required\] The Tag keys to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param resourceArn &#91;required&#93; The ARN of a resource that can be tagged.
+#' @param tagKeys &#91;required&#93; The Tag keys to delete.
 #'
 #' @keywords internal
 #'
@@ -6902,41 +3490,10 @@ apigateway_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Changes information about the current Account resource.
 #'
-#' @usage
-#' apigateway_update_account(patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_account.html](https://paws-r.github.io/docs/apigateway/update_account.html) for full documentation.
 #'
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cloudwatchRoleArn = "string",
-#'   throttleSettings = list(
-#'     burstLimit = 123,
-#'     rateLimit = 123.0
-#'   ),
-#'   features = list(
-#'     "string"
-#'   ),
-#'   apiKeyVersion = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_account(
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -6963,52 +3520,11 @@ apigateway_update_account <- function(patchOperations = NULL) {
 #' @description
 #' Changes information about an ApiKey resource.
 #'
-#' @usage
-#' apigateway_update_api_key(apiKey, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_api_key.html](https://paws-r.github.io/docs/apigateway/update_api_key.html) for full documentation.
 #'
-#' @param apiKey &#91;required&#93; \[Required\] The identifier of the ApiKey resource to be updated.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   value = "string",
-#'   name = "string",
-#'   customerId = "string",
-#'   description = "string",
-#'   enabled = TRUE|FALSE,
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   stageKeys = list(
-#'     "string"
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_api_key(
-#'   apiKey = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param apiKey &#91;required&#93; The identifier of the ApiKey resource to be updated.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7034,56 +3550,13 @@ apigateway_update_api_key <- function(apiKey, patchOperations = NULL) {
 #'
 #' @description
 #' Updates an existing Authorizer resource.
-#' 
-#' <div class="seeAlso">
-#' 
-#' [AWS
-#' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html)
-#' 
-#' </div>
 #'
-#' @usage
-#' apigateway_update_authorizer(restApiId, authorizerId, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_authorizer.html](https://paws-r.github.io/docs/apigateway/update_authorizer.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param authorizerId &#91;required&#93; \[Required\] The identifier of the Authorizer resource.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-#'   providerARNs = list(
-#'     "string"
-#'   ),
-#'   authType = "string",
-#'   authorizerUri = "string",
-#'   authorizerCredentials = "string",
-#'   identitySource = "string",
-#'   identityValidationExpression = "string",
-#'   authorizerResultTtlInSeconds = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_authorizer(
-#'   restApiId = "string",
-#'   authorizerId = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param authorizerId &#91;required&#93; The identifier of the Authorizer resource.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7110,42 +3583,14 @@ apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperation
 #' @description
 #' Changes information about the BasePathMapping resource.
 #'
-#' @usage
-#' apigateway_update_base_path_mapping(domainName, basePath,
-#'   patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_base_path_mapping.html](https://paws-r.github.io/docs/apigateway/update_base_path_mapping.html) for full documentation.
 #'
-#' @param domainName &#91;required&#93; \[Required\] The domain name of the BasePathMapping resource to change.
-#' @param basePath &#91;required&#93; \[Required\] The base path of the BasePathMapping resource to change.
+#' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to change.
+#' @param basePath &#91;required&#93; The base path of the BasePathMapping resource to change.
 #' 
 #' To specify an empty base path, set this parameter to `'(none)'`.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   basePath = "string",
-#'   restApiId = "string",
-#'   stage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_base_path_mapping(
-#'   domainName = "string",
-#'   basePath = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7172,48 +3617,11 @@ apigateway_update_base_path_mapping <- function(domainName, basePath, patchOpera
 #' @description
 #' Changes information about an ClientCertificate resource.
 #'
-#' @usage
-#' apigateway_update_client_certificate(clientCertificateId,
-#'   patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_client_certificate.html](https://paws-r.github.io/docs/apigateway/update_client_certificate.html) for full documentation.
 #'
-#' @param clientCertificateId &#91;required&#93; \[Required\] The identifier of the ClientCertificate resource to be
-#' updated.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   clientCertificateId = "string",
-#'   description = "string",
-#'   pemEncodedCertificate = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   expirationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_client_certificate(
-#'   clientCertificateId = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param clientCertificateId &#91;required&#93; The identifier of the ClientCertificate resource to be updated.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7240,50 +3648,13 @@ apigateway_update_client_certificate <- function(clientCertificateId, patchOpera
 #' @description
 #' Changes information about a Deployment resource.
 #'
-#' @usage
-#' apigateway_update_deployment(restApiId, deploymentId, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_deployment.html](https://paws-r.github.io/docs/apigateway/update_deployment.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param deploymentId &#91;required&#93; The replacement identifier for the Deployment resource to change
 #' information about.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   description = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   apiSummary = list(
-#'     list(
-#'       list(
-#'         authorizationType = "string",
-#'         apiKeyRequired = TRUE|FALSE
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_deployment(
-#'   restApiId = "string",
-#'   deploymentId = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7305,51 +3676,17 @@ apigateway_update_deployment <- function(restApiId, deploymentId, patchOperation
 }
 .apigateway$operations$update_deployment <- apigateway_update_deployment
 
-#' Update documentation part
+#' Updates a documentation part
 #'
 #' @description
-#' Update documentation part
+#' Updates a documentation part.
 #'
-#' @usage
-#' apigateway_update_documentation_part(restApiId, documentationPartId,
-#'   patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_documentation_part.html](https://paws-r.github.io/docs/apigateway/update_documentation_part.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param documentationPartId &#91;required&#93; \[Required\] The identifier of the to-be-updated documentation part.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   location = list(
-#'     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-#'     path = "string",
-#'     method = "string",
-#'     statusCode = "string",
-#'     name = "string"
-#'   ),
-#'   properties = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_documentation_part(
-#'   restApiId = "string",
-#'   documentationPartId = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param documentationPartId &#91;required&#93; The identifier of the to-be-updated documentation part.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7371,48 +3708,17 @@ apigateway_update_documentation_part <- function(restApiId, documentationPartId,
 }
 .apigateway$operations$update_documentation_part <- apigateway_update_documentation_part
 
-#' Update documentation version
+#' Updates a documentation version
 #'
 #' @description
-#' Update documentation version
+#' Updates a documentation version.
 #'
-#' @usage
-#' apigateway_update_documentation_version(restApiId, documentationVersion,
-#'   patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_documentation_version.html](https://paws-r.github.io/docs/apigateway/update_documentation_version.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi..
-#' @param documentationVersion &#91;required&#93; \[Required\] The version identifier of the to-be-updated documentation
-#' version.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   version = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   description = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_documentation_version(
-#'   restApiId = "string",
-#'   documentationVersion = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi..
+#' @param documentationVersion &#91;required&#93; The version identifier of the to-be-updated documentation version.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7439,67 +3745,11 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 #' @description
 #' Changes information about the DomainName resource.
 #'
-#' @usage
-#' apigateway_update_domain_name(domainName, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_domain_name.html](https://paws-r.github.io/docs/apigateway/update_domain_name.html) for full documentation.
 #'
-#' @param domainName &#91;required&#93; \[Required\] The name of the DomainName resource to be changed.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   domainName = "string",
-#'   certificateName = "string",
-#'   certificateArn = "string",
-#'   certificateUploadDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   regionalDomainName = "string",
-#'   regionalHostedZoneId = "string",
-#'   regionalCertificateName = "string",
-#'   regionalCertificateArn = "string",
-#'   distributionDomainName = "string",
-#'   distributionHostedZoneId = "string",
-#'   endpointConfiguration = list(
-#'     types = list(
-#'       "REGIONAL"|"EDGE"|"PRIVATE"
-#'     ),
-#'     vpcEndpointIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
-#'   domainNameStatusMessage = "string",
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   mutualTlsAuthentication = list(
-#'     truststoreUri = "string",
-#'     truststoreVersion = "string",
-#'     truststoreWarnings = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_domain_name(
-#'   domainName = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param domainName &#91;required&#93; The name of the DomainName resource to be changed.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7525,72 +3775,14 @@ apigateway_update_domain_name <- function(domainName, patchOperations = NULL) {
 #' RestApi
 #'
 #' @description
-#' Updates a GatewayResponse of a specified response type on the given
-#' RestApi.
+#' Updates a GatewayResponse of a specified response type on the given RestApi.
 #'
-#' @usage
-#' apigateway_update_gateway_response(restApiId, responseType,
-#'   patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_gateway_response.html](https://paws-r.github.io/docs/apigateway/update_gateway_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param responseType &#91;required&#93; \[Required\]
-#' 
-#' The response type of the associated GatewayResponse. Valid values are
-#' 
-#' -   ACCESS_DENIED
-#' -   API_CONFIGURATION_ERROR
-#' -   AUTHORIZER_FAILURE
-#' -   AUTHORIZER_CONFIGURATION_ERROR
-#' -   BAD_REQUEST_PARAMETERS
-#' -   BAD_REQUEST_BODY
-#' -   DEFAULT_4XX
-#' -   DEFAULT_5XX
-#' -   EXPIRED_TOKEN
-#' -   INVALID_SIGNATURE
-#' -   INTEGRATION_FAILURE
-#' -   INTEGRATION_TIMEOUT
-#' -   INVALID_API_KEY
-#' -   MISSING_AUTHENTICATION_TOKEN
-#' -   QUOTA_EXCEEDED
-#' -   REQUEST_TOO_LARGE
-#' -   RESOURCE_NOT_FOUND
-#' -   THROTTLED
-#' -   UNAUTHORIZED
-#' -   UNSUPPORTED_MEDIA_TYPE
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
-#'   statusCode = "string",
-#'   responseParameters = list(
-#'     "string"
-#'   ),
-#'   responseTemplates = list(
-#'     "string"
-#'   ),
-#'   defaultResponse = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_gateway_response(
-#'   restApiId = "string",
-#'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param responseType &#91;required&#93; The response type of the associated GatewayResponse.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7617,75 +3809,13 @@ apigateway_update_gateway_response <- function(restApiId, responseType, patchOpe
 #' @description
 #' Represents an update integration.
 #'
-#' @usage
-#' apigateway_update_integration(restApiId, resourceId, httpMethod,
-#'   patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_integration.html](https://paws-r.github.io/docs/apigateway/update_integration.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] Represents an update integration request's resource
-#' identifier.
-#' @param httpMethod &#91;required&#93; \[Required\] Represents an update integration request's HTTP method.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'   httpMethod = "string",
-#'   uri = "string",
-#'   connectionType = "INTERNET"|"VPC_LINK",
-#'   connectionId = "string",
-#'   credentials = "string",
-#'   requestParameters = list(
-#'     "string"
-#'   ),
-#'   requestTemplates = list(
-#'     "string"
-#'   ),
-#'   passthroughBehavior = "string",
-#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   timeoutInMillis = 123,
-#'   cacheNamespace = "string",
-#'   cacheKeyParameters = list(
-#'     "string"
-#'   ),
-#'   integrationResponses = list(
-#'     list(
-#'       statusCode = "string",
-#'       selectionPattern = "string",
-#'       responseParameters = list(
-#'         "string"
-#'       ),
-#'       responseTemplates = list(
-#'         "string"
-#'       ),
-#'       contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#'     )
-#'   ),
-#'   tlsConfig = list(
-#'     insecureSkipVerification = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_integration(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; Represents an update integration request's resource identifier.
+#' @param httpMethod &#91;required&#93; Represents an update integration request's HTTP method.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7712,53 +3842,14 @@ apigateway_update_integration <- function(restApiId, resourceId, httpMethod, pat
 #' @description
 #' Represents an update integration response.
 #'
-#' @usage
-#' apigateway_update_integration_response(restApiId, resourceId,
-#'   httpMethod, statusCode, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_integration_response.html](https://paws-r.github.io/docs/apigateway/update_integration_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] Specifies an update integration response request's resource
-#' identifier.
-#' @param httpMethod &#91;required&#93; \[Required\] Specifies an update integration response request's HTTP
-#' method.
-#' @param statusCode &#91;required&#93; \[Required\] Specifies an update integration response request's status
-#' code.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   statusCode = "string",
-#'   selectionPattern = "string",
-#'   responseParameters = list(
-#'     "string"
-#'   ),
-#'   responseTemplates = list(
-#'     "string"
-#'   ),
-#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_integration_response(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   statusCode = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; Specifies an update integration response request's resource identifier.
+#' @param httpMethod &#91;required&#93; Specifies an update integration response request's HTTP method.
+#' @param statusCode &#91;required&#93; Specifies an update integration response request's status code.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7785,102 +3876,13 @@ apigateway_update_integration_response <- function(restApiId, resourceId, httpMe
 #' @description
 #' Updates an existing Method resource.
 #'
-#' @usage
-#' apigateway_update_method(restApiId, resourceId, httpMethod,
-#'   patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_method.html](https://paws-r.github.io/docs/apigateway/update_method.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the Method resource.
-#' @param httpMethod &#91;required&#93; \[Required\] The HTTP verb of the Method resource.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   httpMethod = "string",
-#'   authorizationType = "string",
-#'   authorizerId = "string",
-#'   apiKeyRequired = TRUE|FALSE,
-#'   requestValidatorId = "string",
-#'   operationName = "string",
-#'   requestParameters = list(
-#'     TRUE|FALSE
-#'   ),
-#'   requestModels = list(
-#'     "string"
-#'   ),
-#'   methodResponses = list(
-#'     list(
-#'       statusCode = "string",
-#'       responseParameters = list(
-#'         TRUE|FALSE
-#'       ),
-#'       responseModels = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   methodIntegration = list(
-#'     type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'     httpMethod = "string",
-#'     uri = "string",
-#'     connectionType = "INTERNET"|"VPC_LINK",
-#'     connectionId = "string",
-#'     credentials = "string",
-#'     requestParameters = list(
-#'       "string"
-#'     ),
-#'     requestTemplates = list(
-#'       "string"
-#'     ),
-#'     passthroughBehavior = "string",
-#'     contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'     timeoutInMillis = 123,
-#'     cacheNamespace = "string",
-#'     cacheKeyParameters = list(
-#'       "string"
-#'     ),
-#'     integrationResponses = list(
-#'       list(
-#'         statusCode = "string",
-#'         selectionPattern = "string",
-#'         responseParameters = list(
-#'           "string"
-#'         ),
-#'         responseTemplates = list(
-#'           "string"
-#'         ),
-#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#'       )
-#'     ),
-#'     tlsConfig = list(
-#'       insecureSkipVerification = TRUE|FALSE
-#'     )
-#'   ),
-#'   authorizationScopes = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_method(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The Resource identifier for the Method resource.
+#' @param httpMethod &#91;required&#93; The HTTP verb of the Method resource.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7907,48 +3909,14 @@ apigateway_update_method <- function(restApiId, resourceId, httpMethod, patchOpe
 #' @description
 #' Updates an existing MethodResponse resource.
 #'
-#' @usage
-#' apigateway_update_method_response(restApiId, resourceId, httpMethod,
-#'   statusCode, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_method_response.html](https://paws-r.github.io/docs/apigateway/update_method_response.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the MethodResponse resource.
-#' @param httpMethod &#91;required&#93; \[Required\] The HTTP verb of the Method resource.
-#' @param statusCode &#91;required&#93; \[Required\] The status code for the MethodResponse resource.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   statusCode = "string",
-#'   responseParameters = list(
-#'     TRUE|FALSE
-#'   ),
-#'   responseModels = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_method_response(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   httpMethod = "string",
-#'   statusCode = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The Resource identifier for the MethodResponse resource.
+#' @param httpMethod &#91;required&#93; The HTTP verb of the Method resource.
+#' @param statusCode &#91;required&#93; The status code for the MethodResponse resource.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -7975,41 +3943,12 @@ apigateway_update_method_response <- function(restApiId, resourceId, httpMethod,
 #' @description
 #' Changes information about a model.
 #'
-#' @usage
-#' apigateway_update_model(restApiId, modelName, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_model.html](https://paws-r.github.io/docs/apigateway/update_model.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param modelName &#91;required&#93; \[Required\] The name of the model to update.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   schema = "string",
-#'   contentType = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_model(
-#'   restApiId = "string",
-#'   modelName = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param modelName &#91;required&#93; The name of the model to update.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -8036,41 +3975,12 @@ apigateway_update_model <- function(restApiId, modelName, patchOperations = NULL
 #' @description
 #' Updates a RequestValidator of a given RestApi.
 #'
-#' @usage
-#' apigateway_update_request_validator(restApiId, requestValidatorId,
-#'   patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_request_validator.html](https://paws-r.github.io/docs/apigateway/update_request_validator.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param requestValidatorId &#91;required&#93; \[Required\] The identifier of RequestValidator to be updated.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   validateRequestBody = TRUE|FALSE,
-#'   validateRequestParameters = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_request_validator(
-#'   restApiId = "string",
-#'   requestValidatorId = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param requestValidatorId &#91;required&#93; The identifier of RequestValidator to be updated.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -8097,107 +4007,12 @@ apigateway_update_request_validator <- function(restApiId, requestValidatorId, p
 #' @description
 #' Changes information about a Resource resource.
 #'
-#' @usage
-#' apigateway_update_resource(restApiId, resourceId, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_resource.html](https://paws-r.github.io/docs/apigateway/update_resource.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param resourceId &#91;required&#93; \[Required\] The identifier of the Resource resource.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   parentId = "string",
-#'   pathPart = "string",
-#'   path = "string",
-#'   resourceMethods = list(
-#'     list(
-#'       httpMethod = "string",
-#'       authorizationType = "string",
-#'       authorizerId = "string",
-#'       apiKeyRequired = TRUE|FALSE,
-#'       requestValidatorId = "string",
-#'       operationName = "string",
-#'       requestParameters = list(
-#'         TRUE|FALSE
-#'       ),
-#'       requestModels = list(
-#'         "string"
-#'       ),
-#'       methodResponses = list(
-#'         list(
-#'           statusCode = "string",
-#'           responseParameters = list(
-#'             TRUE|FALSE
-#'           ),
-#'           responseModels = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       methodIntegration = list(
-#'         type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-#'         httpMethod = "string",
-#'         uri = "string",
-#'         connectionType = "INTERNET"|"VPC_LINK",
-#'         connectionId = "string",
-#'         credentials = "string",
-#'         requestParameters = list(
-#'           "string"
-#'         ),
-#'         requestTemplates = list(
-#'           "string"
-#'         ),
-#'         passthroughBehavior = "string",
-#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'         timeoutInMillis = 123,
-#'         cacheNamespace = "string",
-#'         cacheKeyParameters = list(
-#'           "string"
-#'         ),
-#'         integrationResponses = list(
-#'           list(
-#'             statusCode = "string",
-#'             selectionPattern = "string",
-#'             responseParameters = list(
-#'               "string"
-#'             ),
-#'             responseTemplates = list(
-#'               "string"
-#'             ),
-#'             contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-#'           )
-#'         ),
-#'         tlsConfig = list(
-#'           insecureSkipVerification = TRUE|FALSE
-#'         )
-#'       ),
-#'       authorizationScopes = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_resource(
-#'   restApiId = "string",
-#'   resourceId = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param resourceId &#91;required&#93; The identifier of the Resource resource.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -8224,62 +4039,11 @@ apigateway_update_resource <- function(restApiId, resourceId, patchOperations = 
 #' @description
 #' Changes information about the specified API.
 #'
-#' @usage
-#' apigateway_update_rest_api(restApiId, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_rest_api.html](https://paws-r.github.io/docs/apigateway/update_rest_api.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   warnings = list(
-#'     "string"
-#'   ),
-#'   binaryMediaTypes = list(
-#'     "string"
-#'   ),
-#'   minimumCompressionSize = 123,
-#'   apiKeySource = "HEADER"|"AUTHORIZER",
-#'   endpointConfiguration = list(
-#'     types = list(
-#'       "REGIONAL"|"EDGE"|"PRIVATE"
-#'     ),
-#'     vpcEndpointIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   policy = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   disableExecuteApiEndpoint = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_rest_api(
-#'   restApiId = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -8306,84 +4070,12 @@ apigateway_update_rest_api <- function(restApiId, patchOperations = NULL) {
 #' @description
 #' Changes information about a Stage resource.
 #'
-#' @usage
-#' apigateway_update_stage(restApiId, stageName, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_stage.html](https://paws-r.github.io/docs/apigateway/update_stage.html) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
-#' @param stageName &#91;required&#93; \[Required\] The name of the Stage resource to change information about.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deploymentId = "string",
-#'   clientCertificateId = "string",
-#'   stageName = "string",
-#'   description = "string",
-#'   cacheClusterEnabled = TRUE|FALSE,
-#'   cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
-#'   cacheClusterStatus = "CREATE_IN_PROGRESS"|"AVAILABLE"|"DELETE_IN_PROGRESS"|"NOT_AVAILABLE"|"FLUSH_IN_PROGRESS",
-#'   methodSettings = list(
-#'     list(
-#'       metricsEnabled = TRUE|FALSE,
-#'       loggingLevel = "string",
-#'       dataTraceEnabled = TRUE|FALSE,
-#'       throttlingBurstLimit = 123,
-#'       throttlingRateLimit = 123.0,
-#'       cachingEnabled = TRUE|FALSE,
-#'       cacheTtlInSeconds = 123,
-#'       cacheDataEncrypted = TRUE|FALSE,
-#'       requireAuthorizationForCacheControl = TRUE|FALSE,
-#'       unauthorizedCacheControlHeaderStrategy = "FAIL_WITH_403"|"SUCCEED_WITH_RESPONSE_HEADER"|"SUCCEED_WITHOUT_RESPONSE_HEADER"
-#'     )
-#'   ),
-#'   variables = list(
-#'     "string"
-#'   ),
-#'   documentationVersion = "string",
-#'   accessLogSettings = list(
-#'     format = "string",
-#'     destinationArn = "string"
-#'   ),
-#'   canarySettings = list(
-#'     percentTraffic = 123.0,
-#'     deploymentId = "string",
-#'     stageVariableOverrides = list(
-#'       "string"
-#'     ),
-#'     useStageCache = TRUE|FALSE
-#'   ),
-#'   tracingEnabled = TRUE|FALSE,
-#'   webAclArn = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_stage(
-#'   restApiId = "string",
-#'   stageName = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
+#' @param stageName &#91;required&#93; The name of the Stage resource to change information about.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -8409,51 +4101,15 @@ apigateway_update_stage <- function(restApiId, stageName, patchOperations = NULL
 #' associated with a specified API key
 #'
 #' @description
-#' Grants a temporary extension to the remaining quota of a usage plan
-#' associated with a specified API key.
+#' Grants a temporary extension to the remaining quota of a usage plan associated with a specified API key.
 #'
-#' @usage
-#' apigateway_update_usage(usagePlanId, keyId, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_usage.html](https://paws-r.github.io/docs/apigateway/update_usage.html) for full documentation.
 #'
-#' @param usagePlanId &#91;required&#93; \[Required\] The Id of the usage plan associated with the usage data.
-#' @param keyId &#91;required&#93; \[Required\] The identifier of the API key associated with the usage
-#' plan in which a temporary extension is granted to the remaining quota.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   usagePlanId = "string",
-#'   startDate = "string",
-#'   endDate = "string",
-#'   position = "string",
-#'   items = list(
-#'     list(
-#'       list(
-#'         123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_usage(
-#'   usagePlanId = "string",
-#'   keyId = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param usagePlanId &#91;required&#93; The Id of the usage plan associated with the usage data.
+#' @param keyId &#91;required&#93; The identifier of the API key associated with the usage plan in which a
+#' temporary extension is granted to the remaining quota.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -8480,62 +4136,11 @@ apigateway_update_usage <- function(usagePlanId, keyId, patchOperations = NULL) 
 #' @description
 #' Updates a usage plan of a given plan Id.
 #'
-#' @usage
-#' apigateway_update_usage_plan(usagePlanId, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_usage_plan.html](https://paws-r.github.io/docs/apigateway/update_usage_plan.html) for full documentation.
 #'
-#' @param usagePlanId &#91;required&#93; \[Required\] The Id of the to-be-updated usage plan.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   apiStages = list(
-#'     list(
-#'       apiId = "string",
-#'       stage = "string",
-#'       throttle = list(
-#'         list(
-#'           burstLimit = 123,
-#'           rateLimit = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   throttle = list(
-#'     burstLimit = 123,
-#'     rateLimit = 123.0
-#'   ),
-#'   quota = list(
-#'     limit = 123,
-#'     offset = 123,
-#'     period = "DAY"|"WEEK"|"MONTH"
-#'   ),
-#'   productCode = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_usage_plan(
-#'   usagePlanId = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param usagePlanId &#91;required&#93; The Id of the to-be-updated usage plan.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
@@ -8562,46 +4167,12 @@ apigateway_update_usage_plan <- function(usagePlanId, patchOperations = NULL) {
 #' @description
 #' Updates an existing VpcLink of a specified identifier.
 #'
-#' @usage
-#' apigateway_update_vpc_link(vpcLinkId, patchOperations)
+#' See [https://paws-r.github.io/docs/apigateway/update_vpc_link.html](https://paws-r.github.io/docs/apigateway/update_vpc_link.html) for full documentation.
 #'
-#' @param vpcLinkId &#91;required&#93; \[Required\] The identifier of the VpcLink. It is used in an Integration
-#' to reference this VpcLink.
-#' @param patchOperations A list of update operations to be applied to the specified resource and
-#' in the order specified in this list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   id = "string",
-#'   name = "string",
-#'   description = "string",
-#'   targetArns = list(
-#'     "string"
-#'   ),
-#'   status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
-#'   statusMessage = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_vpc_link(
-#'   vpcLinkId = "string",
-#'   patchOperations = list(
-#'     list(
-#'       op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-#'       path = "string",
-#'       value = "string",
-#'       from = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param vpcLinkId &#91;required&#93; The identifier of the VpcLink. It is used in an Integration to reference
+#' this VpcLink.
+#' @param patchOperations For more information about supported patch operations, see [Patch
+#' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'

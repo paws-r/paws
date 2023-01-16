@@ -4,32 +4,45 @@
 \alias{globalaccelerator_create_accelerator}
 \title{Create an accelerator}
 \usage{
-globalaccelerator_create_accelerator(Name, IpAddressType, IpAddresses,
-  Enabled, IdempotencyToken, Tags)
+globalaccelerator_create_accelerator(
+  Name,
+  IpAddressType = NULL,
+  IpAddresses = NULL,
+  Enabled = NULL,
+  IdempotencyToken,
+  Tags = NULL
+)
 }
 \arguments{
-\item{Name}{[required] The name of an accelerator. The name can have a maximum of 32
-characters, must contain only alphanumeric characters or hyphens (-),
-and must not begin or end with a hyphen.}
+\item{Name}{[required] The name of the accelerator. The name can have a maximum of 64
+characters, must contain only alphanumeric characters, periods (.), or
+hyphens (-), and must not begin or end with a hyphen or period.}
 
-\item{IpAddressType}{The value for the address type must be IPv4.}
+\item{IpAddressType}{The IP address type that an accelerator supports. For a standard
+accelerator, the value can be IPV4 or DUAL_STACK.}
 
 \item{IpAddresses}{Optionally, if you've added your own IP address pool to Global
-Accelerator (BYOIP), you can choose IP addresses from your own pool to
-use for the accelerator's static IP addresses when you create an
-accelerator. You can specify one or two addresses, separated by a comma.
-Do not include the /32 suffix.
+Accelerator (BYOIP), you can choose an IPv4 address from your own pool
+to use for the accelerator's static IPv4 address when you create an
+accelerator.
 
-Only one IP address from each of your IP address ranges can be used for
-each accelerator. If you specify only one IP address from your IP
-address range, Global Accelerator assigns a second static IP address for
-the accelerator from the AWS IP address pool.
+After you bring an address range to Amazon Web Services, it appears in
+your account as an address pool. When you create an accelerator, you can
+assign one IPv4 address from your range to it. Global Accelerator
+assigns you a second static IPv4 address from an Amazon IP address
+range. If you bring two IPv4 address ranges to Amazon Web Services, you
+can assign one IPv4 address from each range to your accelerator. This
+restriction is because Global Accelerator assigns each address range to
+a different network zone, for high availability.
+
+You can specify one or two addresses, separated by a space. Do not
+include the /32 suffix.
 
 Note that you can't update IP addresses for an existing accelerator. To
 change them, you must create a new accelerator with the new addresses.
 
-For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring Your Own IP Addresses (BYOIP)}
-in the \emph{AWS Global Accelerator Developer Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring your own IP addresses (BYOIP)}
+in the \emph{Global Accelerator Developer Guide}.}
 
 \item{Enabled}{Indicates whether an accelerator is enabled. The value is true or false.
 The default value is true.
@@ -42,63 +55,12 @@ idempotency—that is, the uniqueness—of an accelerator.}
 
 \item{Tags}{Create tags for an accelerator.
 
-For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}
-in the \emph{AWS Global Accelerator Developer Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Accelerator = list(
-    AcceleratorArn = "string",
-    Name = "string",
-    IpAddressType = "IPV4",
-    Enabled = TRUE|FALSE,
-    IpSets = list(
-      list(
-        IpFamily = "string",
-        IpAddresses = list(
-          "string"
-        )
-      )
-    ),
-    DnsName = "string",
-    Status = "DEPLOYED"|"IN_PROGRESS",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in Global Accelerator}
+in the \emph{Global Accelerator Developer Guide}.}
 }
 \description{
-Create an accelerator. An accelerator includes one or more listeners
-that process inbound connections and direct traffic to one or more
-endpoint groups, each of which includes endpoints, such as Network Load
-Balancers.
+Create an accelerator. An accelerator includes one or more listeners that process inbound connections and direct traffic to one or more endpoint groups, each of which includes endpoints, such as Network Load Balancers.
 
-Global Accelerator is a global service that supports endpoints in
-multiple AWS Regions but you must specify the US West (Oregon) Region to
-create or update accelerators.
+See \url{https://paws-r.github.io/docs/globalaccelerator/create_accelerator.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_accelerator(
-  Name = "string",
-  IpAddressType = "IPV4",
-  IpAddresses = list(
-    "string"
-  ),
-  Enabled = TRUE|FALSE,
-  IdempotencyToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

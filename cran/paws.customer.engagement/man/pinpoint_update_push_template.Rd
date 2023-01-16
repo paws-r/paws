@@ -5,8 +5,12 @@
 \title{Updates an existing message template for messages that are sent through
 a push notification channel}
 \usage{
-pinpoint_update_push_template(CreateNewVersion,
-  PushNotificationTemplateRequest, TemplateName, Version)
+pinpoint_update_push_template(
+  CreateNewVersion = NULL,
+  PushNotificationTemplateRequest,
+  TemplateName,
+  Version = NULL
+)
 }
 \arguments{
 \item{CreateNewVersion}{Specifies whether to save the updates as a new version of the message
@@ -48,83 +52,9 @@ parameter isn't used or is set to false.
 of the template.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageBody = list(
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Updates an existing message template for messages that are sent through
-a push notification channel.
-}
-\section{Request syntax}{
-\preformatted{svc$update_push_template(
-  CreateNewVersion = TRUE|FALSE,
-  PushNotificationTemplateRequest = list(
-    ADM = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      ImageIconUrl = "string",
-      ImageUrl = "string",
-      RawContent = "string",
-      SmallImageIconUrl = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    APNS = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      MediaUrl = "string",
-      RawContent = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    Baidu = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      ImageIconUrl = "string",
-      ImageUrl = "string",
-      RawContent = "string",
-      SmallImageIconUrl = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    Default = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    DefaultSubstitutions = "string",
-    GCM = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      ImageIconUrl = "string",
-      ImageUrl = "string",
-      RawContent = "string",
-      SmallImageIconUrl = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    RecommenderId = "string",
-    tags = list(
-      "string"
-    ),
-    TemplateDescription = "string"
-  ),
-  TemplateName = "string",
-  Version = "string"
-)
-}
-}
+Updates an existing message template for messages that are sent through a push notification channel.
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_push_template.html} for full documentation.
+}
 \keyword{internal}

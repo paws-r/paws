@@ -4,8 +4,12 @@
 \alias{neptune_describe_db_subnet_groups}
 \title{Returns a list of DBSubnetGroup descriptions}
 \usage{
-neptune_describe_db_subnet_groups(DBSubnetGroupName, Filters,
-  MaxRecords, Marker)
+neptune_describe_db_subnet_groups(
+  DBSubnetGroupName = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBSubnetGroupName}{The name of the DB subnet group to return details for.}
@@ -26,52 +30,9 @@ DescribeDBSubnetGroups request. If this parameter is specified, the
 response includes only records beyond the marker, up to the value
 specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBSubnetGroups = list(
-    list(
-      DBSubnetGroupName = "string",
-      DBSubnetGroupDescription = "string",
-      VpcId = "string",
-      SubnetGroupStatus = "string",
-      Subnets = list(
-        list(
-          SubnetIdentifier = "string",
-          SubnetAvailabilityZone = list(
-            Name = "string"
-          ),
-          SubnetStatus = "string"
-        )
-      ),
-      DBSubnetGroupArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is
-specified, the list will contain only the descriptions of the specified
-DBSubnetGroup.
+Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specified, the list will contain only the descriptions of the specified DBSubnetGroup.
 
-For an overview of CIDR ranges, go to the \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
+See \url{https://paws-r.github.io/docs/neptune/describe_db_subnet_groups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_subnet_groups(
-  DBSubnetGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

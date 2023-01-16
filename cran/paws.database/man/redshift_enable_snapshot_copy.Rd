@@ -5,8 +5,13 @@
 \title{Enables the automatic copy of snapshots from one region to another
 region for a specified cluster}
 \usage{
-redshift_enable_snapshot_copy(ClusterIdentifier, DestinationRegion,
-  RetentionPeriod, SnapshotCopyGrantName, ManualSnapshotRetentionPeriod)
+redshift_enable_snapshot_copy(
+  ClusterIdentifier,
+  DestinationRegion,
+  RetentionPeriod = NULL,
+  SnapshotCopyGrantName = NULL,
+  ManualSnapshotRetentionPeriod = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the source cluster to copy snapshots from.
@@ -14,10 +19,11 @@ redshift_enable_snapshot_copy(ClusterIdentifier, DestinationRegion,
 Constraints: Must be the valid name of an existing cluster that does not
 already have cross-region snapshot copy enabled.}
 
-\item{DestinationRegion}{[required] The destination AWS Region that you want to copy snapshots to.
+\item{DestinationRegion}{[required] The destination Amazon Web Services Region that you want to copy
+snapshots to.
 
-Constraints: Must be the name of a valid AWS Region. For more
-information, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region}{Regions and Endpoints}
+Constraints: Must be the name of a valid Amazon Web Services Region. For
+more information, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region}{Regions and Endpoints}
 in the Amazon Web Services General Reference.}
 
 \item{RetentionPeriod}{The number of days to retain automated snapshots in the destination
@@ -27,188 +33,19 @@ Default: 7.
 
 Constraints: Must be at least 1 and no more than 35.}
 
-\item{SnapshotCopyGrantName}{The name of the snapshot copy grant to use when snapshots of an AWS
-KMS-encrypted cluster are copied to the destination region.}
+\item{SnapshotCopyGrantName}{The name of the snapshot copy grant to use when snapshots of an Amazon
+Web Services KMS-encrypted cluster are copied to the destination region.}
 
 \item{ManualSnapshotRetentionPeriod}{The number of days to retain newly copied snapshots in the destination
-AWS Region after they are copied from the source AWS Region. If the
-value is -1, the manual snapshot is retained indefinitely.
+Amazon Web Services Region after they are copied from the source Amazon
+Web Services Region. If the value is -1, the manual snapshot is retained
+indefinitely.
 
 The value must be either -1 or an integer between 1 and 3,653.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Cluster = list(
-    ClusterIdentifier = "string",
-    NodeType = "string",
-    ClusterStatus = "string",
-    ClusterAvailabilityStatus = "string",
-    ModifyStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      VpcEndpoints = list(
-        list(
-          VpcEndpointId = "string"
-        )
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    AutomatedSnapshotRetentionPeriod = 123,
-    ManualSnapshotRetentionPeriod = 123,
-    ClusterSecurityGroups = list(
-      list(
-        ClusterSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    ClusterParameterGroups = list(
-      list(
-        ParameterGroupName = "string",
-        ParameterApplyStatus = "string",
-        ClusterParameterStatusList = list(
-          list(
-            ParameterName = "string",
-            ParameterApplyStatus = "string",
-            ParameterApplyErrorDescription = "string"
-          )
-        )
-      )
-    ),
-    ClusterSubnetGroupName = "string",
-    VpcId = "string",
-    AvailabilityZone = "string",
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      MasterUserPassword = "string",
-      NodeType = "string",
-      NumberOfNodes = 123,
-      ClusterType = "string",
-      ClusterVersion = "string",
-      AutomatedSnapshotRetentionPeriod = 123,
-      ClusterIdentifier = "string",
-      PubliclyAccessible = TRUE|FALSE,
-      EnhancedVpcRouting = TRUE|FALSE,
-      MaintenanceTrackName = "string",
-      EncryptionType = "string"
-    ),
-    ClusterVersion = "string",
-    AllowVersionUpgrade = TRUE|FALSE,
-    NumberOfNodes = 123,
-    PubliclyAccessible = TRUE|FALSE,
-    Encrypted = TRUE|FALSE,
-    RestoreStatus = list(
-      Status = "string",
-      CurrentRestoreRateInMegaBytesPerSecond = 123.0,
-      SnapshotSizeInMegaBytes = 123,
-      ProgressInMegaBytes = 123,
-      ElapsedTimeInSeconds = 123,
-      EstimatedTimeToCompletionInSeconds = 123
-    ),
-    DataTransferProgress = list(
-      Status = "string",
-      CurrentRateInMegaBytesPerSecond = 123.0,
-      TotalDataInMegaBytes = 123,
-      DataTransferredInMegaBytes = 123,
-      EstimatedTimeToCompletionInSeconds = 123,
-      ElapsedTimeInSeconds = 123
-    ),
-    HsmStatus = list(
-      HsmClientCertificateIdentifier = "string",
-      HsmConfigurationIdentifier = "string",
-      Status = "string"
-    ),
-    ClusterSnapshotCopyStatus = list(
-      DestinationRegion = "string",
-      RetentionPeriod = 123,
-      ManualSnapshotRetentionPeriod = 123,
-      SnapshotCopyGrantName = "string"
-    ),
-    ClusterPublicKey = "string",
-    ClusterNodes = list(
-      list(
-        NodeRole = "string",
-        PrivateIPAddress = "string",
-        PublicIPAddress = "string"
-      )
-    ),
-    ElasticIpStatus = list(
-      ElasticIp = "string",
-      Status = "string"
-    ),
-    ClusterRevisionNumber = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    KmsKeyId = "string",
-    EnhancedVpcRouting = TRUE|FALSE,
-    IamRoles = list(
-      list(
-        IamRoleArn = "string",
-        ApplyStatus = "string"
-      )
-    ),
-    PendingActions = list(
-      "string"
-    ),
-    MaintenanceTrackName = "string",
-    ElasticResizeNumberOfNodeOptions = "string",
-    DeferredMaintenanceWindows = list(
-      list(
-        DeferMaintenanceIdentifier = "string",
-        DeferMaintenanceStartTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        DeferMaintenanceEndTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    SnapshotScheduleIdentifier = "string",
-    SnapshotScheduleState = "MODIFYING"|"ACTIVE"|"FAILED",
-    ExpectedNextSnapshotScheduleTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExpectedNextSnapshotScheduleTimeStatus = "string",
-    NextMaintenanceWindowStartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ResizeInfo = list(
-      ResizeType = "string",
-      AllowCancelResize = TRUE|FALSE
-    ),
-    AvailabilityZoneRelocationStatus = "string",
-    ClusterNamespaceArn = "string"
-  )
-)
-}
-}
 \description{
-Enables the automatic copy of snapshots from one region to another
-region for a specified cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_snapshot_copy(
-  ClusterIdentifier = "string",
-  DestinationRegion = "string",
-  RetentionPeriod = 123,
-  SnapshotCopyGrantName = "string",
-  ManualSnapshotRetentionPeriod = 123
-)
-}
-}
+Enables the automatic copy of snapshots from one region to another region for a specified cluster.
 
+See \url{https://paws-r.github.io/docs/redshift/enable_snapshot_copy.html} for full documentation.
+}
 \keyword{internal}

@@ -11,28 +11,9 @@ apigatewayv2_get_deployment(ApiId, DeploymentId)
 
 \item{DeploymentId}{[required] The deployment ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoDeployed = TRUE|FALSE,
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  DeploymentId = "string",
-  DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
-  DeploymentStatusMessage = "string",
-  Description = "string"
-)
-}
-}
 \description{
 Gets a Deployment.
-}
-\section{Request syntax}{
-\preformatted{svc$get_deployment(
-  ApiId = "string",
-  DeploymentId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_deployment.html} for full documentation.
+}
 \keyword{internal}

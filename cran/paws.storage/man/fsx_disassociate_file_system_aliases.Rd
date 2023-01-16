@@ -6,8 +6,11 @@
 Service (DNS) aliases from an Amazon FSx for Windows File Server file
 system}
 \usage{
-fsx_disassociate_file_system_aliases(ClientRequestToken, FileSystemId,
-  Aliases)
+fsx_disassociate_file_system_aliases(
+  ClientRequestToken = NULL,
+  FileSystemId,
+  Aliases
+)
 }
 \arguments{
 \item{ClientRequestToken}{}
@@ -17,38 +20,9 @@ fsx_disassociate_file_system_aliases(ClientRequestToken, FileSystemId,
 \item{Aliases}{[required] An array of one or more DNS alias names to disassociate, or remove, from
 the file system.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Aliases = list(
-    list(
-      Name = "string",
-      Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-    )
-  )
-)
-}
-}
 \description{
-Use this action to disassociate, or remove, one or more Domain Name
-Service (DNS) aliases from an Amazon FSx for Windows File Server file
-system. If you attempt to disassociate a DNS alias that is not
-associated with the file system, Amazon FSx responds with a 400 Bad
-Request. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html}{Working with DNS Aliases}.
+Use this action to disassociate, or remove, one or more Domain Name Service (DNS) aliases from an Amazon FSx for Windows File Server file system. If you attempt to disassociate a DNS alias that is not associated with the file system, Amazon FSx responds with a 400 Bad Request. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html}{Working with DNS Aliases}.
 
-The system generated response showing the DNS aliases that Amazon FSx is
-attempting to disassociate from the file system. Use the API operation
-to monitor the status of the aliases Amazon FSx is disassociating with
-the file system.
+See \url{https://paws-r.github.io/docs/fsx/disassociate_file_system_aliases.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_file_system_aliases(
-  ClientRequestToken = "string",
-  FileSystemId = "string",
-  Aliases = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

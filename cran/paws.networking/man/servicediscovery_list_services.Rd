@@ -5,7 +5,11 @@
 \title{Lists summary information for all the services that are associated with
 one or more specified namespaces}
 \usage{
-servicediscovery_list_services(NextToken, MaxResults, Filters)
+servicediscovery_list_services(
+  NextToken = NULL,
+  MaxResults = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{NextToken}{For the first \code{\link[=servicediscovery_list_services]{list_services}} request,
@@ -16,16 +20,16 @@ If the response contains \code{NextToken}, submit another
 next group of results. Specify the value of \code{NextToken} from the
 previous response in the next request.
 
-AWS Cloud Map gets \code{MaxResults} services and then filters them based on
-the specified criteria. It's possible that no services in the first
+Cloud Map gets \code{MaxResults} services and then filters them based on the
+specified criteria. It's possible that no services in the first
 \code{MaxResults} services matched the specified criteria but that subsequent
 groups of \code{MaxResults} services do contain services that match the
 criteria.}
 
-\item{MaxResults}{The maximum number of services that you want AWS Cloud Map to return in
-the response to a \code{\link[=servicediscovery_list_services]{list_services}}
-request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map
-returns up to 100 services.}
+\item{MaxResults}{The maximum number of services that you want Cloud Map to return in the
+response to a \code{\link[=servicediscovery_list_services]{list_services}} request.
+If you don't specify a value for \code{MaxResults}, Cloud Map returns up to
+100 services.}
 
 \item{Filters}{A complex type that contains specifications for the namespaces that you
 want to list services for.
@@ -33,68 +37,9 @@ want to list services for.
 If you specify more than one filter, an operation must match all filters
 to be returned by \code{\link[=servicediscovery_list_services]{list_services}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Services = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string",
-      Description = "string",
-      InstanceCount = 123,
-      DnsConfig = list(
-        NamespaceId = "string",
-        RoutingPolicy = "MULTIVALUE"|"WEIGHTED",
-        DnsRecords = list(
-          list(
-            Type = "SRV"|"A"|"AAAA"|"CNAME",
-            TTL = 123
-          )
-        )
-      ),
-      HealthCheckConfig = list(
-        Type = "HTTP"|"HTTPS"|"TCP",
-        ResourcePath = "string",
-        FailureThreshold = 123
-      ),
-      HealthCheckCustomConfig = list(
-        FailureThreshold = 123
-      ),
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists summary information for all the services that are associated with
-one or more specified namespaces.
-}
-\section{Request syntax}{
-\preformatted{svc$list_services(
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      Name = "NAMESPACE_ID",
-      Values = list(
-        "string"
-      ),
-      Condition = "EQ"|"IN"|"BETWEEN"
-    )
-  )
-)
-}
-}
+Lists summary information for all the services that are associated with one or more specified namespaces.
 
-\examples{
-\dontrun{
-# Example: List services
-svc$list_services()
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/list_services.html} for full documentation.
 }
 \keyword{internal}

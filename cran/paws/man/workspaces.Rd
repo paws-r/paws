@@ -7,7 +7,19 @@
 workspaces(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -19,10 +31,30 @@ Operations section.
 Amazon WorkSpaces Service
 
 Amazon WorkSpaces enables you to provision virtual, cloud-based
-Microsoft Windows and Amazon Linux desktops for your users.
+Microsoft Windows or Amazon Linux desktops for your users, known as
+\emph{WorkSpaces}. WorkSpaces eliminates the need to procure and deploy
+hardware or install complex software. You can quickly add or remove
+users as your needs change. Users can access their virtual desktops from
+multiple devices or web browsers.
+
+This API Reference provides detailed information about the actions, data
+types, parameters, and errors of the WorkSpaces service. For more
+information about the supported Amazon Web Services Regions, endpoints,
+and service quotas of the Amazon WorkSpaces service, see \href{https://docs.aws.amazon.com/general/latest/gr/wsp.html}{WorkSpaces endpoints and quotas} in the
+\emph{Amazon Web Services General Reference}.
+
+You can also manage your WorkSpaces resources using the WorkSpaces
+console, Command Line Interface (CLI), and SDKs. For more information
+about administering WorkSpaces, see the \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/}{Amazon WorkSpaces Administration Guide}. For
+more information about using the Amazon WorkSpaces client application or
+web browser to access provisioned WorkSpaces, see the \href{https://docs.aws.amazon.com/workspaces/latest/userguide/}{Amazon WorkSpaces User Guide}.
+For more information about using the CLI to manage your WorkSpaces
+resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/workspaces/index.html}{WorkSpaces section of the CLI Reference}.
 }
 \section{Service syntax}{
-\preformatted{svc <- workspaces(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- workspaces(
   config = list(
     credentials = list(
       creds = list(
@@ -30,68 +62,85 @@ Microsoft Windows and Amazon Linux desktops for your users.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=workspaces_associate_connection_alias]{associate_connection_alias} \tab Associates the specified connection alias with the specified directory to enable cross-Region redirection\cr
-\link[=workspaces_associate_ip_groups]{associate_ip_groups} \tab Associates the specified IP access control group with the specified directory\cr
-\link[=workspaces_authorize_ip_rules]{authorize_ip_rules} \tab Adds one or more rules to the specified IP access control group\cr
-\link[=workspaces_copy_workspace_image]{copy_workspace_image} \tab Copies the specified image from the specified Region to the current Region\cr
-\link[=workspaces_create_connection_alias]{create_connection_alias} \tab Creates the specified connection alias for use with cross-Region redirection\cr
-\link[=workspaces_create_ip_group]{create_ip_group} \tab Creates an IP access control group\cr
-\link[=workspaces_create_tags]{create_tags} \tab Creates the specified tags for the specified WorkSpaces resource\cr
-\link[=workspaces_create_workspaces]{create_workspaces} \tab Creates one or more WorkSpaces\cr
-\link[=workspaces_delete_connection_alias]{delete_connection_alias} \tab Deletes the specified connection alias\cr
-\link[=workspaces_delete_ip_group]{delete_ip_group} \tab Deletes the specified IP access control group\cr
-\link[=workspaces_delete_tags]{delete_tags} \tab Deletes the specified tags from the specified WorkSpaces resource\cr
-\link[=workspaces_delete_workspace_image]{delete_workspace_image} \tab Deletes the specified image from your account\cr
-\link[=workspaces_deregister_workspace_directory]{deregister_workspace_directory} \tab Deregisters the specified directory\cr
-\link[=workspaces_describe_account]{describe_account} \tab Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account\cr
-\link[=workspaces_describe_account_modifications]{describe_account_modifications} \tab Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the specified account\cr
-\link[=workspaces_describe_client_properties]{describe_client_properties} \tab Retrieves a list that describes one or more specified Amazon WorkSpaces clients\cr
-\link[=workspaces_describe_connection_aliases]{describe_connection_aliases} \tab Retrieves a list that describes the connection aliases used for cross-Region redirection\cr
-\link[=workspaces_describe_connection_alias_permissions]{describe_connection_alias_permissions} \tab Describes the permissions that the owner of a connection alias has granted to another AWS account for the specified connection alias\cr
-\link[=workspaces_describe_ip_groups]{describe_ip_groups} \tab Describes one or more of your IP access control groups\cr
-\link[=workspaces_describe_tags]{describe_tags} \tab Describes the specified tags for the specified WorkSpaces resource\cr
-\link[=workspaces_describe_workspace_bundles]{describe_workspace_bundles} \tab Retrieves a list that describes the available WorkSpace bundles\cr
-\link[=workspaces_describe_workspace_directories]{describe_workspace_directories} \tab Describes the available directories that are registered with Amazon WorkSpaces\cr
-\link[=workspaces_describe_workspace_image_permissions]{describe_workspace_image_permissions} \tab Describes the permissions that the owner of an image has granted to other AWS accounts for an image\cr
-\link[=workspaces_describe_workspace_images]{describe_workspace_images} \tab Retrieves a list that describes one or more specified images, if the image identifiers are provided\cr
-\link[=workspaces_describe_workspaces]{describe_workspaces} \tab Describes the specified WorkSpaces\cr
-\link[=workspaces_describe_workspaces_connection_status]{describe_workspaces_connection_status} \tab Describes the connection status of the specified WorkSpaces\cr
-\link[=workspaces_describe_workspace_snapshots]{describe_workspace_snapshots} \tab Describes the snapshots for the specified WorkSpace\cr
-\link[=workspaces_disassociate_connection_alias]{disassociate_connection_alias} \tab Disassociates a connection alias from a directory\cr
-\link[=workspaces_disassociate_ip_groups]{disassociate_ip_groups} \tab Disassociates the specified IP access control group from the specified directory\cr
-\link[=workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces\cr
-\link[=workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges} \tab Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL)\cr
-\link[=workspaces_migrate_workspace]{migrate_workspace} \tab Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user volume\cr
-\link[=workspaces_modify_account]{modify_account} \tab Modifies the configuration of Bring Your Own License (BYOL) for the specified account\cr
-\link[=workspaces_modify_client_properties]{modify_client_properties} \tab Modifies the properties of the specified Amazon WorkSpaces clients\cr
-\link[=workspaces_modify_selfservice_permissions]{modify_selfservice_permissions} \tab Modifies the self-service WorkSpace management capabilities for your users\cr
-\link[=workspaces_modify_workspace_access_properties]{modify_workspace_access_properties} \tab Specifies which devices and operating systems users can use to access their WorkSpaces\cr
-\link[=workspaces_modify_workspace_creation_properties]{modify_workspace_creation_properties} \tab Modify the default properties used to create WorkSpaces\cr
-\link[=workspaces_modify_workspace_properties]{modify_workspace_properties} \tab Modifies the specified WorkSpace properties\cr
-\link[=workspaces_modify_workspace_state]{modify_workspace_state} \tab Sets the state of the specified WorkSpace\cr
-\link[=workspaces_reboot_workspaces]{reboot_workspaces} \tab Reboots the specified WorkSpaces\cr
-\link[=workspaces_rebuild_workspaces]{rebuild_workspaces} \tab Rebuilds the specified WorkSpace\cr
-\link[=workspaces_register_workspace_directory]{register_workspace_directory} \tab Registers the specified directory\cr
-\link[=workspaces_restore_workspace]{restore_workspace} \tab Restores the specified WorkSpace to its last known healthy state\cr
-\link[=workspaces_revoke_ip_rules]{revoke_ip_rules} \tab Removes one or more rules from the specified IP access control group\cr
-\link[=workspaces_start_workspaces]{start_workspaces} \tab Starts the specified WorkSpaces\cr
-\link[=workspaces_stop_workspaces]{stop_workspaces} \tab Stops the specified WorkSpaces\cr
-\link[=workspaces_terminate_workspaces]{terminate_workspaces} \tab Terminates the specified WorkSpaces\cr
-\link[=workspaces_update_connection_alias_permission]{update_connection_alias_permission} \tab Shares or unshares a connection alias with one account by specifying whether that account has permission to associate the connection alias with a directory\cr
-\link[=workspaces_update_rules_of_ip_group]{update_rules_of_ip_group} \tab Replaces the current rules of the specified IP access control group with the specified rules\cr
-\link[=workspaces_update_workspace_image_permission]{update_workspace_image_permission} \tab Shares or unshares an image with one account in the same AWS Region by specifying whether that account has permission to copy the image
+\link[paws.end.user.computing:workspaces_associate_connection_alias]{associate_connection_alias} \tab Associates the specified connection alias with the specified directory to enable cross-Region redirection\cr
+\link[paws.end.user.computing:workspaces_associate_ip_groups]{associate_ip_groups} \tab Associates the specified IP access control group with the specified directory\cr
+\link[paws.end.user.computing:workspaces_authorize_ip_rules]{authorize_ip_rules} \tab Adds one or more rules to the specified IP access control group\cr
+\link[paws.end.user.computing:workspaces_copy_workspace_image]{copy_workspace_image} \tab Copies the specified image from the specified Region to the current Region\cr
+\link[paws.end.user.computing:workspaces_create_connect_client_add_in]{create_connect_client_add_in} \tab Creates a client-add-in for Amazon Connect within a directory\cr
+\link[paws.end.user.computing:workspaces_create_connection_alias]{create_connection_alias} \tab Creates the specified connection alias for use with cross-Region redirection\cr
+\link[paws.end.user.computing:workspaces_create_ip_group]{create_ip_group} \tab Creates an IP access control group\cr
+\link[paws.end.user.computing:workspaces_create_tags]{create_tags} \tab Creates the specified tags for the specified WorkSpaces resource\cr
+\link[paws.end.user.computing:workspaces_create_updated_workspace_image]{create_updated_workspace_image} \tab Creates a new updated WorkSpace image based on the specified source image\cr
+\link[paws.end.user.computing:workspaces_create_workspace_bundle]{create_workspace_bundle} \tab Creates the specified WorkSpace bundle\cr
+\link[paws.end.user.computing:workspaces_create_workspace_image]{create_workspace_image} \tab Creates a new WorkSpace image from an existing WorkSpace\cr
+\link[paws.end.user.computing:workspaces_create_workspaces]{create_workspaces} \tab Creates one or more WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_delete_client_branding]{delete_client_branding} \tab Deletes customized client branding\cr
+\link[paws.end.user.computing:workspaces_delete_connect_client_add_in]{delete_connect_client_add_in} \tab Deletes a client-add-in for Amazon Connect that is configured within a directory\cr
+\link[paws.end.user.computing:workspaces_delete_connection_alias]{delete_connection_alias} \tab Deletes the specified connection alias\cr
+\link[paws.end.user.computing:workspaces_delete_ip_group]{delete_ip_group} \tab Deletes the specified IP access control group\cr
+\link[paws.end.user.computing:workspaces_delete_tags]{delete_tags} \tab Deletes the specified tags from the specified WorkSpaces resource\cr
+\link[paws.end.user.computing:workspaces_delete_workspace_bundle]{delete_workspace_bundle} \tab Deletes the specified WorkSpace bundle\cr
+\link[paws.end.user.computing:workspaces_delete_workspace_image]{delete_workspace_image} \tab Deletes the specified image from your account\cr
+\link[paws.end.user.computing:workspaces_deregister_workspace_directory]{deregister_workspace_directory} \tab Deregisters the specified directory\cr
+\link[paws.end.user.computing:workspaces_describe_account]{describe_account} \tab Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account\cr
+\link[paws.end.user.computing:workspaces_describe_account_modifications]{describe_account_modifications} \tab Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the specified account\cr
+\link[paws.end.user.computing:workspaces_describe_client_branding]{describe_client_branding} \tab Describes the specified client branding\cr
+\link[paws.end.user.computing:workspaces_describe_client_properties]{describe_client_properties} \tab Retrieves a list that describes one or more specified Amazon WorkSpaces clients\cr
+\link[paws.end.user.computing:workspaces_describe_connect_client_add_ins]{describe_connect_client_add_ins} \tab Retrieves a list of Amazon Connect client add-ins that have been created\cr
+\link[paws.end.user.computing:workspaces_describe_connection_aliases]{describe_connection_aliases} \tab Retrieves a list that describes the connection aliases used for cross-Region redirection\cr
+\link[paws.end.user.computing:workspaces_describe_connection_alias_permissions]{describe_connection_alias_permissions} \tab Describes the permissions that the owner of a connection alias has granted to another Amazon Web Services account for the specified connection alias\cr
+\link[paws.end.user.computing:workspaces_describe_ip_groups]{describe_ip_groups} \tab Describes one or more of your IP access control groups\cr
+\link[paws.end.user.computing:workspaces_describe_tags]{describe_tags} \tab Describes the specified tags for the specified WorkSpaces resource\cr
+\link[paws.end.user.computing:workspaces_describe_workspace_bundles]{describe_workspace_bundles} \tab Retrieves a list that describes the available WorkSpace bundles\cr
+\link[paws.end.user.computing:workspaces_describe_workspace_directories]{describe_workspace_directories} \tab Describes the available directories that are registered with Amazon WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_describe_workspace_image_permissions]{describe_workspace_image_permissions} \tab Describes the permissions that the owner of an image has granted to other Amazon Web Services accounts for an image\cr
+\link[paws.end.user.computing:workspaces_describe_workspace_images]{describe_workspace_images} \tab Retrieves a list that describes one or more specified images, if the image identifiers are provided\cr
+\link[paws.end.user.computing:workspaces_describe_workspaces]{describe_workspaces} \tab Describes the specified WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_describe_workspaces_connection_status]{describe_workspaces_connection_status} \tab Describes the connection status of the specified WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_describe_workspace_snapshots]{describe_workspace_snapshots} \tab Describes the snapshots for the specified WorkSpace\cr
+\link[paws.end.user.computing:workspaces_disassociate_connection_alias]{disassociate_connection_alias} \tab Disassociates a connection alias from a directory\cr
+\link[paws.end.user.computing:workspaces_disassociate_ip_groups]{disassociate_ip_groups} \tab Disassociates the specified IP access control group from the specified directory\cr
+\link[paws.end.user.computing:workspaces_import_client_branding]{import_client_branding} \tab Imports client branding\cr
+\link[paws.end.user.computing:workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges} \tab Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL)\cr
+\link[paws.end.user.computing:workspaces_migrate_workspace]{migrate_workspace} \tab Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user volume\cr
+\link[paws.end.user.computing:workspaces_modify_account]{modify_account} \tab Modifies the configuration of Bring Your Own License (BYOL) for the specified account\cr
+\link[paws.end.user.computing:workspaces_modify_client_properties]{modify_client_properties} \tab Modifies the properties of the specified Amazon WorkSpaces clients\cr
+\link[paws.end.user.computing:workspaces_modify_saml_properties]{modify_saml_properties} \tab Modifies multiple properties related to SAML 2\cr
+\link[paws.end.user.computing:workspaces_modify_selfservice_permissions]{modify_selfservice_permissions} \tab Modifies the self-service WorkSpace management capabilities for your users\cr
+\link[paws.end.user.computing:workspaces_modify_workspace_access_properties]{modify_workspace_access_properties} \tab Specifies which devices and operating systems users can use to access their WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_modify_workspace_creation_properties]{modify_workspace_creation_properties} \tab Modify the default properties used to create WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_modify_workspace_properties]{modify_workspace_properties} \tab Modifies the specified WorkSpace properties\cr
+\link[paws.end.user.computing:workspaces_modify_workspace_state]{modify_workspace_state} \tab Sets the state of the specified WorkSpace\cr
+\link[paws.end.user.computing:workspaces_reboot_workspaces]{reboot_workspaces} \tab Reboots the specified WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_rebuild_workspaces]{rebuild_workspaces} \tab Rebuilds the specified WorkSpace\cr
+\link[paws.end.user.computing:workspaces_register_workspace_directory]{register_workspace_directory} \tab Registers the specified directory\cr
+\link[paws.end.user.computing:workspaces_restore_workspace]{restore_workspace} \tab Restores the specified WorkSpace to its last known healthy state\cr
+\link[paws.end.user.computing:workspaces_revoke_ip_rules]{revoke_ip_rules} \tab Removes one or more rules from the specified IP access control group\cr
+\link[paws.end.user.computing:workspaces_start_workspaces]{start_workspaces} \tab Starts the specified WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_stop_workspaces]{stop_workspaces} \tab Stops the specified WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_terminate_workspaces]{terminate_workspaces} \tab Terminates the specified WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_update_connect_client_add_in]{update_connect_client_add_in} \tab Updates a Amazon Connect client add-in\cr
+\link[paws.end.user.computing:workspaces_update_connection_alias_permission]{update_connection_alias_permission} \tab Shares or unshares a connection alias with one account by specifying whether that account has permission to associate the connection alias with a directory\cr
+\link[paws.end.user.computing:workspaces_update_rules_of_ip_group]{update_rules_of_ip_group} \tab Replaces the current rules of the specified IP access control group with the specified rules\cr
+\link[paws.end.user.computing:workspaces_update_workspace_bundle]{update_workspace_bundle} \tab Updates a WorkSpace bundle with a new image\cr
+\link[paws.end.user.computing:workspaces_update_workspace_image_permission]{update_workspace_image_permission} \tab Shares or unshares an image with one account in the same Amazon Web Services Region by specifying whether that account has permission to copy the image
 }
 }
 

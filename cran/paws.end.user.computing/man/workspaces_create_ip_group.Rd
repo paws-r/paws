@@ -4,7 +4,12 @@
 \alias{workspaces_create_ip_group}
 \title{Creates an IP access control group}
 \usage{
-workspaces_create_ip_group(GroupName, GroupDesc, UserRules, Tags)
+workspaces_create_ip_group(
+  GroupName,
+  GroupDesc = NULL,
+  UserRules = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group.}
@@ -15,47 +20,9 @@ workspaces_create_ip_group(GroupName, GroupDesc, UserRules, Tags)
 
 \item{Tags}{The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GroupId = "string"
-)
-}
-}
 \description{
 Creates an IP access control group.
 
-An IP access control group provides you with the ability to control the
-IP addresses from which users are allowed to access their WorkSpaces. To
-specify the CIDR address ranges, add rules to your IP access control
-group and then associate the group with your directory. You can add
-rules when you create the group or at any time using
-\code{\link[=workspaces_authorize_ip_rules]{authorize_ip_rules}}.
-
-There is a default IP access control group associated with your
-directory. If you don't associate an IP access control group with your
-directory, the default group is used. The default group includes a
-default rule that allows users to access their WorkSpaces from anywhere.
-You cannot modify the default IP access control group for your
-directory.
+See \url{https://paws-r.github.io/docs/workspaces/create_ip_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_ip_group(
-  GroupName = "string",
-  GroupDesc = "string",
-  UserRules = list(
-    list(
-      ipRule = "string",
-      ruleDesc = "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

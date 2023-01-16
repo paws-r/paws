@@ -4,10 +4,18 @@
 \alias{dynamodb_delete_item}
 \title{Deletes a single item in a table by primary key}
 \usage{
-dynamodb_delete_item(TableName, Key, Expected, ConditionalOperator,
-  ReturnValues, ReturnConsumedCapacity, ReturnItemCollectionMetrics,
-  ConditionExpression, ExpressionAttributeNames,
-  ExpressionAttributeValues)
+dynamodb_delete_item(
+  TableName,
+  Key,
+  Expected = NULL,
+  ConditionalOperator = NULL,
+  ReturnValues = NULL,
+  ReturnConsumedCapacity = NULL,
+  ReturnItemCollectionMetrics = NULL,
+  ConditionExpression = NULL,
+  ExpressionAttributeNames = NULL,
+  ExpressionAttributeValues = NULL
+)
 }
 \arguments{
 \item{TableName}{[required] The name of the table from which to delete the item.}
@@ -39,6 +47,10 @@ appeared before they were deleted. For
 \code{ReturnValues}.)
 \item \code{ALL_OLD} - The content of the old item is returned.
 }
+
+There is no additional cost associated with requesting a return value
+aside from the small network and processing overhead of receiving a
+larger response. No read capacity units are consumed.
 
 The \code{ReturnValues} parameter is used by several DynamoDB operations;
 however, \code{\link[=dynamodb_delete_item]{delete_item}} does not recognize any
@@ -78,7 +90,7 @@ name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{#} character in an expression to dereference an attribute
+Use the \strong{\#} character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -124,236 +136,9 @@ You could then use these values in an expression, such as this:
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ConsumedCapacity = list(
-    TableName = "string",
-    CapacityUnits = 123.0,
-    ReadCapacityUnits = 123.0,
-    WriteCapacityUnits = 123.0,
-    Table = list(
-      ReadCapacityUnits = 123.0,
-      WriteCapacityUnits = 123.0,
-      CapacityUnits = 123.0
-    ),
-    LocalSecondaryIndexes = list(
-      list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      )
-    ),
-    GlobalSecondaryIndexes = list(
-      list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      )
-    )
-  ),
-  ItemCollectionMetrics = list(
-    ItemCollectionKey = list(
-      list(
-        S = "string",
-        N = "string",
-        B = raw,
-        SS = list(
-          "string"
-        ),
-        NS = list(
-          "string"
-        ),
-        BS = list(
-          raw
-        ),
-        M = list(
-          list()
-        ),
-        L = list(
-          list()
-        ),
-        NULL = TRUE|FALSE,
-        BOOL = TRUE|FALSE
-      )
-    ),
-    SizeEstimateRangeGB = list(
-      123.0
-    )
-  )
-)
-}
-}
 \description{
-Deletes a single item in a table by primary key. You can perform a
-conditional delete operation that deletes the item if it exists, or if
-it has an expected attribute value.
+Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the item if it exists, or if it has an expected attribute value.
 
-In addition to deleting an item, you can also return the item's
-attribute values in the same operation, using the \code{ReturnValues}
-parameter.
-
-Unless you specify conditions, the \code{\link[=dynamodb_delete_item]{delete_item}}
-is an idempotent operation; running it multiple times on the same item
-or attribute does \emph{not} result in an error response.
-
-Conditional deletes are useful for deleting items only if specific
-conditions are met. If those conditions are met, DynamoDB performs the
-delete. Otherwise, the item is not deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_item(
-  TableName = "string",
-  Key = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  Expected = list(
-    list(
-      Value = list(
-        S = "string",
-        N = "string",
-        B = raw,
-        SS = list(
-          "string"
-        ),
-        NS = list(
-          "string"
-        ),
-        BS = list(
-          raw
-        ),
-        M = list(
-          list()
-        ),
-        L = list(
-          list()
-        ),
-        NULL = TRUE|FALSE,
-        BOOL = TRUE|FALSE
-      ),
-      Exists = TRUE|FALSE,
-      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH",
-      AttributeValueList = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      )
-    )
-  ),
-  ConditionalOperator = "AND"|"OR",
-  ReturnValues = "NONE"|"ALL_OLD"|"UPDATED_OLD"|"ALL_NEW"|"UPDATED_NEW",
-  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-  ReturnItemCollectionMetrics = "SIZE"|"NONE",
-  ConditionExpression = "string",
-  ExpressionAttributeNames = list(
-    "string"
-  ),
-  ExpressionAttributeValues = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes an item from the Music table.
-svc$delete_item(
-  Key = list(
-    Artist = list(
-      S = "No One You Know"
-    ),
-    SongTitle = list(
-      S = "Scared of My Shadow"
-    )
-  ),
-  TableName = "Music"
-)
-}
-
+See \url{https://paws-r.github.io/docs/dynamodb/delete_item.html} for full documentation.
 }
 \keyword{internal}

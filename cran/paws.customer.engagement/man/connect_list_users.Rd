@@ -5,41 +5,21 @@
 \title{Provides summary information about the users for the specified Amazon
 Connect instance}
 \usage{
-connect_list_users(InstanceId, NextToken, MaxResults)
+connect_list_users(InstanceId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UserSummaryList = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Username = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-Provides summary information about the users for the specified Amazon
-Connect instance.
-}
-\section{Request syntax}{
-\preformatted{svc$list_users(
-  InstanceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Provides summary information about the users for the specified Amazon Connect instance.
 
+See \url{https://paws-r.github.io/docs/connect/list_users.html} for full documentation.
+}
 \keyword{internal}

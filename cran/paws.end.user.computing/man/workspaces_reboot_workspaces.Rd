@@ -9,36 +9,9 @@ workspaces_reboot_workspaces(RebootWorkspaceRequests)
 \arguments{
 \item{RebootWorkspaceRequests}{[required] The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedRequests = list(
-    list(
-      WorkspaceId = "string",
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Reboots the specified WorkSpaces.
 
-You cannot reboot a WorkSpace unless its state is \code{AVAILABLE} or
-\code{UNHEALTHY}.
-
-This operation is asynchronous and returns before the WorkSpaces have
-rebooted.
+See \url{https://paws-r.github.io/docs/workspaces/reboot_workspaces.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$reboot_workspaces(
-  RebootWorkspaceRequests = list(
-    list(
-      WorkspaceId = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

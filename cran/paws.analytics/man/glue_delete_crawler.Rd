@@ -2,7 +2,7 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_delete_crawler}
 \alias{glue_delete_crawler}
-\title{Removes a specified crawler from the AWS Glue Data Catalog, unless the
+\title{Removes a specified crawler from the Glue Data Catalog, unless the
 crawler state is RUNNING}
 \usage{
 glue_delete_crawler(Name)
@@ -10,18 +10,9 @@ glue_delete_crawler(Name)
 \arguments{
 \item{Name}{[required] The name of the crawler to remove.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes a specified crawler from the AWS Glue Data Catalog, unless the
-crawler state is \code{RUNNING}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_crawler(
-  Name = "string"
-)
-}
-}
+Removes a specified crawler from the Glue Data Catalog, unless the crawler state is \code{RUNNING}.
 
+See \url{https://paws-r.github.io/docs/glue/delete_crawler.html} for full documentation.
+}
 \keyword{internal}

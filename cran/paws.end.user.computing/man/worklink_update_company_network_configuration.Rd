@@ -4,8 +4,12 @@
 \alias{worklink_update_company_network_configuration}
 \title{Updates the company network configuration for the fleet}
 \usage{
-worklink_update_company_network_configuration(FleetArn, VpcId,
-  SubnetIds, SecurityGroupIds)
+worklink_update_company_network_configuration(
+  FleetArn,
+  VpcId,
+  SubnetIds,
+  SecurityGroupIds
+)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
@@ -17,24 +21,9 @@ containers.}
 
 \item{SecurityGroupIds}{[required] The security groups associated with access to the provided subnets.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the company network configuration for the fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$update_company_network_configuration(
-  FleetArn = "string",
-  VpcId = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/update_company_network_configuration.html} for full documentation.
+}
 \keyword{internal}

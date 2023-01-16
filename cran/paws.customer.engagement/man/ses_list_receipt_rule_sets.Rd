@@ -5,53 +5,16 @@
 \title{Lists the receipt rule sets that exist under your AWS account in the
 current AWS Region}
 \usage{
-ses_list_receipt_rule_sets(NextToken)
+ses_list_receipt_rule_sets(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to
 \code{\link[=ses_list_receipt_rule_sets]{list_receipt_rule_sets}} to indicate the
 position in the receipt rule set list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RuleSets = list(
-    list(
-      Name = "string",
-      CreatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the receipt rule sets that exist under your AWS account in the
-current AWS Region. If there are additional receipt rule sets to be
-retrieved, you will receive a \code{NextToken} that you can provide to the
-next call to \code{\link[=ses_list_receipt_rule_sets]{list_receipt_rule_sets}} to
-retrieve the additional entries.
+Lists the receipt rule sets that exist under your AWS account in the current AWS Region. If there are additional receipt rule sets to be retrieved, you will receive a \code{NextToken} that you can provide to the next call to \code{\link[=ses_list_receipt_rule_sets]{list_receipt_rule_sets}} to retrieve the additional entries.
 
-For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$list_receipt_rule_sets(
-  NextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists the receipt rule sets that exist under an
-# AWS account:
-svc$list_receipt_rule_sets(
-  NextToken = ""
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/list_receipt_rule_sets.html} for full documentation.
 }
 \keyword{internal}

@@ -2,40 +2,18 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_public_access_block}
 \alias{s3control_get_public_access_block}
-\title{Retrieves the PublicAccessBlock configuration for an AWS account}
+\title{Retrieves the PublicAccessBlock configuration for an Amazon Web Services
+account}
 \usage{
 s3control_get_public_access_block(AccountId)
 }
 \arguments{
-\item{AccountId}{[required] The account ID for the AWS account whose \code{PublicAccessBlock}
-configuration you want to retrieve.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PublicAccessBlockConfiguration = list(
-    BlockPublicAcls = TRUE|FALSE,
-    IgnorePublicAcls = TRUE|FALSE,
-    BlockPublicPolicy = TRUE|FALSE,
-    RestrictPublicBuckets = TRUE|FALSE
-  )
-)
-}
+\item{AccountId}{[required] The account ID for the Amazon Web Services account whose
+\code{PublicAccessBlock} configuration you want to retrieve.}
 }
 \description{
-Retrieves the \code{PublicAccessBlock} configuration for an AWS account. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html}{Using Amazon S3 block public access}.
+Retrieves the \code{PublicAccessBlock} configuration for an Amazon Web Services account. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html}{Using Amazon S3 block public access}.
 
-Related actions include:
-\itemize{
-\item \code{\link[=s3control_delete_public_access_block]{delete_public_access_block}}
-\item \code{\link[=s3control_put_public_access_block]{put_public_access_block}}
+See \url{https://paws-r.github.io/docs/s3control/get_public_access_block.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_public_access_block(
-  AccountId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,15 @@
 \alias{glue_create_schema}
 \title{Creates a new schema set and registers the schema definition}
 \usage{
-glue_create_schema(RegistryId, SchemaName, DataFormat, Compatibility,
-  Description, Tags, SchemaDefinition)
+glue_create_schema(
+  RegistryId = NULL,
+  SchemaName,
+  DataFormat,
+  Compatibility = NULL,
+  Description = NULL,
+  Tags = NULL,
+  SchemaDefinition = NULL
+)
 }
 \arguments{
 \item{RegistryId}{This is a wrapper shape to contain the registry identity fields. If this
@@ -17,8 +24,8 @@ the same will be:
 contain letters, numbers, hyphen, underscore, dollar sign, or hash mark.
 No whitespace.}
 
-\item{DataFormat}{[required] The data format of the schema definition. Currently only \code{AVRO} is
-supported.}
+\item{DataFormat}{[required] The data format of the schema definition. Currently \code{AVRO}, \code{JSON} and
+\code{PROTOBUF} are supported.}
 
 \item{Compatibility}{The compatibility mode of the schema. The possible values are:
 \itemize{
@@ -61,65 +68,15 @@ and check compatibility against all previous schema versions.
 \item{Description}{An optional description of the schema. If description is not provided,
 there will not be any automatic default value for this.}
 
-\item{Tags}{AWS tags that contain a key value pair and may be searched by console,
-command line, or API. If specified, follows the AWS tags-on-create
-pattern.}
+\item{Tags}{Amazon Web Services tags that contain a key value pair and may be
+searched by console, command line, or API. If specified, follows the
+Amazon Web Services tags-on-create pattern.}
 
 \item{SchemaDefinition}{The schema definition using the \code{DataFormat} setting for \code{SchemaName}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegistryName = "string",
-  RegistryArn = "string",
-  SchemaName = "string",
-  SchemaArn = "string",
-  Description = "string",
-  DataFormat = "AVRO",
-  Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
-  SchemaCheckpoint = 123,
-  LatestSchemaVersion = 123,
-  NextSchemaVersion = 123,
-  SchemaStatus = "AVAILABLE"|"PENDING"|"DELETING",
-  Tags = list(
-    "string"
-  ),
-  SchemaVersionId = "string",
-  SchemaVersionStatus = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING"
-)
-}
-}
 \description{
-Creates a new schema set and registers the schema definition. Returns an
-error if the schema set already exists without actually registering the
-version.
+Creates a new schema set and registers the schema definition. Returns an error if the schema set already exists without actually registering the version.
 
-When the schema set is created, a version checkpoint will be set to the
-first version. Compatibility mode "DISABLED" restricts any additional
-schema versions from being added after the first schema version. For all
-other compatibility modes, validation of compatibility settings will be
-applied only from the second version onwards when the
-\code{\link[=glue_register_schema_version]{register_schema_version}} API is used.
-
-When this API is called without a \code{RegistryId}, this will create an
-entry for a "default-registry" in the registry database tables, if it is
-not already present.
+See \url{https://paws-r.github.io/docs/glue/create_schema.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_schema(
-  RegistryId = list(
-    RegistryName = "string",
-    RegistryArn = "string"
-  ),
-  SchemaName = "string",
-  DataFormat = "AVRO",
-  Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
-  Description = "string",
-  Tags = list(
-    "string"
-  ),
-  SchemaDefinition = "string"
-)
-}
-}
-
 \keyword{internal}

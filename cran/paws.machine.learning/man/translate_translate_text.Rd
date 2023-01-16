@@ -4,8 +4,13 @@
 \alias{translate_translate_text}
 \title{Translates input text from the source language to the target language}
 \usage{
-translate_translate_text(Text, TerminologyNames, SourceLanguageCode,
-  TargetLanguageCode)
+translate_translate_text(
+  Text,
+  TerminologyNames = NULL,
+  SourceLanguageCode,
+  TargetLanguageCode,
+  Settings = NULL
+)
 }
 \arguments{
 \item{Text}{[required] The text to translate. The text string can be a maximum of 5,000 bytes
@@ -23,46 +28,24 @@ codes, see what-is-languages.
 
 To have Amazon Translate determine the source language of your text, you
 can specify \code{auto} in the \code{SourceLanguageCode} field. If you specify
-\code{auto}, Amazon Translate will call \href{https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html}{Amazon Comprehend}
-to determine the source language.}
+\code{auto}, Amazon Translate will call \href{https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html}{Amazon Comprehend}
+to determine the source language.
+
+If you specify \code{auto}, you must send the
+\code{\link[=translate_translate_text]{translate_text}} request in a region that
+supports Amazon Comprehend. Otherwise, the request returns an error
+indicating that autodetect is not supported.}
 
 \item{TargetLanguageCode}{[required] The language code requested for the language of the target text. The
 language must be a language supported by Amazon Translate.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TranslatedText = "string",
-  SourceLanguageCode = "string",
-  TargetLanguageCode = "string",
-  AppliedTerminologies = list(
-    list(
-      Name = "string",
-      Terms = list(
-        list(
-          SourceText = "string",
-          TargetText = "string"
-        )
-      )
-    )
-  )
-)
-}
+
+\item{Settings}{Settings to configure your translation output, including the option to
+set the formality level of the output text and the option to mask
+profane words and phrases.}
 }
 \description{
-Translates input text from the source language to the target language.
-For a list of available languages and language codes, see
-what-is-languages.
-}
-\section{Request syntax}{
-\preformatted{svc$translate_text(
-  Text = "string",
-  TerminologyNames = list(
-    "string"
-  ),
-  SourceLanguageCode = "string",
-  TargetLanguageCode = "string"
-)
-}
-}
+Translates input text from the source language to the target language. For a list of available languages and language codes, see what-is-languages.
 
+See \url{https://paws-r.github.io/docs/translate/translate_text.html} for full documentation.
+}
 \keyword{internal}

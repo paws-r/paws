@@ -9,54 +9,9 @@ directconnect_describe_connections_on_interconnect(interconnectId)
 \arguments{
 \item{interconnectId}{[required] The ID of the interconnect.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  connections = list(
-    list(
-      ownerAccount = "string",
-      connectionId = "string",
-      connectionName = "string",
-      connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-      region = "string",
-      location = "string",
-      bandwidth = "string",
-      vlan = 123,
-      partnerName = "string",
-      loaIssueTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lagId = "string",
-      awsDevice = "string",
-      jumboFrameCapable = TRUE|FALSE,
-      awsDeviceV2 = "string",
-      hasLogicalRedundancy = "unknown"|"yes"|"no",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      providerName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Deprecated. Use
-\code{\link[=directconnect_describe_hosted_connections]{describe_hosted_connections}}
-instead.
+Deprecated. Use \code{\link[=directconnect_describe_hosted_connections]{describe_hosted_connections}} instead.
 
-Lists the connections that have been provisioned on the specified
-interconnect.
-
-Intended for use by AWS Direct Connect Partners only.
+See \url{https://paws-r.github.io/docs/directconnect/describe_connections_on_interconnect.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_connections_on_interconnect(
-  interconnectId = "string"
-)
-}
-}
-
 \keyword{internal}

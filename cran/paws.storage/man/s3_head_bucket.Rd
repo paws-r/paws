@@ -2,65 +2,38 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_head_bucket}
 \alias{s3_head_bucket}
-\title{This operation is useful to determine if a bucket exists and you have
+\title{This action is useful to determine if a bucket exists and you have
 permission to access it}
 \usage{
-s3_head_bucket(Bucket, ExpectedBucketOwner)
+s3_head_bucket(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-This operation is useful to determine if a bucket exists and you have
-permission to access it. The operation returns a \verb{200 OK} if the bucket
-exists and you have permission to access it. Otherwise, the operation
-might return responses such as \verb{404 Not Found} and \verb{403 Forbidden}.
+This action is useful to determine if a bucket exists and you have permission to access it. The action returns a \verb{200 OK} if the bucket exists and you have permission to access it.
 
-To use this operation, you must have permissions to perform the
-\code{s3:ListBucket} action. The bucket owner has this permission by default
-and can grant this permission to others. For more information about
-permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
-}
-\section{Request syntax}{
-\preformatted{svc$head_bucket(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation checks to see if a bucket exists.
-svc$head_bucket(
-  Bucket = "acl1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/head_bucket.html} for full documentation.
 }
 \keyword{internal}

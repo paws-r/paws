@@ -12,21 +12,9 @@ costexplorer_provide_anomaly_feedback(AnomalyId, Feedback)
 \item{Feedback}{[required] Describes whether the cost anomaly was a planned activity or you
 considered it an anomaly.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AnomalyId = "string"
-)
-}
-}
 \description{
 Modifies the feedback property of a given cost anomaly.
-}
-\section{Request syntax}{
-\preformatted{svc$provide_anomaly_feedback(
-  AnomalyId = "string",
-  Feedback = "YES"|"NO"|"PLANNED_ACTIVITY"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/costexplorer/provide_anomaly_feedback.html} for full documentation.
+}
 \keyword{internal}

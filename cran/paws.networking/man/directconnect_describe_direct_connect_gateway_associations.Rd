@@ -3,11 +3,16 @@
 \name{directconnect_describe_direct_connect_gateway_associations}
 \alias{directconnect_describe_direct_connect_gateway_associations}
 \title{Lists the associations between your Direct Connect gateways and virtual
-private gateways}
+private gateways and transit gateways}
 \usage{
 directconnect_describe_direct_connect_gateway_associations(
-  associationId, associatedGatewayId, directConnectGatewayId, maxResults,
-  nextToken, virtualGatewayId)
+  associationId = NULL,
+  associatedGatewayId = NULL,
+  directConnectGatewayId = NULL,
+  maxResults = NULL,
+  nextToken = NULL,
+  virtualGatewayId = NULL
+)
 }
 \arguments{
 \item{associationId}{The ID of the Direct Connect gateway association.}
@@ -25,58 +30,11 @@ returned.}
 
 \item{nextToken}{The token provided in the previous call to retrieve the next page.}
 
-\item{virtualGatewayId}{The ID of the virtual private gateway.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  directConnectGatewayAssociations = list(
-    list(
-      directConnectGatewayId = "string",
-      directConnectGatewayOwnerAccount = "string",
-      associationState = "associating"|"associated"|"disassociating"|"disassociated"|"updating",
-      stateChangeError = "string",
-      associatedGateway = list(
-        id = "string",
-        type = "virtualPrivateGateway"|"transitGateway",
-        ownerAccount = "string",
-        region = "string"
-      ),
-      associationId = "string",
-      allowedPrefixesToDirectConnectGateway = list(
-        list(
-          cidr = "string"
-        )
-      ),
-      virtualGatewayId = "string",
-      virtualGatewayRegion = "string",
-      virtualGatewayOwnerAccount = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
+\item{virtualGatewayId}{The ID of the virtual private gateway or transit gateway.}
 }
 \description{
-Lists the associations between your Direct Connect gateways and virtual
-private gateways. You must specify a Direct Connect gateway, a virtual
-private gateway, or both. If you specify a Direct Connect gateway, the
-response contains all virtual private gateways associated with the
-Direct Connect gateway. If you specify a virtual private gateway, the
-response contains all Direct Connect gateways associated with the
-virtual private gateway. If you specify both, the response contains the
-association between the Direct Connect gateway and the virtual private
-gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_direct_connect_gateway_associations(
-  associationId = "string",
-  associatedGatewayId = "string",
-  directConnectGatewayId = "string",
-  maxResults = 123,
-  nextToken = "string",
-  virtualGatewayId = "string"
-)
-}
-}
+Lists the associations between your Direct Connect gateways and virtual private gateways and transit gateways. You must specify one of the following:
 
+See \url{https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateway_associations.html} for full documentation.
+}
 \keyword{internal}

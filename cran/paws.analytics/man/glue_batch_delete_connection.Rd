@@ -4,39 +4,17 @@
 \alias{glue_batch_delete_connection}
 \title{Deletes a list of connection definitions from the Data Catalog}
 \usage{
-glue_batch_delete_connection(CatalogId, ConnectionNameList)
+glue_batch_delete_connection(CatalogId = NULL, ConnectionNameList)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connections reside. If none is
-provided, the AWS account ID is used by default.}
+provided, the Amazon Web Services account ID is used by default.}
 
 \item{ConnectionNameList}{[required] A list of names of the connections to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Succeeded = list(
-    "string"
-  ),
-  Errors = list(
-    list(
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Deletes a list of connection definitions from the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_delete_connection(
-  CatalogId = "string",
-  ConnectionNameList = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/batch_delete_connection.html} for full documentation.
+}
 \keyword{internal}

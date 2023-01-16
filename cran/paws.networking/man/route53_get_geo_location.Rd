@@ -5,7 +5,11 @@
 \title{Gets information about whether a specified geographic location is
 supported for Amazon Route 53 geolocation resource record sets}
 \usage{
-route53_get_geo_location(ContinentCode, CountryCode, SubdivisionCode)
+route53_get_geo_location(
+  ContinentCode = NULL,
+  CountryCode = NULL,
+  SubdivisionCode = NULL
+)
 }
 \arguments{
 \item{ContinentCode}{For geolocation resource record sets, a two-letter abbreviation that
@@ -24,53 +28,15 @@ codes:
 \item{CountryCode}{Amazon Route 53 uses the two-letter country codes that are specified in
 \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO standard 3166-1 alpha-2}.}
 
-\item{SubdivisionCode}{For \code{SubdivisionCode}, Amazon Route 53 supports only states of the
-United States. For a list of state abbreviations, see Appendix B:
+\item{SubdivisionCode}{The code for the subdivision, such as a particular state within the
+United States. For a list of US state abbreviations, see Appendix B:
 Two–Letter State and Possession Abbreviations on the United States
-Postal Service website.
-
-If you specify \code{subdivisioncode}, you must also specify \code{US} for
-\code{CountryCode}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  GeoLocationDetails = list(
-    ContinentCode = "string",
-    ContinentName = "string",
-    CountryCode = "string",
-    CountryName = "string",
-    SubdivisionCode = "string",
-    SubdivisionName = "string"
-  )
-)
-}
+Postal Service website. For a list of all supported subdivision codes,
+use the \code{\link[=route53_list_geo_locations]{list_geo_locations}} API.}
 }
 \description{
-Gets information about whether a specified geographic location is
-supported for Amazon Route 53 geolocation resource record sets.
+Gets information about whether a specified geographic location is supported for Amazon Route 53 geolocation resource record sets.
 
-Use the following syntax to determine whether a continent is supported
-for geolocation:
-
-\verb{GET /2013-04-01/geolocation?continentcode=two-letter abbreviation for a continent }
-
-Use the following syntax to determine whether a country is supported for
-geolocation:
-
-\verb{GET /2013-04-01/geolocation?countrycode=two-character country code }
-
-Use the following syntax to determine whether a subdivision of a country
-is supported for geolocation:
-
-\verb{GET /2013-04-01/geolocation?countrycode=two-character country code&subdivisioncode=subdivision code }
+See \url{https://paws-r.github.io/docs/route53/get_geo_location.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_geo_location(
-  ContinentCode = "string",
-  CountryCode = "string",
-  SubdivisionCode = "string"
-)
-}
-}
-
 \keyword{internal}

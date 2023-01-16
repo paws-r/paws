@@ -2,50 +2,23 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_create_documentation_part}
 \alias{apigateway_create_documentation_part}
-\title{Create documentation part}
+\title{Creates a documentation part}
 \usage{
 apigateway_create_documentation_part(restApiId, location, properties)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{location}{[required] [Required] The location of the targeted API entity of the
-to-be-created documentation part.}
+\item{location}{[required] The location of the targeted API entity of the to-be-created
+documentation part.}
 
-\item{properties}{[required] [Required] The new documentation content map of the targeted API
-entity. Enclosed key-value pairs are API-specific, but only
-OpenAPI-compliant key-value pairs can be exported and, hence, published.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  location = list(
-    type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-    path = "string",
-    method = "string",
-    statusCode = "string",
-    name = "string"
-  ),
-  properties = "string"
-)
-}
+\item{properties}{[required] The new documentation content map of the targeted API entity. Enclosed
+key-value pairs are API-specific, but only OpenAPI-compliant key-value
+pairs can be exported and, hence, published.}
 }
 \description{
-Create documentation part
-}
-\section{Request syntax}{
-\preformatted{svc$create_documentation_part(
-  restApiId = "string",
-  location = list(
-    type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-    path = "string",
-    method = "string",
-    statusCode = "string",
-    name = "string"
-  ),
-  properties = "string"
-)
-}
-}
+Creates a documentation part.
 
+See \url{https://paws-r.github.io/docs/apigateway/create_documentation_part.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{sns_create_topic}
 \title{Creates a topic to which notifications can be published}
 \usage{
-sns_create_topic(Name, Attributes, Tags)
+sns_create_topic(Name, Attributes = NULL, Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the topic you want to create.
@@ -31,14 +31,14 @@ subscriptions.
 default, only the topic owner can publish or subscribe to the topic.
 }
 
-The following attribute applies only to
-\href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html}{server-side-encryption}:
+The following attribute applies only to \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html}{server-side encryption}:
 \itemize{
-\item \code{KmsMasterKeyId} – The ID of an AWS-managed customer master key
-(CMK) for Amazon SNS or a custom CMK. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms}{Key Terms}.
+\item \code{KmsMasterKeyId} – The ID of an Amazon Web Services managed customer
+master key (CMK) for Amazon SNS or a custom CMK. For more
+information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms}{Key Terms}.
 For more examples, see
 \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
-in the \emph{AWS Key Management Service API Reference}.
+in the \emph{Key Management Service API Reference}.
 }
 
 The following attributes apply only to \href{https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html}{FIFO topics}:
@@ -57,7 +57,7 @@ using the body of the message (but not the attributes of the
 message).
 
 (Optional) To override the generated value, you can specify a
-value for the the \code{MessageDeduplicationId} parameter for the
+value for the \code{MessageDeduplicationId} parameter for the
 \code{\link[=sns_publish]{publish}} action.
 }
 }}
@@ -67,35 +67,9 @@ value for the the \code{MessageDeduplicationId} parameter for the
 To be able to tag a topic on creation, you must have the
 \code{sns:CreateTopic} and \code{sns:TagResource} permissions.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TopicArn = "string"
-)
-}
-}
 \description{
-Creates a topic to which notifications can be published. Users can
-create at most 100,000 standard topics (at most 1,000 FIFO topics). For
-more information, see
-\href{https://aws.amazon.com/sns/}{https://aws.amazon.com/sns}. This action
-is idempotent, so if the requester already owns a topic with the
-specified name, that topic's ARN is returned without creating a new
-topic.
-}
-\section{Request syntax}{
-\preformatted{svc$create_topic(
-  Name = "string",
-  Attributes = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a topic to which notifications can be published. Users can create at most 100,000 standard topics (at most 1,000 FIFO topics). For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html}{Creating an Amazon SNS topic} in the \emph{Amazon SNS Developer Guide}. This action is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN is returned without creating a new topic.
 
+See \url{https://paws-r.github.io/docs/sns/create_topic.html} for full documentation.
+}
 \keyword{internal}

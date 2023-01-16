@@ -4,7 +4,7 @@
 \alias{cloudsearchdomain_suggest}
 \title{Retrieves autocomplete suggestions for a partial query string}
 \usage{
-cloudsearchdomain_suggest(query, suggester, size)
+cloudsearchdomain_suggest(query, suggester, size = NULL)
 }
 \arguments{
 \item{query}{[required] Specifies the string for which you want to get suggestions.}
@@ -13,53 +13,9 @@ cloudsearchdomain_suggest(query, suggester, size)
 
 \item{size}{Specifies the maximum number of suggestions to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  status = list(
-    timems = 123,
-    rid = "string"
-  ),
-  suggest = list(
-    query = "string",
-    found = 123,
-    suggestions = list(
-      list(
-        suggestion = "string",
-        score = 123,
-        id = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieves autocomplete suggestions for a partial query string. You can
-use suggestions enable you to display likely matches before users finish
-typing. In Amazon CloudSearch, suggestions are based on the contents of
-a particular text field. When you request suggestions, Amazon
-CloudSearch finds all of the documents whose values in the suggester
-field start with the specified query string. The beginning of the field
-must match the query string to be considered a match.
+Retrieves autocomplete suggestions for a partial query string. You can use suggestions enable you to display likely matches before users finish typing. In Amazon CloudSearch, suggestions are based on the contents of a particular text field. When you request suggestions, Amazon CloudSearch finds all of the documents whose values in the suggester field start with the specified query string. The beginning of the field must match the query string to be considered a match.
 
-For more information about configuring suggesters and retrieving
-suggestions, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Suggestions}
-in the \emph{Amazon CloudSearch Developer Guide}.
-
-The endpoint for submitting \code{\link[=cloudsearchdomain_suggest]{suggest}}
-requests is domain-specific. You submit suggest requests to a domain's
-search endpoint. To get the search endpoint for your domain, use the
-Amazon CloudSearch configuration service \code{DescribeDomains} action. A
-domain's endpoints are also displayed on the domain dashboard in the
-Amazon CloudSearch console.
+See \url{https://paws-r.github.io/docs/cloudsearchdomain/suggest.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$suggest(
-  query = "string",
-  suggester = "string",
-  size = 123
-)
-}
-}
-
 \keyword{internal}

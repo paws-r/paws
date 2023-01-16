@@ -12,20 +12,9 @@ elasticache_delete_cache_subnet_group(CacheSubnetGroupName)
 Constraints: Must contain no more than 255 alphanumeric characters or
 hyphens.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a cache subnet group.
 
-You cannot delete a cache subnet group if it is associated with any
-clusters.
+See \url{https://paws-r.github.io/docs/elasticache/delete_cache_subnet_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_cache_subnet_group(
-  CacheSubnetGroupName = "string"
-)
-}
-}
-
 \keyword{internal}

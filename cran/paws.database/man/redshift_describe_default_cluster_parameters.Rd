@@ -5,8 +5,11 @@
 \title{Returns a list of parameter settings for the specified parameter group
 family}
 \usage{
-redshift_describe_default_cluster_parameters(ParameterGroupFamily,
-  MaxRecords, Marker)
+redshift_describe_default_cluster_parameters(
+  ParameterGroupFamily,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ParameterGroupFamily}{[required] The name of the cluster parameter group family.}
@@ -24,48 +27,14 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_default_cluster_parameters]{describe_default_cluster_parameters}}
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DefaultClusterParameters = list(
-    ParameterGroupFamily = "string",
-    Marker = "string",
-    Parameters = list(
-      list(
-        ParameterName = "string",
-        ParameterValue = "string",
-        Description = "string",
-        Source = "string",
-        DataType = "string",
-        AllowedValues = "string",
-        ApplyType = "static"|"dynamic",
-        IsModifiable = TRUE|FALSE,
-        MinimumEngineVersion = "string"
-      )
-    )
-  )
-)
-}
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.}
 }
 \description{
-Returns a list of parameter settings for the specified parameter group
-family.
+Returns a list of parameter settings for the specified parameter group family.
 
-For more information about parameters and parameter groups, go to
-\href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/describe_default_cluster_parameters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_default_cluster_parameters(
-  ParameterGroupFamily = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

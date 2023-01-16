@@ -12,26 +12,9 @@ firehose_untag_delivery_stream(DeliveryStreamName, TagKeys)
 \item{TagKeys}{[required] A list of tag keys. Each corresponding tag is removed from the delivery
 stream.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes tags from the specified delivery stream. Removed tags are
-deleted, and you can't recover them after this operation successfully
-completes.
+Removes tags from the specified delivery stream. Removed tags are deleted, and you can't recover them after this operation successfully completes.
 
-If you specify a tag that doesn't exist, the operation ignores it.
-
-This operation has a limit of five transactions per second per account.
+See \url{https://paws-r.github.io/docs/firehose/untag_delivery_stream.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$untag_delivery_stream(
-  DeliveryStreamName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{apigatewayv2_update_deployment}
 \title{Updates a Deployment}
 \usage{
-apigatewayv2_update_deployment(ApiId, DeploymentId, Description)
+apigatewayv2_update_deployment(ApiId, DeploymentId, Description = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -13,29 +13,9 @@ apigatewayv2_update_deployment(ApiId, DeploymentId, Description)
 
 \item{Description}{The description for the deployment resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoDeployed = TRUE|FALSE,
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  DeploymentId = "string",
-  DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
-  DeploymentStatusMessage = "string",
-  Description = "string"
-)
-}
-}
 \description{
 Updates a Deployment.
-}
-\section{Request syntax}{
-\preformatted{svc$update_deployment(
-  ApiId = "string",
-  DeploymentId = "string",
-  Description = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/update_deployment.html} for full documentation.
+}
 \keyword{internal}

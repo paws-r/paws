@@ -4,26 +4,37 @@
 \alias{rds_create_db_proxy}
 \title{Creates a new DB proxy}
 \usage{
-rds_create_db_proxy(DBProxyName, EngineFamily, Auth, RoleArn,
-  VpcSubnetIds, VpcSecurityGroupIds, RequireTLS, IdleClientTimeout,
-  DebugLogging, Tags)
+rds_create_db_proxy(
+  DBProxyName,
+  EngineFamily,
+  Auth,
+  RoleArn,
+  VpcSubnetIds,
+  VpcSecurityGroupIds = NULL,
+  RequireTLS = NULL,
+  IdleClientTimeout = NULL,
+  DebugLogging = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBProxyName}{[required] The identifier for the proxy. This name must be unique for all proxies
-owned by your AWS account in the specified AWS Region. An identifier
-must begin with a letter and must contain only ASCII letters, digits,
-and hyphens; it can't end with a hyphen or contain two consecutive
-hyphens.}
+owned by your Amazon Web Services account in the specified Amazon Web
+Services Region. An identifier must begin with a letter and must contain
+only ASCII letters, digits, and hyphens; it can't end with a hyphen or
+contain two consecutive hyphens.}
 
 \item{EngineFamily}{[required] The kinds of databases that the proxy can connect to. This value
 determines which database network protocol the proxy recognizes when it
-interprets network traffic to and from the database. The engine family
-applies to MySQL and PostgreSQL for both RDS and Aurora.}
+interprets network traffic to and from the database. For Aurora MySQL,
+RDS for MariaDB, and RDS for MySQL databases, specify \code{MYSQL}. For
+Aurora PostgreSQL and RDS for PostgreSQL databases, specify
+\code{POSTGRESQL}.}
 
 \item{Auth}{[required] The authorization mechanism that the proxy uses.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that the proxy uses to
-access secrets in AWS Secrets Manager.}
+access secrets in Amazon Web Services Secrets Manager.}
 
 \item{VpcSubnetIds}{[required] One or more VPC subnet IDs to associate with the new proxy.}
 
@@ -48,77 +59,9 @@ safeguard any sensitive information that appears in the logs.}
 \item{Tags}{An optional set of key-value pairs to associate arbitrary data of your
 choosing with the proxy.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBProxy = list(
-    DBProxyName = "string",
-    DBProxyArn = "string",
-    Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
-    EngineFamily = "string",
-    VpcSecurityGroupIds = list(
-      "string"
-    ),
-    VpcSubnetIds = list(
-      "string"
-    ),
-    Auth = list(
-      list(
-        Description = "string",
-        UserName = "string",
-        AuthScheme = "SECRETS",
-        SecretArn = "string",
-        IAMAuth = "DISABLED"|"REQUIRED"
-      )
-    ),
-    RoleArn = "string",
-    Endpoint = "string",
-    RequireTLS = TRUE|FALSE,
-    IdleClientTimeout = 123,
-    DebugLogging = TRUE|FALSE,
-    CreatedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    UpdatedDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Creates a new DB proxy.
-}
-\section{Request syntax}{
-\preformatted{svc$create_db_proxy(
-  DBProxyName = "string",
-  EngineFamily = "MYSQL"|"POSTGRESQL",
-  Auth = list(
-    list(
-      Description = "string",
-      UserName = "string",
-      AuthScheme = "SECRETS",
-      SecretArn = "string",
-      IAMAuth = "DISABLED"|"REQUIRED"
-    )
-  ),
-  RoleArn = "string",
-  VpcSubnetIds = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  RequireTLS = TRUE|FALSE,
-  IdleClientTimeout = 123,
-  DebugLogging = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/create_db_proxy.html} for full documentation.
+}
 \keyword{internal}

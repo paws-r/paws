@@ -11,30 +11,9 @@ elb_delete_load_balancer_policy(LoadBalancerName, PolicyName)
 
 \item{PolicyName}{[required] The name of the policy.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified policy from the specified load balancer. This
-policy must not be enabled for any listeners.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_load_balancer_policy(
-  LoadBalancerName = "string",
-  PolicyName = "string"
-)
-}
-}
+Deletes the specified policy from the specified load balancer. This policy must not be enabled for any listeners.
 
-\examples{
-\dontrun{
-# This example deletes the specified policy from the specified load
-# balancer. The policy must not be enabled on any listener.
-svc$delete_load_balancer_policy(
-  LoadBalancerName = "my-load-balancer",
-  PolicyName = "my-duration-cookie-policy"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/delete_load_balancer_policy.html} for full documentation.
 }
 \keyword{internal}

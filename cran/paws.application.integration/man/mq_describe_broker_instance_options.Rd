@@ -4,59 +4,30 @@
 \alias{mq_describe_broker_instance_options}
 \title{Describe available broker instance options}
 \usage{
-mq_describe_broker_instance_options(EngineType, HostInstanceType,
-  MaxResults, NextToken, StorageType)
+mq_describe_broker_instance_options(
+  EngineType = NULL,
+  HostInstanceType = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  StorageType = NULL
+)
 }
 \arguments{
 \item{EngineType}{Filter response by engine type.}
 
 \item{HostInstanceType}{Filter response by host instance type.}
 
-\item{MaxResults}{The maximum number of instance options that Amazon MQ can return per
-page (20 by default). This value must be an integer from 5 to 100.}
+\item{MaxResults}{The maximum number of brokers that Amazon MQ can return per page (20 by
+default). This value must be an integer from 5 to 100.}
 
 \item{NextToken}{The token that specifies the next page of results Amazon MQ should
 return. To request the first page, leave nextToken empty.}
 
 \item{StorageType}{Filter response by storage type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BrokerInstanceOptions = list(
-    list(
-      AvailabilityZones = list(
-        list(
-          Name = "string"
-        )
-      ),
-      EngineType = "ACTIVEMQ"|"RABBITMQ",
-      HostInstanceType = "string",
-      StorageType = "EBS"|"EFS",
-      SupportedDeploymentModes = list(
-        "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ"|"CLUSTER_MULTI_AZ"
-      ),
-      SupportedEngineVersions = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 \description{
 Describe available broker instance options.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_broker_instance_options(
-  EngineType = "string",
-  HostInstanceType = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  StorageType = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/describe_broker_instance_options.html} for full documentation.
+}
 \keyword{internal}

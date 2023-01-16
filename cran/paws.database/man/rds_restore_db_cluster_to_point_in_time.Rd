@@ -4,13 +4,34 @@
 \alias{rds_restore_db_cluster_to_point_in_time}
 \title{Restores a DB cluster to an arbitrary point in time}
 \usage{
-rds_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
-  RestoreType, SourceDBClusterIdentifier, RestoreToTime,
-  UseLatestRestorableTime, Port, DBSubnetGroupName, OptionGroupName,
-  VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-  BacktrackWindow, EnableCloudwatchLogsExports,
-  DBClusterParameterGroupName, DeletionProtection, CopyTagsToSnapshot,
-  Domain, DomainIAMRoleName)
+rds_restore_db_cluster_to_point_in_time(
+  DBClusterIdentifier,
+  RestoreType = NULL,
+  SourceDBClusterIdentifier,
+  RestoreToTime = NULL,
+  UseLatestRestorableTime = NULL,
+  Port = NULL,
+  DBSubnetGroupName = NULL,
+  OptionGroupName = NULL,
+  VpcSecurityGroupIds = NULL,
+  Tags = NULL,
+  KmsKeyId = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  BacktrackWindow = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  DBClusterParameterGroupName = NULL,
+  DeletionProtection = NULL,
+  CopyTagsToSnapshot = NULL,
+  Domain = NULL,
+  DomainIAMRoleName = NULL,
+  ScalingConfiguration = NULL,
+  EngineMode = NULL,
+  DBClusterInstanceClass = NULL,
+  StorageType = NULL,
+  PubliclyAccessible = NULL,
+  Iops = NULL,
+  ServerlessV2ScalingConfiguration = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the new DB cluster to be created.
@@ -20,7 +41,9 @@ Constraints:
 \item Must contain from 1 to 63 letters, numbers, or hyphens
 \item First character must be a letter
 \item Can't end with a hyphen or contain two consecutive hyphens
-}}
+}
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{RestoreType}{The type of restore to be performed. You can specify one of the
 following values:
@@ -35,14 +58,18 @@ Constraints: You can't specify \code{copy-on-write} if the engine version of
 the source DB cluster is earlier than 1.11.
 
 If you don't specify a \code{RestoreType} value, then the new DB cluster is
-restored as a full copy of the source DB cluster.}
+restored as a full copy of the source DB cluster.
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{SourceDBClusterIdentifier}{[required] The identifier of the source DB cluster from which to restore.
 
 Constraints:
 \itemize{
 \item Must match the identifier of an existing DBCluster.
-}}
+}
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{RestoreToTime}{The date and time to restore the DB cluster to.
 
@@ -59,70 +86,85 @@ enabled
 \item Can't be specified if the \code{RestoreType} parameter is \code{copy-on-write}
 }
 
-Example: \verb{2015-03-07T23:45:00Z}}
+Example: \verb{2015-03-07T23:45:00Z}
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{UseLatestRestorableTime}{A value that indicates whether to restore the DB cluster to the latest
 restorable backup time. By default, the DB cluster isn't restored to the
 latest restorable backup time.
 
 Constraints: Can't be specified if \code{RestoreToTime} parameter is
-provided.}
+provided.
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{Port}{The port number on which the new DB cluster accepts connections.
 
 Constraints: A value from \code{1150-65535}.
 
-Default: The default port for the engine.}
+Default: The default port for the engine.
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{DBSubnetGroupName}{The DB subnet group name to use for the new DB cluster.
 
 Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
-Example: \code{mySubnetgroup}}
+Example: \code{mydbsubnetgroup}
 
-\item{OptionGroupName}{The name of the option group for the new DB cluster.}
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{VpcSecurityGroupIds}{A list of VPC security groups that the new DB cluster belongs to.}
+\item{OptionGroupName}{The name of the option group for the new DB cluster.
+
+DB clusters are associated with a default option group that can't be
+modified.}
+
+\item{VpcSecurityGroupIds}{A list of VPC security groups that the new DB cluster belongs to.
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{Tags}{}
 
-\item{KmsKeyId}{The AWS KMS key identifier to use when restoring an encrypted DB cluster
-from an encrypted DB cluster.
+\item{KmsKeyId}{The Amazon Web Services KMS key identifier to use when restoring an
+encrypted DB cluster from an encrypted DB cluster.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK). To use a CMK in a
-different AWS account, specify the key ARN or alias ARN.
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
 
 You can restore to a new DB cluster and encrypt the new DB cluster with
-a AWS KMS CMK that is different than the AWS KMS key used to encrypt the
-source DB cluster. The new DB cluster is encrypted with the AWS KMS CMK
-identified by the \code{KmsKeyId} parameter.
+a KMS key that is different from the KMS key used to encrypt the source
+DB cluster. The new DB cluster is encrypted with the KMS key identified
+by the \code{KmsKeyId} parameter.
 
 If you don't specify a value for the \code{KmsKeyId} parameter, then the
 following occurs:
 \itemize{
 \item If the DB cluster is encrypted, then the restored DB cluster is
-encrypted using the AWS KMS CMK that was used to encrypt the source
-DB cluster.
+encrypted using the KMS key that was used to encrypt the source DB
+cluster.
 \item If the DB cluster isn't encrypted, then the restored DB cluster
 isn't encrypted.
 }
 
 If \code{DBClusterIdentifier} refers to a DB cluster that isn't encrypted,
-then the restore request is rejected.}
+then the restore request is rejected.
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping isn't enabled.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
-in the \emph{Amazon Aurora User Guide.}}
+in the \emph{Amazon Aurora User Guide}.
+
+Valid for: Aurora DB clusters only}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
-
-Currently, Backtrack is only supported for Aurora MySQL DB clusters.
 
 Default: 0
 
@@ -130,12 +172,38 @@ Constraints:
 \itemize{
 \item If specified, this value must be set to a number from 0 to 259,200
 (72 hours).
-}}
+}
+
+Valid for: Aurora MySQL DB clusters only}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB cluster is to export to CloudWatch
-Logs. The values in the list depend on the DB engine being used. For
-more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
-in the \emph{Amazon Aurora User Guide}.}
+Logs. The values in the list depend on the DB engine being used.
+
+\strong{RDS for MySQL}
+
+Possible values are \code{error}, \code{general}, and \code{slowquery}.
+
+\strong{RDS for PostgreSQL}
+
+Possible values are \code{postgresql} and \code{upgrade}.
+
+\strong{Aurora MySQL}
+
+Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowquery}.
+
+\strong{Aurora PostgreSQL}
+
+Possible value is \code{postgresql}.
+
+For more information about exporting CloudWatch Logs for Amazon RDS, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+in the \emph{Amazon RDS User Guide}.
+
+For more information about exporting CloudWatch Logs for Amazon Aurora,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+in the \emph{Amazon Aurora User Guide}.
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with this DB
 cluster. If this argument is omitted, the default DB cluster parameter
@@ -148,15 +216,21 @@ group.
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter.
 \item Can't end with a hyphen or contain two consecutive hyphens.
-}}
+}
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection is disabled.}
+enabled. By default, deletion protection isn't enabled.
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
 cluster to snapshots of the restored DB cluster. The default is not to
-copy them.}
+copy them.
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{Domain}{Specify the Active Directory directory ID to restore the DB cluster in.
 The domain must be created prior to this operation.
@@ -164,200 +238,103 @@ The domain must be created prior to this operation.
 For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
 Authentication to authenticate users that connect to the DB cluster. For
 more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html}{Kerberos Authentication}
-in the \emph{Amazon Aurora User Guide}.}
+in the \emph{Amazon Aurora User Guide}.
+
+Valid for: Aurora DB clusters only}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
-Directory Service.}
+Directory Service.
+
+Valid for: Aurora DB clusters only}
+
+\item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties
+of the DB cluster.
+
+Valid for: Aurora DB clusters only}
+
+\item{EngineMode}{The engine mode of the new cluster. Specify \code{provisioned} or
+\code{serverless}, depending on the type of the cluster you are creating. You
+can create an Aurora Serverless v1 clone from a provisioned cluster, or
+a provisioned clone from an Aurora Serverless v1 cluster. To create a
+clone that is an Aurora Serverless v1 cluster, the original cluster must
+be an Aurora Serverless v1 cluster or an encrypted provisioned cluster.
+
+Valid for: Aurora DB clusters only}
+
+\item{DBClusterInstanceClass}{The compute and memory capacity of the each DB instance in the Multi-AZ
+DB cluster, for example db.m6g.xlarge. Not all DB instance classes are
+available in all Amazon Web Services Regions, or for all database
+engines.
+
+For the full list of DB instance classes, and availability for your
+engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB instance class}
+in the \emph{Amazon RDS User Guide.}
+
+Valid for: Multi-AZ DB clusters only}
+
+\item{StorageType}{Specifies the storage type to be associated with the each DB instance in
+the Multi-AZ DB cluster.
+
+Valid values: \code{io1}
+
+When specified, a value for the \code{Iops} parameter is required.
+
+Default: \code{io1}
+
+Valid for: Multi-AZ DB clusters only}
+
+\item{PubliclyAccessible}{A value that indicates whether the DB cluster is publicly accessible.
+
+When the DB cluster is publicly accessible, its Domain Name System (DNS)
+endpoint resolves to the private IP address from within the DB cluster's
+virtual private cloud (VPC). It resolves to the public IP address from
+outside of the DB cluster's VPC. Access to the DB cluster is ultimately
+controlled by the security group it uses. That public access is not
+permitted if the security group assigned to the DB cluster doesn't
+permit it.
+
+When the DB cluster isn't publicly accessible, it is an internal DB
+cluster with a DNS name that resolves to a private IP address.
+
+Default: The default behavior varies depending on whether
+\code{DBSubnetGroupName} is specified.
+
+If \code{DBSubnetGroupName} isn't specified, and \code{PubliclyAccessible} isn't
+specified, the following applies:
+\itemize{
+\item If the default VPC in the target Region doesn’t have an internet
+gateway attached to it, the DB cluster is private.
+\item If the default VPC in the target Region has an internet gateway
+attached to it, the DB cluster is public.
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AllocatedStorage = 123,
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    CharacterSetName = "string",
-    DatabaseName = "string",
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    CustomEndpoints = list(
-      "string"
-    ),
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    DBClusterOptionGroupMemberships = list(
-      list(
-        DBClusterOptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    ReplicationSourceIdentifier = "string",
-    ReadReplicaIdentifiers = list(
-      "string"
-    ),
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string",
-        FeatureName = "string"
-      )
-    ),
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    CloneGroupId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EarliestBacktrackTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    BacktrackWindow = 123,
-    BacktrackConsumedChangeRecords = 123,
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    Capacity = 123,
-    EngineMode = "string",
-    ScalingConfigurationInfo = list(
-      MinCapacity = 123,
-      MaxCapacity = 123,
-      AutoPause = TRUE|FALSE,
-      SecondsUntilAutoPause = 123,
-      TimeoutAction = "string"
-    ),
-    DeletionProtection = TRUE|FALSE,
-    HttpEndpointEnabled = TRUE|FALSE,
-    ActivityStreamMode = "sync"|"async",
-    ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-    ActivityStreamKmsKeyId = "string",
-    ActivityStreamKinesisStreamName = "string",
-    CopyTagsToSnapshot = TRUE|FALSE,
-    CrossAccountClone = TRUE|FALSE,
-    DomainMemberships = list(
-      list(
-        Domain = "string",
-        Status = "string",
-        FQDN = "string",
-        IAMRoleName = "string"
-      )
-    ),
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-    GlobalWriteForwardingRequested = TRUE|FALSE,
-    PendingModifiedValues = list(
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      ),
-      DBClusterIdentifier = "string",
-      MasterUserPassword = "string",
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-      EngineVersion = "string"
-    )
-  )
-)
+
+If \code{DBSubnetGroupName} is specified, and \code{PubliclyAccessible} isn't
+specified, the following applies:
+\itemize{
+\item If the subnets are part of a VPC that doesn’t have an internet
+gateway attached to it, the DB cluster is private.
+\item If the subnets are part of a VPC that has an internet gateway
+attached to it, the DB cluster is public.
 }
+
+Valid for: Multi-AZ DB clusters only}
+
+\item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
+be initially allocated for each DB instance in the Multi-AZ DB cluster.
+
+For information about valid \code{Iops} values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage to improve performance}
+in the \emph{Amazon RDS User Guide}.
+
+Constraints: Must be a multiple between .5 and 50 of the storage amount
+for the DB instance.
+
+Valid for: Multi-AZ DB clusters only}
+
+\item{ServerlessV2ScalingConfiguration}{}
 }
 \description{
-Restores a DB cluster to an arbitrary point in time. Users can restore
-to any point in time before \code{LatestRestorableTime} for up to
-\code{BackupRetentionPeriod} days. The target DB cluster is created from the
-source DB cluster with the same configuration as the original DB
-cluster, except that the new DB cluster is created with the default DB
-security group.
+Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.
 
-This action only restores the DB cluster, not the DB instances for that
-DB cluster. You must invoke the
-\code{\link[=rds_create_db_instance]{create_db_instance}} action to create DB
-instances for the restored DB cluster, specifying the identifier of the
-restored DB cluster in \code{DBClusterIdentifier}. You can create DB
-instances only after the
-\code{\link[=rds_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time}}
-action has completed and the DB cluster is available.
-
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
-
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/restore_db_cluster_to_point_in_time.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$restore_db_cluster_to_point_in_time(
-  DBClusterIdentifier = "string",
-  RestoreType = "string",
-  SourceDBClusterIdentifier = "string",
-  RestoreToTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  UseLatestRestorableTime = TRUE|FALSE,
-  Port = 123,
-  DBSubnetGroupName = "string",
-  OptionGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  BacktrackWindow = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  DBClusterParameterGroupName = "string",
-  DeletionProtection = TRUE|FALSE,
-  CopyTagsToSnapshot = TRUE|FALSE,
-  Domain = "string",
-  DomainIAMRoleName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,9 +4,18 @@
 \alias{sagemaker_list_compilation_jobs}
 \title{Lists model compilation jobs that satisfy various filters}
 \usage{
-sagemaker_list_compilation_jobs(NextToken, MaxResults,
-  CreationTimeAfter, CreationTimeBefore, LastModifiedTimeAfter,
-  LastModifiedTimeBefore, NameContains, StatusEquals, SortBy, SortOrder)
+sagemaker_list_compilation_jobs(
+  NextToken = NULL,
+  MaxResults = NULL,
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  NameContains = NULL,
+  StatusEquals = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{NextToken}{If the result of the previous
@@ -38,65 +47,9 @@ DescribeCompilationJobResponse$CompilationJobStatus status.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CompilationJobSummaries = list(
-    list(
-      CompilationJobName = "string",
-      CompilationJobArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CompilationStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CompilationEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CompilationTargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
-      CompilationTargetPlatformOs = "ANDROID"|"LINUX",
-      CompilationTargetPlatformArch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
-      CompilationTargetPlatformAccelerator = "INTEL_GRAPHICS"|"MALI"|"NVIDIA",
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CompilationJobStatus = "INPROGRESS"|"COMPLETED"|"FAILED"|"STARTING"|"STOPPING"|"STOPPED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists model compilation jobs that satisfy various filters.
 
-To create a model compilation job, use
-\code{\link[=sagemaker_create_compilation_job]{create_compilation_job}}. To get
-information about a particular model compilation job you have created,
-use \code{\link[=sagemaker_describe_compilation_job]{describe_compilation_job}}.
+See \url{https://paws-r.github.io/docs/sagemaker/list_compilation_jobs.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_compilation_jobs(
-  NextToken = "string",
-  MaxResults = 123,
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  NameContains = "string",
-  StatusEquals = "INPROGRESS"|"COMPLETED"|"FAILED"|"STARTING"|"STOPPING"|"STOPPED",
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
-
 \keyword{internal}

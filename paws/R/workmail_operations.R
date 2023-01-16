@@ -185,6 +185,69 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
 }
 .workmail$operations$create_alias <- workmail_create_alias
 
+#' Creates an AvailabilityConfiguration for the given WorkMail organization
+#' and domain
+#'
+#' @description
+#' Creates an `AvailabilityConfiguration` for the given WorkMail
+#' organization and domain.
+#'
+#' @usage
+#' workmail_create_availability_configuration(ClientToken, OrganizationId,
+#'   DomainName, EwsProvider, LambdaProvider)
+#'
+#' @param ClientToken An idempotent token that ensures that an API request is executed only
+#' once.
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the
+#' `AvailabilityConfiguration` will be created.
+#' @param DomainName &#91;required&#93; The domain to which the provider applies.
+#' @param EwsProvider Exchange Web Services (EWS) availability provider definition. The
+#' request must contain exactly one provider definition, either
+#' `EwsProvider` or `LambdaProvider`.
+#' @param LambdaProvider Lambda availability provider definition. The request must contain
+#' exactly one provider definition, either `EwsProvider` or
+#' `LambdaProvider`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_availability_configuration(
+#'   ClientToken = "string",
+#'   OrganizationId = "string",
+#'   DomainName = "string",
+#'   EwsProvider = list(
+#'     EwsEndpoint = "string",
+#'     EwsUsername = "string",
+#'     EwsPassword = "string"
+#'   ),
+#'   LambdaProvider = list(
+#'     LambdaArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_create_availability_configuration
+workmail_create_availability_configuration <- function(ClientToken = NULL, OrganizationId, DomainName, EwsProvider = NULL, LambdaProvider = NULL) {
+  op <- new_operation(
+    name = "CreateAvailabilityConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$create_availability_configuration_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
+  output <- .workmail$create_availability_configuration_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$create_availability_configuration <- workmail_create_availability_configuration
+
 #' Creates a group that can be used in Amazon WorkMail by calling the
 #' RegisterToWorkMail operation
 #'
@@ -233,6 +296,101 @@ workmail_create_group <- function(OrganizationId, Name) {
   return(response)
 }
 .workmail$operations$create_group <- workmail_create_group
+
+#' Creates a new mobile device access rule for the specified Amazon
+#' WorkMail organization
+#'
+#' @description
+#' Creates a new mobile device access rule for the specified Amazon
+#' WorkMail organization.
+#'
+#' @usage
+#' workmail_create_mobile_device_access_rule(OrganizationId, ClientToken,
+#'   Name, Description, Effect, DeviceTypes, NotDeviceTypes, DeviceModels,
+#'   NotDeviceModels, DeviceOperatingSystems, NotDeviceOperatingSystems,
+#'   DeviceUserAgents, NotDeviceUserAgents)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which the rule will be created.
+#' @param ClientToken The idempotency token for the client request.
+#' @param Name &#91;required&#93; The rule name.
+#' @param Description The rule description.
+#' @param Effect &#91;required&#93; The effect of the rule when it matches. Allowed values are `ALLOW` or
+#' `DENY`.
+#' @param DeviceTypes Device types that the rule will match.
+#' @param NotDeviceTypes Device types that the rule **will not** match. All other device types
+#' will match.
+#' @param DeviceModels Device models that the rule will match.
+#' @param NotDeviceModels Device models that the rule **will not** match. All other device models
+#' will match.
+#' @param DeviceOperatingSystems Device operating systems that the rule will match.
+#' @param NotDeviceOperatingSystems Device operating systems that the rule **will not** match. All other
+#' device operating systems will match.
+#' @param DeviceUserAgents Device user agents that the rule will match.
+#' @param NotDeviceUserAgents Device user agents that the rule **will not** match. All other device
+#' user agents will match.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MobileDeviceAccessRuleId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_mobile_device_access_rule(
+#'   OrganizationId = "string",
+#'   ClientToken = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   Effect = "ALLOW"|"DENY",
+#'   DeviceTypes = list(
+#'     "string"
+#'   ),
+#'   NotDeviceTypes = list(
+#'     "string"
+#'   ),
+#'   DeviceModels = list(
+#'     "string"
+#'   ),
+#'   NotDeviceModels = list(
+#'     "string"
+#'   ),
+#'   DeviceOperatingSystems = list(
+#'     "string"
+#'   ),
+#'   NotDeviceOperatingSystems = list(
+#'     "string"
+#'   ),
+#'   DeviceUserAgents = list(
+#'     "string"
+#'   ),
+#'   NotDeviceUserAgents = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_create_mobile_device_access_rule
+workmail_create_mobile_device_access_rule <- function(OrganizationId, ClientToken = NULL, Name, Description = NULL, Effect, DeviceTypes = NULL, NotDeviceTypes = NULL, DeviceModels = NULL, NotDeviceModels = NULL, DeviceOperatingSystems = NULL, NotDeviceOperatingSystems = NULL, DeviceUserAgents = NULL, NotDeviceUserAgents = NULL) {
+  op <- new_operation(
+    name = "CreateMobileDeviceAccessRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$create_mobile_device_access_rule_input(OrganizationId = OrganizationId, ClientToken = ClientToken, Name = Name, Description = Description, Effect = Effect, DeviceTypes = DeviceTypes, NotDeviceTypes = NotDeviceTypes, DeviceModels = DeviceModels, NotDeviceModels = NotDeviceModels, DeviceOperatingSystems = DeviceOperatingSystems, NotDeviceOperatingSystems = NotDeviceOperatingSystems, DeviceUserAgents = DeviceUserAgents, NotDeviceUserAgents = NotDeviceUserAgents)
+  output <- .workmail$create_mobile_device_access_rule_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$create_mobile_device_access_rule <- workmail_create_mobile_device_access_rule
 
 #' Creates a new Amazon WorkMail organization
 #'
@@ -429,6 +587,10 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password) {
 #'
 #' @description
 #' Deletes an access control rule for the specified WorkMail organization.
+#' 
+#' Deleting already deleted and non-existing rules does not produce an
+#' error. In those cases, the service sends back an HTTP 200 response with
+#' an empty HTTP body.
 #'
 #' @usage
 #' workmail_delete_access_control_rule(OrganizationId, Name)
@@ -515,6 +677,92 @@ workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
   return(response)
 }
 .workmail$operations$delete_alias <- workmail_delete_alias
+
+#' Deletes the AvailabilityConfiguration for the given WorkMail
+#' organization and domain
+#'
+#' @description
+#' Deletes the `AvailabilityConfiguration` for the given WorkMail
+#' organization and domain.
+#'
+#' @usage
+#' workmail_delete_availability_configuration(OrganizationId, DomainName)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the
+#' `AvailabilityConfiguration` will be deleted.
+#' @param DomainName &#91;required&#93; The domain for which the `AvailabilityConfiguration` will be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_availability_configuration(
+#'   OrganizationId = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_availability_configuration
+workmail_delete_availability_configuration <- function(OrganizationId, DomainName) {
+  op <- new_operation(
+    name = "DeleteAvailabilityConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$delete_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName)
+  output <- .workmail$delete_availability_configuration_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_availability_configuration <- workmail_delete_availability_configuration
+
+#' Deletes the email monitoring configuration for a specified organization
+#'
+#' @description
+#' Deletes the email monitoring configuration for a specified organization.
+#'
+#' @usage
+#' workmail_delete_email_monitoring_configuration(OrganizationId)
+#'
+#' @param OrganizationId &#91;required&#93; The ID of the organization from which the email monitoring configuration
+#' is deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_email_monitoring_configuration(
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_email_monitoring_configuration
+workmail_delete_email_monitoring_configuration <- function(OrganizationId) {
+  op <- new_operation(
+    name = "DeleteEmailMonitoringConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$delete_email_monitoring_configuration_input(OrganizationId = OrganizationId)
+  output <- .workmail$delete_email_monitoring_configuration_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_email_monitoring_configuration <- workmail_delete_email_monitoring_configuration
 
 #' Deletes a group from Amazon WorkMail
 #'
@@ -603,6 +851,116 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
   return(response)
 }
 .workmail$operations$delete_mailbox_permissions <- workmail_delete_mailbox_permissions
+
+#' Deletes the mobile device access override for the given WorkMail
+#' organization, user, and device
+#'
+#' @description
+#' Deletes the mobile device access override for the given WorkMail
+#' organization, user, and device.
+#' 
+#' Deleting already deleted and non-existing overrides does not produce an
+#' error. In those cases, the service sends back an HTTP 200 response with
+#' an empty HTTP body.
+#'
+#' @usage
+#' workmail_delete_mobile_device_access_override(OrganizationId, UserId,
+#'   DeviceId)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the access override will be
+#' deleted.
+#' @param UserId &#91;required&#93; The WorkMail user for which you want to delete the override. Accepts the
+#' following types of user identities:
+#' 
+#' -   User ID: `12345678-1234-1234-1234-123456789012` or
+#'     `S-1-1-12-1234567890-123456789-123456789-1234`
+#' 
+#' -   Email address: `user@@domain.tld`
+#' 
+#' -   User name: `user`
+#' @param DeviceId &#91;required&#93; The mobile device for which you delete the override. `DeviceId` is case
+#' insensitive.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_mobile_device_access_override(
+#'   OrganizationId = "string",
+#'   UserId = "string",
+#'   DeviceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_mobile_device_access_override
+workmail_delete_mobile_device_access_override <- function(OrganizationId, UserId, DeviceId) {
+  op <- new_operation(
+    name = "DeleteMobileDeviceAccessOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$delete_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId)
+  output <- .workmail$delete_mobile_device_access_override_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_mobile_device_access_override <- workmail_delete_mobile_device_access_override
+
+#' Deletes a mobile device access rule for the specified Amazon WorkMail
+#' organization
+#'
+#' @description
+#' Deletes a mobile device access rule for the specified Amazon WorkMail
+#' organization.
+#' 
+#' Deleting already deleted and non-existing rules does not produce an
+#' error. In those cases, the service sends back an HTTP 200 response with
+#' an empty HTTP body.
+#'
+#' @usage
+#' workmail_delete_mobile_device_access_rule(OrganizationId,
+#'   MobileDeviceAccessRuleId)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which the rule will be deleted.
+#' @param MobileDeviceAccessRuleId &#91;required&#93; The identifier of the rule to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_mobile_device_access_rule(
+#'   OrganizationId = "string",
+#'   MobileDeviceAccessRuleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_mobile_device_access_rule
+workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDeviceAccessRuleId) {
+  op <- new_operation(
+    name = "DeleteMobileDeviceAccessRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$delete_mobile_device_access_rule_input(OrganizationId = OrganizationId, MobileDeviceAccessRuleId = MobileDeviceAccessRuleId)
+  output <- .workmail$delete_mobile_device_access_rule_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_mobile_device_access_rule <- workmail_delete_mobile_device_access_rule
 
 #' Deletes an Amazon WorkMail organization and all underlying AWS resources
 #' managed by Amazon WorkMail as part of the organization
@@ -841,6 +1199,102 @@ workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
 }
 .workmail$operations$deregister_from_work_mail <- workmail_deregister_from_work_mail
 
+#' Removes a domain from Amazon WorkMail, stops email routing to WorkMail,
+#' and removes the authorization allowing WorkMail use
+#'
+#' @description
+#' Removes a domain from Amazon WorkMail, stops email routing to WorkMail,
+#' and removes the authorization allowing WorkMail use. SES keeps the
+#' domain because other applications may use it. You must first remove any
+#' email address used by WorkMail entities before you remove the domain.
+#'
+#' @usage
+#' workmail_deregister_mail_domain(OrganizationId, DomainName)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the domain will be
+#' deregistered.
+#' @param DomainName &#91;required&#93; The domain to deregister in WorkMail and SES.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deregister_mail_domain(
+#'   OrganizationId = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_deregister_mail_domain
+workmail_deregister_mail_domain <- function(OrganizationId, DomainName) {
+  op <- new_operation(
+    name = "DeregisterMailDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$deregister_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
+  output <- .workmail$deregister_mail_domain_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$deregister_mail_domain <- workmail_deregister_mail_domain
+
+#' Describes the current email monitoring configuration for a specified
+#' organization
+#'
+#' @description
+#' Describes the current email monitoring configuration for a specified
+#' organization.
+#'
+#' @usage
+#' workmail_describe_email_monitoring_configuration(OrganizationId)
+#'
+#' @param OrganizationId &#91;required&#93; The ID of the organization for which the email monitoring configuration
+#' is described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RoleArn = "string",
+#'   LogGroupArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_email_monitoring_configuration(
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_describe_email_monitoring_configuration
+workmail_describe_email_monitoring_configuration <- function(OrganizationId) {
+  op <- new_operation(
+    name = "DescribeEmailMonitoringConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$describe_email_monitoring_configuration_input(OrganizationId = OrganizationId)
+  output <- .workmail$describe_email_monitoring_configuration_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$describe_email_monitoring_configuration <- workmail_describe_email_monitoring_configuration
+
 #' Returns the data available for the group
 #'
 #' @description
@@ -896,6 +1350,51 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
   return(response)
 }
 .workmail$operations$describe_group <- workmail_describe_group
+
+#' Lists the settings in a DMARC policy for a specified organization
+#'
+#' @description
+#' Lists the settings in a DMARC policy for a specified organization.
+#'
+#' @usage
+#' workmail_describe_inbound_dmarc_settings(OrganizationId)
+#'
+#' @param OrganizationId &#91;required&#93; Lists the ID of the given organization.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Enforced = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_inbound_dmarc_settings(
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_describe_inbound_dmarc_settings
+workmail_describe_inbound_dmarc_settings <- function(OrganizationId) {
+  op <- new_operation(
+    name = "DescribeInboundDmarcSettings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$describe_inbound_dmarc_settings_input(OrganizationId = OrganizationId)
+  output <- .workmail$describe_inbound_dmarc_settings_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$describe_inbound_dmarc_settings <- workmail_describe_inbound_dmarc_settings
 
 #' Describes the current status of a mailbox export job
 #'
@@ -1342,6 +1841,65 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
 }
 .workmail$operations$get_default_retention_policy <- workmail_get_default_retention_policy
 
+#' Gets details for a mail domain, including domain records required to
+#' configure your domain with recommended security
+#'
+#' @description
+#' Gets details for a mail domain, including domain records required to
+#' configure your domain with recommended security.
+#'
+#' @usage
+#' workmail_get_mail_domain(OrganizationId, DomainName)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the domain is retrieved.
+#' @param DomainName &#91;required&#93; The domain from which you want to retrieve details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Records = list(
+#'     list(
+#'       Type = "string",
+#'       Hostname = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   IsTestDomain = TRUE|FALSE,
+#'   IsDefault = TRUE|FALSE,
+#'   OwnershipVerificationStatus = "PENDING"|"VERIFIED"|"FAILED",
+#'   DkimVerificationStatus = "PENDING"|"VERIFIED"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_mail_domain(
+#'   OrganizationId = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_get_mail_domain
+workmail_get_mail_domain <- function(OrganizationId, DomainName) {
+  op <- new_operation(
+    name = "GetMailDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$get_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
+  output <- .workmail$get_mail_domain_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$get_mail_domain <- workmail_get_mail_domain
+
 #' Requests a user's mailbox details for a specified organization and user
 #'
 #' @description
@@ -1390,6 +1948,141 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
   return(response)
 }
 .workmail$operations$get_mailbox_details <- workmail_get_mailbox_details
+
+#' Simulates the effect of the mobile device access rules for the given
+#' attributes of a sample access event
+#'
+#' @description
+#' Simulates the effect of the mobile device access rules for the given
+#' attributes of a sample access event. Use this method to test the effects
+#' of the current set of mobile device access rules for the Amazon WorkMail
+#' organization for a particular user's attributes.
+#'
+#' @usage
+#' workmail_get_mobile_device_access_effect(OrganizationId, DeviceType,
+#'   DeviceModel, DeviceOperatingSystem, DeviceUserAgent)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization to simulate the access effect for.
+#' @param DeviceType Device type the simulated user will report.
+#' @param DeviceModel Device model the simulated user will report.
+#' @param DeviceOperatingSystem Device operating system the simulated user will report.
+#' @param DeviceUserAgent Device user agent the simulated user will report.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Effect = "ALLOW"|"DENY",
+#'   MatchedRules = list(
+#'     list(
+#'       MobileDeviceAccessRuleId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_mobile_device_access_effect(
+#'   OrganizationId = "string",
+#'   DeviceType = "string",
+#'   DeviceModel = "string",
+#'   DeviceOperatingSystem = "string",
+#'   DeviceUserAgent = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_get_mobile_device_access_effect
+workmail_get_mobile_device_access_effect <- function(OrganizationId, DeviceType = NULL, DeviceModel = NULL, DeviceOperatingSystem = NULL, DeviceUserAgent = NULL) {
+  op <- new_operation(
+    name = "GetMobileDeviceAccessEffect",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$get_mobile_device_access_effect_input(OrganizationId = OrganizationId, DeviceType = DeviceType, DeviceModel = DeviceModel, DeviceOperatingSystem = DeviceOperatingSystem, DeviceUserAgent = DeviceUserAgent)
+  output <- .workmail$get_mobile_device_access_effect_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$get_mobile_device_access_effect <- workmail_get_mobile_device_access_effect
+
+#' Gets the mobile device access override for the given WorkMail
+#' organization, user, and device
+#'
+#' @description
+#' Gets the mobile device access override for the given WorkMail
+#' organization, user, and device.
+#'
+#' @usage
+#' workmail_get_mobile_device_access_override(OrganizationId, UserId,
+#'   DeviceId)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization to which you want to apply the
+#' override.
+#' @param UserId &#91;required&#93; Identifies the WorkMail user for the override. Accepts the following
+#' types of user identities:
+#' 
+#' -   User ID: `12345678-1234-1234-1234-123456789012` or
+#'     `S-1-1-12-1234567890-123456789-123456789-1234`
+#' 
+#' -   Email address: `user@@domain.tld`
+#' 
+#' -   User name: `user`
+#' @param DeviceId &#91;required&#93; The mobile device to which the override applies. `DeviceId` is case
+#' insensitive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserId = "string",
+#'   DeviceId = "string",
+#'   Effect = "ALLOW"|"DENY",
+#'   Description = "string",
+#'   DateCreated = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DateModified = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_mobile_device_access_override(
+#'   OrganizationId = "string",
+#'   UserId = "string",
+#'   DeviceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_get_mobile_device_access_override
+workmail_get_mobile_device_access_override <- function(OrganizationId, UserId, DeviceId) {
+  op <- new_operation(
+    name = "GetMobileDeviceAccessOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$get_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId)
+  output <- .workmail$get_mobile_device_access_override_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$get_mobile_device_access_override <- workmail_get_mobile_device_access_override
 
 #' Lists the access control rules for the specified organization
 #'
@@ -1522,6 +2215,79 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
   return(response)
 }
 .workmail$operations$list_aliases <- workmail_list_aliases
+
+#' List all the AvailabilityConfiguration's for the given WorkMail
+#' organization
+#'
+#' @description
+#' List all the `AvailabilityConfiguration`'s for the given WorkMail
+#' organization.
+#'
+#' @usage
+#' workmail_list_availability_configurations(OrganizationId, MaxResults,
+#'   NextToken)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the
+#' `AvailabilityConfiguration`'s will be listed.
+#' @param MaxResults The maximum number of results to return in a single call.
+#' @param NextToken The token to use to retrieve the next page of results. The first call
+#' does not require a token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AvailabilityConfigurations = list(
+#'     list(
+#'       DomainName = "string",
+#'       ProviderType = "EWS"|"LAMBDA",
+#'       EwsProvider = list(
+#'         EwsEndpoint = "string",
+#'         EwsUsername = "string"
+#'       ),
+#'       LambdaProvider = list(
+#'         LambdaArn = "string"
+#'       ),
+#'       DateCreated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DateModified = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_availability_configurations(
+#'   OrganizationId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_availability_configurations
+workmail_list_availability_configurations <- function(OrganizationId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAvailabilityConfigurations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$list_availability_configurations_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .workmail$list_availability_configurations_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_availability_configurations <- workmail_list_availability_configurations
 
 #' Returns an overview of the members of a group
 #'
@@ -1656,6 +2422,62 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
 }
 .workmail$operations$list_groups <- workmail_list_groups
 
+#' Lists the mail domains in a given Amazon WorkMail organization
+#'
+#' @description
+#' Lists the mail domains in a given Amazon WorkMail organization.
+#'
+#' @usage
+#' workmail_list_mail_domains(OrganizationId, MaxResults, NextToken)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which to list domains.
+#' @param MaxResults The maximum number of results to return in a single call.
+#' @param NextToken The token to use to retrieve the next page of results. The first call
+#' does not require a token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MailDomains = list(
+#'     list(
+#'       DomainName = "string",
+#'       DefaultDomain = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_mail_domains(
+#'   OrganizationId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_mail_domains
+workmail_list_mail_domains <- function(OrganizationId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListMailDomains",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$list_mail_domains_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .workmail$list_mail_domains_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_mail_domains <- workmail_list_mail_domains
+
 #' Lists the mailbox export jobs started for the specified organization
 #' within the last seven days
 #'
@@ -1789,6 +2611,170 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
   return(response)
 }
 .workmail$operations$list_mailbox_permissions <- workmail_list_mailbox_permissions
+
+#' Lists all the mobile device access overrides for any given combination
+#' of WorkMail organization, user, or device
+#'
+#' @description
+#' Lists all the mobile device access overrides for any given combination
+#' of WorkMail organization, user, or device.
+#'
+#' @usage
+#' workmail_list_mobile_device_access_overrides(OrganizationId, UserId,
+#'   DeviceId, NextToken, MaxResults)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which to list mobile device
+#' access overrides.
+#' @param UserId The WorkMail user under which you list the mobile device access
+#' overrides. Accepts the following types of user identities:
+#' 
+#' -   User ID: `12345678-1234-1234-1234-123456789012` or
+#'     `S-1-1-12-1234567890-123456789-123456789-1234`
+#' 
+#' -   Email address: `user@@domain.tld`
+#' 
+#' -   User name: `user`
+#' @param DeviceId The mobile device to which the access override applies.
+#' @param NextToken The token to use to retrieve the next page of results. The first call
+#' does not require a token.
+#' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Overrides = list(
+#'     list(
+#'       UserId = "string",
+#'       DeviceId = "string",
+#'       Effect = "ALLOW"|"DENY",
+#'       Description = "string",
+#'       DateCreated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DateModified = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_mobile_device_access_overrides(
+#'   OrganizationId = "string",
+#'   UserId = "string",
+#'   DeviceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_mobile_device_access_overrides
+workmail_list_mobile_device_access_overrides <- function(OrganizationId, UserId = NULL, DeviceId = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListMobileDeviceAccessOverrides",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$list_mobile_device_access_overrides_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .workmail$list_mobile_device_access_overrides_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_mobile_device_access_overrides <- workmail_list_mobile_device_access_overrides
+
+#' Lists the mobile device access rules for the specified Amazon WorkMail
+#' organization
+#'
+#' @description
+#' Lists the mobile device access rules for the specified Amazon WorkMail
+#' organization.
+#'
+#' @usage
+#' workmail_list_mobile_device_access_rules(OrganizationId)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which to list the rules.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rules = list(
+#'     list(
+#'       MobileDeviceAccessRuleId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Effect = "ALLOW"|"DENY",
+#'       DeviceTypes = list(
+#'         "string"
+#'       ),
+#'       NotDeviceTypes = list(
+#'         "string"
+#'       ),
+#'       DeviceModels = list(
+#'         "string"
+#'       ),
+#'       NotDeviceModels = list(
+#'         "string"
+#'       ),
+#'       DeviceOperatingSystems = list(
+#'         "string"
+#'       ),
+#'       NotDeviceOperatingSystems = list(
+#'         "string"
+#'       ),
+#'       DeviceUserAgents = list(
+#'         "string"
+#'       ),
+#'       NotDeviceUserAgents = list(
+#'         "string"
+#'       ),
+#'       DateCreated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DateModified = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_mobile_device_access_rules(
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_mobile_device_access_rules
+workmail_list_mobile_device_access_rules <- function(OrganizationId) {
+  op <- new_operation(
+    name = "ListMobileDeviceAccessRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$list_mobile_device_access_rules_input(OrganizationId = OrganizationId)
+  output <- .workmail$list_mobile_device_access_rules_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_mobile_device_access_rules <- workmail_list_mobile_device_access_rules
 
 #' Returns summaries of the customer's organizations
 #'
@@ -2167,6 +3153,98 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
 }
 .workmail$operations$put_access_control_rule <- workmail_put_access_control_rule
 
+#' Creates or updates the email monitoring configuration for a specified
+#' organization
+#'
+#' @description
+#' Creates or updates the email monitoring configuration for a specified
+#' organization.
+#'
+#' @usage
+#' workmail_put_email_monitoring_configuration(OrganizationId, RoleArn,
+#'   LogGroupArn)
+#'
+#' @param OrganizationId &#91;required&#93; The ID of the organization for which the email monitoring configuration
+#' is set.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM Role associated with the email
+#' monitoring configuration.
+#' @param LogGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudWatch Log group associated
+#' with the email monitoring configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_email_monitoring_configuration(
+#'   OrganizationId = "string",
+#'   RoleArn = "string",
+#'   LogGroupArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_put_email_monitoring_configuration
+workmail_put_email_monitoring_configuration <- function(OrganizationId, RoleArn, LogGroupArn) {
+  op <- new_operation(
+    name = "PutEmailMonitoringConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$put_email_monitoring_configuration_input(OrganizationId = OrganizationId, RoleArn = RoleArn, LogGroupArn = LogGroupArn)
+  output <- .workmail$put_email_monitoring_configuration_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$put_email_monitoring_configuration <- workmail_put_email_monitoring_configuration
+
+#' Enables or disables a DMARC policy for a given organization
+#'
+#' @description
+#' Enables or disables a DMARC policy for a given organization.
+#'
+#' @usage
+#' workmail_put_inbound_dmarc_settings(OrganizationId, Enforced)
+#'
+#' @param OrganizationId &#91;required&#93; The ID of the organization that you are applying the DMARC policy to.
+#' @param Enforced &#91;required&#93; Enforces or suspends a policy after it's applied.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_inbound_dmarc_settings(
+#'   OrganizationId = "string",
+#'   Enforced = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_put_inbound_dmarc_settings
+workmail_put_inbound_dmarc_settings <- function(OrganizationId, Enforced) {
+  op <- new_operation(
+    name = "PutInboundDmarcSettings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$put_inbound_dmarc_settings_input(OrganizationId = OrganizationId, Enforced = Enforced)
+  output <- .workmail$put_inbound_dmarc_settings_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$put_inbound_dmarc_settings <- workmail_put_inbound_dmarc_settings
+
 #' Sets permissions for a user, group, or resource
 #'
 #' @description
@@ -2185,8 +3263,8 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
 #' permissions.
 #' @param PermissionValues &#91;required&#93; The permissions granted to the grantee. SEND_AS allows the grantee to
 #' send email as the owner of the mailbox (the grantee is not mentioned on
-#' these emails). SEND_ON_BEHALF allows the grantee to send email on
-#' behalf of the owner of the mailbox (the grantee is not mentioned as the
+#' these emails). SEND_ON_BEHALF allows the grantee to send email on behalf
+#' of the owner of the mailbox (the grantee is not mentioned as the
 #' physical sender of these emails). FULL_ACCESS allows the grantee full
 #' access to the mailbox, irrespective of other folder-level permissions
 #' set on the mailbox.
@@ -2225,6 +3303,67 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
   return(response)
 }
 .workmail$operations$put_mailbox_permissions <- workmail_put_mailbox_permissions
+
+#' Creates or updates a mobile device access override for the given
+#' WorkMail organization, user, and device
+#'
+#' @description
+#' Creates or updates a mobile device access override for the given
+#' WorkMail organization, user, and device.
+#'
+#' @usage
+#' workmail_put_mobile_device_access_override(OrganizationId, UserId,
+#'   DeviceId, Effect, Description)
+#'
+#' @param OrganizationId &#91;required&#93; Identifies the Amazon WorkMail organization for which you create the
+#' override.
+#' @param UserId &#91;required&#93; The WorkMail user for which you create the override. Accepts the
+#' following types of user identities:
+#' 
+#' -   User ID: `12345678-1234-1234-1234-123456789012` or
+#'     `S-1-1-12-1234567890-123456789-123456789-1234`
+#' 
+#' -   Email address: `user@@domain.tld`
+#' 
+#' -   User name: `user`
+#' @param DeviceId &#91;required&#93; The mobile device for which you create the override. `DeviceId` is case
+#' insensitive.
+#' @param Effect &#91;required&#93; The effect of the override, `ALLOW` or `DENY`.
+#' @param Description A description of the override.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_mobile_device_access_override(
+#'   OrganizationId = "string",
+#'   UserId = "string",
+#'   DeviceId = "string",
+#'   Effect = "ALLOW"|"DENY",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_put_mobile_device_access_override
+workmail_put_mobile_device_access_override <- function(OrganizationId, UserId, DeviceId, Effect, Description = NULL) {
+  op <- new_operation(
+    name = "PutMobileDeviceAccessOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$put_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId, Effect = Effect, Description = Description)
+  output <- .workmail$put_mobile_device_access_override_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$put_mobile_device_access_override <- workmail_put_mobile_device_access_override
 
 #' Puts a retention policy to the specified organization
 #'
@@ -2280,6 +3419,54 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
   return(response)
 }
 .workmail$operations$put_retention_policy <- workmail_put_retention_policy
+
+#' Registers a new domain in Amazon WorkMail and SES, and configures it for
+#' use by WorkMail
+#'
+#' @description
+#' Registers a new domain in Amazon WorkMail and SES, and configures it for
+#' use by WorkMail. Emails received by SES for this domain are routed to
+#' the specified WorkMail organization, and WorkMail has permanent
+#' permission to use the specified domain for sending your users' emails.
+#'
+#' @usage
+#' workmail_register_mail_domain(ClientToken, OrganizationId, DomainName)
+#'
+#' @param ClientToken Idempotency token used when retrying requests.
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which you're creating the domain.
+#' @param DomainName &#91;required&#93; The name of the mail domain to create in Amazon WorkMail and SES.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_mail_domain(
+#'   ClientToken = "string",
+#'   OrganizationId = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_register_mail_domain
+workmail_register_mail_domain <- function(ClientToken = NULL, OrganizationId, DomainName) {
+  op <- new_operation(
+    name = "RegisterMailDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$register_mail_domain_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DomainName = DomainName)
+  output <- .workmail$register_mail_domain_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$register_mail_domain <- workmail_register_mail_domain
 
 #' Registers an existing and disabled user, group, or resource for Amazon
 #' WorkMail use by associating a mailbox and calendaring capabilities
@@ -2501,6 +3688,79 @@ workmail_tag_resource <- function(ResourceARN, Tags) {
 }
 .workmail$operations$tag_resource <- workmail_tag_resource
 
+#' Performs a test on an availability provider to ensure that access is
+#' allowed
+#'
+#' @description
+#' Performs a test on an availability provider to ensure that access is
+#' allowed. For EWS, it verifies the provided credentials can be used to
+#' successfully log in. For Lambda, it verifies that the Lambda function
+#' can be invoked and that the resource access policy was configured to
+#' deny anonymous access. An anonymous invocation is one done without
+#' providing either a `SourceArn` or `SourceAccount` header.
+#' 
+#' The request must contain either one provider definition (`EwsProvider`
+#' or `LambdaProvider`) or the `DomainName` parameter. If the `DomainName`
+#' parameter is provided, the configuration stored under the `DomainName`
+#' will be tested.
+#'
+#' @usage
+#' workmail_test_availability_configuration(OrganizationId, DomainName,
+#'   EwsProvider, LambdaProvider)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization where the availability provider will be
+#' tested.
+#' @param DomainName The domain to which the provider applies. If this field is provided, a
+#' stored availability provider associated to this domain name will be
+#' tested.
+#' @param EwsProvider 
+#' @param LambdaProvider 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TestPassed = TRUE|FALSE,
+#'   FailureReason = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$test_availability_configuration(
+#'   OrganizationId = "string",
+#'   DomainName = "string",
+#'   EwsProvider = list(
+#'     EwsEndpoint = "string",
+#'     EwsUsername = "string",
+#'     EwsPassword = "string"
+#'   ),
+#'   LambdaProvider = list(
+#'     LambdaArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_test_availability_configuration
+workmail_test_availability_configuration <- function(OrganizationId, DomainName = NULL, EwsProvider = NULL, LambdaProvider = NULL) {
+  op <- new_operation(
+    name = "TestAvailabilityConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$test_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
+  output <- .workmail$test_availability_configuration_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$test_availability_configuration <- workmail_test_availability_configuration
+
 #' Untags the specified tags from the specified Amazon WorkMail
 #' organization resource
 #'
@@ -2546,6 +3806,112 @@ workmail_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .workmail$operations$untag_resource <- workmail_untag_resource
+
+#' Updates an existing AvailabilityConfiguration for the given WorkMail
+#' organization and domain
+#'
+#' @description
+#' Updates an existing `AvailabilityConfiguration` for the given WorkMail
+#' organization and domain.
+#'
+#' @usage
+#' workmail_update_availability_configuration(OrganizationId, DomainName,
+#'   EwsProvider, LambdaProvider)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the
+#' `AvailabilityConfiguration` will be updated.
+#' @param DomainName &#91;required&#93; The domain to which the provider applies the availability configuration.
+#' @param EwsProvider The EWS availability provider definition. The request must contain
+#' exactly one provider definition, either `EwsProvider` or
+#' `LambdaProvider`. The previously stored provider will be overridden by
+#' the one provided.
+#' @param LambdaProvider The Lambda availability provider definition. The request must contain
+#' exactly one provider definition, either `EwsProvider` or
+#' `LambdaProvider`. The previously stored provider will be overridden by
+#' the one provided.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_availability_configuration(
+#'   OrganizationId = "string",
+#'   DomainName = "string",
+#'   EwsProvider = list(
+#'     EwsEndpoint = "string",
+#'     EwsUsername = "string",
+#'     EwsPassword = "string"
+#'   ),
+#'   LambdaProvider = list(
+#'     LambdaArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_update_availability_configuration
+workmail_update_availability_configuration <- function(OrganizationId, DomainName, EwsProvider = NULL, LambdaProvider = NULL) {
+  op <- new_operation(
+    name = "UpdateAvailabilityConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$update_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
+  output <- .workmail$update_availability_configuration_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$update_availability_configuration <- workmail_update_availability_configuration
+
+#' Updates the default mail domain for an organization
+#'
+#' @description
+#' Updates the default mail domain for an organization. The default mail
+#' domain is used by the WorkMail AWS Console to suggest an email address
+#' when enabling a mail user. You can only have one default domain.
+#'
+#' @usage
+#' workmail_update_default_mail_domain(OrganizationId, DomainName)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which to list domains.
+#' @param DomainName &#91;required&#93; The domain name that will become the default domain.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_default_mail_domain(
+#'   OrganizationId = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_update_default_mail_domain
+workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
+  op <- new_operation(
+    name = "UpdateDefaultMailDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$update_default_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
+  output <- .workmail$update_default_mail_domain_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$update_default_mail_domain <- workmail_update_default_mail_domain
 
 #' Updates a user's current mailbox quota for a specified organization and
 #' user
@@ -2593,6 +3959,96 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
   return(response)
 }
 .workmail$operations$update_mailbox_quota <- workmail_update_mailbox_quota
+
+#' Updates a mobile device access rule for the specified Amazon WorkMail
+#' organization
+#'
+#' @description
+#' Updates a mobile device access rule for the specified Amazon WorkMail
+#' organization.
+#'
+#' @usage
+#' workmail_update_mobile_device_access_rule(OrganizationId,
+#'   MobileDeviceAccessRuleId, Name, Description, Effect, DeviceTypes,
+#'   NotDeviceTypes, DeviceModels, NotDeviceModels, DeviceOperatingSystems,
+#'   NotDeviceOperatingSystems, DeviceUserAgents, NotDeviceUserAgents)
+#'
+#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which the rule will be updated.
+#' @param MobileDeviceAccessRuleId &#91;required&#93; The identifier of the rule to be updated.
+#' @param Name &#91;required&#93; The updated rule name.
+#' @param Description The updated rule description.
+#' @param Effect &#91;required&#93; The effect of the rule when it matches. Allowed values are `ALLOW` or
+#' `DENY`.
+#' @param DeviceTypes Device types that the updated rule will match.
+#' @param NotDeviceTypes Device types that the updated rule **will not** match. All other device
+#' types will match.
+#' @param DeviceModels Device models that the updated rule will match.
+#' @param NotDeviceModels Device models that the updated rule **will not** match. All other device
+#' models will match.
+#' @param DeviceOperatingSystems Device operating systems that the updated rule will match.
+#' @param NotDeviceOperatingSystems Device operating systems that the updated rule **will not** match. All
+#' other device operating systems will match.
+#' @param DeviceUserAgents User agents that the updated rule will match.
+#' @param NotDeviceUserAgents User agents that the updated rule **will not** match. All other user
+#' agents will match.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_mobile_device_access_rule(
+#'   OrganizationId = "string",
+#'   MobileDeviceAccessRuleId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   Effect = "ALLOW"|"DENY",
+#'   DeviceTypes = list(
+#'     "string"
+#'   ),
+#'   NotDeviceTypes = list(
+#'     "string"
+#'   ),
+#'   DeviceModels = list(
+#'     "string"
+#'   ),
+#'   NotDeviceModels = list(
+#'     "string"
+#'   ),
+#'   DeviceOperatingSystems = list(
+#'     "string"
+#'   ),
+#'   NotDeviceOperatingSystems = list(
+#'     "string"
+#'   ),
+#'   DeviceUserAgents = list(
+#'     "string"
+#'   ),
+#'   NotDeviceUserAgents = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_update_mobile_device_access_rule
+workmail_update_mobile_device_access_rule <- function(OrganizationId, MobileDeviceAccessRuleId, Name, Description = NULL, Effect, DeviceTypes = NULL, NotDeviceTypes = NULL, DeviceModels = NULL, NotDeviceModels = NULL, DeviceOperatingSystems = NULL, NotDeviceOperatingSystems = NULL, DeviceUserAgents = NULL, NotDeviceUserAgents = NULL) {
+  op <- new_operation(
+    name = "UpdateMobileDeviceAccessRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$update_mobile_device_access_rule_input(OrganizationId = OrganizationId, MobileDeviceAccessRuleId = MobileDeviceAccessRuleId, Name = Name, Description = Description, Effect = Effect, DeviceTypes = DeviceTypes, NotDeviceTypes = NotDeviceTypes, DeviceModels = DeviceModels, NotDeviceModels = NotDeviceModels, DeviceOperatingSystems = DeviceOperatingSystems, NotDeviceOperatingSystems = NotDeviceOperatingSystems, DeviceUserAgents = DeviceUserAgents, NotDeviceUserAgents = NotDeviceUserAgents)
+  output <- .workmail$update_mobile_device_access_rule_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$update_mobile_device_access_rule <- workmail_update_mobile_device_access_rule
 
 #' Updates the primary email for a user, group, or resource
 #'

@@ -5,7 +5,7 @@
 \title{Posts a comment in reply to an existing comment on a comparison between
 commits or a pull request}
 \usage{
-codecommit_post_comment_reply(inReplyTo, clientRequestToken, content)
+codecommit_post_comment_reply(inReplyTo, clientRequestToken = NULL, content)
 }
 \arguments{
 \item{inReplyTo}{[required] The system-generated ID of the comment to which you want to reply. To
@@ -22,42 +22,9 @@ that used that token.}
 
 \item{content}{[required] The contents of your reply to a comment.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  comment = list(
-    commentId = "string",
-    content = "string",
-    inReplyTo = "string",
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    authorArn = "string",
-    deleted = TRUE|FALSE,
-    clientRequestToken = "string",
-    callerReactions = list(
-      "string"
-    ),
-    reactionCounts = list(
-      123
-    )
-  )
-)
-}
-}
 \description{
-Posts a comment in reply to an existing comment on a comparison between
-commits or a pull request.
-}
-\section{Request syntax}{
-\preformatted{svc$post_comment_reply(
-  inReplyTo = "string",
-  clientRequestToken = "string",
-  content = "string"
-)
-}
-}
+Posts a comment in reply to an existing comment on a comparison between commits or a pull request.
 
+See \url{https://paws-r.github.io/docs/codecommit/post_comment_reply.html} for full documentation.
+}
 \keyword{internal}

@@ -7,7 +7,10 @@ that you can use for the network management interface when you enable
 Bring Your Own License (BYOL)}
 \usage{
 workspaces_list_available_management_cidr_ranges(
-  ManagementCidrRangeConstraint, MaxResults, NextToken)
+  ManagementCidrRangeConstraint,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ManagementCidrRangeConstraint}{[required] The IP address range to search. Specify an IP address range that is
@@ -19,36 +22,9 @@ range as an IPv4 CIDR block).}
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ManagementCidrRanges = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
-that you can use for the network management interface when you enable
-Bring Your Own License (BYOL).
+Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL).
 
-This operation can be run only by AWS accounts that are enabled for
-BYOL. If your account isn't enabled for BYOL, you'll receive an
-\code{AccessDeniedException} error.
-
-The management network interface is connected to a secure Amazon
-WorkSpaces management network. It is used for interactive streaming of
-the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon
-WorkSpaces to manage the WorkSpace.
+See \url{https://paws-r.github.io/docs/workspaces/list_available_management_cidr_ranges.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_available_management_cidr_ranges(
-  ManagementCidrRangeConstraint = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

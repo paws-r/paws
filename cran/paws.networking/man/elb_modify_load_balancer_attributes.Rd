@@ -4,118 +4,16 @@
 \alias{elb_modify_load_balancer_attributes}
 \title{Modifies the attributes of the specified load balancer}
 \usage{
-elb_modify_load_balancer_attributes(LoadBalancerName,
-  LoadBalancerAttributes)
+elb_modify_load_balancer_attributes(LoadBalancerName, LoadBalancerAttributes)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
 
 \item{LoadBalancerAttributes}{[required] The attributes for the load balancer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LoadBalancerName = "string",
-  LoadBalancerAttributes = list(
-    CrossZoneLoadBalancing = list(
-      Enabled = TRUE|FALSE
-    ),
-    AccessLog = list(
-      Enabled = TRUE|FALSE,
-      S3BucketName = "string",
-      EmitInterval = 123,
-      S3BucketPrefix = "string"
-    ),
-    ConnectionDraining = list(
-      Enabled = TRUE|FALSE,
-      Timeout = 123
-    ),
-    ConnectionSettings = list(
-      IdleTimeout = 123
-    ),
-    AdditionalAttributes = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Modifies the attributes of the specified load balancer.
 
-You can modify the load balancer attributes, such as \code{AccessLogs},
-\code{ConnectionDraining}, and \code{CrossZoneLoadBalancing} by either enabling or
-disabling them. Or, you can modify the load balancer attribute
-\code{ConnectionSettings} by specifying an idle connection timeout value for
-your load balancer.
-
-For more information, see the following in the \emph{Classic Load Balancers
-Guide}:
-\itemize{
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html}{Cross-Zone Load Balancing}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html}{Connection Draining}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html}{Access Logs}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html}{Idle Connection Timeout}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$modify_load_balancer_attributes(
-  LoadBalancerName = "string",
-  LoadBalancerAttributes = list(
-    CrossZoneLoadBalancing = list(
-      Enabled = TRUE|FALSE
-    ),
-    AccessLog = list(
-      Enabled = TRUE|FALSE,
-      S3BucketName = "string",
-      EmitInterval = 123,
-      S3BucketPrefix = "string"
-    ),
-    ConnectionDraining = list(
-      Enabled = TRUE|FALSE,
-      Timeout = 123
-    ),
-    ConnectionSettings = list(
-      IdleTimeout = 123
-    ),
-    AdditionalAttributes = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example enables cross-zone load balancing for the specified load
-# balancer.
-svc$modify_load_balancer_attributes(
-  LoadBalancerAttributes = list(
-    CrossZoneLoadBalancing = list(
-      Enabled = TRUE
-    )
-  ),
-  LoadBalancerName = "my-load-balancer"
-)
-
-# This example enables connection draining for the specified load
-# balancer.
-svc$modify_load_balancer_attributes(
-  LoadBalancerAttributes = list(
-    ConnectionDraining = list(
-      Enabled = TRUE,
-      Timeout = 300L
-    )
-  ),
-  LoadBalancerName = "my-load-balancer"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/modify_load_balancer_attributes.html} for full documentation.
 }
 \keyword{internal}

@@ -5,48 +5,19 @@
 \title{Retrieves the policy status for an Amazon S3 bucket, indicating whether
 the bucket is public}
 \usage{
-s3_get_bucket_policy_status(Bucket, ExpectedBucketOwner)
+s3_get_bucket_policy_status(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose policy status you want to
 retrieve.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyStatus = list(
-    IsPublic = TRUE|FALSE
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Retrieves the policy status for an Amazon S3 bucket, indicating whether
-the bucket is public. In order to use this operation, you must have the
-\code{s3:GetBucketPolicyStatus} permission. For more information about Amazon
-S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
+Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public. In order to use this operation, you must have the \code{s3:GetBucketPolicyStatus} permission. For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
 
-For more information about when Amazon S3 considers a bucket public, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of "Public"}.
-
-The following operations are related to
-\code{\link[=s3_get_bucket_policy_status]{get_bucket_policy_status}}:
-\itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html}{Using Amazon S3 Block Public Access}
-\item \code{\link[=s3_get_public_access_block]{get_public_access_block}}
-\item \code{\link[=s3_put_public_access_block]{put_public_access_block}}
-\item \code{\link[=s3_delete_public_access_block]{delete_public_access_block}}
+See \url{https://paws-r.github.io/docs/s3/get_bucket_policy_status.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_policy_status(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

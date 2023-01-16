@@ -4,11 +4,16 @@
 \alias{s3control_update_job_status}
 \title{Updates the status for the specified job}
 \usage{
-s3control_update_job_status(AccountId, JobId, RequestedJobStatus,
-  StatusUpdateReason)
+s3control_update_job_status(
+  AccountId,
+  JobId,
+  RequestedJobStatus,
+  StatusUpdateReason = NULL
+)
 }
 \arguments{
-\item{AccountId}{[required]}
+\item{AccountId}{[required] The Amazon Web Services account ID associated with the S3 Batch
+Operations job.}
 
 \item{JobId}{[required] The ID of the job whose status you want to update.}
 
@@ -17,36 +22,9 @@ s3control_update_job_status(AccountId, JobId, RequestedJobStatus,
 \item{StatusUpdateReason}{A description of the reason why you want to change the specified job's
 status. This field can be any string up to the maximum length.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string",
-  Status = "Active"|"Cancelled"|"Cancelling"|"Complete"|"Completing"|"Failed"|"Failing"|"New"|"Paused"|"Pausing"|"Preparing"|"Ready"|"Suspended",
-  StatusUpdateReason = "string"
-)
-}
-}
 \description{
-Updates the status for the specified job. Use this operation to confirm
-that you want to run a job or to cancel an existing job. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{S3 Batch Operations} in
-the \emph{Amazon Simple Storage Service Developer Guide}.
+Updates the status for the specified job. Use this action to confirm that you want to run a job or to cancel an existing job. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
-Related actions include:
-\itemize{
-\item \code{\link[=s3control_create_job]{create_job}}
-\item \code{\link[=s3control_list_jobs]{list_jobs}}
-\item \code{\link[=s3control_describe_job]{describe_job}}
-\item \code{\link[=s3control_update_job_status]{update_job_status}}
+See \url{https://paws-r.github.io/docs/s3control/update_job_status.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$update_job_status(
-  AccountId = "string",
-  JobId = "string",
-  RequestedJobStatus = "Cancelled"|"Ready",
-  StatusUpdateReason = "string"
-)
-}
-}
-
 \keyword{internal}

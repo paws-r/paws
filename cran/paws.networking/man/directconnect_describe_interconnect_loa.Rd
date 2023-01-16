@@ -4,8 +4,11 @@
 \alias{directconnect_describe_interconnect_loa}
 \title{Deprecated}
 \usage{
-directconnect_describe_interconnect_loa(interconnectId, providerName,
-  loaContentType)
+directconnect_describe_interconnect_loa(
+  interconnectId,
+  providerName = NULL,
+  loaContentType = NULL
+)
 }
 \arguments{
 \item{interconnectId}{[required] The ID of the interconnect.}
@@ -17,32 +20,9 @@ name alongside your company name as the requester of the cross connect.}
 \item{loaContentType}{The standard media type for the LOA-CFA document. The only supported
 value is application/pdf.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  loa = list(
-    loaContent = raw,
-    loaContentType = "application/pdf"
-  )
-)
-}
-}
 \description{
 Deprecated. Use \code{\link[=directconnect_describe_loa]{describe_loa}} instead.
 
-Gets the LOA-CFA for the specified interconnect.
-
-The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
-is a document that is used when establishing your cross connect to AWS
-at the colocation facility. For more information, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html}{Requesting Cross Connects at AWS Direct Connect Locations}
-in the \emph{AWS Direct Connect User Guide}.
+See \url{https://paws-r.github.io/docs/directconnect/describe_interconnect_loa.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_interconnect_loa(
-  interconnectId = "string",
-  providerName = "string",
-  loaContentType = "application/pdf"
-)
-}
-}
-
 \keyword{internal}

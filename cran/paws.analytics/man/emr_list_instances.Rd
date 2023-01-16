@@ -5,8 +5,15 @@
 \title{Provides information for all active EC2 instances and EC2 instances
 terminated in the last 30 days, up to a maximum of 2,000}
 \usage{
-emr_list_instances(ClusterId, InstanceGroupId, InstanceGroupTypes,
-  InstanceFleetId, InstanceFleetType, InstanceStates, Marker)
+emr_list_instances(
+  ClusterId,
+  InstanceGroupId = NULL,
+  InstanceGroupTypes = NULL,
+  InstanceFleetId = NULL,
+  InstanceFleetType = NULL,
+  InstanceStates = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier of the cluster for which to list the instances.}
@@ -24,71 +31,9 @@ this request.}
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Instances = list(
-    list(
-      Id = "string",
-      Ec2InstanceId = "string",
-      PublicDnsName = "string",
-      PublicIpAddress = "string",
-      PrivateDnsName = "string",
-      PrivateIpAddress = "string",
-      Status = list(
-        State = "AWAITING_FULFILLMENT"|"PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"TERMINATED",
-        StateChangeReason = list(
-          Code = "INTERNAL_ERROR"|"VALIDATION_ERROR"|"INSTANCE_FAILURE"|"BOOTSTRAP_FAILURE"|"CLUSTER_TERMINATED",
-          Message = "string"
-        ),
-        Timeline = list(
-          CreationDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          ReadyDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          EndDateTime = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      ),
-      InstanceGroupId = "string",
-      InstanceFleetId = "string",
-      Market = "ON_DEMAND"|"SPOT",
-      InstanceType = "string",
-      EbsVolumes = list(
-        list(
-          Device = "string",
-          VolumeId = "string"
-        )
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Provides information for all active EC2 instances and EC2 instances
-terminated in the last 30 days, up to a maximum of 2,000. EC2 instances
-in any of the following states are considered active:
-AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
-}
-\section{Request syntax}{
-\preformatted{svc$list_instances(
-  ClusterId = "string",
-  InstanceGroupId = "string",
-  InstanceGroupTypes = list(
-    "MASTER"|"CORE"|"TASK"
-  ),
-  InstanceFleetId = "string",
-  InstanceFleetType = "MASTER"|"CORE"|"TASK",
-  InstanceStates = list(
-    "AWAITING_FULFILLMENT"|"PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"TERMINATED"
-  ),
-  Marker = "string"
-)
-}
-}
+Provides information for all active EC2 instances and EC2 instances terminated in the last 30 days, up to a maximum of 2,000. EC2 instances in any of the following states are considered active: AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 
+See \url{https://paws-r.github.io/docs/emr/list_instances.html} for full documentation.
+}
 \keyword{internal}

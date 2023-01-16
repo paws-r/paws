@@ -11,18 +11,9 @@ sns_remove_permission(TopicArn, Label)
 
 \item{Label}{[required] The unique label of the statement you want to remove.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes a statement from a topic's access control policy.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_permission(
-  TopicArn = "string",
-  Label = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sns/remove_permission.html} for full documentation.
+}
 \keyword{internal}

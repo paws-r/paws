@@ -5,8 +5,11 @@
 \title{Submits a request to change the health status of a custom health check
 to healthy or unhealthy}
 \usage{
-servicediscovery_update_instance_custom_health_status(ServiceId,
-  InstanceId, Status)
+servicediscovery_update_instance_custom_health_status(
+  ServiceId,
+  InstanceId,
+  Status
+)
 }
 \arguments{
 \item{ServiceId}{[required] The ID of the service that includes the configuration for the custom
@@ -16,43 +19,9 @@ health check that you want to change the status for.}
 
 \item{Status}{[required] The new status of the instance, \code{HEALTHY} or \code{UNHEALTHY}.}
 }
-\value{
-An empty list.
-}
 \description{
-Submits a request to change the health status of a custom health check
-to healthy or unhealthy.
+Submits a request to change the health status of a custom health check to healthy or unhealthy.
 
-You can use
-\code{\link[=servicediscovery_update_instance_custom_health_status]{update_instance_custom_health_status}}
-to change the status only for custom health checks, which you define
-using \code{HealthCheckCustomConfig} when you create a service. You can't use
-it to change the status for Route 53 health checks, which you define
-using \code{HealthCheckConfig}.
-
-For more information, see
-\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_HealthCheckCustomConfig.html}{HealthCheckCustomConfig}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_instance_custom_health_status(
-  ServiceId = "string",
-  InstanceId = "string",
-  Status = "HEALTHY"|"UNHEALTHY"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example submits a request to change the health status of an
-# instance associated with a service with a custom health check to
-# HEALTHY.
-svc$update_instance_custom_health_status(
-  InstanceId = "i-abcd1234",
-  ServiceId = "srv-e4anhexample0004",
-  Status = "HEALTHY"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/update_instance_custom_health_status.html} for full documentation.
 }
 \keyword{internal}

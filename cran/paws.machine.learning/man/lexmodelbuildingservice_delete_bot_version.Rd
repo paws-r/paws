@@ -13,22 +13,9 @@ lexmodelbuildingservice_delete_bot_version(name, version)
 version of the bot. To delete the \verb{$LATEST} version, use the
 \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}} operation.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a specific version of a bot. To delete all versions of a bot,
-use the \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}} operation.
+Deletes a specific version of a bot. To delete all versions of a bot, use the \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}} operation.
 
-This operation requires permissions for the \code{lex:DeleteBotVersion}
-action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_version.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_bot_version(
-  name = "string",
-  version = "string"
-)
-}
-}
-
 \keyword{internal}

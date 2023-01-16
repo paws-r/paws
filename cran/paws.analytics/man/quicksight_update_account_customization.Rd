@@ -2,52 +2,28 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_update_account_customization}
 \alias{quicksight_update_account_customization}
-\title{Updates Amazon QuickSight customizations the current AWS Region}
+\title{Updates Amazon QuickSight customizations for the current Amazon Web
+Services Region}
 \usage{
-quicksight_update_account_customization(AwsAccountId, Namespace,
-  AccountCustomization)
+quicksight_update_account_customization(
+  AwsAccountId,
+  Namespace = NULL,
+  AccountCustomization
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account that you want to update QuickSight
-customizations for.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that you want to update
+Amazon QuickSight customizations for.}
 
-\item{Namespace}{The namespace that you want to update QuickSight customizations for.}
+\item{Namespace}{The namespace that you want to update Amazon QuickSight customizations
+for.}
 
-\item{AccountCustomization}{[required] The QuickSight customizations you're updating in the current AWS Region.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  AwsAccountId = "string",
-  Namespace = "string",
-  AccountCustomization = list(
-    DefaultTheme = "string"
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
+\item{AccountCustomization}{[required] The Amazon QuickSight customizations you're updating in the current
+Amazon Web Services Region.}
 }
 \description{
-Updates Amazon QuickSight customizations the current AWS Region.
-Currently, the only customization you can use is a theme.
+Updates Amazon QuickSight customizations for the current Amazon Web Services Region. Currently, the only customization that you can use is a theme.
 
-You can use customizations for your AWS account or, if you specify a
-namespace, for a QuickSight namespace instead. Customizations that apply
-to a namespace override customizations that apply to an AWS account. To
-find out which customizations apply, use the
-\code{\link[=quicksight_describe_account_customization]{describe_account_customization}}
-API operation.
+See \url{https://paws-r.github.io/docs/quicksight/update_account_customization.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_account_customization(
-  AwsAccountId = "string",
-  Namespace = "string",
-  AccountCustomization = list(
-    DefaultTheme = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

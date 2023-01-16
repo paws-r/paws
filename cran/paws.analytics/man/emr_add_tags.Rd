@@ -2,38 +2,23 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_add_tags}
 \alias{emr_add_tags}
-\title{Adds tags to an Amazon EMR resource}
+\title{Adds tags to an Amazon EMR resource, such as a cluster or an Amazon EMR
+Studio}
 \usage{
 emr_add_tags(ResourceId, Tags)
 }
 \arguments{
-\item{ResourceId}{[required] The Amazon EMR resource identifier to which tags will be added. This
-value must be a cluster identifier.}
+\item{ResourceId}{[required] The Amazon EMR resource identifier to which tags will be added. For
+example, a cluster identifier or an Amazon EMR Studio ID.}
 
-\item{Tags}{[required] A list of tags to associate with a cluster and propagate to EC2
-instances. Tags are user-defined key-value pairs that consist of a
-required key string with a maximum of 128 characters, and an optional
-value string with a maximum of 256 characters.}
-}
-\value{
-An empty list.
+\item{Tags}{[required] A list of tags to associate with a resource. Tags are user-defined
+key-value pairs that consist of a required key string with a maximum of
+128 characters, and an optional value string with a maximum of 256
+characters.}
 }
 \description{
-Adds tags to an Amazon EMR resource. Tags make it easier to associate
-clusters in various ways, such as grouping clusters to track your Amazon
-EMR resource allocation costs. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags(
-  ResourceId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Adds tags to an Amazon EMR resource, such as a cluster or an Amazon EMR Studio. Tags make it easier to associate resources in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
 
+See \url{https://paws-r.github.io/docs/emr/add_tags.html} for full documentation.
+}
 \keyword{internal}

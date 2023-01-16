@@ -4,8 +4,12 @@
 \alias{globalaccelerator_update_listener}
 \title{Update a listener}
 \usage{
-globalaccelerator_update_listener(ListenerArn, PortRanges, Protocol,
-  ClientAffinity)
+globalaccelerator_update_listener(
+  ListenerArn,
+  PortRanges = NULL,
+  Protocol = NULL,
+  ClientAffinity = NULL
+)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener to update.}
@@ -21,15 +25,14 @@ endpoint, if you have stateful applications, regardless of the port and
 protocol of the client request. Client affinity gives you control over
 whether to always route each client to the same specific endpoint.
 
-AWS Global Accelerator uses a consistent-flow hashing algorithm to
-choose the optimal endpoint for a connection. If client affinity is
-\code{NONE}, Global Accelerator uses the "five-tuple" (5-tuple)
-properties—source IP address, source port, destination IP address,
-destination port, and protocol—to select the hash value, and then
-chooses the best endpoint. However, with this setting, if someone uses
-different ports to connect to Global Accelerator, their connections
-might not be always routed to the same endpoint because the hash value
-changes.
+Global Accelerator uses a consistent-flow hashing algorithm to choose
+the optimal endpoint for a connection. If client affinity is \code{NONE},
+Global Accelerator uses the "five-tuple" (5-tuple) properties—source IP
+address, source port, destination IP address, destination port, and
+protocol—to select the hash value, and then chooses the best endpoint.
+However, with this setting, if someone uses different ports to connect
+to Global Accelerator, their connections might not be always routed to
+the same endpoint because the hash value changes.
 
 If you want a given client to always be routed to the same endpoint, set
 client affinity to \code{SOURCE_IP} instead. When you use the \code{SOURCE_IP}
@@ -39,38 +42,9 @@ value.
 
 The default value is \code{NONE}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Listener = list(
-    ListenerArn = "string",
-    PortRanges = list(
-      list(
-        FromPort = 123,
-        ToPort = 123
-      )
-    ),
-    Protocol = "TCP"|"UDP",
-    ClientAffinity = "NONE"|"SOURCE_IP"
-  )
-)
-}
-}
 \description{
 Update a listener.
-}
-\section{Request syntax}{
-\preformatted{svc$update_listener(
-  ListenerArn = "string",
-  PortRanges = list(
-    list(
-      FromPort = 123,
-      ToPort = 123
-    )
-  ),
-  Protocol = "TCP"|"UDP",
-  ClientAffinity = "NONE"|"SOURCE_IP"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/update_listener.html} for full documentation.
+}
 \keyword{internal}

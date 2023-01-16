@@ -4,7 +4,11 @@
 \alias{lexmodelbuildingservice_get_bots}
 \title{Returns bot information as follows:}
 \usage{
-lexmodelbuildingservice_get_bots(nextToken, maxResults, nameContains)
+lexmodelbuildingservice_get_bots(
+  nextToken = NULL,
+  maxResults = NULL,
+  nameContains = NULL
+)
 }
 \arguments{
 \item{nextToken}{A pagination token that fetches the next page of bots. If the response
@@ -19,55 +23,9 @@ will return. The default is 10.}
 its name matches the substring. For example, "xyz" matches both "xyzabc"
 and "abcxyz."}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  bots = list(
-    list(
-      name = "string",
-      description = "string",
-      status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
-      lastUpdatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      createdDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      version = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Returns bot information as follows:
-\itemize{
-\item If you provide the \code{nameContains} field, the response includes
-information for the \verb{$LATEST} version of all bots whose name
-contains the specified string.
-\item If you don't specify the \code{nameContains} field, the operation returns
-information about the \verb{$LATEST} version of all of your bots.
-}
 
-This operation requires permission for the \code{lex:GetBots} action.
-}
-\section{Request syntax}{
-\preformatted{svc$get_bots(
-  nextToken = "string",
-  maxResults = 123,
-  nameContains = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example shows how to get a list of all of the bots in your account.
-svc$get_bots(
-  maxResults = 5L,
-  nextToken = ""
-)
-}
-
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bots.html} for full documentation.
 }
 \keyword{internal}

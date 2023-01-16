@@ -11,42 +11,9 @@ glue_create_security_configuration(Name, EncryptionConfiguration)
 
 \item{EncryptionConfiguration}{[required] The encryption configuration for the new security configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  CreatedTimestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Creates a new security configuration. A security configuration is a set
-of security properties that can be used by AWS Glue. You can use a
-security configuration to encrypt data at rest. For information about
-using security configurations in AWS Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html}{Encrypting Data Written by Crawlers, Jobs, and Development Endpoints}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_security_configuration(
-  Name = "string",
-  EncryptionConfiguration = list(
-    S3Encryption = list(
-      list(
-        S3EncryptionMode = "DISABLED"|"SSE-KMS"|"SSE-S3",
-        KmsKeyArn = "string"
-      )
-    ),
-    CloudWatchEncryption = list(
-      CloudWatchEncryptionMode = "DISABLED"|"SSE-KMS",
-      KmsKeyArn = "string"
-    ),
-    JobBookmarksEncryption = list(
-      JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
-      KmsKeyArn = "string"
-    )
-  )
-)
-}
-}
+Creates a new security configuration. A security configuration is a set of security properties that can be used by Glue. You can use a security configuration to encrypt data at rest. For information about using security configurations in Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html}{Encrypting Data Written by Crawlers, Jobs, and Development Endpoints}.
 
+See \url{https://paws-r.github.io/docs/glue/create_security_configuration.html} for full documentation.
+}
 \keyword{internal}

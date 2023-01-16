@@ -4,74 +4,27 @@
 \alias{kinesis_create_stream}
 \title{Creates a Kinesis data stream}
 \usage{
-kinesis_create_stream(StreamName, ShardCount)
+kinesis_create_stream(StreamName, ShardCount = NULL, StreamModeDetails = NULL)
 }
 \arguments{
-\item{StreamName}{[required] A name to identify the stream. The stream name is scoped to the AWS
-account used by the application that creates the stream. It is also
-scoped by AWS Region. That is, two streams in two different AWS accounts
-can have the same name. Two streams in the same AWS account but in two
-different Regions can also have the same name.}
+\item{StreamName}{[required] A name to identify the stream. The stream name is scoped to the Amazon
+Web Services account used by the application that creates the stream. It
+is also scoped by Amazon Web Services Region. That is, two streams in
+two different Amazon Web Services accounts can have the same name. Two
+streams in the same Amazon Web Services account but in two different
+Regions can also have the same name.}
 
-\item{ShardCount}{[required] The number of shards that the stream will use. The throughput of the
+\item{ShardCount}{The number of shards that the stream will use. The throughput of the
 stream is a function of the number of shards; more shards are required
 for greater provisioned throughput.}
-}
-\value{
-An empty list.
+
+\item{StreamModeDetails}{Indicates the capacity mode of the data stream. Currently, in Kinesis
+Data Streams, you can choose between an \strong{on-demand} capacity mode and
+a \strong{provisioned} capacity mode for your data streams.}
 }
 \description{
-Creates a Kinesis data stream. A stream captures and transports data
-records that are continuously emitted from different data sources or
-\emph{producers}. Scale-out within a stream is explicitly supported by means
-of shards, which are uniquely identified groups of data records in a
-stream.
+Creates a Kinesis data stream. A stream captures and transports data records that are continuously emitted from different data sources or \emph{producers}. Scale-out within a stream is explicitly supported by means of shards, which are uniquely identified groups of data records in a stream.
 
-You specify and control the number of shards that a stream is composed
-of. Each shard can support reads up to five transactions per second, up
-to a maximum data read total of 2 MiB per second. Each shard can support
-writes up to 1,000 records per second, up to a maximum data write total
-of 1 MiB per second. If the amount of data input increases or decreases,
-you can add or remove shards.
-
-The stream name identifies the stream. The name is scoped to the AWS
-account used by the application. It is also scoped by AWS Region. That
-is, two streams in two different accounts can have the same name, and
-two streams in the same account, but in two different Regions, can have
-the same name.
-
-\code{\link[=kinesis_create_stream]{create_stream}} is an asynchronous operation.
-Upon receiving a \code{\link[=kinesis_create_stream]{create_stream}} request,
-Kinesis Data Streams immediately returns and sets the stream status to
-\code{CREATING}. After the stream is created, Kinesis Data Streams sets the
-stream status to \code{ACTIVE}. You should perform read and write operations
-only on an \code{ACTIVE} stream.
-
-You receive a \code{LimitExceededException} when making a
-\code{\link[=kinesis_create_stream]{create_stream}} request when you try to do one
-of the following:
-\itemize{
-\item Have more than five streams in the \code{CREATING} state at any point in
-time.
-\item Create more shards than are authorized for your account.
+See \url{https://paws-r.github.io/docs/kinesis/create_stream.html} for full documentation.
 }
-
-For the default shard limit for an AWS account, see \href{https://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html}{Amazon Kinesis Data Streams Limits}
-in the \emph{Amazon Kinesis Data Streams Developer Guide}. To increase this
-limit, \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{contact AWS Support}.
-
-You can use \code{\link[=kinesis_describe_stream]{describe_stream}} to check the
-stream status, which is returned in \code{StreamStatus}.
-
-\code{\link[=kinesis_create_stream]{create_stream}} has a limit of five
-transactions per second per account.
-}
-\section{Request syntax}{
-\preformatted{svc$create_stream(
-  StreamName = "string",
-  ShardCount = 123
-)
-}
-}
-
 \keyword{internal}

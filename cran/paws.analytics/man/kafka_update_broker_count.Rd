@@ -4,8 +4,11 @@
 \alias{kafka_update_broker_count}
 \title{Updates the number of broker nodes in the cluster}
 \usage{
-kafka_update_broker_count(ClusterArn, CurrentVersion,
-  TargetNumberOfBrokerNodes)
+kafka_update_broker_count(
+  ClusterArn,
+  CurrentVersion,
+  TargetNumberOfBrokerNodes
+)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
@@ -16,23 +19,9 @@ generate a new version.}
 \item{TargetNumberOfBrokerNodes}{[required] The number of broker nodes that you want the cluster to have after this
 operation completes successfully.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterArn = "string",
-  ClusterOperationArn = "string"
-)
-}
-}
 \description{
 Updates the number of broker nodes in the cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$update_broker_count(
-  ClusterArn = "string",
-  CurrentVersion = "string",
-  TargetNumberOfBrokerNodes = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/update_broker_count.html} for full documentation.
+}
 \keyword{internal}

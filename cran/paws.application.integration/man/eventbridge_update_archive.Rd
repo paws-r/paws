@@ -4,8 +4,12 @@
 \alias{eventbridge_update_archive}
 \title{Updates the specified archive}
 \usage{
-eventbridge_update_archive(ArchiveName, Description, EventPattern,
-  RetentionDays)
+eventbridge_update_archive(
+  ArchiveName,
+  Description = NULL,
+  EventPattern = NULL,
+  RetentionDays = NULL
+)
 }
 \arguments{
 \item{ArchiveName}{[required] The name of the archive to update.}
@@ -16,28 +20,9 @@ eventbridge_update_archive(ArchiveName, Description, EventPattern,
 
 \item{RetentionDays}{The number of days to retain events in the archive.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ArchiveArn = "string",
-  State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
-  StateReason = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Updates the specified archive.
-}
-\section{Request syntax}{
-\preformatted{svc$update_archive(
-  ArchiveName = "string",
-  Description = "string",
-  EventPattern = "string",
-  RetentionDays = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/eventbridge/update_archive.html} for full documentation.
+}
 \keyword{internal}

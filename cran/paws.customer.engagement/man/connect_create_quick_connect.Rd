@@ -2,14 +2,19 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_quick_connect}
 \alias{connect_create_quick_connect}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Creates a quick connect for the specified Amazon Connect instance}
 \usage{
-connect_create_quick_connect(InstanceId, Name, Description,
-  QuickConnectConfig, Tags)
+connect_create_quick_connect(
+  InstanceId,
+  Name,
+  Description = NULL,
+  QuickConnectConfig,
+  Tags = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{Name}{[required] The name of the quick connect.}
 
@@ -17,45 +22,11 @@ connect_create_quick_connect(InstanceId, Name, Description,
 
 \item{QuickConnectConfig}{[required] Configuration settings for the quick connect.}
 
-\item{Tags}{One or more tags.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  QuickConnectARN = "string",
-  QuickConnectId = "string"
-)
-}
+\item{Tags}{The tags used to organize, track, or control access for this resource.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Creates a quick connect for the specified Amazon Connect instance.
-}
-\section{Request syntax}{
-\preformatted{svc$create_quick_connect(
-  InstanceId = "string",
-  Name = "string",
-  Description = "string",
-  QuickConnectConfig = list(
-    QuickConnectType = "USER"|"QUEUE"|"PHONE_NUMBER",
-    UserConfig = list(
-      UserId = "string",
-      ContactFlowId = "string"
-    ),
-    QueueConfig = list(
-      QueueId = "string",
-      ContactFlowId = "string"
-    ),
-    PhoneConfig = list(
-      PhoneNumber = "string"
-    )
-  ),
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/create_quick_connect.html} for full documentation.
+}
 \keyword{internal}

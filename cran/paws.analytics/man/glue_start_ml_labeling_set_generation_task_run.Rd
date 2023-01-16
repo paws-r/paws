@@ -6,8 +6,7 @@
 to improve the transform's quality by generating label sets and adding
 labels}
 \usage{
-glue_start_ml_labeling_set_generation_task_run(TransformId,
-  OutputS3Path)
+glue_start_ml_labeling_set_generation_task_run(TransformId, OutputS3Path)
 }
 \arguments{
 \item{TransformId}{[required] The unique identifier of the machine learning transform.}
@@ -15,40 +14,9 @@ glue_start_ml_labeling_set_generation_task_run(TransformId,
 \item{OutputS3Path}{[required] The Amazon Simple Storage Service (Amazon S3) path where you generate
 the labeling set.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TaskRunId = "string"
-)
-}
-}
 \description{
-Starts the active learning workflow for your machine learning transform
-to improve the transform's quality by generating label sets and adding
-labels.
+Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels.
 
-When the
-\code{\link[=glue_start_ml_labeling_set_generation_task_run]{start_ml_labeling_set_generation_task_run}}
-finishes, AWS Glue will have generated a "labeling set" or a set of
-questions for humans to answer.
-
-In the case of the \code{FindMatches} transform, these questions are of the
-form, “What is the correct way to group these rows together into groups
-composed entirely of matching records?”
-
-After the labeling process is finished, you can upload your labels with
-a call to
-\code{\link[=glue_start_import_labels_task_run]{start_import_labels_task_run}}.
-After
-\code{\link[=glue_start_import_labels_task_run]{start_import_labels_task_run}}
-finishes, all future runs of the machine learning transform will use the
-new and improved labels and perform a higher-quality transformation.
+See \url{https://paws-r.github.io/docs/glue/start_ml_labeling_set_generation_task_run.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_ml_labeling_set_generation_task_run(
-  TransformId = "string",
-  OutputS3Path = "string"
-)
-}
-}
-
 \keyword{internal}

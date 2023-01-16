@@ -7,49 +7,11 @@
 apigateway_get_usage_plan(usagePlanId)
 }
 \arguments{
-\item{usagePlanId}{[required] [Required] The identifier of the UsagePlan resource to be retrieved.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  apiStages = list(
-    list(
-      apiId = "string",
-      stage = "string",
-      throttle = list(
-        list(
-          burstLimit = 123,
-          rateLimit = 123.0
-        )
-      )
-    )
-  ),
-  throttle = list(
-    burstLimit = 123,
-    rateLimit = 123.0
-  ),
-  quota = list(
-    limit = 123,
-    offset = 123,
-    period = "DAY"|"WEEK"|"MONTH"
-  ),
-  productCode = "string",
-  tags = list(
-    "string"
-  )
-)
-}
+\item{usagePlanId}{[required] The identifier of the UsagePlan resource to be retrieved.}
 }
 \description{
 Gets a usage plan of a given plan identifier.
-}
-\section{Request syntax}{
-\preformatted{svc$get_usage_plan(
-  usagePlanId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_usage_plan.html} for full documentation.
+}
 \keyword{internal}

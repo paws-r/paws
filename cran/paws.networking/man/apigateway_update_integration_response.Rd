@@ -4,57 +4,28 @@
 \alias{apigateway_update_integration_response}
 \title{Represents an update integration response}
 \usage{
-apigateway_update_integration_response(restApiId, resourceId,
-  httpMethod, statusCode, patchOperations)
-}
-\arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
-
-\item{resourceId}{[required] [Required] Specifies an update integration response request's resource
-identifier.}
-
-\item{httpMethod}{[required] [Required] Specifies an update integration response request's HTTP
-method.}
-
-\item{statusCode}{[required] [Required] Specifies an update integration response request's status
-code.}
-
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  statusCode = "string",
-  selectionPattern = "string",
-  responseParameters = list(
-    "string"
-  ),
-  responseTemplates = list(
-    "string"
-  ),
-  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+apigateway_update_integration_response(
+  restApiId,
+  resourceId,
+  httpMethod,
+  statusCode,
+  patchOperations = NULL
 )
 }
+\arguments{
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
+
+\item{resourceId}{[required] Specifies an update integration response request's resource identifier.}
+
+\item{httpMethod}{[required] Specifies an update integration response request's HTTP method.}
+
+\item{statusCode}{[required] Specifies an update integration response request's status code.}
+
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Represents an update integration response.
-}
-\section{Request syntax}{
-\preformatted{svc$update_integration_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_integration_response.html} for full documentation.
+}
 \keyword{internal}

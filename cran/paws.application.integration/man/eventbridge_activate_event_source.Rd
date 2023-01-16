@@ -9,19 +9,9 @@ eventbridge_activate_event_source(Name)
 \arguments{
 \item{Name}{[required] The name of the partner event source to activate.}
 }
-\value{
-An empty list.
-}
 \description{
-Activates a partner event source that has been deactivated. Once
-activated, your matching event bus will start receiving events from the
-event source.
-}
-\section{Request syntax}{
-\preformatted{svc$activate_event_source(
-  Name = "string"
-)
-}
-}
+Activates a partner event source that has been deactivated. Once activated, your matching event bus will start receiving events from the event source.
 
+See \url{https://paws-r.github.io/docs/eventbridge/activate_event_source.html} for full documentation.
+}
 \keyword{internal}

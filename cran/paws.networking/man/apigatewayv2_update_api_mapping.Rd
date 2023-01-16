@@ -4,8 +4,13 @@
 \alias{apigatewayv2_update_api_mapping}
 \title{The API mapping}
 \usage{
-apigatewayv2_update_api_mapping(ApiId, ApiMappingId, ApiMappingKey,
-  DomainName, Stage)
+apigatewayv2_update_api_mapping(
+  ApiId,
+  ApiMappingId,
+  ApiMappingKey = NULL,
+  DomainName,
+  Stage = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -18,27 +23,9 @@ apigatewayv2_update_api_mapping(ApiId, ApiMappingId, ApiMappingKey,
 
 \item{Stage}{The API stage.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApiId = "string",
-  ApiMappingId = "string",
-  ApiMappingKey = "string",
-  Stage = "string"
-)
-}
-}
 \description{
 The API mapping.
-}
-\section{Request syntax}{
-\preformatted{svc$update_api_mapping(
-  ApiId = "string",
-  ApiMappingId = "string",
-  ApiMappingKey = "string",
-  DomainName = "string",
-  Stage = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/update_api_mapping.html} for full documentation.
+}
 \keyword{internal}

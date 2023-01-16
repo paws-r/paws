@@ -4,10 +4,21 @@
 \alias{apigatewayv2_update_route}
 \title{Updates a Route}
 \usage{
-apigatewayv2_update_route(ApiId, ApiKeyRequired, AuthorizationScopes,
-  AuthorizationType, AuthorizerId, ModelSelectionExpression,
-  OperationName, RequestModels, RequestParameters, RouteId, RouteKey,
-  RouteResponseSelectionExpression, Target)
+apigatewayv2_update_route(
+  ApiId,
+  ApiKeyRequired = NULL,
+  AuthorizationScopes = NULL,
+  AuthorizationType = NULL,
+  AuthorizerId = NULL,
+  ModelSelectionExpression = NULL,
+  OperationName = NULL,
+  RequestModels = NULL,
+  RequestParameters = NULL,
+  RouteId,
+  RouteKey = NULL,
+  RouteResponseSelectionExpression = NULL,
+  Target = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -45,60 +56,9 @@ for WebSocket APIs.}
 
 \item{Target}{The target for the route.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApiGatewayManaged = TRUE|FALSE,
-  ApiKeyRequired = TRUE|FALSE,
-  AuthorizationScopes = list(
-    "string"
-  ),
-  AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-  AuthorizerId = "string",
-  ModelSelectionExpression = "string",
-  OperationName = "string",
-  RequestModels = list(
-    "string"
-  ),
-  RequestParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteId = "string",
-  RouteKey = "string",
-  RouteResponseSelectionExpression = "string",
-  Target = "string"
-)
-}
-}
 \description{
 Updates a Route.
-}
-\section{Request syntax}{
-\preformatted{svc$update_route(
-  ApiId = "string",
-  ApiKeyRequired = TRUE|FALSE,
-  AuthorizationScopes = list(
-    "string"
-  ),
-  AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-  AuthorizerId = "string",
-  ModelSelectionExpression = "string",
-  OperationName = "string",
-  RequestModels = list(
-    "string"
-  ),
-  RequestParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteId = "string",
-  RouteKey = "string",
-  RouteResponseSelectionExpression = "string",
-  Target = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/update_route.html} for full documentation.
+}
 \keyword{internal}

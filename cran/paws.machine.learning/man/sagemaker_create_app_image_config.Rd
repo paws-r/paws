@@ -5,51 +5,25 @@
 \title{Creates a configuration for running a SageMaker image as a KernelGateway
 app}
 \usage{
-sagemaker_create_app_image_config(AppImageConfigName, Tags,
-  KernelGatewayImageConfig)
+sagemaker_create_app_image_config(
+  AppImageConfigName,
+  Tags = NULL,
+  KernelGatewayImageConfig = NULL
+)
 }
 \arguments{
 \item{AppImageConfigName}{[required] The name of the AppImageConfig. Must be unique to your account.}
 
 \item{Tags}{A list of tags to apply to the AppImageConfig.}
 
-\item{KernelGatewayImageConfig}{The KernelGatewayImageConfig.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AppImageConfigArn = "string"
-)
-}
+\item{KernelGatewayImageConfig}{The KernelGatewayImageConfig. You can only specify one image kernel in
+the AppImageConfig API. This kernel will be shown to users before the
+image starts. Once the image runs, all kernels are visible in
+JupyterLab.}
 }
 \description{
-Creates a configuration for running a SageMaker image as a KernelGateway
-app. The configuration specifies the Amazon Elastic File System (EFS)
-storage volume on the image, and a list of the kernels in the image.
-}
-\section{Request syntax}{
-\preformatted{svc$create_app_image_config(
-  AppImageConfigName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KernelGatewayImageConfig = list(
-    KernelSpecs = list(
-      list(
-        Name = "string",
-        DisplayName = "string"
-      )
-    ),
-    FileSystemConfig = list(
-      MountPath = "string",
-      DefaultUid = 123,
-      DefaultGid = 123
-    )
-  )
-)
-}
-}
+Creates a configuration for running a SageMaker image as a KernelGateway app. The configuration specifies the Amazon Elastic File System (EFS) storage volume on the image, and a list of the kernels in the image.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_app_image_config.html} for full documentation.
+}
 \keyword{internal}

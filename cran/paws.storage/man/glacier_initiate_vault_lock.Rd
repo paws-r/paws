@@ -5,7 +5,7 @@
 \title{This operation initiates the vault locking process by doing the
 following:}
 \usage{
-glacier_initiate_vault_lock(accountId, vaultName, policy)
+glacier_initiate_vault_lock(accountId, vaultName, policy = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the
@@ -20,71 +20,9 @@ your account ID, do not include any hyphens ('-') in the ID.}
 \item{policy}{The vault lock policy as a JSON string, which uses "\\" as an escape
 character.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  lockId = "string"
-)
-}
-}
 \description{
-This operation initiates the vault locking process by doing the
-following:
-\itemize{
-\item Installing a vault lock policy on the specified vault.
-\item Setting the lock state of vault lock to \code{InProgress}.
-\item Returning a lock ID, which is used to complete the vault locking
-process.
-}
+This operation initiates the vault locking process by doing the following:
 
-You can set one vault lock policy for each vault and this policy can be
-up to 20 KB in size. For more information about vault lock policies, see
-\href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html}{Amazon Glacier Access Control with Vault Lock Policies}.
-
-You must complete the vault locking process within 24 hours after the
-vault lock enters the \code{InProgress} state. After the 24 hour window ends,
-the lock ID expires, the vault automatically exits the \code{InProgress}
-state, and the vault lock policy is removed from the vault. You call
-\code{\link[=glacier_complete_vault_lock]{complete_vault_lock}} to complete the
-vault locking process by setting the state of the vault lock to
-\code{Locked}.
-
-After a vault lock is in the \code{Locked} state, you cannot initiate a new
-vault lock for the vault.
-
-You can abort the vault locking process by calling
-\code{\link[=glacier_abort_vault_lock]{abort_vault_lock}}. You can get the state of
-the vault lock by calling \code{\link[=glacier_get_vault_lock]{get_vault_lock}}.
-For more information about the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
-
-If this operation is called when the vault lock is in the \code{InProgress}
-state, the operation returns an \code{AccessDeniedException} error. When the
-vault lock is in the \code{InProgress} state you must call
-\code{\link[=glacier_abort_vault_lock]{abort_vault_lock}} before you can initiate a
-new vault lock policy.
-}
-\section{Request syntax}{
-\preformatted{svc$initiate_vault_lock(
-  accountId = "string",
-  vaultName = "string",
-  policy = list(
-    Policy = "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The example initiates the vault locking process for the vault named
-# my-vault.
-svc$initiate_vault_lock(
-  accountId = "-",
-  policy = list(
-    Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-vault-loc..."
-  ),
-  vaultName = "my-vault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/initiate_vault_lock.html} for full documentation.
 }
 \keyword{internal}

@@ -3,38 +3,23 @@
 \name{quicksight_delete_user}
 \alias{quicksight_delete_user}
 \title{Deletes the Amazon QuickSight user that is associated with the identity
-of the AWS Identity and Access Management (IAM) user or role that's
-making the call}
+of the Identity and Access Management (IAM) user or role that's making
+the call}
 \usage{
 quicksight_delete_user(UserName, AwsAccountId, Namespace)
 }
 \arguments{
 \item{UserName}{[required] The name of the user that you want to delete.}
 
-\item{AwsAccountId}{[required] The ID for the AWS account that the user is in. Currently, you use the
-ID for the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the user is in.
+Currently, you use the ID for the Amazon Web Services account that
+contains your Amazon QuickSight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-Deletes the Amazon QuickSight user that is associated with the identity
-of the AWS Identity and Access Management (IAM) user or role that's
-making the call. The IAM user isn't deleted as a result of this call.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user(
-  UserName = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
-}
-}
+Deletes the Amazon QuickSight user that is associated with the identity of the Identity and Access Management (IAM) user or role that's making the call. The IAM user isn't deleted as a result of this call.
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_user.html} for full documentation.
+}
 \keyword{internal}

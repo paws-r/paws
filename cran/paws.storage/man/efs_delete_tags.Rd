@@ -2,7 +2,7 @@
 % Please edit documentation in R/efs_operations.R
 \name{efs_delete_tags}
 \alias{efs_delete_tags}
-\title{Deletes the specified tags from a file system}
+\title{DEPRECATED - DeleteTags is deprecated and not maintained}
 \usage{
 efs_delete_tags(FileSystemId, TagKeys)
 }
@@ -11,39 +11,9 @@ efs_delete_tags(FileSystemId, TagKeys)
 
 \item{TagKeys}{[required] A list of tag keys to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified tags from a file system. If the
-\code{\link[=efs_delete_tags]{delete_tags}} request includes a tag key that doesn't
-exist, Amazon EFS ignores it and doesn't cause an error. For more
-information about tags and related restrictions, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Tag Restrictions}
-in the \emph{AWS Billing and Cost Management User Guide}.
+DEPRECATED - \code{\link[=efs_delete_tags]{delete_tags}} is deprecated and not maintained. To remove tags from EFS resources, use the API action.
 
-This operation requires permissions for the
-\code{elasticfilesystem:DeleteTags} action.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_tags(
-  FileSystemId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation deletes tags for an EFS file system.
-svc$delete_tags(
-  FileSystemId = "fs-01234567",
-  TagKeys = list(
-    "Name"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/efs/delete_tags.html} for full documentation.
 }
 \keyword{internal}

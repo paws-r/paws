@@ -4,61 +4,32 @@
 \alias{quicksight_update_dashboard_permissions}
 \title{Updates read and write permissions on a dashboard}
 \usage{
-quicksight_update_dashboard_permissions(AwsAccountId, DashboardId,
-  GrantPermissions, RevokePermissions)
+quicksight_update_dashboard_permissions(
+  AwsAccountId,
+  DashboardId,
+  GrantPermissions = NULL,
+  RevokePermissions = NULL,
+  GrantLinkPermissions = NULL,
+  RevokeLinkPermissions = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard whose permissions
-you're updating.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the dashboard
+whose permissions you're updating.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
 
 \item{GrantPermissions}{The permissions that you want to grant on this resource.}
 
 \item{RevokePermissions}{The permissions that you want to revoke from this resource.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DashboardArn = "string",
-  DashboardId = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
+
+\item{GrantLinkPermissions}{Grants link permissions to all users in a defined namespace.}
+
+\item{RevokeLinkPermissions}{Revokes link permissions from all users in a defined namespace.}
 }
 \description{
 Updates read and write permissions on a dashboard.
-}
-\section{Request syntax}{
-\preformatted{svc$update_dashboard_permissions(
-  AwsAccountId = "string",
-  DashboardId = "string",
-  GrantPermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RevokePermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_dashboard_permissions.html} for full documentation.
+}
 \keyword{internal}

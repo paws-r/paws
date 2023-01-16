@@ -4,7 +4,7 @@
 \alias{budgets_describe_budgets}
 \title{Lists the budgets that are associated with an account}
 \usage{
-budgets_describe_budgets(AccountId, MaxResults, NextToken)
+budgets_describe_budgets(AccountId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budgets that you want
@@ -16,83 +16,9 @@ response contains. The maximum is 100.}
 \item{NextToken}{The pagination token that you include in your request to indicate the
 next set of results that you want to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Budgets = list(
-    list(
-      BudgetName = "string",
-      BudgetLimit = list(
-        Amount = "string",
-        Unit = "string"
-      ),
-      PlannedBudgetLimits = list(
-        list(
-          Amount = "string",
-          Unit = "string"
-        )
-      ),
-      CostFilters = list(
-        list(
-          "string"
-        )
-      ),
-      CostTypes = list(
-        IncludeTax = TRUE|FALSE,
-        IncludeSubscription = TRUE|FALSE,
-        UseBlended = TRUE|FALSE,
-        IncludeRefund = TRUE|FALSE,
-        IncludeCredit = TRUE|FALSE,
-        IncludeUpfront = TRUE|FALSE,
-        IncludeRecurring = TRUE|FALSE,
-        IncludeOtherSubscription = TRUE|FALSE,
-        IncludeSupport = TRUE|FALSE,
-        IncludeDiscount = TRUE|FALSE,
-        UseAmortized = TRUE|FALSE
-      ),
-      TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
-      TimePeriod = list(
-        Start = as.POSIXct(
-          "2015-01-01"
-        ),
-        End = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      CalculatedSpend = list(
-        ActualSpend = list(
-          Amount = "string",
-          Unit = "string"
-        ),
-        ForecastedSpend = list(
-          Amount = "string",
-          Unit = "string"
-        )
-      ),
-      BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the budgets that are associated with an account.
 
-The Request Syntax section shows the \code{BudgetLimit} syntax. For
-\code{PlannedBudgetLimits}, see the
-\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples}{Examples}
-section.
+See \url{https://paws-r.github.io/docs/budgets/describe_budgets.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_budgets(
-  AccountId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

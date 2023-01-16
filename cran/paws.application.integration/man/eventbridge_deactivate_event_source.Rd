@@ -10,25 +10,9 @@ eventbridge_deactivate_event_source(Name)
 \arguments{
 \item{Name}{[required] The name of the partner event source to deactivate.}
 }
-\value{
-An empty list.
-}
 \description{
-You can use this operation to temporarily stop receiving events from the
-specified partner event source. The matching event bus is not deleted.
+You can use this operation to temporarily stop receiving events from the specified partner event source. The matching event bus is not deleted.
 
-When you deactivate a partner event source, the source goes into PENDING
-state. If it remains in PENDING state for more than two weeks, it is
-deleted.
-
-To activate a deactivated partner event source, use
-\code{\link[=eventbridge_activate_event_source]{activate_event_source}}.
+See \url{https://paws-r.github.io/docs/eventbridge/deactivate_event_source.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$deactivate_event_source(
-  Name = "string"
-)
-}
-}
-
 \keyword{internal}

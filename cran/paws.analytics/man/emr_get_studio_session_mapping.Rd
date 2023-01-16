@@ -2,11 +2,15 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_get_studio_session_mapping}
 \alias{emr_get_studio_session_mapping}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Fetches mapping details for the specified Amazon EMR Studio and identity
+(user or group)}
 \usage{
-emr_get_studio_session_mapping(StudioId, IdentityId, IdentityName,
-  IdentityType)
+emr_get_studio_session_mapping(
+  StudioId,
+  IdentityId = NULL,
+  IdentityName = NULL,
+  IdentityType
+)
 }
 \arguments{
 \item{StudioId}{[required] The ID of the Amazon EMR Studio.}
@@ -16,51 +20,21 @@ information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId}{UserId}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-GroupId}{GroupId}
-in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} or
-\code{IdentityId} must be specified.}
+in the \emph{Amazon Web Services SSO Identity Store API Reference}. Either
+\code{IdentityName} or \code{IdentityId} must be specified.}
 
 \item{IdentityName}{The name of the user or group to fetch. For more information, see
-\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId}{UserName}
+\href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName}{UserName}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName}{DisplayName}
-in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} or
-\code{IdentityId} must be specified.}
+in the \emph{Amazon Web Services SSO Identity Store API Reference}. Either
+\code{IdentityName} or \code{IdentityId} must be specified.}
 
 \item{IdentityType}{[required] Specifies whether the identity to fetch is a user or a group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SessionMapping = list(
-    StudioId = "string",
-    IdentityId = "string",
-    IdentityName = "string",
-    IdentityType = "USER"|"GROUP",
-    SessionPolicyArn = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
+Fetches mapping details for the specified Amazon EMR Studio and identity (user or group).
 
-Fetches mapping details for the specified Amazon EMR Studio and identity
-(user or group).
+See \url{https://paws-r.github.io/docs/emr/get_studio_session_mapping.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_studio_session_mapping(
-  StudioId = "string",
-  IdentityId = "string",
-  IdentityName = "string",
-  IdentityType = "USER"|"GROUP"
-)
-}
-}
-
 \keyword{internal}

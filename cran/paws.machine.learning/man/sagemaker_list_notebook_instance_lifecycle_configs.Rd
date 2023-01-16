@@ -5,9 +5,17 @@
 \title{Lists notebook instance lifestyle configurations created with the
 CreateNotebookInstanceLifecycleConfig API}
 \usage{
-sagemaker_list_notebook_instance_lifecycle_configs(NextToken,
-  MaxResults, SortBy, SortOrder, NameContains, CreationTimeBefore,
-  CreationTimeAfter, LastModifiedTimeBefore, LastModifiedTimeAfter)
+sagemaker_list_notebook_instance_lifecycle_configs(
+  NextToken = NULL,
+  MaxResults = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NameContains = NULL,
+  CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL
+)
 }
 \arguments{
 \item{NextToken}{If the result of a
@@ -37,50 +45,9 @@ before the specified time (timestamp).}
 \item{LastModifiedTimeAfter}{A filter that returns only lifecycle configurations that were modified
 after the specified time (timestamp).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  NotebookInstanceLifecycleConfigs = list(
-    list(
-      NotebookInstanceLifecycleConfigName = "string",
-      NotebookInstanceLifecycleConfigArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Lists notebook instance lifestyle configurations created with the
-\code{\link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config}}
-API.
-}
-\section{Request syntax}{
-\preformatted{svc$list_notebook_instance_lifecycle_configs(
-  NextToken = "string",
-  MaxResults = 123,
-  SortBy = "Name"|"CreationTime"|"LastModifiedTime",
-  SortOrder = "Ascending"|"Descending",
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
+Lists notebook instance lifestyle configurations created with the \code{\link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config}} API.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_notebook_instance_lifecycle_configs.html} for full documentation.
+}
 \keyword{internal}

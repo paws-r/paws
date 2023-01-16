@@ -12,31 +12,9 @@ glue_start_export_labels_task_run(TransformId, OutputS3Path)
 
 \item{OutputS3Path}{[required] The Amazon S3 path where you export the labels.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TaskRunId = "string"
-)
-}
-}
 \description{
-Begins an asynchronous task to export all labeled data for a particular
-transform. This task is the only label-related API call that is not part
-of the typical active learning workflow. You typically use
-\code{\link[=glue_start_export_labels_task_run]{start_export_labels_task_run}} when
-you want to work with all of your existing labels at the same time, such
-as when you want to remove or change labels that were previously
-submitted as truth. This API operation accepts the \code{TransformId} whose
-labels you want to export and an Amazon Simple Storage Service (Amazon
-S3) path to export the labels to. The operation returns a \code{TaskRunId}.
-You can check on the status of your task run by calling the
-\code{\link[=glue_get_ml_task_run]{get_ml_task_run}} API.
-}
-\section{Request syntax}{
-\preformatted{svc$start_export_labels_task_run(
-  TransformId = "string",
-  OutputS3Path = "string"
-)
-}
-}
+Begins an asynchronous task to export all labeled data for a particular transform. This task is the only label-related API call that is not part of the typical active learning workflow. You typically use \code{\link[=glue_start_export_labels_task_run]{start_export_labels_task_run}} when you want to work with all of your existing labels at the same time, such as when you want to remove or change labels that were previously submitted as truth. This API operation accepts the \code{TransformId} whose labels you want to export and an Amazon Simple Storage Service (Amazon S3) path to export the labels to. The operation returns a \code{TaskRunId}. You can check on the status of your task run by calling the \code{\link[=glue_get_ml_task_run]{get_ml_task_run}} API.
 
+See \url{https://paws-r.github.io/docs/glue/start_export_labels_task_run.html} for full documentation.
+}
 \keyword{internal}

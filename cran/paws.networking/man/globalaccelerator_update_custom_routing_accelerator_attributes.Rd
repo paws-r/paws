@@ -5,7 +5,11 @@
 \title{Update the attributes for a custom routing accelerator}
 \usage{
 globalaccelerator_update_custom_routing_accelerator_attributes(
-  AcceleratorArn, FlowLogsEnabled, FlowLogsS3Bucket, FlowLogsS3Prefix)
+  AcceleratorArn,
+  FlowLogsEnabled = NULL,
+  FlowLogsS3Bucket = NULL,
+  FlowLogsS3Prefix = NULL
+)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the custom routing accelerator to
@@ -15,13 +19,13 @@ update attributes for.}
 value is true, \code{FlowLogsS3Bucket} and \code{FlowLogsS3Prefix} must be
 specified.
 
-For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/monitoring-global-accelerator.flow-logs.html}{Flow Logs}
-in the \emph{AWS Global Accelerator Developer Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/monitoring-global-accelerator.flow-logs.html}{Flow logs}
+in the \emph{Global Accelerator Developer Guide}.}
 
 \item{FlowLogsS3Bucket}{The name of the Amazon S3 bucket for the flow logs. Attribute is
 required if \code{FlowLogsEnabled} is \code{true}. The bucket must exist and have
-a bucket policy that grants AWS Global Accelerator permission to write
-to the bucket.}
+a bucket policy that grants Global Accelerator permission to write to
+the bucket.}
 
 \item{FlowLogsS3Prefix}{Update the prefix for the location in the Amazon S3 bucket for the flow
 logs. Attribute is required if \code{FlowLogsEnabled} is \code{true}.
@@ -33,27 +37,9 @@ following:
 
 DOC-EXAMPLE-BUCKET//AWSLogs/aws_account_id}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AcceleratorAttributes = list(
-    FlowLogsEnabled = TRUE|FALSE,
-    FlowLogsS3Bucket = "string",
-    FlowLogsS3Prefix = "string"
-  )
-)
-}
-}
 \description{
 Update the attributes for a custom routing accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$update_custom_routing_accelerator_attributes(
-  AcceleratorArn = "string",
-  FlowLogsEnabled = TRUE|FALSE,
-  FlowLogsS3Bucket = "string",
-  FlowLogsS3Prefix = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_accelerator_attributes.html} for full documentation.
+}
 \keyword{internal}

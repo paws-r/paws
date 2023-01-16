@@ -4,7 +4,7 @@
 \alias{codecommit_get_folder}
 \title{Returns the contents of a specified folder in a repository}
 \usage{
-codecommit_get_folder(repositoryName, commitSpecifier, folderPath)
+codecommit_get_folder(repositoryName, commitSpecifier = NULL, folderPath)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository.}
@@ -20,54 +20,9 @@ including the folder name. For example, /examples is a fully-qualified
 path to a folder named examples that was created off of the root
 directory (/) of a repository.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commitId = "string",
-  folderPath = "string",
-  treeId = "string",
-  subFolders = list(
-    list(
-      treeId = "string",
-      absolutePath = "string",
-      relativePath = "string"
-    )
-  ),
-  files = list(
-    list(
-      blobId = "string",
-      absolutePath = "string",
-      relativePath = "string",
-      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-    )
-  ),
-  symbolicLinks = list(
-    list(
-      blobId = "string",
-      absolutePath = "string",
-      relativePath = "string",
-      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-    )
-  ),
-  subModules = list(
-    list(
-      commitId = "string",
-      absolutePath = "string",
-      relativePath = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns the contents of a specified folder in a repository.
-}
-\section{Request syntax}{
-\preformatted{svc$get_folder(
-  repositoryName = "string",
-  commitSpecifier = "string",
-  folderPath = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/get_folder.html} for full documentation.
+}
 \keyword{internal}

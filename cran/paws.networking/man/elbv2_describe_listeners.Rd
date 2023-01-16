@@ -6,8 +6,12 @@
 Application Load Balancer, Network Load Balancer, or Gateway Load
 Balancer}
 \usage{
-elbv2_describe_listeners(LoadBalancerArn, ListenerArns, Marker,
-  PageSize)
+elbv2_describe_listeners(
+  LoadBalancerArn = NULL,
+  ListenerArns = NULL,
+  Marker = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}
@@ -19,117 +23,9 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Listeners = list(
-    list(
-      ListenerArn = "string",
-      LoadBalancerArn = "string",
-      Port = 123,
-      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-      Certificates = list(
-        list(
-          CertificateArn = "string",
-          IsDefault = TRUE|FALSE
-        )
-      ),
-      SslPolicy = "string",
-      DefaultActions = list(
-        list(
-          Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-          TargetGroupArn = "string",
-          AuthenticateOidcConfig = list(
-            Issuer = "string",
-            AuthorizationEndpoint = "string",
-            TokenEndpoint = "string",
-            UserInfoEndpoint = "string",
-            ClientId = "string",
-            ClientSecret = "string",
-            SessionCookieName = "string",
-            Scope = "string",
-            SessionTimeout = 123,
-            AuthenticationRequestExtraParams = list(
-              "string"
-            ),
-            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-            UseExistingClientSecret = TRUE|FALSE
-          ),
-          AuthenticateCognitoConfig = list(
-            UserPoolArn = "string",
-            UserPoolClientId = "string",
-            UserPoolDomain = "string",
-            SessionCookieName = "string",
-            Scope = "string",
-            SessionTimeout = 123,
-            AuthenticationRequestExtraParams = list(
-              "string"
-            ),
-            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-          ),
-          Order = 123,
-          RedirectConfig = list(
-            Protocol = "string",
-            Port = "string",
-            Host = "string",
-            Path = "string",
-            Query = "string",
-            StatusCode = "HTTP_301"|"HTTP_302"
-          ),
-          FixedResponseConfig = list(
-            MessageBody = "string",
-            StatusCode = "string",
-            ContentType = "string"
-          ),
-          ForwardConfig = list(
-            TargetGroups = list(
-              list(
-                TargetGroupArn = "string",
-                Weight = 123
-              )
-            ),
-            TargetGroupStickinessConfig = list(
-              Enabled = TRUE|FALSE,
-              DurationSeconds = 123
-            )
-          )
-        )
-      ),
-      AlpnPolicy = list(
-        "string"
-      )
-    )
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-Describes the specified listeners or the listeners for the specified
-Application Load Balancer, Network Load Balancer, or Gateway Load
-Balancer. You must specify either a load balancer or one or more
-listeners.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_listeners(
-  LoadBalancerArn = "string",
-  ListenerArns = list(
-    "string"
-  ),
-  Marker = "string",
-  PageSize = 123
-)
-}
-}
+Describes the specified listeners or the listeners for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer. You must specify either a load balancer or one or more listeners.
 
-\examples{
-\dontrun{
-# This example describes the specified listener.
-svc$describe_listeners(
-  ListenerArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-lo..."
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/describe_listeners.html} for full documentation.
 }
 \keyword{internal}

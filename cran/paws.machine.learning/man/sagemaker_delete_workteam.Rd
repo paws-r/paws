@@ -9,20 +9,9 @@ sagemaker_delete_workteam(WorkteamName)
 \arguments{
 \item{WorkteamName}{[required] The name of the work team to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Success = TRUE|FALSE
-)
-}
-}
 \description{
 Deletes an existing work team. This operation can't be undone.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_workteam(
-  WorkteamName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_workteam.html} for full documentation.
+}
 \keyword{internal}

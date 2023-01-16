@@ -4,11 +4,41 @@
 \alias{s3_complete_multipart_upload}
 \title{Completes a multipart upload by assembling previously uploaded parts}
 \usage{
-s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
-  RequestPayer, ExpectedBucketOwner)
+s3_complete_multipart_upload(
+  Bucket,
+  Key,
+  MultipartUpload = NULL,
+  UploadId,
+  ChecksumCRC32 = NULL,
+  ChecksumCRC32C = NULL,
+  ChecksumSHA1 = NULL,
+  ChecksumSHA256 = NULL,
+  RequestPayer = NULL,
+  ExpectedBucketOwner = NULL,
+  SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL,
+  SSECustomerKeyMD5 = NULL
+)
 }
 \arguments{
-\item{Bucket}{[required] Name of the bucket to which the multipart upload was initiated.}
+\item{Bucket}{[required] Name of the bucket to which the multipart upload was initiated.
+
+When using this action with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Object key for which the multipart upload was initiated.}
 
@@ -16,141 +46,54 @@ s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
 
 \item{UploadId}{[required] ID for the initiated multipart upload.}
 
+\item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the base64-encoded, 32-bit CRC32 checksum of the object. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the base64-encoded, 32-bit CRC32C checksum of the object. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumSHA1}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumSHA256}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Location = "string",
-  Bucket = "string",
-  Key = "string",
-  Expiration = "string",
-  ETag = "string",
-  ServerSideEncryption = "AES256"|"aws:kms",
-  VersionId = "string",
-  SSEKMSKeyId = "string",
-  BucketKeyEnabled = TRUE|FALSE,
-  RequestCharged = "requester"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
+
+\item{SSECustomerAlgorithm}{The server-side encryption (SSE) algorithm used to encrypt the object.
+This parameter is needed only when the object was created using a
+checksum algorithm. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{SSECustomerKey}{The server-side encryption (SSE) customer managed key. This parameter is
+needed only when the object was created using a checksum algorithm. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{SSECustomerKeyMD5}{The MD5 server-side encryption (SSE) customer managed key. This
+parameter is needed only when the object was created using a checksum
+algorithm. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
 }
 \description{
 Completes a multipart upload by assembling previously uploaded parts.
 
-You first initiate the multipart upload and then upload all parts using
-the \code{\link[=s3_upload_part]{upload_part}} operation. After successfully
-uploading all relevant parts of an upload, you call this operation to
-complete the upload. Upon receiving this request, Amazon S3 concatenates
-all the parts in ascending order by part number to create a new object.
-In the Complete Multipart Upload request, you must provide the parts
-list. You must ensure that the parts list is complete. This operation
-concatenates the parts that you provide in the list. For each part in
-the list, you must provide the part number and the \code{ETag} value,
-returned after that part was uploaded.
-
-Processing of a Complete Multipart Upload request could take several
-minutes to complete. After Amazon S3 begins processing the request, it
-sends an HTTP response header that specifies a 200 OK response. While
-processing is in progress, Amazon S3 periodically sends white space
-characters to keep the connection from timing out. Because a request
-could fail after the initial 200 OK response has been sent, it is
-important that you check the response body to determine whether the
-request succeeded.
-
-Note that if \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
-fails, applications should be prepared to retry the failed requests. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ErrorBestPractices.html}{Amazon S3 Error Best Practices}.
-
-For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading Objects Using Multipart Upload}.
-
-For information about permissions required to use the multipart upload
-API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}.
-
-\code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}} has the
-following special errors:
-\itemize{
-\item Error code: \code{EntityTooSmall}
-\itemize{
-\item Description: Your proposed upload is smaller than the minimum
-allowed object size. Each part must be at least 5 MB in size,
-except the last part.
-\item 400 Bad Request
-}
-\item Error code: \code{InvalidPart}
-\itemize{
-\item Description: One or more of the specified parts could not be
-found. The part might not have been uploaded, or the specified
-entity tag might not have matched the part's entity tag.
-\item 400 Bad Request
-}
-\item Error code: \code{InvalidPartOrder}
-\itemize{
-\item Description: The list of parts was not in ascending order. The
-parts list must be specified in order by part number.
-\item 400 Bad Request
-}
-\item Error code: \code{NoSuchUpload}
-\itemize{
-\item Description: The specified multipart upload does not exist. The
-upload ID might be invalid, or the multipart upload might have
-been aborted or completed.
-\item 404 Not Found
-}
-}
-
-The following operations are related to
-\code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}:
-\itemize{
-\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
-\item \code{\link[=s3_upload_part]{upload_part}}
-\item \code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}
-\item \code{\link[=s3_list_parts]{list_parts}}
-\item \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$complete_multipart_upload(
-  Bucket = "string",
-  Key = "string",
-  MultipartUpload = list(
-    Parts = list(
-      list(
-        ETag = "string",
-        PartNumber = 123
-      )
-    )
-  ),
-  UploadId = "string",
-  RequestPayer = "requester",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example completes a multipart upload.
-svc$complete_multipart_upload(
-  Bucket = "examplebucket",
-  Key = "bigobject",
-  MultipartUpload = list(
-    Parts = list(
-      list(
-        ETag = ""d8c2eafd90c266e19ab9dcacc479f8af"",
-        PartNumber = "1"
-      ),
-      list(
-        ETag = ""d8c2eafd90c266e19ab9dcacc479f8af"",
-        PartNumber = "2"
-      )
-    )
-  ),
-  UploadId = "7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/complete_multipart_upload.html} for full documentation.
 }
 \keyword{internal}

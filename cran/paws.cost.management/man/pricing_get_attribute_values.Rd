@@ -4,8 +4,12 @@
 \alias{pricing_get_attribute_values}
 \title{Returns a list of attribute values}
 \usage{
-pricing_get_attribute_values(ServiceCode, AttributeName, NextToken,
-  MaxResults)
+pricing_get_attribute_values(
+  ServiceCode,
+  AttributeName,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ServiceCode}{[required] The service code for the service whose attributes you want to retrieve.
@@ -19,43 +23,9 @@ want to retrieve.}
 
 \item{MaxResults}{The maximum number of results to return in response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AttributeValues = list(
-    list(
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of attribute values. Attibutes are similar to the details
-in a Price List API offer file. For a list of available attributes, see
-\href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs}{Offer File Definitions}
-in the \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html}{AWS Billing and Cost Management User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_attribute_values(
-  ServiceCode = "string",
-  AttributeName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns a list of attribute values. Attributes are similar to the details in a Price List API offer file. For a list of available attributes, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs}{Offer File Definitions} in the \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html}{Billing and Cost Management User Guide}.
 
-\examples{
-\dontrun{
-# This operation returns a list of values available for the given
-# attribute.
-svc$get_attribute_values(
-  AttributeName = "volumeType",
-  MaxResults = 2L,
-  ServiceCode = "AmazonEC2"
-)
-}
-
+See \url{https://paws-r.github.io/docs/pricing/get_attribute_values.html} for full documentation.
 }
 \keyword{internal}

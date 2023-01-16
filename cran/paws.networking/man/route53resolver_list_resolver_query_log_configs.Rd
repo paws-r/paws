@@ -4,8 +4,13 @@
 \alias{route53resolver_list_resolver_query_log_configs}
 \title{Lists information about the specified query logging configurations}
 \usage{
-route53resolver_list_resolver_query_log_configs(MaxResults, NextToken,
-  Filters, SortBy, SortOrder)
+route53resolver_list_resolver_query_log_configs(
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of query logging configurations that you want to
@@ -52,11 +57,12 @@ configuration was created
 \item \code{DestinationArn}: The location that logs are sent to
 \item \code{Id}: The ID of the configuration
 \item \code{Name}: The name of the configuration
-\item \code{OwnerId}: The AWS account number of the account that created the
-configuration
-\item \code{ShareStatus}: Whether the configuration is shared with other AWS
-accounts or shared with the current account by another AWS account.
-Sharing is configured through AWS Resource Access Manager (AWS RAM).
+\item \code{OwnerId}: The Amazon Web Services account number of the account
+that created the configuration
+\item \code{ShareStatus}: Whether the configuration is shared with other Amazon
+Web Services accounts or shared with the current account by another
+Amazon Web Services account. Sharing is configured through Resource
+Access Manager (RAM).
 \item \code{Status}: The current status of the configuration. Valid values
 include the following:
 \itemize{
@@ -85,49 +91,9 @@ If you submit a second or subsequent
 request and specify the \code{NextToken} parameter, you must use the same
 value for \code{SortOrder}, if any, as in the previous request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  TotalCount = 123,
-  TotalFilteredCount = 123,
-  ResolverQueryLogConfigs = list(
-    list(
-      Id = "string",
-      OwnerId = "string",
-      Status = "CREATING"|"CREATED"|"DELETING"|"FAILED",
-      ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-      AssociationCount = 123,
-      Arn = "string",
-      Name = "string",
-      DestinationArn = "string",
-      CreatorRequestId = "string",
-      CreationTime = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists information about the specified query logging configurations. Each
-configuration defines where you want Resolver to save DNS query logs and
-specifies the VPCs that you want to log queries for.
-}
-\section{Request syntax}{
-\preformatted{svc$list_resolver_query_log_configs(
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  SortBy = "string",
-  SortOrder = "ASCENDING"|"DESCENDING"
-)
-}
-}
+Lists information about the specified query logging configurations. Each configuration defines where you want Resolver to save DNS query logs and specifies the VPCs that you want to log queries for.
 
+See \url{https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_configs.html} for full documentation.
+}
 \keyword{internal}

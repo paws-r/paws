@@ -4,7 +4,7 @@
 \alias{route53_associate_vpc_with_hosted_zone}
 \title{Associates an Amazon VPC with a private hosted zone}
 \usage{
-route53_associate_vpc_with_hosted_zone(HostedZoneId, VPC, Comment)
+route53_associate_vpc_with_hosted_zone(HostedZoneId, VPC, Comment = NULL)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the private hosted zone that you want to associate an Amazon
@@ -18,60 +18,9 @@ associate with a private hosted zone.}
 
 \item{Comment}{\emph{Optional:} A comment about the association request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeInfo = list(
-    Id = "string",
-    Status = "PENDING"|"INSYNC",
-    SubmittedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    Comment = "string"
-  )
-)
-}
-}
 \description{
 Associates an Amazon VPC with a private hosted zone.
 
-To perform the association, the VPC and the private hosted zone must
-already exist. You can't convert a public hosted zone into a private
-hosted zone.
-
-If you want to associate a VPC that was created by using one AWS account
-with a private hosted zone that was created by using a different
-account, the AWS account that created the private hosted zone must first
-submit a
-\code{\link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization}}
-request. Then the account that created the VPC must submit an
-\code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}}
-request.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_vpc_with_hosted_zone(
-  HostedZoneId = "string",
-  VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-    VPCId = "string"
-  ),
-  Comment = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example associates the VPC with ID vpc-1a2b3c4d with the
-# hosted zone with ID Z3M3LMPEXAMPLE.
-svc$associate_vpc_with_hosted_zone(
-  Comment = "",
-  HostedZoneId = "Z3M3LMPEXAMPLE",
-  VPC = list(
-    VPCId = "vpc-1a2b3c4d",
-    VPCRegion = "us-east-2"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/route53/associate_vpc_with_hosted_zone.html} for full documentation.
 }
 \keyword{internal}

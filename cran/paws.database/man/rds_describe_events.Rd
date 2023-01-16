@@ -3,11 +3,20 @@
 \name{rds_describe_events}
 \alias{rds_describe_events}
 \title{Returns events related to DB instances, DB clusters, DB parameter
-groups, DB security groups, DB snapshots, and DB cluster snapshots for
-the past 14 days}
+groups, DB security groups, DB snapshots, DB cluster snapshots, and RDS
+Proxies for the past 14 days}
 \usage{
-rds_describe_events(SourceIdentifier, SourceType, StartTime, EndTime,
-  Duration, EventCategories, Filters, MaxRecords, Marker)
+rds_describe_events(
+  SourceIdentifier = NULL,
+  SourceType = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  Duration = NULL,
+  EventCategories = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{SourceIdentifier}{The identifier of the event source for which events are returned. If not
@@ -29,6 +38,8 @@ value must be supplied.
 must be supplied.
 \item If the source type is a DB cluster snapshot, a
 \code{DBClusterSnapshotIdentifier} value must be supplied.
+\item If the source type is an RDS Proxy, a \code{DBProxyName} value must be
+supplied.
 \item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
@@ -67,62 +78,9 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  Events = list(
-    list(
-      SourceIdentifier = "string",
-      SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-      Message = "string",
-      EventCategories = list(
-        "string"
-      ),
-      Date = as.POSIXct(
-        "2015-01-01"
-      ),
-      SourceArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns events related to DB instances, DB clusters, DB parameter
-groups, DB security groups, DB snapshots, and DB cluster snapshots for
-the past 14 days. Events specific to a particular DB instances, DB
-clusters, DB parameter groups, DB security groups, DB snapshots, and DB
-cluster snapshots group can be obtained by providing the name as a
-parameter.
+Returns events related to DB instances, DB clusters, DB parameter groups, DB security groups, DB snapshots, DB cluster snapshots, and RDS Proxies for the past 14 days. Events specific to a particular DB instance, DB cluster, DB parameter group, DB security group, DB snapshot, DB cluster snapshot group, or RDS Proxy can be obtained by providing the name as a parameter.
 
-By default, the past hour of events are returned.
+See \url{https://paws-r.github.io/docs/rds/describe_events.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_events(
-  SourceIdentifier = "string",
-  SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Duration = 123,
-  EventCategories = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

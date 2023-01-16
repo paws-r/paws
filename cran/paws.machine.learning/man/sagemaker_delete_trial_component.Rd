@@ -9,24 +9,9 @@ sagemaker_delete_trial_component(TrialComponentName)
 \arguments{
 \item{TrialComponentName}{[required] The name of the component to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrialComponentArn = "string"
-)
-}
-}
 \description{
-Deletes the specified trial component. A trial component must be
-disassociated from all trials before the trial component can be deleted.
-To disassociate a trial component from a trial, call the
-\code{\link[=sagemaker_disassociate_trial_component]{disassociate_trial_component}}
-API.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_trial_component(
-  TrialComponentName = "string"
-)
-}
-}
+Deletes the specified trial component. A trial component must be disassociated from all trials before the trial component can be deleted. To disassociate a trial component from a trial, call the \code{\link[=sagemaker_disassociate_trial_component]{disassociate_trial_component}} API.
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_trial_component.html} for full documentation.
+}
 \keyword{internal}

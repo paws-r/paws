@@ -4,47 +4,19 @@
 \alias{glue_create_database}
 \title{Creates a new database in a Data Catalog}
 \usage{
-glue_create_database(CatalogId, DatabaseInput)
+glue_create_database(CatalogId = NULL, DatabaseInput, Tags = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which to create the database. If none is
-provided, the AWS account ID is used by default.}
+provided, the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseInput}{[required] The metadata for the database.}
-}
-\value{
-An empty list.
+
+\item{Tags}{The tags you assign to the database.}
 }
 \description{
 Creates a new database in a Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$create_database(
-  CatalogId = "string",
-  DatabaseInput = list(
-    Name = "string",
-    Description = "string",
-    LocationUri = "string",
-    Parameters = list(
-      "string"
-    ),
-    CreateTableDefaultPermissions = list(
-      list(
-        Principal = list(
-          DataLakePrincipalIdentifier = "string"
-        ),
-        Permissions = list(
-          "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
-        )
-      )
-    ),
-    TargetDatabase = list(
-      CatalogId = "string",
-      DatabaseName = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/create_database.html} for full documentation.
+}
 \keyword{internal}

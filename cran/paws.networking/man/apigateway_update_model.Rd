@@ -4,43 +4,18 @@
 \alias{apigateway_update_model}
 \title{Changes information about a model}
 \usage{
-apigateway_update_model(restApiId, modelName, patchOperations)
+apigateway_update_model(restApiId, modelName, patchOperations = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{modelName}{[required] [Required] The name of the model to update.}
+\item{modelName}{[required] The name of the model to update.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  schema = "string",
-  contentType = "string"
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Changes information about a model.
-}
-\section{Request syntax}{
-\preformatted{svc$update_model(
-  restApiId = "string",
-  modelName = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_model.html} for full documentation.
+}
 \keyword{internal}

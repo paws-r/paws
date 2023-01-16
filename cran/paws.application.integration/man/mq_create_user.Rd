@@ -4,43 +4,35 @@
 \alias{mq_create_user}
 \title{Creates an ActiveMQ user}
 \usage{
-mq_create_user(BrokerId, ConsoleAccess, Groups, Password, Username)
+mq_create_user(
+  BrokerId,
+  ConsoleAccess = NULL,
+  Groups = NULL,
+  Password,
+  Username
+)
 }
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 
-\item{ConsoleAccess}{Enables access to the the ActiveMQ Web Console for the ActiveMQ user.}
+\item{ConsoleAccess}{Enables access to the ActiveMQ Web Console for the ActiveMQ user.}
 
 \item{Groups}{The list of groups (20 maximum) to which the ActiveMQ user belongs. This
 value can contain only alphanumeric characters, dashes, periods,
 underscores, and tildes (- . _ ~). This value must be 2-100 characters
 long.}
 
-\item{Password}{Required. The password of the user. This value must be at least 12
+\item{Password}{[required] Required. The password of the user. This value must be at least 12
 characters long, must contain at least 4 unique characters, and must not
-contain commas.}
+contain commas, colons, or equal signs (,:=).}
 
 \item{Username}{[required] The username of the ActiveMQ user. This value can contain only
 alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 2-100 characters long.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates an ActiveMQ user.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user(
-  BrokerId = "string",
-  ConsoleAccess = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  Password = "string",
-  Username = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/create_user.html} for full documentation.
+}
 \keyword{internal}

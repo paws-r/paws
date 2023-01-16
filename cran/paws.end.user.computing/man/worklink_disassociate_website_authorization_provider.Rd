@@ -4,28 +4,19 @@
 \alias{worklink_disassociate_website_authorization_provider}
 \title{Disassociates a website authorization provider from a specified fleet}
 \usage{
-worklink_disassociate_website_authorization_provider(FleetArn,
-  AuthorizationProviderId)
+worklink_disassociate_website_authorization_provider(
+  FleetArn,
+  AuthorizationProviderId
+)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 
 \item{AuthorizationProviderId}{[required] A unique identifier for the authorization provider.}
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates a website authorization provider from a specified fleet.
-After the disassociation, users can't load any associated websites that
-require this authorization provider.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_website_authorization_provider(
-  FleetArn = "string",
-  AuthorizationProviderId = "string"
-)
-}
-}
+Disassociates a website authorization provider from a specified fleet. After the disassociation, users can't load any associated websites that require this authorization provider.
 
+See \url{https://paws-r.github.io/docs/worklink/disassociate_website_authorization_provider.html} for full documentation.
+}
 \keyword{internal}

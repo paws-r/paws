@@ -5,57 +5,16 @@
 \title{ModifyInstanceGroups modifies the number of nodes and configuration
 settings of an instance group}
 \usage{
-emr_modify_instance_groups(ClusterId, InstanceGroups)
+emr_modify_instance_groups(ClusterId = NULL, InstanceGroups = NULL)
 }
 \arguments{
 \item{ClusterId}{The ID of the cluster to which the instance group belongs.}
 
 \item{InstanceGroups}{Instance groups to change.}
 }
-\value{
-An empty list.
-}
 \description{
-ModifyInstanceGroups modifies the number of nodes and configuration
-settings of an instance group. The input parameters include the new
-target instance count for the group and the instance group ID. The call
-will either succeed or fail atomically.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_instance_groups(
-  ClusterId = "string",
-  InstanceGroups = list(
-    list(
-      InstanceGroupId = "string",
-      InstanceCount = 123,
-      EC2InstanceIdsToTerminate = list(
-        "string"
-      ),
-      ShrinkPolicy = list(
-        DecommissionTimeout = 123,
-        InstanceResizePolicy = list(
-          InstancesToTerminate = list(
-            "string"
-          ),
-          InstancesToProtect = list(
-            "string"
-          ),
-          InstanceTerminationTimeout = 123
-        )
-      ),
-      Configurations = list(
-        list(
-          Classification = "string",
-          Configurations = list(),
-          Properties = list(
-            "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
+ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group. The input parameters include the new target instance count for the group and the instance group ID. The call will either succeed or fail atomically.
 
+See \url{https://paws-r.github.io/docs/emr/modify_instance_groups.html} for full documentation.
+}
 \keyword{internal}

@@ -6,35 +6,9 @@
 \usage{
 ses_get_send_statistics()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SendDataPoints = list(
-    list(
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeliveryAttempts = 123,
-      Bounces = 123,
-      Complaints = 123,
-      Rejects = 123
-    )
-  )
-)
-}
-}
 \description{
-Provides sending statistics for the current AWS Region. The result is a
-list of data points, representing the last two weeks of sending
-activity. Each data point in the list contains statistics for a
-15-minute period of time.
+Provides sending statistics for the current AWS Region. The result is a list of data points, representing the last two weeks of sending activity. Each data point in the list contains statistics for a 15-minute period of time.
 
-You can execute this operation no more than once per second.
-}
-\examples{
-\dontrun{
-# The following example returns Amazon SES sending statistics:
-svc$get_send_statistics()
-}
-
+See \url{https://paws-r.github.io/docs/ses/get_send_statistics.html} for full documentation.
 }
 \keyword{internal}

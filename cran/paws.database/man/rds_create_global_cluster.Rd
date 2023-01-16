@@ -2,11 +2,18 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_create_global_cluster}
 \alias{rds_create_global_cluster}
-\title{Creates an Aurora global database spread across multiple AWS Regions}
+\title{Creates an Aurora global database spread across multiple Amazon Web
+Services Regions}
 \usage{
-rds_create_global_cluster(GlobalClusterIdentifier,
-  SourceDBClusterIdentifier, Engine, EngineVersion, DeletionProtection,
-  DatabaseName, StorageEncrypted)
+rds_create_global_cluster(
+  GlobalClusterIdentifier = NULL,
+  SourceDBClusterIdentifier = NULL,
+  Engine = NULL,
+  EngineVersion = NULL,
+  DeletionProtection = NULL,
+  DatabaseName = NULL,
+  StorageEncrypted = NULL
+)
 }
 \arguments{
 \item{GlobalClusterIdentifier}{The cluster identifier of the new global database cluster.}
@@ -21,63 +28,15 @@ global database. This parameter is optional.}
 \item{DeletionProtection}{The deletion protection setting for the new global database. The global
 database can't be deleted when deletion protection is enabled.}
 
-\item{DatabaseName}{The name for your database of up to 64 alpha-numeric characters. If you
+\item{DatabaseName}{The name for your database of up to 64 alphanumeric characters. If you
 do not provide a name, Amazon Aurora will not create a database in the
 global database cluster you are creating.}
 
 \item{StorageEncrypted}{The storage encryption setting for the new global database cluster.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalCluster = list(
-    GlobalClusterIdentifier = "string",
-    GlobalClusterResourceId = "string",
-    GlobalClusterArn = "string",
-    Status = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    DatabaseName = "string",
-    StorageEncrypted = TRUE|FALSE,
-    DeletionProtection = TRUE|FALSE,
-    GlobalClusterMembers = list(
-      list(
-        DBClusterArn = "string",
-        Readers = list(
-          "string"
-        ),
-        IsWriter = TRUE|FALSE,
-        GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates an Aurora global database spread across multiple AWS Regions.
-The global database contains a single primary cluster with read-write
-capability, and a read-only secondary cluster that receives data from
-the primary cluster through high-speed replication performed by the
-Aurora storage subsystem.
+Creates an Aurora global database spread across multiple Amazon Web Services Regions. The global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.
 
-You can create a global database that is initially empty, and then add a
-primary cluster and a secondary cluster to it. Or you can specify an
-existing Aurora cluster during the create operation, and this cluster
-becomes the primary cluster of the global database.
-
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/create_global_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_global_cluster(
-  GlobalClusterIdentifier = "string",
-  SourceDBClusterIdentifier = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  DeletionProtection = TRUE|FALSE,
-  DatabaseName = "string",
-  StorageEncrypted = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

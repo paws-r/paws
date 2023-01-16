@@ -7,8 +7,8 @@
 quicksight_describe_template_alias(AwsAccountId, TemplateId, AliasName)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template alias that you're
-describing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the template
+alias that you're describing.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
@@ -18,28 +18,9 @@ can specify the latest version of the template by providing the keyword
 \verb{$LATEST} in the \code{AliasName} parameter. The keyword \verb{$PUBLISHED} doesn't
 apply to templates.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateAlias = list(
-    AliasName = "string",
-    Arn = "string",
-    TemplateVersionNumber = 123
-  ),
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Describes the template alias for a template.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_template_alias(
-  AwsAccountId = "string",
-  TemplateId = "string",
-  AliasName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_template_alias.html} for full documentation.
+}
 \keyword{internal}

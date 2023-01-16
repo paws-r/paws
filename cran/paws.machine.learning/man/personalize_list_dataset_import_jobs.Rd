@@ -4,7 +4,11 @@
 \alias{personalize_list_dataset_import_jobs}
 \title{Returns a list of dataset import jobs that use the given dataset}
 \usage{
-personalize_list_dataset_import_jobs(datasetArn, nextToken, maxResults)
+personalize_list_dataset_import_jobs(
+  datasetArn = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{datasetArn}{The Amazon Resource Name (ARN) of the dataset to list the dataset import
@@ -16,43 +20,9 @@ getting the next set of dataset import jobs (if they exist).}
 
 \item{maxResults}{The maximum number of dataset import jobs to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  datasetImportJobs = list(
-    list(
-      datasetImportJobArn = "string",
-      jobName = "string",
-      status = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      failureReason = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of dataset import jobs that use the given dataset. When a
-dataset is not specified, all the dataset import jobs associated with
-the account are listed. The response provides the properties for each
-dataset import job, including the Amazon Resource Name (ARN). For more
-information on dataset import jobs, see
-\code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}}.
-For more information on datasets, see
-\code{\link[=personalize_create_dataset]{create_dataset}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_dataset_import_jobs(
-  datasetArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns a list of dataset import jobs that use the given dataset. When a dataset is not specified, all the dataset import jobs associated with the account are listed. The response provides the properties for each dataset import job, including the Amazon Resource Name (ARN). For more information on dataset import jobs, see \code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}}. For more information on datasets, see \code{\link[=personalize_create_dataset]{create_dataset}}.
 
+See \url{https://paws-r.github.io/docs/personalize/list_dataset_import_jobs.html} for full documentation.
+}
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_get_ml_transform}
 \alias{glue_get_ml_transform}
-\title{Gets an AWS Glue machine learning transform artifact and all its
+\title{Gets an Glue machine learning transform artifact and all its
 corresponding metadata}
 \usage{
 glue_get_ml_transform(TransformId)
@@ -11,94 +11,9 @@ glue_get_ml_transform(TransformId)
 \item{TransformId}{[required] The unique identifier of the transform, generated at the time that the
 transform was created.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransformId = "string",
-  Name = "string",
-  Description = "string",
-  Status = "NOT_READY"|"READY"|"DELETING",
-  CreatedOn = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedOn = as.POSIXct(
-    "2015-01-01"
-  ),
-  InputRecordTables = list(
-    list(
-      DatabaseName = "string",
-      TableName = "string",
-      CatalogId = "string",
-      ConnectionName = "string"
-    )
-  ),
-  Parameters = list(
-    TransformType = "FIND_MATCHES",
-    FindMatchesParameters = list(
-      PrimaryKeyColumnName = "string",
-      PrecisionRecallTradeoff = 123.0,
-      AccuracyCostTradeoff = 123.0,
-      EnforceProvidedLabels = TRUE|FALSE
-    )
-  ),
-  EvaluationMetrics = list(
-    TransformType = "FIND_MATCHES",
-    FindMatchesMetrics = list(
-      AreaUnderPRCurve = 123.0,
-      Precision = 123.0,
-      Recall = 123.0,
-      F1 = 123.0,
-      ConfusionMatrix = list(
-        NumTruePositives = 123,
-        NumFalsePositives = 123,
-        NumTrueNegatives = 123,
-        NumFalseNegatives = 123
-      ),
-      ColumnImportances = list(
-        list(
-          ColumnName = "string",
-          Importance = 123.0
-        )
-      )
-    )
-  ),
-  LabelCount = 123,
-  Schema = list(
-    list(
-      Name = "string",
-      DataType = "string"
-    )
-  ),
-  Role = "string",
-  GlueVersion = "string",
-  MaxCapacity = 123.0,
-  WorkerType = "Standard"|"G.1X"|"G.2X",
-  NumberOfWorkers = 123,
-  Timeout = 123,
-  MaxRetries = 123,
-  TransformEncryption = list(
-    MlUserDataEncryption = list(
-      MlUserDataEncryptionMode = "DISABLED"|"SSE-KMS",
-      KmsKeyId = "string"
-    ),
-    TaskRunSecurityConfigurationName = "string"
-  )
-)
-}
-}
 \description{
-Gets an AWS Glue machine learning transform artifact and all its
-corresponding metadata. Machine learning transforms are a special type
-of transform that use machine learning to learn the details of the
-transformation to be performed by learning from examples provided by
-humans. These transformations are then saved by AWS Glue. You can
-retrieve their metadata by calling
-\code{\link[=glue_get_ml_transform]{get_ml_transform}}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_ml_transform(
-  TransformId = "string"
-)
-}
-}
+Gets an Glue machine learning transform artifact and all its corresponding metadata. Machine learning transforms are a special type of transform that use machine learning to learn the details of the transformation to be performed by learning from examples provided by humans. These transformations are then saved by Glue. You can retrieve their metadata by calling \code{\link[=glue_get_ml_transform]{get_ml_transform}}.
 
+See \url{https://paws-r.github.io/docs/glue/get_ml_transform.html} for full documentation.
+}
 \keyword{internal}

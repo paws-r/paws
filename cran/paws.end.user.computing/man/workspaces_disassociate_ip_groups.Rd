@@ -12,21 +12,9 @@ workspaces_disassociate_ip_groups(DirectoryId, GroupIds)
 
 \item{GroupIds}{[required] The identifiers of one or more IP access control groups.}
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates the specified IP access control group from the specified
-directory.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_ip_groups(
-  DirectoryId = "string",
-  GroupIds = list(
-    "string"
-  )
-)
-}
-}
+Disassociates the specified IP access control group from the specified directory.
 
+See \url{https://paws-r.github.io/docs/workspaces/disassociate_ip_groups.html} for full documentation.
+}
 \keyword{internal}

@@ -9,26 +9,9 @@ ses_update_template(Template)
 \arguments{
 \item{Template}{[required]}
 }
-\value{
-An empty list.
-}
 \description{
-Updates an email template. Email templates enable you to send
-personalized email to one or more destinations in a single API
-operation. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html}{Amazon SES Developer Guide}.
+Updates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html}{Amazon SES Developer Guide}.
 
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/update_template.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_template(
-  Template = list(
-    TemplateName = "string",
-    SubjectPart = "string",
-    TextPart = "string",
-    HtmlPart = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -2,27 +2,18 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_delete_documentation_part}
 \alias{apigateway_delete_documentation_part}
-\title{Delete documentation part}
+\title{Deletes a documentation part}
 \usage{
 apigateway_delete_documentation_part(restApiId, documentationPartId)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{documentationPartId}{[required] [Required] The identifier of the to-be-deleted documentation part.}
-}
-\value{
-An empty list.
+\item{documentationPartId}{[required] The identifier of the to-be-deleted documentation part.}
 }
 \description{
-Delete documentation part
-}
-\section{Request syntax}{
-\preformatted{svc$delete_documentation_part(
-  restApiId = "string",
-  documentationPartId = "string"
-)
-}
-}
+Deletes a documentation part
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_documentation_part.html} for full documentation.
+}
 \keyword{internal}

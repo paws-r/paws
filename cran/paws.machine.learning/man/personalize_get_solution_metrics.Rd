@@ -10,23 +10,9 @@ personalize_get_solution_metrics(solutionVersionArn)
 \item{solutionVersionArn}{[required] The Amazon Resource Name (ARN) of the solution version for which to get
 metrics.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  solutionVersionArn = "string",
-  metrics = list(
-    123.0
-  )
-)
-}
-}
 \description{
 Gets the metrics for the specified solution version.
-}
-\section{Request syntax}{
-\preformatted{svc$get_solution_metrics(
-  solutionVersionArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/personalize/get_solution_metrics.html} for full documentation.
+}
 \keyword{internal}

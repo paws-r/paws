@@ -10,28 +10,9 @@ ses_get_template(TemplateName)
 \arguments{
 \item{TemplateName}{[required] The name of the template you want to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Template = list(
-    TemplateName = "string",
-    SubjectPart = "string",
-    TextPart = "string",
-    HtmlPart = "string"
-  )
-)
-}
-}
 \description{
-Displays the template object (which includes the Subject line, HTML part
-and text part) for the template you specify.
+Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify.
 
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/get_template.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_template(
-  TemplateName = "string"
-)
-}
-}
-
 \keyword{internal}

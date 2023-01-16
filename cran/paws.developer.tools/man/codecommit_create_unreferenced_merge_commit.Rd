@@ -5,10 +5,19 @@
 \title{Creates an unreferenced commit that represents the result of merging two
 branches using a specified merge strategy}
 \usage{
-codecommit_create_unreferenced_merge_commit(repositoryName,
-  sourceCommitSpecifier, destinationCommitSpecifier, mergeOption,
-  conflictDetailLevel, conflictResolutionStrategy, authorName, email,
-  commitMessage, keepEmptyFolders, conflictResolution)
+codecommit_create_unreferenced_merge_commit(
+  repositoryName,
+  sourceCommitSpecifier,
+  destinationCommitSpecifier,
+  mergeOption,
+  conflictDetailLevel = NULL,
+  conflictResolutionStrategy = NULL,
+  authorName = NULL,
+  email = NULL,
+  commitMessage = NULL,
+  keepEmptyFolders = NULL,
+  conflictResolution = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you want to create the unreferenced
@@ -48,59 +57,9 @@ false.}
 \item{conflictResolution}{If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 use when resolving conflicts during a merge.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commitId = "string",
-  treeId = "string"
-)
-}
-}
 \description{
-Creates an unreferenced commit that represents the result of merging two
-branches using a specified merge strategy. This can help you determine
-the outcome of a potential merge. This API cannot be used with the
-fast-forward merge strategy because that strategy does not create a
-merge commit.
+Creates an unreferenced commit that represents the result of merging two branches using a specified merge strategy. This can help you determine the outcome of a potential merge. This API cannot be used with the fast-forward merge strategy because that strategy does not create a merge commit.
 
-This unreferenced merge commit can only be accessed using the GetCommit
-API or through git commands such as git fetch. To retrieve this commit,
-you must specify its commit ID or otherwise reference it.
+See \url{https://paws-r.github.io/docs/codecommit/create_unreferenced_merge_commit.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_unreferenced_merge_commit(
-  repositoryName = "string",
-  sourceCommitSpecifier = "string",
-  destinationCommitSpecifier = "string",
-  mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
-  conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-  conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-  authorName = "string",
-  email = "string",
-  commitMessage = "string",
-  keepEmptyFolders = TRUE|FALSE,
-  conflictResolution = list(
-    replaceContents = list(
-      list(
-        filePath = "string",
-        replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
-        content = raw,
-        fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-      )
-    ),
-    deleteFiles = list(
-      list(
-        filePath = "string"
-      )
-    ),
-    setFileModes = list(
-      list(
-        filePath = "string",
-        fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

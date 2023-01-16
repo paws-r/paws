@@ -4,13 +4,28 @@
 \alias{elasticache_modify_cache_cluster}
 \title{Modifies the settings for a cluster}
 \usage{
-elasticache_modify_cache_cluster(CacheClusterId, NumCacheNodes,
-  CacheNodeIdsToRemove, AZMode, NewAvailabilityZones,
-  CacheSecurityGroupNames, SecurityGroupIds, PreferredMaintenanceWindow,
-  NotificationTopicArn, CacheParameterGroupName, NotificationTopicStatus,
-  ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
-  SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
-  AuthTokenUpdateStrategy)
+elasticache_modify_cache_cluster(
+  CacheClusterId,
+  NumCacheNodes = NULL,
+  CacheNodeIdsToRemove = NULL,
+  AZMode = NULL,
+  NewAvailabilityZones = NULL,
+  CacheSecurityGroupNames = NULL,
+  SecurityGroupIds = NULL,
+  PreferredMaintenanceWindow = NULL,
+  NotificationTopicArn = NULL,
+  CacheParameterGroupName = NULL,
+  NotificationTopicStatus = NULL,
+  ApplyImmediately = NULL,
+  EngineVersion = NULL,
+  AutoMinorVersionUpgrade = NULL,
+  SnapshotRetentionLimit = NULL,
+  SnapshotWindow = NULL,
+  CacheNodeType = NULL,
+  AuthToken = NULL,
+  AuthTokenUpdateStrategy = NULL,
+  LogDeliveryConfigurations = NULL
+)
 }
 \arguments{
 \item{CacheClusterId}{[required] The cluster identifier. This value is stored as a lowercase string.}
@@ -27,7 +42,7 @@ If you are removing cache nodes, you must use the \code{CacheNodeIdsToRemove}
 parameter to provide the IDs of the specific cache nodes to remove.
 
 For clusters running Redis, this value must be 1. For clusters running
-Memcached, this value must be between 1 and 20.
+Memcached, this value must be between 1 and 40.
 
 Adding or removing Memcached cache nodes can be applied immediately or
 as a pending operation (see \code{ApplyImmediately}).
@@ -78,7 +93,9 @@ existing Memcached nodes remain in their current Availability Zone.
 
 Only newly created nodes are located in different Availability Zones.}
 
-\item{NewAvailabilityZones}{The list of Availability Zones where the new Memcached cache nodes are
+\item{NewAvailabilityZones}{This option is only supported on Memcached clusters.
+
+The list of Availability Zones where the new Memcached cache nodes are
 created.
 
 This parameter is only valid when \code{NumCacheNodes} in the request is
@@ -86,8 +103,6 @@ greater than the sum of the number of active cache nodes and the number
 of cache nodes pending creation (which may be zero). The number of
 Availability Zones supplied in this list must match the cache nodes
 being added in this request.
-
-This option is only supported on Memcached clusters.
 
 Scenarios:
 \itemize{
@@ -219,7 +234,9 @@ but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing cluster and
 create it anew with the earlier engine version.}
 
-\item{AutoMinorVersionUpgrade}{This parameter is currently disabled.}
+\item{AutoMinorVersionUpgrade}{If you are running Redis engine version 6.0 or later, set this
+parameter to yes if you want to opt-in to the next auto minor version
+upgrade campaign. This parameter is disabled for previous versions.}
 
 \item{SnapshotRetentionLimit}{The number of days for which ElastiCache retains automatic cluster
 snapshots before deleting them. For example, if you set
@@ -245,7 +262,8 @@ length
 '\%'
 }
 
-For more information, see AUTH password at AUTH.}
+For more information, see AUTH password at
+\href{https://redis.io/commands/auth/}{AUTH}.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
 must be specified with the \code{auth-token} parameter. Possible values:
@@ -255,128 +273,12 @@ must be specified with the \code{auth-token} parameter. Possible values:
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis AUTH}}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CacheCluster = list(
-    CacheClusterId = "string",
-    ConfigurationEndpoint = list(
-      Address = "string",
-      Port = 123
-    ),
-    ClientDownloadLandingPage = "string",
-    CacheNodeType = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    CacheClusterStatus = "string",
-    NumCacheNodes = 123,
-    PreferredAvailabilityZone = "string",
-    PreferredOutpostArn = "string",
-    CacheClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      NumCacheNodes = 123,
-      CacheNodeIdsToRemove = list(
-        "string"
-      ),
-      EngineVersion = "string",
-      CacheNodeType = "string",
-      AuthTokenStatus = "SETTING"|"ROTATING"
-    ),
-    NotificationConfiguration = list(
-      TopicArn = "string",
-      TopicStatus = "string"
-    ),
-    CacheSecurityGroups = list(
-      list(
-        CacheSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    CacheParameterGroup = list(
-      CacheParameterGroupName = "string",
-      ParameterApplyStatus = "string",
-      CacheNodeIdsToReboot = list(
-        "string"
-      )
-    ),
-    CacheSubnetGroupName = "string",
-    CacheNodes = list(
-      list(
-        CacheNodeId = "string",
-        CacheNodeStatus = "string",
-        CacheNodeCreateTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        Endpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        ParameterGroupStatus = "string",
-        SourceCacheNodeId = "string",
-        CustomerAvailabilityZone = "string",
-        CustomerOutpostArn = "string"
-      )
-    ),
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    SecurityGroups = list(
-      list(
-        SecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    ReplicationGroupId = "string",
-    SnapshotRetentionLimit = 123,
-    SnapshotWindow = "string",
-    AuthTokenEnabled = TRUE|FALSE,
-    AuthTokenLastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    ARN = "string"
-  )
-)
-}
+
+\item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
 }
 \description{
-Modifies the settings for a cluster. You can use this operation to
-change one or more cluster configuration parameters by specifying the
-parameters and the new values.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_cache_cluster(
-  CacheClusterId = "string",
-  NumCacheNodes = 123,
-  CacheNodeIdsToRemove = list(
-    "string"
-  ),
-  AZMode = "single-az"|"cross-az",
-  NewAvailabilityZones = list(
-    "string"
-  ),
-  CacheSecurityGroupNames = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  PreferredMaintenanceWindow = "string",
-  NotificationTopicArn = "string",
-  CacheParameterGroupName = "string",
-  NotificationTopicStatus = "string",
-  ApplyImmediately = TRUE|FALSE,
-  EngineVersion = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  SnapshotRetentionLimit = 123,
-  SnapshotWindow = "string",
-  CacheNodeType = "string",
-  AuthToken = "string",
-  AuthTokenUpdateStrategy = "SET"|"ROTATE"|"DELETE"
-)
-}
-}
+Modifies the settings for a cluster. You can use this operation to change one or more cluster configuration parameters by specifying the parameters and the new values.
 
+See \url{https://paws-r.github.io/docs/elasticache/modify_cache_cluster.html} for full documentation.
+}
 \keyword{internal}

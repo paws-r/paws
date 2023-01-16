@@ -4,95 +4,16 @@
 \alias{directconnect_create_bgp_peer}
 \title{Creates a BGP peer on the specified virtual interface}
 \usage{
-directconnect_create_bgp_peer(virtualInterfaceId, newBGPPeer)
+directconnect_create_bgp_peer(virtualInterfaceId = NULL, newBGPPeer = NULL)
 }
 \arguments{
 \item{virtualInterfaceId}{The ID of the virtual interface.}
 
 \item{newBGPPeer}{Information about the BGP peer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualInterface = list(
-    ownerAccount = "string",
-    virtualInterfaceId = "string",
-    location = "string",
-    connectionId = "string",
-    virtualInterfaceType = "string",
-    virtualInterfaceName = "string",
-    vlan = 123,
-    asn = 123,
-    amazonSideAsn = 123,
-    authKey = "string",
-    amazonAddress = "string",
-    customerAddress = "string",
-    addressFamily = "ipv4"|"ipv6",
-    virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-    customerRouterConfig = "string",
-    mtu = 123,
-    jumboFrameCapable = TRUE|FALSE,
-    virtualGatewayId = "string",
-    directConnectGatewayId = "string",
-    routeFilterPrefixes = list(
-      list(
-        cidr = "string"
-      )
-    ),
-    bgpPeers = list(
-      list(
-        bgpPeerId = "string",
-        asn = 123,
-        authKey = "string",
-        addressFamily = "ipv4"|"ipv6",
-        amazonAddress = "string",
-        customerAddress = "string",
-        bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
-        bgpStatus = "up"|"down"|"unknown",
-        awsDeviceV2 = "string"
-      )
-    ),
-    region = "string",
-    awsDeviceV2 = "string",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Creates a BGP peer on the specified virtual interface.
 
-You must create a BGP peer for the corresponding address family
-(IPv4/IPv6) in order to access AWS resources that also use that address
-family.
-
-If logical redundancy is not supported by the connection, interconnect,
-or LAG, the BGP peer cannot be in the same address family as an existing
-BGP peer on the virtual interface.
-
-When creating a IPv6 BGP peer, omit the Amazon address and customer
-address. IPv6 addresses are automatically assigned from the Amazon pool
-of IPv6 addresses; you cannot specify custom IPv6 addresses.
-
-For a public virtual interface, the Autonomous System Number (ASN) must
-be private or already whitelisted for the virtual interface.
+See \url{https://paws-r.github.io/docs/directconnect/create_bgp_peer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_bgp_peer(
-  virtualInterfaceId = "string",
-  newBGPPeer = list(
-    asn = 123,
-    authKey = "string",
-    addressFamily = "ipv4"|"ipv6",
-    amazonAddress = "string",
-    customerAddress = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

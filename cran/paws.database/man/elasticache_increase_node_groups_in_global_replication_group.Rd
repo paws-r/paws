@@ -2,81 +2,30 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_increase_node_groups_in_global_replication_group}
 \alias{elasticache_increase_node_groups_in_global_replication_group}
-\title{Increase the number of node groups in the Global Datastore}
+\title{Increase the number of node groups in the Global datastore}
 \usage{
 elasticache_increase_node_groups_in_global_replication_group(
-  GlobalReplicationGroupId, NodeGroupCount, RegionalConfigurations,
-  ApplyImmediately)
+  GlobalReplicationGroupId,
+  NodeGroupCount,
+  RegionalConfigurations = NULL,
+  ApplyImmediately
+)
 }
 \arguments{
-\item{GlobalReplicationGroupId}{[required] The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{[required] The name of the Global datastore}
 
 \item{NodeGroupCount}{[required] The number of node groups you wish to add}
 
-\item{RegionalConfigurations}{Describes the replication group IDs, the AWS regions where they are
+\item{RegionalConfigurations}{Describes the replication group IDs, the Amazon regions where they are
 stored and the shard configuration for each that comprise the Global
-Datastore}
+datastore}
 
 \item{ApplyImmediately}{[required] Indicates that the process begins immediately. At present, the only
 permitted value for this parameter is true.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalReplicationGroup = list(
-    GlobalReplicationGroupId = "string",
-    GlobalReplicationGroupDescription = "string",
-    Status = "string",
-    CacheNodeType = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    Members = list(
-      list(
-        ReplicationGroupId = "string",
-        ReplicationGroupRegion = "string",
-        Role = "string",
-        AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-        Status = "string"
-      )
-    ),
-    ClusterEnabled = TRUE|FALSE,
-    GlobalNodeGroups = list(
-      list(
-        GlobalNodeGroupId = "string",
-        Slots = "string"
-      )
-    ),
-    AuthTokenEnabled = TRUE|FALSE,
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    ARN = "string"
-  )
-)
-}
-}
 \description{
-Increase the number of node groups in the Global Datastore
-}
-\section{Request syntax}{
-\preformatted{svc$increase_node_groups_in_global_replication_group(
-  GlobalReplicationGroupId = "string",
-  NodeGroupCount = 123,
-  RegionalConfigurations = list(
-    list(
-      ReplicationGroupId = "string",
-      ReplicationGroupRegion = "string",
-      ReshardingConfiguration = list(
-        list(
-          NodeGroupId = "string",
-          PreferredAvailabilityZones = list(
-            "string"
-          )
-        )
-      )
-    )
-  ),
-  ApplyImmediately = TRUE|FALSE
-)
-}
-}
+Increase the number of node groups in the Global datastore
 
+See \url{https://paws-r.github.io/docs/elasticache/increase_node_groups_in_global_replication_group.html} for full documentation.
+}
 \keyword{internal}

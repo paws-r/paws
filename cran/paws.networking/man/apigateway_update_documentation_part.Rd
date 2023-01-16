@@ -2,50 +2,24 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_update_documentation_part}
 \alias{apigateway_update_documentation_part}
-\title{Update documentation part}
+\title{Updates a documentation part}
 \usage{
-apigateway_update_documentation_part(restApiId, documentationPartId,
-  patchOperations)
+apigateway_update_documentation_part(
+  restApiId,
+  documentationPartId,
+  patchOperations = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{documentationPartId}{[required] [Required] The identifier of the to-be-updated documentation part.}
+\item{documentationPartId}{[required] The identifier of the to-be-updated documentation part.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  location = list(
-    type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-    path = "string",
-    method = "string",
-    statusCode = "string",
-    name = "string"
-  ),
-  properties = "string"
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
-Update documentation part
-}
-\section{Request syntax}{
-\preformatted{svc$update_documentation_part(
-  restApiId = "string",
-  documentationPartId = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
+Updates a documentation part.
 
+See \url{https://paws-r.github.io/docs/apigateway/update_documentation_part.html} for full documentation.
+}
 \keyword{internal}

@@ -4,12 +4,18 @@
 \alias{sagemaker_create_artifact}
 \title{Creates an artifact}
 \usage{
-sagemaker_create_artifact(ArtifactName, Source, ArtifactType,
-  Properties, MetadataProperties, Tags)
+sagemaker_create_artifact(
+  ArtifactName = NULL,
+  Source,
+  ArtifactType,
+  Properties = NULL,
+  MetadataProperties = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{ArtifactName}{The name of the artifact. Must be unique to your account in an AWS
-Region.}
+\item{ArtifactName}{The name of the artifact. Must be unique to your account in an Amazon
+Web Services Region.}
 
 \item{Source}{[required] The ID, ID type, and URI of the source.}
 
@@ -21,48 +27,9 @@ Region.}
 
 \item{Tags}{A list of tags to apply to the artifact.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ArtifactArn = "string"
-)
-}
-}
 \description{
-Creates an \emph{artifact}. An artifact is a lineage tracking entity that
-represents a URI addressable object or data. Some examples are the S3
-URI of a dataset and the ECR registry path of an image. For more
-information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_artifact(
-  ArtifactName = "string",
-  Source = list(
-    SourceUri = "string",
-    SourceTypes = list(
-      list(
-        SourceIdType = "MD5Hash"|"S3ETag"|"S3Version"|"Custom",
-        Value = "string"
-      )
-    )
-  ),
-  ArtifactType = "string",
-  Properties = list(
-    "string"
-  ),
-  MetadataProperties = list(
-    CommitId = "string",
-    Repository = "string",
-    GeneratedBy = "string",
-    ProjectId = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates an \emph{artifact}. An artifact is a lineage tracking entity that represents a URI addressable object or data. Some examples are the S3 URI of a dataset and the ECR registry path of an image. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_artifact.html} for full documentation.
+}
 \keyword{internal}

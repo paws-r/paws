@@ -11,27 +11,9 @@ kinesis_remove_tags_from_stream(StreamName, TagKeys)
 
 \item{TagKeys}{[required] A list of tag keys. Each corresponding tag is removed from the stream.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes tags from the specified Kinesis data stream. Removed tags are
-deleted and cannot be recovered after this operation successfully
-completes.
+Removes tags from the specified Kinesis data stream. Removed tags are deleted and cannot be recovered after this operation successfully completes.
 
-If you specify a tag that does not exist, it is ignored.
-
-\code{\link[=kinesis_remove_tags_from_stream]{remove_tags_from_stream}} has a limit
-of five transactions per second per account.
+See \url{https://paws-r.github.io/docs/kinesis/remove_tags_from_stream.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$remove_tags_from_stream(
-  StreamName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -5,8 +5,12 @@
 \title{For a given input face ID, searches for matching faces in the collection
 the face belongs to}
 \usage{
-rekognition_search_faces(CollectionId, FaceId, MaxFaces,
-  FaceMatchThreshold)
+rekognition_search_faces(
+  CollectionId,
+  FaceId,
+  MaxFaces = NULL,
+  FaceMatchThreshold = NULL
+)
 }
 \arguments{
 \item{CollectionId}{[required] ID of the collection the face belongs to.}
@@ -20,74 +24,9 @@ number of faces with the highest confidence in the match.}
 return. For example, don't return any matches where confidence in
 matches is less than 70\%. The default value is 80\%.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SearchedFaceId = "string",
-  FaceMatches = list(
-    list(
-      Similarity = 123.0,
-      Face = list(
-        FaceId = "string",
-        BoundingBox = list(
-          Width = 123.0,
-          Height = 123.0,
-          Left = 123.0,
-          Top = 123.0
-        ),
-        ImageId = "string",
-        ExternalImageId = "string",
-        Confidence = 123.0
-      )
-    )
-  ),
-  FaceModelVersion = "string"
-)
-}
-}
 \description{
-For a given input face ID, searches for matching faces in the collection
-the face belongs to. You get a face ID when you add a face to the
-collection using the \code{\link[=rekognition_index_faces]{index_faces}} operation.
-The operation compares the features of the input face with faces in the
-specified collection.
+For a given input face ID, searches for matching faces in the collection the face belongs to. You get a face ID when you add a face to the collection using the \code{\link[=rekognition_index_faces]{index_faces}} operation. The operation compares the features of the input face with faces in the specified collection.
 
-You can also search faces without indexing faces by using the
-\code{\link[=rekognition_search_faces_by_image]{search_faces_by_image}} operation.
-
-The operation response returns an array of faces that match, ordered by
-similarity score with the highest similarity first. More specifically,
-it is an array of metadata for each face match that is found. Along with
-the metadata, the response also includes a \code{confidence} value for each
-face match, indicating the confidence that the specific face matches the
-input face.
-
-For an example, see Searching for a Face Using Its Face ID in the Amazon
-Rekognition Developer Guide.
-
-This operation requires permissions to perform the
-\code{rekognition:SearchFaces} action.
-}
-\section{Request syntax}{
-\preformatted{svc$search_faces(
-  CollectionId = "string",
-  FaceId = "string",
-  MaxFaces = 123,
-  FaceMatchThreshold = 123.0
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation searches for matching faces in the collection the
-# supplied face belongs to.
-svc$search_faces(
-  CollectionId = "myphotos",
-  FaceId = "70008e50-75e4-55d0-8e80-363fb73b3a14",
-  FaceMatchThreshold = 90L,
-  MaxFaces = 10L
-)
-}
-
+See \url{https://paws-r.github.io/docs/rekognition/search_faces.html} for full documentation.
 }
 \keyword{internal}

@@ -2,10 +2,15 @@
 % Please edit documentation in R/route53domains_operations.R
 \name{route53domains_view_billing}
 \alias{route53domains_view_billing}
-\title{Returns all the domain-related billing records for the current AWS
-account for a specified period}
+\title{Returns all the domain-related billing records for the current Amazon
+Web Services account for a specified period}
 \usage{
-route53domains_view_billing(Start, End, Marker, MaxItems)
+route53domains_view_billing(
+  Start = NULL,
+  End = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{Start}{The beginning date and time for the time period for which you want a
@@ -18,11 +23,11 @@ Coordinated Universal time (UTC).}
 
 \item{Marker}{For an initial request for a list of billing records, omit this element.
 If the number of billing records that are associated with the current
-AWS account during the specified period is greater than the value that
-you specified for \code{MaxItems}, you can use \code{Marker} to return additional
-billing records. Get the value of \code{NextPageMarker} from the previous
-response, and submit another request that includes the value of
-\code{NextPageMarker} in the \code{Marker} element.
+Amazon Web Services account during the specified period is greater than
+the value that you specified for \code{MaxItems}, you can use \code{Marker} to
+return additional billing records. Get the value of \code{NextPageMarker}
+from the previous response, and submit another request that includes the
+value of \code{NextPageMarker} in the \code{Marker} element.
 
 Constraints: The marker must match the value of \code{NextPageMarker} that
 was returned in the previous response.}
@@ -31,39 +36,9 @@ was returned in the previous response.}
 
 Default: 20}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextPageMarker = "string",
-  BillingRecords = list(
-    list(
-      DomainName = "string",
-      Operation = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
-      InvoiceId = "string",
-      BillDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Price = 123.0
-    )
-  )
-)
-}
-}
 \description{
-Returns all the domain-related billing records for the current AWS
-account for a specified period
-}
-\section{Request syntax}{
-\preformatted{svc$view_billing(
-  Start = as.POSIXct(
-    "2015-01-01"
-  ),
-  End = as.POSIXct(
-    "2015-01-01"
-  ),
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Returns all the domain-related billing records for the current Amazon Web Services account for a specified period
 
+See \url{https://paws-r.github.io/docs/route53domains/view_billing.html} for full documentation.
+}
 \keyword{internal}

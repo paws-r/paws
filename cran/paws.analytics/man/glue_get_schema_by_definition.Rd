@@ -18,34 +18,9 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 
 \item{SchemaDefinition}{[required] The definition of the schema for which schema details are required.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaVersionId = "string",
-  SchemaArn = "string",
-  DataFormat = "AVRO",
-  Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
-  CreatedTime = "string"
-)
-}
-}
 \description{
-Retrieves a schema by the \code{SchemaDefinition}. The schema definition is
-sent to the Schema Registry, canonicalized, and hashed. If the hash is
-matched within the scope of the \code{SchemaName} or ARN (or the default
-registry, if none is supplied), that schema’s metadata is returned.
-Otherwise, a 404 or NotFound error is returned. Schema versions in
-\code{Deleted} statuses will not be included in the results.
-}
-\section{Request syntax}{
-\preformatted{svc$get_schema_by_definition(
-  SchemaId = list(
-    SchemaArn = "string",
-    SchemaName = "string",
-    RegistryName = "string"
-  ),
-  SchemaDefinition = "string"
-)
-}
-}
+Retrieves a schema by the \code{SchemaDefinition}. The schema definition is sent to the Schema Registry, canonicalized, and hashed. If the hash is matched within the scope of the \code{SchemaName} or ARN (or the default registry, if none is supplied), that schema’s metadata is returned. Otherwise, a 404 or NotFound error is returned. Schema versions in \code{Deleted} statuses will not be included in the results.
 
+See \url{https://paws-r.github.io/docs/glue/get_schema_by_definition.html} for full documentation.
+}
 \keyword{internal}

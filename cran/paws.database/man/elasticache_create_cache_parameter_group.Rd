@@ -4,8 +4,12 @@
 \alias{elasticache_create_cache_parameter_group}
 \title{Creates a new Amazon ElastiCache cache parameter group}
 \usage{
-elasticache_create_cache_parameter_group(CacheParameterGroupName,
-  CacheParameterGroupFamily, Description)
+elasticache_create_cache_parameter_group(
+  CacheParameterGroupName,
+  CacheParameterGroupFamily,
+  Description,
+  Tags = NULL
+)
 }
 \arguments{
 \item{CacheParameterGroupName}{[required] A user-specified name for the cache parameter group.}
@@ -15,46 +19,16 @@ group can be used with.
 
 Valid values are: \code{memcached1.4} | \code{memcached1.5} | \code{memcached1.6} |
 \code{redis2.6} | \code{redis2.8} | \code{redis3.2} | \code{redis4.0} | \code{redis5.0} |
-\code{redis6.x} |}
+\code{redis6.x}}
 
 \item{Description}{[required] A user-specified description for the cache parameter group.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CacheParameterGroup = list(
-    CacheParameterGroupName = "string",
-    CacheParameterGroupFamily = "string",
-    Description = "string",
-    IsGlobal = TRUE|FALSE,
-    ARN = "string"
-  )
-)
-}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
-Creates a new Amazon ElastiCache cache parameter group. An ElastiCache
-cache parameter group is a collection of parameters and their values
-that are applied to all of the nodes in any cluster or replication group
-using the CacheParameterGroup.
+Creates a new Amazon ElastiCache cache parameter group. An ElastiCache cache parameter group is a collection of parameters and their values that are applied to all of the nodes in any cluster or replication group using the CacheParameterGroup.
 
-A newly created CacheParameterGroup is an exact duplicate of the default
-parameter group for the CacheParameterGroupFamily. To customize the
-newly created CacheParameterGroup you can change the values of specific
-parameters. For more information, see:
-\itemize{
-\item \code{\link[=elasticache_modify_cache_parameter_group]{modify_cache_parameter_group}}
-in the ElastiCache API Reference.
-\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html}{Parameters and Parameter Groups}
-in the ElastiCache User Guide.
+See \url{https://paws-r.github.io/docs/elasticache/create_cache_parameter_group.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$create_cache_parameter_group(
-  CacheParameterGroupName = "string",
-  CacheParameterGroupFamily = "string",
-  Description = "string"
-)
-}
-}
-
 \keyword{internal}

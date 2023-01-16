@@ -24,10 +24,11 @@ NULL
 #' underscores are allowed.
 #' @param gatewayRouteName &#91;required&#93; The name to use for the gateway route.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the gateway route in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The gateway route specification to apply.
 #' @param tags Optional metadata that you can apply to the gateway route to assist with
@@ -62,6 +63,11 @@ NULL
 #'     spec = list(
 #'       grpcRoute = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -69,11 +75,43 @@ NULL
 #'           )
 #'         ),
 #'         match = list(
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           metadata = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           serviceName = "string"
 #'         )
 #'       ),
 #'       http2Route = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             ),
+#'             path = list(
+#'               exact = "string"
+#'             ),
+#'             prefix = list(
+#'               defaultPrefix = "ENABLED"|"DISABLED",
+#'               value = "string"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -81,11 +119,56 @@ NULL
 #'           )
 #'         ),
 #'         match = list(
-#'           prefix = "string"
+#'           headers = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
+#'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       httpRoute = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             ),
+#'             path = list(
+#'               exact = "string"
+#'             ),
+#'             prefix = list(
+#'               defaultPrefix = "ENABLED"|"DISABLED",
+#'               value = "string"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -93,9 +176,43 @@ NULL
 #'           )
 #'         ),
 #'         match = list(
-#'           prefix = "string"
+#'           headers = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
+#'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       priority = 123
 #'     ),
 #'     status = list(
 #'       status = "ACTIVE"|"INACTIVE"|"DELETED"
@@ -115,6 +232,11 @@ NULL
 #'   spec = list(
 #'     grpcRoute = list(
 #'       action = list(
+#'         rewrite = list(
+#'           hostname = list(
+#'             defaultTargetHostname = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
 #'         target = list(
 #'           virtualService = list(
 #'             virtualServiceName = "string"
@@ -122,11 +244,43 @@ NULL
 #'         )
 #'       ),
 #'       match = list(
+#'         hostname = list(
+#'           exact = "string",
+#'           suffix = "string"
+#'         ),
+#'         metadata = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
 #'         serviceName = "string"
 #'       )
 #'     ),
 #'     http2Route = list(
 #'       action = list(
+#'         rewrite = list(
+#'           hostname = list(
+#'             defaultTargetHostname = "ENABLED"|"DISABLED"
+#'           ),
+#'           path = list(
+#'             exact = "string"
+#'           ),
+#'           prefix = list(
+#'             defaultPrefix = "ENABLED"|"DISABLED",
+#'             value = "string"
+#'           )
+#'         ),
 #'         target = list(
 #'           virtualService = list(
 #'             virtualServiceName = "string"
@@ -134,11 +288,56 @@ NULL
 #'         )
 #'       ),
 #'       match = list(
-#'         prefix = "string"
+#'         headers = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         hostname = list(
+#'           exact = "string",
+#'           suffix = "string"
+#'         ),
+#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'         path = list(
+#'           exact = "string",
+#'           regex = "string"
+#'         ),
+#'         prefix = "string",
+#'         queryParameters = list(
+#'           list(
+#'             match = list(
+#'               exact = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     httpRoute = list(
 #'       action = list(
+#'         rewrite = list(
+#'           hostname = list(
+#'             defaultTargetHostname = "ENABLED"|"DISABLED"
+#'           ),
+#'           path = list(
+#'             exact = "string"
+#'           ),
+#'           prefix = list(
+#'             defaultPrefix = "ENABLED"|"DISABLED",
+#'             value = "string"
+#'           )
+#'         ),
 #'         target = list(
 #'           virtualService = list(
 #'             virtualServiceName = "string"
@@ -146,9 +345,43 @@ NULL
 #'         )
 #'       ),
 #'       match = list(
-#'         prefix = "string"
+#'         headers = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         hostname = list(
+#'           exact = "string",
+#'           suffix = "string"
+#'         ),
+#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'         path = list(
+#'           exact = "string",
+#'           regex = "string"
+#'         ),
+#'         prefix = "string",
+#'         queryParameters = list(
+#'           list(
+#'             match = list(
+#'               exact = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         )
 #'       )
-#'     )
+#'     ),
+#'     priority = 123
 #'   ),
 #'   tags = list(
 #'     list(
@@ -230,6 +463,9 @@ appmesh_create_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #'     spec = list(
 #'       egressFilter = list(
 #'         type = "ALLOW_ALL"|"DROP_ALL"
+#'       ),
+#'       serviceDiscovery = list(
+#'         ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY"
 #'       )
 #'     ),
 #'     status = list(
@@ -247,6 +483,9 @@ appmesh_create_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #'   spec = list(
 #'     egressFilter = list(
 #'       type = "ALLOW_ALL"|"DROP_ALL"
+#'     ),
+#'     serviceDiscovery = list(
+#'       ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY"
 #'     )
 #'   ),
 #'   tags = list(
@@ -297,10 +536,11 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the route in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name to use for the route.
 #' @param spec &#91;required&#93; The route specification to apply.
@@ -417,7 +657,19 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'             )
 #'           ),
 #'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
 #'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           scheme = "http"|"https"
 #'         ),
 #'         retryPolicy = list(
@@ -471,7 +723,19 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'             )
 #'           ),
 #'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
 #'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           scheme = "http"|"https"
 #'         ),
 #'         retryPolicy = list(
@@ -615,7 +879,19 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'           )
 #'         ),
 #'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'         path = list(
+#'           exact = "string",
+#'           regex = "string"
+#'         ),
 #'         prefix = "string",
+#'         queryParameters = list(
+#'           list(
+#'             match = list(
+#'               exact = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
 #'         scheme = "http"|"https"
 #'       ),
 #'       retryPolicy = list(
@@ -669,7 +945,19 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'           )
 #'         ),
 #'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'         path = list(
+#'           exact = "string",
+#'           regex = "string"
+#'         ),
 #'         prefix = "string",
+#'         queryParameters = list(
+#'           list(
+#'             match = list(
+#'               exact = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
 #'         scheme = "http"|"https"
 #'       ),
 #'       retryPolicy = list(
@@ -767,10 +1055,11 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual gateway in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual gateway specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual gateway to assist
@@ -803,11 +1092,27 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -816,6 +1121,9 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -857,9 +1165,29 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -889,11 +1217,27 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'     backendDefaults = list(
 #'       clientPolicy = list(
 #'         tls = list(
+#'           certificate = list(
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
+#'             )
+#'           ),
 #'           enforce = TRUE|FALSE,
 #'           ports = list(
 #'             123
 #'           ),
 #'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             trust = list(
 #'               acm = list(
 #'                 certificateAuthorityArns = list(
@@ -902,6 +1246,9 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'               ),
 #'               file = list(
 #'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             )
 #'           )
@@ -943,9 +1290,29 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'             file = list(
 #'               certificateChain = "string",
 #'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
 #'             )
 #'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             trust = list(
+#'               file = list(
+#'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1015,15 +1382,13 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' traces. You can override this behavior by setting the
 #' `APPMESH_RESOURCE_CLUSTER` environment variable with your own name.
 #' 
-#' AWS Cloud Map is not available in the eu-south-1 Region.
-#' 
 #' For more information about virtual nodes, see [Virtual
 #' nodes](https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_nodes.html).
 #' You must be using `1.15.0` or later of the Envoy image when setting
-#' these variables. For more information about App Mesh Envoy variables,
-#' see [Envoy
+#' these variables. For more information aboutApp Mesh Envoy variables, see
+#' [Envoy
 #' image](https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html)
-#' in the AWS App Mesh User Guide.
+#' in the App Mesh User Guide.
 #'
 #' @usage
 #' appmesh_create_virtual_node(clientToken, meshName, meshOwner, spec,
@@ -1033,10 +1398,11 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual node in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual node specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual node to assist with
@@ -1069,11 +1435,27 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -1082,6 +1464,9 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -1093,11 +1478,27 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'           virtualService = list(
 #'             clientPolicy = list(
 #'               tls = list(
+#'                 certificate = list(
+#'                   file = list(
+#'                     certificateChain = "string",
+#'                     privateKey = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
+#'                   )
+#'                 ),
 #'                 enforce = TRUE|FALSE,
 #'                 ports = list(
 #'                   123
 #'                 ),
 #'                 validation = list(
+#'                   subjectAlternativeNames = list(
+#'                     match = list(
+#'                       exact = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   ),
 #'                   trust = list(
 #'                     acm = list(
 #'                       certificateAuthorityArns = list(
@@ -1106,6 +1507,9 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                     ),
 #'                     file = list(
 #'                       certificateChain = "string"
+#'                     ),
+#'                     sds = list(
+#'                       secretName = "string"
 #'                     )
 #'                   )
 #'                 )
@@ -1203,9 +1607,29 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -1224,11 +1648,14 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               value = "string"
 #'             )
 #'           ),
+#'           ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
 #'           namespaceName = "string",
 #'           serviceName = "string"
 #'         ),
 #'         dns = list(
-#'           hostname = "string"
+#'           hostname = "string",
+#'           ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
+#'           responseType = "LOADBALANCER"|"ENDPOINTS"
 #'         )
 #'       )
 #'     ),
@@ -1250,11 +1677,27 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'     backendDefaults = list(
 #'       clientPolicy = list(
 #'         tls = list(
+#'           certificate = list(
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
+#'             )
+#'           ),
 #'           enforce = TRUE|FALSE,
 #'           ports = list(
 #'             123
 #'           ),
 #'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             trust = list(
 #'               acm = list(
 #'                 certificateAuthorityArns = list(
@@ -1263,6 +1706,9 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               ),
 #'               file = list(
 #'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             )
 #'           )
@@ -1274,11 +1720,27 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'         virtualService = list(
 #'           clientPolicy = list(
 #'             tls = list(
+#'               certificate = list(
+#'                 file = list(
+#'                   certificateChain = "string",
+#'                   privateKey = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               ),
 #'               enforce = TRUE|FALSE,
 #'               ports = list(
 #'                 123
 #'               ),
 #'               validation = list(
+#'                 subjectAlternativeNames = list(
+#'                   match = list(
+#'                     exact = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
 #'                 trust = list(
 #'                   acm = list(
 #'                     certificateAuthorityArns = list(
@@ -1287,6 +1749,9 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                   ),
 #'                   file = list(
 #'                     certificateChain = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
 #'                   )
 #'                 )
 #'               )
@@ -1384,9 +1849,29 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'             file = list(
 #'               certificateChain = "string",
 #'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
 #'             )
 #'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             trust = list(
+#'               file = list(
+#'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1405,11 +1890,14 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'             value = "string"
 #'           )
 #'         ),
+#'         ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
 #'         namespaceName = "string",
 #'         serviceName = "string"
 #'       ),
 #'       dns = list(
-#'         hostname = "string"
+#'         hostname = "string",
+#'         ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
+#'         responseType = "LOADBALANCER"|"ENDPOINTS"
 #'       )
 #'     )
 #'   ),
@@ -1466,10 +1954,11 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual router in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual router specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual router to assist
@@ -1585,10 +2074,11 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual service in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then the account that you specify must share the mesh with
-#' your account before you can create the resource in the service mesh. For
-#' more information about mesh sharing, see [Working with shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then the account that you specify must share
+#' the mesh with your account before you can create the resource in the
+#' service mesh. For more information about mesh sharing, see [Working with
+#' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual service specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual service to assist
@@ -1692,10 +2182,10 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to delete.
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the gateway route from.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to delete the route from.
 #'
@@ -1722,6 +2212,11 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'     spec = list(
 #'       grpcRoute = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -1729,11 +2224,43 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'           )
 #'         ),
 #'         match = list(
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           metadata = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           serviceName = "string"
 #'         )
 #'       ),
 #'       http2Route = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             ),
+#'             path = list(
+#'               exact = "string"
+#'             ),
+#'             prefix = list(
+#'               defaultPrefix = "ENABLED"|"DISABLED",
+#'               value = "string"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -1741,11 +2268,56 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'           )
 #'         ),
 #'         match = list(
-#'           prefix = "string"
+#'           headers = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
+#'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       httpRoute = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             ),
+#'             path = list(
+#'               exact = "string"
+#'             ),
+#'             prefix = list(
+#'               defaultPrefix = "ENABLED"|"DISABLED",
+#'               value = "string"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -1753,9 +2325,43 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'           )
 #'         ),
 #'         match = list(
-#'           prefix = "string"
+#'           headers = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
+#'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       priority = 123
 #'     ),
 #'     status = list(
 #'       status = "ACTIVE"|"INACTIVE"|"DELETED"
@@ -1831,6 +2437,9 @@ appmesh_delete_gateway_route <- function(gatewayRouteName, meshName, meshOwner =
 #'     spec = list(
 #'       egressFilter = list(
 #'         type = "ALLOW_ALL"|"DROP_ALL"
+#'       ),
+#'       serviceDiscovery = list(
+#'         ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY"
 #'       )
 #'     ),
 #'     status = list(
@@ -1876,10 +2485,10 @@ appmesh_delete_mesh <- function(meshName) {
 #' appmesh_delete_route(meshName, meshOwner, routeName, virtualRouterName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the route in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name of the route to delete.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to delete the route in.
@@ -1988,7 +2597,19 @@ appmesh_delete_mesh <- function(meshName) {
 #'             )
 #'           ),
 #'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
 #'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           scheme = "http"|"https"
 #'         ),
 #'         retryPolicy = list(
@@ -2042,7 +2663,19 @@ appmesh_delete_mesh <- function(meshName) {
 #'             )
 #'           ),
 #'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
 #'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           scheme = "http"|"https"
 #'         ),
 #'         retryPolicy = list(
@@ -2135,10 +2768,10 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #' appmesh_delete_virtual_gateway(meshName, meshOwner, virtualGatewayName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual gateway from.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to delete.
 #'
@@ -2165,11 +2798,27 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -2178,6 +2827,9 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -2219,9 +2871,29 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -2282,10 +2954,10 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #' appmesh_delete_virtual_node(meshName, meshOwner, virtualNodeName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual node in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to delete.
 #'
@@ -2312,11 +2984,27 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -2325,6 +3013,9 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -2336,11 +3027,27 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'           virtualService = list(
 #'             clientPolicy = list(
 #'               tls = list(
+#'                 certificate = list(
+#'                   file = list(
+#'                     certificateChain = "string",
+#'                     privateKey = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
+#'                   )
+#'                 ),
 #'                 enforce = TRUE|FALSE,
 #'                 ports = list(
 #'                   123
 #'                 ),
 #'                 validation = list(
+#'                   subjectAlternativeNames = list(
+#'                     match = list(
+#'                       exact = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   ),
 #'                   trust = list(
 #'                     acm = list(
 #'                       certificateAuthorityArns = list(
@@ -2349,6 +3056,9 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'                     ),
 #'                     file = list(
 #'                       certificateChain = "string"
+#'                     ),
+#'                     sds = list(
+#'                       secretName = "string"
 #'                     )
 #'                   )
 #'                 )
@@ -2446,9 +3156,29 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -2467,11 +3197,14 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'               value = "string"
 #'             )
 #'           ),
+#'           ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
 #'           namespaceName = "string",
 #'           serviceName = "string"
 #'         ),
 #'         dns = list(
-#'           hostname = "string"
+#'           hostname = "string",
+#'           ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
+#'           responseType = "LOADBALANCER"|"ENDPOINTS"
 #'         )
 #'       )
 #'     ),
@@ -2524,10 +3257,10 @@ appmesh_delete_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeN
 #' appmesh_delete_virtual_router(meshName, meshOwner, virtualRouterName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual router in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to delete.
 #'
@@ -2606,10 +3339,10 @@ appmesh_delete_virtual_router <- function(meshName, meshOwner = NULL, virtualRou
 #' appmesh_delete_virtual_service(meshName, meshOwner, virtualServiceName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual service in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualServiceName &#91;required&#93; The name of the virtual service to delete.
 #'
@@ -2690,10 +3423,10 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to describe.
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway that the gateway route is associated
 #' with.
@@ -2721,6 +3454,11 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'     spec = list(
 #'       grpcRoute = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -2728,11 +3466,43 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'           )
 #'         ),
 #'         match = list(
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           metadata = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           serviceName = "string"
 #'         )
 #'       ),
 #'       http2Route = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             ),
+#'             path = list(
+#'               exact = "string"
+#'             ),
+#'             prefix = list(
+#'               defaultPrefix = "ENABLED"|"DISABLED",
+#'               value = "string"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -2740,11 +3510,56 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'           )
 #'         ),
 #'         match = list(
-#'           prefix = "string"
+#'           headers = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
+#'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       httpRoute = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             ),
+#'             path = list(
+#'               exact = "string"
+#'             ),
+#'             prefix = list(
+#'               defaultPrefix = "ENABLED"|"DISABLED",
+#'               value = "string"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -2752,9 +3567,43 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'           )
 #'         ),
 #'         match = list(
-#'           prefix = "string"
+#'           headers = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
+#'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       priority = 123
 #'     ),
 #'     status = list(
 #'       status = "ACTIVE"|"INACTIVE"|"DELETED"
@@ -2803,10 +3652,10 @@ appmesh_describe_gateway_route <- function(gatewayRouteName, meshName, meshOwner
 #' appmesh_describe_mesh(meshName, meshOwner)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to describe.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #'
 #' @return
@@ -2831,6 +3680,9 @@ appmesh_describe_gateway_route <- function(gatewayRouteName, meshName, meshOwner
 #'     spec = list(
 #'       egressFilter = list(
 #'         type = "ALLOW_ALL"|"DROP_ALL"
+#'       ),
+#'       serviceDiscovery = list(
+#'         ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY"
 #'       )
 #'     ),
 #'     status = list(
@@ -2878,10 +3730,10 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'   virtualRouterName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name of the route to describe.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router that the route is associated with.
@@ -2990,7 +3842,19 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'             )
 #'           ),
 #'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
 #'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           scheme = "http"|"https"
 #'         ),
 #'         retryPolicy = list(
@@ -3044,7 +3908,19 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'             )
 #'           ),
 #'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
 #'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           scheme = "http"|"https"
 #'         ),
 #'         retryPolicy = list(
@@ -3137,10 +4013,10 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #'   virtualGatewayName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to describe.
 #'
@@ -3167,11 +4043,27 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -3180,6 +4072,9 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -3221,9 +4116,29 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -3281,10 +4196,10 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #' appmesh_describe_virtual_node(meshName, meshOwner, virtualNodeName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to describe.
 #'
@@ -3311,11 +4226,27 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -3324,6 +4255,9 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -3335,11 +4269,27 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'           virtualService = list(
 #'             clientPolicy = list(
 #'               tls = list(
+#'                 certificate = list(
+#'                   file = list(
+#'                     certificateChain = "string",
+#'                     privateKey = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
+#'                   )
+#'                 ),
 #'                 enforce = TRUE|FALSE,
 #'                 ports = list(
 #'                   123
 #'                 ),
 #'                 validation = list(
+#'                   subjectAlternativeNames = list(
+#'                     match = list(
+#'                       exact = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   ),
 #'                   trust = list(
 #'                     acm = list(
 #'                       certificateAuthorityArns = list(
@@ -3348,6 +4298,9 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'                     ),
 #'                     file = list(
 #'                       certificateChain = "string"
+#'                     ),
+#'                     sds = list(
+#'                       secretName = "string"
 #'                     )
 #'                   )
 #'                 )
@@ -3445,9 +4398,29 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -3466,11 +4439,14 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'               value = "string"
 #'             )
 #'           ),
+#'           ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
 #'           namespaceName = "string",
 #'           serviceName = "string"
 #'         ),
 #'         dns = list(
-#'           hostname = "string"
+#'           hostname = "string",
+#'           ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
+#'           responseType = "LOADBALANCER"|"ENDPOINTS"
 #'         )
 #'       )
 #'     ),
@@ -3520,10 +4496,10 @@ appmesh_describe_virtual_node <- function(meshName, meshOwner = NULL, virtualNod
 #' appmesh_describe_virtual_router(meshName, meshOwner, virtualRouterName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to describe.
 #'
@@ -3603,10 +4579,10 @@ appmesh_describe_virtual_router <- function(meshName, meshOwner = NULL, virtualR
 #'   virtualServiceName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualServiceName &#91;required&#93; The name of the virtual service to describe.
 #'
@@ -3699,10 +4675,10 @@ appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtual
 #' [`list_gateway_routes`][appmesh_list_gateway_routes] returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list gateway routes in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_gateway_routes`][appmesh_list_gateway_routes] request where
@@ -3864,10 +4840,10 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' don't use this parameter, [`list_routes`][appmesh_list_routes] returns
 #' up to 100 results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list routes in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_routes`][appmesh_list_routes] request where `limit` was used and
@@ -4023,10 +4999,10 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 #' [`list_virtual_gateways`][appmesh_list_virtual_gateways] returns up to
 #' 100 results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual gateways in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_virtual_gateways`][appmesh_list_virtual_gateways] request where
@@ -4108,10 +5084,10 @@ appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NU
 #' [`list_virtual_nodes`][appmesh_list_virtual_nodes] returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual nodes in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_virtual_nodes`][appmesh_list_virtual_nodes] request where `limit`
@@ -4193,10 +5169,10 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL,
 #' [`list_virtual_routers`][appmesh_list_virtual_routers] returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual routers in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_virtual_routers`][appmesh_list_virtual_routers] request where
@@ -4278,10 +5254,10 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NUL
 #' [`list_virtual_services`][appmesh_list_virtual_services] returns up to
 #' 100 results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual services in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_virtual_services`][appmesh_list_virtual_services] request where
@@ -4456,10 +5432,10 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #' underscores are allowed.
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to update.
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new gateway route specification to apply. This overwrites the
 #' existing data.
@@ -4489,6 +5465,11 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'     spec = list(
 #'       grpcRoute = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -4496,11 +5477,43 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'           )
 #'         ),
 #'         match = list(
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           metadata = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           serviceName = "string"
 #'         )
 #'       ),
 #'       http2Route = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             ),
+#'             path = list(
+#'               exact = "string"
+#'             ),
+#'             prefix = list(
+#'               defaultPrefix = "ENABLED"|"DISABLED",
+#'               value = "string"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -4508,11 +5521,56 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'           )
 #'         ),
 #'         match = list(
-#'           prefix = "string"
+#'           headers = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
+#'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       httpRoute = list(
 #'         action = list(
+#'           rewrite = list(
+#'             hostname = list(
+#'               defaultTargetHostname = "ENABLED"|"DISABLED"
+#'             ),
+#'             path = list(
+#'               exact = "string"
+#'             ),
+#'             prefix = list(
+#'               defaultPrefix = "ENABLED"|"DISABLED",
+#'               value = "string"
+#'             )
+#'           ),
 #'           target = list(
 #'             virtualService = list(
 #'               virtualServiceName = "string"
@@ -4520,9 +5578,43 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'           )
 #'         ),
 #'         match = list(
-#'           prefix = "string"
+#'           headers = list(
+#'             list(
+#'               invert = TRUE|FALSE,
+#'               match = list(
+#'                 exact = "string",
+#'                 prefix = "string",
+#'                 range = list(
+#'                   end = 123,
+#'                   start = 123
+#'                 ),
+#'                 regex = "string",
+#'                 suffix = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
+#'           hostname = list(
+#'             exact = "string",
+#'             suffix = "string"
+#'           ),
+#'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
+#'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       priority = 123
 #'     ),
 #'     status = list(
 #'       status = "ACTIVE"|"INACTIVE"|"DELETED"
@@ -4542,6 +5634,11 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'   spec = list(
 #'     grpcRoute = list(
 #'       action = list(
+#'         rewrite = list(
+#'           hostname = list(
+#'             defaultTargetHostname = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
 #'         target = list(
 #'           virtualService = list(
 #'             virtualServiceName = "string"
@@ -4549,11 +5646,43 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'         )
 #'       ),
 #'       match = list(
+#'         hostname = list(
+#'           exact = "string",
+#'           suffix = "string"
+#'         ),
+#'         metadata = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
 #'         serviceName = "string"
 #'       )
 #'     ),
 #'     http2Route = list(
 #'       action = list(
+#'         rewrite = list(
+#'           hostname = list(
+#'             defaultTargetHostname = "ENABLED"|"DISABLED"
+#'           ),
+#'           path = list(
+#'             exact = "string"
+#'           ),
+#'           prefix = list(
+#'             defaultPrefix = "ENABLED"|"DISABLED",
+#'             value = "string"
+#'           )
+#'         ),
 #'         target = list(
 #'           virtualService = list(
 #'             virtualServiceName = "string"
@@ -4561,11 +5690,56 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'         )
 #'       ),
 #'       match = list(
-#'         prefix = "string"
+#'         headers = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         hostname = list(
+#'           exact = "string",
+#'           suffix = "string"
+#'         ),
+#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'         path = list(
+#'           exact = "string",
+#'           regex = "string"
+#'         ),
+#'         prefix = "string",
+#'         queryParameters = list(
+#'           list(
+#'             match = list(
+#'               exact = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     httpRoute = list(
 #'       action = list(
+#'         rewrite = list(
+#'           hostname = list(
+#'             defaultTargetHostname = "ENABLED"|"DISABLED"
+#'           ),
+#'           path = list(
+#'             exact = "string"
+#'           ),
+#'           prefix = list(
+#'             defaultPrefix = "ENABLED"|"DISABLED",
+#'             value = "string"
+#'           )
+#'         ),
 #'         target = list(
 #'           virtualService = list(
 #'             virtualServiceName = "string"
@@ -4573,9 +5747,43 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'         )
 #'       ),
 #'       match = list(
-#'         prefix = "string"
+#'         headers = list(
+#'           list(
+#'             invert = TRUE|FALSE,
+#'             match = list(
+#'               exact = "string",
+#'               prefix = "string",
+#'               range = list(
+#'                 end = 123,
+#'                 start = 123
+#'               ),
+#'               regex = "string",
+#'               suffix = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
+#'         hostname = list(
+#'           exact = "string",
+#'           suffix = "string"
+#'         ),
+#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'         path = list(
+#'           exact = "string",
+#'           regex = "string"
+#'         ),
+#'         prefix = "string",
+#'         queryParameters = list(
+#'           list(
+#'             match = list(
+#'               exact = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         )
 #'       )
-#'     )
+#'     ),
+#'     priority = 123
 #'   ),
 #'   virtualGatewayName = "string"
 #' )
@@ -4637,6 +5845,9 @@ appmesh_update_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #'     spec = list(
 #'       egressFilter = list(
 #'         type = "ALLOW_ALL"|"DROP_ALL"
+#'       ),
+#'       serviceDiscovery = list(
+#'         ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY"
 #'       )
 #'     ),
 #'     status = list(
@@ -4654,6 +5865,9 @@ appmesh_update_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #'   spec = list(
 #'     egressFilter = list(
 #'       type = "ALLOW_ALL"|"DROP_ALL"
+#'     ),
+#'     serviceDiscovery = list(
+#'       ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY"
 #'     )
 #'   )
 #' )
@@ -4694,10 +5908,10 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name of the route to update.
 #' @param spec &#91;required&#93; The new route specification to apply. This overwrites the existing data.
@@ -4807,7 +6021,19 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'             )
 #'           ),
 #'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
 #'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           scheme = "http"|"https"
 #'         ),
 #'         retryPolicy = list(
@@ -4861,7 +6087,19 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'             )
 #'           ),
 #'           method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'           path = list(
+#'             exact = "string",
+#'             regex = "string"
+#'           ),
 #'           prefix = "string",
+#'           queryParameters = list(
+#'             list(
+#'               match = list(
+#'                 exact = "string"
+#'               ),
+#'               name = "string"
+#'             )
+#'           ),
 #'           scheme = "http"|"https"
 #'         ),
 #'         retryPolicy = list(
@@ -5005,7 +6243,19 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'           )
 #'         ),
 #'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'         path = list(
+#'           exact = "string",
+#'           regex = "string"
+#'         ),
 #'         prefix = "string",
+#'         queryParameters = list(
+#'           list(
+#'             match = list(
+#'               exact = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
 #'         scheme = "http"|"https"
 #'       ),
 #'       retryPolicy = list(
@@ -5059,7 +6309,19 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'           )
 #'         ),
 #'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
+#'         path = list(
+#'           exact = "string",
+#'           regex = "string"
+#'         ),
 #'         prefix = "string",
+#'         queryParameters = list(
+#'           list(
+#'             match = list(
+#'               exact = "string"
+#'             ),
+#'             name = "string"
+#'           )
+#'         ),
 #'         scheme = "http"|"https"
 #'       ),
 #'       retryPolicy = list(
@@ -5141,10 +6403,10 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual gateway resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual gateway specification to apply. This overwrites the
 #' existing data.
@@ -5173,11 +6435,27 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -5186,6 +6464,9 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -5227,9 +6508,29 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -5259,11 +6560,27 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'     backendDefaults = list(
 #'       clientPolicy = list(
 #'         tls = list(
+#'           certificate = list(
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
+#'             )
+#'           ),
 #'           enforce = TRUE|FALSE,
 #'           ports = list(
 #'             123
 #'           ),
 #'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             trust = list(
 #'               acm = list(
 #'                 certificateAuthorityArns = list(
@@ -5272,6 +6589,9 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'               ),
 #'               file = list(
 #'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             )
 #'           )
@@ -5313,9 +6633,29 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'             file = list(
 #'               certificateChain = "string",
 #'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
 #'             )
 #'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             trust = list(
+#'               file = list(
+#'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -5364,10 +6704,10 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual node specification to apply. This overwrites the
 #' existing data.
@@ -5396,11 +6736,27 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'       backendDefaults = list(
 #'         clientPolicy = list(
 #'           tls = list(
+#'             certificate = list(
+#'               file = list(
+#'                 certificateChain = "string",
+#'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             ),
 #'             enforce = TRUE|FALSE,
 #'             ports = list(
 #'               123
 #'             ),
 #'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
 #'               trust = list(
 #'                 acm = list(
 #'                   certificateAuthorityArns = list(
@@ -5409,6 +6765,9 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                 ),
 #'                 file = list(
 #'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
 #'                 )
 #'               )
 #'             )
@@ -5420,11 +6779,27 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'           virtualService = list(
 #'             clientPolicy = list(
 #'               tls = list(
+#'                 certificate = list(
+#'                   file = list(
+#'                     certificateChain = "string",
+#'                     privateKey = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
+#'                   )
+#'                 ),
 #'                 enforce = TRUE|FALSE,
 #'                 ports = list(
 #'                   123
 #'                 ),
 #'                 validation = list(
+#'                   subjectAlternativeNames = list(
+#'                     match = list(
+#'                       exact = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   ),
 #'                   trust = list(
 #'                     acm = list(
 #'                       certificateAuthorityArns = list(
@@ -5433,6 +6808,9 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                     ),
 #'                     file = list(
 #'                       certificateChain = "string"
+#'                     ),
+#'                     sds = list(
+#'                       secretName = "string"
 #'                     )
 #'                   )
 #'                 )
@@ -5530,9 +6908,29 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               file = list(
 #'                 certificateChain = "string",
 #'                 privateKey = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             ),
-#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'             mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'             validation = list(
+#'               subjectAlternativeNames = list(
+#'                 match = list(
+#'                   exact = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               trust = list(
+#'                 file = list(
+#'                   certificateChain = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -5551,11 +6949,14 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               value = "string"
 #'             )
 #'           ),
+#'           ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
 #'           namespaceName = "string",
 #'           serviceName = "string"
 #'         ),
 #'         dns = list(
-#'           hostname = "string"
+#'           hostname = "string",
+#'           ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
+#'           responseType = "LOADBALANCER"|"ENDPOINTS"
 #'         )
 #'       )
 #'     ),
@@ -5577,11 +6978,27 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'     backendDefaults = list(
 #'       clientPolicy = list(
 #'         tls = list(
+#'           certificate = list(
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
+#'             )
+#'           ),
 #'           enforce = TRUE|FALSE,
 #'           ports = list(
 #'             123
 #'           ),
 #'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             trust = list(
 #'               acm = list(
 #'                 certificateAuthorityArns = list(
@@ -5590,6 +7007,9 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               ),
 #'               file = list(
 #'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
 #'               )
 #'             )
 #'           )
@@ -5601,11 +7021,27 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'         virtualService = list(
 #'           clientPolicy = list(
 #'             tls = list(
+#'               certificate = list(
+#'                 file = list(
+#'                   certificateChain = "string",
+#'                   privateKey = "string"
+#'                 ),
+#'                 sds = list(
+#'                   secretName = "string"
+#'                 )
+#'               ),
 #'               enforce = TRUE|FALSE,
 #'               ports = list(
 #'                 123
 #'               ),
 #'               validation = list(
+#'                 subjectAlternativeNames = list(
+#'                   match = list(
+#'                     exact = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
 #'                 trust = list(
 #'                   acm = list(
 #'                     certificateAuthorityArns = list(
@@ -5614,6 +7050,9 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'                   ),
 #'                   file = list(
 #'                     certificateChain = "string"
+#'                   ),
+#'                   sds = list(
+#'                     secretName = "string"
 #'                   )
 #'                 )
 #'               )
@@ -5711,9 +7150,29 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'             file = list(
 #'               certificateChain = "string",
 #'               privateKey = "string"
+#'             ),
+#'             sds = list(
+#'               secretName = "string"
 #'             )
 #'           ),
-#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED",
+#'           validation = list(
+#'             subjectAlternativeNames = list(
+#'               match = list(
+#'                 exact = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             trust = list(
+#'               file = list(
+#'                 certificateChain = "string"
+#'               ),
+#'               sds = list(
+#'                 secretName = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -5732,11 +7191,14 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'             value = "string"
 #'           )
 #'         ),
+#'         ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
 #'         namespaceName = "string",
 #'         serviceName = "string"
 #'       ),
 #'       dns = list(
-#'         hostname = "string"
+#'         hostname = "string",
+#'         ipPreference = "IPv6_PREFERRED"|"IPv4_PREFERRED"|"IPv4_ONLY"|"IPv6_ONLY",
+#'         responseType = "LOADBALANCER"|"ENDPOINTS"
 #'       )
 #'     )
 #'   ),
@@ -5777,10 +7239,10 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual router specification to apply. This overwrites the
 #' existing data.
@@ -5876,10 +7338,10 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
-#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it's the ID of the account that shared the mesh with
-#' your account. For more information about mesh sharing, see [Working with
-#' shared
+#' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
+#' account ID is not your own, then it's the ID of the account that shared
+#' the mesh with your account. For more information about mesh sharing, see
+#' [Working with shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual service specification to apply. This overwrites the
 #' existing data.

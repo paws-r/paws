@@ -4,7 +4,7 @@
 \alias{cloudfront_get_realtime_log_config}
 \title{Gets a real-time log configuration}
 \usage{
-cloudfront_get_realtime_log_config(Name, ARN)
+cloudfront_get_realtime_log_config(Name = NULL, ARN = NULL)
 }
 \arguments{
 \item{Name}{The name of the real-time log configuration to get.}
@@ -12,42 +12,9 @@ cloudfront_get_realtime_log_config(Name, ARN)
 \item{ARN}{The Amazon Resource Name (ARN) of the real-time log configuration to
 get.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RealtimeLogConfig = list(
-    ARN = "string",
-    Name = "string",
-    SamplingRate = 123,
-    EndPoints = list(
-      list(
-        StreamType = "string",
-        KinesisStreamConfig = list(
-          RoleARN = "string",
-          StreamARN = "string"
-        )
-      )
-    ),
-    Fields = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Gets a real-time log configuration.
 
-To get a real-time log configuration, you can provide the
-configuration’s name or its Amazon Resource Name (ARN). You must provide
-at least one. If you provide both, CloudFront uses the name to identify
-the real-time log configuration to get.
+See \url{https://paws-r.github.io/docs/cloudfront/get_realtime_log_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_realtime_log_config(
-  Name = "string",
-  ARN = "string"
-)
-}
-}
-
 \keyword{internal}

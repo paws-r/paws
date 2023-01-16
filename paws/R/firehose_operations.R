@@ -92,8 +92,10 @@ NULL
 #'   KinesisStreamSourceConfiguration,
 #'   DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration,
 #'   ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration,
-#'   ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration,
-#'   HttpEndpointDestinationConfiguration, Tags)
+#'   ElasticsearchDestinationConfiguration,
+#'   AmazonopensearchserviceDestinationConfiguration,
+#'   SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration,
+#'   Tags)
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream. This name must be unique per AWS
 #' account in the same AWS Region. If the delivery streams are in different
@@ -119,6 +121,7 @@ NULL
 #' @param RedshiftDestinationConfiguration The destination in Amazon Redshift. You can specify only one
 #' destination.
 #' @param ElasticsearchDestinationConfiguration The destination in Amazon ES. You can specify only one destination.
+#' @param AmazonopensearchserviceDestinationConfiguration 
 #' @param SplunkDestinationConfiguration The destination in Splunk. You can specify only one destination.
 #' @param HttpEndpointDestinationConfiguration Enables configuring Kinesis Firehose to deliver data to any HTTP
 #' endpoint destination. You can specify only one destination.
@@ -200,10 +203,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "Lambda",
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -285,6 +288,12 @@ NULL
 #'         )
 #'       ),
 #'       Enabled = TRUE|FALSE
+#'     ),
+#'     DynamicPartitioningConfiguration = list(
+#'       RetryOptions = list(
+#'         DurationInSeconds = 123
+#'       ),
+#'       Enabled = TRUE|FALSE
 #'     )
 #'   ),
 #'   RedshiftDestinationConfiguration = list(
@@ -326,10 +335,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "Lambda",
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -406,10 +415,76 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "Lambda",
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
+#'               ParameterValue = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CloudWatchLoggingOptions = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamName = "string"
+#'     ),
+#'     VpcConfiguration = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       RoleARN = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   AmazonopensearchserviceDestinationConfiguration = list(
+#'     RoleARN = "string",
+#'     DomainARN = "string",
+#'     ClusterEndpoint = "string",
+#'     IndexName = "string",
+#'     TypeName = "string",
+#'     IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",
+#'     BufferingHints = list(
+#'       IntervalInSeconds = 123,
+#'       SizeInMBs = 123
+#'     ),
+#'     RetryOptions = list(
+#'       DurationInSeconds = 123
+#'     ),
+#'     S3BackupMode = "FailedDocumentsOnly"|"AllDocuments",
+#'     S3Configuration = list(
+#'       RoleARN = "string",
+#'       BucketARN = "string",
+#'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
+#'       BufferingHints = list(
+#'         SizeInMBs = 123,
+#'         IntervalInSeconds = 123
+#'       ),
+#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'       EncryptionConfiguration = list(
+#'         NoEncryptionConfig = "NoEncryption",
+#'         KMSEncryptionConfig = list(
+#'           AWSKMSKeyARN = "string"
+#'         )
+#'       ),
+#'       CloudWatchLoggingOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     ),
+#'     ProcessingConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       Processors = list(
+#'         list(
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Parameters = list(
+#'             list(
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -466,10 +541,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "Lambda",
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -510,10 +585,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "Lambda",
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -560,14 +635,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname firehose_create_delivery_stream
-firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL) {
+firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags)
+  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config)
@@ -760,10 +835,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "Lambda",
+#'                 Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -845,6 +920,12 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'               )
 #'             ),
 #'             Enabled = TRUE|FALSE
+#'           ),
+#'           DynamicPartitioningConfiguration = list(
+#'             RetryOptions = list(
+#'               DurationInSeconds = 123
+#'             ),
+#'             Enabled = TRUE|FALSE
 #'           )
 #'         ),
 #'         RedshiftDestinationDescription = list(
@@ -885,10 +966,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "Lambda",
+#'                 Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -965,10 +1046,77 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "Lambda",
+#'                 Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
+#'                     ParameterValue = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           CloudWatchLoggingOptions = list(
+#'             Enabled = TRUE|FALSE,
+#'             LogGroupName = "string",
+#'             LogStreamName = "string"
+#'           ),
+#'           VpcConfigurationDescription = list(
+#'             SubnetIds = list(
+#'               "string"
+#'             ),
+#'             RoleARN = "string",
+#'             SecurityGroupIds = list(
+#'               "string"
+#'             ),
+#'             VpcId = "string"
+#'           )
+#'         ),
+#'         AmazonopensearchserviceDestinationDescription = list(
+#'           RoleARN = "string",
+#'           DomainARN = "string",
+#'           ClusterEndpoint = "string",
+#'           IndexName = "string",
+#'           TypeName = "string",
+#'           IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",
+#'           BufferingHints = list(
+#'             IntervalInSeconds = 123,
+#'             SizeInMBs = 123
+#'           ),
+#'           RetryOptions = list(
+#'             DurationInSeconds = 123
+#'           ),
+#'           S3BackupMode = "FailedDocumentsOnly"|"AllDocuments",
+#'           S3DestinationDescription = list(
+#'             RoleARN = "string",
+#'             BucketARN = "string",
+#'             Prefix = "string",
+#'             ErrorOutputPrefix = "string",
+#'             BufferingHints = list(
+#'               SizeInMBs = 123,
+#'               IntervalInSeconds = 123
+#'             ),
+#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'             EncryptionConfiguration = list(
+#'               NoEncryptionConfig = "NoEncryption",
+#'               KMSEncryptionConfig = list(
+#'                 AWSKMSKeyARN = "string"
+#'               )
+#'             ),
+#'             CloudWatchLoggingOptions = list(
+#'               Enabled = TRUE|FALSE,
+#'               LogGroupName = "string",
+#'               LogStreamName = "string"
+#'             )
+#'           ),
+#'           ProcessingConfiguration = list(
+#'             Enabled = TRUE|FALSE,
+#'             Processors = list(
+#'               list(
+#'                 Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'                 Parameters = list(
+#'                   list(
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -1026,10 +1174,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "Lambda",
+#'                 Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -1069,10 +1217,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "Lambda",
+#'                 Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -1301,13 +1449,13 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' 
 #' You must specify the name of the delivery stream and the data record
 #' when using [`put_record`][firehose_put_record]. The data record consists
-#' of a data blob that can be up to 1,000 KB in size, and any kind of data.
-#' For example, it can be a segment from a log file, geographic location
-#' data, website clickstream data, and so on.
+#' of a data blob that can be up to 1,000 KiB in size, and any kind of
+#' data. For example, it can be a segment from a log file, geographic
+#' location data, website clickstream data, and so on.
 #' 
 #' Kinesis Data Firehose buffers records before delivering them to the
 #' destination. To disambiguate the data blobs at the destination, a common
-#' solution is to use delimiters in the data, such as a newline (`\n`) or
+#' solution is to use delimiters in the data, such as a newline (`\\n`) or
 #' some other character unique within the data. This allows the consumer
 #' application to parse individual data items when reading the data from
 #' the destination.
@@ -1391,7 +1539,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' 
 #' Each [`put_record_batch`][firehose_put_record_batch] request supports up
 #' to 500 records. Each record in the request can be as large as 1,000 KB
-#' (before 64-bit encoding), up to a limit of 4 MB for the entire request.
+#' (before base64 encoding), up to a limit of 4 MB for the entire request.
 #' These limits cannot be changed.
 #' 
 #' You must specify the name of the delivery stream and the data record
@@ -1402,7 +1550,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' 
 #' Kinesis Data Firehose buffers records before delivering them to the
 #' destination. To disambiguate the data blobs at the destination, a common
-#' solution is to use delimiters in the data, such as a newline (`\n`) or
+#' solution is to use delimiters in the data, such as a newline (`\\n`) or
 #' some other character unique within the data. This allows the consumer
 #' application to parse individual data items when reading the data from
 #' the destination.
@@ -1827,7 +1975,8 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' firehose_update_destination(DeliveryStreamName,
 #'   CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate,
 #'   ExtendedS3DestinationUpdate, RedshiftDestinationUpdate,
-#'   ElasticsearchDestinationUpdate, SplunkDestinationUpdate,
+#'   ElasticsearchDestinationUpdate,
+#'   AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate,
 #'   HttpEndpointDestinationUpdate)
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
@@ -1843,6 +1992,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @param ExtendedS3DestinationUpdate Describes an update for a destination in Amazon S3.
 #' @param RedshiftDestinationUpdate Describes an update for a destination in Amazon Redshift.
 #' @param ElasticsearchDestinationUpdate Describes an update for a destination in Amazon ES.
+#' @param AmazonopensearchserviceDestinationUpdate 
 #' @param SplunkDestinationUpdate Describes an update for a destination in Splunk.
 #' @param HttpEndpointDestinationUpdate Describes an update to the specified HTTP endpoint destination.
 #'
@@ -1902,10 +2052,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "Lambda",
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -1987,6 +2137,12 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'         )
 #'       ),
 #'       Enabled = TRUE|FALSE
+#'     ),
+#'     DynamicPartitioningConfiguration = list(
+#'       RetryOptions = list(
+#'         DurationInSeconds = 123
+#'       ),
+#'       Enabled = TRUE|FALSE
 #'     )
 #'   ),
 #'   RedshiftDestinationUpdate = list(
@@ -2028,10 +2184,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "Lambda",
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2107,10 +2263,66 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "Lambda",
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
+#'               ParameterValue = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CloudWatchLoggingOptions = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamName = "string"
+#'     )
+#'   ),
+#'   AmazonopensearchserviceDestinationUpdate = list(
+#'     RoleARN = "string",
+#'     DomainARN = "string",
+#'     ClusterEndpoint = "string",
+#'     IndexName = "string",
+#'     TypeName = "string",
+#'     IndexRotationPeriod = "NoRotation"|"OneHour"|"OneDay"|"OneWeek"|"OneMonth",
+#'     BufferingHints = list(
+#'       IntervalInSeconds = 123,
+#'       SizeInMBs = 123
+#'     ),
+#'     RetryOptions = list(
+#'       DurationInSeconds = 123
+#'     ),
+#'     S3Update = list(
+#'       RoleARN = "string",
+#'       BucketARN = "string",
+#'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
+#'       BufferingHints = list(
+#'         SizeInMBs = 123,
+#'         IntervalInSeconds = 123
+#'       ),
+#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'       EncryptionConfiguration = list(
+#'         NoEncryptionConfig = "NoEncryption",
+#'         KMSEncryptionConfig = list(
+#'           AWSKMSKeyARN = "string"
+#'         )
+#'       ),
+#'       CloudWatchLoggingOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     ),
+#'     ProcessingConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       Processors = list(
+#'         list(
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Parameters = list(
+#'             list(
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2158,10 +2370,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "Lambda",
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2202,10 +2414,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "Lambda",
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2246,14 +2458,14 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname firehose_update_destination
-firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL) {
+firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, AmazonopensearchserviceDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL) {
   op <- new_operation(
     name = "UpdateDestination",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate)
+  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, AmazonopensearchserviceDestinationUpdate = AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate)
   output <- .firehose$update_destination_output()
   config <- get_config()
   svc <- .firehose$service(config)

@@ -9,20 +9,9 @@ worklink_describe_device_policy_configuration(FleetArn)
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeviceCaCertificate = "string"
-)
-}
-}
 \description{
 Describes the device policy configuration for the specified fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_device_policy_configuration(
-  FleetArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/describe_device_policy_configuration.html} for full documentation.
+}
 \keyword{internal}

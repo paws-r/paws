@@ -7,7 +7,19 @@
 comprehend(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -22,7 +34,9 @@ your documents, the topics they discuss, the predominant sentiment
 expressed in them, the predominant language used, and more.
 }
 \section{Service syntax}{
-\preformatted{svc <- comprehend(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- comprehend(
   config = list(
     credentials = list(
       creds = list(
@@ -30,78 +44,93 @@ expressed in them, the predominant language used, and more.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=comprehend_batch_detect_dominant_language]{batch_detect_dominant_language} \tab Determines the dominant language of the input text for a batch of documents\cr
-\link[=comprehend_batch_detect_entities]{batch_detect_entities} \tab Inspects the text of a batch of documents for named entities and returns information about them\cr
-\link[=comprehend_batch_detect_key_phrases]{batch_detect_key_phrases} \tab Detects the key noun phrases found in a batch of documents\cr
-\link[=comprehend_batch_detect_sentiment]{batch_detect_sentiment} \tab Inspects a batch of documents and returns an inference of the prevailing sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one\cr
-\link[=comprehend_batch_detect_syntax]{batch_detect_syntax} \tab Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them\cr
-\link[=comprehend_classify_document]{classify_document} \tab Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint\cr
-\link[=comprehend_create_document_classifier]{create_document_classifier} \tab Creates a new document classifier that you can use to categorize documents\cr
-\link[=comprehend_create_endpoint]{create_endpoint} \tab Creates a model-specific endpoint for synchronous inference for a previously trained custom model\cr
-\link[=comprehend_create_entity_recognizer]{create_entity_recognizer} \tab Creates an entity recognizer using submitted files\cr
-\link[=comprehend_delete_document_classifier]{delete_document_classifier} \tab Deletes a previously created document classifier\cr
-\link[=comprehend_delete_endpoint]{delete_endpoint} \tab Deletes a model-specific endpoint for a previously-trained custom model\cr
-\link[=comprehend_delete_entity_recognizer]{delete_entity_recognizer} \tab Deletes an entity recognizer\cr
-\link[=comprehend_describe_document_classification_job]{describe_document_classification_job} \tab Gets the properties associated with a document classification job\cr
-\link[=comprehend_describe_document_classifier]{describe_document_classifier} \tab Gets the properties associated with a document classifier\cr
-\link[=comprehend_describe_dominant_language_detection_job]{describe_dominant_language_detection_job} \tab Gets the properties associated with a dominant language detection job\cr
-\link[=comprehend_describe_endpoint]{describe_endpoint} \tab Gets the properties associated with a specific endpoint\cr
-\link[=comprehend_describe_entities_detection_job]{describe_entities_detection_job} \tab Gets the properties associated with an entities detection job\cr
-\link[=comprehend_describe_entity_recognizer]{describe_entity_recognizer} \tab Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on\cr
-\link[=comprehend_describe_events_detection_job]{describe_events_detection_job} \tab Gets the status and details of an events detection job\cr
-\link[=comprehend_describe_key_phrases_detection_job]{describe_key_phrases_detection_job} \tab Gets the properties associated with a key phrases detection job\cr
-\link[=comprehend_describe_pii_entities_detection_job]{describe_pii_entities_detection_job} \tab Gets the properties associated with a PII entities detection job\cr
-\link[=comprehend_describe_sentiment_detection_job]{describe_sentiment_detection_job} \tab Gets the properties associated with a sentiment detection job\cr
-\link[=comprehend_describe_topics_detection_job]{describe_topics_detection_job} \tab Gets the properties associated with a topic detection job\cr
-\link[=comprehend_detect_dominant_language]{detect_dominant_language} \tab Determines the dominant language of the input text\cr
-\link[=comprehend_detect_entities]{detect_entities} \tab Inspects text for named entities, and returns information about them\cr
-\link[=comprehend_detect_key_phrases]{detect_key_phrases} \tab Detects the key noun phrases found in the text\cr
-\link[=comprehend_detect_pii_entities]{detect_pii_entities} \tab Inspects the input text for entities that contain personally identifiable information (PII) and returns information about them\cr
-\link[=comprehend_detect_sentiment]{detect_sentiment} \tab Inspects text and returns an inference of the prevailing sentiment (POSITIVE, NEUTRAL, MIXED, or NEGATIVE)\cr
-\link[=comprehend_detect_syntax]{detect_syntax} \tab Inspects text for syntax and the part of speech of words in the document\cr
-\link[=comprehend_list_document_classification_jobs]{list_document_classification_jobs} \tab Gets a list of the documentation classification jobs that you have submitted\cr
-\link[=comprehend_list_document_classifiers]{list_document_classifiers} \tab Gets a list of the document classifiers that you have created\cr
-\link[=comprehend_list_dominant_language_detection_jobs]{list_dominant_language_detection_jobs} \tab Gets a list of the dominant language detection jobs that you have submitted\cr
-\link[=comprehend_list_endpoints]{list_endpoints} \tab Gets a list of all existing endpoints that you've created\cr
-\link[=comprehend_list_entities_detection_jobs]{list_entities_detection_jobs} \tab Gets a list of the entity detection jobs that you have submitted\cr
-\link[=comprehend_list_entity_recognizers]{list_entity_recognizers} \tab Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training\cr
-\link[=comprehend_list_events_detection_jobs]{list_events_detection_jobs} \tab Gets a list of the events detection jobs that you have submitted\cr
-\link[=comprehend_list_key_phrases_detection_jobs]{list_key_phrases_detection_jobs} \tab Get a list of key phrase detection jobs that you have submitted\cr
-\link[=comprehend_list_pii_entities_detection_jobs]{list_pii_entities_detection_jobs} \tab Gets a list of the PII entity detection jobs that you have submitted\cr
-\link[=comprehend_list_sentiment_detection_jobs]{list_sentiment_detection_jobs} \tab Gets a list of sentiment detection jobs that you have submitted\cr
-\link[=comprehend_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags associated with a given Amazon Comprehend resource\cr
-\link[=comprehend_list_topics_detection_jobs]{list_topics_detection_jobs} \tab Gets a list of the topic detection jobs that you have submitted\cr
-\link[=comprehend_start_document_classification_job]{start_document_classification_job} \tab Starts an asynchronous document classification job\cr
-\link[=comprehend_start_dominant_language_detection_job]{start_dominant_language_detection_job} \tab Starts an asynchronous dominant language detection job for a collection of documents\cr
-\link[=comprehend_start_entities_detection_job]{start_entities_detection_job} \tab Starts an asynchronous entity detection job for a collection of documents\cr
-\link[=comprehend_start_events_detection_job]{start_events_detection_job} \tab Starts an asynchronous event detection job for a collection of documents\cr
-\link[=comprehend_start_key_phrases_detection_job]{start_key_phrases_detection_job} \tab Starts an asynchronous key phrase detection job for a collection of documents\cr
-\link[=comprehend_start_pii_entities_detection_job]{start_pii_entities_detection_job} \tab Starts an asynchronous PII entity detection job for a collection of documents\cr
-\link[=comprehend_start_sentiment_detection_job]{start_sentiment_detection_job} \tab Starts an asynchronous sentiment detection job for a collection of documents\cr
-\link[=comprehend_start_topics_detection_job]{start_topics_detection_job} \tab Starts an asynchronous topic detection job\cr
-\link[=comprehend_stop_dominant_language_detection_job]{stop_dominant_language_detection_job} \tab Stops a dominant language detection job in progress\cr
-\link[=comprehend_stop_entities_detection_job]{stop_entities_detection_job} \tab Stops an entities detection job in progress\cr
-\link[=comprehend_stop_events_detection_job]{stop_events_detection_job} \tab Stops an events detection job in progress\cr
-\link[=comprehend_stop_key_phrases_detection_job]{stop_key_phrases_detection_job} \tab Stops a key phrases detection job in progress\cr
-\link[=comprehend_stop_pii_entities_detection_job]{stop_pii_entities_detection_job} \tab Stops a PII entities detection job in progress\cr
-\link[=comprehend_stop_sentiment_detection_job]{stop_sentiment_detection_job} \tab Stops a sentiment detection job in progress\cr
-\link[=comprehend_stop_training_document_classifier]{stop_training_document_classifier} \tab Stops a document classifier training job while in progress\cr
-\link[=comprehend_stop_training_entity_recognizer]{stop_training_entity_recognizer} \tab Stops an entity recognizer training job while in progress\cr
-\link[=comprehend_tag_resource]{tag_resource} \tab Associates a specific tag with an Amazon Comprehend resource\cr
-\link[=comprehend_untag_resource]{untag_resource} \tab Removes a specific tag associated with an Amazon Comprehend resource\cr
-\link[=comprehend_update_endpoint]{update_endpoint} \tab Updates information about the specified endpoint
+\link[paws.machine.learning:comprehend_batch_detect_dominant_language]{batch_detect_dominant_language} \tab Determines the dominant language of the input text for a batch of documents\cr
+\link[paws.machine.learning:comprehend_batch_detect_entities]{batch_detect_entities} \tab Inspects the text of a batch of documents for named entities and returns information about them\cr
+\link[paws.machine.learning:comprehend_batch_detect_key_phrases]{batch_detect_key_phrases} \tab Detects the key noun phrases found in a batch of documents\cr
+\link[paws.machine.learning:comprehend_batch_detect_sentiment]{batch_detect_sentiment} \tab Inspects a batch of documents and returns an inference of the prevailing sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one\cr
+\link[paws.machine.learning:comprehend_batch_detect_syntax]{batch_detect_syntax} \tab Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them\cr
+\link[paws.machine.learning:comprehend_classify_document]{classify_document} \tab Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint\cr
+\link[paws.machine.learning:comprehend_contains_pii_entities]{contains_pii_entities} \tab Analyzes input text for the presence of personally identifiable information (PII) and returns the labels of identified PII entity types such as name, address, bank account number, or phone number\cr
+\link[paws.machine.learning:comprehend_create_document_classifier]{create_document_classifier} \tab Creates a new document classifier that you can use to categorize documents\cr
+\link[paws.machine.learning:comprehend_create_endpoint]{create_endpoint} \tab Creates a model-specific endpoint for synchronous inference for a previously trained custom model For information about endpoints, see Managing endpoints\cr
+\link[paws.machine.learning:comprehend_create_entity_recognizer]{create_entity_recognizer} \tab Creates an entity recognizer using submitted files\cr
+\link[paws.machine.learning:comprehend_delete_document_classifier]{delete_document_classifier} \tab Deletes a previously created document classifier\cr
+\link[paws.machine.learning:comprehend_delete_endpoint]{delete_endpoint} \tab Deletes a model-specific endpoint for a previously-trained custom model\cr
+\link[paws.machine.learning:comprehend_delete_entity_recognizer]{delete_entity_recognizer} \tab Deletes an entity recognizer\cr
+\link[paws.machine.learning:comprehend_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy that is attached to a custom model\cr
+\link[paws.machine.learning:comprehend_describe_document_classification_job]{describe_document_classification_job} \tab Gets the properties associated with a document classification job\cr
+\link[paws.machine.learning:comprehend_describe_document_classifier]{describe_document_classifier} \tab Gets the properties associated with a document classifier\cr
+\link[paws.machine.learning:comprehend_describe_dominant_language_detection_job]{describe_dominant_language_detection_job} \tab Gets the properties associated with a dominant language detection job\cr
+\link[paws.machine.learning:comprehend_describe_endpoint]{describe_endpoint} \tab Gets the properties associated with a specific endpoint\cr
+\link[paws.machine.learning:comprehend_describe_entities_detection_job]{describe_entities_detection_job} \tab Gets the properties associated with an entities detection job\cr
+\link[paws.machine.learning:comprehend_describe_entity_recognizer]{describe_entity_recognizer} \tab Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on\cr
+\link[paws.machine.learning:comprehend_describe_events_detection_job]{describe_events_detection_job} \tab Gets the status and details of an events detection job\cr
+\link[paws.machine.learning:comprehend_describe_key_phrases_detection_job]{describe_key_phrases_detection_job} \tab Gets the properties associated with a key phrases detection job\cr
+\link[paws.machine.learning:comprehend_describe_pii_entities_detection_job]{describe_pii_entities_detection_job} \tab Gets the properties associated with a PII entities detection job\cr
+\link[paws.machine.learning:comprehend_describe_resource_policy]{describe_resource_policy} \tab Gets the details of a resource-based policy that is attached to a custom model, including the JSON body of the policy\cr
+\link[paws.machine.learning:comprehend_describe_sentiment_detection_job]{describe_sentiment_detection_job} \tab Gets the properties associated with a sentiment detection job\cr
+\link[paws.machine.learning:comprehend_describe_targeted_sentiment_detection_job]{describe_targeted_sentiment_detection_job} \tab Gets the properties associated with a targeted sentiment detection job\cr
+\link[paws.machine.learning:comprehend_describe_topics_detection_job]{describe_topics_detection_job} \tab Gets the properties associated with a topic detection job\cr
+\link[paws.machine.learning:comprehend_detect_dominant_language]{detect_dominant_language} \tab Determines the dominant language of the input text\cr
+\link[paws.machine.learning:comprehend_detect_entities]{detect_entities} \tab Inspects text for named entities, and returns information about them\cr
+\link[paws.machine.learning:comprehend_detect_key_phrases]{detect_key_phrases} \tab Detects the key noun phrases found in the text\cr
+\link[paws.machine.learning:comprehend_detect_pii_entities]{detect_pii_entities} \tab Inspects the input text for entities that contain personally identifiable information (PII) and returns information about them\cr
+\link[paws.machine.learning:comprehend_detect_sentiment]{detect_sentiment} \tab Inspects text and returns an inference of the prevailing sentiment (POSITIVE, NEUTRAL, MIXED, or NEGATIVE)\cr
+\link[paws.machine.learning:comprehend_detect_syntax]{detect_syntax} \tab Inspects text for syntax and the part of speech of words in the document\cr
+\link[paws.machine.learning:comprehend_import_model]{import_model} \tab Creates a new custom model that replicates a source custom model that you import\cr
+\link[paws.machine.learning:comprehend_list_document_classification_jobs]{list_document_classification_jobs} \tab Gets a list of the documentation classification jobs that you have submitted\cr
+\link[paws.machine.learning:comprehend_list_document_classifiers]{list_document_classifiers} \tab Gets a list of the document classifiers that you have created\cr
+\link[paws.machine.learning:comprehend_list_document_classifier_summaries]{list_document_classifier_summaries} \tab Gets a list of summaries of the document classifiers that you have created\cr
+\link[paws.machine.learning:comprehend_list_dominant_language_detection_jobs]{list_dominant_language_detection_jobs} \tab Gets a list of the dominant language detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehend_list_endpoints]{list_endpoints} \tab Gets a list of all existing endpoints that you've created\cr
+\link[paws.machine.learning:comprehend_list_entities_detection_jobs]{list_entities_detection_jobs} \tab Gets a list of the entity detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehend_list_entity_recognizers]{list_entity_recognizers} \tab Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training\cr
+\link[paws.machine.learning:comprehend_list_entity_recognizer_summaries]{list_entity_recognizer_summaries} \tab Gets a list of summaries for the entity recognizers that you have created\cr
+\link[paws.machine.learning:comprehend_list_events_detection_jobs]{list_events_detection_jobs} \tab Gets a list of the events detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehend_list_key_phrases_detection_jobs]{list_key_phrases_detection_jobs} \tab Get a list of key phrase detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehend_list_pii_entities_detection_jobs]{list_pii_entities_detection_jobs} \tab Gets a list of the PII entity detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehend_list_sentiment_detection_jobs]{list_sentiment_detection_jobs} \tab Gets a list of sentiment detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehend_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags associated with a given Amazon Comprehend resource\cr
+\link[paws.machine.learning:comprehend_list_targeted_sentiment_detection_jobs]{list_targeted_sentiment_detection_jobs} \tab Gets a list of targeted sentiment detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehend_list_topics_detection_jobs]{list_topics_detection_jobs} \tab Gets a list of the topic detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehend_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to a custom model\cr
+\link[paws.machine.learning:comprehend_start_document_classification_job]{start_document_classification_job} \tab Starts an asynchronous document classification job\cr
+\link[paws.machine.learning:comprehend_start_dominant_language_detection_job]{start_dominant_language_detection_job} \tab Starts an asynchronous dominant language detection job for a collection of documents\cr
+\link[paws.machine.learning:comprehend_start_entities_detection_job]{start_entities_detection_job} \tab Starts an asynchronous entity detection job for a collection of documents\cr
+\link[paws.machine.learning:comprehend_start_events_detection_job]{start_events_detection_job} \tab Starts an asynchronous event detection job for a collection of documents\cr
+\link[paws.machine.learning:comprehend_start_key_phrases_detection_job]{start_key_phrases_detection_job} \tab Starts an asynchronous key phrase detection job for a collection of documents\cr
+\link[paws.machine.learning:comprehend_start_pii_entities_detection_job]{start_pii_entities_detection_job} \tab Starts an asynchronous PII entity detection job for a collection of documents\cr
+\link[paws.machine.learning:comprehend_start_sentiment_detection_job]{start_sentiment_detection_job} \tab Starts an asynchronous sentiment detection job for a collection of documents\cr
+\link[paws.machine.learning:comprehend_start_targeted_sentiment_detection_job]{start_targeted_sentiment_detection_job} \tab Starts an asynchronous targeted sentiment detection job for a collection of documents\cr
+\link[paws.machine.learning:comprehend_start_topics_detection_job]{start_topics_detection_job} \tab Starts an asynchronous topic detection job\cr
+\link[paws.machine.learning:comprehend_stop_dominant_language_detection_job]{stop_dominant_language_detection_job} \tab Stops a dominant language detection job in progress\cr
+\link[paws.machine.learning:comprehend_stop_entities_detection_job]{stop_entities_detection_job} \tab Stops an entities detection job in progress\cr
+\link[paws.machine.learning:comprehend_stop_events_detection_job]{stop_events_detection_job} \tab Stops an events detection job in progress\cr
+\link[paws.machine.learning:comprehend_stop_key_phrases_detection_job]{stop_key_phrases_detection_job} \tab Stops a key phrases detection job in progress\cr
+\link[paws.machine.learning:comprehend_stop_pii_entities_detection_job]{stop_pii_entities_detection_job} \tab Stops a PII entities detection job in progress\cr
+\link[paws.machine.learning:comprehend_stop_sentiment_detection_job]{stop_sentiment_detection_job} \tab Stops a sentiment detection job in progress\cr
+\link[paws.machine.learning:comprehend_stop_targeted_sentiment_detection_job]{stop_targeted_sentiment_detection_job} \tab Stops a targeted sentiment detection job in progress\cr
+\link[paws.machine.learning:comprehend_stop_training_document_classifier]{stop_training_document_classifier} \tab Stops a document classifier training job while in progress\cr
+\link[paws.machine.learning:comprehend_stop_training_entity_recognizer]{stop_training_entity_recognizer} \tab Stops an entity recognizer training job while in progress\cr
+\link[paws.machine.learning:comprehend_tag_resource]{tag_resource} \tab Associates a specific tag with an Amazon Comprehend resource\cr
+\link[paws.machine.learning:comprehend_untag_resource]{untag_resource} \tab Removes a specific tag associated with an Amazon Comprehend resource\cr
+\link[paws.machine.learning:comprehend_update_endpoint]{update_endpoint} \tab Updates information about the specified endpoint
 }
 }
 

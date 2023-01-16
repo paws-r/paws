@@ -9,19 +9,9 @@ ses_delete_template(TemplateName)
 \arguments{
 \item{TemplateName}{[required] The name of the template to be deleted.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an email template.
 
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/delete_template.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_template(
-  TemplateName = "string"
-)
-}
-}
-
 \keyword{internal}

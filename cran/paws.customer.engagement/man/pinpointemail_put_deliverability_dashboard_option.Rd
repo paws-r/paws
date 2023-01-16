@@ -5,8 +5,10 @@
 \title{Enable or disable the Deliverability dashboard for your Amazon Pinpoint
 account}
 \usage{
-pinpointemail_put_deliverability_dashboard_option(DashboardEnabled,
-  SubscribedDomains)
+pinpointemail_put_deliverability_dashboard_option(
+  DashboardEnabled,
+  SubscribedDomains = NULL
+)
 }
 \arguments{
 \item{DashboardEnabled}{[required] Specifies whether to enable the Deliverability dashboard for your Amazon
@@ -15,40 +17,9 @@ Pinpoint account. To enable the dashboard, set this value to \code{true}.}
 \item{SubscribedDomains}{An array of objects, one for each verified domain that you use to send
 email and enabled the Deliverability dashboard for.}
 }
-\value{
-An empty list.
-}
 \description{
-Enable or disable the Deliverability dashboard for your Amazon Pinpoint
-account. When you enable the Deliverability dashboard, you gain access
-to reputation, deliverability, and other metrics for the domains that
-you use to send email using Amazon Pinpoint. You also gain the ability
-to perform predictive inbox placement tests.
+Enable or disable the Deliverability dashboard for your Amazon Pinpoint account. When you enable the Deliverability dashboard, you gain access to reputation, deliverability, and other metrics for the domains that you use to send email using Amazon Pinpoint. You also gain the ability to perform predictive inbox placement tests.
 
-When you use the Deliverability dashboard, you pay a monthly
-subscription charge, in addition to any other fees that you accrue by
-using Amazon Pinpoint. For more information about the features and cost
-of a Deliverability dashboard subscription, see \href{https://aws.amazon.com/pinpoint/pricing/}{Amazon Pinpoint Pricing}.
+See \url{https://paws-r.github.io/docs/pinpointemail/put_deliverability_dashboard_option.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_deliverability_dashboard_option(
-  DashboardEnabled = TRUE|FALSE,
-  SubscribedDomains = list(
-    list(
-      Domain = "string",
-      SubscriptionStartDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      InboxPlacementTrackingOption = list(
-        Global = TRUE|FALSE,
-        TrackedIsps = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

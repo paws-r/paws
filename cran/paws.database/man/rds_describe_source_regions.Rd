@@ -2,18 +2,23 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_source_regions}
 \alias{rds_describe_source_regions}
-\title{Returns a list of the source AWS Regions where the current AWS Region
-can create a read replica, copy a DB snapshot from, or replicate
-automated backups from}
+\title{Returns a list of the source Amazon Web Services Regions where the
+current Amazon Web Services Region can create a read replica, copy a DB
+snapshot from, or replicate automated backups from}
 \usage{
-rds_describe_source_regions(RegionName, MaxRecords, Marker, Filters)
+rds_describe_source_regions(
+  RegionName = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  Filters = NULL
+)
 }
 \arguments{
-\item{RegionName}{The source AWS Region name. For example, \code{us-east-1}.
+\item{RegionName}{The source Amazon Web Services Region name. For example, \code{us-east-1}.
 
 Constraints:
 \itemize{
-\item Must specify a valid AWS Region name.
+\item Must specify a valid Amazon Web Services Region name.
 }}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
@@ -32,40 +37,9 @@ the marker, up to the value specified by \code{MaxRecords}.}
 
 \item{Filters}{This parameter isn't currently supported.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  SourceRegions = list(
-    list(
-      RegionName = "string",
-      Endpoint = "string",
-      Status = "string",
-      SupportsDBInstanceAutomatedBackupsReplication = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of the source AWS Regions where the current AWS Region
-can create a read replica, copy a DB snapshot from, or replicate
-automated backups from. This API action supports pagination.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_source_regions(
-  RegionName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
+Returns a list of the source Amazon Web Services Regions where the current Amazon Web Services Region can create a read replica, copy a DB snapshot from, or replicate automated backups from. This API action supports pagination.
 
+See \url{https://paws-r.github.io/docs/rds/describe_source_regions.html} for full documentation.
+}
 \keyword{internal}

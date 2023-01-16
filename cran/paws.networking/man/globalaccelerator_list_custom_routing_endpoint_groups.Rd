@@ -5,8 +5,11 @@
 \title{List the endpoint groups that are associated with a listener for a
 custom routing accelerator}
 \usage{
-globalaccelerator_list_custom_routing_endpoint_groups(ListenerArn,
-  MaxResults, NextToken)
+globalaccelerator_list_custom_routing_endpoint_groups(
+  ListenerArn,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener to list endpoint groups
@@ -18,43 +21,9 @@ call. The default value is 10.}
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointGroups = list(
-    list(
-      EndpointGroupArn = "string",
-      EndpointGroupRegion = "string",
-      DestinationDescriptions = list(
-        list(
-          FromPort = 123,
-          ToPort = 123,
-          Protocols = list(
-            "TCP"|"UDP"
-          )
-        )
-      ),
-      EndpointDescriptions = list(
-        list(
-          EndpointId = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List the endpoint groups that are associated with a listener for a
-custom routing accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$list_custom_routing_endpoint_groups(
-  ListenerArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+List the endpoint groups that are associated with a listener for a custom routing accelerator.
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_endpoint_groups.html} for full documentation.
+}
 \keyword{internal}

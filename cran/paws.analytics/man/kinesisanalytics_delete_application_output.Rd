@@ -5,8 +5,11 @@
 \title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications}
 \usage{
-kinesisanalytics_delete_application_output(ApplicationName,
-  CurrentApplicationVersionId, OutputId)
+kinesisanalytics_delete_application_output(
+  ApplicationName,
+  CurrentApplicationVersionId,
+  OutputId
+)
 }
 \arguments{
 \item{ApplicationName}{[required] Amazon Kinesis Analytics application name.}
@@ -27,30 +30,9 @@ application configuration. You can use the
 \code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to get the specific \code{OutputId}.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Deletes output destination configuration from your application
-configuration. Amazon Kinesis Analytics will no longer write data from
-the corresponding in-application stream to the external output
-destination.
-
-This operation requires permissions to perform the
-\code{kinesisanalytics:DeleteApplicationOutput} action.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/delete_application_output.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_application_output(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  OutputId = "string"
-)
-}
-}
-
 \keyword{internal}

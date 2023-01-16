@@ -11,51 +11,9 @@ datapipeline_describe_pipelines(pipelineIds)
 identifiers in a single call. To obtain pipeline IDs, call
 \code{\link[=datapipeline_list_pipelines]{list_pipelines}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelineDescriptionList = list(
-    list(
-      pipelineId = "string",
-      name = "string",
-      fields = list(
-        list(
-          key = "string",
-          stringValue = "string",
-          refValue = "string"
-        )
-      ),
-      description = "string",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieves metadata about one or more pipelines. The information
-retrieved includes the name of the pipeline, the pipeline identifier,
-its current state, and the user account that owns the pipeline. Using
-account credentials, you can retrieve metadata about pipelines that you
-or your IAM users have created. If you are using an IAM user account,
-you can retrieve metadata about only those pipelines for which you have
-read permissions.
+Retrieves metadata about one or more pipelines. The information retrieved includes the name of the pipeline, the pipeline identifier, its current state, and the user account that owns the pipeline. Using account credentials, you can retrieve metadata about pipelines that you or your IAM users have created. If you are using an IAM user account, you can retrieve metadata about only those pipelines for which you have read permissions.
 
-To retrieve the full pipeline definition instead of metadata about the
-pipeline, call
-\code{\link[=datapipeline_get_pipeline_definition]{get_pipeline_definition}}.
+See \url{https://paws-r.github.io/docs/datapipeline/describe_pipelines.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_pipelines(
-  pipelineIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

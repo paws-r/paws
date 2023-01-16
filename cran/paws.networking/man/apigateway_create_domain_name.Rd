@@ -4,13 +4,24 @@
 \alias{apigateway_create_domain_name}
 \title{Creates a new domain name}
 \usage{
-apigateway_create_domain_name(domainName, certificateName,
-  certificateBody, certificatePrivateKey, certificateChain,
-  certificateArn, regionalCertificateName, regionalCertificateArn,
-  endpointConfiguration, tags, securityPolicy, mutualTlsAuthentication)
+apigateway_create_domain_name(
+  domainName,
+  certificateName = NULL,
+  certificateBody = NULL,
+  certificatePrivateKey = NULL,
+  certificateChain = NULL,
+  certificateArn = NULL,
+  regionalCertificateName = NULL,
+  regionalCertificateArn = NULL,
+  endpointConfiguration = NULL,
+  tags = NULL,
+  securityPolicy = NULL,
+  mutualTlsAuthentication = NULL,
+  ownershipVerificationCertificateArn = NULL
+)
 }
 \arguments{
-\item{domainName}{[required] [Required] The name of the DomainName resource.}
+\item{domainName}{[required] The name of the DomainName resource.}
 
 \item{certificateName}{The user-friendly name of the certificate that will be used by
 edge-optimized endpoint for this domain name.}
@@ -52,76 +63,15 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 DomainName. The valid values are \code{TLS_1_0} and \code{TLS_1_2}.}
 
 \item{mutualTlsAuthentication}{}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  domainName = "string",
-  certificateName = "string",
-  certificateArn = "string",
-  certificateUploadDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  regionalDomainName = "string",
-  regionalHostedZoneId = "string",
-  regionalCertificateName = "string",
-  regionalCertificateArn = "string",
-  distributionDomainName = "string",
-  distributionHostedZoneId = "string",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    ),
-    vpcEndpointIds = list(
-      "string"
-    )
-  ),
-  domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
-  domainNameStatusMessage = "string",
-  securityPolicy = "TLS_1_0"|"TLS_1_2",
-  tags = list(
-    "string"
-  ),
-  mutualTlsAuthentication = list(
-    truststoreUri = "string",
-    truststoreVersion = "string",
-    truststoreWarnings = list(
-      "string"
-    )
-  )
-)
-}
+
+\item{ownershipVerificationCertificateArn}{The ARN of the public certificate issued by ACM to validate ownership of
+your custom domain. Only required when configuring mutual TLS and using
+an ACM imported or private CA certificate ARN as the
+regionalCertificateArn.}
 }
 \description{
 Creates a new domain name.
-}
-\section{Request syntax}{
-\preformatted{svc$create_domain_name(
-  domainName = "string",
-  certificateName = "string",
-  certificateBody = "string",
-  certificatePrivateKey = "string",
-  certificateChain = "string",
-  certificateArn = "string",
-  regionalCertificateName = "string",
-  regionalCertificateArn = "string",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    ),
-    vpcEndpointIds = list(
-      "string"
-    )
-  ),
-  tags = list(
-    "string"
-  ),
-  securityPolicy = "TLS_1_0"|"TLS_1_2",
-  mutualTlsAuthentication = list(
-    truststoreUri = "string",
-    truststoreVersion = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/create_domain_name.html} for full documentation.
+}
 \keyword{internal}

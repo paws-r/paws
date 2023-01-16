@@ -4,8 +4,11 @@
 \alias{redshift_describe_cluster_tracks}
 \title{Returns a list of all the available maintenance tracks}
 \usage{
-redshift_describe_cluster_tracks(MaintenanceTrackName, MaxRecords,
-  Marker)
+redshift_describe_cluster_tracks(
+  MaintenanceTrackName = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{MaintenanceTrackName}{The name of the maintenance track.}
@@ -20,39 +23,9 @@ value in the \code{Marker} field of the response. You can retrieve the next
 set of response records by providing the returned marker value in the
 \code{Marker} parameter and retrying the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MaintenanceTracks = list(
-    list(
-      MaintenanceTrackName = "string",
-      DatabaseVersion = "string",
-      UpdateTargets = list(
-        list(
-          MaintenanceTrackName = "string",
-          DatabaseVersion = "string",
-          SupportedOperations = list(
-            list(
-              OperationName = "string"
-            )
-          )
-        )
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
 Returns a list of all the available maintenance tracks.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_cluster_tracks(
-  MaintenanceTrackName = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/describe_cluster_tracks.html} for full documentation.
+}
 \keyword{internal}

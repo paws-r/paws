@@ -4,8 +4,12 @@
 \alias{workdocs_update_document_version}
 \title{Changes the status of the document version to ACTIVE}
 \usage{
-workdocs_update_document_version(AuthenticationToken, DocumentId,
-  VersionId, VersionStatus)
+workdocs_update_document_version(
+  AuthenticationToken = NULL,
+  DocumentId,
+  VersionId,
+  VersionStatus = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -17,25 +21,9 @@ administrator credentials to access the API.}
 
 \item{VersionStatus}{The status of the version.}
 }
-\value{
-An empty list.
-}
 \description{
 Changes the status of the document version to ACTIVE.
 
-Amazon WorkDocs also sets its document container to ACTIVE. This is the
-last step in a document upload, after the client uploads the document to
-an S3-presigned URL returned by
-\code{\link[=workdocs_initiate_document_version_upload]{initiate_document_version_upload}}.
+See \url{https://paws-r.github.io/docs/workdocs/update_document_version.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_document_version(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  VersionId = "string",
-  VersionStatus = "ACTIVE"
-)
-}
-}
-
 \keyword{internal}

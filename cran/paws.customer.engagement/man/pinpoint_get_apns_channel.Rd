@@ -11,34 +11,9 @@ pinpoint_get_apns_channel(ApplicationId)
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  APNSChannelResponse = list(
-    ApplicationId = "string",
-    CreationDate = "string",
-    DefaultAuthenticationMethod = "string",
-    Enabled = TRUE|FALSE,
-    HasCredential = TRUE|FALSE,
-    HasTokenKey = TRUE|FALSE,
-    Id = "string",
-    IsArchived = TRUE|FALSE,
-    LastModifiedBy = "string",
-    LastModifiedDate = "string",
-    Platform = "string",
-    Version = 123
-  )
-)
-}
-}
 \description{
-Retrieves information about the status and settings of the APNs channel
-for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$get_apns_channel(
-  ApplicationId = "string"
-)
-}
-}
+Retrieves information about the status and settings of the APNs channel for an application.
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_apns_channel.html} for full documentation.
+}
 \keyword{internal}

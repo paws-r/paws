@@ -4,7 +4,7 @@
 \alias{workdocs_delete_folder}
 \title{Permanently deletes the specified folder and its contents}
 \usage{
-workdocs_delete_folder(AuthenticationToken, FolderId)
+workdocs_delete_folder(AuthenticationToken = NULL, FolderId)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -12,18 +12,9 @@ administrator credentials to access the API.}
 
 \item{FolderId}{[required] The ID of the folder.}
 }
-\value{
-An empty list.
-}
 \description{
 Permanently deletes the specified folder and its contents.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_folder(
-  AuthenticationToken = "string",
-  FolderId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/delete_folder.html} for full documentation.
+}
 \keyword{internal}

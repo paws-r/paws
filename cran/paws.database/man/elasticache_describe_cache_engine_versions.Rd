@@ -4,8 +4,14 @@
 \alias{elasticache_describe_cache_engine_versions}
 \title{Returns a list of the available cache engines and their versions}
 \usage{
-elasticache_describe_cache_engine_versions(Engine, EngineVersion,
-  CacheParameterGroupFamily, MaxRecords, Marker, DefaultOnly)
+elasticache_describe_cache_engine_versions(
+  Engine = NULL,
+  EngineVersion = NULL,
+  CacheParameterGroupFamily = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  DefaultOnly = NULL
+)
 }
 \arguments{
 \item{Engine}{The cache engine to return. Valid values: \code{memcached} | \code{redis}}
@@ -19,7 +25,7 @@ for.
 
 Valid values are: \code{memcached1.4} | \code{memcached1.5} | \code{memcached1.6} |
 \code{redis2.6} | \code{redis2.8} | \code{redis3.2} | \code{redis4.0} | \code{redis5.0} |
-\code{redis6.x} |
+\code{redis6.x} | \code{redis6.2}
 
 Constraints:
 \itemize{
@@ -44,34 +50,9 @@ the value specified by \code{MaxRecords}.}
 \item{DefaultOnly}{If \code{true}, specifies that only the default version of the specified
 engine or engine and major version combination is to be returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  CacheEngineVersions = list(
-    list(
-      Engine = "string",
-      EngineVersion = "string",
-      CacheParameterGroupFamily = "string",
-      CacheEngineDescription = "string",
-      CacheEngineVersionDescription = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns a list of the available cache engines and their versions.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_cache_engine_versions(
-  Engine = "string",
-  EngineVersion = "string",
-  CacheParameterGroupFamily = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  DefaultOnly = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticache/describe_cache_engine_versions.html} for full documentation.
+}
 \keyword{internal}

@@ -6,9 +6,17 @@
 directly to a phone number, or a message to a mobile platform endpoint
 (when you specify the TargetArn)}
 \usage{
-sns_publish(TopicArn, TargetArn, PhoneNumber, Message, Subject,
-  MessageStructure, MessageAttributes, MessageDeduplicationId,
-  MessageGroupId)
+sns_publish(
+  TopicArn = NULL,
+  TargetArn = NULL,
+  PhoneNumber = NULL,
+  Message,
+  Subject = NULL,
+  MessageStructure = NULL,
+  MessageAttributes = NULL,
+  MessageDeduplicationId = NULL,
+  MessageGroupId = NULL
+)
 }
 \arguments{
 \item{TopicArn}{The topic you want to publish to.
@@ -100,7 +108,7 @@ Valid value: \code{json}}
 
 \item{MessageDeduplicationId}{This parameter applies only to FIFO (first-in-first-out) topics. The
 \code{MessageDeduplicationId} can contain up to 128 alphanumeric characters
-(a-z, A-Z, 0-9) and punctuation
+\verb{(a-z, A-Z, 0-9)} and punctuation
 \verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
 
 Every message must have a unique \code{MessageDeduplicationId}, which is a
@@ -116,8 +124,9 @@ If the topic has \code{ContentBasedDeduplication} set, the system generates a
 []: R:\%5C}
 
 \item{MessageGroupId}{This parameter applies only to FIFO (first-in-first-out) topics. The
-\code{MessageGroupId} can contain up to 128 alphanumeric characters (a-z,
-A-Z, 0-9) and punctuation \verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
+\code{MessageGroupId} can contain up to 128 alphanumeric characters
+\verb{(a-z, A-Z, 0-9)} and punctuation
+\verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
 
 The \code{MessageGroupId} is a tag that specifies that a message belongs to a
 specific message group. Messages that belong to the same message group
@@ -127,55 +136,9 @@ groups might be processed out of order). Every message must include a
 
 []: R:\%5C}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageId = "string",
-  SequenceNumber = "string"
-)
-}
-}
 \description{
-Sends a message to an Amazon SNS topic, a text message (SMS message)
-directly to a phone number, or a message to a mobile platform endpoint
-(when you specify the \code{TargetArn}).
+Sends a message to an Amazon SNS topic, a text message (SMS message) directly to a phone number, or a message to a mobile platform endpoint (when you specify the \code{TargetArn}).
 
-If you send a message to a topic, Amazon SNS delivers the message to
-each endpoint that is subscribed to the topic. The format of the message
-depends on the notification protocol for each subscribed endpoint.
-
-When a \code{messageId} is returned, the message has been saved and Amazon
-SNS will attempt to deliver it shortly.
-
-To use the \code{\link[=sns_publish]{publish}} action for sending a message to a
-mobile endpoint, such as an app on a Kindle device or mobile phone, you
-must specify the EndpointArn for the TargetArn parameter. The
-EndpointArn is returned when making a call with the
-\code{\link[=sns_create_platform_endpoint]{create_platform_endpoint}} action.
-
-For more information about formatting messages, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-send-custom-platform-specific-payloads-mobile-devices.html}{Send Custom Platform-Specific Payloads in Messages to Mobile Devices}.
-
-You can publish messages only to topics and endpoints in the same AWS
-Region.
+See \url{https://paws-r.github.io/docs/sns/publish.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$publish(
-  TopicArn = "string",
-  TargetArn = "string",
-  PhoneNumber = "string",
-  Message = "string",
-  Subject = "string",
-  MessageStructure = "string",
-  MessageAttributes = list(
-    list(
-      DataType = "string",
-      StringValue = "string",
-      BinaryValue = raw
-    )
-  ),
-  MessageDeduplicationId = "string",
-  MessageGroupId = "string"
-)
-}
-}
-
 \keyword{internal}

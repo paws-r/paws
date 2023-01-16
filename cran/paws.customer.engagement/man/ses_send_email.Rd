@@ -4,31 +4,40 @@
 \alias{ses_send_email}
 \title{Composes an email message and immediately queues it for sending}
 \usage{
-ses_send_email(Source, Destination, Message, ReplyToAddresses,
-  ReturnPath, SourceArn, ReturnPathArn, Tags, ConfigurationSetName)
+ses_send_email(
+  Source,
+  Destination,
+  Message,
+  ReplyToAddresses = NULL,
+  ReturnPath = NULL,
+  SourceArn = NULL,
+  ReturnPathArn = NULL,
+  Tags = NULL,
+  ConfigurationSetName = NULL
+)
 }
 \arguments{
 \item{Source}{[required] The email address that is sending the email. This email address must be
 either individually verified with Amazon SES, or from a domain that has
 been verified with Amazon SES. For information about verifying
-identities, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
+identities, see the \href{https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
 
 If you are sending on behalf of another user and have been permitted to
 do so by a sending authorization policy, then you must also specify the
 \code{SourceArn} parameter. For more information about sending authorization,
-see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
+see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.
 
 Amazon SES does not support the SMTPUTF8 extension, as described in
-\href{https://datatracker.ietf.org/doc/html/rfc6531}{RFC6531}. For this
-reason, the \emph{local part} of a source email address (the part of the
-email address that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If
+\href{https://www.rfc-editor.org/rfc/rfc6531}{RFC6531}. For this reason, the
+\emph{local part} of a source email address (the part of the email address
+that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If
 the \emph{domain part} of an address (the part after the @ sign) contains
 non-ASCII characters, they must be encoded using Punycode, as described
-in \href{https://datatracker.ietf.org/doc/html/rfc3492.html}{RFC3492}. The
-sender name (also known as the \emph{friendly name}) may contain non-ASCII
+in \href{https://www.rfc-editor.org/rfc/rfc3492.html}{RFC3492}. The sender
+name (also known as the \emph{friendly name}) may contain non-ASCII
 characters. These characters must be encoded using MIME encoded-word
-syntax, as described in \href{https://datatracker.ietf.org/doc/html/rfc2047}{RFC 2047}. MIME encoded-word
-syntax uses the following form: \verb{=?charset?encoding?encoded-text?=}.}
+syntax, as described in \href{https://www.rfc-editor.org/rfc/rfc2047}{RFC 2047}. MIME encoded-word syntax
+uses the following form: \verb{=?charset?encoding?encoded-text?=}.}
 
 \item{Destination}{[required] The destination for this email, composed of To:, CC:, and BCC: fields.}
 
@@ -58,7 +67,7 @@ you would specify the \code{SourceArn} to be
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}, and the
 \code{Source} to be \code{user@example.com}.
 
-For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
+For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{ReturnPathArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
@@ -72,7 +81,7 @@ would specify the \code{ReturnPathArn} to be
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}, and the
 \code{ReturnPath} to be \code{feedback@example.com}.
 
-For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
+For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{Tags}{A list of tags, in the form of name/value pairs, to apply to an email
 that you send using \code{\link[=ses_send_email]{send_email}}. Tags correspond to
@@ -82,130 +91,9 @@ email sending events.}
 \item{ConfigurationSetName}{The name of the configuration set to use when you send an email using
 \code{\link[=ses_send_email]{send_email}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageId = "string"
-)
-}
-}
 \description{
-Composes an email message and immediately queues it for sending. In
-order to send email using the \code{\link[=ses_send_email]{send_email}} operation,
-your message must meet the following requirements:
-\itemize{
-\item The message must be sent from a verified email address or domain. If
-you attempt to send email using a non-verified address or domain,
-the operation will result in an "Email address not verified" error.
-\item If your account is still in the Amazon SES sandbox, you may only
-send to verified addresses or domains, or to email addresses
-associated with the Amazon SES Mailbox Simulator. For more
-information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains}
-in the \emph{Amazon SES Developer Guide.}
-\item The maximum message size is 10 MB.
-\item The message must include at least one recipient email address. The
-recipient address can be a To: address, a CC: address, or a BCC:
-address. If a recipient email address is invalid (that is, it is not
-in the format \emph{UserName@[SubDomain.]Domain.TopLevelDomain}), the
-entire message will be rejected, even if the message contains other
-recipients that are valid.
-\item The message may not include more than 50 recipients, across the To:,
-CC: and BCC: fields. If you need to send an email message to a
-larger audience, you can divide your recipient list into groups of
-50 or fewer, and then call the \code{\link[=ses_send_email]{send_email}}
-operation several times to send the message to each group.
-}
+Composes an email message and immediately queues it for sending. In order to send email using the \code{\link[=ses_send_email]{send_email}} operation, your message must meet the following requirements:
 
-For every message that you send, the total number of recipients
-(including each recipient in the To:, CC: and BCC: fields) is counted
-against the maximum number of emails you can send in a 24-hour period
-(your \emph{sending quota}). For more information about sending quotas in
-Amazon SES, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-quotas.html}{Managing Your Amazon SES Sending Limits}
-in the \emph{Amazon SES Developer Guide.}
-}
-\section{Request syntax}{
-\preformatted{svc$send_email(
-  Source = "string",
-  Destination = list(
-    ToAddresses = list(
-      "string"
-    ),
-    CcAddresses = list(
-      "string"
-    ),
-    BccAddresses = list(
-      "string"
-    )
-  ),
-  Message = list(
-    Subject = list(
-      Data = "string",
-      Charset = "string"
-    ),
-    Body = list(
-      Text = list(
-        Data = "string",
-        Charset = "string"
-      ),
-      Html = list(
-        Data = "string",
-        Charset = "string"
-      )
-    )
-  ),
-  ReplyToAddresses = list(
-    "string"
-  ),
-  ReturnPath = "string",
-  SourceArn = "string",
-  ReturnPathArn = "string",
-  Tags = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ConfigurationSetName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example sends a formatted email:
-svc$send_email(
-  Destination = list(
-    BccAddresses = list(),
-    CcAddresses = list(
-      "recipient3@example.com"
-    ),
-    ToAddresses = list(
-      "recipient1@example.com",
-      "recipient2@example.com"
-    )
-  ),
-  Message = list(
-    Body = list(
-      Html = list(
-        Charset = "UTF-8",
-        Data = "This message body contains HTML formatting. It can, for exa..."
-      ),
-      Text = list(
-        Charset = "UTF-8",
-        Data = "This is the message body in text format."
-      )
-    ),
-    Subject = list(
-      Charset = "UTF-8",
-      Data = "Test email"
-    )
-  ),
-  ReplyToAddresses = list(),
-  ReturnPath = "",
-  ReturnPathArn = "",
-  Source = "sender@example.com",
-  SourceArn = ""
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/send_email.html} for full documentation.
 }
 \keyword{internal}

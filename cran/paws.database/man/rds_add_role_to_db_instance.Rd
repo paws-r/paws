@@ -2,8 +2,8 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_add_role_to_db_instance}
 \alias{rds_add_role_to_db_instance}
-\title{Associates an AWS Identity and Access Management (IAM) role with a DB
-instance}
+\title{Associates an Amazon Web Services Identity and Access Management (IAM)
+role with a DB instance}
 \usage{
 rds_add_role_to_db_instance(DBInstanceIdentifier, RoleArn, FeatureName)
 }
@@ -14,26 +14,12 @@ rds_add_role_to_db_instance(DBInstanceIdentifier, RoleArn, FeatureName)
 instance, for example \verb{arn:aws:iam::123456789012:role/AccessRole}.}
 
 \item{FeatureName}{[required] The name of the feature for the DB instance that the IAM role is to be
-associated with. For the list of supported feature names, see
+associated with. For information about supported feature names, see
 DBEngineVersion.}
 }
-\value{
-An empty list.
-}
 \description{
-Associates an AWS Identity and Access Management (IAM) role with a DB
-instance.
+Associates an Amazon Web Services Identity and Access Management (IAM) role with a DB instance.
 
-To add a role to a DB instance, the status of the DB instance must be
-\code{available}.
+See \url{https://paws-r.github.io/docs/rds/add_role_to_db_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_role_to_db_instance(
-  DBInstanceIdentifier = "string",
-  RoleArn = "string",
-  FeatureName = "string"
-)
-}
-}
-
 \keyword{internal}

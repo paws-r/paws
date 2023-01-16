@@ -5,32 +5,42 @@
 \title{Composes an email message using an email template and immediately queues
 it for sending}
 \usage{
-ses_send_templated_email(Source, Destination, ReplyToAddresses,
-  ReturnPath, SourceArn, ReturnPathArn, Tags, ConfigurationSetName,
-  Template, TemplateArn, TemplateData)
+ses_send_templated_email(
+  Source,
+  Destination,
+  ReplyToAddresses = NULL,
+  ReturnPath = NULL,
+  SourceArn = NULL,
+  ReturnPathArn = NULL,
+  Tags = NULL,
+  ConfigurationSetName = NULL,
+  Template,
+  TemplateArn = NULL,
+  TemplateData
+)
 }
 \arguments{
 \item{Source}{[required] The email address that is sending the email. This email address must be
 either individually verified with Amazon SES, or from a domain that has
 been verified with Amazon SES. For information about verifying
-identities, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
+identities, see the \href{https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
 
 If you are sending on behalf of another user and have been permitted to
 do so by a sending authorization policy, then you must also specify the
 \code{SourceArn} parameter. For more information about sending authorization,
-see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
+see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.
 
 Amazon SES does not support the SMTPUTF8 extension, as described in
-\href{https://datatracker.ietf.org/doc/html/rfc6531}{RFC6531}. For this
-reason, the \emph{local part} of a source email address (the part of the
-email address that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If
+\href{https://www.rfc-editor.org/rfc/rfc6531}{RFC6531}. For this reason, the
+\emph{local part} of a source email address (the part of the email address
+that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If
 the \emph{domain part} of an address (the part after the @ sign) contains
 non-ASCII characters, they must be encoded using Punycode, as described
-in \href{https://datatracker.ietf.org/doc/html/rfc3492.html}{RFC3492}. The
-sender name (also known as the \emph{friendly name}) may contain non-ASCII
+in \href{https://www.rfc-editor.org/rfc/rfc3492.html}{RFC3492}. The sender
+name (also known as the \emph{friendly name}) may contain non-ASCII
 characters. These characters must be encoded using MIME encoded-word
-syntax, as described in\href{https://datatracker.ietf.org/doc/html/rfc2047}{RFC 2047}. MIME encoded-word
-syntax uses the following form: \verb{=?charset?encoding?encoded-text?=}.}
+syntax, as described in\href{https://www.rfc-editor.org/rfc/rfc2047}{RFC 2047}. MIME encoded-word syntax
+uses the following form: \verb{=?charset?encoding?encoded-text?=}.}
 
 \item{Destination}{[required] The destination for this email, composed of To:, CC:, and BCC: fields. A
 Destination can include up to 50 recipients across these three fields.}
@@ -59,7 +69,7 @@ you would specify the \code{SourceArn} to be
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}, and the
 \code{Source} to be \code{user@example.com}.
 
-For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
+For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{ReturnPathArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
@@ -73,7 +83,7 @@ would specify the \code{ReturnPathArn} to be
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}, and the
 \code{ReturnPath} to be \code{feedback@example.com}.
 
-For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
+For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{Tags}{A list of tags, in the form of name/value pairs, to apply to an email
 that you send using \code{\link[=ses_send_templated_email]{send_templated_email}}.
@@ -91,88 +101,9 @@ you can publish email sending events.}
 a JSON object, typically consisting of key-value pairs in which the keys
 correspond to replacement tags in the email template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageId = "string"
-)
-}
-}
 \description{
-Composes an email message using an email template and immediately queues
-it for sending.
+Composes an email message using an email template and immediately queues it for sending.
 
-In order to send email using the
-\code{\link[=ses_send_templated_email]{send_templated_email}} operation, your call
-to the API must meet the following requirements:
-\itemize{
-\item The call must refer to an existing email template. You can create
-email templates using the \code{\link[=ses_create_template]{create_template}}
-operation.
-\item The message must be sent from a verified email address or domain.
-\item If your account is still in the Amazon SES sandbox, you may only
-send to verified addresses or domains, or to email addresses
-associated with the Amazon SES Mailbox Simulator. For more
-information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains}
-in the \emph{Amazon SES Developer Guide.}
-\item The maximum message size is 10 MB.
-\item Calls to the \code{\link[=ses_send_templated_email]{send_templated_email}}
-operation may only include one \code{Destination} parameter. A
-destination is a set of recipients who will receive the same version
-of the email. The \code{Destination} parameter can include up to 50
-recipients, across the To:, CC: and BCC: fields.
-\item The \code{Destination} parameter must include at least one recipient
-email address. The recipient address can be a To: address, a CC:
-address, or a BCC: address. If a recipient email address is invalid
-(that is, it is not in the format
-\emph{UserName@[SubDomain.]Domain.TopLevelDomain}), the entire message
-will be rejected, even if the message contains other recipients that
-are valid.
+See \url{https://paws-r.github.io/docs/ses/send_templated_email.html} for full documentation.
 }
-
-If your call to the \code{\link[=ses_send_templated_email]{send_templated_email}}
-operation includes all of the required parameters, Amazon SES accepts it
-and returns a Message ID. However, if Amazon SES can't render the email
-because the template contains errors, it doesn't send the email.
-Additionally, because it already accepted the message, Amazon SES
-doesn't return a message stating that it was unable to send the email.
-
-For these reasons, we highly recommend that you set up Amazon SES to
-send you notifications when Rendering Failure events occur. For more
-information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html}{Sending Personalized Email Using the Amazon SES API}
-in the \emph{Amazon Simple Email Service Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$send_templated_email(
-  Source = "string",
-  Destination = list(
-    ToAddresses = list(
-      "string"
-    ),
-    CcAddresses = list(
-      "string"
-    ),
-    BccAddresses = list(
-      "string"
-    )
-  ),
-  ReplyToAddresses = list(
-    "string"
-  ),
-  ReturnPath = "string",
-  SourceArn = "string",
-  ReturnPathArn = "string",
-  Tags = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ConfigurationSetName = "string",
-  Template = "string",
-  TemplateArn = "string",
-  TemplateData = "string"
-)
-}
-}
-
 \keyword{internal}

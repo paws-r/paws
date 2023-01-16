@@ -7,7 +7,19 @@
 cloudtrail(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,31 +28,35 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
+CloudTrail
+
 This is the CloudTrail API Reference. It provides descriptions of
 actions, data types, common parameters, and common errors for
 CloudTrail.
 
-CloudTrail is a web service that records AWS API calls for your AWS
-account and delivers log files to an Amazon S3 bucket. The recorded
-information includes the identity of the user, the start time of the AWS
-API call, the source IP address, the request parameters, and the
-response elements returned by the service.
+CloudTrail is a web service that records Amazon Web Services API calls
+for your Amazon Web Services account and delivers log files to an Amazon
+S3 bucket. The recorded information includes the identity of the user,
+the start time of the Amazon Web Services API call, the source IP
+address, the request parameters, and the response elements returned by
+the service.
 
-As an alternative to the API, you can use one of the AWS SDKs, which
-consist of libraries and sample code for various programming languages
-and platforms (Java, Ruby, .NET, iOS, Android, etc.). The SDKs provide a
-convenient way to create programmatic access to AWSCloudTrail. For
-example, the SDKs take care of cryptographically signing requests,
-managing errors, and retrying requests automatically. For information
-about the AWS SDKs, including how to download and install them, see the
-\href{https://aws.amazon.com/tools/}{Tools for Amazon Web Services page}.
+As an alternative to the API, you can use one of the Amazon Web Services
+SDKs, which consist of libraries and sample code for various programming
+languages and platforms (Java, Ruby, .NET, iOS, Android, etc.). The SDKs
+provide programmatic access to CloudTrail. For example, the SDKs handle
+cryptographically signing requests, managing errors, and retrying
+requests automatically. For more information about the Amazon Web
+Services SDKs, including how to download and install them, see \href{https://aws.amazon.com/developer/tools/}{Tools to Build on Amazon Web Services}.
 
-See the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html}{AWS CloudTrail User Guide}
-for information about the data that is included with each AWS API call
-listed in the log files.
+See the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html}{CloudTrail User Guide}
+for information about the data that is included with each Amazon Web
+Services API call listed in the log files.
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudtrail(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudtrail(
   config = list(
     credentials = list(
       creds = list(
@@ -48,36 +64,51 @@ listed in the log files.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=cloudtrail_add_tags]{add_tags} \tab Adds one or more tags to a trail, up to a limit of 50\cr
-\link[=cloudtrail_create_trail]{create_trail} \tab Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket\cr
-\link[=cloudtrail_delete_trail]{delete_trail} \tab Deletes a trail\cr
-\link[=cloudtrail_describe_trails]{describe_trails} \tab Retrieves settings for one or more trails associated with the current region for your account\cr
-\link[=cloudtrail_get_event_selectors]{get_event_selectors} \tab Describes the settings for the event selectors that you configured for your trail\cr
-\link[=cloudtrail_get_insight_selectors]{get_insight_selectors} \tab Describes the settings for the Insights event selectors that you configured for your trail\cr
-\link[=cloudtrail_get_trail]{get_trail} \tab Returns settings information for a specified trail\cr
-\link[=cloudtrail_get_trail_status]{get_trail_status} \tab Returns a JSON-formatted list of information about the specified trail\cr
-\link[=cloudtrail_list_public_keys]{list_public_keys} \tab Returns all public keys whose private keys were used to sign the digest files within the specified time range\cr
-\link[=cloudtrail_list_tags]{list_tags} \tab Lists the tags for the trail in the current region\cr
-\link[=cloudtrail_list_trails]{list_trails} \tab Lists trails that are in the current account\cr
-\link[=cloudtrail_lookup_events]{lookup_events} \tab Looks up management events or CloudTrail Insights events that are captured by CloudTrail\cr
-\link[=cloudtrail_put_event_selectors]{put_event_selectors} \tab Configures an event selector or advanced event selectors for your trail\cr
-\link[=cloudtrail_put_insight_selectors]{put_insight_selectors} \tab Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail\cr
-\link[=cloudtrail_remove_tags]{remove_tags} \tab Removes the specified tags from a trail\cr
-\link[=cloudtrail_start_logging]{start_logging} \tab Starts the recording of AWS API calls and log file delivery for a trail\cr
-\link[=cloudtrail_stop_logging]{stop_logging} \tab Suspends the recording of AWS API calls and log file delivery for the specified trail\cr
-\link[=cloudtrail_update_trail]{update_trail} \tab Updates the settings that specify delivery of log files
+\link[paws.management.p1:cloudtrail_add_tags]{add_tags} \tab Adds one or more tags to a trail or event data store, up to a limit of 50\cr
+\link[paws.management.p1:cloudtrail_cancel_query]{cancel_query} \tab Cancels a query if the query is not in a terminated state, such as CANCELLED, FAILED, TIMED_OUT, or FINISHED\cr
+\link[paws.management.p1:cloudtrail_create_event_data_store]{create_event_data_store} \tab Creates a new event data store\cr
+\link[paws.management.p1:cloudtrail_create_trail]{create_trail} \tab Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket\cr
+\link[paws.management.p1:cloudtrail_delete_event_data_store]{delete_event_data_store} \tab Disables the event data store specified by EventDataStore, which accepts an event data store ARN\cr
+\link[paws.management.p1:cloudtrail_delete_trail]{delete_trail} \tab Deletes a trail\cr
+\link[paws.management.p1:cloudtrail_describe_query]{describe_query} \tab Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status\cr
+\link[paws.management.p1:cloudtrail_describe_trails]{describe_trails} \tab Retrieves settings for one or more trails associated with the current region for your account\cr
+\link[paws.management.p1:cloudtrail_get_event_data_store]{get_event_data_store} \tab Returns information about an event data store specified as either an ARN or the ID portion of the ARN\cr
+\link[paws.management.p1:cloudtrail_get_event_selectors]{get_event_selectors} \tab Describes the settings for the event selectors that you configured for your trail\cr
+\link[paws.management.p1:cloudtrail_get_insight_selectors]{get_insight_selectors} \tab Describes the settings for the Insights event selectors that you configured for your trail\cr
+\link[paws.management.p1:cloudtrail_get_query_results]{get_query_results} \tab Gets event data results of a query\cr
+\link[paws.management.p1:cloudtrail_get_trail]{get_trail} \tab Returns settings information for a specified trail\cr
+\link[paws.management.p1:cloudtrail_get_trail_status]{get_trail_status} \tab Returns a JSON-formatted list of information about the specified trail\cr
+\link[paws.management.p1:cloudtrail_list_event_data_stores]{list_event_data_stores} \tab Returns information about all event data stores in the account, in the current region\cr
+\link[paws.management.p1:cloudtrail_list_public_keys]{list_public_keys} \tab Returns all public keys whose private keys were used to sign the digest files within the specified time range\cr
+\link[paws.management.p1:cloudtrail_list_queries]{list_queries} \tab Returns a list of queries and query statuses for the past seven days\cr
+\link[paws.management.p1:cloudtrail_list_tags]{list_tags} \tab Lists the tags for the trail or event data store in the current region\cr
+\link[paws.management.p1:cloudtrail_list_trails]{list_trails} \tab Lists trails that are in the current account\cr
+\link[paws.management.p1:cloudtrail_lookup_events]{lookup_events} \tab Looks up management events or CloudTrail Insights events that are captured by CloudTrail\cr
+\link[paws.management.p1:cloudtrail_put_event_selectors]{put_event_selectors} \tab Configures an event selector or advanced event selectors for your trail\cr
+\link[paws.management.p1:cloudtrail_put_insight_selectors]{put_insight_selectors} \tab Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail\cr
+\link[paws.management.p1:cloudtrail_remove_tags]{remove_tags} \tab Removes the specified tags from a trail or event data store\cr
+\link[paws.management.p1:cloudtrail_restore_event_data_store]{restore_event_data_store} \tab Restores a deleted event data store specified by EventDataStore, which accepts an event data store ARN\cr
+\link[paws.management.p1:cloudtrail_start_logging]{start_logging} \tab Starts the recording of Amazon Web Services API calls and log file delivery for a trail\cr
+\link[paws.management.p1:cloudtrail_start_query]{start_query} \tab Starts a CloudTrail Lake query\cr
+\link[paws.management.p1:cloudtrail_stop_logging]{stop_logging} \tab Suspends the recording of Amazon Web Services API calls and log file delivery for the specified trail\cr
+\link[paws.management.p1:cloudtrail_update_event_data_store]{update_event_data_store} \tab Updates an event data store\cr
+\link[paws.management.p1:cloudtrail_update_trail]{update_trail} \tab Updates trail settings that control what events you are logging, and how to handle log files
 }
 }
 

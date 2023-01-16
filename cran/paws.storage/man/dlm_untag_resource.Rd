@@ -11,20 +11,9 @@ dlm_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] The tag keys.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes the specified tags from the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/dlm/untag_resource.html} for full documentation.
+}
 \keyword{internal}

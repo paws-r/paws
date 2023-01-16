@@ -7,7 +7,19 @@
 kafka(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -19,7 +31,9 @@ Operations section.
 The operations for managing an Amazon MSK cluster.
 }
 \section{Service syntax}{
-\preformatted{svc <- kafka(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- kafka(
   config = list(
     credentials = list(
       creds = list(
@@ -27,47 +41,57 @@ The operations for managing an Amazon MSK cluster.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=kafka_batch_associate_scram_secret]{batch_associate_scram_secret} \tab Associates one or more Scram Secrets with an Amazon MSK cluster\cr
-\link[=kafka_batch_disassociate_scram_secret]{batch_disassociate_scram_secret} \tab Disassociates one or more Scram Secrets from an Amazon MSK cluster\cr
-\link[=kafka_create_cluster]{create_cluster} \tab Creates a new MSK cluster\cr
-\link[=kafka_create_configuration]{create_configuration} \tab Creates a new MSK configuration\cr
-\link[=kafka_delete_cluster]{delete_cluster} \tab Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request\cr
-\link[=kafka_delete_configuration]{delete_configuration} \tab Deletes an MSK Configuration\cr
-\link[=kafka_describe_cluster]{describe_cluster} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
-\link[=kafka_describe_cluster_operation]{describe_cluster_operation} \tab Returns a description of the cluster operation specified by the ARN\cr
-\link[=kafka_describe_configuration]{describe_configuration} \tab Returns a description of this MSK configuration\cr
-\link[=kafka_describe_configuration_revision]{describe_configuration_revision} \tab Returns a description of this revision of the configuration\cr
-\link[=kafka_get_bootstrap_brokers]{get_bootstrap_brokers} \tab A list of brokers that a client application can use to bootstrap\cr
-\link[=kafka_get_compatible_kafka_versions]{get_compatible_kafka_versions} \tab Gets the Apache Kafka versions to which you can update the MSK cluster\cr
-\link[=kafka_list_cluster_operations]{list_cluster_operations} \tab Returns a list of all the operations that have been performed on the specified MSK cluster\cr
-\link[=kafka_list_clusters]{list_clusters} \tab Returns a list of all the MSK clusters in the current Region\cr
-\link[=kafka_list_configuration_revisions]{list_configuration_revisions} \tab Returns a list of all the MSK configurations in this Region\cr
-\link[=kafka_list_configurations]{list_configurations} \tab Returns a list of all the MSK configurations in this Region\cr
-\link[=kafka_list_kafka_versions]{list_kafka_versions} \tab Returns a list of Kafka versions\cr
-\link[=kafka_list_nodes]{list_nodes} \tab Returns a list of the broker nodes in the cluster\cr
-\link[=kafka_list_scram_secrets]{list_scram_secrets} \tab Returns a list of the Scram Secrets associated with an Amazon MSK cluster\cr
-\link[=kafka_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with the specified resource\cr
-\link[=kafka_reboot_broker]{reboot_broker} \tab Reboots brokers\cr
-\link[=kafka_tag_resource]{tag_resource} \tab Adds tags to the specified MSK resource\cr
-\link[=kafka_untag_resource]{untag_resource} \tab Removes the tags associated with the keys that are provided in the query\cr
-\link[=kafka_update_broker_count]{update_broker_count} \tab Updates the number of broker nodes in the cluster\cr
-\link[=kafka_update_broker_storage]{update_broker_storage} \tab Updates the EBS storage associated with MSK brokers\cr
-\link[=kafka_update_cluster_configuration]{update_cluster_configuration} \tab Updates the cluster with the configuration that is specified in the request body\cr
-\link[=kafka_update_cluster_kafka_version]{update_cluster_kafka_version} \tab Updates the Apache Kafka version for the cluster\cr
-\link[=kafka_update_configuration]{update_configuration} \tab Updates an MSK configuration\cr
-\link[=kafka_update_monitoring]{update_monitoring} \tab Updates the monitoring settings for the cluster
+\link[paws.analytics:kafka_batch_associate_scram_secret]{batch_associate_scram_secret} \tab Associates one or more Scram Secrets with an Amazon MSK cluster\cr
+\link[paws.analytics:kafka_batch_disassociate_scram_secret]{batch_disassociate_scram_secret} \tab Disassociates one or more Scram Secrets from an Amazon MSK cluster\cr
+\link[paws.analytics:kafka_create_cluster]{create_cluster} \tab Creates a new MSK cluster\cr
+\link[paws.analytics:kafka_create_cluster_v2]{create_cluster_v2} \tab Creates a new MSK cluster\cr
+\link[paws.analytics:kafka_create_configuration]{create_configuration} \tab Creates a new MSK configuration\cr
+\link[paws.analytics:kafka_delete_cluster]{delete_cluster} \tab Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request\cr
+\link[paws.analytics:kafka_delete_configuration]{delete_configuration} \tab Deletes an MSK Configuration\cr
+\link[paws.analytics:kafka_describe_cluster]{describe_cluster} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
+\link[paws.analytics:kafka_describe_cluster_operation]{describe_cluster_operation} \tab Returns a description of the cluster operation specified by the ARN\cr
+\link[paws.analytics:kafka_describe_cluster_v2]{describe_cluster_v2} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
+\link[paws.analytics:kafka_describe_configuration]{describe_configuration} \tab Returns a description of this MSK configuration\cr
+\link[paws.analytics:kafka_describe_configuration_revision]{describe_configuration_revision} \tab Returns a description of this revision of the configuration\cr
+\link[paws.analytics:kafka_get_bootstrap_brokers]{get_bootstrap_brokers} \tab A list of brokers that a client application can use to bootstrap\cr
+\link[paws.analytics:kafka_get_compatible_kafka_versions]{get_compatible_kafka_versions} \tab Gets the Apache Kafka versions to which you can update the MSK cluster\cr
+\link[paws.analytics:kafka_list_cluster_operations]{list_cluster_operations} \tab Returns a list of all the operations that have been performed on the specified MSK cluster\cr
+\link[paws.analytics:kafka_list_clusters]{list_clusters} \tab Returns a list of all the MSK clusters in the current Region\cr
+\link[paws.analytics:kafka_list_clusters_v2]{list_clusters_v2} \tab Returns a list of all the MSK clusters in the current Region\cr
+\link[paws.analytics:kafka_list_configuration_revisions]{list_configuration_revisions} \tab Returns a list of all the MSK configurations in this Region\cr
+\link[paws.analytics:kafka_list_configurations]{list_configurations} \tab Returns a list of all the MSK configurations in this Region\cr
+\link[paws.analytics:kafka_list_kafka_versions]{list_kafka_versions} \tab Returns a list of Apache Kafka versions\cr
+\link[paws.analytics:kafka_list_nodes]{list_nodes} \tab Returns a list of the broker nodes in the cluster\cr
+\link[paws.analytics:kafka_list_scram_secrets]{list_scram_secrets} \tab Returns a list of the Scram Secrets associated with an Amazon MSK cluster\cr
+\link[paws.analytics:kafka_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with the specified resource\cr
+\link[paws.analytics:kafka_reboot_broker]{reboot_broker} \tab Reboots brokers\cr
+\link[paws.analytics:kafka_tag_resource]{tag_resource} \tab Adds tags to the specified MSK resource\cr
+\link[paws.analytics:kafka_untag_resource]{untag_resource} \tab Removes the tags associated with the keys that are provided in the query\cr
+\link[paws.analytics:kafka_update_broker_count]{update_broker_count} \tab Updates the number of broker nodes in the cluster\cr
+\link[paws.analytics:kafka_update_broker_storage]{update_broker_storage} \tab Updates the EBS storage associated with MSK brokers\cr
+\link[paws.analytics:kafka_update_broker_type]{update_broker_type} \tab Updates EC2 instance type\cr
+\link[paws.analytics:kafka_update_cluster_configuration]{update_cluster_configuration} \tab Updates the cluster with the configuration that is specified in the request body\cr
+\link[paws.analytics:kafka_update_cluster_kafka_version]{update_cluster_kafka_version} \tab Updates the Apache Kafka version for the cluster\cr
+\link[paws.analytics:kafka_update_configuration]{update_configuration} \tab Updates an MSK configuration\cr
+\link[paws.analytics:kafka_update_connectivity]{update_connectivity} \tab Updates the cluster's connectivity configuration\cr
+\link[paws.analytics:kafka_update_monitoring]{update_monitoring} \tab Updates the monitoring settings for the cluster\cr
+\link[paws.analytics:kafka_update_security]{update_security} \tab Updates the security settings for the cluster
 }
 }
 

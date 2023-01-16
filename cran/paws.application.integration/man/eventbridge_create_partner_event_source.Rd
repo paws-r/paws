@@ -8,54 +8,17 @@ eventbridge_create_partner_event_source(Name, Account)
 }
 \arguments{
 \item{Name}{[required] The name of the partner event source. This name must be unique and must
-be in the format \code{partner_name/event_namespace/event_name}. The AWS
-account that wants to use this partner event source must create a
-partner event bus with a name that matches the name of the partner event
-source.}
+be in the format \code{partner_name/event_namespace/event_name}. The Amazon
+Web Services account that wants to use this partner event source must
+create a partner event bus with a name that matches the name of the
+partner event source.}
 
-\item{Account}{[required] The AWS account ID that is permitted to create a matching partner event
-bus for this partner event source.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  EventSourceArn = "string"
-)
-}
+\item{Account}{[required] The Amazon Web Services account ID that is permitted to create a
+matching partner event bus for this partner event source.}
 }
 \description{
-Called by an SaaS partner to create a partner event source. This
-operation is not used by AWS customers.
+Called by an SaaS partner to create a partner event source. This operation is not used by Amazon Web Services customers.
 
-Each partner event source can be used by one AWS account to create a
-matching partner event bus in that AWS account. A SaaS partner must
-create one partner event source for each AWS account that wants to
-receive those event types.
-
-A partner event source creates events based on resources within the SaaS
-partner's service or application.
-
-An AWS account that creates a partner event bus that matches the partner
-event source can use that event bus to receive events from the partner,
-and then process them using AWS Events rules and targets.
-
-Partner event source names follow this format:
-
-\code{partner_name/event_namespace/event_name}
-
-\emph{partner_name} is determined during partner registration and identifies
-the partner to AWS customers. \emph{event_namespace} is determined by the
-partner and is a way for the partner to categorize their events.
-\emph{event_name} is determined by the partner, and should uniquely identify
-an event-generating resource within the partner system. The combination
-of \emph{event_namespace} and \emph{event_name} should help AWS customers decide
-whether to create an event bus to receive these events.
+See \url{https://paws-r.github.io/docs/eventbridge/create_partner_event_source.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_partner_event_source(
-  Name = "string",
-  Account = "string"
-)
-}
-}
-
 \keyword{internal}

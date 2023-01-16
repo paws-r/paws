@@ -4,7 +4,7 @@
 \alias{kafka_update_configuration}
 \title{Updates an MSK configuration}
 \usage{
-kafka_update_configuration(Arn, Description, ServerProperties)
+kafka_update_configuration(Arn, Description = NULL, ServerProperties)
 }
 \arguments{
 \item{Arn}{[required] The Amazon Resource Name (ARN) of the configuration.}
@@ -16,29 +16,9 @@ ensure that the contents of the file are base64 encoded. When using the
 AWS Management Console, the SDK, or the AWS CLI, the contents of
 server.properties can be in plaintext.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  LatestRevision = list(
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Description = "string",
-    Revision = 123
-  )
-)
-}
-}
 \description{
 Updates an MSK configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$update_configuration(
-  Arn = "string",
-  Description = "string",
-  ServerProperties = raw
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/update_configuration.html} for full documentation.
+}
 \keyword{internal}

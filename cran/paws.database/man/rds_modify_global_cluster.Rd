@@ -4,8 +4,13 @@
 \alias{rds_modify_global_cluster}
 \title{Modify a setting for an Amazon Aurora global cluster}
 \usage{
-rds_modify_global_cluster(GlobalClusterIdentifier,
-  NewGlobalClusterIdentifier, DeletionProtection)
+rds_modify_global_cluster(
+  GlobalClusterIdentifier = NULL,
+  NewGlobalClusterIdentifier = NULL,
+  DeletionProtection = NULL,
+  EngineVersion = NULL,
+  AllowMajorVersionUpgrade = NULL
+)
 }
 \arguments{
 \item{GlobalClusterIdentifier}{The DB cluster identifier for the global cluster being modified. This
@@ -32,49 +37,41 @@ Example: \code{my-cluster2}}
 \item{DeletionProtection}{Indicates if the global database cluster has deletion protection
 enabled. The global database cluster can't be deleted when deletion
 protection is enabled.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalCluster = list(
-    GlobalClusterIdentifier = "string",
-    GlobalClusterResourceId = "string",
-    GlobalClusterArn = "string",
-    Status = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    DatabaseName = "string",
-    StorageEncrypted = TRUE|FALSE,
-    DeletionProtection = TRUE|FALSE,
-    GlobalClusterMembers = list(
-      list(
-        DBClusterArn = "string",
-        Readers = list(
-          "string"
-        ),
-        IsWriter = TRUE|FALSE,
-        GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
-      )
-    )
-  )
-)
-}
+
+\item{EngineVersion}{The version number of the database engine to which you want to upgrade.
+Changing this parameter results in an outage. The change is applied
+during the next maintenance window unless \code{ApplyImmediately} is enabled.
+
+To list all of the available engine versions for \code{aurora} (for MySQL
+5.6-compatible Aurora), use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'}
+
+To list all of the available engine versions for \code{aurora-mysql} (for
+MySQL 5.7-compatible and MySQL 8.0-compatible Aurora), use the following
+command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-mysql --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'}
+
+To list all of the available engine versions for \code{aurora-postgresql},
+use the following command:
+
+\verb{aws rds describe-db-engine-versions --engine aurora-postgresql --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'}}
+
+\item{AllowMajorVersionUpgrade}{A value that indicates whether major version upgrades are allowed.
+
+Constraints: You must allow major version upgrades when specifying a
+value for the \code{EngineVersion} parameter that is a different major
+version than the DB cluster's current version.
+
+If you upgrade the major version of a global database, the cluster and
+DB instance parameter groups are set to the default parameter groups for
+the new version. Apply any custom parameter groups after completing the
+upgrade.}
 }
 \description{
-Modify a setting for an Amazon Aurora global cluster. You can change one
-or more database configuration parameters by specifying these parameters
-and the new values in the request. For more information on Amazon
-Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
+Modify a setting for an Amazon Aurora global cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What is Amazon Aurora?} in the \emph{Amazon Aurora User Guide}.
 
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/modify_global_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_global_cluster(
-  GlobalClusterIdentifier = "string",
-  NewGlobalClusterIdentifier = "string",
-  DeletionProtection = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

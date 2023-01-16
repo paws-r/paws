@@ -7,7 +7,19 @@
 codepipeline(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -31,34 +43,34 @@ uniquely named, and consists of stages, actions, and transitions.
 
 You can work with pipelines by calling:
 \itemize{
-\item \code{\link[=codepipeline_create_pipeline]{create_pipeline}}, which creates a
+\item \code{create_pipeline}, which creates a
 uniquely named pipeline.
-\item \code{\link[=codepipeline_delete_pipeline]{delete_pipeline}}, which deletes the
+\item \code{delete_pipeline}, which deletes the
 specified pipeline.
-\item \code{\link[=codepipeline_get_pipeline]{get_pipeline}}, which returns
+\item \code{get_pipeline}, which returns
 information about the pipeline structure and pipeline metadata,
 including the pipeline Amazon Resource Name (ARN).
-\item \code{\link[=codepipeline_get_pipeline_execution]{get_pipeline_execution}},
+\item \code{get_pipeline_execution},
 which returns information about a specific execution of a pipeline.
-\item \code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}}, which
+\item \code{get_pipeline_state}, which
 returns information about the current state of the stages and
 actions of a pipeline.
-\item \code{\link[=codepipeline_list_action_executions]{list_action_executions}},
+\item \code{list_action_executions},
 which returns action-level details for past executions. The details
 include full stage and action-level details, including individual
 action duration, status, any errors that occurred during the
 execution, and input and output artifact location details.
-\item \code{\link[=codepipeline_list_pipelines]{list_pipelines}}, which gets a
+\item \code{list_pipelines}, which gets a
 summary of all of the pipelines associated with your account.
-\item \code{\link[=codepipeline_list_pipeline_executions]{list_pipeline_executions}},
+\item \code{list_pipeline_executions},
 which gets a summary of the most recent executions for a pipeline.
-\item \code{\link[=codepipeline_start_pipeline_execution]{start_pipeline_execution}},
+\item \code{start_pipeline_execution},
 which runs the most recent revision of an artifact through the
 pipeline.
-\item \code{\link[=codepipeline_stop_pipeline_execution]{stop_pipeline_execution}},
+\item \code{stop_pipeline_execution},
 which stops the specified pipeline execution from continuing through
 the pipeline.
-\item \code{\link[=codepipeline_update_pipeline]{update_pipeline}}, which updates a
+\item \code{update_pipeline}, which updates a
 pipeline with edits or changes to the structure of the pipeline.
 }
 
@@ -68,9 +80,9 @@ or failure. If a stage fails, the pipeline stops at that stage and
 remains stopped until either a new version of an artifact appears in the
 source location, or a user takes action to rerun the most recent
 artifact through the pipeline. You can call
-\code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}}, which displays
+\code{get_pipeline_state}, which displays
 the status of a pipeline, including the status of stages in the
-pipeline, or \code{\link[=codepipeline_get_pipeline]{get_pipeline}}, which returns
+pipeline, or \code{get_pipeline}, which returns
 the entire structure of the pipeline, including the stages of that
 pipeline. For more information about the structure of stages and
 actions, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html}{AWS CodePipeline Pipeline Structure Reference}.
@@ -81,8 +93,8 @@ example, you can use a source action to import artifacts into a pipeline
 from a source such as Amazon S3. Like stages, you do not work with
 actions directly in most cases, but you do define and interact with
 actions when working with pipeline operations such as
-\code{\link[=codepipeline_create_pipeline]{create_pipeline}} and
-\code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}}. Valid action
+\code{create_pipeline} and
+\code{get_pipeline_state}. Valid action
 categories are:
 \itemize{
 \item Source
@@ -99,10 +111,10 @@ one stage complete.
 
 You can work with transitions by calling:
 \itemize{
-\item \code{\link[=codepipeline_disable_stage_transition]{disable_stage_transition}},
+\item \code{disable_stage_transition},
 which prevents artifacts from transitioning to the next stage in a
 pipeline.
-\item \code{\link[=codepipeline_enable_stage_transition]{enable_stage_transition}},
+\item \code{enable_stage_transition},
 which enables transition of artifacts between stages in a pipeline.
 }
 
@@ -118,15 +130,15 @@ source action might import a revision of an artifact from a source.
 
 You can work with jobs by calling:
 \itemize{
-\item \code{\link[=codepipeline_acknowledge_job]{acknowledge_job}}, which confirms
+\item \code{acknowledge_job}, which confirms
 whether a job worker has received the specified job.
-\item \code{\link[=codepipeline_get_job_details]{get_job_details}}, which returns the
+\item \code{get_job_details}, which returns the
 details of a job.
-\item \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}}, which determines
+\item \code{poll_for_jobs}, which determines
 whether there are any jobs to act on.
-\item \code{\link[=codepipeline_put_job_failure_result]{put_job_failure_result}},
+\item \code{put_job_failure_result},
 which provides details of a job failure.
-\item \code{\link[=codepipeline_put_job_success_result]{put_job_success_result}},
+\item \code{put_job_success_result},
 which provides details of a job success.
 }
 
@@ -136,20 +148,22 @@ created by members of the AWS Partner Network.
 
 You can work with third party jobs by calling:
 \itemize{
-\item \code{\link[=codepipeline_acknowledge_third_party_job]{acknowledge_third_party_job}},
+\item \code{acknowledge_third_party_job},
 which confirms whether a job worker has received the specified job.
-\item \code{\link[=codepipeline_get_third_party_job_details]{get_third_party_job_details}},
+\item \code{get_third_party_job_details},
 which requests the details of a job for a partner action.
-\item \code{\link[=codepipeline_poll_for_third_party_jobs]{poll_for_third_party_jobs}},
+\item \code{poll_for_third_party_jobs},
 which determines whether there are any jobs to act on.
-\item \code{\link[=codepipeline_put_third_party_job_failure_result]{put_third_party_job_failure_result}},
+\item \code{put_third_party_job_failure_result},
 which provides details of a job failure.
-\item \code{\link[=codepipeline_put_third_party_job_success_result]{put_third_party_job_success_result}},
+\item \code{put_third_party_job_success_result},
 which provides details of a job success.
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- codepipeline(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- codepipeline(
   config = list(
     credentials = list(
       creds = list(
@@ -157,55 +171,61 @@ which provides details of a job success.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=codepipeline_acknowledge_job]{acknowledge_job} \tab Returns information about a specified job and whether that job has been received by the job worker\cr
-\link[=codepipeline_acknowledge_third_party_job]{acknowledge_third_party_job} \tab Confirms a job worker has received the specified job\cr
-\link[=codepipeline_create_custom_action_type]{create_custom_action_type} \tab Creates a new custom action that can be used in all pipelines associated with the AWS account\cr
-\link[=codepipeline_create_pipeline]{create_pipeline} \tab Creates a pipeline\cr
-\link[=codepipeline_delete_custom_action_type]{delete_custom_action_type} \tab Marks a custom action as deleted\cr
-\link[=codepipeline_delete_pipeline]{delete_pipeline} \tab Deletes the specified pipeline\cr
-\link[=codepipeline_delete_webhook]{delete_webhook} \tab Deletes a previously created webhook by name\cr
-\link[=codepipeline_deregister_webhook_with_third_party]{deregister_webhook_with_third_party} \tab Removes the connection between the webhook that was created by CodePipeline and the external tool with events to be detected\cr
-\link[=codepipeline_disable_stage_transition]{disable_stage_transition} \tab Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline\cr
-\link[=codepipeline_enable_stage_transition]{enable_stage_transition} \tab Enables artifacts in a pipeline to transition to a stage in a pipeline\cr
-\link[=codepipeline_get_job_details]{get_job_details} \tab Returns information about a job\cr
-\link[=codepipeline_get_pipeline]{get_pipeline} \tab Returns the metadata, structure, stages, and actions of a pipeline\cr
-\link[=codepipeline_get_pipeline_execution]{get_pipeline_execution} \tab Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline\cr
-\link[=codepipeline_get_pipeline_state]{get_pipeline_state} \tab Returns information about the state of a pipeline, including the stages and actions\cr
-\link[=codepipeline_get_third_party_job_details]{get_third_party_job_details} \tab Requests the details of a job for a third party action\cr
-\link[=codepipeline_list_action_executions]{list_action_executions} \tab Lists the action executions that have occurred in a pipeline\cr
-\link[=codepipeline_list_action_types]{list_action_types} \tab Gets a summary of all AWS CodePipeline action types associated with your account\cr
-\link[=codepipeline_list_pipeline_executions]{list_pipeline_executions} \tab Gets a summary of the most recent executions for a pipeline\cr
-\link[=codepipeline_list_pipelines]{list_pipelines} \tab Gets a summary of all of the pipelines associated with your account\cr
-\link[=codepipeline_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource\cr
-\link[=codepipeline_list_webhooks]{list_webhooks} \tab Gets a listing of all the webhooks in this AWS Region for this account\cr
-\link[=codepipeline_poll_for_jobs]{poll_for_jobs} \tab Returns information about any jobs for AWS CodePipeline to act on\cr
-\link[=codepipeline_poll_for_third_party_jobs]{poll_for_third_party_jobs} \tab Determines whether there are any third party jobs for a job worker to act on\cr
-\link[=codepipeline_put_action_revision]{put_action_revision} \tab Provides information to AWS CodePipeline about new revisions to a source\cr
-\link[=codepipeline_put_approval_result]{put_approval_result} \tab Provides the response to a manual approval request to AWS CodePipeline\cr
-\link[=codepipeline_put_job_failure_result]{put_job_failure_result} \tab Represents the failure of a job as returned to the pipeline by a job worker\cr
-\link[=codepipeline_put_job_success_result]{put_job_success_result} \tab Represents the success of a job as returned to the pipeline by a job worker\cr
-\link[=codepipeline_put_third_party_job_failure_result]{put_third_party_job_failure_result} \tab Represents the failure of a third party job as returned to the pipeline by a job worker\cr
-\link[=codepipeline_put_third_party_job_success_result]{put_third_party_job_success_result} \tab Represents the success of a third party job as returned to the pipeline by a job worker\cr
-\link[=codepipeline_put_webhook]{put_webhook} \tab Defines a webhook and returns a unique webhook URL generated by CodePipeline\cr
-\link[=codepipeline_register_webhook_with_third_party]{register_webhook_with_third_party} \tab Configures a connection between the webhook that was created and the external tool with events to be detected\cr
-\link[=codepipeline_retry_stage_execution]{retry_stage_execution} \tab Resumes the pipeline execution by retrying the last failed actions in a stage\cr
-\link[=codepipeline_start_pipeline_execution]{start_pipeline_execution} \tab Starts the specified pipeline\cr
-\link[=codepipeline_stop_pipeline_execution]{stop_pipeline_execution} \tab Stops the specified pipeline execution\cr
-\link[=codepipeline_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
-\link[=codepipeline_untag_resource]{untag_resource} \tab Removes tags from an AWS resource\cr
-\link[=codepipeline_update_pipeline]{update_pipeline} \tab Updates a specified pipeline with edits or changes to its structure
+\link[paws.developer.tools:codepipeline_acknowledge_job]{acknowledge_job} \tab Returns information about a specified job and whether that job has been received by the job worker\cr
+\link[paws.developer.tools:codepipeline_acknowledge_third_party_job]{acknowledge_third_party_job} \tab Confirms a job worker has received the specified job\cr
+\link[paws.developer.tools:codepipeline_create_custom_action_type]{create_custom_action_type} \tab Creates a new custom action that can be used in all pipelines associated with the AWS account\cr
+\link[paws.developer.tools:codepipeline_create_pipeline]{create_pipeline} \tab Creates a pipeline\cr
+\link[paws.developer.tools:codepipeline_delete_custom_action_type]{delete_custom_action_type} \tab Marks a custom action as deleted\cr
+\link[paws.developer.tools:codepipeline_delete_pipeline]{delete_pipeline} \tab Deletes the specified pipeline\cr
+\link[paws.developer.tools:codepipeline_delete_webhook]{delete_webhook} \tab Deletes a previously created webhook by name\cr
+\link[paws.developer.tools:codepipeline_deregister_webhook_with_third_party]{deregister_webhook_with_third_party} \tab Removes the connection between the webhook that was created by CodePipeline and the external tool with events to be detected\cr
+\link[paws.developer.tools:codepipeline_disable_stage_transition]{disable_stage_transition} \tab Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline\cr
+\link[paws.developer.tools:codepipeline_enable_stage_transition]{enable_stage_transition} \tab Enables artifacts in a pipeline to transition to a stage in a pipeline\cr
+\link[paws.developer.tools:codepipeline_get_action_type]{get_action_type} \tab Returns information about an action type created for an external provider, where the action is to be used by customers of the external provider\cr
+\link[paws.developer.tools:codepipeline_get_job_details]{get_job_details} \tab Returns information about a job\cr
+\link[paws.developer.tools:codepipeline_get_pipeline]{get_pipeline} \tab Returns the metadata, structure, stages, and actions of a pipeline\cr
+\link[paws.developer.tools:codepipeline_get_pipeline_execution]{get_pipeline_execution} \tab Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline\cr
+\link[paws.developer.tools:codepipeline_get_pipeline_state]{get_pipeline_state} \tab Returns information about the state of a pipeline, including the stages and actions\cr
+\link[paws.developer.tools:codepipeline_get_third_party_job_details]{get_third_party_job_details} \tab Requests the details of a job for a third party action\cr
+\link[paws.developer.tools:codepipeline_list_action_executions]{list_action_executions} \tab Lists the action executions that have occurred in a pipeline\cr
+\link[paws.developer.tools:codepipeline_list_action_types]{list_action_types} \tab Gets a summary of all AWS CodePipeline action types associated with your account\cr
+\link[paws.developer.tools:codepipeline_list_pipeline_executions]{list_pipeline_executions} \tab Gets a summary of the most recent executions for a pipeline\cr
+\link[paws.developer.tools:codepipeline_list_pipelines]{list_pipelines} \tab Gets a summary of all of the pipelines associated with your account\cr
+\link[paws.developer.tools:codepipeline_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource\cr
+\link[paws.developer.tools:codepipeline_list_webhooks]{list_webhooks} \tab Gets a listing of all the webhooks in this AWS Region for this account\cr
+\link[paws.developer.tools:codepipeline_poll_for_jobs]{poll_for_jobs} \tab Returns information about any jobs for AWS CodePipeline to act on\cr
+\link[paws.developer.tools:codepipeline_poll_for_third_party_jobs]{poll_for_third_party_jobs} \tab Determines whether there are any third party jobs for a job worker to act on\cr
+\link[paws.developer.tools:codepipeline_put_action_revision]{put_action_revision} \tab Provides information to AWS CodePipeline about new revisions to a source\cr
+\link[paws.developer.tools:codepipeline_put_approval_result]{put_approval_result} \tab Provides the response to a manual approval request to AWS CodePipeline\cr
+\link[paws.developer.tools:codepipeline_put_job_failure_result]{put_job_failure_result} \tab Represents the failure of a job as returned to the pipeline by a job worker\cr
+\link[paws.developer.tools:codepipeline_put_job_success_result]{put_job_success_result} \tab Represents the success of a job as returned to the pipeline by a job worker\cr
+\link[paws.developer.tools:codepipeline_put_third_party_job_failure_result]{put_third_party_job_failure_result} \tab Represents the failure of a third party job as returned to the pipeline by a job worker\cr
+\link[paws.developer.tools:codepipeline_put_third_party_job_success_result]{put_third_party_job_success_result} \tab Represents the success of a third party job as returned to the pipeline by a job worker\cr
+\link[paws.developer.tools:codepipeline_put_webhook]{put_webhook} \tab Defines a webhook and returns a unique webhook URL generated by CodePipeline\cr
+\link[paws.developer.tools:codepipeline_register_webhook_with_third_party]{register_webhook_with_third_party} \tab Configures a connection between the webhook that was created and the external tool with events to be detected\cr
+\link[paws.developer.tools:codepipeline_retry_stage_execution]{retry_stage_execution} \tab Resumes the pipeline execution by retrying the last failed actions in a stage\cr
+\link[paws.developer.tools:codepipeline_start_pipeline_execution]{start_pipeline_execution} \tab Starts the specified pipeline\cr
+\link[paws.developer.tools:codepipeline_stop_pipeline_execution]{stop_pipeline_execution} \tab Stops the specified pipeline execution\cr
+\link[paws.developer.tools:codepipeline_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
+\link[paws.developer.tools:codepipeline_untag_resource]{untag_resource} \tab Removes tags from an AWS resource\cr
+\link[paws.developer.tools:codepipeline_update_action_type]{update_action_type} \tab Updates an action type that was created with any supported integration model, where the action type is to be used by customers of the action type provider\cr
+\link[paws.developer.tools:codepipeline_update_pipeline]{update_pipeline} \tab Updates a specified pipeline with edits or changes to its structure
 }
 }
 

@@ -4,10 +4,18 @@
 \alias{elasticache_describe_update_actions}
 \title{Returns details of the update actions}
 \usage{
-elasticache_describe_update_actions(ServiceUpdateName,
-  ReplicationGroupIds, CacheClusterIds, Engine, ServiceUpdateStatus,
-  ServiceUpdateTimeRange, UpdateActionStatus, ShowNodeLevelUpdateStatus,
-  MaxRecords, Marker)
+elasticache_describe_update_actions(
+  ServiceUpdateName = NULL,
+  ReplicationGroupIds = NULL,
+  CacheClusterIds = NULL,
+  Engine = NULL,
+  ServiceUpdateStatus = NULL,
+  ServiceUpdateTimeRange = NULL,
+  UpdateActionStatus = NULL,
+  ShowNodeLevelUpdateStatus = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ServiceUpdateName}{The unique ID of the service update}
@@ -35,121 +43,9 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  UpdateActions = list(
-    list(
-      ReplicationGroupId = "string",
-      CacheClusterId = "string",
-      ServiceUpdateName = "string",
-      ServiceUpdateReleaseDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      ServiceUpdateSeverity = "critical"|"important"|"medium"|"low",
-      ServiceUpdateStatus = "available"|"cancelled"|"expired",
-      ServiceUpdateRecommendedApplyByDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      ServiceUpdateType = "security-update",
-      UpdateActionAvailableDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateActionStatus = "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete"|"scheduling"|"scheduled"|"not-applicable",
-      NodesUpdated = "string",
-      UpdateActionStatusModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      SlaMet = "yes"|"no"|"n/a",
-      NodeGroupUpdateStatus = list(
-        list(
-          NodeGroupId = "string",
-          NodeGroupMemberUpdateStatus = list(
-            list(
-              CacheClusterId = "string",
-              CacheNodeId = "string",
-              NodeUpdateStatus = "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete",
-              NodeDeletionDate = as.POSIXct(
-                "2015-01-01"
-              ),
-              NodeUpdateStartDate = as.POSIXct(
-                "2015-01-01"
-              ),
-              NodeUpdateEndDate = as.POSIXct(
-                "2015-01-01"
-              ),
-              NodeUpdateInitiatedBy = "system"|"customer",
-              NodeUpdateInitiatedDate = as.POSIXct(
-                "2015-01-01"
-              ),
-              NodeUpdateStatusModifiedDate = as.POSIXct(
-                "2015-01-01"
-              )
-            )
-          )
-        )
-      ),
-      CacheNodeUpdateStatus = list(
-        list(
-          CacheNodeId = "string",
-          NodeUpdateStatus = "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete",
-          NodeDeletionDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          NodeUpdateStartDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          NodeUpdateEndDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          NodeUpdateInitiatedBy = "system"|"customer",
-          NodeUpdateInitiatedDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          NodeUpdateStatusModifiedDate = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      ),
-      EstimatedUpdateTime = "string",
-      Engine = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns details of the update actions
-}
-\section{Request syntax}{
-\preformatted{svc$describe_update_actions(
-  ServiceUpdateName = "string",
-  ReplicationGroupIds = list(
-    "string"
-  ),
-  CacheClusterIds = list(
-    "string"
-  ),
-  Engine = "string",
-  ServiceUpdateStatus = list(
-    "available"|"cancelled"|"expired"
-  ),
-  ServiceUpdateTimeRange = list(
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  UpdateActionStatus = list(
-    "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete"|"scheduling"|"scheduled"|"not-applicable"
-  ),
-  ShowNodeLevelUpdateStatus = TRUE|FALSE,
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticache/describe_update_actions.html} for full documentation.
+}
 \keyword{internal}

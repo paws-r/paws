@@ -4,20 +4,26 @@
 \alias{apigateway_put_integration_response}
 \title{Represents a put integration}
 \usage{
-apigateway_put_integration_response(restApiId, resourceId, httpMethod,
-  statusCode, selectionPattern, responseParameters, responseTemplates,
-  contentHandling)
+apigateway_put_integration_response(
+  restApiId,
+  resourceId,
+  httpMethod,
+  statusCode,
+  selectionPattern = NULL,
+  responseParameters = NULL,
+  responseTemplates = NULL,
+  contentHandling = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Specifies a put integration response request's resource
-identifier.}
+\item{resourceId}{[required] Specifies a put integration response request's resource identifier.}
 
-\item{httpMethod}{[required] [Required] Specifies a put integration response request's HTTP method.}
+\item{httpMethod}{[required] Specifies a put integration response request's HTTP method.}
 
-\item{statusCode}{[required] [Required] Specifies the status code that is used to map the
-integration response to an existing MethodResponse.}
+\item{statusCode}{[required] Specifies the status code that is used to map the integration response
+to an existing MethodResponse.}
 
 \item{selectionPattern}{Specifies the selection pattern of a put integration response.}
 
@@ -38,50 +44,14 @@ expression without the \code{$} prefix.}
 \item{contentHandling}{Specifies how to handle response payload content type conversions.
 Supported values are \code{CONVERT_TO_BINARY} and \code{CONVERT_TO_TEXT}, with the
 following behaviors:
-\itemize{
-\item \code{CONVERT_TO_BINARY}: Converts a response payload from a
-Base64-encoded string to the corresponding binary blob.
-\item \code{CONVERT_TO_TEXT}: Converts a response payload from a binary blob to
-a Base64-encoded string.
-}
 
 If this property is not defined, the response payload will be passed
 through from the integration response to the method response without
 modification.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  statusCode = "string",
-  selectionPattern = "string",
-  responseParameters = list(
-    "string"
-  ),
-  responseTemplates = list(
-    "string"
-  ),
-  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-)
-}
-}
 \description{
 Represents a put integration.
-}
-\section{Request syntax}{
-\preformatted{svc$put_integration_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string",
-  selectionPattern = "string",
-  responseParameters = list(
-    "string"
-  ),
-  responseTemplates = list(
-    "string"
-  ),
-  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/put_integration_response.html} for full documentation.
+}
 \keyword{internal}

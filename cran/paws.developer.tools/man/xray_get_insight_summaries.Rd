@@ -5,8 +5,15 @@
 \title{Retrieves the summaries of all insights in the specified group matching
 the provided filter values}
 \usage{
-xray_get_insight_summaries(States, GroupARN, GroupName, StartTime,
-  EndTime, MaxResults, NextToken)
+xray_get_insight_summaries(
+  States = NULL,
+  GroupARN = NULL,
+  GroupName = NULL,
+  StartTime,
+  EndTime,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{States}{The list of insight states.}
@@ -26,84 +33,9 @@ can't be more than 30 days old.}
 
 \item{NextToken}{Pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InsightSummaries = list(
-    list(
-      InsightId = "string",
-      GroupARN = "string",
-      GroupName = "string",
-      RootCauseServiceId = list(
-        Name = "string",
-        Names = list(
-          "string"
-        ),
-        AccountId = "string",
-        Type = "string"
-      ),
-      Categories = list(
-        "FAULT"
-      ),
-      State = "ACTIVE"|"CLOSED",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Summary = "string",
-      ClientRequestImpactStatistics = list(
-        FaultCount = 123,
-        OkCount = 123,
-        TotalCount = 123
-      ),
-      RootCauseServiceRequestImpactStatistics = list(
-        FaultCount = 123,
-        OkCount = 123,
-        TotalCount = 123
-      ),
-      TopAnomalousServices = list(
-        list(
-          ServiceId = list(
-            Name = "string",
-            Names = list(
-              "string"
-            ),
-            AccountId = "string",
-            Type = "string"
-          )
-        )
-      ),
-      LastUpdateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the summaries of all insights in the specified group matching
-the provided filter values.
-}
-\section{Request syntax}{
-\preformatted{svc$get_insight_summaries(
-  States = list(
-    "ACTIVE"|"CLOSED"
-  ),
-  GroupARN = "string",
-  GroupName = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Retrieves the summaries of all insights in the specified group matching the provided filter values.
 
+See \url{https://paws-r.github.io/docs/xray/get_insight_summaries.html} for full documentation.
+}
 \keyword{internal}

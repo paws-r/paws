@@ -10,29 +10,9 @@ route53domains_list_tags_for_domain(DomainName)
 \arguments{
 \item{DomainName}{[required] The domain for which you want to get a list of tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-This operation returns all of the tags that are associated with the
-specified domain.
+This operation returns all of the tags that are associated with the specified domain.
 
-All tag operations are eventually consistent; subsequent operations
-might not immediately represent all issued operations.
+See \url{https://paws-r.github.io/docs/route53domains/list_tags_for_domain.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_domain(
-  DomainName = "string"
-)
-}
-}
-
 \keyword{internal}

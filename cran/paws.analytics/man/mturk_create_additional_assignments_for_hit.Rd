@@ -5,8 +5,11 @@
 \title{The CreateAdditionalAssignmentsForHIT operation increases the maximum
 number of assignments of an existing HIT}
 \usage{
-mturk_create_additional_assignments_for_hit(HITId,
-  NumberOfAdditionalAssignments, UniqueRequestToken)
+mturk_create_additional_assignments_for_hit(
+  HITId,
+  NumberOfAdditionalAssignments,
+  UniqueRequestToken = NULL
+)
 }
 \arguments{
 \item{HITId}{[required] The ID of the HIT to extend.}
@@ -21,36 +24,9 @@ system from a previous call using the same \code{UniqueRequestToken},
 subsequent calls will return an error with a message containing the
 request ID.}
 }
-\value{
-An empty list.
-}
 \description{
-The
-\code{\link[=mturk_create_additional_assignments_for_hit]{create_additional_assignments_for_hit}}
-operation increases the maximum number of assignments of an existing
-HIT.
+The \code{\link[=mturk_create_additional_assignments_for_hit]{create_additional_assignments_for_hit}} operation increases the maximum number of assignments of an existing HIT.
 
-To extend the maximum number of assignments, specify the number of
-additional assignments.
-\itemize{
-\item HITs created with fewer than 10 assignments cannot be extended to
-have 10 or more assignments. Attempting to add assignments in a way
-that brings the total number of assignments for a HIT from fewer
-than 10 assignments to 10 or more assignments will result in an
-\code{AWS.MechanicalTurk.InvalidMaximumAssignmentsIncrease} exception.
-\item HITs that were created before July 22, 2015 cannot be extended.
-Attempting to extend HITs that were created before July 22, 2015
-will result in an \code{AWS.MechanicalTurk.HITTooOldForExtension}
-exception.
+See \url{https://paws-r.github.io/docs/mturk/create_additional_assignments_for_hit.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$create_additional_assignments_for_hit(
-  HITId = "string",
-  NumberOfAdditionalAssignments = 123,
-  UniqueRequestToken = "string"
-)
-}
-}
-
 \keyword{internal}

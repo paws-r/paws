@@ -4,8 +4,13 @@
 \alias{athena_list_table_metadata}
 \title{Lists the metadata for the tables in the specified data catalog database}
 \usage{
-athena_list_table_metadata(CatalogName, DatabaseName, Expression,
-  NextToken, MaxResults)
+athena_list_table_metadata(
+  CatalogName,
+  DatabaseName,
+  Expression = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{CatalogName}{[required] The name of the data catalog for which table metadata should be
@@ -23,54 +28,9 @@ page call.}
 
 \item{MaxResults}{Specifies the maximum number of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TableMetadataList = list(
-    list(
-      Name = "string",
-      CreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastAccessTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TableType = "string",
-      Columns = list(
-        list(
-          Name = "string",
-          Type = "string",
-          Comment = "string"
-        )
-      ),
-      PartitionKeys = list(
-        list(
-          Name = "string",
-          Type = "string",
-          Comment = "string"
-        )
-      ),
-      Parameters = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the metadata for the tables in the specified data catalog
-database.
-}
-\section{Request syntax}{
-\preformatted{svc$list_table_metadata(
-  CatalogName = "string",
-  DatabaseName = "string",
-  Expression = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists the metadata for the tables in the specified data catalog database.
 
+See \url{https://paws-r.github.io/docs/athena/list_table_metadata.html} for full documentation.
+}
 \keyword{internal}

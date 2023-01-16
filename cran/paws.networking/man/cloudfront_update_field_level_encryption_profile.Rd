@@ -5,7 +5,10 @@
 \title{Update a field-level encryption profile}
 \usage{
 cloudfront_update_field_level_encryption_profile(
-  FieldLevelEncryptionProfileConfig, Id, IfMatch)
+  FieldLevelEncryptionProfileConfig,
+  Id,
+  IfMatch = NULL
+)
 }
 \arguments{
 \item{FieldLevelEncryptionProfileConfig}{[required] Request to update a field-level encryption profile.}
@@ -15,67 +18,9 @@ cloudfront_update_field_level_encryption_profile(
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
 profile identity to update. For example: \code{E2QWRUHAPOMQZL}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FieldLevelEncryptionProfile = list(
-    Id = "string",
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    FieldLevelEncryptionProfileConfig = list(
-      Name = "string",
-      CallerReference = "string",
-      Comment = "string",
-      EncryptionEntities = list(
-        Quantity = 123,
-        Items = list(
-          list(
-            PublicKeyId = "string",
-            ProviderId = "string",
-            FieldPatterns = list(
-              Quantity = 123,
-              Items = list(
-                "string"
-              )
-            )
-          )
-        )
-      )
-    )
-  ),
-  ETag = "string"
-)
-}
-}
 \description{
 Update a field-level encryption profile.
-}
-\section{Request syntax}{
-\preformatted{svc$update_field_level_encryption_profile(
-  FieldLevelEncryptionProfileConfig = list(
-    Name = "string",
-    CallerReference = "string",
-    Comment = "string",
-    EncryptionEntities = list(
-      Quantity = 123,
-      Items = list(
-        list(
-          PublicKeyId = "string",
-          ProviderId = "string",
-          FieldPatterns = list(
-            Quantity = 123,
-            Items = list(
-              "string"
-            )
-          )
-        )
-      )
-    )
-  ),
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/update_field_level_encryption_profile.html} for full documentation.
+}
 \keyword{internal}

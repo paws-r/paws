@@ -2,7 +2,7 @@
 % Please edit documentation in R/efs_operations.R
 \name{efs_create_tags}
 \alias{efs_create_tags}
-\title{Creates or overwrites tags associated with a file system}
+\title{DEPRECATED - CreateTags is deprecated and not maintained}
 \usage{
 efs_create_tags(FileSystemId, Tags)
 }
@@ -12,46 +12,9 @@ operation modifies the tags only, not the file system.}
 
 \item{Tags}{[required] An array of \code{Tag} objects to add. Each \code{Tag} object is a key-value pair.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates or overwrites tags associated with a file system. Each tag is a
-key-value pair. If a tag key specified in the request already exists on
-the file system, this operation overwrites its value with the value
-provided in the request. If you add the \code{Name} tag to your file system,
-Amazon EFS returns it in the response to the
-\code{\link[=efs_describe_file_systems]{describe_file_systems}} operation.
+DEPRECATED - \code{\link[=efs_create_tags]{create_tags}} is deprecated and not maintained. To create tags for EFS resources, use the API action.
 
-This operation requires permission for the
-\code{elasticfilesystem:CreateTags} action.
-}
-\section{Request syntax}{
-\preformatted{svc$create_tags(
-  FileSystemId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation creates a new tag for an EFS file system.
-svc$create_tags(
-  FileSystemId = "fs-01234567",
-  Tags = list(
-    list(
-      Key = "Name",
-      Value = "MyFileSystem"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/efs/create_tags.html} for full documentation.
 }
 \keyword{internal}

@@ -6,7 +6,9 @@
 send using a particular configuration set in a specific AWS Region}
 \usage{
 pinpointemail_put_configuration_set_reputation_options(
-  ConfigurationSetName, ReputationMetricsEnabled)
+  ConfigurationSetName,
+  ReputationMetricsEnabled = NULL
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to enable or disable
@@ -16,19 +18,9 @@ reputation metric tracking for.}
 configuration set. If \code{false}, tracking of reputation metrics is
 disabled for the configuration set.}
 }
-\value{
-An empty list.
-}
 \description{
-Enable or disable collection of reputation metrics for emails that you
-send using a particular configuration set in a specific AWS Region.
-}
-\section{Request syntax}{
-\preformatted{svc$put_configuration_set_reputation_options(
-  ConfigurationSetName = "string",
-  ReputationMetricsEnabled = TRUE|FALSE
-)
-}
-}
+Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific AWS Region.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/put_configuration_set_reputation_options.html} for full documentation.
+}
 \keyword{internal}

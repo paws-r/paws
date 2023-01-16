@@ -7,7 +7,19 @@
 cloudsearchdomain(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -20,9 +32,9 @@ You use the AmazonCloudSearch2013 API to upload documents to a search
 domain and search those documents.
 
 The endpoints for submitting
-\code{\link[=cloudsearchdomain_upload_documents]{upload_documents}},
-\code{\link[=cloudsearchdomain_search]{search}}, and
-\code{\link[=cloudsearchdomain_suggest]{suggest}} requests are domain-specific. To
+\code{upload_documents},
+\code{search}, and
+\code{suggest} requests are domain-specific. To
 get the endpoints for your domain, use the Amazon CloudSearch
 configuration service \code{DescribeDomains} action. The domain endpoints are
 also displayed on the domain dashboard in the Amazon CloudSearch
@@ -31,7 +43,9 @@ console. You submit suggest requests to the search endpoint.
 For more information, see the \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/}{Amazon CloudSearch Developer Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudsearchdomain(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudsearchdomain(
   config = list(
     credentials = list(
       creds = list(
@@ -39,21 +53,25 @@ For more information, see the \href{https://docs.aws.amazon.com/cloudsearch/late
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=cloudsearchdomain_search]{search} \tab Retrieves a list of documents that match the specified search criteria\cr
-\link[=cloudsearchdomain_suggest]{suggest} \tab Retrieves autocomplete suggestions for a partial query string\cr
-\link[=cloudsearchdomain_upload_documents]{upload_documents} \tab Posts a batch of documents to a search domain for indexing
+\link[paws.analytics:cloudsearchdomain_search]{search} \tab Retrieves a list of documents that match the specified search criteria\cr
+\link[paws.analytics:cloudsearchdomain_suggest]{suggest} \tab Retrieves autocomplete suggestions for a partial query string\cr
+\link[paws.analytics:cloudsearchdomain_upload_documents]{upload_documents} \tab Posts a batch of documents to a search domain for indexing
 }
 }
 

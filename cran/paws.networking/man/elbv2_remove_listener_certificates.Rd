@@ -13,24 +13,9 @@ elbv2_remove_listener_certificates(ListenerArn, Certificates)
 \item{Certificates}{[required] The certificate to remove. You can specify one certificate per call. Set
 \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the specified certificate from the certificate list for the
-specified HTTPS or TLS listener.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_listener_certificates(
-  ListenerArn = "string",
-  Certificates = list(
-    list(
-      CertificateArn = "string",
-      IsDefault = TRUE|FALSE
-    )
-  )
-)
-}
-}
+Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener.
 
+See \url{https://paws-r.github.io/docs/elbv2/remove_listener_certificates.html} for full documentation.
+}
 \keyword{internal}

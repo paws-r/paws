@@ -4,7 +4,12 @@
 \alias{codebuild_describe_test_cases}
 \title{Returns a list of details about test cases for a report}
 \usage{
-codebuild_describe_test_cases(reportArn, nextToken, maxResults, filter)
+codebuild_describe_test_cases(
+  reportArn,
+  nextToken = NULL,
+  maxResults = NULL,
+  filter = NULL
+)
 }
 \arguments{
 \item{reportArn}{[required] The ARN of the report for which test cases are returned.}
@@ -23,40 +28,9 @@ The default value is 100.}
 
 \item{filter}{A \code{TestCaseFilter} object used to filter the returned reports.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  testCases = list(
-    list(
-      reportArn = "string",
-      testRawDataPath = "string",
-      prefix = "string",
-      name = "string",
-      status = "string",
-      durationInNanoSeconds = 123,
-      message = "string",
-      expired = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Returns a list of details about test cases for a report.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_test_cases(
-  reportArn = "string",
-  nextToken = "string",
-  maxResults = 123,
-  filter = list(
-    status = "string",
-    keyword = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/describe_test_cases.html} for full documentation.
+}
 \keyword{internal}

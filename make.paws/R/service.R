@@ -86,7 +86,9 @@ service_title <- function(api) {
 # Return the API description.
 service_description <- function(api) {
   desc <- convert(api$documentation, package_name(api), links = get_links(api))
-  if (is.null(desc) || desc == "") return("")
+  if (is.null(desc) || length(desc) == 0 || (length(desc) == 1 && desc == "")) {
+    return("")
+  }
   if (length(desc) > 1) {
     if (desc[1] == service_title(api)) desc <- desc[-1]
     if (desc[1] == "") desc <- desc[-1]

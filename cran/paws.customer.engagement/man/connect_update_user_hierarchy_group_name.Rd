@@ -4,29 +4,19 @@
 \alias{connect_update_user_hierarchy_group_name}
 \title{Updates the name of the user hierarchy group}
 \usage{
-connect_update_user_hierarchy_group_name(Name, HierarchyGroupId,
-  InstanceId)
+connect_update_user_hierarchy_group_name(Name, HierarchyGroupId, InstanceId)
 }
 \arguments{
 \item{Name}{[required] The name of the hierarchy group. Must not be more than 100 characters.}
 
 \item{HierarchyGroupId}{[required] The identifier of the hierarchy group.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-An empty list.
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
 Updates the name of the user hierarchy group.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user_hierarchy_group_name(
-  Name = "string",
-  HierarchyGroupId = "string",
-  InstanceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/update_user_hierarchy_group_name.html} for full documentation.
+}
 \keyword{internal}

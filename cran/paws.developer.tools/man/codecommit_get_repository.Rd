@@ -9,42 +9,9 @@ codecommit_get_repository(repositoryName)
 \arguments{
 \item{repositoryName}{[required] The name of the repository to get information about.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  repositoryMetadata = list(
-    accountId = "string",
-    repositoryId = "string",
-    repositoryName = "string",
-    repositoryDescription = "string",
-    defaultBranch = "string",
-    lastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    cloneUrlHttp = "string",
-    cloneUrlSsh = "string",
-    Arn = "string"
-  )
-)
-}
-}
 \description{
 Returns information about a repository.
 
-The description field for a repository accepts all HTML characters and
-all valid Unicode characters. Applications that do not HTML-encode the
-description and display it in a webpage can expose users to potentially
-malicious code. Make sure that you HTML-encode the description field in
-any application that uses this API to display the repository description
-on a webpage.
+See \url{https://paws-r.github.io/docs/codecommit/get_repository.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_repository(
-  repositoryName = "string"
-)
-}
-}
-
 \keyword{internal}

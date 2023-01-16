@@ -7,7 +7,19 @@
 pi(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -25,11 +37,11 @@ Performance Insights data types, parameters and errors.
 
 When Performance Insights is enabled, the Amazon RDS Performance
 Insights API provides visibility into the performance of your DB
-instance. Amazon CloudWatch provides the authoritative source for AWS
-service-vended monitoring metrics. Performance Insights offers a
-domain-specific view of DB load.
+instance. Amazon CloudWatch provides the authoritative source for Amazon
+Web Services service-vended monitoring metrics. Performance Insights
+offers a domain-specific view of DB load.
 
-DB load is measured as Average Active Sessions. Performance Insights
+DB load is measured as average active sessions. Performance Insights
 provides the data to API consumers as a two-dimensional time-series
 dataset. The time dimension provides DB load data for each time point in
 the queried time range. Each time point decomposes overall load in
@@ -37,13 +49,23 @@ relation to the requested dimensions, measured at that time point.
 Examples include SQL, Wait event, User, and Host.
 \itemize{
 \item To learn more about Performance Insights and Amazon Aurora DB
-instances, go to the \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{Amazon Aurora User Guide}.
+instances, go to the \emph{<span
+href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html">
+Amazon Aurora User Guide</span>} .
 \item To learn more about Performance Insights and Amazon RDS DB
-instances, go to the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Amazon RDS User Guide}.
+instances, go to the \emph{<span
+href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html">
+Amazon RDS User Guide</span>} .
+\item To learn more about Performance Insights and Amazon DocumentDB
+clusters, go to the \emph{<span
+href="https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html">
+Amazon DocumentDB Developer Guide</span>} .
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- pi(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- pi(
   config = list(
     credentials = list(
       creds = list(
@@ -51,20 +73,28 @@ instances, go to the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuid
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=pi_describe_dimension_keys]{describe_dimension_keys} \tab For a specific time period, retrieve the top N dimension keys for a metric\cr
-\link[=pi_get_resource_metrics]{get_resource_metrics} \tab Retrieve Performance Insights metrics for a set of data sources, over a time period
+\link[paws.management.p2:pi_describe_dimension_keys]{describe_dimension_keys} \tab For a specific time period, retrieve the top N dimension keys for a metric\cr
+\link[paws.management.p2:pi_get_dimension_key_details]{get_dimension_key_details} \tab Get the attributes of the specified dimension group for a DB instance or data source\cr
+\link[paws.management.p2:pi_get_resource_metadata]{get_resource_metadata} \tab Retrieve the metadata for different features\cr
+\link[paws.management.p2:pi_get_resource_metrics]{get_resource_metrics} \tab Retrieve Performance Insights metrics for a set of data sources over a time period\cr
+\link[paws.management.p2:pi_list_available_resource_dimensions]{list_available_resource_dimensions} \tab Retrieve the dimensions that can be queried for each specified metric type on a specified DB instance\cr
+\link[paws.management.p2:pi_list_available_resource_metrics]{list_available_resource_metrics} \tab Retrieve metrics of the specified types that can be queried for a specified DB instance
 }
 }
 

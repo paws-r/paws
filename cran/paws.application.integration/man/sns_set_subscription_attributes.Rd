@@ -5,8 +5,11 @@
 \title{Allows a subscription owner to set an attribute of the subscription to a
 new value}
 \usage{
-sns_set_subscription_attributes(SubscriptionArn, AttributeName,
-  AttributeValue)
+sns_set_subscription_attributes(
+  SubscriptionArn,
+  AttributeName,
+  AttributeValue = NULL
+)
 }
 \arguments{
 \item{SubscriptionArn}{[required] The ARN of the subscription to modify.}
@@ -31,24 +34,29 @@ delivered due to client errors (for example, when the subscribed
 endpoint is unreachable) or server errors (for example, when the
 service that powers the subscribed endpoint becomes unavailable) are
 held in the dead-letter queue for further analysis or reprocessing.
+}
+
+The following attribute applies only to Amazon Kinesis Data Firehose
+delivery stream subscriptions:
+\itemize{
+\item \code{SubscriptionRoleArn} – The ARN of the IAM role that has the
+following:
+\itemize{
+\item Permission to write to the Kinesis Data Firehose delivery stream
+\item Amazon SNS listed as a trusted entity
+}
+
+Specifying a valid ARN for this attribute is required for Kinesis
+Data Firehose delivery stream subscriptions. For more information,
+see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html}{Fanout to Kinesis Data Firehose delivery streams}
+in the \emph{Amazon SNS Developer Guide}.
 }}
 
 \item{AttributeValue}{The new value for the attribute in JSON format.}
 }
-\value{
-An empty list.
-}
 \description{
-Allows a subscription owner to set an attribute of the subscription to a
-new value.
-}
-\section{Request syntax}{
-\preformatted{svc$set_subscription_attributes(
-  SubscriptionArn = "string",
-  AttributeName = "string",
-  AttributeValue = "string"
-)
-}
-}
+Allows a subscription owner to set an attribute of the subscription to a new value.
 
+See \url{https://paws-r.github.io/docs/sns/set_subscription_attributes.html} for full documentation.
+}
 \keyword{internal}

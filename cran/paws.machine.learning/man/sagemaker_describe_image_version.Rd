@@ -4,7 +4,7 @@
 \alias{sagemaker_describe_image_version}
 \title{Describes a version of a SageMaker image}
 \usage{
-sagemaker_describe_image_version(ImageName, Version)
+sagemaker_describe_image_version(ImageName, Version = NULL)
 }
 \arguments{
 \item{ImageName}{[required] The name of the image.}
@@ -12,33 +12,9 @@ sagemaker_describe_image_version(ImageName, Version)
 \item{Version}{The version of the image. If not specified, the latest version is
 described.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BaseImage = "string",
-  ContainerImage = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  FailureReason = "string",
-  ImageArn = "string",
-  ImageVersionArn = "string",
-  ImageVersionStatus = "CREATING"|"CREATED"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED",
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Version = 123
-)
-}
-}
 \description{
 Describes a version of a SageMaker image.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_image_version(
-  ImageName = "string",
-  Version = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_image_version.html} for full documentation.
+}
 \keyword{internal}

@@ -12,19 +12,32 @@ NULL
 #' 
 #' For sample code that uses the Configuration API, see the [Amazon
 #' Elasticsearch Service Developer
-#' Guide](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html).
+#' Guide](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/configuration-samples.html).
 #' The guide also contains [sample code for sending signed HTTP requests to
 #' the Elasticsearch
-#' APIs](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html).
+#' APIs](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/request-signing.html).
 #' 
 #' The endpoint for configuration service requests is region-specific:
 #' es.*region*.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
-#' a current list of supported regions and endpoints, see [Regions and
-#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
+#' a current list of supported regions and endpoints, see <a
+#' href="https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions"
+#' target="_blank">Regions and Endpoints</a>.
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -36,10 +49,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -66,6 +83,8 @@ NULL
 #'  \link[=elasticsearchservice_delete_inbound_cross_cluster_search_connection]{delete_inbound_cross_cluster_search_connection} \tab Allows the destination domain owner to delete an existing inbound cross-cluster search connection\cr
 #'  \link[=elasticsearchservice_delete_outbound_cross_cluster_search_connection]{delete_outbound_cross_cluster_search_connection} \tab Allows the source domain owner to delete an existing outbound cross-cluster search connection\cr
 #'  \link[=elasticsearchservice_delete_package]{delete_package} \tab Delete the package\cr
+#'  \link[=elasticsearchservice_describe_domain_auto_tunes]{describe_domain_auto_tunes} \tab Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action type, description, severity, and scheduled date\cr
+#'  \link[=elasticsearchservice_describe_domain_change_progress]{describe_domain_change_progress} \tab Returns information about the current blue/green deployment happening on a domain, including a change ID, status, and progress stages\cr
 #'  \link[=elasticsearchservice_describe_elasticsearch_domain]{describe_elasticsearch_domain} \tab Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN\cr
 #'  \link[=elasticsearchservice_describe_elasticsearch_domain_config]{describe_elasticsearch_domain_config} \tab Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options\cr
 #'  \link[=elasticsearchservice_describe_elasticsearch_domains]{describe_elasticsearch_domains} \tab Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN\cr

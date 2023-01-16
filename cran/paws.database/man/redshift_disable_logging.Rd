@@ -12,30 +12,9 @@ redshift_disable_logging(ClusterIdentifier)
 
 Example: \code{examplecluster}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LoggingEnabled = TRUE|FALSE,
-  BucketName = "string",
-  S3KeyPrefix = "string",
-  LastSuccessfulDeliveryTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastFailureTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastFailureMessage = "string"
-)
-}
-}
 \description{
-Stops logging information, such as queries and connection attempts, for
-the specified Amazon Redshift cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_logging(
-  ClusterIdentifier = "string"
-)
-}
-}
+Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.
 
+See \url{https://paws-r.github.io/docs/redshift/disable_logging.html} for full documentation.
+}
 \keyword{internal}

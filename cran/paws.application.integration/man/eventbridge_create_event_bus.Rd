@@ -4,7 +4,7 @@
 \alias{eventbridge_create_event_bus}
 \title{Creates a new event bus within your account}
 \usage{
-eventbridge_create_event_bus(Name, EventSourceName, Tags)
+eventbridge_create_event_bus(Name, EventSourceName = NULL, Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the new event bus.
@@ -21,30 +21,9 @@ event source that the new event bus will be matched with.}
 
 \item{Tags}{Tags to associate with the event bus.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventBusArn = "string"
-)
-}
-}
 \description{
-Creates a new event bus within your account. This can be a custom event
-bus which you can use to receive events from your custom applications
-and services, or it can be a partner event bus which can be matched to a
-partner event source.
-}
-\section{Request syntax}{
-\preformatted{svc$create_event_bus(
-  Name = "string",
-  EventSourceName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a new event bus within your account. This can be a custom event bus which you can use to receive events from your custom applications and services, or it can be a partner event bus which can be matched to a partner event source.
 
+See \url{https://paws-r.github.io/docs/eventbridge/create_event_bus.html} for full documentation.
+}
 \keyword{internal}

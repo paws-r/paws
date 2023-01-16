@@ -6,7 +6,11 @@
 stream, its Amazon Resource Name (ARN), the composition of its shards,
 and its corresponding DynamoDB table}
 \usage{
-dynamodbstreams_describe_stream(StreamArn, Limit, ExclusiveStartShardId)
+dynamodbstreams_describe_stream(
+  StreamArn,
+  Limit = NULL,
+  ExclusiveStartShardId = NULL
+)
 }
 \arguments{
 \item{StreamArn}{[required] The Amazon Resource Name (ARN) for the stream.}
@@ -17,69 +21,9 @@ dynamodbstreams_describe_stream(StreamArn, Limit, ExclusiveStartShardId)
 the value that was returned for \code{LastEvaluatedShardId} in the previous
 operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StreamDescription = list(
-    StreamArn = "string",
-    StreamLabel = "string",
-    StreamStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED",
-    StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY",
-    CreationRequestDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    TableName = "string",
-    KeySchema = list(
-      list(
-        AttributeName = "string",
-        KeyType = "HASH"|"RANGE"
-      )
-    ),
-    Shards = list(
-      list(
-        ShardId = "string",
-        SequenceNumberRange = list(
-          StartingSequenceNumber = "string",
-          EndingSequenceNumber = "string"
-        ),
-        ParentShardId = "string"
-      )
-    ),
-    LastEvaluatedShardId = "string"
-  )
-)
-}
-}
 \description{
-Returns information about a stream, including the current status of the
-stream, its Amazon Resource Name (ARN), the composition of its shards,
-and its corresponding DynamoDB table.
+Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN), the composition of its shards, and its corresponding DynamoDB table.
 
-You can call \code{\link[=dynamodbstreams_describe_stream]{describe_stream}} at a
-maximum rate of 10 times per second.
-
-Each shard in the stream has a \code{SequenceNumberRange} associated with it.
-If the \code{SequenceNumberRange} has a \code{StartingSequenceNumber} but no
-\code{EndingSequenceNumber}, then the shard is still open (able to receive
-more stream records). If both \code{StartingSequenceNumber} and
-\code{EndingSequenceNumber} are present, then that shard is closed and can no
-longer receive more data.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_stream(
-  StreamArn = "string",
-  Limit = 123,
-  ExclusiveStartShardId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example describes a stream with a given stream ARN.
-svc$describe_stream(
-  StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/dynamodbstreams/describe_stream.html} for full documentation.
 }
 \keyword{internal}

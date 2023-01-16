@@ -2,62 +2,31 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_update_medical_vocabulary}
 \alias{transcribeservice_update_medical_vocabulary}
-\title{Updates a vocabulary with new values that you provide in a different
-text file from the one you used to create the vocabulary}
+\title{Updates an existing custom medical vocabulary with new values}
 \usage{
-transcribeservice_update_medical_vocabulary(VocabularyName,
-  LanguageCode, VocabularyFileUri)
+transcribeservice_update_medical_vocabulary(
+  VocabularyName,
+  LanguageCode,
+  VocabularyFileUri
+)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the vocabulary to update. The name is case sensitive. If you
-try to update a vocabulary with the same name as a vocabulary you've
-already made, you get a \code{ConflictException} error.}
+\item{VocabularyName}{[required] The name of the custom medical vocabulary you want to update. Vocabulary
+names are case sensitive.}
 
-\item{LanguageCode}{[required] The language code of the language used for the entries in the updated
-vocabulary. US English (en-US) is the only valid language code in Amazon
-Transcribe Medical.}
+\item{LanguageCode}{[required] The language code that represents the language of the entries in the
+custom vocabulary you want to update. US English (\code{en-US}) is the only
+language supported with Amazon Transcribe Medical.}
 
-\item{VocabularyFileUri}{The location in Amazon S3 of the text file that contains the you use for
-your custom vocabulary. The URI must be in the same AWS Region as the
-resource that you are calling. The following is the format for a URI:
+\item{VocabularyFileUri}{[required] The Amazon S3 location of the text file that contains your custom
+medical vocabulary. The URI must be located in the same Amazon Web
+Services Region as the resource you're calling.
 
-\verb{https://s3.<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey>}
-
-For example:
-
-\verb{https://s3.us-east-1.amazonaws.com/AWSDOC-EXAMPLE-BUCKET/vocab.txt}
-
-For more information about Amazon S3 object names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys}{Object Keys}
-in the \emph{Amazon S3 Developer Guide}.
-
-For more information about custom vocabularies in Amazon Transcribe
-Medical, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary}{Medical Custom Vocabularies}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  VocabularyName = "string",
-  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  VocabularyState = "PENDING"|"READY"|"FAILED"
-)
-}
+Here's an example URI path: \verb{s3://DOC-EXAMPLE-BUCKET/my-vocab-file.txt}}
 }
 \description{
-Updates a vocabulary with new values that you provide in a different
-text file from the one you used to create the vocabulary. The
-\code{\link[=transcribeservice_update_medical_vocabulary]{update_medical_vocabulary}}
-operation overwrites all of the existing information with the values
-that you provide in the request.
-}
-\section{Request syntax}{
-\preformatted{svc$update_medical_vocabulary(
-  VocabularyName = "string",
-  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
-  VocabularyFileUri = "string"
-)
-}
-}
+Updates an existing custom medical vocabulary with new values. This operation overwrites all existing information with your new values; you cannot append new terms onto an existing vocabulary.
 
+See \url{https://paws-r.github.io/docs/transcribeservice/update_medical_vocabulary.html} for full documentation.
+}
 \keyword{internal}

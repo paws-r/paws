@@ -4,9 +4,17 @@
 \alias{sagemaker_list_images}
 \title{Lists the images in your account and their properties}
 \usage{
-sagemaker_list_images(CreationTimeAfter, CreationTimeBefore,
-  LastModifiedTimeAfter, LastModifiedTimeBefore, MaxResults, NameContains,
-  NextToken, SortBy, SortOrder)
+sagemaker_list_images(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  NextToken = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only images created on or after the specified
@@ -35,54 +43,9 @@ next set of images.}
 
 \item{SortOrder}{The sort order. The default value is \code{DESCENDING}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Images = list(
-    list(
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Description = "string",
-      DisplayName = "string",
-      FailureReason = "string",
-      ImageArn = "string",
-      ImageName = "string",
-      ImageStatus = "CREATING"|"CREATED"|"CREATE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"DELETING"|"DELETE_FAILED",
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the images in your account and their properties. The list can be
-filtered by creation time or modified time, and whether the image name
-contains a specified string.
-}
-\section{Request syntax}{
-\preformatted{svc$list_images(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxResults = 123,
-  NameContains = "string",
-  NextToken = "string",
-  SortBy = "CREATION_TIME"|"LAST_MODIFIED_TIME"|"IMAGE_NAME",
-  SortOrder = "ASCENDING"|"DESCENDING"
-)
-}
-}
+Lists the images in your account and their properties. The list can be filtered by creation time or modified time, and whether the image name contains a specified string.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_images.html} for full documentation.
+}
 \keyword{internal}

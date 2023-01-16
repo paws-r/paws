@@ -4,8 +4,7 @@
 \alias{budgets_create_subscriber}
 \title{Creates a subscriber}
 \usage{
-budgets_create_subscriber(AccountId, BudgetName, Notification,
-  Subscriber)
+budgets_create_subscriber(AccountId, BudgetName, Notification, Subscriber)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to
@@ -18,30 +17,9 @@ be unique within an account.}
 
 \item{Subscriber}{[required] The subscriber that you want to associate with a budget notification.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a subscriber. You must create the associated budget and
-notification before you create the subscriber.
-}
-\section{Request syntax}{
-\preformatted{svc$create_subscriber(
-  AccountId = "string",
-  BudgetName = "string",
-  Notification = list(
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-    Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-    NotificationState = "OK"|"ALARM"
-  ),
-  Subscriber = list(
-    SubscriptionType = "SNS"|"EMAIL",
-    Address = "string"
-  )
-)
-}
-}
+Creates a subscriber. You must create the associated budget and notification before you create the subscriber.
 
+See \url{https://paws-r.github.io/docs/budgets/create_subscriber.html} for full documentation.
+}
 \keyword{internal}

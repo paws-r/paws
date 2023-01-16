@@ -4,8 +4,10 @@
 \alias{storagegateway_update_bandwidth_rate_limit_schedule}
 \title{Updates the bandwidth rate limit schedule for a specified gateway}
 \usage{
-storagegateway_update_bandwidth_rate_limit_schedule(GatewayARN,
-  BandwidthRateLimitIntervals)
+storagegateway_update_bandwidth_rate_limit_schedule(
+  GatewayARN,
+  BandwidthRateLimitIntervals
+)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -14,37 +16,9 @@ storagegateway_update_bandwidth_rate_limit_schedule(GatewayARN,
 gateway. When no bandwidth rate limit intervals have been scheduled, the
 array is empty.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Updates the bandwidth rate limit schedule for a specified gateway. By
-default, gateways do not have bandwidth rate limit schedules, which
-means no bandwidth rate limiting is in effect. Use this to initiate or
-update a gateway's bandwidth rate limit schedule. This operation is
-supported in the volume and tape gateway types.
-}
-\section{Request syntax}{
-\preformatted{svc$update_bandwidth_rate_limit_schedule(
-  GatewayARN = "string",
-  BandwidthRateLimitIntervals = list(
-    list(
-      StartHourOfDay = 123,
-      StartMinuteOfHour = 123,
-      EndHourOfDay = 123,
-      EndMinuteOfHour = 123,
-      DaysOfWeek = list(
-        123
-      ),
-      AverageUploadRateLimitInBitsPerSec = 123,
-      AverageDownloadRateLimitInBitsPerSec = 123
-    )
-  )
-)
-}
-}
+Updates the bandwidth rate limit schedule for a specified gateway. By default, gateways do not have bandwidth rate limit schedules, which means no bandwidth rate limiting is in effect. Use this to initiate or update a gateway's bandwidth rate limit schedule. This operation is supported only for volume, tape and S3 file gateways. FSx file gateways do not support bandwidth rate limits.
 
+See \url{https://paws-r.github.io/docs/storagegateway/update_bandwidth_rate_limit_schedule.html} for full documentation.
+}
 \keyword{internal}

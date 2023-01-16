@@ -4,12 +4,23 @@
 \alias{neptune_restore_db_cluster_to_point_in_time}
 \title{Restores a DB cluster to an arbitrary point in time}
 \usage{
-neptune_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
-  RestoreType, SourceDBClusterIdentifier, RestoreToTime,
-  UseLatestRestorableTime, Port, DBSubnetGroupName, OptionGroupName,
-  VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-  EnableCloudwatchLogsExports, DBClusterParameterGroupName,
-  DeletionProtection)
+neptune_restore_db_cluster_to_point_in_time(
+  DBClusterIdentifier,
+  RestoreType = NULL,
+  SourceDBClusterIdentifier,
+  RestoreToTime = NULL,
+  UseLatestRestorableTime = NULL,
+  Port = NULL,
+  DBSubnetGroupName = NULL,
+  OptionGroupName = NULL,
+  VpcSecurityGroupIds = NULL,
+  Tags = NULL,
+  KmsKeyId = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  DBClusterParameterGroupName = NULL,
+  DeletionProtection = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the new DB cluster to be created.
@@ -83,11 +94,11 @@ Example: \code{mySubnetgroup}}
 
 \item{Tags}{The tags to be applied to the restored DB cluster.}
 
-\item{KmsKeyId}{The AWS KMS key identifier to use when restoring an encrypted DB cluster
-from an encrypted DB cluster.
+\item{KmsKeyId}{The Amazon KMS key identifier to use when restoring an encrypted DB
+cluster from an encrypted DB cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are restoring a DB cluster with the same AWS
+encryption key. If you are restoring a DB cluster with the same Amazon
 account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
@@ -110,7 +121,7 @@ not encrypted.
 If \code{DBClusterIdentifier} refers to a DB cluster that is not encrypted,
 then the restore request is rejected.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
+\item{EnableIAMDatabaseAuthentication}{True to enable mapping of Amazon Identity and Access Management (IAM)
 accounts to database accounts, and otherwise false.
 
 Default: \code{false}}
@@ -131,132 +142,9 @@ DBClusterParameterGroup.
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AllocatedStorage = 123,
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    CharacterSetName = "string",
-    DatabaseName = "string",
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    DBClusterOptionGroupMemberships = list(
-      list(
-        DBClusterOptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    ReplicationSourceIdentifier = "string",
-    ReadReplicaIdentifiers = list(
-      "string"
-    ),
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string",
-        FeatureName = "string"
-      )
-    ),
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    CloneGroupId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Restores a DB cluster to an arbitrary point in time. Users can restore
-to any point in time before \code{LatestRestorableTime} for up to
-\code{BackupRetentionPeriod} days. The target DB cluster is created from the
-source DB cluster with the same configuration as the original DB
-cluster, except that the new DB cluster is created with the default DB
-security group.
+Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.
 
-This action only restores the DB cluster, not the DB instances for that
-DB cluster. You must invoke the
-\code{\link[=neptune_create_db_instance]{create_db_instance}} action to create DB
-instances for the restored DB cluster, specifying the identifier of the
-restored DB cluster in \code{DBClusterIdentifier}. You can create DB
-instances only after the
-\code{\link[=neptune_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time}}
-action has completed and the DB cluster is available.
+See \url{https://paws-r.github.io/docs/neptune/restore_db_cluster_to_point_in_time.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$restore_db_cluster_to_point_in_time(
-  DBClusterIdentifier = "string",
-  RestoreType = "string",
-  SourceDBClusterIdentifier = "string",
-  RestoreToTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  UseLatestRestorableTime = TRUE|FALSE,
-  Port = 123,
-  DBSubnetGroupName = "string",
-  OptionGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  DBClusterParameterGroupName = "string",
-  DeletionProtection = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

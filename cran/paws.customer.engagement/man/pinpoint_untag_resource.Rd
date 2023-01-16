@@ -14,21 +14,9 @@ pinpoint_untag_resource(ResourceArn, TagKeys)
 append the tagKeys parameter and argument for each additional tag to
 remove, separated by an ampersand (&).}
 }
-\value{
-An empty list.
-}
 \description{
-Removes one or more tags (keys and values) from an application,
-campaign, message template, or segment.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes one or more tags (keys and values) from an application, campaign, message template, or segment.
 
+See \url{https://paws-r.github.io/docs/pinpoint/untag_resource.html} for full documentation.
+}
 \keyword{internal}

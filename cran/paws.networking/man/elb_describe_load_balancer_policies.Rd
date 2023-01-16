@@ -4,62 +4,19 @@
 \alias{elb_describe_load_balancer_policies}
 \title{Describes the specified policies}
 \usage{
-elb_describe_load_balancer_policies(LoadBalancerName, PolicyNames)
+elb_describe_load_balancer_policies(
+  LoadBalancerName = NULL,
+  PolicyNames = NULL
+)
 }
 \arguments{
 \item{LoadBalancerName}{The name of the load balancer.}
 
 \item{PolicyNames}{The names of the policies.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyDescriptions = list(
-    list(
-      PolicyName = "string",
-      PolicyTypeName = "string",
-      PolicyAttributeDescriptions = list(
-        list(
-          AttributeName = "string",
-          AttributeValue = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Describes the specified policies.
 
-If you specify a load balancer name, the action returns the descriptions
-of all policies created for the load balancer. If you specify a policy
-name associated with your load balancer, the action returns the
-description of that policy. If you don't specify a load balancer name,
-the action returns descriptions of the specified sample policies, or
-descriptions of all sample policies. The names of the sample policies
-have the \verb{ELBSample-} prefix.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_load_balancer_policies(
-  LoadBalancerName = "string",
-  PolicyNames = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the specified policy associated with the
-# specified load balancer.
-svc$describe_load_balancer_policies(
-  LoadBalancerName = "my-load-balancer",
-  PolicyNames = list(
-    "my-authentication-policy"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/describe_load_balancer_policies.html} for full documentation.
 }
 \keyword{internal}

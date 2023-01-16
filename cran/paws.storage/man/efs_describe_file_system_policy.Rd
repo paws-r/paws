@@ -9,24 +9,9 @@ efs_describe_file_system_policy(FileSystemId)
 \arguments{
 \item{FileSystemId}{[required] Specifies which EFS file system to retrieve the \code{FileSystemPolicy} for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FileSystemId = "string",
-  Policy = "string"
-)
-}
-}
 \description{
 Returns the \code{FileSystemPolicy} for the specified EFS file system.
 
-This operation requires permissions for the
-\code{elasticfilesystem:DescribeFileSystemPolicy} action.
+See \url{https://paws-r.github.io/docs/efs/describe_file_system_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_file_system_policy(
-  FileSystemId = "string"
-)
-}
-}
-
 \keyword{internal}

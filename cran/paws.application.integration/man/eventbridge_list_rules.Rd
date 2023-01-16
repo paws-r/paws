@@ -4,7 +4,12 @@
 \alias{eventbridge_list_rules}
 \title{Lists your Amazon EventBridge rules}
 \usage{
-eventbridge_list_rules(NamePrefix, EventBusName, NextToken, Limit)
+eventbridge_list_rules(
+  NamePrefix = NULL,
+  EventBusName = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{NamePrefix}{The prefix matching the rule name.}
@@ -17,41 +22,9 @@ results.}
 
 \item{Limit}{The maximum number of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Rules = list(
-    list(
-      Name = "string",
-      Arn = "string",
-      EventPattern = "string",
-      State = "ENABLED"|"DISABLED",
-      Description = "string",
-      ScheduleExpression = "string",
-      RoleArn = "string",
-      ManagedBy = "string",
-      EventBusName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists your Amazon EventBridge rules. You can either list all the rules
-or you can provide a prefix to match to the rule names.
+Lists your Amazon EventBridge rules. You can either list all the rules or you can provide a prefix to match to the rule names.
 
-ListRules does not list the targets of a rule. To see the targets
-associated with a rule, use
-\code{\link[=eventbridge_list_targets_by_rule]{list_targets_by_rule}}.
+See \url{https://paws-r.github.io/docs/eventbridge/list_rules.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_rules(
-  NamePrefix = "string",
-  EventBusName = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
-
 \keyword{internal}

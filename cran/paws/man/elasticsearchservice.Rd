@@ -7,7 +7,19 @@
 elasticsearchservice(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -21,15 +33,19 @@ Amazon Elasticsearch Configuration Service
 Use the Amazon Elasticsearch Configuration API to create, configure, and
 manage Elasticsearch domains.
 
-For sample code that uses the Configuration API, see the \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html}{Amazon Elasticsearch Service Developer Guide}.
-The guide also contains \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html}{sample code for sending signed HTTP requests to the Elasticsearch APIs}.
+For sample code that uses the Configuration API, see the \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/configuration-samples.html}{Amazon Elasticsearch Service Developer Guide}.
+The guide also contains \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/request-signing.html}{sample code for sending signed HTTP requests to the Elasticsearch APIs}.
 
 The endpoint for configuration service requests is region-specific:
 es.\emph{region}.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
-a current list of supported regions and endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions}{Regions and Endpoints}.
+a current list of supported regions and endpoints, see <a
+href="https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions"
+target="_blank">Regions and Endpoints</a>.
 }
 \section{Service syntax}{
-\preformatted{svc <- elasticsearchservice(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- elasticsearchservice(
   config = list(
     credentials = list(
       creds = list(
@@ -37,57 +53,63 @@ a current list of supported regions and endpoints, see \href{https://docs.aws.am
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=elasticsearchservice_accept_inbound_cross_cluster_search_connection]{accept_inbound_cross_cluster_search_connection} \tab Allows the destination domain owner to accept an inbound cross-cluster search connection request\cr
-\link[=elasticsearchservice_add_tags]{add_tags} \tab Attaches tags to an existing Elasticsearch domain\cr
-\link[=elasticsearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon ES domain\cr
-\link[=elasticsearchservice_cancel_elasticsearch_service_software_update]{cancel_elasticsearch_service_software_update} \tab Cancels a scheduled service software update for an Amazon ES domain\cr
-\link[=elasticsearchservice_create_elasticsearch_domain]{create_elasticsearch_domain} \tab Creates a new Elasticsearch domain\cr
-\link[=elasticsearchservice_create_outbound_cross_cluster_search_connection]{create_outbound_cross_cluster_search_connection} \tab Creates a new cross-cluster search connection from a source domain to a destination domain\cr
-\link[=elasticsearchservice_create_package]{create_package} \tab Create a package for use with Amazon ES domains\cr
-\link[=elasticsearchservice_delete_elasticsearch_domain]{delete_elasticsearch_domain} \tab Permanently deletes the specified Elasticsearch domain and all of its data\cr
-\link[=elasticsearchservice_delete_elasticsearch_service_role]{delete_elasticsearch_service_role} \tab Deletes the service-linked role that Elasticsearch Service uses to manage and maintain VPC domains\cr
-\link[=elasticsearchservice_delete_inbound_cross_cluster_search_connection]{delete_inbound_cross_cluster_search_connection} \tab Allows the destination domain owner to delete an existing inbound cross-cluster search connection\cr
-\link[=elasticsearchservice_delete_outbound_cross_cluster_search_connection]{delete_outbound_cross_cluster_search_connection} \tab Allows the source domain owner to delete an existing outbound cross-cluster search connection\cr
-\link[=elasticsearchservice_delete_package]{delete_package} \tab Delete the package\cr
-\link[=elasticsearchservice_describe_elasticsearch_domain]{describe_elasticsearch_domain} \tab Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN\cr
-\link[=elasticsearchservice_describe_elasticsearch_domain_config]{describe_elasticsearch_domain_config} \tab Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options\cr
-\link[=elasticsearchservice_describe_elasticsearch_domains]{describe_elasticsearch_domains} \tab Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN\cr
-\link[=elasticsearchservice_describe_elasticsearch_instance_type_limits]{describe_elasticsearch_instance_type_limits} \tab Describe Elasticsearch Limits for a given InstanceType and ElasticsearchVersion\cr
-\link[=elasticsearchservice_describe_inbound_cross_cluster_search_connections]{describe_inbound_cross_cluster_search_connections} \tab Lists all the inbound cross-cluster search connections for a destination domain\cr
-\link[=elasticsearchservice_describe_outbound_cross_cluster_search_connections]{describe_outbound_cross_cluster_search_connections} \tab Lists all the outbound cross-cluster search connections for a source domain\cr
-\link[=elasticsearchservice_describe_packages]{describe_packages} \tab Describes all packages available to Amazon ES\cr
-\link[=elasticsearchservice_describe_reserved_elasticsearch_instance_offerings]{describe_reserved_elasticsearch_instance_offerings} \tab Lists available reserved Elasticsearch instance offerings\cr
-\link[=elasticsearchservice_describe_reserved_elasticsearch_instances]{describe_reserved_elasticsearch_instances} \tab Returns information about reserved Elasticsearch instances for this account\cr
-\link[=elasticsearchservice_dissociate_package]{dissociate_package} \tab Dissociates a package from the Amazon ES domain\cr
-\link[=elasticsearchservice_get_compatible_elasticsearch_versions]{get_compatible_elasticsearch_versions} \tab Returns a list of upgrade compatible Elastisearch versions\cr
-\link[=elasticsearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of versions of the package, along with their creation time and commit message\cr
-\link[=elasticsearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades that were performed on the domain\cr
-\link[=elasticsearchservice_get_upgrade_status]{get_upgrade_status} \tab Retrieves the latest status of the last upgrade or upgrade eligibility check that was performed on the domain\cr
-\link[=elasticsearchservice_list_domain_names]{list_domain_names} \tab Returns the name of all Elasticsearch domains owned by the current user's account\cr
-\link[=elasticsearchservice_list_domains_for_package]{list_domains_for_package} \tab Lists all Amazon ES domains associated with the package\cr
-\link[=elasticsearchservice_list_elasticsearch_instance_types]{list_elasticsearch_instance_types} \tab List all Elasticsearch instance types that are supported for given ElasticsearchVersion\cr
-\link[=elasticsearchservice_list_elasticsearch_versions]{list_elasticsearch_versions} \tab List all supported Elasticsearch versions\cr
-\link[=elasticsearchservice_list_packages_for_domain]{list_packages_for_domain} \tab Lists all packages associated with the Amazon ES domain\cr
-\link[=elasticsearchservice_list_tags]{list_tags} \tab Returns all tags for the given Elasticsearch domain\cr
-\link[=elasticsearchservice_purchase_reserved_elasticsearch_instance_offering]{purchase_reserved_elasticsearch_instance_offering} \tab Allows you to purchase reserved Elasticsearch instances\cr
-\link[=elasticsearchservice_reject_inbound_cross_cluster_search_connection]{reject_inbound_cross_cluster_search_connection} \tab Allows the destination domain owner to reject an inbound cross-cluster search connection request\cr
-\link[=elasticsearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from the specified Elasticsearch domain\cr
-\link[=elasticsearchservice_start_elasticsearch_service_software_update]{start_elasticsearch_service_software_update} \tab Schedules a service software update for an Amazon ES domain\cr
-\link[=elasticsearchservice_update_elasticsearch_domain_config]{update_elasticsearch_domain_config} \tab Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances\cr
-\link[=elasticsearchservice_update_package]{update_package} \tab Updates a package for use with Amazon ES domains\cr
-\link[=elasticsearchservice_upgrade_elasticsearch_domain]{upgrade_elasticsearch_domain} \tab Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version
+\link[paws.analytics:elasticsearchservice_accept_inbound_cross_cluster_search_connection]{accept_inbound_cross_cluster_search_connection} \tab Allows the destination domain owner to accept an inbound cross-cluster search connection request\cr
+\link[paws.analytics:elasticsearchservice_add_tags]{add_tags} \tab Attaches tags to an existing Elasticsearch domain\cr
+\link[paws.analytics:elasticsearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon ES domain\cr
+\link[paws.analytics:elasticsearchservice_cancel_elasticsearch_service_software_update]{cancel_elasticsearch_service_software_update} \tab Cancels a scheduled service software update for an Amazon ES domain\cr
+\link[paws.analytics:elasticsearchservice_create_elasticsearch_domain]{create_elasticsearch_domain} \tab Creates a new Elasticsearch domain\cr
+\link[paws.analytics:elasticsearchservice_create_outbound_cross_cluster_search_connection]{create_outbound_cross_cluster_search_connection} \tab Creates a new cross-cluster search connection from a source domain to a destination domain\cr
+\link[paws.analytics:elasticsearchservice_create_package]{create_package} \tab Create a package for use with Amazon ES domains\cr
+\link[paws.analytics:elasticsearchservice_delete_elasticsearch_domain]{delete_elasticsearch_domain} \tab Permanently deletes the specified Elasticsearch domain and all of its data\cr
+\link[paws.analytics:elasticsearchservice_delete_elasticsearch_service_role]{delete_elasticsearch_service_role} \tab Deletes the service-linked role that Elasticsearch Service uses to manage and maintain VPC domains\cr
+\link[paws.analytics:elasticsearchservice_delete_inbound_cross_cluster_search_connection]{delete_inbound_cross_cluster_search_connection} \tab Allows the destination domain owner to delete an existing inbound cross-cluster search connection\cr
+\link[paws.analytics:elasticsearchservice_delete_outbound_cross_cluster_search_connection]{delete_outbound_cross_cluster_search_connection} \tab Allows the source domain owner to delete an existing outbound cross-cluster search connection\cr
+\link[paws.analytics:elasticsearchservice_delete_package]{delete_package} \tab Delete the package\cr
+\link[paws.analytics:elasticsearchservice_describe_domain_auto_tunes]{describe_domain_auto_tunes} \tab Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action type, description, severity, and scheduled date\cr
+\link[paws.analytics:elasticsearchservice_describe_domain_change_progress]{describe_domain_change_progress} \tab Returns information about the current blue/green deployment happening on a domain, including a change ID, status, and progress stages\cr
+\link[paws.analytics:elasticsearchservice_describe_elasticsearch_domain]{describe_elasticsearch_domain} \tab Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN\cr
+\link[paws.analytics:elasticsearchservice_describe_elasticsearch_domain_config]{describe_elasticsearch_domain_config} \tab Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options\cr
+\link[paws.analytics:elasticsearchservice_describe_elasticsearch_domains]{describe_elasticsearch_domains} \tab Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN\cr
+\link[paws.analytics:elasticsearchservice_describe_elasticsearch_instance_type_limits]{describe_elasticsearch_instance_type_limits} \tab Describe Elasticsearch Limits for a given InstanceType and ElasticsearchVersion\cr
+\link[paws.analytics:elasticsearchservice_describe_inbound_cross_cluster_search_connections]{describe_inbound_cross_cluster_search_connections} \tab Lists all the inbound cross-cluster search connections for a destination domain\cr
+\link[paws.analytics:elasticsearchservice_describe_outbound_cross_cluster_search_connections]{describe_outbound_cross_cluster_search_connections} \tab Lists all the outbound cross-cluster search connections for a source domain\cr
+\link[paws.analytics:elasticsearchservice_describe_packages]{describe_packages} \tab Describes all packages available to Amazon ES\cr
+\link[paws.analytics:elasticsearchservice_describe_reserved_elasticsearch_instance_offerings]{describe_reserved_elasticsearch_instance_offerings} \tab Lists available reserved Elasticsearch instance offerings\cr
+\link[paws.analytics:elasticsearchservice_describe_reserved_elasticsearch_instances]{describe_reserved_elasticsearch_instances} \tab Returns information about reserved Elasticsearch instances for this account\cr
+\link[paws.analytics:elasticsearchservice_dissociate_package]{dissociate_package} \tab Dissociates a package from the Amazon ES domain\cr
+\link[paws.analytics:elasticsearchservice_get_compatible_elasticsearch_versions]{get_compatible_elasticsearch_versions} \tab Returns a list of upgrade compatible Elastisearch versions\cr
+\link[paws.analytics:elasticsearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of versions of the package, along with their creation time and commit message\cr
+\link[paws.analytics:elasticsearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades that were performed on the domain\cr
+\link[paws.analytics:elasticsearchservice_get_upgrade_status]{get_upgrade_status} \tab Retrieves the latest status of the last upgrade or upgrade eligibility check that was performed on the domain\cr
+\link[paws.analytics:elasticsearchservice_list_domain_names]{list_domain_names} \tab Returns the name of all Elasticsearch domains owned by the current user's account\cr
+\link[paws.analytics:elasticsearchservice_list_domains_for_package]{list_domains_for_package} \tab Lists all Amazon ES domains associated with the package\cr
+\link[paws.analytics:elasticsearchservice_list_elasticsearch_instance_types]{list_elasticsearch_instance_types} \tab List all Elasticsearch instance types that are supported for given ElasticsearchVersion\cr
+\link[paws.analytics:elasticsearchservice_list_elasticsearch_versions]{list_elasticsearch_versions} \tab List all supported Elasticsearch versions\cr
+\link[paws.analytics:elasticsearchservice_list_packages_for_domain]{list_packages_for_domain} \tab Lists all packages associated with the Amazon ES domain\cr
+\link[paws.analytics:elasticsearchservice_list_tags]{list_tags} \tab Returns all tags for the given Elasticsearch domain\cr
+\link[paws.analytics:elasticsearchservice_purchase_reserved_elasticsearch_instance_offering]{purchase_reserved_elasticsearch_instance_offering} \tab Allows you to purchase reserved Elasticsearch instances\cr
+\link[paws.analytics:elasticsearchservice_reject_inbound_cross_cluster_search_connection]{reject_inbound_cross_cluster_search_connection} \tab Allows the destination domain owner to reject an inbound cross-cluster search connection request\cr
+\link[paws.analytics:elasticsearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from the specified Elasticsearch domain\cr
+\link[paws.analytics:elasticsearchservice_start_elasticsearch_service_software_update]{start_elasticsearch_service_software_update} \tab Schedules a service software update for an Amazon ES domain\cr
+\link[paws.analytics:elasticsearchservice_update_elasticsearch_domain_config]{update_elasticsearch_domain_config} \tab Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances\cr
+\link[paws.analytics:elasticsearchservice_update_package]{update_package} \tab Updates a package for use with Amazon ES domains\cr
+\link[paws.analytics:elasticsearchservice_upgrade_elasticsearch_domain]{upgrade_elasticsearch_domain} \tab Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version
 }
 }
 

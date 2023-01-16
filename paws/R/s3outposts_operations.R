@@ -3,17 +3,12 @@
 #' @include s3outposts_service.R
 NULL
 
-#' S3 on Outposts access points simplify managing data access at scale for
-#' shared datasets in Amazon S3 on Outposts
+#' Creates an endpoint and associates it with the specified Outpost
 #'
 #' @description
-#' S3 on Outposts access points simplify managing data access at scale for
-#' shared datasets in Amazon S3 on Outposts. S3 on Outposts uses endpoints
-#' to connect to Outposts buckets so that you can perform actions within
-#' your virtual private cloud (VPC).
+#' Creates an endpoint and associates it with the specified Outpost.
 #' 
-#' This action creates an endpoint and associates it with the specified
-#' Outpost.
+#' It can take up to 5 minutes for this action to finish.
 #' 
 #' Related actions include:
 #' 
@@ -22,11 +17,22 @@ NULL
 #' -   [`list_endpoints`][s3outposts_list_endpoints]
 #'
 #' @usage
-#' s3outposts_create_endpoint(OutpostId, SubnetId, SecurityGroupId)
+#' s3outposts_create_endpoint(OutpostId, SubnetId, SecurityGroupId,
+#'   AccessType, CustomerOwnedIpv4Pool)
 #'
-#' @param OutpostId &#91;required&#93; The ID of the AWS Outpost.
-#' @param SubnetId &#91;required&#93; The ID of the subnet in the selected VPC.
+#' @param OutpostId &#91;required&#93; The ID of the Outposts.
+#' @param SubnetId &#91;required&#93; The ID of the subnet in the selected VPC. The endpoint subnet must
+#' belong to the Outpost that has Amazon S3 on Outposts provisioned.
 #' @param SecurityGroupId &#91;required&#93; The ID of the security group to use with the endpoint.
+#' @param AccessType The type of access for the network connectivity for the Amazon S3 on
+#' Outposts endpoint. To use the Amazon Web Services VPC, choose `Private`.
+#' To use the endpoint with an on-premises network, choose
+#' `CustomerOwnedIp`. If you choose `CustomerOwnedIp`, you must also
+#' provide the customer-owned IP address pool (CoIP pool).
+#' 
+#' `Private` is the default access type value.
+#' @param CustomerOwnedIpv4Pool The ID of the customer-owned IPv4 address pool (CoIP pool) for the
+#' endpoint. IP addresses are allocated from this pool for the endpoint.
 #'
 #' @return
 #' A list with the following syntax:
@@ -41,21 +47,23 @@ NULL
 #' svc$create_endpoint(
 #'   OutpostId = "string",
 #'   SubnetId = "string",
-#'   SecurityGroupId = "string"
+#'   SecurityGroupId = "string",
+#'   AccessType = "Private"|"CustomerOwnedIp",
+#'   CustomerOwnedIpv4Pool = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname s3outposts_create_endpoint
-s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId) {
+s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId, AccessType = NULL, CustomerOwnedIpv4Pool = NULL) {
   op <- new_operation(
     name = "CreateEndpoint",
     http_method = "POST",
     http_path = "/S3Outposts/CreateEndpoint",
     paginator = list()
   )
-  input <- .s3outposts$create_endpoint_input(OutpostId = OutpostId, SubnetId = SubnetId, SecurityGroupId = SecurityGroupId)
+  input <- .s3outposts$create_endpoint_input(OutpostId = OutpostId, SubnetId = SubnetId, SecurityGroupId = SecurityGroupId, AccessType = AccessType, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool)
   output <- .s3outposts$create_endpoint_output()
   config <- get_config()
   svc <- .s3outposts$service(config)
@@ -65,16 +73,12 @@ s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId) {
 }
 .s3outposts$operations$create_endpoint <- s3outposts_create_endpoint
 
-#' S3 on Outposts access points simplify managing data access at scale for
-#' shared datasets in Amazon S3 on Outposts
+#' Deletes an endpoint
 #'
 #' @description
-#' S3 on Outposts access points simplify managing data access at scale for
-#' shared datasets in Amazon S3 on Outposts. S3 on Outposts uses endpoints
-#' to connect to Outposts buckets so that you can perform actions within
-#' your virtual private cloud (VPC).
+#' Deletes an endpoint.
 #' 
-#' This action deletes an endpoint.
+#' It can take up to 5 minutes for this action to finish.
 #' 
 #' Related actions include:
 #' 
@@ -85,8 +89,8 @@ s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId) {
 #' @usage
 #' s3outposts_delete_endpoint(EndpointId, OutpostId)
 #'
-#' @param EndpointId &#91;required&#93; The ID of the end point.
-#' @param OutpostId &#91;required&#93; The ID of the AWS Outpost.
+#' @param EndpointId &#91;required&#93; The ID of the endpoint.
+#' @param OutpostId &#91;required&#93; The ID of the Outposts.
 #'
 #' @return
 #' An empty list.
@@ -119,16 +123,10 @@ s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
 }
 .s3outposts$operations$delete_endpoint <- s3outposts_delete_endpoint
 
-#' S3 on Outposts access points simplify managing data access at scale for
-#' shared datasets in Amazon S3 on Outposts
+#' Lists endpoints associated with the specified Outpost
 #'
 #' @description
-#' S3 on Outposts access points simplify managing data access at scale for
-#' shared datasets in Amazon S3 on Outposts. S3 on Outposts uses endpoints
-#' to connect to Outposts buckets so that you can perform actions within
-#' your virtual private cloud (VPC).
-#' 
-#' This action lists endpoints associated with the Outpost.
+#' Lists endpoints associated with the specified Outpost.
 #' 
 #' Related actions include:
 #' 
@@ -139,8 +137,9 @@ s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
 #' @usage
 #' s3outposts_list_endpoints(NextToken, MaxResults)
 #'
-#' @param NextToken The next endpoint requested in the list.
-#' @param MaxResults The max number of endpoints that can be returned on the request.
+#' @param NextToken If a previous response from this operation included a `NextToken` value,
+#' provide that value here to retrieve the next page of results.
+#' @param MaxResults The maximum number of endpoints that will be returned in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -151,7 +150,7 @@ s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
 #'       EndpointArn = "string",
 #'       OutpostsId = "string",
 #'       CidrBlock = "string",
-#'       Status = "PENDING"|"AVAILABLE",
+#'       Status = "Pending"|"Available"|"Deleting",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -159,7 +158,12 @@ s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
 #'         list(
 #'           NetworkInterfaceId = "string"
 #'         )
-#'       )
+#'       ),
+#'       VpcId = "string",
+#'       SubnetId = "string",
+#'       SecurityGroupId = "string",
+#'       AccessType = "Private"|"CustomerOwnedIp",
+#'       CustomerOwnedIpv4Pool = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -193,3 +197,82 @@ s3outposts_list_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .s3outposts$operations$list_endpoints <- s3outposts_list_endpoints
+
+#' Lists all endpoints associated with an Outpost that has been shared by
+#' Amazon Web Services Resource Access Manager (RAM)
+#'
+#' @description
+#' Lists all endpoints associated with an Outpost that has been shared by
+#' Amazon Web Services Resource Access Manager (RAM).
+#' 
+#' Related actions include:
+#' 
+#' -   [`create_endpoint`][s3outposts_create_endpoint]
+#' 
+#' -   [`delete_endpoint`][s3outposts_delete_endpoint]
+#'
+#' @usage
+#' s3outposts_list_shared_endpoints(NextToken, MaxResults, OutpostId)
+#'
+#' @param NextToken If a previous response from this operation included a `NextToken` value,
+#' you can provide that value here to retrieve the next page of results.
+#' @param MaxResults The maximum number of endpoints that will be returned in the response.
+#' @param OutpostId &#91;required&#93; The ID of the Amazon Web Services Outpost.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoints = list(
+#'     list(
+#'       EndpointArn = "string",
+#'       OutpostsId = "string",
+#'       CidrBlock = "string",
+#'       Status = "Pending"|"Available"|"Deleting",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NetworkInterfaces = list(
+#'         list(
+#'           NetworkInterfaceId = "string"
+#'         )
+#'       ),
+#'       VpcId = "string",
+#'       SubnetId = "string",
+#'       SecurityGroupId = "string",
+#'       AccessType = "Private"|"CustomerOwnedIp",
+#'       CustomerOwnedIpv4Pool = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_shared_endpoints(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   OutpostId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3outposts_list_shared_endpoints
+s3outposts_list_shared_endpoints <- function(NextToken = NULL, MaxResults = NULL, OutpostId) {
+  op <- new_operation(
+    name = "ListSharedEndpoints",
+    http_method = "GET",
+    http_path = "/S3Outposts/ListSharedEndpoints",
+    paginator = list()
+  )
+  input <- .s3outposts$list_shared_endpoints_input(NextToken = NextToken, MaxResults = MaxResults, OutpostId = OutpostId)
+  output <- .s3outposts$list_shared_endpoints_output()
+  config <- get_config()
+  svc <- .s3outposts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3outposts$operations$list_shared_endpoints <- s3outposts_list_shared_endpoints

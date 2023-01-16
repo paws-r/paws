@@ -4,65 +4,21 @@
 \alias{appmesh_delete_virtual_router}
 \title{Deletes an existing virtual router}
 \usage{
-appmesh_delete_virtual_router(meshName, meshOwner, virtualRouterName)
+appmesh_delete_virtual_router(meshName, meshOwner = NULL, virtualRouterName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh to delete the virtual router in.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then it's the ID of the account that shared the mesh with
-your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then it's the ID of the account that shared
+the mesh with your account. For more information about mesh sharing, see
+\href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{virtualRouterName}{[required] The name of the virtual router to delete.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualRouter = list(
-    meshName = "string",
-    metadata = list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshOwner = "string",
-      resourceOwner = "string",
-      uid = "string",
-      version = 123
-    ),
-    spec = list(
-      listeners = list(
-        list(
-          portMapping = list(
-            port = 123,
-            protocol = "http"|"tcp"|"http2"|"grpc"
-          )
-        )
-      )
-    ),
-    status = list(
-      status = "ACTIVE"|"INACTIVE"|"DELETED"
-    ),
-    virtualRouterName = "string"
-  )
-)
-}
 }
 \description{
 Deletes an existing virtual router.
 
-You must delete any routes associated with the virtual router before you
-can delete the router itself.
+See \url{https://paws-r.github.io/docs/appmesh/delete_virtual_router.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_virtual_router(
-  meshName = "string",
-  meshOwner = "string",
-  virtualRouterName = "string"
-)
-}
-}
-
 \keyword{internal}

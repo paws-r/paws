@@ -10,21 +10,9 @@ backup_export_backup_plan_template(BackupPlanId)
 \arguments{
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupPlanTemplateJson = "string"
-)
-}
-}
 \description{
-Returns the backup plan that is specified by the plan ID as a backup
-template.
-}
-\section{Request syntax}{
-\preformatted{svc$export_backup_plan_template(
-  BackupPlanId = "string"
-)
-}
-}
+Returns the backup plan that is specified by the plan ID as a backup template.
 
+See \url{https://paws-r.github.io/docs/backup/export_backup_plan_template.html} for full documentation.
+}
 \keyword{internal}

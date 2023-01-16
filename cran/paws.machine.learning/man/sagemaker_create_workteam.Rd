@@ -4,8 +4,14 @@
 \alias{sagemaker_create_workteam}
 \title{Creates a new work team for labeling your data}
 \usage{
-sagemaker_create_workteam(WorkteamName, WorkforceName,
-  MemberDefinitions, Description, NotificationConfiguration, Tags)
+sagemaker_create_workteam(
+  WorkteamName,
+  WorkforceName = NULL,
+  MemberDefinitions,
+  Description,
+  NotificationConfiguration = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{WorkteamName}{[required] The name of the work team. Use this name to identify the work team.}
@@ -42,51 +48,11 @@ items.}
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html}{Resource Tag}
 and \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management User Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  WorkteamArn = "string"
-)
-}
+in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 }
 \description{
-Creates a new work team for labeling your data. A work team is defined
-by one or more Amazon Cognito user pools. You must first create the user
-pools before you can create a work team.
+Creates a new work team for labeling your data. A work team is defined by one or more Amazon Cognito user pools. You must first create the user pools before you can create a work team.
 
-You cannot create more than 25 work teams in an account and region.
+See \url{https://paws-r.github.io/docs/sagemaker/create_workteam.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_workteam(
-  WorkteamName = "string",
-  WorkforceName = "string",
-  MemberDefinitions = list(
-    list(
-      CognitoMemberDefinition = list(
-        UserPool = "string",
-        UserGroup = "string",
-        ClientId = "string"
-      ),
-      OidcMemberDefinition = list(
-        Groups = list(
-          "string"
-        )
-      )
-    )
-  ),
-  Description = "string",
-  NotificationConfiguration = list(
-    NotificationTopicArn = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

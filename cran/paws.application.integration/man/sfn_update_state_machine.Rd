@@ -5,8 +5,13 @@
 \title{Updates an existing state machine by modifying its definition, roleArn,
 or loggingConfiguration}
 \usage{
-sfn_update_state_machine(stateMachineArn, definition, roleArn,
-  loggingConfiguration, tracingConfiguration)
+sfn_update_state_machine(
+  stateMachineArn,
+  definition = NULL,
+  roleArn = NULL,
+  loggingConfiguration = NULL,
+  tracingConfiguration = NULL
+)
 }
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine.}
@@ -20,48 +25,9 @@ options.}
 
 \item{tracingConfiguration}{Selects whether AWS X-Ray tracing is enabled.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  updateDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Updates an existing state machine by modifying its \code{definition},
-\code{roleArn}, or \code{loggingConfiguration}. Running executions will continue
-to use the previous \code{definition} and \code{roleArn}. You must include at
-least one of \code{definition} or \code{roleArn} or you will receive a
-\code{MissingRequiredParameter} error.
+Updates an existing state machine by modifying its \code{definition}, \code{roleArn}, or \code{loggingConfiguration}. Running executions will continue to use the previous \code{definition} and \code{roleArn}. You must include at least one of \code{definition} or \code{roleArn} or you will receive a \code{MissingRequiredParameter} error.
 
-All \code{\link[=sfn_start_execution]{start_execution}} calls within a few seconds
-will use the updated \code{definition} and \code{roleArn}. Executions started
-immediately after calling
-\code{\link[=sfn_update_state_machine]{update_state_machine}} may use the previous
-state machine \code{definition} and \code{roleArn}.
+See \url{https://paws-r.github.io/docs/sfn/update_state_machine.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_state_machine(
-  stateMachineArn = "string",
-  definition = "string",
-  roleArn = "string",
-  loggingConfiguration = list(
-    level = "ALL"|"ERROR"|"FATAL"|"OFF",
-    includeExecutionData = TRUE|FALSE,
-    destinations = list(
-      list(
-        cloudWatchLogsLogGroup = list(
-          logGroupArn = "string"
-        )
-      )
-    )
-  ),
-  tracingConfiguration = list(
-    enabled = TRUE|FALSE
-  )
-)
-}
-}
-
 \keyword{internal}

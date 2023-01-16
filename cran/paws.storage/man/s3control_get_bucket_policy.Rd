@@ -7,15 +7,16 @@
 s3control_get_bucket_policy(AccountId, Bucket)
 }
 \arguments{
-\item{AccountId}{[required] The AWS account ID of the Outposts bucket.}
+\item{AccountId}{[required] The Amazon Web Services account ID of the Outposts bucket.}
 
 \item{Bucket}{[required] Specifies the bucket.
 
 For using this parameter with Amazon S3 on Outposts with the REST API,
 you must specify the name and the x-amz-outpost-id as well.
 
-For using this parameter with S3 on Outposts with the AWS SDK and CLI,
-you must specify the ARN of the bucket accessed in the format
+For using this parameter with S3 on Outposts with the Amazon Web
+Services SDK and CLI, you must specify the ARN of the bucket accessed in
+the format
 \verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
 For example, to access the bucket \code{reports} through outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
@@ -23,63 +24,9 @@ encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
 The value must be URL encoded.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Policy = "string"
-)
-}
-}
 \description{
-This action gets a bucket policy for an Amazon S3 on Outposts bucket. To
-get a policy for an S3 bucket, see
-\code{\link[=s3control_get_bucket_policy]{get_bucket_policy}} in the \emph{Amazon Simple
-Storage Service API}.
+This action gets a bucket policy for an Amazon S3 on Outposts bucket. To get a policy for an S3 bucket, see \code{\link[=s3control_get_bucket_policy]{get_bucket_policy}} in the \emph{Amazon S3 API Reference}.
 
-Returns the policy of a specified Outposts bucket. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-If you are using an identity other than the root user of the AWS account
-that owns the bucket, the calling identity must have the
-\code{\link[=s3control_get_bucket_policy]{get_bucket_policy}} permissions on the
-specified bucket and belong to the bucket owner's account in order to
-use this operation.
-
-Only users from Outposts bucket owner account with the right permissions
-can perform actions on an Outposts bucket. If you don't have
-\code{s3-outposts:GetBucketPolicy} permissions or you're not using an
-identity that belongs to the bucket owner's account, Amazon S3 returns a
-\verb{403 Access Denied} error.
-
-As a security precaution, the root user of the AWS account that owns a
-bucket can always use this operation, even if the policy explicitly
-denies the root user the ability to perform this action.
-
-For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
-
-All Amazon S3 on Outposts REST API requests for this action require an
-additional parameter of \code{x-amz-outpost-id} to be passed with the request
-and an S3 on Outposts endpoint hostname prefix instead of \code{s3-control}.
-For an example of the request syntax for Amazon S3 on Outposts that uses
-the S3 on Outposts endpoint hostname prefix and the \code{x-amz-outpost-id}
-derived using the access point ARN, see the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketPolicy.html#API_control_GetBucketPolicy_Examples}{Examples}
-section.
-
-The following actions are related to
-\code{\link[=s3control_get_bucket_policy]{get_bucket_policy}}:
-\itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
-\item \code{\link[=s3control_put_bucket_policy]{put_bucket_policy}}
-\item \code{\link[=s3control_delete_bucket_policy]{delete_bucket_policy}}
+See \url{https://paws-r.github.io/docs/s3control/get_bucket_policy.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_policy(
-  AccountId = "string",
-  Bucket = "string"
-)
-}
-}
-
 \keyword{internal}

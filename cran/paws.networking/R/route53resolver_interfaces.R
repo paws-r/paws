@@ -3,6 +3,18 @@
 #' @include route53resolver_service.R
 NULL
 
+.route53resolver$associate_firewall_rule_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), Name = structure(logical(0), tags = list(type = "string")), MutationProtection = structure(logical(0), tags = list(box = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$associate_firewall_rule_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupAssociation = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), MutationProtection = structure(logical(0), tags = list(type = "string")), ManagedOwnerName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$associate_resolver_endpoint_ip_address_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverEndpointId = structure(logical(0), tags = list(type = "string")), IpAddress = structure(list(IpId = structure(logical(0), tags = list(box = TRUE, type = "string")), SubnetId = structure(logical(0), tags = list(box = TRUE, type = "string")), Ip = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -36,6 +48,42 @@ NULL
 .route53resolver$associate_resolver_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverRuleAssociation = structure(list(Id = structure(logical(0), tags = list(type = "string")), ResolverRuleId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$create_firewall_domain_list_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$create_firewall_domain_list_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallDomainList = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DomainCount = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), ManagedOwnerName = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$create_firewall_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), FirewallDomainListId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), Action = structure(logical(0), tags = list(type = "string")), BlockResponse = structure(logical(0), tags = list(box = TRUE, type = "string")), BlockOverrideDomain = structure(logical(0), tags = list(box = TRUE, type = "string")), BlockOverrideDnsType = structure(logical(0), tags = list(box = TRUE, type = "string")), BlockOverrideTtl = structure(logical(0), tags = list(box = TRUE, type = "integer")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$create_firewall_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRule = structure(list(FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), FirewallDomainListId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), Action = structure(logical(0), tags = list(type = "string")), BlockResponse = structure(logical(0), tags = list(type = "string")), BlockOverrideDomain = structure(logical(0), tags = list(type = "string")), BlockOverrideDnsType = structure(logical(0), tags = list(type = "string")), BlockOverrideTtl = structure(logical(0), tags = list(type = "integer")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$create_firewall_rule_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$create_firewall_rule_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroup = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), RuleCount = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -75,6 +123,42 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$delete_firewall_domain_list_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallDomainListId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$delete_firewall_domain_list_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallDomainList = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DomainCount = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), ManagedOwnerName = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$delete_firewall_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), FirewallDomainListId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$delete_firewall_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRule = structure(list(FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), FirewallDomainListId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), Action = structure(logical(0), tags = list(type = "string")), BlockResponse = structure(logical(0), tags = list(type = "string")), BlockOverrideDomain = structure(logical(0), tags = list(type = "string")), BlockOverrideDnsType = structure(logical(0), tags = list(type = "string")), BlockOverrideTtl = structure(logical(0), tags = list(type = "integer")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$delete_firewall_rule_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$delete_firewall_rule_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroup = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), RuleCount = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$delete_resolver_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -111,6 +195,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$disassociate_firewall_rule_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupAssociationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$disassociate_firewall_rule_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupAssociation = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), MutationProtection = structure(logical(0), tags = list(type = "string")), ManagedOwnerName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$disassociate_resolver_endpoint_ip_address_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverEndpointId = structure(logical(0), tags = list(type = "string")), IpAddress = structure(list(IpId = structure(logical(0), tags = list(box = TRUE, type = "string")), SubnetId = structure(logical(0), tags = list(box = TRUE, type = "string")), Ip = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -144,6 +240,78 @@ NULL
 .route53resolver$disassociate_resolver_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverRuleAssociation = structure(list(Id = structure(logical(0), tags = list(type = "string")), ResolverRuleId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_firewall_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_firewall_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallConfig = structure(list(Id = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), FirewallFailOpen = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_firewall_domain_list_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallDomainListId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_firewall_domain_list_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallDomainList = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DomainCount = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), ManagedOwnerName = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_firewall_rule_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_firewall_rule_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroup = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), RuleCount = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_firewall_rule_group_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupAssociationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_firewall_rule_group_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupAssociation = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), MutationProtection = structure(logical(0), tags = list(type = "string")), ManagedOwnerName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_firewall_rule_group_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_firewall_rule_group_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_resolver_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_resolver_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverConfig = structure(list(Id = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), AutodefinedReverse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -243,6 +411,102 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$import_firewall_domains_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallDomainListId = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), DomainFileUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$import_firewall_domains_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_configs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_configs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), FirewallConfigs = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), FirewallFailOpen = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_domain_lists_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_domain_lists_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), FirewallDomainLists = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), ManagedOwnerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_domains_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallDomainListId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_domains_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Domains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_rule_group_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupId = structure(logical(0), tags = list(box = TRUE, type = "string")), VpcId = structure(logical(0), tags = list(box = TRUE, type = "string")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), Status = structure(logical(0), tags = list(box = TRUE, type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_rule_group_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), FirewallRuleGroupAssociations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), MutationProtection = structure(logical(0), tags = list(type = "string")), ManagedOwnerName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_rule_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_rule_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), FirewallRuleGroups = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_rules_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), Action = structure(logical(0), tags = list(box = TRUE, type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_firewall_rules_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), FirewallRules = structure(list(structure(list(FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), FirewallDomainListId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), Action = structure(logical(0), tags = list(type = "string")), BlockResponse = structure(logical(0), tags = list(type = "string")), BlockOverrideDomain = structure(logical(0), tags = list(type = "string")), BlockOverrideDnsType = structure(logical(0), tags = list(type = "string")), BlockOverrideTtl = structure(logical(0), tags = list(type = "integer")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_resolver_configs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_resolver_configs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ResolverConfigs = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), AutodefinedReverse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$list_resolver_dnssec_configs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))
@@ -339,6 +603,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$put_firewall_rule_group_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), FirewallRuleGroupPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$put_firewall_rule_group_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReturnValue = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$put_resolver_query_log_config_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), ResolverQueryLogConfigPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -384,6 +660,66 @@ NULL
 .route53resolver$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_firewall_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), FirewallFailOpen = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_firewall_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallConfig = structure(list(Id = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), FirewallFailOpen = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_firewall_domains_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallDomainListId = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), Domains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_firewall_domains_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_firewall_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), FirewallDomainListId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), Action = structure(logical(0), tags = list(box = TRUE, type = "string")), BlockResponse = structure(logical(0), tags = list(box = TRUE, type = "string")), BlockOverrideDomain = structure(logical(0), tags = list(box = TRUE, type = "string")), BlockOverrideDnsType = structure(logical(0), tags = list(box = TRUE, type = "string")), BlockOverrideTtl = structure(logical(0), tags = list(box = TRUE, type = "integer")), Name = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_firewall_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRule = structure(list(FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), FirewallDomainListId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), Action = structure(logical(0), tags = list(type = "string")), BlockResponse = structure(logical(0), tags = list(type = "string")), BlockOverrideDomain = structure(logical(0), tags = list(type = "string")), BlockOverrideDnsType = structure(logical(0), tags = list(type = "string")), BlockOverrideTtl = structure(logical(0), tags = list(type = "integer")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_firewall_rule_group_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupAssociationId = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), MutationProtection = structure(logical(0), tags = list(box = TRUE, type = "string")), Name = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_firewall_rule_group_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallRuleGroupAssociation = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), FirewallRuleGroupId = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Priority = structure(logical(0), tags = list(type = "integer")), MutationProtection = structure(logical(0), tags = list(type = "string")), ManagedOwnerName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_resolver_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), AutodefinedReverseFlag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_resolver_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverConfig = structure(list(Id = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), AutodefinedReverse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

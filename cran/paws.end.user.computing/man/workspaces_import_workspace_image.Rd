@@ -5,8 +5,14 @@
 \title{Imports the specified Windows 10 Bring Your Own License (BYOL) image
 into Amazon WorkSpaces}
 \usage{
-workspaces_import_workspace_image(Ec2ImageId, IngestionProcess,
-  ImageName, ImageDescription, Tags, Applications)
+workspaces_import_workspace_image(
+  Ec2ImageId,
+  IngestionProcess,
+  ImageName,
+  ImageDescription,
+  Tags = NULL,
+  Applications = NULL
+)
 }
 \arguments{
 \item{Ec2ImageId}{[required] The identifier of the EC2 image.}
@@ -34,35 +40,9 @@ to Office for BYOL images, see \href{https://docs.aws.amazon.com/workspaces/late
 Although this parameter is an array, only one item is allowed at this
 time.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageId = "string"
-)
-}
-}
 \description{
-Imports the specified Windows 10 Bring Your Own License (BYOL) image
-into Amazon WorkSpaces. The image must be an already licensed Amazon EC2
-image that is in your AWS account, and you must own the image. For more
-information about creating BYOL images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Licenses}.
-}
-\section{Request syntax}{
-\preformatted{svc$import_workspace_image(
-  Ec2ImageId = "string",
-  IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO"|"BYOL_REGULAR_WSP",
-  ImageName = "string",
-  ImageDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  Applications = list(
-    "Microsoft_Office_2016"|"Microsoft_Office_2019"
-  )
-)
-}
-}
+Imports the specified Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces. The image must be an already licensed Amazon EC2 image that is in your Amazon Web Services account, and you must own the image. For more information about creating BYOL images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Licenses}.
 
+See \url{https://paws-r.github.io/docs/workspaces/import_workspace_image.html} for full documentation.
+}
 \keyword{internal}

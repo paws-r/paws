@@ -12,24 +12,9 @@ workspaces_update_rules_of_ip_group(GroupId, UserRules)
 
 \item{UserRules}{[required] One or more rules.}
 }
-\value{
-An empty list.
-}
 \description{
-Replaces the current rules of the specified IP access control group with
-the specified rules.
-}
-\section{Request syntax}{
-\preformatted{svc$update_rules_of_ip_group(
-  GroupId = "string",
-  UserRules = list(
-    list(
-      ipRule = "string",
-      ruleDesc = "string"
-    )
-  )
-)
-}
-}
+Replaces the current rules of the specified IP access control group with the specified rules.
 
+See \url{https://paws-r.github.io/docs/workspaces/update_rules_of_ip_group.html} for full documentation.
+}
 \keyword{internal}

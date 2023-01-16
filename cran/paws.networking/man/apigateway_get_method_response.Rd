@@ -4,41 +4,20 @@
 \alias{apigateway_get_method_response}
 \title{Describes a MethodResponse resource}
 \usage{
-apigateway_get_method_response(restApiId, resourceId, httpMethod,
-  statusCode)
+apigateway_get_method_response(restApiId, resourceId, httpMethod, statusCode)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] The Resource identifier for the MethodResponse resource.}
+\item{resourceId}{[required] The Resource identifier for the MethodResponse resource.}
 
-\item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
+\item{httpMethod}{[required] The HTTP verb of the Method resource.}
 
-\item{statusCode}{[required] [Required] The status code for the MethodResponse resource.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  statusCode = "string",
-  responseParameters = list(
-    TRUE|FALSE
-  ),
-  responseModels = list(
-    "string"
-  )
-)
-}
+\item{statusCode}{[required] The status code for the MethodResponse resource.}
 }
 \description{
 Describes a MethodResponse resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_method_response(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  statusCode = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_method_response.html} for full documentation.
+}
 \keyword{internal}

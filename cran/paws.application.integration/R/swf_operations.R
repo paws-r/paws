@@ -7,47 +7,9 @@ NULL
 #' that meet the specified filtering criteria
 #'
 #' @description
-#' Returns the number of closed workflow executions within the given domain
-#' that meet the specified filtering criteria.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `tagFilter.tag`: String constraint. The key is
-#'         `swf:tagFilter.tag`.
-#' 
-#'     -   `typeFilter.name`: String constraint. The key is
-#'         `swf:typeFilter.name`.
-#' 
-#'     -   `typeFilter.version`: String constraint. The key is
-#'         `swf:typeFilter.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns the number of closed workflow executions within the given domain that meet the specified filtering criteria.
 #'
-#' @usage
-#' swf_count_closed_workflow_executions(domain, startTimeFilter,
-#'   closeTimeFilter, executionFilter, typeFilter, tagFilter,
-#'   closeStatusFilter)
+#' See [https://paws-r.github.io/docs/swf/count_closed_workflow_executions.html](https://paws-r.github.io/docs/swf/count_closed_workflow_executions.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the workflow executions to count.
 #' @param startTimeFilter If specified, only workflow executions that meet the start time criteria
@@ -82,51 +44,6 @@ NULL
 #' `closeStatusFilter`, `executionFilter`, `typeFilter` and `tagFilter` are
 #' mutually exclusive. You can specify at most one of these in a request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   count = 123,
-#'   truncated = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$count_closed_workflow_executions(
-#'   domain = "string",
-#'   startTimeFilter = list(
-#'     oldestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     latestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   closeTimeFilter = list(
-#'     oldestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     latestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   executionFilter = list(
-#'     workflowId = "string"
-#'   ),
-#'   typeFilter = list(
-#'     name = "string",
-#'     version = "string"
-#'   ),
-#'   tagFilter = list(
-#'     tag = "string"
-#'   ),
-#'   closeStatusFilter = list(
-#'     status = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname swf_count_closed_workflow_executions
@@ -151,46 +68,9 @@ swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL,
 #' that meet the specified filtering criteria
 #'
 #' @description
-#' Returns the number of open workflow executions within the given domain
-#' that meet the specified filtering criteria.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `tagFilter.tag`: String constraint. The key is
-#'         `swf:tagFilter.tag`.
-#' 
-#'     -   `typeFilter.name`: String constraint. The key is
-#'         `swf:typeFilter.name`.
-#' 
-#'     -   `typeFilter.version`: String constraint. The key is
-#'         `swf:typeFilter.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns the number of open workflow executions within the given domain that meet the specified filtering criteria.
 #'
-#' @usage
-#' swf_count_open_workflow_executions(domain, startTimeFilter, typeFilter,
-#'   tagFilter, executionFilter)
+#' See [https://paws-r.github.io/docs/swf/count_open_workflow_executions.html](https://paws-r.github.io/docs/swf/count_open_workflow_executions.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the workflow executions to count.
 #' @param startTimeFilter &#91;required&#93; Specifies the start time criteria that workflow executions must meet in
@@ -209,40 +89,6 @@ swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL,
 #' 
 #' `executionFilter`, `typeFilter` and `tagFilter` are mutually exclusive.
 #' You can specify at most one of these in a request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   count = 123,
-#'   truncated = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$count_open_workflow_executions(
-#'   domain = "string",
-#'   startTimeFilter = list(
-#'     oldestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     latestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   typeFilter = list(
-#'     name = "string",
-#'     version = "string"
-#'   ),
-#'   tagFilter = list(
-#'     tag = "string"
-#'   ),
-#'   executionFilter = list(
-#'     workflowId = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -268,58 +114,12 @@ swf_count_open_workflow_executions <- function(domain, startTimeFilter, typeFilt
 #' list
 #'
 #' @description
-#' Returns the estimated number of activity tasks in the specified task
-#' list. The count returned is an approximation and isn't guaranteed to be
-#' exact. If you specify a task list that no activity task was ever
-#' scheduled in then `0` is returned.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the `taskList.name` parameter by using a `Condition`
-#'     element with the `swf:taskList.name` key to allow the action to
-#'     access only certain task lists.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns the estimated number of activity tasks in the specified task list. The count returned is an approximation and isn't guaranteed to be exact. If you specify a task list that no activity task was ever scheduled in then `0` is returned.
 #'
-#' @usage
-#' swf_count_pending_activity_tasks(domain, taskList)
+#' See [https://paws-r.github.io/docs/swf/count_pending_activity_tasks.html](https://paws-r.github.io/docs/swf/count_pending_activity_tasks.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the task list.
 #' @param taskList &#91;required&#93; The name of the task list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   count = 123,
-#'   truncated = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$count_pending_activity_tasks(
-#'   domain = "string",
-#'   taskList = list(
-#'     name = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -345,58 +145,12 @@ swf_count_pending_activity_tasks <- function(domain, taskList) {
 #' list
 #'
 #' @description
-#' Returns the estimated number of decision tasks in the specified task
-#' list. The count returned is an approximation and isn't guaranteed to be
-#' exact. If you specify a task list that no decision task was ever
-#' scheduled in then `0` is returned.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the `taskList.name` parameter by using a `Condition`
-#'     element with the `swf:taskList.name` key to allow the action to
-#'     access only certain task lists.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns the estimated number of decision tasks in the specified task list. The count returned is an approximation and isn't guaranteed to be exact. If you specify a task list that no decision task was ever scheduled in then `0` is returned.
 #'
-#' @usage
-#' swf_count_pending_decision_tasks(domain, taskList)
+#' See [https://paws-r.github.io/docs/swf/count_pending_decision_tasks.html](https://paws-r.github.io/docs/swf/count_pending_decision_tasks.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the task list.
 #' @param taskList &#91;required&#93; The name of the task list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   count = 123,
-#'   truncated = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$count_pending_decision_tasks(
-#'   domain = "string",
-#'   taskList = list(
-#'     name = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -421,61 +175,12 @@ swf_count_pending_decision_tasks <- function(domain, taskList) {
 #' Deprecates the specified activity type
 #'
 #' @description
-#' Deprecates the specified *activity type*. After an activity type has
-#' been deprecated, you cannot create new tasks of that activity type.
-#' Tasks of this type that were scheduled before the type was deprecated
-#' continue to run.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `activityType.name`: String constraint. The key is
-#'         `swf:activityType.name`.
-#' 
-#'     -   `activityType.version`: String constraint. The key is
-#'         `swf:activityType.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Deprecates the specified *activity type*. After an activity type has been deprecated, you cannot create new tasks of that activity type. Tasks of this type that were scheduled before the type was deprecated continue to run.
 #'
-#' @usage
-#' swf_deprecate_activity_type(domain, activityType)
+#' See [https://paws-r.github.io/docs/swf/deprecate_activity_type.html](https://paws-r.github.io/docs/swf/deprecate_activity_type.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain in which the activity type is registered.
 #' @param activityType &#91;required&#93; The activity type to deprecate.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deprecate_activity_type(
-#'   domain = "string",
-#'   activityType = list(
-#'     name = "string",
-#'     version = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -500,51 +205,11 @@ swf_deprecate_activity_type <- function(domain, activityType) {
 #' Deprecates the specified domain
 #'
 #' @description
-#' Deprecates the specified domain. After a domain has been deprecated it
-#' cannot be used to create new workflow executions or register new types.
-#' However, you can still use visibility actions on this domain.
-#' Deprecating a domain also deprecates all activity and workflow types
-#' registered in the domain. Executions that were started before the domain
-#' was deprecated continues to run.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Deprecates the specified domain. After a domain has been deprecated it cannot be used to create new workflow executions or register new types. However, you can still use visibility actions on this domain. Deprecating a domain also deprecates all activity and workflow types registered in the domain. Executions that were started before the domain was deprecated continues to run.
 #'
-#' @usage
-#' swf_deprecate_domain(name)
+#' See [https://paws-r.github.io/docs/swf/deprecate_domain.html](https://paws-r.github.io/docs/swf/deprecate_domain.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the domain to deprecate.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deprecate_domain(
-#'   name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -569,62 +234,12 @@ swf_deprecate_domain <- function(name) {
 #' Deprecates the specified workflow type
 #'
 #' @description
-#' Deprecates the specified *workflow type*. After a workflow type has been
-#' deprecated, you cannot create new executions of that type. Executions
-#' that were started before the type was deprecated continues to run. A
-#' deprecated workflow type may still be used when calling visibility
-#' actions.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `workflowType.name`: String constraint. The key is
-#'         `swf:workflowType.name`.
-#' 
-#'     -   `workflowType.version`: String constraint. The key is
-#'         `swf:workflowType.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Deprecates the specified *workflow type*. After a workflow type has been deprecated, you cannot create new executions of that type. Executions that were started before the type was deprecated continues to run. A deprecated workflow type may still be used when calling visibility actions.
 #'
-#' @usage
-#' swf_deprecate_workflow_type(domain, workflowType)
+#' See [https://paws-r.github.io/docs/swf/deprecate_workflow_type.html](https://paws-r.github.io/docs/swf/deprecate_workflow_type.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain in which the workflow type is registered.
 #' @param workflowType &#91;required&#93; The workflow type to deprecate.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deprecate_workflow_type(
-#'   domain = "string",
-#'   workflowType = list(
-#'     name = "string",
-#'     version = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -649,87 +264,14 @@ swf_deprecate_workflow_type <- function(domain, workflowType) {
 #' Returns information about the specified activity type
 #'
 #' @description
-#' Returns information about the specified activity type. This includes
-#' configuration settings provided when the type was registered and other
-#' general information about the type.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `activityType.name`: String constraint. The key is
-#'         `swf:activityType.name`.
-#' 
-#'     -   `activityType.version`: String constraint. The key is
-#'         `swf:activityType.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns information about the specified activity type. This includes configuration settings provided when the type was registered and other general information about the type.
 #'
-#' @usage
-#' swf_describe_activity_type(domain, activityType)
+#' See [https://paws-r.github.io/docs/swf/describe_activity_type.html](https://paws-r.github.io/docs/swf/describe_activity_type.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain in which the activity type is registered.
 #' @param activityType &#91;required&#93; The activity type to get information about. Activity types are
 #' identified by the `name` and `version` that were supplied when the
 #' activity was registered.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   typeInfo = list(
-#'     activityType = list(
-#'       name = "string",
-#'       version = "string"
-#'     ),
-#'     status = "REGISTERED"|"DEPRECATED",
-#'     description = "string",
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     deprecationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   configuration = list(
-#'     defaultTaskStartToCloseTimeout = "string",
-#'     defaultTaskHeartbeatTimeout = "string",
-#'     defaultTaskList = list(
-#'       name = "string"
-#'     ),
-#'     defaultTaskPriority = "string",
-#'     defaultTaskScheduleToStartTimeout = "string",
-#'     defaultTaskScheduleToCloseTimeout = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_activity_type(
-#'   domain = "string",
-#'   activityType = list(
-#'     name = "string",
-#'     version = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -755,57 +297,11 @@ swf_describe_activity_type <- function(domain, activityType) {
 #' and status
 #'
 #' @description
-#' Returns information about the specified domain, including description
-#' and status.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns information about the specified domain, including description and status.
 #'
-#' @usage
-#' swf_describe_domain(name)
+#' See [https://paws-r.github.io/docs/swf/describe_domain.html](https://paws-r.github.io/docs/swf/describe_domain.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the domain to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   domainInfo = list(
-#'     name = "string",
-#'     status = "REGISTERED"|"DEPRECATED",
-#'     description = "string",
-#'     arn = "string"
-#'   ),
-#'   configuration = list(
-#'     workflowExecutionRetentionPeriodInDays = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_domain(
-#'   name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -831,103 +327,12 @@ swf_describe_domain <- function(name) {
 #' type and some statistics
 #'
 #' @description
-#' Returns information about the specified workflow execution including its
-#' type and some statistics.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns information about the specified workflow execution including its type and some statistics.
 #'
-#' @usage
-#' swf_describe_workflow_execution(domain, execution)
+#' See [https://paws-r.github.io/docs/swf/describe_workflow_execution.html](https://paws-r.github.io/docs/swf/describe_workflow_execution.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the workflow execution.
 #' @param execution &#91;required&#93; The workflow execution to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   executionInfo = list(
-#'     execution = list(
-#'       workflowId = "string",
-#'       runId = "string"
-#'     ),
-#'     workflowType = list(
-#'       name = "string",
-#'       version = "string"
-#'     ),
-#'     startTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     closeTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     executionStatus = "OPEN"|"CLOSED",
-#'     closeStatus = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT",
-#'     parent = list(
-#'       workflowId = "string",
-#'       runId = "string"
-#'     ),
-#'     tagList = list(
-#'       "string"
-#'     ),
-#'     cancelRequested = TRUE|FALSE
-#'   ),
-#'   executionConfiguration = list(
-#'     taskStartToCloseTimeout = "string",
-#'     executionStartToCloseTimeout = "string",
-#'     taskList = list(
-#'       name = "string"
-#'     ),
-#'     taskPriority = "string",
-#'     childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'     lambdaRole = "string"
-#'   ),
-#'   openCounts = list(
-#'     openActivityTasks = 123,
-#'     openDecisionTasks = 123,
-#'     openTimers = 123,
-#'     openChildWorkflowExecutions = 123,
-#'     openLambdaFunctions = 123
-#'   ),
-#'   latestActivityTaskTimestamp = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   latestExecutionContext = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_workflow_execution(
-#'   domain = "string",
-#'   execution = list(
-#'     workflowId = "string",
-#'     runId = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -952,85 +357,12 @@ swf_describe_workflow_execution <- function(domain, execution) {
 #' Returns information about the specified workflow type
 #'
 #' @description
-#' Returns information about the specified *workflow type*. This includes
-#' configuration settings specified when the type was registered and other
-#' information such as creation date, current status, etc.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `workflowType.name`: String constraint. The key is
-#'         `swf:workflowType.name`.
-#' 
-#'     -   `workflowType.version`: String constraint. The key is
-#'         `swf:workflowType.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns information about the specified *workflow type*. This includes configuration settings specified when the type was registered and other information such as creation date, current status, etc.
 #'
-#' @usage
-#' swf_describe_workflow_type(domain, workflowType)
+#' See [https://paws-r.github.io/docs/swf/describe_workflow_type.html](https://paws-r.github.io/docs/swf/describe_workflow_type.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain in which this workflow type is registered.
 #' @param workflowType &#91;required&#93; The workflow type to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   typeInfo = list(
-#'     workflowType = list(
-#'       name = "string",
-#'       version = "string"
-#'     ),
-#'     status = "REGISTERED"|"DEPRECATED",
-#'     description = "string",
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     deprecationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   configuration = list(
-#'     defaultTaskStartToCloseTimeout = "string",
-#'     defaultExecutionStartToCloseTimeout = "string",
-#'     defaultTaskList = list(
-#'       name = "string"
-#'     ),
-#'     defaultTaskPriority = "string",
-#'     defaultChildPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'     defaultLambdaRole = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_workflow_type(
-#'   domain = "string",
-#'   workflowType = list(
-#'     name = "string",
-#'     version = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1055,37 +387,9 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #' Returns the history of the specified workflow execution
 #'
 #' @description
-#' Returns the history of the specified workflow execution. The results may
-#' be split into multiple pages. To retrieve subsequent pages, make the
-#' call again using the `nextPageToken` returned by the initial call.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns the history of the specified workflow execution. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the `nextPageToken` returned by the initial call.
 #'
-#' @usage
-#' swf_get_workflow_execution_history(domain, execution, nextPageToken,
-#'   maximumPageSize, reverseOrder)
+#' See [https://paws-r.github.io/docs/swf/get_workflow_execution_history.html](https://paws-r.github.io/docs/swf/get_workflow_execution_history.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the workflow execution.
 #' @param execution &#91;required&#93; Specifies the workflow execution for which to return the history.
@@ -1103,446 +407,6 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #' @param reverseOrder When set to `true`, returns the events in reverse order. By default the
 #' results are returned in ascending order of the `eventTimeStamp` of the
 #' events.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   events = list(
-#'     list(
-#'       eventTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       eventType = "WorkflowExecutionStarted"|"WorkflowExecutionCancelRequested"|"WorkflowExecutionCompleted"|"CompleteWorkflowExecutionFailed"|"WorkflowExecutionFailed"|"FailWorkflowExecutionFailed"|"WorkflowExecutionTimedOut"|"WorkflowExecutionCanceled"|"CancelWorkflowExecutionFailed"|"WorkflowExecutionContinuedAsNew"|"ContinueAsNewWorkflowExecutionFailed"|"WorkflowExecutionTerminated"|"DecisionTaskScheduled"|"DecisionTaskStarted"|"DecisionTaskCompleted"|"DecisionTaskTimedOut"|"ActivityTaskScheduled"|"ScheduleActivityTaskFailed"|"ActivityTaskStarted"|"ActivityTaskCompleted"|"ActivityTaskFailed"|"ActivityTaskTimedOut"|"ActivityTaskCanceled"|"ActivityTaskCancelRequested"|"RequestCancelActivityTaskFailed"|"WorkflowExecutionSignaled"|"MarkerRecorded"|"RecordMarkerFailed"|"TimerStarted"|"StartTimerFailed"|"TimerFired"|"TimerCanceled"|"CancelTimerFailed"|"StartChildWorkflowExecutionInitiated"|"StartChildWorkflowExecutionFailed"|"ChildWorkflowExecutionStarted"|"ChildWorkflowExecutionCompleted"|"ChildWorkflowExecutionFailed"|"ChildWorkflowExecutionTimedOut"|"ChildWorkflowExecutionCanceled"|"ChildWorkflowExecutionTerminated"|"SignalExternalWorkflowExecutionInitiated"|"SignalExternalWorkflowExecutionFailed"|"ExternalWorkflowExecutionSignaled"|"RequestCancelExternalWorkflowExecutionInitiated"|"RequestCancelExternalWorkflowExecutionFailed"|"ExternalWorkflowExecutionCancelRequested"|"LambdaFunctionScheduled"|"LambdaFunctionStarted"|"LambdaFunctionCompleted"|"LambdaFunctionFailed"|"LambdaFunctionTimedOut"|"ScheduleLambdaFunctionFailed"|"StartLambdaFunctionFailed",
-#'       eventId = 123,
-#'       workflowExecutionStartedEventAttributes = list(
-#'         input = "string",
-#'         executionStartToCloseTimeout = "string",
-#'         taskStartToCloseTimeout = "string",
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         tagList = list(
-#'           "string"
-#'         ),
-#'         continuedExecutionRunId = "string",
-#'         parentWorkflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         parentInitiatedEventId = 123,
-#'         lambdaRole = "string"
-#'       ),
-#'       workflowExecutionCompletedEventAttributes = list(
-#'         result = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       completeWorkflowExecutionFailedEventAttributes = list(
-#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       workflowExecutionFailedEventAttributes = list(
-#'         reason = "string",
-#'         details = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       failWorkflowExecutionFailedEventAttributes = list(
-#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       workflowExecutionTimedOutEventAttributes = list(
-#'         timeoutType = "START_TO_CLOSE",
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON"
-#'       ),
-#'       workflowExecutionCanceledEventAttributes = list(
-#'         details = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       cancelWorkflowExecutionFailedEventAttributes = list(
-#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       workflowExecutionContinuedAsNewEventAttributes = list(
-#'         input = "string",
-#'         decisionTaskCompletedEventId = 123,
-#'         newExecutionRunId = "string",
-#'         executionStartToCloseTimeout = "string",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         taskStartToCloseTimeout = "string",
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'         tagList = list(
-#'           "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         lambdaRole = "string"
-#'       ),
-#'       continueAsNewWorkflowExecutionFailedEventAttributes = list(
-#'         cause = "UNHANDLED_DECISION"|"WORKFLOW_TYPE_DEPRECATED"|"WORKFLOW_TYPE_DOES_NOT_EXIST"|"DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_CHILD_POLICY_UNDEFINED"|"CONTINUE_AS_NEW_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       workflowExecutionTerminatedEventAttributes = list(
-#'         reason = "string",
-#'         details = "string",
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'         cause = "CHILD_POLICY_APPLIED"|"EVENT_LIMIT_EXCEEDED"|"OPERATOR_INITIATED"
-#'       ),
-#'       workflowExecutionCancelRequestedEventAttributes = list(
-#'         externalWorkflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         externalInitiatedEventId = 123,
-#'         cause = "CHILD_POLICY_APPLIED"
-#'       ),
-#'       decisionTaskScheduledEventAttributes = list(
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         startToCloseTimeout = "string"
-#'       ),
-#'       decisionTaskStartedEventAttributes = list(
-#'         identity = "string",
-#'         scheduledEventId = 123
-#'       ),
-#'       decisionTaskCompletedEventAttributes = list(
-#'         executionContext = "string",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       decisionTaskTimedOutEventAttributes = list(
-#'         timeoutType = "START_TO_CLOSE",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       activityTaskScheduledEventAttributes = list(
-#'         activityType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         activityId = "string",
-#'         input = "string",
-#'         control = "string",
-#'         scheduleToStartTimeout = "string",
-#'         scheduleToCloseTimeout = "string",
-#'         startToCloseTimeout = "string",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         decisionTaskCompletedEventId = 123,
-#'         heartbeatTimeout = "string"
-#'       ),
-#'       activityTaskStartedEventAttributes = list(
-#'         identity = "string",
-#'         scheduledEventId = 123
-#'       ),
-#'       activityTaskCompletedEventAttributes = list(
-#'         result = "string",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       activityTaskFailedEventAttributes = list(
-#'         reason = "string",
-#'         details = "string",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       activityTaskTimedOutEventAttributes = list(
-#'         timeoutType = "START_TO_CLOSE"|"SCHEDULE_TO_START"|"SCHEDULE_TO_CLOSE"|"HEARTBEAT",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123,
-#'         details = "string"
-#'       ),
-#'       activityTaskCanceledEventAttributes = list(
-#'         details = "string",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123,
-#'         latestCancelRequestedEventId = 123
-#'       ),
-#'       activityTaskCancelRequestedEventAttributes = list(
-#'         decisionTaskCompletedEventId = 123,
-#'         activityId = "string"
-#'       ),
-#'       workflowExecutionSignaledEventAttributes = list(
-#'         signalName = "string",
-#'         input = "string",
-#'         externalWorkflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         externalInitiatedEventId = 123
-#'       ),
-#'       markerRecordedEventAttributes = list(
-#'         markerName = "string",
-#'         details = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       recordMarkerFailedEventAttributes = list(
-#'         markerName = "string",
-#'         cause = "OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       timerStartedEventAttributes = list(
-#'         timerId = "string",
-#'         control = "string",
-#'         startToFireTimeout = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       timerFiredEventAttributes = list(
-#'         timerId = "string",
-#'         startedEventId = 123
-#'       ),
-#'       timerCanceledEventAttributes = list(
-#'         timerId = "string",
-#'         startedEventId = 123,
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       startChildWorkflowExecutionInitiatedEventAttributes = list(
-#'         workflowId = "string",
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         control = "string",
-#'         input = "string",
-#'         executionStartToCloseTimeout = "string",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         decisionTaskCompletedEventId = 123,
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'         taskStartToCloseTimeout = "string",
-#'         tagList = list(
-#'           "string"
-#'         ),
-#'         lambdaRole = "string"
-#'       ),
-#'       childWorkflowExecutionStartedEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         initiatedEventId = 123
-#'       ),
-#'       childWorkflowExecutionCompletedEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         result = "string",
-#'         initiatedEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       childWorkflowExecutionFailedEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         reason = "string",
-#'         details = "string",
-#'         initiatedEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       childWorkflowExecutionTimedOutEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         timeoutType = "START_TO_CLOSE",
-#'         initiatedEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       childWorkflowExecutionCanceledEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         details = "string",
-#'         initiatedEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       childWorkflowExecutionTerminatedEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         initiatedEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       signalExternalWorkflowExecutionInitiatedEventAttributes = list(
-#'         workflowId = "string",
-#'         runId = "string",
-#'         signalName = "string",
-#'         input = "string",
-#'         decisionTaskCompletedEventId = 123,
-#'         control = "string"
-#'       ),
-#'       externalWorkflowExecutionSignaledEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         initiatedEventId = 123
-#'       ),
-#'       signalExternalWorkflowExecutionFailedEventAttributes = list(
-#'         workflowId = "string",
-#'         runId = "string",
-#'         cause = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"|"SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
-#'         initiatedEventId = 123,
-#'         decisionTaskCompletedEventId = 123,
-#'         control = "string"
-#'       ),
-#'       externalWorkflowExecutionCancelRequestedEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         initiatedEventId = 123
-#'       ),
-#'       requestCancelExternalWorkflowExecutionInitiatedEventAttributes = list(
-#'         workflowId = "string",
-#'         runId = "string",
-#'         decisionTaskCompletedEventId = 123,
-#'         control = "string"
-#'       ),
-#'       requestCancelExternalWorkflowExecutionFailedEventAttributes = list(
-#'         workflowId = "string",
-#'         runId = "string",
-#'         cause = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"|"REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
-#'         initiatedEventId = 123,
-#'         decisionTaskCompletedEventId = 123,
-#'         control = "string"
-#'       ),
-#'       scheduleActivityTaskFailedEventAttributes = list(
-#'         activityType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         activityId = "string",
-#'         cause = "ACTIVITY_TYPE_DEPRECATED"|"ACTIVITY_TYPE_DOES_NOT_EXIST"|"ACTIVITY_ID_ALREADY_IN_USE"|"OPEN_ACTIVITIES_LIMIT_EXCEEDED"|"ACTIVITY_CREATION_RATE_EXCEEDED"|"DEFAULT_SCHEDULE_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_SCHEDULE_TO_START_TIMEOUT_UNDEFINED"|"DEFAULT_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       requestCancelActivityTaskFailedEventAttributes = list(
-#'         activityId = "string",
-#'         cause = "ACTIVITY_ID_UNKNOWN"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       startTimerFailedEventAttributes = list(
-#'         timerId = "string",
-#'         cause = "TIMER_ID_ALREADY_IN_USE"|"OPEN_TIMERS_LIMIT_EXCEEDED"|"TIMER_CREATION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       cancelTimerFailedEventAttributes = list(
-#'         timerId = "string",
-#'         cause = "TIMER_ID_UNKNOWN"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       startChildWorkflowExecutionFailedEventAttributes = list(
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         cause = "WORKFLOW_TYPE_DOES_NOT_EXIST"|"WORKFLOW_TYPE_DEPRECATED"|"OPEN_CHILDREN_LIMIT_EXCEEDED"|"OPEN_WORKFLOWS_LIMIT_EXCEEDED"|"CHILD_CREATION_RATE_EXCEEDED"|"WORKFLOW_ALREADY_RUNNING"|"DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_CHILD_POLICY_UNDEFINED"|"OPERATION_NOT_PERMITTED",
-#'         workflowId = "string",
-#'         initiatedEventId = 123,
-#'         decisionTaskCompletedEventId = 123,
-#'         control = "string"
-#'       ),
-#'       lambdaFunctionScheduledEventAttributes = list(
-#'         id = "string",
-#'         name = "string",
-#'         control = "string",
-#'         input = "string",
-#'         startToCloseTimeout = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       lambdaFunctionStartedEventAttributes = list(
-#'         scheduledEventId = 123
-#'       ),
-#'       lambdaFunctionCompletedEventAttributes = list(
-#'         scheduledEventId = 123,
-#'         startedEventId = 123,
-#'         result = "string"
-#'       ),
-#'       lambdaFunctionFailedEventAttributes = list(
-#'         scheduledEventId = 123,
-#'         startedEventId = 123,
-#'         reason = "string",
-#'         details = "string"
-#'       ),
-#'       lambdaFunctionTimedOutEventAttributes = list(
-#'         scheduledEventId = 123,
-#'         startedEventId = 123,
-#'         timeoutType = "START_TO_CLOSE"
-#'       ),
-#'       scheduleLambdaFunctionFailedEventAttributes = list(
-#'         id = "string",
-#'         name = "string",
-#'         cause = "ID_ALREADY_IN_USE"|"OPEN_LAMBDA_FUNCTIONS_LIMIT_EXCEEDED"|"LAMBDA_FUNCTION_CREATION_RATE_EXCEEDED"|"LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       startLambdaFunctionFailedEventAttributes = list(
-#'         scheduledEventId = 123,
-#'         cause = "ASSUME_ROLE_FAILED",
-#'         message = "string"
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_workflow_execution_history(
-#'   domain = "string",
-#'   execution = list(
-#'     workflowId = "string",
-#'     runId = "string"
-#'   ),
-#'   nextPageToken = "string",
-#'   maximumPageSize = 123,
-#'   reverseOrder = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1568,37 +432,9 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
 #' domain that match the specified name and registration status
 #'
 #' @description
-#' Returns information about all activities registered in the specified
-#' domain that match the specified name and registration status. The result
-#' includes information like creation date, current status of the activity,
-#' etc. The results may be split into multiple pages. To retrieve
-#' subsequent pages, make the call again using the `nextPageToken` returned
-#' by the initial call.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns information about all activities registered in the specified domain that match the specified name and registration status. The result includes information like creation date, current status of the activity, etc. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the `nextPageToken` returned by the initial call.
 #'
-#' @usage
-#' swf_list_activity_types(domain, name, registrationStatus, nextPageToken,
-#'   maximumPageSize, reverseOrder)
+#' See [https://paws-r.github.io/docs/swf/list_activity_types.html](https://paws-r.github.io/docs/swf/list_activity_types.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain in which the activity types have been registered.
 #' @param name If specified, only lists the activity types that have this name.
@@ -1617,42 +453,6 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
 #' @param reverseOrder When set to `true`, returns the results in reverse order. By default,
 #' the results are returned in ascending alphabetical order by `name` of
 #' the activity types.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   typeInfos = list(
-#'     list(
-#'       activityType = list(
-#'         name = "string",
-#'         version = "string"
-#'       ),
-#'       status = "REGISTERED"|"DEPRECATED",
-#'       description = "string",
-#'       creationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       deprecationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_activity_types(
-#'   domain = "string",
-#'   name = "string",
-#'   registrationStatus = "REGISTERED"|"DEPRECATED",
-#'   nextPageToken = "string",
-#'   maximumPageSize = 123,
-#'   reverseOrder = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1678,49 +478,9 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
 #' that meet the filtering criteria
 #'
 #' @description
-#' Returns a list of closed workflow executions in the specified domain
-#' that meet the filtering criteria. The results may be split into multiple
-#' pages. To retrieve subsequent pages, make the call again using the
-#' nextPageToken returned by the initial call.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `tagFilter.tag`: String constraint. The key is
-#'         `swf:tagFilter.tag`.
-#' 
-#'     -   `typeFilter.name`: String constraint. The key is
-#'         `swf:typeFilter.name`.
-#' 
-#'     -   `typeFilter.version`: String constraint. The key is
-#'         `swf:typeFilter.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns a list of closed workflow executions in the specified domain that meet the filtering criteria. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the nextPageToken returned by the initial call.
 #'
-#' @usage
-#' swf_list_closed_workflow_executions(domain, startTimeFilter,
-#'   closeTimeFilter, executionFilter, closeStatusFilter, typeFilter,
-#'   tagFilter, nextPageToken, maximumPageSize, reverseOrder)
+#' See [https://paws-r.github.io/docs/swf/list_closed_workflow_executions.html](https://paws-r.github.io/docs/swf/list_closed_workflow_executions.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the workflow executions to list.
 #' @param startTimeFilter If specified, the workflow executions are included in the returned
@@ -1772,81 +532,6 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
 #' results are returned in descending order of the start or the close time
 #' of the executions.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   executionInfos = list(
-#'     list(
-#'       execution = list(
-#'         workflowId = "string",
-#'         runId = "string"
-#'       ),
-#'       workflowType = list(
-#'         name = "string",
-#'         version = "string"
-#'       ),
-#'       startTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       closeTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       executionStatus = "OPEN"|"CLOSED",
-#'       closeStatus = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT",
-#'       parent = list(
-#'         workflowId = "string",
-#'         runId = "string"
-#'       ),
-#'       tagList = list(
-#'         "string"
-#'       ),
-#'       cancelRequested = TRUE|FALSE
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_closed_workflow_executions(
-#'   domain = "string",
-#'   startTimeFilter = list(
-#'     oldestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     latestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   closeTimeFilter = list(
-#'     oldestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     latestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   executionFilter = list(
-#'     workflowId = "string"
-#'   ),
-#'   closeStatusFilter = list(
-#'     status = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT"
-#'   ),
-#'   typeFilter = list(
-#'     name = "string",
-#'     version = "string"
-#'   ),
-#'   tagFilter = list(
-#'     tag = "string"
-#'   ),
-#'   nextPageToken = "string",
-#'   maximumPageSize = 123,
-#'   reverseOrder = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname swf_list_closed_workflow_executions
@@ -1870,39 +555,9 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
 #' Returns the list of domains registered in the account
 #'
 #' @description
-#' Returns the list of domains registered in the account. The results may
-#' be split into multiple pages. To retrieve subsequent pages, make the
-#' call again using the nextPageToken returned by the initial call.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains. The element must be set to
-#'     `arn:aws:swf::AccountID:domain/*`, where *AccountID* is the account
-#'     ID, with no dashes.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns the list of domains registered in the account. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the nextPageToken returned by the initial call.
 #'
-#' @usage
-#' swf_list_domains(nextPageToken, registrationStatus, maximumPageSize,
-#'   reverseOrder)
+#' See [https://paws-r.github.io/docs/swf/list_domains.html](https://paws-r.github.io/docs/swf/list_domains.html) for full documentation.
 #'
 #' @param nextPageToken If `NextPageToken` is returned there are more results available. The
 #' value of `NextPageToken` is a unique pagination token for each page.
@@ -1919,32 +574,6 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
 #' @param reverseOrder When set to `true`, returns the results in reverse order. By default,
 #' the results are returned in ascending alphabetical order by `name` of
 #' the domains.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   domainInfos = list(
-#'     list(
-#'       name = "string",
-#'       status = "REGISTERED"|"DEPRECATED",
-#'       description = "string",
-#'       arn = "string"
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_domains(
-#'   nextPageToken = "string",
-#'   registrationStatus = "REGISTERED"|"DEPRECATED",
-#'   maximumPageSize = 123,
-#'   reverseOrder = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1970,49 +599,9 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
 #' meet the filtering criteria
 #'
 #' @description
-#' Returns a list of open workflow executions in the specified domain that
-#' meet the filtering criteria. The results may be split into multiple
-#' pages. To retrieve subsequent pages, make the call again using the
-#' nextPageToken returned by the initial call.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `tagFilter.tag`: String constraint. The key is
-#'         `swf:tagFilter.tag`.
-#' 
-#'     -   `typeFilter.name`: String constraint. The key is
-#'         `swf:typeFilter.name`.
-#' 
-#'     -   `typeFilter.version`: String constraint. The key is
-#'         `swf:typeFilter.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns a list of open workflow executions in the specified domain that meet the filtering criteria. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the nextPageToken returned by the initial call.
 #'
-#' @usage
-#' swf_list_open_workflow_executions(domain, startTimeFilter, typeFilter,
-#'   tagFilter, nextPageToken, maximumPageSize, reverseOrder,
-#'   executionFilter)
+#' See [https://paws-r.github.io/docs/swf/list_open_workflow_executions.html](https://paws-r.github.io/docs/swf/list_open_workflow_executions.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the workflow executions to list.
 #' @param startTimeFilter &#91;required&#93; Workflow executions are included in the returned results based on
@@ -2046,70 +635,6 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
 #' `executionFilter`, `typeFilter` and `tagFilter` are mutually exclusive.
 #' You can specify at most one of these in a request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   executionInfos = list(
-#'     list(
-#'       execution = list(
-#'         workflowId = "string",
-#'         runId = "string"
-#'       ),
-#'       workflowType = list(
-#'         name = "string",
-#'         version = "string"
-#'       ),
-#'       startTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       closeTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       executionStatus = "OPEN"|"CLOSED",
-#'       closeStatus = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT",
-#'       parent = list(
-#'         workflowId = "string",
-#'         runId = "string"
-#'       ),
-#'       tagList = list(
-#'         "string"
-#'       ),
-#'       cancelRequested = TRUE|FALSE
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_open_workflow_executions(
-#'   domain = "string",
-#'   startTimeFilter = list(
-#'     oldestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     latestDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   typeFilter = list(
-#'     name = "string",
-#'     version = "string"
-#'   ),
-#'   tagFilter = list(
-#'     tag = "string"
-#'   ),
-#'   nextPageToken = "string",
-#'   maximumPageSize = 123,
-#'   reverseOrder = TRUE|FALSE,
-#'   executionFilter = list(
-#'     workflowId = "string"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname swf_list_open_workflow_executions
@@ -2135,30 +660,9 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
 #' @description
 #' List tags for a given domain.
 #'
-#' @usage
-#' swf_list_tags_for_resource(resourceArn)
+#' See [https://paws-r.github.io/docs/swf/list_tags_for_resource.html](https://paws-r.github.io/docs/swf/list_tags_for_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon SWF domain.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   resourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2183,34 +687,9 @@ swf_list_tags_for_resource <- function(resourceArn) {
 #' Returns information about workflow types in the specified domain
 #'
 #' @description
-#' Returns information about workflow types in the specified domain. The
-#' results may be split into multiple pages that can be retrieved by making
-#' the call repeatedly.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Returns information about workflow types in the specified domain. The results may be split into multiple pages that can be retrieved by making the call repeatedly.
 #'
-#' @usage
-#' swf_list_workflow_types(domain, name, registrationStatus, nextPageToken,
-#'   maximumPageSize, reverseOrder)
+#' See [https://paws-r.github.io/docs/swf/list_workflow_types.html](https://paws-r.github.io/docs/swf/list_workflow_types.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain in which the workflow types have been registered.
 #' @param name If specified, lists the workflow type with this name.
@@ -2229,42 +708,6 @@ swf_list_tags_for_resource <- function(resourceArn) {
 #' @param reverseOrder When set to `true`, returns the results in reverse order. By default the
 #' results are returned in ascending alphabetical order of the `name` of
 #' the workflow types.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   typeInfos = list(
-#'     list(
-#'       workflowType = list(
-#'         name = "string",
-#'         version = "string"
-#'       ),
-#'       status = "REGISTERED"|"DEPRECATED",
-#'       description = "string",
-#'       creationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       deprecationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_workflow_types(
-#'   domain = "string",
-#'   name = "string",
-#'   registrationStatus = "REGISTERED"|"DEPRECATED",
-#'   nextPageToken = "string",
-#'   maximumPageSize = 123,
-#'   reverseOrder = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2290,87 +733,21 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
 #' taskList
 #'
 #' @description
-#' Used by workers to get an ActivityTask from the specified activity
-#' `taskList`. This initiates a long poll, where the service holds the HTTP
-#' connection open and responds as soon as a task becomes available. The
-#' maximum time the service holds on to the request before responding is 60
-#' seconds. If no task is available within 60 seconds, the poll returns an
-#' empty result. An empty result, in this context, means that an
-#' ActivityTask is returned, but that the value of taskToken is an empty
-#' string. If a task is returned, the worker should use its type to
-#' identify and process it correctly.
-#' 
-#' Workers should set their client side socket timeout to at least 70
-#' seconds (10 seconds higher than the maximum time service may hold the
-#' poll request).
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the `taskList.name` parameter by using a `Condition`
-#'     element with the `swf:taskList.name` key to allow the action to
-#'     access only certain task lists.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Used by workers to get an ActivityTask from the specified activity `taskList`. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available. The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll returns an empty result. An empty result, in this context, means that an ActivityTask is returned, but that the value of taskToken is an empty string. If a task is returned, the worker should use its type to identify and process it correctly.
 #'
-#' @usage
-#' swf_poll_for_activity_task(domain, taskList, identity)
+#' See [https://paws-r.github.io/docs/swf/poll_for_activity_task.html](https://paws-r.github.io/docs/swf/poll_for_activity_task.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the task lists being polled.
 #' @param taskList &#91;required&#93; Specifies the task list to poll for activity tasks.
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param identity Identity of the worker making the request, recorded in the
 #' `ActivityTaskStarted` event in the workflow history. This enables
 #' diagnostic tracing when problems arise. The form of this identity is
 #' user defined.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskToken = "string",
-#'   activityId = "string",
-#'   startedEventId = 123,
-#'   workflowExecution = list(
-#'     workflowId = "string",
-#'     runId = "string"
-#'   ),
-#'   activityType = list(
-#'     name = "string",
-#'     version = "string"
-#'   ),
-#'   input = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$poll_for_activity_task(
-#'   domain = "string",
-#'   taskList = list(
-#'     name = "string"
-#'   ),
-#'   identity = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2396,66 +773,16 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' taskList
 #'
 #' @description
-#' Used by deciders to get a DecisionTask from the specified decision
-#' `taskList`. A decision task may be returned for any open workflow
-#' execution that is using the specified task list. The task includes a
-#' paginated view of the history of the workflow execution. The decider
-#' should use the workflow type and the history to determine how to
-#' properly handle the task.
-#' 
-#' This action initiates a long poll, where the service holds the HTTP
-#' connection open and responds as soon a task becomes available. If no
-#' decision task is available in the specified task list before the timeout
-#' of 60 seconds expires, an empty result is returned. An empty result, in
-#' this context, means that a DecisionTask is returned, but that the value
-#' of taskToken is an empty string.
-#' 
-#' Deciders should set their client side socket timeout to at least 70
-#' seconds (10 seconds higher than the timeout).
-#' 
-#' Because the number of workflow history events for a single workflow
-#' execution might be very large, the result returned might be split up
-#' across a number of pages. To retrieve subsequent pages, make additional
-#' calls to [`poll_for_decision_task`][swf_poll_for_decision_task] using
-#' the `nextPageToken` returned by the initial call. Note that you do *not*
-#' call
-#' [`get_workflow_execution_history`][swf_get_workflow_execution_history]
-#' with this `nextPageToken`. Instead, call
-#' [`poll_for_decision_task`][swf_poll_for_decision_task] again.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the `taskList.name` parameter by using a `Condition`
-#'     element with the `swf:taskList.name` key to allow the action to
-#'     access only certain task lists.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Used by deciders to get a DecisionTask from the specified decision `taskList`. A decision task may be returned for any open workflow execution that is using the specified task list. The task includes a paginated view of the history of the workflow execution. The decider should use the workflow type and the history to determine how to properly handle the task.
 #'
-#' @usage
-#' swf_poll_for_decision_task(domain, taskList, identity, nextPageToken,
-#'   maximumPageSize, reverseOrder)
+#' See [https://paws-r.github.io/docs/swf/poll_for_decision_task.html](https://paws-r.github.io/docs/swf/poll_for_decision_task.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the task lists to poll.
 #' @param taskList &#91;required&#93; Specifies the task list to poll for decision tasks.
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param identity Identity of the decider making the request, which is recorded in the
 #' DecisionTaskStarted event in the workflow history. This enables
@@ -2487,457 +814,6 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' results are returned in ascending order of the `eventTimestamp` of the
 #' events.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskToken = "string",
-#'   startedEventId = 123,
-#'   workflowExecution = list(
-#'     workflowId = "string",
-#'     runId = "string"
-#'   ),
-#'   workflowType = list(
-#'     name = "string",
-#'     version = "string"
-#'   ),
-#'   events = list(
-#'     list(
-#'       eventTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       eventType = "WorkflowExecutionStarted"|"WorkflowExecutionCancelRequested"|"WorkflowExecutionCompleted"|"CompleteWorkflowExecutionFailed"|"WorkflowExecutionFailed"|"FailWorkflowExecutionFailed"|"WorkflowExecutionTimedOut"|"WorkflowExecutionCanceled"|"CancelWorkflowExecutionFailed"|"WorkflowExecutionContinuedAsNew"|"ContinueAsNewWorkflowExecutionFailed"|"WorkflowExecutionTerminated"|"DecisionTaskScheduled"|"DecisionTaskStarted"|"DecisionTaskCompleted"|"DecisionTaskTimedOut"|"ActivityTaskScheduled"|"ScheduleActivityTaskFailed"|"ActivityTaskStarted"|"ActivityTaskCompleted"|"ActivityTaskFailed"|"ActivityTaskTimedOut"|"ActivityTaskCanceled"|"ActivityTaskCancelRequested"|"RequestCancelActivityTaskFailed"|"WorkflowExecutionSignaled"|"MarkerRecorded"|"RecordMarkerFailed"|"TimerStarted"|"StartTimerFailed"|"TimerFired"|"TimerCanceled"|"CancelTimerFailed"|"StartChildWorkflowExecutionInitiated"|"StartChildWorkflowExecutionFailed"|"ChildWorkflowExecutionStarted"|"ChildWorkflowExecutionCompleted"|"ChildWorkflowExecutionFailed"|"ChildWorkflowExecutionTimedOut"|"ChildWorkflowExecutionCanceled"|"ChildWorkflowExecutionTerminated"|"SignalExternalWorkflowExecutionInitiated"|"SignalExternalWorkflowExecutionFailed"|"ExternalWorkflowExecutionSignaled"|"RequestCancelExternalWorkflowExecutionInitiated"|"RequestCancelExternalWorkflowExecutionFailed"|"ExternalWorkflowExecutionCancelRequested"|"LambdaFunctionScheduled"|"LambdaFunctionStarted"|"LambdaFunctionCompleted"|"LambdaFunctionFailed"|"LambdaFunctionTimedOut"|"ScheduleLambdaFunctionFailed"|"StartLambdaFunctionFailed",
-#'       eventId = 123,
-#'       workflowExecutionStartedEventAttributes = list(
-#'         input = "string",
-#'         executionStartToCloseTimeout = "string",
-#'         taskStartToCloseTimeout = "string",
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         tagList = list(
-#'           "string"
-#'         ),
-#'         continuedExecutionRunId = "string",
-#'         parentWorkflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         parentInitiatedEventId = 123,
-#'         lambdaRole = "string"
-#'       ),
-#'       workflowExecutionCompletedEventAttributes = list(
-#'         result = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       completeWorkflowExecutionFailedEventAttributes = list(
-#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       workflowExecutionFailedEventAttributes = list(
-#'         reason = "string",
-#'         details = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       failWorkflowExecutionFailedEventAttributes = list(
-#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       workflowExecutionTimedOutEventAttributes = list(
-#'         timeoutType = "START_TO_CLOSE",
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON"
-#'       ),
-#'       workflowExecutionCanceledEventAttributes = list(
-#'         details = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       cancelWorkflowExecutionFailedEventAttributes = list(
-#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       workflowExecutionContinuedAsNewEventAttributes = list(
-#'         input = "string",
-#'         decisionTaskCompletedEventId = 123,
-#'         newExecutionRunId = "string",
-#'         executionStartToCloseTimeout = "string",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         taskStartToCloseTimeout = "string",
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'         tagList = list(
-#'           "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         lambdaRole = "string"
-#'       ),
-#'       continueAsNewWorkflowExecutionFailedEventAttributes = list(
-#'         cause = "UNHANDLED_DECISION"|"WORKFLOW_TYPE_DEPRECATED"|"WORKFLOW_TYPE_DOES_NOT_EXIST"|"DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_CHILD_POLICY_UNDEFINED"|"CONTINUE_AS_NEW_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       workflowExecutionTerminatedEventAttributes = list(
-#'         reason = "string",
-#'         details = "string",
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'         cause = "CHILD_POLICY_APPLIED"|"EVENT_LIMIT_EXCEEDED"|"OPERATOR_INITIATED"
-#'       ),
-#'       workflowExecutionCancelRequestedEventAttributes = list(
-#'         externalWorkflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         externalInitiatedEventId = 123,
-#'         cause = "CHILD_POLICY_APPLIED"
-#'       ),
-#'       decisionTaskScheduledEventAttributes = list(
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         startToCloseTimeout = "string"
-#'       ),
-#'       decisionTaskStartedEventAttributes = list(
-#'         identity = "string",
-#'         scheduledEventId = 123
-#'       ),
-#'       decisionTaskCompletedEventAttributes = list(
-#'         executionContext = "string",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       decisionTaskTimedOutEventAttributes = list(
-#'         timeoutType = "START_TO_CLOSE",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       activityTaskScheduledEventAttributes = list(
-#'         activityType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         activityId = "string",
-#'         input = "string",
-#'         control = "string",
-#'         scheduleToStartTimeout = "string",
-#'         scheduleToCloseTimeout = "string",
-#'         startToCloseTimeout = "string",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         decisionTaskCompletedEventId = 123,
-#'         heartbeatTimeout = "string"
-#'       ),
-#'       activityTaskStartedEventAttributes = list(
-#'         identity = "string",
-#'         scheduledEventId = 123
-#'       ),
-#'       activityTaskCompletedEventAttributes = list(
-#'         result = "string",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       activityTaskFailedEventAttributes = list(
-#'         reason = "string",
-#'         details = "string",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       activityTaskTimedOutEventAttributes = list(
-#'         timeoutType = "START_TO_CLOSE"|"SCHEDULE_TO_START"|"SCHEDULE_TO_CLOSE"|"HEARTBEAT",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123,
-#'         details = "string"
-#'       ),
-#'       activityTaskCanceledEventAttributes = list(
-#'         details = "string",
-#'         scheduledEventId = 123,
-#'         startedEventId = 123,
-#'         latestCancelRequestedEventId = 123
-#'       ),
-#'       activityTaskCancelRequestedEventAttributes = list(
-#'         decisionTaskCompletedEventId = 123,
-#'         activityId = "string"
-#'       ),
-#'       workflowExecutionSignaledEventAttributes = list(
-#'         signalName = "string",
-#'         input = "string",
-#'         externalWorkflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         externalInitiatedEventId = 123
-#'       ),
-#'       markerRecordedEventAttributes = list(
-#'         markerName = "string",
-#'         details = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       recordMarkerFailedEventAttributes = list(
-#'         markerName = "string",
-#'         cause = "OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       timerStartedEventAttributes = list(
-#'         timerId = "string",
-#'         control = "string",
-#'         startToFireTimeout = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       timerFiredEventAttributes = list(
-#'         timerId = "string",
-#'         startedEventId = 123
-#'       ),
-#'       timerCanceledEventAttributes = list(
-#'         timerId = "string",
-#'         startedEventId = 123,
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       startChildWorkflowExecutionInitiatedEventAttributes = list(
-#'         workflowId = "string",
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         control = "string",
-#'         input = "string",
-#'         executionStartToCloseTimeout = "string",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         decisionTaskCompletedEventId = 123,
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'         taskStartToCloseTimeout = "string",
-#'         tagList = list(
-#'           "string"
-#'         ),
-#'         lambdaRole = "string"
-#'       ),
-#'       childWorkflowExecutionStartedEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         initiatedEventId = 123
-#'       ),
-#'       childWorkflowExecutionCompletedEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         result = "string",
-#'         initiatedEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       childWorkflowExecutionFailedEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         reason = "string",
-#'         details = "string",
-#'         initiatedEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       childWorkflowExecutionTimedOutEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         timeoutType = "START_TO_CLOSE",
-#'         initiatedEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       childWorkflowExecutionCanceledEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         details = "string",
-#'         initiatedEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       childWorkflowExecutionTerminatedEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         initiatedEventId = 123,
-#'         startedEventId = 123
-#'       ),
-#'       signalExternalWorkflowExecutionInitiatedEventAttributes = list(
-#'         workflowId = "string",
-#'         runId = "string",
-#'         signalName = "string",
-#'         input = "string",
-#'         decisionTaskCompletedEventId = 123,
-#'         control = "string"
-#'       ),
-#'       externalWorkflowExecutionSignaledEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         initiatedEventId = 123
-#'       ),
-#'       signalExternalWorkflowExecutionFailedEventAttributes = list(
-#'         workflowId = "string",
-#'         runId = "string",
-#'         cause = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"|"SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
-#'         initiatedEventId = 123,
-#'         decisionTaskCompletedEventId = 123,
-#'         control = "string"
-#'       ),
-#'       externalWorkflowExecutionCancelRequestedEventAttributes = list(
-#'         workflowExecution = list(
-#'           workflowId = "string",
-#'           runId = "string"
-#'         ),
-#'         initiatedEventId = 123
-#'       ),
-#'       requestCancelExternalWorkflowExecutionInitiatedEventAttributes = list(
-#'         workflowId = "string",
-#'         runId = "string",
-#'         decisionTaskCompletedEventId = 123,
-#'         control = "string"
-#'       ),
-#'       requestCancelExternalWorkflowExecutionFailedEventAttributes = list(
-#'         workflowId = "string",
-#'         runId = "string",
-#'         cause = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"|"REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
-#'         initiatedEventId = 123,
-#'         decisionTaskCompletedEventId = 123,
-#'         control = "string"
-#'       ),
-#'       scheduleActivityTaskFailedEventAttributes = list(
-#'         activityType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         activityId = "string",
-#'         cause = "ACTIVITY_TYPE_DEPRECATED"|"ACTIVITY_TYPE_DOES_NOT_EXIST"|"ACTIVITY_ID_ALREADY_IN_USE"|"OPEN_ACTIVITIES_LIMIT_EXCEEDED"|"ACTIVITY_CREATION_RATE_EXCEEDED"|"DEFAULT_SCHEDULE_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_SCHEDULE_TO_START_TIMEOUT_UNDEFINED"|"DEFAULT_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       requestCancelActivityTaskFailedEventAttributes = list(
-#'         activityId = "string",
-#'         cause = "ACTIVITY_ID_UNKNOWN"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       startTimerFailedEventAttributes = list(
-#'         timerId = "string",
-#'         cause = "TIMER_ID_ALREADY_IN_USE"|"OPEN_TIMERS_LIMIT_EXCEEDED"|"TIMER_CREATION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       cancelTimerFailedEventAttributes = list(
-#'         timerId = "string",
-#'         cause = "TIMER_ID_UNKNOWN"|"OPERATION_NOT_PERMITTED",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       startChildWorkflowExecutionFailedEventAttributes = list(
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         cause = "WORKFLOW_TYPE_DOES_NOT_EXIST"|"WORKFLOW_TYPE_DEPRECATED"|"OPEN_CHILDREN_LIMIT_EXCEEDED"|"OPEN_WORKFLOWS_LIMIT_EXCEEDED"|"CHILD_CREATION_RATE_EXCEEDED"|"WORKFLOW_ALREADY_RUNNING"|"DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_CHILD_POLICY_UNDEFINED"|"OPERATION_NOT_PERMITTED",
-#'         workflowId = "string",
-#'         initiatedEventId = 123,
-#'         decisionTaskCompletedEventId = 123,
-#'         control = "string"
-#'       ),
-#'       lambdaFunctionScheduledEventAttributes = list(
-#'         id = "string",
-#'         name = "string",
-#'         control = "string",
-#'         input = "string",
-#'         startToCloseTimeout = "string",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       lambdaFunctionStartedEventAttributes = list(
-#'         scheduledEventId = 123
-#'       ),
-#'       lambdaFunctionCompletedEventAttributes = list(
-#'         scheduledEventId = 123,
-#'         startedEventId = 123,
-#'         result = "string"
-#'       ),
-#'       lambdaFunctionFailedEventAttributes = list(
-#'         scheduledEventId = 123,
-#'         startedEventId = 123,
-#'         reason = "string",
-#'         details = "string"
-#'       ),
-#'       lambdaFunctionTimedOutEventAttributes = list(
-#'         scheduledEventId = 123,
-#'         startedEventId = 123,
-#'         timeoutType = "START_TO_CLOSE"
-#'       ),
-#'       scheduleLambdaFunctionFailedEventAttributes = list(
-#'         id = "string",
-#'         name = "string",
-#'         cause = "ID_ALREADY_IN_USE"|"OPEN_LAMBDA_FUNCTIONS_LIMIT_EXCEEDED"|"LAMBDA_FUNCTION_CREATION_RATE_EXCEEDED"|"LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION",
-#'         decisionTaskCompletedEventId = 123
-#'       ),
-#'       startLambdaFunctionFailedEventAttributes = list(
-#'         scheduledEventId = 123,
-#'         cause = "ASSUME_ROLE_FAILED",
-#'         message = "string"
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string",
-#'   previousStartedEventId = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$poll_for_decision_task(
-#'   domain = "string",
-#'   taskList = list(
-#'     name = "string"
-#'   ),
-#'   identity = "string",
-#'   nextPageToken = "string",
-#'   maximumPageSize = 123,
-#'   reverseOrder = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname swf_poll_for_decision_task
@@ -2962,62 +838,9 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #' represented by the specified taskToken is still making progress
 #'
 #' @description
-#' Used by activity workers to report to the service that the ActivityTask
-#' represented by the specified `taskToken` is still making progress. The
-#' worker can also specify details of the progress, for example percent
-#' complete, using the `details` parameter. This action can also be used by
-#' the worker as a mechanism to check if cancellation is being requested
-#' for the activity task. If a cancellation is being attempted for the
-#' specified task, then the boolean `cancelRequested` flag returned by the
-#' service is set to `true`.
-#' 
-#' This action resets the `taskHeartbeatTimeout` clock. The
-#' `taskHeartbeatTimeout` is specified in
-#' [`register_activity_type`][swf_register_activity_type].
-#' 
-#' This action doesn't in itself create an event in the workflow execution
-#' history. However, if the task times out, the workflow execution history
-#' contains a `ActivityTaskTimedOut` event that contains the information
-#' from the last heartbeat generated by the activity worker.
-#' 
-#' The `taskStartToCloseTimeout` of an activity type is the maximum
-#' duration of an activity task, regardless of the number of
-#' [`record_activity_task_heartbeat`][swf_record_activity_task_heartbeat]
-#' requests received. The `taskStartToCloseTimeout` is also specified in
-#' [`register_activity_type`][swf_register_activity_type].
-#' 
-#' This operation is only useful for long-lived activities to report
-#' liveliness of the task and to determine if a cancellation is being
-#' attempted.
-#' 
-#' If the `cancelRequested` flag returns `true`, a cancellation is being
-#' attempted. If the worker can cancel the activity, it should respond with
-#' [`respond_activity_task_canceled`][swf_respond_activity_task_canceled].
-#' Otherwise, it should ignore the cancellation request.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Used by activity workers to report to the service that the ActivityTask represented by the specified `taskToken` is still making progress. The worker can also specify details of the progress, for example percent complete, using the `details` parameter. This action can also be used by the worker as a mechanism to check if cancellation is being requested for the activity task. If a cancellation is being attempted for the specified task, then the boolean `cancelRequested` flag returned by the service is set to `true`.
 #'
-#' @usage
-#' swf_record_activity_task_heartbeat(taskToken, details)
+#' See [https://paws-r.github.io/docs/swf/record_activity_task_heartbeat.html](https://paws-r.github.io/docs/swf/record_activity_task_heartbeat.html) for full documentation.
 #'
 #' @param taskToken &#91;required&#93; The `taskToken` of the ActivityTask.
 #' 
@@ -3026,22 +849,6 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #' must also be passed. This enables it to provide its progress and respond
 #' with results.
 #' @param details If specified, contains details about the progress of the task.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cancelRequested = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$record_activity_task_heartbeat(
-#'   taskToken = "string",
-#'   details = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3067,54 +874,16 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' the specified domain
 #'
 #' @description
-#' Registers a new *activity type* along with its configuration settings in
-#' the specified domain.
-#' 
-#' A `TypeAlreadyExists` fault is returned if the type already exists in
-#' the domain. You cannot change any configuration settings of the type
-#' after its registration, and it must be registered as a new version.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `defaultTaskList.name`: String constraint. The key is
-#'         `swf:defaultTaskList.name`.
-#' 
-#'     -   `name`: String constraint. The key is `swf:name`.
-#' 
-#'     -   `version`: String constraint. The key is `swf:version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Registers a new *activity type* along with its configuration settings in the specified domain.
 #'
-#' @usage
-#' swf_register_activity_type(domain, name, version, description,
-#'   defaultTaskStartToCloseTimeout, defaultTaskHeartbeatTimeout,
-#'   defaultTaskList, defaultTaskPriority, defaultTaskScheduleToStartTimeout,
-#'   defaultTaskScheduleToCloseTimeout)
+#' See [https://paws-r.github.io/docs/swf/register_activity_type.html](https://paws-r.github.io/docs/swf/register_activity_type.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain in which this activity is to be registered.
 #' @param name &#91;required&#93; The name of the activity type within the domain.
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param version &#91;required&#93; The version of the activity type.
 #' 
@@ -3123,7 +892,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param description A textual description of the activity type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration that a worker can take to
@@ -3156,7 +925,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' For more information about setting task priority, see [Setting Task
 #' Priority](https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
-#' in the *in the *Amazon SWF Developer Guide*.*.
+#' in the *in the Amazon SWF Developer Guide.*.
 #' @param defaultTaskScheduleToStartTimeout If set, specifies the default maximum duration that a task of this
 #' activity type can wait before being assigned to a worker. This default
 #' can be overridden when scheduling an activity task using the
@@ -3170,27 +939,6 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' The duration is specified in seconds, an integer greater than or equal
 #' to `0`. You can use `NONE` to specify unlimited duration.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_activity_type(
-#'   domain = "string",
-#'   name = "string",
-#'   version = "string",
-#'   description = "string",
-#'   defaultTaskStartToCloseTimeout = "string",
-#'   defaultTaskHeartbeatTimeout = "string",
-#'   defaultTaskList = list(
-#'     name = "string"
-#'   ),
-#'   defaultTaskPriority = "string",
-#'   defaultTaskScheduleToStartTimeout = "string",
-#'   defaultTaskScheduleToCloseTimeout = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3216,39 +964,15 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #'
 #' @description
 #' Registers a new domain.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   You cannot use an IAM policy to control domain access for this
-#'     action. The name of the domain being registered is available as the
-#'     resource of this action.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
 #'
-#' @usage
-#' swf_register_domain(name, description,
-#'   workflowExecutionRetentionPeriodInDays, tags)
+#' See [https://paws-r.github.io/docs/swf/register_domain.html](https://paws-r.github.io/docs/swf/register_domain.html) for full documentation.
 #'
 #' @param name &#91;required&#93; Name of the domain to register. The name must be unique in the region
 #' that the domain is registered in.
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param description A text description of the domain.
 #' @param workflowExecutionRetentionPeriodInDays &#91;required&#93; The duration (in days) that records and histories of workflow executions
@@ -3268,24 +992,6 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #' 
 #' Tags may only contain unicode letters, digits, whitespace, or these
 #' symbols: `_ . : / = + - @@`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_domain(
-#'   name = "string",
-#'   description = "string",
-#'   workflowExecutionRetentionPeriodInDays = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3311,57 +1017,16 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' specified domain
 #'
 #' @description
-#' Registers a new *workflow type* and its configuration settings in the
-#' specified domain.
-#' 
-#' The retention period for the workflow history is set by the
-#' [`register_domain`][swf_register_domain] action.
-#' 
-#' If the type already exists, then a `TypeAlreadyExists` fault is
-#' returned. You cannot change the configuration settings of a workflow
-#' type once it is registered and it must be registered as a new version.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `defaultTaskList.name`: String constraint. The key is
-#'         `swf:defaultTaskList.name`.
-#' 
-#'     -   `name`: String constraint. The key is `swf:name`.
-#' 
-#'     -   `version`: String constraint. The key is `swf:version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Registers a new *workflow type* and its configuration settings in the specified domain.
 #'
-#' @usage
-#' swf_register_workflow_type(domain, name, version, description,
-#'   defaultTaskStartToCloseTimeout, defaultExecutionStartToCloseTimeout,
-#'   defaultTaskList, defaultTaskPriority, defaultChildPolicy,
-#'   defaultLambdaRole)
+#' See [https://paws-r.github.io/docs/swf/register_workflow_type.html](https://paws-r.github.io/docs/swf/register_workflow_type.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain in which to register the workflow type.
 #' @param name &#91;required&#93; The name of the workflow type.
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param version &#91;required&#93; The version of the workflow type.
 #' 
@@ -3372,7 +1037,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param description Textual description of the workflow type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration of decision tasks for
@@ -3436,27 +1101,6 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>
 #' in the *Amazon SWF Developer Guide*.
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_workflow_type(
-#'   domain = "string",
-#'   name = "string",
-#'   version = "string",
-#'   description = "string",
-#'   defaultTaskStartToCloseTimeout = "string",
-#'   defaultExecutionStartToCloseTimeout = "string",
-#'   defaultTaskList = list(
-#'     name = "string"
-#'   ),
-#'   defaultTaskPriority = "string",
-#'   defaultChildPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'   defaultLambdaRole = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname swf_register_workflow_type
@@ -3482,60 +1126,13 @@ swf_register_workflow_type <- function(domain, name, version, description = NULL
 #' and runId
 #'
 #' @description
-#' Records a `WorkflowExecutionCancelRequested` event in the currently
-#' running workflow execution identified by the given domain, workflowId,
-#' and runId. This logically requests the cancellation of the workflow
-#' execution as a whole. It is up to the decider to take appropriate
-#' actions when it receives an execution history with this event.
-#' 
-#' If the runId isn't specified, the `WorkflowExecutionCancelRequested`
-#' event is recorded in the history of the current open workflow execution
-#' with the specified workflowId in the domain.
-#' 
-#' Because this action allows the workflow to properly clean up and
-#' gracefully close, it should be used instead of
-#' [`terminate_workflow_execution`][swf_terminate_workflow_execution] when
-#' possible.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Records a `WorkflowExecutionCancelRequested` event in the currently running workflow execution identified by the given domain, workflowId, and runId. This logically requests the cancellation of the workflow execution as a whole. It is up to the decider to take appropriate actions when it receives an execution history with this event.
 #'
-#' @usage
-#' swf_request_cancel_workflow_execution(domain, workflowId, runId)
+#' See [https://paws-r.github.io/docs/swf/request_cancel_workflow_execution.html](https://paws-r.github.io/docs/swf/request_cancel_workflow_execution.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the workflow execution to cancel.
 #' @param workflowId &#91;required&#93; The workflowId of the workflow execution to cancel.
 #' @param runId The runId of the workflow execution to cancel.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$request_cancel_workflow_execution(
-#'   domain = "string",
-#'   workflowId = "string",
-#'   runId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3561,50 +1158,9 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
 #' the taskToken was successfully canceled
 #'
 #' @description
-#' Used by workers to tell the service that the ActivityTask identified by
-#' the `taskToken` was successfully canceled. Additional `details` can be
-#' provided using the `details` argument.
-#' 
-#' These `details` (if provided) appear in the `ActivityTaskCanceled` event
-#' added to the workflow history.
-#' 
-#' Only use this operation if the `canceled` flag of a
-#' [`record_activity_task_heartbeat`][swf_record_activity_task_heartbeat]
-#' request returns `true` and if the activity can be safely undone or
-#' abandoned.
-#' 
-#' A task is considered open from the time that it is scheduled until it is
-#' closed. Therefore a task is reported as open while a worker is
-#' processing it. A task is closed after it has been specified in a call to
-#' [`respond_activity_task_completed`][swf_respond_activity_task_completed],
-#' RespondActivityTaskCanceled,
-#' [`respond_activity_task_failed`][swf_respond_activity_task_failed], or
-#' the task has [timed
-#' out](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Used by workers to tell the service that the ActivityTask identified by the `taskToken` was successfully canceled. Additional `details` can be provided using the `details` argument.
 #'
-#' @usage
-#' swf_respond_activity_task_canceled(taskToken, details)
+#' See [https://paws-r.github.io/docs/swf/respond_activity_task_canceled.html](https://paws-r.github.io/docs/swf/respond_activity_task_canceled.html) for full documentation.
 #'
 #' @param taskToken &#91;required&#93; The `taskToken` of the ActivityTask.
 #' 
@@ -3613,17 +1169,6 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
 #' must also be passed. This enables it to provide its progress and respond
 #' with results.
 #' @param details Information about the cancellation.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$respond_activity_task_canceled(
-#'   taskToken = "string",
-#'   details = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3649,51 +1194,9 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
 #' the taskToken completed successfully with a result (if provided)
 #'
 #' @description
-#' Used by workers to tell the service that the ActivityTask identified by
-#' the `taskToken` completed successfully with a `result` (if provided).
-#' The `result` appears in the `ActivityTaskCompleted` event in the
-#' workflow history.
-#' 
-#' If the requested task doesn't complete successfully, use
-#' [`respond_activity_task_failed`][swf_respond_activity_task_failed]
-#' instead. If the worker finds that the task is canceled through the
-#' `canceled` flag returned by
-#' [`record_activity_task_heartbeat`][swf_record_activity_task_heartbeat],
-#' it should cancel the task, clean up and then call
-#' [`respond_activity_task_canceled`][swf_respond_activity_task_canceled].
-#' 
-#' A task is considered open from the time that it is scheduled until it is
-#' closed. Therefore a task is reported as open while a worker is
-#' processing it. A task is closed after it has been specified in a call to
-#' RespondActivityTaskCompleted,
-#' [`respond_activity_task_canceled`][swf_respond_activity_task_canceled],
-#' [`respond_activity_task_failed`][swf_respond_activity_task_failed], or
-#' the task has [timed
-#' out](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Used by workers to tell the service that the ActivityTask identified by the `taskToken` completed successfully with a `result` (if provided). The `result` appears in the `ActivityTaskCompleted` event in the workflow history.
 #'
-#' @usage
-#' swf_respond_activity_task_completed(taskToken, result)
+#' See [https://paws-r.github.io/docs/swf/respond_activity_task_completed.html](https://paws-r.github.io/docs/swf/respond_activity_task_completed.html) for full documentation.
 #'
 #' @param taskToken &#91;required&#93; The `taskToken` of the ActivityTask.
 #' 
@@ -3703,17 +1206,6 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
 #' with results.
 #' @param result The result of the activity task. It is a free form string that is
 #' implementation specific.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$respond_activity_task_completed(
-#'   taskToken = "string",
-#'   result = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3739,42 +1231,9 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
 #' the taskToken has failed with reason (if specified)
 #'
 #' @description
-#' Used by workers to tell the service that the ActivityTask identified by
-#' the `taskToken` has failed with `reason` (if specified). The `reason`
-#' and `details` appear in the `ActivityTaskFailed` event added to the
-#' workflow history.
-#' 
-#' A task is considered open from the time that it is scheduled until it is
-#' closed. Therefore a task is reported as open while a worker is
-#' processing it. A task is closed after it has been specified in a call to
-#' [`respond_activity_task_completed`][swf_respond_activity_task_completed],
-#' [`respond_activity_task_canceled`][swf_respond_activity_task_canceled],
-#' RespondActivityTaskFailed, or the task has [timed
-#' out](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Used by workers to tell the service that the ActivityTask identified by the `taskToken` has failed with `reason` (if specified). The `reason` and `details` appear in the `ActivityTaskFailed` event added to the workflow history.
 #'
-#' @usage
-#' swf_respond_activity_task_failed(taskToken, reason, details)
+#' See [https://paws-r.github.io/docs/swf/respond_activity_task_failed.html](https://paws-r.github.io/docs/swf/respond_activity_task_failed.html) for full documentation.
 #'
 #' @param taskToken &#91;required&#93; The `taskToken` of the ActivityTask.
 #' 
@@ -3784,18 +1243,6 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
 #' with results.
 #' @param reason Description of the error that may assist in diagnostics.
 #' @param details Detailed information about the failure.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$respond_activity_task_failed(
-#'   taskToken = "string",
-#'   reason = "string",
-#'   details = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3821,30 +1268,9 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #' the taskToken has successfully completed
 #'
 #' @description
-#' Used by deciders to tell the service that the DecisionTask identified by
-#' the `taskToken` has successfully completed. The `decisions` argument
-#' specifies the list of decisions made while processing the task.
-#' 
-#' A `DecisionTaskCompleted` event is added to the workflow history. The
-#' `executionContext` specified is attached to the event in the workflow
-#' execution history.
-#' 
-#' **Access Control**
-#' 
-#' If an IAM policy grants permission to use
-#' [`respond_decision_task_completed`][swf_respond_decision_task_completed],
-#' it can express permissions for the list of decisions in the `decisions`
-#' parameter. Each of the decisions has one or more parameters, much like a
-#' regular API call. To allow for policies to be as readable as possible,
-#' you can express permissions on decisions as if they were actual API
-#' calls, including applying conditions to some parameters. For more
-#' information, see [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Used by deciders to tell the service that the DecisionTask identified by the `taskToken` has successfully completed. The `decisions` argument specifies the list of decisions made while processing the task.
 #'
-#' @usage
-#' swf_respond_decision_task_completed(taskToken, decisions,
-#'   executionContext)
+#' See [https://paws-r.github.io/docs/swf/respond_decision_task_completed.html](https://paws-r.github.io/docs/swf/respond_decision_task_completed.html) for full documentation.
 #'
 #' @param taskToken &#91;required&#93; The `taskToken` from the DecisionTask.
 #' 
@@ -3856,118 +1282,6 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #' processing this decision task. See the docs for the Decision structure
 #' for details.
 #' @param executionContext User defined context to add to workflow execution.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$respond_decision_task_completed(
-#'   taskToken = "string",
-#'   decisions = list(
-#'     list(
-#'       decisionType = "ScheduleActivityTask"|"RequestCancelActivityTask"|"CompleteWorkflowExecution"|"FailWorkflowExecution"|"CancelWorkflowExecution"|"ContinueAsNewWorkflowExecution"|"RecordMarker"|"StartTimer"|"CancelTimer"|"SignalExternalWorkflowExecution"|"RequestCancelExternalWorkflowExecution"|"StartChildWorkflowExecution"|"ScheduleLambdaFunction",
-#'       scheduleActivityTaskDecisionAttributes = list(
-#'         activityType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         activityId = "string",
-#'         control = "string",
-#'         input = "string",
-#'         scheduleToCloseTimeout = "string",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         scheduleToStartTimeout = "string",
-#'         startToCloseTimeout = "string",
-#'         heartbeatTimeout = "string"
-#'       ),
-#'       requestCancelActivityTaskDecisionAttributes = list(
-#'         activityId = "string"
-#'       ),
-#'       completeWorkflowExecutionDecisionAttributes = list(
-#'         result = "string"
-#'       ),
-#'       failWorkflowExecutionDecisionAttributes = list(
-#'         reason = "string",
-#'         details = "string"
-#'       ),
-#'       cancelWorkflowExecutionDecisionAttributes = list(
-#'         details = "string"
-#'       ),
-#'       continueAsNewWorkflowExecutionDecisionAttributes = list(
-#'         input = "string",
-#'         executionStartToCloseTimeout = "string",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         taskStartToCloseTimeout = "string",
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'         tagList = list(
-#'           "string"
-#'         ),
-#'         workflowTypeVersion = "string",
-#'         lambdaRole = "string"
-#'       ),
-#'       recordMarkerDecisionAttributes = list(
-#'         markerName = "string",
-#'         details = "string"
-#'       ),
-#'       startTimerDecisionAttributes = list(
-#'         timerId = "string",
-#'         control = "string",
-#'         startToFireTimeout = "string"
-#'       ),
-#'       cancelTimerDecisionAttributes = list(
-#'         timerId = "string"
-#'       ),
-#'       signalExternalWorkflowExecutionDecisionAttributes = list(
-#'         workflowId = "string",
-#'         runId = "string",
-#'         signalName = "string",
-#'         input = "string",
-#'         control = "string"
-#'       ),
-#'       requestCancelExternalWorkflowExecutionDecisionAttributes = list(
-#'         workflowId = "string",
-#'         runId = "string",
-#'         control = "string"
-#'       ),
-#'       startChildWorkflowExecutionDecisionAttributes = list(
-#'         workflowType = list(
-#'           name = "string",
-#'           version = "string"
-#'         ),
-#'         workflowId = "string",
-#'         control = "string",
-#'         input = "string",
-#'         executionStartToCloseTimeout = "string",
-#'         taskList = list(
-#'           name = "string"
-#'         ),
-#'         taskPriority = "string",
-#'         taskStartToCloseTimeout = "string",
-#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'         tagList = list(
-#'           "string"
-#'         ),
-#'         lambdaRole = "string"
-#'       ),
-#'       scheduleLambdaFunctionDecisionAttributes = list(
-#'         id = "string",
-#'         name = "string",
-#'         control = "string",
-#'         input = "string",
-#'         startToCloseTimeout = "string"
-#'       )
-#'     )
-#'   ),
-#'   executionContext = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3994,43 +1308,9 @@ swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, exe
 #' identified by the given domain, workflowId and runId
 #'
 #' @description
-#' Records a `WorkflowExecutionSignaled` event in the workflow execution
-#' history and creates a decision task for the workflow execution
-#' identified by the given domain, workflowId and runId. The event is
-#' recorded with the specified user defined signalName and input (if
-#' provided).
-#' 
-#' If a runId isn't specified, then the `WorkflowExecutionSignaled` event
-#' is recorded in the history of the current open workflow with the
-#' matching workflowId in the domain.
-#' 
-#' If the specified workflow execution isn't open, this method fails with
-#' `UnknownResource`.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Records a `WorkflowExecutionSignaled` event in the workflow execution history and creates a decision task for the workflow execution identified by the given domain, workflowId and runId. The event is recorded with the specified user defined signalName and input (if provided).
 #'
-#' @usage
-#' swf_signal_workflow_execution(domain, workflowId, runId, signalName,
-#'   input)
+#' See [https://paws-r.github.io/docs/swf/signal_workflow_execution.html](https://paws-r.github.io/docs/swf/signal_workflow_execution.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the workflow execution to signal.
 #' @param workflowId &#91;required&#93; The workflowId of the workflow execution to signal.
@@ -4039,20 +1319,6 @@ swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, exe
 #' workflow.
 #' @param input Data to attach to the `WorkflowExecutionSignaled` event in the target
 #' workflow execution's history.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$signal_workflow_execution(
-#'   domain = "string",
-#'   workflowId = "string",
-#'   runId = "string",
-#'   signalName = "string",
-#'   input = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4078,55 +1344,9 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' the provided workflowId and input data
 #'
 #' @description
-#' Starts an execution of the workflow type in the specified domain using
-#' the provided `workflowId` and input data.
-#' 
-#' This action returns the newly started workflow execution.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `tagList.member.0`: The key is `swf:tagList.member.0`.
-#' 
-#'     -   `tagList.member.1`: The key is `swf:tagList.member.1`.
-#' 
-#'     -   `tagList.member.2`: The key is `swf:tagList.member.2`.
-#' 
-#'     -   `tagList.member.3`: The key is `swf:tagList.member.3`.
-#' 
-#'     -   `tagList.member.4`: The key is `swf:tagList.member.4`.
-#' 
-#'     -   `taskList`: String constraint. The key is `swf:taskList.name`.
-#' 
-#'     -   `workflowType.name`: String constraint. The key is
-#'         `swf:workflowType.name`.
-#' 
-#'     -   `workflowType.version`: String constraint. The key is
-#'         `swf:workflowType.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Starts an execution of the workflow type in the specified domain using the provided `workflowId` and input data.
 #'
-#' @usage
-#' swf_start_workflow_execution(domain, workflowId, workflowType, taskList,
-#'   taskPriority, input, executionStartToCloseTimeout, tagList,
-#'   taskStartToCloseTimeout, childPolicy, lambdaRole)
+#' See [https://paws-r.github.io/docs/swf/start_workflow_execution.html](https://paws-r.github.io/docs/swf/start_workflow_execution.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain in which the workflow execution is created.
 #' @param workflowId &#91;required&#93; The user defined identifier associated with the workflow execution. You
@@ -4138,7 +1358,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param workflowType &#91;required&#93; The type of the workflow to start.
 #' @param taskList The task list to use for the decision tasks generated for this workflow
@@ -4152,7 +1372,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param taskPriority The task priority to use for this workflow execution. This overrides any
 #' default priority that was assigned when the workflow type was
@@ -4233,38 +1453,6 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>
 #' in the *Amazon SWF Developer Guide*.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   runId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_workflow_execution(
-#'   domain = "string",
-#'   workflowId = "string",
-#'   workflowType = list(
-#'     name = "string",
-#'     version = "string"
-#'   ),
-#'   taskList = list(
-#'     name = "string"
-#'   ),
-#'   taskPriority = "string",
-#'   input = "string",
-#'   executionStartToCloseTimeout = "string",
-#'   tagList = list(
-#'     "string"
-#'   ),
-#'   taskStartToCloseTimeout = "string",
-#'   childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
-#'   lambdaRole = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname swf_start_workflow_execution
@@ -4289,33 +1477,14 @@ swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskL
 #'
 #' @description
 #' Add a tag to a Amazon SWF domain.
-#' 
-#' Amazon SWF supports a maximum of 50 tags per resource.
 #'
-#' @usage
-#' swf_tag_resource(resourceArn, tags)
+#' See [https://paws-r.github.io/docs/swf/tag_resource.html](https://paws-r.github.io/docs/swf/tag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon SWF domain.
 #' @param tags &#91;required&#93; The list of tags to add to a domain.
 #' 
 #' Tags may only contain unicode letters, digits, whitespace, or these
 #' symbols: `_ . : / = + - @@`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceArn = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4341,49 +1510,9 @@ swf_tag_resource <- function(resourceArn, tags) {
 #' workflow execution identified by the given domain, runId, and workflowId
 #'
 #' @description
-#' Records a `WorkflowExecutionTerminated` event and forces closure of the
-#' workflow execution identified by the given domain, runId, and
-#' workflowId. The child policy, registered with the workflow type or
-#' specified when starting this execution, is applied to any open child
-#' workflow executions of this workflow execution.
-#' 
-#' If the identified workflow execution was in progress, it is terminated
-#' immediately.
-#' 
-#' If a runId isn't specified, then the `WorkflowExecutionTerminated` event
-#' is recorded in the history of the current open workflow with the
-#' matching workflowId in the domain.
-#' 
-#' You should consider using
-#' [`request_cancel_workflow_execution`][swf_request_cancel_workflow_execution]
-#' action instead because it allows the workflow to gracefully close while
-#' [`terminate_workflow_execution`][swf_terminate_workflow_execution]
-#' doesn't.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Records a `WorkflowExecutionTerminated` event and forces closure of the workflow execution identified by the given domain, runId, and workflowId. The child policy, registered with the workflow type or specified when starting this execution, is applied to any open child workflow executions of this workflow execution.
 #'
-#' @usage
-#' swf_terminate_workflow_execution(domain, workflowId, runId, reason,
-#'   details, childPolicy)
+#' See [https://paws-r.github.io/docs/swf/terminate_workflow_execution.html](https://paws-r.github.io/docs/swf/terminate_workflow_execution.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The domain of the workflow execution to terminate.
 #' @param workflowId &#91;required&#93; The workflowId of the workflow execution to terminate.
@@ -4412,21 +1541,6 @@ swf_tag_resource <- function(resourceArn, tags) {
 #' parameter is set nor a default child policy was specified at
 #' registration time then a fault is returned.
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$terminate_workflow_execution(
-#'   domain = "string",
-#'   workflowId = "string",
-#'   runId = "string",
-#'   reason = "string",
-#'   details = "string",
-#'   childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname swf_terminate_workflow_execution
@@ -4450,60 +1564,12 @@ swf_terminate_workflow_execution <- function(domain, workflowId, runId = NULL, r
 #' Undeprecates a previously deprecated activity type
 #'
 #' @description
-#' Undeprecates a previously deprecated *activity type*. After an activity
-#' type has been undeprecated, you can create new tasks of that activity
-#' type.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `activityType.name`: String constraint. The key is
-#'         `swf:activityType.name`.
-#' 
-#'     -   `activityType.version`: String constraint. The key is
-#'         `swf:activityType.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Undeprecates a previously deprecated *activity type*. After an activity type has been undeprecated, you can create new tasks of that activity type.
 #'
-#' @usage
-#' swf_undeprecate_activity_type(domain, activityType)
+#' See [https://paws-r.github.io/docs/swf/undeprecate_activity_type.html](https://paws-r.github.io/docs/swf/undeprecate_activity_type.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain of the deprecated activity type.
 #' @param activityType &#91;required&#93; The activity type to undeprecate.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$undeprecate_activity_type(
-#'   domain = "string",
-#'   activityType = list(
-#'     name = "string",
-#'     version = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4528,48 +1594,11 @@ swf_undeprecate_activity_type <- function(domain, activityType) {
 #' Undeprecates a previously deprecated domain
 #'
 #' @description
-#' Undeprecates a previously deprecated domain. After a domain has been
-#' undeprecated it can be used to create new workflow executions or
-#' register new types.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Undeprecates a previously deprecated domain. After a domain has been undeprecated it can be used to create new workflow executions or register new types.
 #'
-#' @usage
-#' swf_undeprecate_domain(name)
+#' See [https://paws-r.github.io/docs/swf/undeprecate_domain.html](https://paws-r.github.io/docs/swf/undeprecate_domain.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the domain of the deprecated workflow type.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$undeprecate_domain(
-#'   name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4594,59 +1623,12 @@ swf_undeprecate_domain <- function(name) {
 #' Undeprecates a previously deprecated workflow type
 #'
 #' @description
-#' Undeprecates a previously deprecated *workflow type*. After a workflow
-#' type has been undeprecated, you can create new executions of that type.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not exactly reflect recent updates and changes.
-#' 
-#' **Access Control**
-#' 
-#' You can use IAM policies to control this action's access to Amazon SWF
-#' resources as follows:
-#' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
-#' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
-#' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
-#' 
-#'     -   `workflowType.name`: String constraint. The key is
-#'         `swf:workflowType.name`.
-#' 
-#'     -   `workflowType.version`: String constraint. The key is
-#'         `swf:workflowType.version`.
-#' 
-#' If the caller doesn't have sufficient permissions to invoke the action,
-#' or the parameter values fall outside the specified constraints, the
-#' action fails. The associated event attribute's `cause` parameter is set
-#' to `OPERATION_NOT_PERMITTED`. For details and example IAM policies, see
-#' [Using IAM to Manage Access to Amazon SWF
-#' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
-#' in the *Amazon SWF Developer Guide*.
+#' Undeprecates a previously deprecated *workflow type*. After a workflow type has been undeprecated, you can create new executions of that type.
 #'
-#' @usage
-#' swf_undeprecate_workflow_type(domain, workflowType)
+#' See [https://paws-r.github.io/docs/swf/undeprecate_workflow_type.html](https://paws-r.github.io/docs/swf/undeprecate_workflow_type.html) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain of the deprecated workflow type.
 #' @param workflowType &#91;required&#93; The name of the domain of the deprecated workflow type.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$undeprecate_workflow_type(
-#'   domain = "string",
-#'   workflowType = list(
-#'     name = "string",
-#'     version = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4673,24 +1655,10 @@ swf_undeprecate_workflow_type <- function(domain, workflowType) {
 #' @description
 #' Remove a tag from a Amazon SWF domain.
 #'
-#' @usage
-#' swf_untag_resource(resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/swf/untag_resource.html](https://paws-r.github.io/docs/swf/untag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon SWF domain.
 #' @param tagKeys &#91;required&#93; The list of tags to remove from the Amazon SWF domain.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

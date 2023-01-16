@@ -4,7 +4,12 @@
 \alias{sfn_start_sync_execution}
 \title{Starts a Synchronous Express state machine execution}
 \usage{
-sfn_start_sync_execution(stateMachineArn, name, input, traceHeader)
+sfn_start_sync_execution(
+  stateMachineArn,
+  name = NULL,
+  input = NULL,
+  traceHeader = NULL
+)
 }
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to execute.}
@@ -25,47 +30,9 @@ in UTF-8 encoding.}
 \item{traceHeader}{Passes the AWS X-Ray trace header. The trace header can also be passed
 in the request payload.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  executionArn = "string",
-  stateMachineArn = "string",
-  name = "string",
-  startDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  stopDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  status = "SUCCEEDED"|"FAILED"|"TIMED_OUT",
-  error = "string",
-  cause = "string",
-  input = "string",
-  inputDetails = list(
-    included = TRUE|FALSE
-  ),
-  output = "string",
-  outputDetails = list(
-    included = TRUE|FALSE
-  ),
-  traceHeader = "string",
-  billingDetails = list(
-    billedMemoryUsedInMB = 123,
-    billedDurationInMilliseconds = 123
-  )
-)
-}
-}
 \description{
 Starts a Synchronous Express state machine execution.
-}
-\section{Request syntax}{
-\preformatted{svc$start_sync_execution(
-  stateMachineArn = "string",
-  name = "string",
-  input = "string",
-  traceHeader = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sfn/start_sync_execution.html} for full documentation.
+}
 \keyword{internal}

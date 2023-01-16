@@ -150,6 +150,82 @@ get_env <- function(variable) {
   return("")
 }
 
+# Get the name of the IAM role from the instance metadata.
+get_iam_role <- function() {
+
+  iam_role_response <-  get_instance_metadata("iam/security-credentials")
+
+  if (is.null(iam_role_response)) return(NULL)
+
+  iam_role_name <- raw_to_utf8(iam_role_response$body)
+
+  return(iam_role_name)
+}
+
+# Gets the instance metadata by making an http request to an instance metadata services
+# Please see security recommendations by AWS: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
+get_instance_metadata <- function(query_path = "") {
+  token_ttl <- '21600' # same approach as in boto3: https://github.com/boto/botocore/blob/master/botocore/utils.py#L376
+  # Do not get metadata when the disabled setting is on.
+  if (trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")) {
+    return(NULL)
+  }
+  # Get token timeout for IMDSv2 tokens
+  token <-  "" # Token to be used in case of more secure IMDSv2 authentication
+  #try IMDSv2  (more information): https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
+  metadata_token_url <-  file.path(
+    "http://169.254.169.254/latest/api/token"
+  )
+  metadata_token_request <- new_http_request(
+    "PUT",
+    metadata_token_url,
+    timeout = 1,
+    header=c("X-aws-ec2-metadata-token-ttl-seconds"= token_ttl)
+  )
+
+  metadata_token_response <- tryCatch(
+    {
+      issue(metadata_token_request)
+    },
+    error = function(e) {
+      NULL
+    }
+  )
+  if (!is.null(metadata_token_response) && metadata_token_response$status_code == 200) {
+    if (length(metadata_token_response[["body"]])>0) {
+      token <- rawToChar(metadata_token_response[["body"]])
+    }
+  }
+  metadata_url <- file.path(
+    "http://169.254.169.254/latest/meta-data",
+    query_path
+  )
+  if (token!="") {
+    metadata_request <- new_http_request(
+      "GET",
+      metadata_url,
+      timeout = 1,
+      header = c("X-aws-ec2-metadata-token"= token)
+    )
+  } else {
+    metadata_request <- new_http_request("GET", metadata_url, timeout = 1)
+  }
+  metadata_response <- tryCatch(
+    {
+      issue(metadata_request)
+    },
+    error = function(e) {
+      NULL
+    }
+  )
+
+  if (is.null(metadata_response) || metadata_response$status_code != 200) {
+    return(NULL)
+  }
+
+  return(metadata_response)
+}
+
 # Get the value of an OS environment variable.
 # NOTE: Does not work on Windows.
 get_os_env <- function(var) {
@@ -173,37 +249,6 @@ get_profile_name <- function(profile = "") {
   if (profile == "") profile <- "default"
 
   return(profile)
-}
-
-# Gets the instance metadata by making an http request.
-get_instance_metadata <- function(query_path = "") {
-
-  # Do not get metadata when the disabled setting is on.
-  if (trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")) {
-    return(NULL)
-  }
-
-  metadata_url <- file.path(
-    "http://169.254.169.254/latest/meta-data",
-    query_path
-  )
-  metadata_request <-
-    new_http_request("GET", metadata_url, timeout = 1)
-
-  metadata_response <- tryCatch(
-    {
-      issue(metadata_request)
-    },
-    error = function(e) {
-      NULL
-    }
-  )
-
-  if (is.null(metadata_response) || metadata_response$status_code != 200) {
-    return(NULL)
-  }
-
-  return(metadata_response)
 }
 
 # Get region from the config file.
@@ -247,4 +292,43 @@ get_region <- function(profile = "") {
   if (is.null(region)) stop("No region provided")
 
   return(region)
+}
+
+# Get the AWS role ARN to use.
+get_role_arn <- function(role_arn = "") {
+  if (!is.null(role_arn) && role_arn != "") {
+    return(role_arn)
+  }
+
+  role_arn <- get_env("AWS_ROLE_ARN")
+
+  if (role_arn == "") stop("No Role ARN provided")
+
+  return(role_arn)
+}
+
+# Get the AWS role session to use. If none, return "default".
+get_role_session_name <- function(role_session_name = "") {
+  if (!is.null(role_session_name) && role_session_name != "") {
+    return(role_session_name)
+  }
+
+  role_session_name <- get_env("AWS_ROLE_SESSION_NAME")
+
+  if (role_session_name == "") role_session_name <- "default"
+
+  return(role_session_name)
+}
+
+# Get the Web Identity Token File to use (via AssumeRoleWithWebIdentity).
+get_web_identity_token_file <- function(web_identity_token_file = "") {
+  if (!is.null(web_identity_token_file) && web_identity_token_file != "") {
+    return(web_identity_token_file)
+  }
+
+  web_identity_token_file <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
+
+  if (web_identity_token_file == "") stop("No WebIdentityToken file available")
+
+  return(web_identity_token_file)
 }

@@ -4,84 +4,28 @@
 \alias{kinesis_describe_stream}
 \title{Describes the specified Kinesis data stream}
 \usage{
-kinesis_describe_stream(StreamName, Limit, ExclusiveStartShardId)
+kinesis_describe_stream(StreamName, Limit = NULL, ExclusiveStartShardId = NULL)
 }
 \arguments{
 \item{StreamName}{[required] The name of the stream to describe.}
 
 \item{Limit}{The maximum number of shards to return in a single call. The default
 value is 100. If you specify a value greater than 100, at most 100
-shards are returned.}
+results are returned.}
 
-\item{ExclusiveStartShardId}{The shard ID of the shard to start with.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StreamDescription = list(
-    StreamName = "string",
-    StreamARN = "string",
-    StreamStatus = "CREATING"|"DELETING"|"ACTIVE"|"UPDATING",
-    Shards = list(
-      list(
-        ShardId = "string",
-        ParentShardId = "string",
-        AdjacentParentShardId = "string",
-        HashKeyRange = list(
-          StartingHashKey = "string",
-          EndingHashKey = "string"
-        ),
-        SequenceNumberRange = list(
-          StartingSequenceNumber = "string",
-          EndingSequenceNumber = "string"
-        )
-      )
-    ),
-    HasMoreShards = TRUE|FALSE,
-    RetentionPeriodHours = 123,
-    StreamCreationTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnhancedMonitoring = list(
-      list(
-        ShardLevelMetrics = list(
-          "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
-        )
-      )
-    ),
-    EncryptionType = "NONE"|"KMS",
-    KeyId = "string"
-  )
-)
-}
+\item{ExclusiveStartShardId}{The shard ID of the shard to start with.
+
+Specify this parameter to indicate that you want to describe the stream
+starting with the shard whose ID immediately follows
+\code{ExclusiveStartShardId}.
+
+If you don't specify this parameter, the default behavior for
+\code{\link[=kinesis_describe_stream]{describe_stream}} is to describe the stream
+starting with the first shard in the stream.}
 }
 \description{
 Describes the specified Kinesis data stream.
 
-The information returned includes the stream name, Amazon Resource Name
-(ARN), creation time, enhanced metric configuration, and shard map. The
-shard map is an array of shard objects. For each shard object, there is
-the hash key and sequence number ranges that the shard spans, and the
-IDs of any earlier shards that played in a role in creating the shard.
-Every record ingested in the stream is identified by a sequence number,
-which is assigned when the record is put into the stream.
-
-You can limit the number of shards returned by each call. For more
-information, see \href{https://docs.aws.amazon.com/streams/latest/dev/}{Retrieving Shards from a Stream} in the \emph{Amazon
-Kinesis Data Streams Developer Guide}.
-
-There are no guarantees about the chronological order shards returned.
-To process shards in chronological order, use the ID of the parent shard
-to track the lineage to the oldest shard.
-
-This operation has a limit of 10 transactions per second per account.
+See \url{https://paws-r.github.io/docs/kinesis/describe_stream.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_stream(
-  StreamName = "string",
-  Limit = 123,
-  ExclusiveStartShardId = "string"
-)
-}
-}
-
 \keyword{internal}

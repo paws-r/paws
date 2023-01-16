@@ -8,47 +8,12 @@ change}
 connect_describe_instance(InstanceId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Instance = list(
-    Id = "string",
-    Arn = "string",
-    IdentityManagementType = "SAML"|"CONNECT_MANAGED"|"EXISTING_DIRECTORY",
-    InstanceAlias = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ServiceRole = "string",
-    InstanceStatus = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED",
-    StatusReason = list(
-      Message = "string"
-    ),
-    InboundCallsEnabled = TRUE|FALSE,
-    OutboundCallsEnabled = TRUE|FALSE
-  )
-)
-}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Returns the current state of the specified instance identifier. It
-tracks the instance while it is being created and returns an error
-status if applicable.
-
-If an instance is not created successfully, the instance status reason
-field returns details relevant to the reason. The instance in a failed
-state is returned only for 24 hours after the CreateInstance API was
-invoked.
+See \url{https://paws-r.github.io/docs/connect/describe_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_instance(
-  InstanceId = "string"
-)
-}
-}
-
 \keyword{internal}

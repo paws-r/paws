@@ -48,7 +48,8 @@ NULL
 #'               VolumeSpecification = list(
 #'                 VolumeType = "string",
 #'                 Iops = 123,
-#'                 SizeInGB = 123
+#'                 SizeInGB = 123,
+#'                 Throughput = 123
 #'               ),
 #'               VolumesPerInstance = 123
 #'             )
@@ -63,7 +64,8 @@ NULL
 #'               "string"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         CustomAmiId = "string"
 #'       )
 #'     ),
 #'     LaunchSpecifications = list(
@@ -74,7 +76,12 @@ NULL
 #'         AllocationStrategy = "capacity-optimized"
 #'       ),
 #'       OnDemandSpecification = list(
-#'         AllocationStrategy = "lowest-price"
+#'         AllocationStrategy = "lowest-price",
+#'         CapacityReservationOptions = list(
+#'           UsageStrategy = "use-capacity-reservations-first",
+#'           CapacityReservationPreference = "open"|"none",
+#'           CapacityReservationResourceGroupArn = "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -150,7 +157,8 @@ emr_add_instance_fleet <- function(ClusterId, InstanceFleet) {
 #'             VolumeSpecification = list(
 #'               VolumeType = "string",
 #'               Iops = 123,
-#'               SizeInGB = 123
+#'               SizeInGB = 123,
+#'               Throughput = 123
 #'             ),
 #'             VolumesPerInstance = 123
 #'           )
@@ -194,7 +202,8 @@ emr_add_instance_fleet <- function(ClusterId, InstanceFleet) {
 #'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       CustomAmiId = "string"
 #'     )
 #'   ),
 #'   JobFlowId = "string"
@@ -233,8 +242,8 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #' to connect to the master node and submitting queries directly to the
 #' software running on the master node, such as Hive and Hadoop. For more
 #' information on how to do this, see [Add More than 256 Steps to a
-#' Cluster](https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
-#' in the *Amazon EMR Management Guide*.
+#' Cluster](https://docs.aws.amazon.com/emr/latest/ManagementGuide/) in the
+#' *Amazon EMR Management Guide*.
 #' 
 #' A step specifies the location of a JAR file stored either on the master
 #' node of the cluster or in Amazon S3. Each step is performed by the main
@@ -249,14 +258,24 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #' 
 #' You can only add steps to a cluster that is in one of the following
 #' states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
+#' 
+#' The string values passed into `HadoopJarStep` object cannot exceed a
+#' total of 10240 characters.
 #'
 #' @usage
-#' emr_add_job_flow_steps(JobFlowId, Steps)
+#' emr_add_job_flow_steps(JobFlowId, Steps, ExecutionRoleArn)
 #'
 #' @param JobFlowId &#91;required&#93; A string that uniquely identifies the job flow. This identifier is
 #' returned by [`run_job_flow`][emr_run_job_flow] and can also be obtained
 #' from [`list_clusters`][emr_list_clusters].
 #' @param Steps &#91;required&#93; A list of StepConfig to be executed by the job flow.
+#' @param ExecutionRoleArn The Amazon Resource Name (ARN) of the runtime role for a step on the
+#' cluster. The runtime role can be a cross-account IAM role. The runtime
+#' role ARN is a combination of account ID, role name, and role type using
+#' the following format: `arn:partition:service:region:account:resource`.
+#' 
+#' For example, `arn:aws:iam::1234567890:role/ReadOnly` is a correctly
+#' formatted runtime role ARN.
 #'
 #' @return
 #' A list with the following syntax:
@@ -290,21 +309,22 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   ExecutionRoleArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname emr_add_job_flow_steps
-emr_add_job_flow_steps <- function(JobFlowId, Steps) {
+emr_add_job_flow_steps <- function(JobFlowId, Steps, ExecutionRoleArn = NULL) {
   op <- new_operation(
     name = "AddJobFlowSteps",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .emr$add_job_flow_steps_input(JobFlowId = JobFlowId, Steps = Steps)
+  input <- .emr$add_job_flow_steps_input(JobFlowId = JobFlowId, Steps = Steps, ExecutionRoleArn = ExecutionRoleArn)
   output <- .emr$add_job_flow_steps_output()
   config <- get_config()
   svc <- .emr$service(config)
@@ -314,23 +334,25 @@ emr_add_job_flow_steps <- function(JobFlowId, Steps) {
 }
 .emr$operations$add_job_flow_steps <- emr_add_job_flow_steps
 
-#' Adds tags to an Amazon EMR resource
+#' Adds tags to an Amazon EMR resource, such as a cluster or an Amazon EMR
+#' Studio
 #'
 #' @description
-#' Adds tags to an Amazon EMR resource. Tags make it easier to associate
-#' clusters in various ways, such as grouping clusters to track your Amazon
-#' EMR resource allocation costs. For more information, see [Tag
+#' Adds tags to an Amazon EMR resource, such as a cluster or an Amazon EMR
+#' Studio. Tags make it easier to associate resources in various ways, such
+#' as grouping clusters to track your Amazon EMR resource allocation costs.
+#' For more information, see [Tag
 #' Clusters](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 #'
 #' @usage
 #' emr_add_tags(ResourceId, Tags)
 #'
-#' @param ResourceId &#91;required&#93; The Amazon EMR resource identifier to which tags will be added. This
-#' value must be a cluster identifier.
-#' @param Tags &#91;required&#93; A list of tags to associate with a cluster and propagate to EC2
-#' instances. Tags are user-defined key-value pairs that consist of a
-#' required key string with a maximum of 128 characters, and an optional
-#' value string with a maximum of 256 characters.
+#' @param ResourceId &#91;required&#93; The Amazon EMR resource identifier to which tags will be added. For
+#' example, a cluster identifier or an Amazon EMR Studio ID.
+#' @param Tags &#91;required&#93; A list of tags to associate with a resource. Tags are user-defined
+#' key-value pairs that consist of a required key string with a maximum of
+#' 128 characters, and an optional value string with a maximum of 256
+#' characters.
 #'
 #' @return
 #' An empty list.
@@ -375,8 +397,10 @@ emr_add_tags <- function(ResourceId, Tags) {
 #' Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum
 #' of 256 steps are allowed in each CancelSteps request. CancelSteps is
 #' idempotent but asynchronous; it does not guarantee that a step will be
-#' canceled, even if the request is successfully submitted. You can only
-#' cancel steps that are in a `PENDING` state.
+#' canceled, even if the request is successfully submitted. When you use
+#' Amazon EMR versions 5.28.0 and later, you can cancel steps that are in a
+#' `PENDING` or `RUNNING` state. In earlier versions of Amazon EMR, you can
+#' only cancel steps that are in a `PENDING` state.
 #'
 #' @usage
 #' emr_cancel_steps(ClusterId, StepIds, StepCancellationOption)
@@ -489,36 +513,33 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 }
 .emr$operations$create_security_configuration <- emr_create_security_configuration
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Creates a new Amazon EMR Studio
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Creates a new Amazon EMR Studio.
 #'
 #' @usage
 #' emr_create_studio(Name, Description, AuthMode, VpcId, SubnetIds,
 #'   ServiceRole, UserRole, WorkspaceSecurityGroupId, EngineSecurityGroupId,
-#'   DefaultS3Location, Tags)
+#'   DefaultS3Location, IdpAuthUrl, IdpRelayStateParameterName, Tags)
 #'
 #' @param Name &#91;required&#93; A descriptive name for the Amazon EMR Studio.
-#' @param Description A detailed description of the Studio.
-#' @param AuthMode &#91;required&#93; Specifies whether the Studio authenticates users using single sign-on
-#' (SSO) or IAM. Amazon EMR Studio currently only supports SSO
-#' authentication.
+#' @param Description A detailed description of the Amazon EMR Studio.
+#' @param AuthMode &#91;required&#93; Specifies whether the Studio authenticates users using IAM or Amazon Web
+#' Services SSO.
 #' @param VpcId &#91;required&#93; The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate
 #' with the Studio.
-#' @param SubnetIds &#91;required&#93; A list of subnet IDs to associate with the Studio. The subnets must
-#' belong to the VPC specified by `VpcId`. Studio users can create a
-#' Workspace in any of the specified subnets.
-#' @param ServiceRole &#91;required&#93; The IAM role that will be assumed by the Amazon EMR Studio. The service
-#' role provides a way for Amazon EMR Studio to interoperate with other AWS
-#' services.
-#' @param UserRole &#91;required&#93; The IAM user role that will be assumed by users and groups logged in to
-#' a Studio. The permissions attached to this IAM role can be scoped down
-#' for each user or group using session policies.
+#' @param SubnetIds &#91;required&#93; A list of subnet IDs to associate with the Amazon EMR Studio. A Studio
+#' can have a maximum of 5 subnets. The subnets must belong to the VPC
+#' specified by `VpcId`. Studio users can create a Workspace in any of the
+#' specified subnets.
+#' @param ServiceRole &#91;required&#93; The IAM role that the Amazon EMR Studio assumes. The service role
+#' provides a way for Amazon EMR Studio to interoperate with other Amazon
+#' Web Services services.
+#' @param UserRole The IAM user role that users and groups assume when logged in to an
+#' Amazon EMR Studio. Only specify a `UserRole` when you use Amazon Web
+#' Services SSO authentication. The permissions attached to the `UserRole`
+#' can be scoped down for each user or group using session policies.
 #' @param WorkspaceSecurityGroupId &#91;required&#93; The ID of the Amazon EMR Studio Workspace security group. The Workspace
 #' security group allows outbound network traffic to resources in the
 #' Engine security group, and it must be in the same VPC specified by
@@ -526,13 +547,22 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' @param EngineSecurityGroupId &#91;required&#93; The ID of the Amazon EMR Studio Engine security group. The Engine
 #' security group allows inbound network traffic from the Workspace
 #' security group, and it must be in the same VPC specified by `VpcId`.
-#' @param DefaultS3Location The default Amazon S3 location to back up EMR Studio Workspaces and
-#' notebook files. A Studio user can select an alternative Amazon S3
-#' location when creating a Workspace.
-#' @param Tags A list of tags to associate with the Studio. Tags are user-defined
-#' key-value pairs that consist of a required key string with a maximum of
-#' 128 characters, and an optional value string with a maximum of 256
-#' characters.
+#' @param DefaultS3Location &#91;required&#93; The Amazon S3 location to back up Amazon EMR Studio Workspaces and
+#' notebook files.
+#' @param IdpAuthUrl The authentication endpoint of your identity provider (IdP). Specify
+#' this value when you use IAM authentication and want to let federated
+#' users log in to a Studio with the Studio URL and credentials from your
+#' IdP. Amazon EMR Studio redirects users to this endpoint to enter
+#' credentials.
+#' @param IdpRelayStateParameterName The name that your identity provider (IdP) uses for its `RelayState`
+#' parameter. For example, `RelayState` or `TargetSource`. Specify this
+#' value when you use IAM authentication and want to let federated users
+#' log in to a Studio using the Studio URL. The `RelayState` parameter
+#' differs by IdP.
+#' @param Tags A list of tags to associate with the Amazon EMR Studio. Tags are
+#' user-defined key-value pairs that consist of a required key string with
+#' a maximum of 128 characters, and an optional value string with a maximum
+#' of 256 characters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -558,6 +588,8 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #'   WorkspaceSecurityGroupId = "string",
 #'   EngineSecurityGroupId = "string",
 #'   DefaultS3Location = "string",
+#'   IdpAuthUrl = "string",
+#'   IdpRelayStateParameterName = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -570,14 +602,14 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' @keywords internal
 #'
 #' @rdname emr_create_studio
-emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetIds, ServiceRole, UserRole, WorkspaceSecurityGroupId, EngineSecurityGroupId, DefaultS3Location = NULL, Tags = NULL) {
+emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetIds, ServiceRole, UserRole = NULL, WorkspaceSecurityGroupId, EngineSecurityGroupId, DefaultS3Location, IdpAuthUrl = NULL, IdpRelayStateParameterName = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateStudio",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .emr$create_studio_input(Name = Name, Description = Description, AuthMode = AuthMode, VpcId = VpcId, SubnetIds = SubnetIds, ServiceRole = ServiceRole, UserRole = UserRole, WorkspaceSecurityGroupId = WorkspaceSecurityGroupId, EngineSecurityGroupId = EngineSecurityGroupId, DefaultS3Location = DefaultS3Location, Tags = Tags)
+  input <- .emr$create_studio_input(Name = Name, Description = Description, AuthMode = AuthMode, VpcId = VpcId, SubnetIds = SubnetIds, ServiceRole = ServiceRole, UserRole = UserRole, WorkspaceSecurityGroupId = WorkspaceSecurityGroupId, EngineSecurityGroupId = EngineSecurityGroupId, DefaultS3Location = DefaultS3Location, IdpAuthUrl = IdpAuthUrl, IdpRelayStateParameterName = IdpRelayStateParameterName, Tags = Tags)
   output <- .emr$create_studio_output()
   config <- get_config()
   svc <- .emr$service(config)
@@ -587,16 +619,19 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
 }
 .emr$operations$create_studio <- emr_create_studio
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Maps a user or group to the Amazon EMR Studio specified by StudioId, and
+#' applies a session policy to refine Studio permissions for that user or
+#' group
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Maps a user or group to the Amazon EMR Studio specified by `StudioId`,
 #' and applies a session policy to refine Studio permissions for that user
-#' or group.
+#' or group. Use
+#' [`create_studio_session_mapping`][emr_create_studio_session_mapping] to
+#' assign users to a Studio when you use Amazon Web Services SSO
+#' authentication. For instructions on how to assign users to a Studio when
+#' you use IAM authentication, see [Assign a user or group to your EMR
+#' Studio](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-studio-manage-users.html#emr-studio-assign-users-groups).
 #'
 #' @usage
 #' emr_create_studio_session_mapping(StudioId, IdentityId, IdentityName,
@@ -604,24 +639,26 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
 #'
 #' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio to which the user or group will be
 #' mapped.
-#' @param IdentityId The globally unique identifier (GUID) of the user or group from the AWS
-#' SSO Identity Store. For more information, see
+#' @param IdentityId The globally unique identifier (GUID) of the user or group from the
+#' Amazon Web Services SSO Identity Store. For more information, see
 #' [UserId](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
 #' and
 #' [GroupId](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-GroupId)
-#' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
-#' `IdentityId` must be specified.
+#' in the *Amazon Web Services SSO Identity Store API Reference*. Either
+#' `IdentityName` or `IdentityId` must be specified, but not both.
 #' @param IdentityName The name of the user or group. For more information, see
-#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
+#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName)
 #' and
 #' [DisplayName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName)
-#' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
-#' `IdentityId` must be specified.
-#' @param IdentityType &#91;required&#93; Specifies whether the identity to map to the Studio is a user or a
-#' group.
+#' in the *Amazon Web Services SSO Identity Store API Reference*. Either
+#' `IdentityName` or `IdentityId` must be specified, but not both.
+#' @param IdentityType &#91;required&#93; Specifies whether the identity to map to the Amazon EMR Studio is a user
+#' or a group.
 #' @param SessionPolicyArn &#91;required&#93; The Amazon Resource Name (ARN) for the session policy that will be
-#' applied to the user or group. Session policies refine Studio user
-#' permissions without the need to use multiple IAM user roles.
+#' applied to the user or group. You should specify the ARN for the session
+#' policy that you want to apply, not the ARN of your user role. For more
+#' information, see [Create an EMR Studio User Role with Session
+#' Policies](https://docs.aws.amazon.com/emr/latest/ManagementGuide/).
 #'
 #' @return
 #' An empty list.
@@ -697,13 +734,9 @@ emr_delete_security_configuration <- function(Name) {
 }
 .emr$operations$delete_security_configuration <- emr_delete_security_configuration
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Removes an Amazon EMR Studio from the Studio metadata store
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Removes an Amazon EMR Studio from the Studio metadata store.
 #'
 #' @usage
@@ -741,13 +774,9 @@ emr_delete_studio <- function(StudioId) {
 }
 .emr$operations$delete_studio <- emr_delete_studio
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Removes a user or group from an Amazon EMR Studio
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Removes a user or group from an Amazon EMR Studio.
 #'
 #' @usage
@@ -760,17 +789,17 @@ emr_delete_studio <- function(StudioId) {
 #' [UserId](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
 #' and
 #' [GroupId](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-GroupId)
-#' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
-#' `IdentityId` must be specified.
-#' @param IdentityName The name of the user name or group to remove from the Studio. For more
-#' information, see
-#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
+#' in the *Amazon Web Services SSO Identity Store API Reference*. Either
+#' `IdentityName` or `IdentityId` must be specified.
+#' @param IdentityName The name of the user name or group to remove from the Amazon EMR Studio.
+#' For more information, see
+#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName)
 #' and
 #' [DisplayName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName)
-#' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
-#' `IdentityId` must be specified.
-#' @param IdentityType &#91;required&#93; Specifies whether the identity to delete from the Studio is a user or a
-#' group.
+#' in the *Amazon Web Services SSO Store API Reference*. Either
+#' `IdentityName` or `IdentityId` must be specified.
+#' @param IdentityType &#91;required&#93; Specifies whether the identity to delete from the Amazon EMR Studio is a
+#' user or a group.
 #'
 #' @return
 #' An empty list.
@@ -923,7 +952,8 @@ emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #'         InstanceRole = "MASTER"|"CORE"|"TASK",
 #'         PlacementStrategy = "SPREAD"|"PARTITION"|"CLUSTER"|"NONE"
 #'       )
-#'     )
+#'     ),
+#'     OSReleaseLabel = "string"
 #'   )
 #' )
 #' ```
@@ -1047,7 +1077,8 @@ emr_describe_cluster <- function(ClusterId) {
 #'             ),
 #'             EndDateTime = as.POSIXct(
 #'               "2015-01-01"
-#'             )
+#'             ),
+#'             CustomAmiId = "string"
 #'           )
 #'         ),
 #'         NormalizedInstanceHours = 123,
@@ -1233,6 +1264,72 @@ emr_describe_notebook_execution <- function(NotebookExecutionId) {
 }
 .emr$operations$describe_notebook_execution <- emr_describe_notebook_execution
 
+#' Provides EMR release label details, such as releases available the
+#' region where the API request is run, and the available applications for
+#' a specific EMR release label
+#'
+#' @description
+#' Provides EMR release label details, such as releases available the
+#' region where the API request is run, and the available applications for
+#' a specific EMR release label. Can also list EMR release versions that
+#' support a specified version of Spark.
+#'
+#' @usage
+#' emr_describe_release_label(ReleaseLabel, NextToken, MaxResults)
+#'
+#' @param ReleaseLabel The target release label to be described.
+#' @param NextToken The pagination token. Reserved for future use. Currently set to null.
+#' @param MaxResults Reserved for future use. Currently set to null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReleaseLabel = "string",
+#'   Applications = list(
+#'     list(
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   AvailableOSReleases = list(
+#'     list(
+#'       Label = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_release_label(
+#'   ReleaseLabel = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_describe_release_label
+emr_describe_release_label <- function(ReleaseLabel = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeReleaseLabel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$describe_release_label_input(ReleaseLabel = ReleaseLabel, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .emr$describe_release_label_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$describe_release_label <- emr_describe_release_label
+
 #' Provides the details of a security configuration by returning the
 #' configuration JSON
 #'
@@ -1335,7 +1432,8 @@ emr_describe_security_configuration <- function(Name) {
 #'           "2015-01-01"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     ExecutionRoleArn = "string"
 #'   )
 #' )
 #' ```
@@ -1368,13 +1466,10 @@ emr_describe_step <- function(ClusterId, StepId) {
 }
 .emr$operations$describe_step <- emr_describe_step
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Returns details for the specified Amazon EMR Studio including ID, Name,
+#' VPC, Studio access URL, and so on
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Returns details for the specified Amazon EMR Studio including ID, Name,
 #' VPC, Studio access URL, and so on.
 #'
@@ -1406,6 +1501,8 @@ emr_describe_step <- function(ClusterId, StepId) {
 #'       "2015-01-01"
 #'     ),
 #'     DefaultS3Location = "string",
+#'     IdpAuthUrl = "string",
+#'     IdpRelayStateParameterName = "string",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -1443,13 +1540,61 @@ emr_describe_studio <- function(StudioId) {
 }
 .emr$operations$describe_studio <- emr_describe_studio
 
-#' Returns the Amazon EMR block public access configuration for your AWS
-#' account in the current Region
+#' Returns the auto-termination policy for an Amazon EMR cluster
 #'
 #' @description
-#' Returns the Amazon EMR block public access configuration for your AWS
-#' account in the current Region. For more information see [Configure Block
-#' Public Access for Amazon
+#' Returns the auto-termination policy for an Amazon EMR cluster.
+#'
+#' @usage
+#' emr_get_auto_termination_policy(ClusterId)
+#'
+#' @param ClusterId &#91;required&#93; Specifies the ID of the Amazon EMR cluster for which the
+#' auto-termination policy will be fetched.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoTerminationPolicy = list(
+#'     IdleTimeout = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_auto_termination_policy(
+#'   ClusterId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_get_auto_termination_policy
+emr_get_auto_termination_policy <- function(ClusterId) {
+  op <- new_operation(
+    name = "GetAutoTerminationPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$get_auto_termination_policy_input(ClusterId = ClusterId)
+  output <- .emr$get_auto_termination_policy_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$get_auto_termination_policy <- emr_get_auto_termination_policy
+
+#' Returns the Amazon EMR block public access configuration for your Amazon
+#' Web Services account in the current Region
+#'
+#' @description
+#' Returns the Amazon EMR block public access configuration for your Amazon
+#' Web Services account in the current Region. For more information see
+#' [Configure Block Public Access for Amazon
 #' EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/) in the
 #' *Amazon EMR Management Guide*.
 #'
@@ -1557,13 +1702,10 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
 }
 .emr$operations$get_managed_scaling_policy <- emr_get_managed_scaling_policy
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Fetches mapping details for the specified Amazon EMR Studio and identity
+#' (user or group)
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
 #' Fetches mapping details for the specified Amazon EMR Studio and identity
 #' (user or group).
 #'
@@ -1577,14 +1719,14 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
 #' [UserId](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
 #' and
 #' [GroupId](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-GroupId)
-#' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
-#' `IdentityId` must be specified.
+#' in the *Amazon Web Services SSO Identity Store API Reference*. Either
+#' `IdentityName` or `IdentityId` must be specified.
 #' @param IdentityName The name of the user or group to fetch. For more information, see
-#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
+#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName)
 #' and
 #' [DisplayName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName)
-#' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
-#' `IdentityId` must be specified.
+#' in the *Amazon Web Services SSO Identity Store API Reference*. Either
+#' `IdentityName` or `IdentityId` must be specified.
 #' @param IdentityType &#91;required&#93; Specifies whether the identity to fetch is a user or a group.
 #'
 #' @return
@@ -1695,21 +1837,25 @@ emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
 }
 .emr$operations$list_bootstrap_actions <- emr_list_bootstrap_actions
 
-#' Provides the status of all clusters visible to this AWS account
+#' Provides the status of all clusters visible to this Amazon Web Services
+#' account
 #'
 #' @description
-#' Provides the status of all clusters visible to this AWS account. Allows
-#' you to filter the list of clusters based on certain criteria; for
-#' example, filtering by cluster creation date and time or by status. This
-#' call returns a maximum of 50 clusters per call, but returns a marker to
-#' track the paging of the cluster list across multiple ListClusters calls.
+#' Provides the status of all clusters visible to this Amazon Web Services
+#' account. Allows you to filter the list of clusters based on certain
+#' criteria; for example, filtering by cluster creation date and time or by
+#' status. This call returns a maximum of 50 clusters in unsorted order per
+#' call, but returns a marker to track the paging of the cluster list
+#' across multiple ListClusters calls.
 #'
 #' @usage
 #' emr_list_clusters(CreatedAfter, CreatedBefore, ClusterStates, Marker)
 #'
 #' @param CreatedAfter The creation date and time beginning value filter for listing clusters.
 #' @param CreatedBefore The creation date and time end value filter for listing clusters.
-#' @param ClusterStates The cluster state filters to apply when listing clusters.
+#' @param ClusterStates The cluster state filters to apply when listing clusters. Clusters that
+#' change state while this action runs may be not be returned as expected
+#' in the list of clusters.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
 #'
 #' @return
@@ -1848,12 +1994,14 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #'               VolumeSpecification = list(
 #'                 VolumeType = "string",
 #'                 Iops = 123,
-#'                 SizeInGB = 123
+#'                 SizeInGB = 123,
+#'                 Throughput = 123
 #'               ),
 #'               Device = "string"
 #'             )
 #'           ),
-#'           EbsOptimized = TRUE|FALSE
+#'           EbsOptimized = TRUE|FALSE,
+#'           CustomAmiId = "string"
 #'         )
 #'       ),
 #'       LaunchSpecifications = list(
@@ -1864,7 +2012,12 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #'           AllocationStrategy = "capacity-optimized"
 #'         ),
 #'         OnDemandSpecification = list(
-#'           AllocationStrategy = "lowest-price"
+#'           AllocationStrategy = "lowest-price",
+#'           CapacityReservationOptions = list(
+#'             UsageStrategy = "use-capacity-reservations-first",
+#'             CapacityReservationPreference = "open"|"none",
+#'             CapacityReservationResourceGroupArn = "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -1969,7 +2122,8 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
 #'           VolumeSpecification = list(
 #'             VolumeType = "string",
 #'             Iops = 123,
-#'             SizeInGB = 123
+#'             SizeInGB = 123,
+#'             Throughput = 123
 #'           ),
 #'           Device = "string"
 #'         )
@@ -2031,7 +2185,8 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
 #'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       CustomAmiId = "string"
 #'     )
 #'   ),
 #'   Marker = "string"
@@ -2280,6 +2435,73 @@ emr_list_notebook_executions <- function(EditorId = NULL, Status = NULL, From = 
 }
 .emr$operations$list_notebook_executions <- emr_list_notebook_executions
 
+#' Retrieves release labels of EMR services in the region where the API is
+#' called
+#'
+#' @description
+#' Retrieves release labels of EMR services in the region where the API is
+#' called.
+#'
+#' @usage
+#' emr_list_release_labels(Filters, NextToken, MaxResults)
+#'
+#' @param Filters Filters the results of the request. `Prefix` specifies the prefix of
+#' release labels to return. `Application` specifies the application
+#' (with/without version) of release labels to return.
+#' @param NextToken Specifies the next page of results. If `NextToken` is not specified,
+#' which is usually the case for the first request of ListReleaseLabels,
+#' the first page of results are determined by other filtering parameters
+#' or by the latest version. The
+#' [`list_release_labels`][emr_list_release_labels] request fails if the
+#' identity (Amazon Web Services account ID) and all filtering parameters
+#' are different from the original request, or if the `NextToken` is
+#' expired or tampered with.
+#' @param MaxResults Defines the maximum number of release labels to return in a single
+#' response. The default is `100`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReleaseLabels = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_release_labels(
+#'   Filters = list(
+#'     Prefix = "string",
+#'     Application = "string"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_list_release_labels
+emr_list_release_labels <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListReleaseLabels",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$list_release_labels_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .emr$list_release_labels_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$list_release_labels <- emr_list_release_labels
+
 #' Lists all the security configurations visible to this account, providing
 #' their creation dates and times, and their names
 #'
@@ -2339,12 +2561,15 @@ emr_list_security_configurations <- function(Marker = NULL) {
 .emr$operations$list_security_configurations <- emr_list_security_configurations
 
 #' Provides a list of steps for the cluster in reverse order unless you
-#' specify stepIds with the request of filter by StepStates
+#' specify stepIds with the request or filter by StepStates
 #'
 #' @description
 #' Provides a list of steps for the cluster in reverse order unless you
-#' specify `stepIds` with the request of filter by `StepStates`. You can
-#' specify a maximum of ten `stepIDs`.
+#' specify `stepIds` with the request or filter by `StepStates`. You can
+#' specify a maximum of 10 `stepIDs`. The CLI automatically paginates
+#' results to return a list greater than 50 steps. To return more than 50
+#' steps using the CLI, specify a `Marker`, which is a pagination token
+#' that indicates the next set of steps to retrieve.
 #'
 #' @usage
 #' emr_list_steps(ClusterId, StepStates, StepIds, Marker)
@@ -2354,7 +2579,11 @@ emr_list_security_configurations <- function(Marker = NULL) {
 #' @param StepIds The filter to limit the step list based on the identifier of the steps.
 #' You can specify a maximum of ten Step IDs. The character constraint
 #' applies to the overall length of the array.
-#' @param Marker The pagination token that indicates the next set of results to retrieve.
+#' @param Marker The maximum number of steps that a single [`list_steps`][emr_list_steps]
+#' action returns is 50. To return a longer list of steps, use multiple
+#' [`list_steps`][emr_list_steps] actions along with the `Marker`
+#' parameter, which is a pagination token that indicates the next set of
+#' results to retrieve.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2438,15 +2667,12 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
 }
 .emr$operations$list_steps <- emr_list_steps
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Returns a list of all user or group session mappings for the Amazon EMR
+#' Studio specified by StudioId
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
-#' Returns a list of all user or group session mappings for the EMR Studio
-#' specified by `StudioId`.
+#' Returns a list of all user or group session mappings for the Amazon EMR
+#' Studio specified by `StudioId`.
 #'
 #' @usage
 #' emr_list_studio_session_mappings(StudioId, IdentityType, Marker)
@@ -2506,16 +2732,13 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
 }
 .emr$operations$list_studio_session_mappings <- emr_list_studio_session_mappings
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Returns a list of all Amazon EMR Studios associated with the Amazon Web
+#' Services account
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
-#' Returns a list of all Amazon EMR Studios associated with the AWS
-#' account. The list includes details such as ID, Studio Access URL, and
-#' creation time for each Studio.
+#' Returns a list of all Amazon EMR Studios associated with the Amazon Web
+#' Services account. The list includes details such as ID, Studio Access
+#' URL, and creation time for each Studio.
 #'
 #' @usage
 #' emr_list_studios(Marker)
@@ -2533,6 +2756,7 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
 #'       VpcId = "string",
 #'       Description = "string",
 #'       Url = "string",
+#'       AuthMode = "SSO"|"IAM",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -2581,7 +2805,10 @@ emr_list_studios <- function(Marker = NULL) {
 #'
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param StepConcurrencyLevel The number of steps that can be executed concurrently. You can specify a
-#' maximum of 256 steps.
+#' minimum of 1 step and a maximum of 256 steps. We recommend that you do
+#' not change this parameter while steps are running or the
+#' `ActionOnFailure` setting may not behave as expected. For more
+#' information see Step$ActionOnFailure.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2635,7 +2862,7 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
 #' emr_modify_instance_fleet(ClusterId, InstanceFleet)
 #'
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
-#' @param InstanceFleet &#91;required&#93; The unique identifier of the instance fleet.
+#' @param InstanceFleet &#91;required&#93; The configuration parameters of the instance fleet.
 #'
 #' @return
 #' An empty list.
@@ -2713,6 +2940,7 @@ emr_modify_instance_fleet <- function(ClusterId, InstanceFleet) {
 #'           InstanceTerminationTimeout = 123
 #'         )
 #'       ),
+#'       ReconfigurationType = "OVERWRITE"|"MERGE",
 #'       Configurations = list(
 #'         list(
 #'           Classification = "string",
@@ -2887,13 +3115,66 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
 }
 .emr$operations$put_auto_scaling_policy <- emr_put_auto_scaling_policy
 
+#' Auto-termination is supported in Amazon EMR versions 5
+#'
+#' @description
+#' Auto-termination is supported in Amazon EMR versions 5.30.0 and 6.1.0
+#' and later. For more information, see [Using an auto-termination
+#' policy](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-auto-termination-policy.html).
+#' 
+#' Creates or updates an auto-termination policy for an Amazon EMR cluster.
+#' An auto-termination policy defines the amount of idle time in seconds
+#' after which a cluster automatically terminates. For alternative cluster
+#' termination options, see [Control cluster
+#' termination](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-termination.html).
+#'
+#' @usage
+#' emr_put_auto_termination_policy(ClusterId, AutoTerminationPolicy)
+#'
+#' @param ClusterId &#91;required&#93; Specifies the ID of the Amazon EMR cluster to which the auto-termination
+#' policy will be attached.
+#' @param AutoTerminationPolicy Specifies the auto-termination policy to attach to the cluster.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_auto_termination_policy(
+#'   ClusterId = "string",
+#'   AutoTerminationPolicy = list(
+#'     IdleTimeout = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_put_auto_termination_policy
+emr_put_auto_termination_policy <- function(ClusterId, AutoTerminationPolicy = NULL) {
+  op <- new_operation(
+    name = "PutAutoTerminationPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$put_auto_termination_policy_input(ClusterId = ClusterId, AutoTerminationPolicy = AutoTerminationPolicy)
+  output <- .emr$put_auto_termination_policy_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$put_auto_termination_policy <- emr_put_auto_termination_policy
+
 #' Creates or updates an Amazon EMR block public access configuration for
-#' your AWS account in the current Region
+#' your Amazon Web Services account in the current Region
 #'
 #' @description
 #' Creates or updates an Amazon EMR block public access configuration for
-#' your AWS account in the current Region. For more information see
-#' [Configure Block Public Access for Amazon
+#' your Amazon Web Services account in the current Region. For more
+#' information see [Configure Block Public Access for Amazon
 #' EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/) in the
 #' *Amazon EMR Management Guide*.
 #'
@@ -3058,6 +3339,47 @@ emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
 }
 .emr$operations$remove_auto_scaling_policy <- emr_remove_auto_scaling_policy
 
+#' Removes an auto-termination policy from an Amazon EMR cluster
+#'
+#' @description
+#' Removes an auto-termination policy from an Amazon EMR cluster.
+#'
+#' @usage
+#' emr_remove_auto_termination_policy(ClusterId)
+#'
+#' @param ClusterId &#91;required&#93; Specifies the ID of the Amazon EMR cluster from which the
+#' auto-termination policy will be removed.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_auto_termination_policy(
+#'   ClusterId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_remove_auto_termination_policy
+emr_remove_auto_termination_policy <- function(ClusterId) {
+  op <- new_operation(
+    name = "RemoveAutoTerminationPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$remove_auto_termination_policy_input(ClusterId = ClusterId)
+  output <- .emr$remove_auto_termination_policy_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$remove_auto_termination_policy <- emr_remove_auto_termination_policy
+
 #' Removes a managed scaling policy from a specified EMR cluster
 #'
 #' @description
@@ -3099,13 +3421,14 @@ emr_remove_managed_scaling_policy <- function(ClusterId) {
 }
 .emr$operations$remove_managed_scaling_policy <- emr_remove_managed_scaling_policy
 
-#' Removes tags from an Amazon EMR resource
+#' Removes tags from an Amazon EMR resource, such as a cluster or Amazon
+#' EMR Studio
 #'
 #' @description
-#' Removes tags from an Amazon EMR resource. Tags make it easier to
-#' associate clusters in various ways, such as grouping clusters to track
-#' your Amazon EMR resource allocation costs. For more information, see
-#' [Tag
+#' Removes tags from an Amazon EMR resource, such as a cluster or Amazon
+#' EMR Studio. Tags make it easier to associate resources in various ways,
+#' such as grouping clusters to track your Amazon EMR resource allocation
+#' costs. For more information, see [Tag
 #' Clusters](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 #' 
 #' The following example removes the stack tag with value Prod from a
@@ -3114,9 +3437,9 @@ emr_remove_managed_scaling_policy <- function(ClusterId) {
 #' @usage
 #' emr_remove_tags(ResourceId, TagKeys)
 #'
-#' @param ResourceId &#91;required&#93; The Amazon EMR resource identifier from which tags will be removed. This
-#' value must be a cluster identifier.
-#' @param TagKeys &#91;required&#93; A list of tag keys to remove from a resource.
+#' @param ResourceId &#91;required&#93; The Amazon EMR resource identifier from which tags will be removed. For
+#' example, a cluster identifier or an Amazon EMR Studio ID.
+#' @param TagKeys &#91;required&#93; A list of tag keys to remove from the resource.
 #'
 #' @return
 #' An empty list.
@@ -3175,8 +3498,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' SSH shell to connect to the master node and submitting queries directly
 #' to the software running on the master node, such as Hive and Hadoop. For
 #' more information on how to do this, see [Add More than 256 Steps to a
-#' Cluster](https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html)
-#' in the *Amazon EMR Management Guide*.
+#' Cluster](https://docs.aws.amazon.com/emr/latest/ManagementGuide/) in the
+#' *Amazon EMR Management Guide*.
 #' 
 #' For long running clusters, we recommend that you periodically store your
 #' results.
@@ -3193,15 +3516,15 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'   VisibleToAllUsers, JobFlowRole, ServiceRole, Tags,
 #'   SecurityConfiguration, AutoScalingRole, ScaleDownBehavior, CustomAmiId,
 #'   EbsRootVolumeSize, RepoUpgradeOnBoot, KerberosAttributes,
-#'   StepConcurrencyLevel, ManagedScalingPolicy, PlacementGroupConfigs)
+#'   StepConcurrencyLevel, ManagedScalingPolicy, PlacementGroupConfigs,
+#'   AutoTerminationPolicy, OSReleaseLabel)
 #'
 #' @param Name &#91;required&#93; The name of the job flow.
 #' @param LogUri The location in Amazon S3 to write the log files of the job flow. If a
 #' value is not provided, logs are not created.
-#' @param LogEncryptionKmsKeyId The AWS KMS customer master key (CMK) used for encrypting log files. If
-#' a value is not provided, the logs remain encrypted by AES-256. This
-#' attribute is only available with Amazon EMR version 5.30.0 and later,
-#' excluding Amazon EMR 6.0.0.
+#' @param LogEncryptionKmsKeyId The KMS key used for encrypting log files. If a value is not provided,
+#' the logs remain encrypted by AES-256. This attribute is only available
+#' with Amazon EMR version 5.30.0 and later, excluding Amazon EMR 6.0.0.
 #' @param AdditionalInfo A JSON string for selecting additional features.
 #' @param AmiVersion Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR
 #' releases 4.0 and later, `ReleaseLabel` is used. To specify a custom AMI,
@@ -3250,7 +3573,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' 
 #' -   "mapr-m7" - launch the cluster using MapR M7 Edition.
 #' 
-#' -   "hunk" - launch the cluster with the Hunk Big Data Analtics
+#' -   "hunk" - launch the cluster with the Hunk Big Data Analytics
 #'     Platform.
 #' 
 #' -   "hue"- launch the cluster with Hue installed.
@@ -3262,20 +3585,33 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @param Applications Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of
 #' applications for Amazon EMR to install and configure when launching the
 #' cluster. For a list of applications available for each Amazon EMR
-#' release version, see the [Amazon EMR Release
+#' release version, see the [Amazon EMRRelease
 #' Guide](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
 #' @param Configurations For Amazon EMR releases 4.0 and later. The list of configurations
 #' supplied for the EMR cluster you are creating.
-#' @param VisibleToAllUsers A value of `true` indicates that all IAM users in the AWS account can
-#' perform cluster actions if they have the proper IAM policy permissions.
-#' This is the default. A value of `false` indicates that only the IAM user
-#' who created the cluster can perform actions.
+#' @param VisibleToAllUsers The VisibleToAllUsers parameter is no longer supported. By default, the
+#' value is set to `true`. Setting it to `false` now has no effect.
+#' 
+#' Set this value to `true` so that IAM principals in the Amazon Web
+#' Services account associated with the cluster can perform EMR actions on
+#' the cluster that their IAM policies allow. This value defaults to `true`
+#' for clusters created using the EMR API or the CLI
+#' [create-cluster](https://docs.aws.amazon.com/cli/latest/reference/emr/create-cluster.html)
+#' command.
+#' 
+#' When set to `false`, only the IAM principal that created the cluster and
+#' the Amazon Web Services account root user can perform EMR actions for
+#' the cluster, regardless of the IAM permissions policies attached to
+#' other IAM principals. For more information, see [Understanding the EMR
+#' Cluster VisibleToAllUsers
+#' Setting](https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_iam_emr-with-iam.html#security_set_visible_to_all_users)
+#' in the *Amazon EMRManagement Guide*.
 #' @param JobFlowRole Also called instance profile and EC2 role. An IAM role for an EMR
 #' cluster. The EC2 instances of the cluster assume this role. The default
 #' role is `EMR_EC2_DefaultRole`. In order to use the default role, you
 #' must have already created it using the CLI or console.
-#' @param ServiceRole The IAM role that will be assumed by the Amazon EMR service to access
-#' AWS resources on your behalf.
+#' @param ServiceRole The IAM role that Amazon EMR assumes in order to access Amazon Web
+#' Services resources on your behalf.
 #' @param Tags A list of tags to associate with a cluster and propagate to Amazon EC2
 #' instances.
 #' @param SecurityConfiguration The name of a security configuration to apply to the cluster.
@@ -3330,6 +3666,10 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' default value is `1`. The maximum value is `256`.
 #' @param ManagedScalingPolicy The specified managed scaling policy for an Amazon EMR cluster.
 #' @param PlacementGroupConfigs The specified placement group configuration for an Amazon EMR cluster.
+#' @param AutoTerminationPolicy 
+#' @param OSReleaseLabel Specifies a particular Amazon Linux release for all nodes in a cluster
+#' launch RunJobFlow request. If a release is not specified, Amazon EMR
+#' uses the latest validated Amazon Linux release for cluster launch.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3376,7 +3716,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'               VolumeSpecification = list(
 #'                 VolumeType = "string",
 #'                 Iops = 123,
-#'                 SizeInGB = 123
+#'                 SizeInGB = 123,
+#'                 Throughput = 123
 #'               ),
 #'               VolumesPerInstance = 123
 #'             )
@@ -3420,7 +3761,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'               )
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         CustomAmiId = "string"
 #'       )
 #'     ),
 #'     InstanceFleets = list(
@@ -3441,7 +3783,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'                   VolumeSpecification = list(
 #'                     VolumeType = "string",
 #'                     Iops = 123,
-#'                     SizeInGB = 123
+#'                     SizeInGB = 123,
+#'                     Throughput = 123
 #'                   ),
 #'                   VolumesPerInstance = 123
 #'                 )
@@ -3456,7 +3799,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'                   "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             CustomAmiId = "string"
 #'           )
 #'         ),
 #'         LaunchSpecifications = list(
@@ -3467,7 +3811,12 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'             AllocationStrategy = "capacity-optimized"
 #'           ),
 #'           OnDemandSpecification = list(
-#'             AllocationStrategy = "lowest-price"
+#'             AllocationStrategy = "lowest-price",
+#'             CapacityReservationOptions = list(
+#'               UsageStrategy = "use-capacity-reservations-first",
+#'               CapacityReservationPreference = "open"|"none",
+#'               CapacityReservationResourceGroupArn = "string"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -3595,21 +3944,25 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'       InstanceRole = "MASTER"|"CORE"|"TASK",
 #'       PlacementStrategy = "SPREAD"|"PARTITION"|"CLUSTER"|"NONE"
 #'     )
-#'   )
+#'   ),
+#'   AutoTerminationPolicy = list(
+#'     IdleTimeout = 123
+#'   ),
+#'   OSReleaseLabel = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname emr_run_job_flow
-emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL) {
+emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL) {
   op <- new_operation(
     name = "RunJobFlow",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs)
+  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel)
   output <- .emr$run_job_flow_output()
   config <- get_config()
   svc <- .emr$service(config)
@@ -3690,30 +4043,38 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
 }
 .emr$operations$set_termination_protection <- emr_set_termination_protection
 
-#' Sets the Cluster$VisibleToAllUsers value, which determines whether the
-#' cluster is visible to all IAM users of the AWS account associated with
-#' the cluster
+#' The SetVisibleToAllUsers parameter is no longer supported
 #'
 #' @description
-#' Sets the Cluster$VisibleToAllUsers value, which determines whether the
-#' cluster is visible to all IAM users of the AWS account associated with
-#' the cluster. Only the IAM user who created the cluster or the AWS
-#' account root user can call this action. The default value, `true`,
-#' indicates that all IAM users in the AWS account can perform cluster
-#' actions if they have the proper IAM policy permissions. If set to
-#' `false`, only the IAM user that created the cluster can perform actions.
-#' This action works on running clusters. You can override the default
-#' `true` setting when you create a cluster by using the
-#' `VisibleToAllUsers` parameter with [`run_job_flow`][emr_run_job_flow].
+#' The SetVisibleToAllUsers parameter is no longer supported. Your cluster
+#' may be visible to all users in your account. To restrict cluster access
+#' using an IAM policy, see [Identity and Access Management for
+#' EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-access-iam.html).
+#' 
+#' Sets the Cluster$VisibleToAllUsers value for an EMR cluster. When
+#' `true`, IAM principals in the Amazon Web Services account can perform
+#' EMR cluster actions that their IAM policies allow. When `false`, only
+#' the IAM principal that created the cluster and the Amazon Web Services
+#' account root user can perform EMR actions on the cluster, regardless of
+#' IAM permissions policies attached to other IAM principals.
+#' 
+#' This action works on running clusters. When you create a cluster, use
+#' the RunJobFlowInput$VisibleToAllUsers parameter.
+#' 
+#' For more information, see [Understanding the EMR Cluster
+#' VisibleToAllUsers
+#' Setting](https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_iam_emr-with-iam.html#security_set_visible_to_all_users)
+#' in the *Amazon EMRManagement Guide*.
 #'
 #' @usage
 #' emr_set_visible_to_all_users(JobFlowIds, VisibleToAllUsers)
 #'
 #' @param JobFlowIds &#91;required&#93; The unique identifier of the job flow (cluster).
-#' @param VisibleToAllUsers &#91;required&#93; A value of `true` indicates that all IAM users in the AWS account can
-#' perform cluster actions if they have the proper IAM policy permissions.
-#' This is the default. A value of `false` indicates that only the IAM user
-#' who created the cluster can perform actions.
+#' @param VisibleToAllUsers &#91;required&#93; A value of `true` indicates that an IAM principal in the Amazon Web
+#' Services account can perform EMR actions on the cluster that the IAM
+#' policies attached to the principal allow. A value of `false` indicates
+#' that only the IAM principal that created the cluster and the Amazon Web
+#' Services root user can perform EMR actions on the cluster.
 #'
 #' @return
 #' An empty list.
@@ -3924,13 +4285,68 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 }
 .emr$operations$terminate_job_flows <- emr_terminate_job_flows
 
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change
+#' Updates an Amazon EMR Studio configuration, including attributes such as
+#' name, description, and subnets
 #'
 #' @description
-#' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-#' subject to change.
-#' 
+#' Updates an Amazon EMR Studio configuration, including attributes such as
+#' name, description, and subnets.
+#'
+#' @usage
+#' emr_update_studio(StudioId, Name, Description, SubnetIds,
+#'   DefaultS3Location)
+#'
+#' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio to update.
+#' @param Name A descriptive name for the Amazon EMR Studio.
+#' @param Description A detailed description to assign to the Amazon EMR Studio.
+#' @param SubnetIds A list of subnet IDs to associate with the Amazon EMR Studio. The list
+#' can include new subnet IDs, but must also include all of the subnet IDs
+#' previously associated with the Studio. The list order does not matter. A
+#' Studio can have a maximum of 5 subnets. The subnets must belong to the
+#' same VPC as the Studio.
+#' @param DefaultS3Location The Amazon S3 location to back up Workspaces and notebook files for the
+#' Amazon EMR Studio.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_studio(
+#'   StudioId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
+#'   DefaultS3Location = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_update_studio
+emr_update_studio <- function(StudioId, Name = NULL, Description = NULL, SubnetIds = NULL, DefaultS3Location = NULL) {
+  op <- new_operation(
+    name = "UpdateStudio",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$update_studio_input(StudioId = StudioId, Name = Name, Description = Description, SubnetIds = SubnetIds, DefaultS3Location = DefaultS3Location)
+  output <- .emr$update_studio_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$update_studio <- emr_update_studio
+
+#' Updates the session policy attached to the user or group for the
+#' specified Amazon EMR Studio
+#'
+#' @description
 #' Updates the session policy attached to the user or group for the
 #' specified Amazon EMR Studio.
 #'
@@ -3938,20 +4354,20 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #' emr_update_studio_session_mapping(StudioId, IdentityId, IdentityName,
 #'   IdentityType, SessionPolicyArn)
 #'
-#' @param StudioId &#91;required&#93; The ID of the EMR Studio.
+#' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio.
 #' @param IdentityId The globally unique identifier (GUID) of the user or group. For more
 #' information, see
 #' [UserId](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
 #' and
 #' [GroupId](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-GroupId)
-#' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
-#' `IdentityId` must be specified.
+#' in the *Amazon Web Services SSO Identity Store API Reference*. Either
+#' `IdentityName` or `IdentityId` must be specified.
 #' @param IdentityName The name of the user or group to update. For more information, see
-#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId)
+#' [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName)
 #' and
 #' [DisplayName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName)
-#' in the *AWS SSO Identity Store API Reference*. Either `IdentityName` or
-#' `IdentityId` must be specified.
+#' in the *Amazon Web Services SSO Identity Store API Reference*. Either
+#' `IdentityName` or `IdentityId` must be specified.
 #' @param IdentityType &#91;required&#93; Specifies whether the identity to update is a user or a group.
 #' @param SessionPolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the session policy to associate with
 #' the specified user or group.

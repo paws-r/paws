@@ -3,38 +3,41 @@
 #' @include codegurureviewer_service.R
 NULL
 
-#' Use to associate an AWS CodeCommit repository or a repostory managed by
-#' AWS CodeStar Connections with Amazon CodeGuru Reviewer
+#' Use to associate an Amazon Web Services CodeCommit repository or a
+#' repostory managed by Amazon Web Services CodeStar Connections with
+#' Amazon CodeGuru Reviewer
 #'
 #' @description
-#' Use to associate an AWS CodeCommit repository or a repostory managed by
-#' AWS CodeStar Connections with Amazon CodeGuru Reviewer. When you
-#' associate a repository, CodeGuru Reviewer reviews source code changes in
-#' the repository's pull requests and provides automatic recommendations.
-#' You can view recommendations using the CodeGuru Reviewer console. For
-#' more information, see [Recommendations in Amazon CodeGuru
+#' Use to associate an Amazon Web Services CodeCommit repository or a
+#' repostory managed by Amazon Web Services CodeStar Connections with
+#' Amazon CodeGuru Reviewer. When you associate a repository, CodeGuru
+#' Reviewer reviews source code changes in the repository's pull requests
+#' and provides automatic recommendations. You can view recommendations
+#' using the CodeGuru Reviewer console. For more information, see
+#' [Recommendations in Amazon CodeGuru
 #' Reviewer](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html)
 #' in the *Amazon CodeGuru Reviewer User Guide.*
 #' 
-#' If you associate a CodeCommit repository, it must be in the same AWS
-#' Region and AWS account where its CodeGuru Reviewer code reviews are
-#' configured.
+#' If you associate a CodeCommit or S3 repository, it must be in the same
+#' Amazon Web Services Region and Amazon Web Services account where its
+#' CodeGuru Reviewer code reviews are configured.
 #' 
-#' Bitbucket and GitHub Enterprise Server repositories are managed by AWS
-#' CodeStar Connections to connect to CodeGuru Reviewer. For more
-#' information, see Connect to a repository source provider in the *Amazon
-#' CodeGuru Reviewer User Guide.*
+#' Bitbucket and GitHub Enterprise Server repositories are managed by
+#' Amazon Web Services CodeStar Connections to connect to CodeGuru
+#' Reviewer. For more information, see [Associate a
+#' repository](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-associate-repository.html)
+#' in the *Amazon CodeGuru Reviewer User Guide.*
 #' 
-#' You cannot use the CodeGuru Reviewer SDK or the AWS CLI to associate a
-#' GitHub repository with Amazon CodeGuru Reviewer. To associate a GitHub
-#' repository, use the console. For more information, see [Getting started
-#' with CodeGuru
+#' You cannot use the CodeGuru Reviewer SDK or the Amazon Web Services CLI
+#' to associate a GitHub repository with Amazon CodeGuru Reviewer. To
+#' associate a GitHub repository, use the console. For more information,
+#' see [Getting started with CodeGuru
 #' Reviewer](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-with-guru.html)
 #' in the *CodeGuru Reviewer User Guide.*
 #'
 #' @usage
 #' codegurureviewer_associate_repository(Repository, ClientRequestToken,
-#'   Tags)
+#'   Tags, KMSKeyDetails)
 #'
 #' @param Repository &#91;required&#93; The repository to associate.
 #' @param ClientRequestToken Amazon CodeGuru Reviewer uses this value to prevent the accidental
@@ -50,6 +53,14 @@ NULL
 #'     `111122223333`, `Production`, or a team name). Omitting the tag
 #'     value is the same as using an empty string. Like tag keys, tag
 #'     values are case sensitive.
+#' @param KMSKeyDetails A `KMSKeyDetails` object that contains:
+#' 
+#' -   The encryption option for this repository association. It is either
+#'     owned by Amazon Web Services Key Management Service (KMS)
+#'     (`AWS_OWNED_CMK`) or customer managed (`CUSTOMER_MANAGED_CMK`).
+#' 
+#' -   The ID of the Amazon Web Services KMS key that is associated with
+#'     this respository association.
 #'
 #' @return
 #' A list with the following syntax:
@@ -61,7 +72,7 @@ NULL
 #'     ConnectionArn = "string",
 #'     Name = "string",
 #'     Owner = "string",
-#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"|"S3Bucket",
 #'     State = "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated",
 #'     StateReason = "string",
 #'     LastUpdatedTimeStamp = as.POSIXct(
@@ -69,6 +80,17 @@ NULL
 #'     ),
 #'     CreatedTimeStamp = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     KMSKeyDetails = list(
+#'       KMSKeyId = "string",
+#'       EncryptionOption = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
+#'     ),
+#'     S3RepositoryDetails = list(
+#'       BucketName = "string",
+#'       CodeArtifacts = list(
+#'         SourceCodeArtifactsObjectKey = "string",
+#'         BuildArtifactsObjectKey = "string"
+#'       )
 #'     )
 #'   ),
 #'   Tags = list(
@@ -93,11 +115,19 @@ NULL
 #'       Name = "string",
 #'       ConnectionArn = "string",
 #'       Owner = "string"
+#'     ),
+#'     S3Bucket = list(
+#'       Name = "string",
+#'       BucketName = "string"
 #'     )
 #'   ),
 #'   ClientRequestToken = "string",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   KMSKeyDetails = list(
+#'     KMSKeyId = "string",
+#'     EncryptionOption = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
 #'   )
 #' )
 #' ```
@@ -105,14 +135,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_associate_repository
-codegurureviewer_associate_repository <- function(Repository, ClientRequestToken = NULL, Tags = NULL) {
+codegurureviewer_associate_repository <- function(Repository, ClientRequestToken = NULL, Tags = NULL, KMSKeyDetails = NULL) {
   op <- new_operation(
     name = "AssociateRepository",
     http_method = "POST",
     http_path = "/associations",
     paginator = list()
   )
-  input <- .codegurureviewer$associate_repository_input(Repository = Repository, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  input <- .codegurureviewer$associate_repository_input(Repository = Repository, ClientRequestToken = ClientRequestToken, Tags = Tags, KMSKeyDetails = KMSKeyDetails)
   output <- .codegurureviewer$associate_repository_output()
   config <- get_config()
   svc <- .codegurureviewer$service(config)
@@ -129,15 +159,14 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
 #' [`CodeReviewType`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReviewType.html)
 #' of `RepositoryAnalysis`. This type of code review analyzes all code
 #' under a specified branch in an associated repository. `PullRequest` code
-#' reviews are automatically triggered by a pull request so cannot be
-#' created using this method.
+#' reviews are automatically triggered by a pull request.
 #'
 #' @usage
 #' codegurureviewer_create_code_review(Name, RepositoryAssociationArn,
 #'   Type, ClientRequestToken)
 #'
-#' @param Name &#91;required&#93; The name of the code review. The name of each code review in your AWS
-#' account must be unique.
+#' @param Name &#91;required&#93; The name of the code review. The name of each code review in your Amazon
+#' Web Services account must be unique.
 #' @param RepositoryAssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
 #' object. You can retrieve this ARN by calling
@@ -161,7 +190,7 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
 #'     CodeReviewArn = "string",
 #'     RepositoryName = "string",
 #'     Owner = "string",
-#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"|"S3Bucket",
 #'     State = "Completed"|"Pending"|"Failed"|"Deleting",
 #'     StateReason = "string",
 #'     CreatedTimeStamp = as.POSIXct(
@@ -175,17 +204,46 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
 #'     SourceCodeType = list(
 #'       CommitDiff = list(
 #'         SourceCommit = "string",
-#'         DestinationCommit = "string"
+#'         DestinationCommit = "string",
+#'         MergeBaseCommit = "string"
 #'       ),
 #'       RepositoryHead = list(
 #'         BranchName = "string"
+#'       ),
+#'       BranchDiff = list(
+#'         SourceBranchName = "string",
+#'         DestinationBranchName = "string"
+#'       ),
+#'       S3BucketRepository = list(
+#'         Name = "string",
+#'         Details = list(
+#'           BucketName = "string",
+#'           CodeArtifacts = list(
+#'             SourceCodeArtifactsObjectKey = "string",
+#'             BuildArtifactsObjectKey = "string"
+#'           )
+#'         )
+#'       ),
+#'       RequestMetadata = list(
+#'         RequestId = "string",
+#'         Requester = "string",
+#'         EventInfo = list(
+#'           Name = "string",
+#'           State = "string"
+#'         ),
+#'         VendorName = "GitHub"|"GitLab"|"NativeS3"
 #'       )
 #'     ),
 #'     AssociationArn = "string",
 #'     Metrics = list(
 #'       MeteredLinesOfCodeCount = 123,
+#'       SuppressedLinesOfCodeCount = 123,
 #'       FindingsCount = 123
-#'     )
+#'     ),
+#'     AnalysisTypes = list(
+#'       "Security"|"CodeQuality"
+#'     ),
+#'     ConfigFileState = "Present"|"Absent"|"PresentWithErrors"
 #'   )
 #' )
 #' ```
@@ -199,7 +257,43 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
 #'     RepositoryAnalysis = list(
 #'       RepositoryHead = list(
 #'         BranchName = "string"
+#'       ),
+#'       SourceCodeType = list(
+#'         CommitDiff = list(
+#'           SourceCommit = "string",
+#'           DestinationCommit = "string",
+#'           MergeBaseCommit = "string"
+#'         ),
+#'         RepositoryHead = list(
+#'           BranchName = "string"
+#'         ),
+#'         BranchDiff = list(
+#'           SourceBranchName = "string",
+#'           DestinationBranchName = "string"
+#'         ),
+#'         S3BucketRepository = list(
+#'           Name = "string",
+#'           Details = list(
+#'             BucketName = "string",
+#'             CodeArtifacts = list(
+#'               SourceCodeArtifactsObjectKey = "string",
+#'               BuildArtifactsObjectKey = "string"
+#'             )
+#'           )
+#'         ),
+#'         RequestMetadata = list(
+#'           RequestId = "string",
+#'           Requester = "string",
+#'           EventInfo = list(
+#'             Name = "string",
+#'             State = "string"
+#'           ),
+#'           VendorName = "GitHub"|"GitLab"|"NativeS3"
+#'         )
 #'       )
+#'     ),
+#'     AnalysisTypes = list(
+#'       "Security"|"CodeQuality"
 #'     )
 #'   ),
 #'   ClientRequestToken = "string"
@@ -249,7 +343,7 @@ codegurureviewer_create_code_review <- function(Name, RepositoryAssociationArn, 
 #'     CodeReviewArn = "string",
 #'     RepositoryName = "string",
 #'     Owner = "string",
-#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"|"S3Bucket",
 #'     State = "Completed"|"Pending"|"Failed"|"Deleting",
 #'     StateReason = "string",
 #'     CreatedTimeStamp = as.POSIXct(
@@ -263,17 +357,46 @@ codegurureviewer_create_code_review <- function(Name, RepositoryAssociationArn, 
 #'     SourceCodeType = list(
 #'       CommitDiff = list(
 #'         SourceCommit = "string",
-#'         DestinationCommit = "string"
+#'         DestinationCommit = "string",
+#'         MergeBaseCommit = "string"
 #'       ),
 #'       RepositoryHead = list(
 #'         BranchName = "string"
+#'       ),
+#'       BranchDiff = list(
+#'         SourceBranchName = "string",
+#'         DestinationBranchName = "string"
+#'       ),
+#'       S3BucketRepository = list(
+#'         Name = "string",
+#'         Details = list(
+#'           BucketName = "string",
+#'           CodeArtifacts = list(
+#'             SourceCodeArtifactsObjectKey = "string",
+#'             BuildArtifactsObjectKey = "string"
+#'           )
+#'         )
+#'       ),
+#'       RequestMetadata = list(
+#'         RequestId = "string",
+#'         Requester = "string",
+#'         EventInfo = list(
+#'           Name = "string",
+#'           State = "string"
+#'         ),
+#'         VendorName = "GitHub"|"GitLab"|"NativeS3"
 #'       )
 #'     ),
 #'     AssociationArn = "string",
 #'     Metrics = list(
 #'       MeteredLinesOfCodeCount = 123,
+#'       SuppressedLinesOfCodeCount = 123,
 #'       FindingsCount = 123
-#'     )
+#'     ),
+#'     AnalysisTypes = list(
+#'       "Security"|"CodeQuality"
+#'     ),
+#'     ConfigFileState = "Present"|"Absent"|"PresentWithErrors"
 #'   )
 #' )
 #' ```
@@ -322,11 +445,11 @@ codegurureviewer_describe_code_review <- function(CodeReviewArn) {
 #' @param UserId Optional parameter to describe the feedback for a given user. If this is
 #' not supplied, it defaults to the user making the request.
 #' 
-#' The `UserId` is an IAM principal that can be specified as an AWS account
-#' ID or an Amazon Resource Name (ARN). For more information, see
-#' [Specifying a
+#' The `UserId` is an IAM principal that can be specified as an Amazon Web
+#' Services account ID or an Amazon Resource Name (ARN). For more
+#' information, see [Specifying a
 #' Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#Principal_specifying)
-#' in the *AWS Identity and Access Management User Guide*.
+#' in the *Amazon Web Services Identity and Access Management User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -406,7 +529,7 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
 #'     ConnectionArn = "string",
 #'     Name = "string",
 #'     Owner = "string",
-#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"|"S3Bucket",
 #'     State = "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated",
 #'     StateReason = "string",
 #'     LastUpdatedTimeStamp = as.POSIXct(
@@ -414,6 +537,17 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
 #'     ),
 #'     CreatedTimeStamp = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     KMSKeyDetails = list(
+#'       KMSKeyId = "string",
+#'       EncryptionOption = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
+#'     ),
+#'     S3RepositoryDetails = list(
+#'       BucketName = "string",
+#'       CodeArtifacts = list(
+#'         SourceCodeArtifactsObjectKey = "string",
+#'         BuildArtifactsObjectKey = "string"
+#'       )
 #'     )
 #'   ),
 #'   Tags = list(
@@ -475,7 +609,7 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
 #'     ConnectionArn = "string",
 #'     Name = "string",
 #'     Owner = "string",
-#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'     ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"|"S3Bucket",
 #'     State = "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated",
 #'     StateReason = "string",
 #'     LastUpdatedTimeStamp = as.POSIXct(
@@ -483,6 +617,17 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
 #'     ),
 #'     CreatedTimeStamp = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     KMSKeyDetails = list(
+#'       KMSKeyId = "string",
+#'       EncryptionOption = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK"
+#'     ),
+#'     S3RepositoryDetails = list(
+#'       BucketName = "string",
+#'       CodeArtifacts = list(
+#'         SourceCodeArtifactsObjectKey = "string",
+#'         BuildArtifactsObjectKey = "string"
+#'       )
 #'     )
 #'   ),
 #'   Tags = list(
@@ -565,7 +710,7 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 #'       CodeReviewArn = "string",
 #'       RepositoryName = "string",
 #'       Owner = "string",
-#'       ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'       ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"|"S3Bucket",
 #'       State = "Completed"|"Pending"|"Failed"|"Deleting",
 #'       CreatedTimeStamp = as.POSIXct(
 #'         "2015-01-01"
@@ -577,7 +722,41 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 #'       PullRequestId = "string",
 #'       MetricsSummary = list(
 #'         MeteredLinesOfCodeCount = 123,
+#'         SuppressedLinesOfCodeCount = 123,
 #'         FindingsCount = 123
+#'       ),
+#'       SourceCodeType = list(
+#'         CommitDiff = list(
+#'           SourceCommit = "string",
+#'           DestinationCommit = "string",
+#'           MergeBaseCommit = "string"
+#'         ),
+#'         RepositoryHead = list(
+#'           BranchName = "string"
+#'         ),
+#'         BranchDiff = list(
+#'           SourceBranchName = "string",
+#'           DestinationBranchName = "string"
+#'         ),
+#'         S3BucketRepository = list(
+#'           Name = "string",
+#'           Details = list(
+#'             BucketName = "string",
+#'             CodeArtifacts = list(
+#'               SourceCodeArtifactsObjectKey = "string",
+#'               BuildArtifactsObjectKey = "string"
+#'             )
+#'           )
+#'         ),
+#'         RequestMetadata = list(
+#'           RequestId = "string",
+#'           Requester = "string",
+#'           EventInfo = list(
+#'             Name = "string",
+#'             State = "string"
+#'           ),
+#'           VendorName = "GitHub"|"GitLab"|"NativeS3"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -589,7 +768,7 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 #' ```
 #' svc$list_code_reviews(
 #'   ProviderTypes = list(
-#'     "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"
+#'     "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"|"S3Bucket"
 #'   ),
 #'   States = list(
 #'     "Completed"|"Pending"|"Failed"|"Deleting"
@@ -645,14 +824,15 @@ codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NU
 #' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`CodeReview`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
 #' object.
-#' @param UserIds An AWS user's account ID or Amazon Resource Name (ARN). Use this ID to
-#' query the recommendation feedback for a code review from that user.
+#' @param UserIds An Amazon Web Services user's account ID or Amazon Resource Name (ARN).
+#' Use this ID to query the recommendation feedback for a code review from
+#' that user.
 #' 
-#' The `UserId` is an IAM principal that can be specified as an AWS account
-#' ID or an Amazon Resource Name (ARN). For more information, see
-#' [Specifying a
+#' The `UserId` is an IAM principal that can be specified as an Amazon Web
+#' Services account ID or an Amazon Resource Name (ARN). For more
+#' information, see [Specifying a
 #' Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#Principal_specifying)
-#' in the *AWS Identity and Access Management User Guide*.
+#' in the *Amazon Web Services Identity and Access Management User Guide*.
 #' @param RecommendationIds Used to query the recommendation feedback for a given recommendation.
 #'
 #' @return
@@ -733,7 +913,18 @@ codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxR
 #'       RecommendationId = "string",
 #'       StartLine = 123,
 #'       EndLine = 123,
-#'       Description = "string"
+#'       Description = "string",
+#'       RecommendationCategory = "AWSBestPractices"|"AWSCloudFormationIssues"|"DuplicateCode"|"CodeMaintenanceIssues"|"ConcurrencyIssues"|"InputValidations"|"PythonBestPractices"|"JavaBestPractices"|"ResourceLeaks"|"SecurityIssues"|"CodeInconsistencies",
+#'       RuleMetadata = list(
+#'         RuleId = "string",
+#'         RuleName = "string",
+#'         ShortDescription = "string",
+#'         LongDescription = "string",
+#'         RuleTags = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Severity = "Info"|"Low"|"Medium"|"High"|"Critical"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -825,10 +1016,10 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #'     repositories](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html)
 #'     in the *Amazon CodeGuru Reviewer User Guide*.
 #' @param Names List of repository names to use as a filter.
-#' @param Owners List of owners to use as a filter. For AWS CodeCommit, it is the name of
-#' the CodeCommit account that was used to associate the repository. For
-#' other repository source providers, such as Bitbucket and GitHub
-#' Enterprise Server, this is name of the account that was used to
+#' @param Owners List of owners to use as a filter. For Amazon Web Services CodeCommit,
+#' it is the name of the CodeCommit account that was used to associate the
+#' repository. For other repository source providers, such as Bitbucket and
+#' GitHub Enterprise Server, this is name of the account that was used to
 #' associate the repository.
 #' @param MaxResults The maximum number of repository association results returned by
 #' [`list_repository_associations`][codegurureviewer_list_repository_associations]
@@ -865,7 +1056,7 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #'       AssociationId = "string",
 #'       Name = "string",
 #'       Owner = "string",
-#'       ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer",
+#'       ProviderType = "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"|"S3Bucket",
 #'       State = "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated"
 #'     )
 #'   ),
@@ -877,7 +1068,7 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #' ```
 #' svc$list_repository_associations(
 #'   ProviderTypes = list(
-#'     "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"
+#'     "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"|"S3Bucket"
 #'   ),
 #'   States = list(
 #'     "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated"

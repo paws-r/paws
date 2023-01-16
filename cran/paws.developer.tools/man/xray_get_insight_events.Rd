@@ -5,7 +5,7 @@
 \title{X-Ray reevaluates insights periodically until they're resolved, and
 records each intermediate state as an event}
 \usage{
-xray_get_insight_events(InsightId, MaxResults, NextToken)
+xray_get_insight_events(InsightId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{InsightId}{[required] The insight's unique identifier. Use the GetInsightSummaries action to
@@ -16,54 +16,9 @@ retrieve an InsightId.}
 \item{NextToken}{Specify the pagination token returned by a previous request to retrieve
 the next page of events.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InsightEvents = list(
-    list(
-      Summary = "string",
-      EventTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ClientRequestImpactStatistics = list(
-        FaultCount = 123,
-        OkCount = 123,
-        TotalCount = 123
-      ),
-      RootCauseServiceRequestImpactStatistics = list(
-        FaultCount = 123,
-        OkCount = 123,
-        TotalCount = 123
-      ),
-      TopAnomalousServices = list(
-        list(
-          ServiceId = list(
-            Name = "string",
-            Names = list(
-              "string"
-            ),
-            AccountId = "string",
-            Type = "string"
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-X-Ray reevaluates insights periodically until they're resolved, and
-records each intermediate state as an event. You can review an insight's
-events in the Impact Timeline on the Inspect page in the X-Ray console.
-}
-\section{Request syntax}{
-\preformatted{svc$get_insight_events(
-  InsightId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+X-Ray reevaluates insights periodically until they're resolved, and records each intermediate state as an event. You can review an insight's events in the Impact Timeline on the Inspect page in the X-Ray console.
 
+See \url{https://paws-r.github.io/docs/xray/get_insight_events.html} for full documentation.
+}
 \keyword{internal}

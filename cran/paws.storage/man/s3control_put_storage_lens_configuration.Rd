@@ -4,8 +4,12 @@
 \alias{s3control_put_storage_lens_configuration}
 \title{Puts an Amazon S3 Storage Lens configuration}
 \usage{
-s3control_put_storage_lens_configuration(ConfigId, AccountId,
-  StorageLensConfiguration, Tags)
+s3control_put_storage_lens_configuration(
+  ConfigId,
+  AccountId,
+  StorageLensConfiguration,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ConfigId}{[required] The ID of the S3 Storage Lens configuration.}
@@ -18,90 +22,9 @@ s3control_put_storage_lens_configuration(ConfigId, AccountId,
 
 You can set up to a maximum of 50 tags.}
 }
-\value{
-An empty list.
-}
 \description{
-Puts an Amazon S3 Storage Lens configuration. For more information about
-S3 Storage Lens, see Working with Amazon S3 Storage Lens in the \emph{Amazon
-Simple Storage Service Developer Guide}.
+Puts an Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html}{Working with Amazon S3 Storage Lens} in the \emph{Amazon S3 User Guide}.
 
-To use this action, you must have permission to perform the
-\code{s3:PutStorageLensConfiguration} action. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html#storage_lens_IAM}{Setting permissions to use Amazon S3 Storage Lens}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+See \url{https://paws-r.github.io/docs/s3control/put_storage_lens_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_storage_lens_configuration(
-  ConfigId = "string",
-  AccountId = "string",
-  StorageLensConfiguration = list(
-    Id = "string",
-    AccountLevel = list(
-      ActivityMetrics = list(
-        IsEnabled = TRUE|FALSE
-      ),
-      BucketLevel = list(
-        ActivityMetrics = list(
-          IsEnabled = TRUE|FALSE
-        ),
-        PrefixLevel = list(
-          StorageMetrics = list(
-            IsEnabled = TRUE|FALSE,
-            SelectionCriteria = list(
-              Delimiter = "string",
-              MaxDepth = 123,
-              MinStorageBytesPercentage = 123.0
-            )
-          )
-        )
-      )
-    ),
-    Include = list(
-      Buckets = list(
-        "string"
-      ),
-      Regions = list(
-        "string"
-      )
-    ),
-    Exclude = list(
-      Buckets = list(
-        "string"
-      ),
-      Regions = list(
-        "string"
-      )
-    ),
-    DataExport = list(
-      S3BucketDestination = list(
-        Format = "CSV"|"Parquet",
-        OutputSchemaVersion = "V_1",
-        AccountId = "string",
-        Arn = "string",
-        Prefix = "string",
-        Encryption = list(
-          SSES3 = list(),
-          SSEKMS = list(
-            KeyId = "string"
-          )
-        )
-      )
-    ),
-    IsEnabled = TRUE|FALSE,
-    AwsOrg = list(
-      Arn = "string"
-    ),
-    StorageLensArn = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

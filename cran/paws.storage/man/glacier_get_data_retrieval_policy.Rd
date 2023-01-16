@@ -15,38 +15,9 @@ You can either specify an AWS account ID or optionally a single '\code{-}'
 associated with the credentials used to sign the request. If you specify
 your account ID, do not include any hyphens ('-') in the ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Policy = list(
-    Rules = list(
-      list(
-        Strategy = "string",
-        BytesPerHour = 123
-      )
-    )
-  )
-)
-}
-}
 \description{
-This operation returns the current data retrieval policy for the account
-and region specified in the GET request. For more information about data
-retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html}{Amazon Glacier Data Retrieval Policies}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_data_retrieval_policy(
-  accountId = "string"
-)
-}
-}
+This operation returns the current data retrieval policy for the account and region specified in the GET request. For more information about data retrieval policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html}{Amazon Glacier Data Retrieval Policies}.
 
-\examples{
-\dontrun{
-# The example returns the current data retrieval policy for the account.
-svc$get_data_retrieval_policy(
-  accountId = "-"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/get_data_retrieval_policy.html} for full documentation.
 }
 \keyword{internal}

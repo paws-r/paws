@@ -11,23 +11,9 @@ sagemaker_delete_human_task_ui(HumanTaskUiName)
 \item{HumanTaskUiName}{[required] The name of the human task user interface (work task template) you want
 to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Use this operation to delete a human task user interface (worker task
-template).
+Use this operation to delete a human task user interface (worker task template).
 
-To see a list of human task user interfaces (work task templates) in
-your account, use . When you delete a worker task template, it no longer
-appears when you call
-\code{\link[=sagemaker_list_human_task_uis]{list_human_task_uis}}.
+See \url{https://paws-r.github.io/docs/sagemaker/delete_human_task_ui.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_human_task_ui(
-  HumanTaskUiName = "string"
-)
-}
-}
-
 \keyword{internal}

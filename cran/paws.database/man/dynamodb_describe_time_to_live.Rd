@@ -10,24 +10,9 @@ dynamodb_describe_time_to_live(TableName)
 \arguments{
 \item{TableName}{[required] The name of the table to be described.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TimeToLiveDescription = list(
-    TimeToLiveStatus = "ENABLING"|"DISABLING"|"ENABLED"|"DISABLED",
-    AttributeName = "string"
-  )
-)
-}
-}
 \description{
-Gives a description of the Time to Live (TTL) status on the specified
-table.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_time_to_live(
-  TableName = "string"
-)
-}
-}
+Gives a description of the Time to Live (TTL) status on the specified table.
 
+See \url{https://paws-r.github.io/docs/dynamodb/describe_time_to_live.html} for full documentation.
+}
 \keyword{internal}

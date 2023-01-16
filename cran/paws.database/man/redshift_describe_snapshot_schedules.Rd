@@ -4,8 +4,14 @@
 \alias{redshift_describe_snapshot_schedules}
 \title{Returns a list of snapshot schedules}
 \usage{
-redshift_describe_snapshot_schedules(ClusterIdentifier,
-  ScheduleIdentifier, TagKeys, TagValues, Marker, MaxRecords)
+redshift_describe_snapshot_schedules(
+  ClusterIdentifier = NULL,
+  ScheduleIdentifier = NULL,
+  TagKeys = NULL,
+  TagValues = NULL,
+  Marker = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{The unique identifier for the cluster whose snapshot schedules you want
@@ -30,56 +36,9 @@ value, a value is returned in a \code{marker} field of the response. You can
 retrieve the next set of records by retrying the command with the
 returned \code{marker} value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SnapshotSchedules = list(
-    list(
-      ScheduleDefinitions = list(
-        "string"
-      ),
-      ScheduleIdentifier = "string",
-      ScheduleDescription = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      NextInvocations = list(
-        as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      AssociatedClusterCount = 123,
-      AssociatedClusters = list(
-        list(
-          ClusterIdentifier = "string",
-          ScheduleAssociationState = "MODIFYING"|"ACTIVE"|"FAILED"
-        )
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
 Returns a list of snapshot schedules.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_snapshot_schedules(
-  ClusterIdentifier = "string",
-  ScheduleIdentifier = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  ),
-  Marker = "string",
-  MaxRecords = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/describe_snapshot_schedules.html} for full documentation.
+}
 \keyword{internal}

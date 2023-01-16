@@ -4,7 +4,7 @@
 \alias{route53domains_check_domain_availability}
 \title{This operation checks the availability of one domain name}
 \usage{
-route53domains_check_domain_availability(DomainName, IdnLangCode)
+route53domains_check_domain_availability(DomainName, IdnLangCode = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to get availability for. The
@@ -29,23 +29,9 @@ For more information, see \href{https://docs.aws.amazon.com/Route53/latest/Devel
 
 \item{IdnLangCode}{Reserved for future use.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Availability = "AVAILABLE"|"AVAILABLE_RESERVED"|"AVAILABLE_PREORDER"|"UNAVAILABLE"|"UNAVAILABLE_PREMIUM"|"UNAVAILABLE_RESTRICTED"|"RESERVED"|"DONT_KNOW"
-)
-}
-}
 \description{
-This operation checks the availability of one domain name. Note that if
-the availability status of a domain is pending, you must submit another
-request to determine the availability of the domain name.
-}
-\section{Request syntax}{
-\preformatted{svc$check_domain_availability(
-  DomainName = "string",
-  IdnLangCode = "string"
-)
-}
-}
+This operation checks the availability of one domain name. Note that if the availability status of a domain is pending, you must submit another request to determine the availability of the domain name.
 
+See \url{https://paws-r.github.io/docs/route53domains/check_domain_availability.html} for full documentation.
+}
 \keyword{internal}

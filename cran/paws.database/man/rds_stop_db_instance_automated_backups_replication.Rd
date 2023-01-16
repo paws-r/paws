@@ -11,63 +11,9 @@ rds_stop_db_instance_automated_backups_replication(SourceDBInstanceArn)
 stop replicating automated backups, for example,
 \code{arn:aws:rds:us-west-2:123456789012:db:mydatabase}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBInstanceAutomatedBackup = list(
-    DBInstanceArn = "string",
-    DbiResourceId = "string",
-    Region = "string",
-    DBInstanceIdentifier = "string",
-    RestoreWindow = list(
-      EarliestTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LatestTime = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    AllocatedStorage = 123,
-    Status = "string",
-    Port = 123,
-    AvailabilityZone = "string",
-    VpcId = "string",
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    LicenseModel = "string",
-    Iops = 123,
-    OptionGroupName = "string",
-    TdeCredentialArn = "string",
-    Encrypted = TRUE|FALSE,
-    StorageType = "string",
-    KmsKeyId = "string",
-    Timezone = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    BackupRetentionPeriod = 123,
-    DBInstanceAutomatedBackupsArn = "string",
-    DBInstanceAutomatedBackupsReplications = list(
-      list(
-        DBInstanceAutomatedBackupsArn = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Stops automated backup replication for a DB instance.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html}{Replicating Automated Backups to Another AWS Region}
-in the \emph{Amazon RDS User Guide.}
+See \url{https://paws-r.github.io/docs/rds/stop_db_instance_automated_backups_replication.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_db_instance_automated_backups_replication(
-  SourceDBInstanceArn = "string"
-)
-}
-}
-
 \keyword{internal}

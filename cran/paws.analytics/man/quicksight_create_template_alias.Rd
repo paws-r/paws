@@ -4,44 +4,28 @@
 \alias{quicksight_create_template_alias}
 \title{Creates a template alias for a template}
 \usage{
-quicksight_create_template_alias(AwsAccountId, TemplateId, AliasName,
-  TemplateVersionNumber)
+quicksight_create_template_alias(
+  AwsAccountId,
+  TemplateId,
+  AliasName,
+  TemplateVersionNumber
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you creating
-an alias for.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the template
+that you creating an alias for.}
 
 \item{TemplateId}{[required] An ID for the template.}
 
 \item{AliasName}{[required] The name that you want to give to the template alias that you're
 creating. Don't start the alias name with the \code{$} character. Alias names
-that start with \code{$} are reserved by QuickSight.}
+that start with \code{$} are reserved by Amazon QuickSight.}
 
 \item{TemplateVersionNumber}{[required] The version number of the template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateAlias = list(
-    AliasName = "string",
-    Arn = "string",
-    TemplateVersionNumber = 123
-  ),
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Creates a template alias for a template.
-}
-\section{Request syntax}{
-\preformatted{svc$create_template_alias(
-  AwsAccountId = "string",
-  TemplateId = "string",
-  AliasName = "string",
-  TemplateVersionNumber = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/create_template_alias.html} for full documentation.
+}
 \keyword{internal}

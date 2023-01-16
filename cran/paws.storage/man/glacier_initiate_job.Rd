@@ -5,7 +5,7 @@
 \title{This operation initiates a job of the specified type, which can be a
 select, an archival retrieval, or a vault retrieval}
 \usage{
-glacier_initiate_job(accountId, vaultName, jobParameters)
+glacier_initiate_job(accountId, vaultName, jobParameters = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
@@ -18,112 +18,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{jobParameters}{Provides options for specifying job information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  location = "string",
-  jobId = "string",
-  jobOutputPath = "string"
-)
-}
-}
 \description{
-This operation initiates a job of the specified type, which can be a
-select, an archival retrieval, or a vault retrieval. For more
-information about using this operation, see the documentation for the
-underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job}.
-}
-\section{Request syntax}{
-\preformatted{svc$initiate_job(
-  accountId = "string",
-  vaultName = "string",
-  jobParameters = list(
-    Format = "string",
-    Type = "string",
-    ArchiveId = "string",
-    Description = "string",
-    SNSTopic = "string",
-    RetrievalByteRange = "string",
-    Tier = "string",
-    InventoryRetrievalParameters = list(
-      StartDate = "string",
-      EndDate = "string",
-      Limit = "string",
-      Marker = "string"
-    ),
-    SelectParameters = list(
-      InputSerialization = list(
-        csv = list(
-          FileHeaderInfo = "USE"|"IGNORE"|"NONE",
-          Comments = "string",
-          QuoteEscapeCharacter = "string",
-          RecordDelimiter = "string",
-          FieldDelimiter = "string",
-          QuoteCharacter = "string"
-        )
-      ),
-      ExpressionType = "SQL",
-      Expression = "string",
-      OutputSerialization = list(
-        csv = list(
-          QuoteFields = "ALWAYS"|"ASNEEDED",
-          QuoteEscapeCharacter = "string",
-          RecordDelimiter = "string",
-          FieldDelimiter = "string",
-          QuoteCharacter = "string"
-        )
-      )
-    ),
-    OutputLocation = list(
-      S3 = list(
-        BucketName = "string",
-        Prefix = "string",
-        Encryption = list(
-          EncryptionType = "aws:kms"|"AES256",
-          KMSKeyId = "string",
-          KMSContext = "string"
-        ),
-        CannedACL = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control",
-        AccessControlList = list(
-          list(
-            Grantee = list(
-              Type = "AmazonCustomerByEmail"|"CanonicalUser"|"Group",
-              DisplayName = "string",
-              URI = "string",
-              ID = "string",
-              EmailAddress = "string"
-            ),
-            Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
-          )
-        ),
-        Tagging = list(
-          "string"
-        ),
-        UserMetadata = list(
-          "string"
-        ),
-        StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"
-      )
-    )
-  )
-)
-}
-}
+This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval. For more information about using this operation, see the documentation for the underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job}.
 
-\examples{
-\dontrun{
-# The example initiates an inventory-retrieval job for the vault named
-# examplevault.
-svc$initiate_job(
-  accountId = "-",
-  jobParameters = list(
-    Description = "My inventory job",
-    Format = "CSV",
-    SNSTopic = "arn:aws:sns:us-west-2:111111111111:Glacier-InventoryRetrieval-topic-Example",
-    Type = "inventory-retrieval"
-  ),
-  vaultName = "examplevault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/initiate_job.html} for full documentation.
 }
 \keyword{internal}

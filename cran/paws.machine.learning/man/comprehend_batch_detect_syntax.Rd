@@ -17,48 +17,9 @@ following languages supported by Amazon Comprehend: German ("de"),
 English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 Portuguese ("pt"). All documents must be in the same language.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResultList = list(
-    list(
-      Index = 123,
-      SyntaxTokens = list(
-        list(
-          TokenId = 123,
-          Text = "string",
-          BeginOffset = 123,
-          EndOffset = 123,
-          PartOfSpeech = list(
-            Tag = "ADJ"|"ADP"|"ADV"|"AUX"|"CONJ"|"CCONJ"|"DET"|"INTJ"|"NOUN"|"NUM"|"O"|"PART"|"PRON"|"PROPN"|"PUNCT"|"SCONJ"|"SYM"|"VERB",
-            Score = 123.0
-          )
-        )
-      )
-    )
-  ),
-  ErrorList = list(
-    list(
-      Index = 123,
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Inspects the text of a batch of documents for the syntax and part of
-speech of the words in the document and returns information about them.
-For more information, see how-syntax.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_detect_syntax(
-  TextList = list(
-    "string"
-  ),
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
-)
-}
-}
+Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them. For more information, see how-syntax.
 
+See \url{https://paws-r.github.io/docs/comprehend/batch_detect_syntax.html} for full documentation.
+}
 \keyword{internal}

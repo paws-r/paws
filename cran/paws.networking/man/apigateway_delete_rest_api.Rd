@@ -7,19 +7,11 @@
 apigateway_delete_rest_api(restApiId)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
-}
-\value{
-An empty list.
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 }
 \description{
 Deletes the specified API.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_rest_api(
-  restApiId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_rest_api.html} for full documentation.
+}
 \keyword{internal}

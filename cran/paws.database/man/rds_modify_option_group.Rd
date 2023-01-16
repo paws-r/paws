@@ -4,8 +4,12 @@
 \alias{rds_modify_option_group}
 \title{Modifies an existing option group}
 \usage{
-rds_modify_option_group(OptionGroupName, OptionsToInclude,
-  OptionsToRemove, ApplyImmediately)
+rds_modify_option_group(
+  OptionGroupName,
+  OptionsToInclude = NULL,
+  OptionsToRemove = NULL,
+  ApplyImmediately = NULL
+)
 }
 \arguments{
 \item{OptionGroupName}{[required] The name of the option group to be modified.
@@ -24,93 +28,9 @@ configuration.}
 the next maintenance window for each instance associated with the option
 group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OptionGroup = list(
-    OptionGroupName = "string",
-    OptionGroupDescription = "string",
-    EngineName = "string",
-    MajorEngineVersion = "string",
-    Options = list(
-      list(
-        OptionName = "string",
-        OptionDescription = "string",
-        Persistent = TRUE|FALSE,
-        Permanent = TRUE|FALSE,
-        Port = 123,
-        OptionVersion = "string",
-        OptionSettings = list(
-          list(
-            Name = "string",
-            Value = "string",
-            DefaultValue = "string",
-            Description = "string",
-            ApplyType = "string",
-            DataType = "string",
-            AllowedValues = "string",
-            IsModifiable = TRUE|FALSE,
-            IsCollection = TRUE|FALSE
-          )
-        ),
-        DBSecurityGroupMemberships = list(
-          list(
-            DBSecurityGroupName = "string",
-            Status = "string"
-          )
-        ),
-        VpcSecurityGroupMemberships = list(
-          list(
-            VpcSecurityGroupId = "string",
-            Status = "string"
-          )
-        )
-      )
-    ),
-    AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
-    VpcId = "string",
-    OptionGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Modifies an existing option group.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_option_group(
-  OptionGroupName = "string",
-  OptionsToInclude = list(
-    list(
-      OptionName = "string",
-      Port = 123,
-      OptionVersion = "string",
-      DBSecurityGroupMemberships = list(
-        "string"
-      ),
-      VpcSecurityGroupMemberships = list(
-        "string"
-      ),
-      OptionSettings = list(
-        list(
-          Name = "string",
-          Value = "string",
-          DefaultValue = "string",
-          Description = "string",
-          ApplyType = "string",
-          DataType = "string",
-          AllowedValues = "string",
-          IsModifiable = TRUE|FALSE,
-          IsCollection = TRUE|FALSE
-        )
-      )
-    )
-  ),
-  OptionsToRemove = list(
-    "string"
-  ),
-  ApplyImmediately = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/modify_option_group.html} for full documentation.
+}
 \keyword{internal}

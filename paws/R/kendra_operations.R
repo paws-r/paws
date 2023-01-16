@@ -3,16 +3,151 @@
 #' @include kendra_service.R
 NULL
 
+#' Grants users or groups in your Amazon Web Services SSO identity source
+#' access to your Amazon Kendra experience
+#'
+#' @description
+#' Grants users or groups in your Amazon Web Services SSO identity source
+#' access to your Amazon Kendra experience. You can create an Amazon Kendra
+#' experience such as a search application. For more information on
+#' creating a search application experience, see [Building a search
+#' experience with no
+#' code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#'
+#' @usage
+#' kendra_associate_entities_to_experience(Id, IndexId, EntityList)
+#'
+#' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#' @param EntityList &#91;required&#93; Lists users or groups in your Amazon Web Services SSO identity source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedEntityList = list(
+#'     list(
+#'       EntityId = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_entities_to_experience(
+#'   Id = "string",
+#'   IndexId = "string",
+#'   EntityList = list(
+#'     list(
+#'       EntityId = "string",
+#'       EntityType = "USER"|"GROUP"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_associate_entities_to_experience
+kendra_associate_entities_to_experience <- function(Id, IndexId, EntityList) {
+  op <- new_operation(
+    name = "AssociateEntitiesToExperience",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$associate_entities_to_experience_input(Id = Id, IndexId = IndexId, EntityList = EntityList)
+  output <- .kendra$associate_entities_to_experience_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$associate_entities_to_experience <- kendra_associate_entities_to_experience
+
+#' Defines the specific permissions of users or groups in your Amazon Web
+#' Services SSO identity source with access to your Amazon Kendra
+#' experience
+#'
+#' @description
+#' Defines the specific permissions of users or groups in your Amazon Web
+#' Services SSO identity source with access to your Amazon Kendra
+#' experience. You can create an Amazon Kendra experience such as a search
+#' application. For more information on creating a search application
+#' experience, see [Building a search experience with no
+#' code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#'
+#' @usage
+#' kendra_associate_personas_to_entities(Id, IndexId, Personas)
+#'
+#' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#' @param Personas &#91;required&#93; The personas that define the specific permissions of users or groups in
+#' your Amazon Web Services SSO identity source. The available personas or
+#' access roles are `Owner` and `Viewer`. For more information on these
+#' personas, see [Providing access to your search
+#' page](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html#access-search-experience).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedEntityList = list(
+#'     list(
+#'       EntityId = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_personas_to_entities(
+#'   Id = "string",
+#'   IndexId = "string",
+#'   Personas = list(
+#'     list(
+#'       EntityId = "string",
+#'       Persona = "OWNER"|"VIEWER"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_associate_personas_to_entities
+kendra_associate_personas_to_entities <- function(Id, IndexId, Personas) {
+  op <- new_operation(
+    name = "AssociatePersonasToEntities",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$associate_personas_to_entities_input(Id = Id, IndexId = IndexId, Personas = Personas)
+  output <- .kendra$associate_personas_to_entities_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$associate_personas_to_entities <- kendra_associate_personas_to_entities
+
 #' Removes one or more documents from an index
 #'
 #' @description
 #' Removes one or more documents from an index. The documents must have
 #' been added with the [`batch_put_document`][kendra_batch_put_document]
-#' operation.
+#' API.
 #' 
 #' The documents are deleted asynchronously. You can see the progress of
-#' the deletion by using AWS CloudWatch. Any error messages releated to the
-#' processing of the batch are sent to you CloudWatch log.
+#' the deletion by using Amazon Web Services CloudWatch. Any error messages
+#' related to the processing of the batch are sent to you CloudWatch log.
 #'
 #' @usage
 #' kendra_batch_delete_document(IndexId, DocumentIdList,
@@ -70,29 +205,135 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 }
 .kendra$operations$batch_delete_document <- kendra_batch_delete_document
 
+#' Returns the indexing status for one or more documents submitted with the
+#' BatchPutDocument API
+#'
+#' @description
+#' Returns the indexing status for one or more documents submitted with the
+#' [BatchPutDocument](https://docs.aws.amazon.com/kendra/latest/dg/API_BatchPutDocument.html)
+#' API.
+#' 
+#' When you use the [`batch_put_document`][kendra_batch_put_document] API,
+#' documents are indexed asynchronously. You can use the
+#' [`batch_get_document_status`][kendra_batch_get_document_status] API to
+#' get the current status of a list of documents so that you can determine
+#' if they have been successfully indexed.
+#' 
+#' You can also use the
+#' [`batch_get_document_status`][kendra_batch_get_document_status] API to
+#' check the status of the
+#' [BatchDeleteDocument](https://docs.aws.amazon.com/kendra/latest/dg/API_BatchDeleteDocument.html)
+#' API. When a document is deleted from the index, Amazon Kendra returns
+#' `NOT_FOUND` as the status.
+#'
+#' @usage
+#' kendra_batch_get_document_status(IndexId, DocumentInfoList)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index to add documents to. The index ID is
+#' returned by the
+#' [CreateIndex](https://docs.aws.amazon.com/kendra/latest/dg/API_CreateIndex.html)
+#' API.
+#' @param DocumentInfoList &#91;required&#93; A list of `DocumentInfo` objects that identify the documents for which
+#' to get the status. You identify the documents by their document ID and
+#' optional attributes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Errors = list(
+#'     list(
+#'       DocumentId = "string",
+#'       ErrorCode = "InternalError"|"InvalidRequest",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   DocumentStatusList = list(
+#'     list(
+#'       DocumentId = "string",
+#'       DocumentStatus = "NOT_FOUND"|"PROCESSING"|"INDEXED"|"UPDATED"|"FAILED"|"UPDATE_FAILED",
+#'       FailureCode = "string",
+#'       FailureReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_document_status(
+#'   IndexId = "string",
+#'   DocumentInfoList = list(
+#'     list(
+#'       DocumentId = "string",
+#'       Attributes = list(
+#'         list(
+#'           Key = "string",
+#'           Value = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_batch_get_document_status
+kendra_batch_get_document_status <- function(IndexId, DocumentInfoList) {
+  op <- new_operation(
+    name = "BatchGetDocumentStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$batch_get_document_status_input(IndexId = IndexId, DocumentInfoList = DocumentInfoList)
+  output <- .kendra$batch_get_document_status_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$batch_get_document_status <- kendra_batch_get_document_status
+
 #' Adds one or more documents to an index
 #'
 #' @description
 #' Adds one or more documents to an index.
 #' 
-#' The [`batch_put_document`][kendra_batch_put_document] operation enables
-#' you to ingest inline documents or a set of documents stored in an Amazon
-#' S3 bucket. Use this operation to ingest your text and unstructured text
-#' into an index, add custom attributes to the documents, and to attach an
-#' access control list to the documents added to the index.
+#' The [`batch_put_document`][kendra_batch_put_document] API enables you to
+#' ingest inline documents or a set of documents stored in an Amazon S3
+#' bucket. Use this API to ingest your text and unstructured text into an
+#' index, add custom attributes to the documents, and to attach an access
+#' control list to the documents added to the index.
 #' 
 #' The documents are indexed asynchronously. You can see the progress of
-#' the batch using AWS CloudWatch. Any error messages related to processing
-#' the batch are sent to your AWS CloudWatch log.
+#' the batch using Amazon Web Services CloudWatch. Any error messages
+#' related to processing the batch are sent to your Amazon Web Services
+#' CloudWatch log.
+#' 
+#' For an example of ingesting inline documents using Python and Java SDKs,
+#' see [Adding files directly to an
+#' index](https://docs.aws.amazon.com/kendra/latest/dg/in-adding-binary-doc.html).
 #'
 #' @usage
-#' kendra_batch_put_document(IndexId, RoleArn, Documents)
+#' kendra_batch_put_document(IndexId, RoleArn, Documents,
+#'   CustomDocumentEnrichmentConfiguration)
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index to add the documents to. You need to create
-#' the index first using the [`create_index`][kendra_create_index]
-#' operation.
+#' the index first using the [`create_index`][kendra_create_index] API.
 #' @param RoleArn The Amazon Resource Name (ARN) of a role that is allowed to run the
-#' [`batch_put_document`][kendra_batch_put_document] operation. For more
+#' [`batch_put_document`][kendra_batch_put_document] API. For more
 #' information, see [IAM Roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Documents &#91;required&#93; One or more documents to add to the index.
@@ -107,6 +348,15 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 #' 
 #' For more information about file size and transaction per second quotas,
 #' see [Quotas](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
+#' @param CustomDocumentEnrichmentConfiguration Configuration information for altering your document metadata and
+#' content during the document ingestion process when you use the
+#' [`batch_put_document`][kendra_batch_put_document] API.
+#' 
+#' For more information on how to create, modify and delete document
+#' metadata, or make other content alterations when you ingest documents
+#' into Amazon Kendra, see [Customizing document metadata during the
+#' ingestion
+#' process](https://docs.aws.amazon.com/kendra/latest/dg/custom-document-enrichment.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -155,11 +405,97 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 #'         list(
 #'           Name = "string",
 #'           Type = "USER"|"GROUP",
-#'           Access = "ALLOW"|"DENY"
+#'           Access = "ALLOW"|"DENY",
+#'           DataSourceId = "string"
 #'         )
 #'       ),
-#'       ContentType = "PDF"|"HTML"|"MS_WORD"|"PLAIN_TEXT"|"PPT"
+#'       HierarchicalAccessControlList = list(
+#'         list(
+#'           PrincipalList = list(
+#'             list(
+#'               Name = "string",
+#'               Type = "USER"|"GROUP",
+#'               Access = "ALLOW"|"DENY",
+#'               DataSourceId = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ContentType = "PDF"|"HTML"|"MS_WORD"|"PLAIN_TEXT"|"PPT",
+#'       AccessControlConfigurationId = "string"
 #'     )
+#'   ),
+#'   CustomDocumentEnrichmentConfiguration = list(
+#'     InlineConfigurations = list(
+#'       list(
+#'         Condition = list(
+#'           ConditionDocumentAttributeKey = "string",
+#'           Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'           ConditionOnValue = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         Target = list(
+#'           TargetDocumentAttributeKey = "string",
+#'           TargetDocumentAttributeValueDeletion = TRUE|FALSE,
+#'           TargetDocumentAttributeValue = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         DocumentContentDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     PreExtractionHookConfiguration = list(
+#'       InvocationCondition = list(
+#'         ConditionDocumentAttributeKey = "string",
+#'         Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'         ConditionOnValue = list(
+#'           StringValue = "string",
+#'           StringListValue = list(
+#'             "string"
+#'           ),
+#'           LongValue = 123,
+#'           DateValue = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       LambdaArn = "string",
+#'       S3Bucket = "string"
+#'     ),
+#'     PostExtractionHookConfiguration = list(
+#'       InvocationCondition = list(
+#'         ConditionDocumentAttributeKey = "string",
+#'         Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'         ConditionOnValue = list(
+#'           StringValue = "string",
+#'           StringListValue = list(
+#'             "string"
+#'           ),
+#'           LongValue = 123,
+#'           DateValue = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       LambdaArn = "string",
+#'       S3Bucket = "string"
+#'     ),
+#'     RoleArn = "string"
 #'   )
 #' )
 #' ```
@@ -167,14 +503,14 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 #' @keywords internal
 #'
 #' @rdname kendra_batch_put_document
-kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
+kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents, CustomDocumentEnrichmentConfiguration = NULL) {
   op <- new_operation(
     name = "BatchPutDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$batch_put_document_input(IndexId = IndexId, RoleArn = RoleArn, Documents = Documents)
+  input <- .kendra$batch_put_document_input(IndexId = IndexId, RoleArn = RoleArn, Documents = Documents, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$batch_put_document_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -184,48 +520,220 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 }
 .kendra$operations$batch_put_document <- kendra_batch_put_document
 
-#' Creates a data source that you use to with an Amazon Kendra index
+#' Clears existing query suggestions from an index
 #'
 #' @description
-#' Creates a data source that you use to with an Amazon Kendra index.
+#' Clears existing query suggestions from an index.
+#' 
+#' This deletes existing suggestions only, not the queries in the query
+#' log. After you clear suggestions, Amazon Kendra learns new suggestions
+#' based on new queries added to the query log from the time you cleared
+#' suggestions. If you do not see any new suggestions, then please allow
+#' Amazon Kendra to collect enough queries to learn new suggestions.
+#' 
+#' [`clear_query_suggestions`][kendra_clear_query_suggestions] is currently
+#' not supported in the Amazon Web Services GovCloud (US-West) region.
+#'
+#' @usage
+#' kendra_clear_query_suggestions(IndexId)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index you want to clear query suggestions from.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$clear_query_suggestions(
+#'   IndexId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_clear_query_suggestions
+kendra_clear_query_suggestions <- function(IndexId) {
+  op <- new_operation(
+    name = "ClearQuerySuggestions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$clear_query_suggestions_input(IndexId = IndexId)
+  output <- .kendra$clear_query_suggestions_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$clear_query_suggestions <- kendra_clear_query_suggestions
+
+#' Creates an access configuration for your documents
+#'
+#' @description
+#' Creates an access configuration for your documents. This includes user
+#' and group access information for your documents. This is useful for user
+#' context filtering, where search results are filtered based on the user
+#' or their group access to documents.
+#' 
+#' You can use this to re-configure your existing document level access
+#' control without indexing all of your documents again. For example, your
+#' index contains top-secret company documents that only certain employees
+#' or users should access. One of these users leaves the company or
+#' switches to a team that should be blocked from accessing top-secret
+#' documents. The user still has access to top-secret documents because the
+#' user had access when your documents were previously indexed. You can
+#' create a specific access control configuration for the user with deny
+#' access. You can later update the access control configuration to allow
+#' access if the user returns to the company and re-joins the 'top-secret'
+#' team. You can re-configure access control for your documents as
+#' circumstances change.
+#' 
+#' To apply your access control configuration to certain documents, you
+#' call the [`batch_put_document`][kendra_batch_put_document] API with the
+#' `AccessControlConfigurationId` included in the
+#' [Document](https://docs.aws.amazon.com/kendra/latest/dg/API_Document.html)
+#' object. If you use an S3 bucket as a data source, you update the
+#' `.metadata.json` with the `AccessControlConfigurationId` and synchronize
+#' your data source. Amazon Kendra currently only supports access control
+#' configuration for S3 data sources and documents indexed using the
+#' [`batch_put_document`][kendra_batch_put_document] API.
+#'
+#' @usage
+#' kendra_create_access_control_configuration(IndexId, Name, Description,
+#'   AccessControlList, HierarchicalAccessControlList, ClientToken)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index to create an access control configuration
+#' for your documents.
+#' @param Name &#91;required&#93; A name for the access control configuration.
+#' @param Description A description for the access control configuration.
+#' @param AccessControlList Information on principals (users and/or groups) and which documents they
+#' should have access to. This is useful for user context filtering, where
+#' search results are filtered based on the user or their group access to
+#' documents.
+#' @param HierarchicalAccessControlList The list of
+#' [principal](https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html)
+#' lists that define the hierarchy for which documents users should have
+#' access to.
+#' @param ClientToken A token that you provide to identify the request to create an access
+#' control configuration. Multiple calls to the
+#' [`create_access_control_configuration`][kendra_create_access_control_configuration]
+#' API with the same client token will create only one access control
+#' configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_access_control_configuration(
+#'   IndexId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   AccessControlList = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "USER"|"GROUP",
+#'       Access = "ALLOW"|"DENY",
+#'       DataSourceId = "string"
+#'     )
+#'   ),
+#'   HierarchicalAccessControlList = list(
+#'     list(
+#'       PrincipalList = list(
+#'         list(
+#'           Name = "string",
+#'           Type = "USER"|"GROUP",
+#'           Access = "ALLOW"|"DENY",
+#'           DataSourceId = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_create_access_control_configuration
+kendra_create_access_control_configuration <- function(IndexId, Name, Description = NULL, AccessControlList = NULL, HierarchicalAccessControlList = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateAccessControlConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$create_access_control_configuration_input(IndexId = IndexId, Name = Name, Description = Description, AccessControlList = AccessControlList, HierarchicalAccessControlList = HierarchicalAccessControlList, ClientToken = ClientToken)
+  output <- .kendra$create_access_control_configuration_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$create_access_control_configuration <- kendra_create_access_control_configuration
+
+#' Creates a data source that you want to use with an Amazon Kendra index
+#'
+#' @description
+#' Creates a data source that you want to use with an Amazon Kendra index.
 #' 
 #' You specify a name, data source connector type and description for your
-#' data source. You also specify configuration information such as document
-#' metadata (author, source URI, and so on) and user context information.
+#' data source. You also specify configuration information for the data
+#' source connector.
 #' 
 #' [`create_data_source`][kendra_create_data_source] is a synchronous
 #' operation. The operation returns 200 if the data source was successfully
 #' created. Otherwise, an exception is raised.
+#' 
+#' Amazon S3 and
+#' [custom](https://docs.aws.amazon.com/kendra/latest/dg/data-source-custom.html)
+#' data sources are the only supported data sources in the Amazon Web
+#' Services GovCloud (US-West) region.
+#' 
+#' For an example of creating an index and data source using the Python
+#' SDK, see [Getting started with Python
+#' SDK](https://docs.aws.amazon.com/kendra/latest/dg/gs-python.html). For
+#' an example of creating an index and data source using the Java SDK, see
+#' [Getting started with Java
+#' SDK](https://docs.aws.amazon.com/kendra/latest/dg/gs-java.html).
 #'
 #' @usage
 #' kendra_create_data_source(Name, IndexId, Type, Configuration,
-#'   Description, Schedule, RoleArn, Tags, ClientToken)
+#'   Description, Schedule, RoleArn, Tags, ClientToken, LanguageCode,
+#'   CustomDocumentEnrichmentConfiguration)
 #'
-#' @param Name &#91;required&#93; A unique name for the data source. A data source name can't be changed
-#' without deleting and recreating the data source.
-#' @param IndexId &#91;required&#93; The identifier of the index that should be associated with this data
-#' source.
-#' @param Type &#91;required&#93; The type of repository that contains the data source.
-#' @param Configuration The connector configuration information that is required to access the
-#' repository.
+#' @param Name &#91;required&#93; A unique name for the data source connector. A data source name can't be
+#' changed without deleting and recreating the data source connector.
+#' @param IndexId &#91;required&#93; The identifier of the index you want to use with the data source
+#' connector.
+#' @param Type &#91;required&#93; The type of data source repository. For example, `SHAREPOINT`.
+#' @param Configuration Configuration information to connect to your data source repository.
 #' 
 #' You can't specify the `Configuration` parameter when the `Type`
 #' parameter is set to `CUSTOM`. If you do, you receive a
 #' `ValidationException` exception.
 #' 
 #' The `Configuration` parameter is required for all other data sources.
-#' @param Description A description for the data source.
-#' @param Schedule Sets the frequency that Amazon Kendra will check the documents in your
-#' repository and update the index. If you don't set a schedule Amazon
-#' Kendra will not periodically update the index. You can call the
-#' [`start_data_source_sync_job`][kendra_start_data_source_sync_job]
-#' operation to update the index.
+#' @param Description A description for the data source connector.
+#' @param Schedule Sets the frequency for Amazon Kendra to check the documents in your data
+#' source repository and update the index. If you don't set a schedule
+#' Amazon Kendra will not periodically update the index. You can call the
+#' [`start_data_source_sync_job`][kendra_start_data_source_sync_job] API to
+#' update the index.
 #' 
 #' You can't specify the `Schedule` parameter when the `Type` parameter is
 #' set to `CUSTOM`. If you do, you receive a `ValidationException`
 #' exception.
 #' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access the
-#' data source. For more information, see [IAM Roles for Amazon
+#' data source connector. For more information, see [IAM Roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' 
 #' You can't specify the `RoleArn` parameter when the `Type` parameter is
@@ -233,13 +741,26 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #' exception.
 #' 
 #' The `RoleArn` parameter is required for all other data sources.
-#' @param Tags A list of key-value pairs that identify the data source. You can use the
-#' tags to identify and organize your resources and to control access to
-#' resources.
-#' @param ClientToken A token that you provide to identify the request to create a data
-#' source. Multiple calls to the
-#' [`create_data_source`][kendra_create_data_source] operation with the
-#' same client token will create only one data source.
+#' @param Tags A list of key-value pairs that identify the data source connector. You
+#' can use the tags to identify and organize your resources and to control
+#' access to resources.
+#' @param ClientToken A token that you provide to identify the request to create a data source
+#' connector. Multiple calls to the
+#' [`create_data_source`][kendra_create_data_source] API with the same
+#' client token will create only one data source connector.
+#' @param LanguageCode The code for a language. This allows you to support a language for all
+#' documents when creating the data source connector. English is supported
+#' by default. For more information on supported languages, including their
+#' codes, see [Adding documents in languages other than
+#' English](https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html).
+#' @param CustomDocumentEnrichmentConfiguration Configuration information for altering document metadata and content
+#' during the document ingestion process.
+#' 
+#' For more information on how to create, modify and delete document
+#' metadata, or make other content alterations when you ingest documents
+#' into Amazon Kendra, see [Customizing document metadata during the
+#' ingestion
+#' process](https://docs.aws.amazon.com/kendra/latest/dg/custom-document-enrichment.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -254,7 +775,7 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #' svc$create_data_source(
 #'   Name = "string",
 #'   IndexId = "string",
-#'   Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW"|"CUSTOM"|"CONFLUENCE"|"GOOGLEDRIVE",
+#'   Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW"|"CUSTOM"|"CONFLUENCE"|"GOOGLEDRIVE"|"WEBCRAWLER"|"WORKDOCS"|"FSX"|"SLACK"|"BOX"|"QUIP"|"JIRA"|"GITHUB"|"ALFRESCO",
 #'   Configuration = list(
 #'     S3Configuration = list(
 #'       BucketName = "string",
@@ -275,7 +796,7 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #'       )
 #'     ),
 #'     SharePointConfiguration = list(
-#'       SharePointVersion = "SHAREPOINT_ONLINE",
+#'       SharePointVersion = "SHAREPOINT_2013"|"SHAREPOINT_2016"|"SHAREPOINT_ONLINE",
 #'       Urls = list(
 #'         "string"
 #'       ),
@@ -304,7 +825,12 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #'         )
 #'       ),
 #'       DocumentTitleFieldName = "string",
-#'       DisableLocalGroups = TRUE|FALSE
+#'       DisableLocalGroups = TRUE|FALSE,
+#'       SslCertificateS3Path = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       ),
+#'       AuthenticationType = "HTTP_BASIC"|"OAUTH2"
 #'     ),
 #'     DatabaseConfiguration = list(
 #'       DatabaseEngineType = "RDS_AURORA_MYSQL"|"RDS_AURORA_POSTGRESQL"|"RDS_MYSQL"|"RDS_POSTGRESQL",
@@ -471,7 +997,8 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #'             DateFieldFormat = "string",
 #'             IndexFieldName = "string"
 #'           )
-#'         )
+#'         ),
+#'         FilterQuery = "string"
 #'       ),
 #'       ServiceCatalogConfiguration = list(
 #'         CrawlAttachments = TRUE|FALSE,
@@ -490,7 +1017,8 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #'             IndexFieldName = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       AuthenticationType = "HTTP_BASIC"|"OAUTH2"
 #'     ),
 #'     ConfluenceConfiguration = list(
 #'       ServerUrl = "string",
@@ -580,6 +1108,449 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #'       ExcludeSharedDrives = list(
 #'         "string"
 #'       )
+#'     ),
+#'     WebCrawlerConfiguration = list(
+#'       Urls = list(
+#'         SeedUrlConfiguration = list(
+#'           SeedUrls = list(
+#'             "string"
+#'           ),
+#'           WebCrawlerMode = "HOST_ONLY"|"SUBDOMAINS"|"EVERYTHING"
+#'         ),
+#'         SiteMapsConfiguration = list(
+#'           SiteMaps = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CrawlDepth = 123,
+#'       MaxLinksPerPage = 123,
+#'       MaxContentSizePerPageInMegaBytes = 123.0,
+#'       MaxUrlsPerMinuteCrawlRate = 123,
+#'       UrlInclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       UrlExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ProxyConfiguration = list(
+#'         Host = "string",
+#'         Port = 123,
+#'         Credentials = "string"
+#'       ),
+#'       AuthenticationConfiguration = list(
+#'         BasicAuthentication = list(
+#'           list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Credentials = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     WorkDocsConfiguration = list(
+#'       OrganizationId = "string",
+#'       CrawlComments = TRUE|FALSE,
+#'       UseChangeLog = TRUE|FALSE,
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     FsxConfiguration = list(
+#'       FileSystemId = "string",
+#'       FileSystemType = "WINDOWS",
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SecretArn = "string",
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     SlackConfiguration = list(
+#'       TeamId = "string",
+#'       SecretArn = "string",
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SlackEntityList = list(
+#'         "PUBLIC_CHANNEL"|"PRIVATE_CHANNEL"|"GROUP_MESSAGE"|"DIRECT_MESSAGE"
+#'       ),
+#'       UseChangeLog = TRUE|FALSE,
+#'       CrawlBotMessage = TRUE|FALSE,
+#'       ExcludeArchived = TRUE|FALSE,
+#'       SinceCrawlDate = "string",
+#'       LookBackPeriod = 123,
+#'       PrivateChannelFilter = list(
+#'         "string"
+#'       ),
+#'       PublicChannelFilter = list(
+#'         "string"
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     BoxConfiguration = list(
+#'       EnterpriseId = "string",
+#'       SecretArn = "string",
+#'       UseChangeLog = TRUE|FALSE,
+#'       CrawlComments = TRUE|FALSE,
+#'       CrawlTasks = TRUE|FALSE,
+#'       CrawlWebLinks = TRUE|FALSE,
+#'       FileFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       TaskFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       CommentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       WebLinkFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     QuipConfiguration = list(
+#'       Domain = "string",
+#'       SecretArn = "string",
+#'       CrawlFileComments = TRUE|FALSE,
+#'       CrawlChatRooms = TRUE|FALSE,
+#'       CrawlAttachments = TRUE|FALSE,
+#'       FolderIds = list(
+#'         "string"
+#'       ),
+#'       ThreadFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       MessageFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       AttachmentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     JiraConfiguration = list(
+#'       JiraAccountUrl = "string",
+#'       SecretArn = "string",
+#'       UseChangeLog = TRUE|FALSE,
+#'       Project = list(
+#'         "string"
+#'       ),
+#'       IssueType = list(
+#'         "string"
+#'       ),
+#'       Status = list(
+#'         "string"
+#'       ),
+#'       IssueSubEntityFilter = list(
+#'         "COMMENTS"|"ATTACHMENTS"|"WORKLOGS"
+#'       ),
+#'       AttachmentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       CommentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       IssueFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       ProjectFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       WorkLogFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     GitHubConfiguration = list(
+#'       SaaSConfiguration = list(
+#'         OrganizationName = "string",
+#'         HostUrl = "string"
+#'       ),
+#'       OnPremiseConfiguration = list(
+#'         HostUrl = "string",
+#'         OrganizationName = "string",
+#'         SslCertificateS3Path = list(
+#'           Bucket = "string",
+#'           Key = "string"
+#'         )
+#'       ),
+#'       Type = "SAAS"|"ON_PREMISE",
+#'       SecretArn = "string",
+#'       UseChangeLog = TRUE|FALSE,
+#'       GitHubDocumentCrawlProperties = list(
+#'         CrawlRepositoryDocuments = TRUE|FALSE,
+#'         CrawlIssue = TRUE|FALSE,
+#'         CrawlIssueComment = TRUE|FALSE,
+#'         CrawlIssueCommentAttachment = TRUE|FALSE,
+#'         CrawlPullRequest = TRUE|FALSE,
+#'         CrawlPullRequestComment = TRUE|FALSE,
+#'         CrawlPullRequestCommentAttachment = TRUE|FALSE
+#'       ),
+#'       RepositoryFilter = list(
+#'         "string"
+#'       ),
+#'       InclusionFolderNamePatterns = list(
+#'         "string"
+#'       ),
+#'       InclusionFileTypePatterns = list(
+#'         "string"
+#'       ),
+#'       InclusionFileNamePatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionFolderNamePatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionFileTypePatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionFileNamePatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       GitHubRepositoryConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubCommitConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubIssueDocumentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubIssueCommentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubIssueAttachmentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubPullRequestCommentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubPullRequestDocumentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubPullRequestDocumentAttachmentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     AlfrescoConfiguration = list(
+#'       SiteUrl = "string",
+#'       SiteId = "string",
+#'       SecretArn = "string",
+#'       SslCertificateS3Path = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       ),
+#'       CrawlSystemFolders = TRUE|FALSE,
+#'       CrawlComments = TRUE|FALSE,
+#'       EntityFilter = list(
+#'         "wiki"|"blog"|"documentLibrary"
+#'       ),
+#'       DocumentLibraryFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       BlogFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       WikiFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Description = "string",
@@ -591,21 +1562,94 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #'       Value = "string"
 #'     )
 #'   ),
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   LanguageCode = "string",
+#'   CustomDocumentEnrichmentConfiguration = list(
+#'     InlineConfigurations = list(
+#'       list(
+#'         Condition = list(
+#'           ConditionDocumentAttributeKey = "string",
+#'           Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'           ConditionOnValue = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         Target = list(
+#'           TargetDocumentAttributeKey = "string",
+#'           TargetDocumentAttributeValueDeletion = TRUE|FALSE,
+#'           TargetDocumentAttributeValue = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         DocumentContentDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     PreExtractionHookConfiguration = list(
+#'       InvocationCondition = list(
+#'         ConditionDocumentAttributeKey = "string",
+#'         Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'         ConditionOnValue = list(
+#'           StringValue = "string",
+#'           StringListValue = list(
+#'             "string"
+#'           ),
+#'           LongValue = 123,
+#'           DateValue = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       LambdaArn = "string",
+#'       S3Bucket = "string"
+#'     ),
+#'     PostExtractionHookConfiguration = list(
+#'       InvocationCondition = list(
+#'         ConditionDocumentAttributeKey = "string",
+#'         Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'         ConditionOnValue = list(
+#'           StringValue = "string",
+#'           StringListValue = list(
+#'             "string"
+#'           ),
+#'           LongValue = 123,
+#'           DateValue = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       LambdaArn = "string",
+#'       S3Bucket = "string"
+#'     ),
+#'     RoleArn = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kendra_create_data_source
-kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL, Description = NULL, Schedule = NULL, RoleArn = NULL, Tags = NULL, ClientToken = NULL) {
+kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL, Description = NULL, Schedule = NULL, RoleArn = NULL, Tags = NULL, ClientToken = NULL, LanguageCode = NULL, CustomDocumentEnrichmentConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDataSource",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$create_data_source_input(Name = Name, IndexId = IndexId, Type = Type, Configuration = Configuration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, Tags = Tags, ClientToken = ClientToken)
+  input <- .kendra$create_data_source_input(Name = Name, IndexId = IndexId, Type = Type, Configuration = Configuration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, Tags = Tags, ClientToken = ClientToken, LanguageCode = LanguageCode, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$create_data_source_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -615,30 +1659,121 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
 }
 .kendra$operations$create_data_source <- kendra_create_data_source
 
+#' Creates an Amazon Kendra experience such as a search application
+#'
+#' @description
+#' Creates an Amazon Kendra experience such as a search application. For
+#' more information on creating a search application experience, including
+#' using the Python and Java SDKs, see [Building a search experience with
+#' no
+#' code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#'
+#' @usage
+#' kendra_create_experience(Name, IndexId, RoleArn, Configuration,
+#'   Description, ClientToken)
+#'
+#' @param Name &#91;required&#93; A name for your Amazon Kendra experience.
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access
+#' [`query`][kendra_query] API, `QuerySuggestions` API,
+#' [`submit_feedback`][kendra_submit_feedback] API, and Amazon Web Services
+#' SSO that stores your user and group information. For more information,
+#' see [IAM roles for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+#' @param Configuration Configuration information for your Amazon Kendra experience. This
+#' includes `ContentSourceConfiguration`, which specifies the data source
+#' IDs and/or FAQ IDs, and `UserIdentityConfiguration`, which specifies the
+#' user or group information to grant access to your Amazon Kendra
+#' experience.
+#' @param Description A description for your Amazon Kendra experience.
+#' @param ClientToken A token that you provide to identify the request to create your Amazon
+#' Kendra experience. Multiple calls to the
+#' [`create_experience`][kendra_create_experience] API with the same client
+#' token creates only one Amazon Kendra experience.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_experience(
+#'   Name = "string",
+#'   IndexId = "string",
+#'   RoleArn = "string",
+#'   Configuration = list(
+#'     ContentSourceConfiguration = list(
+#'       DataSourceIds = list(
+#'         "string"
+#'       ),
+#'       FaqIds = list(
+#'         "string"
+#'       ),
+#'       DirectPutContent = TRUE|FALSE
+#'     ),
+#'     UserIdentityConfiguration = list(
+#'       IdentityAttributeName = "string"
+#'     )
+#'   ),
+#'   Description = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_create_experience
+kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuration = NULL, Description = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateExperience",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$create_experience_input(Name = Name, IndexId = IndexId, RoleArn = RoleArn, Configuration = Configuration, Description = Description, ClientToken = ClientToken)
+  output <- .kendra$create_experience_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$create_experience <- kendra_create_experience
+
 #' Creates an new set of frequently asked question (FAQ) questions and
 #' answers
 #'
 #' @description
 #' Creates an new set of frequently asked question (FAQ) questions and
 #' answers.
+#' 
+#' Adding FAQs to an index is an asynchronous operation.
+#' 
+#' For an example of adding an FAQ to an index using Python and Java SDKs,
+#' see [Using your FAQ
+#' file](https://docs.aws.amazon.com/kendra/latest/dg/in-creating-faq.html#using-faq-file).
 #'
 #' @usage
 #' kendra_create_faq(IndexId, Name, Description, S3Path, RoleArn, Tags,
-#'   FileFormat, ClientToken)
+#'   FileFormat, ClientToken, LanguageCode)
 #'
-#' @param IndexId &#91;required&#93; The identifier of the index that contains the FAQ.
-#' @param Name &#91;required&#93; The name that should be associated with the FAQ.
-#' @param Description A description of the FAQ.
-#' @param S3Path &#91;required&#93; The S3 location of the FAQ input data.
+#' @param IndexId &#91;required&#93; The identifier of the index for the FAQ.
+#' @param Name &#91;required&#93; A name for the FAQ.
+#' @param Description A description for the FAQ.
+#' @param S3Path &#91;required&#93; The path to the FAQ file in S3.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of a role with permission to access the
 #' S3 bucket that contains the FAQs. For more information, see [IAM Roles
 #' for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Tags A list of key-value pairs that identify the FAQ. You can use the tags to
 #' identify and organize your resources and to control access to resources.
-#' @param FileFormat The format of the input file. You can choose between a basic CSV format,
-#' a CSV format that includes customs attributes in a header, and a JSON
-#' format that includes custom attributes.
+#' @param FileFormat The format of the FAQ input file. You can choose between a basic CSV
+#' format, a CSV format that includes customs attributes in a header, and a
+#' JSON format that includes custom attributes.
 #' 
 #' The format must match the format of the file stored in the S3 bucket
 #' identified in the `S3Path` parameter.
@@ -646,8 +1781,13 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
 #' For more information, see [Adding questions and
 #' answers](https://docs.aws.amazon.com/kendra/latest/dg/in-creating-faq.html).
 #' @param ClientToken A token that you provide to identify the request to create a FAQ.
-#' Multiple calls to the `CreateFaqRequest` operation with the same client
-#' token will create only one FAQ.
+#' Multiple calls to the `CreateFaqRequest` API with the same client token
+#' will create only one FAQ.
+#' @param LanguageCode The code for a language. This allows you to support a language for the
+#' FAQ document. English is supported by default. For more information on
+#' supported languages, including their codes, see [Adding documents in
+#' languages other than
+#' English](https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -675,21 +1815,22 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
 #'     )
 #'   ),
 #'   FileFormat = "CSV"|"CSV_WITH_HEADER"|"JSON",
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   LanguageCode = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kendra_create_faq
-kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn, Tags = NULL, FileFormat = NULL, ClientToken = NULL) {
+kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn, Tags = NULL, FileFormat = NULL, ClientToken = NULL, LanguageCode = NULL) {
   op <- new_operation(
     name = "CreateFaq",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$create_faq_input(IndexId = IndexId, Name = Name, Description = Description, S3Path = S3Path, RoleArn = RoleArn, Tags = Tags, FileFormat = FileFormat, ClientToken = ClientToken)
+  input <- .kendra$create_faq_input(IndexId = IndexId, Name = Name, Description = Description, S3Path = S3Path, RoleArn = RoleArn, Tags = Tags, FileFormat = FileFormat, ClientToken = ClientToken, LanguageCode = LanguageCode)
   output <- .kendra$create_faq_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -699,23 +1840,32 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 }
 .kendra$operations$create_faq <- kendra_create_faq
 
-#' Creates a new Amazon Kendra index
+#' Creates an Amazon Kendra index
 #'
 #' @description
-#' Creates a new Amazon Kendra index. Index creation is an asynchronous
-#' operation. To determine if index creation has completed, check the
-#' `Status` field returned from a call to . The `Status` field is set to
-#' `ACTIVE` when the index is ready to use.
+#' Creates an Amazon Kendra index. Index creation is an asynchronous API.
+#' To determine if index creation has completed, check the `Status` field
+#' returned from a call to [`describe_index`][kendra_describe_index]. The
+#' `Status` field is set to `ACTIVE` when the index is ready to use.
 #' 
 #' Once the index is active you can index your documents using the
-#' operation or using one of the supported data sources.
+#' [`batch_put_document`][kendra_batch_put_document] API or using one of
+#' the supported data sources.
+#' 
+#' For an example of creating an index and data source using the Python
+#' SDK, see [Getting started with Python
+#' SDK](https://docs.aws.amazon.com/kendra/latest/dg/gs-python.html). For
+#' an example of creating an index and data source using the Java SDK, see
+#' [Getting started with Java
+#' SDK](https://docs.aws.amazon.com/kendra/latest/dg/gs-java.html).
 #'
 #' @usage
 #' kendra_create_index(Name, Edition, RoleArn,
 #'   ServerSideEncryptionConfiguration, Description, ClientToken, Tags,
-#'   UserTokenConfigurations, UserContextPolicy)
+#'   UserTokenConfigurations, UserContextPolicy,
+#'   UserGroupResolutionConfiguration)
 #'
-#' @param Name &#91;required&#93; The name for the new index.
+#' @param Name &#91;required&#93; A name for the index.
 #' @param Edition The Amazon Kendra edition to use for the index. Choose
 #' `DEVELOPER_EDITION` for indexes intended for development, testing, or
 #' proof of concept. Use `ENTERPRISE_EDITION` for your production
@@ -723,35 +1873,43 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' 
 #' The `Edition` parameter is optional. If you don't supply a value, the
 #' default is `ENTERPRISE_EDITION`.
-#' @param RoleArn &#91;required&#93; An AWS Identity and Access Management (IAM) role that gives Amazon
-#' Kendra permissions to access your Amazon CloudWatch logs and metrics.
-#' This is also the role used when you use the
-#' [`batch_put_document`][kendra_batch_put_document] operation to index
-#' documents from an Amazon S3 bucket.
-#' @param ServerSideEncryptionConfiguration The identifier of the AWS KMS customer managed key (CMK) to use to
+#' 
+#' For more information on quota limits for enterprise and developer
+#' editions, see
+#' [Quotas](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
+#' @param RoleArn &#91;required&#93; An Identity and Access Management (IAM) role that gives Amazon Kendra
+#' permissions to access your Amazon CloudWatch logs and metrics. This is
+#' also the role you use when you call the
+#' [`batch_put_document`][kendra_batch_put_document] API to index documents
+#' from an Amazon S3 bucket.
+#' @param ServerSideEncryptionConfiguration The identifier of the KMS customer managed key (CMK) that's used to
 #' encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support
 #' asymmetric CMKs.
 #' @param Description A description for the index.
 #' @param ClientToken A token that you provide to identify the request to create an index.
-#' Multiple calls to the [`create_index`][kendra_create_index] operation
-#' with the same client token will create only one index.
+#' Multiple calls to the [`create_index`][kendra_create_index] API with the
+#' same client token will create only one index.
 #' @param Tags A list of key-value pairs that identify the index. You can use the tags
 #' to identify and organize your resources and to control access to
 #' resources.
 #' @param UserTokenConfigurations The user token configuration.
 #' @param UserContextPolicy The user context policy.
 #' 
-#' ### ATTRIBUTE_FILTER
+#' **ATTRIBUTE_FILTER**
 #' 
-#' All indexed content is searchable and displayable for all users. If
-#' there is an access control list, it is ignored. You can filter on user
-#' and group attributes.
+#' All indexed content is searchable and displayable for all users. If you
+#' want to filter search results on user context, you can use the attribute
+#' filters of `_user_id` and `_group_ids` or you can provide user and group
+#' information in `UserContext`.
 #' 
-#' ### USER_TOKEN
+#' **USER_TOKEN**
 #' 
-#' Enables SSO and token-based user access control. All documents with no
-#' access control and all documents accessible to the user will be
-#' searchable and displayable.
+#' Enables token-based user access control to filter search results on user
+#' context. All documents with no access control and all documents
+#' accessible to the user will be searchable and displayable.
+#' @param UserGroupResolutionConfiguration Enables fetching access levels of groups and users from an Amazon Web
+#' Services Single Sign On identity source. To configure this, see
+#' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/dg/API_UserGroupResolutionConfiguration.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -795,21 +1953,24 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #'       )
 #'     )
 #'   ),
-#'   UserContextPolicy = "ATTRIBUTE_FILTER"|"USER_TOKEN"
+#'   UserContextPolicy = "ATTRIBUTE_FILTER"|"USER_TOKEN",
+#'   UserGroupResolutionConfiguration = list(
+#'     UserGroupResolutionMode = "AWS_SSO"|"NONE"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kendra_create_index
-kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncryptionConfiguration = NULL, Description = NULL, ClientToken = NULL, Tags = NULL, UserTokenConfigurations = NULL, UserContextPolicy = NULL) {
+kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncryptionConfiguration = NULL, Description = NULL, ClientToken = NULL, Tags = NULL, UserTokenConfigurations = NULL, UserContextPolicy = NULL, UserGroupResolutionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateIndex",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$create_index_input(Name = Name, Edition = Edition, RoleArn = RoleArn, ServerSideEncryptionConfiguration = ServerSideEncryptionConfiguration, Description = Description, ClientToken = ClientToken, Tags = Tags, UserTokenConfigurations = UserTokenConfigurations, UserContextPolicy = UserContextPolicy)
+  input <- .kendra$create_index_input(Name = Name, Edition = Edition, RoleArn = RoleArn, ServerSideEncryptionConfiguration = ServerSideEncryptionConfiguration, Description = Description, ClientToken = ClientToken, Tags = Tags, UserTokenConfigurations = UserTokenConfigurations, UserContextPolicy = UserContextPolicy, UserGroupResolutionConfiguration = UserGroupResolutionConfiguration)
   output <- .kendra$create_index_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -819,28 +1980,139 @@ kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncrypt
 }
 .kendra$operations$create_index <- kendra_create_index
 
+#' Creates a block list to exlcude certain queries from suggestions
+#'
+#' @description
+#' Creates a block list to exlcude certain queries from suggestions.
+#' 
+#' Any query that contains words or phrases specified in the block list is
+#' blocked or filtered out from being shown as a suggestion.
+#' 
+#' You need to provide the file location of your block list text file in
+#' your S3 bucket. In your text file, enter each block word or phrase on a
+#' separate line.
+#' 
+#' For information on the current quota limits for block lists, see [Quotas
+#' for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
+#' 
+#' [`create_query_suggestions_block_list`][kendra_create_query_suggestions_block_list]
+#' is currently not supported in the Amazon Web Services GovCloud (US-West)
+#' region.
+#' 
+#' For an example of creating a block list for query suggestions using the
+#' Python SDK, see [Query suggestions block
+#' list](https://docs.aws.amazon.com/kendra/latest/dg/query-suggestions.html#suggestions-block-list).
+#'
+#' @usage
+#' kendra_create_query_suggestions_block_list(IndexId, Name, Description,
+#'   SourceS3Path, ClientToken, RoleArn, Tags)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index you want to create a query suggestions block
+#' list for.
+#' @param Name &#91;required&#93; A user friendly name for the block list.
+#' 
+#' For example, the block list named 'offensive-words' includes all
+#' offensive words that could appear in user queries and need to be blocked
+#' from suggestions.
+#' @param Description A user-friendly description for the block list.
+#' 
+#' For example, the description "List of all offensive words that can
+#' appear in user queries and need to be blocked from suggestions."
+#' @param SourceS3Path &#91;required&#93; The S3 path to your block list text file in your S3 bucket.
+#' 
+#' Each block word or phrase should be on a separate line in a text file.
+#' 
+#' For information on the current quota limits for block lists, see [Quotas
+#' for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
+#' @param ClientToken A token that you provide to identify the request to create a query
+#' suggestions block list.
+#' @param RoleArn &#91;required&#93; The IAM (Identity and Access Management) role used by Amazon Kendra to
+#' access the block list text file in your S3 bucket.
+#' 
+#' You need permissions to the role ARN (Amazon Web Services Resource
+#' Name). The role needs S3 read permissions to your file in S3 and needs
+#' to give STS (Security Token Service) assume role permissions to Amazon
+#' Kendra.
+#' @param Tags A tag that you can assign to a block list that categorizes the block
+#' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_query_suggestions_block_list(
+#'   IndexId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   SourceS3Path = list(
+#'     Bucket = "string",
+#'     Key = "string"
+#'   ),
+#'   ClientToken = "string",
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_create_query_suggestions_block_list
+kendra_create_query_suggestions_block_list <- function(IndexId, Name, Description = NULL, SourceS3Path, ClientToken = NULL, RoleArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateQuerySuggestionsBlockList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$create_query_suggestions_block_list_input(IndexId = IndexId, Name = Name, Description = Description, SourceS3Path = SourceS3Path, ClientToken = ClientToken, RoleArn = RoleArn, Tags = Tags)
+  output <- .kendra$create_query_suggestions_block_list_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$create_query_suggestions_block_list <- kendra_create_query_suggestions_block_list
+
 #' Creates a thesaurus for an index
 #'
 #' @description
 #' Creates a thesaurus for an index. The thesaurus contains a list of
 #' synonyms in Solr format.
+#' 
+#' For an example of adding a thesaurus file to an index, see [Adding
+#' custom synonyms to an
+#' index](https://docs.aws.amazon.com/kendra/latest/dg/index-synonyms-adding-thesaurus-file.html).
 #'
 #' @usage
 #' kendra_create_thesaurus(IndexId, Name, Description, RoleArn, Tags,
 #'   SourceS3Path, ClientToken)
 #'
-#' @param IndexId &#91;required&#93; The unique identifier of the index for the new thesaurus.
-#' @param Name &#91;required&#93; The name for the new thesaurus.
-#' @param Description The description for the new thesaurus.
-#' @param RoleArn &#91;required&#93; An AWS Identity and Access Management (IAM) role that gives Amazon
-#' Kendra permissions to access thesaurus file specified in `SourceS3Path`.
+#' @param IndexId &#91;required&#93; The identifier of the index for the thesaurus.
+#' @param Name &#91;required&#93; A name for the thesaurus.
+#' @param Description A description for the thesaurus.
+#' @param RoleArn &#91;required&#93; An IAM role that gives Amazon Kendra permissions to access thesaurus
+#' file specified in `SourceS3Path`.
 #' @param Tags A list of key-value pairs that identify the thesaurus. You can use the
 #' tags to identify and organize your resources and to control access to
 #' resources.
-#' @param SourceS3Path &#91;required&#93; The thesaurus file Amazon S3 source path.
+#' @param SourceS3Path &#91;required&#93; The path to the thesaurus file in S3.
 #' @param ClientToken A token that you provide to identify the request to create a thesaurus.
-#' Multiple calls to the [`create_thesaurus`][kendra_create_thesaurus]
-#' operation with the same client token will create only one index.
+#' Multiple calls to the [`create_thesaurus`][kendra_create_thesaurus] API
+#' with the same client token will create only one thesaurus.
 #'
 #' @return
 #' A list with the following syntax:
@@ -891,20 +2163,68 @@ kendra_create_thesaurus <- function(IndexId, Name, Description = NULL, RoleArn, 
 }
 .kendra$operations$create_thesaurus <- kendra_create_thesaurus
 
+#' Deletes an access control configuration that you created for your
+#' documents in an index
+#'
+#' @description
+#' Deletes an access control configuration that you created for your
+#' documents in an index. This includes user and group access information
+#' for your documents. This is useful for user context filtering, where
+#' search results are filtered based on the user or their group access to
+#' documents.
+#'
+#' @usage
+#' kendra_delete_access_control_configuration(IndexId, Id)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index for an access control configuration.
+#' @param Id &#91;required&#93; The identifier of the access control configuration you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_access_control_configuration(
+#'   IndexId = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_delete_access_control_configuration
+kendra_delete_access_control_configuration <- function(IndexId, Id) {
+  op <- new_operation(
+    name = "DeleteAccessControlConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$delete_access_control_configuration_input(IndexId = IndexId, Id = Id)
+  output <- .kendra$delete_access_control_configuration_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$delete_access_control_configuration <- kendra_delete_access_control_configuration
+
 #' Deletes an Amazon Kendra data source
 #'
 #' @description
 #' Deletes an Amazon Kendra data source. An exception is not thrown if the
 #' data source is already being deleted. While the data source is being
-#' deleted, the `Status` field returned by a call to the operation is set
-#' to `DELETING`. For more information, see [Deleting Data
+#' deleted, the `Status` field returned by a call to the
+#' [`describe_data_source`][kendra_describe_data_source] API is set to
+#' `DELETING`. For more information, see [Deleting Data
 #' Sources](https://docs.aws.amazon.com/kendra/latest/dg/delete-data-source.html).
 #'
 #' @usage
 #' kendra_delete_data_source(Id, IndexId)
 #'
-#' @param Id &#91;required&#93; The unique identifier of the data source to delete.
-#' @param IndexId &#91;required&#93; The unique identifier of the index associated with the data source.
+#' @param Id &#91;required&#93; The identifier of the data source you want to delete.
+#' @param IndexId &#91;required&#93; The identifier of the index used with the data source.
 #'
 #' @return
 #' An empty list.
@@ -937,6 +2257,51 @@ kendra_delete_data_source <- function(Id, IndexId) {
 }
 .kendra$operations$delete_data_source <- kendra_delete_data_source
 
+#' Deletes your Amazon Kendra experience such as a search application
+#'
+#' @description
+#' Deletes your Amazon Kendra experience such as a search application. For
+#' more information on creating a search application experience, see
+#' [Building a search experience with no
+#' code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#'
+#' @usage
+#' kendra_delete_experience(Id, IndexId)
+#'
+#' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience you want to delete.
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_experience(
+#'   Id = "string",
+#'   IndexId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_delete_experience
+kendra_delete_experience <- function(Id, IndexId) {
+  op <- new_operation(
+    name = "DeleteExperience",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$delete_experience_input(Id = Id, IndexId = IndexId)
+  output <- .kendra$delete_experience_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$delete_experience <- kendra_delete_experience
+
 #' Removes an FAQ from an index
 #'
 #' @description
@@ -945,8 +2310,8 @@ kendra_delete_data_source <- function(Id, IndexId) {
 #' @usage
 #' kendra_delete_faq(Id, IndexId)
 #'
-#' @param Id &#91;required&#93; The identifier of the FAQ to remove.
-#' @param IndexId &#91;required&#93; The index to remove the FAQ from.
+#' @param Id &#91;required&#93; The identifier of the FAQ you want to remove.
+#' @param IndexId &#91;required&#93; The identifier of the index for the FAQ.
 #'
 #' @return
 #' An empty list.
@@ -985,13 +2350,12 @@ kendra_delete_faq <- function(Id, IndexId) {
 #' Deletes an existing Amazon Kendra index. An exception is not thrown if
 #' the index is already being deleted. While the index is being deleted,
 #' the `Status` field returned by a call to the
-#' [`describe_index`][kendra_describe_index] operation is set to
-#' `DELETING`.
+#' [`describe_index`][kendra_describe_index] API is set to `DELETING`.
 #'
 #' @usage
 #' kendra_delete_index(Id)
 #'
-#' @param Id &#91;required&#93; The identifier of the index to delete.
+#' @param Id &#91;required&#93; The identifier of the index you want to delete.
 #'
 #' @return
 #' An empty list.
@@ -1023,6 +2387,147 @@ kendra_delete_index <- function(Id) {
 }
 .kendra$operations$delete_index <- kendra_delete_index
 
+#' Deletes a group so that all users and sub groups that belong to the
+#' group can no longer access documents only available to that group
+#'
+#' @description
+#' Deletes a group so that all users and sub groups that belong to the
+#' group can no longer access documents only available to that group.
+#' 
+#' For example, after deleting the group "Summer Interns", all interns who
+#' belonged to that group no longer see intern-only documents in their
+#' search results.
+#' 
+#' If you want to delete or replace users or sub groups of a group, you
+#' need to use the [`put_principal_mapping`][kendra_put_principal_mapping]
+#' operation. For example, if a user in the group "Engineering" leaves the
+#' engineering team and another user takes their place, you provide an
+#' updated list of users or sub groups that belong to the "Engineering"
+#' group when calling
+#' [`put_principal_mapping`][kendra_put_principal_mapping]. You can update
+#' your internal list of users or sub groups and input this list when
+#' calling [`put_principal_mapping`][kendra_put_principal_mapping].
+#' 
+#' [`delete_principal_mapping`][kendra_delete_principal_mapping] is
+#' currently not supported in the Amazon Web Services GovCloud (US-West)
+#' region.
+#'
+#' @usage
+#' kendra_delete_principal_mapping(IndexId, DataSourceId, GroupId,
+#'   OrderingId)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index you want to delete a group from.
+#' @param DataSourceId The identifier of the data source you want to delete a group from.
+#' 
+#' A group can be tied to multiple data sources. You can delete a group
+#' from accessing documents in a certain data source. For example, the
+#' groups "Research", "Engineering", and "Sales and Marketing" are all tied
+#' to the company's documents stored in the data sources Confluence and
+#' Salesforce. You want to delete "Research" and "Engineering" groups from
+#' Salesforce, so that these groups cannot access customer-related
+#' documents stored in Salesforce. Only "Sales and Marketing" should access
+#' documents in the Salesforce data source.
+#' @param GroupId &#91;required&#93; The identifier of the group you want to delete.
+#' @param OrderingId The timestamp identifier you specify to ensure Amazon Kendra does not
+#' override the latest `DELETE` action with previous actions. The highest
+#' number ID, which is the ordering ID, is the latest action you want to
+#' process and apply on top of other actions with lower number IDs. This
+#' prevents previous actions with lower number IDs from possibly overriding
+#' the latest action.
+#' 
+#' The ordering ID can be the UNIX time of the last update you made to a
+#' group members list. You would then provide this list when calling
+#' [`put_principal_mapping`][kendra_put_principal_mapping]. This ensures
+#' your `DELETE` action for that updated group with the latest members list
+#' doesn't get overwritten by earlier `DELETE` actions for the same group
+#' which are yet to be processed.
+#' 
+#' The default ordering ID is the current UNIX time in milliseconds that
+#' the action was received by Amazon Kendra.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_principal_mapping(
+#'   IndexId = "string",
+#'   DataSourceId = "string",
+#'   GroupId = "string",
+#'   OrderingId = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_delete_principal_mapping
+kendra_delete_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, OrderingId = NULL) {
+  op <- new_operation(
+    name = "DeletePrincipalMapping",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$delete_principal_mapping_input(IndexId = IndexId, DataSourceId = DataSourceId, GroupId = GroupId, OrderingId = OrderingId)
+  output <- .kendra$delete_principal_mapping_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$delete_principal_mapping <- kendra_delete_principal_mapping
+
+#' Deletes a block list used for query suggestions for an index
+#'
+#' @description
+#' Deletes a block list used for query suggestions for an index.
+#' 
+#' A deleted block list might not take effect right away. Amazon Kendra
+#' needs to refresh the entire suggestions list to add back the queries
+#' that were previously blocked.
+#' 
+#' [`delete_query_suggestions_block_list`][kendra_delete_query_suggestions_block_list]
+#' is currently not supported in the Amazon Web Services GovCloud (US-West)
+#' region.
+#'
+#' @usage
+#' kendra_delete_query_suggestions_block_list(IndexId, Id)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index for the block list.
+#' @param Id &#91;required&#93; The identifier of the block list you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_query_suggestions_block_list(
+#'   IndexId = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_delete_query_suggestions_block_list
+kendra_delete_query_suggestions_block_list <- function(IndexId, Id) {
+  op <- new_operation(
+    name = "DeleteQuerySuggestionsBlockList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$delete_query_suggestions_block_list_input(IndexId = IndexId, Id = Id)
+  output <- .kendra$delete_query_suggestions_block_list_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$delete_query_suggestions_block_list <- kendra_delete_query_suggestions_block_list
+
 #' Deletes an existing Amazon Kendra thesaurus
 #'
 #' @description
@@ -1031,8 +2536,8 @@ kendra_delete_index <- function(Id) {
 #' @usage
 #' kendra_delete_thesaurus(Id, IndexId)
 #'
-#' @param Id &#91;required&#93; The identifier of the thesaurus to delete.
-#' @param IndexId &#91;required&#93; The identifier of the index associated with the thesaurus to delete.
+#' @param Id &#91;required&#93; The identifier of the thesaurus you want to delete.
+#' @param IndexId &#91;required&#93; The identifier of the index for the thesaurus.
 #'
 #' @return
 #' An empty list.
@@ -1065,16 +2570,91 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 }
 .kendra$operations$delete_thesaurus <- kendra_delete_thesaurus
 
-#' Gets information about a Amazon Kendra data source
+#' Gets information about an access control configuration that you created
+#' for your documents in an index
 #'
 #' @description
-#' Gets information about a Amazon Kendra data source.
+#' Gets information about an access control configuration that you created
+#' for your documents in an index. This includes user and group access
+#' information for your documents. This is useful for user context
+#' filtering, where search results are filtered based on the user or their
+#' group access to documents.
+#'
+#' @usage
+#' kendra_describe_access_control_configuration(IndexId, Id)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index for an access control configuration.
+#' @param Id &#91;required&#93; The identifier of the access control configuration you want to get
+#' information on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Description = "string",
+#'   ErrorMessage = "string",
+#'   AccessControlList = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "USER"|"GROUP",
+#'       Access = "ALLOW"|"DENY",
+#'       DataSourceId = "string"
+#'     )
+#'   ),
+#'   HierarchicalAccessControlList = list(
+#'     list(
+#'       PrincipalList = list(
+#'         list(
+#'           Name = "string",
+#'           Type = "USER"|"GROUP",
+#'           Access = "ALLOW"|"DENY",
+#'           DataSourceId = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_access_control_configuration(
+#'   IndexId = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_describe_access_control_configuration
+kendra_describe_access_control_configuration <- function(IndexId, Id) {
+  op <- new_operation(
+    name = "DescribeAccessControlConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$describe_access_control_configuration_input(IndexId = IndexId, Id = Id)
+  output <- .kendra$describe_access_control_configuration_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$describe_access_control_configuration <- kendra_describe_access_control_configuration
+
+#' Gets information about an Amazon Kendra data source
+#'
+#' @description
+#' Gets information about an Amazon Kendra data source.
 #'
 #' @usage
 #' kendra_describe_data_source(Id, IndexId)
 #'
-#' @param Id &#91;required&#93; The unique identifier of the data source to describe.
-#' @param IndexId &#91;required&#93; The identifier of the index that contains the data source.
+#' @param Id &#91;required&#93; The identifier of the data source.
+#' @param IndexId &#91;required&#93; The identifier of the index used with the data source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1083,7 +2663,7 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #'   Id = "string",
 #'   IndexId = "string",
 #'   Name = "string",
-#'   Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW"|"CUSTOM"|"CONFLUENCE"|"GOOGLEDRIVE",
+#'   Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW"|"CUSTOM"|"CONFLUENCE"|"GOOGLEDRIVE"|"WEBCRAWLER"|"WORKDOCS"|"FSX"|"SLACK"|"BOX"|"QUIP"|"JIRA"|"GITHUB"|"ALFRESCO",
 #'   Configuration = list(
 #'     S3Configuration = list(
 #'       BucketName = "string",
@@ -1104,7 +2684,7 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #'       )
 #'     ),
 #'     SharePointConfiguration = list(
-#'       SharePointVersion = "SHAREPOINT_ONLINE",
+#'       SharePointVersion = "SHAREPOINT_2013"|"SHAREPOINT_2016"|"SHAREPOINT_ONLINE",
 #'       Urls = list(
 #'         "string"
 #'       ),
@@ -1133,7 +2713,12 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #'         )
 #'       ),
 #'       DocumentTitleFieldName = "string",
-#'       DisableLocalGroups = TRUE|FALSE
+#'       DisableLocalGroups = TRUE|FALSE,
+#'       SslCertificateS3Path = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       ),
+#'       AuthenticationType = "HTTP_BASIC"|"OAUTH2"
 #'     ),
 #'     DatabaseConfiguration = list(
 #'       DatabaseEngineType = "RDS_AURORA_MYSQL"|"RDS_AURORA_POSTGRESQL"|"RDS_MYSQL"|"RDS_POSTGRESQL",
@@ -1300,7 +2885,8 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #'             DateFieldFormat = "string",
 #'             IndexFieldName = "string"
 #'           )
-#'         )
+#'         ),
+#'         FilterQuery = "string"
 #'       ),
 #'       ServiceCatalogConfiguration = list(
 #'         CrawlAttachments = TRUE|FALSE,
@@ -1319,7 +2905,8 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #'             IndexFieldName = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       AuthenticationType = "HTTP_BASIC"|"OAUTH2"
 #'     ),
 #'     ConfluenceConfiguration = list(
 #'       ServerUrl = "string",
@@ -1409,6 +2996,449 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #'       ExcludeSharedDrives = list(
 #'         "string"
 #'       )
+#'     ),
+#'     WebCrawlerConfiguration = list(
+#'       Urls = list(
+#'         SeedUrlConfiguration = list(
+#'           SeedUrls = list(
+#'             "string"
+#'           ),
+#'           WebCrawlerMode = "HOST_ONLY"|"SUBDOMAINS"|"EVERYTHING"
+#'         ),
+#'         SiteMapsConfiguration = list(
+#'           SiteMaps = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CrawlDepth = 123,
+#'       MaxLinksPerPage = 123,
+#'       MaxContentSizePerPageInMegaBytes = 123.0,
+#'       MaxUrlsPerMinuteCrawlRate = 123,
+#'       UrlInclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       UrlExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ProxyConfiguration = list(
+#'         Host = "string",
+#'         Port = 123,
+#'         Credentials = "string"
+#'       ),
+#'       AuthenticationConfiguration = list(
+#'         BasicAuthentication = list(
+#'           list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Credentials = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     WorkDocsConfiguration = list(
+#'       OrganizationId = "string",
+#'       CrawlComments = TRUE|FALSE,
+#'       UseChangeLog = TRUE|FALSE,
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     FsxConfiguration = list(
+#'       FileSystemId = "string",
+#'       FileSystemType = "WINDOWS",
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SecretArn = "string",
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     SlackConfiguration = list(
+#'       TeamId = "string",
+#'       SecretArn = "string",
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SlackEntityList = list(
+#'         "PUBLIC_CHANNEL"|"PRIVATE_CHANNEL"|"GROUP_MESSAGE"|"DIRECT_MESSAGE"
+#'       ),
+#'       UseChangeLog = TRUE|FALSE,
+#'       CrawlBotMessage = TRUE|FALSE,
+#'       ExcludeArchived = TRUE|FALSE,
+#'       SinceCrawlDate = "string",
+#'       LookBackPeriod = 123,
+#'       PrivateChannelFilter = list(
+#'         "string"
+#'       ),
+#'       PublicChannelFilter = list(
+#'         "string"
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     BoxConfiguration = list(
+#'       EnterpriseId = "string",
+#'       SecretArn = "string",
+#'       UseChangeLog = TRUE|FALSE,
+#'       CrawlComments = TRUE|FALSE,
+#'       CrawlTasks = TRUE|FALSE,
+#'       CrawlWebLinks = TRUE|FALSE,
+#'       FileFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       TaskFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       CommentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       WebLinkFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     QuipConfiguration = list(
+#'       Domain = "string",
+#'       SecretArn = "string",
+#'       CrawlFileComments = TRUE|FALSE,
+#'       CrawlChatRooms = TRUE|FALSE,
+#'       CrawlAttachments = TRUE|FALSE,
+#'       FolderIds = list(
+#'         "string"
+#'       ),
+#'       ThreadFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       MessageFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       AttachmentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     JiraConfiguration = list(
+#'       JiraAccountUrl = "string",
+#'       SecretArn = "string",
+#'       UseChangeLog = TRUE|FALSE,
+#'       Project = list(
+#'         "string"
+#'       ),
+#'       IssueType = list(
+#'         "string"
+#'       ),
+#'       Status = list(
+#'         "string"
+#'       ),
+#'       IssueSubEntityFilter = list(
+#'         "COMMENTS"|"ATTACHMENTS"|"WORKLOGS"
+#'       ),
+#'       AttachmentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       CommentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       IssueFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       ProjectFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       WorkLogFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     GitHubConfiguration = list(
+#'       SaaSConfiguration = list(
+#'         OrganizationName = "string",
+#'         HostUrl = "string"
+#'       ),
+#'       OnPremiseConfiguration = list(
+#'         HostUrl = "string",
+#'         OrganizationName = "string",
+#'         SslCertificateS3Path = list(
+#'           Bucket = "string",
+#'           Key = "string"
+#'         )
+#'       ),
+#'       Type = "SAAS"|"ON_PREMISE",
+#'       SecretArn = "string",
+#'       UseChangeLog = TRUE|FALSE,
+#'       GitHubDocumentCrawlProperties = list(
+#'         CrawlRepositoryDocuments = TRUE|FALSE,
+#'         CrawlIssue = TRUE|FALSE,
+#'         CrawlIssueComment = TRUE|FALSE,
+#'         CrawlIssueCommentAttachment = TRUE|FALSE,
+#'         CrawlPullRequest = TRUE|FALSE,
+#'         CrawlPullRequestComment = TRUE|FALSE,
+#'         CrawlPullRequestCommentAttachment = TRUE|FALSE
+#'       ),
+#'       RepositoryFilter = list(
+#'         "string"
+#'       ),
+#'       InclusionFolderNamePatterns = list(
+#'         "string"
+#'       ),
+#'       InclusionFileTypePatterns = list(
+#'         "string"
+#'       ),
+#'       InclusionFileNamePatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionFolderNamePatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionFileTypePatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionFileNamePatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       GitHubRepositoryConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubCommitConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubIssueDocumentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubIssueCommentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubIssueAttachmentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubPullRequestCommentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubPullRequestDocumentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubPullRequestDocumentAttachmentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     AlfrescoConfiguration = list(
+#'       SiteUrl = "string",
+#'       SiteId = "string",
+#'       SecretArn = "string",
+#'       SslCertificateS3Path = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       ),
+#'       CrawlSystemFolders = TRUE|FALSE,
+#'       CrawlComments = TRUE|FALSE,
+#'       EntityFilter = list(
+#'         "wiki"|"blog"|"documentLibrary"
+#'       ),
+#'       DocumentLibraryFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       BlogFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       WikiFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   CreatedAt = as.POSIXct(
@@ -1421,7 +3451,80 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #'   Status = "CREATING"|"DELETING"|"FAILED"|"UPDATING"|"ACTIVE",
 #'   Schedule = "string",
 #'   RoleArn = "string",
-#'   ErrorMessage = "string"
+#'   ErrorMessage = "string",
+#'   LanguageCode = "string",
+#'   CustomDocumentEnrichmentConfiguration = list(
+#'     InlineConfigurations = list(
+#'       list(
+#'         Condition = list(
+#'           ConditionDocumentAttributeKey = "string",
+#'           Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'           ConditionOnValue = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         Target = list(
+#'           TargetDocumentAttributeKey = "string",
+#'           TargetDocumentAttributeValueDeletion = TRUE|FALSE,
+#'           TargetDocumentAttributeValue = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         DocumentContentDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     PreExtractionHookConfiguration = list(
+#'       InvocationCondition = list(
+#'         ConditionDocumentAttributeKey = "string",
+#'         Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'         ConditionOnValue = list(
+#'           StringValue = "string",
+#'           StringListValue = list(
+#'             "string"
+#'           ),
+#'           LongValue = 123,
+#'           DateValue = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       LambdaArn = "string",
+#'       S3Bucket = "string"
+#'     ),
+#'     PostExtractionHookConfiguration = list(
+#'       InvocationCondition = list(
+#'         ConditionDocumentAttributeKey = "string",
+#'         Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'         ConditionOnValue = list(
+#'           StringValue = "string",
+#'           StringListValue = list(
+#'             "string"
+#'           ),
+#'           LongValue = 123,
+#'           DateValue = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       LambdaArn = "string",
+#'       S3Bucket = "string"
+#'     ),
+#'     RoleArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1453,6 +3556,90 @@ kendra_describe_data_source <- function(Id, IndexId) {
 }
 .kendra$operations$describe_data_source <- kendra_describe_data_source
 
+#' Gets information about your Amazon Kendra experience such as a search
+#' application
+#'
+#' @description
+#' Gets information about your Amazon Kendra experience such as a search
+#' application. For more information on creating a search application
+#' experience, see [Building a search experience with no
+#' code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#'
+#' @usage
+#' kendra_describe_experience(Id, IndexId)
+#'
+#' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience you want to get
+#' information on.
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   IndexId = "string",
+#'   Name = "string",
+#'   Endpoints = list(
+#'     list(
+#'       EndpointType = "HOME",
+#'       Endpoint = "string"
+#'     )
+#'   ),
+#'   Configuration = list(
+#'     ContentSourceConfiguration = list(
+#'       DataSourceIds = list(
+#'         "string"
+#'       ),
+#'       FaqIds = list(
+#'         "string"
+#'       ),
+#'       DirectPutContent = TRUE|FALSE
+#'     ),
+#'     UserIdentityConfiguration = list(
+#'       IdentityAttributeName = "string"
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   Status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
+#'   RoleArn = "string",
+#'   ErrorMessage = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_experience(
+#'   Id = "string",
+#'   IndexId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_describe_experience
+kendra_describe_experience <- function(Id, IndexId) {
+  op <- new_operation(
+    name = "DescribeExperience",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$describe_experience_input(Id = Id, IndexId = IndexId)
+  output <- .kendra$describe_experience_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$describe_experience <- kendra_describe_experience
+
 #' Gets information about an FAQ list
 #'
 #' @description
@@ -1461,8 +3648,8 @@ kendra_describe_data_source <- function(Id, IndexId) {
 #' @usage
 #' kendra_describe_faq(Id, IndexId)
 #'
-#' @param Id &#91;required&#93; The unique identifier of the FAQ.
-#' @param IndexId &#91;required&#93; The identifier of the index that contains the FAQ.
+#' @param Id &#91;required&#93; The identifier of the FAQ you want to get information on.
+#' @param IndexId &#91;required&#93; The identifier of the index for the FAQ.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1485,7 +3672,8 @@ kendra_describe_data_source <- function(Id, IndexId) {
 #'   Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
 #'   RoleArn = "string",
 #'   ErrorMessage = "string",
-#'   FileFormat = "CSV"|"CSV_WITH_HEADER"|"JSON"
+#'   FileFormat = "CSV"|"CSV_WITH_HEADER"|"JSON",
+#'   LanguageCode = "string"
 #' )
 #' ```
 #'
@@ -1517,15 +3705,15 @@ kendra_describe_faq <- function(Id, IndexId) {
 }
 .kendra$operations$describe_faq <- kendra_describe_faq
 
-#' Describes an existing Amazon Kendra index
+#' Gets information about an existing Amazon Kendra index
 #'
 #' @description
-#' Describes an existing Amazon Kendra index
+#' Gets information about an existing Amazon Kendra index.
 #'
 #' @usage
 #' kendra_describe_index(Id)
 #'
-#' @param Id &#91;required&#93; The name of the index to describe.
+#' @param Id &#91;required&#93; The identifier of the index you want to get information on.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1598,7 +3786,10 @@ kendra_describe_faq <- function(Id, IndexId) {
 #'       )
 #'     )
 #'   ),
-#'   UserContextPolicy = "ATTRIBUTE_FILTER"|"USER_TOKEN"
+#'   UserContextPolicy = "ATTRIBUTE_FILTER"|"USER_TOKEN",
+#'   UserGroupResolutionConfiguration = list(
+#'     UserGroupResolutionMode = "AWS_SSO"|"NONE"
+#'   )
 #' )
 #' ```
 #'
@@ -1629,16 +3820,231 @@ kendra_describe_index <- function(Id) {
 }
 .kendra$operations$describe_index <- kendra_describe_index
 
-#' Describes an existing Amazon Kendra thesaurus
+#' Describes the processing of PUT and DELETE actions for mapping users to
+#' their groups
 #'
 #' @description
-#' Describes an existing Amazon Kendra thesaurus.
+#' Describes the processing of `PUT` and `DELETE` actions for mapping users
+#' to their groups. This includes information on the status of actions
+#' currently processing or yet to be processed, when actions were last
+#' updated, when actions were received by Amazon Kendra, the latest action
+#' that should process and apply after other actions, and useful error
+#' messages if an action could not be processed.
+#' 
+#' [`describe_principal_mapping`][kendra_describe_principal_mapping] is
+#' currently not supported in the Amazon Web Services GovCloud (US-West)
+#' region.
+#'
+#' @usage
+#' kendra_describe_principal_mapping(IndexId, DataSourceId, GroupId)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index required to check the processing of `PUT`
+#' and `DELETE` actions for mapping users to their groups.
+#' @param DataSourceId The identifier of the data source to check the processing of `PUT` and
+#' `DELETE` actions for mapping users to their groups.
+#' @param GroupId &#91;required&#93; The identifier of the group required to check the processing of `PUT`
+#' and `DELETE` actions for mapping users to their groups.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndexId = "string",
+#'   DataSourceId = "string",
+#'   GroupId = "string",
+#'   GroupOrderingIdSummaries = list(
+#'     list(
+#'       Status = "FAILED"|"SUCCEEDED"|"PROCESSING"|"DELETING"|"DELETED",
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ReceivedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OrderingId = 123,
+#'       FailureReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_principal_mapping(
+#'   IndexId = "string",
+#'   DataSourceId = "string",
+#'   GroupId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_describe_principal_mapping
+kendra_describe_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId) {
+  op <- new_operation(
+    name = "DescribePrincipalMapping",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$describe_principal_mapping_input(IndexId = IndexId, DataSourceId = DataSourceId, GroupId = GroupId)
+  output <- .kendra$describe_principal_mapping_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$describe_principal_mapping <- kendra_describe_principal_mapping
+
+#' Gets information about a block list used for query suggestions for an
+#' index
+#'
+#' @description
+#' Gets information about a block list used for query suggestions for an
+#' index.
+#' 
+#' This is used to check the current settings that are applied to a block
+#' list.
+#' 
+#' [`describe_query_suggestions_block_list`][kendra_describe_query_suggestions_block_list]
+#' is currently not supported in the Amazon Web Services GovCloud (US-West)
+#' region.
+#'
+#' @usage
+#' kendra_describe_query_suggestions_block_list(IndexId, Id)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index for the block list.
+#' @param Id &#91;required&#93; The identifier of the block list you want to get information on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndexId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   Status = "ACTIVE"|"CREATING"|"DELETING"|"UPDATING"|"ACTIVE_BUT_UPDATE_FAILED"|"FAILED",
+#'   ErrorMessage = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SourceS3Path = list(
+#'     Bucket = "string",
+#'     Key = "string"
+#'   ),
+#'   ItemCount = 123,
+#'   FileSizeBytes = 123,
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_query_suggestions_block_list(
+#'   IndexId = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_describe_query_suggestions_block_list
+kendra_describe_query_suggestions_block_list <- function(IndexId, Id) {
+  op <- new_operation(
+    name = "DescribeQuerySuggestionsBlockList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$describe_query_suggestions_block_list_input(IndexId = IndexId, Id = Id)
+  output <- .kendra$describe_query_suggestions_block_list_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$describe_query_suggestions_block_list <- kendra_describe_query_suggestions_block_list
+
+#' Gets information on the settings of query suggestions for an index
+#'
+#' @description
+#' Gets information on the settings of query suggestions for an index.
+#' 
+#' This is used to check the current settings applied to query suggestions.
+#' 
+#' [`describe_query_suggestions_config`][kendra_describe_query_suggestions_config]
+#' is currently not supported in the Amazon Web Services GovCloud (US-West)
+#' region.
+#'
+#' @usage
+#' kendra_describe_query_suggestions_config(IndexId)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index with query suggestions that you want to get
+#' information on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Mode = "ENABLED"|"LEARN_ONLY",
+#'   Status = "ACTIVE"|"UPDATING",
+#'   QueryLogLookBackWindowInDays = 123,
+#'   IncludeQueriesWithoutUserInformation = TRUE|FALSE,
+#'   MinimumNumberOfQueryingUsers = 123,
+#'   MinimumQueryCount = 123,
+#'   LastSuggestionsBuildTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastClearTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TotalSuggestionsCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_query_suggestions_config(
+#'   IndexId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_describe_query_suggestions_config
+kendra_describe_query_suggestions_config <- function(IndexId) {
+  op <- new_operation(
+    name = "DescribeQuerySuggestionsConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$describe_query_suggestions_config_input(IndexId = IndexId)
+  output <- .kendra$describe_query_suggestions_config_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$describe_query_suggestions_config <- kendra_describe_query_suggestions_config
+
+#' Gets information about an existing Amazon Kendra thesaurus
+#'
+#' @description
+#' Gets information about an existing Amazon Kendra thesaurus.
 #'
 #' @usage
 #' kendra_describe_thesaurus(Id, IndexId)
 #'
-#' @param Id &#91;required&#93; The identifier of the thesaurus to describe.
-#' @param IndexId &#91;required&#93; The identifier of the index associated with the thesaurus to describe.
+#' @param Id &#91;required&#93; The identifier of the thesaurus you want to get information on.
+#' @param IndexId &#91;required&#93; The identifier of the index for the thesaurus.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1695,6 +4101,372 @@ kendra_describe_thesaurus <- function(Id, IndexId) {
 }
 .kendra$operations$describe_thesaurus <- kendra_describe_thesaurus
 
+#' Prevents users or groups in your Amazon Web Services SSO identity source
+#' from accessing your Amazon Kendra experience
+#'
+#' @description
+#' Prevents users or groups in your Amazon Web Services SSO identity source
+#' from accessing your Amazon Kendra experience. You can create an Amazon
+#' Kendra experience such as a search application. For more information on
+#' creating a search application experience, see [Building a search
+#' experience with no
+#' code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#'
+#' @usage
+#' kendra_disassociate_entities_from_experience(Id, IndexId, EntityList)
+#'
+#' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#' @param EntityList &#91;required&#93; Lists users or groups in your Amazon Web Services SSO identity source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedEntityList = list(
+#'     list(
+#'       EntityId = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_entities_from_experience(
+#'   Id = "string",
+#'   IndexId = "string",
+#'   EntityList = list(
+#'     list(
+#'       EntityId = "string",
+#'       EntityType = "USER"|"GROUP"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_disassociate_entities_from_experience
+kendra_disassociate_entities_from_experience <- function(Id, IndexId, EntityList) {
+  op <- new_operation(
+    name = "DisassociateEntitiesFromExperience",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$disassociate_entities_from_experience_input(Id = Id, IndexId = IndexId, EntityList = EntityList)
+  output <- .kendra$disassociate_entities_from_experience_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$disassociate_entities_from_experience <- kendra_disassociate_entities_from_experience
+
+#' Removes the specific permissions of users or groups in your Amazon Web
+#' Services SSO identity source with access to your Amazon Kendra
+#' experience
+#'
+#' @description
+#' Removes the specific permissions of users or groups in your Amazon Web
+#' Services SSO identity source with access to your Amazon Kendra
+#' experience. You can create an Amazon Kendra experience such as a search
+#' application. For more information on creating a search application
+#' experience, see [Building a search experience with no
+#' code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#'
+#' @usage
+#' kendra_disassociate_personas_from_entities(Id, IndexId, EntityIds)
+#'
+#' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#' @param EntityIds &#91;required&#93; The identifiers of users or groups in your Amazon Web Services SSO
+#' identity source. For example, user IDs could be user emails.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedEntityList = list(
+#'     list(
+#'       EntityId = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_personas_from_entities(
+#'   Id = "string",
+#'   IndexId = "string",
+#'   EntityIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_disassociate_personas_from_entities
+kendra_disassociate_personas_from_entities <- function(Id, IndexId, EntityIds) {
+  op <- new_operation(
+    name = "DisassociatePersonasFromEntities",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$disassociate_personas_from_entities_input(Id = Id, IndexId = IndexId, EntityIds = EntityIds)
+  output <- .kendra$disassociate_personas_from_entities_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$disassociate_personas_from_entities <- kendra_disassociate_personas_from_entities
+
+#' Fetches the queries that are suggested to your users
+#'
+#' @description
+#' Fetches the queries that are suggested to your users.
+#' 
+#' [`get_query_suggestions`][kendra_get_query_suggestions] is currently not
+#' supported in the Amazon Web Services GovCloud (US-West) region.
+#'
+#' @usage
+#' kendra_get_query_suggestions(IndexId, QueryText, MaxSuggestionsCount)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index you want to get query suggestions from.
+#' @param QueryText &#91;required&#93; The text of a user's query to generate query suggestions.
+#' 
+#' A query is suggested if the query prefix matches what a user starts to
+#' type as their query.
+#' 
+#' Amazon Kendra does not show any suggestions if a user types fewer than
+#' two characters or more than 60 characters. A query must also have at
+#' least one search result and contain at least one word of more than four
+#' characters.
+#' @param MaxSuggestionsCount The maximum number of query suggestions you want to show to your users.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QuerySuggestionsId = "string",
+#'   Suggestions = list(
+#'     list(
+#'       Id = "string",
+#'       Value = list(
+#'         Text = list(
+#'           Text = "string",
+#'           Highlights = list(
+#'             list(
+#'               BeginOffset = 123,
+#'               EndOffset = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_query_suggestions(
+#'   IndexId = "string",
+#'   QueryText = "string",
+#'   MaxSuggestionsCount = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_get_query_suggestions
+kendra_get_query_suggestions <- function(IndexId, QueryText, MaxSuggestionsCount = NULL) {
+  op <- new_operation(
+    name = "GetQuerySuggestions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$get_query_suggestions_input(IndexId = IndexId, QueryText = QueryText, MaxSuggestionsCount = MaxSuggestionsCount)
+  output <- .kendra$get_query_suggestions_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$get_query_suggestions <- kendra_get_query_suggestions
+
+#' Retrieves search metrics data
+#'
+#' @description
+#' Retrieves search metrics data. The data provides a snapshot of how your
+#' users interact with your search application and how effective the
+#' application is.
+#'
+#' @usage
+#' kendra_get_snapshots(IndexId, Interval, MetricType, NextToken,
+#'   MaxResults)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index to get search metrics data.
+#' @param Interval &#91;required&#93; The time interval or time window to get search metrics data. The time
+#' interval uses the time zone of your index. You can view data in the
+#' following time windows:
+#' 
+#' -   `THIS_WEEK`: The current week, starting on the Sunday and ending on
+#'     the day before the current date.
+#' 
+#' -   `ONE_WEEK_AGO`: The previous week, starting on the Sunday and ending
+#'     on the following Saturday.
+#' 
+#' -   `TWO_WEEKS_AGO`: The week before the previous week, starting on the
+#'     Sunday and ending on the following Saturday.
+#' 
+#' -   `THIS_MONTH`: The current month, starting on the first day of the
+#'     month and ending on the day before the current date.
+#' 
+#' -   `ONE_MONTH_AGO`: The previous month, starting on the first day of
+#'     the month and ending on the last day of the month.
+#' 
+#' -   `TWO_MONTHS_AGO`: The month before the previous month, starting on
+#'     the first day of the month and ending on last day of the month.
+#' @param MetricType &#91;required&#93; The metric you want to retrieve. You can specify only one metric per
+#' call.
+#' 
+#' For more information about the metrics you can view, see [Gaining
+#' insights with search
+#' analytics](https://docs.aws.amazon.com/kendra/latest/dg/search-analytics.html).
+#' @param NextToken If the previous response was incomplete (because there is more data to
+#' retrieve), Amazon Kendra returns a pagination token in the response. You
+#' can use this pagination token to retrieve the next set of search metrics
+#' data.
+#' @param MaxResults The maximum number of returned data for the metric.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SnapShotTimeFilter = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   SnapshotsDataHeader = list(
+#'     "string"
+#'   ),
+#'   SnapshotsData = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_snapshots(
+#'   IndexId = "string",
+#'   Interval = "THIS_MONTH"|"THIS_WEEK"|"ONE_WEEK_AGO"|"TWO_WEEKS_AGO"|"ONE_MONTH_AGO"|"TWO_MONTHS_AGO",
+#'   MetricType = "QUERIES_BY_COUNT"|"QUERIES_BY_ZERO_CLICK_RATE"|"QUERIES_BY_ZERO_RESULT_RATE"|"DOCS_BY_CLICK_COUNT"|"AGG_QUERY_DOC_METRICS"|"TREND_QUERY_DOC_METRICS",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_get_snapshots
+kendra_get_snapshots <- function(IndexId, Interval, MetricType, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetSnapshots",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$get_snapshots_input(IndexId = IndexId, Interval = Interval, MetricType = MetricType, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .kendra$get_snapshots_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$get_snapshots <- kendra_get_snapshots
+
+#' Lists one or more access control configurations for an index
+#'
+#' @description
+#' Lists one or more access control configurations for an index. This
+#' includes user and group access information for your documents. This is
+#' useful for user context filtering, where search results are filtered
+#' based on the user or their group access to documents.
+#'
+#' @usage
+#' kendra_list_access_control_configurations(IndexId, NextToken,
+#'   MaxResults)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index for the access control configuration.
+#' @param NextToken If the previous response was incomplete (because there's more data to
+#' retrieve), Amazon Kendra returns a pagination token in the response. You
+#' can use this pagination token to retrieve the next set of access control
+#' configurations.
+#' @param MaxResults The maximum number of access control configurations to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   AccessControlConfigurations = list(
+#'     list(
+#'       Id = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_access_control_configurations(
+#'   IndexId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_list_access_control_configurations
+kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAccessControlConfigurations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$list_access_control_configurations_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .kendra$list_access_control_configurations_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$list_access_control_configurations <- kendra_list_access_control_configurations
+
 #' Gets statistics about synchronizing Amazon Kendra with a data source
 #'
 #' @description
@@ -1705,9 +4477,10 @@ kendra_describe_thesaurus <- function(Id, IndexId) {
 #'   StartTimeFilter, StatusFilter)
 #'
 #' @param Id &#91;required&#93; The identifier of the data source.
-#' @param IndexId &#91;required&#93; The identifier of the index that contains the data source.
-#' @param NextToken If the result of the previous request to `GetDataSourceSyncJobHistory`
-#' was truncated, include the `NextToken` to fetch the next set of jobs.
+#' @param IndexId &#91;required&#93; The identifier of the index used with the data source.
+#' @param NextToken If the previous response was incomplete (because there is more data to
+#' retrieve), Amazon Kendra returns a pagination token in the response. You
+#' can use this pagination token to retrieve the next set of jobs.
 #' @param MaxResults The maximum number of synchronization jobs to return in the response. If
 #' there are fewer results in the list, this response contains only the
 #' actual results.
@@ -1793,7 +4566,7 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
 #' @usage
 #' kendra_list_data_sources(IndexId, NextToken, MaxResults)
 #'
-#' @param IndexId &#91;required&#93; The identifier of the index that contains the data source.
+#' @param IndexId &#91;required&#93; The identifier of the index used with one or more data sources.
 #' @param NextToken If the previous response was incomplete (because there is more data to
 #' retrieve), Amazon Kendra returns a pagination token in the response. You
 #' can use this pagination token to retrieve the next set of data sources
@@ -1808,14 +4581,15 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
 #'     list(
 #'       Name = "string",
 #'       Id = "string",
-#'       Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW"|"CUSTOM"|"CONFLUENCE"|"GOOGLEDRIVE",
+#'       Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW"|"CUSTOM"|"CONFLUENCE"|"GOOGLEDRIVE"|"WEBCRAWLER"|"WORKDOCS"|"FSX"|"SLACK"|"BOX"|"QUIP"|"JIRA"|"GITHUB"|"ALFRESCO",
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       Status = "CREATING"|"DELETING"|"FAILED"|"UPDATING"|"ACTIVE"
+#'       Status = "CREATING"|"DELETING"|"FAILED"|"UPDATING"|"ACTIVE",
+#'       LanguageCode = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1851,6 +4625,217 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
 }
 .kendra$operations$list_data_sources <- kendra_list_data_sources
 
+#' Lists specific permissions of users and groups with access to your
+#' Amazon Kendra experience
+#'
+#' @description
+#' Lists specific permissions of users and groups with access to your
+#' Amazon Kendra experience.
+#'
+#' @usage
+#' kendra_list_entity_personas(Id, IndexId, NextToken, MaxResults)
+#'
+#' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#' @param NextToken If the previous response was incomplete (because there is more data to
+#' retrieve), Amazon Kendra returns a pagination token in the response. You
+#' can use this pagination token to retrieve the next set of users or
+#' groups.
+#' @param MaxResults The maximum number of returned users or groups.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SummaryItems = list(
+#'     list(
+#'       EntityId = "string",
+#'       Persona = "OWNER"|"VIEWER",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_entity_personas(
+#'   Id = "string",
+#'   IndexId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_list_entity_personas
+kendra_list_entity_personas <- function(Id, IndexId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEntityPersonas",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$list_entity_personas_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .kendra$list_entity_personas_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$list_entity_personas <- kendra_list_entity_personas
+
+#' Lists users or groups in your Amazon Web Services SSO identity source
+#' that are granted access to your Amazon Kendra experience
+#'
+#' @description
+#' Lists users or groups in your Amazon Web Services SSO identity source
+#' that are granted access to your Amazon Kendra experience. You can create
+#' an Amazon Kendra experience such as a search application. For more
+#' information on creating a search application experience, see [Building a
+#' search experience with no
+#' code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#'
+#' @usage
+#' kendra_list_experience_entities(Id, IndexId, NextToken)
+#'
+#' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#' @param NextToken If the previous response was incomplete (because there is more data to
+#' retrieve), Amazon Kendra returns a pagination token in the response. You
+#' can use this pagination token to retrieve the next set of users or
+#' groups.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SummaryItems = list(
+#'     list(
+#'       EntityId = "string",
+#'       EntityType = "USER"|"GROUP",
+#'       DisplayData = list(
+#'         UserName = "string",
+#'         GroupName = "string",
+#'         IdentifiedUserName = "string",
+#'         FirstName = "string",
+#'         LastName = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_experience_entities(
+#'   Id = "string",
+#'   IndexId = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_list_experience_entities
+kendra_list_experience_entities <- function(Id, IndexId, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListExperienceEntities",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$list_experience_entities_input(Id = Id, IndexId = IndexId, NextToken = NextToken)
+  output <- .kendra$list_experience_entities_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$list_experience_entities <- kendra_list_experience_entities
+
+#' Lists one or more Amazon Kendra experiences
+#'
+#' @description
+#' Lists one or more Amazon Kendra experiences. You can create an Amazon
+#' Kendra experience such as a search application. For more information on
+#' creating a search application experience, see [Building a search
+#' experience with no
+#' code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#'
+#' @usage
+#' kendra_list_experiences(IndexId, NextToken, MaxResults)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#' @param NextToken If the previous response was incomplete (because there is more data to
+#' retrieve), Amazon Kendra returns a pagination token in the response. You
+#' can use this pagination token to retrieve the next set of Amazon Kendra
+#' experiences.
+#' @param MaxResults The maximum number of returned Amazon Kendra experiences.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SummaryItems = list(
+#'     list(
+#'       Name = "string",
+#'       Id = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
+#'       Endpoints = list(
+#'         list(
+#'           EndpointType = "HOME",
+#'           Endpoint = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_experiences(
+#'   IndexId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_list_experiences
+kendra_list_experiences <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListExperiences",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$list_experiences_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .kendra$list_experiences_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$list_experiences <- kendra_list_experiences
+
 #' Gets a list of FAQ lists associated with an index
 #'
 #' @description
@@ -1860,8 +4845,9 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
 #' kendra_list_faqs(IndexId, NextToken, MaxResults)
 #'
 #' @param IndexId &#91;required&#93; The index that contains the FAQ lists.
-#' @param NextToken If the result of the previous request to [`list_faqs`][kendra_list_faqs]
-#' was truncated, include the `NextToken` to fetch the next set of FAQs.
+#' @param NextToken If the previous response was incomplete (because there is more data to
+#' retrieve), Amazon Kendra returns a pagination token in the response. You
+#' can use this pagination token to retrieve the next set of FAQs.
 #' @param MaxResults The maximum number of FAQs to return in the response. If there are fewer
 #' results in the list, this response contains only the actual results.
 #'
@@ -1881,7 +4867,8 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       FileFormat = "CSV"|"CSV_WITH_HEADER"|"JSON"
+#'       FileFormat = "CSV"|"CSV_WITH_HEADER"|"JSON",
+#'       LanguageCode = "string"
 #'     )
 #'   )
 #' )
@@ -1916,10 +4903,83 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 }
 .kendra$operations$list_faqs <- kendra_list_faqs
 
-#' Lists the Amazon Kendra indexes that you have created
+#' Provides a list of groups that are mapped to users before a given
+#' ordering or timestamp identifier
 #'
 #' @description
-#' Lists the Amazon Kendra indexes that you have created.
+#' Provides a list of groups that are mapped to users before a given
+#' ordering or timestamp identifier.
+#' 
+#' [`list_groups_older_than_ordering_id`][kendra_list_groups_older_than_ordering_id]
+#' is currently not supported in the Amazon Web Services GovCloud (US-West)
+#' region.
+#'
+#' @usage
+#' kendra_list_groups_older_than_ordering_id(IndexId, DataSourceId,
+#'   OrderingId, NextToken, MaxResults)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index for getting a list of groups mapped to users
+#' before a given ordering or timestamp identifier.
+#' @param DataSourceId The identifier of the data source for getting a list of groups mapped to
+#' users before a given ordering timestamp identifier.
+#' @param OrderingId &#91;required&#93; The timestamp identifier used for the latest `PUT` or `DELETE` action
+#' for mapping users to their groups.
+#' @param NextToken If the previous response was incomplete (because there is more data to
+#' retrieve), Amazon Kendra returns a pagination token in the response. You
+#' can use this pagination token to retrieve the next set of groups that
+#' are mapped to users before a given ordering or timestamp identifier.
+#' @param MaxResults The maximum number of returned groups that are mapped to users before a
+#' given ordering or timestamp identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupsSummaries = list(
+#'     list(
+#'       GroupId = "string",
+#'       OrderingId = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_groups_older_than_ordering_id(
+#'   IndexId = "string",
+#'   DataSourceId = "string",
+#'   OrderingId = 123,
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_list_groups_older_than_ordering_id
+kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NULL, OrderingId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListGroupsOlderThanOrderingId",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$list_groups_older_than_ordering_id_input(IndexId = IndexId, DataSourceId = DataSourceId, OrderingId = OrderingId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .kendra$list_groups_older_than_ordering_id_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$list_groups_older_than_ordering_id <- kendra_list_groups_older_than_ordering_id
+
+#' Lists the Amazon Kendra indexes that you created
+#'
+#' @description
+#' Lists the Amazon Kendra indexes that you created.
 #'
 #' @usage
 #' kendra_list_indices(NextToken, MaxResults)
@@ -1980,6 +5040,86 @@ kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .kendra$operations$list_indices <- kendra_list_indices
 
+#' Lists the block lists used for query suggestions for an index
+#'
+#' @description
+#' Lists the block lists used for query suggestions for an index.
+#' 
+#' For information on the current quota limits for block lists, see [Quotas
+#' for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
+#' 
+#' [`list_query_suggestions_block_lists`][kendra_list_query_suggestions_block_lists]
+#' is currently not supported in the Amazon Web Services GovCloud (US-West)
+#' region.
+#'
+#' @usage
+#' kendra_list_query_suggestions_block_lists(IndexId, NextToken,
+#'   MaxResults)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index for a list of all block lists that exist for
+#' that index.
+#' 
+#' For information on the current quota limits for block lists, see [Quotas
+#' for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
+#' @param NextToken If the previous response was incomplete (because there is more data to
+#' retrieve), Amazon Kendra returns a pagination token in the response. You
+#' can use this pagination token to retrieve the next set of block lists
+#' (`BlockListSummaryItems`).
+#' @param MaxResults The maximum number of block lists to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BlockListSummaryItems = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Status = "ACTIVE"|"CREATING"|"DELETING"|"UPDATING"|"ACTIVE_BUT_UPDATE_FAILED"|"FAILED",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ItemCount = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_query_suggestions_block_lists(
+#'   IndexId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_list_query_suggestions_block_lists
+kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListQuerySuggestionsBlockLists",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$list_query_suggestions_block_lists_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .kendra$list_query_suggestions_block_lists_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$list_query_suggestions_block_lists <- kendra_list_query_suggestions_block_lists
+
 #' Gets a list of tags associated with a specified resource
 #'
 #' @description
@@ -2032,15 +5172,15 @@ kendra_list_tags_for_resource <- function(ResourceARN) {
 }
 .kendra$operations$list_tags_for_resource <- kendra_list_tags_for_resource
 
-#' Lists the Amazon Kendra thesauri associated with an index
+#' Lists the thesauri for an index
 #'
 #' @description
-#' Lists the Amazon Kendra thesauri associated with an index.
+#' Lists the thesauri for an index.
 #'
 #' @usage
 #' kendra_list_thesauri(IndexId, NextToken, MaxResults)
 #'
-#' @param IndexId &#91;required&#93; The identifier of the index associated with the thesaurus to list.
+#' @param IndexId &#91;required&#93; The identifier of the index with one or more thesauri.
 #' @param NextToken If the previous response was incomplete (because there is more data to
 #' retrieve), Amazon Kendra returns a pagination token in the response. You
 #' can use this pagination token to retrieve the next set of thesauri
@@ -2097,12 +5237,135 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 }
 .kendra$operations$list_thesauri <- kendra_list_thesauri
 
+#' Maps users to their groups so that you only need to provide the user ID
+#' when you issue the query
+#'
+#' @description
+#' Maps users to their groups so that you only need to provide the user ID
+#' when you issue the query.
+#' 
+#' You can also map sub groups to groups. For example, the group "Company
+#' Intellectual Property Teams" includes sub groups "Research" and
+#' "Engineering". These sub groups include their own list of users or
+#' people who work in these teams. Only users who work in research and
+#' engineering, and therefore belong in the intellectual property group,
+#' can see top-secret company documents in their search results.
+#' 
+#' This is useful for user context filtering, where search results are
+#' filtered based on the user or their group access to documents. For more
+#' information, see [Filtering on user
+#' context](https://docs.aws.amazon.com/kendra/latest/dg/user-context-filter.html).
+#' 
+#' If more than five `PUT` actions for a group are currently processing, a
+#' validation exception is thrown.
+#' 
+#' [`put_principal_mapping`][kendra_put_principal_mapping] is currently not
+#' supported in the Amazon Web Services GovCloud (US-West) region.
+#'
+#' @usage
+#' kendra_put_principal_mapping(IndexId, DataSourceId, GroupId,
+#'   GroupMembers, OrderingId, RoleArn)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index you want to map users to their groups.
+#' @param DataSourceId The identifier of the data source you want to map users to their groups.
+#' 
+#' This is useful if a group is tied to multiple data sources, but you only
+#' want the group to access documents of a certain data source. For
+#' example, the groups "Research", "Engineering", and "Sales and Marketing"
+#' are all tied to the company's documents stored in the data sources
+#' Confluence and Salesforce. However, "Sales and Marketing" team only
+#' needs access to customer-related documents stored in Salesforce.
+#' @param GroupId &#91;required&#93; The identifier of the group you want to map its users to.
+#' @param GroupMembers &#91;required&#93; The list that contains your users or sub groups that belong the same
+#' group.
+#' 
+#' For example, the group "Company" includes the user "CEO" and the sub
+#' groups "Research", "Engineering", and "Sales and Marketing".
+#' 
+#' If you have more than 1000 users and/or sub groups for a single group,
+#' you need to provide the path to the S3 file that lists your users and
+#' sub groups for a group. Your sub groups can contain more than 1000
+#' users, but the list of sub groups that belong to a group (and/or users)
+#' must be no more than 1000.
+#' @param OrderingId The timestamp identifier you specify to ensure Amazon Kendra does not
+#' override the latest `PUT` action with previous actions. The highest
+#' number ID, which is the ordering ID, is the latest action you want to
+#' process and apply on top of other actions with lower number IDs. This
+#' prevents previous actions with lower number IDs from possibly overriding
+#' the latest action.
+#' 
+#' The ordering ID can be the UNIX time of the last update you made to a
+#' group members list. You would then provide this list when calling
+#' [`put_principal_mapping`][kendra_put_principal_mapping]. This ensures
+#' your `PUT` action for that updated group with the latest members list
+#' doesn't get overwritten by earlier `PUT` actions for the same group
+#' which are yet to be processed.
+#' 
+#' The default ordering ID is the current UNIX time in milliseconds that
+#' the action was received by Amazon Kendra.
+#' @param RoleArn The Amazon Resource Name (ARN) of a role that has access to the S3 file
+#' that contains your list of users or sub groups that belong to a group.
+#' 
+#' For more information, see [IAM roles for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html#iam-roles-ds).
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_principal_mapping(
+#'   IndexId = "string",
+#'   DataSourceId = "string",
+#'   GroupId = "string",
+#'   GroupMembers = list(
+#'     MemberGroups = list(
+#'       list(
+#'         GroupId = "string",
+#'         DataSourceId = "string"
+#'       )
+#'     ),
+#'     MemberUsers = list(
+#'       list(
+#'         UserId = "string"
+#'       )
+#'     ),
+#'     S3PathforGroupMembers = list(
+#'       Bucket = "string",
+#'       Key = "string"
+#'     )
+#'   ),
+#'   OrderingId = 123,
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_put_principal_mapping
+kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, GroupMembers, OrderingId = NULL, RoleArn = NULL) {
+  op <- new_operation(
+    name = "PutPrincipalMapping",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$put_principal_mapping_input(IndexId = IndexId, DataSourceId = DataSourceId, GroupId = GroupId, GroupMembers = GroupMembers, OrderingId = OrderingId, RoleArn = RoleArn)
+  output <- .kendra$put_principal_mapping_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$put_principal_mapping <- kendra_put_principal_mapping
+
 #' Searches an active index
 #'
 #' @description
 #' Searches an active index. Use this API to search your documents using
-#' query. The [`query`][kendra_query] operation enables to do faceted
-#' search and to filter results based on document attributes.
+#' query. The [`query`][kendra_query] API enables to do faceted search and
+#' to filter results based on document attributes.
 #' 
 #' It also enables you to provide user context that Amazon Kendra uses to
 #' enforce document access control in the search results.
@@ -2124,12 +5387,14 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #'
 #' @usage
 #' kendra_query(IndexId, QueryText, AttributeFilter, Facets,
-#'   RequestedDocumentAttributes, QueryResultTypeFilter, PageNumber,
-#'   PageSize, SortingConfiguration, UserContext, VisitorId)
+#'   RequestedDocumentAttributes, QueryResultTypeFilter,
+#'   DocumentRelevanceOverrideConfigurations, PageNumber, PageSize,
+#'   SortingConfiguration, UserContext, VisitorId,
+#'   SpellCorrectionConfiguration)
 #'
 #' @param IndexId &#91;required&#93; The unique identifier of the index to search. The identifier is returned
-#' in the response from the operation.
-#' @param QueryText &#91;required&#93; The text to search for.
+#' in the response from the [`create_index`][kendra_create_index] API.
+#' @param QueryText The text to search for.
 #' @param AttributeFilter Enables filtered searches based on document attributes. You can only
 #' provide one attribute filter; however, the `AndAllFilters`, `NotFilter`,
 #' and `OrAllFilters` parameters contain a list of other filters.
@@ -2137,13 +5402,27 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' The `AttributeFilter` parameter enables you to create a set of filtering
 #' rules that a document must satisfy to be included in the query results.
 #' @param Facets An array of documents attributes. Amazon Kendra returns a count for each
-#' attribute key specified. You can use this information to help narrow the
-#' search for your user.
-#' @param RequestedDocumentAttributes An array of document attributes to include in the response. No other
-#' document attributes are included in the response. By default all
-#' document attributes are included in the response.
+#' attribute key specified. This helps your users narrow their search.
+#' @param RequestedDocumentAttributes An array of document attributes to include in the response. You can
+#' limit the response to include certain document attributes. By default
+#' all document attributes are included in the response.
 #' @param QueryResultTypeFilter Sets the type of query. Only results for the specified query type are
 #' returned.
+#' @param DocumentRelevanceOverrideConfigurations Overrides relevance tuning configurations of fields or attributes set at
+#' the index level.
+#' 
+#' If you use this API to override the relevance tuning configured at the
+#' index level, but there is no relevance tuning configured at the index
+#' level, then Amazon Kendra does not apply any relevance tuning.
+#' 
+#' If there is relevance tuning configured at the index level, but you do
+#' not use this API to override any relevance tuning in the index, then
+#' Amazon Kendra uses the relevance tuning that is configured at the index
+#' level.
+#' 
+#' If there is relevance tuning configured for fields at the index level,
+#' but you use this API to override only some of these fields, then for the
+#' fields you did not override, the importance is set to 1.
 #' @param PageNumber Query results are returned in pages the size of the `PageSize`
 #' parameter. By default, Amazon Kendra returns the first page of results.
 #' Use this parameter to get result pages after the first one.
@@ -2158,10 +5437,11 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' 
 #' If you don't provide sorting configuration, the results are sorted by
 #' the relevance that Amazon Kendra determines for the result.
-#' @param UserContext The user context token.
+#' @param UserContext The user context token or user and group information.
 #' @param VisitorId Provides an identifier for a specific user. The `VisitorId` should be a
 #' unique identifier, such as a GUID. Don't use personally identifiable
 #' information, such as the user's email address, as the `VisitorId`.
+#' @param SpellCorrectionConfiguration Enables suggested spell corrections for queries.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2231,7 +5511,7 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #'         )
 #'       ),
 #'       ScoreAttributes = list(
-#'         ScoreConfidence = "VERY_HIGH"|"HIGH"|"MEDIUM"|"LOW"
+#'         ScoreConfidence = "VERY_HIGH"|"HIGH"|"MEDIUM"|"LOW"|"NOT_AVAILABLE"
 #'       ),
 #'       FeedbackToken = "string"
 #'     )
@@ -2252,12 +5532,32 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #'               "2015-01-01"
 #'             )
 #'           ),
-#'           Count = 123
+#'           Count = 123,
+#'           FacetResults = list()
 #'         )
 #'       )
 #'     )
 #'   ),
-#'   TotalNumberOfResults = 123
+#'   TotalNumberOfResults = 123,
+#'   Warnings = list(
+#'     list(
+#'       Message = "string",
+#'       Code = "QUERY_LANGUAGE_INVALID_SYNTAX"
+#'     )
+#'   ),
+#'   SpellCorrectedQueries = list(
+#'     list(
+#'       SuggestedQueryText = "string",
+#'       Corrections = list(
+#'         list(
+#'           BeginOffset = 123,
+#'           EndOffset = 123,
+#'           Term = "string",
+#'           CorrectedTerm = "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2368,13 +5668,29 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #'   ),
 #'   Facets = list(
 #'     list(
-#'       DocumentAttributeKey = "string"
+#'       DocumentAttributeKey = "string",
+#'       Facets = list(),
+#'       MaxResults = 123
 #'     )
 #'   ),
 #'   RequestedDocumentAttributes = list(
 #'     "string"
 #'   ),
 #'   QueryResultTypeFilter = "DOCUMENT"|"QUESTION_ANSWER"|"ANSWER",
+#'   DocumentRelevanceOverrideConfigurations = list(
+#'     list(
+#'       Name = "string",
+#'       Relevance = list(
+#'         Freshness = TRUE|FALSE,
+#'         Importance = 123,
+#'         Duration = "string",
+#'         RankOrder = "ASCENDING"|"DESCENDING",
+#'         ValueImportanceMap = list(
+#'           123
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   PageNumber = 123,
 #'   PageSize = 123,
 #'   SortingConfiguration = list(
@@ -2382,23 +5698,36 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #'     SortOrder = "DESC"|"ASC"
 #'   ),
 #'   UserContext = list(
-#'     Token = "string"
+#'     Token = "string",
+#'     UserId = "string",
+#'     Groups = list(
+#'       "string"
+#'     ),
+#'     DataSourceGroups = list(
+#'       list(
+#'         GroupId = "string",
+#'         DataSourceId = "string"
+#'       )
+#'     )
 #'   ),
-#'   VisitorId = "string"
+#'   VisitorId = "string",
+#'   SpellCorrectionConfiguration = list(
+#'     IncludeQuerySpellCheckSuggestions = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kendra_query
-kendra_query <- function(IndexId, QueryText, AttributeFilter = NULL, Facets = NULL, RequestedDocumentAttributes = NULL, QueryResultTypeFilter = NULL, PageNumber = NULL, PageSize = NULL, SortingConfiguration = NULL, UserContext = NULL, VisitorId = NULL) {
+kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Facets = NULL, RequestedDocumentAttributes = NULL, QueryResultTypeFilter = NULL, DocumentRelevanceOverrideConfigurations = NULL, PageNumber = NULL, PageSize = NULL, SortingConfiguration = NULL, UserContext = NULL, VisitorId = NULL, SpellCorrectionConfiguration = NULL) {
   op <- new_operation(
     name = "Query",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$query_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, Facets = Facets, RequestedDocumentAttributes = RequestedDocumentAttributes, QueryResultTypeFilter = QueryResultTypeFilter, PageNumber = PageNumber, PageSize = PageSize, SortingConfiguration = SortingConfiguration, UserContext = UserContext, VisitorId = VisitorId)
+  input <- .kendra$query_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, Facets = Facets, RequestedDocumentAttributes = RequestedDocumentAttributes, QueryResultTypeFilter = QueryResultTypeFilter, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, SortingConfiguration = SortingConfiguration, UserContext = UserContext, VisitorId = VisitorId, SpellCorrectionConfiguration = SpellCorrectionConfiguration)
   output <- .kendra$query_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -2457,11 +5786,11 @@ kendra_start_data_source_sync_job <- function(Id, IndexId) {
 }
 .kendra$operations$start_data_source_sync_job <- kendra_start_data_source_sync_job
 
-#' Stops a running synchronization job
+#' Stops a synchronization job that is currently running
 #'
 #' @description
-#' Stops a running synchronization job. You can't stop a scheduled
-#' synchronization job.
+#' Stops a synchronization job that is currently running. You can't stop a
+#' scheduled synchronization job.
 #'
 #' @usage
 #' kendra_stop_data_source_sync_job(Id, IndexId)
@@ -2502,11 +5831,14 @@ kendra_stop_data_source_sync_job <- function(Id, IndexId) {
 .kendra$operations$stop_data_source_sync_job <- kendra_stop_data_source_sync_job
 
 #' Enables you to provide feedback to Amazon Kendra to improve the
-#' performance of the service
+#' performance of your index
 #'
 #' @description
 #' Enables you to provide feedback to Amazon Kendra to improve the
-#' performance of the service.
+#' performance of your index.
+#' 
+#' [`submit_feedback`][kendra_submit_feedback] is currently not supported
+#' in the Amazon Web Services GovCloud (US-West) region.
 #'
 #' @usage
 #' kendra_submit_feedback(IndexId, QueryId, ClickFeedbackItems,
@@ -2514,7 +5846,8 @@ kendra_stop_data_source_sync_job <- function(Id, IndexId) {
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index that was queried.
 #' @param QueryId &#91;required&#93; The identifier of the specific query for which you are submitting
-#' feedback. The query ID is returned in the response to the operation.
+#' feedback. The query ID is returned in the response to the
+#' [`query`][kendra_query] API.
 #' @param ClickFeedbackItems Tells Amazon Kendra that a particular search result link was chosen by
 #' the user.
 #' @param RelevanceFeedbackItems Provides Amazon Kendra with relevant or not relevant feedback for
@@ -2662,6 +5995,104 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .kendra$operations$untag_resource <- kendra_untag_resource
 
+#' Updates an access control configuration for your documents in an index
+#'
+#' @description
+#' Updates an access control configuration for your documents in an index.
+#' This includes user and group access information for your documents. This
+#' is useful for user context filtering, where search results are filtered
+#' based on the user or their group access to documents.
+#' 
+#' You can update an access control configuration you created without
+#' indexing all of your documents again. For example, your index contains
+#' top-secret company documents that only certain employees or users should
+#' access. You created an 'allow' access control configuration for one user
+#' who recently joined the 'top-secret' team, switching from a team with
+#' 'deny' access to top-secret documents. However, the user suddenly
+#' returns to their previous team and should no longer have access to top
+#' secret documents. You can update the access control configuration to
+#' re-configure access control for your documents as circumstances change.
+#' 
+#' You call the [`batch_put_document`][kendra_batch_put_document] API to
+#' apply the updated access control configuration, with the
+#' `AccessControlConfigurationId` included in the
+#' [Document](https://docs.aws.amazon.com/kendra/latest/dg/API_Document.html)
+#' object. If you use an S3 bucket as a data source, you synchronize your
+#' data source to apply the `AccessControlConfigurationId` in the
+#' `.metadata.json` file. Amazon Kendra currently only supports access
+#' control configuration for S3 data sources and documents indexed using
+#' the [`batch_put_document`][kendra_batch_put_document] API.
+#'
+#' @usage
+#' kendra_update_access_control_configuration(IndexId, Id, Name,
+#'   Description, AccessControlList, HierarchicalAccessControlList)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index for an access control configuration.
+#' @param Id &#91;required&#93; The identifier of the access control configuration you want to update.
+#' @param Name A new name for the access control configuration.
+#' @param Description A new description for the access control configuration.
+#' @param AccessControlList Information you want to update on principals (users and/or groups) and
+#' which documents they should have access to. This is useful for user
+#' context filtering, where search results are filtered based on the user
+#' or their group access to documents.
+#' @param HierarchicalAccessControlList The updated list of
+#' [principal](https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html)
+#' lists that define the hierarchy for which documents users should have
+#' access to.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_access_control_configuration(
+#'   IndexId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   AccessControlList = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "USER"|"GROUP",
+#'       Access = "ALLOW"|"DENY",
+#'       DataSourceId = "string"
+#'     )
+#'   ),
+#'   HierarchicalAccessControlList = list(
+#'     list(
+#'       PrincipalList = list(
+#'         list(
+#'           Name = "string",
+#'           Type = "USER"|"GROUP",
+#'           Access = "ALLOW"|"DENY",
+#'           DataSourceId = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_update_access_control_configuration
+kendra_update_access_control_configuration <- function(IndexId, Id, Name = NULL, Description = NULL, AccessControlList = NULL, HierarchicalAccessControlList = NULL) {
+  op <- new_operation(
+    name = "UpdateAccessControlConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$update_access_control_configuration_input(IndexId = IndexId, Id = Id, Name = Name, Description = Description, AccessControlList = AccessControlList, HierarchicalAccessControlList = HierarchicalAccessControlList)
+  output <- .kendra$update_access_control_configuration_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$update_access_control_configuration <- kendra_update_access_control_configuration
+
 #' Updates an existing Amazon Kendra data source
 #'
 #' @description
@@ -2669,18 +6100,33 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' @usage
 #' kendra_update_data_source(Id, Name, IndexId, Configuration, Description,
-#'   Schedule, RoleArn)
+#'   Schedule, RoleArn, LanguageCode, CustomDocumentEnrichmentConfiguration)
 #'
-#' @param Id &#91;required&#93; The unique identifier of the data source to update.
-#' @param Name The name of the data source to update. The name of the data source can't
-#' be updated. To rename a data source you must delete the data source and
-#' re-create it.
-#' @param IndexId &#91;required&#93; The identifier of the index that contains the data source to update.
-#' @param Configuration 
-#' @param Description The new description for the data source.
-#' @param Schedule The new update schedule for the data source.
-#' @param RoleArn The Amazon Resource Name (ARN) of the new role to use when the data
-#' source is accessing resources on your behalf.
+#' @param Id &#91;required&#93; The identifier of the data source you want to update.
+#' @param Name A new name for the data source connector. You must first delete the data
+#' source and re-create it to change the name of the data source.
+#' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
+#' @param Configuration Configuration information you want to update for the data source
+#' connector.
+#' @param Description A new description for the data source connector.
+#' @param Schedule The sync schedule you want to update for the data source connector.
+#' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access the
+#' data source. For more information, see [IAM Roles for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+#' @param LanguageCode The code for a language you want to update for the data source
+#' connector. This allows you to support a language for all documents when
+#' updating the data source. English is supported by default. For more
+#' information on supported languages, including their codes, see [Adding
+#' documents in languages other than
+#' English](https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html).
+#' @param CustomDocumentEnrichmentConfiguration Configuration information you want to update for altering document
+#' metadata and content during the document ingestion process.
+#' 
+#' For more information on how to create, modify and delete document
+#' metadata, or make other content alterations when you ingest documents
+#' into Amazon Kendra, see [Customizing document metadata during the
+#' ingestion
+#' process](https://docs.aws.amazon.com/kendra/latest/dg/custom-document-enrichment.html).
 #'
 #' @return
 #' An empty list.
@@ -2711,7 +6157,7 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #'       )
 #'     ),
 #'     SharePointConfiguration = list(
-#'       SharePointVersion = "SHAREPOINT_ONLINE",
+#'       SharePointVersion = "SHAREPOINT_2013"|"SHAREPOINT_2016"|"SHAREPOINT_ONLINE",
 #'       Urls = list(
 #'         "string"
 #'       ),
@@ -2740,7 +6186,12 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #'         )
 #'       ),
 #'       DocumentTitleFieldName = "string",
-#'       DisableLocalGroups = TRUE|FALSE
+#'       DisableLocalGroups = TRUE|FALSE,
+#'       SslCertificateS3Path = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       ),
+#'       AuthenticationType = "HTTP_BASIC"|"OAUTH2"
 #'     ),
 #'     DatabaseConfiguration = list(
 #'       DatabaseEngineType = "RDS_AURORA_MYSQL"|"RDS_AURORA_POSTGRESQL"|"RDS_MYSQL"|"RDS_POSTGRESQL",
@@ -2907,7 +6358,8 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #'             DateFieldFormat = "string",
 #'             IndexFieldName = "string"
 #'           )
-#'         )
+#'         ),
+#'         FilterQuery = "string"
 #'       ),
 #'       ServiceCatalogConfiguration = list(
 #'         CrawlAttachments = TRUE|FALSE,
@@ -2926,7 +6378,8 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #'             IndexFieldName = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       AuthenticationType = "HTTP_BASIC"|"OAUTH2"
 #'     ),
 #'     ConfluenceConfiguration = list(
 #'       ServerUrl = "string",
@@ -3016,25 +6469,541 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #'       ExcludeSharedDrives = list(
 #'         "string"
 #'       )
+#'     ),
+#'     WebCrawlerConfiguration = list(
+#'       Urls = list(
+#'         SeedUrlConfiguration = list(
+#'           SeedUrls = list(
+#'             "string"
+#'           ),
+#'           WebCrawlerMode = "HOST_ONLY"|"SUBDOMAINS"|"EVERYTHING"
+#'         ),
+#'         SiteMapsConfiguration = list(
+#'           SiteMaps = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CrawlDepth = 123,
+#'       MaxLinksPerPage = 123,
+#'       MaxContentSizePerPageInMegaBytes = 123.0,
+#'       MaxUrlsPerMinuteCrawlRate = 123,
+#'       UrlInclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       UrlExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ProxyConfiguration = list(
+#'         Host = "string",
+#'         Port = 123,
+#'         Credentials = "string"
+#'       ),
+#'       AuthenticationConfiguration = list(
+#'         BasicAuthentication = list(
+#'           list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Credentials = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     WorkDocsConfiguration = list(
+#'       OrganizationId = "string",
+#'       CrawlComments = TRUE|FALSE,
+#'       UseChangeLog = TRUE|FALSE,
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     FsxConfiguration = list(
+#'       FileSystemId = "string",
+#'       FileSystemType = "WINDOWS",
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SecretArn = "string",
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     SlackConfiguration = list(
+#'       TeamId = "string",
+#'       SecretArn = "string",
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SlackEntityList = list(
+#'         "PUBLIC_CHANNEL"|"PRIVATE_CHANNEL"|"GROUP_MESSAGE"|"DIRECT_MESSAGE"
+#'       ),
+#'       UseChangeLog = TRUE|FALSE,
+#'       CrawlBotMessage = TRUE|FALSE,
+#'       ExcludeArchived = TRUE|FALSE,
+#'       SinceCrawlDate = "string",
+#'       LookBackPeriod = 123,
+#'       PrivateChannelFilter = list(
+#'         "string"
+#'       ),
+#'       PublicChannelFilter = list(
+#'         "string"
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     BoxConfiguration = list(
+#'       EnterpriseId = "string",
+#'       SecretArn = "string",
+#'       UseChangeLog = TRUE|FALSE,
+#'       CrawlComments = TRUE|FALSE,
+#'       CrawlTasks = TRUE|FALSE,
+#'       CrawlWebLinks = TRUE|FALSE,
+#'       FileFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       TaskFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       CommentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       WebLinkFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     QuipConfiguration = list(
+#'       Domain = "string",
+#'       SecretArn = "string",
+#'       CrawlFileComments = TRUE|FALSE,
+#'       CrawlChatRooms = TRUE|FALSE,
+#'       CrawlAttachments = TRUE|FALSE,
+#'       FolderIds = list(
+#'         "string"
+#'       ),
+#'       ThreadFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       MessageFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       AttachmentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     JiraConfiguration = list(
+#'       JiraAccountUrl = "string",
+#'       SecretArn = "string",
+#'       UseChangeLog = TRUE|FALSE,
+#'       Project = list(
+#'         "string"
+#'       ),
+#'       IssueType = list(
+#'         "string"
+#'       ),
+#'       Status = list(
+#'         "string"
+#'       ),
+#'       IssueSubEntityFilter = list(
+#'         "COMMENTS"|"ATTACHMENTS"|"WORKLOGS"
+#'       ),
+#'       AttachmentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       CommentFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       IssueFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       ProjectFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       WorkLogFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     GitHubConfiguration = list(
+#'       SaaSConfiguration = list(
+#'         OrganizationName = "string",
+#'         HostUrl = "string"
+#'       ),
+#'       OnPremiseConfiguration = list(
+#'         HostUrl = "string",
+#'         OrganizationName = "string",
+#'         SslCertificateS3Path = list(
+#'           Bucket = "string",
+#'           Key = "string"
+#'         )
+#'       ),
+#'       Type = "SAAS"|"ON_PREMISE",
+#'       SecretArn = "string",
+#'       UseChangeLog = TRUE|FALSE,
+#'       GitHubDocumentCrawlProperties = list(
+#'         CrawlRepositoryDocuments = TRUE|FALSE,
+#'         CrawlIssue = TRUE|FALSE,
+#'         CrawlIssueComment = TRUE|FALSE,
+#'         CrawlIssueCommentAttachment = TRUE|FALSE,
+#'         CrawlPullRequest = TRUE|FALSE,
+#'         CrawlPullRequestComment = TRUE|FALSE,
+#'         CrawlPullRequestCommentAttachment = TRUE|FALSE
+#'       ),
+#'       RepositoryFilter = list(
+#'         "string"
+#'       ),
+#'       InclusionFolderNamePatterns = list(
+#'         "string"
+#'       ),
+#'       InclusionFileTypePatterns = list(
+#'         "string"
+#'       ),
+#'       InclusionFileNamePatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionFolderNamePatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionFileTypePatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionFileNamePatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       GitHubRepositoryConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubCommitConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubIssueDocumentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubIssueCommentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubIssueAttachmentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubPullRequestCommentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubPullRequestDocumentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       GitHubPullRequestDocumentAttachmentConfigurationFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       )
+#'     ),
+#'     AlfrescoConfiguration = list(
+#'       SiteUrl = "string",
+#'       SiteId = "string",
+#'       SecretArn = "string",
+#'       SslCertificateS3Path = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       ),
+#'       CrawlSystemFolders = TRUE|FALSE,
+#'       CrawlComments = TRUE|FALSE,
+#'       EntityFilter = list(
+#'         "wiki"|"blog"|"documentLibrary"
+#'       ),
+#'       DocumentLibraryFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       BlogFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       WikiFieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Description = "string",
 #'   Schedule = "string",
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   LanguageCode = "string",
+#'   CustomDocumentEnrichmentConfiguration = list(
+#'     InlineConfigurations = list(
+#'       list(
+#'         Condition = list(
+#'           ConditionDocumentAttributeKey = "string",
+#'           Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'           ConditionOnValue = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         Target = list(
+#'           TargetDocumentAttributeKey = "string",
+#'           TargetDocumentAttributeValueDeletion = TRUE|FALSE,
+#'           TargetDocumentAttributeValue = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         DocumentContentDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     PreExtractionHookConfiguration = list(
+#'       InvocationCondition = list(
+#'         ConditionDocumentAttributeKey = "string",
+#'         Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'         ConditionOnValue = list(
+#'           StringValue = "string",
+#'           StringListValue = list(
+#'             "string"
+#'           ),
+#'           LongValue = 123,
+#'           DateValue = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       LambdaArn = "string",
+#'       S3Bucket = "string"
+#'     ),
+#'     PostExtractionHookConfiguration = list(
+#'       InvocationCondition = list(
+#'         ConditionDocumentAttributeKey = "string",
+#'         Operator = "GreaterThan"|"GreaterThanOrEquals"|"LessThan"|"LessThanOrEquals"|"Equals"|"NotEquals"|"Contains"|"NotContains"|"Exists"|"NotExists"|"BeginsWith",
+#'         ConditionOnValue = list(
+#'           StringValue = "string",
+#'           StringListValue = list(
+#'             "string"
+#'           ),
+#'           LongValue = 123,
+#'           DateValue = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       LambdaArn = "string",
+#'       S3Bucket = "string"
+#'     ),
+#'     RoleArn = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kendra_update_data_source
-kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = NULL, Description = NULL, Schedule = NULL, RoleArn = NULL) {
+kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = NULL, Description = NULL, Schedule = NULL, RoleArn = NULL, LanguageCode = NULL, CustomDocumentEnrichmentConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataSource",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$update_data_source_input(Id = Id, Name = Name, IndexId = IndexId, Configuration = Configuration, Description = Description, Schedule = Schedule, RoleArn = RoleArn)
+  input <- .kendra$update_data_source_input(Id = Id, Name = Name, IndexId = IndexId, Configuration = Configuration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, LanguageCode = LanguageCode, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$update_data_source_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -3044,6 +7013,79 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 }
 .kendra$operations$update_data_source <- kendra_update_data_source
 
+#' Updates your Amazon Kendra experience such as a search application
+#'
+#' @description
+#' Updates your Amazon Kendra experience such as a search application. For
+#' more information on creating a search application experience, see
+#' [Building a search experience with no
+#' code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#'
+#' @usage
+#' kendra_update_experience(Id, Name, IndexId, RoleArn, Configuration,
+#'   Description)
+#'
+#' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience you want to update.
+#' @param Name A new name for your Amazon Kendra experience.
+#' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
+#' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access
+#' [`query`][kendra_query] API, `QuerySuggestions` API,
+#' [`submit_feedback`][kendra_submit_feedback] API, and Amazon Web Services
+#' SSO that stores your user and group information. For more information,
+#' see [IAM roles for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+#' @param Configuration Configuration information you want to update for your Amazon Kendra
+#' experience.
+#' @param Description A new description for your Amazon Kendra experience.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_experience(
+#'   Id = "string",
+#'   Name = "string",
+#'   IndexId = "string",
+#'   RoleArn = "string",
+#'   Configuration = list(
+#'     ContentSourceConfiguration = list(
+#'       DataSourceIds = list(
+#'         "string"
+#'       ),
+#'       FaqIds = list(
+#'         "string"
+#'       ),
+#'       DirectPutContent = TRUE|FALSE
+#'     ),
+#'     UserIdentityConfiguration = list(
+#'       IdentityAttributeName = "string"
+#'     )
+#'   ),
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_update_experience
+kendra_update_experience <- function(Id, Name = NULL, IndexId, RoleArn = NULL, Configuration = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateExperience",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$update_experience_input(Id = Id, Name = Name, IndexId = IndexId, RoleArn = RoleArn, Configuration = Configuration, Description = Description)
+  output <- .kendra$update_experience_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$update_experience <- kendra_update_experience
+
 #' Updates an existing Amazon Kendra index
 #'
 #' @description
@@ -3052,22 +7094,30 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 #' @usage
 #' kendra_update_index(Id, Name, RoleArn, Description,
 #'   DocumentMetadataConfigurationUpdates, CapacityUnits,
-#'   UserTokenConfigurations, UserContextPolicy)
+#'   UserTokenConfigurations, UserContextPolicy,
+#'   UserGroupResolutionConfiguration)
 #'
-#' @param Id &#91;required&#93; The identifier of the index to update.
-#' @param Name The name of the index to update.
-#' @param RoleArn A new IAM role that gives Amazon Kendra permission to access your Amazon
-#' CloudWatch logs.
+#' @param Id &#91;required&#93; The identifier of the index you want to update.
+#' @param Name The name of the index you want to update.
+#' @param RoleArn An Identity and Access Management (IAM) role that gives Amazon Kendra
+#' permission to access Amazon CloudWatch logs and metrics.
 #' @param Description A new description for the index.
-#' @param DocumentMetadataConfigurationUpdates The document metadata to update.
-#' @param CapacityUnits Sets the number of addtional storage and query capacity units that
-#' should be used by the index. You can change the capacity of the index up
-#' to 5 times per day.
+#' @param DocumentMetadataConfigurationUpdates The document metadata configuration you want to update for the index.
+#' Document metadata are fields or attributes associated with your
+#' documents. For example, the company department name associated with each
+#' document.
+#' @param CapacityUnits Sets the number of additional document storage and query capacity units
+#' that should be used by the index. You can change the capacity of the
+#' index up to 5 times per day, or make 5 API calls.
 #' 
 #' If you are using extra storage units, you can't reduce the storage
-#' capacity below that required to meet the storage needs for your index.
+#' capacity below what is required to meet the storage needs for your
+#' index.
 #' @param UserTokenConfigurations The user token configuration.
-#' @param UserContextPolicy The user user token context policy.
+#' @param UserContextPolicy The user context policy.
+#' @param UserGroupResolutionConfiguration Enables fetching access levels of groups and users from an Amazon Web
+#' Services Single Sign On identity source. To configure this, see
+#' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/dg/API_UserGroupResolutionConfiguration.html).
 #'
 #' @return
 #' An empty list.
@@ -3121,21 +7171,24 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 #'       )
 #'     )
 #'   ),
-#'   UserContextPolicy = "ATTRIBUTE_FILTER"|"USER_TOKEN"
+#'   UserContextPolicy = "ATTRIBUTE_FILTER"|"USER_TOKEN",
+#'   UserGroupResolutionConfiguration = list(
+#'     UserGroupResolutionMode = "AWS_SSO"|"NONE"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname kendra_update_index
-kendra_update_index <- function(Id, Name = NULL, RoleArn = NULL, Description = NULL, DocumentMetadataConfigurationUpdates = NULL, CapacityUnits = NULL, UserTokenConfigurations = NULL, UserContextPolicy = NULL) {
+kendra_update_index <- function(Id, Name = NULL, RoleArn = NULL, Description = NULL, DocumentMetadataConfigurationUpdates = NULL, CapacityUnits = NULL, UserTokenConfigurations = NULL, UserContextPolicy = NULL, UserGroupResolutionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateIndex",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$update_index_input(Id = Id, Name = Name, RoleArn = RoleArn, Description = Description, DocumentMetadataConfigurationUpdates = DocumentMetadataConfigurationUpdates, CapacityUnits = CapacityUnits, UserTokenConfigurations = UserTokenConfigurations, UserContextPolicy = UserContextPolicy)
+  input <- .kendra$update_index_input(Id = Id, Name = Name, RoleArn = RoleArn, Description = Description, DocumentMetadataConfigurationUpdates = DocumentMetadataConfigurationUpdates, CapacityUnits = CapacityUnits, UserTokenConfigurations = UserTokenConfigurations, UserContextPolicy = UserContextPolicy, UserGroupResolutionConfiguration = UserGroupResolutionConfiguration)
   output <- .kendra$update_index_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -3145,20 +7198,209 @@ kendra_update_index <- function(Id, Name = NULL, RoleArn = NULL, Description = N
 }
 .kendra$operations$update_index <- kendra_update_index
 
-#' Updates a thesaurus file associated with an index
+#' Updates a block list used for query suggestions for an index
 #'
 #' @description
-#' Updates a thesaurus file associated with an index.
+#' Updates a block list used for query suggestions for an index.
+#' 
+#' Updates to a block list might not take effect right away. Amazon Kendra
+#' needs to refresh the entire suggestions list to apply any updates to the
+#' block list. Other changes not related to the block list apply
+#' immediately.
+#' 
+#' If a block list is updating, then you need to wait for the first update
+#' to finish before submitting another update.
+#' 
+#' Amazon Kendra supports partial updates, so you only need to provide the
+#' fields you want to update.
+#' 
+#' [`update_query_suggestions_block_list`][kendra_update_query_suggestions_block_list]
+#' is currently not supported in the Amazon Web Services GovCloud (US-West)
+#' region.
+#'
+#' @usage
+#' kendra_update_query_suggestions_block_list(IndexId, Id, Name,
+#'   Description, SourceS3Path, RoleArn)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index for the block list.
+#' @param Id &#91;required&#93; The identifier of the block list you want to update.
+#' @param Name A new name for the block list.
+#' @param Description A new description for the block list.
+#' @param SourceS3Path The S3 path where your block list text file sits in S3.
+#' 
+#' If you update your block list and provide the same path to the block
+#' list text file in S3, then Amazon Kendra reloads the file to refresh the
+#' block list. Amazon Kendra does not automatically refresh your block
+#' list. You need to call the
+#' [`update_query_suggestions_block_list`][kendra_update_query_suggestions_block_list]
+#' API to refresh you block list.
+#' 
+#' If you update your block list, then Amazon Kendra asynchronously
+#' refreshes all query suggestions with the latest content in the S3 file.
+#' This means changes might not take effect immediately.
+#' @param RoleArn The IAM (Identity and Access Management) role used to access the block
+#' list text file in S3.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_query_suggestions_block_list(
+#'   IndexId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   SourceS3Path = list(
+#'     Bucket = "string",
+#'     Key = "string"
+#'   ),
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_update_query_suggestions_block_list
+kendra_update_query_suggestions_block_list <- function(IndexId, Id, Name = NULL, Description = NULL, SourceS3Path = NULL, RoleArn = NULL) {
+  op <- new_operation(
+    name = "UpdateQuerySuggestionsBlockList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$update_query_suggestions_block_list_input(IndexId = IndexId, Id = Id, Name = Name, Description = Description, SourceS3Path = SourceS3Path, RoleArn = RoleArn)
+  output <- .kendra$update_query_suggestions_block_list_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$update_query_suggestions_block_list <- kendra_update_query_suggestions_block_list
+
+#' Updates the settings of query suggestions for an index
+#'
+#' @description
+#' Updates the settings of query suggestions for an index.
+#' 
+#' Amazon Kendra supports partial updates, so you only need to provide the
+#' fields you want to update.
+#' 
+#' If an update is currently processing (i.e. 'happening'), you need to
+#' wait for the update to finish before making another update.
+#' 
+#' Updates to query suggestions settings might not take effect right away.
+#' The time for your updated settings to take effect depends on the updates
+#' made and the number of search queries in your index.
+#' 
+#' You can still enable/disable query suggestions at any time.
+#' 
+#' [`update_query_suggestions_config`][kendra_update_query_suggestions_config]
+#' is currently not supported in the Amazon Web Services GovCloud (US-West)
+#' region.
+#'
+#' @usage
+#' kendra_update_query_suggestions_config(IndexId, Mode,
+#'   QueryLogLookBackWindowInDays, IncludeQueriesWithoutUserInformation,
+#'   MinimumNumberOfQueryingUsers, MinimumQueryCount)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index with query suggestions you want to update.
+#' @param Mode Set the mode to `ENABLED` or `LEARN_ONLY`.
+#' 
+#' By default, Amazon Kendra enables query suggestions. `LEARN_ONLY` mode
+#' allows you to turn off query suggestions. You can to update this at any
+#' time.
+#' 
+#' In `LEARN_ONLY` mode, Amazon Kendra continues to learn from new queries
+#' to keep suggestions up to date for when you are ready to switch to
+#' ENABLED mode again.
+#' @param QueryLogLookBackWindowInDays How recent your queries are in your query log time window.
+#' 
+#' The time window is the number of days from current day to past days.
+#' 
+#' By default, Amazon Kendra sets this to 180.
+#' @param IncludeQueriesWithoutUserInformation `TRUE` to include queries without user information (i.e. all queries,
+#' irrespective of the user), otherwise `FALSE` to only include queries
+#' with user information.
+#' 
+#' If you pass user information to Amazon Kendra along with the queries,
+#' you can set this flag to `FALSE` and instruct Amazon Kendra to only
+#' consider queries with user information.
+#' 
+#' If you set to `FALSE`, Amazon Kendra only considers queries searched at
+#' least `MinimumQueryCount` times across `MinimumNumberOfQueryingUsers`
+#' unique users for suggestions.
+#' 
+#' If you set to `TRUE`, Amazon Kendra ignores all user information and
+#' learns from all queries.
+#' @param MinimumNumberOfQueryingUsers The minimum number of unique users who must search a query in order for
+#' the query to be eligible to suggest to your users.
+#' 
+#' Increasing this number might decrease the number of suggestions.
+#' However, this ensures a query is searched by many users and is truly
+#' popular to suggest to users.
+#' 
+#' How you tune this setting depends on your specific needs.
+#' @param MinimumQueryCount The the minimum number of times a query must be searched in order to be
+#' eligible to suggest to your users.
+#' 
+#' Decreasing this number increases the number of suggestions. However,
+#' this affects the quality of suggestions as it sets a low bar for a query
+#' to be considered popular to suggest to users.
+#' 
+#' How you tune this setting depends on your specific needs.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_query_suggestions_config(
+#'   IndexId = "string",
+#'   Mode = "ENABLED"|"LEARN_ONLY",
+#'   QueryLogLookBackWindowInDays = 123,
+#'   IncludeQueriesWithoutUserInformation = TRUE|FALSE,
+#'   MinimumNumberOfQueryingUsers = 123,
+#'   MinimumQueryCount = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_update_query_suggestions_config
+kendra_update_query_suggestions_config <- function(IndexId, Mode = NULL, QueryLogLookBackWindowInDays = NULL, IncludeQueriesWithoutUserInformation = NULL, MinimumNumberOfQueryingUsers = NULL, MinimumQueryCount = NULL) {
+  op <- new_operation(
+    name = "UpdateQuerySuggestionsConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$update_query_suggestions_config_input(IndexId = IndexId, Mode = Mode, QueryLogLookBackWindowInDays = QueryLogLookBackWindowInDays, IncludeQueriesWithoutUserInformation = IncludeQueriesWithoutUserInformation, MinimumNumberOfQueryingUsers = MinimumNumberOfQueryingUsers, MinimumQueryCount = MinimumQueryCount)
+  output <- .kendra$update_query_suggestions_config_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$update_query_suggestions_config <- kendra_update_query_suggestions_config
+
+#' Updates a thesaurus for an index
+#'
+#' @description
+#' Updates a thesaurus for an index.
 #'
 #' @usage
 #' kendra_update_thesaurus(Id, Name, IndexId, Description, RoleArn,
 #'   SourceS3Path)
 #'
-#' @param Id &#91;required&#93; The identifier of the thesaurus to update.
-#' @param Name The updated name of the thesaurus.
-#' @param IndexId &#91;required&#93; The identifier of the index associated with the thesaurus to update.
-#' @param Description The updated description of the thesaurus.
-#' @param RoleArn The updated role ARN of the thesaurus.
+#' @param Id &#91;required&#93; The identifier of the thesaurus you want to update.
+#' @param Name A new name for the thesaurus.
+#' @param IndexId &#91;required&#93; The identifier of the index for the thesaurus.
+#' @param Description A new description for the thesaurus.
+#' @param RoleArn An IAM role that gives Amazon Kendra permissions to access thesaurus
+#' file specified in `SourceS3Path`.
 #' @param SourceS3Path 
 #'
 #' @return

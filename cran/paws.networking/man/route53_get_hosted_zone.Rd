@@ -10,57 +10,9 @@ route53_get_hosted_zone(Id)
 \arguments{
 \item{Id}{[required] The ID of the hosted zone that you want to get information about.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HostedZone = list(
-    Id = "string",
-    Name = "string",
-    CallerReference = "string",
-    Config = list(
-      Comment = "string",
-      PrivateZone = TRUE|FALSE
-    ),
-    ResourceRecordSetCount = 123,
-    LinkedService = list(
-      ServicePrincipal = "string",
-      Description = "string"
-    )
-  ),
-  DelegationSet = list(
-    Id = "string",
-    CallerReference = "string",
-    NameServers = list(
-      "string"
-    )
-  ),
-  VPCs = list(
-    list(
-      VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-      VPCId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets information about a specified hosted zone including the four name
-servers assigned to the hosted zone.
-}
-\section{Request syntax}{
-\preformatted{svc$get_hosted_zone(
-  Id = "string"
-)
-}
-}
+Gets information about a specified hosted zone including the four name servers assigned to the hosted zone.
 
-\examples{
-\dontrun{
-# The following example gets information about the Z3M3LMPEXAMPLE hosted
-# zone.
-svc$get_hosted_zone(
-  Id = "Z3M3LMPEXAMPLE"
-)
-}
-
+See \url{https://paws-r.github.io/docs/route53/get_hosted_zone.html} for full documentation.
 }
 \keyword{internal}

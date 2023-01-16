@@ -5,7 +5,7 @@
 \title{Returns a list of key-value pairs assigned to a target recovery point,
 backup plan, or backup vault}
 \usage{
-backup_list_tags(ResourceArn, NextToken, MaxResults)
+backup_list_tags(ResourceArn, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies a resource. The
@@ -20,29 +20,9 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns a list of key-value pairs assigned to a target recovery point,
-backup plan, or backup vault.
+Returns a list of key-value pairs assigned to a target recovery point, backup plan, or backup vault.
 
-\code{\link[=backup_list_tags]{list_tags}} are currently only supported with Amazon
-EFS backups.
+See \url{https://paws-r.github.io/docs/backup/list_tags.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags(
-  ResourceArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

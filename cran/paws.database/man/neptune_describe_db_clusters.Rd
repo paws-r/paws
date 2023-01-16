@@ -5,8 +5,12 @@
 \title{Returns information about provisioned DB clusters, and supports
 pagination}
 \usage{
-neptune_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
-  Marker)
+neptune_describe_db_clusters(
+  DBClusterIdentifier = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{The user-supplied DB cluster identifier. If this parameter is specified,
@@ -29,8 +33,9 @@ information about the DB clusters identified by these ARNs.
 the results list to DB clusters created by that engine.
 }
 
-For example, to invoke this API from the AWS CLI and filter so that only
-Neptune DB clusters are returned, you could use the following command:}
+For example, to invoke this API from the Amazon CLI and filter so that
+only Neptune DB clusters are returned, you could use the following
+command:}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
@@ -46,110 +51,9 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBClusters = list(
-    list(
-      AllocatedStorage = 123,
-      AvailabilityZones = list(
-        "string"
-      ),
-      BackupRetentionPeriod = 123,
-      CharacterSetName = "string",
-      DatabaseName = "string",
-      DBClusterIdentifier = "string",
-      DBClusterParameterGroup = "string",
-      DBSubnetGroup = "string",
-      Status = "string",
-      PercentProgress = "string",
-      EarliestRestorableTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Endpoint = "string",
-      ReaderEndpoint = "string",
-      MultiAZ = TRUE|FALSE,
-      Engine = "string",
-      EngineVersion = "string",
-      LatestRestorableTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Port = 123,
-      MasterUsername = "string",
-      DBClusterOptionGroupMemberships = list(
-        list(
-          DBClusterOptionGroupName = "string",
-          Status = "string"
-        )
-      ),
-      PreferredBackupWindow = "string",
-      PreferredMaintenanceWindow = "string",
-      ReplicationSourceIdentifier = "string",
-      ReadReplicaIdentifiers = list(
-        "string"
-      ),
-      DBClusterMembers = list(
-        list(
-          DBInstanceIdentifier = "string",
-          IsClusterWriter = TRUE|FALSE,
-          DBClusterParameterGroupStatus = "string",
-          PromotionTier = 123
-        )
-      ),
-      VpcSecurityGroups = list(
-        list(
-          VpcSecurityGroupId = "string",
-          Status = "string"
-        )
-      ),
-      HostedZoneId = "string",
-      StorageEncrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      DbClusterResourceId = "string",
-      DBClusterArn = "string",
-      AssociatedRoles = list(
-        list(
-          RoleArn = "string",
-          Status = "string",
-          FeatureName = "string"
-        )
-      ),
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-      CloneGroupId = "string",
-      ClusterCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EnabledCloudwatchLogsExports = list(
-        "string"
-      ),
-      DeletionProtection = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Returns information about provisioned DB clusters, and supports
-pagination.
+Returns information about provisioned DB clusters, and supports pagination.
 
-This operation can also return information for Amazon RDS clusters and
-Amazon DocDB clusters.
+See \url{https://paws-r.github.io/docs/neptune/describe_db_clusters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_clusters(
-  DBClusterIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

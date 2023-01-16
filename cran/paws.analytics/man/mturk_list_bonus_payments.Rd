@@ -5,7 +5,12 @@
 \title{The ListBonusPayments operation retrieves the amounts of bonuses you
 have paid to Workers for a given HIT or assignment}
 \usage{
-mturk_list_bonus_payments(HITId, AssignmentId, NextToken, MaxResults)
+mturk_list_bonus_payments(
+  HITId = NULL,
+  AssignmentId = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{HITId}{The ID of the HIT associated with the bonus payments to retrieve. If not
@@ -22,37 +27,9 @@ specified}
 
 \item{MaxResults}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NumResults = 123,
-  NextToken = "string",
-  BonusPayments = list(
-    list(
-      WorkerId = "string",
-      BonusAmount = "string",
-      AssignmentId = "string",
-      Reason = "string",
-      GrantTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_list_bonus_payments]{list_bonus_payments}} operation
-retrieves the amounts of bonuses you have paid to Workers for a given
-HIT or assignment.
-}
-\section{Request syntax}{
-\preformatted{svc$list_bonus_payments(
-  HITId = "string",
-  AssignmentId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+The \code{\link[=mturk_list_bonus_payments]{list_bonus_payments}} operation retrieves the amounts of bonuses you have paid to Workers for a given HIT or assignment.
 
+See \url{https://paws-r.github.io/docs/mturk/list_bonus_payments.html} for full documentation.
+}
 \keyword{internal}

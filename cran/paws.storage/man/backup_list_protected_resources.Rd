@@ -2,11 +2,11 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_protected_resources}
 \alias{backup_list_protected_resources}
-\title{Returns an array of resources successfully backed up by AWS Backup,
+\title{Returns an array of resources successfully backed up by Backup,
 including the time the resource was saved, an Amazon Resource Name (ARN)
 of the resource, and a resource type}
 \usage{
-backup_list_protected_resources(NextToken, MaxResults)
+backup_list_protected_resources(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The next item following a partial list of returned items. For example,
@@ -16,32 +16,9 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Results = list(
-    list(
-      ResourceArn = "string",
-      ResourceType = "string",
-      LastBackupTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns an array of resources successfully backed up by AWS Backup,
-including the time the resource was saved, an Amazon Resource Name (ARN)
-of the resource, and a resource type.
-}
-\section{Request syntax}{
-\preformatted{svc$list_protected_resources(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
 
+See \url{https://paws-r.github.io/docs/backup/list_protected_resources.html} for full documentation.
+}
 \keyword{internal}

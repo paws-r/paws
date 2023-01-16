@@ -4,7 +4,12 @@
 \alias{sagemaker_render_ui_template}
 \title{Renders the UI template so that you can preview the worker's experience}
 \usage{
-sagemaker_render_ui_template(UiTemplate, Task, RoleArn, HumanTaskUiArn)
+sagemaker_render_ui_template(
+  UiTemplate = NULL,
+  Task,
+  RoleArn,
+  HumanTaskUiArn = NULL
+)
 }
 \arguments{
 \item{UiTemplate}{A \code{Template} object containing the worker UI template to render.}
@@ -20,33 +25,9 @@ provide a \code{HumanTaskUiArn} if you use the \code{UiTemplate} parameter.
 See a list of available Human Ui Amazon Resource Names (ARNs) in
 UiConfig.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RenderedContent = "string",
-  Errors = list(
-    list(
-      Code = "string",
-      Message = "string"
-    )
-  )
-)
-}
-}
 \description{
 Renders the UI template so that you can preview the worker's experience.
-}
-\section{Request syntax}{
-\preformatted{svc$render_ui_template(
-  UiTemplate = list(
-    Content = "string"
-  ),
-  Task = list(
-    Input = "string"
-  ),
-  RoleArn = "string",
-  HumanTaskUiArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/render_ui_template.html} for full documentation.
+}
 \keyword{internal}

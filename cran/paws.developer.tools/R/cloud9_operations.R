@@ -3,25 +3,21 @@
 #' @include cloud9_service.R
 NULL
 
-#' Creates an AWS Cloud9 development environment, launches an Amazon
-#' Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
-#' instance to the environment
+#' Creates an Cloud9 development environment, launches an Amazon Elastic
+#' Compute Cloud (Amazon EC2) instance, and then connects from the instance
+#' to the environment
 #'
 #' @description
-#' Creates an AWS Cloud9 development environment, launches an Amazon
-#' Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
-#' instance to the environment.
+#' Creates an Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and then connects from the instance to the environment.
 #'
-#' @usage
-#' cloud9_create_environment_ec2(name, description, clientRequestToken,
-#'   instanceType, subnetId, automaticStopTimeMinutes, ownerArn, tags,
-#'   connectionType)
+#' See [https://paws-r.github.io/docs/cloud9/create_environment_ec2.html](https://paws-r.github.io/docs/cloud9/create_environment_ec2.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the environment to create.
 #' 
-#' This name is visible to other AWS IAM users in the same AWS account.
+#' This name is visible to other IAM users in the same Amazon Web Services
+#' account.
 #' @param description The description of the environment to create.
-#' @param clientRequestToken A unique, case-sensitive string that helps AWS Cloud9 to ensure this
+#' @param clientRequestToken A unique, case-sensitive string that helps Cloud9 to ensure this
 #' operation completes no more than one time.
 #' 
 #' For more information, see [Client
@@ -29,69 +25,66 @@ NULL
 #' in the *Amazon EC2 API Reference*.
 #' @param instanceType &#91;required&#93; The type of instance to connect to the environment (for example,
 #' `t2.micro`).
-#' @param subnetId The ID of the subnet in Amazon VPC that AWS Cloud9 will use to
-#' communicate with the Amazon EC2 instance.
+#' @param subnetId The ID of the subnet in Amazon VPC that Cloud9 will use to communicate
+#' with the Amazon EC2 instance.
+#' @param imageId The identifier for the Amazon Machine Image (AMI) that's used to create
+#' the EC2 instance. To choose an AMI for the instance, you must specify a
+#' valid AMI alias or a valid Amazon EC2 Systems Manager (SSM) path.
+#' 
+#' The default AMI is used if the parameter isn't explicitly assigned a
+#' value in the request. Because Amazon Linux AMI has ended standard
+#' support as of December 31, 2020, we recommend you choose Amazon Linux 2,
+#' which includes long term support through 2023.
+#' 
+#' **AMI aliases**
+#' 
+#' -   **Amazon Linux (default): `amazonlinux-1-x86_64`**
+#' 
+#' -   Amazon Linux 2: `amazonlinux-2-x86_64`
+#' 
+#' -   Ubuntu 18.04: `ubuntu-18.04-x86_64`
+#' 
+#' **SSM paths**
+#' 
+#' -   **Amazon Linux (default):
+#'     `resolve:ssm:/aws/service/cloud9/amis/amazonlinux-1-x86_64`**
+#' 
+#' -   Amazon Linux 2:
+#'     `resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2-x86_64`
+#' 
+#' -   Ubuntu 18.04:
+#'     `resolve:ssm:/aws/service/cloud9/amis/ubuntu-18.04-x86_64`
 #' @param automaticStopTimeMinutes The number of minutes until the running instance is shut down after the
 #' environment has last been used.
 #' @param ownerArn The Amazon Resource Name (ARN) of the environment owner. This ARN can be
-#' the ARN of any AWS IAM principal. If this value is not specified, the
-#' ARN defaults to this environment's creator.
-#' @param tags An array of key-value pairs that will be associated with the new AWS
-#' Cloud9 development environment.
+#' the ARN of any IAM principal. If this value is not specified, the ARN
+#' defaults to this environment's creator.
+#' @param tags An array of key-value pairs that will be associated with the new Cloud9
+#' development environment.
 #' @param connectionType The connection type used for connecting to an Amazon EC2 environment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   environmentId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_environment_ec2(
-#'   name = "string",
-#'   description = "string",
-#'   clientRequestToken = "string",
-#'   instanceType = "string",
-#'   subnetId = "string",
-#'   automaticStopTimeMinutes = 123,
-#'   ownerArn = "string",
-#'   tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   connectionType = "CONNECT_SSH"|"CONNECT_SSM"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$create_environment_ec2(
-#'   name = "my-demo-environment",
-#'   automaticStopTimeMinutes = 60L,
-#'   description = "This is my demonstration environment.",
-#'   instanceType = "t2.micro",
-#'   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
-#'   subnetId = "subnet-1fab8aEX"
-#' )
-#' }
+#' Valid values are `CONNECT_SSH` (default) and `CONNECT_SSM` (connected
+#' through Amazon EC2 Systems Manager).
+#' 
+#' For more information, see [Accessing no-ingress EC2 instances with
+#' Amazon EC2 Systems
+#' Manager](https://docs.aws.amazon.com/cloud9/latest/user-guide/ec2-ssm.html)
+#' in the *Cloud9 User Guide*.
+#' @param dryRun Checks whether you have the required permissions for the action, without
+#' actually making the request, and provides an error response. If you have
+#' the required permissions, the error response is `DryRunOperation`.
+#' Otherwise, it is `UnauthorizedOperation`.
 #'
 #' @keywords internal
 #'
 #' @rdname cloud9_create_environment_ec2
-cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, automaticStopTimeMinutes = NULL, ownerArn = NULL, tags = NULL, connectionType = NULL) {
+cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, imageId = NULL, automaticStopTimeMinutes = NULL, ownerArn = NULL, tags = NULL, connectionType = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentEC2",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloud9$create_environment_ec2_input(name = name, description = description, clientRequestToken = clientRequestToken, instanceType = instanceType, subnetId = subnetId, automaticStopTimeMinutes = automaticStopTimeMinutes, ownerArn = ownerArn, tags = tags, connectionType = connectionType)
+  input <- .cloud9$create_environment_ec2_input(name = name, description = description, clientRequestToken = clientRequestToken, instanceType = instanceType, subnetId = subnetId, imageId = imageId, automaticStopTimeMinutes = automaticStopTimeMinutes, ownerArn = ownerArn, tags = tags, connectionType = connectionType, dryRun = dryRun)
   output <- .cloud9$create_environment_ec2_output()
   config <- get_config()
   svc <- .cloud9$service(config)
@@ -101,14 +94,12 @@ cloud9_create_environment_ec2 <- function(name, description = NULL, clientReques
 }
 .cloud9$operations$create_environment_ec2 <- cloud9_create_environment_ec2
 
-#' Adds an environment member to an AWS Cloud9 development environment
+#' Adds an environment member to an Cloud9 development environment
 #'
 #' @description
-#' Adds an environment member to an AWS Cloud9 development environment.
+#' Adds an environment member to an Cloud9 development environment.
 #'
-#' @usage
-#' cloud9_create_environment_membership(environmentId, userArn,
-#'   permissions)
+#' See [https://paws-r.github.io/docs/cloud9/create_environment_membership.html](https://paws-r.github.io/docs/cloud9/create_environment_membership.html) for full documentation.
 #'
 #' @param environmentId &#91;required&#93; The ID of the environment that contains the environment member you want
 #' to add.
@@ -120,41 +111,6 @@ cloud9_create_environment_ec2 <- function(name, description = NULL, clientReques
 #' -   `read-only`: Has read-only access to the environment.
 #' 
 #' -   `read-write`: Has read-write access to the environment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   membership = list(
-#'     permissions = "owner"|"read-write"|"read-only",
-#'     userId = "string",
-#'     userArn = "string",
-#'     environmentId = "string",
-#'     lastAccess = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_environment_membership(
-#'   environmentId = "string",
-#'   userArn = "string",
-#'   permissions = "read-write"|"read-only"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$create_environment_membership(
-#'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
-#'   permissions = "read-write",
-#'   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -176,34 +132,14 @@ cloud9_create_environment_membership <- function(environmentId, userArn, permiss
 }
 .cloud9$operations$create_environment_membership <- cloud9_create_environment_membership
 
-#' Deletes an AWS Cloud9 development environment
+#' Deletes an Cloud9 development environment
 #'
 #' @description
-#' Deletes an AWS Cloud9 development environment. If an Amazon EC2 instance
-#' is connected to the environment, also terminates the instance.
+#' Deletes an Cloud9 development environment. If an Amazon EC2 instance is connected to the environment, also terminates the instance.
 #'
-#' @usage
-#' cloud9_delete_environment(environmentId)
+#' See [https://paws-r.github.io/docs/cloud9/delete_environment.html](https://paws-r.github.io/docs/cloud9/delete_environment.html) for full documentation.
 #'
 #' @param environmentId &#91;required&#93; The ID of the environment to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_environment(
-#'   environmentId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$delete_environment(
-#'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -225,38 +161,16 @@ cloud9_delete_environment <- function(environmentId) {
 }
 .cloud9$operations$delete_environment <- cloud9_delete_environment
 
-#' Deletes an environment member from an AWS Cloud9 development environment
+#' Deletes an environment member from an Cloud9 development environment
 #'
 #' @description
-#' Deletes an environment member from an AWS Cloud9 development
-#' environment.
+#' Deletes an environment member from an Cloud9 development environment.
 #'
-#' @usage
-#' cloud9_delete_environment_membership(environmentId, userArn)
+#' See [https://paws-r.github.io/docs/cloud9/delete_environment_membership.html](https://paws-r.github.io/docs/cloud9/delete_environment_membership.html) for full documentation.
 #'
 #' @param environmentId &#91;required&#93; The ID of the environment to delete the environment member from.
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the environment member to delete from
 #' the environment.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_environment_membership(
-#'   environmentId = "string",
-#'   userArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$delete_environment_membership(
-#'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
-#'   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -278,16 +192,13 @@ cloud9_delete_environment_membership <- function(environmentId, userArn) {
 }
 .cloud9$operations$delete_environment_membership <- cloud9_delete_environment_membership
 
-#' Gets information about environment members for an AWS Cloud9 development
+#' Gets information about environment members for an Cloud9 development
 #' environment
 #'
 #' @description
-#' Gets information about environment members for an AWS Cloud9 development
-#' environment.
+#' Gets information about environment members for an Cloud9 development environment.
 #'
-#' @usage
-#' cloud9_describe_environment_memberships(userArn, environmentId,
-#'   permissions, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/cloud9/describe_environment_memberships.html](https://paws-r.github.io/docs/cloud9/describe_environment_memberships.html) for full documentation.
 #'
 #' @param userArn The Amazon Resource Name (ARN) of an individual environment member to
 #' get information about. If no value is specified, information about all
@@ -312,62 +223,6 @@ cloud9_delete_environment_membership <- function(environmentId, userArn) {
 #' token that is returned, until no more next tokens are returned.
 #' @param maxResults The maximum number of environment members to get information about.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   memberships = list(
-#'     list(
-#'       permissions = "owner"|"read-write"|"read-only",
-#'       userId = "string",
-#'       userArn = "string",
-#'       environmentId = "string",
-#'       lastAccess = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_environment_memberships(
-#'   userArn = "string",
-#'   environmentId = "string",
-#'   permissions = list(
-#'     "owner"|"read-write"|"read-only"
-#'   ),
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example gets information about all of the environment
-#' # members for the specified AWS Cloud9 development environment.
-#' svc$describe_environment_memberships(
-#'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-#' )
-#' 
-#' # The following example gets information about the owner of the specified
-#' # AWS Cloud9 development environment.
-#' svc$describe_environment_memberships(
-#'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
-#'   permissions = list(
-#'     "owner"
-#'   )
-#' )
-#' 
-#' # The following example gets AWS Cloud9 development environment membership
-#' # information for the specified user.
-#' svc$describe_environment_memberships(
-#'   userArn = "arn:aws:iam::123456789012:user/MyDemoUser"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname cloud9_describe_environment_memberships
@@ -388,39 +243,14 @@ cloud9_describe_environment_memberships <- function(userArn = NULL, environmentI
 }
 .cloud9$operations$describe_environment_memberships <- cloud9_describe_environment_memberships
 
-#' Gets status information for an AWS Cloud9 development environment
+#' Gets status information for an Cloud9 development environment
 #'
 #' @description
-#' Gets status information for an AWS Cloud9 development environment.
+#' Gets status information for an Cloud9 development environment.
 #'
-#' @usage
-#' cloud9_describe_environment_status(environmentId)
+#' See [https://paws-r.github.io/docs/cloud9/describe_environment_status.html](https://paws-r.github.io/docs/cloud9/describe_environment_status.html) for full documentation.
 #'
 #' @param environmentId &#91;required&#93; The ID of the environment to get status information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   status = "error"|"creating"|"connecting"|"ready"|"stopping"|"stopped"|"deleting",
-#'   message = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_environment_status(
-#'   environmentId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$describe_environment_status(
-#'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -442,58 +272,14 @@ cloud9_describe_environment_status <- function(environmentId) {
 }
 .cloud9$operations$describe_environment_status <- cloud9_describe_environment_status
 
-#' Gets information about AWS Cloud9 development environments
+#' Gets information about Cloud9 development environments
 #'
 #' @description
-#' Gets information about AWS Cloud9 development environments.
+#' Gets information about Cloud9 development environments.
 #'
-#' @usage
-#' cloud9_describe_environments(environmentIds)
+#' See [https://paws-r.github.io/docs/cloud9/describe_environments.html](https://paws-r.github.io/docs/cloud9/describe_environments.html) for full documentation.
 #'
 #' @param environmentIds &#91;required&#93; The IDs of individual environments to get information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   environments = list(
-#'     list(
-#'       id = "string",
-#'       name = "string",
-#'       description = "string",
-#'       type = "ssh"|"ec2",
-#'       connectionType = "CONNECT_SSH"|"CONNECT_SSM",
-#'       arn = "string",
-#'       ownerArn = "string",
-#'       lifecycle = list(
-#'         status = "CREATING"|"CREATED"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED",
-#'         reason = "string",
-#'         failureResource = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_environments(
-#'   environmentIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$describe_environments(
-#'   environmentIds = list(
-#'     "8d9967e2f0624182b74e7690ad69ebEX",
-#'     "349c86d4579e4e7298d500ff57a6b2EX"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -515,13 +301,12 @@ cloud9_describe_environments <- function(environmentIds) {
 }
 .cloud9$operations$describe_environments <- cloud9_describe_environments
 
-#' Gets a list of AWS Cloud9 development environment identifiers
+#' Gets a list of Cloud9 development environment identifiers
 #'
 #' @description
-#' Gets a list of AWS Cloud9 development environment identifiers.
+#' Gets a list of Cloud9 development environment identifiers.
 #'
-#' @usage
-#' cloud9_list_environments(nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/cloud9/list_environments.html](https://paws-r.github.io/docs/cloud9/list_environments.html) for full documentation.
 #'
 #' @param nextToken During a previous call, if there are more than 25 items in the list,
 #' only the first 25 items are returned, along with a unique string called
@@ -530,31 +315,6 @@ cloud9_describe_environments <- function(environmentIds) {
 #' items in the list, keep calling this operation with each subsequent next
 #' token that is returned, until no more next tokens are returned.
 #' @param maxResults The maximum number of environments to get identifiers for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   environmentIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_environments(
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$list_environments()
-#' }
 #'
 #' @keywords internal
 #'
@@ -576,38 +336,16 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
 }
 .cloud9$operations$list_environments <- cloud9_list_environments
 
-#' Gets a list of the tags associated with an AWS Cloud9 development
+#' Gets a list of the tags associated with an Cloud9 development
 #' environment
 #'
 #' @description
-#' Gets a list of the tags associated with an AWS Cloud9 development
-#' environment.
+#' Gets a list of the tags associated with an Cloud9 development environment.
 #'
-#' @usage
-#' cloud9_list_tags_for_resource(ResourceARN)
+#' See [https://paws-r.github.io/docs/cloud9/list_tags_for_resource.html](https://paws-r.github.io/docs/cloud9/list_tags_for_resource.html) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
-#' to get the tags for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceARN = "string"
-#' )
-#' ```
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the Cloud9 development environment to
+#' get the tags for.
 #'
 #' @keywords internal
 #'
@@ -629,36 +367,16 @@ cloud9_list_tags_for_resource <- function(ResourceARN) {
 }
 .cloud9$operations$list_tags_for_resource <- cloud9_list_tags_for_resource
 
-#' Adds tags to an AWS Cloud9 development environment
+#' Adds tags to an Cloud9 development environment
 #'
 #' @description
-#' Adds tags to an AWS Cloud9 development environment.
-#' 
-#' Tags that you add to an AWS Cloud9 environment by using this method will
-#' NOT be automatically propagated to underlying resources.
+#' Adds tags to an Cloud9 development environment.
 #'
-#' @usage
-#' cloud9_tag_resource(ResourceARN, Tags)
+#' See [https://paws-r.github.io/docs/cloud9/tag_resource.html](https://paws-r.github.io/docs/cloud9/tag_resource.html) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
-#' to add tags to.
-#' @param Tags &#91;required&#93; The list of tags to add to the given AWS Cloud9 development environment.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceARN = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the Cloud9 development environment to
+#' add tags to.
+#' @param Tags &#91;required&#93; The list of tags to add to the given Cloud9 development environment.
 #'
 #' @keywords internal
 #'
@@ -680,31 +398,17 @@ cloud9_tag_resource <- function(ResourceARN, Tags) {
 }
 .cloud9$operations$tag_resource <- cloud9_tag_resource
 
-#' Removes tags from an AWS Cloud9 development environment
+#' Removes tags from an Cloud9 development environment
 #'
 #' @description
-#' Removes tags from an AWS Cloud9 development environment.
+#' Removes tags from an Cloud9 development environment.
 #'
-#' @usage
-#' cloud9_untag_resource(ResourceARN, TagKeys)
+#' See [https://paws-r.github.io/docs/cloud9/untag_resource.html](https://paws-r.github.io/docs/cloud9/untag_resource.html) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
-#' to remove tags from.
-#' @param TagKeys &#91;required&#93; The tag names of the tags to remove from the given AWS Cloud9
-#' development environment.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceARN = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the Cloud9 development environment to
+#' remove tags from.
+#' @param TagKeys &#91;required&#93; The tag names of the tags to remove from the given Cloud9 development
+#' environment.
 #'
 #' @keywords internal
 #'
@@ -726,51 +430,40 @@ cloud9_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .cloud9$operations$untag_resource <- cloud9_untag_resource
 
-#' Changes the settings of an existing AWS Cloud9 development environment
+#' Changes the settings of an existing Cloud9 development environment
 #'
 #' @description
-#' Changes the settings of an existing AWS Cloud9 development environment.
+#' Changes the settings of an existing Cloud9 development environment.
 #'
-#' @usage
-#' cloud9_update_environment(environmentId, name, description)
+#' See [https://paws-r.github.io/docs/cloud9/update_environment.html](https://paws-r.github.io/docs/cloud9/update_environment.html) for full documentation.
 #'
 #' @param environmentId &#91;required&#93; The ID of the environment to change settings.
 #' @param name A replacement name for the environment.
 #' @param description Any new or replacement description for the environment.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_environment(
-#'   environmentId = "string",
-#'   name = "string",
-#'   description = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$update_environment(
-#'   name = "my-changed-demo-environment",
-#'   description = "This is my changed demonstration environment.",
-#'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-#' )
-#' }
+#' @param managedCredentialsAction Allows the environment owner to turn on or turn off the Amazon Web
+#' Services managed temporary credentials for an Cloud9 environment by
+#' using one of the following values:
+#' 
+#' -   `ENABLE`
+#' 
+#' -   `DISABLE`
+#' 
+#' Only the environment owner can change the status of managed temporary
+#' credentials. An `AccessDeniedException` is thrown if an attempt to turn
+#' on or turn off managed temporary credentials is made by an account
+#' that's not the environment owner.
 #'
 #' @keywords internal
 #'
 #' @rdname cloud9_update_environment
-cloud9_update_environment <- function(environmentId, name = NULL, description = NULL) {
+cloud9_update_environment <- function(environmentId, name = NULL, description = NULL, managedCredentialsAction = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloud9$update_environment_input(environmentId = environmentId, name = name, description = description)
+  input <- .cloud9$update_environment_input(environmentId = environmentId, name = name, description = description, managedCredentialsAction = managedCredentialsAction)
   output <- .cloud9$update_environment_output()
   config <- get_config()
   svc <- .cloud9$service(config)
@@ -780,16 +473,13 @@ cloud9_update_environment <- function(environmentId, name = NULL, description = 
 }
 .cloud9$operations$update_environment <- cloud9_update_environment
 
-#' Changes the settings of an existing environment member for an AWS Cloud9
+#' Changes the settings of an existing environment member for an Cloud9
 #' development environment
 #'
 #' @description
-#' Changes the settings of an existing environment member for an AWS Cloud9
-#' development environment.
+#' Changes the settings of an existing environment member for an Cloud9 development environment.
 #'
-#' @usage
-#' cloud9_update_environment_membership(environmentId, userArn,
-#'   permissions)
+#' See [https://paws-r.github.io/docs/cloud9/update_environment_membership.html](https://paws-r.github.io/docs/cloud9/update_environment_membership.html) for full documentation.
 #'
 #' @param environmentId &#91;required&#93; The ID of the environment for the environment member whose settings you
 #' want to change.
@@ -801,41 +491,6 @@ cloud9_update_environment <- function(environmentId, name = NULL, description = 
 #' -   `read-only`: Has read-only access to the environment.
 #' 
 #' -   `read-write`: Has read-write access to the environment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   membership = list(
-#'     permissions = "owner"|"read-write"|"read-only",
-#'     userId = "string",
-#'     userArn = "string",
-#'     environmentId = "string",
-#'     lastAccess = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_environment_membership(
-#'   environmentId = "string",
-#'   userArn = "string",
-#'   permissions = "read-write"|"read-only"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$update_environment_membership(
-#'   environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
-#'   permissions = "read-only",
-#'   userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-#' )
-#' }
 #'
 #' @keywords internal
 #'

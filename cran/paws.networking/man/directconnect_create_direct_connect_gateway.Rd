@@ -6,8 +6,10 @@
 enables you to connect a set of virtual interfaces and virtual private
 gateways}
 \usage{
-directconnect_create_direct_connect_gateway(directConnectGatewayName,
-  amazonSideAsn)
+directconnect_create_direct_connect_gateway(
+  directConnectGatewayName,
+  amazonSideAsn = NULL
+)
 }
 \arguments{
 \item{directConnectGatewayName}{[required] The name of the Direct Connect gateway.}
@@ -17,35 +19,9 @@ be configured on the Amazon side of the connection. The ASN must be in
 the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
 The default is 64512.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  directConnectGateway = list(
-    directConnectGatewayId = "string",
-    directConnectGatewayName = "string",
-    amazonSideAsn = 123,
-    ownerAccount = "string",
-    directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
-    stateChangeError = "string"
-  )
-)
-}
-}
 \description{
-Creates a Direct Connect gateway, which is an intermediate object that
-enables you to connect a set of virtual interfaces and virtual private
-gateways. A Direct Connect gateway is global and visible in any AWS
-Region after it is created. The virtual interfaces and virtual private
-gateways that are connected through a Direct Connect gateway can be in
-different AWS Regions. This enables you to connect to a VPC in any
-Region, regardless of the Region in which the virtual interfaces are
-located, and pass traffic between them.
-}
-\section{Request syntax}{
-\preformatted{svc$create_direct_connect_gateway(
-  directConnectGatewayName = "string",
-  amazonSideAsn = 123
-)
-}
-}
+Creates a Direct Connect gateway, which is an intermediate object that enables you to connect a set of virtual interfaces and virtual private gateways. A Direct Connect gateway is global and visible in any Amazon Web Services Region after it is created. The virtual interfaces and virtual private gateways that are connected through a Direct Connect gateway can be in different Amazon Web Services Regions. This enables you to connect to a VPC in any Region, regardless of the Region in which the virtual interfaces are located, and pass traffic between them.
 
+See \url{https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway.html} for full documentation.
+}
 \keyword{internal}

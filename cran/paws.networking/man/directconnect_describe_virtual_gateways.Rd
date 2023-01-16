@@ -2,25 +2,14 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_describe_virtual_gateways}
 \alias{directconnect_describe_virtual_gateways}
-\title{Lists the virtual private gateways owned by the AWS account}
+\title{Lists the virtual private gateways owned by the Amazon Web Services
+account}
 \usage{
 directconnect_describe_virtual_gateways()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualGateways = list(
-    list(
-      virtualGatewayId = "string",
-      virtualGatewayState = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists the virtual private gateways owned by the AWS account.
+Lists the virtual private gateways owned by the Amazon Web Services account.
 
-You can create one or more AWS Direct Connect private virtual interfaces
-linked to a virtual private gateway.
+See \url{https://paws-r.github.io/docs/directconnect/describe_virtual_gateways.html} for full documentation.
 }
 \keyword{internal}

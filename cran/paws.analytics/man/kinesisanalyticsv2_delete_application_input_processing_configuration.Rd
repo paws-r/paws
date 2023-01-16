@@ -5,7 +5,10 @@
 \title{Deletes an InputProcessingConfiguration from an input}
 \usage{
 kinesisanalyticsv2_delete_application_input_processing_configuration(
-  ApplicationName, CurrentApplicationVersionId, InputId)
+  ApplicationName,
+  CurrentApplicationVersionId,
+  InputId
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application.}
@@ -22,23 +25,9 @@ application by using the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationARN = "string",
-  ApplicationVersionId = 123
-)
-}
-}
 \description{
 Deletes an InputProcessingConfiguration from an input.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application_input_processing_configuration(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  InputId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_input_processing_configuration.html} for full documentation.
+}
 \keyword{internal}

@@ -13,41 +13,9 @@ elbv2_deregister_targets(TargetGroupArn, Targets)
 target, you must specify both the target ID and the port when you
 deregister it.}
 }
-\value{
-An empty list.
-}
 \description{
-Deregisters the specified targets from the specified target group. After
-the targets are deregistered, they no longer receive traffic from the
-load balancer.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_targets(
-  TargetGroupArn = "string",
-  Targets = list(
-    list(
-      Id = "string",
-      Port = 123,
-      AvailabilityZone = "string"
-    )
-  )
-)
-}
-}
+Deregisters the specified targets from the specified target group. After the targets are deregistered, they no longer receive traffic from the load balancer.
 
-\examples{
-\dontrun{
-# This example deregisters the specified instance from the specified
-# target group.
-svc$deregister_targets(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar...",
-  Targets = list(
-    list(
-      Id = "i-0f76fade"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/deregister_targets.html} for full documentation.
 }
 \keyword{internal}

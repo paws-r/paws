@@ -5,8 +5,13 @@
 \title{Creates a copy of an entire cluster or replication group at a specific
 moment in time}
 \usage{
-elasticache_create_snapshot(ReplicationGroupId, CacheClusterId,
-  SnapshotName, KmsKeyId)
+elasticache_create_snapshot(
+  ReplicationGroupId = NULL,
+  CacheClusterId = NULL,
+  SnapshotName,
+  KmsKeyId = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ReplicationGroupId}{The identifier of an existing replication group. The snapshot is created
@@ -18,83 +23,13 @@ cluster.}
 \item{SnapshotName}{[required] A name for the snapshot being created.}
 
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the snapshot.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Snapshot = list(
-    SnapshotName = "string",
-    ReplicationGroupId = "string",
-    ReplicationGroupDescription = "string",
-    CacheClusterId = "string",
-    SnapshotStatus = "string",
-    SnapshotSource = "string",
-    CacheNodeType = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    NumCacheNodes = 123,
-    PreferredAvailabilityZone = "string",
-    PreferredOutpostArn = "string",
-    CacheClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredMaintenanceWindow = "string",
-    TopicArn = "string",
-    Port = 123,
-    CacheParameterGroupName = "string",
-    CacheSubnetGroupName = "string",
-    VpcId = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    SnapshotRetentionLimit = 123,
-    SnapshotWindow = "string",
-    NumNodeGroups = 123,
-    AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-    NodeSnapshots = list(
-      list(
-        CacheClusterId = "string",
-        NodeGroupId = "string",
-        CacheNodeId = "string",
-        NodeGroupConfiguration = list(
-          NodeGroupId = "string",
-          Slots = "string",
-          ReplicaCount = 123,
-          PrimaryAvailabilityZone = "string",
-          ReplicaAvailabilityZones = list(
-            "string"
-          ),
-          PrimaryOutpostArn = "string",
-          ReplicaOutpostArns = list(
-            "string"
-          )
-        ),
-        CacheSize = "string",
-        CacheNodeCreateTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        SnapshotCreateTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    KmsKeyId = "string",
-    ARN = "string"
-  )
-)
-}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
-Creates a copy of an entire cluster or replication group at a specific
-moment in time.
+Creates a copy of an entire cluster or replication group at a specific moment in time.
 
-This operation is valid for Redis only.
+See \url{https://paws-r.github.io/docs/elasticache/create_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_snapshot(
-  ReplicationGroupId = "string",
-  CacheClusterId = "string",
-  SnapshotName = "string",
-  KmsKeyId = "string"
-)
-}
-}
-
 \keyword{internal}

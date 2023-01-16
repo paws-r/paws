@@ -5,7 +5,7 @@
 \title{Gets the VpcLinks collection under the caller's account in a selected
 region}
 \usage{
-apigateway_get_vpc_links(position, limit)
+apigateway_get_vpc_links(position = NULL, limit = NULL)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}
@@ -13,37 +13,9 @@ apigateway_get_vpc_links(position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  position = "string",
-  items = list(
-    list(
-      id = "string",
-      name = "string",
-      description = "string",
-      targetArns = list(
-        "string"
-      ),
-      status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
-      statusMessage = "string",
-      tags = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Gets the VpcLinks collection under the caller's account in a selected
-region.
-}
-\section{Request syntax}{
-\preformatted{svc$get_vpc_links(
-  position = "string",
-  limit = 123
-)
-}
-}
+Gets the VpcLinks collection under the caller's account in a selected region.
 
+See \url{https://paws-r.github.io/docs/apigateway/get_vpc_links.html} for full documentation.
+}
 \keyword{internal}

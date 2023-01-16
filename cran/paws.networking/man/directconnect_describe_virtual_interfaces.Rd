@@ -2,86 +2,21 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_describe_virtual_interfaces}
 \alias{directconnect_describe_virtual_interfaces}
-\title{Displays all virtual interfaces for an AWS account}
+\title{Displays all virtual interfaces for an Amazon Web Services account}
 \usage{
-directconnect_describe_virtual_interfaces(connectionId,
-  virtualInterfaceId)
+directconnect_describe_virtual_interfaces(
+  connectionId = NULL,
+  virtualInterfaceId = NULL
+)
 }
 \arguments{
 \item{connectionId}{The ID of the connection.}
 
 \item{virtualInterfaceId}{The ID of the virtual interface.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualInterfaces = list(
-    list(
-      ownerAccount = "string",
-      virtualInterfaceId = "string",
-      location = "string",
-      connectionId = "string",
-      virtualInterfaceType = "string",
-      virtualInterfaceName = "string",
-      vlan = 123,
-      asn = 123,
-      amazonSideAsn = 123,
-      authKey = "string",
-      amazonAddress = "string",
-      customerAddress = "string",
-      addressFamily = "ipv4"|"ipv6",
-      virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-      customerRouterConfig = "string",
-      mtu = 123,
-      jumboFrameCapable = TRUE|FALSE,
-      virtualGatewayId = "string",
-      directConnectGatewayId = "string",
-      routeFilterPrefixes = list(
-        list(
-          cidr = "string"
-        )
-      ),
-      bgpPeers = list(
-        list(
-          bgpPeerId = "string",
-          asn = 123,
-          authKey = "string",
-          addressFamily = "ipv4"|"ipv6",
-          amazonAddress = "string",
-          customerAddress = "string",
-          bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
-          bgpStatus = "up"|"down"|"unknown",
-          awsDeviceV2 = "string"
-        )
-      ),
-      region = "string",
-      awsDeviceV2 = "string",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Displays all virtual interfaces for an AWS account. Virtual interfaces
-deleted fewer than 15 minutes before you make the request are also
-returned. If you specify a connection ID, only the virtual interfaces
-associated with the connection are returned. If you specify a virtual
-interface ID, then only a single virtual interface is returned.
+Displays all virtual interfaces for an Amazon Web Services account. Virtual interfaces deleted fewer than 15 minutes before you make the request are also returned. If you specify a connection ID, only the virtual interfaces associated with the connection are returned. If you specify a virtual interface ID, then only a single virtual interface is returned.
 
-A virtual interface (VLAN) transmits the traffic between the AWS Direct
-Connect location and the customer network.
+See \url{https://paws-r.github.io/docs/directconnect/describe_virtual_interfaces.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_virtual_interfaces(
-  connectionId = "string",
-  virtualInterfaceId = "string"
-)
-}
-}
-
 \keyword{internal}

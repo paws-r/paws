@@ -7,7 +7,19 @@
 cloudfront(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -22,7 +34,9 @@ data types, and errors. For detailed information about CloudFront
 features, see the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- cloudfront(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- cloudfront(
   config = list(
     credentials = list(
       creds = list(
@@ -30,100 +44,121 @@ features, see the \emph{Amazon CloudFront Developer Guide}.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=cloudfront_create_cache_policy]{create_cache_policy} \tab Creates a cache policy\cr
-\link[=cloudfront_create_cloud_front_origin_access_identity]{create_cloud_front_origin_access_identity} \tab Creates a new origin access identity\cr
-\link[=cloudfront_create_distribution]{create_distribution} \tab Creates a new web distribution\cr
-\link[=cloudfront_create_distribution_with_tags]{create_distribution_with_tags} \tab Create a new distribution with tags\cr
-\link[=cloudfront_create_field_level_encryption_config]{create_field_level_encryption_config} \tab Create a new field-level encryption configuration\cr
-\link[=cloudfront_create_field_level_encryption_profile]{create_field_level_encryption_profile} \tab Create a field-level encryption profile\cr
-\link[=cloudfront_create_invalidation]{create_invalidation} \tab Create a new invalidation\cr
-\link[=cloudfront_create_key_group]{create_key_group} \tab Creates a key group that you can use with CloudFront signed URLs and signed cookies\cr
-\link[=cloudfront_create_monitoring_subscription]{create_monitoring_subscription} \tab Enables additional CloudWatch metrics for the specified CloudFront distribution\cr
-\link[=cloudfront_create_origin_request_policy]{create_origin_request_policy} \tab Creates an origin request policy\cr
-\link[=cloudfront_create_public_key]{create_public_key} \tab Uploads a public key to CloudFront that you can use with signed URLs and signed cookies, or with field-level encryption\cr
-\link[=cloudfront_create_realtime_log_config]{create_realtime_log_config} \tab Creates a real-time log configuration\cr
-\link[=cloudfront_create_streaming_distribution]{create_streaming_distribution} \tab This API is deprecated\cr
-\link[=cloudfront_create_streaming_distribution_with_tags]{create_streaming_distribution_with_tags} \tab This API is deprecated\cr
-\link[=cloudfront_delete_cache_policy]{delete_cache_policy} \tab Deletes a cache policy\cr
-\link[=cloudfront_delete_cloud_front_origin_access_identity]{delete_cloud_front_origin_access_identity} \tab Delete an origin access identity\cr
-\link[=cloudfront_delete_distribution]{delete_distribution} \tab Delete a distribution\cr
-\link[=cloudfront_delete_field_level_encryption_config]{delete_field_level_encryption_config} \tab Remove a field-level encryption configuration\cr
-\link[=cloudfront_delete_field_level_encryption_profile]{delete_field_level_encryption_profile} \tab Remove a field-level encryption profile\cr
-\link[=cloudfront_delete_key_group]{delete_key_group} \tab Deletes a key group\cr
-\link[=cloudfront_delete_monitoring_subscription]{delete_monitoring_subscription} \tab Disables additional CloudWatch metrics for the specified CloudFront distribution\cr
-\link[=cloudfront_delete_origin_request_policy]{delete_origin_request_policy} \tab Deletes an origin request policy\cr
-\link[=cloudfront_delete_public_key]{delete_public_key} \tab Remove a public key you previously added to CloudFront\cr
-\link[=cloudfront_delete_realtime_log_config]{delete_realtime_log_config} \tab Deletes a real-time log configuration\cr
-\link[=cloudfront_delete_streaming_distribution]{delete_streaming_distribution} \tab Delete a streaming distribution\cr
-\link[=cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata:\cr
-\link[=cloudfront_get_cache_policy_config]{get_cache_policy_config} \tab Gets a cache policy configuration\cr
-\link[=cloudfront_get_cloud_front_origin_access_identity]{get_cloud_front_origin_access_identity} \tab Get the information about an origin access identity\cr
-\link[=cloudfront_get_cloud_front_origin_access_identity_config]{get_cloud_front_origin_access_identity_config} \tab Get the configuration information about an origin access identity\cr
-\link[=cloudfront_get_distribution]{get_distribution} \tab Get the information about a distribution\cr
-\link[=cloudfront_get_distribution_config]{get_distribution_config} \tab Get the configuration information about a distribution\cr
-\link[=cloudfront_get_field_level_encryption]{get_field_level_encryption} \tab Get the field-level encryption configuration information\cr
-\link[=cloudfront_get_field_level_encryption_config]{get_field_level_encryption_config} \tab Get the field-level encryption configuration information\cr
-\link[=cloudfront_get_field_level_encryption_profile]{get_field_level_encryption_profile} \tab Get the field-level encryption profile information\cr
-\link[=cloudfront_get_field_level_encryption_profile_config]{get_field_level_encryption_profile_config} \tab Get the field-level encryption profile configuration information\cr
-\link[=cloudfront_get_invalidation]{get_invalidation} \tab Get the information about an invalidation\cr
-\link[=cloudfront_get_key_group]{get_key_group} \tab Gets a key group, including the date and time when the key group was last modified\cr
-\link[=cloudfront_get_key_group_config]{get_key_group_config} \tab Gets a key group configuration\cr
-\link[=cloudfront_get_monitoring_subscription]{get_monitoring_subscription} \tab Gets information about whether additional CloudWatch metrics are enabled for the specified CloudFront distribution\cr
-\link[=cloudfront_get_origin_request_policy]{get_origin_request_policy} \tab Gets an origin request policy, including the following metadata:\cr
-\link[=cloudfront_get_origin_request_policy_config]{get_origin_request_policy_config} \tab Gets an origin request policy configuration\cr
-\link[=cloudfront_get_public_key]{get_public_key} \tab Gets a public key\cr
-\link[=cloudfront_get_public_key_config]{get_public_key_config} \tab Gets a public key configuration\cr
-\link[=cloudfront_get_realtime_log_config]{get_realtime_log_config} \tab Gets a real-time log configuration\cr
-\link[=cloudfront_get_streaming_distribution]{get_streaming_distribution} \tab Gets information about a specified RTMP distribution, including the distribution configuration\cr
-\link[=cloudfront_get_streaming_distribution_config]{get_streaming_distribution_config} \tab Get the configuration information about a streaming distribution\cr
-\link[=cloudfront_list_cache_policies]{list_cache_policies} \tab Gets a list of cache policies\cr
-\link[=cloudfront_list_cloud_front_origin_access_identities]{list_cloud_front_origin_access_identities} \tab Lists origin access identities\cr
-\link[=cloudfront_list_distributions]{list_distributions} \tab List CloudFront distributions\cr
-\link[=cloudfront_list_distributions_by_cache_policy_id]{list_distributions_by_cache_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that’s associated with the specified cache policy\cr
-\link[=cloudfront_list_distributions_by_key_group]{list_distributions_by_key_group} \tab Gets a list of distribution IDs for distributions that have a cache behavior that references the specified key group\cr
-\link[=cloudfront_list_distributions_by_origin_request_policy_id]{list_distributions_by_origin_request_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that’s associated with the specified origin request policy\cr
-\link[=cloudfront_list_distributions_by_realtime_log_config]{list_distributions_by_realtime_log_config} \tab Gets a list of distributions that have a cache behavior that’s associated with the specified real-time log configuration\cr
-\link[=cloudfront_list_distributions_by_web_acl_id]{list_distributions_by_web_acl_id} \tab List the distributions that are associated with a specified AWS WAF web ACL\cr
-\link[=cloudfront_list_field_level_encryption_configs]{list_field_level_encryption_configs} \tab List all field-level encryption configurations that have been created in CloudFront for this account\cr
-\link[=cloudfront_list_field_level_encryption_profiles]{list_field_level_encryption_profiles} \tab Request a list of field-level encryption profiles that have been created in CloudFront for this account\cr
-\link[=cloudfront_list_invalidations]{list_invalidations} \tab Lists invalidation batches\cr
-\link[=cloudfront_list_key_groups]{list_key_groups} \tab Gets a list of key groups\cr
-\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies} \tab Gets a list of origin request policies\cr
-\link[=cloudfront_list_public_keys]{list_public_keys} \tab List all public keys that have been added to CloudFront for this account\cr
-\link[=cloudfront_list_realtime_log_configs]{list_realtime_log_configs} \tab Gets a list of real-time log configurations\cr
-\link[=cloudfront_list_streaming_distributions]{list_streaming_distributions} \tab List streaming distributions\cr
-\link[=cloudfront_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a CloudFront resource\cr
-\link[=cloudfront_tag_resource]{tag_resource} \tab Add tags to a CloudFront resource\cr
-\link[=cloudfront_untag_resource]{untag_resource} \tab Remove tags from a CloudFront resource\cr
-\link[=cloudfront_update_cache_policy]{update_cache_policy} \tab Updates a cache policy configuration\cr
-\link[=cloudfront_update_cloud_front_origin_access_identity]{update_cloud_front_origin_access_identity} \tab Update an origin access identity\cr
-\link[=cloudfront_update_distribution]{update_distribution} \tab Updates the configuration for a web distribution\cr
-\link[=cloudfront_update_field_level_encryption_config]{update_field_level_encryption_config} \tab Update a field-level encryption configuration\cr
-\link[=cloudfront_update_field_level_encryption_profile]{update_field_level_encryption_profile} \tab Update a field-level encryption profile\cr
-\link[=cloudfront_update_key_group]{update_key_group} \tab Updates a key group\cr
-\link[=cloudfront_update_origin_request_policy]{update_origin_request_policy} \tab Updates an origin request policy configuration\cr
-\link[=cloudfront_update_public_key]{update_public_key} \tab Update public key information\cr
-\link[=cloudfront_update_realtime_log_config]{update_realtime_log_config} \tab Updates a real-time log configuration\cr
-\link[=cloudfront_update_streaming_distribution]{update_streaming_distribution} \tab Update a streaming distribution
+\link[paws.networking:cloudfront_associate_alias]{associate_alias} \tab Associates an alias (also known as a CNAME or an alternate domain name) with a CloudFront distribution\cr
+\link[paws.networking:cloudfront_create_cache_policy]{create_cache_policy} \tab Creates a cache policy\cr
+\link[paws.networking:cloudfront_create_cloud_front_origin_access_identity]{create_cloud_front_origin_access_identity} \tab Creates a new origin access identity\cr
+\link[paws.networking:cloudfront_create_distribution]{create_distribution} \tab Creates a new web distribution\cr
+\link[paws.networking:cloudfront_create_distribution_with_tags]{create_distribution_with_tags} \tab Create a new distribution with tags\cr
+\link[paws.networking:cloudfront_create_field_level_encryption_config]{create_field_level_encryption_config} \tab Create a new field-level encryption configuration\cr
+\link[paws.networking:cloudfront_create_field_level_encryption_profile]{create_field_level_encryption_profile} \tab Create a field-level encryption profile\cr
+\link[paws.networking:cloudfront_create_function]{create_function} \tab Creates a CloudFront function\cr
+\link[paws.networking:cloudfront_create_invalidation]{create_invalidation} \tab Create a new invalidation\cr
+\link[paws.networking:cloudfront_create_key_group]{create_key_group} \tab Creates a key group that you can use with CloudFront signed URLs and signed cookies\cr
+\link[paws.networking:cloudfront_create_monitoring_subscription]{create_monitoring_subscription} \tab Enables additional CloudWatch metrics for the specified CloudFront distribution\cr
+\link[paws.networking:cloudfront_create_origin_request_policy]{create_origin_request_policy} \tab Creates an origin request policy\cr
+\link[paws.networking:cloudfront_create_public_key]{create_public_key} \tab Uploads a public key to CloudFront that you can use with signed URLs and signed cookies, or with field-level encryption\cr
+\link[paws.networking:cloudfront_create_realtime_log_config]{create_realtime_log_config} \tab Creates a real-time log configuration\cr
+\link[paws.networking:cloudfront_create_response_headers_policy]{create_response_headers_policy} \tab Creates a response headers policy\cr
+\link[paws.networking:cloudfront_create_streaming_distribution]{create_streaming_distribution} \tab This API is deprecated\cr
+\link[paws.networking:cloudfront_create_streaming_distribution_with_tags]{create_streaming_distribution_with_tags} \tab This API is deprecated\cr
+\link[paws.networking:cloudfront_delete_cache_policy]{delete_cache_policy} \tab Deletes a cache policy\cr
+\link[paws.networking:cloudfront_delete_cloud_front_origin_access_identity]{delete_cloud_front_origin_access_identity} \tab Delete an origin access identity\cr
+\link[paws.networking:cloudfront_delete_distribution]{delete_distribution} \tab Delete a distribution\cr
+\link[paws.networking:cloudfront_delete_field_level_encryption_config]{delete_field_level_encryption_config} \tab Remove a field-level encryption configuration\cr
+\link[paws.networking:cloudfront_delete_field_level_encryption_profile]{delete_field_level_encryption_profile} \tab Remove a field-level encryption profile\cr
+\link[paws.networking:cloudfront_delete_function]{delete_function} \tab Deletes a CloudFront function\cr
+\link[paws.networking:cloudfront_delete_key_group]{delete_key_group} \tab Deletes a key group\cr
+\link[paws.networking:cloudfront_delete_monitoring_subscription]{delete_monitoring_subscription} \tab Disables additional CloudWatch metrics for the specified CloudFront distribution\cr
+\link[paws.networking:cloudfront_delete_origin_request_policy]{delete_origin_request_policy} \tab Deletes an origin request policy\cr
+\link[paws.networking:cloudfront_delete_public_key]{delete_public_key} \tab Remove a public key you previously added to CloudFront\cr
+\link[paws.networking:cloudfront_delete_realtime_log_config]{delete_realtime_log_config} \tab Deletes a real-time log configuration\cr
+\link[paws.networking:cloudfront_delete_response_headers_policy]{delete_response_headers_policy} \tab Deletes a response headers policy\cr
+\link[paws.networking:cloudfront_delete_streaming_distribution]{delete_streaming_distribution} \tab Delete a streaming distribution\cr
+\link[paws.networking:cloudfront_describe_function]{describe_function} \tab Gets configuration information and metadata about a CloudFront function, but not the function’s code\cr
+\link[paws.networking:cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata:\cr
+\link[paws.networking:cloudfront_get_cache_policy_config]{get_cache_policy_config} \tab Gets a cache policy configuration\cr
+\link[paws.networking:cloudfront_get_cloud_front_origin_access_identity]{get_cloud_front_origin_access_identity} \tab Get the information about an origin access identity\cr
+\link[paws.networking:cloudfront_get_cloud_front_origin_access_identity_config]{get_cloud_front_origin_access_identity_config} \tab Get the configuration information about an origin access identity\cr
+\link[paws.networking:cloudfront_get_distribution]{get_distribution} \tab Get the information about a distribution\cr
+\link[paws.networking:cloudfront_get_distribution_config]{get_distribution_config} \tab Get the configuration information about a distribution\cr
+\link[paws.networking:cloudfront_get_field_level_encryption]{get_field_level_encryption} \tab Get the field-level encryption configuration information\cr
+\link[paws.networking:cloudfront_get_field_level_encryption_config]{get_field_level_encryption_config} \tab Get the field-level encryption configuration information\cr
+\link[paws.networking:cloudfront_get_field_level_encryption_profile]{get_field_level_encryption_profile} \tab Get the field-level encryption profile information\cr
+\link[paws.networking:cloudfront_get_field_level_encryption_profile_config]{get_field_level_encryption_profile_config} \tab Get the field-level encryption profile configuration information\cr
+\link[paws.networking:cloudfront_get_function]{get_function} \tab Gets the code of a CloudFront function\cr
+\link[paws.networking:cloudfront_get_invalidation]{get_invalidation} \tab Get the information about an invalidation\cr
+\link[paws.networking:cloudfront_get_key_group]{get_key_group} \tab Gets a key group, including the date and time when the key group was last modified\cr
+\link[paws.networking:cloudfront_get_key_group_config]{get_key_group_config} \tab Gets a key group configuration\cr
+\link[paws.networking:cloudfront_get_monitoring_subscription]{get_monitoring_subscription} \tab Gets information about whether additional CloudWatch metrics are enabled for the specified CloudFront distribution\cr
+\link[paws.networking:cloudfront_get_origin_request_policy]{get_origin_request_policy} \tab Gets an origin request policy, including the following metadata:\cr
+\link[paws.networking:cloudfront_get_origin_request_policy_config]{get_origin_request_policy_config} \tab Gets an origin request policy configuration\cr
+\link[paws.networking:cloudfront_get_public_key]{get_public_key} \tab Gets a public key\cr
+\link[paws.networking:cloudfront_get_public_key_config]{get_public_key_config} \tab Gets a public key configuration\cr
+\link[paws.networking:cloudfront_get_realtime_log_config]{get_realtime_log_config} \tab Gets a real-time log configuration\cr
+\link[paws.networking:cloudfront_get_response_headers_policy]{get_response_headers_policy} \tab Gets a response headers policy, including metadata (the policy’s identifier and the date and time when the policy was last modified)\cr
+\link[paws.networking:cloudfront_get_response_headers_policy_config]{get_response_headers_policy_config} \tab Gets a response headers policy configuration\cr
+\link[paws.networking:cloudfront_get_streaming_distribution]{get_streaming_distribution} \tab Gets information about a specified RTMP distribution, including the distribution configuration\cr
+\link[paws.networking:cloudfront_get_streaming_distribution_config]{get_streaming_distribution_config} \tab Get the configuration information about a streaming distribution\cr
+\link[paws.networking:cloudfront_list_cache_policies]{list_cache_policies} \tab Gets a list of cache policies\cr
+\link[paws.networking:cloudfront_list_cloud_front_origin_access_identities]{list_cloud_front_origin_access_identities} \tab Lists origin access identities\cr
+\link[paws.networking:cloudfront_list_conflicting_aliases]{list_conflicting_aliases} \tab Gets a list of aliases (also called CNAMEs or alternate domain names) that conflict or overlap with the provided alias, and the associated CloudFront distributions and Amazon Web Services accounts for each conflicting alias\cr
+\link[paws.networking:cloudfront_list_distributions]{list_distributions} \tab List CloudFront distributions\cr
+\link[paws.networking:cloudfront_list_distributions_by_cache_policy_id]{list_distributions_by_cache_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that’s associated with the specified cache policy\cr
+\link[paws.networking:cloudfront_list_distributions_by_key_group]{list_distributions_by_key_group} \tab Gets a list of distribution IDs for distributions that have a cache behavior that references the specified key group\cr
+\link[paws.networking:cloudfront_list_distributions_by_origin_request_policy_id]{list_distributions_by_origin_request_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that’s associated with the specified origin request policy\cr
+\link[paws.networking:cloudfront_list_distributions_by_realtime_log_config]{list_distributions_by_realtime_log_config} \tab Gets a list of distributions that have a cache behavior that’s associated with the specified real-time log configuration\cr
+\link[paws.networking:cloudfront_list_distributions_by_response_headers_policy_id]{list_distributions_by_response_headers_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that’s associated with the specified response headers policy\cr
+\link[paws.networking:cloudfront_list_distributions_by_web_acl_id]{list_distributions_by_web_acl_id} \tab List the distributions that are associated with a specified WAF web ACL\cr
+\link[paws.networking:cloudfront_list_field_level_encryption_configs]{list_field_level_encryption_configs} \tab List all field-level encryption configurations that have been created in CloudFront for this account\cr
+\link[paws.networking:cloudfront_list_field_level_encryption_profiles]{list_field_level_encryption_profiles} \tab Request a list of field-level encryption profiles that have been created in CloudFront for this account\cr
+\link[paws.networking:cloudfront_list_functions]{list_functions} \tab Gets a list of all CloudFront functions in your Amazon Web Services account\cr
+\link[paws.networking:cloudfront_list_invalidations]{list_invalidations} \tab Lists invalidation batches\cr
+\link[paws.networking:cloudfront_list_key_groups]{list_key_groups} \tab Gets a list of key groups\cr
+\link[paws.networking:cloudfront_list_origin_request_policies]{list_origin_request_policies} \tab Gets a list of origin request policies\cr
+\link[paws.networking:cloudfront_list_public_keys]{list_public_keys} \tab List all public keys that have been added to CloudFront for this account\cr
+\link[paws.networking:cloudfront_list_realtime_log_configs]{list_realtime_log_configs} \tab Gets a list of real-time log configurations\cr
+\link[paws.networking:cloudfront_list_response_headers_policies]{list_response_headers_policies} \tab Gets a list of response headers policies\cr
+\link[paws.networking:cloudfront_list_streaming_distributions]{list_streaming_distributions} \tab List streaming distributions\cr
+\link[paws.networking:cloudfront_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a CloudFront resource\cr
+\link[paws.networking:cloudfront_publish_function]{publish_function} \tab Publishes a CloudFront function by copying the function code from the DEVELOPMENT stage to LIVE\cr
+\link[paws.networking:cloudfront_tag_resource]{tag_resource} \tab Add tags to a CloudFront resource\cr
+\link[paws.networking:cloudfront_test_function]{test_function} \tab Tests a CloudFront function\cr
+\link[paws.networking:cloudfront_untag_resource]{untag_resource} \tab Remove tags from a CloudFront resource\cr
+\link[paws.networking:cloudfront_update_cache_policy]{update_cache_policy} \tab Updates a cache policy configuration\cr
+\link[paws.networking:cloudfront_update_cloud_front_origin_access_identity]{update_cloud_front_origin_access_identity} \tab Update an origin access identity\cr
+\link[paws.networking:cloudfront_update_distribution]{update_distribution} \tab Updates the configuration for a web distribution\cr
+\link[paws.networking:cloudfront_update_field_level_encryption_config]{update_field_level_encryption_config} \tab Update a field-level encryption configuration\cr
+\link[paws.networking:cloudfront_update_field_level_encryption_profile]{update_field_level_encryption_profile} \tab Update a field-level encryption profile\cr
+\link[paws.networking:cloudfront_update_function]{update_function} \tab Updates a CloudFront function\cr
+\link[paws.networking:cloudfront_update_key_group]{update_key_group} \tab Updates a key group\cr
+\link[paws.networking:cloudfront_update_origin_request_policy]{update_origin_request_policy} \tab Updates an origin request policy configuration\cr
+\link[paws.networking:cloudfront_update_public_key]{update_public_key} \tab Update public key information\cr
+\link[paws.networking:cloudfront_update_realtime_log_config]{update_realtime_log_config} \tab Updates a real-time log configuration\cr
+\link[paws.networking:cloudfront_update_response_headers_policy]{update_response_headers_policy} \tab Updates a response headers policy\cr
+\link[paws.networking:cloudfront_update_streaming_distribution]{update_streaming_distribution} \tab Update a streaming distribution
 }
 }
 
 \examples{
 \dontrun{
 svc <- cloudfront()
-svc$create_cache_policy(
+svc$associate_alias(
   Foo = 123
 )
 }

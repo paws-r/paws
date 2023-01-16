@@ -5,7 +5,11 @@
 \title{Returns the description of specific Amazon FSx file systems, if a
 FileSystemIds value is provided for that file system}
 \usage{
-fsx_describe_file_systems(FileSystemIds, MaxResults, NextToken)
+fsx_describe_file_systems(
+  FileSystemIds = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{FileSystemIds}{IDs of the file systems whose descriptions you want to retrieve
@@ -18,158 +22,12 @@ the request and the service's internal maximum number of items per page.}
 
 \item{NextToken}{Opaque pagination token returned from a previous
 \code{\link[=fsx_describe_file_systems]{describe_file_systems}} operation (String).
-If a token present, the action continues the list from where the
+If a token present, the operation continues the list from where the
 returning call left off.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FileSystems = list(
-    list(
-      OwnerId = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      FileSystemId = "string",
-      FileSystemType = "WINDOWS"|"LUSTRE",
-      Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-      FailureDetails = list(
-        Message = "string"
-      ),
-      StorageCapacity = 123,
-      StorageType = "SSD"|"HDD",
-      VpcId = "string",
-      SubnetIds = list(
-        "string"
-      ),
-      NetworkInterfaceIds = list(
-        "string"
-      ),
-      DNSName = "string",
-      KmsKeyId = "string",
-      ResourceARN = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      WindowsConfiguration = list(
-        ActiveDirectoryId = "string",
-        SelfManagedActiveDirectoryConfiguration = list(
-          DomainName = "string",
-          OrganizationalUnitDistinguishedName = "string",
-          FileSystemAdministratorsGroup = "string",
-          UserName = "string",
-          DnsIps = list(
-            "string"
-          )
-        ),
-        DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-        RemoteAdministrationEndpoint = "string",
-        PreferredSubnetId = "string",
-        PreferredFileServerIp = "string",
-        ThroughputCapacity = 123,
-        MaintenanceOperationsInProgress = list(
-          "PATCHING"|"BACKING_UP"
-        ),
-        WeeklyMaintenanceStartTime = "string",
-        DailyAutomaticBackupStartTime = "string",
-        AutomaticBackupRetentionDays = 123,
-        CopyTagsToBackups = TRUE|FALSE,
-        Aliases = list(
-          list(
-            Name = "string",
-            Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-          )
-        )
-      ),
-      LustreConfiguration = list(
-        WeeklyMaintenanceStartTime = "string",
-        DataRepositoryConfiguration = list(
-          Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-          ImportPath = "string",
-          ExportPath = "string",
-          ImportedFileChunkSize = 123,
-          AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-          FailureDetails = list(
-            Message = "string"
-          )
-        ),
-        DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-        PerUnitStorageThroughput = 123,
-        MountName = "string",
-        DailyAutomaticBackupStartTime = "string",
-        AutomaticBackupRetentionDays = 123,
-        CopyTagsToBackups = TRUE|FALSE,
-        DriveCacheType = "NONE"|"READ"
-      ),
-      AdministrativeActions = list(
-        list(
-          AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-          ProgressPercent = 123,
-          RequestTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-          TargetFileSystemValues = list(),
-          FailureDetails = list(
-            Message = "string"
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the description of specific Amazon FSx file systems, if a
-\code{FileSystemIds} value is provided for that file system. Otherwise, it
-returns descriptions of all file systems owned by your AWS account in
-the AWS Region of the endpoint that you're calling.
+Returns the description of specific Amazon FSx file systems, if a \code{FileSystemIds} value is provided for that file system. Otherwise, it returns descriptions of all file systems owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
-When retrieving all file system descriptions, you can optionally specify
-the \code{MaxResults} parameter to limit the number of descriptions in a
-response. If more file system descriptions remain, Amazon FSx returns a
-\code{NextToken} value in the response. In this case, send a later request
-with the \code{NextToken} request parameter set to the value of \code{NextToken}
-from the last response.
-
-This action is used in an iterative process to retrieve a list of your
-file system descriptions.
-\code{\link[=fsx_describe_file_systems]{describe_file_systems}} is called first
-without a \code{NextToken}value. Then the action continues to be called with
-the \code{NextToken} parameter set to the value of the last \code{NextToken} value
-until a response has no \code{NextToken}.
-
-When using this action, keep the following in mind:
-\itemize{
-\item The implementation might return fewer than \code{MaxResults} file system
-descriptions while still including a \code{NextToken} value.
-\item The order of file systems returned in the response of one
-\code{\link[=fsx_describe_file_systems]{describe_file_systems}} call and the
-order of file systems returned across the responses of a multicall
-iteration is unspecified.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_file_systems(
-  FileSystemIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation describes all of the Amazon FSx file systems in an
-# account.
-svc$describe_file_systems()
-}
-
+See \url{https://paws-r.github.io/docs/fsx/describe_file_systems.html} for full documentation.
 }
 \keyword{internal}

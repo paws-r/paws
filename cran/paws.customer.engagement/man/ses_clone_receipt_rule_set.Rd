@@ -17,35 +17,9 @@ underscores (_), or dashes (-).
 
 \item{OriginalRuleSetName}{[required] The name of the rule set to clone.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a receipt rule set by cloning an existing one. All receipt rules
-and configurations are copied to the new receipt rule set and are
-completely independent of the source rule set.
+Creates a receipt rule set by cloning an existing one. All receipt rules and configurations are copied to the new receipt rule set and are completely independent of the source rule set.
 
-For information about setting up rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$clone_receipt_rule_set(
-  RuleSetName = "string",
-  OriginalRuleSetName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example creates a receipt rule set by cloning an existing
-# one:
-svc$clone_receipt_rule_set(
-  OriginalRuleSetName = "RuleSetToClone",
-  RuleSetName = "RuleSetToCreate"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/clone_receipt_rule_set.html} for full documentation.
 }
 \keyword{internal}

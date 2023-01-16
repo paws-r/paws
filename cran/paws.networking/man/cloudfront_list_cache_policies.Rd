@@ -4,15 +4,16 @@
 \alias{cloudfront_list_cache_policies}
 \title{Gets a list of cache policies}
 \usage{
-cloudfront_list_cache_policies(Type, Marker, MaxItems)
+cloudfront_list_cache_policies(Type = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Type}{A filter to return only the specified kinds of cache policies. Valid
 values are:
 \itemize{
-\item \code{managed} – Returns only the managed policies created by AWS.
-\item \code{custom} – Returns only the custom policies created in your AWS
-account.
+\item \code{managed} – Returns only the managed policies created by Amazon Web
+Services.
+\item \code{custom} – Returns only the custom policies created in your Amazon
+Web Services account.
 }}
 
 \item{Marker}{Use this field when paginating results to indicate where to begin in
@@ -23,85 +24,9 @@ response.}
 
 \item{MaxItems}{The maximum number of cache policies that you want in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CachePolicyList = list(
-    NextMarker = "string",
-    MaxItems = 123,
-    Quantity = 123,
-    Items = list(
-      list(
-        Type = "managed"|"custom",
-        CachePolicy = list(
-          Id = "string",
-          LastModifiedTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          CachePolicyConfig = list(
-            Comment = "string",
-            Name = "string",
-            DefaultTTL = 123,
-            MaxTTL = 123,
-            MinTTL = 123,
-            ParametersInCacheKeyAndForwardedToOrigin = list(
-              EnableAcceptEncodingGzip = TRUE|FALSE,
-              EnableAcceptEncodingBrotli = TRUE|FALSE,
-              HeadersConfig = list(
-                HeaderBehavior = "none"|"whitelist",
-                Headers = list(
-                  Quantity = 123,
-                  Items = list(
-                    "string"
-                  )
-                )
-              ),
-              CookiesConfig = list(
-                CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
-                Cookies = list(
-                  Quantity = 123,
-                  Items = list(
-                    "string"
-                  )
-                )
-              ),
-              QueryStringsConfig = list(
-                QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
-                QueryStrings = list(
-                  Quantity = 123,
-                  Items = list(
-                    "string"
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets a list of cache policies.
 
-You can optionally apply a filter to return only the managed policies
-created by AWS, or only the custom policies created in your AWS account.
-
-You can optionally specify the maximum number of items to receive in the
-response. If the total number of items in the list exceeds the maximum
-that you specify, or the default maximum, the response is paginated. To
-get the next page of items, send a subsequent request that specifies the
-\code{NextMarker} value from the current response as the \code{Marker} value in
-the subsequent request.
+See \url{https://paws-r.github.io/docs/cloudfront/list_cache_policies.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_cache_policies(
-  Type = "managed"|"custom",
-  Marker = "string",
-  MaxItems = "string"
-)
-}
-}
-
 \keyword{internal}

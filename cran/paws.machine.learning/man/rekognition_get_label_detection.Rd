@@ -5,7 +5,12 @@
 \title{Gets the label detection results of a Amazon Rekognition Video analysis
 started by StartLabelDetection}
 \usage{
-rekognition_get_label_detection(JobId, MaxResults, NextToken, SortBy)
+rekognition_get_label_detection(
+  JobId,
+  MaxResults = NULL,
+  NextToken = NULL,
+  SortBy = NULL
+)
 }
 \arguments{
 \item{JobId}{[required] Job identifier for the label detection operation for which you want
@@ -27,93 +32,9 @@ alphabetically group elements for a label together. Within each label
 group, the array element are sorted by detection confidence. The default
 sort is by \code{TIMESTAMP}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
-  StatusMessage = "string",
-  VideoMetadata = list(
-    Codec = "string",
-    DurationMillis = 123,
-    Format = "string",
-    FrameRate = 123.0,
-    FrameHeight = 123,
-    FrameWidth = 123
-  ),
-  NextToken = "string",
-  Labels = list(
-    list(
-      Timestamp = 123,
-      Label = list(
-        Name = "string",
-        Confidence = 123.0,
-        Instances = list(
-          list(
-            BoundingBox = list(
-              Width = 123.0,
-              Height = 123.0,
-              Left = 123.0,
-              Top = 123.0
-            ),
-            Confidence = 123.0
-          )
-        ),
-        Parents = list(
-          list(
-            Name = "string"
-          )
-        )
-      )
-    )
-  ),
-  LabelModelVersion = "string"
-)
-}
-}
 \description{
-Gets the label detection results of a Amazon Rekognition Video analysis
-started by \code{\link[=rekognition_start_label_detection]{start_label_detection}}.
+Gets the label detection results of a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_label_detection]{start_label_detection}}.
 
-The label detection operation is started by a call to
-\code{\link[=rekognition_start_label_detection]{start_label_detection}} which
-returns a job identifier (\code{JobId}). When the label detection operation
-finishes, Amazon Rekognition publishes a completion status to the Amazon
-Simple Notification Service topic registered in the initial call to
-\code{StartlabelDetection}. To get the results of the label detection
-operation, first check that the status value published to the Amazon SNS
-topic is \code{SUCCEEDED}. If so, call
-\code{\link[=rekognition_get_label_detection]{get_label_detection}} and pass the
-job identifier (\code{JobId}) from the initial call to
-\code{\link[=rekognition_start_label_detection]{start_label_detection}}.
-
-\code{\link[=rekognition_get_label_detection]{get_label_detection}} returns an
-array of detected labels (\code{Labels}) sorted by the time the labels were
-detected. You can also sort by the label name by specifying \code{NAME} for
-the \code{SortBy} input parameter.
-
-The labels returned include the label name, the percentage confidence in
-the accuracy of the detected label, and the time the label was detected
-in the video.
-
-The returned labels also include bounding box information for common
-objects, a hierarchical taxonomy of detected labels, and the version of
-the label model used for detection.
-
-Use MaxResults parameter to limit the number of labels returned. If
-there are more results than specified in \code{MaxResults}, the value of
-\code{NextToken} in the operation response contains a pagination token for
-getting the next set of results. To get the next page of results, call
-\code{GetlabelDetection} and populate the \code{NextToken} request parameter with
-the token value returned from the previous call to
-\code{\link[=rekognition_get_label_detection]{get_label_detection}}.
+See \url{https://paws-r.github.io/docs/rekognition/get_label_detection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_label_detection(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "NAME"|"TIMESTAMP"
-)
-}
-}
-
 \keyword{internal}

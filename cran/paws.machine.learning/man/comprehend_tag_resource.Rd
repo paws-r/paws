@@ -14,26 +14,9 @@ to which you want to associate the tags.}
 can be a maximum of 50 tags (both existing and pending) associated with
 a specific resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Associates a specific tag with an Amazon Comprehend resource. A tag is a
-key-value pair that adds as a metadata to a resource used by Amazon
-Comprehend. For example, a tag with "Sales" as the key might be added to
-a resource to indicate its use by the sales department.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Associates a specific tag with an Amazon Comprehend resource. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department.
 
+See \url{https://paws-r.github.io/docs/comprehend/tag_resource.html} for full documentation.
+}
 \keyword{internal}

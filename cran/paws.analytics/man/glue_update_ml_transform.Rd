@@ -4,9 +4,19 @@
 \alias{glue_update_ml_transform}
 \title{Updates an existing machine learning transform}
 \usage{
-glue_update_ml_transform(TransformId, Name, Description, Parameters,
-  Role, GlueVersion, MaxCapacity, WorkerType, NumberOfWorkers, Timeout,
-  MaxRetries)
+glue_update_ml_transform(
+  TransformId,
+  Name = NULL,
+  Description = NULL,
+  Parameters = NULL,
+  Role = NULL,
+  GlueVersion = NULL,
+  MaxCapacity = NULL,
+  WorkerType = NULL,
+  NumberOfWorkers = NULL,
+  Timeout = NULL,
+  MaxRetries = NULL
+)
 }
 \arguments{
 \item{TransformId}{[required] A unique identifier that was generated when the transform was created.}
@@ -21,17 +31,17 @@ glue_update_ml_transform(TransformId, Name, Description, Parameters,
 \item{Role}{The name or Amazon Resource Name (ARN) of the IAM role with the required
 permissions.}
 
-\item{GlueVersion}{This value determines which version of AWS Glue this machine learning
+\item{GlueVersion}{This value determines which version of Glue this machine learning
 transform is compatible with. Glue 1.0 is recommended for most
 customers. If the value is not set, the Glue compatibility defaults to
-Glue 0.9. For more information, see \href{https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions}{AWS Glue Versions}
+Glue 0.9. For more information, see \href{https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions}{Glue Versions}
 in the developer guide.}
 
-\item{MaxCapacity}{The number of AWS Glue data processing units (DPUs) that are allocated
-to task runs for this transform. You can allocate from 2 to 100 DPUs;
-the default is 10. A DPU is a relative measure of processing power that
+\item{MaxCapacity}{The number of Glue data processing units (DPUs) that are allocated to
+task runs for this transform. You can allocate from 2 to 100 DPUs; the
+default is 10. A DPU is a relative measure of processing power that
 consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
-information, see the \href{https://aws.amazon.com/glue/pricing/}{AWS Glue pricing page}.
+information, see the \href{https://aws.amazon.com/glue/pricing/}{Glue pricing page}.
 
 When the \code{WorkerType} field is set to a value other than \code{Standard}, the
 \code{MaxCapacity} field is set automatically and becomes read-only.}
@@ -58,45 +68,9 @@ before it is terminated and enters \code{TIMEOUT} status. The default is
 \item{MaxRetries}{The maximum number of times to retry a task for this transform after a
 task run fails.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransformId = "string"
-)
-}
-}
 \description{
-Updates an existing machine learning transform. Call this operation to
-tune the algorithm parameters to achieve better results.
+Updates an existing machine learning transform. Call this operation to tune the algorithm parameters to achieve better results.
 
-After calling this operation, you can call the
-\code{\link[=glue_start_ml_evaluation_task_run]{start_ml_evaluation_task_run}}
-operation to assess how well your new parameters achieved your goals
-(such as improving the quality of your machine learning transform, or
-making it more cost-effective).
+See \url{https://paws-r.github.io/docs/glue/update_ml_transform.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_ml_transform(
-  TransformId = "string",
-  Name = "string",
-  Description = "string",
-  Parameters = list(
-    TransformType = "FIND_MATCHES",
-    FindMatchesParameters = list(
-      PrimaryKeyColumnName = "string",
-      PrecisionRecallTradeoff = 123.0,
-      AccuracyCostTradeoff = 123.0,
-      EnforceProvidedLabels = TRUE|FALSE
-    )
-  ),
-  Role = "string",
-  GlueVersion = "string",
-  MaxCapacity = 123.0,
-  WorkerType = "Standard"|"G.1X"|"G.2X",
-  NumberOfWorkers = 123,
-  Timeout = 123,
-  MaxRetries = 123
-)
-}
-}
-
 \keyword{internal}

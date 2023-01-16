@@ -4,8 +4,12 @@
 \alias{neptune_create_db_subnet_group}
 \title{Creates a new DB subnet group}
 \usage{
-neptune_create_db_subnet_group(DBSubnetGroupName,
-  DBSubnetGroupDescription, SubnetIds, Tags)
+neptune_create_db_subnet_group(
+  DBSubnetGroupName,
+  DBSubnetGroupDescription,
+  SubnetIds,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBSubnetGroupName}{[required] The name for the DB subnet group. This value is stored as a lowercase
@@ -22,46 +26,9 @@ Example: \code{mySubnetgroup}}
 
 \item{Tags}{The tags to be assigned to the new DB subnet group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBSubnetGroup = list(
-    DBSubnetGroupName = "string",
-    DBSubnetGroupDescription = "string",
-    VpcId = "string",
-    SubnetGroupStatus = "string",
-    Subnets = list(
-      list(
-        SubnetIdentifier = "string",
-        SubnetAvailabilityZone = list(
-          Name = "string"
-        ),
-        SubnetStatus = "string"
-      )
-    ),
-    DBSubnetGroupArn = "string"
-  )
-)
-}
-}
 \description{
-Creates a new DB subnet group. DB subnet groups must contain at least
-one subnet in at least two AZs in the AWS Region.
-}
-\section{Request syntax}{
-\preformatted{svc$create_db_subnet_group(
-  DBSubnetGroupName = "string",
-  DBSubnetGroupDescription = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the Amazon Region.
 
+See \url{https://paws-r.github.io/docs/neptune/create_db_subnet_group.html} for full documentation.
+}
 \keyword{internal}

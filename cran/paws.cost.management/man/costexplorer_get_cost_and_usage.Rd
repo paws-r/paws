@@ -4,26 +4,39 @@
 \alias{costexplorer_get_cost_and_usage}
 \title{Retrieves cost and usage metrics for your account}
 \usage{
-costexplorer_get_cost_and_usage(TimePeriod, Granularity, Filter,
-  Metrics, GroupBy, NextPageToken)
+costexplorer_get_cost_and_usage(
+  TimePeriod,
+  Granularity,
+  Filter = NULL,
+  Metrics,
+  GroupBy = NULL,
+  NextPageToken = NULL
+)
 }
 \arguments{
-\item{TimePeriod}{[required] Sets the start and end dates for retrieving AWS costs. The start date is
-inclusive, but the end date is exclusive. For example, if \code{start} is
-\code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and usage data is
-retrieved from \code{2017-01-01} up to and including \code{2017-04-30} but not
-including \code{2017-05-01}.}
+\item{TimePeriod}{[required] Sets the start date and end date for retrieving Amazon Web Services
+costs. The start date is inclusive, but the end date is exclusive. For
+example, if \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the
+cost and usage data is retrieved from \code{2017-01-01} up to and including
+\code{2017-04-30} but not including \code{2017-05-01}.}
 
-\item{Granularity}{Sets the AWS cost granularity to \code{MONTHLY} or \code{DAILY}, or \code{HOURLY}. If
-\code{Granularity} isn't set, the response object doesn't include the
-\code{Granularity}, either \code{MONTHLY} or \code{DAILY}, or \code{HOURLY}.}
+\item{Granularity}{[required] Sets the Amazon Web Services cost granularity to \code{MONTHLY} or \code{DAILY},
+or \code{HOURLY}. If \code{Granularity} isn't set, the response object doesn't
+include the \code{Granularity}, either \code{MONTHLY} or \code{DAILY}, or \code{HOURLY}.}
 
-\item{Filter}{Filters AWS costs by different dimensions. For example, you can specify
-\code{SERVICE} and \code{LINKED_ACCOUNT} and get the costs that are associated
-with that account's usage of that service. You can nest \code{Expression}
-objects to define any combination of dimension filters. For more
-information, see
-\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.}
+\item{Filter}{Filters Amazon Web Services costs by different dimensions. For example,
+you can specify \code{SERVICE} and \code{LINKED_ACCOUNT} and get the costs that
+are associated with that account's usage of that service. You can nest
+\code{Expression} objects to define any combination of dimension filters. For
+more information, see
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.
+
+Valid values for \code{MatchOptions} for \code{Dimensions} are \code{EQUALS} and
+\code{CASE_SENSITIVE}.
+
+Valid values for \code{MatchOptions} for \code{CostCategories} and \code{Tags} are
+\code{EQUALS}, \code{ABSENT}, and \code{CASE_SENSITIVE}. Default values are \code{EQUALS}
+and \code{CASE_SENSITIVE}.}
 
 \item{Metrics}{[required] Which metrics are returned in the query. For more information about
 blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
@@ -36,143 +49,32 @@ If you return the \code{UsageQuantity} metric, the service aggregates all
 usage numbers without taking into account the units. For example, if you
 aggregate \code{usageQuantity} across all of Amazon EC2, the results aren't
 meaningful because Amazon EC2 compute hours and data transfer are
-measured in different units (for example, hours vs. GB). To get more
+measured in different units (for example, hours and GB). To get more
 meaningful \code{UsageQuantity} metrics, filter by \code{UsageType} or
 \code{UsageTypeGroups}.
 
 \code{Metrics} is required for
 \code{\link[=costexplorer_get_cost_and_usage]{get_cost_and_usage}} requests.}
 
-\item{GroupBy}{You can group AWS costs using up to two different groups, either
-dimensions, tag keys, cost categories, or any two group by types.
+\item{GroupBy}{You can group Amazon Web Services costs using up to two different
+groups, either dimensions, tag keys, cost categories, or any two group
+by types.
 
-When you group by tag key, you get all tag values, including empty
-strings.
+Valid values for the \code{DIMENSION} type are \code{AZ}, \code{INSTANCE_TYPE},
+\code{LEGAL_ENTITY_NAME}, \code{INVOICING_ENTITY}, \code{LINKED_ACCOUNT}, \code{OPERATION},
+\code{PLATFORM}, \code{PURCHASE_TYPE}, \code{SERVICE}, \code{TENANCY}, \code{RECORD_TYPE}, and
+\code{USAGE_TYPE}.
 
-Valid values are \code{AZ}, \code{INSTANCE_TYPE}, \code{LEGAL_ENTITY_NAME},
-\code{LINKED_ACCOUNT}, \code{OPERATION}, \code{PLATFORM}, \code{PURCHASE_TYPE}, \code{SERVICE},
-\code{TAGS}, \code{TENANCY}, \code{RECORD_TYPE}, and \code{USAGE_TYPE}.}
+When you group by the \code{TAG} type and include a valid tag key, you get
+all tag values, including empty strings.}
 
-\item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
-when the response from a previous call has more results than the maximum
-page size.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NextPageToken = "string",
-  GroupDefinitions = list(
-    list(
-      Type = "DIMENSION"|"TAG"|"COST_CATEGORY",
-      Key = "string"
-    )
-  ),
-  ResultsByTime = list(
-    list(
-      TimePeriod = list(
-        Start = "string",
-        End = "string"
-      ),
-      Total = list(
-        list(
-          Amount = "string",
-          Unit = "string"
-        )
-      ),
-      Groups = list(
-        list(
-          Keys = list(
-            "string"
-          ),
-          Metrics = list(
-            list(
-              Amount = "string",
-              Unit = "string"
-            )
-          )
-        )
-      ),
-      Estimated = TRUE|FALSE
-    )
-  ),
-  DimensionValueAttributes = list(
-    list(
-      Value = "string",
-      Attributes = list(
-        "string"
-      )
-    )
-  )
-)
-}
+\item{NextPageToken}{The token to retrieve the next set of results. Amazon Web Services
+provides the token when the response from a previous call has more
+results than the maximum page size.}
 }
 \description{
-Retrieves cost and usage metrics for your account. You can specify which
-cost and usage-related metric, such as \code{BlendedCosts} or
-\code{UsageQuantity}, that you want the request to return. You can also
-filter and group your data by various dimensions, such as \code{SERVICE} or
-\code{AZ}, in a specific time range. For a complete list of valid dimensions,
-see the \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}}
-operation. Management account in an organization in AWS Organizations
-have access to all member accounts.
+Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric that you want the request to return. For example, you can specify \code{BlendedCosts} or \code{UsageQuantity}. You can also filter and group your data by various dimensions, such as \code{SERVICE} or \code{AZ}, in a specific time range. For a complete list of valid dimensions, see the \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation. Management account in an organization in Organizations have access to all member accounts.
 
-For information about filter limitations, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-limits.html}{Quotas and restrictions}
-in the \emph{Billing and Cost Management User Guide}.
+See \url{https://paws-r.github.io/docs/costexplorer/get_cost_and_usage.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_cost_and_usage(
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  Metrics = list(
-    "string"
-  ),
-  GroupBy = list(
-    list(
-      Type = "DIMENSION"|"TAG"|"COST_CATEGORY",
-      Key = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
-
 \keyword{internal}

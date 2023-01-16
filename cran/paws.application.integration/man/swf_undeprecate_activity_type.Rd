@@ -11,52 +11,9 @@ swf_undeprecate_activity_type(domain, activityType)
 
 \item{activityType}{[required] The activity type to undeprecate.}
 }
-\value{
-An empty list.
-}
 \description{
-Undeprecates a previously deprecated \emph{activity type}. After an activity
-type has been undeprecated, you can create new tasks of that activity
-type.
+Undeprecates a previously deprecated \emph{activity type}. After an activity type has been undeprecated, you can create new tasks of that activity type.
 
-This operation is eventually consistent. The results are best effort and
-may not exactly reflect recent updates and changes.
-
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item Constrain the following parameters by using a \code{Condition} element
-with the appropriate keys.
-\itemize{
-\item \code{activityType.name}: String constraint. The key is
-\code{swf:activityType.name}.
-\item \code{activityType.version}: String constraint. The key is
-\code{swf:activityType.version}.
+See \url{https://paws-r.github.io/docs/swf/undeprecate_activity_type.html} for full documentation.
 }
-}
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$undeprecate_activity_type(
-  domain = "string",
-  activityType = list(
-    name = "string",
-    version = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

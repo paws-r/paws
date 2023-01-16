@@ -5,7 +5,7 @@
 \title{Lists the pipeline identifiers for all active pipelines that you have
 permission to access}
 \usage{
-datapipeline_list_pipelines(marker)
+datapipeline_list_pipelines(marker = NULL)
 }
 \arguments{
 \item{marker}{The starting point for the results to be returned. For the first call,
@@ -13,28 +13,9 @@ this value should be empty. As long as there are more results, continue
 to call \code{\link[=datapipeline_list_pipelines]{list_pipelines}} with the marker
 value from the previous call to retrieve the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelineIdList = list(
-    list(
-      id = "string",
-      name = "string"
-    )
-  ),
-  marker = "string",
-  hasMoreResults = TRUE|FALSE
-)
-}
-}
 \description{
-Lists the pipeline identifiers for all active pipelines that you have
-permission to access.
-}
-\section{Request syntax}{
-\preformatted{svc$list_pipelines(
-  marker = "string"
-)
-}
-}
+Lists the pipeline identifiers for all active pipelines that you have permission to access.
 
+See \url{https://paws-r.github.io/docs/datapipeline/list_pipelines.html} for full documentation.
+}
 \keyword{internal}

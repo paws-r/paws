@@ -9,20 +9,9 @@ sagemaker_start_monitoring_schedule(MonitoringScheduleName)
 \arguments{
 \item{MonitoringScheduleName}{[required] The name of the schedule to start.}
 }
-\value{
-An empty list.
-}
 \description{
 Starts a previously stopped monitoring schedule.
 
-By default, when you successfully create a new schedule, the status of a
-monitoring schedule is \code{scheduled}.
+See \url{https://paws-r.github.io/docs/sagemaker/start_monitoring_schedule.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_monitoring_schedule(
-  MonitoringScheduleName = "string"
-)
-}
-}
-
 \keyword{internal}

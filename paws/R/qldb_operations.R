@@ -17,7 +17,8 @@ NULL
 #' qldb_cancel_journal_kinesis_stream(LedgerName, StreamId)
 #'
 #' @param LedgerName &#91;required&#93; The name of the ledger.
-#' @param StreamId &#91;required&#93; The unique ID that QLDB assigns to each QLDB journal stream.
+#' @param StreamId &#91;required&#93; The UUID (represented in Base62-encoded text) of the QLDB journal stream
+#' to be canceled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -55,16 +56,20 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 }
 .qldb$operations$cancel_journal_kinesis_stream <- qldb_cancel_journal_kinesis_stream
 
-#' Creates a new ledger in your AWS account
+#' Creates a new ledger in your Amazon Web Services account in the current
+#' Region
 #'
 #' @description
-#' Creates a new ledger in your AWS account.
+#' Creates a new ledger in your Amazon Web Services account in the current
+#' Region.
 #'
 #' @usage
-#' qldb_create_ledger(Name, Tags, PermissionsMode, DeletionProtection)
+#' qldb_create_ledger(Name, Tags, PermissionsMode, DeletionProtection,
+#'   KmsKey)
 #'
 #' @param Name &#91;required&#93; The name of the ledger that you want to create. The name must be unique
-#' among all of your ledgers in the current AWS Region.
+#' among all of the ledgers in your Amazon Web Services account in the
+#' current Region.
 #' 
 #' Naming constraints for ledger names are defined in [Quotas in Amazon
 #' QLDB](https://docs.aws.amazon.com/qldb/latest/developerguide/limits.html#limits.naming)
@@ -73,16 +78,79 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' create. Tag keys are case sensitive. Tag values are case sensitive and
 #' can be null.
 #' @param PermissionsMode &#91;required&#93; The permissions mode to assign to the ledger that you want to create.
+#' This parameter can have one of the following values:
+#' 
+#' -   `ALLOW_ALL`: A legacy permissions mode that enables access control
+#'     with API-level granularity for ledgers.
+#' 
+#'     This mode allows users who have the `SendCommand` API permission for
+#'     this ledger to run all PartiQL commands (hence, `ALLOW_ALL`) on any
+#'     tables in the specified ledger. This mode disregards any table-level
+#'     or command-level IAM permissions policies that you create for the
+#'     ledger.
+#' 
+#' -   `STANDARD`: (*Recommended*) A permissions mode that enables access
+#'     control with finer granularity for ledgers, tables, and PartiQL
+#'     commands.
+#' 
+#'     By default, this mode denies all user requests to run any PartiQL
+#'     commands on any tables in this ledger. To allow PartiQL commands to
+#'     run, you must create IAM permissions policies for specific table
+#'     resources and PartiQL actions, in addition to the `SendCommand` API
+#'     permission for the ledger. For information, see [Getting started
+#'     with the standard permissions
+#'     mode](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-standard-mode.html)
+#'     in the *Amazon QLDB Developer Guide*.
+#' 
+#' We strongly recommend using the `STANDARD` permissions mode to maximize
+#' the security of your ledger data.
 #' @param DeletionProtection The flag that prevents a ledger from being deleted by any user. If not
 #' provided on ledger creation, this feature is enabled (`true`) by
 #' default.
 #' 
 #' If deletion protection is enabled, you must first disable it before you
-#' can delete the ledger using the QLDB API or the AWS Command Line
-#' Interface (AWS CLI). You can disable it by calling the
+#' can delete the ledger. You can disable it by calling the
 #' [`update_ledger`][qldb_update_ledger] operation to set the flag to
-#' `false`. The QLDB console disables deletion protection for you when you
-#' use it to delete a ledger.
+#' `false`.
+#' @param KmsKey The key in Key Management Service (KMS) to use for encryption of data at
+#' rest in the ledger. For more information, see [Encryption at
+#' rest](https://docs.aws.amazon.com/qldb/latest/developerguide/encryption-at-rest.html)
+#' in the *Amazon QLDB Developer Guide*.
+#' 
+#' Use one of the following options to specify this parameter:
+#' 
+#' -   `AWS_OWNED_KMS_KEY`: Use an KMS key that is owned and managed by
+#'     Amazon Web Services on your behalf.
+#' 
+#' -   **Undefined**: By default, use an Amazon Web Services owned KMS key.
+#' 
+#' -   **A valid symmetric customer managed KMS key**: Use the specified
+#'     KMS key in your account that you create, own, and manage.
+#' 
+#'     Amazon QLDB does not support asymmetric keys. For more information,
+#'     see [Using symmetric and asymmetric
+#'     keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+#'     in the *Key Management Service Developer Guide*.
+#' 
+#' To specify a customer managed KMS key, you can use its key ID, Amazon
+#' Resource Name (ARN), alias name, or alias ARN. When using an alias name,
+#' prefix it with `"alias/"`. To specify a key in a different Amazon Web
+#' Services account, you must use the key ARN or alias ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN:
+#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Alias name: `alias/ExampleAlias`
+#' 
+#' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
+#' 
+#' For more information, see [Key identifiers
+#' (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -94,7 +162,9 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #'   CreationDateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   DeletionProtection = TRUE|FALSE
+#'   PermissionsMode = "ALLOW_ALL"|"STANDARD",
+#'   DeletionProtection = TRUE|FALSE,
+#'   KmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -105,22 +175,23 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   PermissionsMode = "ALLOW_ALL",
-#'   DeletionProtection = TRUE|FALSE
+#'   PermissionsMode = "ALLOW_ALL"|"STANDARD",
+#'   DeletionProtection = TRUE|FALSE,
+#'   KmsKey = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname qldb_create_ledger
-qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProtection = NULL) {
+qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProtection = NULL, KmsKey = NULL) {
   op <- new_operation(
     name = "CreateLedger",
     http_method = "POST",
     http_path = "/ledgers",
     paginator = list()
   )
-  input <- .qldb$create_ledger_input(Name = Name, Tags = Tags, PermissionsMode = PermissionsMode, DeletionProtection = DeletionProtection)
+  input <- .qldb$create_ledger_input(Name = Name, Tags = Tags, PermissionsMode = PermissionsMode, DeletionProtection = DeletionProtection, KmsKey = KmsKey)
   output <- .qldb$create_ledger_output()
   config <- get_config()
   svc <- .qldb$service(config)
@@ -136,11 +207,9 @@ qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProte
 #' Deletes a ledger and all of its contents. This action is irreversible.
 #' 
 #' If deletion protection is enabled, you must first disable it before you
-#' can delete the ledger using the QLDB API or the AWS Command Line
-#' Interface (AWS CLI). You can disable it by calling the
+#' can delete the ledger. You can disable it by calling the
 #' [`update_ledger`][qldb_update_ledger] operation to set the flag to
-#' `false`. The QLDB console disables deletion protection for you when you
-#' use it to delete a ledger.
+#' `false`.
 #'
 #' @usage
 #' qldb_delete_ledger(Name)
@@ -182,14 +251,20 @@ qldb_delete_ledger <- function(Name) {
 #' @description
 #' Returns detailed information about a given Amazon QLDB journal stream.
 #' The output includes the Amazon Resource Name (ARN), stream name, current
-#' status, creation time, and the parameters of your original stream
+#' status, creation time, and the parameters of the original stream
 #' creation request.
+#' 
+#' This action does not return any expired journal streams. For more
+#' information, see [Expiration for terminal
+#' streams](https://docs.aws.amazon.com/qldb/latest/developerguide/streams.create.html#streams.create.states.expiration)
+#' in the *Amazon QLDB Developer Guide*.
 #'
 #' @usage
 #' qldb_describe_journal_kinesis_stream(LedgerName, StreamId)
 #'
 #' @param LedgerName &#91;required&#93; The name of the ledger.
-#' @param StreamId &#91;required&#93; The unique ID that QLDB assigns to each QLDB journal stream.
+#' @param StreamId &#91;required&#93; The UUID (represented in Base62-encoded text) of the QLDB journal stream
+#' to describe.
 #'
 #' @return
 #' A list with the following syntax:
@@ -249,17 +324,17 @@ qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
 .qldb$operations$describe_journal_kinesis_stream <- qldb_describe_journal_kinesis_stream
 
 #' Returns information about a journal export job, including the ledger
-#' name, export ID, when it was created, current status, and its start and
-#' end time export parameters
+#' name, export ID, creation time, current status, and the parameters of
+#' the original export creation request
 #'
 #' @description
 #' Returns information about a journal export job, including the ledger
-#' name, export ID, when it was created, current status, and its start and
-#' end time export parameters.
+#' name, export ID, creation time, current status, and the parameters of
+#' the original export creation request.
 #' 
 #' This action does not return any expired export jobs. For more
-#' information, see [Export Job
-#' Expiration](https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
+#' information, see [Export job
+#' expiration](https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
 #' in the *Amazon QLDB Developer Guide*.
 #' 
 #' If the export job with the given `ExportId` doesn't exist, then throws
@@ -272,7 +347,8 @@ qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' qldb_describe_journal_s3_export(Name, ExportId)
 #'
 #' @param Name &#91;required&#93; The name of the ledger.
-#' @param ExportId &#91;required&#93; The unique ID of the journal export job that you want to describe.
+#' @param ExportId &#91;required&#93; The UUID (represented in Base62-encoded text) of the journal export job
+#' to describe.
 #'
 #' @return
 #' A list with the following syntax:
@@ -299,7 +375,8 @@ qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #'         KmsKeyArn = "string"
 #'       )
 #'     ),
-#'     RoleArn = "string"
+#'     RoleArn = "string",
+#'     OutputFormat = "ION_BINARY"|"ION_TEXT"|"JSON"
 #'   )
 #' )
 #' ```
@@ -332,12 +409,12 @@ qldb_describe_journal_s3_export <- function(Name, ExportId) {
 }
 .qldb$operations$describe_journal_s3_export <- qldb_describe_journal_s3_export
 
-#' Returns information about a ledger, including its state and when it was
-#' created
+#' Returns information about a ledger, including its state, permissions
+#' mode, encryption at rest settings, and when it was created
 #'
 #' @description
-#' Returns information about a ledger, including its state and when it was
-#' created.
+#' Returns information about a ledger, including its state, permissions
+#' mode, encryption at rest settings, and when it was created.
 #'
 #' @usage
 #' qldb_describe_ledger(Name)
@@ -354,7 +431,15 @@ qldb_describe_journal_s3_export <- function(Name, ExportId) {
 #'   CreationDateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   DeletionProtection = TRUE|FALSE
+#'   PermissionsMode = "ALLOW_ALL"|"STANDARD",
+#'   DeletionProtection = TRUE|FALSE,
+#'   EncryptionDescription = list(
+#'     KmsKeyArn = "string",
+#'     EncryptionStatus = "ENABLED"|"UPDATING"|"KMS_KEY_INACCESSIBLE",
+#'     InaccessibleKmsKeyDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -390,8 +475,16 @@ qldb_describe_ledger <- function(Name) {
 #'
 #' @description
 #' Exports journal contents within a date and time range from a ledger into
-#' a specified Amazon Simple Storage Service (Amazon S3) bucket. The data
-#' is written as files in Amazon Ion format.
+#' a specified Amazon Simple Storage Service (Amazon S3) bucket. A journal
+#' export job can write the data objects in either the text or binary
+#' representation of Amazon Ion format, or in *JSON Lines* text format.
+#' 
+#' In JSON Lines format, each journal block in the exported data object is
+#' a valid JSON object that is delimited by a newline. You can use this
+#' format to easily integrate JSON exports with analytics tools such as
+#' Glue and Amazon Athena because these services can parse
+#' newline-delimited JSON automatically. For more information about the
+#' format, see [JSON Lines](https://jsonlines.org/).
 #' 
 #' If the ledger with the given `Name` doesn't exist, then throws
 #' `ResourceNotFoundException`.
@@ -405,25 +498,26 @@ qldb_describe_ledger <- function(Name) {
 #'
 #' @usage
 #' qldb_export_journal_to_s3(Name, InclusiveStartTime, ExclusiveEndTime,
-#'   S3ExportConfiguration, RoleArn)
+#'   S3ExportConfiguration, RoleArn, OutputFormat)
 #'
 #' @param Name &#91;required&#93; The name of the ledger.
-#' @param InclusiveStartTime &#91;required&#93; The inclusive start date and time for the range of journal contents that
-#' you want to export.
+#' @param InclusiveStartTime &#91;required&#93; The inclusive start date and time for the range of journal contents to
+#' export.
 #' 
 #' The `InclusiveStartTime` must be in `ISO 8601` date and time format and
-#' in Universal Coordinated Time (UTC). For example: `2019-06-13T21:36:34Z`
+#' in Universal Coordinated Time (UTC). For example:
+#' `2019-06-13T21:36:34Z`.
 #' 
 #' The `InclusiveStartTime` must be before `ExclusiveEndTime`.
 #' 
 #' If you provide an `InclusiveStartTime` that is before the ledger's
 #' `CreationDateTime`, Amazon QLDB defaults it to the ledger's
 #' `CreationDateTime`.
-#' @param ExclusiveEndTime &#91;required&#93; The exclusive end date and time for the range of journal contents that
-#' you want to export.
+#' @param ExclusiveEndTime &#91;required&#93; The exclusive end date and time for the range of journal contents to
+#' export.
 #' 
 #' The `ExclusiveEndTime` must be in `ISO 8601` date and time format and in
-#' Universal Coordinated Time (UTC). For example: `2019-06-13T21:36:34Z`
+#' Universal Coordinated Time (UTC). For example: `2019-06-13T21:36:34Z`.
 #' 
 #' The `ExclusiveEndTime` must be less than or equal to the current UTC
 #' date and time.
@@ -435,8 +529,14 @@ qldb_describe_ledger <- function(Name) {
 #' -   Write objects into your Amazon Simple Storage Service (Amazon S3)
 #'     bucket.
 #' 
-#' -   (Optional) Use your customer master key (CMK) in AWS Key Management
-#'     Service (AWS KMS) for server-side encryption of your exported data.
+#' -   (Optional) Use your customer managed key in Key Management Service
+#'     (KMS) for server-side encryption of your exported data.
+#' 
+#' To pass a role to QLDB when requesting a journal export, you must have
+#' permissions to perform the `iam:PassRole` action on the IAM role
+#' resource. This is required for all journal export requests.
+#' @param OutputFormat The output format of your exported journal data. If this parameter is
+#' not specified, the exported data defaults to `ION_TEXT` format.
 #'
 #' @return
 #' A list with the following syntax:
@@ -464,21 +564,22 @@ qldb_describe_ledger <- function(Name) {
 #'       KmsKeyArn = "string"
 #'     )
 #'   ),
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   OutputFormat = "ION_BINARY"|"ION_TEXT"|"JSON"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname qldb_export_journal_to_s3
-qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime, S3ExportConfiguration, RoleArn) {
+qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime, S3ExportConfiguration, RoleArn, OutputFormat = NULL) {
   op <- new_operation(
     name = "ExportJournalToS3",
     http_method = "POST",
     http_path = "/ledgers/{name}/journal-s3-exports",
     paginator = list()
   )
-  input <- .qldb$export_journal_to_s3_input(Name = Name, InclusiveStartTime = InclusiveStartTime, ExclusiveEndTime = ExclusiveEndTime, S3ExportConfiguration = S3ExportConfiguration, RoleArn = RoleArn)
+  input <- .qldb$export_journal_to_s3_input(Name = Name, InclusiveStartTime = InclusiveStartTime, ExclusiveEndTime = ExclusiveEndTime, S3ExportConfiguration = S3ExportConfiguration, RoleArn = RoleArn, OutputFormat = OutputFormat)
   output <- .qldb$export_journal_to_s3_output()
   config <- get_config()
   svc <- .qldb$service(config)
@@ -515,12 +616,12 @@ qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime
 #' @param BlockAddress &#91;required&#93; The location of the block that you want to request. An address is an
 #' Amazon Ion structure that has two fields: `strandId` and `sequenceNo`.
 #' 
-#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}`
+#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}`.
 #' @param DigestTipAddress The latest block location covered by the digest for which to request a
 #' proof. An address is an Amazon Ion structure that has two fields:
 #' `strandId` and `sequenceNo`.
 #' 
-#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}`
+#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -634,13 +735,14 @@ qldb_get_digest <- function(Name) {
 #' is an Amazon Ion structure that has two fields: `strandId` and
 #' `sequenceNo`.
 #' 
-#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}`
-#' @param DocumentId &#91;required&#93; The unique ID of the document to be verified.
+#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}`.
+#' @param DocumentId &#91;required&#93; The UUID (represented in Base62-encoded text) of the document to be
+#' verified.
 #' @param DigestTipAddress The latest block location covered by the digest for which to request a
 #' proof. An address is an Amazon Ion structure that has two fields:
 #' `strandId` and `sequenceNo`.
 #' 
-#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}`
+#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -697,6 +799,11 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
 #' given ledger. The output of each stream descriptor includes the same
 #' details that are returned by
 #' [`describe_journal_kinesis_stream`][qldb_describe_journal_kinesis_stream].
+#' 
+#' This action does not return any expired journal streams. For more
+#' information, see [Expiration for terminal
+#' streams](https://docs.aws.amazon.com/qldb/latest/developerguide/streams.create.html#streams.create.states.expiration)
+#' in the *Amazon QLDB Developer Guide*.
 #' 
 #' This action returns a maximum of `MaxResults` items. It is paginated so
 #' that you can retrieve all the items by calling
@@ -779,11 +886,11 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
 .qldb$operations$list_journal_kinesis_streams_for_ledger <- qldb_list_journal_kinesis_streams_for_ledger
 
 #' Returns an array of journal export job descriptions for all ledgers that
-#' are associated with the current AWS account and Region
+#' are associated with the current Amazon Web Services account and Region
 #'
 #' @description
 #' Returns an array of journal export job descriptions for all ledgers that
-#' are associated with the current AWS account and Region.
+#' are associated with the current Amazon Web Services account and Region.
 #' 
 #' This action returns a maximum of `MaxResults` items, and is paginated so
 #' that you can retrieve all the items by calling
@@ -791,8 +898,8 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
 #' times.
 #' 
 #' This action does not return any expired export jobs. For more
-#' information, see [Export Job
-#' Expiration](https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
+#' information, see [Export job
+#' expiration](https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
 #' in the *Amazon QLDB Developer Guide*.
 #'
 #' @usage
@@ -832,7 +939,8 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
 #'           KmsKeyArn = "string"
 #'         )
 #'       ),
-#'       RoleArn = "string"
+#'       RoleArn = "string",
+#'       OutputFormat = "ION_BINARY"|"ION_TEXT"|"JSON"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -880,8 +988,8 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
 #' multiple times.
 #' 
 #' This action does not return any expired export jobs. For more
-#' information, see [Export Job
-#' Expiration](https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
+#' information, see [Export job
+#' expiration](https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
 #' in the *Amazon QLDB Developer Guide*.
 #'
 #' @usage
@@ -923,7 +1031,8 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
 #'           KmsKeyArn = "string"
 #'         )
 #'       ),
-#'       RoleArn = "string"
+#'       RoleArn = "string",
+#'       OutputFormat = "ION_BINARY"|"ION_TEXT"|"JSON"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -960,11 +1069,11 @@ qldb_list_journal_s3_exports_for_ledger <- function(Name, MaxResults = NULL, Nex
 .qldb$operations$list_journal_s3_exports_for_ledger <- qldb_list_journal_s3_exports_for_ledger
 
 #' Returns an array of ledger summaries that are associated with the
-#' current AWS account and Region
+#' current Amazon Web Services account and Region
 #'
 #' @description
 #' Returns an array of ledger summaries that are associated with the
-#' current AWS account and Region.
+#' current Amazon Web Services account and Region.
 #' 
 #' This action returns a maximum of 100 items and is paginated so that you
 #' can retrieve all the items by calling
@@ -1034,8 +1143,7 @@ qldb_list_ledgers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @usage
 #' qldb_list_tags_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for which you want to list the tags. For
-#' example:
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for which to list the tags. For example:
 #' 
 #' `arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger`
 #'
@@ -1092,12 +1200,16 @@ qldb_list_tags_for_resource <- function(ResourceArn) {
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants QLDB
 #' permissions for a journal stream to write data records to a Kinesis Data
 #' Streams resource.
+#' 
+#' To pass a role to QLDB when requesting a journal stream, you must have
+#' permissions to perform the `iam:PassRole` action on the IAM role
+#' resource. This is required for all journal stream requests.
 #' @param Tags The key-value pairs to add as tags to the stream that you want to
 #' create. Tag keys are case sensitive. Tag values are case sensitive and
 #' can be null.
 #' @param InclusiveStartTime &#91;required&#93; The inclusive start date and time from which to start streaming journal
 #' data. This parameter must be in `ISO 8601` date and time format and in
-#' Universal Coordinated Time (UTC). For example: `2019-06-13T21:36:34Z`
+#' Universal Coordinated Time (UTC). For example: `2019-06-13T21:36:34Z`.
 #' 
 #' The `InclusiveStartTime` cannot be in the future and must be before
 #' `ExclusiveEndTime`.
@@ -1110,7 +1222,7 @@ qldb_list_tags_for_resource <- function(ResourceArn) {
 #' cancel it.
 #' 
 #' The `ExclusiveEndTime` must be in `ISO 8601` date and time format and in
-#' Universal Coordinated Time (UTC). For example: `2019-06-13T21:36:34Z`
+#' Universal Coordinated Time (UTC). For example: `2019-06-13T21:36:34Z`.
 #' @param KinesisConfiguration &#91;required&#93; The configuration settings of the Kinesis Data Streams destination for
 #' your stream request.
 #' @param StreamName &#91;required&#93; The name that you want to assign to the QLDB journal stream.
@@ -1235,11 +1347,11 @@ qldb_tag_resource <- function(ResourceArn, Tags) {
 #' @usage
 #' qldb_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) from which you want to remove the tags.
-#' For example:
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) from which to remove the tags. For
+#' example:
 #' 
 #' `arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger`
-#' @param TagKeys &#91;required&#93; The list of tag keys that you want to remove.
+#' @param TagKeys &#91;required&#93; The list of tag keys to remove.
 #'
 #' @return
 #' An empty list.
@@ -1280,7 +1392,7 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates properties on a ledger.
 #'
 #' @usage
-#' qldb_update_ledger(Name, DeletionProtection)
+#' qldb_update_ledger(Name, DeletionProtection, KmsKey)
 #'
 #' @param Name &#91;required&#93; The name of the ledger.
 #' @param DeletionProtection The flag that prevents a ledger from being deleted by any user. If not
@@ -1288,11 +1400,48 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #' default.
 #' 
 #' If deletion protection is enabled, you must first disable it before you
-#' can delete the ledger using the QLDB API or the AWS Command Line
-#' Interface (AWS CLI). You can disable it by calling the
+#' can delete the ledger. You can disable it by calling the
 #' [`update_ledger`][qldb_update_ledger] operation to set the flag to
-#' `false`. The QLDB console disables deletion protection for you when you
-#' use it to delete a ledger.
+#' `false`.
+#' @param KmsKey The key in Key Management Service (KMS) to use for encryption of data at
+#' rest in the ledger. For more information, see [Encryption at
+#' rest](https://docs.aws.amazon.com/qldb/latest/developerguide/encryption-at-rest.html)
+#' in the *Amazon QLDB Developer Guide*.
+#' 
+#' Use one of the following options to specify this parameter:
+#' 
+#' -   `AWS_OWNED_KMS_KEY`: Use an KMS key that is owned and managed by
+#'     Amazon Web Services on your behalf.
+#' 
+#' -   **Undefined**: Make no changes to the KMS key of the ledger.
+#' 
+#' -   **A valid symmetric customer managed KMS key**: Use the specified
+#'     KMS key in your account that you create, own, and manage.
+#' 
+#'     Amazon QLDB does not support asymmetric keys. For more information,
+#'     see [Using symmetric and asymmetric
+#'     keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+#'     in the *Key Management Service Developer Guide*.
+#' 
+#' To specify a customer managed KMS key, you can use its key ID, Amazon
+#' Resource Name (ARN), alias name, or alias ARN. When using an alias name,
+#' prefix it with `"alias/"`. To specify a key in a different Amazon Web
+#' Services account, you must use the key ARN or alias ARN.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN:
+#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Alias name: `alias/ExampleAlias`
+#' 
+#' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
+#' 
+#' For more information, see [Key identifiers
+#' (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1304,7 +1453,14 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #'   CreationDateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   DeletionProtection = TRUE|FALSE
+#'   DeletionProtection = TRUE|FALSE,
+#'   EncryptionDescription = list(
+#'     KmsKeyArn = "string",
+#'     EncryptionStatus = "ENABLED"|"UPDATING"|"KMS_KEY_INACCESSIBLE",
+#'     InaccessibleKmsKeyDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1312,21 +1468,22 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #' ```
 #' svc$update_ledger(
 #'   Name = "string",
-#'   DeletionProtection = TRUE|FALSE
+#'   DeletionProtection = TRUE|FALSE,
+#'   KmsKey = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname qldb_update_ledger
-qldb_update_ledger <- function(Name, DeletionProtection = NULL) {
+qldb_update_ledger <- function(Name, DeletionProtection = NULL, KmsKey = NULL) {
   op <- new_operation(
     name = "UpdateLedger",
     http_method = "PATCH",
     http_path = "/ledgers/{name}",
     paginator = list()
   )
-  input <- .qldb$update_ledger_input(Name = Name, DeletionProtection = DeletionProtection)
+  input <- .qldb$update_ledger_input(Name = Name, DeletionProtection = DeletionProtection, KmsKey = KmsKey)
   output <- .qldb$update_ledger_output()
   config <- get_config()
   svc <- .qldb$service(config)
@@ -1335,3 +1492,84 @@ qldb_update_ledger <- function(Name, DeletionProtection = NULL) {
   return(response)
 }
 .qldb$operations$update_ledger <- qldb_update_ledger
+
+#' Updates the permissions mode of a ledger
+#'
+#' @description
+#' Updates the permissions mode of a ledger.
+#' 
+#' Before you switch to the `STANDARD` permissions mode, you must first
+#' create all required IAM policies and table tags to avoid disruption to
+#' your users. To learn more, see [Migrating to the standard permissions
+#' mode](https://docs.aws.amazon.com/qldb/latest/developerguide/ledger-management.basics.html#ledger-mgmt.basics.update-permissions.migrating)
+#' in the *Amazon QLDB Developer Guide*.
+#'
+#' @usage
+#' qldb_update_ledger_permissions_mode(Name, PermissionsMode)
+#'
+#' @param Name &#91;required&#93; The name of the ledger.
+#' @param PermissionsMode &#91;required&#93; The permissions mode to assign to the ledger. This parameter can have
+#' one of the following values:
+#' 
+#' -   `ALLOW_ALL`: A legacy permissions mode that enables access control
+#'     with API-level granularity for ledgers.
+#' 
+#'     This mode allows users who have the `SendCommand` API permission for
+#'     this ledger to run all PartiQL commands (hence, `ALLOW_ALL`) on any
+#'     tables in the specified ledger. This mode disregards any table-level
+#'     or command-level IAM permissions policies that you create for the
+#'     ledger.
+#' 
+#' -   `STANDARD`: (*Recommended*) A permissions mode that enables access
+#'     control with finer granularity for ledgers, tables, and PartiQL
+#'     commands.
+#' 
+#'     By default, this mode denies all user requests to run any PartiQL
+#'     commands on any tables in this ledger. To allow PartiQL commands to
+#'     run, you must create IAM permissions policies for specific table
+#'     resources and PartiQL actions, in addition to the `SendCommand` API
+#'     permission for the ledger. For information, see [Getting started
+#'     with the standard permissions
+#'     mode](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-standard-mode.html)
+#'     in the *Amazon QLDB Developer Guide*.
+#' 
+#' We strongly recommend using the `STANDARD` permissions mode to maximize
+#' the security of your ledger data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Arn = "string",
+#'   PermissionsMode = "ALLOW_ALL"|"STANDARD"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_ledger_permissions_mode(
+#'   Name = "string",
+#'   PermissionsMode = "ALLOW_ALL"|"STANDARD"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname qldb_update_ledger_permissions_mode
+qldb_update_ledger_permissions_mode <- function(Name, PermissionsMode) {
+  op <- new_operation(
+    name = "UpdateLedgerPermissionsMode",
+    http_method = "PATCH",
+    http_path = "/ledgers/{name}/permissions-mode",
+    paginator = list()
+  )
+  input <- .qldb$update_ledger_permissions_mode_input(Name = Name, PermissionsMode = PermissionsMode)
+  output <- .qldb$update_ledger_permissions_mode_output()
+  config <- get_config()
+  svc <- .qldb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.qldb$operations$update_ledger_permissions_mode <- qldb_update_ledger_permissions_mode

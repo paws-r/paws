@@ -5,7 +5,7 @@
 \title{Lists all the event buses in your account, including the default event
 bus, custom event buses, and partner event buses}
 \usage{
-eventbridge_list_event_buses(NamePrefix, NextToken, Limit)
+eventbridge_list_event_buses(NamePrefix = NULL, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{NamePrefix}{Specifying this limits the results to only those event buses with names
@@ -18,30 +18,9 @@ results.}
 The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventBuses = list(
-    list(
-      Name = "string",
-      Arn = "string",
-      Policy = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all the event buses in your account, including the default event
-bus, custom event buses, and partner event buses.
-}
-\section{Request syntax}{
-\preformatted{svc$list_event_buses(
-  NamePrefix = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Lists all the event buses in your account, including the default event bus, custom event buses, and partner event buses.
 
+See \url{https://paws-r.github.io/docs/eventbridge/list_event_buses.html} for full documentation.
+}
 \keyword{internal}

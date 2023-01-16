@@ -11,21 +11,9 @@ sagemaker_deregister_devices(DeviceFleetName, DeviceNames)
 
 \item{DeviceNames}{[required] The unique IDs of the devices.}
 }
-\value{
-An empty list.
-}
 \description{
-Deregisters the specified devices. After you deregister a device, you
-will need to re-register the devices.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_devices(
-  DeviceFleetName = "string",
-  DeviceNames = list(
-    "string"
-  )
-)
-}
-}
+Deregisters the specified devices. After you deregister a device, you will need to re-register the devices.
 
+See \url{https://paws-r.github.io/docs/sagemaker/deregister_devices.html} for full documentation.
+}
 \keyword{internal}

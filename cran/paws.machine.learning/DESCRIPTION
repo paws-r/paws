@@ -1,10 +1,10 @@
 Package: paws.machine.learning
 Title: 'Amazon Web Services' Machine Learning Services
-Version: 0.1.13
+Version: 0.2.0
 Authors@R: c(
-    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut")),
+    person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
-    person("Dyfan", "Jones", email = "dyfan.r.jones@gmail.com", role = "cre"),
+    person("Dyfan", "Jones", , "dyfan.r.jones@gmail.com", role = "cre"),
     person("Amazon.com, Inc.", role = "cph")
   )
 Description: Interface to 'Amazon Web Services' machine learning services,
@@ -15,28 +15,58 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.common (>= 0.3.0)
+    paws.common (>= 0.5.4)
 Suggests: 
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.2
 Collate: 
+    'augmentedairuntime_service.R'
+    'augmentedairuntime_interfaces.R'
+    'augmentedairuntime_operations.R'
     'comprehend_service.R'
     'comprehend_interfaces.R'
     'comprehend_operations.R'
     'comprehendmedical_service.R'
     'comprehendmedical_interfaces.R'
     'comprehendmedical_operations.R'
+    'elasticinference_service.R'
+    'elasticinference_interfaces.R'
+    'elasticinference_operations.R'
+    'forecastqueryservice_service.R'
+    'forecastqueryservice_interfaces.R'
+    'forecastqueryservice_operations.R'
+    'forecastservice_service.R'
+    'forecastservice_interfaces.R'
+    'forecastservice_operations.R'
+    'frauddetector_service.R'
+    'frauddetector_interfaces.R'
+    'frauddetector_operations.R'
     'lexmodelbuildingservice_service.R'
     'lexmodelbuildingservice_interfaces.R'
     'lexmodelbuildingservice_operations.R'
+    'lexmodelsv2_service.R'
+    'lexmodelsv2_interfaces.R'
+    'lexmodelsv2_operations.R'
     'lexruntimeservice_service.R'
     'lexruntimeservice_interfaces.R'
     'lexruntimeservice_operations.R'
+    'lexruntimev2_service.R'
+    'lexruntimev2_interfaces.R'
+    'lexruntimev2_operations.R'
+    'lookoutequipment_service.R'
+    'lookoutequipment_interfaces.R'
+    'lookoutequipment_operations.R'
+    'lookoutmetrics_service.R'
+    'lookoutmetrics_interfaces.R'
+    'lookoutmetrics_operations.R'
     'machinelearning_service.R'
     'machinelearning_interfaces.R'
     'machinelearning_operations.R'
+    'panorama_service.R'
+    'panorama_interfaces.R'
+    'panorama_operations.R'
     'personalize_service.R'
     'personalize_interfaces.R'
     'personalize_operations.R'
@@ -55,6 +85,12 @@ Collate:
     'sagemaker_service.R'
     'sagemaker_interfaces.R'
     'sagemaker_operations.R'
+    'sagemakeredgemanager_service.R'
+    'sagemakeredgemanager_interfaces.R'
+    'sagemakeredgemanager_operations.R'
+    'sagemakerfeaturestoreruntime_service.R'
+    'sagemakerfeaturestoreruntime_interfaces.R'
+    'sagemakerfeaturestoreruntime_operations.R'
     'sagemakerruntime_service.R'
     'sagemakerruntime_interfaces.R'
     'sagemakerruntime_operations.R'
@@ -67,3 +103,6 @@ Collate:
     'translate_service.R'
     'translate_interfaces.R'
     'translate_operations.R'
+    'voiceid_service.R'
+    'voiceid_interfaces.R'
+    'voiceid_operations.R'

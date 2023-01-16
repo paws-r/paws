@@ -5,8 +5,11 @@
 \title{Modifies the parameters of a DB cluster parameter group to the default
 value}
 \usage{
-neptune_reset_db_cluster_parameter_group(DBClusterParameterGroupName,
-  ResetAllParameters, Parameters)
+neptune_reset_db_cluster_parameter_group(
+  DBClusterParameterGroupName,
+  ResetAllParameters = NULL,
+  Parameters = NULL
+)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group to reset.}
@@ -20,47 +23,9 @@ for the \code{Parameters} parameter.}
 the default values. You can't use this parameter if the
 \code{ResetAllParameters} parameter is set to \code{true}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterParameterGroupName = "string"
-)
-}
-}
 \description{
-Modifies the parameters of a DB cluster parameter group to the default
-value. To reset specific parameters submit a list of the following:
-\code{ParameterName} and \code{ApplyMethod}. To reset the entire DB cluster
-parameter group, specify the \code{DBClusterParameterGroupName} and
-\code{ResetAllParameters} parameters.
+Modifies the parameters of a DB cluster parameter group to the default value. To reset specific parameters submit a list of the following: \code{ParameterName} and \code{ApplyMethod}. To reset the entire DB cluster parameter group, specify the \code{DBClusterParameterGroupName} and \code{ResetAllParameters} parameters.
 
-When resetting the entire group, dynamic parameters are updated
-immediately and static parameters are set to \code{pending-reboot} to take
-effect on the next DB instance restart or
-\code{\link[=neptune_reboot_db_instance]{reboot_db_instance}} request. You must
-call \code{\link[=neptune_reboot_db_instance]{reboot_db_instance}} for every DB
-instance in your DB cluster that you want the updated static parameter
-to apply to.
+See \url{https://paws-r.github.io/docs/neptune/reset_db_cluster_parameter_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$reset_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string",
-  ResetAllParameters = TRUE|FALSE,
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      ApplyType = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string",
-      ApplyMethod = "immediate"|"pending-reboot"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

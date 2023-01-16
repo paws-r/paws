@@ -4,21 +4,42 @@
 \alias{codebuild_start_build}
 \title{Starts running a build}
 \usage{
-codebuild_start_build(projectName, secondarySourcesOverride,
-  secondarySourcesVersionOverride, sourceVersion, artifactsOverride,
-  secondaryArtifactsOverride, environmentVariablesOverride,
-  sourceTypeOverride, sourceLocationOverride, sourceAuthOverride,
-  gitCloneDepthOverride, gitSubmodulesConfigOverride, buildspecOverride,
-  insecureSslOverride, reportBuildStatusOverride,
-  buildStatusConfigOverride, environmentTypeOverride, imageOverride,
-  computeTypeOverride, certificateOverride, cacheOverride,
-  serviceRoleOverride, privilegedModeOverride, timeoutInMinutesOverride,
-  queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
-  logsConfigOverride, registryCredentialOverride,
-  imagePullCredentialsTypeOverride, debugSessionEnabled)
+codebuild_start_build(
+  projectName,
+  secondarySourcesOverride = NULL,
+  secondarySourcesVersionOverride = NULL,
+  sourceVersion = NULL,
+  artifactsOverride = NULL,
+  secondaryArtifactsOverride = NULL,
+  environmentVariablesOverride = NULL,
+  sourceTypeOverride = NULL,
+  sourceLocationOverride = NULL,
+  sourceAuthOverride = NULL,
+  gitCloneDepthOverride = NULL,
+  gitSubmodulesConfigOverride = NULL,
+  buildspecOverride = NULL,
+  insecureSslOverride = NULL,
+  reportBuildStatusOverride = NULL,
+  buildStatusConfigOverride = NULL,
+  environmentTypeOverride = NULL,
+  imageOverride = NULL,
+  computeTypeOverride = NULL,
+  certificateOverride = NULL,
+  cacheOverride = NULL,
+  serviceRoleOverride = NULL,
+  privilegedModeOverride = NULL,
+  timeoutInMinutesOverride = NULL,
+  queuedTimeoutInMinutesOverride = NULL,
+  encryptionKeyOverride = NULL,
+  idempotencyToken = NULL,
+  logsConfigOverride = NULL,
+  registryCredentialOverride = NULL,
+  imagePullCredentialsTypeOverride = NULL,
+  debugSessionEnabled = NULL
+)
 }
 \arguments{
-\item{projectName}{[required] The name of the AWS CodeBuild build project to start running a build.}
+\item{projectName}{[required] The name of the CodeBuild build project to start running a build.}
 
 \item{secondarySourcesOverride}{An array of \code{ProjectSource} objects.}
 
@@ -29,12 +50,12 @@ only.}
 \item{sourceVersion}{The version of the build input to be built, for this build only. If not
 specified, the latest version is used. If specified, the contents
 depends on the source provider:
-\subsection{AWS CodeCommit}{
+
+\strong{CodeCommit}
 
 The commit ID, branch, or Git tag to use.
-}
 
-\subsection{GitHub}{
+\strong{GitHub}
 
 The commit ID, pull request ID, branch name, or tag name that
 corresponds to the version of the source code you want to build. If a
@@ -42,17 +63,15 @@ pull request ID is specified, it must use the format
 \code{pr/pull-request-ID} (for example \code{pr/25}). If a branch name is
 specified, the branch's HEAD commit ID is used. If not specified, the
 default branch's HEAD commit ID is used.
-}
 
-\subsection{Bitbucket}{
+\strong{Bitbucket}
 
 The commit ID, branch name, or tag name that corresponds to the version
 of the source code you want to build. If a branch name is specified, the
 branch's HEAD commit ID is used. If not specified, the default branch's
 HEAD commit ID is used.
-}
 
-\subsection{Amazon Simple Storage Service (Amazon S3)}{
+\strong{Amazon S3}
 
 The version ID of the object that represents the build input ZIP file to
 use.
@@ -61,8 +80,7 @@ If \code{sourceVersion} is specified at the project level, then this
 \code{sourceVersion} (at the build level) takes precedence.
 
 For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html}{Source Version Sample with CodeBuild}
-in the \emph{AWS CodeBuild User Guide}.
-}}
+in the \emph{CodeBuild User Guide}.}
 
 \item{artifactsOverride}{Build output artifact settings that override, for this build only, the
 latest ones already defined in the build project.}
@@ -87,7 +105,7 @@ overrides, for this build only, any previous depth of history defined in
 the build project.}
 
 \item{gitSubmodulesConfigOverride}{Information about the Git submodules configuration for this build of an
-AWS CodeBuild build project.}
+CodeBuild build project.}
 
 \item{buildspecOverride}{A buildspec file declaration that overrides, for this build only, the
 latest one already defined in the build project.
@@ -95,8 +113,8 @@ latest one already defined in the build project.
 If this value is set, it can be either an inline buildspec definition,
 the path to an alternate buildspec file relative to the value of the
 built-in \code{CODEBUILD_SRC_DIR} environment variable, or the path to an S3
-bucket. The bucket must be in the same AWS Region as the build project.
-Specify the buildspec file using its ARN (for example,
+bucket. The bucket must be in the same Amazon Web Services Region as the
+build project. Specify the buildspec file using its ARN (for example,
 \code{arn:aws:s3:::my-codebuild-sample2/buildspec.yml}). If this value is not
 provided or is set to an empty string, the source code must contain a
 buildspec file in its root directory. For more information, see
@@ -110,7 +128,13 @@ override applies only if the build's source is GitHub Enterprise.}
 \item{reportBuildStatusOverride}{Set to true to report to your source provider the status of a build's
 start and completion. If you use this option with a source provider
 other than GitHub, GitHub Enterprise, or Bitbucket, an
-invalidInputException is thrown.
+\code{invalidInputException} is thrown.
+
+To be able to report the build status to the source provider, the user
+associated with the source provider must have write access to the repo.
+If the user does not have write access, the build status cannot be
+updated. For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/access-tokens.html}{Source provider access}
+in the \emph{CodeBuild User Guide}.
 
 The status of a build triggered by a webhook is always reported to your
 source provider.}
@@ -146,9 +170,9 @@ the build project.}
 \item{queuedTimeoutInMinutesOverride}{The number of minutes a build is allowed to be queued before it times
 out.}
 
-\item{encryptionKeyOverride}{The AWS Key Management Service (AWS KMS) customer master key (CMK) that
-overrides the one specified in the build project. The CMK key encrypts
-the build output artifacts.
+\item{encryptionKeyOverride}{The Key Management Service customer master key (CMK) that overrides the
+one specified in the build project. The CMK key encrypts the build
+output artifacts.
 
 You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
@@ -159,7 +183,7 @@ available, the CMK's alias (using the format \verb{alias/<alias-name>}).}
 \item{idempotencyToken}{A unique, case sensitive identifier you provide to ensure the
 idempotency of the StartBuild request. The token is included in the
 StartBuild request and is valid for 5 minutes. If you repeat the
-StartBuild request with the same token, but change a parameter, AWS
+StartBuild request with the same token, but change a parameter,
 CodeBuild returns a parameter mismatch error.}
 
 \item{logsConfigOverride}{Log settings for this build that override the log settings defined in
@@ -167,339 +191,29 @@ the build project.}
 
 \item{registryCredentialOverride}{The credentials for access to a private registry.}
 
-\item{imagePullCredentialsTypeOverride}{The type of credentials AWS CodeBuild uses to pull images in your build.
+\item{imagePullCredentialsTypeOverride}{The type of credentials CodeBuild uses to pull images in your build.
 There are two valid values:
-\subsection{CODEBUILD}{
 
-Specifies that AWS CodeBuild uses its own credentials. This requires
-that you modify your ECR repository policy to trust AWS CodeBuild's
-service principal.
-}
+\strong{CODEBUILD}
 
-\subsection{SERVICE_ROLE}{
+Specifies that CodeBuild uses its own credentials. This requires that
+you modify your ECR repository policy to trust CodeBuild's service
+principal.
 
-Specifies that AWS CodeBuild uses your build project's service role.
+\strong{SERVICE_ROLE}
+
+Specifies that CodeBuild uses your build project's service role.
 
 When using a cross-account or private registry image, you must use
-\code{SERVICE_ROLE} credentials. When using an AWS CodeBuild curated image,
-you must use \code{CODEBUILD} credentials.
-}}
+\code{SERVICE_ROLE} credentials. When using an CodeBuild curated image, you
+must use \code{CODEBUILD} credentials.}
 
 \item{debugSessionEnabled}{Specifies if session debugging is enabled for this build. For more
 information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html}{Viewing a running build in Session Manager}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  build = list(
-    id = "string",
-    arn = "string",
-    buildNumber = 123,
-    startTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    endTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    currentPhase = "string",
-    buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-    sourceVersion = "string",
-    resolvedSourceVersion = "string",
-    projectName = "string",
-    phases = list(
-      list(
-        phaseType = "SUBMITTED"|"QUEUED"|"PROVISIONING"|"DOWNLOAD_SOURCE"|"INSTALL"|"PRE_BUILD"|"BUILD"|"POST_BUILD"|"UPLOAD_ARTIFACTS"|"FINALIZING"|"COMPLETED",
-        phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-        startTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        endTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        durationInSeconds = 123,
-        contexts = list(
-          list(
-            statusCode = "string",
-            message = "string"
-          )
-        )
-      )
-    ),
-    source = list(
-      type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-      location = "string",
-      gitCloneDepth = 123,
-      gitSubmodulesConfig = list(
-        fetchSubmodules = TRUE|FALSE
-      ),
-      buildspec = "string",
-      auth = list(
-        type = "OAUTH",
-        resource = "string"
-      ),
-      reportBuildStatus = TRUE|FALSE,
-      buildStatusConfig = list(
-        context = "string",
-        targetUrl = "string"
-      ),
-      insecureSsl = TRUE|FALSE,
-      sourceIdentifier = "string"
-    ),
-    secondarySources = list(
-      list(
-        type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-        location = "string",
-        gitCloneDepth = 123,
-        gitSubmodulesConfig = list(
-          fetchSubmodules = TRUE|FALSE
-        ),
-        buildspec = "string",
-        auth = list(
-          type = "OAUTH",
-          resource = "string"
-        ),
-        reportBuildStatus = TRUE|FALSE,
-        buildStatusConfig = list(
-          context = "string",
-          targetUrl = "string"
-        ),
-        insecureSsl = TRUE|FALSE,
-        sourceIdentifier = "string"
-      )
-    ),
-    secondarySourceVersions = list(
-      list(
-        sourceIdentifier = "string",
-        sourceVersion = "string"
-      )
-    ),
-    artifacts = list(
-      location = "string",
-      sha256sum = "string",
-      md5sum = "string",
-      overrideArtifactName = TRUE|FALSE,
-      encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
-    ),
-    secondaryArtifacts = list(
-      list(
-        location = "string",
-        sha256sum = "string",
-        md5sum = "string",
-        overrideArtifactName = TRUE|FALSE,
-        encryptionDisabled = TRUE|FALSE,
-        artifactIdentifier = "string"
-      )
-    ),
-    cache = list(
-      type = "NO_CACHE"|"S3"|"LOCAL",
-      location = "string",
-      modes = list(
-        "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-      )
-    ),
-    environment = list(
-      type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-      image = "string",
-      computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-      environmentVariables = list(
-        list(
-          name = "string",
-          value = "string",
-          type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-        )
-      ),
-      privilegedMode = TRUE|FALSE,
-      certificate = "string",
-      registryCredential = list(
-        credential = "string",
-        credentialProvider = "SECRETS_MANAGER"
-      ),
-      imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-    ),
-    serviceRole = "string",
-    logs = list(
-      groupName = "string",
-      streamName = "string",
-      deepLink = "string",
-      s3DeepLink = "string",
-      cloudWatchLogsArn = "string",
-      s3LogsArn = "string",
-      cloudWatchLogs = list(
-        status = "ENABLED"|"DISABLED",
-        groupName = "string",
-        streamName = "string"
-      ),
-      s3Logs = list(
-        status = "ENABLED"|"DISABLED",
-        location = "string",
-        encryptionDisabled = TRUE|FALSE
-      )
-    ),
-    timeoutInMinutes = 123,
-    queuedTimeoutInMinutes = 123,
-    buildComplete = TRUE|FALSE,
-    initiator = "string",
-    vpcConfig = list(
-      vpcId = "string",
-      subnets = list(
-        "string"
-      ),
-      securityGroupIds = list(
-        "string"
-      )
-    ),
-    networkInterface = list(
-      subnetId = "string",
-      networkInterfaceId = "string"
-    ),
-    encryptionKey = "string",
-    exportedEnvironmentVariables = list(
-      list(
-        name = "string",
-        value = "string"
-      )
-    ),
-    reportArns = list(
-      "string"
-    ),
-    fileSystemLocations = list(
-      list(
-        type = "EFS",
-        location = "string",
-        mountPoint = "string",
-        identifier = "string",
-        mountOptions = "string"
-      )
-    ),
-    debugSession = list(
-      sessionEnabled = TRUE|FALSE,
-      sessionTarget = "string"
-    ),
-    buildBatchArn = "string"
-  )
-)
-}
-}
 \description{
 Starts running a build.
-}
-\section{Request syntax}{
-\preformatted{svc$start_build(
-  projectName = "string",
-  secondarySourcesOverride = list(
-    list(
-      type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-      location = "string",
-      gitCloneDepth = 123,
-      gitSubmodulesConfig = list(
-        fetchSubmodules = TRUE|FALSE
-      ),
-      buildspec = "string",
-      auth = list(
-        type = "OAUTH",
-        resource = "string"
-      ),
-      reportBuildStatus = TRUE|FALSE,
-      buildStatusConfig = list(
-        context = "string",
-        targetUrl = "string"
-      ),
-      insecureSsl = TRUE|FALSE,
-      sourceIdentifier = "string"
-    )
-  ),
-  secondarySourcesVersionOverride = list(
-    list(
-      sourceIdentifier = "string",
-      sourceVersion = "string"
-    )
-  ),
-  sourceVersion = "string",
-  artifactsOverride = list(
-    type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-    location = "string",
-    path = "string",
-    namespaceType = "NONE"|"BUILD_ID",
-    name = "string",
-    packaging = "NONE"|"ZIP",
-    overrideArtifactName = TRUE|FALSE,
-    encryptionDisabled = TRUE|FALSE,
-    artifactIdentifier = "string"
-  ),
-  secondaryArtifactsOverride = list(
-    list(
-      type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-      location = "string",
-      path = "string",
-      namespaceType = "NONE"|"BUILD_ID",
-      name = "string",
-      packaging = "NONE"|"ZIP",
-      overrideArtifactName = TRUE|FALSE,
-      encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
-    )
-  ),
-  environmentVariablesOverride = list(
-    list(
-      name = "string",
-      value = "string",
-      type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-    )
-  ),
-  sourceTypeOverride = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-  sourceLocationOverride = "string",
-  sourceAuthOverride = list(
-    type = "OAUTH",
-    resource = "string"
-  ),
-  gitCloneDepthOverride = 123,
-  gitSubmodulesConfigOverride = list(
-    fetchSubmodules = TRUE|FALSE
-  ),
-  buildspecOverride = "string",
-  insecureSslOverride = TRUE|FALSE,
-  reportBuildStatusOverride = TRUE|FALSE,
-  buildStatusConfigOverride = list(
-    context = "string",
-    targetUrl = "string"
-  ),
-  environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-  imageOverride = "string",
-  computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-  certificateOverride = "string",
-  cacheOverride = list(
-    type = "NO_CACHE"|"S3"|"LOCAL",
-    location = "string",
-    modes = list(
-      "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-    )
-  ),
-  serviceRoleOverride = "string",
-  privilegedModeOverride = TRUE|FALSE,
-  timeoutInMinutesOverride = 123,
-  queuedTimeoutInMinutesOverride = 123,
-  encryptionKeyOverride = "string",
-  idempotencyToken = "string",
-  logsConfigOverride = list(
-    cloudWatchLogs = list(
-      status = "ENABLED"|"DISABLED",
-      groupName = "string",
-      streamName = "string"
-    ),
-    s3Logs = list(
-      status = "ENABLED"|"DISABLED",
-      location = "string",
-      encryptionDisabled = TRUE|FALSE
-    )
-  ),
-  registryCredentialOverride = list(
-    credential = "string",
-    credentialProvider = "SECRETS_MANAGER"
-  ),
-  imagePullCredentialsTypeOverride = "CODEBUILD"|"SERVICE_ROLE",
-  debugSessionEnabled = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/start_build.html} for full documentation.
+}
 \keyword{internal}

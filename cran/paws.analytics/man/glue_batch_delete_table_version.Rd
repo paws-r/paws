@@ -4,12 +4,16 @@
 \alias{glue_batch_delete_table_version}
 \title{Deletes a specified batch of versions of a table}
 \usage{
-glue_batch_delete_table_version(CatalogId, DatabaseName, TableName,
-  VersionIds)
+glue_batch_delete_table_version(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  VersionIds
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is provided,
-the AWS account ID is used by default.}
+the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The database in the catalog in which the table resides. For Hive
 compatibility, this name is entirely lowercase.}
@@ -20,34 +24,9 @@ lowercase.}
 \item{VersionIds}{[required] A list of the IDs of versions to be deleted. A \code{VersionId} is a string
 representation of an integer. Each version is incremented by 1.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Errors = list(
-    list(
-      TableName = "string",
-      VersionId = "string",
-      ErrorDetail = list(
-        ErrorCode = "string",
-        ErrorMessage = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Deletes a specified batch of versions of a table.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_delete_table_version(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  VersionIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/batch_delete_table_version.html} for full documentation.
+}
 \keyword{internal}

@@ -7,28 +7,13 @@
 apigateway_get_request_validator(restApiId, requestValidatorId)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{requestValidatorId}{[required] [Required] The identifier of the RequestValidator to be retrieved.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  validateRequestBody = TRUE|FALSE,
-  validateRequestParameters = TRUE|FALSE
-)
-}
+\item{requestValidatorId}{[required] The identifier of the RequestValidator to be retrieved.}
 }
 \description{
 Gets a RequestValidator of a given RestApi.
-}
-\section{Request syntax}{
-\preformatted{svc$get_request_validator(
-  restApiId = "string",
-  requestValidatorId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_request_validator.html} for full documentation.
+}
 \keyword{internal}

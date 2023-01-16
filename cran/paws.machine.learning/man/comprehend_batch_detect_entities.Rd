@@ -16,45 +16,9 @@ bytes of UTF-8 encoded characters.}
 languages supported by Amazon Comprehend. All documents must be in the
 same language.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResultList = list(
-    list(
-      Index = 123,
-      Entities = list(
-        list(
-          Score = 123.0,
-          Type = "PERSON"|"LOCATION"|"ORGANIZATION"|"COMMERCIAL_ITEM"|"EVENT"|"DATE"|"QUANTITY"|"TITLE"|"OTHER",
-          Text = "string",
-          BeginOffset = 123,
-          EndOffset = 123
-        )
-      )
-    )
-  ),
-  ErrorList = list(
-    list(
-      Index = 123,
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Inspects the text of a batch of documents for named entities and returns
-information about them. For more information about named entities, see
-how-entities
-}
-\section{Request syntax}{
-\preformatted{svc$batch_detect_entities(
-  TextList = list(
-    "string"
-  ),
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
-)
-}
-}
+Inspects the text of a batch of documents for named entities and returns information about them. For more information about named entities, see how-entities
 
+See \url{https://paws-r.github.io/docs/comprehend/batch_detect_entities.html} for full documentation.
+}
 \keyword{internal}

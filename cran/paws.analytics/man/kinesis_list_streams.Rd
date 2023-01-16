@@ -4,50 +4,17 @@
 \alias{kinesis_list_streams}
 \title{Lists your Kinesis data streams}
 \usage{
-kinesis_list_streams(Limit, ExclusiveStartStreamName)
+kinesis_list_streams(Limit = NULL, ExclusiveStartStreamName = NULL)
 }
 \arguments{
-\item{Limit}{The maximum number of streams to list.}
+\item{Limit}{The maximum number of streams to list. The default value is 100. If you
+specify a value greater than 100, at most 100 results are returned.}
 
 \item{ExclusiveStartStreamName}{The name of the stream to start the list with.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StreamNames = list(
-    "string"
-  ),
-  HasMoreStreams = TRUE|FALSE
-)
-}
 }
 \description{
 Lists your Kinesis data streams.
 
-The number of streams may be too large to return from a single call to
-\code{\link[=kinesis_list_streams]{list_streams}}. You can limit the number of
-returned streams using the \code{Limit} parameter. If you do not specify a
-value for the \code{Limit} parameter, Kinesis Data Streams uses the default
-limit, which is currently 10.
-
-You can detect if there are more streams available to list by using the
-\code{HasMoreStreams} flag from the returned output. If there are more
-streams available, you can request more streams by using the name of the
-last stream returned by the \code{\link[=kinesis_list_streams]{list_streams}}
-request in the \code{ExclusiveStartStreamName} parameter in a subsequent
-request to \code{\link[=kinesis_list_streams]{list_streams}}. The group of stream
-names returned by the subsequent request is then added to the list. You
-can continue this process until all the stream names have been collected
-in the list.
-
-\code{\link[=kinesis_list_streams]{list_streams}} has a limit of five transactions
-per second per account.
+See \url{https://paws-r.github.io/docs/kinesis/list_streams.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_streams(
-  Limit = 123,
-  ExclusiveStartStreamName = "string"
-)
-}
-}
-
 \keyword{internal}

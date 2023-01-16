@@ -2,36 +2,48 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_create_studio}
 \alias{emr_create_studio}
-\title{The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change}
+\title{Creates a new Amazon EMR Studio}
 \usage{
-emr_create_studio(Name, Description, AuthMode, VpcId, SubnetIds,
-  ServiceRole, UserRole, WorkspaceSecurityGroupId, EngineSecurityGroupId,
-  DefaultS3Location, Tags)
+emr_create_studio(
+  Name,
+  Description = NULL,
+  AuthMode,
+  VpcId,
+  SubnetIds,
+  ServiceRole,
+  UserRole = NULL,
+  WorkspaceSecurityGroupId,
+  EngineSecurityGroupId,
+  DefaultS3Location,
+  IdpAuthUrl = NULL,
+  IdpRelayStateParameterName = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] A descriptive name for the Amazon EMR Studio.}
 
-\item{Description}{A detailed description of the Studio.}
+\item{Description}{A detailed description of the Amazon EMR Studio.}
 
-\item{AuthMode}{[required] Specifies whether the Studio authenticates users using single sign-on
-(SSO) or IAM. Amazon EMR Studio currently only supports SSO
-authentication.}
+\item{AuthMode}{[required] Specifies whether the Studio authenticates users using IAM or Amazon Web
+Services SSO.}
 
 \item{VpcId}{[required] The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate
 with the Studio.}
 
-\item{SubnetIds}{[required] A list of subnet IDs to associate with the Studio. The subnets must
-belong to the VPC specified by \code{VpcId}. Studio users can create a
-Workspace in any of the specified subnets.}
+\item{SubnetIds}{[required] A list of subnet IDs to associate with the Amazon EMR Studio. A Studio
+can have a maximum of 5 subnets. The subnets must belong to the VPC
+specified by \code{VpcId}. Studio users can create a Workspace in any of the
+specified subnets.}
 
-\item{ServiceRole}{[required] The IAM role that will be assumed by the Amazon EMR Studio. The service
-role provides a way for Amazon EMR Studio to interoperate with other AWS
-services.}
+\item{ServiceRole}{[required] The IAM role that the Amazon EMR Studio assumes. The service role
+provides a way for Amazon EMR Studio to interoperate with other Amazon
+Web Services services.}
 
-\item{UserRole}{[required] The IAM user role that will be assumed by users and groups logged in to
-a Studio. The permissions attached to this IAM role can be scoped down
-for each user or group using session policies.}
+\item{UserRole}{The IAM user role that users and groups assume when logged in to an
+Amazon EMR Studio. Only specify a \code{UserRole} when you use Amazon Web
+Services SSO authentication. The permissions attached to the \code{UserRole}
+can be scoped down for each user or group using session policies.}
 
 \item{WorkspaceSecurityGroupId}{[required] The ID of the Amazon EMR Studio Workspace security group. The Workspace
 security group allows outbound network traffic to resources in the
@@ -42,50 +54,29 @@ Engine security group, and it must be in the same VPC specified by
 security group allows inbound network traffic from the Workspace
 security group, and it must be in the same VPC specified by \code{VpcId}.}
 
-\item{DefaultS3Location}{The default Amazon S3 location to back up EMR Studio Workspaces and
-notebook files. A Studio user can select an alternative Amazon S3
-location when creating a Workspace.}
+\item{DefaultS3Location}{[required] The Amazon S3 location to back up Amazon EMR Studio Workspaces and
+notebook files.}
 
-\item{Tags}{A list of tags to associate with the Studio. Tags are user-defined
-key-value pairs that consist of a required key string with a maximum of
-128 characters, and an optional value string with a maximum of 256
-characters.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StudioId = "string",
-  Url = "string"
-)
-}
+\item{IdpAuthUrl}{The authentication endpoint of your identity provider (IdP). Specify
+this value when you use IAM authentication and want to let federated
+users log in to a Studio with the Studio URL and credentials from your
+IdP. Amazon EMR Studio redirects users to this endpoint to enter
+credentials.}
+
+\item{IdpRelayStateParameterName}{The name that your identity provider (IdP) uses for its \code{RelayState}
+parameter. For example, \code{RelayState} or \code{TargetSource}. Specify this
+value when you use IAM authentication and want to let federated users
+log in to a Studio using the Studio URL. The \code{RelayState} parameter
+differs by IdP.}
+
+\item{Tags}{A list of tags to associate with the Amazon EMR Studio. Tags are
+user-defined key-value pairs that consist of a required key string with
+a maximum of 128 characters, and an optional value string with a maximum
+of 256 characters.}
 }
 \description{
-The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
-subject to change.
-
 Creates a new Amazon EMR Studio.
-}
-\section{Request syntax}{
-\preformatted{svc$create_studio(
-  Name = "string",
-  Description = "string",
-  AuthMode = "SSO"|"IAM",
-  VpcId = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  ServiceRole = "string",
-  UserRole = "string",
-  WorkspaceSecurityGroupId = "string",
-  EngineSecurityGroupId = "string",
-  DefaultS3Location = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/emr/create_studio.html} for full documentation.
+}
 \keyword{internal}

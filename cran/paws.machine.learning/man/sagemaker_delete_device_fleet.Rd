@@ -9,17 +9,9 @@ sagemaker_delete_device_fleet(DeviceFleetName)
 \arguments{
 \item{DeviceFleetName}{[required] The name of the fleet to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_device_fleet(
-  DeviceFleetName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_device_fleet.html} for full documentation.
+}
 \keyword{internal}

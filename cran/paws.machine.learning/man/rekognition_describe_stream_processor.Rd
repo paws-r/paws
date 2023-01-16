@@ -10,50 +10,9 @@ rekognition_describe_stream_processor(Name)
 \arguments{
 \item{Name}{[required] Name of the stream processor for which you want information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  StreamProcessorArn = "string",
-  Status = "STOPPED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING",
-  StatusMessage = "string",
-  CreationTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastUpdateTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  Input = list(
-    KinesisVideoStream = list(
-      Arn = "string"
-    )
-  ),
-  Output = list(
-    KinesisDataStream = list(
-      Arn = "string"
-    )
-  ),
-  RoleArn = "string",
-  Settings = list(
-    FaceSearch = list(
-      CollectionId = "string",
-      FaceMatchThreshold = 123.0
-    )
-  )
-)
-}
-}
 \description{
-Provides information about a stream processor created by
-\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. You
-can get information about the input and output streams, the input
-parameters for the face recognition being performed, and the current
-status of the stream processor.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_stream_processor(
-  Name = "string"
-)
-}
-}
+Provides information about a stream processor created by \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. You can get information about the input and output streams, the input parameters for the face recognition being performed, and the current status of the stream processor.
 
+See \url{https://paws-r.github.io/docs/rekognition/describe_stream_processor.html} for full documentation.
+}
 \keyword{internal}

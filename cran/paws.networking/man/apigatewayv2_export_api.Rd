@@ -4,8 +4,14 @@
 \alias{apigatewayv2_export_api}
 \title{Export api}
 \usage{
-apigatewayv2_export_api(ApiId, ExportVersion, IncludeExtensions,
-  OutputType, Specification, StageName)
+apigatewayv2_export_api(
+  ApiId,
+  ExportVersion = NULL,
+  IncludeExtensions = NULL,
+  OutputType,
+  Specification,
+  StageName = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -26,25 +32,9 @@ the only supported value.}
 \item{StageName}{The name of the API stage to export. If you don't specify this property,
 a representation of the latest API configuration is exported.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  body = raw
-)
-}
-}
 \description{
 Export api
-}
-\section{Request syntax}{
-\preformatted{svc$export_api(
-  ApiId = "string",
-  ExportVersion = "string",
-  IncludeExtensions = TRUE|FALSE,
-  OutputType = "YAML"|"JSON",
-  Specification = "OAS30",
-  StageName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/export_api.html} for full documentation.
+}
 \keyword{internal}

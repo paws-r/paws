@@ -4,7 +4,7 @@
 \alias{sagemaker_describe_device}
 \title{Describes the device}
 \usage{
-sagemaker_describe_device(NextToken, DeviceName, DeviceFleetName)
+sagemaker_describe_device(NextToken = NULL, DeviceName, DeviceFleetName)
 }
 \arguments{
 \item{NextToken}{Next token of device description.}
@@ -13,46 +13,9 @@ sagemaker_describe_device(NextToken, DeviceName, DeviceFleetName)
 
 \item{DeviceFleetName}{[required] The name of the fleet the devices belong to.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeviceArn = "string",
-  DeviceName = "string",
-  Description = "string",
-  DeviceFleetName = "string",
-  IotThingName = "string",
-  RegistrationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LatestHeartbeat = as.POSIXct(
-    "2015-01-01"
-  ),
-  Models = list(
-    list(
-      ModelName = "string",
-      ModelVersion = "string",
-      LatestSampleTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LatestInference = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  MaxModels = 123,
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the device.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_device(
-  NextToken = "string",
-  DeviceName = "string",
-  DeviceFleetName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_device.html} for full documentation.
+}
 \keyword{internal}

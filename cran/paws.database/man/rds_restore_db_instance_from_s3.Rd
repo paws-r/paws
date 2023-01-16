@@ -5,20 +5,53 @@
 \title{Amazon Relational Database Service (Amazon RDS) supports importing MySQL
 databases by using backup files}
 \usage{
-rds_restore_db_instance_from_s3(DBName, DBInstanceIdentifier,
-  AllocatedStorage, DBInstanceClass, Engine, MasterUsername,
-  MasterUserPassword, DBSecurityGroups, VpcSecurityGroupIds,
-  AvailabilityZone, DBSubnetGroupName, PreferredMaintenanceWindow,
-  DBParameterGroupName, BackupRetentionPeriod, PreferredBackupWindow,
-  Port, MultiAZ, EngineVersion, AutoMinorVersionUpgrade, LicenseModel,
-  Iops, OptionGroupName, PubliclyAccessible, Tags, StorageType,
-  StorageEncrypted, KmsKeyId, CopyTagsToSnapshot, MonitoringInterval,
-  MonitoringRoleArn, EnableIAMDatabaseAuthentication, SourceEngine,
-  SourceEngineVersion, S3BucketName, S3Prefix, S3IngestionRoleArn,
-  EnablePerformanceInsights, PerformanceInsightsKMSKeyId,
-  PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports,
-  ProcessorFeatures, UseDefaultProcessorFeatures, DeletionProtection,
-  MaxAllocatedStorage)
+rds_restore_db_instance_from_s3(
+  DBName = NULL,
+  DBInstanceIdentifier,
+  AllocatedStorage = NULL,
+  DBInstanceClass,
+  Engine,
+  MasterUsername = NULL,
+  MasterUserPassword = NULL,
+  DBSecurityGroups = NULL,
+  VpcSecurityGroupIds = NULL,
+  AvailabilityZone = NULL,
+  DBSubnetGroupName = NULL,
+  PreferredMaintenanceWindow = NULL,
+  DBParameterGroupName = NULL,
+  BackupRetentionPeriod = NULL,
+  PreferredBackupWindow = NULL,
+  Port = NULL,
+  MultiAZ = NULL,
+  EngineVersion = NULL,
+  AutoMinorVersionUpgrade = NULL,
+  LicenseModel = NULL,
+  Iops = NULL,
+  OptionGroupName = NULL,
+  PubliclyAccessible = NULL,
+  Tags = NULL,
+  StorageType = NULL,
+  StorageEncrypted = NULL,
+  KmsKeyId = NULL,
+  CopyTagsToSnapshot = NULL,
+  MonitoringInterval = NULL,
+  MonitoringRoleArn = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  SourceEngine,
+  SourceEngineVersion,
+  S3BucketName,
+  S3Prefix = NULL,
+  S3IngestionRoleArn,
+  EnablePerformanceInsights = NULL,
+  PerformanceInsightsKMSKeyId = NULL,
+  PerformanceInsightsRetentionPeriod = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  ProcessorFeatures = NULL,
+  UseDefaultProcessorFeatures = NULL,
+  DeletionProtection = NULL,
+  MaxAllocatedStorage = NULL,
+  NetworkType = NULL
+)
 }
 \arguments{
 \item{DBName}{The name of the database to create when the DB instance is created.
@@ -45,10 +78,10 @@ Be sure to allocate enough memory for your new DB instance so that the
 restore operation can succeed. You can also allocate additional memory
 for future growth.}
 
-\item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example,
-\code{db.m4.large}. Not all DB instance classes are available in all AWS
-Regions, or for all database engines. For the full list of DB instance
-classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
+\item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example
+db.m4.large. Not all DB instance classes are available in all Amazon Web
+Services Regions, or for all database engines. For the full list of DB
+instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide.}
 
 Importing from Amazon S3 isn't supported on the db.t2.micro DB instance
@@ -79,19 +112,25 @@ Default: The default DB security group for the database engine.}
 \item{VpcSecurityGroupIds}{A list of VPC security groups to associate with this DB instance.}
 
 \item{AvailabilityZone}{The Availability Zone that the DB instance is created in. For
-information about AWS Regions and Availability Zones, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}
+information about Amazon Web Services Regions and Availability Zones,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}
 in the \emph{Amazon RDS User Guide.}
 
-Default: A random, system-chosen Availability Zone in the endpoint's AWS
-Region.
+Default: A random, system-chosen Availability Zone in the endpoint's
+Amazon Web Services Region.
 
 Example: \verb{us-east-1d}
 
 Constraint: The \code{AvailabilityZone} parameter can't be specified if the
 DB instance is a Multi-AZ deployment. The specified Availability Zone
-must be in the same AWS Region as the current endpoint.}
+must be in the same Amazon Web Services Region as the current endpoint.}
 
-\item{DBSubnetGroupName}{A DB subnet group to associate with this DB instance.}
+\item{DBSubnetGroupName}{A DB subnet group to associate with this DB instance.
+
+Constraints: If supplied, must match the name of an existing
+DBSubnetGroup.
+
+Example: \code{mydbsubnetgroup}}
 
 \item{PreferredMaintenanceWindow}{The time range each week during which system maintenance can occur, in
 Universal Coordinated Time (UTC). For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance}{Amazon RDS Maintenance Window}
@@ -116,7 +155,7 @@ this parameter to a positive number enables backups. For more
 information, see \code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
 \item{PreferredBackupWindow}{The time range each day during which automated backups are created if
-automated backups are enabled. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{The Backup Window}
+automated backups are enabled. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{Backup window}
 in the \emph{Amazon RDS User Guide.}
 
 Constraints:
@@ -161,12 +200,13 @@ is used.}
 
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
 
-When the DB instance is publicly accessible, its DNS endpoint resolves
-to the private IP address from within the DB instance's VPC, and to the
-public IP address from outside of the DB instance's VPC. Access to the
-DB instance is ultimately controlled by the security group it uses, and
-that public access is not permitted if the security group assigned to
-the DB instance doesn't permit it.
+When the DB instance is publicly accessible, its Domain Name System
+(DNS) endpoint resolves to the private IP address from within the DB
+instance's virtual private cloud (VPC). It resolves to the public IP
+address from outside of the DB instance's VPC. Access to the DB instance
+is ultimately controlled by the security group it uses. That public
+access is not permitted if the security group assigned to the DB
+instance doesn't permit it.
 
 When the DB instance isn't publicly accessible, it is an internal DB
 instance with a DNS name that resolves to a private IP address.
@@ -189,16 +229,17 @@ Default: \code{io1} if the \code{Iops} parameter is specified; otherwise \code{g
 
 \item{StorageEncrypted}{A value that indicates whether the new DB instance is encrypted or not.}
 
-\item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB instance.
+\item{KmsKeyId}{The Amazon Web Services KMS key identifier for an encrypted DB instance.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK). To use a CMK in a
-different AWS account, specify the key ARN or alias ARN.
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
 
 If the \code{StorageEncrypted} parameter is enabled, and you do not specify a
 value for the \code{KmsKeyId} parameter, then Amazon RDS will use your
-default CMK. There is a default CMK for your AWS account. Your AWS
-account has a different default CMK for each AWS Region.}
+default KMS key. There is a default KMS key for your Amazon Web Services
+account. Your Amazon Web Services account has a different default KMS
+key for each Amazon Web Services Region.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB instance to
 snapshots of the DB instance. By default, tags are not copied.}
@@ -223,9 +264,9 @@ in the \emph{Amazon RDS User Guide.}
 If \code{MonitoringInterval} is set to a value other than 0, then you must
 supply a \code{MonitoringRoleArn} value.}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping isn't enabled.
 
 For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide.}}
@@ -245,27 +286,44 @@ file.}
 
 \item{S3Prefix}{The prefix of your Amazon S3 bucket.}
 
-\item{S3IngestionRoleArn}{[required] An AWS Identity and Access Management (IAM) role to allow Amazon RDS to
-access your Amazon S3 bucket.}
+\item{S3IngestionRoleArn}{[required] An Amazon Web Services Identity and Access Management (IAM) role to
+allow Amazon RDS to access your Amazon S3 bucket.}
 
 \item{EnablePerformanceInsights}{A value that indicates whether to enable Performance Insights for the DB
 instance.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
-in the \emph{Amazon Relational Database Service User Guide}.}
+in the \emph{Amazon RDS User Guide}.}
 
-\item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
+\item{PerformanceInsightsKMSKeyId}{The Amazon Web Services KMS key identifier for encryption of Performance
+Insights data.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK).
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key.
 
 If you do not specify a value for \code{PerformanceInsightsKMSKeyId}, then
-Amazon RDS uses your default CMK. There is a default CMK for your AWS
-account. Your AWS account has a different default CMK for each AWS
-Region.}
+Amazon RDS uses your default KMS key. There is a default KMS key for
+your Amazon Web Services account. Your Amazon Web Services account has a
+different default KMS key for each Amazon Web Services Region.}
 
-\item{PerformanceInsightsRetentionPeriod}{The amount of time, in days, to retain Performance Insights data. Valid
-values are 7 or 731 (2 years).}
+\item{PerformanceInsightsRetentionPeriod}{The number of days to retain Performance Insights data. The default is 7
+days. The following values are valid:
+\itemize{
+\item 7
+\item \emph{month} * 31, where \emph{month} is a number of months from 1-23
+\item 731
+}
+
+For example, the following values are valid:
+\itemize{
+\item 93 (3 months * 31)
+\item 341 (11 months * 31)
+\item 589 (19 months * 31)
+\item 731
+}
+
+If you specify a retention period such as 94, which isn't a valid value,
+RDS issues an error.}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
@@ -280,273 +338,34 @@ uses its default processor features.}
 
 \item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
 enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection is disabled. For more
+enabled. By default, deletion protection isn't enabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
-\item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
-of the DB instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DBInstance = list(
-    DBInstanceIdentifier = "string",
-    DBInstanceClass = "string",
-    Engine = "string",
-    DBInstanceStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    AllocatedStorage = 123,
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredBackupWindow = "string",
-    BackupRetentionPeriod = 123,
-    DBSecurityGroups = list(
-      list(
-        DBSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    DBParameterGroups = list(
-      list(
-        DBParameterGroupName = "string",
-        ParameterApplyStatus = "string"
-      )
-    ),
-    AvailabilityZone = "string",
-    DBSubnetGroup = list(
-      DBSubnetGroupName = "string",
-      DBSubnetGroupDescription = "string",
-      VpcId = "string",
-      SubnetGroupStatus = "string",
-      Subnets = list(
-        list(
-          SubnetIdentifier = "string",
-          SubnetAvailabilityZone = list(
-            Name = "string"
-          ),
-          SubnetOutpost = list(
-            Arn = "string"
-          ),
-          SubnetStatus = "string"
-        )
-      ),
-      DBSubnetGroupArn = "string"
-    ),
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      DBInstanceClass = "string",
-      AllocatedStorage = 123,
-      MasterUserPassword = "string",
-      Port = 123,
-      BackupRetentionPeriod = 123,
-      MultiAZ = TRUE|FALSE,
-      EngineVersion = "string",
-      LicenseModel = "string",
-      Iops = 123,
-      DBInstanceIdentifier = "string",
-      StorageType = "string",
-      CACertificateIdentifier = "string",
-      DBSubnetGroupName = "string",
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      ),
-      ProcessorFeatures = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-    ),
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MultiAZ = TRUE|FALSE,
-    EngineVersion = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    ReadReplicaSourceDBInstanceIdentifier = "string",
-    ReadReplicaDBInstanceIdentifiers = list(
-      "string"
-    ),
-    ReadReplicaDBClusterIdentifiers = list(
-      "string"
-    ),
-    ReplicaMode = "open-read-only"|"mounted",
-    LicenseModel = "string",
-    Iops = 123,
-    OptionGroupMemberships = list(
-      list(
-        OptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    CharacterSetName = "string",
-    NcharCharacterSetName = "string",
-    SecondaryAvailabilityZone = "string",
-    PubliclyAccessible = TRUE|FALSE,
-    StatusInfos = list(
-      list(
-        StatusType = "string",
-        Normal = TRUE|FALSE,
-        Status = "string",
-        Message = "string"
-      )
-    ),
-    StorageType = "string",
-    TdeCredentialArn = "string",
-    DbInstancePort = 123,
-    DBClusterIdentifier = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbiResourceId = "string",
-    CACertificateIdentifier = "string",
-    DomainMemberships = list(
-      list(
-        Domain = "string",
-        Status = "string",
-        FQDN = "string",
-        IAMRoleName = "string"
-      )
-    ),
-    CopyTagsToSnapshot = TRUE|FALSE,
-    MonitoringInterval = 123,
-    EnhancedMonitoringResourceArn = "string",
-    MonitoringRoleArn = "string",
-    PromotionTier = 123,
-    DBInstanceArn = "string",
-    Timezone = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    PerformanceInsightsEnabled = TRUE|FALSE,
-    PerformanceInsightsKMSKeyId = "string",
-    PerformanceInsightsRetentionPeriod = 123,
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    ProcessorFeatures = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    DeletionProtection = TRUE|FALSE,
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        FeatureName = "string",
-        Status = "string"
-      )
-    ),
-    ListenerEndpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    MaxAllocatedStorage = 123,
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    DBInstanceAutomatedBackupsReplications = list(
-      list(
-        DBInstanceAutomatedBackupsArn = "string"
-      )
-    ),
-    CustomerOwnedIpEnabled = TRUE|FALSE
-  )
-)
-}
-}
-\description{
-Amazon Relational Database Service (Amazon RDS) supports importing MySQL
-databases by using backup files. You can create a backup of your
-on-premises database, store it on Amazon Simple Storage Service (Amazon
-S3), and then restore the backup file onto a new Amazon RDS DB instance
-running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance}
-in the \emph{Amazon RDS User Guide.}
-}
-\section{Request syntax}{
-\preformatted{svc$restore_db_instance_from_s3(
-  DBName = "string",
-  DBInstanceIdentifier = "string",
-  AllocatedStorage = 123,
-  DBInstanceClass = "string",
-  Engine = "string",
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  DBSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  AvailabilityZone = "string",
-  DBSubnetGroupName = "string",
-  PreferredMaintenanceWindow = "string",
-  DBParameterGroupName = "string",
-  BackupRetentionPeriod = 123,
-  PreferredBackupWindow = "string",
-  Port = 123,
-  MultiAZ = TRUE|FALSE,
-  EngineVersion = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageType = "string",
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  MonitoringInterval = 123,
-  MonitoringRoleArn = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  SourceEngine = "string",
-  SourceEngineVersion = "string",
-  S3BucketName = "string",
-  S3Prefix = "string",
-  S3IngestionRoleArn = "string",
-  EnablePerformanceInsights = TRUE|FALSE,
-  PerformanceInsightsKMSKeyId = "string",
-  PerformanceInsightsRetentionPeriod = 123,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  ProcessorFeatures = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  UseDefaultProcessorFeatures = TRUE|FALSE,
-  DeletionProtection = TRUE|FALSE,
-  MaxAllocatedStorage = 123
-)
-}
+\item{MaxAllocatedStorage}{The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
+scale the storage of the DB instance.
+
+For more information about this setting, including limitations that
+apply to it, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling}{Managing capacity automatically with Amazon RDS storage autoscaling}
+in the \emph{Amazon RDS User Guide}.}
+
+\item{NetworkType}{The network type of the DB instance.
+
+Valid values:
+\itemize{
+\item \code{IPV4}
+\item \code{DUAL}
 }
 
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB instance. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon RDS User Guide.}}
+}
+\description{
+Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance} in the \emph{Amazon RDS User Guide.}
+
+See \url{https://paws-r.github.io/docs/rds/restore_db_instance_from_s3.html} for full documentation.
+}
 \keyword{internal}

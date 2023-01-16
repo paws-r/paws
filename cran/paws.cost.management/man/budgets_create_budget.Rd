@@ -4,7 +4,7 @@
 \alias{budgets_create_budget}
 \title{Creates a budget and, if included, notifications and subscribers}
 \usage{
-budgets_create_budget(AccountId, Budget, NotificationsWithSubscribers)
+budgets_create_budget(AccountId, Budget, NotificationsWithSubscribers = NULL)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget.}
@@ -15,97 +15,11 @@ budgets_create_budget(AccountId, Budget, NotificationsWithSubscribers)
 have up to five notifications, and each notification can have one SNS
 subscriber and up to 10 email subscribers. If you include notifications
 and subscribers in your \code{\link[=budgets_create_budget]{create_budget}} call,
-AWS creates the notifications and subscribers for you.}
-}
-\value{
-An empty list.
+Amazon Web Services creates the notifications and subscribers for you.}
 }
 \description{
 Creates a budget and, if included, notifications and subscribers.
 
-Only one of \code{BudgetLimit} or \code{PlannedBudgetLimits} can be present in the
-syntax at one time. Use the syntax that matches your case. The Request
-Syntax section shows the \code{BudgetLimit} syntax. For
-\code{PlannedBudgetLimits}, see the
-\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples}{Examples}
-section.
+See \url{https://paws-r.github.io/docs/budgets/create_budget.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_budget(
-  AccountId = "string",
-  Budget = list(
-    BudgetName = "string",
-    BudgetLimit = list(
-      Amount = "string",
-      Unit = "string"
-    ),
-    PlannedBudgetLimits = list(
-      list(
-        Amount = "string",
-        Unit = "string"
-      )
-    ),
-    CostFilters = list(
-      list(
-        "string"
-      )
-    ),
-    CostTypes = list(
-      IncludeTax = TRUE|FALSE,
-      IncludeSubscription = TRUE|FALSE,
-      UseBlended = TRUE|FALSE,
-      IncludeRefund = TRUE|FALSE,
-      IncludeCredit = TRUE|FALSE,
-      IncludeUpfront = TRUE|FALSE,
-      IncludeRecurring = TRUE|FALSE,
-      IncludeOtherSubscription = TRUE|FALSE,
-      IncludeSupport = TRUE|FALSE,
-      IncludeDiscount = TRUE|FALSE,
-      UseAmortized = TRUE|FALSE
-    ),
-    TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
-    TimePeriod = list(
-      Start = as.POSIXct(
-        "2015-01-01"
-      ),
-      End = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    CalculatedSpend = list(
-      ActualSpend = list(
-        Amount = "string",
-        Unit = "string"
-      ),
-      ForecastedSpend = list(
-        Amount = "string",
-        Unit = "string"
-      )
-    ),
-    BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
-    LastUpdatedTime = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  NotificationsWithSubscribers = list(
-    list(
-      Notification = list(
-        NotificationType = "ACTUAL"|"FORECASTED",
-        ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-        Threshold = 123.0,
-        ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-        NotificationState = "OK"|"ALARM"
-      ),
-      Subscribers = list(
-        list(
-          SubscriptionType = "SNS"|"EMAIL",
-          Address = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

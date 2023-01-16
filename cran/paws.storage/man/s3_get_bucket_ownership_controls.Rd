@@ -4,48 +4,19 @@
 \alias{s3_get_bucket_ownership_controls}
 \title{Retrieves OwnershipControls for an Amazon S3 bucket}
 \usage{
-s3_get_bucket_ownership_controls(Bucket, ExpectedBucketOwner)
+s3_get_bucket_ownership_controls(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose \code{OwnershipControls} you want to
 retrieve.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OwnershipControls = list(
-    Rules = list(
-      list(
-        ObjectOwnership = "BucketOwnerPreferred"|"ObjectWriter"
-      )
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Retrieves \code{OwnershipControls} for an Amazon S3 bucket. To use this
-operation, you must have the \code{s3:GetBucketOwnershipControls} permission.
-For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
+Retrieves \code{OwnershipControls} for an Amazon S3 bucket. To use this operation, you must have the \code{s3:GetBucketOwnershipControls} permission. For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying permissions in a policy}.
 
-For information about Amazon S3 Object Ownership, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html}{Using Object Ownership}.
-
-The following operations are related to
-\code{\link[=s3_get_bucket_ownership_controls]{get_bucket_ownership_controls}}:
-\itemize{
-\item \code{\link[=s3_put_bucket_ownership_controls]{put_bucket_ownership_controls}}
-\item \code{\link[=s3_delete_bucket_ownership_controls]{delete_bucket_ownership_controls}}
+See \url{https://paws-r.github.io/docs/s3/get_bucket_ownership_controls.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_ownership_controls(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

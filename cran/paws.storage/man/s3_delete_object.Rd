@@ -5,28 +5,35 @@
 \title{Removes the null version (if there is one) of an object and inserts a
 delete marker, which becomes the latest version of the object}
 \usage{
-s3_delete_object(Bucket, Key, MFA, VersionId, RequestPayer,
-  BypassGovernanceRetention, ExpectedBucketOwner)
+s3_delete_object(
+  Bucket,
+  Key,
+  MFA = NULL,
+  VersionId = NULL,
+  RequestPayer = NULL,
+  BypassGovernanceRetention = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name of the bucket containing the object.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Key name of the object to delete.}
 
@@ -40,79 +47,16 @@ with MFA delete enabled.}
 \item{RequestPayer}{}
 
 \item{BypassGovernanceRetention}{Indicates whether S3 Object Lock should bypass Governance-mode
-restrictions to process this operation.}
+restrictions to process this operation. To use this header, you must
+have the \code{s3:BypassGovernanceRetention} permission.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DeleteMarker = TRUE|FALSE,
-  VersionId = "string",
-  RequestCharged = "requester"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Removes the null version (if there is one) of an object and inserts a
-delete marker, which becomes the latest version of the object. If there
-isn't a null version, Amazon S3 does not remove any objects.
+Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn't a null version, Amazon S3 does not remove any objects but will still respond that the command was successful.
 
-To remove a specific version, you must be the bucket owner and you must
-use the version Id subresource. Using this subresource permanently
-deletes the version. If the object deleted is a delete marker, Amazon S3
-sets the response header, \code{x-amz-delete-marker}, to true.
-
-If the object you want to delete is in a bucket where the bucket
-versioning configuration is MFA Delete enabled, you must include the
-\code{x-amz-mfa} request header in the DELETE \code{versionId} request. Requests
-that include \code{x-amz-mfa} must use HTTPS.
-
-For more information about MFA Delete, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMFADelete.html}{Using MFA Delete}.
-To see sample requests that use versioning, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html#ExampleVersionObjectDelete}{Sample Request}.
-
-You can delete objects by explicitly calling the DELETE Object API or
-configure its lifecycle
-(\code{\link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle}}) to enable Amazon S3
-to remove them for you. If you want to block users or accounts from
-removing or deleting objects from your bucket, you must deny them the
-\code{s3:DeleteObject}, \code{s3:DeleteObjectVersion}, and
-\code{s3:PutLifeCycleConfiguration} actions.
-
-The following operation is related to
-\code{\link[=s3_delete_object]{delete_object}}:
-\itemize{
-\item \code{\link[=s3_put_object]{put_object}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_object(
-  Bucket = "string",
-  Key = "string",
-  MFA = "string",
-  VersionId = "string",
-  RequestPayer = "requester",
-  BypassGovernanceRetention = TRUE|FALSE,
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes an object from an S3 bucket.
-svc$delete_object(
-  Bucket = "examplebucket",
-  Key = "objectkey.jpg"
-)
-
-# The following example deletes an object from a non-versioned bucket.
-svc$delete_object(
-  Bucket = "ExampleBucket",
-  Key = "HappyFace.jpg"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/delete_object.html} for full documentation.
 }
 \keyword{internal}

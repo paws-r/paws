@@ -15,20 +15,9 @@ a given resource. For example, a tag with "Sales" as the key might be
 added to a resource to indicate its use by the sales department. Keys
 must be unique and cannot be duplicated for a particular resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes a specific tag associated with an Amazon Comprehend resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/comprehend/untag_resource.html} for full documentation.
+}
 \keyword{internal}

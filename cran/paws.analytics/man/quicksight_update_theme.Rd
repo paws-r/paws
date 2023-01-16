@@ -4,18 +4,26 @@
 \alias{quicksight_update_theme}
 \title{Updates a theme}
 \usage{
-quicksight_update_theme(AwsAccountId, ThemeId, Name, BaseThemeId,
-  VersionDescription, Configuration)
+quicksight_update_theme(
+  AwsAccountId,
+  ThemeId,
+  Name = NULL,
+  BaseThemeId,
+  VersionDescription = NULL,
+  Configuration = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme that you're updating.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the theme that
+you're updating.}
 
 \item{ThemeId}{[required] The ID for the theme.}
 
 \item{Name}{The name for the theme.}
 
 \item{BaseThemeId}{[required] The theme ID, defined by Amazon QuickSight, that a custom theme inherits
-from. All themes initially inherit from a default QuickSight theme.}
+from. All themes initially inherit from a default Amazon QuickSight
+theme.}
 
 \item{VersionDescription}{A description of the theme version that you're updating Every time that
 you call \code{\link[=quicksight_update_theme]{update_theme}}, you create a new
@@ -24,73 +32,9 @@ of the version in \code{VersionDescription}.}
 
 \item{Configuration}{The theme configuration, which contains the theme display properties.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThemeId = "string",
-  Arn = "string",
-  VersionArn = "string",
-  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Updates a theme.
-}
-\section{Request syntax}{
-\preformatted{svc$update_theme(
-  AwsAccountId = "string",
-  ThemeId = "string",
-  Name = "string",
-  BaseThemeId = "string",
-  VersionDescription = "string",
-  Configuration = list(
-    DataColorPalette = list(
-      Colors = list(
-        "string"
-      ),
-      MinMaxGradient = list(
-        "string"
-      ),
-      EmptyFillColor = "string"
-    ),
-    UIColorPalette = list(
-      PrimaryForeground = "string",
-      PrimaryBackground = "string",
-      SecondaryForeground = "string",
-      SecondaryBackground = "string",
-      Accent = "string",
-      AccentForeground = "string",
-      Danger = "string",
-      DangerForeground = "string",
-      Warning = "string",
-      WarningForeground = "string",
-      Success = "string",
-      SuccessForeground = "string",
-      Dimension = "string",
-      DimensionForeground = "string",
-      Measure = "string",
-      MeasureForeground = "string"
-    ),
-    Sheet = list(
-      Tile = list(
-        Border = list(
-          Show = TRUE|FALSE
-        )
-      ),
-      TileLayout = list(
-        Gutter = list(
-          Show = TRUE|FALSE
-        ),
-        Margin = list(
-          Show = TRUE|FALSE
-        )
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_theme.html} for full documentation.
+}
 \keyword{internal}

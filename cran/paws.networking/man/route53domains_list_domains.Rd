@@ -3,17 +3,31 @@
 \name{route53domains_list_domains}
 \alias{route53domains_list_domains}
 \title{This operation returns all the domain names registered with Amazon Route
-53 for the current AWS account}
+53 for the current Amazon Web Services account if no filtering
+conditions are used}
 \usage{
-route53domains_list_domains(Marker, MaxItems)
+route53domains_list_domains(
+  FilterConditions = NULL,
+  SortCondition = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
+\item{FilterConditions}{A complex type that contains information about the filters applied
+during the \code{\link[=route53domains_list_domains]{list_domains}} request. The
+filter conditions can include domain name and domain expiration.}
+
+\item{SortCondition}{A complex type that contains information about the requested ordering of
+domains in the returned list.}
+
 \item{Marker}{For an initial request for a list of domains, omit this element. If the
-number of domains that are associated with the current AWS account is
-greater than the value that you specified for \code{MaxItems}, you can use
-\code{Marker} to return additional domains. Get the value of \code{NextPageMarker}
-from the previous response, and submit another request that includes the
-value of \code{NextPageMarker} in the \code{Marker} element.
+number of domains that are associated with the current Amazon Web
+Services account is greater than the value that you specified for
+\code{MaxItems}, you can use \code{Marker} to return additional domains. Get the
+value of \code{NextPageMarker} from the previous response, and submit another
+request that includes the value of \code{NextPageMarker} in the \code{Marker}
+element.
 
 Constraints: The marker must match the value specified in the previous
 request.}
@@ -22,32 +36,9 @@ request.}
 
 Default: 20}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Domains = list(
-    list(
-      DomainName = "string",
-      AutoRenew = TRUE|FALSE,
-      TransferLock = TRUE|FALSE,
-      Expiry = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextPageMarker = "string"
-)
-}
-}
 \description{
-This operation returns all the domain names registered with Amazon Route
-53 for the current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_domains(
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+This operation returns all the domain names registered with Amazon Route 53 for the current Amazon Web Services account if no filtering conditions are used.
 
+See \url{https://paws-r.github.io/docs/route53domains/list_domains.html} for full documentation.
+}
 \keyword{internal}

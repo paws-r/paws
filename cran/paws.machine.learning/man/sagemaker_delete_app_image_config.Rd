@@ -9,17 +9,9 @@ sagemaker_delete_app_image_config(AppImageConfigName)
 \arguments{
 \item{AppImageConfigName}{[required] The name of the AppImageConfig to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an AppImageConfig.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_app_image_config(
-  AppImageConfigName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_app_image_config.html} for full documentation.
+}
 \keyword{internal}

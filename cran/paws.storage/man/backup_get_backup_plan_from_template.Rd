@@ -9,56 +9,9 @@ backup_get_backup_plan_from_template(BackupPlanTemplateId)
 \arguments{
 \item{BackupPlanTemplateId}{[required] Uniquely identifies a stored backup plan template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupPlanDocument = list(
-    BackupPlanName = "string",
-    Rules = list(
-      list(
-        RuleName = "string",
-        TargetBackupVaultName = "string",
-        ScheduleExpression = "string",
-        StartWindowMinutes = 123,
-        CompletionWindowMinutes = 123,
-        Lifecycle = list(
-          MoveToColdStorageAfterDays = 123,
-          DeleteAfterDays = 123
-        ),
-        RecoveryPointTags = list(
-          "string"
-        ),
-        RuleId = "string",
-        CopyActions = list(
-          list(
-            Lifecycle = list(
-              MoveToColdStorageAfterDays = 123,
-              DeleteAfterDays = 123
-            ),
-            DestinationBackupVaultArn = "string"
-          )
-        )
-      )
-    ),
-    AdvancedBackupSettings = list(
-      list(
-        ResourceType = "string",
-        BackupOptions = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Returns the template specified by its \code{templateId} as a backup plan.
-}
-\section{Request syntax}{
-\preformatted{svc$get_backup_plan_from_template(
-  BackupPlanTemplateId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/backup/get_backup_plan_from_template.html} for full documentation.
+}
 \keyword{internal}

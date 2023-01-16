@@ -4,8 +4,16 @@
 \alias{costexplorer_get_savings_plans_coverage}
 \title{Retrieves the Savings Plans covered for your account}
 \usage{
-costexplorer_get_savings_plans_coverage(TimePeriod, GroupBy,
-  Granularity, Filter, Metrics, NextToken, MaxResults, SortBy)
+costexplorer_get_savings_plans_coverage(
+  TimePeriod,
+  GroupBy = NULL,
+  Granularity = NULL,
+  Filter = NULL,
+  Metrics = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  SortBy = NULL
+)
 }
 \arguments{
 \item{TimePeriod}{[required] The time period that you want the usage and costs for. The \code{Start} date
@@ -51,7 +59,7 @@ results than the maximum page size.}
 \item{MaxResults}{The number of items to be returned in a response. The default is \code{20},
 with a minimum value of \code{1}.}
 
-\item{SortBy}{The value by which you want to sort the data.
+\item{SortBy}{The value that you want to sort the data by.
 
 The following values are supported for \code{Key}:
 \itemize{
@@ -64,108 +72,11 @@ The following values are supported for \code{Key}:
 \item \code{Service}
 }
 
-Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SavingsPlansCoverages = list(
-    list(
-      Attributes = list(
-        "string"
-      ),
-      Coverage = list(
-        SpendCoveredBySavingsPlans = "string",
-        OnDemandCost = "string",
-        TotalCost = "string",
-        CoveragePercentage = "string"
-      ),
-      TimePeriod = list(
-        Start = "string",
-        End = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+The supported values for \code{SortOrder} are \code{ASCENDING} and \code{DESCENDING}.}
 }
 \description{
-Retrieves the Savings Plans covered for your account. This enables you
-to see how much of your cost is covered by a Savings Plan. An
-organization’s management account can see the coverage of the associated
-member accounts. This supports dimensions, Cost Categories, and nested
-expressions. For any time period, you can filter data for Savings Plans
-usage with the following dimensions:
-\itemize{
-\item \code{LINKED_ACCOUNT}
-\item \code{REGION}
-\item \code{SERVICE}
-\item \code{INSTANCE_FAMILY}
-}
+Retrieves the Savings Plans covered for your account. This enables you to see how much of your cost is covered by a Savings Plan. An organization’s management account can see the coverage of the associated member accounts. This supports dimensions, Cost Categories, and nested expressions. For any time period, you can filter data for Savings Plans usage with the following dimensions:
 
-To determine valid values for a dimension, use the
-\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation.
+See \url{https://paws-r.github.io/docs/costexplorer/get_savings_plans_coverage.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_savings_plans_coverage(
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  GroupBy = list(
-    list(
-      Type = "DIMENSION"|"TAG"|"COST_CATEGORY",
-      Key = "string"
-    )
-  ),
-  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  Metrics = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  SortBy = list(
-    Key = "string",
-    SortOrder = "ASCENDING"|"DESCENDING"
-  )
-)
-}
-}
-
 \keyword{internal}

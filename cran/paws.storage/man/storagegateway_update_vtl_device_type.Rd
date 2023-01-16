@@ -13,36 +13,9 @@ storagegateway_update_vtl_device_type(VTLDeviceARN, DeviceType)
 
 Valid Values: \code{STK-L700} | \code{AWS-Gateway-VTL} | \verb{IBM-03584L32-0402}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VTLDeviceARN = "string"
-)
-}
-}
 \description{
-Updates the type of medium changer in a tape gateway. When you activate
-a tape gateway, you select a medium changer type for the tape gateway.
-This operation enables you to select a different type of medium changer
-after a tape gateway is activated. This operation is only supported in
-the tape gateway type.
-}
-\section{Request syntax}{
-\preformatted{svc$update_vtl_device_type(
-  VTLDeviceARN = "string",
-  DeviceType = "string"
-)
-}
-}
+Updates the type of medium changer in a tape gateway. When you activate a tape gateway, you select a medium changer type for the tape gateway. This operation enables you to select a different type of medium changer after a tape gateway is activated. This operation is only supported in the tape gateway type.
 
-\examples{
-\dontrun{
-# Updates the type of medium changer in a gateway-VTL after a gateway-VTL
-# is activated.
-svc$update_vtl_device_type(
-  DeviceType = "Medium Changer",
-  VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/update_vtl_device_type.html} for full documentation.
 }
 \keyword{internal}

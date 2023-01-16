@@ -4,44 +4,37 @@
 \alias{sagemaker_create_device_fleet}
 \title{Creates a device fleet}
 \usage{
-sagemaker_create_device_fleet(DeviceFleetName, RoleArn, Description,
-  OutputConfig, Tags)
+sagemaker_create_device_fleet(
+  DeviceFleetName,
+  RoleArn = NULL,
+  Description = NULL,
+  OutputConfig,
+  Tags = NULL,
+  EnableIotRoleAlias = NULL
+)
 }
 \arguments{
 \item{DeviceFleetName}{[required] The name of the fleet that the device belongs to.}
 
-\item{RoleArn}{The Amazon Resource Name (ARN) that has access to AWS Internet of Things
-(IoT).}
+\item{RoleArn}{The Amazon Resource Name (ARN) that has access to Amazon Web Services
+Internet of Things (IoT).}
 
 \item{Description}{A description of the fleet.}
 
 \item{OutputConfig}{[required] The output configuration for storing sample data collected by the fleet.}
 
 \item{Tags}{Creates tags for the specified fleet.}
-}
-\value{
-An empty list.
+
+\item{EnableIotRoleAlias}{Whether to create an Amazon Web Services IoT Role Alias during device
+fleet creation. The name of the role alias generated will match this
+pattern: "SageMakerEdge-\{DeviceFleetName\}".
+
+For example, if your device fleet is called "demo-fleet", the name of
+the role alias will be "SageMakerEdge-demo-fleet".}
 }
 \description{
 Creates a device fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$create_device_fleet(
-  DeviceFleetName = "string",
-  RoleArn = "string",
-  Description = "string",
-  OutputConfig = list(
-    S3OutputLocation = "string",
-    KmsKeyId = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_device_fleet.html} for full documentation.
+}
 \keyword{internal}

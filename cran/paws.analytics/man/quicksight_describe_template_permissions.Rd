@@ -7,37 +7,14 @@
 quicksight_describe_template_permissions(AwsAccountId, TemplateId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you're
-describing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the template
+that you're describing.}
 
 \item{TemplateId}{[required] The ID for the template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateId = "string",
-  TemplateArn = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Describes read and write permissions on a template.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_template_permissions(
-  AwsAccountId = "string",
-  TemplateId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_template_permissions.html} for full documentation.
+}
 \keyword{internal}

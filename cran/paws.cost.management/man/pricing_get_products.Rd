@@ -4,11 +4,16 @@
 \alias{pricing_get_products}
 \title{Returns a list of all products that match the filter criteria}
 \usage{
-pricing_get_products(ServiceCode, Filters, FormatVersion, NextToken,
-  MaxResults)
+pricing_get_products(
+  ServiceCode,
+  Filters = NULL,
+  FormatVersion = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{ServiceCode}{The code for the service whose products you want to retrieve.}
+\item{ServiceCode}{[required] The code for the service whose products you want to retrieve.}
 
 \item{Filters}{The list of filters that limit the returned products. only products that
 match all filters are returned.}
@@ -22,56 +27,9 @@ want to retrieve.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FormatVersion = "string",
-  PriceList = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of all products that match the filter criteria.
-}
-\section{Request syntax}{
-\preformatted{svc$get_products(
-  ServiceCode = "string",
-  Filters = list(
-    list(
-      Type = "TERM_MATCH",
-      Field = "string",
-      Value = "string"
-    )
-  ),
-  FormatVersion = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
-\examples{
-\dontrun{
-# This operation returns a list of products that match the given criteria.
-svc$get_products(
-  Filters = list(
-    list(
-      Field = "ServiceCode",
-      Type = "TERM_MATCH",
-      Value = "AmazonEC2"
-    ),
-    list(
-      Field = "volumeType",
-      Type = "TERM_MATCH",
-      Value = "Provisioned IOPS"
-    )
-  ),
-  FormatVersion = "aws_v1",
-  MaxResults = 1L
-)
-}
-
+See \url{https://paws-r.github.io/docs/pricing/get_products.html} for full documentation.
 }
 \keyword{internal}

@@ -11,26 +11,9 @@ workspaces_authorize_ip_rules(GroupId, UserRules)
 
 \item{UserRules}{[required] The rules to add to the group.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds one or more rules to the specified IP access control group.
 
-This action gives users permission to access their WorkSpaces from the
-CIDR address ranges specified in the rules.
+See \url{https://paws-r.github.io/docs/workspaces/authorize_ip_rules.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$authorize_ip_rules(
-  GroupId = "string",
-  UserRules = list(
-    list(
-      ipRule = "string",
-      ruleDesc = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

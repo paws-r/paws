@@ -7,20 +7,11 @@
 apigateway_delete_client_certificate(clientCertificateId)
 }
 \arguments{
-\item{clientCertificateId}{[required] [Required] The identifier of the ClientCertificate resource to be
-deleted.}
-}
-\value{
-An empty list.
+\item{clientCertificateId}{[required] The identifier of the ClientCertificate resource to be deleted.}
 }
 \description{
 Deletes the ClientCertificate resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_client_certificate(
-  clientCertificateId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_client_certificate.html} for full documentation.
+}
 \keyword{internal}

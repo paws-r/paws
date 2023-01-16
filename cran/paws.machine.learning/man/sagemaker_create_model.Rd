@@ -2,10 +2,18 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_model}
 \alias{sagemaker_create_model}
-\title{Creates a model in Amazon SageMaker}
+\title{Creates a model in SageMaker}
 \usage{
-sagemaker_create_model(ModelName, PrimaryContainer, Containers,
-  ExecutionRoleArn, Tags, VpcConfig, EnableNetworkIsolation)
+sagemaker_create_model(
+  ModelName,
+  PrimaryContainer = NULL,
+  Containers = NULL,
+  InferenceExecutionConfig = NULL,
+  ExecutionRoleArn,
+  Tags = NULL,
+  VpcConfig = NULL,
+  EnableNetworkIsolation = NULL
+)
 }
 \arguments{
 \item{ModelName}{[required] The name of the new model.}
@@ -16,17 +24,20 @@ uses when the model is deployed for predictions.}
 
 \item{Containers}{Specifies the containers in the inference pipeline.}
 
-\item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can
-assume to access model artifacts and docker image for deployment on ML
-compute instances or for batch transform jobs. Deploying on ML compute
-instances is part of model hosting. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles}.
+\item{InferenceExecutionConfig}{Specifies details of how containers in a multi-container endpoint are
+called.}
 
-To be able to pass this role to Amazon SageMaker, the caller of this API
-must have the \code{iam:PassRole} permission.}
+\item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that SageMaker can assume
+to access model artifacts and docker image for deployment on ML compute
+instances or for batch transform jobs. Deploying on ML compute instances
+is part of model hosting. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker Roles}.
 
-\item{Tags}{An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
+To be able to pass this role to SageMaker, the caller of this API must
+have the \code{iam:PassRole} permission.}
+
+\item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
 
 \item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your model to
 connect to. Control access to and from your model container by
@@ -37,96 +48,9 @@ and \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html}{Protec
 \item{EnableNetworkIsolation}{Isolates the model container. No inbound or outbound network calls can
 be made to or from the model container.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelArn = "string"
-)
-}
-}
 \description{
-Creates a model in Amazon SageMaker. In the request, you name the model
-and describe a primary container. For the primary container, you specify
-the Docker image that contains inference code, artifacts (from prior
-training), and a custom environment map that the inference code uses
-when you deploy the model for predictions.
+Creates a model in SageMaker. In the request, you name the model and describe a primary container. For the primary container, you specify the Docker image that contains inference code, artifacts (from prior training), and a custom environment map that the inference code uses when you deploy the model for predictions.
 
-Use this API to create a model if you want to use Amazon SageMaker
-hosting services or run a batch transform job.
-
-To host your model, you create an endpoint configuration with the
-\code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}} API, and
-then create an endpoint with the
-\code{\link[=sagemaker_create_endpoint]{create_endpoint}} API. Amazon SageMaker
-then deploys all of the containers that you defined for the model in the
-hosting environment.
-
-For an example that calls this method when deploying a model to Amazon
-SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
-
-To run a batch transform using your model, you start a job with the
-\code{\link[=sagemaker_create_transform_job]{create_transform_job}} API. Amazon
-SageMaker uses your model and your dataset to get inferences which are
-then saved to a specified S3 location.
-
-In the \code{\link[=sagemaker_create_model]{create_model}} request, you must define
-a container with the \code{PrimaryContainer} parameter.
-
-In the request, you also provide an IAM role that Amazon SageMaker can
-assume to access model artifacts and docker image for deployment on ML
-compute hosting instances or for batch transform jobs. In addition, you
-also use the IAM role to manage permissions the inference code needs.
-For example, if the inference code access any other AWS resources, you
-grant necessary permissions via this role.
+See \url{https://paws-r.github.io/docs/sagemaker/create_model.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_model(
-  ModelName = "string",
-  PrimaryContainer = list(
-    ContainerHostname = "string",
-    Image = "string",
-    ImageConfig = list(
-      RepositoryAccessMode = "Platform"|"Vpc"
-    ),
-    Mode = "SingleModel"|"MultiModel",
-    ModelDataUrl = "string",
-    Environment = list(
-      "string"
-    ),
-    ModelPackageName = "string"
-  ),
-  Containers = list(
-    list(
-      ContainerHostname = "string",
-      Image = "string",
-      ImageConfig = list(
-        RepositoryAccessMode = "Platform"|"Vpc"
-      ),
-      Mode = "SingleModel"|"MultiModel",
-      ModelDataUrl = "string",
-      Environment = list(
-        "string"
-      ),
-      ModelPackageName = "string"
-    )
-  ),
-  ExecutionRoleArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  VpcConfig = list(
-    SecurityGroupIds = list(
-      "string"
-    ),
-    Subnets = list(
-      "string"
-    )
-  ),
-  EnableNetworkIsolation = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

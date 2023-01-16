@@ -4,7 +4,12 @@
 \alias{simpledb_delete_attributes}
 \title{Deletes one or more attributes associated with an item}
 \usage{
-simpledb_delete_attributes(DomainName, ItemName, Attributes, Expected)
+simpledb_delete_attributes(
+  DomainName,
+  ItemName,
+  Attributes = NULL,
+  Expected = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain in which to perform the operation.}
@@ -20,46 +25,9 @@ specified attributes will be deleted or not. The update condition must
 be satisfied in order for this request to be processed and the
 attributes to be deleted.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes one or more attributes associated with an item. If all
-attributes of the item are deleted, the item is deleted.
+Deletes one or more attributes associated with an item. If all attributes of the item are deleted, the item is deleted.
 
-If \code{\link[=simpledb_delete_attributes]{delete_attributes}} is called without
-being passed any attributes or values specified, all the attributes for
-the item are deleted.
-
-\code{\link[=simpledb_delete_attributes]{delete_attributes}} is an idempotent
-operation; running it multiple times on the same item or attribute does
-not result in an error response.
-
-Because Amazon SimpleDB makes multiple copies of item data and uses an
-eventual consistency update model, performing a
-\code{\link[=simpledb_get_attributes]{get_attributes}} or
-\code{\link[=simpledb_select]{select}} operation (read) immediately after a
-\code{\link[=simpledb_delete_attributes]{delete_attributes}} or
-\code{\link[=simpledb_put_attributes]{put_attributes}} operation (write) might not
-return updated item data.
+See \url{https://paws-r.github.io/docs/simpledb/delete_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_attributes(
-  DomainName = "string",
-  ItemName = "string",
-  Attributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  Expected = list(
-    Name = "string",
-    Value = "string",
-    Exists = TRUE|FALSE
-  )
-)
-}
-}
-
 \keyword{internal}

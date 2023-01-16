@@ -84,6 +84,43 @@ test_that("content_md5 works with an empty body", {
   expect_equivalent(actual, expected)
 })
 
+test_that("content_md5 leave existing Content-MD5 alone", {
+  hash <- digest::digest(raw(0), serialize = FALSE, raw = TRUE)
+  expect_hash <- base64enc::base64encode(hash)
+
+  request <- list(
+    "operation" = list(
+      "name" = "PutObject"
+    ),
+    "http_request" = list(
+      "header" = list(
+        "Content-MD5" = expect_hash
+      )
+    ),
+    body = raw(1)
+  )
+
+  actual <- content_md5(request)
+  expect_equal(actual$http_request$header$`Content-MD5`, expect_hash)
+})
+
+test_that("content_md5 create new Content-Md5", {
+  body <- raw(1)
+  hash <- digest::digest(body, serialize = FALSE, raw = TRUE)
+  expect_hash <- base64enc::base64encode(hash)
+
+  request <- list(
+    "operation" = list(
+      "name" = "PutObject"
+    ),
+    body = body
+  )
+
+  actual <- content_md5(request)
+  expect_equal(actual$http_request$header$`Content-Md5`, expect_hash)
+})
+
+
 test_that("s3_unmarshal_get_bucket_location", {
 
   op <- Operation(name = "GetBucketLocation")
@@ -222,4 +259,141 @@ test_that("S3 access points", {
   req <- build_request(bucket = access_point_arn, operation = "ListObjects")
   actual <- update_endpoint_for_s3_config(req)
   expect_equal(actual$http_request$url$host, host)
+})
+
+test_that("update url endpoint with new endpoint", {
+  org_ep <- "https://s3.eu-east-2.amazonaws.com"
+  new_ep <- "https://s3.amazonaws.com"
+  actual <- set_request_url(org_ep, new_ep)
+  expect_equal(actual, new_ep)
+})
+
+test_that("update url endpoint with new endpoint without new scheme", {
+  org_ep <- "https://s3.eu-east-2.amazonaws.com"
+  new_ep <- "sftp://s3.amazonaws.com"
+  actual <- set_request_url(org_ep, new_ep, F)
+  expect_equal(actual, "https://s3.amazonaws.com")
+})
+
+test_that("ignore redirect when no http response is given", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  actual <- s3_redirect_from_error(req)
+  expect_equal(actual, req)
+})
+
+test_that("ignore redirect when http status is successful", {
+  for (status in c(200, 201, 202, 204, 206)) {
+    req <- build_request(bucket = "foo", operation = "ListObjects")
+    req$http_response <- paws.common:::HttpResponse(
+      status_code = status,
+      body = raw(0),
+      header = list()
+    )
+    actual <- s3_redirect_from_error(req)
+    expect_equal(actual, req)
+  }
+})
+
+test_that("ignore redirect if already redirected", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- paws.common:::HttpResponse(
+    status_code = 301,
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )),
+    header = list(
+      "x-amz-bucket-region" = "eu-east-2"
+    )
+  )
+  req$context$s3_redirect <- TRUE
+  actual <- s3_redirect_from_error(req)
+  expect_equal(actual, req)
+})
+
+test_that("ignore redirect if unable to find S3 region", {
+  raw_error <- charToRaw(paste0(
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+    "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+    "<Bucket>foo</Bucket></Error>"
+  ))
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- paws.common:::HttpResponse(
+    status_code = 301,
+    body = raw_error
+  )
+  actual <- s3_redirect_from_error(req)
+  expect_equal(actual, req)
+  expect_equal(actual$http_response$body, raw_error)
+})
+
+
+test_that("redirect request from http response error", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- paws.common:::HttpResponse(
+    status_code = 301,
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )),
+    header = list(
+      "x-amz-bucket-region" = "eu-east-2"
+    )
+  )
+
+  pass <- mock2(side_effect = function(...) as.list(...))
+  mockery::stub(s3_redirect_from_error, "sign", pass)
+  mockery::stub(s3_redirect_from_error, "send", pass)
+
+  actual <- s3_redirect_from_error(req)
+  sign_args <- mockery::mock_args(pass)[[1]]
+  expect_true(sign_args[[1]]$context$s3_redirect)
+  expect_false(sign_args[[1]]$built)
+  expect_equal(actual$client_info$endpoint, "https://s3.eu-east-2.amazonaws.com")
+  expect_equal(actual$http_request$url$host, "s3.eu-east-2.amazonaws.com")
+})
+
+test_that("redirect error with region", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- paws.common:::HttpResponse(
+    status_code = 301,
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )),
+    header = list(
+      "x-amz-bucket-region" = "eu-east-2"
+    )
+  )
+
+  error <- s3_unmarshal_error(req)$error
+
+  expect_equal(error$code, "BucketRegionError")
+  expect_true(
+    grepl("incorrect region.*bucket is in 'eu-east-2' region", error$message)
+  )
+  expect_equal(error$status_code, 301)
+})
+
+test_that("redirect error without region", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- paws.common:::HttpResponse(
+    status_code = 301,
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    ))
+  )
+
+  error <- s3_unmarshal_error(req)$error
+
+  expect_equal(error$code, "BucketRegionError")
+  expect_true(
+    grepl("incorrect region", error$message)
+  )
+  expect_equal(error$status_code, 301)
 })

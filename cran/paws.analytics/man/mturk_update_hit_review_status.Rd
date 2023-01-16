@@ -4,7 +4,7 @@
 \alias{mturk_update_hit_review_status}
 \title{The UpdateHITReviewStatus operation updates the status of a HIT}
 \usage{
-mturk_update_hit_review_status(HITId, Revert)
+mturk_update_hit_review_status(HITId, Revert = NULL)
 }
 \arguments{
 \item{HITId}{[required] The ID of the HIT to update.}
@@ -17,21 +17,9 @@ to \code{Reviewing}
 \code{Reviewable}
 }}
 }
-\value{
-An empty list.
-}
 \description{
-The \code{\link[=mturk_update_hit_review_status]{update_hit_review_status}}
-operation updates the status of a HIT. If the status is Reviewable, this
-operation can update the status to Reviewing, or it can revert a
-Reviewing HIT back to the Reviewable status.
-}
-\section{Request syntax}{
-\preformatted{svc$update_hit_review_status(
-  HITId = "string",
-  Revert = TRUE|FALSE
-)
-}
-}
+The \code{\link[=mturk_update_hit_review_status]{update_hit_review_status}} operation updates the status of a HIT. If the status is Reviewable, this operation can update the status to Reviewing, or it can revert a Reviewing HIT back to the Reviewable status.
 
+See \url{https://paws-r.github.io/docs/mturk/update_hit_review_status.html} for full documentation.
+}
 \keyword{internal}

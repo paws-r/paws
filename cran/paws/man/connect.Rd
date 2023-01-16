@@ -7,7 +7,19 @@
 connect(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,26 +28,28 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Connect is a cloud-based contact center solution that makes it
-easy to set up and manage a customer contact center and provide reliable
+Amazon Connect is a cloud-based contact center solution that you use to
+set up and manage a customer contact center and provide reliable
 customer engagement at any scale.
 
-Amazon Connect provides rich metrics and real-time reporting that allow
-you to optimize contact routing. You can also resolve customer issues
-more efficiently by putting customers in touch with the right agents.
+Amazon Connect provides metrics and real-time reporting that enable you
+to optimize contact routing. You can also resolve customer issues more
+efficiently by getting customers in touch with the appropriate agents.
 
 There are limits to the number of Amazon Connect resources that you can
-create and limits to the number of requests that you can make per
-second. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html}{Amazon Connect Service Quotas}
+create. There are also limits to the number of requests that you can
+make per second. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html}{Amazon Connect Service Quotas}
 in the \emph{Amazon Connect Administrator Guide}.
 
-To connect programmatically to an AWS service, you use an endpoint. For
-a list of Amazon Connect endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/connect_region.html}{Amazon Connect Endpoints}.
+You can connect programmatically to an Amazon Web Services service by
+using an endpoint. For a list of Amazon Connect endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/connect_region.html}{Amazon Connect Endpoints}.
 
-Working with contact flows? Check out the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
+Working with contact flows? Check out the \href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html}{Amazon Connect Flow language}.
 }
 \section{Service syntax}{
-\preformatted{svc <- connect(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- connect(
   config = list(
     credentials = list(
       creds = list(
@@ -43,106 +57,173 @@ Working with contact flows? Check out the \href{https://docs.aws.amazon.com/conn
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=connect_associate_approved_origin]{associate_approved_origin} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_associate_instance_storage_config]{associate_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_associate_lambda_function]{associate_lambda_function} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_associate_lex_bot]{associate_lex_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_associate_routing_profile_queues]{associate_routing_profile_queues} \tab Associates a set of queues with a routing profile\cr
-\link[=connect_associate_security_key]{associate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_create_contact_flow]{create_contact_flow} \tab Creates a contact flow for the specified Amazon Connect instance\cr
-\link[=connect_create_instance]{create_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_create_integration_association]{create_integration_association} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_create_quick_connect]{create_quick_connect} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_create_routing_profile]{create_routing_profile} \tab Creates a new routing profile\cr
-\link[=connect_create_use_case]{create_use_case} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_create_user]{create_user} \tab Creates a user account for the specified Amazon Connect instance\cr
-\link[=connect_create_user_hierarchy_group]{create_user_hierarchy_group} \tab Creates a new user hierarchy group\cr
-\link[=connect_delete_instance]{delete_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_delete_integration_association]{delete_integration_association} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_delete_quick_connect]{delete_quick_connect} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_delete_use_case]{delete_use_case} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_delete_user]{delete_user} \tab Deletes a user account from the specified Amazon Connect instance\cr
-\link[=connect_delete_user_hierarchy_group]{delete_user_hierarchy_group} \tab Deletes an existing user hierarchy group\cr
-\link[=connect_describe_contact_flow]{describe_contact_flow} \tab Describes the specified contact flow\cr
-\link[=connect_describe_instance]{describe_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_describe_instance_attribute]{describe_instance_attribute} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_describe_instance_storage_config]{describe_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_describe_quick_connect]{describe_quick_connect} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_describe_routing_profile]{describe_routing_profile} \tab Describes the specified routing profile\cr
-\link[=connect_describe_user]{describe_user} \tab Describes the specified user account\cr
-\link[=connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Describes the specified hierarchy group\cr
-\link[=connect_describe_user_hierarchy_structure]{describe_user_hierarchy_structure} \tab Describes the hierarchy structure of the specified Amazon Connect instance\cr
-\link[=connect_disassociate_approved_origin]{disassociate_approved_origin} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_disassociate_instance_storage_config]{disassociate_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_disassociate_lambda_function]{disassociate_lambda_function} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_disassociate_lex_bot]{disassociate_lex_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_disassociate_routing_profile_queues]{disassociate_routing_profile_queues} \tab Disassociates a set of queues from a routing profile\cr
-\link[=connect_disassociate_security_key]{disassociate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact\cr
-\link[=connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance\cr
-\link[=connect_get_federation_token]{get_federation_token} \tab Retrieves a token for federation\cr
-\link[=connect_get_metric_data]{get_metric_data} \tab Gets historical metric data from the specified Amazon Connect instance\cr
-\link[=connect_list_approved_origins]{list_approved_origins} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_contact_flows]{list_contact_flows} \tab Provides information about the contact flows for the specified Amazon Connect instance\cr
-\link[=connect_list_hours_of_operations]{list_hours_of_operations} \tab Provides information about the hours of operation for the specified Amazon Connect instance\cr
-\link[=connect_list_instance_attributes]{list_instance_attributes} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_instances]{list_instances} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_instance_storage_configs]{list_instance_storage_configs} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_integration_associations]{list_integration_associations} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_lambda_functions]{list_lambda_functions} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_lex_bots]{list_lex_bots} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_phone_numbers]{list_phone_numbers} \tab Provides information about the phone numbers for the specified Amazon Connect instance\cr
-\link[=connect_list_prompts]{list_prompts} \tab Provides information about the prompts for the specified Amazon Connect instance\cr
-\link[=connect_list_queues]{list_queues} \tab Provides information about the queues for the specified Amazon Connect instance\cr
-\link[=connect_list_quick_connects]{list_quick_connects} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_routing_profile_queues]{list_routing_profile_queues} \tab List the queues associated with a routing profile\cr
-\link[=connect_list_routing_profiles]{list_routing_profiles} \tab Provides summary information about the routing profiles for the specified Amazon Connect instance\cr
-\link[=connect_list_security_keys]{list_security_keys} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_security_profiles]{list_security_profiles} \tab Provides summary information about the security profiles for the specified Amazon Connect instance\cr
-\link[=connect_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
-\link[=connect_list_use_cases]{list_use_cases} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Provides summary information about the hierarchy groups for the specified Amazon Connect instance\cr
-\link[=connect_list_users]{list_users} \tab Provides summary information about the users for the specified Amazon Connect instance\cr
-\link[=connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call\cr
-\link[=connect_start_chat_contact]{start_chat_contact} \tab Initiates a contact flow to start a new chat for the customer\cr
-\link[=connect_start_contact_recording]{start_contact_recording} \tab This API starts recording the contact when the agent joins the call\cr
-\link[=connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab This API places an outbound call to a contact, and then initiates the contact flow\cr
-\link[=connect_start_task_contact]{start_task_contact} \tab Initiates a contact flow to start a new task\cr
-\link[=connect_stop_contact]{stop_contact} \tab Ends the specified contact\cr
-\link[=connect_stop_contact_recording]{stop_contact_recording} \tab When a contact is being recorded, this API stops recording the call\cr
-\link[=connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording the call\cr
-\link[=connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
-\link[=connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
-\link[=connect_update_contact_attributes]{update_contact_attributes} \tab Creates or updates the contact attributes associated with the specified contact\cr
-\link[=connect_update_contact_flow_content]{update_contact_flow_content} \tab Updates the specified contact flow\cr
-\link[=connect_update_contact_flow_name]{update_contact_flow_name} \tab The name of the contact flow\cr
-\link[=connect_update_instance_attribute]{update_instance_attribute} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_update_instance_storage_config]{update_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_update_quick_connect_config]{update_quick_connect_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_update_quick_connect_name]{update_quick_connect_name} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_update_routing_profile_concurrency]{update_routing_profile_concurrency} \tab Updates the channels that agents can handle in the Contact Control Panel (CCP) for a routing profile\cr
-\link[=connect_update_routing_profile_default_outbound_queue]{update_routing_profile_default_outbound_queue} \tab Updates the default outbound queue of a routing profile\cr
-\link[=connect_update_routing_profile_name]{update_routing_profile_name} \tab Updates the name and description of a routing profile\cr
-\link[=connect_update_routing_profile_queues]{update_routing_profile_queues} \tab Updates the properties associated with a set of queues for a routing profile\cr
-\link[=connect_update_user_hierarchy]{update_user_hierarchy} \tab Assigns the specified hierarchy group to the specified user\cr
-\link[=connect_update_user_hierarchy_group_name]{update_user_hierarchy_group_name} \tab Updates the name of the user hierarchy group\cr
-\link[=connect_update_user_hierarchy_structure]{update_user_hierarchy_structure} \tab Updates the user hierarchy structure: add, remove, and rename user hierarchy levels\cr
-\link[=connect_update_user_identity_info]{update_user_identity_info} \tab Updates the identity information for the specified user\cr
-\link[=connect_update_user_phone_config]{update_user_phone_config} \tab Updates the phone configuration settings for the specified user\cr
-\link[=connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to the specified user\cr
-\link[=connect_update_user_security_profiles]{update_user_security_profiles} \tab Assigns the specified security profiles to the specified user
+\link[paws.customer.engagement:connect_associate_approved_origin]{associate_approved_origin} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_associate_bot]{associate_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_associate_default_vocabulary]{associate_default_vocabulary} \tab Associates an existing vocabulary as the default\cr
+\link[paws.customer.engagement:connect_associate_instance_storage_config]{associate_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_associate_lambda_function]{associate_lambda_function} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_associate_lex_bot]{associate_lex_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_associate_phone_number_contact_flow]{associate_phone_number_contact_flow} \tab Associates a contact flow with a phone number claimed to your Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_associate_queue_quick_connects]{associate_queue_quick_connects} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_associate_routing_profile_queues]{associate_routing_profile_queues} \tab Associates a set of queues with a routing profile\cr
+\link[paws.customer.engagement:connect_associate_security_key]{associate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_claim_phone_number]{claim_phone_number} \tab Claims an available phone number to your Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_create_agent_status]{create_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_create_contact_flow]{create_contact_flow} \tab Creates a contact flow for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_create_contact_flow_module]{create_contact_flow_module} \tab Creates a contact flow module for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_create_hours_of_operation]{create_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_create_instance]{create_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_create_integration_association]{create_integration_association} \tab Creates an Amazon Web Services resource association with an Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_create_queue]{create_queue} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_create_quick_connect]{create_quick_connect} \tab Creates a quick connect for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_create_routing_profile]{create_routing_profile} \tab Creates a new routing profile\cr
+\link[paws.customer.engagement:connect_create_security_profile]{create_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_create_task_template]{create_task_template} \tab Creates a new task template in the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_create_use_case]{create_use_case} \tab Creates a use case for an integration association\cr
+\link[paws.customer.engagement:connect_create_user]{create_user} \tab Creates a user account for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_create_user_hierarchy_group]{create_user_hierarchy_group} \tab Creates a new user hierarchy group\cr
+\link[paws.customer.engagement:connect_create_vocabulary]{create_vocabulary} \tab Creates a custom vocabulary associated with your Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_delete_contact_flow]{delete_contact_flow} \tab Deletes a contact flow for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_delete_contact_flow_module]{delete_contact_flow_module} \tab Deletes the specified contact flow module\cr
+\link[paws.customer.engagement:connect_delete_hours_of_operation]{delete_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_delete_instance]{delete_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_delete_integration_association]{delete_integration_association} \tab Deletes an Amazon Web Services resource association from an Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_delete_quick_connect]{delete_quick_connect} \tab Deletes a quick connect\cr
+\link[paws.customer.engagement:connect_delete_security_profile]{delete_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_delete_task_template]{delete_task_template} \tab Deletes the task template\cr
+\link[paws.customer.engagement:connect_delete_use_case]{delete_use_case} \tab Deletes a use case from an integration association\cr
+\link[paws.customer.engagement:connect_delete_user]{delete_user} \tab Deletes a user account from the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_delete_user_hierarchy_group]{delete_user_hierarchy_group} \tab Deletes an existing user hierarchy group\cr
+\link[paws.customer.engagement:connect_delete_vocabulary]{delete_vocabulary} \tab Deletes the vocabulary that has the given identifier\cr
+\link[paws.customer.engagement:connect_describe_agent_status]{describe_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_describe_contact]{describe_contact} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_describe_contact_flow]{describe_contact_flow} \tab Describes the specified contact flow\cr
+\link[paws.customer.engagement:connect_describe_contact_flow_module]{describe_contact_flow_module} \tab Describes the specified contact flow module\cr
+\link[paws.customer.engagement:connect_describe_hours_of_operation]{describe_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_describe_instance]{describe_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_describe_instance_attribute]{describe_instance_attribute} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_describe_instance_storage_config]{describe_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_describe_phone_number]{describe_phone_number} \tab Gets details and status of a phone number that’s claimed to your Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_describe_queue]{describe_queue} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_describe_quick_connect]{describe_quick_connect} \tab Describes the quick connect\cr
+\link[paws.customer.engagement:connect_describe_routing_profile]{describe_routing_profile} \tab Describes the specified routing profile\cr
+\link[paws.customer.engagement:connect_describe_security_profile]{describe_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_describe_user]{describe_user} \tab Describes the specified user account\cr
+\link[paws.customer.engagement:connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Describes the specified hierarchy group\cr
+\link[paws.customer.engagement:connect_describe_user_hierarchy_structure]{describe_user_hierarchy_structure} \tab Describes the hierarchy structure of the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_describe_vocabulary]{describe_vocabulary} \tab Describes the specified vocabulary\cr
+\link[paws.customer.engagement:connect_disassociate_approved_origin]{disassociate_approved_origin} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_disassociate_bot]{disassociate_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_disassociate_instance_storage_config]{disassociate_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_disassociate_lambda_function]{disassociate_lambda_function} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_disassociate_lex_bot]{disassociate_lex_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_disassociate_phone_number_contact_flow]{disassociate_phone_number_contact_flow} \tab Removes the contact flow association from a phone number claimed to your Amazon Connect instance, if a contact flow association exists\cr
+\link[paws.customer.engagement:connect_disassociate_queue_quick_connects]{disassociate_queue_quick_connects} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_disassociate_routing_profile_queues]{disassociate_routing_profile_queues} \tab Disassociates a set of queues from a routing profile\cr
+\link[paws.customer.engagement:connect_disassociate_security_key]{disassociate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact\cr
+\link[paws.customer.engagement:connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_get_current_user_data]{get_current_user_data} \tab Gets the real-time active user data from the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_get_federation_token]{get_federation_token} \tab Retrieves a token for federation\cr
+\link[paws.customer.engagement:connect_get_metric_data]{get_metric_data} \tab Gets historical metric data from the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_get_task_template]{get_task_template} \tab Gets details about a specific task template in the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_agent_statuses]{list_agent_statuses} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_approved_origins]{list_approved_origins} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_bots]{list_bots} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_contact_flow_modules]{list_contact_flow_modules} \tab Provides information about the contact flow modules for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_contact_flows]{list_contact_flows} \tab Provides information about the contact flows for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_contact_references]{list_contact_references} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_default_vocabularies]{list_default_vocabularies} \tab Lists the default vocabularies for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_hours_of_operations]{list_hours_of_operations} \tab Provides information about the hours of operation for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_instance_attributes]{list_instance_attributes} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_instances]{list_instances} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_instance_storage_configs]{list_instance_storage_configs} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_integration_associations]{list_integration_associations} \tab Provides summary information about the Amazon Web Services resource associations for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_lambda_functions]{list_lambda_functions} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_lex_bots]{list_lex_bots} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_phone_numbers]{list_phone_numbers} \tab Provides information about the phone numbers for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_phone_numbers_v2]{list_phone_numbers_v2} \tab Lists phone numbers claimed to your Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_prompts]{list_prompts} \tab Provides information about the prompts for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_queue_quick_connects]{list_queue_quick_connects} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_queues]{list_queues} \tab Provides information about the queues for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_quick_connects]{list_quick_connects} \tab Provides information about the quick connects for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_routing_profile_queues]{list_routing_profile_queues} \tab Lists the queues associated with a routing profile\cr
+\link[paws.customer.engagement:connect_list_routing_profiles]{list_routing_profiles} \tab Provides summary information about the routing profiles for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_security_keys]{list_security_keys} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_security_profile_permissions]{list_security_profile_permissions} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_list_security_profiles]{list_security_profiles} \tab Provides summary information about the security profiles for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
+\link[paws.customer.engagement:connect_list_task_templates]{list_task_templates} \tab Lists task templates for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_use_cases]{list_use_cases} \tab Lists the use cases for the integration association\cr
+\link[paws.customer.engagement:connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Provides summary information about the hierarchy groups for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_users]{list_users} \tab Provides summary information about the users for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_put_user_status]{put_user_status} \tab Changes the current status of a user or agent in Amazon Connect\cr
+\link[paws.customer.engagement:connect_release_phone_number]{release_phone_number} \tab Releases a phone number previously claimed to an Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call\cr
+\link[paws.customer.engagement:connect_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for available phone numbers that you can claim to your Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_search_users]{search_users} \tab Searches users in an Amazon Connect instance, with optional filtering\cr
+\link[paws.customer.engagement:connect_search_vocabularies]{search_vocabularies} \tab Searches for vocabularies within a specific Amazon Connect instance using State, NameStartsWith, and LanguageCode\cr
+\link[paws.customer.engagement:connect_start_chat_contact]{start_chat_contact} \tab Initiates a contact flow to start a new chat for the customer\cr
+\link[paws.customer.engagement:connect_start_contact_recording]{start_contact_recording} \tab Starts recording the contact:\cr
+\link[paws.customer.engagement:connect_start_contact_streaming]{start_contact_streaming} \tab Initiates real-time message streaming for a new chat contact\cr
+\link[paws.customer.engagement:connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab Places an outbound call to a contact, and then initiates the contact flow\cr
+\link[paws.customer.engagement:connect_start_task_contact]{start_task_contact} \tab Initiates a contact flow to start a new task\cr
+\link[paws.customer.engagement:connect_stop_contact]{stop_contact} \tab Ends the specified contact\cr
+\link[paws.customer.engagement:connect_stop_contact_recording]{stop_contact_recording} \tab Stops recording a call when a contact is being recorded\cr
+\link[paws.customer.engagement:connect_stop_contact_streaming]{stop_contact_streaming} \tab Ends message streaming on a specified contact\cr
+\link[paws.customer.engagement:connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording the call\cr
+\link[paws.customer.engagement:connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
+\link[paws.customer.engagement:connect_transfer_contact]{transfer_contact} \tab Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created\cr
+\link[paws.customer.engagement:connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
+\link[paws.customer.engagement:connect_update_agent_status]{update_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_contact]{update_contact} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_contact_attributes]{update_contact_attributes} \tab Creates or updates user-defined contact attributes associated with the specified contact\cr
+\link[paws.customer.engagement:connect_update_contact_flow_content]{update_contact_flow_content} \tab Updates the specified contact flow\cr
+\link[paws.customer.engagement:connect_update_contact_flow_metadata]{update_contact_flow_metadata} \tab Updates metadata about specified contact flow\cr
+\link[paws.customer.engagement:connect_update_contact_flow_module_content]{update_contact_flow_module_content} \tab Updates specified contact flow module for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_update_contact_flow_module_metadata]{update_contact_flow_module_metadata} \tab Updates metadata about specified contact flow module\cr
+\link[paws.customer.engagement:connect_update_contact_flow_name]{update_contact_flow_name} \tab The name of the contact flow\cr
+\link[paws.customer.engagement:connect_update_contact_schedule]{update_contact_schedule} \tab Updates the scheduled time of a task contact that is already scheduled\cr
+\link[paws.customer.engagement:connect_update_hours_of_operation]{update_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_instance_attribute]{update_instance_attribute} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_instance_storage_config]{update_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_phone_number]{update_phone_number} \tab Updates your claimed phone number from its current Amazon Connect instance to another Amazon Connect instance in the same Region\cr
+\link[paws.customer.engagement:connect_update_queue_hours_of_operation]{update_queue_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_queue_max_contacts]{update_queue_max_contacts} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_queue_name]{update_queue_name} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_queue_outbound_caller_config]{update_queue_outbound_caller_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_queue_status]{update_queue_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_quick_connect_config]{update_quick_connect_config} \tab Updates the configuration settings for the specified quick connect\cr
+\link[paws.customer.engagement:connect_update_quick_connect_name]{update_quick_connect_name} \tab Updates the name and description of a quick connect\cr
+\link[paws.customer.engagement:connect_update_routing_profile_concurrency]{update_routing_profile_concurrency} \tab Updates the channels that agents can handle in the Contact Control Panel (CCP) for a routing profile\cr
+\link[paws.customer.engagement:connect_update_routing_profile_default_outbound_queue]{update_routing_profile_default_outbound_queue} \tab Updates the default outbound queue of a routing profile\cr
+\link[paws.customer.engagement:connect_update_routing_profile_name]{update_routing_profile_name} \tab Updates the name and description of a routing profile\cr
+\link[paws.customer.engagement:connect_update_routing_profile_queues]{update_routing_profile_queues} \tab Updates the properties associated with a set of queues for a routing profile\cr
+\link[paws.customer.engagement:connect_update_security_profile]{update_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_update_task_template]{update_task_template} \tab Updates details about a specific task template in the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_update_user_hierarchy]{update_user_hierarchy} \tab Assigns the specified hierarchy group to the specified user\cr
+\link[paws.customer.engagement:connect_update_user_hierarchy_group_name]{update_user_hierarchy_group_name} \tab Updates the name of the user hierarchy group\cr
+\link[paws.customer.engagement:connect_update_user_hierarchy_structure]{update_user_hierarchy_structure} \tab Updates the user hierarchy structure: add, remove, and rename user hierarchy levels\cr
+\link[paws.customer.engagement:connect_update_user_identity_info]{update_user_identity_info} \tab Updates the identity information for the specified user\cr
+\link[paws.customer.engagement:connect_update_user_phone_config]{update_user_phone_config} \tab Updates the phone configuration settings for the specified user\cr
+\link[paws.customer.engagement:connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to the specified user\cr
+\link[paws.customer.engagement:connect_update_user_security_profiles]{update_user_security_profiles} \tab Assigns the specified security profiles to the specified user
 }
 }
 

@@ -9,26 +9,9 @@ rekognition_delete_project(ProjectArn)
 \arguments{
 \item{ProjectArn}{[required] The Amazon Resource Name (ARN) of the project that you want to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "CREATING"|"CREATED"|"DELETING"
-)
-}
-}
 \description{
-Deletes an Amazon Rekognition Custom Labels project. To delete a project
-you must first delete all models associated with the project. To delete
-a model, see
-\code{\link[=rekognition_delete_project_version]{delete_project_version}}.
+Deletes an Amazon Rekognition Custom Labels project. To delete a project you must first delete all models associated with the project. To delete a model, see \code{\link[=rekognition_delete_project_version]{delete_project_version}}.
 
-This operation requires permissions to perform the
-\code{rekognition:DeleteProject} action.
+See \url{https://paws-r.github.io/docs/rekognition/delete_project.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_project(
-  ProjectArn = "string"
-)
-}
-}
-
 \keyword{internal}

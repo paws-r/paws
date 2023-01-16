@@ -6,18 +6,9 @@ NULL
 #' Creates a receipt rule set by cloning an existing one
 #'
 #' @description
-#' Creates a receipt rule set by cloning an existing one. All receipt rules
-#' and configurations are copied to the new receipt rule set and are
-#' completely independent of the source rule set.
-#' 
-#' For information about setting up rule sets, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Creates a receipt rule set by cloning an existing one. All receipt rules and configurations are copied to the new receipt rule set and are completely independent of the source rule set.
 #'
-#' @usage
-#' ses_clone_receipt_rule_set(RuleSetName, OriginalRuleSetName)
+#' See [https://paws-r.github.io/docs/ses/clone_receipt_rule_set.html](https://paws-r.github.io/docs/ses/clone_receipt_rule_set.html) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the rule set to create. The name must:
 #' 
@@ -28,27 +19,6 @@ NULL
 #' 
 #' -   Contain less than 64 characters.
 #' @param OriginalRuleSetName &#91;required&#93; The name of the rule set to clone.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$clone_receipt_rule_set(
-#'   RuleSetName = "string",
-#'   OriginalRuleSetName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a receipt rule set by cloning an existing
-#' # one:
-#' svc$clone_receipt_rule_set(
-#'   OriginalRuleSetName = "RuleSetToClone",
-#'   RuleSetName = "RuleSetToCreate"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -74,30 +44,10 @@ ses_clone_receipt_rule_set <- function(RuleSetName, OriginalRuleSetName) {
 #'
 #' @description
 #' Creates a configuration set.
-#' 
-#' Configuration sets enable you to publish email sending events. For
-#' information about using configuration sets, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_create_configuration_set(ConfigurationSet)
+#' See [https://paws-r.github.io/docs/ses/create_configuration_set.html](https://paws-r.github.io/docs/ses/create_configuration_set.html) for full documentation.
 #'
 #' @param ConfigurationSet &#91;required&#93; A data structure that contains the name of the configuration set.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_configuration_set(
-#'   ConfigurationSet = list(
-#'     Name = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -123,60 +73,13 @@ ses_create_configuration_set <- function(ConfigurationSet) {
 #'
 #' @description
 #' Creates a configuration set event destination.
-#' 
-#' When you create or update an event destination, you must provide one,
-#' and only one, destination. The destination can be CloudWatch, Amazon
-#' Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
-#' 
-#' An event destination is the AWS service to which Amazon SES publishes
-#' the email sending events associated with a configuration set. For
-#' information about using configuration sets, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_create_configuration_set_event_destination(ConfigurationSetName,
-#'   EventDestination)
+#' See [https://paws-r.github.io/docs/ses/create_configuration_set_event_destination.html](https://paws-r.github.io/docs/ses/create_configuration_set_event_destination.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that the event destination should be
 #' associated with.
 #' @param EventDestination &#91;required&#93; An object that describes the AWS service that email sending event
 #' information will be published to.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_configuration_set_event_destination(
-#'   ConfigurationSetName = "string",
-#'   EventDestination = list(
-#'     Name = "string",
-#'     Enabled = TRUE|FALSE,
-#'     MatchingEventTypes = list(
-#'       "send"|"reject"|"bounce"|"complaint"|"delivery"|"open"|"click"|"renderingFailure"
-#'     ),
-#'     KinesisFirehoseDestination = list(
-#'       IAMRoleARN = "string",
-#'       DeliveryStreamARN = "string"
-#'     ),
-#'     CloudWatchDestination = list(
-#'       DimensionConfigurations = list(
-#'         list(
-#'           DimensionName = "string",
-#'           DimensionValueSource = "messageTag"|"emailHeader"|"linkTag",
-#'           DefaultDimensionValue = "string"
-#'         )
-#'       )
-#'     ),
-#'     SNSDestination = list(
-#'       TopicARN = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -202,35 +105,13 @@ ses_create_configuration_set_event_destination <- function(ConfigurationSetName,
 #' for open and click event tracking
 #'
 #' @description
-#' Creates an association between a configuration set and a custom domain
-#' for open and click event tracking.
-#' 
-#' By default, images and links used for tracking open and click events are
-#' hosted on domains operated by Amazon SES. You can configure a subdomain
-#' of your own to handle these events. For information about using custom
-#' domains, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
+#' Creates an association between a configuration set and a custom domain for open and click event tracking.
 #'
-#' @usage
-#' ses_create_configuration_set_tracking_options(ConfigurationSetName,
-#'   TrackingOptions)
+#' See [https://paws-r.github.io/docs/ses/create_configuration_set_tracking_options.html](https://paws-r.github.io/docs/ses/create_configuration_set_tracking_options.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that the tracking options should be
 #' associated with.
 #' @param TrackingOptions &#91;required&#93; 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_configuration_set_tracking_options(
-#'   ConfigurationSetName = "string",
-#'   TrackingOptions = list(
-#'     CustomRedirectDomain = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -256,18 +137,8 @@ ses_create_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #'
 #' @description
 #' Creates a new custom verification email template.
-#' 
-#' For more information about custom verification email templates, see
-#' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_create_custom_verification_email_template(TemplateName,
-#'   FromEmailAddress, TemplateSubject, TemplateContent,
-#'   SuccessRedirectionURL, FailureRedirectionURL)
+#' See [https://paws-r.github.io/docs/ses/create_custom_verification_email_template.html](https://paws-r.github.io/docs/ses/create_custom_verification_email_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template.
 #' @param FromEmailAddress &#91;required&#93; The email address that the custom verification email is sent from.
@@ -276,27 +147,12 @@ ses_create_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' email must be less than 10 MB. The message body may contain HTML, with
 #' some limitations. For more information, see [Custom Verification Email
 #' Frequently Asked
-#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html#custom-verification-emails-faq)
+#' Questions](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html#custom-verification-emails-faq)
 #' in the *Amazon SES Developer Guide*.
 #' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.
 #' @param FailureRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is not successfully verified.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_custom_verification_email_template(
-#'   TemplateName = "string",
-#'   FromEmailAddress = "string",
-#'   TemplateSubject = "string",
-#'   TemplateContent = "string",
-#'   SuccessRedirectionURL = "string",
-#'   FailureRedirectionURL = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -322,49 +178,12 @@ ses_create_custom_verification_email_template <- function(TemplateName, FromEmai
 #'
 #' @description
 #' Creates a new IP address filter.
-#' 
-#' For information about setting up IP address filters, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_create_receipt_filter(Filter)
+#' See [https://paws-r.github.io/docs/ses/create_receipt_filter.html](https://paws-r.github.io/docs/ses/create_receipt_filter.html) for full documentation.
 #'
 #' @param Filter &#91;required&#93; A data structure that describes the IP address filter to create, which
 #' consists of a name, an IP address range, and whether to allow or block
 #' mail from it.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_receipt_filter(
-#'   Filter = list(
-#'     Name = "string",
-#'     IpFilter = list(
-#'       Policy = "Block"|"Allow",
-#'       Cidr = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a new IP address filter:
-#' svc$create_receipt_filter(
-#'   Filter = list(
-#'     IpFilter = list(
-#'       Cidr = "1.2.3.4/24",
-#'       Policy = "Allow"
-#'     ),
-#'     Name = "MyFilter"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -390,15 +209,8 @@ ses_create_receipt_filter <- function(Filter) {
 #'
 #' @description
 #' Creates a receipt rule.
-#' 
-#' For information about setting up receipt rules, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_create_receipt_rule(RuleSetName, After, Rule)
+#' See [https://paws-r.github.io/docs/ses/create_receipt_rule.html](https://paws-r.github.io/docs/ses/create_receipt_rule.html) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the rule set that the receipt rule will be added to.
 #' @param After The name of an existing rule after which the new rule will be placed. If
@@ -406,87 +218,6 @@ ses_create_receipt_filter <- function(Filter) {
 #' of the rule list.
 #' @param Rule &#91;required&#93; A data structure that contains the specified rule's name, actions,
 #' recipients, domains, enabled status, scan status, and TLS policy.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_receipt_rule(
-#'   RuleSetName = "string",
-#'   After = "string",
-#'   Rule = list(
-#'     Name = "string",
-#'     Enabled = TRUE|FALSE,
-#'     TlsPolicy = "Require"|"Optional",
-#'     Recipients = list(
-#'       "string"
-#'     ),
-#'     Actions = list(
-#'       list(
-#'         S3Action = list(
-#'           TopicArn = "string",
-#'           BucketName = "string",
-#'           ObjectKeyPrefix = "string",
-#'           KmsKeyArn = "string"
-#'         ),
-#'         BounceAction = list(
-#'           TopicArn = "string",
-#'           SmtpReplyCode = "string",
-#'           StatusCode = "string",
-#'           Message = "string",
-#'           Sender = "string"
-#'         ),
-#'         WorkmailAction = list(
-#'           TopicArn = "string",
-#'           OrganizationArn = "string"
-#'         ),
-#'         LambdaAction = list(
-#'           TopicArn = "string",
-#'           FunctionArn = "string",
-#'           InvocationType = "Event"|"RequestResponse"
-#'         ),
-#'         StopAction = list(
-#'           Scope = "RuleSet",
-#'           TopicArn = "string"
-#'         ),
-#'         AddHeaderAction = list(
-#'           HeaderName = "string",
-#'           HeaderValue = "string"
-#'         ),
-#'         SNSAction = list(
-#'           TopicArn = "string",
-#'           Encoding = "UTF-8"|"Base64"
-#'         )
-#'       )
-#'     ),
-#'     ScanEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a new receipt rule:
-#' svc$create_receipt_rule(
-#'   After = "",
-#'   Rule = list(
-#'     Actions = list(
-#'       list(
-#'         S3Action = list(
-#'           BucketName = "MyBucket",
-#'           ObjectKeyPrefix = "email"
-#'         )
-#'       )
-#'     ),
-#'     Enabled = TRUE,
-#'     Name = "MyRule",
-#'     ScanEnabled = TRUE,
-#'     TlsPolicy = "Optional"
-#'   ),
-#'   RuleSetName = "MyRuleSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -512,15 +243,8 @@ ses_create_receipt_rule <- function(RuleSetName, After = NULL, Rule) {
 #'
 #' @description
 #' Creates an empty receipt rule set.
-#' 
-#' For information about setting up receipt rule sets, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_create_receipt_rule_set(RuleSetName)
+#' See [https://paws-r.github.io/docs/ses/create_receipt_rule_set.html](https://paws-r.github.io/docs/ses/create_receipt_rule_set.html) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the rule set to create. The name must:
 #' 
@@ -530,24 +254,6 @@ ses_create_receipt_rule <- function(RuleSetName, After = NULL, Rule) {
 #' -   Start and end with a letter or number.
 #' 
 #' -   Contain less than 64 characters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_receipt_rule_set(
-#'   RuleSetName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates an empty receipt rule set:
-#' svc$create_receipt_rule_set(
-#'   RuleSetName = "MyRuleSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -572,33 +278,12 @@ ses_create_receipt_rule_set <- function(RuleSetName) {
 #' Creates an email template
 #'
 #' @description
-#' Creates an email template. Email templates enable you to send
-#' personalized email to one or more destinations in a single API
-#' operation. For more information, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Creates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html).
 #'
-#' @usage
-#' ses_create_template(Template)
+#' See [https://paws-r.github.io/docs/ses/create_template.html](https://paws-r.github.io/docs/ses/create_template.html) for full documentation.
 #'
 #' @param Template &#91;required&#93; The content of the email, composed of a subject line, an HTML part, and
 #' a text-only part.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_template(
-#'   Template = list(
-#'     TemplateName = "string",
-#'     SubjectPart = "string",
-#'     TextPart = "string",
-#'     HtmlPart = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -623,27 +308,11 @@ ses_create_template <- function(Template) {
 #' Deletes a configuration set
 #'
 #' @description
-#' Deletes a configuration set. Configuration sets enable you to publish
-#' email sending events. For information about using configuration sets,
-#' see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Deletes a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html).
 #'
-#' @usage
-#' ses_delete_configuration_set(ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/ses/delete_configuration_set.html](https://paws-r.github.io/docs/ses/delete_configuration_set.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_configuration_set(
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -668,32 +337,13 @@ ses_delete_configuration_set <- function(ConfigurationSetName) {
 #' Deletes a configuration set event destination
 #'
 #' @description
-#' Deletes a configuration set event destination. Configuration set event
-#' destinations are associated with configuration sets, which enable you to
-#' publish email sending events. For information about using configuration
-#' sets, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Deletes a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html).
 #'
-#' @usage
-#' ses_delete_configuration_set_event_destination(ConfigurationSetName,
-#'   EventDestinationName)
+#' See [https://paws-r.github.io/docs/ses/delete_configuration_set_event_destination.html](https://paws-r.github.io/docs/ses/delete_configuration_set_event_destination.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set from which to delete the event
 #' destination.
 #' @param EventDestinationName &#91;required&#93; The name of the event destination to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_configuration_set_event_destination(
-#'   ConfigurationSetName = "string",
-#'   EventDestinationName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -719,34 +369,12 @@ ses_delete_configuration_set_event_destination <- function(ConfigurationSetName,
 #' for open and click event tracking
 #'
 #' @description
-#' Deletes an association between a configuration set and a custom domain
-#' for open and click event tracking.
-#' 
-#' By default, images and links used for tracking open and click events are
-#' hosted on domains operated by Amazon SES. You can configure a subdomain
-#' of your own to handle these events. For information about using custom
-#' domains, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
-#' 
-#' Deleting this kind of association will result in emails sent using the
-#' specified configuration set to capture open and click events using the
-#' standard, Amazon SES-operated domains.
+#' Deletes an association between a configuration set and a custom domain for open and click event tracking.
 #'
-#' @usage
-#' ses_delete_configuration_set_tracking_options(ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/ses/delete_configuration_set_tracking_options.html](https://paws-r.github.io/docs/ses/delete_configuration_set_tracking_options.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set from which you want to delete the
 #' tracking options.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_configuration_set_tracking_options(
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -772,29 +400,11 @@ ses_delete_configuration_set_tracking_options <- function(ConfigurationSetName) 
 #'
 #' @description
 #' Deletes an existing custom verification email template.
-#' 
-#' For more information about custom verification email templates, see
-#' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_delete_custom_verification_email_template(TemplateName)
+#' See [https://paws-r.github.io/docs/ses/delete_custom_verification_email_template.html](https://paws-r.github.io/docs/ses/delete_custom_verification_email_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
 #' delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_custom_verification_email_template(
-#'   TemplateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -820,35 +430,12 @@ ses_delete_custom_verification_email_template <- function(TemplateName) {
 #' list of verified identities
 #'
 #' @description
-#' Deletes the specified identity (an email address or a domain) from the
-#' list of verified identities.
-#' 
-#' You can execute this operation no more than once per second.
+#' Deletes the specified identity (an email address or a domain) from the list of verified identities.
 #'
-#' @usage
-#' ses_delete_identity(Identity)
+#' See [https://paws-r.github.io/docs/ses/delete_identity.html](https://paws-r.github.io/docs/ses/delete_identity.html) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity to be removed from the list of identities for the AWS
 #' Account.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_identity(
-#'   Identity = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an identity from the list of identities
-#' # that have been submitted for verification with Amazon SES:
-#' svc$delete_identity(
-#'   Identity = "user@example.com"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -874,22 +461,9 @@ ses_delete_identity <- function(Identity) {
 #' identity (an email address or a domain)
 #'
 #' @description
-#' Deletes the specified sending authorization policy for the given
-#' identity (an email address or a domain). This API returns successfully
-#' even if a policy with the specified name does not exist.
-#' 
-#' This API is for the identity owner only. If you have not verified the
-#' identity, this API will return an error.
-#' 
-#' Sending authorization is a feature that enables an identity owner to
-#' authorize other senders to use its identities. For information about
-#' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Deletes the specified sending authorization policy for the given identity (an email address or a domain). This API returns successfully even if a policy with the specified name does not exist.
 #'
-#' @usage
-#' ses_delete_identity_policy(Identity, PolicyName)
+#' See [https://paws-r.github.io/docs/ses/delete_identity_policy.html](https://paws-r.github.io/docs/ses/delete_identity_policy.html) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity that is associated with the policy that you want to delete.
 #' You can specify the identity by using its name or by using its Amazon
@@ -898,27 +472,6 @@ ses_delete_identity <- function(Identity) {
 #' 
 #' To successfully call this API, you must own the identity.
 #' @param PolicyName &#91;required&#93; The name of the policy to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_identity_policy(
-#'   Identity = "string",
-#'   PolicyName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a sending authorization policy for an
-#' # identity:
-#' svc$delete_identity_policy(
-#'   Identity = "user@example.com",
-#'   PolicyName = "MyPolicy"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -944,35 +497,10 @@ ses_delete_identity_policy <- function(Identity, PolicyName) {
 #'
 #' @description
 #' Deletes the specified IP address filter.
-#' 
-#' For information about managing IP address filters, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_delete_receipt_filter(FilterName)
+#' See [https://paws-r.github.io/docs/ses/delete_receipt_filter.html](https://paws-r.github.io/docs/ses/delete_receipt_filter.html) for full documentation.
 #'
 #' @param FilterName &#91;required&#93; The name of the IP address filter to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_receipt_filter(
-#'   FilterName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an IP address filter:
-#' svc$delete_receipt_filter(
-#'   FilterName = "MyFilter"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -998,39 +526,12 @@ ses_delete_receipt_filter <- function(FilterName) {
 #'
 #' @description
 #' Deletes the specified receipt rule.
-#' 
-#' For information about managing receipt rules, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_delete_receipt_rule(RuleSetName, RuleName)
+#' See [https://paws-r.github.io/docs/ses/delete_receipt_rule.html](https://paws-r.github.io/docs/ses/delete_receipt_rule.html) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that contains the receipt rule to
 #' delete.
 #' @param RuleName &#91;required&#93; The name of the receipt rule to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_receipt_rule(
-#'   RuleSetName = "string",
-#'   RuleName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a receipt rule:
-#' svc$delete_receipt_rule(
-#'   RuleName = "MyRule",
-#'   RuleSetName = "MyRuleSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1056,39 +557,11 @@ ses_delete_receipt_rule <- function(RuleSetName, RuleName) {
 #' contains
 #'
 #' @description
-#' Deletes the specified receipt rule set and all of the receipt rules it
-#' contains.
-#' 
-#' The currently active rule set cannot be deleted.
-#' 
-#' For information about managing receipt rule sets, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Deletes the specified receipt rule set and all of the receipt rules it contains.
 #'
-#' @usage
-#' ses_delete_receipt_rule_set(RuleSetName)
+#' See [https://paws-r.github.io/docs/ses/delete_receipt_rule_set.html](https://paws-r.github.io/docs/ses/delete_receipt_rule_set.html) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_receipt_rule_set(
-#'   RuleSetName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a receipt rule set:
-#' svc$delete_receipt_rule_set(
-#'   RuleSetName = "MyRuleSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1114,23 +587,10 @@ ses_delete_receipt_rule_set <- function(RuleSetName) {
 #'
 #' @description
 #' Deletes an email template.
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_delete_template(TemplateName)
+#' See [https://paws-r.github.io/docs/ses/delete_template.html](https://paws-r.github.io/docs/ses/delete_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the template to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_template(
-#'   TemplateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1155,32 +615,11 @@ ses_delete_template <- function(TemplateName) {
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use the [`delete_identity`][ses_delete_identity] operation
-#' to delete email addresses and domains.
+#' Deprecated. Use the [`delete_identity`][ses_delete_identity] operation to delete email addresses and domains.
 #'
-#' @usage
-#' ses_delete_verified_email_address(EmailAddress)
+#' See [https://paws-r.github.io/docs/ses/delete_verified_email_address.html](https://paws-r.github.io/docs/ses/delete_verified_email_address.html) for full documentation.
 #'
 #' @param EmailAddress &#91;required&#93; An email address to be removed from the list of verified addresses.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_verified_email_address(
-#'   EmailAddress = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an email address from the list of
-#' # identities that have been submitted for verification with Amazon SES:
-#' svc$delete_verified_email_address(
-#'   EmailAddress = "user@example.com"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1206,91 +645,9 @@ ses_delete_verified_email_address <- function(EmailAddress) {
 #' currently active
 #'
 #' @description
-#' Returns the metadata and receipt rules for the receipt rule set that is
-#' currently active.
-#' 
-#' For information about setting up receipt rule sets, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Returns the metadata and receipt rules for the receipt rule set that is currently active.
 #'
-#' @usage
-#' ses_describe_active_receipt_rule_set()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Metadata = list(
-#'     Name = "string",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   Rules = list(
-#'     list(
-#'       Name = "string",
-#'       Enabled = TRUE|FALSE,
-#'       TlsPolicy = "Require"|"Optional",
-#'       Recipients = list(
-#'         "string"
-#'       ),
-#'       Actions = list(
-#'         list(
-#'           S3Action = list(
-#'             TopicArn = "string",
-#'             BucketName = "string",
-#'             ObjectKeyPrefix = "string",
-#'             KmsKeyArn = "string"
-#'           ),
-#'           BounceAction = list(
-#'             TopicArn = "string",
-#'             SmtpReplyCode = "string",
-#'             StatusCode = "string",
-#'             Message = "string",
-#'             Sender = "string"
-#'           ),
-#'           WorkmailAction = list(
-#'             TopicArn = "string",
-#'             OrganizationArn = "string"
-#'           ),
-#'           LambdaAction = list(
-#'             TopicArn = "string",
-#'             FunctionArn = "string",
-#'             InvocationType = "Event"|"RequestResponse"
-#'           ),
-#'           StopAction = list(
-#'             Scope = "RuleSet",
-#'             TopicArn = "string"
-#'           ),
-#'           AddHeaderAction = list(
-#'             HeaderName = "string",
-#'             HeaderValue = "string"
-#'           ),
-#'           SNSAction = list(
-#'             TopicArn = "string",
-#'             Encoding = "UTF-8"|"Base64"
-#'           )
-#'         )
-#'       ),
-#'       ScanEnabled = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_active_receipt_rule_set()
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the metadata and receipt rules for the
-#' # receipt rule set that is currently active:
-#' svc$describe_active_receipt_rule_set()
-#' }
+#' See [https://paws-r.github.io/docs/ses/describe_active_receipt_rule_set.html](https://paws-r.github.io/docs/ses/describe_active_receipt_rule_set.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1315,76 +672,12 @@ ses_describe_active_receipt_rule_set <- function() {
 #' Returns the details of the specified configuration set
 #'
 #' @description
-#' Returns the details of the specified configuration set. For information
-#' about using configuration sets, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Returns the details of the specified configuration set. For information about using configuration sets, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html).
 #'
-#' @usage
-#' ses_describe_configuration_set(ConfigurationSetName,
-#'   ConfigurationSetAttributeNames)
+#' See [https://paws-r.github.io/docs/ses/describe_configuration_set.html](https://paws-r.github.io/docs/ses/describe_configuration_set.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to describe.
 #' @param ConfigurationSetAttributeNames A list of configuration set attributes to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationSet = list(
-#'     Name = "string"
-#'   ),
-#'   EventDestinations = list(
-#'     list(
-#'       Name = "string",
-#'       Enabled = TRUE|FALSE,
-#'       MatchingEventTypes = list(
-#'         "send"|"reject"|"bounce"|"complaint"|"delivery"|"open"|"click"|"renderingFailure"
-#'       ),
-#'       KinesisFirehoseDestination = list(
-#'         IAMRoleARN = "string",
-#'         DeliveryStreamARN = "string"
-#'       ),
-#'       CloudWatchDestination = list(
-#'         DimensionConfigurations = list(
-#'           list(
-#'             DimensionName = "string",
-#'             DimensionValueSource = "messageTag"|"emailHeader"|"linkTag",
-#'             DefaultDimensionValue = "string"
-#'           )
-#'         )
-#'       ),
-#'       SNSDestination = list(
-#'         TopicARN = "string"
-#'       )
-#'     )
-#'   ),
-#'   TrackingOptions = list(
-#'     CustomRedirectDomain = "string"
-#'   ),
-#'   DeliveryOptions = list(
-#'     TlsPolicy = "Require"|"Optional"
-#'   ),
-#'   ReputationOptions = list(
-#'     SendingEnabled = TRUE|FALSE,
-#'     ReputationMetricsEnabled = TRUE|FALSE,
-#'     LastFreshStart = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_configuration_set(
-#'   ConfigurationSetName = "string",
-#'   ConfigurationSetAttributeNames = list(
-#'     "eventDestinations"|"trackingOptions"|"deliveryOptions"|"reputationOptions"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1410,89 +703,11 @@ ses_describe_configuration_set <- function(ConfigurationSetName, ConfigurationSe
 #'
 #' @description
 #' Returns the details of the specified receipt rule.
-#' 
-#' For information about setting up receipt rules, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_describe_receipt_rule(RuleSetName, RuleName)
+#' See [https://paws-r.github.io/docs/ses/describe_receipt_rule.html](https://paws-r.github.io/docs/ses/describe_receipt_rule.html) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that the receipt rule belongs to.
 #' @param RuleName &#91;required&#93; The name of the receipt rule.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Rule = list(
-#'     Name = "string",
-#'     Enabled = TRUE|FALSE,
-#'     TlsPolicy = "Require"|"Optional",
-#'     Recipients = list(
-#'       "string"
-#'     ),
-#'     Actions = list(
-#'       list(
-#'         S3Action = list(
-#'           TopicArn = "string",
-#'           BucketName = "string",
-#'           ObjectKeyPrefix = "string",
-#'           KmsKeyArn = "string"
-#'         ),
-#'         BounceAction = list(
-#'           TopicArn = "string",
-#'           SmtpReplyCode = "string",
-#'           StatusCode = "string",
-#'           Message = "string",
-#'           Sender = "string"
-#'         ),
-#'         WorkmailAction = list(
-#'           TopicArn = "string",
-#'           OrganizationArn = "string"
-#'         ),
-#'         LambdaAction = list(
-#'           TopicArn = "string",
-#'           FunctionArn = "string",
-#'           InvocationType = "Event"|"RequestResponse"
-#'         ),
-#'         StopAction = list(
-#'           Scope = "RuleSet",
-#'           TopicArn = "string"
-#'         ),
-#'         AddHeaderAction = list(
-#'           HeaderName = "string",
-#'           HeaderValue = "string"
-#'         ),
-#'         SNSAction = list(
-#'           TopicArn = "string",
-#'           Encoding = "UTF-8"|"Base64"
-#'         )
-#'       )
-#'     ),
-#'     ScanEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_receipt_rule(
-#'   RuleSetName = "string",
-#'   RuleName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the details of a receipt rule:
-#' svc$describe_receipt_rule(
-#'   RuleName = "MyRule",
-#'   RuleSetName = "MyRuleSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1518,95 +733,10 @@ ses_describe_receipt_rule <- function(RuleSetName, RuleName) {
 #'
 #' @description
 #' Returns the details of the specified receipt rule set.
-#' 
-#' For information about managing receipt rule sets, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_describe_receipt_rule_set(RuleSetName)
+#' See [https://paws-r.github.io/docs/ses/describe_receipt_rule_set.html](https://paws-r.github.io/docs/ses/describe_receipt_rule_set.html) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Metadata = list(
-#'     Name = "string",
-#'     CreatedTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   Rules = list(
-#'     list(
-#'       Name = "string",
-#'       Enabled = TRUE|FALSE,
-#'       TlsPolicy = "Require"|"Optional",
-#'       Recipients = list(
-#'         "string"
-#'       ),
-#'       Actions = list(
-#'         list(
-#'           S3Action = list(
-#'             TopicArn = "string",
-#'             BucketName = "string",
-#'             ObjectKeyPrefix = "string",
-#'             KmsKeyArn = "string"
-#'           ),
-#'           BounceAction = list(
-#'             TopicArn = "string",
-#'             SmtpReplyCode = "string",
-#'             StatusCode = "string",
-#'             Message = "string",
-#'             Sender = "string"
-#'           ),
-#'           WorkmailAction = list(
-#'             TopicArn = "string",
-#'             OrganizationArn = "string"
-#'           ),
-#'           LambdaAction = list(
-#'             TopicArn = "string",
-#'             FunctionArn = "string",
-#'             InvocationType = "Event"|"RequestResponse"
-#'           ),
-#'           StopAction = list(
-#'             Scope = "RuleSet",
-#'             TopicArn = "string"
-#'           ),
-#'           AddHeaderAction = list(
-#'             HeaderName = "string",
-#'             HeaderValue = "string"
-#'           ),
-#'           SNSAction = list(
-#'             TopicArn = "string",
-#'             Encoding = "UTF-8"|"Base64"
-#'           )
-#'         )
-#'       ),
-#'       ScanEnabled = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_receipt_rule_set(
-#'   RuleSetName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the metadata and receipt rules of a
-#' # receipt rule set:
-#' svc$describe_receipt_rule_set(
-#'   RuleSetName = "MyRuleSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1632,32 +762,11 @@ ses_describe_receipt_rule_set <- function(RuleSetName) {
 #' current region
 #'
 #' @description
-#' Returns the email sending status of the Amazon SES account for the
-#' current region.
-#' 
-#' You can execute this operation no more than once per second.
+#' Returns the email sending status of the Amazon SES account for the current region.
 #'
-#' @usage
-#' ses_get_account_sending_enabled()
+#' See [https://paws-r.github.io/docs/ses/get_account_sending_enabled.html](https://paws-r.github.io/docs/ses/get_account_sending_enabled.html) for full documentation.
 #'
 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Enabled = TRUE|FALSE
-#' )
-#' ```
-#'
-
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns if sending status for an account is
-#' # enabled. (true / false):
-#' svc$get_account_sending_enabled()
-#' }
 #'
 #' @keywords internal
 #'
@@ -1683,41 +792,12 @@ ses_get_account_sending_enabled <- function() {
 #' specify
 #'
 #' @description
-#' Returns the custom email verification template for the template name you
-#' specify.
-#' 
-#' For more information about custom verification email templates, see
-#' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
-#' 
-#' You can execute this operation no more than once per second.
+#' Returns the custom email verification template for the template name you specify.
 #'
-#' @usage
-#' ses_get_custom_verification_email_template(TemplateName)
+#' See [https://paws-r.github.io/docs/ses/get_custom_verification_email_template.html](https://paws-r.github.io/docs/ses/get_custom_verification_email_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
 #' retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateName = "string",
-#'   FromEmailAddress = "string",
-#'   TemplateSubject = "string",
-#'   TemplateContent = "string",
-#'   SuccessRedirectionURL = "string",
-#'   FailureRedirectionURL = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_custom_verification_email_template(
-#'   TemplateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1742,72 +822,12 @@ ses_get_custom_verification_email_template <- function(TemplateName) {
 #' Returns the current status of Easy DKIM signing for an entity
 #'
 #' @description
-#' Returns the current status of Easy DKIM signing for an entity. For
-#' domain name identities, this operation also returns the DKIM tokens that
-#' are required for Easy DKIM signing, and whether Amazon SES has
-#' successfully verified that these tokens have been published.
-#' 
-#' This operation takes a list of identities as input and returns the
-#' following information for each:
-#' 
-#' -   Whether Easy DKIM signing is enabled or disabled.
-#' 
-#' -   A set of DKIM tokens that represent the identity. If the identity is
-#'     an email address, the tokens represent the domain of that address.
-#' 
-#' -   Whether Amazon SES has successfully verified the DKIM tokens
-#'     published in the domain's DNS. This information is only returned for
-#'     domain name identities, not for email addresses.
-#' 
-#' This operation is throttled at one request per second and can only get
-#' DKIM attributes for up to 100 identities at a time.
-#' 
-#' For more information about creating DNS records using DKIM tokens, go to
-#' the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
+#' Returns the current status of Easy DKIM signing for an entity. For domain name identities, this operation also returns the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES has successfully verified that these tokens have been published.
 #'
-#' @usage
-#' ses_get_identity_dkim_attributes(Identities)
+#' See [https://paws-r.github.io/docs/ses/get_identity_dkim_attributes.html](https://paws-r.github.io/docs/ses/get_identity_dkim_attributes.html) for full documentation.
 #'
 #' @param Identities &#91;required&#93; A list of one or more verified identities - email addresses, domains, or
 #' both.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DkimAttributes = list(
-#'     list(
-#'       DkimEnabled = TRUE|FALSE,
-#'       DkimVerificationStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure"|"NotStarted",
-#'       DkimTokens = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_identity_dkim_attributes(
-#'   Identities = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example retrieves the Amazon SES Easy DKIM attributes for
-#' # a list of identities:
-#' svc$get_identity_dkim_attributes(
-#'   Identities = list(
-#'     "example.com",
-#'     "user@example.com"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1833,50 +853,11 @@ ses_get_identity_dkim_attributes <- function(Identities) {
 #' addresses : domains)
 #'
 #' @description
-#' Returns the custom MAIL FROM attributes for a list of identities (email
-#' addresses : domains).
-#' 
-#' This operation is throttled at one request per second and can only get
-#' custom MAIL FROM attributes for up to 100 identities at a time.
+#' Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains).
 #'
-#' @usage
-#' ses_get_identity_mail_from_domain_attributes(Identities)
+#' See [https://paws-r.github.io/docs/ses/get_identity_mail_from_domain_attributes.html](https://paws-r.github.io/docs/ses/get_identity_mail_from_domain_attributes.html) for full documentation.
 #'
 #' @param Identities &#91;required&#93; A list of one or more identities.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MailFromDomainAttributes = list(
-#'     list(
-#'       MailFromDomain = "string",
-#'       MailFromDomainStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure",
-#'       BehaviorOnMXFailure = "UseDefaultValue"|"RejectMessage"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_identity_mail_from_domain_attributes(
-#'   Identities = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the custom MAIL FROM attributes for an
-#' # identity:
-#' svc$get_identity_mail_from_domain_attributes(
-#'   Identities = list(
-#'     "example.com"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1902,61 +883,14 @@ ses_get_identity_mail_from_domain_attributes <- function(Identities) {
 #' returns a structure describing identity notification attributes
 #'
 #' @description
-#' Given a list of verified identities (email addresses and/or domains),
-#' returns a structure describing identity notification attributes.
-#' 
-#' This operation is throttled at one request per second and can only get
-#' notification attributes for up to 100 identities at a time.
-#' 
-#' For more information about using notifications with Amazon SES, see the
-#' [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
+#' Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes.
 #'
-#' @usage
-#' ses_get_identity_notification_attributes(Identities)
+#' See [https://paws-r.github.io/docs/ses/get_identity_notification_attributes.html](https://paws-r.github.io/docs/ses/get_identity_notification_attributes.html) for full documentation.
 #'
 #' @param Identities &#91;required&#93; A list of one or more identities. You can specify an identity by using
 #' its name or by using its Amazon Resource Name (ARN). Examples:
 #' `user@@example.com`, `example.com`,
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NotificationAttributes = list(
-#'     list(
-#'       BounceTopic = "string",
-#'       ComplaintTopic = "string",
-#'       DeliveryTopic = "string",
-#'       ForwardingEnabled = TRUE|FALSE,
-#'       HeadersInBounceNotificationsEnabled = TRUE|FALSE,
-#'       HeadersInComplaintNotificationsEnabled = TRUE|FALSE,
-#'       HeadersInDeliveryNotificationsEnabled = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_identity_notification_attributes(
-#'   Identities = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the notification attributes for an
-#' # identity:
-#' svc$get_identity_notification_attributes(
-#'   Identities = list(
-#'     "example.com"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1982,23 +916,9 @@ ses_get_identity_notification_attributes <- function(Identities) {
 #' identity (an email address or a domain)
 #'
 #' @description
-#' Returns the requested sending authorization policies for the given
-#' identity (an email address or a domain). The policies are returned as a
-#' map of policy names to policy contents. You can retrieve a maximum of 20
-#' policies at a time.
-#' 
-#' This API is for the identity owner only. If you have not verified the
-#' identity, this API will return an error.
-#' 
-#' Sending authorization is a feature that enables an identity owner to
-#' authorize other senders to use its identities. For information about
-#' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Returns the requested sending authorization policies for the given identity (an email address or a domain). The policies are returned as a map of policy names to policy contents. You can retrieve a maximum of 20 policies at a time.
 #'
-#' @usage
-#' ses_get_identity_policies(Identity, PolicyNames)
+#' See [https://paws-r.github.io/docs/ses/get_identity_policies.html](https://paws-r.github.io/docs/ses/get_identity_policies.html) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity for which the policies will be retrieved. You can specify
 #' an identity by using its name or by using its Amazon Resource Name
@@ -2010,38 +930,6 @@ ses_get_identity_notification_attributes <- function(Identities) {
 #' maximum of 20 policies at a time. If you do not know the names of the
 #' policies that are attached to the identity, you can use
 #' [`list_identity_policies`][ses_list_identity_policies].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Policies = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_identity_policies(
-#'   Identity = "string",
-#'   PolicyNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a sending authorization policy for an
-#' # identity:
-#' svc$get_identity_policies(
-#'   Identity = "example.com",
-#'   PolicyNames = list(
-#'     "MyPolicy"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2068,67 +956,11 @@ ses_get_identity_policies <- function(Identity, PolicyNames) {
 #' for each identity
 #'
 #' @description
-#' Given a list of identities (email addresses and/or domains), returns the
-#' verification status and (for domain identities) the verification token
-#' for each identity.
-#' 
-#' The verification status of an email address is "Pending" until the email
-#' address owner clicks the link within the verification email that Amazon
-#' SES sent to that address. If the email address owner clicks the link
-#' within 24 hours, the verification status of the email address changes to
-#' "Success". If the link is not clicked within 24 hours, the verification
-#' status changes to "Failed." In that case, if you still want to verify
-#' the email address, you must restart the verification process from the
-#' beginning.
-#' 
-#' For domain identities, the domain's verification status is "Pending" as
-#' Amazon SES searches for the required TXT record in the DNS settings of
-#' the domain. When Amazon SES detects the record, the domain's
-#' verification status changes to "Success". If Amazon SES is unable to
-#' detect the record within 72 hours, the domain's verification status
-#' changes to "Failed." In that case, if you still want to verify the
-#' domain, you must restart the verification process from the beginning.
-#' 
-#' This operation is throttled at one request per second and can only get
-#' verification attributes for up to 100 identities at a time.
+#' Given a list of identities (email addresses and/or domains), returns the verification status and (for domain identities) the verification token for each identity.
 #'
-#' @usage
-#' ses_get_identity_verification_attributes(Identities)
+#' See [https://paws-r.github.io/docs/ses/get_identity_verification_attributes.html](https://paws-r.github.io/docs/ses/get_identity_verification_attributes.html) for full documentation.
 #'
 #' @param Identities &#91;required&#93; A list of identities.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VerificationAttributes = list(
-#'     list(
-#'       VerificationStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure"|"NotStarted",
-#'       VerificationToken = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_identity_verification_attributes(
-#'   Identities = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the verification status and the
-#' # verification token for a domain identity:
-#' svc$get_identity_verification_attributes(
-#'   Identities = list(
-#'     "example.com"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2154,32 +986,10 @@ ses_get_identity_verification_attributes <- function(Identities) {
 #'
 #' @description
 #' Provides the sending limits for the Amazon SES account.
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_get_send_quota()
+#' See [https://paws-r.github.io/docs/ses/get_send_quota.html](https://paws-r.github.io/docs/ses/get_send_quota.html) for full documentation.
 #'
 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Max24HourSend = 123.0,
-#'   MaxSendRate = 123.0,
-#'   SentLast24Hours = 123.0
-#' )
-#' ```
-#'
-
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns the Amazon SES sending limits for an AWS
-#' # account:
-#' svc$get_send_quota()
-#' }
 #'
 #' @keywords internal
 #'
@@ -2204,43 +1014,11 @@ ses_get_send_quota <- function() {
 #' Provides sending statistics for the current AWS Region
 #'
 #' @description
-#' Provides sending statistics for the current AWS Region. The result is a
-#' list of data points, representing the last two weeks of sending
-#' activity. Each data point in the list contains statistics for a
-#' 15-minute period of time.
-#' 
-#' You can execute this operation no more than once per second.
+#' Provides sending statistics for the current AWS Region. The result is a list of data points, representing the last two weeks of sending activity. Each data point in the list contains statistics for a 15-minute period of time.
 #'
-#' @usage
-#' ses_get_send_statistics()
+#' See [https://paws-r.github.io/docs/ses/get_send_statistics.html](https://paws-r.github.io/docs/ses/get_send_statistics.html) for full documentation.
 #'
 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SendDataPoints = list(
-#'     list(
-#'       Timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DeliveryAttempts = 123,
-#'       Bounces = 123,
-#'       Complaints = 123,
-#'       Rejects = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns Amazon SES sending statistics:
-#' svc$get_send_statistics()
-#' }
 #'
 #' @keywords internal
 #'
@@ -2266,35 +1044,11 @@ ses_get_send_statistics <- function() {
 #' and text part) for the template you specify
 #'
 #' @description
-#' Displays the template object (which includes the Subject line, HTML part
-#' and text part) for the template you specify.
-#' 
-#' You can execute this operation no more than once per second.
+#' Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify.
 #'
-#' @usage
-#' ses_get_template(TemplateName)
+#' See [https://paws-r.github.io/docs/ses/get_template.html](https://paws-r.github.io/docs/ses/get_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the template you want to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Template = list(
-#'     TemplateName = "string",
-#'     SubjectPart = "string",
-#'     TextPart = "string",
-#'     HtmlPart = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_template(
-#'   TemplateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2320,48 +1074,14 @@ ses_get_template <- function(TemplateName) {
 #' SES account in the current AWS Region
 #'
 #' @description
-#' Provides a list of the configuration sets associated with your Amazon
-#' SES account in the current AWS Region. For information about using
-#' configuration sets, see [Monitoring Your Amazon SES Sending
-#' Activity](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html)
-#' in the *Amazon SES Developer Guide.*
-#' 
-#' You can execute this operation no more than once per second. This
-#' operation will return up to 1,000 configuration sets each time it is
-#' run. If your Amazon SES account has more than 1,000 configuration sets,
-#' this operation will also return a NextToken element. You can then
-#' execute the [`list_configuration_sets`][ses_list_configuration_sets]
-#' operation again, passing the `NextToken` parameter and the value of the
-#' NextToken element to retrieve additional results.
+#' Provides a list of the configuration sets associated with your Amazon SES account in the current AWS Region. For information about using configuration sets, see [Monitoring Your Amazon SES Sending Activity](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html) in the *Amazon SES Developer Guide.*
 #'
-#' @usage
-#' ses_list_configuration_sets(NextToken, MaxItems)
+#' See [https://paws-r.github.io/docs/ses/list_configuration_sets.html](https://paws-r.github.io/docs/ses/list_configuration_sets.html) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to
 #' [`list_configuration_sets`][ses_list_configuration_sets] to indicate the
 #' position of the configuration set in the configuration set list.
 #' @param MaxItems The number of configuration sets to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationSets = list(
-#'     list(
-#'       Name = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_configuration_sets(
-#'   NextToken = "string",
-#'   MaxItems = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2387,18 +1107,9 @@ ses_list_configuration_sets <- function(NextToken = NULL, MaxItems = NULL) {
 #' in the current AWS Region
 #'
 #' @description
-#' Lists the existing custom verification email templates for your account
-#' in the current AWS Region.
-#' 
-#' For more information about custom verification email templates, see
-#' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
-#' 
-#' You can execute this operation no more than once per second.
+#' Lists the existing custom verification email templates for your account in the current AWS Region.
 #'
-#' @usage
-#' ses_list_custom_verification_email_templates(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/ses/list_custom_verification_email_templates.html](https://paws-r.github.io/docs/ses/list_custom_verification_email_templates.html) for full documentation.
 #'
 #' @param NextToken An array the contains the name and creation time stamp for each template
 #' in your Amazon SES account.
@@ -2406,31 +1117,6 @@ ses_list_configuration_sets <- function(NextToken = NULL, MaxItems = NULL) {
 #' This value must be at least 1 and less than or equal to 50. If you do
 #' not specify a value, or if you specify a value less than 1 or greater
 #' than 50, the operation will return up to 50 results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CustomVerificationEmailTemplates = list(
-#'     list(
-#'       TemplateName = "string",
-#'       FromEmailAddress = "string",
-#'       TemplateSubject = "string",
-#'       SuccessRedirectionURL = "string",
-#'       FailureRedirectionURL = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_custom_verification_email_templates(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2457,14 +1143,9 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
 #' verification status
 #'
 #' @description
-#' Returns a list containing all of the identities (email addresses and
-#' domains) for your AWS account in the current AWS Region, regardless of
-#' verification status.
-#' 
-#' You can execute this operation no more than once per second.
+#' Returns a list containing all of the identities (email addresses and domains) for your AWS account in the current AWS Region, regardless of verification status.
 #'
-#' @usage
-#' ses_list_identities(IdentityType, NextToken, MaxItems)
+#' See [https://paws-r.github.io/docs/ses/list_identities.html](https://paws-r.github.io/docs/ses/list_identities.html) for full documentation.
 #'
 #' @param IdentityType The type of the identities to list. Possible values are "EmailAddress"
 #' and "Domain". If this parameter is omitted, then all identities will be
@@ -2472,37 +1153,6 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
 #' @param NextToken The token to use for pagination.
 #' @param MaxItems The maximum number of identities per page. Possible values are 1-1000
 #' inclusive.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Identities = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_identities(
-#'   IdentityType = "EmailAddress"|"Domain",
-#'   NextToken = "string",
-#'   MaxItems = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example lists the email address identities that have been
-#' # submitted for verification with Amazon SES:
-#' svc$list_identities(
-#'   IdentityType = "EmailAddress",
-#'   MaxItems = 123L,
-#'   NextToken = ""
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2528,23 +1178,9 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
 #' the given identity (an email address or a domain)
 #'
 #' @description
-#' Returns a list of sending authorization policies that are attached to
-#' the given identity (an email address or a domain). This API returns only
-#' a list. If you want the actual policy content, you can use
-#' [`get_identity_policies`][ses_get_identity_policies].
-#' 
-#' This API is for the identity owner only. If you have not verified the
-#' identity, this API will return an error.
-#' 
-#' Sending authorization is a feature that enables an identity owner to
-#' authorize other senders to use its identities. For information about
-#' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain). This API returns only a list. If you want the actual policy content, you can use [`get_identity_policies`][ses_get_identity_policies].
 #'
-#' @usage
-#' ses_list_identity_policies(Identity)
+#' See [https://paws-r.github.io/docs/ses/list_identity_policies.html](https://paws-r.github.io/docs/ses/list_identity_policies.html) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity that is associated with the policy for which the policies
 #' will be listed. You can specify an identity by using its name or by
@@ -2553,32 +1189,6 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
 #' 
 #' To successfully call this API, you must own the identity.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PolicyNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_identity_policies(
-#'   Identity = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of sending authorization policies
-#' # that are attached to an identity:
-#' svc$list_identity_policies(
-#'   Identity = "example.com"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2604,45 +1214,9 @@ ses_list_identity_policies <- function(Identity) {
 #' current AWS Region
 #'
 #' @description
-#' Lists the IP address filters associated with your AWS account in the
-#' current AWS Region.
-#' 
-#' For information about managing IP address filters, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Lists the IP address filters associated with your AWS account in the current AWS Region.
 #'
-#' @usage
-#' ses_list_receipt_filters()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       IpFilter = list(
-#'         Policy = "Block"|"Allow",
-#'         Cidr = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_receipt_filters()
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example lists the IP address filters that are associated
-#' # with an AWS account:
-#' svc$list_receipt_filters()
-#' }
+#' See [https://paws-r.github.io/docs/ses/list_receipt_filters.html](https://paws-r.github.io/docs/ses/list_receipt_filters.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -2668,56 +1242,13 @@ ses_list_receipt_filters <- function() {
 #' current AWS Region
 #'
 #' @description
-#' Lists the receipt rule sets that exist under your AWS account in the
-#' current AWS Region. If there are additional receipt rule sets to be
-#' retrieved, you will receive a `NextToken` that you can provide to the
-#' next call to [`list_receipt_rule_sets`][ses_list_receipt_rule_sets] to
-#' retrieve the additional entries.
-#' 
-#' For information about managing receipt rule sets, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Lists the receipt rule sets that exist under your AWS account in the current AWS Region. If there are additional receipt rule sets to be retrieved, you will receive a `NextToken` that you can provide to the next call to [`list_receipt_rule_sets`][ses_list_receipt_rule_sets] to retrieve the additional entries.
 #'
-#' @usage
-#' ses_list_receipt_rule_sets(NextToken)
+#' See [https://paws-r.github.io/docs/ses/list_receipt_rule_sets.html](https://paws-r.github.io/docs/ses/list_receipt_rule_sets.html) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to
 #' [`list_receipt_rule_sets`][ses_list_receipt_rule_sets] to indicate the
 #' position in the receipt rule set list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RuleSets = list(
-#'     list(
-#'       Name = "string",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_receipt_rule_sets(
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example lists the receipt rule sets that exist under an
-#' # AWS account:
-#' svc$list_receipt_rule_sets(
-#'   NextToken = ""
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2743,13 +1274,9 @@ ses_list_receipt_rule_sets <- function(NextToken = NULL) {
 #' current AWS Region
 #'
 #' @description
-#' Lists the email templates present in your Amazon SES account in the
-#' current AWS Region.
-#' 
-#' You can execute this operation no more than once per second.
+#' Lists the email templates present in your Amazon SES account in the current AWS Region.
 #'
-#' @usage
-#' ses_list_templates(NextToken, MaxItems)
+#' See [https://paws-r.github.io/docs/ses/list_templates.html](https://paws-r.github.io/docs/ses/list_templates.html) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to
 #' [`list_templates`][ses_list_templates] to indicate the position in the
@@ -2758,30 +1285,6 @@ ses_list_receipt_rule_sets <- function(NextToken = NULL) {
 #' and less than or equal to 10. If you do not specify a value, or if you
 #' specify a value less than 1 or greater than 10, the operation will
 #' return up to 10 results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplatesMetadata = list(
-#'     list(
-#'       Name = "string",
-#'       CreatedTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_templates(
-#'   NextToken = "string",
-#'   MaxItems = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2806,32 +1309,11 @@ ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use the [`list_identities`][ses_list_identities] operation
-#' to list the email addresses and domains associated with your account.
+#' Deprecated. Use the [`list_identities`][ses_list_identities] operation to list the email addresses and domains associated with your account.
 #'
-#' @usage
-#' ses_list_verified_email_addresses()
+#' See [https://paws-r.github.io/docs/ses/list_verified_email_addresses.html](https://paws-r.github.io/docs/ses/list_verified_email_addresses.html) for full documentation.
 #'
 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VerifiedEmailAddresses = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-
-#'
-#' @examples
-#' \dontrun{
-#' # The following example lists all email addresses that have been submitted
-#' # for verification with Amazon SES:
-#' svc$list_verified_email_addresses()
-#' }
 #'
 #' @keywords internal
 #'
@@ -2858,27 +1340,12 @@ ses_list_verified_email_addresses <- function() {
 #' @description
 #' Adds or updates the delivery options for a configuration set.
 #'
-#' @usage
-#' ses_put_configuration_set_delivery_options(ConfigurationSetName,
-#'   DeliveryOptions)
+#' See [https://paws-r.github.io/docs/ses/put_configuration_set_delivery_options.html](https://paws-r.github.io/docs/ses/put_configuration_set_delivery_options.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to specify the delivery
 #' options for.
 #' @param DeliveryOptions Specifies whether messages that use the configuration set are required
 #' to use Transport Layer Security (TLS).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_configuration_set_delivery_options(
-#'   ConfigurationSetName = "string",
-#'   DeliveryOptions = list(
-#'     TlsPolicy = "Require"|"Optional"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2904,21 +1371,9 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #' identity (an email address or a domain)
 #'
 #' @description
-#' Adds or updates a sending authorization policy for the specified
-#' identity (an email address or a domain).
-#' 
-#' This API is for the identity owner only. If you have not verified the
-#' identity, this API will return an error.
-#' 
-#' Sending authorization is a feature that enables an identity owner to
-#' authorize other senders to use its identities. For information about
-#' using sending authorization, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Adds or updates a sending authorization policy for the specified identity (an email address or a domain).
 #'
-#' @usage
-#' ses_put_identity_policy(Identity, PolicyName, Policy)
+#' See [https://paws-r.github.io/docs/ses/put_identity_policy.html](https://paws-r.github.io/docs/ses/put_identity_policy.html) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity that the policy will apply to. You can specify an identity
 #' by using its name or by using its Amazon Resource Name (ARN). Examples:
@@ -2934,30 +1389,7 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #' 
 #' For information about the syntax of sending authorization policies, see
 #' the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_identity_policy(
-#'   Identity = "string",
-#'   PolicyName = "string",
-#'   Policy = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example adds a sending authorization policy to an
-#' # identity:
-#' svc$put_identity_policy(
-#'   Identity = "example.com",
-#'   Policy = "\{"Version":"2008-10-17","Statement":[\{"Sid":"stmt1469123904194"...",
-#'   PolicyName = "MyPolicy"
-#' )
-#' }
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-policies.html).
 #'
 #' @keywords internal
 #'
@@ -2983,49 +1415,12 @@ ses_put_identity_policy <- function(Identity, PolicyName, Policy) {
 #'
 #' @description
 #' Reorders the receipt rules within a receipt rule set.
-#' 
-#' All of the rules in the rule set must be represented in this request.
-#' That is, this API will return an error if the reorder request doesn't
-#' explicitly position all of the rules.
-#' 
-#' For information about managing receipt rule sets, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_reorder_receipt_rule_set(RuleSetName, RuleNames)
+#' See [https://paws-r.github.io/docs/ses/reorder_receipt_rule_set.html](https://paws-r.github.io/docs/ses/reorder_receipt_rule_set.html) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set to reorder.
 #' @param RuleNames &#91;required&#93; A list of the specified receipt rule set's receipt rules in the order
 #' that you want to put them.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reorder_receipt_rule_set(
-#'   RuleSetName = "string",
-#'   RuleNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example reorders the receipt rules within a receipt rule
-#' # set:
-#' svc$reorder_receipt_rule_set(
-#'   RuleNames = list(
-#'     "MyRule",
-#'     "MyOtherRule"
-#'   ),
-#'   RuleSetName = "MyRuleSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3051,22 +1446,9 @@ ses_reorder_receipt_rule_set <- function(RuleSetName, RuleNames) {
 #' received through Amazon SES
 #'
 #' @description
-#' Generates and sends a bounce message to the sender of an email you
-#' received through Amazon SES. You can only use this API on an email up to
-#' 24 hours after you receive it.
-#' 
-#' You cannot use this API to send generic bounces for mail that was not
-#' received by Amazon SES.
-#' 
-#' For information about receiving email through Amazon SES, see the
-#' [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Generates and sends a bounce message to the sender of an email you received through Amazon SES. You can only use this API on an email up to 24 hours after you receive it.
 #'
-#' @usage
-#' ses_send_bounce(OriginalMessageId, BounceSender, Explanation,
-#'   MessageDsn, BouncedRecipientInfoList, BounceSenderArn)
+#' See [https://paws-r.github.io/docs/ses/send_bounce.html](https://paws-r.github.io/docs/ses/send_bounce.html) for full documentation.
 #'
 #' @param OriginalMessageId &#91;required&#93; The message ID of the message to be bounced.
 #' @param BounceSender &#91;required&#93; The address to use in the "From" header of the bounce message. This must
@@ -3085,60 +1467,7 @@ ses_reorder_receipt_rule_set <- function(RuleSetName, RuleNames) {
 #' that permits you to use the address in the "From" header of the bounce.
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_bounce(
-#'   OriginalMessageId = "string",
-#'   BounceSender = "string",
-#'   Explanation = "string",
-#'   MessageDsn = list(
-#'     ReportingMta = "string",
-#'     ArrivalDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ExtensionFields = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   BouncedRecipientInfoList = list(
-#'     list(
-#'       Recipient = "string",
-#'       RecipientArn = "string",
-#'       BounceType = "DoesNotExist"|"MessageTooLarge"|"ExceededQuota"|"ContentRejected"|"Undefined"|"TemporaryFailure",
-#'       RecipientDsnFields = list(
-#'         FinalRecipient = "string",
-#'         Action = "failed"|"delayed"|"delivered"|"relayed"|"expanded",
-#'         RemoteMta = "string",
-#'         Status = "string",
-#'         DiagnosticCode = "string",
-#'         LastAttemptDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ExtensionFields = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   BounceSenderArn = "string"
-#' )
-#' ```
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #'
 #' @keywords internal
 #'
@@ -3163,76 +1492,35 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' Composes an email message to multiple destinations
 #'
 #' @description
-#' Composes an email message to multiple destinations. The message body is
-#' created using an email template.
-#' 
-#' In order to send email using the
-#' [`send_bulk_templated_email`][ses_send_bulk_templated_email] operation,
-#' your call to the API must meet the following requirements:
-#' 
-#' -   The call must refer to an existing email template. You can create
-#'     email templates using the [`create_template`][ses_create_template]
-#'     operation.
-#' 
-#' -   The message must be sent from a verified email address or domain.
-#' 
-#' -   If your account is still in the Amazon SES sandbox, you may only
-#'     send to verified addresses or domains, or to email addresses
-#'     associated with the Amazon SES Mailbox Simulator. For more
-#'     information, see [Verifying Email Addresses and
-#'     Domains](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
-#'     in the *Amazon SES Developer Guide.*
-#' 
-#' -   The maximum message size is 10 MB.
-#' 
-#' -   Each `Destination` parameter must include at least one recipient
-#'     email address. The recipient address can be a To: address, a CC:
-#'     address, or a BCC: address. If a recipient email address is invalid
-#'     (that is, it is not in the format
-#'     *UserName@@\[SubDomain.\]Domain.TopLevelDomain*), the entire message
-#'     will be rejected, even if the message contains other recipients that
-#'     are valid.
-#' 
-#' -   The message may not include more than 50 recipients, across the To:,
-#'     CC: and BCC: fields. If you need to send an email message to a
-#'     larger audience, you can divide your recipient list into groups of
-#'     50 or fewer, and then call the
-#'     [`send_bulk_templated_email`][ses_send_bulk_templated_email]
-#'     operation several times to send the message to each group.
-#' 
-#' -   The number of destinations you can contact in a single call to the
-#'     API may be limited by your account's maximum sending rate.
+#' Composes an email message to multiple destinations. The message body is created using an email template.
 #'
-#' @usage
-#' ses_send_bulk_templated_email(Source, SourceArn, ReplyToAddresses,
-#'   ReturnPath, ReturnPathArn, ConfigurationSetName, DefaultTags, Template,
-#'   TemplateArn, DefaultTemplateData, Destinations)
+#' See [https://paws-r.github.io/docs/ses/send_bulk_templated_email.html](https://paws-r.github.io/docs/ses/send_bulk_templated_email.html) for full documentation.
 #'
 #' @param Source &#91;required&#93; The email address that is sending the email. This email address must be
 #' either individually verified with Amazon SES, or from a domain that has
 #' been verified with Amazon SES. For information about verifying
 #' identities, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html).
 #' 
 #' If you are sending on behalf of another user and have been permitted to
 #' do so by a sending authorization policy, then you must also specify the
 #' `SourceArn` parameter. For more information about sending authorization,
 #' see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' Amazon SES does not support the SMTPUTF8 extension, as described in
-#' [RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this
-#' reason, the *local part* of a source email address (the part of the
-#' email address that precedes the @@ sign) may only contain [7-bit ASCII
+#' [RFC6531](https://www.rfc-editor.org/rfc/rfc6531). For this reason, the
+#' *local part* of a source email address (the part of the email address
+#' that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
 #' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
-#' in [RFC3492](https://datatracker.ietf.org/doc/html/rfc3492.html). The
-#' sender name (also known as the *friendly name*) may contain non-ASCII
+#' in [RFC3492](https://www.rfc-editor.org/rfc/rfc3492.html). The sender
+#' name (also known as the *friendly name*) may contain non-ASCII
 #' characters. These characters must be encoded using MIME encoded-word
 #' syntax, as described in [RFC
-#' 2047](https://datatracker.ietf.org/doc/html/rfc2047). MIME encoded-word
-#' syntax uses the following form: `=?charset?encoding?encoded-text?=`.
+#' 2047](https://www.rfc-editor.org/rfc/rfc2047). MIME encoded-word syntax
+#' uses the following form: `=?charset?encoding?encoded-text?=`.
 #' @param SourceArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
 #' that permits you to send for the email address specified in the `Source`
@@ -3247,7 +1535,7 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param ReplyToAddresses The reply-to email address(es) for the message. If the recipient replies
 #' to the message, each reply-to address will receive the reply.
 #' @param ReturnPath The email address that bounces and complaints will be forwarded to when
@@ -3272,7 +1560,7 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param ConfigurationSetName The name of the configuration set to use when you send an email using
 #' [`send_bulk_templated_email`][ses_send_bulk_templated_email].
 #' @param DefaultTags A list of tags, in the form of name/value pairs, to apply to an email
@@ -3290,65 +1578,6 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' @param Destinations &#91;required&#93; One or more `Destination` objects. All of the recipients in a
 #' `Destination` will receive the same version of the email. You can
 #' specify up to 50 `Destination` objects within a `Destinations` array.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = list(
-#'     list(
-#'       Status = "Success"|"MessageRejected"|"MailFromDomainNotVerified"|"ConfigurationSetDoesNotExist"|"TemplateDoesNotExist"|"AccountSuspended"|"AccountThrottled"|"AccountDailyQuotaExceeded"|"InvalidSendingPoolName"|"AccountSendingPaused"|"ConfigurationSetSendingPaused"|"InvalidParameterValue"|"TransientFailure"|"Failed",
-#'       Error = "string",
-#'       MessageId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_bulk_templated_email(
-#'   Source = "string",
-#'   SourceArn = "string",
-#'   ReplyToAddresses = list(
-#'     "string"
-#'   ),
-#'   ReturnPath = "string",
-#'   ReturnPathArn = "string",
-#'   ConfigurationSetName = "string",
-#'   DefaultTags = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   Template = "string",
-#'   TemplateArn = "string",
-#'   DefaultTemplateData = "string",
-#'   Destinations = list(
-#'     list(
-#'       Destination = list(
-#'         ToAddresses = list(
-#'           "string"
-#'         ),
-#'         CcAddresses = list(
-#'           "string"
-#'         ),
-#'         BccAddresses = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ReplacementTags = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       ReplacementTemplateData = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3374,44 +1603,14 @@ ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddre
 #' account in the current AWS Region and attempts to verify it
 #'
 #' @description
-#' Adds an email address to the list of identities for your Amazon SES
-#' account in the current AWS Region and attempts to verify it. As a result
-#' of executing this operation, a customized verification email is sent to
-#' the specified address.
-#' 
-#' To use this operation, you must first create a custom verification email
-#' template. For more information about creating and using custom
-#' verification email templates, see [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
-#' 
-#' You can execute this operation no more than once per second.
+#' Adds an email address to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. As a result of executing this operation, a customized verification email is sent to the specified address.
 #'
-#' @usage
-#' ses_send_custom_verification_email(EmailAddress, TemplateName,
-#'   ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/ses/send_custom_verification_email.html](https://paws-r.github.io/docs/ses/send_custom_verification_email.html) for full documentation.
 #'
 #' @param EmailAddress &#91;required&#93; The email address to verify.
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template to use when sending
 #' the verification email.
 #' @param ConfigurationSetName Name of a configuration set to use when sending the verification email.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_custom_verification_email(
-#'   EmailAddress = "string",
-#'   TemplateName = "string",
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3436,73 +1635,35 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' Composes an email message and immediately queues it for sending
 #'
 #' @description
-#' Composes an email message and immediately queues it for sending. In
-#' order to send email using the [`send_email`][ses_send_email] operation,
-#' your message must meet the following requirements:
-#' 
-#' -   The message must be sent from a verified email address or domain. If
-#'     you attempt to send email using a non-verified address or domain,
-#'     the operation will result in an "Email address not verified" error.
-#' 
-#' -   If your account is still in the Amazon SES sandbox, you may only
-#'     send to verified addresses or domains, or to email addresses
-#'     associated with the Amazon SES Mailbox Simulator. For more
-#'     information, see [Verifying Email Addresses and
-#'     Domains](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
-#'     in the *Amazon SES Developer Guide.*
-#' 
-#' -   The maximum message size is 10 MB.
-#' 
-#' -   The message must include at least one recipient email address. The
-#'     recipient address can be a To: address, a CC: address, or a BCC:
-#'     address. If a recipient email address is invalid (that is, it is not
-#'     in the format *UserName@@\[SubDomain.\]Domain.TopLevelDomain*), the
-#'     entire message will be rejected, even if the message contains other
-#'     recipients that are valid.
-#' 
-#' -   The message may not include more than 50 recipients, across the To:,
-#'     CC: and BCC: fields. If you need to send an email message to a
-#'     larger audience, you can divide your recipient list into groups of
-#'     50 or fewer, and then call the [`send_email`][ses_send_email]
-#'     operation several times to send the message to each group.
-#' 
-#' For every message that you send, the total number of recipients
-#' (including each recipient in the To:, CC: and BCC: fields) is counted
-#' against the maximum number of emails you can send in a 24-hour period
-#' (your *sending quota*). For more information about sending quotas in
-#' Amazon SES, see [Managing Your Amazon SES Sending
-#' Limits](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-quotas.html)
-#' in the *Amazon SES Developer Guide.*
+#' Composes an email message and immediately queues it for sending. In order to send email using the [`send_email`][ses_send_email] operation, your message must meet the following requirements:
 #'
-#' @usage
-#' ses_send_email(Source, Destination, Message, ReplyToAddresses,
-#'   ReturnPath, SourceArn, ReturnPathArn, Tags, ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/ses/send_email.html](https://paws-r.github.io/docs/ses/send_email.html) for full documentation.
 #'
 #' @param Source &#91;required&#93; The email address that is sending the email. This email address must be
 #' either individually verified with Amazon SES, or from a domain that has
 #' been verified with Amazon SES. For information about verifying
 #' identities, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html).
 #' 
 #' If you are sending on behalf of another user and have been permitted to
 #' do so by a sending authorization policy, then you must also specify the
 #' `SourceArn` parameter. For more information about sending authorization,
 #' see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' Amazon SES does not support the SMTPUTF8 extension, as described in
-#' [RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this
-#' reason, the *local part* of a source email address (the part of the
-#' email address that precedes the @@ sign) may only contain [7-bit ASCII
+#' [RFC6531](https://www.rfc-editor.org/rfc/rfc6531). For this reason, the
+#' *local part* of a source email address (the part of the email address
+#' that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
 #' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
-#' in [RFC3492](https://datatracker.ietf.org/doc/html/rfc3492.html). The
-#' sender name (also known as the *friendly name*) may contain non-ASCII
+#' in [RFC3492](https://www.rfc-editor.org/rfc/rfc3492.html). The sender
+#' name (also known as the *friendly name*) may contain non-ASCII
 #' characters. These characters must be encoded using MIME encoded-word
 #' syntax, as described in [RFC
-#' 2047](https://datatracker.ietf.org/doc/html/rfc2047). MIME encoded-word
-#' syntax uses the following form: `=?charset?encoding?encoded-text?=`.
+#' 2047](https://www.rfc-editor.org/rfc/rfc2047). MIME encoded-word syntax
+#' uses the following form: `=?charset?encoding?encoded-text?=`.
 #' @param Destination &#91;required&#93; The destination for this email, composed of To:, CC:, and BCC: fields.
 #' @param Message &#91;required&#93; The message to be sent.
 #' @param ReplyToAddresses The reply-to email address(es) for the message. If the recipient replies
@@ -3529,7 +1690,7 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param ReturnPathArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
 #' that permits you to use the email address specified in the `ReturnPath`
@@ -3544,106 +1705,13 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param Tags A list of tags, in the form of name/value pairs, to apply to an email
 #' that you send using [`send_email`][ses_send_email]. Tags correspond to
 #' characteristics of the email that you define, so that you can publish
 #' email sending events.
 #' @param ConfigurationSetName The name of the configuration set to use when you send an email using
 #' [`send_email`][ses_send_email].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_email(
-#'   Source = "string",
-#'   Destination = list(
-#'     ToAddresses = list(
-#'       "string"
-#'     ),
-#'     CcAddresses = list(
-#'       "string"
-#'     ),
-#'     BccAddresses = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Message = list(
-#'     Subject = list(
-#'       Data = "string",
-#'       Charset = "string"
-#'     ),
-#'     Body = list(
-#'       Text = list(
-#'         Data = "string",
-#'         Charset = "string"
-#'       ),
-#'       Html = list(
-#'         Data = "string",
-#'         Charset = "string"
-#'       )
-#'     )
-#'   ),
-#'   ReplyToAddresses = list(
-#'     "string"
-#'   ),
-#'   ReturnPath = "string",
-#'   SourceArn = "string",
-#'   ReturnPathArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example sends a formatted email:
-#' svc$send_email(
-#'   Destination = list(
-#'     BccAddresses = list(),
-#'     CcAddresses = list(
-#'       "recipient3@example.com"
-#'     ),
-#'     ToAddresses = list(
-#'       "recipient1@example.com",
-#'       "recipient2@example.com"
-#'     )
-#'   ),
-#'   Message = list(
-#'     Body = list(
-#'       Html = list(
-#'         Charset = "UTF-8",
-#'         Data = "This message body contains HTML formatting. It can, for exa..."
-#'       ),
-#'       Text = list(
-#'         Charset = "UTF-8",
-#'         Data = "This is the message body in text format."
-#'       )
-#'     ),
-#'     Subject = list(
-#'       Charset = "UTF-8",
-#'       Data = "Test email"
-#'     )
-#'   ),
-#'   ReplyToAddresses = list(),
-#'   ReturnPath = "",
-#'   ReturnPathArn = "",
-#'   Source = "sender@example.com",
-#'   SourceArn = ""
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3669,120 +1737,26 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #'
 #' @description
 #' Composes an email message and immediately queues it for sending.
-#' 
-#' This operation is more flexible than the [`send_email`][ses_send_email]
-#' API operation. When you use the [`send_raw_email`][ses_send_raw_email]
-#' operation, you can specify the headers of the message as well as its
-#' content. This flexibility is useful, for example, when you want to send
-#' a multipart MIME email (such a message that contains both a text and an
-#' HTML version). You can also use this operation to send messages that
-#' include attachments.
-#' 
-#' The [`send_raw_email`][ses_send_raw_email] operation has the following
-#' requirements:
-#' 
-#' -   You can only send email from [verified email addresses or
-#'     domains](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
-#'     If you try to send email from an address that isn't verified, the
-#'     operation results in an "Email address not verified" error.
-#' 
-#' -   If your account is still in the [Amazon SES
-#'     sandbox](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html),
-#'     you can only send email to other verified addresses in your account,
-#'     or to addresses that are associated with the [Amazon SES mailbox
-#'     simulator](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-simulator.html).
-#' 
-#' -   The maximum message size, including attachments, is 10 MB.
-#' 
-#' -   Each message has to include at least one recipient address. A
-#'     recipient address includes any address on the To:, CC:, or BCC:
-#'     lines.
-#' 
-#' -   If you send a single message to more than one recipient address, and
-#'     one of the recipient addresses isn't in a valid format (that is,
-#'     it's not in the format
-#'     *UserName@@\[SubDomain.\]Domain.TopLevelDomain*), Amazon SES rejects
-#'     the entire message, even if the other addresses are valid.
-#' 
-#' -   Each message can include up to 50 recipient addresses across the
-#'     To:, CC:, or BCC: lines. If you need to send a single message to
-#'     more than 50 recipients, you have to split the list of recipient
-#'     addresses into groups of less than 50 recipients, and send separate
-#'     messages to each group.
-#' 
-#' -   Amazon SES allows you to specify 8-bit Content-Transfer-Encoding for
-#'     MIME message parts. However, if Amazon SES has to modify the
-#'     contents of your message (for example, if you use open and click
-#'     tracking), 8-bit content isn't preserved. For this reason, we highly
-#'     recommend that you encode all content that isn't 7-bit ASCII. For
-#'     more information, see [MIME
-#'     Encoding](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html#send-email-mime-encoding)
-#'     in the *Amazon SES Developer Guide*.
-#' 
-#' Additionally, keep the following considerations in mind when using the
-#' [`send_raw_email`][ses_send_raw_email] operation:
-#' 
-#' -   Although you can customize the message headers when using the
-#'     [`send_raw_email`][ses_send_raw_email] operation, Amazon SES will
-#'     automatically apply its own `Message-ID` and `Date` headers; if you
-#'     passed these headers when creating the message, they will be
-#'     overwritten by the values that Amazon SES provides.
-#' 
-#' -   If you are using sending authorization to send on behalf of another
-#'     user, [`send_raw_email`][ses_send_raw_email] enables you to specify
-#'     the cross-account identity for the email's Source, From, and
-#'     Return-Path parameters in one of two ways: you can pass optional
-#'     parameters `SourceArn`, `FromArn`, and/or `ReturnPathArn` to the
-#'     API, or you can include the following X-headers in the header of
-#'     your raw email:
-#' 
-#'     -   `X-SES-SOURCE-ARN`
-#' 
-#'     -   `X-SES-FROM-ARN`
-#' 
-#'     -   `X-SES-RETURN-PATH-ARN`
-#' 
-#'     Don't include these X-headers in the DKIM signature. Amazon SES
-#'     removes these before it sends the email.
-#' 
-#'     If you only specify the `SourceIdentityArn` parameter, Amazon SES
-#'     sets the From and Return-Path addresses to the same identity that
-#'     you specified.
-#' 
-#'     For more information about sending authorization, see the [Using
-#'     Sending Authorization with Amazon
-#'     SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html)
-#'     in the *Amazon SES Developer Guide.*
-#' 
-#' -   For every message that you send, the total number of recipients
-#'     (including each recipient in the To:, CC: and BCC: fields) is
-#'     counted against the maximum number of emails you can send in a
-#'     24-hour period (your *sending quota*). For more information about
-#'     sending quotas in Amazon SES, see [Managing Your Amazon SES Sending
-#'     Limits](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-quotas.html)
-#'     in the *Amazon SES Developer Guide.*
 #'
-#' @usage
-#' ses_send_raw_email(Source, Destinations, RawMessage, FromArn, SourceArn,
-#'   ReturnPathArn, Tags, ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/ses/send_raw_email.html](https://paws-r.github.io/docs/ses/send_raw_email.html) for full documentation.
 #'
 #' @param Source The identity's email address. If you do not provide a value for this
 #' parameter, you must specify a "From" address in the raw text of the
 #' message. (You can also specify both.)
 #' 
 #' Amazon SES does not support the SMTPUTF8 extension, as described
-#' in[RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this
-#' reason, the *local part* of a source email address (the part of the
-#' email address that precedes the @@ sign) may only contain [7-bit ASCII
+#' in[RFC6531](https://www.rfc-editor.org/rfc/rfc6531). For this reason,
+#' the *local part* of a source email address (the part of the email
+#' address that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
 #' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
-#' in [RFC3492](https://datatracker.ietf.org/doc/html/rfc3492.html). The
-#' sender name (also known as the *friendly name*) may contain non-ASCII
+#' in [RFC3492](https://www.rfc-editor.org/rfc/rfc3492.html). The sender
+#' name (also known as the *friendly name*) may contain non-ASCII
 #' characters. These characters must be encoded using MIME encoded-word
 #' syntax, as described in [RFC
-#' 2047](https://datatracker.ietf.org/doc/html/rfc2047). MIME encoded-word
-#' syntax uses the following form: `=?charset?encoding?encoded-text?=`.
+#' 2047](https://www.rfc-editor.org/rfc/rfc2047). MIME encoded-word syntax
+#' uses the following form: `=?charset?encoding?encoded-text?=`.
 #' 
 #' If you specify the `Source` parameter and have feedback forwarding
 #' enabled, then bounces and complaints will be sent to this email address.
@@ -3802,21 +1776,21 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' 
 #' -   Attachments must be of a content type that Amazon SES supports. For
 #'     a list on unsupported content types, see [Unsupported Attachment
-#'     Types](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html#send-email-raw-mime)
-#'     in the *Amazon SES Developer Guide*.
+#'     Types](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html) in
+#'     the *Amazon SES Developer Guide*.
 #' 
 #' -   The entire message must be base64-encoded.
 #' 
 #' -   If any of the MIME parts in your message contain content that is
 #'     outside of the 7-bit ASCII character range, we highly recommend that
 #'     you encode that content. For more information, see [Sending Raw
-#'     Email](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html)
+#'     Email](https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html)
 #'     in the *Amazon SES Developer Guide*.
 #' 
 #' -   Per [RFC
-#'     5321](https://datatracker.ietf.org/doc/html/rfc5321#section-4.5.3.1.6),
-#'     the maximum length of each line of text, including the &lt;CRLF&gt;,
-#'     must not exceed 1,000 characters.
+#'     5321](https://www.rfc-editor.org/rfc/rfc5321#section-4.5.3.1.6), the
+#'     maximum length of each line of text, including the \<CRLF\>, must
+#'     not exceed 1,000 characters.
 #' @param FromArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
 #' that permits you to specify a particular "From" address in the header of
@@ -3830,7 +1804,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' For information about when to use this parameter, see the description of
 #' [`send_raw_email`][ses_send_raw_email] in this guide, or see the [Amazon
 #' SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-delegate-sender-tasks-email.html).
 #' @param SourceArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
 #' that permits you to send for the email address specified in the `Source`
@@ -3851,7 +1825,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' For information about when to use this parameter, see the description of
 #' [`send_raw_email`][ses_send_raw_email] in this guide, or see the [Amazon
 #' SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-delegate-sender-tasks-email.html).
 #' @param ReturnPathArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
 #' that permits you to use the email address specified in the `ReturnPath`
@@ -3872,59 +1846,13 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' For information about when to use this parameter, see the description of
 #' [`send_raw_email`][ses_send_raw_email] in this guide, or see the [Amazon
 #' SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-delegate-sender-tasks-email.html).
 #' @param Tags A list of tags, in the form of name/value pairs, to apply to an email
 #' that you send using [`send_raw_email`][ses_send_raw_email]. Tags
 #' correspond to characteristics of the email that you define, so that you
 #' can publish email sending events.
 #' @param ConfigurationSetName The name of the configuration set to use when you send an email using
 #' [`send_raw_email`][ses_send_raw_email].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_raw_email(
-#'   Source = "string",
-#'   Destinations = list(
-#'     "string"
-#'   ),
-#'   RawMessage = list(
-#'     Data = raw
-#'   ),
-#'   FromArn = "string",
-#'   SourceArn = "string",
-#'   ReturnPathArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example sends an email with an attachment:
-#' svc$send_raw_email(
-#'   Destinations = list(),
-#'   FromArn = "",
-#'   RawMessage = list(
-#'     Data = "From: sender@example.com\\nTo: recipient@example.com\\nSubject:..."
-#'   ),
-#'   ReturnPathArn = "",
-#'   Source = "",
-#'   SourceArn = ""
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3950,85 +1878,35 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' it for sending
 #'
 #' @description
-#' Composes an email message using an email template and immediately queues
-#' it for sending.
-#' 
-#' In order to send email using the
-#' [`send_templated_email`][ses_send_templated_email] operation, your call
-#' to the API must meet the following requirements:
-#' 
-#' -   The call must refer to an existing email template. You can create
-#'     email templates using the [`create_template`][ses_create_template]
-#'     operation.
-#' 
-#' -   The message must be sent from a verified email address or domain.
-#' 
-#' -   If your account is still in the Amazon SES sandbox, you may only
-#'     send to verified addresses or domains, or to email addresses
-#'     associated with the Amazon SES Mailbox Simulator. For more
-#'     information, see [Verifying Email Addresses and
-#'     Domains](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
-#'     in the *Amazon SES Developer Guide.*
-#' 
-#' -   The maximum message size is 10 MB.
-#' 
-#' -   Calls to the [`send_templated_email`][ses_send_templated_email]
-#'     operation may only include one `Destination` parameter. A
-#'     destination is a set of recipients who will receive the same version
-#'     of the email. The `Destination` parameter can include up to 50
-#'     recipients, across the To:, CC: and BCC: fields.
-#' 
-#' -   The `Destination` parameter must include at least one recipient
-#'     email address. The recipient address can be a To: address, a CC:
-#'     address, or a BCC: address. If a recipient email address is invalid
-#'     (that is, it is not in the format
-#'     *UserName@@\[SubDomain.\]Domain.TopLevelDomain*), the entire message
-#'     will be rejected, even if the message contains other recipients that
-#'     are valid.
-#' 
-#' If your call to the [`send_templated_email`][ses_send_templated_email]
-#' operation includes all of the required parameters, Amazon SES accepts it
-#' and returns a Message ID. However, if Amazon SES can't render the email
-#' because the template contains errors, it doesn't send the email.
-#' Additionally, because it already accepted the message, Amazon SES
-#' doesn't return a message stating that it was unable to send the email.
-#' 
-#' For these reasons, we highly recommend that you set up Amazon SES to
-#' send you notifications when Rendering Failure events occur. For more
-#' information, see [Sending Personalized Email Using the Amazon SES
-#' API](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html)
-#' in the *Amazon Simple Email Service Developer Guide*.
+#' Composes an email message using an email template and immediately queues it for sending.
 #'
-#' @usage
-#' ses_send_templated_email(Source, Destination, ReplyToAddresses,
-#'   ReturnPath, SourceArn, ReturnPathArn, Tags, ConfigurationSetName,
-#'   Template, TemplateArn, TemplateData)
+#' See [https://paws-r.github.io/docs/ses/send_templated_email.html](https://paws-r.github.io/docs/ses/send_templated_email.html) for full documentation.
 #'
 #' @param Source &#91;required&#93; The email address that is sending the email. This email address must be
 #' either individually verified with Amazon SES, or from a domain that has
 #' been verified with Amazon SES. For information about verifying
 #' identities, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html).
 #' 
 #' If you are sending on behalf of another user and have been permitted to
 #' do so by a sending authorization policy, then you must also specify the
 #' `SourceArn` parameter. For more information about sending authorization,
 #' see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' Amazon SES does not support the SMTPUTF8 extension, as described in
-#' [RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this
-#' reason, the *local part* of a source email address (the part of the
-#' email address that precedes the @@ sign) may only contain [7-bit ASCII
+#' [RFC6531](https://www.rfc-editor.org/rfc/rfc6531). For this reason, the
+#' *local part* of a source email address (the part of the email address
+#' that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
 #' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
-#' in [RFC3492](https://datatracker.ietf.org/doc/html/rfc3492.html). The
-#' sender name (also known as the *friendly name*) may contain non-ASCII
+#' in [RFC3492](https://www.rfc-editor.org/rfc/rfc3492.html). The sender
+#' name (also known as the *friendly name*) may contain non-ASCII
 #' characters. These characters must be encoded using MIME encoded-word
 #' syntax, as described in[RFC
-#' 2047](https://datatracker.ietf.org/doc/html/rfc2047). MIME encoded-word
-#' syntax uses the following form: `=?charset?encoding?encoded-text?=`.
+#' 2047](https://www.rfc-editor.org/rfc/rfc2047). MIME encoded-word syntax
+#' uses the following form: `=?charset?encoding?encoded-text?=`.
 #' @param Destination &#91;required&#93; The destination for this email, composed of To:, CC:, and BCC: fields. A
 #' Destination can include up to 50 recipients across these three fields.
 #' @param ReplyToAddresses The reply-to email address(es) for the message. If the recipient replies
@@ -4055,7 +1933,7 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param ReturnPathArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
 #' that permits you to use the email address specified in the `ReturnPath`
@@ -4070,7 +1948,7 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' 
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param Tags A list of tags, in the form of name/value pairs, to apply to an email
 #' that you send using [`send_templated_email`][ses_send_templated_email].
 #' Tags correspond to characteristics of the email that you define, so that
@@ -4082,48 +1960,6 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' @param TemplateData &#91;required&#93; A list of replacement values to apply to the template. This parameter is
 #' a JSON object, typically consisting of key-value pairs in which the keys
 #' correspond to replacement tags in the email template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_templated_email(
-#'   Source = "string",
-#'   Destination = list(
-#'     ToAddresses = list(
-#'       "string"
-#'     ),
-#'     CcAddresses = list(
-#'       "string"
-#'     ),
-#'     BccAddresses = list(
-#'       "string"
-#'     )
-#'   ),
-#'   ReplyToAddresses = list(
-#'     "string"
-#'   ),
-#'   ReturnPath = "string",
-#'   SourceArn = "string",
-#'   ReturnPathArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ConfigurationSetName = "string",
-#'   Template = "string",
-#'   TemplateArn = "string",
-#'   TemplateData = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4149,39 +1985,11 @@ ses_send_templated_email <- function(Source, Destination, ReplyToAddresses = NUL
 #'
 #' @description
 #' Sets the specified receipt rule set as the active receipt rule set.
-#' 
-#' To disable your email-receiving through Amazon SES completely, you can
-#' call this API with RuleSetName set to null.
-#' 
-#' For information about managing receipt rule sets, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_set_active_receipt_rule_set(RuleSetName)
+#' See [https://paws-r.github.io/docs/ses/set_active_receipt_rule_set.html](https://paws-r.github.io/docs/ses/set_active_receipt_rule_set.html) for full documentation.
 #'
 #' @param RuleSetName The name of the receipt rule set to make active. Setting this value to
 #' null disables all email receiving.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_active_receipt_rule_set(
-#'   RuleSetName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example sets the active receipt rule set:
-#' svc$set_active_receipt_rule_set(
-#'   RuleSetName = "RuleSetToActivate"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4206,53 +2014,13 @@ ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
 #' Enables or disables Easy DKIM signing of email sent from an identity
 #'
 #' @description
-#' Enables or disables Easy DKIM signing of email sent from an identity. If
-#' Easy DKIM signing is enabled for a domain, then Amazon SES uses DKIM to
-#' sign all email that it sends from addresses on that domain. If Easy DKIM
-#' signing is enabled for an email address, then Amazon SES uses DKIM to
-#' sign all email it sends from that address.
-#' 
-#' For email addresses (for example, `user@@example.com`), you can only
-#' enable DKIM signing if the corresponding domain (in this case,
-#' `example.com`) has been set up to use Easy DKIM.
-#' 
-#' You can enable DKIM signing for an identity at any time after you start
-#' the verification process for the identity, even if the verification
-#' process isn't complete.
-#' 
-#' You can execute this operation no more than once per second.
-#' 
-#' For more information about Easy DKIM signing, go to the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
+#' Enables or disables Easy DKIM signing of email sent from an identity. If Easy DKIM signing is enabled for a domain, then Amazon SES uses DKIM to sign all email that it sends from addresses on that domain. If Easy DKIM signing is enabled for an email address, then Amazon SES uses DKIM to sign all email it sends from that address.
 #'
-#' @usage
-#' ses_set_identity_dkim_enabled(Identity, DkimEnabled)
+#' See [https://paws-r.github.io/docs/ses/set_identity_dkim_enabled.html](https://paws-r.github.io/docs/ses/set_identity_dkim_enabled.html) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity for which DKIM signing should be enabled or disabled.
 #' @param DkimEnabled &#91;required&#93; Sets whether DKIM signing is enabled for an identity. Set to `true` to
 #' enable DKIM signing for this identity; `false` to disable it.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_identity_dkim_enabled(
-#'   Identity = "string",
-#'   DkimEnabled = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example configures Amazon SES to Easy DKIM-sign the email
-#' # sent from an identity:
-#' svc$set_identity_dkim_enabled(
-#'   DkimEnabled = TRUE,
-#'   Identity = "user@example.com"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4278,24 +2046,9 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
 #' whether Amazon SES forwards bounce and complaint notifications as email
 #'
 #' @description
-#' Given an identity (an email address or a domain), enables or disables
-#' whether Amazon SES forwards bounce and complaint notifications as email.
-#' Feedback forwarding can only be disabled when Amazon Simple Notification
-#' Service (Amazon SNS) topics are specified for both bounces and
-#' complaints.
-#' 
-#' Feedback forwarding does not apply to delivery notifications. Delivery
-#' notifications are only available through Amazon SNS.
-#' 
-#' You can execute this operation no more than once per second.
-#' 
-#' For more information about using notifications with Amazon SES, see the
-#' [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
+#' Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email. Feedback forwarding can only be disabled when Amazon Simple Notification Service (Amazon SNS) topics are specified for both bounces and complaints.
 #'
-#' @usage
-#' ses_set_identity_feedback_forwarding_enabled(Identity,
-#'   ForwardingEnabled)
+#' See [https://paws-r.github.io/docs/ses/set_identity_feedback_forwarding_enabled.html](https://paws-r.github.io/docs/ses/set_identity_feedback_forwarding_enabled.html) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity for which to set bounce and complaint notification
 #' forwarding. Examples: `user@@example.com`, `example.com`.
@@ -4306,27 +2059,6 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
 #' publish bounce and complaint notifications only through Amazon SNS. This
 #' value can only be set to `false` when Amazon SNS topics are set for both
 #' `Bounce` and `Complaint` notification types.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_identity_feedback_forwarding_enabled(
-#'   Identity = "string",
-#'   ForwardingEnabled = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example configures Amazon SES to forward an identity's
-#' # bounces and complaints via email:
-#' svc$set_identity_feedback_forwarding_enabled(
-#'   ForwardingEnabled = TRUE,
-#'   Identity = "user@example.com"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4353,19 +2085,9 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
 #' Notification Service (Amazon SNS) notifications of a specified type
 #'
 #' @description
-#' Given an identity (an email address or a domain), sets whether Amazon
-#' SES includes the original email headers in the Amazon Simple
-#' Notification Service (Amazon SNS) notifications of a specified type.
-#' 
-#' You can execute this operation no more than once per second.
-#' 
-#' For more information about using notifications with Amazon SES, see the
-#' [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
+#' Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type.
 #'
-#' @usage
-#' ses_set_identity_headers_in_notifications_enabled(Identity,
-#'   NotificationType, Enabled)
+#' See [https://paws-r.github.io/docs/ses/set_identity_headers_in_notifications_enabled.html](https://paws-r.github.io/docs/ses/set_identity_headers_in_notifications_enabled.html) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity for which to enable or disable headers in notifications.
 #' Examples: `user@@example.com`, `example.com`.
@@ -4379,29 +2101,6 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
 #' 
 #' This value can only be set when `NotificationType` is already set to use
 #' a particular Amazon SNS topic.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_identity_headers_in_notifications_enabled(
-#'   Identity = "string",
-#'   NotificationType = "Bounce"|"Complaint"|"Delivery",
-#'   Enabled = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example configures Amazon SES to include the original
-#' # email headers in the Amazon SNS bounce notifications for an identity:
-#' svc$set_identity_headers_in_notifications_enabled(
-#'   Enabled = TRUE,
-#'   Identity = "user@example.com",
-#'   NotificationType = "Bounce"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4427,21 +2126,9 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
 #' identity (an email address or a domain)
 #'
 #' @description
-#' Enables or disables the custom MAIL FROM domain setup for a verified
-#' identity (an email address or a domain).
-#' 
-#' To send emails using the specified MAIL FROM domain, you must add an MX
-#' record to your MAIL FROM domain's DNS settings. If you want your emails
-#' to pass Sender Policy Framework (SPF) checks, you must also add or
-#' update an SPF record. For more information, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
-#' 
-#' You can execute this operation no more than once per second.
+#' Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain).
 #'
-#' @usage
-#' ses_set_identity_mail_from_domain(Identity, MailFromDomain,
-#'   BehaviorOnMXFailure)
+#' See [https://paws-r.github.io/docs/ses/set_identity_mail_from_domain.html](https://paws-r.github.io/docs/ses/set_identity_mail_from_domain.html) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The verified identity for which you want to enable or disable the
 #' specified custom MAIL FROM domain.
@@ -4450,9 +2137,9 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
 #' not be used in a "From" address if the MAIL FROM domain is the
 #' destination of email feedback forwarding (for more information, see the
 #' [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html)),
-#' and 3) not be used to receive emails. A value of `null` disables the
-#' custom MAIL FROM setting for the identity.
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/mail-from.html)), and
+#' 3) not be used to receive emails. A value of `null` disables the custom
+#' MAIL FROM setting for the identity.
 #' @param BehaviorOnMXFailure The action that you want Amazon SES to take if it cannot successfully
 #' read the required MX record when you send an email. If you choose
 #' `UseDefaultValue`, Amazon SES will use amazonses.com (or a subdomain of
@@ -4462,29 +2149,6 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
 #' The action specified in `BehaviorOnMXFailure` is taken when the custom
 #' MAIL FROM domain setup is in the `Pending`, `Failed`, and
 #' `TemporaryFailure` states.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_identity_mail_from_domain(
-#'   Identity = "string",
-#'   MailFromDomain = "string",
-#'   BehaviorOnMXFailure = "UseDefaultValue"|"RejectMessage"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example configures Amazon SES to use a custom MAIL FROM
-#' # domain for an identity:
-#' svc$set_identity_mail_from_domain(
-#'   BehaviorOnMXFailure = "UseDefaultValue",
-#'   Identity = "user@example.com",
-#'   MailFromDomain = "bounces.example.com"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4510,23 +2174,9 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
 #' when delivering notifications
 #'
 #' @description
-#' Sets an Amazon Simple Notification Service (Amazon SNS) topic to use
-#' when delivering notifications. When you use this operation, you specify
-#' a verified identity, such as an email address or domain. When you send
-#' an email that uses the chosen identity in the Source field, Amazon SES
-#' sends notifications to the topic you specified. You can send bounce,
-#' complaint, or delivery notifications (or any combination of the three)
-#' to the Amazon SNS topic that you specify.
-#' 
-#' You can execute this operation no more than once per second.
-#' 
-#' For more information about feedback notification, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
+#' Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications. When you use this operation, you specify a verified identity, such as an email address or domain. When you send an email that uses the chosen identity in the Source field, Amazon SES sends notifications to the topic you specified. You can send bounce, complaint, or delivery notifications (or any combination of the three) to the Amazon SNS topic that you specify.
 #'
-#' @usage
-#' ses_set_identity_notification_topic(Identity, NotificationType,
-#'   SnsTopic)
+#' See [https://paws-r.github.io/docs/ses/set_identity_notification_topic.html](https://paws-r.github.io/docs/ses/set_identity_notification_topic.html) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity (email address or domain) that you want to set the Amazon
 #' SNS topic for.
@@ -4542,30 +2192,6 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
 #' @param SnsTopic The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter
 #' is omitted from the request or a null value is passed, `SnsTopic` is
 #' cleared and publishing is disabled.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_identity_notification_topic(
-#'   Identity = "string",
-#'   NotificationType = "Bounce"|"Complaint"|"Delivery",
-#'   SnsTopic = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example sets the Amazon SNS topic to which Amazon SES will
-#' # publish bounce, complaint, and/or delivery notifications for emails sent
-#' # with the specified identity as the Source:
-#' svc$set_identity_notification_topic(
-#'   Identity = "user@example.com",
-#'   NotificationType = "Bounce",
-#'   SnsTopic = "arn:aws:sns:us-west-2:111122223333:MyTopic"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4591,44 +2217,14 @@ ses_set_identity_notification_topic <- function(Identity, NotificationType, SnsT
 #'
 #' @description
 #' Sets the position of the specified receipt rule in the receipt rule set.
-#' 
-#' For information about managing receipt rules, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_set_receipt_rule_position(RuleSetName, RuleName, After)
+#' See [https://paws-r.github.io/docs/ses/set_receipt_rule_position.html](https://paws-r.github.io/docs/ses/set_receipt_rule_position.html) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that contains the receipt rule to
 #' reposition.
 #' @param RuleName &#91;required&#93; The name of the receipt rule to reposition.
 #' @param After The name of the receipt rule after which to place the specified receipt
 #' rule.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_receipt_rule_position(
-#'   RuleSetName = "string",
-#'   RuleName = "string",
-#'   After = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example sets the position of a receipt rule in a receipt
-#' # rule set:
-#' svc$set_receipt_rule_position(
-#'   After = "PutRuleAfterThisRule",
-#'   RuleName = "RuleToReposition",
-#'   RuleSetName = "MyRuleSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4654,34 +2250,14 @@ ses_set_receipt_rule_position <- function(RuleSetName, RuleName, After = NULL) {
 #' template and a set of replacement data
 #'
 #' @description
-#' Creates a preview of the MIME content of an email when provided with a
-#' template and a set of replacement data.
-#' 
-#' You can execute this operation no more than once per second.
+#' Creates a preview of the MIME content of an email when provided with a template and a set of replacement data.
 #'
-#' @usage
-#' ses_test_render_template(TemplateName, TemplateData)
+#' See [https://paws-r.github.io/docs/ses/test_render_template.html](https://paws-r.github.io/docs/ses/test_render_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the template that you want to render.
 #' @param TemplateData &#91;required&#93; A list of replacement values to apply to the template. This parameter is
 #' a JSON object, typically consisting of key-value pairs in which the keys
 #' correspond to replacement tags in the email template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RenderedTemplate = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$test_render_template(
-#'   TemplateName = "string",
-#'   TemplateData = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4707,37 +2283,12 @@ ses_test_render_template <- function(TemplateName, TemplateData) {
 #' in the current AWS Region
 #'
 #' @description
-#' Enables or disables email sending across your entire Amazon SES account
-#' in the current AWS Region. You can use this operation in conjunction
-#' with Amazon CloudWatch alarms to temporarily pause email sending across
-#' your Amazon SES account in a given AWS Region when reputation metrics
-#' (such as your bounce or complaint rates) reach certain thresholds.
-#' 
-#' You can execute this operation no more than once per second.
+#' Enables or disables email sending across your entire Amazon SES account in the current AWS Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending across your Amazon SES account in a given AWS Region when reputation metrics (such as your bounce or complaint rates) reach certain thresholds.
 #'
-#' @usage
-#' ses_update_account_sending_enabled(Enabled)
+#' See [https://paws-r.github.io/docs/ses/update_account_sending_enabled.html](https://paws-r.github.io/docs/ses/update_account_sending_enabled.html) for full documentation.
 #'
 #' @param Enabled Describes whether email sending is enabled or disabled for your Amazon
 #' SES account in the current AWS Region.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_account_sending_enabled(
-#'   Enabled = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example updated the sending status for this account.
-#' svc$update_account_sending_enabled(
-#'   Enabled = TRUE
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4762,62 +2313,14 @@ ses_update_account_sending_enabled <- function(Enabled = NULL) {
 #' Updates the event destination of a configuration set
 #'
 #' @description
-#' Updates the event destination of a configuration set. Event destinations
-#' are associated with configuration sets, which enable you to publish
-#' email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or
-#' Amazon Simple Notification Service (Amazon SNS). For information about
-#' using configuration sets, see [Monitoring Your Amazon SES Sending
-#' Activity](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html)
-#' in the *Amazon SES Developer Guide.*
-#' 
-#' When you create or update an event destination, you must provide one,
-#' and only one, destination. The destination can be Amazon CloudWatch,
-#' Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon
-#' SNS).
-#' 
-#' You can execute this operation no more than once per second.
+#' Updates the event destination of a configuration set. Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about using configuration sets, see [Monitoring Your Amazon SES Sending Activity](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html) in the *Amazon SES Developer Guide.*
 #'
-#' @usage
-#' ses_update_configuration_set_event_destination(ConfigurationSetName,
-#'   EventDestination)
+#' See [https://paws-r.github.io/docs/ses/update_configuration_set_event_destination.html](https://paws-r.github.io/docs/ses/update_configuration_set_event_destination.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination
 #' that you want to update.
 #' @param EventDestination &#91;required&#93; The event destination object that you want to apply to the specified
 #' configuration set.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_configuration_set_event_destination(
-#'   ConfigurationSetName = "string",
-#'   EventDestination = list(
-#'     Name = "string",
-#'     Enabled = TRUE|FALSE,
-#'     MatchingEventTypes = list(
-#'       "send"|"reject"|"bounce"|"complaint"|"delivery"|"open"|"click"|"renderingFailure"
-#'     ),
-#'     KinesisFirehoseDestination = list(
-#'       IAMRoleARN = "string",
-#'       DeliveryStreamARN = "string"
-#'     ),
-#'     CloudWatchDestination = list(
-#'       DimensionConfigurations = list(
-#'         list(
-#'           DimensionName = "string",
-#'           DimensionValueSource = "messageTag"|"emailHeader"|"linkTag",
-#'           DefaultDimensionValue = "string"
-#'         )
-#'       )
-#'     ),
-#'     SNSDestination = list(
-#'       TopicARN = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4843,42 +2346,14 @@ ses_update_configuration_set_event_destination <- function(ConfigurationSetName,
 #' using a specific configuration set in a given AWS Region
 #'
 #' @description
-#' Enables or disables the publishing of reputation metrics for emails sent
-#' using a specific configuration set in a given AWS Region. Reputation
-#' metrics include bounce and complaint rates. These metrics are published
-#' to Amazon CloudWatch. By using CloudWatch, you can create alarms when
-#' bounce or complaint rates exceed certain thresholds.
-#' 
-#' You can execute this operation no more than once per second.
+#' Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set in a given AWS Region. Reputation metrics include bounce and complaint rates. These metrics are published to Amazon CloudWatch. By using CloudWatch, you can create alarms when bounce or complaint rates exceed certain thresholds.
 #'
-#' @usage
-#' ses_update_configuration_set_reputation_metrics_enabled(
-#'   ConfigurationSetName, Enabled)
+#' See [https://paws-r.github.io/docs/ses/update_configuration_set_reputation_metrics_enabled.html](https://paws-r.github.io/docs/ses/update_configuration_set_reputation_metrics_enabled.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to update.
 #' @param Enabled &#91;required&#93; Describes whether or not Amazon SES will publish reputation metrics for
 #' the configuration set, such as bounce and complaint rates, to Amazon
 #' CloudWatch.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_configuration_set_reputation_metrics_enabled(
-#'   ConfigurationSetName = "string",
-#'   Enabled = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Set the reputationMetricsEnabled flag for a specific configuration set.
-#' svc$update_configuration_set_reputation_metrics_enabled(
-#'   ConfigurationSetName = "foo",
-#'   Enabled = TRUE
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4904,42 +2379,13 @@ ses_update_configuration_set_reputation_metrics_enabled <- function(Configuratio
 #' configuration set in a given AWS Region
 #'
 #' @description
-#' Enables or disables email sending for messages sent using a specific
-#' configuration set in a given AWS Region. You can use this operation in
-#' conjunction with Amazon CloudWatch alarms to temporarily pause email
-#' sending for a configuration set when the reputation metrics for that
-#' configuration set (such as your bounce on complaint rate) exceed certain
-#' thresholds.
-#' 
-#' You can execute this operation no more than once per second.
+#' Enables or disables email sending for messages sent using a specific configuration set in a given AWS Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending for a configuration set when the reputation metrics for that configuration set (such as your bounce on complaint rate) exceed certain thresholds.
 #'
-#' @usage
-#' ses_update_configuration_set_sending_enabled(ConfigurationSetName,
-#'   Enabled)
+#' See [https://paws-r.github.io/docs/ses/update_configuration_set_sending_enabled.html](https://paws-r.github.io/docs/ses/update_configuration_set_sending_enabled.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to update.
 #' @param Enabled &#91;required&#93; Describes whether email sending is enabled or disabled for the
 #' configuration set.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_configuration_set_sending_enabled(
-#'   ConfigurationSetName = "string",
-#'   Enabled = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Set the sending enabled flag for a specific configuration set.
-#' svc$update_configuration_set_sending_enabled(
-#'   ConfigurationSetName = "foo",
-#'   Enabled = TRUE
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4965,35 +2411,13 @@ ses_update_configuration_set_sending_enabled <- function(ConfigurationSetName, E
 #' for open and click event tracking
 #'
 #' @description
-#' Modifies an association between a configuration set and a custom domain
-#' for open and click event tracking.
-#' 
-#' By default, images and links used for tracking open and click events are
-#' hosted on domains operated by Amazon SES. You can configure a subdomain
-#' of your own to handle these events. For information about using custom
-#' domains, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html).
+#' Modifies an association between a configuration set and a custom domain for open and click event tracking.
 #'
-#' @usage
-#' ses_update_configuration_set_tracking_options(ConfigurationSetName,
-#'   TrackingOptions)
+#' See [https://paws-r.github.io/docs/ses/update_configuration_set_tracking_options.html](https://paws-r.github.io/docs/ses/update_configuration_set_tracking_options.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set for which you want to update the
 #' custom tracking domain.
 #' @param TrackingOptions &#91;required&#93; 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_configuration_set_tracking_options(
-#'   ConfigurationSetName = "string",
-#'   TrackingOptions = list(
-#'     CustomRedirectDomain = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5019,18 +2443,8 @@ ses_update_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #'
 #' @description
 #' Updates an existing custom verification email template.
-#' 
-#' For more information about custom verification email templates, see
-#' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
-#' in the *Amazon SES Developer Guide*.
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_update_custom_verification_email_template(TemplateName,
-#'   FromEmailAddress, TemplateSubject, TemplateContent,
-#'   SuccessRedirectionURL, FailureRedirectionURL)
+#' See [https://paws-r.github.io/docs/ses/update_custom_verification_email_template.html](https://paws-r.github.io/docs/ses/update_custom_verification_email_template.html) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
 #' update.
@@ -5040,27 +2454,12 @@ ses_update_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' email must be less than 10 MB. The message body may contain HTML, with
 #' some limitations. For more information, see [Custom Verification Email
 #' Frequently Asked
-#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html#custom-verification-emails-faq)
+#' Questions](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html#custom-verification-emails-faq)
 #' in the *Amazon SES Developer Guide*.
 #' @param SuccessRedirectionURL The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.
 #' @param FailureRedirectionURL The URL that the recipient of the verification email is sent to if his
 #' or her address is not successfully verified.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_custom_verification_email_template(
-#'   TemplateName = "string",
-#'   FromEmailAddress = "string",
-#'   TemplateSubject = "string",
-#'   TemplateContent = "string",
-#'   SuccessRedirectionURL = "string",
-#'   FailureRedirectionURL = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5086,97 +2485,11 @@ ses_update_custom_verification_email_template <- function(TemplateName, FromEmai
 #'
 #' @description
 #' Updates a receipt rule.
-#' 
-#' For information about managing receipt rules, see the [Amazon SES
-#' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_update_receipt_rule(RuleSetName, Rule)
+#' See [https://paws-r.github.io/docs/ses/update_receipt_rule.html](https://paws-r.github.io/docs/ses/update_receipt_rule.html) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that the receipt rule belongs to.
 #' @param Rule &#91;required&#93; A data structure that contains the updated receipt rule information.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_receipt_rule(
-#'   RuleSetName = "string",
-#'   Rule = list(
-#'     Name = "string",
-#'     Enabled = TRUE|FALSE,
-#'     TlsPolicy = "Require"|"Optional",
-#'     Recipients = list(
-#'       "string"
-#'     ),
-#'     Actions = list(
-#'       list(
-#'         S3Action = list(
-#'           TopicArn = "string",
-#'           BucketName = "string",
-#'           ObjectKeyPrefix = "string",
-#'           KmsKeyArn = "string"
-#'         ),
-#'         BounceAction = list(
-#'           TopicArn = "string",
-#'           SmtpReplyCode = "string",
-#'           StatusCode = "string",
-#'           Message = "string",
-#'           Sender = "string"
-#'         ),
-#'         WorkmailAction = list(
-#'           TopicArn = "string",
-#'           OrganizationArn = "string"
-#'         ),
-#'         LambdaAction = list(
-#'           TopicArn = "string",
-#'           FunctionArn = "string",
-#'           InvocationType = "Event"|"RequestResponse"
-#'         ),
-#'         StopAction = list(
-#'           Scope = "RuleSet",
-#'           TopicArn = "string"
-#'         ),
-#'         AddHeaderAction = list(
-#'           HeaderName = "string",
-#'           HeaderValue = "string"
-#'         ),
-#'         SNSAction = list(
-#'           TopicArn = "string",
-#'           Encoding = "UTF-8"|"Base64"
-#'         )
-#'       )
-#'     ),
-#'     ScanEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example updates a receipt rule to use an Amazon S3 action:
-#' svc$update_receipt_rule(
-#'   Rule = list(
-#'     Actions = list(
-#'       list(
-#'         S3Action = list(
-#'           BucketName = "MyBucket",
-#'           ObjectKeyPrefix = "email"
-#'         )
-#'       )
-#'     ),
-#'     Enabled = TRUE,
-#'     Name = "MyRule",
-#'     ScanEnabled = TRUE,
-#'     TlsPolicy = "Optional"
-#'   ),
-#'   RuleSetName = "MyRuleSet"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5201,32 +2514,11 @@ ses_update_receipt_rule <- function(RuleSetName, Rule) {
 #' Updates an email template
 #'
 #' @description
-#' Updates an email template. Email templates enable you to send
-#' personalized email to one or more destinations in a single API
-#' operation. For more information, see the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
-#' 
-#' You can execute this operation no more than once per second.
+#' Updates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html).
 #'
-#' @usage
-#' ses_update_template(Template)
+#' See [https://paws-r.github.io/docs/ses/update_template.html](https://paws-r.github.io/docs/ses/update_template.html) for full documentation.
 #'
 #' @param Template &#91;required&#93; 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_template(
-#'   Template = list(
-#'     TemplateName = "string",
-#'     SubjectPart = "string",
-#'     TextPart = "string",
-#'     HtmlPart = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5252,72 +2544,10 @@ ses_update_template <- function(Template) {
 #'
 #' @description
 #' Returns a set of DKIM tokens for a domain identity.
-#' 
-#' When you execute the [`verify_domain_dkim`][ses_verify_domain_dkim]
-#' operation, the domain that you specify is added to the list of
-#' identities that are associated with your account. This is true even if
-#' you haven't already associated the domain with your account by using the
-#' [`verify_domain_identity`][ses_verify_domain_identity] operation.
-#' However, you can't send email from the domain until you either
-#' successfully [verify
-#' it](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html)
-#' or you successfully [set up DKIM for
-#' it](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
-#' 
-#' You use the tokens that are generated by this operation to create CNAME
-#' records. When Amazon SES detects that you've added these records to the
-#' DNS configuration for a domain, you can start sending email from that
-#' domain. You can start sending email even if you haven't added the TXT
-#' record provided by the VerifyDomainIdentity operation to the DNS
-#' configuration for your domain. All email that you send from the domain
-#' is authenticated using DKIM.
-#' 
-#' To create the CNAME records for DKIM authentication, use the following
-#' values:
-#' 
-#' -   **Name**: *token*._domainkey.*example.com*
-#' 
-#' -   **Type**: CNAME
-#' 
-#' -   **Value**: *token*.dkim.amazonses.com
-#' 
-#' In the preceding example, replace *token* with one of the tokens that
-#' are generated when you execute this operation. Replace *example.com*
-#' with your domain. Repeat this process for each token that's generated by
-#' this operation.
-#' 
-#' You can execute this operation no more than once per second.
 #'
-#' @usage
-#' ses_verify_domain_dkim(Domain)
+#' See [https://paws-r.github.io/docs/ses/verify_domain_dkim.html](https://paws-r.github.io/docs/ses/verify_domain_dkim.html) for full documentation.
 #'
 #' @param Domain &#91;required&#93; The name of the domain to be verified for Easy DKIM signing.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DkimTokens = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$verify_domain_dkim(
-#'   Domain = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example generates DKIM tokens for a domain that has been
-#' # verified with Amazon SES:
-#' svc$verify_domain_dkim(
-#'   Domain = "example.com"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5343,42 +2573,11 @@ ses_verify_domain_dkim <- function(Domain) {
 #' the current AWS Region and attempts to verify it
 #'
 #' @description
-#' Adds a domain to the list of identities for your Amazon SES account in
-#' the current AWS Region and attempts to verify it. For more information
-#' about verifying domains, see [Verifying Email Addresses and
-#' Domains](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
-#' in the *Amazon SES Developer Guide.*
-#' 
-#' You can execute this operation no more than once per second.
+#' Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. For more information about verifying domains, see [Verifying Email Addresses and Domains](https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html) in the *Amazon SES Developer Guide.*
 #'
-#' @usage
-#' ses_verify_domain_identity(Domain)
+#' See [https://paws-r.github.io/docs/ses/verify_domain_identity.html](https://paws-r.github.io/docs/ses/verify_domain_identity.html) for full documentation.
 #'
 #' @param Domain &#91;required&#93; The domain to be verified.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VerificationToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$verify_domain_identity(
-#'   Domain = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example starts the domain verification process with Amazon
-#' # SES:
-#' svc$verify_domain_identity(
-#'   Domain = "example.com"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5403,32 +2602,11 @@ ses_verify_domain_identity <- function(Domain) {
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use the [`verify_email_identity`][ses_verify_email_identity]
-#' operation to verify a new email address.
+#' Deprecated. Use the [`verify_email_identity`][ses_verify_email_identity] operation to verify a new email address.
 #'
-#' @usage
-#' ses_verify_email_address(EmailAddress)
+#' See [https://paws-r.github.io/docs/ses/verify_email_address.html](https://paws-r.github.io/docs/ses/verify_email_address.html) for full documentation.
 #'
 #' @param EmailAddress &#91;required&#93; The email address to be verified.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$verify_email_address(
-#'   EmailAddress = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example starts the email address verification process with
-#' # Amazon SES:
-#' svc$verify_email_address(
-#'   EmailAddress = "user@example.com"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5454,36 +2632,11 @@ ses_verify_email_address <- function(EmailAddress) {
 #' account in the current AWS region and attempts to verify it
 #'
 #' @description
-#' Adds an email address to the list of identities for your Amazon SES
-#' account in the current AWS region and attempts to verify it. As a result
-#' of executing this operation, a verification email is sent to the
-#' specified address.
-#' 
-#' You can execute this operation no more than once per second.
+#' Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it. As a result of executing this operation, a verification email is sent to the specified address.
 #'
-#' @usage
-#' ses_verify_email_identity(EmailAddress)
+#' See [https://paws-r.github.io/docs/ses/verify_email_identity.html](https://paws-r.github.io/docs/ses/verify_email_identity.html) for full documentation.
 #'
 #' @param EmailAddress &#91;required&#93; The email address to be verified.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$verify_email_identity(
-#'   EmailAddress = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example starts the email address verification process with
-#' # Amazon SES:
-#' svc$verify_email_identity(
-#'   EmailAddress = "user@example.com"
-#' )
-#' }
 #'
 #' @keywords internal
 #'

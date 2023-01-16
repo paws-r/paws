@@ -5,7 +5,13 @@
 \title{Retrieves a list that describes one or more specified images, if the
 image names or image ARNs are provided}
 \usage{
-appstream_describe_images(Names, Arns, Type, NextToken, MaxResults)
+appstream_describe_images(
+  Names = NULL,
+  Arns = NULL,
+  Type = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Names}{The names of the public or private images to describe.}
@@ -19,72 +25,9 @@ this operation. If this value is null, it retrieves the first page.}
 
 \item{MaxResults}{The maximum size of each page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Images = list(
-    list(
-      Name = "string",
-      Arn = "string",
-      BaseImageArn = "string",
-      DisplayName = "string",
-      State = "PENDING"|"AVAILABLE"|"FAILED"|"COPYING"|"DELETING",
-      Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
-      ImageBuilderSupported = TRUE|FALSE,
-      ImageBuilderName = "string",
-      Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
-      Description = "string",
-      StateChangeReason = list(
-        Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
-        Message = "string"
-      ),
-      Applications = list(
-        list(
-          Name = "string",
-          DisplayName = "string",
-          IconURL = "string",
-          LaunchPath = "string",
-          LaunchParameters = "string",
-          Enabled = TRUE|FALSE,
-          Metadata = list(
-            "string"
-          )
-        )
-      ),
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      PublicBaseImageReleasedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      AppstreamAgentVersion = "string",
-      ImagePermissions = list(
-        allowFleet = TRUE|FALSE,
-        allowImageBuilder = TRUE|FALSE
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list that describes one or more specified images, if the
-image names or image ARNs are provided. Otherwise, all images in the
-account are described.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_images(
-  Names = list(
-    "string"
-  ),
-  Arns = list(
-    "string"
-  ),
-  Type = "PUBLIC"|"PRIVATE"|"SHARED",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided. Otherwise, all images in the account are described.
 
+See \url{https://paws-r.github.io/docs/appstream/describe_images.html} for full documentation.
+}
 \keyword{internal}

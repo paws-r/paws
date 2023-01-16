@@ -7,7 +7,19 @@
 simpledb(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -37,7 +49,9 @@ Visit
 more information.
 }
 \section{Service syntax}{
-\preformatted{svc <- simpledb(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- simpledb(
   config = list(
     credentials = list(
       creds = list(
@@ -45,28 +59,32 @@ more information.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=simpledb_batch_delete_attributes]{batch_delete_attributes} \tab Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies\cr
-\link[=simpledb_batch_put_attributes]{batch_put_attributes} \tab The BatchPutAttributes operation creates or replaces attributes within one or more items\cr
-\link[=simpledb_create_domain]{create_domain} \tab The CreateDomain operation creates a new domain\cr
-\link[=simpledb_delete_attributes]{delete_attributes} \tab Deletes one or more attributes associated with an item\cr
-\link[=simpledb_delete_domain]{delete_domain} \tab The DeleteDomain operation deletes a domain\cr
-\link[=simpledb_domain_metadata]{domain_metadata} \tab Returns information about the domain, including when the domain was created, the number of items and attributes in the domain, and the size of the attribute names and values\cr
-\link[=simpledb_get_attributes]{get_attributes} \tab Returns all of the attributes associated with the specified item\cr
-\link[=simpledb_list_domains]{list_domains} \tab The ListDomains operation lists all domains associated with the Access Key ID\cr
-\link[=simpledb_put_attributes]{put_attributes} \tab The PutAttributes operation creates or replaces attributes in an item\cr
-\link[=simpledb_select]{select} \tab The Select operation returns a set of attributes for ItemNames that match the select expression
+\link[paws.database:simpledb_batch_delete_attributes]{batch_delete_attributes} \tab Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies\cr
+\link[paws.database:simpledb_batch_put_attributes]{batch_put_attributes} \tab The BatchPutAttributes operation creates or replaces attributes within one or more items\cr
+\link[paws.database:simpledb_create_domain]{create_domain} \tab The CreateDomain operation creates a new domain\cr
+\link[paws.database:simpledb_delete_attributes]{delete_attributes} \tab Deletes one or more attributes associated with an item\cr
+\link[paws.database:simpledb_delete_domain]{delete_domain} \tab The DeleteDomain operation deletes a domain\cr
+\link[paws.database:simpledb_domain_metadata]{domain_metadata} \tab Returns information about the domain, including when the domain was created, the number of items and attributes in the domain, and the size of the attribute names and values\cr
+\link[paws.database:simpledb_get_attributes]{get_attributes} \tab Returns all of the attributes associated with the specified item\cr
+\link[paws.database:simpledb_list_domains]{list_domains} \tab The ListDomains operation lists all domains associated with the Access Key ID\cr
+\link[paws.database:simpledb_put_attributes]{put_attributes} \tab The PutAttributes operation creates or replaces attributes in an item\cr
+\link[paws.database:simpledb_select]{select} \tab The Select operation returns a set of attributes for ItemNames that match the select expression
 }
 }
 

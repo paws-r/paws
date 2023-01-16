@@ -5,30 +5,19 @@
 \title{Sets a resource-based policy that is used to manage access permissions
 on the target backup vault}
 \usage{
-backup_put_backup_vault_access_policy(BackupVaultName, Policy)
+backup_put_backup_vault_access_policy(BackupVaultName, Policy = NULL)
 }
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
+them and the Amazon Web Services Region where they are created. They
+consist of lowercase letters, numbers, and hyphens.}
 
 \item{Policy}{The backup vault access policy document in JSON format.}
 }
-\value{
-An empty list.
-}
 \description{
-Sets a resource-based policy that is used to manage access permissions
-on the target backup vault. Requires a backup vault name and an access
-policy document in JSON format.
-}
-\section{Request syntax}{
-\preformatted{svc$put_backup_vault_access_policy(
-  BackupVaultName = "string",
-  Policy = "string"
-)
-}
-}
+Sets a resource-based policy that is used to manage access permissions on the target backup vault. Requires a backup vault name and an access policy document in JSON format.
 
+See \url{https://paws-r.github.io/docs/backup/put_backup_vault_access_policy.html} for full documentation.
+}
 \keyword{internal}

@@ -4,10 +4,18 @@
 \alias{dynamodb_put_item}
 \title{Creates a new item, or replaces an old item with a new item}
 \usage{
-dynamodb_put_item(TableName, Item, Expected, ReturnValues,
-  ReturnConsumedCapacity, ReturnItemCollectionMetrics,
-  ConditionalOperator, ConditionExpression, ExpressionAttributeNames,
-  ExpressionAttributeValues)
+dynamodb_put_item(
+  TableName,
+  Item,
+  Expected = NULL,
+  ReturnValues = NULL,
+  ReturnConsumedCapacity = NULL,
+  ReturnItemCollectionMetrics = NULL,
+  ConditionalOperator = NULL,
+  ConditionExpression = NULL,
+  ExpressionAttributeNames = NULL,
+  ExpressionAttributeValues = NULL
+)
 }
 \arguments{
 \item{TableName}{[required] The name of the table to contain the item.}
@@ -52,6 +60,12 @@ attribute name-value pair, then the content of the old item is
 returned.
 }
 
+The values returned are strongly consistent.
+
+There is no additional cost associated with requesting a return value
+aside from the small network and processing overhead of receiving a
+larger response. No read capacity units are consumed.
+
 The \code{ReturnValues} parameter is used by several DynamoDB operations;
 however, \code{\link[=dynamodb_put_item]{put_item}} does not recognize any values
 other than \code{NONE} or \code{ALL_OLD}.}
@@ -95,7 +109,7 @@ name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{#} character in an expression to dereference an attribute
+Use the \strong{\#} character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -141,270 +155,9 @@ You could then use these values in an expression, such as this:
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ConsumedCapacity = list(
-    TableName = "string",
-    CapacityUnits = 123.0,
-    ReadCapacityUnits = 123.0,
-    WriteCapacityUnits = 123.0,
-    Table = list(
-      ReadCapacityUnits = 123.0,
-      WriteCapacityUnits = 123.0,
-      CapacityUnits = 123.0
-    ),
-    LocalSecondaryIndexes = list(
-      list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      )
-    ),
-    GlobalSecondaryIndexes = list(
-      list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      )
-    )
-  ),
-  ItemCollectionMetrics = list(
-    ItemCollectionKey = list(
-      list(
-        S = "string",
-        N = "string",
-        B = raw,
-        SS = list(
-          "string"
-        ),
-        NS = list(
-          "string"
-        ),
-        BS = list(
-          raw
-        ),
-        M = list(
-          list()
-        ),
-        L = list(
-          list()
-        ),
-        NULL = TRUE|FALSE,
-        BOOL = TRUE|FALSE
-      )
-    ),
-    SizeEstimateRangeGB = list(
-      123.0
-    )
-  )
-)
-}
-}
 \description{
-Creates a new item, or replaces an old item with a new item. If an item
-that has the same primary key as the new item already exists in the
-specified table, the new item completely replaces the existing item. You
-can perform a conditional put operation (add a new item if one with the
-specified primary key doesn't exist), or replace an existing item if it
-has certain attribute values. You can return the item's attribute values
-in the same operation, using the \code{ReturnValues} parameter.
+Creates a new item, or replaces an old item with a new item. If an item that has the same primary key as the new item already exists in the specified table, the new item completely replaces the existing item. You can perform a conditional put operation (add a new item if one with the specified primary key doesn't exist), or replace an existing item if it has certain attribute values. You can return the item's attribute values in the same operation, using the \code{ReturnValues} parameter.
 
-This topic provides general information about the
-\code{\link[=dynamodb_put_item]{put_item}} API.
-
-For information on how to call the \code{\link[=dynamodb_put_item]{put_item}} API
-using the AWS SDK in specific languages, see the following:
-\itemize{
-\item \href{https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html}{PutItem in the AWS Command Line Interface}
-\item \href{https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2/MDynamoDBPutItemPutItemRequest.html}{PutItem in the AWS SDK for .NET}
-\item \href{https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=dynamodb-2012-08-10&type=PutItem}{PutItem in the AWS SDK for C++}
-\item \href{https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/#DynamoDB.PutItem}{PutItem in the AWS SDK for Go}
-\item \href{https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDB.html#putItem-com.amazonaws.services.dynamodbv2.model.PutItemRequest-}{PutItem in the AWS SDK for Java}
-\item \href{https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#putItem-property}{PutItem in the AWS SDK for JavaScript}
-\item \href{https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-dynamodb-2012-08-10.html#putitem}{PutItem in the AWS SDK for PHP V3}
-\item \href{https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html}{PutItem in the AWS SDK for Python}
-\item \href{https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/DynamoDB/Client.html#put_item-instance_method}{PutItem in the AWS SDK for Ruby V2}
-}
-
-When you add an item, the primary key attributes are the only required
-attributes. Attribute values cannot be null.
-
-Empty String and Binary attribute values are allowed. Attribute values
-of type String and Binary must have a length greater than zero if the
-attribute is used as a key attribute for a table or index. Set type
-attributes cannot be empty.
-
-Invalid Requests with empty values will be rejected with a
-\code{ValidationException} exception.
-
-To prevent a new item from replacing an existing item, use a conditional
-expression that contains the \code{attribute_not_exists} function with the
-name of the attribute being used as the partition key for the table.
-Since every record must contain that attribute, the
-\code{attribute_not_exists} function will only succeed if no matching item
-exists.
-
-For more information about \code{\link[=dynamodb_put_item]{put_item}}, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html}{Working with Items}
-in the \emph{Amazon DynamoDB Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$put_item(
-  TableName = "string",
-  Item = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  Expected = list(
-    list(
-      Value = list(
-        S = "string",
-        N = "string",
-        B = raw,
-        SS = list(
-          "string"
-        ),
-        NS = list(
-          "string"
-        ),
-        BS = list(
-          raw
-        ),
-        M = list(
-          list()
-        ),
-        L = list(
-          list()
-        ),
-        NULL = TRUE|FALSE,
-        BOOL = TRUE|FALSE
-      ),
-      Exists = TRUE|FALSE,
-      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH",
-      AttributeValueList = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      )
-    )
-  ),
-  ReturnValues = "NONE"|"ALL_OLD"|"UPDATED_OLD"|"ALL_NEW"|"UPDATED_NEW",
-  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-  ReturnItemCollectionMetrics = "SIZE"|"NONE",
-  ConditionalOperator = "AND"|"OR",
-  ConditionExpression = "string",
-  ExpressionAttributeNames = list(
-    "string"
-  ),
-  ExpressionAttributeValues = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example adds a new item to the Music table.
-svc$put_item(
-  Item = list(
-    AlbumTitle = list(
-      S = "Somewhat Famous"
-    ),
-    Artist = list(
-      S = "No One You Know"
-    ),
-    SongTitle = list(
-      S = "Call Me Today"
-    )
-  ),
-  ReturnConsumedCapacity = "TOTAL",
-  TableName = "Music"
-)
-}
-
+See \url{https://paws-r.github.io/docs/dynamodb/put_item.html} for full documentation.
 }
 \keyword{internal}

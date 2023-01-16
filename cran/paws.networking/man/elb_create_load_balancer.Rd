@@ -4,8 +4,15 @@
 \alias{elb_create_load_balancer}
 \title{Creates a Classic Load Balancer}
 \usage{
-elb_create_load_balancer(LoadBalancerName, Listeners, AvailabilityZones,
-  Subnets, SecurityGroups, Scheme, Tags)
+elb_create_load_balancer(
+  LoadBalancerName,
+  Listeners,
+  AvailabilityZones = NULL,
+  Subnets = NULL,
+  SecurityGroups = NULL,
+  Scheme = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.
@@ -50,173 +57,9 @@ resolves to private IP addresses.}
 For more information about tagging your load balancer, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html}{Tag Your Classic Load Balancer}
 in the \emph{Classic Load Balancers Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DNSName = "string"
-)
-}
-}
 \description{
 Creates a Classic Load Balancer.
 
-You can add listeners, security groups, subnets, and tags when you
-create your load balancer, or you can add them later using
-\code{\link[=elb_create_load_balancer_listeners]{create_load_balancer_listeners}},
-\code{\link[=elb_apply_security_groups_to_load_balancer]{apply_security_groups_to_load_balancer}},
-\code{\link[=elb_attach_load_balancer_to_subnets]{attach_load_balancer_to_subnets}},
-and \code{\link[=elb_add_tags]{add_tags}}.
-
-To describe your current load balancers, see
-\code{\link[=elb_describe_load_balancers]{describe_load_balancers}}. When you are
-finished with a load balancer, you can delete it using
-\code{\link[=elb_delete_load_balancer]{delete_load_balancer}}.
-
-You can create up to 20 load balancers per region per account. You can
-request an increase for the number of load balancers for your account.
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html}{Limits for Your Classic Load Balancer}
-in the \emph{Classic Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_load_balancer(
-  LoadBalancerName = "string",
-  Listeners = list(
-    list(
-      Protocol = "string",
-      LoadBalancerPort = 123,
-      InstanceProtocol = "string",
-      InstancePort = 123,
-      SSLCertificateId = "string"
-    )
-  ),
-  AvailabilityZones = list(
-    "string"
-  ),
-  Subnets = list(
-    "string"
-  ),
-  SecurityGroups = list(
-    "string"
-  ),
-  Scheme = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a load balancer with an HTTP listener in a VPC.
-svc$create_load_balancer(
-  Listeners = list(
-    list(
-      InstancePort = 80L,
-      InstanceProtocol = "HTTP",
-      LoadBalancerPort = 80L,
-      Protocol = "HTTP"
-    )
-  ),
-  LoadBalancerName = "my-load-balancer",
-  SecurityGroups = list(
-    "sg-a61988c3"
-  ),
-  Subnets = list(
-    "subnet-15aaab61"
-  )
-)
-
-# This example creates a load balancer with an HTTP listener in
-# EC2-Classic.
-svc$create_load_balancer(
-  AvailabilityZones = list(
-    "us-west-2a"
-  ),
-  Listeners = list(
-    list(
-      InstancePort = 80L,
-      InstanceProtocol = "HTTP",
-      LoadBalancerPort = 80L,
-      Protocol = "HTTP"
-    )
-  ),
-  LoadBalancerName = "my-load-balancer"
-)
-
-# This example creates a load balancer with an HTTPS listener in a VPC.
-svc$create_load_balancer(
-  Listeners = list(
-    list(
-      InstancePort = 80L,
-      InstanceProtocol = "HTTP",
-      LoadBalancerPort = 80L,
-      Protocol = "HTTP"
-    ),
-    list(
-      InstancePort = 80L,
-      InstanceProtocol = "HTTP",
-      LoadBalancerPort = 443L,
-      Protocol = "HTTPS",
-      SSLCertificateId = "arn:aws:iam::123456789012:server-certificate/my-server-cert"
-    )
-  ),
-  LoadBalancerName = "my-load-balancer",
-  SecurityGroups = list(
-    "sg-a61988c3"
-  ),
-  Subnets = list(
-    "subnet-15aaab61"
-  )
-)
-
-# This example creates a load balancer with an HTTPS listener in
-# EC2-Classic.
-svc$create_load_balancer(
-  AvailabilityZones = list(
-    "us-west-2a"
-  ),
-  Listeners = list(
-    list(
-      InstancePort = 80L,
-      InstanceProtocol = "HTTP",
-      LoadBalancerPort = 80L,
-      Protocol = "HTTP"
-    ),
-    list(
-      InstancePort = 80L,
-      InstanceProtocol = "HTTP",
-      LoadBalancerPort = 443L,
-      Protocol = "HTTPS",
-      SSLCertificateId = "arn:aws:iam::123456789012:server-certificate/my-server-cert"
-    )
-  ),
-  LoadBalancerName = "my-load-balancer"
-)
-
-# This example creates an internal load balancer with an HTTP listener in
-# a VPC.
-svc$create_load_balancer(
-  Listeners = list(
-    list(
-      InstancePort = 80L,
-      InstanceProtocol = "HTTP",
-      LoadBalancerPort = 80L,
-      Protocol = "HTTP"
-    )
-  ),
-  LoadBalancerName = "my-load-balancer",
-  Scheme = "internal",
-  SecurityGroups = list(
-    "sg-a61988c3"
-  ),
-  Subnets = list(
-    "subnet-15aaab61"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/create_load_balancer.html} for full documentation.
 }
 \keyword{internal}

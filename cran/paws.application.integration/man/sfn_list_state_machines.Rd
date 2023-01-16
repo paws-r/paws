@@ -4,7 +4,7 @@
 \alias{sfn_list_state_machines}
 \title{Lists the existing state machines}
 \usage{
-sfn_list_state_machines(maxResults, nextToken)
+sfn_list_state_machines(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{maxResults}{The maximum number of results that are returned per call. You can use
@@ -21,41 +21,9 @@ arguments unchanged. Each pagination token expires after 24 hours. Using
 an expired pagination token will return an \emph{HTTP 400 InvalidToken}
 error.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  stateMachines = list(
-    list(
-      stateMachineArn = "string",
-      name = "string",
-      type = "STANDARD"|"EXPRESS",
-      creationDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists the existing state machines.
 
-If \code{nextToken} is returned, there are more results available. The value
-of \code{nextToken} is a unique pagination token for each page. Make the call
-again using the returned token to retrieve the next page. Keep all other
-arguments unchanged. Each pagination token expires after 24 hours. Using
-an expired pagination token will return an \emph{HTTP 400 InvalidToken}
-error.
-
-This operation is eventually consistent. The results are best effort and
-may not reflect very recent updates and changes.
+See \url{https://paws-r.github.io/docs/sfn/list_state_machines.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_state_machines(
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
-
 \keyword{internal}

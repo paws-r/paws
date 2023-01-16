@@ -245,7 +245,7 @@ ecrpublic_complete_layer_upload <- function(registryId = NULL, repositoryName, u
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
-#' ecrpublic_create_repository(repositoryName, catalogData)
+#' ecrpublic_create_repository(repositoryName, catalogData, tags)
 #'
 #' @param repositoryName &#91;required&#93; The name to use for the repository. This appears publicly in the Amazon
 #' ECR Public Gallery. The repository name may be specified on its own
@@ -254,6 +254,10 @@ ecrpublic_complete_layer_upload <- function(registryId = NULL, repositoryName, u
 #' `project-a/nginx-web-app`).
 #' @param catalogData The details about the repository that are publicly visible in the Amazon
 #' ECR Public Gallery.
+#' @param tags The metadata that you apply to the repository to help you categorize and
+#' organize them. Each tag consists of a key and an optional value, both of
+#' which you define. Tag keys can have a maximum character length of 128
+#' characters, and tag values can have a maximum length of 256 characters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -299,6 +303,12 @@ ecrpublic_complete_layer_upload <- function(registryId = NULL, repositoryName, u
 #'     logoImageBlob = raw,
 #'     aboutText = "string",
 #'     usageText = "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -306,14 +316,14 @@ ecrpublic_complete_layer_upload <- function(registryId = NULL, repositoryName, u
 #' @keywords internal
 #'
 #' @rdname ecrpublic_create_repository
-ecrpublic_create_repository <- function(repositoryName, catalogData = NULL) {
+ecrpublic_create_repository <- function(repositoryName, catalogData = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRepository",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecrpublic$create_repository_input(repositoryName = repositoryName, catalogData = catalogData)
+  input <- .ecrpublic$create_repository_input(repositoryName = repositoryName, catalogData = catalogData, tags = tags)
   output <- .ecrpublic$create_repository_output()
   config <- get_config()
   svc <- .ecrpublic$service(config)
@@ -1064,6 +1074,58 @@ ecrpublic_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 }
 .ecrpublic$operations$initiate_layer_upload <- ecrpublic_initiate_layer_upload
 
+#' List the tags for an Amazon ECR Public resource
+#'
+#' @description
+#' List the tags for an Amazon ECR Public resource.
+#'
+#' @usage
+#' ecrpublic_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
+#' list the tags. Currently, the supported resource is an Amazon ECR Public
+#' repository.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecrpublic_list_tags_for_resource
+ecrpublic_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecrpublic$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .ecrpublic$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .ecrpublic$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecrpublic$operations$list_tags_for_resource <- ecrpublic_list_tags_for_resource
+
 #' Creates or updates the image manifest and tags associated with an image
 #'
 #' @description
@@ -1338,6 +1400,106 @@ ecrpublic_set_repository_policy <- function(registryId = NULL, repositoryName, p
   return(response)
 }
 .ecrpublic$operations$set_repository_policy <- ecrpublic_set_repository_policy
+
+#' Associates the specified tags to a resource with the specified
+#' resourceArn
+#'
+#' @description
+#' Associates the specified tags to a resource with the specified
+#' `resourceArn`. If existing tags on a resource are not specified in the
+#' request parameters, they are not changed. When a resource is deleted,
+#' the tags associated with that resource are deleted as well.
+#'
+#' @usage
+#' ecrpublic_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which to add tags.
+#' Currently, the supported resource is an Amazon ECR Public repository.
+#' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
+#' Tag keys can have a maximum character length of 128 characters, and tag
+#' values can have a maximum length of 256 characters.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecrpublic_tag_resource
+ecrpublic_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecrpublic$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .ecrpublic$tag_resource_output()
+  config <- get_config()
+  svc <- .ecrpublic$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecrpublic$operations$tag_resource <- ecrpublic_tag_resource
+
+#' Deletes specified tags from a resource
+#'
+#' @description
+#' Deletes specified tags from a resource.
+#'
+#' @usage
+#' ecrpublic_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to delete
+#' tags. Currently, the supported resource is an Amazon ECR Public
+#' repository.
+#' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecrpublic_untag_resource
+ecrpublic_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecrpublic$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .ecrpublic$untag_resource_output()
+  config <- get_config()
+  svc <- .ecrpublic$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecrpublic$operations$untag_resource <- ecrpublic_untag_resource
 
 #' Uploads an image layer part to Amazon ECR
 #'

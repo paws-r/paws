@@ -3,10 +3,15 @@
 \name{rds_revoke_db_security_group_ingress}
 \alias{rds_revoke_db_security_group_ingress}
 \title{Revokes ingress from a DBSecurityGroup for previously authorized IP
-ranges or EC2 or VPC Security Groups}
+ranges or EC2 or VPC security groups}
 \usage{
-rds_revoke_db_security_group_ingress(DBSecurityGroupName, CIDRIP,
-  EC2SecurityGroupName, EC2SecurityGroupId, EC2SecurityGroupOwnerId)
+rds_revoke_db_security_group_ingress(
+  DBSecurityGroupName,
+  CIDRIP = NULL,
+  EC2SecurityGroupName = NULL,
+  EC2SecurityGroupId = NULL,
+  EC2SecurityGroupOwnerId = NULL
+)
 }
 \arguments{
 \item{DBSecurityGroupName}{[required] The name of the DB security group to revoke ingress from.}
@@ -25,54 +30,16 @@ security groups, \code{EC2SecurityGroupId} must be provided. Otherwise,
 EC2SecurityGroupOwnerId and either \code{EC2SecurityGroupName} or
 \code{EC2SecurityGroupId} must be provided.}
 
-\item{EC2SecurityGroupOwnerId}{The AWS account number of the owner of the EC2 security group specified
-in the \code{EC2SecurityGroupName} parameter. The AWS access key ID isn't an
-acceptable value. For VPC DB security groups, \code{EC2SecurityGroupId} must
-be provided. Otherwise, EC2SecurityGroupOwnerId and either
-\code{EC2SecurityGroupName} or \code{EC2SecurityGroupId} must be provided.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DBSecurityGroup = list(
-    OwnerId = "string",
-    DBSecurityGroupName = "string",
-    DBSecurityGroupDescription = "string",
-    VpcId = "string",
-    EC2SecurityGroups = list(
-      list(
-        Status = "string",
-        EC2SecurityGroupName = "string",
-        EC2SecurityGroupId = "string",
-        EC2SecurityGroupOwnerId = "string"
-      )
-    ),
-    IPRanges = list(
-      list(
-        Status = "string",
-        CIDRIP = "string"
-      )
-    ),
-    DBSecurityGroupArn = "string"
-  )
-)
-}
+\item{EC2SecurityGroupOwnerId}{The Amazon Web Services account number of the owner of the EC2 security
+group specified in the \code{EC2SecurityGroupName} parameter. The Amazon Web
+Services access key ID isn't an acceptable value. For VPC DB security
+groups, \code{EC2SecurityGroupId} must be provided. Otherwise,
+EC2SecurityGroupOwnerId and either \code{EC2SecurityGroupName} or
+\code{EC2SecurityGroupId} must be provided.}
 }
 \description{
-Revokes ingress from a DBSecurityGroup for previously authorized IP
-ranges or EC2 or VPC Security Groups. Required parameters for this API
-are one of CIDRIP, EC2SecurityGroupId for VPC, or
-(EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
-EC2SecurityGroupId).
-}
-\section{Request syntax}{
-\preformatted{svc$revoke_db_security_group_ingress(
-  DBSecurityGroupName = "string",
-  CIDRIP = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupId = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
-}
-}
+Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC security groups. Required parameters for this API are one of CIDRIP, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId).
 
+See \url{https://paws-r.github.io/docs/rds/revoke_db_security_group_ingress.html} for full documentation.
+}
 \keyword{internal}

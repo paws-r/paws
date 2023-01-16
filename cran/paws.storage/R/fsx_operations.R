@@ -7,25 +7,9 @@ NULL
 #' aliases with an existing Amazon FSx for Windows File Server file system
 #'
 #' @description
-#' Use this action to associate one or more Domain Name Server (DNS)
-#' aliases with an existing Amazon FSx for Windows File Server file system.
-#' A file systen can have a maximum of 50 DNS aliases associated with it at
-#' any one time. If you try to associate a DNS alias that is already
-#' associated with the file system, FSx takes no action on that alias in
-#' the request. For more information, see [Working with DNS
-#' Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html)
-#' and [Walkthrough 5: Using DNS aliases to access your file
-#' system](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/walkthrough05-file-system-custom-CNAME.html),
-#' including additional steps you must take to be able to access your file
-#' system using a DNS alias.
-#' 
-#' The system response shows the DNS aliases that Amazon FSx is attempting
-#' to associate with the file system. Use the API operation to monitor the
-#' status of the aliases Amazon FSx is associating with the file system.
+#' Use this action to associate one or more Domain Name Server (DNS) aliases with an existing Amazon FSx for Windows File Server file system. A file system can have a maximum of 50 DNS aliases associated with it at any one time. If you try to associate a DNS alias that is already associated with the file system, FSx takes no action on that alias in the request. For more information, see [Working with DNS Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html) and [Walkthrough 5: Using DNS aliases to access your file system](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/walkthrough05-file-system-custom-CNAME.html), including additional steps you must take to be able to access your file system using a DNS alias.
 #'
-#' @usage
-#' fsx_associate_file_system_aliases(ClientRequestToken, FileSystemId,
-#'   Aliases)
+#' See [https://paws-r.github.io/docs/fsx/associate_file_system_aliases.html](https://paws-r.github.io/docs/fsx/associate_file_system_aliases.html) for full documentation.
 #'
 #' @param ClientRequestToken 
 #' @param FileSystemId &#91;required&#93; Specifies the file system with which you want to associate one or more
@@ -34,8 +18,8 @@ NULL
 #' system. The alias name has to comply with the following formatting
 #' requirements:
 #' 
-#' -   Formatted as a fully-qualified domain name (FQDN),
-#'     *`hostname.domain`* , for example, `accounting.corp.example.com`.
+#' -   Formatted as a fully-qualified domain name (FQDN), *hostname.domain*
+#'     , for example, `accounting.corp.example.com`.
 #' 
 #' -   Can contain alphanumeric characters and the hyphen (-).
 #' 
@@ -47,30 +31,6 @@ NULL
 #' lowercase letters (a-z), regardless of how you specify them: as
 #' uppercase letters, lowercase letters, or the corresponding letters in
 #' escape codes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Aliases = list(
-#'     list(
-#'       Name = "string",
-#'       Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_file_system_aliases(
-#'   ClientRequestToken = "string",
-#'   FileSystemId = "string",
-#'   Aliases = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -96,37 +56,11 @@ fsx_associate_file_system_aliases <- function(ClientRequestToken = NULL, FileSys
 #' task is in either the PENDING or EXECUTING state
 #'
 #' @description
-#' Cancels an existing Amazon FSx for Lustre data repository task if that
-#' task is in either the `PENDING` or `EXECUTING` state. When you cancel a
-#' task, Amazon FSx does the following.
-#' 
-#' -   Any files that FSx has already exported are not reverted.
-#' 
-#' -   FSx continues to export any files that are "in-flight" when the
-#'     cancel operation is received.
-#' 
-#' -   FSx does not export any files that have not yet been exported.
+#' Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the `PENDING` or `EXECUTING` state. When you cancel a task, Amazon FSx does the following.
 #'
-#' @usage
-#' fsx_cancel_data_repository_task(TaskId)
+#' See [https://paws-r.github.io/docs/fsx/cancel_data_repository_task.html](https://paws-r.github.io/docs/fsx/cancel_data_repository_task.html) for full documentation.
 #'
 #' @param TaskId &#91;required&#93; Specifies the data repository task to cancel.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Lifecycle = "PENDING"|"EXECUTING"|"FAILED"|"SUCCEEDED"|"CANCELED"|"CANCELING",
-#'   TaskId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$cancel_data_repository_task(
-#'   TaskId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -148,234 +82,87 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 }
 .fsx$operations$cancel_data_repository_task <- fsx_cancel_data_repository_task
 
-#' Creates a backup of an existing Amazon FSx file system
+#' Copies an existing backup within the same Amazon Web Services account to
+#' another Amazon Web Services Region (cross-Region copy) or within the
+#' same Amazon Web Services Region (in-Region copy)
 #'
 #' @description
-#' Creates a backup of an existing Amazon FSx file system. Creating regular
-#' backups for your file system is a best practice, enabling you to restore
-#' a file system from a backup if an issue arises with the original file
-#' system.
-#' 
-#' For Amazon FSx for Lustre file systems, you can create a backup only for
-#' file systems with the following configuration:
-#' 
-#' -   a Persistent deployment type
-#' 
-#' -   is *not* linked to a data respository.
-#' 
-#' For more information about backing up Amazon FSx for Lustre file
-#' systems, see [Working with FSx for Lustre
-#' backups](https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html).
-#' 
-#' For more information about backing up Amazon FSx for Windows file
-#' systems, see [Working with FSx for Windows
-#' backups](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html).
-#' 
-#' If a backup with the specified client request token exists, and the
-#' parameters match, this operation returns the description of the existing
-#' backup. If a backup specified client request token exists, and the
-#' parameters don't match, this operation returns
-#' `IncompatibleParameterError`. If a backup with the specified client
-#' request token doesn't exist, [`create_backup`][fsx_create_backup] does
-#' the following:
-#' 
-#' -   Creates a new Amazon FSx backup with an assigned ID, and an initial
-#'     lifecycle state of `CREATING`.
-#' 
-#' -   Returns the description of the backup.
-#' 
-#' By using the idempotent operation, you can retry a
-#' [`create_backup`][fsx_create_backup] operation without the risk of
-#' creating an extra backup. This approach can be useful when an initial
-#' call fails in a way that makes it unclear whether a backup was created.
-#' If you use the same client request token and the initial call created a
-#' backup, the operation returns a successful result because all the
-#' parameters are the same.
-#' 
-#' The [`create_backup`][fsx_create_backup] operation returns while the
-#' backup's lifecycle state is still `CREATING`. You can check the backup
-#' creation status by calling the
-#' [`describe_backups`][fsx_describe_backups] operation, which returns the
-#' backup state along with other information.
+#' Copies an existing backup within the same Amazon Web Services account to another Amazon Web Services Region (cross-Region copy) or within the same Amazon Web Services Region (in-Region copy). You can have up to five backup copy requests in progress to a single destination Region per account.
 #'
-#' @usage
-#' fsx_create_backup(FileSystemId, ClientRequestToken, Tags)
+#' See [https://paws-r.github.io/docs/fsx/copy_backup.html](https://paws-r.github.io/docs/fsx/copy_backup.html) for full documentation.
 #'
-#' @param FileSystemId &#91;required&#93; The ID of the file system to back up.
+#' @param ClientRequestToken 
+#' @param SourceBackupId &#91;required&#93; The ID of the source backup. Specifies the ID of the backup that's being
+#' copied.
+#' @param SourceRegion The source Amazon Web Services Region of the backup. Specifies the
+#' Amazon Web Services Region from which the backup is being copied. The
+#' source and destination Regions must be in the same Amazon Web Services
+#' partition. If you don't specify a Region, `SourceRegion` defaults to the
+#' Region where the request is sent from (in-Region copy).
+#' @param KmsKeyId 
+#' @param CopyTags A Boolean flag indicating whether tags from the source backup should be
+#' copied to the backup copy. This value defaults to `false`.
+#' 
+#' If you set `CopyTags` to `true` and the source backup has existing tags,
+#' you can use the `Tags` parameter to create new tags, provided that the
+#' sum of the source backup tags and the new tags doesn't exceed 50. Both
+#' sets of tags are merged. If there are tag conflicts (for example, two
+#' tags with the same key but different values), the tags created with the
+#' `Tags` parameter take precedence.
+#' @param Tags 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_copy_backup
+fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceRegion = NULL, KmsKeyId = NULL, CopyTags = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CopyBackup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$copy_backup_input(ClientRequestToken = ClientRequestToken, SourceBackupId = SourceBackupId, SourceRegion = SourceRegion, KmsKeyId = KmsKeyId, CopyTags = CopyTags, Tags = Tags)
+  output <- .fsx$copy_backup_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$copy_backup <- fsx_copy_backup
+
+#' Creates a backup of an existing Amazon FSx for Windows File Server file
+#' system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP
+#' volume, or Amazon FSx for OpenZFS file system
+#'
+#' @description
+#' Creates a backup of an existing Amazon FSx for Windows File Server file system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP volume, or Amazon FSx for OpenZFS file system. We recommend creating regular backups so that you can restore a file system or volume from a backup if an issue arises with the original file system or volume.
+#'
+#' See [https://paws-r.github.io/docs/fsx/create_backup.html](https://paws-r.github.io/docs/fsx/create_backup.html) for full documentation.
+#'
+#' @param FileSystemId The ID of the file system to back up.
 #' @param ClientRequestToken (Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
 #' ensure idempotent creation. This string is automatically filled on your
-#' behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
-#' SDK.
+#' behalf when you use the Command Line Interface (CLI) or an Amazon Web
+#' Services SDK.
 #' @param Tags (Optional) The tags to apply to the backup at backup creation. The key
 #' value of the `Name` tag appears in the console as the backup name. If
-#' you have set `CopyTagsToBackups` to true, and you specify one or more
-#' tags using the [`create_backup`][fsx_create_backup] action, no existing
-#' file system tags are copied from the file system to the backup.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Backup = list(
-#'     BackupId = "string",
-#'     Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
-#'     FailureDetails = list(
-#'       Message = "string"
-#'     ),
-#'     Type = "AUTOMATIC"|"USER_INITIATED"|"AWS_BACKUP",
-#'     ProgressPercent = 123,
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     KmsKeyId = "string",
-#'     ResourceARN = "string",
-#'     Tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     FileSystem = list(
-#'       OwnerId = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       FileSystemId = "string",
-#'       FileSystemType = "WINDOWS"|"LUSTRE",
-#'       Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-#'       FailureDetails = list(
-#'         Message = "string"
-#'       ),
-#'       StorageCapacity = 123,
-#'       StorageType = "SSD"|"HDD",
-#'       VpcId = "string",
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       NetworkInterfaceIds = list(
-#'         "string"
-#'       ),
-#'       DNSName = "string",
-#'       KmsKeyId = "string",
-#'       ResourceARN = "string",
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       WindowsConfiguration = list(
-#'         ActiveDirectoryId = "string",
-#'         SelfManagedActiveDirectoryConfiguration = list(
-#'           DomainName = "string",
-#'           OrganizationalUnitDistinguishedName = "string",
-#'           FileSystemAdministratorsGroup = "string",
-#'           UserName = "string",
-#'           DnsIps = list(
-#'             "string"
-#'           )
-#'         ),
-#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-#'         RemoteAdministrationEndpoint = "string",
-#'         PreferredSubnetId = "string",
-#'         PreferredFileServerIp = "string",
-#'         ThroughputCapacity = 123,
-#'         MaintenanceOperationsInProgress = list(
-#'           "PATCHING"|"BACKING_UP"
-#'         ),
-#'         WeeklyMaintenanceStartTime = "string",
-#'         DailyAutomaticBackupStartTime = "string",
-#'         AutomaticBackupRetentionDays = 123,
-#'         CopyTagsToBackups = TRUE|FALSE,
-#'         Aliases = list(
-#'           list(
-#'             Name = "string",
-#'             Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-#'           )
-#'         )
-#'       ),
-#'       LustreConfiguration = list(
-#'         WeeklyMaintenanceStartTime = "string",
-#'         DataRepositoryConfiguration = list(
-#'           Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-#'           ImportPath = "string",
-#'           ExportPath = "string",
-#'           ImportedFileChunkSize = 123,
-#'           AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-#'           FailureDetails = list(
-#'             Message = "string"
-#'           )
-#'         ),
-#'         DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-#'         PerUnitStorageThroughput = 123,
-#'         MountName = "string",
-#'         DailyAutomaticBackupStartTime = "string",
-#'         AutomaticBackupRetentionDays = 123,
-#'         CopyTagsToBackups = TRUE|FALSE,
-#'         DriveCacheType = "NONE"|"READ"
-#'       ),
-#'       AdministrativeActions = list(
-#'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-#'           ProgressPercent = 123,
-#'           RequestTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-#'           TargetFileSystemValues = list(),
-#'           FailureDetails = list(
-#'             Message = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     DirectoryInformation = list(
-#'       DomainName = "string",
-#'       ActiveDirectoryId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_backup(
-#'   FileSystemId = "string",
-#'   ClientRequestToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation creates a new backup.
-#' svc$create_backup(
-#'   FileSystemId = "fs-0498eed5fe91001ec",
-#'   Tags = list(
-#'     list(
-#'       Key = "Name",
-#'       Value = "MyBackup"
-#'     )
-#'   )
-#' )
-#' }
+#' you have set `CopyTagsToBackups` to `true`, and you specify one or more
+#' tags using the [`create_backup`][fsx_create_backup] operation, no
+#' existing file system tags are copied from the file system to the backup.
+#' @param VolumeId (Optional) The ID of the FSx for ONTAP volume to back up.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_create_backup
-fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NULL) {
+fsx_create_backup <- function(FileSystemId = NULL, ClientRequestToken = NULL, Tags = NULL, VolumeId = NULL) {
   op <- new_operation(
     name = "CreateBackup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$create_backup_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  input <- .fsx$create_backup_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, Tags = Tags, VolumeId = VolumeId)
   output <- .fsx$create_backup_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -385,35 +172,98 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 }
 .fsx$operations$create_backup <- fsx_create_backup
 
+#' Creates an Amazon FSx for Lustre data repository association (DRA)
+#'
+#' @description
+#' Creates an Amazon FSx for Lustre data repository association (DRA). A data repository association is a link between a directory on the file system and an Amazon S3 bucket or prefix. You can have a maximum of 8 data repository associations on a file system. Data repository associations are supported only for file systems with the `Persistent_2` deployment type.
+#'
+#' See [https://paws-r.github.io/docs/fsx/create_data_repository_association.html](https://paws-r.github.io/docs/fsx/create_data_repository_association.html) for full documentation.
+#'
+#' @param FileSystemId &#91;required&#93; 
+#' @param FileSystemPath &#91;required&#93; A path on the file system that points to a high-level directory (such as
+#' `/ns1/`) or subdirectory (such as `/ns1/subdir/`) that will be mapped
+#' 1-1 with `DataRepositoryPath`. The leading forward slash in the name is
+#' required. Two data repository associations cannot have overlapping file
+#' system paths. For example, if a data repository is associated with file
+#' system path `/ns1/`, then you cannot link another data repository with
+#' file system path `/ns1/ns2`.
+#' 
+#' This path specifies where in your file system files will be exported
+#' from or imported to. This file system directory can be linked to only
+#' one Amazon S3 bucket, and no other S3 bucket can be linked to the
+#' directory.
+#' 
+#' If you specify only a forward slash (`/`) as the file system path, you
+#' can link only 1 data repository to the file system. You can only specify
+#' "/" as the file system path for the first data repository associated
+#' with a file system.
+#' @param DataRepositoryPath &#91;required&#93; The path to the Amazon S3 data repository that will be linked to the
+#' file system. The path can be an S3 bucket or prefix in the format
+#' `s3://myBucket/myPrefix/`. This path specifies where in the S3 data
+#' repository files will be imported from or exported to.
+#' @param BatchImportMetaDataOnCreate Set to `true` to run an import data repository task to import metadata
+#' from the data repository to the file system after the data repository
+#' association is created. Default is `false`.
+#' @param ImportedFileChunkSize For files imported from a data repository, this value determines the
+#' stripe count and maximum amount of data per file (in MiB) stored on a
+#' single physical disk. The maximum number of disks that a single file can
+#' be striped across is limited by the total number of disks that make up
+#' the file system.
+#' 
+#' The default chunk size is 1,024 MiB (1 GiB) and can go as high as
+#' 512,000 MiB (500 GiB). Amazon S3 objects have a maximum size of 5 TB.
+#' @param S3 The configuration for an Amazon S3 data repository linked to an Amazon
+#' FSx Lustre file system with a data repository association. The
+#' configuration defines which file events (new, changed, or deleted files
+#' or directories) are automatically imported from the linked data
+#' repository to the file system or automatically exported from the file
+#' system to the data repository.
+#' @param ClientRequestToken 
+#' @param Tags 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_data_repository_association
+fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath, DataRepositoryPath, BatchImportMetaDataOnCreate = NULL, ImportedFileChunkSize = NULL, S3 = NULL, ClientRequestToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateDataRepositoryAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$create_data_repository_association_input(FileSystemId = FileSystemId, FileSystemPath = FileSystemPath, DataRepositoryPath = DataRepositoryPath, BatchImportMetaDataOnCreate = BatchImportMetaDataOnCreate, ImportedFileChunkSize = ImportedFileChunkSize, S3 = S3, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  output <- .fsx$create_data_repository_association_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_data_repository_association <- fsx_create_data_repository_association
+
 #' Creates an Amazon FSx for Lustre data repository task
 #'
 #' @description
-#' Creates an Amazon FSx for Lustre data repository task. You use data
-#' repository tasks to perform bulk operations between your Amazon FSx file
-#' system and its linked data repository. An example of a data repository
-#' task is exporting any data and metadata changes, including POSIX
-#' metadata, to files, directories, and symbolic links (symlinks) from your
-#' FSx file system to its linked data repository. A
-#' [`create_data_repository_task`][fsx_create_data_repository_task]
-#' operation will fail if a data repository is not linked to the FSx file
-#' system. To learn more about data repository tasks, see [Data Repository
-#' Tasks](https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html).
-#' To learn more about linking a data repository to your file system, see
-#' [Linking your file system to an S3
-#' bucket](https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-fs-linked-data-repo.html).
+#' Creates an Amazon FSx for Lustre data repository task. You use data repository tasks to perform bulk operations between your Amazon FSx file system and its linked data repositories. An example of a data repository task is exporting any data and metadata changes, including POSIX metadata, to files, directories, and symbolic links (symlinks) from your FSx file system to a linked data repository. A [`create_data_repository_task`][fsx_create_data_repository_task] operation will fail if a data repository is not linked to the FSx file system. To learn more about data repository tasks, see [Data Repository Tasks](https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html). To learn more about linking a data repository to your file system, see [Linking your file system to an S3 bucket](https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html).
 #'
-#' @usage
-#' fsx_create_data_repository_task(Type, Paths, FileSystemId, Report,
-#'   ClientRequestToken, Tags)
+#' See [https://paws-r.github.io/docs/fsx/create_data_repository_task.html](https://paws-r.github.io/docs/fsx/create_data_repository_task.html) for full documentation.
 #'
 #' @param Type &#91;required&#93; Specifies the type of data repository task to create.
-#' @param Paths (Optional) The path or paths on the Amazon FSx file system to use when
-#' the data repository task is processed. The default path is the file
-#' system root directory. The paths you provide need to be relative to the
-#' mount point of the file system. If the mount point is `/mnt/fsx` and
-#' `/mnt/fsx/path1` is a directory or file on the file system you want to
-#' export, then the path to provide is `path1`. If a path that you provide
-#' isn't valid, the task fails.
+#' @param Paths A list of paths for the data repository task to use when the task is
+#' processed. If a path that you provide isn't valid, the task fails.
+#' 
+#' -   For export tasks, the list contains paths on the Amazon FSx file
+#'     system from which the files are exported to the Amazon S3 bucket.
+#'     The default path is the file system root directory. The paths you
+#'     provide need to be relative to the mount point of the file system.
+#'     If the mount point is `/mnt/fsx` and `/mnt/fsx/path1` is a directory
+#'     or file on the file system you want to export, then the path to
+#'     provide is `path1`.
+#' 
+#' -   For import tasks, the list contains paths in the Amazon S3 bucket
+#'     from which POSIX metadata changes are imported to the Amazon FSx
+#'     file system. The path can be an S3 bucket or prefix in the format
+#'     `s3://myBucket/myPrefix` (where `myPrefix` is optional).
 #' @param FileSystemId &#91;required&#93; 
 #' @param Report &#91;required&#93; Defines whether or not Amazon FSx provides a CompletionReport once the
 #' task has completed. A CompletionReport provides a detailed report on the
@@ -423,79 +273,6 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 #' Reports](https://docs.aws.amazon.com/fsx/latest/LustreGuide/task-completion-report.html).
 #' @param ClientRequestToken 
 #' @param Tags 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataRepositoryTask = list(
-#'     TaskId = "string",
-#'     Lifecycle = "PENDING"|"EXECUTING"|"FAILED"|"SUCCEEDED"|"CANCELED"|"CANCELING",
-#'     Type = "EXPORT_TO_REPOSITORY",
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ResourceARN = "string",
-#'     Tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     FileSystemId = "string",
-#'     Paths = list(
-#'       "string"
-#'     ),
-#'     FailureDetails = list(
-#'       Message = "string"
-#'     ),
-#'     Status = list(
-#'       TotalCount = 123,
-#'       SucceededCount = 123,
-#'       FailedCount = 123,
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     Report = list(
-#'       Enabled = TRUE|FALSE,
-#'       Path = "string",
-#'       Format = "REPORT_CSV_20191124",
-#'       Scope = "FAILED_FILES_ONLY"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_data_repository_task(
-#'   Type = "EXPORT_TO_REPOSITORY",
-#'   Paths = list(
-#'     "string"
-#'   ),
-#'   FileSystemId = "string",
-#'   Report = list(
-#'     Enabled = TRUE|FALSE,
-#'     Path = "string",
-#'     Format = "REPORT_CSV_20191124",
-#'     Scope = "FAILED_FILES_ONLY"
-#'   ),
-#'   ClientRequestToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -520,309 +297,117 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' Creates a new, empty Amazon FSx file system
 #'
 #' @description
-#' Creates a new, empty Amazon FSx file system.
-#' 
-#' If a file system with the specified client request token exists and the
-#' parameters match, [`create_file_system`][fsx_create_file_system] returns
-#' the description of the existing file system. If a file system specified
-#' client request token exists and the parameters don't match, this call
-#' returns `IncompatibleParameterError`. If a file system with the
-#' specified client request token doesn't exist,
-#' [`create_file_system`][fsx_create_file_system] does the following:
-#' 
-#' -   Creates a new, empty Amazon FSx file system with an assigned ID, and
-#'     an initial lifecycle state of `CREATING`.
-#' 
-#' -   Returns the description of the file system.
-#' 
-#' This operation requires a client request token in the request that
-#' Amazon FSx uses to ensure idempotent creation. This means that calling
-#' the operation multiple times with the same client request token has no
-#' effect. By using the idempotent operation, you can retry a
-#' [`create_file_system`][fsx_create_file_system] operation without the
-#' risk of creating an extra file system. This approach can be useful when
-#' an initial call fails in a way that makes it unclear whether a file
-#' system was created. Examples are if a transport level timeout occurred,
-#' or your connection was reset. If you use the same client request token
-#' and the initial call created a file system, the client receives success
-#' as long as the parameters are the same.
-#' 
-#' The [`create_file_system`][fsx_create_file_system] call returns while
-#' the file system's lifecycle state is still `CREATING`. You can check the
-#' file-system creation status by calling the
-#' [`describe_file_systems`][fsx_describe_file_systems] operation, which
-#' returns the file system state along with other information.
+#' Creates a new, empty Amazon FSx file system. You can create the following supported Amazon FSx file systems using the [`create_file_system`][fsx_create_file_system] API operation:
 #'
-#' @usage
-#' fsx_create_file_system(ClientRequestToken, FileSystemType,
-#'   StorageCapacity, StorageType, SubnetIds, SecurityGroupIds, Tags,
-#'   KmsKeyId, WindowsConfiguration, LustreConfiguration)
+#' See [https://paws-r.github.io/docs/fsx/create_file_system.html](https://paws-r.github.io/docs/fsx/create_file_system.html) for full documentation.
 #'
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
 #' idempotent creation. This string is automatically filled on your behalf
-#' when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
-#' @param FileSystemType &#91;required&#93; The type of Amazon FSx file system to create, either `WINDOWS` or
-#' `LUSTRE`.
-#' @param StorageCapacity &#91;required&#93; Sets the storage capacity of the file system that you're creating.
+#' when you use the Command Line Interface (CLI) or an Amazon Web Services
+#' SDK.
+#' @param FileSystemType &#91;required&#93; The type of Amazon FSx file system to create. Valid values are
+#' `WINDOWS`, `LUSTRE`, `ONTAP`, and `OPENZFS`.
+#' @param StorageCapacity &#91;required&#93; Sets the storage capacity of the file system that you're creating, in
+#' gibibytes (GiB).
 #' 
-#' For Lustre file systems:
+#' **FSx for Lustre file systems** - The amount of storage capacity that
+#' you can configure depends on the value that you set for `StorageType`
+#' and the Lustre `DeploymentType`, as follows:
 #' 
-#' -   For `SCRATCH_2` and `PERSISTENT_1 SSD` deployment types, valid
-#'     values are 1200 GiB, 2400 GiB, and increments of 2400 GiB.
+#' -   For `SCRATCH_2`, `PERSISTENT_2` and `PERSISTENT_1` deployment types
+#'     using SSD storage type, the valid values are 1200 GiB, 2400 GiB, and
+#'     increments of 2400 GiB.
 #' 
-#' -   For `PERSISTENT HDD` file systems, valid values are increments of
+#' -   For `PERSISTENT_1` HDD file systems, valid values are increments of
 #'     6000 GiB for 12 MB/s/TiB file systems and increments of 1800 GiB for
 #'     40 MB/s/TiB file systems.
 #' 
 #' -   For `SCRATCH_1` deployment type, valid values are 1200 GiB, 2400
 #'     GiB, and increments of 3600 GiB.
 #' 
-#' For Windows file systems:
+#' **FSx for ONTAP file systems** - The amount of storage capacity that you
+#' can configure is from 1024 GiB up to 196,608 GiB (192 TiB).
 #' 
-#' -   If `StorageType=SSD`, valid values are 32 GiB - 65,536 GiB (64 TiB).
+#' **FSx for OpenZFS file systems** - The amount of storage capacity that
+#' you can configure is from 64 GiB up to 524,288 GiB (512 TiB).
 #' 
-#' -   If `StorageType=HDD`, valid values are 2000 GiB - 65,536 GiB (64
-#'     TiB).
-#' @param StorageType Sets the storage type for the file system you're creating. Valid values
-#' are `SSD` and `HDD`.
+#' **FSx for Windows File Server file systems** - The amount of storage
+#' capacity that you can configure depends on the value that you set for
+#' `StorageType` as follows:
+#' 
+#' -   For SSD storage, valid values are 32 GiB-65,536 GiB (64 TiB).
+#' 
+#' -   For HDD storage, valid values are 2000 GiB-65,536 GiB (64 TiB).
+#' @param StorageType Sets the storage type for the file system that you're creating. Valid
+#' values are `SSD` and `HDD`.
 #' 
 #' -   Set to `SSD` to use solid state drive storage. SSD is supported on
-#'     all Windows and Lustre deployment types.
+#'     all Windows, Lustre, ONTAP, and OpenZFS deployment types.
 #' 
 #' -   Set to `HDD` to use hard disk drive storage. HDD is supported on
 #'     `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types,
-#'     and on `PERSISTENT` Lustre file system deployment types.
+#'     and on `PERSISTENT_1` Lustre file system deployment types.
 #' 
-#' Default value is `SSD`. For more information, see [Storage Type
-#' Options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options)
-#' in the *Amazon FSx for Windows User Guide* and [Multiple Storage
-#' Options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
-#' in the *Amazon FSx for Lustre User Guide*.
+#' Default value is `SSD`. For more information, see [Storage type
+#' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options)
+#' in the *FSx for Windows File Server User Guide* and [Multiple storage
+#' options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
+#' in the *FSx for Lustre User Guide*.
 #' @param SubnetIds &#91;required&#93; Specifies the IDs of the subnets that the file system will be accessible
-#' from. For Windows `MULTI_AZ_1` file system deployment types, provide
+#' from. For Windows and ONTAP `MULTI_AZ_1` deployment types,provide
 #' exactly two subnet IDs, one for the preferred file server and one for
 #' the standby file server. You specify one of these subnets as the
-#' preferred subnet using the `WindowsConfiguration > PreferredSubnetID`
-#' property.
+#' preferred subnet using the `WindowsConfiguration > PreferredSubnetID` or
+#' `OntapConfiguration > PreferredSubnetID` properties. For more
+#' information about Multi-AZ file system configuration, see [Availability
+#' and durability: Single-AZ and Multi-AZ file
+#' systems](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html)
+#' in the *Amazon FSx for Windows User Guide* and [Availability and
+#' durability](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/) in the
+#' *Amazon FSx for ONTAP User Guide*.
 #' 
-#' For Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` file system deployment types
-#' and Lustre file systems, provide exactly one subnet ID. The file server
-#' is launched in that subnet's Availability Zone.
+#' For Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` and all Lustre deployment
+#' types, provide exactly one subnet ID. The file server is launched in
+#' that subnet's Availability Zone.
 #' @param SecurityGroupIds A list of IDs specifying the security groups to apply to all network
 #' interfaces created for file system access. This list isn't returned in
 #' later requests to describe the file system.
-#' @param Tags The tags to apply to the file system being created. The key value of the
-#' `Name` tag appears in the console as the file system name.
+#' @param Tags The tags to apply to the file system that's being created. The key value
+#' of the `Name` tag appears in the console as the file system name.
 #' @param KmsKeyId 
-#' @param WindowsConfiguration The Microsoft Windows configuration for the file system being created.
+#' @param WindowsConfiguration The Microsoft Windows configuration for the file system that's being
+#' created.
 #' @param LustreConfiguration 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FileSystem = list(
-#'     OwnerId = "string",
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     FileSystemId = "string",
-#'     FileSystemType = "WINDOWS"|"LUSTRE",
-#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-#'     FailureDetails = list(
-#'       Message = "string"
-#'     ),
-#'     StorageCapacity = 123,
-#'     StorageType = "SSD"|"HDD",
-#'     VpcId = "string",
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     NetworkInterfaceIds = list(
-#'       "string"
-#'     ),
-#'     DNSName = "string",
-#'     KmsKeyId = "string",
-#'     ResourceARN = "string",
-#'     Tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     WindowsConfiguration = list(
-#'       ActiveDirectoryId = "string",
-#'       SelfManagedActiveDirectoryConfiguration = list(
-#'         DomainName = "string",
-#'         OrganizationalUnitDistinguishedName = "string",
-#'         FileSystemAdministratorsGroup = "string",
-#'         UserName = "string",
-#'         DnsIps = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-#'       RemoteAdministrationEndpoint = "string",
-#'       PreferredSubnetId = "string",
-#'       PreferredFileServerIp = "string",
-#'       ThroughputCapacity = 123,
-#'       MaintenanceOperationsInProgress = list(
-#'         "PATCHING"|"BACKING_UP"
-#'       ),
-#'       WeeklyMaintenanceStartTime = "string",
-#'       DailyAutomaticBackupStartTime = "string",
-#'       AutomaticBackupRetentionDays = 123,
-#'       CopyTagsToBackups = TRUE|FALSE,
-#'       Aliases = list(
-#'         list(
-#'           Name = "string",
-#'           Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-#'         )
-#'       )
-#'     ),
-#'     LustreConfiguration = list(
-#'       WeeklyMaintenanceStartTime = "string",
-#'       DataRepositoryConfiguration = list(
-#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-#'         ImportPath = "string",
-#'         ExportPath = "string",
-#'         ImportedFileChunkSize = 123,
-#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-#'         FailureDetails = list(
-#'           Message = "string"
-#'         )
-#'       ),
-#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-#'       PerUnitStorageThroughput = 123,
-#'       MountName = "string",
-#'       DailyAutomaticBackupStartTime = "string",
-#'       AutomaticBackupRetentionDays = 123,
-#'       CopyTagsToBackups = TRUE|FALSE,
-#'       DriveCacheType = "NONE"|"READ"
-#'     ),
-#'     AdministrativeActions = list(
-#'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-#'         ProgressPercent = 123,
-#'         RequestTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-#'         TargetFileSystemValues = list(),
-#'         FailureDetails = list(
-#'           Message = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_file_system(
-#'   ClientRequestToken = "string",
-#'   FileSystemType = "WINDOWS"|"LUSTRE",
-#'   StorageCapacity = 123,
-#'   StorageType = "SSD"|"HDD",
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   KmsKeyId = "string",
-#'   WindowsConfiguration = list(
-#'     ActiveDirectoryId = "string",
-#'     SelfManagedActiveDirectoryConfiguration = list(
-#'       DomainName = "string",
-#'       OrganizationalUnitDistinguishedName = "string",
-#'       FileSystemAdministratorsGroup = "string",
-#'       UserName = "string",
-#'       Password = "string",
-#'       DnsIps = list(
-#'         "string"
-#'       )
-#'     ),
-#'     DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-#'     PreferredSubnetId = "string",
-#'     ThroughputCapacity = 123,
-#'     WeeklyMaintenanceStartTime = "string",
-#'     DailyAutomaticBackupStartTime = "string",
-#'     AutomaticBackupRetentionDays = 123,
-#'     CopyTagsToBackups = TRUE|FALSE,
-#'     Aliases = list(
-#'       "string"
-#'     )
-#'   ),
-#'   LustreConfiguration = list(
-#'     WeeklyMaintenanceStartTime = "string",
-#'     ImportPath = "string",
-#'     ExportPath = "string",
-#'     ImportedFileChunkSize = 123,
-#'     DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-#'     AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-#'     PerUnitStorageThroughput = 123,
-#'     DailyAutomaticBackupStartTime = "string",
-#'     AutomaticBackupRetentionDays = 123,
-#'     CopyTagsToBackups = TRUE|FALSE,
-#'     DriveCacheType = "NONE"|"READ"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation creates a new Amazon FSx for Windows File Server file
-#' # system.
-#' svc$create_file_system(
-#'   ClientRequestToken = "a8ca07e4-61ec-4399-99f4-19853801bcd5",
-#'   FileSystemType = "WINDOWS",
-#'   KmsKeyId = "arn:aws:kms:us-east-1:012345678912:key/1111abcd-2222-3333-4444-55556666eeff",
-#'   SecurityGroupIds = list(
-#'     "sg-edcd9784"
-#'   ),
-#'   StorageCapacity = 3200L,
-#'   StorageType = "HDD",
-#'   SubnetIds = list(
-#'     "subnet-1234abcd"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "Name",
-#'       Value = "MyFileSystem"
-#'     )
-#'   ),
-#'   WindowsConfiguration = list(
-#'     ActiveDirectoryId = "d-1234abcd12",
-#'     Aliases = list(
-#'       "accounting.corp.example.com"
-#'     ),
-#'     AutomaticBackupRetentionDays = 30L,
-#'     DailyAutomaticBackupStartTime = "05:00",
-#'     ThroughputCapacity = 32L,
-#'     WeeklyMaintenanceStartTime = "1:05:00"
-#'   )
-#' )
-#' }
+#' @param OntapConfiguration 
+#' @param FileSystemTypeVersion (Optional) For FSx for Lustre file systems, sets the Lustre version for
+#' the file system that you're creating. Valid values are `2.10` and
+#' `2.12`:
+#' 
+#' -   2.10 is supported by the Scratch and Persistent_1 Lustre deployment
+#'     types.
+#' 
+#' -   2.12 is supported by all Lustre deployment types. `2.12` is required
+#'     when setting FSx for Lustre `DeploymentType` to `PERSISTENT_2`.
+#' 
+#' Default value = `2.10`, except when `DeploymentType` is set to
+#' `PERSISTENT_2`, then the default is `2.12`.
+#' 
+#' If you set `FileSystemTypeVersion` to `2.10` for a `PERSISTENT_2` Lustre
+#' deployment type, the [`create_file_system`][fsx_create_file_system]
+#' operation fails.
+#' @param OpenZFSConfiguration The OpenZFS configuration for the file system that's being created.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_create_file_system
-fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL) {
+fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFileSystem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$create_file_system_input(ClientRequestToken = ClientRequestToken, FileSystemType = FileSystemType, StorageCapacity = StorageCapacity, StorageType = StorageType, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration)
+  input <- .fsx$create_file_system_input(ClientRequestToken = ClientRequestToken, FileSystemType = FileSystemType, StorageCapacity = StorageCapacity, StorageType = StorageType, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration)
   output <- .fsx$create_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -832,53 +417,19 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 }
 .fsx$operations$create_file_system <- fsx_create_file_system
 
-#' Creates a new Amazon FSx file system from an existing Amazon FSx backup
+#' Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server,
+#' or Amazon FSx for OpenZFS file system from an existing Amazon FSx backup
 #'
 #' @description
-#' Creates a new Amazon FSx file system from an existing Amazon FSx backup.
-#' 
-#' If a file system with the specified client request token exists and the
-#' parameters match, this operation returns the description of the file
-#' system. If a client request token specified by the file system exists
-#' and the parameters don't match, this call returns
-#' `IncompatibleParameterError`. If a file system with the specified client
-#' request token doesn't exist, this operation does the following:
-#' 
-#' -   Creates a new Amazon FSx file system from backup with an assigned
-#'     ID, and an initial lifecycle state of `CREATING`.
-#' 
-#' -   Returns the description of the file system.
-#' 
-#' Parameters like Active Directory, default share name, automatic backup,
-#' and backup settings default to the parameters of the file system that
-#' was backed up, unless overridden. You can explicitly supply other
-#' settings.
-#' 
-#' By using the idempotent operation, you can retry a
-#' [`create_file_system_from_backup`][fsx_create_file_system_from_backup]
-#' call without the risk of creating an extra file system. This approach
-#' can be useful when an initial call fails in a way that makes it unclear
-#' whether a file system was created. Examples are if a transport level
-#' timeout occurred, or your connection was reset. If you use the same
-#' client request token and the initial call created a file system, the
-#' client receives success as long as the parameters are the same.
-#' 
-#' The
-#' [`create_file_system_from_backup`][fsx_create_file_system_from_backup]
-#' call returns while the file system's lifecycle state is still
-#' `CREATING`. You can check the file-system creation status by calling the
-#' [`describe_file_systems`][fsx_describe_file_systems] operation, which
-#' returns the file system state along with other information.
+#' Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server, or Amazon FSx for OpenZFS file system from an existing Amazon FSx backup.
 #'
-#' @usage
-#' fsx_create_file_system_from_backup(BackupId, ClientRequestToken,
-#'   SubnetIds, SecurityGroupIds, Tags, WindowsConfiguration,
-#'   LustreConfiguration, StorageType)
+#' See [https://paws-r.github.io/docs/fsx/create_file_system_from_backup.html](https://paws-r.github.io/docs/fsx/create_file_system_from_backup.html) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; 
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
 #' idempotent creation. This string is automatically filled on your behalf
-#' when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
+#' when you use the Command Line Interface (CLI) or an Amazon Web Services
+#' SDK.
 #' @param SubnetIds &#91;required&#93; Specifies the IDs of the subnets that the file system will be accessible
 #' from. For Windows `MULTI_AZ_1` file system deployment types, provide
 #' exactly two subnet IDs, one for the preferred file server and one for
@@ -886,229 +437,56 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' preferred subnet using the `WindowsConfiguration > PreferredSubnetID`
 #' property.
 #' 
-#' For Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` deployment types and Lustre
-#' file systems, provide exactly one subnet ID. The file server is launched
-#' in that subnet's Availability Zone.
+#' Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` file system deployment types,
+#' Lustre file systems, and OpenZFS file systems provide exactly one subnet
+#' ID. The file server is launched in that subnet's Availability Zone.
 #' @param SecurityGroupIds A list of IDs for the security groups that apply to the specified
 #' network interfaces created for file system access. These security groups
 #' apply to all network interfaces. This value isn't returned in later
-#' DescribeFileSystem requests.
+#' `DescribeFileSystem` requests.
 #' @param Tags The tags to be applied to the file system at file system creation. The
 #' key value of the `Name` tag appears in the console as the file system
 #' name.
 #' @param WindowsConfiguration The configuration for this Microsoft Windows file system.
 #' @param LustreConfiguration 
-#' @param StorageType Sets the storage type for the Windows file system you're creating from a
-#' backup. Valid values are `SSD` and `HDD`.
+#' @param StorageType Sets the storage type for the Windows or OpenZFS file system that you're
+#' creating from a backup. Valid values are `SSD` and `HDD`.
 #' 
-#' -   Set to `SSD` to use solid state drive storage. Supported on all
-#'     Windows deployment types.
+#' -   Set to `SSD` to use solid state drive storage. SSD is supported on
+#'     all Windows and OpenZFS deployment types.
 #' 
-#' -   Set to `HDD` to use hard disk drive storage. Supported on
-#'     `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types.
+#' -   Set to `HDD` to use hard disk drive storage. HDD is supported on
+#'     `SINGLE_AZ_2` and `MULTI_AZ_1` FSx for Windows File Server file
+#'     system deployment types.
 #' 
-#' Default value is `SSD`.
+#' The default value is `SSD`.
 #' 
 #' HDD and SSD storage types have different minimum storage capacity
 #' requirements. A restored file system's storage capacity is tied to the
 #' file system that was backed up. You can create a file system that uses
-#' HDD storage from a backup of a file system that used SSD storage only if
-#' the original SSD file system had a storage capacity of at least 2000
-#' GiB.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FileSystem = list(
-#'     OwnerId = "string",
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     FileSystemId = "string",
-#'     FileSystemType = "WINDOWS"|"LUSTRE",
-#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-#'     FailureDetails = list(
-#'       Message = "string"
-#'     ),
-#'     StorageCapacity = 123,
-#'     StorageType = "SSD"|"HDD",
-#'     VpcId = "string",
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     NetworkInterfaceIds = list(
-#'       "string"
-#'     ),
-#'     DNSName = "string",
-#'     KmsKeyId = "string",
-#'     ResourceARN = "string",
-#'     Tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     WindowsConfiguration = list(
-#'       ActiveDirectoryId = "string",
-#'       SelfManagedActiveDirectoryConfiguration = list(
-#'         DomainName = "string",
-#'         OrganizationalUnitDistinguishedName = "string",
-#'         FileSystemAdministratorsGroup = "string",
-#'         UserName = "string",
-#'         DnsIps = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-#'       RemoteAdministrationEndpoint = "string",
-#'       PreferredSubnetId = "string",
-#'       PreferredFileServerIp = "string",
-#'       ThroughputCapacity = 123,
-#'       MaintenanceOperationsInProgress = list(
-#'         "PATCHING"|"BACKING_UP"
-#'       ),
-#'       WeeklyMaintenanceStartTime = "string",
-#'       DailyAutomaticBackupStartTime = "string",
-#'       AutomaticBackupRetentionDays = 123,
-#'       CopyTagsToBackups = TRUE|FALSE,
-#'       Aliases = list(
-#'         list(
-#'           Name = "string",
-#'           Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-#'         )
-#'       )
-#'     ),
-#'     LustreConfiguration = list(
-#'       WeeklyMaintenanceStartTime = "string",
-#'       DataRepositoryConfiguration = list(
-#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-#'         ImportPath = "string",
-#'         ExportPath = "string",
-#'         ImportedFileChunkSize = 123,
-#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-#'         FailureDetails = list(
-#'           Message = "string"
-#'         )
-#'       ),
-#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-#'       PerUnitStorageThroughput = 123,
-#'       MountName = "string",
-#'       DailyAutomaticBackupStartTime = "string",
-#'       AutomaticBackupRetentionDays = 123,
-#'       CopyTagsToBackups = TRUE|FALSE,
-#'       DriveCacheType = "NONE"|"READ"
-#'     ),
-#'     AdministrativeActions = list(
-#'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-#'         ProgressPercent = 123,
-#'         RequestTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-#'         TargetFileSystemValues = list(),
-#'         FailureDetails = list(
-#'           Message = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_file_system_from_backup(
-#'   BackupId = "string",
-#'   ClientRequestToken = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   WindowsConfiguration = list(
-#'     ActiveDirectoryId = "string",
-#'     SelfManagedActiveDirectoryConfiguration = list(
-#'       DomainName = "string",
-#'       OrganizationalUnitDistinguishedName = "string",
-#'       FileSystemAdministratorsGroup = "string",
-#'       UserName = "string",
-#'       Password = "string",
-#'       DnsIps = list(
-#'         "string"
-#'       )
-#'     ),
-#'     DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-#'     PreferredSubnetId = "string",
-#'     ThroughputCapacity = 123,
-#'     WeeklyMaintenanceStartTime = "string",
-#'     DailyAutomaticBackupStartTime = "string",
-#'     AutomaticBackupRetentionDays = 123,
-#'     CopyTagsToBackups = TRUE|FALSE,
-#'     Aliases = list(
-#'       "string"
-#'     )
-#'   ),
-#'   LustreConfiguration = list(
-#'     WeeklyMaintenanceStartTime = "string",
-#'     ImportPath = "string",
-#'     ExportPath = "string",
-#'     ImportedFileChunkSize = 123,
-#'     DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-#'     AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-#'     PerUnitStorageThroughput = 123,
-#'     DailyAutomaticBackupStartTime = "string",
-#'     AutomaticBackupRetentionDays = 123,
-#'     CopyTagsToBackups = TRUE|FALSE,
-#'     DriveCacheType = "NONE"|"READ"
-#'   ),
-#'   StorageType = "SSD"|"HDD"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation creates a new file system from backup.
-#' svc$create_file_system_from_backup(
-#'   BackupId = "backup-03e3c82e0183b7b6b",
-#'   ClientRequestToken = "f4c94ed7-238d-4c46-93db-48cd62ec33b7",
-#'   SecurityGroupIds = list(
-#'     "sg-edcd9784"
-#'   ),
-#'   SubnetIds = list(
-#'     "subnet-1234abcd"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "Name",
-#'       Value = "MyFileSystem"
-#'     )
-#'   ),
-#'   WindowsConfiguration = list(
-#'     ThroughputCapacity = 8L
-#'   )
-#' )
-#' }
+#' HDD storage from a backup of a file system that used SSD storage if the
+#' original SSD file system had a storage capacity of at least 2000 GiB.
+#' @param KmsKeyId 
+#' @param FileSystemTypeVersion Sets the version for the Amazon FSx for Lustre file system that you're
+#' creating from a backup. Valid values are `2.10` and `2.12`.
+#' 
+#' You don't need to specify `FileSystemTypeVersion` because it will be
+#' applied using the backup's `FileSystemTypeVersion` setting. If you
+#' choose to specify `FileSystemTypeVersion` when creating from backup, the
+#' value must match the backup's `FileSystemTypeVersion` setting.
+#' @param OpenZFSConfiguration The OpenZFS configuration for the file system that's being created.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_create_file_system_from_backup
-fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL) {
+fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL, KmsKeyId = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFileSystemFromBackup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$create_file_system_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, StorageType = StorageType)
+  input <- .fsx$create_file_system_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, Tags = Tags, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, StorageType = StorageType, KmsKeyId = KmsKeyId, FileSystemTypeVersion = FileSystemTypeVersion, OpenZFSConfiguration = OpenZFSConfiguration)
   output <- .fsx$create_file_system_from_backup_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -1118,51 +496,171 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 }
 .fsx$operations$create_file_system_from_backup <- fsx_create_file_system_from_backup
 
-#' Deletes an Amazon FSx backup, deleting its contents
+#' Creates a snapshot of an existing Amazon FSx for OpenZFS volume
 #'
 #' @description
-#' Deletes an Amazon FSx backup, deleting its contents. After deletion, the
-#' backup no longer exists, and its data is gone.
-#' 
-#' The [`delete_backup`][fsx_delete_backup] call returns instantly. The
-#' backup will not show up in later
-#' [`describe_backups`][fsx_describe_backups] calls.
-#' 
-#' The data in a deleted backup is also deleted and can't be recovered by
-#' any means.
+#' Creates a snapshot of an existing Amazon FSx for OpenZFS volume. With snapshots, you can easily undo file changes and compare file versions by restoring the volume to a previous version.
 #'
-#' @usage
-#' fsx_delete_backup(BackupId, ClientRequestToken)
+#' See [https://paws-r.github.io/docs/fsx/create_snapshot.html](https://paws-r.github.io/docs/fsx/create_snapshot.html) for full documentation.
 #'
-#' @param BackupId &#91;required&#93; The ID of the backup you want to delete.
+#' @param ClientRequestToken 
+#' @param Name &#91;required&#93; The name of the snapshot.
+#' @param VolumeId &#91;required&#93; The ID of the volume that you are taking a snapshot of.
+#' @param Tags 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_snapshot
+fsx_create_snapshot <- function(ClientRequestToken = NULL, Name, VolumeId, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$create_snapshot_input(ClientRequestToken = ClientRequestToken, Name = Name, VolumeId = VolumeId, Tags = Tags)
+  output <- .fsx$create_snapshot_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_snapshot <- fsx_create_snapshot
+
+#' Creates a storage virtual machine (SVM) for an Amazon FSx for ONTAP file
+#' system
+#'
+#' @description
+#' Creates a storage virtual machine (SVM) for an Amazon FSx for ONTAP file system.
+#'
+#' See [https://paws-r.github.io/docs/fsx/create_storage_virtual_machine.html](https://paws-r.github.io/docs/fsx/create_storage_virtual_machine.html) for full documentation.
+#'
+#' @param ActiveDirectoryConfiguration Describes the self-managed Microsoft Active Directory to which you want
+#' to join the SVM. Joining an Active Directory provides user
+#' authentication and access control for SMB clients, including Microsoft
+#' Windows and macOS client accessing the file system.
+#' @param ClientRequestToken 
+#' @param FileSystemId &#91;required&#93; 
+#' @param Name &#91;required&#93; The name of the SVM.
+#' @param SvmAdminPassword The password to use when managing the SVM using the NetApp ONTAP CLI or
+#' REST API. If you do not specify a password, you can still use the file
+#' system's `fsxadmin` user to manage the SVM.
+#' @param Tags 
+#' @param RootVolumeSecurityStyle The security style of the root volume of the SVM. Specify one of the
+#' following values:
+#' 
+#' -   `UNIX` if the file system is managed by a UNIX administrator, the
+#'     majority of users are NFS clients, and an application accessing the
+#'     data uses a UNIX user as the service account.
+#' 
+#' -   `NTFS` if the file system is managed by a Windows administrator, the
+#'     majority of users are SMB clients, and an application accessing the
+#'     data uses a Windows user as the service account.
+#' 
+#' -   `MIXED` if the file system is managed by both UNIX and Windows
+#'     administrators and users consist of both NFS and SMB clients.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_storage_virtual_machine
+fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NULL, ClientRequestToken = NULL, FileSystemId, Name, SvmAdminPassword = NULL, Tags = NULL, RootVolumeSecurityStyle = NULL) {
+  op <- new_operation(
+    name = "CreateStorageVirtualMachine",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$create_storage_virtual_machine_input(ActiveDirectoryConfiguration = ActiveDirectoryConfiguration, ClientRequestToken = ClientRequestToken, FileSystemId = FileSystemId, Name = Name, SvmAdminPassword = SvmAdminPassword, Tags = Tags, RootVolumeSecurityStyle = RootVolumeSecurityStyle)
+  output <- .fsx$create_storage_virtual_machine_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_storage_virtual_machine <- fsx_create_storage_virtual_machine
+
+#' Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume
+#'
+#' @description
+#' Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
+#'
+#' See [https://paws-r.github.io/docs/fsx/create_volume.html](https://paws-r.github.io/docs/fsx/create_volume.html) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param VolumeType &#91;required&#93; Specifies the type of volume to create; `ONTAP` and `OPENZFS` are the
+#' only valid volume types.
+#' @param Name &#91;required&#93; Specifies the name of the volume that you're creating.
+#' @param OntapConfiguration Specifies the configuration to use when creating the ONTAP volume.
+#' @param Tags 
+#' @param OpenZFSConfiguration Specifies the configuration to use when creating the OpenZFS volume.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_volume
+fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, OntapConfiguration = NULL, Tags = NULL, OpenZFSConfiguration = NULL) {
+  op <- new_operation(
+    name = "CreateVolume",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$create_volume_input(ClientRequestToken = ClientRequestToken, VolumeType = VolumeType, Name = Name, OntapConfiguration = OntapConfiguration, Tags = Tags, OpenZFSConfiguration = OpenZFSConfiguration)
+  output <- .fsx$create_volume_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_volume <- fsx_create_volume
+
+#' Creates a new Amazon FSx for NetApp ONTAP volume from an existing Amazon
+#' FSx volume backup
+#'
+#' @description
+#' Creates a new Amazon FSx for NetApp ONTAP volume from an existing Amazon FSx volume backup.
+#'
+#' See [https://paws-r.github.io/docs/fsx/create_volume_from_backup.html](https://paws-r.github.io/docs/fsx/create_volume_from_backup.html) for full documentation.
+#'
+#' @param BackupId &#91;required&#93; 
+#' @param ClientRequestToken 
+#' @param Name &#91;required&#93; The name of the new volume you're creating.
+#' @param OntapConfiguration Specifies the configuration of the ONTAP volume that you are creating.
+#' @param Tags 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_create_volume_from_backup
+fsx_create_volume_from_backup <- function(BackupId, ClientRequestToken = NULL, Name, OntapConfiguration = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateVolumeFromBackup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$create_volume_from_backup_input(BackupId = BackupId, ClientRequestToken = ClientRequestToken, Name = Name, OntapConfiguration = OntapConfiguration, Tags = Tags)
+  output <- .fsx$create_volume_from_backup_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$create_volume_from_backup <- fsx_create_volume_from_backup
+
+#' Deletes an Amazon FSx backup
+#'
+#' @description
+#' Deletes an Amazon FSx backup. After deletion, the backup no longer exists, and its data is gone.
+#'
+#' See [https://paws-r.github.io/docs/fsx/delete_backup.html](https://paws-r.github.io/docs/fsx/delete_backup.html) for full documentation.
+#'
+#' @param BackupId &#91;required&#93; The ID of the backup that you want to delete.
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
-#' idempotent deletion. This is automatically filled on your behalf when
-#' using the AWS CLI or SDK.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BackupId = "string",
-#'   Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_backup(
-#'   BackupId = "string",
-#'   ClientRequestToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation deletes an Amazon FSx file system backup.
-#' svc$delete_backup(
-#'   BackupId = "backup-03e3c82e0183b7b6b"
-#' )
-#' }
+#' idempotent deletion. This parameter is automatically filled on your
+#' behalf when using the CLI or SDK.
 #'
 #' @keywords internal
 #'
@@ -1184,117 +682,67 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 }
 .fsx$operations$delete_backup <- fsx_delete_backup
 
-#' Deletes a file system, deleting its contents
+#' Deletes a data repository association on an Amazon FSx for Lustre file
+#' system
 #'
 #' @description
-#' Deletes a file system, deleting its contents. After deletion, the file
-#' system no longer exists, and its data is gone. Any existing automatic
-#' backups will also be deleted.
-#' 
-#' By default, when you delete an Amazon FSx for Windows File Server file
-#' system, a final backup is created upon deletion. This final backup is
-#' not subject to the file system's retention policy, and must be manually
-#' deleted.
-#' 
-#' The [`delete_file_system`][fsx_delete_file_system] action returns while
-#' the file system has the `DELETING` status. You can check the file system
-#' deletion status by calling the
-#' [`describe_file_systems`][fsx_describe_file_systems] action, which
-#' returns a list of file systems in your account. If you pass the file
-#' system ID for a deleted file system, the
-#' [`describe_file_systems`][fsx_describe_file_systems] returns a
-#' `FileSystemNotFound` error.
-#' 
-#' Deleting an Amazon FSx for Lustre file system will fail with a 400
-#' BadRequest if a data repository task is in a `PENDING` or `EXECUTING`
-#' state.
-#' 
-#' The data in a deleted file system is also deleted and can't be recovered
-#' by any means.
+#' Deletes a data repository association on an Amazon FSx for Lustre file system. Deleting the data repository association unlinks the file system from the Amazon S3 bucket. When deleting a data repository association, you have the option of deleting the data in the file system that corresponds to the data repository association. Data repository associations are supported only for file systems with the `Persistent_2` deployment type.
 #'
-#' @usage
-#' fsx_delete_file_system(FileSystemId, ClientRequestToken,
-#'   WindowsConfiguration, LustreConfiguration)
+#' See [https://paws-r.github.io/docs/fsx/delete_data_repository_association.html](https://paws-r.github.io/docs/fsx/delete_data_repository_association.html) for full documentation.
 #'
-#' @param FileSystemId &#91;required&#93; The ID of the file system you want to delete.
+#' @param AssociationId &#91;required&#93; The ID of the data repository association that you want to delete.
+#' @param ClientRequestToken 
+#' @param DeleteDataInFileSystem &#91;required&#93; Set to `true` to delete the data in the file system that corresponds to
+#' the data repository association.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_delete_data_repository_association
+fsx_delete_data_repository_association <- function(AssociationId, ClientRequestToken = NULL, DeleteDataInFileSystem) {
+  op <- new_operation(
+    name = "DeleteDataRepositoryAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$delete_data_repository_association_input(AssociationId = AssociationId, ClientRequestToken = ClientRequestToken, DeleteDataInFileSystem = DeleteDataInFileSystem)
+  output <- .fsx$delete_data_repository_association_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$delete_data_repository_association <- fsx_delete_data_repository_association
+
+#' Deletes a file system
+#'
+#' @description
+#' Deletes a file system. After deletion, the file system no longer exists, and its data is gone. Any existing automatic backups and snapshots are also deleted.
+#'
+#' See [https://paws-r.github.io/docs/fsx/delete_file_system.html](https://paws-r.github.io/docs/fsx/delete_file_system.html) for full documentation.
+#'
+#' @param FileSystemId &#91;required&#93; The ID of the file system that you want to delete.
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
-#' idempotent deletion. This is automatically filled on your behalf when
-#' using the AWS CLI or SDK.
+#' idempotent deletion. This token is automatically filled on your behalf
+#' when using the Command Line Interface (CLI) or an Amazon Web Services
+#' SDK.
 #' @param WindowsConfiguration 
 #' @param LustreConfiguration 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FileSystemId = "string",
-#'   Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-#'   WindowsResponse = list(
-#'     FinalBackupId = "string",
-#'     FinalBackupTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   LustreResponse = list(
-#'     FinalBackupId = "string",
-#'     FinalBackupTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_file_system(
-#'   FileSystemId = "string",
-#'   ClientRequestToken = "string",
-#'   WindowsConfiguration = list(
-#'     SkipFinalBackup = TRUE|FALSE,
-#'     FinalBackupTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   ),
-#'   LustreConfiguration = list(
-#'     SkipFinalBackup = TRUE|FALSE,
-#'     FinalBackupTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation deletes an Amazon FSx file system.
-#' svc$delete_file_system(
-#'   FileSystemId = "fs-0498eed5fe91001ec"
-#' )
-#' }
+#' @param OpenZFSConfiguration The configuration object for the OpenZFS file system used in the
+#' [`delete_file_system`][fsx_delete_file_system] operation.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_delete_file_system
-fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL) {
+fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "DeleteFileSystem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$delete_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration)
+  input <- .fsx$delete_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OpenZFSConfiguration = OpenZFSConfiguration)
   output <- .fsx$delete_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -1304,204 +752,122 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 }
 .fsx$operations$delete_file_system <- fsx_delete_file_system
 
-#' Returns the description of specific Amazon FSx backups, if a BackupIds
+#' Deletes an Amazon FSx for OpenZFS snapshot
+#'
+#' @description
+#' Deletes an Amazon FSx for OpenZFS snapshot. After deletion, the snapshot no longer exists, and its data is gone. Deleting a snapshot doesn't affect snapshots stored in a file system backup.
+#'
+#' See [https://paws-r.github.io/docs/fsx/delete_snapshot.html](https://paws-r.github.io/docs/fsx/delete_snapshot.html) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param SnapshotId &#91;required&#93; The ID of the snapshot that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_delete_snapshot
+fsx_delete_snapshot <- function(ClientRequestToken = NULL, SnapshotId) {
+  op <- new_operation(
+    name = "DeleteSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$delete_snapshot_input(ClientRequestToken = ClientRequestToken, SnapshotId = SnapshotId)
+  output <- .fsx$delete_snapshot_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$delete_snapshot <- fsx_delete_snapshot
+
+#' Deletes an existing Amazon FSx for ONTAP storage virtual machine (SVM)
+#'
+#' @description
+#' Deletes an existing Amazon FSx for ONTAP storage virtual machine (SVM). Prior to deleting an SVM, you must delete all non-root volumes in the SVM, otherwise the operation will fail.
+#'
+#' See [https://paws-r.github.io/docs/fsx/delete_storage_virtual_machine.html](https://paws-r.github.io/docs/fsx/delete_storage_virtual_machine.html) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param StorageVirtualMachineId &#91;required&#93; The ID of the SVM that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_delete_storage_virtual_machine
+fsx_delete_storage_virtual_machine <- function(ClientRequestToken = NULL, StorageVirtualMachineId) {
+  op <- new_operation(
+    name = "DeleteStorageVirtualMachine",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$delete_storage_virtual_machine_input(ClientRequestToken = ClientRequestToken, StorageVirtualMachineId = StorageVirtualMachineId)
+  output <- .fsx$delete_storage_virtual_machine_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$delete_storage_virtual_machine <- fsx_delete_storage_virtual_machine
+
+#' Deletes an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume
+#'
+#' @description
+#' Deletes an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume.
+#'
+#' See [https://paws-r.github.io/docs/fsx/delete_volume.html](https://paws-r.github.io/docs/fsx/delete_volume.html) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param VolumeId &#91;required&#93; The ID of the volume that you are deleting.
+#' @param OntapConfiguration For Amazon FSx for ONTAP volumes, specify whether to take a final backup
+#' of the volume and apply tags to the backup. To apply tags to the backup,
+#' you must have the `fsx:TagResource` permission.
+#' @param OpenZFSConfiguration For Amazon FSx for OpenZFS volumes, specify whether to delete all child
+#' volumes and snapshots.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_delete_volume
+fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfiguration = NULL, OpenZFSConfiguration = NULL) {
+  op <- new_operation(
+    name = "DeleteVolume",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$delete_volume_input(ClientRequestToken = ClientRequestToken, VolumeId = VolumeId, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration)
+  output <- .fsx$delete_volume_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$delete_volume <- fsx_delete_volume
+
+#' Returns the description of a specific Amazon FSx backup, if a BackupIds
 #' value is provided for that backup
 #'
 #' @description
-#' Returns the description of specific Amazon FSx backups, if a `BackupIds`
-#' value is provided for that backup. Otherwise, it returns all backups
-#' owned by your AWS account in the AWS Region of the endpoint that you're
-#' calling.
-#' 
-#' When retrieving all backups, you can optionally specify the `MaxResults`
-#' parameter to limit the number of backups in a response. If more backups
-#' remain, Amazon FSx returns a `NextToken` value in the response. In this
-#' case, send a later request with the `NextToken` request parameter set to
-#' the value of `NextToken` from the last response.
-#' 
-#' This action is used in an iterative process to retrieve a list of your
-#' backups. [`describe_backups`][fsx_describe_backups] is called first
-#' without a `NextToken`value. Then the action continues to be called with
-#' the `NextToken` parameter set to the value of the last `NextToken` value
-#' until a response has no `NextToken`.
-#' 
-#' When using this action, keep the following in mind:
-#' 
-#' -   The implementation might return fewer than `MaxResults` file system
-#'     descriptions while still including a `NextToken` value.
-#' 
-#' -   The order of backups returned in the response of one
-#'     [`describe_backups`][fsx_describe_backups] call and the order of
-#'     backups returned across the responses of a multi-call iteration is
-#'     unspecified.
+#' Returns the description of a specific Amazon FSx backup, if a `BackupIds` value is provided for that backup. Otherwise, it returns all backups owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 #'
-#' @usage
-#' fsx_describe_backups(BackupIds, Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/fsx/describe_backups.html](https://paws-r.github.io/docs/fsx/describe_backups.html) for full documentation.
 #'
-#' @param BackupIds IDs of the backups you want to retrieve (String). This overrides any
-#' filters. If any IDs are not found, BackupNotFound will be thrown.
-#' @param Filters Filters structure. Supported names are file-system-id and backup-type.
-#' @param MaxResults Maximum number of backups to return in the response (integer). This
-#' parameter value must be greater than 0. The number of items that Amazon
-#' FSx returns is the minimum of the `MaxResults` parameter specified in
-#' the request and the service's internal maximum number of items per page.
-#' @param NextToken Opaque pagination token returned from a previous
-#' [`describe_backups`][fsx_describe_backups] operation (String). If a
-#' token present, the action continues the list from where the returning
-#' call left off.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Backups = list(
-#'     list(
-#'       BackupId = "string",
-#'       Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
-#'       FailureDetails = list(
-#'         Message = "string"
-#'       ),
-#'       Type = "AUTOMATIC"|"USER_INITIATED"|"AWS_BACKUP",
-#'       ProgressPercent = 123,
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       KmsKeyId = "string",
-#'       ResourceARN = "string",
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       FileSystem = list(
-#'         OwnerId = "string",
-#'         CreationTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         FileSystemId = "string",
-#'         FileSystemType = "WINDOWS"|"LUSTRE",
-#'         Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-#'         FailureDetails = list(
-#'           Message = "string"
-#'         ),
-#'         StorageCapacity = 123,
-#'         StorageType = "SSD"|"HDD",
-#'         VpcId = "string",
-#'         SubnetIds = list(
-#'           "string"
-#'         ),
-#'         NetworkInterfaceIds = list(
-#'           "string"
-#'         ),
-#'         DNSName = "string",
-#'         KmsKeyId = "string",
-#'         ResourceARN = "string",
-#'         Tags = list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         WindowsConfiguration = list(
-#'           ActiveDirectoryId = "string",
-#'           SelfManagedActiveDirectoryConfiguration = list(
-#'             DomainName = "string",
-#'             OrganizationalUnitDistinguishedName = "string",
-#'             FileSystemAdministratorsGroup = "string",
-#'             UserName = "string",
-#'             DnsIps = list(
-#'               "string"
-#'             )
-#'           ),
-#'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-#'           RemoteAdministrationEndpoint = "string",
-#'           PreferredSubnetId = "string",
-#'           PreferredFileServerIp = "string",
-#'           ThroughputCapacity = 123,
-#'           MaintenanceOperationsInProgress = list(
-#'             "PATCHING"|"BACKING_UP"
-#'           ),
-#'           WeeklyMaintenanceStartTime = "string",
-#'           DailyAutomaticBackupStartTime = "string",
-#'           AutomaticBackupRetentionDays = 123,
-#'           CopyTagsToBackups = TRUE|FALSE,
-#'           Aliases = list(
-#'             list(
-#'               Name = "string",
-#'               Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-#'             )
-#'           )
-#'         ),
-#'         LustreConfiguration = list(
-#'           WeeklyMaintenanceStartTime = "string",
-#'           DataRepositoryConfiguration = list(
-#'             Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-#'             ImportPath = "string",
-#'             ExportPath = "string",
-#'             ImportedFileChunkSize = 123,
-#'             AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-#'             FailureDetails = list(
-#'               Message = "string"
-#'             )
-#'           ),
-#'           DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-#'           PerUnitStorageThroughput = 123,
-#'           MountName = "string",
-#'           DailyAutomaticBackupStartTime = "string",
-#'           AutomaticBackupRetentionDays = 123,
-#'           CopyTagsToBackups = TRUE|FALSE,
-#'           DriveCacheType = "NONE"|"READ"
-#'         ),
-#'         AdministrativeActions = list(
-#'           list(
-#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-#'             ProgressPercent = 123,
-#'             RequestTime = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-#'             TargetFileSystemValues = list(),
-#'             FailureDetails = list(
-#'               Message = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       DirectoryInformation = list(
-#'         DomainName = "string",
-#'         ActiveDirectoryId = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_backups(
-#'   BackupIds = list(
-#'     "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Name = "file-system-id"|"backup-type"|"file-system-type",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation describes all of the Amazon FSx backups in an account.
-#' svc$describe_backups()
-#' }
+#' @param BackupIds The IDs of the backups that you want to retrieve. This parameter value
+#' overrides any filters. If any IDs aren't found, a `BackupNotFound` error
+#' occurs.
+#' @param Filters The filters structure. The supported names are `file-system-id`,
+#' `backup-type`, `file-system-type`, and `volume-id`.
+#' @param MaxResults Maximum number of backups to return in the response. This parameter
+#' value must be greater than 0. The number of items that Amazon FSx
+#' returns is the minimum of the `MaxResults` parameter specified in the
+#' request and the service's internal maximum number of items per page.
+#' @param NextToken An opaque pagination token returned from a previous
+#' [`describe_backups`][fsx_describe_backups] operation. If a token is
+#' present, the operation continues the list from where the returning call
+#' left off.
 #'
 #' @keywords internal
 #'
@@ -1524,28 +890,49 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 .fsx$operations$describe_backups <- fsx_describe_backups
 
 #' Returns the description of specific Amazon FSx for Lustre data
+#' repository associations, if one or more AssociationIds values are
+#' provided in the request, or if filters are used in the request
+#'
+#' @description
+#' Returns the description of specific Amazon FSx for Lustre data repository associations, if one or more `AssociationIds` values are provided in the request, or if filters are used in the request. Data repository associations are supported only for file systems with the `Persistent_2` deployment type.
+#'
+#' See [https://paws-r.github.io/docs/fsx/describe_data_repository_associations.html](https://paws-r.github.io/docs/fsx/describe_data_repository_associations.html) for full documentation.
+#'
+#' @param AssociationIds IDs of the data repository associations whose descriptions you want to
+#' retrieve (String).
+#' @param Filters 
+#' @param MaxResults The maximum number of resources to return in the response. This value
+#' must be an integer greater than zero.
+#' @param NextToken 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_data_repository_associations
+fsx_describe_data_repository_associations <- function(AssociationIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeDataRepositoryAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$describe_data_repository_associations_input(AssociationIds = AssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fsx$describe_data_repository_associations_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_data_repository_associations <- fsx_describe_data_repository_associations
+
+#' Returns the description of specific Amazon FSx for Lustre data
 #' repository tasks, if one or more TaskIds values are provided in the
 #' request, or if filters are used in the request
 #'
 #' @description
-#' Returns the description of specific Amazon FSx for Lustre data
-#' repository tasks, if one or more `TaskIds` values are provided in the
-#' request, or if filters are used in the request. You can use filters to
-#' narrow the response to include just tasks for specific file systems, or
-#' tasks in a specific lifecycle state. Otherwise, it returns all data
-#' repository tasks owned by your AWS account in the AWS Region of the
-#' endpoint that you're calling.
-#' 
-#' When retrieving all tasks, you can paginate the response by using the
-#' optional `MaxResults` parameter to limit the number of tasks returned in
-#' a response. If more tasks remain, Amazon FSx returns a `NextToken` value
-#' in the response. In this case, send a later request with the `NextToken`
-#' request parameter set to the value of `NextToken` from the last
-#' response.
+#' Returns the description of specific Amazon FSx for Lustre data repository tasks, if one or more `TaskIds` values are provided in the request, or if filters are used in the request. You can use filters to narrow the response to include just tasks for specific file systems, or tasks in a specific lifecycle state. Otherwise, it returns all data repository tasks owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 #'
-#' @usage
-#' fsx_describe_data_repository_tasks(TaskIds, Filters, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/fsx/describe_data_repository_tasks.html](https://paws-r.github.io/docs/fsx/describe_data_repository_tasks.html) for full documentation.
 #'
 #' @param TaskIds (Optional) IDs of the tasks whose descriptions you want to retrieve
 #' (String).
@@ -1555,77 +942,6 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 #' specific lifecycle state.
 #' @param MaxResults 
 #' @param NextToken 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataRepositoryTasks = list(
-#'     list(
-#'       TaskId = "string",
-#'       Lifecycle = "PENDING"|"EXECUTING"|"FAILED"|"SUCCEEDED"|"CANCELED"|"CANCELING",
-#'       Type = "EXPORT_TO_REPOSITORY",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ResourceARN = "string",
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       FileSystemId = "string",
-#'       Paths = list(
-#'         "string"
-#'       ),
-#'       FailureDetails = list(
-#'         Message = "string"
-#'       ),
-#'       Status = list(
-#'         TotalCount = 123,
-#'         SucceededCount = 123,
-#'         FailedCount = 123,
-#'         LastUpdatedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       Report = list(
-#'         Enabled = TRUE|FALSE,
-#'         Path = "string",
-#'         Format = "REPORT_CSV_20191124",
-#'         Scope = "FAILED_FILES_ONLY"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_data_repository_tasks(
-#'   TaskIds = list(
-#'     "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Name = "file-system-id"|"task-lifecycle",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1651,15 +967,9 @@ fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, M
 #' FSx for Windows File Server file system
 #'
 #' @description
-#' Returns the DNS aliases that are associated with the specified Amazon
-#' FSx for Windows File Server file system. A history of all DNS aliases
-#' that have been associated with and disassociated from the file system is
-#' available in the list of AdministrativeAction provided in the
-#' [`describe_file_systems`][fsx_describe_file_systems] operation response.
+#' Returns the DNS aliases that are associated with the specified Amazon FSx for Windows File Server file system. A history of all DNS aliases that have been associated with and disassociated from the file system is available in the list of AdministrativeAction provided in the [`describe_file_systems`][fsx_describe_file_systems] operation response.
 #'
-#' @usage
-#' fsx_describe_file_system_aliases(ClientRequestToken, FileSystemId,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/fsx/describe_file_system_aliases.html](https://paws-r.github.io/docs/fsx/describe_file_system_aliases.html) for full documentation.
 #'
 #' @param ClientRequestToken 
 #' @param FileSystemId &#91;required&#93; The ID of the file system to return the associated DNS aliases for
@@ -1672,30 +982,6 @@ fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, M
 #' [`describe_file_system_aliases`][fsx_describe_file_system_aliases]
 #' operation (String). If a token is included in the request, the action
 #' continues the list from where the previous returning call left off.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Aliases = list(
-#'     list(
-#'       Name = "string",
-#'       Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_file_system_aliases(
-#'   ClientRequestToken = "string",
-#'   FileSystemId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1721,37 +1007,9 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #' FileSystemIds value is provided for that file system
 #'
 #' @description
-#' Returns the description of specific Amazon FSx file systems, if a
-#' `FileSystemIds` value is provided for that file system. Otherwise, it
-#' returns descriptions of all file systems owned by your AWS account in
-#' the AWS Region of the endpoint that you're calling.
-#' 
-#' When retrieving all file system descriptions, you can optionally specify
-#' the `MaxResults` parameter to limit the number of descriptions in a
-#' response. If more file system descriptions remain, Amazon FSx returns a
-#' `NextToken` value in the response. In this case, send a later request
-#' with the `NextToken` request parameter set to the value of `NextToken`
-#' from the last response.
-#' 
-#' This action is used in an iterative process to retrieve a list of your
-#' file system descriptions.
-#' [`describe_file_systems`][fsx_describe_file_systems] is called first
-#' without a `NextToken`value. Then the action continues to be called with
-#' the `NextToken` parameter set to the value of the last `NextToken` value
-#' until a response has no `NextToken`.
-#' 
-#' When using this action, keep the following in mind:
-#' 
-#' -   The implementation might return fewer than `MaxResults` file system
-#'     descriptions while still including a `NextToken` value.
-#' 
-#' -   The order of file systems returned in the response of one
-#'     [`describe_file_systems`][fsx_describe_file_systems] call and the
-#'     order of file systems returned across the responses of a multicall
-#'     iteration is unspecified.
+#' Returns the description of specific Amazon FSx file systems, if a `FileSystemIds` value is provided for that file system. Otherwise, it returns descriptions of all file systems owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 #'
-#' @usage
-#' fsx_describe_file_systems(FileSystemIds, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/fsx/describe_file_systems.html](https://paws-r.github.io/docs/fsx/describe_file_systems.html) for full documentation.
 #'
 #' @param FileSystemIds IDs of the file systems whose descriptions you want to retrieve
 #' (String).
@@ -1761,130 +1019,8 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #' the request and the service's internal maximum number of items per page.
 #' @param NextToken Opaque pagination token returned from a previous
 #' [`describe_file_systems`][fsx_describe_file_systems] operation (String).
-#' If a token present, the action continues the list from where the
+#' If a token present, the operation continues the list from where the
 #' returning call left off.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FileSystems = list(
-#'     list(
-#'       OwnerId = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       FileSystemId = "string",
-#'       FileSystemType = "WINDOWS"|"LUSTRE",
-#'       Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-#'       FailureDetails = list(
-#'         Message = "string"
-#'       ),
-#'       StorageCapacity = 123,
-#'       StorageType = "SSD"|"HDD",
-#'       VpcId = "string",
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       NetworkInterfaceIds = list(
-#'         "string"
-#'       ),
-#'       DNSName = "string",
-#'       KmsKeyId = "string",
-#'       ResourceARN = "string",
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       WindowsConfiguration = list(
-#'         ActiveDirectoryId = "string",
-#'         SelfManagedActiveDirectoryConfiguration = list(
-#'           DomainName = "string",
-#'           OrganizationalUnitDistinguishedName = "string",
-#'           FileSystemAdministratorsGroup = "string",
-#'           UserName = "string",
-#'           DnsIps = list(
-#'             "string"
-#'           )
-#'         ),
-#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-#'         RemoteAdministrationEndpoint = "string",
-#'         PreferredSubnetId = "string",
-#'         PreferredFileServerIp = "string",
-#'         ThroughputCapacity = 123,
-#'         MaintenanceOperationsInProgress = list(
-#'           "PATCHING"|"BACKING_UP"
-#'         ),
-#'         WeeklyMaintenanceStartTime = "string",
-#'         DailyAutomaticBackupStartTime = "string",
-#'         AutomaticBackupRetentionDays = 123,
-#'         CopyTagsToBackups = TRUE|FALSE,
-#'         Aliases = list(
-#'           list(
-#'             Name = "string",
-#'             Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-#'           )
-#'         )
-#'       ),
-#'       LustreConfiguration = list(
-#'         WeeklyMaintenanceStartTime = "string",
-#'         DataRepositoryConfiguration = list(
-#'           Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-#'           ImportPath = "string",
-#'           ExportPath = "string",
-#'           ImportedFileChunkSize = 123,
-#'           AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-#'           FailureDetails = list(
-#'             Message = "string"
-#'           )
-#'         ),
-#'         DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-#'         PerUnitStorageThroughput = 123,
-#'         MountName = "string",
-#'         DailyAutomaticBackupStartTime = "string",
-#'         AutomaticBackupRetentionDays = 123,
-#'         CopyTagsToBackups = TRUE|FALSE,
-#'         DriveCacheType = "NONE"|"READ"
-#'       ),
-#'       AdministrativeActions = list(
-#'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-#'           ProgressPercent = 123,
-#'           RequestTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-#'           TargetFileSystemValues = list(),
-#'           FailureDetails = list(
-#'             Message = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_file_systems(
-#'   FileSystemIds = list(
-#'     "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation describes all of the Amazon FSx file systems in an
-#' # account.
-#' svc$describe_file_systems()
-#' }
 #'
 #' @keywords internal
 #'
@@ -1906,55 +1042,121 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 }
 .fsx$operations$describe_file_systems <- fsx_describe_file_systems
 
+#' Returns the description of specific Amazon FSx for OpenZFS snapshots, if
+#' a SnapshotIds value is provided
+#'
+#' @description
+#' Returns the description of specific Amazon FSx for OpenZFS snapshots, if a `SnapshotIds` value is provided. Otherwise, this operation returns all snapshots owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
+#'
+#' See [https://paws-r.github.io/docs/fsx/describe_snapshots.html](https://paws-r.github.io/docs/fsx/describe_snapshots.html) for full documentation.
+#'
+#' @param SnapshotIds The IDs of the snapshots that you want to retrieve. This parameter value
+#' overrides any filters. If any IDs aren't found, a `SnapshotNotFound`
+#' error occurs.
+#' @param Filters The filters structure. The supported names are `file-system-id` or
+#' `volume-id`.
+#' @param MaxResults 
+#' @param NextToken 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_snapshots
+fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeSnapshots",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$describe_snapshots_input(SnapshotIds = SnapshotIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fsx$describe_snapshots_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_snapshots <- fsx_describe_snapshots
+
+#' Describes one or more Amazon FSx for NetApp ONTAP storage virtual
+#' machines (SVMs)
+#'
+#' @description
+#' Describes one or more Amazon FSx for NetApp ONTAP storage virtual machines (SVMs).
+#'
+#' See [https://paws-r.github.io/docs/fsx/describe_storage_virtual_machines.html](https://paws-r.github.io/docs/fsx/describe_storage_virtual_machines.html) for full documentation.
+#'
+#' @param StorageVirtualMachineIds Enter the ID of one or more SVMs that you want to view.
+#' @param Filters Enter a filter name:value pair to view a select set of SVMs.
+#' @param MaxResults 
+#' @param NextToken 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_storage_virtual_machines
+fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeStorageVirtualMachines",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$describe_storage_virtual_machines_input(StorageVirtualMachineIds = StorageVirtualMachineIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fsx$describe_storage_virtual_machines_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_storage_virtual_machines <- fsx_describe_storage_virtual_machines
+
+#' Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for
+#' OpenZFS volumes
+#'
+#' @description
+#' Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volumes.
+#'
+#' See [https://paws-r.github.io/docs/fsx/describe_volumes.html](https://paws-r.github.io/docs/fsx/describe_volumes.html) for full documentation.
+#'
+#' @param VolumeIds The IDs of the volumes whose descriptions you want to retrieve.
+#' @param Filters Enter a filter `Name` and `Values` pair to view a select set of volumes.
+#' @param MaxResults 
+#' @param NextToken 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_volumes
+fsx_describe_volumes <- function(VolumeIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeVolumes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$describe_volumes_input(VolumeIds = VolumeIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fsx$describe_volumes_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_volumes <- fsx_describe_volumes
+
 #' Use this action to disassociate, or remove, one or more Domain Name
 #' Service (DNS) aliases from an Amazon FSx for Windows File Server file
 #' system
 #'
 #' @description
-#' Use this action to disassociate, or remove, one or more Domain Name
-#' Service (DNS) aliases from an Amazon FSx for Windows File Server file
-#' system. If you attempt to disassociate a DNS alias that is not
-#' associated with the file system, Amazon FSx responds with a 400 Bad
-#' Request. For more information, see [Working with DNS
-#' Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html).
-#' 
-#' The system generated response showing the DNS aliases that Amazon FSx is
-#' attempting to disassociate from the file system. Use the API operation
-#' to monitor the status of the aliases Amazon FSx is disassociating with
-#' the file system.
+#' Use this action to disassociate, or remove, one or more Domain Name Service (DNS) aliases from an Amazon FSx for Windows File Server file system. If you attempt to disassociate a DNS alias that is not associated with the file system, Amazon FSx responds with a 400 Bad Request. For more information, see [Working with DNS Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html).
 #'
-#' @usage
-#' fsx_disassociate_file_system_aliases(ClientRequestToken, FileSystemId,
-#'   Aliases)
+#' See [https://paws-r.github.io/docs/fsx/disassociate_file_system_aliases.html](https://paws-r.github.io/docs/fsx/disassociate_file_system_aliases.html) for full documentation.
 #'
 #' @param ClientRequestToken 
 #' @param FileSystemId &#91;required&#93; Specifies the file system from which to disassociate the DNS aliases.
 #' @param Aliases &#91;required&#93; An array of one or more DNS alias names to disassociate, or remove, from
 #' the file system.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Aliases = list(
-#'     list(
-#'       Name = "string",
-#'       Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_file_system_aliases(
-#'   ClientRequestToken = "string",
-#'   FileSystemId = "string",
-#'   Aliases = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1976,37 +1178,12 @@ fsx_disassociate_file_system_aliases <- function(ClientRequestToken = NULL, File
 }
 .fsx$operations$disassociate_file_system_aliases <- fsx_disassociate_file_system_aliases
 
-#' Lists tags for an Amazon FSx file systems and backups in the case of
-#' Amazon FSx for Windows File Server
+#' Lists tags for Amazon FSx resources
 #'
 #' @description
-#' Lists tags for an Amazon FSx file systems and backups in the case of
-#' Amazon FSx for Windows File Server.
-#' 
-#' When retrieving all tags, you can optionally specify the `MaxResults`
-#' parameter to limit the number of tags in a response. If more tags
-#' remain, Amazon FSx returns a `NextToken` value in the response. In this
-#' case, send a later request with the `NextToken` request parameter set to
-#' the value of `NextToken` from the last response.
-#' 
-#' This action is used in an iterative process to retrieve a list of your
-#' tags. [`list_tags_for_resource`][fsx_list_tags_for_resource] is called
-#' first without a `NextToken`value. Then the action continues to be called
-#' with the `NextToken` parameter set to the value of the last `NextToken`
-#' value until a response has no `NextToken`.
-#' 
-#' When using this action, keep the following in mind:
-#' 
-#' -   The implementation might return fewer than `MaxResults` file system
-#'     descriptions while still including a `NextToken` value.
-#' 
-#' -   The order of tags returned in the response of one
-#'     [`list_tags_for_resource`][fsx_list_tags_for_resource] call and the
-#'     order of tags returned across the responses of a multi-call
-#'     iteration is unspecified.
+#' Lists tags for Amazon FSx resources.
 #'
-#' @usage
-#' fsx_list_tags_for_resource(ResourceARN, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/fsx/list_tags_for_resource.html](https://paws-r.github.io/docs/fsx/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the Amazon FSx resource that will have its tags listed.
 #' @param MaxResults Maximum number of tags to return in the response (integer). This
@@ -2017,37 +1194,6 @@ fsx_disassociate_file_system_aliases <- function(ClientRequestToken = NULL, File
 #' [`list_tags_for_resource`][fsx_list_tags_for_resource] operation
 #' (String). If a token present, the action continues the list from where
 #' the returning call left off.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceARN = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation lists tags for an Amazon FSx resource.
-#' svc$list_tags_for_resource(
-#'   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2069,48 +1215,93 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 }
 .fsx$operations$list_tags_for_resource <- fsx_list_tags_for_resource
 
+#' Releases the file system lock from an Amazon FSx for OpenZFS file system
+#'
+#' @description
+#' Releases the file system lock from an Amazon FSx for OpenZFS file system.
+#'
+#' See [https://paws-r.github.io/docs/fsx/release_file_system_nfs_v3_locks.html](https://paws-r.github.io/docs/fsx/release_file_system_nfs_v3_locks.html) for full documentation.
+#'
+#' @param FileSystemId &#91;required&#93; 
+#' @param ClientRequestToken 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_release_file_system_nfs_v3_locks
+fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "ReleaseFileSystemNfsV3Locks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$release_file_system_nfs_v3_locks_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken)
+  output <- .fsx$release_file_system_nfs_v3_locks_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$release_file_system_nfs_v3_locks <- fsx_release_file_system_nfs_v3_locks
+
+#' Returns an Amazon FSx for OpenZFS volume to the state saved by the
+#' specified snapshot
+#'
+#' @description
+#' Returns an Amazon FSx for OpenZFS volume to the state saved by the specified snapshot.
+#'
+#' See [https://paws-r.github.io/docs/fsx/restore_volume_from_snapshot.html](https://paws-r.github.io/docs/fsx/restore_volume_from_snapshot.html) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param VolumeId &#91;required&#93; The ID of the volume that you are restoring.
+#' @param SnapshotId &#91;required&#93; The ID of the source snapshot. Specifies the snapshot that you are
+#' restoring from.
+#' @param Options The settings used when restoring the specified volume from snapshot.
+#' 
+#' -   `DELETE_INTERMEDIATE_SNAPSHOTS` - Deletes snapshots between the
+#'     current state and the specified snapshot. If there are intermediate
+#'     snapshots and this option isn't used,
+#'     [`restore_volume_from_snapshot`][fsx_restore_volume_from_snapshot]
+#'     fails.
+#' 
+#' -   `DELETE_CLONED_VOLUMES` - Deletes any dependent clone volumes
+#'     created from intermediate snapshots. If there are any dependent
+#'     clone volumes and this option isn't used,
+#'     [`restore_volume_from_snapshot`][fsx_restore_volume_from_snapshot]
+#'     fails.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_restore_volume_from_snapshot
+fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId, SnapshotId, Options = NULL) {
+  op <- new_operation(
+    name = "RestoreVolumeFromSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$restore_volume_from_snapshot_input(ClientRequestToken = ClientRequestToken, VolumeId = VolumeId, SnapshotId = SnapshotId, Options = Options)
+  output <- .fsx$restore_volume_from_snapshot_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$restore_volume_from_snapshot <- fsx_restore_volume_from_snapshot
+
 #' Tags an Amazon FSx resource
 #'
 #' @description
 #' Tags an Amazon FSx resource.
 #'
-#' @usage
-#' fsx_tag_resource(ResourceARN, Tags)
+#' See [https://paws-r.github.io/docs/fsx/tag_resource.html](https://paws-r.github.io/docs/fsx/tag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon FSx resource that you want
 #' to tag.
 #' @param Tags &#91;required&#93; A list of tags for the resource. If a tag with a given key already
 #' exists, the value is replaced by the one specified in this parameter.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceARN = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation tags an Amazon FSx resource.
-#' svc$tag_resource(
-#'   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec",
-#'   Tags = list(
-#'     list(
-#'       Key = "Name",
-#'       Value = "MyFileSystem"
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2137,36 +1328,11 @@ fsx_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' This action removes a tag from an Amazon FSx resource.
 #'
-#' @usage
-#' fsx_untag_resource(ResourceARN, TagKeys)
+#' See [https://paws-r.github.io/docs/fsx/untag_resource.html](https://paws-r.github.io/docs/fsx/untag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the Amazon FSx resource to untag.
 #' @param TagKeys &#91;required&#93; A list of keys of tags on the resource to untag. In case the tag key
 #' doesn't exist, the call will still succeed to be idempotent.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceARN = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation untags an Amazon FSx resource.
-#' svc$untag_resource(
-#'   ResourceARN = "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0498eed5fe91001ec",
-#'   TagKeys = list(
-#'     "Name"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2188,238 +1354,121 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .fsx$operations$untag_resource <- fsx_untag_resource
 
+#' Updates the configuration of an existing data repository association on
+#' an Amazon FSx for Lustre file system
+#'
+#' @description
+#' Updates the configuration of an existing data repository association on an Amazon FSx for Lustre file system. Data repository associations are supported only for file systems with the `Persistent_2` deployment type.
+#'
+#' See [https://paws-r.github.io/docs/fsx/update_data_repository_association.html](https://paws-r.github.io/docs/fsx/update_data_repository_association.html) for full documentation.
+#'
+#' @param AssociationId &#91;required&#93; The ID of the data repository association that you are updating.
+#' @param ClientRequestToken 
+#' @param ImportedFileChunkSize For files imported from a data repository, this value determines the
+#' stripe count and maximum amount of data per file (in MiB) stored on a
+#' single physical disk. The maximum number of disks that a single file can
+#' be striped across is limited by the total number of disks that make up
+#' the file system.
+#' 
+#' The default chunk size is 1,024 MiB (1 GiB) and can go as high as
+#' 512,000 MiB (500 GiB). Amazon S3 objects have a maximum size of 5 TB.
+#' @param S3 The configuration for an Amazon S3 data repository linked to an Amazon
+#' FSx Lustre file system with a data repository association. The
+#' configuration defines which file events (new, changed, or deleted files
+#' or directories) are automatically imported from the linked data
+#' repository to the file system or automatically exported from the file
+#' system to the data repository.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_update_data_repository_association
+fsx_update_data_repository_association <- function(AssociationId, ClientRequestToken = NULL, ImportedFileChunkSize = NULL, S3 = NULL) {
+  op <- new_operation(
+    name = "UpdateDataRepositoryAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$update_data_repository_association_input(AssociationId = AssociationId, ClientRequestToken = ClientRequestToken, ImportedFileChunkSize = ImportedFileChunkSize, S3 = S3)
+  output <- .fsx$update_data_repository_association_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$update_data_repository_association <- fsx_update_data_repository_association
+
 #' Use this operation to update the configuration of an existing Amazon FSx
 #' file system
 #'
 #' @description
-#' Use this operation to update the configuration of an existing Amazon FSx
-#' file system. You can update multiple properties in a single request.
-#' 
-#' For Amazon FSx for Windows File Server file systems, you can update the
-#' following properties:
-#' 
-#' -   AutomaticBackupRetentionDays
-#' 
-#' -   DailyAutomaticBackupStartTime
-#' 
-#' -   SelfManagedActiveDirectoryConfiguration
-#' 
-#' -   StorageCapacity
-#' 
-#' -   ThroughputCapacity
-#' 
-#' -   WeeklyMaintenanceStartTime
-#' 
-#' For Amazon FSx for Lustre file systems, you can update the following
-#' properties:
-#' 
-#' -   AutoImportPolicy
-#' 
-#' -   AutomaticBackupRetentionDays
-#' 
-#' -   DailyAutomaticBackupStartTime
-#' 
-#' -   StorageCapacity
-#' 
-#' -   WeeklyMaintenanceStartTime
+#' Use this operation to update the configuration of an existing Amazon FSx file system. You can update multiple properties in a single request.
 #'
-#' @usage
-#' fsx_update_file_system(FileSystemId, ClientRequestToken,
-#'   StorageCapacity, WindowsConfiguration, LustreConfiguration)
+#' See [https://paws-r.github.io/docs/fsx/update_file_system.html](https://paws-r.github.io/docs/fsx/update_file_system.html) for full documentation.
 #'
-#' @param FileSystemId &#91;required&#93; Identifies the file system that you are updating.
+#' @param FileSystemId &#91;required&#93; The ID of the file system that you are updating.
 #' @param ClientRequestToken A string of up to 64 ASCII characters that Amazon FSx uses to ensure
 #' idempotent updates. This string is automatically filled on your behalf
-#' when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
-#' @param StorageCapacity Use this parameter to increase the storage capacity of an Amazon FSx
-#' file system. Specifies the storage capacity target value, GiB, to
-#' increase the storage capacity for the file system that you're updating.
-#' You cannot make a storage capacity increase request if there is an
+#' when you use the Command Line Interface (CLI) or an Amazon Web Services
+#' SDK.
+#' @param StorageCapacity Use this parameter to increase the storage capacity of an Amazon FSx for
+#' Windows File Server, Amazon FSx for Lustre, or Amazon FSx for NetApp
+#' ONTAP file system. Specifies the storage capacity target value, in GiB,
+#' to increase the storage capacity for the file system that you're
+#' updating.
+#' 
+#' You can't make a storage capacity increase request if there is an
 #' existing storage capacity increase request in progress.
 #' 
 #' For Windows file systems, the storage capacity target value must be at
-#' least 10 percent (%) greater than the current storage capacity value. In
-#' order to increase storage capacity, the file system must have at least
-#' 16 MB/s of throughput capacity.
+#' least 10 percent greater than the current storage capacity value. To
+#' increase storage capacity, the file system must have at least 16 MBps of
+#' throughput capacity. For more information, see [Managing storage
+#' capacity](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html)
+#' in the *Amazon FSx for Windows File Server User Guide*.
 #' 
 #' For Lustre file systems, the storage capacity target value can be the
 #' following:
 #' 
-#' -   For `SCRATCH_2` and `PERSISTENT_1 SSD` deployment types, valid
-#'     values are in multiples of 2400 GiB. The value must be greater than
-#'     the current storage capacity.
+#' -   For `SCRATCH_2`, `PERSISTENT_1`, and `PERSISTENT_2 SSD` deployment
+#'     types, valid values are in multiples of 2400 GiB. The value must be
+#'     greater than the current storage capacity.
 #' 
 #' -   For `PERSISTENT HDD` file systems, valid values are multiples of
-#'     6000 GiB for 12 MB/s/TiB file systems and multiples of 1800 GiB for
-#'     40 MB/s/TiB file systems. The values must be greater than the
-#'     current storage capacity.
+#'     6000 GiB for 12-MBps throughput per TiB file systems and multiples
+#'     of 1800 GiB for 40-MBps throughput per TiB file systems. The values
+#'     must be greater than the current storage capacity.
 #' 
-#' -   For `SCRATCH_1` file systems, you cannot increase the storage
+#' -   For `SCRATCH_1` file systems, you can't increase the storage
 #'     capacity.
 #' 
-#' For more information, see [Managing storage
-#' capacity](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html)
-#' in the *Amazon FSx for Windows File Server User Guide* and [Managing
-#' storage and throughput
+#' For more information, see [Managing storage and throughput
 #' capacity](https://docs.aws.amazon.com/fsx/latest/LustreGuide/managing-storage-capacity.html)
 #' in the *Amazon FSx for Lustre User Guide*.
+#' 
+#' For ONTAP file systems, the storage capacity target value must be at
+#' least 10 percent greater than the current storage capacity value. For
+#' more information, see [Managing storage capacity and provisioned
+#' IOPS](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-storage-capacity.html)
+#' in the *Amazon FSx for NetApp ONTAP User Guide*.
 #' @param WindowsConfiguration The configuration updates for an Amazon FSx for Windows File Server file
 #' system.
 #' @param LustreConfiguration 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FileSystem = list(
-#'     OwnerId = "string",
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     FileSystemId = "string",
-#'     FileSystemType = "WINDOWS"|"LUSTRE",
-#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-#'     FailureDetails = list(
-#'       Message = "string"
-#'     ),
-#'     StorageCapacity = 123,
-#'     StorageType = "SSD"|"HDD",
-#'     VpcId = "string",
-#'     SubnetIds = list(
-#'       "string"
-#'     ),
-#'     NetworkInterfaceIds = list(
-#'       "string"
-#'     ),
-#'     DNSName = "string",
-#'     KmsKeyId = "string",
-#'     ResourceARN = "string",
-#'     Tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     WindowsConfiguration = list(
-#'       ActiveDirectoryId = "string",
-#'       SelfManagedActiveDirectoryConfiguration = list(
-#'         DomainName = "string",
-#'         OrganizationalUnitDistinguishedName = "string",
-#'         FileSystemAdministratorsGroup = "string",
-#'         UserName = "string",
-#'         DnsIps = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-#'       RemoteAdministrationEndpoint = "string",
-#'       PreferredSubnetId = "string",
-#'       PreferredFileServerIp = "string",
-#'       ThroughputCapacity = 123,
-#'       MaintenanceOperationsInProgress = list(
-#'         "PATCHING"|"BACKING_UP"
-#'       ),
-#'       WeeklyMaintenanceStartTime = "string",
-#'       DailyAutomaticBackupStartTime = "string",
-#'       AutomaticBackupRetentionDays = 123,
-#'       CopyTagsToBackups = TRUE|FALSE,
-#'       Aliases = list(
-#'         list(
-#'           Name = "string",
-#'           Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-#'         )
-#'       )
-#'     ),
-#'     LustreConfiguration = list(
-#'       WeeklyMaintenanceStartTime = "string",
-#'       DataRepositoryConfiguration = list(
-#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-#'         ImportPath = "string",
-#'         ExportPath = "string",
-#'         ImportedFileChunkSize = 123,
-#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-#'         FailureDetails = list(
-#'           Message = "string"
-#'         )
-#'       ),
-#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-#'       PerUnitStorageThroughput = 123,
-#'       MountName = "string",
-#'       DailyAutomaticBackupStartTime = "string",
-#'       AutomaticBackupRetentionDays = 123,
-#'       CopyTagsToBackups = TRUE|FALSE,
-#'       DriveCacheType = "NONE"|"READ"
-#'     ),
-#'     AdministrativeActions = list(
-#'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-#'         ProgressPercent = 123,
-#'         RequestTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-#'         TargetFileSystemValues = list(),
-#'         FailureDetails = list(
-#'           Message = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_file_system(
-#'   FileSystemId = "string",
-#'   ClientRequestToken = "string",
-#'   StorageCapacity = 123,
-#'   WindowsConfiguration = list(
-#'     WeeklyMaintenanceStartTime = "string",
-#'     DailyAutomaticBackupStartTime = "string",
-#'     AutomaticBackupRetentionDays = 123,
-#'     ThroughputCapacity = 123,
-#'     SelfManagedActiveDirectoryConfiguration = list(
-#'       UserName = "string",
-#'       Password = "string",
-#'       DnsIps = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   LustreConfiguration = list(
-#'     WeeklyMaintenanceStartTime = "string",
-#'     DailyAutomaticBackupStartTime = "string",
-#'     AutomaticBackupRetentionDays = 123,
-#'     AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation updates an existing file system.
-#' svc$update_file_system(
-#'   FileSystemId = "fs-0498eed5fe91001ec",
-#'   WindowsConfiguration = list(
-#'     AutomaticBackupRetentionDays = 10L,
-#'     DailyAutomaticBackupStartTime = "06:00",
-#'     WeeklyMaintenanceStartTime = "3:06:00"
-#'   )
-#' )
-#' }
+#' @param OntapConfiguration 
+#' @param OpenZFSConfiguration The configuration updates for an Amazon FSx for OpenZFS file system.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_update_file_system
-fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL) {
+fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateFileSystem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration)
+  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration)
   output <- .fsx$update_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -2428,3 +1477,107 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
   return(response)
 }
 .fsx$operations$update_file_system <- fsx_update_file_system
+
+#' Updates the name of an Amazon FSx for OpenZFS snapshot
+#'
+#' @description
+#' Updates the name of an Amazon FSx for OpenZFS snapshot.
+#'
+#' See [https://paws-r.github.io/docs/fsx/update_snapshot.html](https://paws-r.github.io/docs/fsx/update_snapshot.html) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param Name &#91;required&#93; The name of the snapshot to update.
+#' @param SnapshotId &#91;required&#93; The ID of the snapshot that you want to update, in the format
+#' `fsvolsnap-0123456789abcdef0`.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_update_snapshot
+fsx_update_snapshot <- function(ClientRequestToken = NULL, Name, SnapshotId) {
+  op <- new_operation(
+    name = "UpdateSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$update_snapshot_input(ClientRequestToken = ClientRequestToken, Name = Name, SnapshotId = SnapshotId)
+  output <- .fsx$update_snapshot_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$update_snapshot <- fsx_update_snapshot
+
+#' Updates an Amazon FSx for ONTAP storage virtual machine (SVM)
+#'
+#' @description
+#' Updates an Amazon FSx for ONTAP storage virtual machine (SVM).
+#'
+#' See [https://paws-r.github.io/docs/fsx/update_storage_virtual_machine.html](https://paws-r.github.io/docs/fsx/update_storage_virtual_machine.html) for full documentation.
+#'
+#' @param ActiveDirectoryConfiguration Updates the Microsoft Active Directory (AD) configuration for an SVM
+#' that is joined to an AD.
+#' @param ClientRequestToken 
+#' @param StorageVirtualMachineId &#91;required&#93; The ID of the SVM that you want to update, in the format
+#' `svm-0123456789abcdef0`.
+#' @param SvmAdminPassword Enter a new SvmAdminPassword if you are updating it.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_update_storage_virtual_machine
+fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NULL, ClientRequestToken = NULL, StorageVirtualMachineId, SvmAdminPassword = NULL) {
+  op <- new_operation(
+    name = "UpdateStorageVirtualMachine",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$update_storage_virtual_machine_input(ActiveDirectoryConfiguration = ActiveDirectoryConfiguration, ClientRequestToken = ClientRequestToken, StorageVirtualMachineId = StorageVirtualMachineId, SvmAdminPassword = SvmAdminPassword)
+  output <- .fsx$update_storage_virtual_machine_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$update_storage_virtual_machine <- fsx_update_storage_virtual_machine
+
+#' Updates the configuration of an Amazon FSx for NetApp ONTAP or Amazon
+#' FSx for OpenZFS volume
+#'
+#' @description
+#' Updates the configuration of an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume.
+#'
+#' See [https://paws-r.github.io/docs/fsx/update_volume.html](https://paws-r.github.io/docs/fsx/update_volume.html) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param VolumeId &#91;required&#93; The ID of the volume that you want to update, in the format
+#' `fsvol-0123456789abcdef0`.
+#' @param OntapConfiguration The configuration of the ONTAP volume that you are updating.
+#' @param Name The name of the OpenZFS volume. OpenZFS root volumes are automatically
+#' named `FSX`. Child volume names must be unique among their parent
+#' volume's children. The name of the volume is part of the mount string
+#' for the OpenZFS volume.
+#' @param OpenZFSConfiguration The configuration of the OpenZFS volume that you are updating.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_update_volume
+fsx_update_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfiguration = NULL, Name = NULL, OpenZFSConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateVolume",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$update_volume_input(ClientRequestToken = ClientRequestToken, VolumeId = VolumeId, OntapConfiguration = OntapConfiguration, Name = Name, OpenZFSConfiguration = OpenZFSConfiguration)
+  output <- .fsx$update_volume_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$update_volume <- fsx_update_volume

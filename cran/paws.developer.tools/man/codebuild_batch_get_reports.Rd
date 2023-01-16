@@ -9,66 +9,9 @@ codebuild_batch_get_reports(reportArns)
 \arguments{
 \item{reportArns}{[required] An array of ARNs that identify the \code{Report} objects to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  reports = list(
-    list(
-      arn = "string",
-      type = "TEST"|"CODE_COVERAGE",
-      name = "string",
-      reportGroupArn = "string",
-      executionId = "string",
-      status = "GENERATING"|"SUCCEEDED"|"FAILED"|"INCOMPLETE"|"DELETING",
-      created = as.POSIXct(
-        "2015-01-01"
-      ),
-      expired = as.POSIXct(
-        "2015-01-01"
-      ),
-      exportConfig = list(
-        exportConfigType = "S3"|"NO_EXPORT",
-        s3Destination = list(
-          bucket = "string",
-          path = "string",
-          packaging = "ZIP"|"NONE",
-          encryptionKey = "string",
-          encryptionDisabled = TRUE|FALSE
-        )
-      ),
-      truncated = TRUE|FALSE,
-      testSummary = list(
-        total = 123,
-        statusCounts = list(
-          123
-        ),
-        durationInNanoSeconds = 123
-      ),
-      codeCoverageSummary = list(
-        lineCoveragePercentage = 123.0,
-        linesCovered = 123,
-        linesMissed = 123,
-        branchCoveragePercentage = 123.0,
-        branchesCovered = 123,
-        branchesMissed = 123
-      )
-    )
-  ),
-  reportsNotFound = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Returns an array of reports.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_get_reports(
-  reportArns = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/batch_get_reports.html} for full documentation.
+}
 \keyword{internal}

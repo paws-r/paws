@@ -7,7 +7,19 @@
 pinpoint(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -19,7 +31,9 @@ Operations section.
 Doc Engage API - Amazon Pinpoint API
 }
 \section{Service syntax}{
-\preformatted{svc <- pinpoint(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- pinpoint(
   config = list(
     credentials = list(
       creds = list(
@@ -27,130 +41,141 @@ Doc Engage API - Amazon Pinpoint API
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=pinpoint_create_app]{create_app} \tab Creates an application\cr
-\link[=pinpoint_create_campaign]{create_campaign} \tab Creates a new campaign for an application or updates the settings of an existing campaign for an application\cr
-\link[=pinpoint_create_email_template]{create_email_template} \tab Creates a message template for messages that are sent through the email channel\cr
-\link[=pinpoint_create_export_job]{create_export_job} \tab Creates an export job for an application\cr
-\link[=pinpoint_create_import_job]{create_import_job} \tab Creates an import job for an application\cr
-\link[=pinpoint_create_journey]{create_journey} \tab Creates a journey for an application\cr
-\link[=pinpoint_create_push_template]{create_push_template} \tab Creates a message template for messages that are sent through a push notification channel\cr
-\link[=pinpoint_create_recommender_configuration]{create_recommender_configuration} \tab Creates an Amazon Pinpoint configuration for a recommender model\cr
-\link[=pinpoint_create_segment]{create_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
-\link[=pinpoint_create_sms_template]{create_sms_template} \tab Creates a message template for messages that are sent through the SMS channel\cr
-\link[=pinpoint_create_voice_template]{create_voice_template} \tab Creates a message template for messages that are sent through the voice channel\cr
-\link[=pinpoint_delete_adm_channel]{delete_adm_channel} \tab Disables the ADM channel for an application and deletes any existing settings for the channel\cr
-\link[=pinpoint_delete_apns_channel]{delete_apns_channel} \tab Disables the APNs channel for an application and deletes any existing settings for the channel\cr
-\link[=pinpoint_delete_apns_sandbox_channel]{delete_apns_sandbox_channel} \tab Disables the APNs sandbox channel for an application and deletes any existing settings for the channel\cr
-\link[=pinpoint_delete_apns_voip_channel]{delete_apns_voip_channel} \tab Disables the APNs VoIP channel for an application and deletes any existing settings for the channel\cr
-\link[=pinpoint_delete_apns_voip_sandbox_channel]{delete_apns_voip_sandbox_channel} \tab Disables the APNs VoIP sandbox channel for an application and deletes any existing settings for the channel\cr
-\link[=pinpoint_delete_app]{delete_app} \tab Deletes an application\cr
-\link[=pinpoint_delete_baidu_channel]{delete_baidu_channel} \tab Disables the Baidu channel for an application and deletes any existing settings for the channel\cr
-\link[=pinpoint_delete_campaign]{delete_campaign} \tab Deletes a campaign from an application\cr
-\link[=pinpoint_delete_email_channel]{delete_email_channel} \tab Disables the email channel for an application and deletes any existing settings for the channel\cr
-\link[=pinpoint_delete_email_template]{delete_email_template} \tab Deletes a message template for messages that were sent through the email channel\cr
-\link[=pinpoint_delete_endpoint]{delete_endpoint} \tab Deletes an endpoint from an application\cr
-\link[=pinpoint_delete_event_stream]{delete_event_stream} \tab Deletes the event stream for an application\cr
-\link[=pinpoint_delete_gcm_channel]{delete_gcm_channel} \tab Disables the GCM channel for an application and deletes any existing settings for the channel\cr
-\link[=pinpoint_delete_journey]{delete_journey} \tab Deletes a journey from an application\cr
-\link[=pinpoint_delete_push_template]{delete_push_template} \tab Deletes a message template for messages that were sent through a push notification channel\cr
-\link[=pinpoint_delete_recommender_configuration]{delete_recommender_configuration} \tab Deletes an Amazon Pinpoint configuration for a recommender model\cr
-\link[=pinpoint_delete_segment]{delete_segment} \tab Deletes a segment from an application\cr
-\link[=pinpoint_delete_sms_channel]{delete_sms_channel} \tab Disables the SMS channel for an application and deletes any existing settings for the channel\cr
-\link[=pinpoint_delete_sms_template]{delete_sms_template} \tab Deletes a message template for messages that were sent through the SMS channel\cr
-\link[=pinpoint_delete_user_endpoints]{delete_user_endpoints} \tab Deletes all the endpoints that are associated with a specific user ID\cr
-\link[=pinpoint_delete_voice_channel]{delete_voice_channel} \tab Disables the voice channel for an application and deletes any existing settings for the channel\cr
-\link[=pinpoint_delete_voice_template]{delete_voice_template} \tab Deletes a message template for messages that were sent through the voice channel\cr
-\link[=pinpoint_get_adm_channel]{get_adm_channel} \tab Retrieves information about the status and settings of the ADM channel for an application\cr
-\link[=pinpoint_get_apns_channel]{get_apns_channel} \tab Retrieves information about the status and settings of the APNs channel for an application\cr
-\link[=pinpoint_get_apns_sandbox_channel]{get_apns_sandbox_channel} \tab Retrieves information about the status and settings of the APNs sandbox channel for an application\cr
-\link[=pinpoint_get_apns_voip_channel]{get_apns_voip_channel} \tab Retrieves information about the status and settings of the APNs VoIP channel for an application\cr
-\link[=pinpoint_get_apns_voip_sandbox_channel]{get_apns_voip_sandbox_channel} \tab Retrieves information about the status and settings of the APNs VoIP sandbox channel for an application\cr
-\link[=pinpoint_get_app]{get_app} \tab Retrieves information about an application\cr
-\link[=pinpoint_get_application_date_range_kpi]{get_application_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard metric that applies to an application\cr
-\link[=pinpoint_get_application_settings]{get_application_settings} \tab Retrieves information about the settings for an application\cr
-\link[=pinpoint_get_apps]{get_apps} \tab Retrieves information about all the applications that are associated with your Amazon Pinpoint account\cr
-\link[=pinpoint_get_baidu_channel]{get_baidu_channel} \tab Retrieves information about the status and settings of the Baidu channel for an application\cr
-\link[=pinpoint_get_campaign]{get_campaign} \tab Retrieves information about the status, configuration, and other settings for a campaign\cr
-\link[=pinpoint_get_campaign_activities]{get_campaign_activities} \tab Retrieves information about all the activities for a campaign\cr
-\link[=pinpoint_get_campaign_date_range_kpi]{get_campaign_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard metric that applies to a campaign\cr
-\link[=pinpoint_get_campaigns]{get_campaigns} \tab Retrieves information about the status, configuration, and other settings for all the campaigns that are associated with an application\cr
-\link[=pinpoint_get_campaign_version]{get_campaign_version} \tab Retrieves information about the status, configuration, and other settings for a specific version of a campaign\cr
-\link[=pinpoint_get_campaign_versions]{get_campaign_versions} \tab Retrieves information about the status, configuration, and other settings for all versions of a campaign\cr
-\link[=pinpoint_get_channels]{get_channels} \tab Retrieves information about the history and status of each channel for an application\cr
-\link[=pinpoint_get_email_channel]{get_email_channel} \tab Retrieves information about the status and settings of the email channel for an application\cr
-\link[=pinpoint_get_email_template]{get_email_template} \tab Retrieves the content and settings of a message template for messages that are sent through the email channel\cr
-\link[=pinpoint_get_endpoint]{get_endpoint} \tab Retrieves information about the settings and attributes of a specific endpoint for an application\cr
-\link[=pinpoint_get_event_stream]{get_event_stream} \tab Retrieves information about the event stream settings for an application\cr
-\link[=pinpoint_get_export_job]{get_export_job} \tab Retrieves information about the status and settings of a specific export job for an application\cr
-\link[=pinpoint_get_export_jobs]{get_export_jobs} \tab Retrieves information about the status and settings of all the export jobs for an application\cr
-\link[=pinpoint_get_gcm_channel]{get_gcm_channel} \tab Retrieves information about the status and settings of the GCM channel for an application\cr
-\link[=pinpoint_get_import_job]{get_import_job} \tab Retrieves information about the status and settings of a specific import job for an application\cr
-\link[=pinpoint_get_import_jobs]{get_import_jobs} \tab Retrieves information about the status and settings of all the import jobs for an application\cr
-\link[=pinpoint_get_journey]{get_journey} \tab Retrieves information about the status, configuration, and other settings for a journey\cr
-\link[=pinpoint_get_journey_date_range_kpi]{get_journey_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey\cr
-\link[=pinpoint_get_journey_execution_activity_metrics]{get_journey_execution_activity_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity\cr
-\link[=pinpoint_get_journey_execution_metrics]{get_journey_execution_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey\cr
-\link[=pinpoint_get_push_template]{get_push_template} \tab Retrieves the content and settings of a message template for messages that are sent through a push notification channel\cr
-\link[=pinpoint_get_recommender_configuration]{get_recommender_configuration} \tab Retrieves information about an Amazon Pinpoint configuration for a recommender model\cr
-\link[=pinpoint_get_recommender_configurations]{get_recommender_configurations} \tab Retrieves information about all the recommender model configurations that are associated with your Amazon Pinpoint account\cr
-\link[=pinpoint_get_segment]{get_segment} \tab Retrieves information about the configuration, dimension, and other settings for a specific segment that's associated with an application\cr
-\link[=pinpoint_get_segment_export_jobs]{get_segment_export_jobs} \tab Retrieves information about the status and settings of the export jobs for a segment\cr
-\link[=pinpoint_get_segment_import_jobs]{get_segment_import_jobs} \tab Retrieves information about the status and settings of the import jobs for a segment\cr
-\link[=pinpoint_get_segments]{get_segments} \tab Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application\cr
-\link[=pinpoint_get_segment_version]{get_segment_version} \tab Retrieves information about the configuration, dimension, and other settings for a specific version of a segment that's associated with an application\cr
-\link[=pinpoint_get_segment_versions]{get_segment_versions} \tab Retrieves information about the configuration, dimension, and other settings for all the versions of a specific segment that's associated with an application\cr
-\link[=pinpoint_get_sms_channel]{get_sms_channel} \tab Retrieves information about the status and settings of the SMS channel for an application\cr
-\link[=pinpoint_get_sms_template]{get_sms_template} \tab Retrieves the content and settings of a message template for messages that are sent through the SMS channel\cr
-\link[=pinpoint_get_user_endpoints]{get_user_endpoints} \tab Retrieves information about all the endpoints that are associated with a specific user ID\cr
-\link[=pinpoint_get_voice_channel]{get_voice_channel} \tab Retrieves information about the status and settings of the voice channel for an application\cr
-\link[=pinpoint_get_voice_template]{get_voice_template} \tab Retrieves the content and settings of a message template for messages that are sent through the voice channel\cr
-\link[=pinpoint_list_journeys]{list_journeys} \tab Retrieves information about the status, configuration, and other settings for all the journeys that are associated with an application\cr
-\link[=pinpoint_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or segment\cr
-\link[=pinpoint_list_templates]{list_templates} \tab Retrieves information about all the message templates that are associated with your Amazon Pinpoint account\cr
-\link[=pinpoint_list_template_versions]{list_template_versions} \tab Retrieves information about all the versions of a specific message template\cr
-\link[=pinpoint_phone_number_validate]{phone_number_validate} \tab Retrieves information about a phone number\cr
-\link[=pinpoint_put_events]{put_events} \tab Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with\cr
-\link[=pinpoint_put_event_stream]{put_event_stream} \tab Creates a new event stream for an application or updates the settings of an existing event stream for an application\cr
-\link[=pinpoint_remove_attributes]{remove_attributes} \tab Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application\cr
-\link[=pinpoint_send_messages]{send_messages} \tab Creates and sends a direct message\cr
-\link[=pinpoint_send_users_messages]{send_users_messages} \tab Creates and sends a message to a list of users\cr
-\link[=pinpoint_tag_resource]{tag_resource} \tab Adds one or more tags (keys and values) to an application, campaign, message template, or segment\cr
-\link[=pinpoint_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an application, campaign, message template, or segment\cr
-\link[=pinpoint_update_adm_channel]{update_adm_channel} \tab Enables the ADM channel for an application or updates the status and settings of the ADM channel for an application\cr
-\link[=pinpoint_update_apns_channel]{update_apns_channel} \tab Enables the APNs channel for an application or updates the status and settings of the APNs channel for an application\cr
-\link[=pinpoint_update_apns_sandbox_channel]{update_apns_sandbox_channel} \tab Enables the APNs sandbox channel for an application or updates the status and settings of the APNs sandbox channel for an application\cr
-\link[=pinpoint_update_apns_voip_channel]{update_apns_voip_channel} \tab Enables the APNs VoIP channel for an application or updates the status and settings of the APNs VoIP channel for an application\cr
-\link[=pinpoint_update_apns_voip_sandbox_channel]{update_apns_voip_sandbox_channel} \tab Enables the APNs VoIP sandbox channel for an application or updates the status and settings of the APNs VoIP sandbox channel for an application\cr
-\link[=pinpoint_update_application_settings]{update_application_settings} \tab Updates the settings for an application\cr
-\link[=pinpoint_update_baidu_channel]{update_baidu_channel} \tab Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for an application\cr
-\link[=pinpoint_update_campaign]{update_campaign} \tab Updates the configuration and other settings for a campaign\cr
-\link[=pinpoint_update_email_channel]{update_email_channel} \tab Enables the email channel for an application or updates the status and settings of the email channel for an application\cr
-\link[=pinpoint_update_email_template]{update_email_template} \tab Updates an existing message template for messages that are sent through the email channel\cr
-\link[=pinpoint_update_endpoint]{update_endpoint} \tab Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an application\cr
-\link[=pinpoint_update_endpoints_batch]{update_endpoints_batch} \tab Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application\cr
-\link[=pinpoint_update_gcm_channel]{update_gcm_channel} \tab Enables the GCM channel for an application or updates the status and settings of the GCM channel for an application\cr
-\link[=pinpoint_update_journey]{update_journey} \tab Updates the configuration and other settings for a journey\cr
-\link[=pinpoint_update_journey_state]{update_journey_state} \tab Cancels (stops) an active journey\cr
-\link[=pinpoint_update_push_template]{update_push_template} \tab Updates an existing message template for messages that are sent through a push notification channel\cr
-\link[=pinpoint_update_recommender_configuration]{update_recommender_configuration} \tab Updates an Amazon Pinpoint configuration for a recommender model\cr
-\link[=pinpoint_update_segment]{update_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
-\link[=pinpoint_update_sms_channel]{update_sms_channel} \tab Enables the SMS channel for an application or updates the status and settings of the SMS channel for an application\cr
-\link[=pinpoint_update_sms_template]{update_sms_template} \tab Updates an existing message template for messages that are sent through the SMS channel\cr
-\link[=pinpoint_update_template_active_version]{update_template_active_version} \tab Changes the status of a specific version of a message template to active\cr
-\link[=pinpoint_update_voice_channel]{update_voice_channel} \tab Enables the voice channel for an application or updates the status and settings of the voice channel for an application\cr
-\link[=pinpoint_update_voice_template]{update_voice_template} \tab Updates an existing message template for messages that are sent through the voice channel
+\link[paws.customer.engagement:pinpoint_create_app]{create_app} \tab Creates an application\cr
+\link[paws.customer.engagement:pinpoint_create_campaign]{create_campaign} \tab Creates a new campaign for an application or updates the settings of an existing campaign for an application\cr
+\link[paws.customer.engagement:pinpoint_create_email_template]{create_email_template} \tab Creates a message template for messages that are sent through the email channel\cr
+\link[paws.customer.engagement:pinpoint_create_export_job]{create_export_job} \tab Creates an export job for an application\cr
+\link[paws.customer.engagement:pinpoint_create_import_job]{create_import_job} \tab Creates an import job for an application\cr
+\link[paws.customer.engagement:pinpoint_create_in_app_template]{create_in_app_template} \tab Creates a new message template for messages using the in-app message channel\cr
+\link[paws.customer.engagement:pinpoint_create_journey]{create_journey} \tab Creates a journey for an application\cr
+\link[paws.customer.engagement:pinpoint_create_push_template]{create_push_template} \tab Creates a message template for messages that are sent through a push notification channel\cr
+\link[paws.customer.engagement:pinpoint_create_recommender_configuration]{create_recommender_configuration} \tab Creates an Amazon Pinpoint configuration for a recommender model\cr
+\link[paws.customer.engagement:pinpoint_create_segment]{create_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
+\link[paws.customer.engagement:pinpoint_create_sms_template]{create_sms_template} \tab Creates a message template for messages that are sent through the SMS channel\cr
+\link[paws.customer.engagement:pinpoint_create_voice_template]{create_voice_template} \tab Creates a message template for messages that are sent through the voice channel\cr
+\link[paws.customer.engagement:pinpoint_delete_adm_channel]{delete_adm_channel} \tab Disables the ADM channel for an application and deletes any existing settings for the channel\cr
+\link[paws.customer.engagement:pinpoint_delete_apns_channel]{delete_apns_channel} \tab Disables the APNs channel for an application and deletes any existing settings for the channel\cr
+\link[paws.customer.engagement:pinpoint_delete_apns_sandbox_channel]{delete_apns_sandbox_channel} \tab Disables the APNs sandbox channel for an application and deletes any existing settings for the channel\cr
+\link[paws.customer.engagement:pinpoint_delete_apns_voip_channel]{delete_apns_voip_channel} \tab Disables the APNs VoIP channel for an application and deletes any existing settings for the channel\cr
+\link[paws.customer.engagement:pinpoint_delete_apns_voip_sandbox_channel]{delete_apns_voip_sandbox_channel} \tab Disables the APNs VoIP sandbox channel for an application and deletes any existing settings for the channel\cr
+\link[paws.customer.engagement:pinpoint_delete_app]{delete_app} \tab Deletes an application\cr
+\link[paws.customer.engagement:pinpoint_delete_baidu_channel]{delete_baidu_channel} \tab Disables the Baidu channel for an application and deletes any existing settings for the channel\cr
+\link[paws.customer.engagement:pinpoint_delete_campaign]{delete_campaign} \tab Deletes a campaign from an application\cr
+\link[paws.customer.engagement:pinpoint_delete_email_channel]{delete_email_channel} \tab Disables the email channel for an application and deletes any existing settings for the channel\cr
+\link[paws.customer.engagement:pinpoint_delete_email_template]{delete_email_template} \tab Deletes a message template for messages that were sent through the email channel\cr
+\link[paws.customer.engagement:pinpoint_delete_endpoint]{delete_endpoint} \tab Deletes an endpoint from an application\cr
+\link[paws.customer.engagement:pinpoint_delete_event_stream]{delete_event_stream} \tab Deletes the event stream for an application\cr
+\link[paws.customer.engagement:pinpoint_delete_gcm_channel]{delete_gcm_channel} \tab Disables the GCM channel for an application and deletes any existing settings for the channel\cr
+\link[paws.customer.engagement:pinpoint_delete_in_app_template]{delete_in_app_template} \tab Deletes a message template for messages sent using the in-app message channel\cr
+\link[paws.customer.engagement:pinpoint_delete_journey]{delete_journey} \tab Deletes a journey from an application\cr
+\link[paws.customer.engagement:pinpoint_delete_push_template]{delete_push_template} \tab Deletes a message template for messages that were sent through a push notification channel\cr
+\link[paws.customer.engagement:pinpoint_delete_recommender_configuration]{delete_recommender_configuration} \tab Deletes an Amazon Pinpoint configuration for a recommender model\cr
+\link[paws.customer.engagement:pinpoint_delete_segment]{delete_segment} \tab Deletes a segment from an application\cr
+\link[paws.customer.engagement:pinpoint_delete_sms_channel]{delete_sms_channel} \tab Disables the SMS channel for an application and deletes any existing settings for the channel\cr
+\link[paws.customer.engagement:pinpoint_delete_sms_template]{delete_sms_template} \tab Deletes a message template for messages that were sent through the SMS channel\cr
+\link[paws.customer.engagement:pinpoint_delete_user_endpoints]{delete_user_endpoints} \tab Deletes all the endpoints that are associated with a specific user ID\cr
+\link[paws.customer.engagement:pinpoint_delete_voice_channel]{delete_voice_channel} \tab Disables the voice channel for an application and deletes any existing settings for the channel\cr
+\link[paws.customer.engagement:pinpoint_delete_voice_template]{delete_voice_template} \tab Deletes a message template for messages that were sent through the voice channel\cr
+\link[paws.customer.engagement:pinpoint_get_adm_channel]{get_adm_channel} \tab Retrieves information about the status and settings of the ADM channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_apns_channel]{get_apns_channel} \tab Retrieves information about the status and settings of the APNs channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_apns_sandbox_channel]{get_apns_sandbox_channel} \tab Retrieves information about the status and settings of the APNs sandbox channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_apns_voip_channel]{get_apns_voip_channel} \tab Retrieves information about the status and settings of the APNs VoIP channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_apns_voip_sandbox_channel]{get_apns_voip_sandbox_channel} \tab Retrieves information about the status and settings of the APNs VoIP sandbox channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_app]{get_app} \tab Retrieves information about an application\cr
+\link[paws.customer.engagement:pinpoint_get_application_date_range_kpi]{get_application_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard metric that applies to an application\cr
+\link[paws.customer.engagement:pinpoint_get_application_settings]{get_application_settings} \tab Retrieves information about the settings for an application\cr
+\link[paws.customer.engagement:pinpoint_get_apps]{get_apps} \tab Retrieves information about all the applications that are associated with your Amazon Pinpoint account\cr
+\link[paws.customer.engagement:pinpoint_get_baidu_channel]{get_baidu_channel} \tab Retrieves information about the status and settings of the Baidu channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_campaign]{get_campaign} \tab Retrieves information about the status, configuration, and other settings for a campaign\cr
+\link[paws.customer.engagement:pinpoint_get_campaign_activities]{get_campaign_activities} \tab Retrieves information about all the activities for a campaign\cr
+\link[paws.customer.engagement:pinpoint_get_campaign_date_range_kpi]{get_campaign_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard metric that applies to a campaign\cr
+\link[paws.customer.engagement:pinpoint_get_campaigns]{get_campaigns} \tab Retrieves information about the status, configuration, and other settings for all the campaigns that are associated with an application\cr
+\link[paws.customer.engagement:pinpoint_get_campaign_version]{get_campaign_version} \tab Retrieves information about the status, configuration, and other settings for a specific version of a campaign\cr
+\link[paws.customer.engagement:pinpoint_get_campaign_versions]{get_campaign_versions} \tab Retrieves information about the status, configuration, and other settings for all versions of a campaign\cr
+\link[paws.customer.engagement:pinpoint_get_channels]{get_channels} \tab Retrieves information about the history and status of each channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_email_channel]{get_email_channel} \tab Retrieves information about the status and settings of the email channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_email_template]{get_email_template} \tab Retrieves the content and settings of a message template for messages that are sent through the email channel\cr
+\link[paws.customer.engagement:pinpoint_get_endpoint]{get_endpoint} \tab Retrieves information about the settings and attributes of a specific endpoint for an application\cr
+\link[paws.customer.engagement:pinpoint_get_event_stream]{get_event_stream} \tab Retrieves information about the event stream settings for an application\cr
+\link[paws.customer.engagement:pinpoint_get_export_job]{get_export_job} \tab Retrieves information about the status and settings of a specific export job for an application\cr
+\link[paws.customer.engagement:pinpoint_get_export_jobs]{get_export_jobs} \tab Retrieves information about the status and settings of all the export jobs for an application\cr
+\link[paws.customer.engagement:pinpoint_get_gcm_channel]{get_gcm_channel} \tab Retrieves information about the status and settings of the GCM channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_import_job]{get_import_job} \tab Retrieves information about the status and settings of a specific import job for an application\cr
+\link[paws.customer.engagement:pinpoint_get_import_jobs]{get_import_jobs} \tab Retrieves information about the status and settings of all the import jobs for an application\cr
+\link[paws.customer.engagement:pinpoint_get_in_app_messages]{get_in_app_messages} \tab Retrieves the in-app messages targeted for the provided endpoint ID\cr
+\link[paws.customer.engagement:pinpoint_get_in_app_template]{get_in_app_template} \tab Retrieves the content and settings of a message template for messages sent through the in-app channel\cr
+\link[paws.customer.engagement:pinpoint_get_journey]{get_journey} \tab Retrieves information about the status, configuration, and other settings for a journey\cr
+\link[paws.customer.engagement:pinpoint_get_journey_date_range_kpi]{get_journey_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey\cr
+\link[paws.customer.engagement:pinpoint_get_journey_execution_activity_metrics]{get_journey_execution_activity_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity\cr
+\link[paws.customer.engagement:pinpoint_get_journey_execution_metrics]{get_journey_execution_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey\cr
+\link[paws.customer.engagement:pinpoint_get_push_template]{get_push_template} \tab Retrieves the content and settings of a message template for messages that are sent through a push notification channel\cr
+\link[paws.customer.engagement:pinpoint_get_recommender_configuration]{get_recommender_configuration} \tab Retrieves information about an Amazon Pinpoint configuration for a recommender model\cr
+\link[paws.customer.engagement:pinpoint_get_recommender_configurations]{get_recommender_configurations} \tab Retrieves information about all the recommender model configurations that are associated with your Amazon Pinpoint account\cr
+\link[paws.customer.engagement:pinpoint_get_segment]{get_segment} \tab Retrieves information about the configuration, dimension, and other settings for a specific segment that's associated with an application\cr
+\link[paws.customer.engagement:pinpoint_get_segment_export_jobs]{get_segment_export_jobs} \tab Retrieves information about the status and settings of the export jobs for a segment\cr
+\link[paws.customer.engagement:pinpoint_get_segment_import_jobs]{get_segment_import_jobs} \tab Retrieves information about the status and settings of the import jobs for a segment\cr
+\link[paws.customer.engagement:pinpoint_get_segments]{get_segments} \tab Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application\cr
+\link[paws.customer.engagement:pinpoint_get_segment_version]{get_segment_version} \tab Retrieves information about the configuration, dimension, and other settings for a specific version of a segment that's associated with an application\cr
+\link[paws.customer.engagement:pinpoint_get_segment_versions]{get_segment_versions} \tab Retrieves information about the configuration, dimension, and other settings for all the versions of a specific segment that's associated with an application\cr
+\link[paws.customer.engagement:pinpoint_get_sms_channel]{get_sms_channel} \tab Retrieves information about the status and settings of the SMS channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_sms_template]{get_sms_template} \tab Retrieves the content and settings of a message template for messages that are sent through the SMS channel\cr
+\link[paws.customer.engagement:pinpoint_get_user_endpoints]{get_user_endpoints} \tab Retrieves information about all the endpoints that are associated with a specific user ID\cr
+\link[paws.customer.engagement:pinpoint_get_voice_channel]{get_voice_channel} \tab Retrieves information about the status and settings of the voice channel for an application\cr
+\link[paws.customer.engagement:pinpoint_get_voice_template]{get_voice_template} \tab Retrieves the content and settings of a message template for messages that are sent through the voice channel\cr
+\link[paws.customer.engagement:pinpoint_list_journeys]{list_journeys} \tab Retrieves information about the status, configuration, and other settings for all the journeys that are associated with an application\cr
+\link[paws.customer.engagement:pinpoint_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or segment\cr
+\link[paws.customer.engagement:pinpoint_list_templates]{list_templates} \tab Retrieves information about all the message templates that are associated with your Amazon Pinpoint account\cr
+\link[paws.customer.engagement:pinpoint_list_template_versions]{list_template_versions} \tab Retrieves information about all the versions of a specific message template\cr
+\link[paws.customer.engagement:pinpoint_phone_number_validate]{phone_number_validate} \tab Retrieves information about a phone number\cr
+\link[paws.customer.engagement:pinpoint_put_events]{put_events} \tab Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with\cr
+\link[paws.customer.engagement:pinpoint_put_event_stream]{put_event_stream} \tab Creates a new event stream for an application or updates the settings of an existing event stream for an application\cr
+\link[paws.customer.engagement:pinpoint_remove_attributes]{remove_attributes} \tab Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application\cr
+\link[paws.customer.engagement:pinpoint_send_messages]{send_messages} \tab Creates and sends a direct message\cr
+\link[paws.customer.engagement:pinpoint_send_otp_message]{send_otp_message} \tab Send an OTP message\cr
+\link[paws.customer.engagement:pinpoint_send_users_messages]{send_users_messages} \tab Creates and sends a message to a list of users\cr
+\link[paws.customer.engagement:pinpoint_tag_resource]{tag_resource} \tab Adds one or more tags (keys and values) to an application, campaign, message template, or segment\cr
+\link[paws.customer.engagement:pinpoint_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an application, campaign, message template, or segment\cr
+\link[paws.customer.engagement:pinpoint_update_adm_channel]{update_adm_channel} \tab Enables the ADM channel for an application or updates the status and settings of the ADM channel for an application\cr
+\link[paws.customer.engagement:pinpoint_update_apns_channel]{update_apns_channel} \tab Enables the APNs channel for an application or updates the status and settings of the APNs channel for an application\cr
+\link[paws.customer.engagement:pinpoint_update_apns_sandbox_channel]{update_apns_sandbox_channel} \tab Enables the APNs sandbox channel for an application or updates the status and settings of the APNs sandbox channel for an application\cr
+\link[paws.customer.engagement:pinpoint_update_apns_voip_channel]{update_apns_voip_channel} \tab Enables the APNs VoIP channel for an application or updates the status and settings of the APNs VoIP channel for an application\cr
+\link[paws.customer.engagement:pinpoint_update_apns_voip_sandbox_channel]{update_apns_voip_sandbox_channel} \tab Enables the APNs VoIP sandbox channel for an application or updates the status and settings of the APNs VoIP sandbox channel for an application\cr
+\link[paws.customer.engagement:pinpoint_update_application_settings]{update_application_settings} \tab Updates the settings for an application\cr
+\link[paws.customer.engagement:pinpoint_update_baidu_channel]{update_baidu_channel} \tab Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for an application\cr
+\link[paws.customer.engagement:pinpoint_update_campaign]{update_campaign} \tab Updates the configuration and other settings for a campaign\cr
+\link[paws.customer.engagement:pinpoint_update_email_channel]{update_email_channel} \tab Enables the email channel for an application or updates the status and settings of the email channel for an application\cr
+\link[paws.customer.engagement:pinpoint_update_email_template]{update_email_template} \tab Updates an existing message template for messages that are sent through the email channel\cr
+\link[paws.customer.engagement:pinpoint_update_endpoint]{update_endpoint} \tab Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an application\cr
+\link[paws.customer.engagement:pinpoint_update_endpoints_batch]{update_endpoints_batch} \tab Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application\cr
+\link[paws.customer.engagement:pinpoint_update_gcm_channel]{update_gcm_channel} \tab Enables the GCM channel for an application or updates the status and settings of the GCM channel for an application\cr
+\link[paws.customer.engagement:pinpoint_update_in_app_template]{update_in_app_template} \tab Updates an existing message template for messages sent through the in-app message channel\cr
+\link[paws.customer.engagement:pinpoint_update_journey]{update_journey} \tab Updates the configuration and other settings for a journey\cr
+\link[paws.customer.engagement:pinpoint_update_journey_state]{update_journey_state} \tab Cancels (stops) an active journey\cr
+\link[paws.customer.engagement:pinpoint_update_push_template]{update_push_template} \tab Updates an existing message template for messages that are sent through a push notification channel\cr
+\link[paws.customer.engagement:pinpoint_update_recommender_configuration]{update_recommender_configuration} \tab Updates an Amazon Pinpoint configuration for a recommender model\cr
+\link[paws.customer.engagement:pinpoint_update_segment]{update_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
+\link[paws.customer.engagement:pinpoint_update_sms_channel]{update_sms_channel} \tab Enables the SMS channel for an application or updates the status and settings of the SMS channel for an application\cr
+\link[paws.customer.engagement:pinpoint_update_sms_template]{update_sms_template} \tab Updates an existing message template for messages that are sent through the SMS channel\cr
+\link[paws.customer.engagement:pinpoint_update_template_active_version]{update_template_active_version} \tab Changes the status of a specific version of a message template to active\cr
+\link[paws.customer.engagement:pinpoint_update_voice_channel]{update_voice_channel} \tab Enables the voice channel for an application or updates the status and settings of the voice channel for an application\cr
+\link[paws.customer.engagement:pinpoint_update_voice_template]{update_voice_template} \tab Updates an existing message template for messages that are sent through the voice channel\cr
+\link[paws.customer.engagement:pinpoint_verify_otp_message]{verify_otp_message} \tab Verify an OTP
 }
 }
 

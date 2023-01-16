@@ -7,7 +7,19 @@
 swf(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -29,11 +41,14 @@ coordinating them without worrying about underlying complexities such as
 tracking their progress and maintaining their state.
 
 This documentation serves as reference only. For a broader overview of
-the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-welcome.html}{Amazon SWF Developer Guide}}
-.
+the Amazon SWF programming model, see the \emph{<span
+href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/">Amazon
+SWF Developer Guide</span>} .
 }
 \section{Service syntax}{
-\preformatted{svc <- swf(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- swf(
   config = list(
     credentials = list(
       creds = list(
@@ -41,55 +56,59 @@ the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.co
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=swf_count_closed_workflow_executions]{count_closed_workflow_executions} \tab Returns the number of closed workflow executions within the given domain that meet the specified filtering criteria\cr
-\link[=swf_count_open_workflow_executions]{count_open_workflow_executions} \tab Returns the number of open workflow executions within the given domain that meet the specified filtering criteria\cr
-\link[=swf_count_pending_activity_tasks]{count_pending_activity_tasks} \tab Returns the estimated number of activity tasks in the specified task list\cr
-\link[=swf_count_pending_decision_tasks]{count_pending_decision_tasks} \tab Returns the estimated number of decision tasks in the specified task list\cr
-\link[=swf_deprecate_activity_type]{deprecate_activity_type} \tab Deprecates the specified activity type\cr
-\link[=swf_deprecate_domain]{deprecate_domain} \tab Deprecates the specified domain\cr
-\link[=swf_deprecate_workflow_type]{deprecate_workflow_type} \tab Deprecates the specified workflow type\cr
-\link[=swf_describe_activity_type]{describe_activity_type} \tab Returns information about the specified activity type\cr
-\link[=swf_describe_domain]{describe_domain} \tab Returns information about the specified domain, including description and status\cr
-\link[=swf_describe_workflow_execution]{describe_workflow_execution} \tab Returns information about the specified workflow execution including its type and some statistics\cr
-\link[=swf_describe_workflow_type]{describe_workflow_type} \tab Returns information about the specified workflow type\cr
-\link[=swf_get_workflow_execution_history]{get_workflow_execution_history} \tab Returns the history of the specified workflow execution\cr
-\link[=swf_list_activity_types]{list_activity_types} \tab Returns information about all activities registered in the specified domain that match the specified name and registration status\cr
-\link[=swf_list_closed_workflow_executions]{list_closed_workflow_executions} \tab Returns a list of closed workflow executions in the specified domain that meet the filtering criteria\cr
-\link[=swf_list_domains]{list_domains} \tab Returns the list of domains registered in the account\cr
-\link[=swf_list_open_workflow_executions]{list_open_workflow_executions} \tab Returns a list of open workflow executions in the specified domain that meet the filtering criteria\cr
-\link[=swf_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given domain\cr
-\link[=swf_list_workflow_types]{list_workflow_types} \tab Returns information about workflow types in the specified domain\cr
-\link[=swf_poll_for_activity_task]{poll_for_activity_task} \tab Used by workers to get an ActivityTask from the specified activity taskList\cr
-\link[=swf_poll_for_decision_task]{poll_for_decision_task} \tab Used by deciders to get a DecisionTask from the specified decision taskList\cr
-\link[=swf_record_activity_task_heartbeat]{record_activity_task_heartbeat} \tab Used by activity workers to report to the service that the ActivityTask represented by the specified taskToken is still making progress\cr
-\link[=swf_register_activity_type]{register_activity_type} \tab Registers a new activity type along with its configuration settings in the specified domain\cr
-\link[=swf_register_domain]{register_domain} \tab Registers a new domain\cr
-\link[=swf_register_workflow_type]{register_workflow_type} \tab Registers a new workflow type and its configuration settings in the specified domain\cr
-\link[=swf_request_cancel_workflow_execution]{request_cancel_workflow_execution} \tab Records a WorkflowExecutionCancelRequested event in the currently running workflow execution identified by the given domain, workflowId, and runId\cr
-\link[=swf_respond_activity_task_canceled]{respond_activity_task_canceled} \tab Used by workers to tell the service that the ActivityTask identified by the taskToken was successfully canceled\cr
-\link[=swf_respond_activity_task_completed]{respond_activity_task_completed} \tab Used by workers to tell the service that the ActivityTask identified by the taskToken completed successfully with a result (if provided)\cr
-\link[=swf_respond_activity_task_failed]{respond_activity_task_failed} \tab Used by workers to tell the service that the ActivityTask identified by the taskToken has failed with reason (if specified)\cr
-\link[=swf_respond_decision_task_completed]{respond_decision_task_completed} \tab Used by deciders to tell the service that the DecisionTask identified by the taskToken has successfully completed\cr
-\link[=swf_signal_workflow_execution]{signal_workflow_execution} \tab Records a WorkflowExecutionSignaled event in the workflow execution history and creates a decision task for the workflow execution identified by the given domain, workflowId and runId\cr
-\link[=swf_start_workflow_execution]{start_workflow_execution} \tab Starts an execution of the workflow type in the specified domain using the provided workflowId and input data\cr
-\link[=swf_tag_resource]{tag_resource} \tab Add a tag to a Amazon SWF domain\cr
-\link[=swf_terminate_workflow_execution]{terminate_workflow_execution} \tab Records a WorkflowExecutionTerminated event and forces closure of the workflow execution identified by the given domain, runId, and workflowId\cr
-\link[=swf_undeprecate_activity_type]{undeprecate_activity_type} \tab Undeprecates a previously deprecated activity type\cr
-\link[=swf_undeprecate_domain]{undeprecate_domain} \tab Undeprecates a previously deprecated domain\cr
-\link[=swf_undeprecate_workflow_type]{undeprecate_workflow_type} \tab Undeprecates a previously deprecated workflow type\cr
-\link[=swf_untag_resource]{untag_resource} \tab Remove a tag from a Amazon SWF domain
+\link[paws.application.integration:swf_count_closed_workflow_executions]{count_closed_workflow_executions} \tab Returns the number of closed workflow executions within the given domain that meet the specified filtering criteria\cr
+\link[paws.application.integration:swf_count_open_workflow_executions]{count_open_workflow_executions} \tab Returns the number of open workflow executions within the given domain that meet the specified filtering criteria\cr
+\link[paws.application.integration:swf_count_pending_activity_tasks]{count_pending_activity_tasks} \tab Returns the estimated number of activity tasks in the specified task list\cr
+\link[paws.application.integration:swf_count_pending_decision_tasks]{count_pending_decision_tasks} \tab Returns the estimated number of decision tasks in the specified task list\cr
+\link[paws.application.integration:swf_deprecate_activity_type]{deprecate_activity_type} \tab Deprecates the specified activity type\cr
+\link[paws.application.integration:swf_deprecate_domain]{deprecate_domain} \tab Deprecates the specified domain\cr
+\link[paws.application.integration:swf_deprecate_workflow_type]{deprecate_workflow_type} \tab Deprecates the specified workflow type\cr
+\link[paws.application.integration:swf_describe_activity_type]{describe_activity_type} \tab Returns information about the specified activity type\cr
+\link[paws.application.integration:swf_describe_domain]{describe_domain} \tab Returns information about the specified domain, including description and status\cr
+\link[paws.application.integration:swf_describe_workflow_execution]{describe_workflow_execution} \tab Returns information about the specified workflow execution including its type and some statistics\cr
+\link[paws.application.integration:swf_describe_workflow_type]{describe_workflow_type} \tab Returns information about the specified workflow type\cr
+\link[paws.application.integration:swf_get_workflow_execution_history]{get_workflow_execution_history} \tab Returns the history of the specified workflow execution\cr
+\link[paws.application.integration:swf_list_activity_types]{list_activity_types} \tab Returns information about all activities registered in the specified domain that match the specified name and registration status\cr
+\link[paws.application.integration:swf_list_closed_workflow_executions]{list_closed_workflow_executions} \tab Returns a list of closed workflow executions in the specified domain that meet the filtering criteria\cr
+\link[paws.application.integration:swf_list_domains]{list_domains} \tab Returns the list of domains registered in the account\cr
+\link[paws.application.integration:swf_list_open_workflow_executions]{list_open_workflow_executions} \tab Returns a list of open workflow executions in the specified domain that meet the filtering criteria\cr
+\link[paws.application.integration:swf_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given domain\cr
+\link[paws.application.integration:swf_list_workflow_types]{list_workflow_types} \tab Returns information about workflow types in the specified domain\cr
+\link[paws.application.integration:swf_poll_for_activity_task]{poll_for_activity_task} \tab Used by workers to get an ActivityTask from the specified activity taskList\cr
+\link[paws.application.integration:swf_poll_for_decision_task]{poll_for_decision_task} \tab Used by deciders to get a DecisionTask from the specified decision taskList\cr
+\link[paws.application.integration:swf_record_activity_task_heartbeat]{record_activity_task_heartbeat} \tab Used by activity workers to report to the service that the ActivityTask represented by the specified taskToken is still making progress\cr
+\link[paws.application.integration:swf_register_activity_type]{register_activity_type} \tab Registers a new activity type along with its configuration settings in the specified domain\cr
+\link[paws.application.integration:swf_register_domain]{register_domain} \tab Registers a new domain\cr
+\link[paws.application.integration:swf_register_workflow_type]{register_workflow_type} \tab Registers a new workflow type and its configuration settings in the specified domain\cr
+\link[paws.application.integration:swf_request_cancel_workflow_execution]{request_cancel_workflow_execution} \tab Records a WorkflowExecutionCancelRequested event in the currently running workflow execution identified by the given domain, workflowId, and runId\cr
+\link[paws.application.integration:swf_respond_activity_task_canceled]{respond_activity_task_canceled} \tab Used by workers to tell the service that the ActivityTask identified by the taskToken was successfully canceled\cr
+\link[paws.application.integration:swf_respond_activity_task_completed]{respond_activity_task_completed} \tab Used by workers to tell the service that the ActivityTask identified by the taskToken completed successfully with a result (if provided)\cr
+\link[paws.application.integration:swf_respond_activity_task_failed]{respond_activity_task_failed} \tab Used by workers to tell the service that the ActivityTask identified by the taskToken has failed with reason (if specified)\cr
+\link[paws.application.integration:swf_respond_decision_task_completed]{respond_decision_task_completed} \tab Used by deciders to tell the service that the DecisionTask identified by the taskToken has successfully completed\cr
+\link[paws.application.integration:swf_signal_workflow_execution]{signal_workflow_execution} \tab Records a WorkflowExecutionSignaled event in the workflow execution history and creates a decision task for the workflow execution identified by the given domain, workflowId and runId\cr
+\link[paws.application.integration:swf_start_workflow_execution]{start_workflow_execution} \tab Starts an execution of the workflow type in the specified domain using the provided workflowId and input data\cr
+\link[paws.application.integration:swf_tag_resource]{tag_resource} \tab Add a tag to a Amazon SWF domain\cr
+\link[paws.application.integration:swf_terminate_workflow_execution]{terminate_workflow_execution} \tab Records a WorkflowExecutionTerminated event and forces closure of the workflow execution identified by the given domain, runId, and workflowId\cr
+\link[paws.application.integration:swf_undeprecate_activity_type]{undeprecate_activity_type} \tab Undeprecates a previously deprecated activity type\cr
+\link[paws.application.integration:swf_undeprecate_domain]{undeprecate_domain} \tab Undeprecates a previously deprecated domain\cr
+\link[paws.application.integration:swf_undeprecate_workflow_type]{undeprecate_workflow_type} \tab Undeprecates a previously deprecated workflow type\cr
+\link[paws.application.integration:swf_untag_resource]{untag_resource} \tab Remove a tag from a Amazon SWF domain
 }
 }
 

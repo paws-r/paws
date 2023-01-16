@@ -4,34 +4,20 @@
 \alias{quicksight_delete_user_by_principal_id}
 \title{Deletes a user identified by its principal ID}
 \usage{
-quicksight_delete_user_by_principal_id(PrincipalId, AwsAccountId,
-  Namespace)
+quicksight_delete_user_by_principal_id(PrincipalId, AwsAccountId, Namespace)
 }
 \arguments{
 \item{PrincipalId}{[required] The principal ID of the user.}
 
-\item{AwsAccountId}{[required] The ID for the AWS account that the user is in. Currently, you use the
-ID for the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the user is in.
+Currently, you use the ID for the Amazon Web Services account that
+contains your Amazon QuickSight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Deletes a user identified by its principal ID.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user_by_principal_id(
-  PrincipalId = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_user_by_principal_id.html} for full documentation.
+}
 \keyword{internal}

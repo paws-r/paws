@@ -4,18 +4,28 @@
 \alias{sagemaker_create_processing_job}
 \title{Creates a processing job}
 \usage{
-sagemaker_create_processing_job(ProcessingInputs,
-  ProcessingOutputConfig, ProcessingJobName, ProcessingResources,
-  StoppingCondition, AppSpecification, Environment, NetworkConfig,
-  RoleArn, Tags, ExperimentConfig)
+sagemaker_create_processing_job(
+  ProcessingInputs = NULL,
+  ProcessingOutputConfig = NULL,
+  ProcessingJobName,
+  ProcessingResources,
+  StoppingCondition = NULL,
+  AppSpecification,
+  Environment = NULL,
+  NetworkConfig = NULL,
+  RoleArn,
+  Tags = NULL,
+  ExperimentConfig = NULL
+)
 }
 \arguments{
-\item{ProcessingInputs}{List of input configurations for the processing job.}
+\item{ProcessingInputs}{An array of inputs configuring the data to download into the processing
+container.}
 
 \item{ProcessingOutputConfig}{Output configuration for the processing job.}
 
-\item{ProcessingJobName}{[required] The name of the processing job. The name must be unique within an AWS
-Region in the AWS account.}
+\item{ProcessingJobName}{[required] The name of the processing job. The name must be unique within an Amazon
+Web Services Region in the Amazon Web Services account.}
 
 \item{ProcessingResources}{[required] Identifies the resources, ML compute instances, and ML storage volumes
 to deploy for a processing job. In distributed training, you specify
@@ -25,136 +35,25 @@ more than one instance.}
 
 \item{AppSpecification}{[required] Configures the processing job to run a specified Docker container image.}
 
-\item{Environment}{Sets the environment variables in the Docker container.}
+\item{Environment}{The environment variables to set in the Docker container. Up to 100 key
+and values entries in the map are supported.}
 
-\item{NetworkConfig}{Networking options for a processing job.}
+\item{NetworkConfig}{Networking options for a processing job, such as whether to allow
+inbound and outbound network calls to and from processing containers,
+and the VPC subnets and security groups to use for VPC-enabled
+processing jobs.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 assume to perform tasks on your behalf.}
 
 \item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management User Guide}.}
+in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 
 \item{ExperimentConfig}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProcessingJobArn = "string"
-)
-}
-}
 \description{
 Creates a processing job.
-}
-\section{Request syntax}{
-\preformatted{svc$create_processing_job(
-  ProcessingInputs = list(
-    list(
-      InputName = "string",
-      AppManaged = TRUE|FALSE,
-      S3Input = list(
-        S3Uri = "string",
-        LocalPath = "string",
-        S3DataType = "ManifestFile"|"S3Prefix",
-        S3InputMode = "Pipe"|"File",
-        S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
-        S3CompressionType = "None"|"Gzip"
-      ),
-      DatasetDefinition = list(
-        AthenaDatasetDefinition = list(
-          Catalog = "string",
-          Database = "string",
-          QueryString = "string",
-          WorkGroup = "string",
-          OutputS3Uri = "string",
-          KmsKeyId = "string",
-          OutputFormat = "PARQUET"|"ORC"|"AVRO"|"JSON"|"TEXTFILE",
-          OutputCompression = "GZIP"|"SNAPPY"|"ZLIB"
-        ),
-        RedshiftDatasetDefinition = list(
-          ClusterId = "string",
-          Database = "string",
-          DbUser = "string",
-          QueryString = "string",
-          ClusterRoleArn = "string",
-          OutputS3Uri = "string",
-          KmsKeyId = "string",
-          OutputFormat = "PARQUET"|"CSV",
-          OutputCompression = "None"|"GZIP"|"BZIP2"|"ZSTD"|"SNAPPY"
-        ),
-        LocalPath = "string",
-        DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
-        InputMode = "Pipe"|"File"
-      )
-    )
-  ),
-  ProcessingOutputConfig = list(
-    Outputs = list(
-      list(
-        OutputName = "string",
-        S3Output = list(
-          S3Uri = "string",
-          LocalPath = "string",
-          S3UploadMode = "Continuous"|"EndOfJob"
-        ),
-        FeatureStoreOutput = list(
-          FeatureGroupName = "string"
-        ),
-        AppManaged = TRUE|FALSE
-      )
-    ),
-    KmsKeyId = "string"
-  ),
-  ProcessingJobName = "string",
-  ProcessingResources = list(
-    ClusterConfig = list(
-      InstanceCount = 123,
-      InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
-      VolumeSizeInGB = 123,
-      VolumeKmsKeyId = "string"
-    )
-  ),
-  StoppingCondition = list(
-    MaxRuntimeInSeconds = 123
-  ),
-  AppSpecification = list(
-    ImageUri = "string",
-    ContainerEntrypoint = list(
-      "string"
-    ),
-    ContainerArguments = list(
-      "string"
-    )
-  ),
-  Environment = list(
-    "string"
-  ),
-  NetworkConfig = list(
-    EnableInterContainerTrafficEncryption = TRUE|FALSE,
-    EnableNetworkIsolation = TRUE|FALSE,
-    VpcConfig = list(
-      SecurityGroupIds = list(
-        "string"
-      ),
-      Subnets = list(
-        "string"
-      )
-    )
-  ),
-  RoleArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ExperimentConfig = list(
-    ExperimentName = "string",
-    TrialName = "string",
-    TrialComponentDisplayName = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_processing_job.html} for full documentation.
+}
 \keyword{internal}

@@ -13,24 +13,9 @@ tag.}
 \item{tags}{[required] A list of tag keys to add to the resource. If a tag key already exists,
 the existing value is replaced with the new value.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds the specified tags to the specified resource. If a tag key already
-exists, the existing value is replaced with the new value.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
+Adds the specified tags to the specified resource. If a tag key already exists, the existing value is replaced with the new value.
 
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/tag_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -7,7 +7,19 @@
 servicediscovery(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,17 +28,20 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Cloud Map lets you configure public DNS, private DNS, or HTTP
+Cloud Map
+
+With Cloud Map, you can configure public DNS, private DNS, or HTTP
 namespaces that your microservice applications run in. When an instance
-of the service becomes available, you can call the AWS Cloud Map API to
-register the instance with AWS Cloud Map. For public or private DNS
-namespaces, AWS Cloud Map automatically creates DNS records and an
-optional health check. Clients that submit public or private DNS
-queries, or HTTP requests, for the service receive an answer that
-contains up to eight healthy records.
+becomes available, you can call the Cloud Map API to register the
+instance with Cloud Map. For public or private DNS namespaces, Cloud Map
+automatically creates DNS records and an optional health check. Clients
+that submit public or private DNS queries, or HTTP requests, for the
+service receive an answer that contains up to eight healthy records.
 }
 \section{Service syntax}{
-\preformatted{svc <- servicediscovery(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- servicediscovery(
   config = list(
     credentials = list(
       creds = list(
@@ -34,41 +49,48 @@ contains up to eight healthy records.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=servicediscovery_create_http_namespace]{create_http_namespace} \tab Creates an HTTP namespace\cr
-\link[=servicediscovery_create_private_dns_namespace]{create_private_dns_namespace} \tab Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC\cr
-\link[=servicediscovery_create_public_dns_namespace]{create_public_dns_namespace} \tab Creates a public namespace based on DNS, which will be visible on the internet\cr
-\link[=servicediscovery_create_service]{create_service} \tab Creates a service, which defines the configuration for the following entities:\cr
-\link[=servicediscovery_delete_namespace]{delete_namespace} \tab Deletes a namespace from the current account\cr
-\link[=servicediscovery_delete_service]{delete_service} \tab Deletes a specified service\cr
-\link[=servicediscovery_deregister_instance]{deregister_instance} \tab Deletes the Amazon Route 53 DNS records and health check, if any, that AWS Cloud Map created for the specified instance\cr
-\link[=servicediscovery_discover_instances]{discover_instances} \tab Discovers registered instances for a specified namespace and service\cr
-\link[=servicediscovery_get_instance]{get_instance} \tab Gets information about a specified instance\cr
-\link[=servicediscovery_get_instances_health_status]{get_instances_health_status} \tab Gets the current health status (Healthy, Unhealthy, or Unknown) of one or more instances that are associated with a specified service\cr
-\link[=servicediscovery_get_namespace]{get_namespace} \tab Gets information about a namespace\cr
-\link[=servicediscovery_get_operation]{get_operation} \tab Gets information about any operation that returns an operation ID in the response, such as a CreateService request\cr
-\link[=servicediscovery_get_service]{get_service} \tab Gets the settings for a specified service\cr
-\link[=servicediscovery_list_instances]{list_instances} \tab Lists summary information about the instances that you registered by using a specified service\cr
-\link[=servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current AWS account\cr
-\link[=servicediscovery_list_operations]{list_operations} \tab Lists operations that match the criteria that you specify\cr
-\link[=servicediscovery_list_services]{list_services} \tab Lists summary information for all the services that are associated with one or more specified namespaces\cr
-\link[=servicediscovery_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource\cr
-\link[=servicediscovery_register_instance]{register_instance} \tab Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service\cr
-\link[=servicediscovery_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
-\link[=servicediscovery_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
-\link[=servicediscovery_update_instance_custom_health_status]{update_instance_custom_health_status} \tab Submits a request to change the health status of a custom health check to healthy or unhealthy\cr
-\link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations:
+\link[paws.networking:servicediscovery_create_http_namespace]{create_http_namespace} \tab Creates an HTTP namespace\cr
+\link[paws.networking:servicediscovery_create_private_dns_namespace]{create_private_dns_namespace} \tab Creates a private namespace based on DNS, which is visible only inside a specified Amazon VPC\cr
+\link[paws.networking:servicediscovery_create_public_dns_namespace]{create_public_dns_namespace} \tab Creates a public namespace based on DNS, which is visible on the internet\cr
+\link[paws.networking:servicediscovery_create_service]{create_service} \tab Creates a service\cr
+\link[paws.networking:servicediscovery_delete_namespace]{delete_namespace} \tab Deletes a namespace from the current account\cr
+\link[paws.networking:servicediscovery_delete_service]{delete_service} \tab Deletes a specified service\cr
+\link[paws.networking:servicediscovery_deregister_instance]{deregister_instance} \tab Deletes the Amazon Route 53 DNS records and health check, if any, that Cloud Map created for the specified instance\cr
+\link[paws.networking:servicediscovery_discover_instances]{discover_instances} \tab Discovers registered instances for a specified namespace and service\cr
+\link[paws.networking:servicediscovery_get_instance]{get_instance} \tab Gets information about a specified instance\cr
+\link[paws.networking:servicediscovery_get_instances_health_status]{get_instances_health_status} \tab Gets the current health status (Healthy, Unhealthy, or Unknown) of one or more instances that are associated with a specified service\cr
+\link[paws.networking:servicediscovery_get_namespace]{get_namespace} \tab Gets information about a namespace\cr
+\link[paws.networking:servicediscovery_get_operation]{get_operation} \tab Gets information about any operation that returns an operation ID in the response, such as a CreateService request\cr
+\link[paws.networking:servicediscovery_get_service]{get_service} \tab Gets the settings for a specified service\cr
+\link[paws.networking:servicediscovery_list_instances]{list_instances} \tab Lists summary information about the instances that you registered by using a specified service\cr
+\link[paws.networking:servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current account\cr
+\link[paws.networking:servicediscovery_list_operations]{list_operations} \tab Lists operations that match the criteria that you specify\cr
+\link[paws.networking:servicediscovery_list_services]{list_services} \tab Lists summary information for all the services that are associated with one or more specified namespaces\cr
+\link[paws.networking:servicediscovery_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource\cr
+\link[paws.networking:servicediscovery_register_instance]{register_instance} \tab Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service\cr
+\link[paws.networking:servicediscovery_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
+\link[paws.networking:servicediscovery_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
+\link[paws.networking:servicediscovery_update_http_namespace]{update_http_namespace} \tab Updates an HTTP namespace\cr
+\link[paws.networking:servicediscovery_update_instance_custom_health_status]{update_instance_custom_health_status} \tab Submits a request to change the health status of a custom health check to healthy or unhealthy\cr
+\link[paws.networking:servicediscovery_update_private_dns_namespace]{update_private_dns_namespace} \tab Updates a private DNS namespace\cr
+\link[paws.networking:servicediscovery_update_public_dns_namespace]{update_public_dns_namespace} \tab Updates a public DNS namespace\cr
+\link[paws.networking:servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations:
 }
 }
 

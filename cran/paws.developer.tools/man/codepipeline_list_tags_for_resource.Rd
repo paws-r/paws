@@ -5,7 +5,11 @@
 \title{Gets the set of key-value pairs (metadata) that are used to manage the
 resource}
 \usage{
-codepipeline_list_tags_for_resource(resourceArn, nextToken, maxResults)
+codepipeline_list_tags_for_resource(
+  resourceArn,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource to get tags for.}
@@ -16,29 +20,9 @@ lists all available tags in one call and does not use pagination.}
 
 \item{maxResults}{The maximum number of results to return in a single call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Gets the set of key-value pairs (metadata) that are used to manage the
-resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  resourceArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Gets the set of key-value pairs (metadata) that are used to manage the resource.
 
+See \url{https://paws-r.github.io/docs/codepipeline/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

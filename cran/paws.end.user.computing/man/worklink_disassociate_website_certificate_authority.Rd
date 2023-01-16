@@ -4,26 +4,16 @@
 \alias{worklink_disassociate_website_certificate_authority}
 \title{Removes a certificate authority (CA)}
 \usage{
-worklink_disassociate_website_certificate_authority(FleetArn,
-  WebsiteCaId)
+worklink_disassociate_website_certificate_authority(FleetArn, WebsiteCaId)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 
 \item{WebsiteCaId}{[required] A unique identifier for the CA.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes a certificate authority (CA).
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_website_certificate_authority(
-  FleetArn = "string",
-  WebsiteCaId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/disassociate_website_certificate_authority.html} for full documentation.
+}
 \keyword{internal}

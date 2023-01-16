@@ -7,7 +7,19 @@
 textract(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -21,7 +33,9 @@ into machine-readable text. This is the API reference documentation for
 Amazon Textract.
 }
 \section{Service syntax}{
-\preformatted{svc <- textract(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- textract(
   config = list(
     credentials = list(
       creds = list(
@@ -29,24 +43,32 @@ Amazon Textract.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=textract_analyze_document]{analyze_document} \tab Analyzes an input document for relationships between detected items\cr
-\link[=textract_detect_document_text]{detect_document_text} \tab Detects text in the input document\cr
-\link[=textract_get_document_analysis]{get_document_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document\cr
-\link[=textract_get_document_text_detection]{get_document_text_detection} \tab Gets the results for an Amazon Textract asynchronous operation that detects text in a document\cr
-\link[=textract_start_document_analysis]{start_document_analysis} \tab Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements\cr
-\link[=textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document
+\link[paws.machine.learning:textract_analyze_document]{analyze_document} \tab Analyzes an input document for relationships between detected items\cr
+\link[paws.machine.learning:textract_analyze_expense]{analyze_expense} \tab AnalyzeExpense synchronously analyzes an input document for financially related relationships between text\cr
+\link[paws.machine.learning:textract_analyze_id]{analyze_id} \tab Analyzes identity documents for relevant information\cr
+\link[paws.machine.learning:textract_detect_document_text]{detect_document_text} \tab Detects text in the input document\cr
+\link[paws.machine.learning:textract_get_document_analysis]{get_document_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document\cr
+\link[paws.machine.learning:textract_get_document_text_detection]{get_document_text_detection} \tab Gets the results for an Amazon Textract asynchronous operation that detects text in a document\cr
+\link[paws.machine.learning:textract_get_expense_analysis]{get_expense_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes invoices and receipts\cr
+\link[paws.machine.learning:textract_start_document_analysis]{start_document_analysis} \tab Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements\cr
+\link[paws.machine.learning:textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document\cr
+\link[paws.machine.learning:textract_start_expense_analysis]{start_expense_analysis} \tab Starts the asynchronous analysis of invoices or receipts for data like contact information, items purchased, and vendor names
 }
 }
 

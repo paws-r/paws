@@ -5,33 +5,20 @@
 \title{When a contact is being recorded, and the recording has been suspended
 using SuspendContactRecording, this API resumes recording the call}
 \usage{
-connect_resume_contact_recording(InstanceId, ContactId,
-  InitialContactId)
+connect_resume_contact_recording(InstanceId, ContactId, InitialContactId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{ContactId}{[required] The identifier of the contact.}
 
 \item{InitialContactId}{[required] The identifier of the contact. This is the identifier of the contact
 associated with the first interaction with the contact center.}
 }
-\value{
-An empty list.
-}
 \description{
-When a contact is being recorded, and the recording has been suspended
-using SuspendContactRecording, this API resumes recording the call.
+When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call.
 
-Only voice recordings are supported at this time.
+See \url{https://paws-r.github.io/docs/connect/resume_contact_recording.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$resume_contact_recording(
-  InstanceId = "string",
-  ContactId = "string",
-  InitialContactId = "string"
-)
-}
-}
-
 \keyword{internal}

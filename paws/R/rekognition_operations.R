@@ -14,6 +14,16 @@ NULL
 #' largest face and compares it with each face detected in the target
 #' image.
 #' 
+#' CompareFaces uses machine learning algorithms, which are probabilistic.
+#' A false negative is an incorrect prediction that a face in the target
+#' image has a low similarity confidence score when compared to the face in
+#' the source image. To reduce the probability of false negatives, we
+#' recommend that you compare the target image against multiple source
+#' images. If you plan to use [`compare_faces`][rekognition_compare_faces]
+#' to make a decision that impacts an individual's rights, privacy, or
+#' access to services, we recommend that you pass the result to a human for
+#' review and further validation before taking action.
+#' 
 #' You pass the input and target images either as base64-encoded image
 #' bytes or as references to images in an Amazon S3 bucket. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing image bytes isn't
@@ -22,7 +32,7 @@ NULL
 #' In response, the operation returns an array of face matches ordered by
 #' similarity score in descending order. For each face match, the response
 #' provides a bounding box of the face, facial landmarks, pose details
-#' (pitch, role, and yaw), quality (brightness and sharpness), and
+#' (pitch, roll, and yaw), quality (brightness and sharpness), and
 #' confidence value (indicating the level of confidence that the bounding
 #' box contains a face). The response also provides a similarity score,
 #' which indicates how closely the faces match.
@@ -133,6 +143,16 @@ NULL
 #'         Quality = list(
 #'           Brightness = 123.0,
 #'           Sharpness = 123.0
+#'         ),
+#'         Emotions = list(
+#'           list(
+#'             Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'             Confidence = 123.0
+#'           )
+#'         ),
+#'         Smile = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
 #'         )
 #'       )
 #'     )
@@ -161,6 +181,16 @@ NULL
 #'       Quality = list(
 #'         Brightness = 123.0,
 #'         Sharpness = 123.0
+#'       ),
+#'       Emotions = list(
+#'         list(
+#'           Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'           Confidence = 123.0
+#'         )
+#'       ),
+#'       Smile = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
 #'       )
 #'     )
 #'   ),
@@ -252,12 +282,16 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' Collection names are case-sensitive.
 #' 
 #' This operation requires permissions to perform the
-#' `rekognition:CreateCollection` action.
+#' `rekognition:CreateCollection` action. If you want to tag your
+#' collection, you also require permission to perform the
+#' `rekognition:TagResource` operation.
 #'
 #' @usage
-#' rekognition_create_collection(CollectionId)
+#' rekognition_create_collection(CollectionId, Tags)
 #'
 #' @param CollectionId &#91;required&#93; ID for the collection that you are creating.
+#' @param Tags A set of tags (key-value pairs) that you want to attach to the
+#' collection.
 #'
 #' @return
 #' A list with the following syntax:
@@ -272,7 +306,10 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' @section Request syntax:
 #' ```
 #' svc$create_collection(
-#'   CollectionId = "string"
+#'   CollectionId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -287,14 +324,14 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' @keywords internal
 #'
 #' @rdname rekognition_create_collection
-rekognition_create_collection <- function(CollectionId) {
+rekognition_create_collection <- function(CollectionId, Tags = NULL) {
   op <- new_operation(
     name = "CreateCollection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$create_collection_input(CollectionId = CollectionId)
+  input <- .rekognition$create_collection_input(CollectionId = CollectionId, Tags = Tags)
   output <- .rekognition$create_collection_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -304,12 +341,106 @@ rekognition_create_collection <- function(CollectionId) {
 }
 .rekognition$operations$create_collection <- rekognition_create_collection
 
+#' Creates a new Amazon Rekognition Custom Labels dataset
+#'
+#' @description
+#' Creates a new Amazon Rekognition Custom Labels dataset. You can create a
+#' dataset by using an Amazon Sagemaker format manifest file or by copying
+#' an existing Amazon Rekognition Custom Labels dataset.
+#' 
+#' To create a training dataset for a project, specify `train` for the
+#' value of `DatasetType`. To create the test dataset for a project,
+#' specify `test` for the value of `DatasetType`.
+#' 
+#' The response from [`create_dataset`][rekognition_create_dataset] is the
+#' Amazon Resource Name (ARN) for the dataset. Creating a dataset takes a
+#' while to complete. Use
+#' [`describe_dataset`][rekognition_describe_dataset] to check the current
+#' status. The dataset created successfully if the value of `Status` is
+#' `CREATE_COMPLETE`.
+#' 
+#' To check if any non-terminal errors occurred, call
+#' [`list_dataset_entries`][rekognition_list_dataset_entries] and check for
+#' the presence of `errors` lists in the JSON Lines.
+#' 
+#' Dataset creation fails if a terminal error occurs (`Status` =
+#' `CREATE_FAILED`). Currently, you can't access the terminal error
+#' information.
+#' 
+#' For more information, see Creating dataset in the *Amazon Rekognition
+#' Custom Labels Developer Guide*.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:CreateDataset` action. If you want to copy an existing
+#' dataset, you also require permission to perform the
+#' `rekognition:ListDatasetEntries` action.
+#'
+#' @usage
+#' rekognition_create_dataset(DatasetSource, DatasetType, ProjectArn)
+#'
+#' @param DatasetSource The source files for the dataset. You can specify the ARN of an existing
+#' dataset or specify the Amazon S3 bucket location of an Amazon Sagemaker
+#' format manifest file. If you don't specify `datasetSource`, an empty
+#' dataset is created. To add labeled images to the dataset, You can use
+#' the console or call
+#' [`update_dataset_entries`][rekognition_update_dataset_entries].
+#' @param DatasetType &#91;required&#93; The type of the dataset. Specify `train` to create a training dataset.
+#' Specify `test` to create a test dataset.
+#' @param ProjectArn &#91;required&#93; The ARN of the Amazon Rekognition Custom Labels project to which you
+#' want to asssign the dataset.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_dataset(
+#'   DatasetSource = list(
+#'     GroundTruthManifest = list(
+#'       S3Object = list(
+#'         Bucket = "string",
+#'         Name = "string",
+#'         Version = "string"
+#'       )
+#'     ),
+#'     DatasetArn = "string"
+#'   ),
+#'   DatasetType = "TRAIN"|"TEST",
+#'   ProjectArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_create_dataset
+rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, ProjectArn) {
+  op <- new_operation(
+    name = "CreateDataset",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$create_dataset_input(DatasetSource = DatasetSource, DatasetType = DatasetType, ProjectArn = ProjectArn)
+  output <- .rekognition$create_dataset_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$create_dataset <- rekognition_create_dataset
+
 #' Creates a new Amazon Rekognition Custom Labels project
 #'
 #' @description
 #' Creates a new Amazon Rekognition Custom Labels project. A project is a
-#' logical grouping of resources (images, Labels, models) and operations
-#' (training, evaluation and detection).
+#' group of resources (datasets, model versions) that you use to create and
+#' manage Amazon Rekognition Custom Labels models.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:CreateProject` action.
@@ -358,18 +489,41 @@ rekognition_create_project <- function(ProjectName) {
 #'
 #' @description
 #' Creates a new version of a model and begins training. Models are managed
-#' as part of an Amazon Rekognition Custom Labels project. You can specify
-#' one training dataset and one testing dataset. The response from
-#' [`create_project_version`][rekognition_create_project_version] is an
-#' Amazon Resource Name (ARN) for the version of the model.
+#' as part of an Amazon Rekognition Custom Labels project. The response
+#' from [`create_project_version`][rekognition_create_project_version] is
+#' an Amazon Resource Name (ARN) for the version of the model.
+#' 
+#' Training uses the training and test datasets associated with the
+#' project. For more information, see Creating training and test dataset in
+#' the *Amazon Rekognition Custom Labels Developer Guide*.
+#' 
+#' You can train a model in a project that doesn't have associated datasets
+#' by specifying manifest files in the `TrainingData` and `TestingData`
+#' fields.
+#' 
+#' If you open the console after training a model with manifest files,
+#' Amazon Rekognition Custom Labels creates the datasets for you using the
+#' most recent manifest files. You can no longer train a model version for
+#' the project by specifying manifest files.
+#' 
+#' Instead of training with a project without associated datasets, we
+#' recommend that you use the manifest files to create training and test
+#' datasets for the project.
 #' 
 #' Training takes a while to complete. You can get the current status by
 #' calling
 #' [`describe_project_versions`][rekognition_describe_project_versions].
+#' Training completed successfully if the value of the `Status` field is
+#' `TRAINING_COMPLETED`.
+#' 
+#' If training fails, see Debugging a failed model training in the *Amazon
+#' Rekognition Custom Labels* developer guide.
 #' 
 #' Once training has successfully completed, call
 #' [`describe_project_versions`][rekognition_describe_project_versions] to
-#' get the training results and evaluate the model.
+#' get the training results and evaluate the model. For more information,
+#' see Improving a trained Amazon Rekognition Custom Labels model in the
+#' *Amazon Rekognition Custom Labels* developers guide.
 #' 
 #' After evaluating the model, you start the model by calling
 #' [`start_project_version`][rekognition_start_project_version].
@@ -379,14 +533,42 @@ rekognition_create_project <- function(ProjectName) {
 #'
 #' @usage
 #' rekognition_create_project_version(ProjectArn, VersionName,
-#'   OutputConfig, TrainingData, TestingData)
+#'   OutputConfig, TrainingData, TestingData, Tags, KmsKeyId)
 #'
 #' @param ProjectArn &#91;required&#93; The ARN of the Amazon Rekognition Custom Labels project that manages the
 #' model that you want to train.
 #' @param VersionName &#91;required&#93; A name for the version of the model. This value must be unique.
-#' @param OutputConfig &#91;required&#93; The Amazon S3 location to store the results of training.
-#' @param TrainingData &#91;required&#93; The dataset to use for training.
-#' @param TestingData &#91;required&#93; The dataset to use for testing.
+#' @param OutputConfig &#91;required&#93; The Amazon S3 bucket location to store the results of training. The S3
+#' bucket can be in any AWS account as long as the caller has
+#' `s3:PutObject` permissions on the S3 bucket.
+#' @param TrainingData Specifies an external manifest that the services uses to train the
+#' model. If you specify `TrainingData` you must also specify
+#' `TestingData`. The project must not have any associated datasets.
+#' @param TestingData Specifies an external manifest that the service uses to test the model.
+#' If you specify `TestingData` you must also specify `TrainingData`. The
+#' project must not have any associated datasets.
+#' @param Tags A set of tags (key-value pairs) that you want to attach to the model.
+#' @param KmsKeyId The identifier for your AWS Key Management Service key (AWS KMS key).
+#' You can supply the Amazon Resource Name (ARN) of your KMS key, the ID of
+#' your KMS key, an alias for your KMS key, or an alias ARN. The key is
+#' used to encrypt training and test images copied into the service for
+#' model training. Your source images are unaffected. The key is also used
+#' to encrypt training results and manifest files written to the output
+#' Amazon S3 bucket (`OutputConfig`).
+#' 
+#' If you choose to use your own KMS key, you need the following
+#' permissions on the KMS key.
+#' 
+#' -   kms:CreateGrant
+#' 
+#' -   kms:DescribeKey
+#' 
+#' -   kms:GenerateDataKey
+#' 
+#' -   kms:Decrypt
+#' 
+#' If you don't specify a value for `KmsKeyId`, images copied into the
+#' service are encrypted using a key that AWS owns and manages.
 #'
 #' @return
 #' A list with the following syntax:
@@ -431,21 +613,25 @@ rekognition_create_project <- function(ProjectName) {
 #'       )
 #'     ),
 #'     AutoCreate = TRUE|FALSE
-#'   )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   KmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_create_project_version
-rekognition_create_project_version <- function(ProjectArn, VersionName, OutputConfig, TrainingData, TestingData) {
+rekognition_create_project_version <- function(ProjectArn, VersionName, OutputConfig, TrainingData = NULL, TestingData = NULL, Tags = NULL, KmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateProjectVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$create_project_version_input(ProjectArn = ProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, TrainingData = TrainingData, TestingData = TestingData)
+  input <- .rekognition$create_project_version_input(ProjectArn = ProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, TrainingData = TrainingData, TestingData = TestingData, Tags = Tags, KmsKeyId = KmsKeyId)
   output <- .rekognition$create_project_version_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -456,48 +642,99 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 .rekognition$operations$create_project_version <- rekognition_create_project_version
 
 #' Creates an Amazon Rekognition stream processor that you can use to
-#' detect and recognize faces in a streaming video
+#' detect and recognize faces or to detect labels in a streaming video
 #'
 #' @description
 #' Creates an Amazon Rekognition stream processor that you can use to
-#' detect and recognize faces in a streaming video.
+#' detect and recognize faces or to detect labels in a streaming video.
 #' 
 #' Amazon Rekognition Video is a consumer of live video from Amazon Kinesis
-#' Video Streams. Amazon Rekognition Video sends analysis results to Amazon
-#' Kinesis Data Streams.
+#' Video Streams. There are two different settings for stream processors in
+#' Amazon Rekognition: detecting faces and detecting labels.
 #' 
-#' You provide as input a Kinesis video stream (`Input`) and a Kinesis data
-#' stream (`Output`) stream. You also specify the face recognition criteria
-#' in `Settings`. For example, the collection containing faces that you
-#' want to recognize. Use `Name` to assign an identifier for the stream
-#' processor. You use `Name` to manage the stream processor. For example,
-#' you can start processing the source video by calling
+#' -   If you are creating a stream processor for detecting faces, you
+#'     provide as input a Kinesis video stream (`Input`) and a Kinesis data
+#'     stream (`Output`) stream. You also specify the face recognition
+#'     criteria in `Settings`. For example, the collection containing faces
+#'     that you want to recognize. After you have finished analyzing a
+#'     streaming video, use
+#'     [`stop_stream_processor`][rekognition_stop_stream_processor] to stop
+#'     processing.
+#' 
+#' -   If you are creating a stream processor to detect labels, you provide
+#'     as input a Kinesis video stream (`Input`), Amazon S3 bucket
+#'     information (`Output`), and an Amazon SNS topic ARN
+#'     (`NotificationChannel`). You can also provide a KMS key ID to
+#'     encrypt the data sent to your Amazon S3 bucket. You specify what you
+#'     want to detect in `ConnectedHomeSettings`, such as people, packages
+#'     and people, or pets, people, and packages. You can also specify
+#'     where in the frame you want Amazon Rekognition to monitor with
+#'     `RegionsOfInterest`. When you run the
+#'     [`start_stream_processor`][rekognition_start_stream_processor]
+#'     operation on a label detection stream processor, you input start and
+#'     stop information to determine the length of the processing time.
+#' 
+#' Use `Name` to assign an identifier for the stream processor. You use
+#' `Name` to manage the stream processor. For example, you can start
+#' processing the source video by calling
 #' [`start_stream_processor`][rekognition_start_stream_processor] with the
 #' `Name` field.
 #' 
-#' After you have finished analyzing a streaming video, use
-#' [`stop_stream_processor`][rekognition_stop_stream_processor] to stop
-#' processing. You can delete the stream processor by calling
-#' [`delete_stream_processor`][rekognition_delete_stream_processor].
+#' This operation requires permissions to perform the
+#' `rekognition:CreateStreamProcessor` action. If you want to tag your
+#' stream processor, you also require permission to perform the
+#' `rekognition:TagResource` operation.
 #'
 #' @usage
 #' rekognition_create_stream_processor(Input, Output, Name, Settings,
-#'   RoleArn)
+#'   RoleArn, Tags, NotificationChannel, KmsKeyId, RegionsOfInterest,
+#'   DataSharingPreference)
 #'
 #' @param Input &#91;required&#93; Kinesis video stream stream that provides the source streaming video. If
 #' you are using the AWS CLI, the parameter name is `StreamProcessorInput`.
-#' @param Output &#91;required&#93; Kinesis data stream stream to which Amazon Rekognition Video puts the
-#' analysis results. If you are using the AWS CLI, the parameter name is
-#' `StreamProcessorOutput`.
+#' This is required for both face search and label detection stream
+#' processors.
+#' @param Output &#91;required&#93; Kinesis data stream stream or Amazon S3 bucket location to which Amazon
+#' Rekognition Video puts the analysis results. If you are using the AWS
+#' CLI, the parameter name is `StreamProcessorOutput`. This must be a
+#' S3Destination of an Amazon S3 bucket that you own for a label detection
+#' stream processor or a Kinesis data stream ARN for a face search stream
+#' processor.
 #' @param Name &#91;required&#93; An identifier you assign to the stream processor. You can use `Name` to
 #' manage the stream processor. For example, you can get the current status
 #' of the stream processor by calling
 #' [`describe_stream_processor`][rekognition_describe_stream_processor].
-#' `Name` is idempotent.
-#' @param Settings &#91;required&#93; Face recognition input parameters to be used by the stream processor.
-#' Includes the collection to use for face recognition and the face
-#' attributes to detect.
-#' @param RoleArn &#91;required&#93; ARN of the IAM role that allows access to the stream processor.
+#' `Name` is idempotent. This is required for both face search and label
+#' detection stream processors.
+#' @param Settings &#91;required&#93; Input parameters used in a streaming video analyzed by a stream
+#' processor. You can use `FaceSearch` to recognize faces in a streaming
+#' video, or you can use `ConnectedHome` to detect labels.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Number (ARN) of the IAM role that allows access to
+#' the stream processor. The IAM role provides Rekognition read permissions
+#' for a Kinesis stream. It also provides write permissions to an Amazon S3
+#' bucket and Amazon Simple Notification Service topic for a label
+#' detection stream processor. This is required for both face search and
+#' label detection stream processors.
+#' @param Tags A set of tags (key-value pairs) that you want to attach to the stream
+#' processor.
+#' @param NotificationChannel 
+#' @param KmsKeyId The identifier for your AWS Key Management Service key (AWS KMS key).
+#' This is an optional parameter for label detection stream processors and
+#' should not be used to create a face search stream processor. You can
+#' supply the Amazon Resource Name (ARN) of your KMS key, the ID of your
+#' KMS key, an alias for your KMS key, or an alias ARN. The key is used to
+#' encrypt results and data published to your Amazon S3 bucket, which
+#' includes image frames and hero images. Your source images are
+#' unaffected.
+#' @param RegionsOfInterest Specifies locations in the frames where Amazon Rekognition checks for
+#' objects or people. You can specify up to 10 regions of interest, and
+#' each region has either a polygon or a bounding box. This is an optional
+#' parameter for label detection stream processors and should not be used
+#' to create a face search stream processor.
+#' @param DataSharingPreference Shows whether you are sharing data with Rekognition to improve model
+#' performance. You can choose this option at the account level or on a
+#' per-stream basis. Note that if you opt out at the account level this
+#' setting is ignored on individual streams.
 #'
 #' @return
 #' A list with the following syntax:
@@ -518,6 +755,10 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #'   Output = list(
 #'     KinesisDataStream = list(
 #'       Arn = "string"
+#'     ),
+#'     S3Destination = list(
+#'       Bucket = "string",
+#'       KeyPrefix = "string"
 #'     )
 #'   ),
 #'   Name = "string",
@@ -525,23 +766,55 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #'     FaceSearch = list(
 #'       CollectionId = "string",
 #'       FaceMatchThreshold = 123.0
+#'     ),
+#'     ConnectedHome = list(
+#'       Labels = list(
+#'         "string"
+#'       ),
+#'       MinConfidence = 123.0
 #'     )
 #'   ),
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   NotificationChannel = list(
+#'     SNSTopicArn = "string"
+#'   ),
+#'   KmsKeyId = "string",
+#'   RegionsOfInterest = list(
+#'     list(
+#'       BoundingBox = list(
+#'         Width = 123.0,
+#'         Height = 123.0,
+#'         Left = 123.0,
+#'         Top = 123.0
+#'       ),
+#'       Polygon = list(
+#'         list(
+#'           X = 123.0,
+#'           Y = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DataSharingPreference = list(
+#'     OptIn = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_create_stream_processor
-rekognition_create_stream_processor <- function(Input, Output, Name, Settings, RoleArn) {
+rekognition_create_stream_processor <- function(Input, Output, Name, Settings, RoleArn, Tags = NULL, NotificationChannel = NULL, KmsKeyId = NULL, RegionsOfInterest = NULL, DataSharingPreference = NULL) {
   op <- new_operation(
     name = "CreateStreamProcessor",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$create_stream_processor_input(Input = Input, Output = Output, Name = Name, Settings = Settings, RoleArn = RoleArn)
+  input <- .rekognition$create_stream_processor_input(Input = Input, Output = Output, Name = Name, Settings = Settings, RoleArn = RoleArn, Tags = Tags, NotificationChannel = NotificationChannel, KmsKeyId = KmsKeyId, RegionsOfInterest = RegionsOfInterest, DataSharingPreference = DataSharingPreference)
   output <- .rekognition$create_stream_processor_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -555,8 +828,8 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
 #'
 #' @description
 #' Deletes the specified collection. Note that this operation removes all
-#' faces in the collection. For an example, see
-#' delete-collection-procedure.
+#' faces in the collection. For an example, see [Deleting a
+#' collection](https://docs.aws.amazon.com/rekognition/latest/dg/delete-collection-procedure.html).
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DeleteCollection` action.
@@ -608,6 +881,59 @@ rekognition_delete_collection <- function(CollectionId) {
   return(response)
 }
 .rekognition$operations$delete_collection <- rekognition_delete_collection
+
+#' Deletes an existing Amazon Rekognition Custom Labels dataset
+#'
+#' @description
+#' Deletes an existing Amazon Rekognition Custom Labels dataset. Deleting a
+#' dataset might take while. Use
+#' [`describe_dataset`][rekognition_describe_dataset] to check the current
+#' status. The dataset is still deleting if the value of `Status` is
+#' `DELETE_IN_PROGRESS`. If you try to access the dataset after it is
+#' deleted, you get a `ResourceNotFoundException` exception.
+#' 
+#' You can't delete a dataset while it is creating (`Status` =
+#' `CREATE_IN_PROGRESS`) or if the dataset is updating (`Status` =
+#' `UPDATE_IN_PROGRESS`).
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:DeleteDataset` action.
+#'
+#' @usage
+#' rekognition_delete_dataset(DatasetArn)
+#'
+#' @param DatasetArn &#91;required&#93; The ARN of the Amazon Rekognition Custom Labels dataset that you want to
+#' delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_dataset(
+#'   DatasetArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_delete_dataset
+rekognition_delete_dataset <- function(DatasetArn) {
+  op <- new_operation(
+    name = "DeleteDataset",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$delete_dataset_input(DatasetArn = DatasetArn)
+  output <- .rekognition$delete_dataset_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$delete_dataset <- rekognition_delete_dataset
 
 #' Deletes faces from a collection
 #'
@@ -682,6 +1008,11 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 #' you must first delete all models associated with the project. To delete
 #' a model, see
 #' [`delete_project_version`][rekognition_delete_project_version].
+#' 
+#' [`delete_project`][rekognition_delete_project] is an asynchronous
+#' operation. To check if the project is deleted, call
+#' [`describe_projects`][rekognition_describe_projects]. The project is
+#' deleted when the project no longer appears in the response.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DeleteProject` action.
@@ -883,14 +1214,80 @@ rekognition_describe_collection <- function(CollectionId) {
 }
 .rekognition$operations$describe_collection <- rekognition_describe_collection
 
-#' Lists and describes the models in an Amazon Rekognition Custom Labels
-#' project
+#' Describes an Amazon Rekognition Custom Labels dataset
 #'
 #' @description
-#' Lists and describes the models in an Amazon Rekognition Custom Labels
-#' project. You can specify up to 10 model versions in
+#' Describes an Amazon Rekognition Custom Labels dataset. You can get
+#' information such as the current status of a dataset and statistics about
+#' the images and labels in a dataset.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:DescribeDataset` action.
+#'
+#' @usage
+#' rekognition_describe_dataset(DatasetArn)
+#'
+#' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset that you want to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetDescription = list(
+#'     CreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED"|"DELETE_IN_PROGRESS",
+#'     StatusMessage = "string",
+#'     StatusMessageCode = "SUCCESS"|"SERVICE_ERROR"|"CLIENT_ERROR",
+#'     DatasetStats = list(
+#'       LabeledEntries = 123,
+#'       TotalEntries = 123,
+#'       TotalLabels = 123,
+#'       ErrorEntries = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_dataset(
+#'   DatasetArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_describe_dataset
+rekognition_describe_dataset <- function(DatasetArn) {
+  op <- new_operation(
+    name = "DescribeDataset",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$describe_dataset_input(DatasetArn = DatasetArn)
+  output <- .rekognition$describe_dataset_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$describe_dataset <- rekognition_describe_dataset
+
+#' Lists and describes the versions of a model in an Amazon Rekognition
+#' Custom Labels project
+#'
+#' @description
+#' Lists and describes the versions of a model in an Amazon Rekognition
+#' Custom Labels project. You can specify up to 10 model versions in
 #' `ProjectVersionArns`. If you don't specify a value, descriptions for all
-#' models are returned.
+#' model versions in the project are returned.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DescribeProjectVersions` action.
@@ -1036,7 +1433,9 @@ rekognition_describe_collection <- function(CollectionId) {
 #'           Name = "string",
 #'           Version = "string"
 #'         )
-#'       )
+#'       ),
+#'       KmsKeyId = "string",
+#'       MaxInferenceUnits = 123
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1075,18 +1474,16 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 }
 .rekognition$operations$describe_project_versions <- rekognition_describe_project_versions
 
-#' Lists and gets information about your Amazon Rekognition Custom Labels
-#' projects
+#' Gets information about your Amazon Rekognition Custom Labels projects
 #'
 #' @description
-#' Lists and gets information about your Amazon Rekognition Custom Labels
-#' projects.
+#' Gets information about your Amazon Rekognition Custom Labels projects.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DescribeProjects` action.
 #'
 #' @usage
-#' rekognition_describe_projects(NextToken, MaxResults)
+#' rekognition_describe_projects(NextToken, MaxResults, ProjectNames)
 #'
 #' @param NextToken If the previous response was incomplete (because there is more results
 #' to retrieve), Amazon Rekognition Custom Labels returns a pagination
@@ -1095,6 +1492,9 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #' @param MaxResults The maximum number of results to return per paginated call. The largest
 #' value you can specify is 100. If you specify a value greater than 100, a
 #' ValidationException error occurs. The default value is 100.
+#' @param ProjectNames A list of the projects that you want Amazon Rekognition Custom Labels to
+#' describe. If you don't specify a value, the response includes
+#' descriptions for all the projects in your AWS account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1106,7 +1506,19 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #'       CreationTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       Status = "CREATING"|"CREATED"|"DELETING"
+#'       Status = "CREATING"|"CREATED"|"DELETING",
+#'       Datasets = list(
+#'         list(
+#'           CreationTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           DatasetType = "TRAIN"|"TEST",
+#'           DatasetArn = "string",
+#'           Status = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED"|"DELETE_IN_PROGRESS",
+#'           StatusMessage = "string",
+#'           StatusMessageCode = "SUCCESS"|"SERVICE_ERROR"|"CLIENT_ERROR"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1117,21 +1529,24 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #' ```
 #' svc$describe_projects(
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   ProjectNames = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_describe_projects
-rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL) {
+rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, ProjectNames = NULL) {
   op <- new_operation(
     name = "DescribeProjects",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$describe_projects_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .rekognition$describe_projects_input(NextToken = NextToken, MaxResults = MaxResults, ProjectNames = ProjectNames)
   output <- .rekognition$describe_projects_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -1162,7 +1577,7 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL) {
 #' list(
 #'   Name = "string",
 #'   StreamProcessorArn = "string",
-#'   Status = "STOPPED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING",
+#'   Status = "STOPPED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"UPDATING",
 #'   StatusMessage = "string",
 #'   CreationTimestamp = as.POSIXct(
 #'     "2015-01-01"
@@ -1178,6 +1593,10 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL) {
 #'   Output = list(
 #'     KinesisDataStream = list(
 #'       Arn = "string"
+#'     ),
+#'     S3Destination = list(
+#'       Bucket = "string",
+#'       KeyPrefix = "string"
 #'     )
 #'   ),
 #'   RoleArn = "string",
@@ -1185,7 +1604,36 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL) {
 #'     FaceSearch = list(
 #'       CollectionId = "string",
 #'       FaceMatchThreshold = 123.0
+#'     ),
+#'     ConnectedHome = list(
+#'       Labels = list(
+#'         "string"
+#'       ),
+#'       MinConfidence = 123.0
 #'     )
+#'   ),
+#'   NotificationChannel = list(
+#'     SNSTopicArn = "string"
+#'   ),
+#'   KmsKeyId = "string",
+#'   RegionsOfInterest = list(
+#'     list(
+#'       BoundingBox = list(
+#'         Width = 123.0,
+#'         Height = 123.0,
+#'         Left = 123.0,
+#'         Top = 123.0
+#'       ),
+#'       Polygon = list(
+#'         list(
+#'           X = 123.0,
+#'           Y = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DataSharingPreference = list(
+#'     OptIn = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1239,25 +1687,32 @@ rekognition_describe_stream_processor <- function(Name) {
 #' location information, if it exists, for the label on the image
 #' (`Geometry`).
 #' 
-#' During training model calculates a threshold value that determines if a
-#' prediction for a label is true. By default,
-#' [`detect_custom_labels`][rekognition_detect_custom_labels] doesn't
-#' return labels whose confidence value is below the model's calculated
-#' threshold value. To filter labels that are returned, specify a value for
-#' `MinConfidence` that is higher than the model's calculated threshold.
-#' You can get the model's calculated threshold from the model's training
-#' results shown in the Amazon Rekognition Custom Labels console. To get
-#' all labels, regardless of confidence, specify a `MinConfidence` value of
-#' 0.
+#' To filter labels that are returned, specify a value for `MinConfidence`.
+#' `DetectCustomLabelsLabels` only returns labels with a confidence that's
+#' higher than the specified value. The value of `MinConfidence` maps to
+#' the assumed threshold values created during training. For more
+#' information, see *Assumed threshold* in the Amazon Rekognition Custom
+#' Labels Developer Guide. Amazon Rekognition Custom Labels metrics
+#' expresses an assumed threshold as a floating point value between 0-1.
+#' The range of `MinConfidence` normalizes the threshold value to a
+#' percentage value (0-100). Confidence responses from
+#' [`detect_custom_labels`][rekognition_detect_custom_labels] are also
+#' returned as a percentage. You can use `MinConfidence` to change the
+#' precision and recall or your model. For more information, see *Analyzing
+#' an image* in the Amazon Rekognition Custom Labels Developer Guide.
 #' 
-#' You can also add the `MaxResults` parameter to limit the number of
-#' labels returned.
+#' If you don't specify a value for `MinConfidence`,
+#' [`detect_custom_labels`][rekognition_detect_custom_labels] returns
+#' labels based on the assumed threshold of each label.
 #' 
 #' This is a stateless API operation. That is, the operation does not
 #' persist any data.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DetectCustomLabels` action.
+#' 
+#' For more information, see *Analyzing an image* in the Amazon Rekognition
+#' Custom Labels Developer Guide.
 #'
 #' @usage
 #' rekognition_detect_custom_labels(ProjectVersionArn, Image, MaxResults,
@@ -1268,10 +1723,15 @@ rekognition_describe_stream_processor <- function(Name) {
 #' @param MaxResults Maximum number of results you want the service to return in the
 #' response. The service returns the specified number of highest confidence
 #' labels ranked from highest confidence to lowest.
-#' @param MinConfidence Specifies the minimum confidence level for the labels to return. Amazon
-#' Rekognition doesn't return any labels with a confidence lower than this
-#' specified value. If you specify a value of 0, all labels are return,
-#' regardless of the default thresholds that the model version applies.
+#' @param MinConfidence Specifies the minimum confidence level for the labels to return.
+#' [`detect_custom_labels`][rekognition_detect_custom_labels] doesn't
+#' return any labels with a confidence value that's lower than this
+#' specified value. If you specify a value of 0,
+#' [`detect_custom_labels`][rekognition_detect_custom_labels] returns all
+#' labels, regardless of the assumed threshold applied to each label. If
+#' you don't specify a value for `MinConfidence`,
+#' [`detect_custom_labels`][rekognition_detect_custom_labels] returns
+#' labels based on the assumed threshold of each label.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1521,7 +1981,7 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' events like wedding, graduation, and birthday party; and concepts like
 #' landscape, evening, and nature.
 #' 
-#' For an example, see Analyzing Images Stored in an Amazon S3 Bucket in
+#' For an example, see Analyzing images stored in an Amazon S3 bucket in
 #' the Amazon Rekognition Developer Guide.
 #' 
 #' [`detect_labels`][rekognition_detect_labels] does not support the
@@ -1966,9 +2426,9 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
 #' `TextDetection` element provides information about a single word or line
 #' of text that was detected in the image.
 #' 
-#' A word is one or more ISO basic latin script characters that are not
-#' separated by spaces. [`detect_text`][rekognition_detect_text] can detect
-#' up to 50 words in an image.
+#' A word is one or more script characters that are not separated by
+#' spaces. [`detect_text`][rekognition_detect_text] can detect up to 100
+#' words in an image.
 #' 
 #' A line is a string of equally spaced words. A line isn't necessarily a
 #' complete sentence. For example, a driver's license number is detected as
@@ -1986,8 +2446,8 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
 #' To be detected, text must be within +/- 90 degrees orientation of the
 #' horizontal axis.
 #' 
-#' For more information, see DetectText in the Amazon Rekognition Developer
-#' Guide.
+#' For more information, see Detecting text in the Amazon Rekognition
+#' Developer Guide.
 #'
 #' @usage
 #' rekognition_detect_text(Image, Filters)
@@ -2057,6 +2517,12 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
 #'           Height = 123.0,
 #'           Left = 123.0,
 #'           Top = 123.0
+#'         ),
+#'         Polygon = list(
+#'           list(
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2084,16 +2550,82 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
 }
 .rekognition$operations$detect_text <- rekognition_detect_text
 
-#' Gets the name and additional information about a celebrity based on his
-#' or her Amazon Rekognition ID
+#' Distributes the entries (images) in a training dataset across the
+#' training dataset and the test dataset for a project
 #'
 #' @description
-#' Gets the name and additional information about a celebrity based on his
-#' or her Amazon Rekognition ID. The additional information is returned as
+#' Distributes the entries (images) in a training dataset across the
+#' training dataset and the test dataset for a project.
+#' [`distribute_dataset_entries`][rekognition_distribute_dataset_entries]
+#' moves 20% of the training dataset images to the test dataset. An entry
+#' is a JSON Line that describes an image.
+#' 
+#' You supply the Amazon Resource Names (ARN) of a project's training
+#' dataset and test dataset. The training dataset must contain the images
+#' that you want to split. The test dataset must be empty. The datasets
+#' must belong to the same project. To create training and test datasets
+#' for a project, call [`create_dataset`][rekognition_create_dataset].
+#' 
+#' Distributing a dataset takes a while to complete. To check the status
+#' call [`describe_dataset`][rekognition_describe_dataset]. The operation
+#' is complete when the `Status` field for the training dataset and the
+#' test dataset is `UPDATE_COMPLETE`. If the dataset split fails, the value
+#' of `Status` is `UPDATE_FAILED`.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:DistributeDatasetEntries` action.
+#'
+#' @usage
+#' rekognition_distribute_dataset_entries(Datasets)
+#'
+#' @param Datasets &#91;required&#93; The ARNS for the training dataset and test dataset that you want to use.
+#' The datasets must belong to the same project. The test dataset must be
+#' empty.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$distribute_dataset_entries(
+#'   Datasets = list(
+#'     list(
+#'       Arn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_distribute_dataset_entries
+rekognition_distribute_dataset_entries <- function(Datasets) {
+  op <- new_operation(
+    name = "DistributeDatasetEntries",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$distribute_dataset_entries_input(Datasets = Datasets)
+  output <- .rekognition$distribute_dataset_entries_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$distribute_dataset_entries <- rekognition_distribute_dataset_entries
+
+#' Gets the name and additional information about a celebrity based on
+#' their Amazon Rekognition ID
+#'
+#' @description
+#' Gets the name and additional information about a celebrity based on
+#' their Amazon Rekognition ID. The additional information is returned as
 #' an array of URLs. If there is no additional information about the
 #' celebrity, this list is empty.
 #' 
-#' For more information, see Recognizing Celebrities in an Image in the
+#' For more information, see Getting information about a celebrity in the
 #' Amazon Rekognition Developer Guide.
 #' 
 #' This operation requires permissions to perform the
@@ -2113,7 +2645,10 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
 #'   Urls = list(
 #'     "string"
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   KnownGender = list(
+#'     Type = "Male"|"Female"|"Nonbinary"|"Unlisted"
+#'   )
 #' )
 #' ```
 #'
@@ -2155,10 +2690,11 @@ rekognition_get_celebrity_info <- function(Id) {
 #' Celebrity recognition in a video is an asynchronous operation. Analysis
 #' is started by a call to
 #' [`start_celebrity_recognition`][rekognition_start_celebrity_recognition]
-#' which returns a job identifier (`JobId`). When the celebrity recognition
-#' operation finishes, Amazon Rekognition Video publishes a completion
-#' status to the Amazon Simple Notification Service topic registered in the
-#' initial call to
+#' which returns a job identifier (`JobId`).
+#' 
+#' When the celebrity recognition operation finishes, Amazon Rekognition
+#' Video publishes a completion status to the Amazon Simple Notification
+#' Service topic registered in the initial call to
 #' [`start_celebrity_recognition`][rekognition_start_celebrity_recognition].
 #' To get the results of the celebrity recognition analysis, first check
 #' that the status value published to the Amazon SNS topic is `SUCCEEDED`.
@@ -2173,14 +2709,17 @@ rekognition_get_celebrity_info <- function(Id) {
 #' array (`Celebrities`) of CelebrityRecognition objects. Each
 #' `CelebrityRecognition` contains information about the celebrity in a
 #' CelebrityDetail object and the time, `Timestamp`, the celebrity was
-#' detected.
+#' detected. This CelebrityDetail object stores information about the
+#' detected celebrity's face attributes, a face bounding box, known gender,
+#' the celebrity's name, and a confidence estimate.
 #' 
 #' [`get_celebrity_recognition`][rekognition_get_celebrity_recognition]
 #' only returns the default facial attributes (`BoundingBox`, `Confidence`,
-#' `Landmarks`, `Pose`, and `Quality`). The other facial attributes listed
-#' in the `Face` object of the following response syntax are not returned.
-#' For more information, see FaceDetail in the Amazon Rekognition Developer
-#' Guide.
+#' `Landmarks`, `Pose`, and `Quality`). The `BoundingBox` field only
+#' applies to the detected face instance. The other facial attributes
+#' listed in the `Face` object of the following response syntax are not
+#' returned. For more information, see FaceDetail in the Amazon Rekognition
+#' Developer Guide.
 #' 
 #' By default, the `Celebrities` array is sorted by time (milliseconds from
 #' the start of the video). You can also sort the array by celebrity by
@@ -2232,7 +2771,8 @@ rekognition_get_celebrity_info <- function(Id) {
 #'     Format = "string",
 #'     FrameRate = 123.0,
 #'     FrameHeight = 123,
-#'     FrameWidth = 123
+#'     FrameWidth = 123,
+#'     ColorRange = "FULL"|"LIMITED"
 #'   ),
 #'   NextToken = "string",
 #'   Celebrities = list(
@@ -2317,6 +2857,9 @@ rekognition_get_celebrity_info <- function(Id) {
 #'             Sharpness = 123.0
 #'           ),
 #'           Confidence = 123.0
+#'         ),
+#'         KnownGender = list(
+#'           Type = "Male"|"Female"|"Nonbinary"|"Unlisted"
 #'         )
 #'       )
 #'     )
@@ -2354,33 +2897,39 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 }
 .rekognition$operations$get_celebrity_recognition <- rekognition_get_celebrity_recognition
 
-#' Gets the unsafe content analysis results for a Amazon Rekognition Video
-#' analysis started by StartContentModeration
+#' Gets the inappropriate, unwanted, or offensive content analysis results
+#' for a Amazon Rekognition Video analysis started by
+#' StartContentModeration
 #'
 #' @description
-#' Gets the unsafe content analysis results for a Amazon Rekognition Video
-#' analysis started by
-#' [`start_content_moderation`][rekognition_start_content_moderation].
+#' Gets the inappropriate, unwanted, or offensive content analysis results
+#' for a Amazon Rekognition Video analysis started by
+#' [`start_content_moderation`][rekognition_start_content_moderation]. For
+#' a list of moderation labels in Amazon Rekognition, see [Using the image
+#' and video moderation
+#' APIs](https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html#moderation-api).
 #' 
-#' Unsafe content analysis of a video is an asynchronous operation. You
-#' start analysis by calling
+#' Amazon Rekognition Video inappropriate or offensive content detection in
+#' a stored video is an asynchronous operation. You start analysis by
+#' calling
 #' [`start_content_moderation`][rekognition_start_content_moderation] which
 #' returns a job identifier (`JobId`). When analysis finishes, Amazon
 #' Rekognition Video publishes a completion status to the Amazon Simple
 #' Notification Service topic registered in the initial call to
 #' [`start_content_moderation`][rekognition_start_content_moderation]. To
-#' get the results of the unsafe content analysis, first check that the
-#' status value published to the Amazon SNS topic is `SUCCEEDED`. If so,
-#' call [`get_content_moderation`][rekognition_get_content_moderation] and
-#' pass the job identifier (`JobId`) from the initial call to
+#' get the results of the content analysis, first check that the status
+#' value published to the Amazon SNS topic is `SUCCEEDED`. If so, call
+#' [`get_content_moderation`][rekognition_get_content_moderation] and pass
+#' the job identifier (`JobId`) from the initial call to
 #' [`start_content_moderation`][rekognition_start_content_moderation].
 #' 
 #' For more information, see Working with Stored Videos in the Amazon
 #' Rekognition Devlopers Guide.
 #' 
 #' [`get_content_moderation`][rekognition_get_content_moderation] returns
-#' detected unsafe content labels, and the time they are detected, in an
-#' array, `ModerationLabels`, of ContentModerationDetection objects.
+#' detected inappropriate, unwanted, or offensive content moderation
+#' labels, and the time they are detected, in an array, `ModerationLabels`,
+#' of ContentModerationDetection objects.
 #' 
 #' By default, the moderated labels are returned sorted by time, in
 #' milliseconds from the start of the video. You can also sort them by
@@ -2398,14 +2947,14 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' returned from the previous call to
 #' [`get_content_moderation`][rekognition_get_content_moderation].
 #' 
-#' For more information, see Detecting Unsafe Content in the Amazon
-#' Rekognition Developer Guide.
+#' For more information, see moderating content in the Amazon Rekognition
+#' Developer Guide.
 #'
 #' @usage
 #' rekognition_get_content_moderation(JobId, MaxResults, NextToken, SortBy)
 #'
-#' @param JobId &#91;required&#93; The identifier for the unsafe content job. Use `JobId` to identify the
-#' job in a subsequent call to
+#' @param JobId &#91;required&#93; The identifier for the inappropriate, unwanted, or offensive content
+#' moderation job. Use `JobId` to identify the job in a subsequent call to
 #' [`get_content_moderation`][rekognition_get_content_moderation].
 #' @param MaxResults Maximum number of results to return per paginated call. The largest
 #' value you can specify is 1000. If you specify a value greater than 1000,
@@ -2413,7 +2962,7 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' @param NextToken If the previous response was incomplete (because there is more data to
 #' retrieve), Amazon Rekognition returns a pagination token in the
 #' response. You can use this pagination token to retrieve the next set of
-#' unsafe content labels.
+#' content moderation labels.
 #' @param SortBy Sort to use for elements in the `ModerationLabelDetections` array. Use
 #' `TIMESTAMP` to sort array elements by the time labels are detected. Use
 #' `NAME` to alphabetically group elements for a label together. Within
@@ -2432,7 +2981,8 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #'     Format = "string",
 #'     FrameRate = 123.0,
 #'     FrameHeight = 123,
-#'     FrameWidth = 123
+#'     FrameWidth = 123,
+#'     ColorRange = "FULL"|"LIMITED"
 #'   ),
 #'   ModerationLabels = list(
 #'     list(
@@ -2535,7 +3085,8 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
 #'     Format = "string",
 #'     FrameRate = 123.0,
 #'     FrameHeight = 123,
-#'     FrameWidth = 123
+#'     FrameWidth = 123,
+#'     ColorRange = "FULL"|"LIMITED"
 #'   ),
 #'   NextToken = "string",
 #'   Faces = list(
@@ -2714,7 +3265,8 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #'     Format = "string",
 #'     FrameRate = 123.0,
 #'     FrameHeight = 123,
-#'     FrameWidth = 123
+#'     FrameWidth = 123,
+#'     ColorRange = "FULL"|"LIMITED"
 #'   ),
 #'   Persons = list(
 #'     list(
@@ -2808,7 +3360,8 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #'             ),
 #'             ImageId = "string",
 #'             ExternalImageId = "string",
-#'             Confidence = 123.0
+#'             Confidence = 123.0,
+#'             IndexFacesModelVersion = "string"
 #'           )
 #'         )
 #'       )
@@ -2918,7 +3471,8 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
 #'     Format = "string",
 #'     FrameRate = 123.0,
 #'     FrameHeight = 123,
-#'     FrameWidth = 123
+#'     FrameWidth = 123,
+#'     ColorRange = "FULL"|"LIMITED"
 #'   ),
 #'   NextToken = "string",
 #'   Labels = list(
@@ -3056,7 +3610,8 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #'     Format = "string",
 #'     FrameRate = 123.0,
 #'     FrameHeight = 123,
-#'     FrameWidth = 123
+#'     FrameWidth = 123,
+#'     ColorRange = "FULL"|"LIMITED"
 #'   ),
 #'   NextToken = "string",
 #'   Persons = list(
@@ -3217,7 +3772,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' from the previous call to
 #' [`get_segment_detection`][rekognition_get_segment_detection].
 #' 
-#' For more information, see Detecting Video Segments in Stored Video in
+#' For more information, see Detecting video segments in stored video in
 #' the Amazon Rekognition Developer Guide.
 #'
 #' @usage
@@ -3245,7 +3800,8 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #'       Format = "string",
 #'       FrameRate = 123.0,
 #'       FrameHeight = 123,
-#'       FrameWidth = 123
+#'       FrameWidth = 123,
+#'       ColorRange = "FULL"|"LIMITED"
 #'     )
 #'   ),
 #'   AudioMetadata = list(
@@ -3267,13 +3823,16 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #'       EndTimecodeSMPTE = "string",
 #'       DurationSMPTE = "string",
 #'       TechnicalCueSegment = list(
-#'         Type = "ColorBars"|"EndCredits"|"BlackFrames",
+#'         Type = "ColorBars"|"EndCredits"|"BlackFrames"|"OpeningCredits"|"StudioLogo"|"Slate"|"Content",
 #'         Confidence = 123.0
 #'       ),
 #'       ShotSegment = list(
 #'         Index = 123,
 #'         Confidence = 123.0
-#'       )
+#'       ),
+#'       StartFrameNumber = 123,
+#'       EndFrameNumber = 123,
+#'       DurationFrames = 123
 #'     )
 #'   ),
 #'   SelectedSegmentTypes = list(
@@ -3377,7 +3936,8 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
 #'     Format = "string",
 #'     FrameRate = 123.0,
 #'     FrameHeight = 123,
-#'     FrameWidth = 123
+#'     FrameWidth = 123,
+#'     ColorRange = "FULL"|"LIMITED"
 #'   ),
 #'   TextDetections = list(
 #'     list(
@@ -3454,7 +4014,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' operations using the [`search_faces`][rekognition_search_faces] and
 #' [`search_faces_by_image`][rekognition_search_faces_by_image] operations.
 #' 
-#' For more information, see Adding Faces to a Collection in the Amazon
+#' For more information, see Adding faces to a collection in the Amazon
 #' Rekognition Developer Guide.
 #' 
 #' To get the number of faces in a collection, call
@@ -3623,7 +4183,8 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #'         ),
 #'         ImageId = "string",
 #'         ExternalImageId = "string",
-#'         Confidence = 123.0
+#'         Confidence = 123.0,
+#'         IndexFacesModelVersion = "string"
 #'       ),
 #'       FaceDetail = list(
 #'         BoundingBox = list(
@@ -3838,7 +4399,7 @@ rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL,
 #' truncated, the response also provides a `NextToken` that you can use in
 #' the subsequent request to fetch the next set of collection IDs.
 #' 
-#' For an example, see Listing Collections in the Amazon Rekognition
+#' For an example, see Listing collections in the Amazon Rekognition
 #' Developer Guide.
 #' 
 #' This operation requires permissions to perform the
@@ -3898,6 +4459,171 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .rekognition$operations$list_collections <- rekognition_list_collections
 
+#' Lists the entries (images) within a dataset
+#'
+#' @description
+#' Lists the entries (images) within a dataset. An entry is a JSON Line
+#' that contains the information for a single image, including the image
+#' location, assigned labels, and object location bounding boxes. For more
+#' information, see [Creating a manifest
+#' file](https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/).
+#' 
+#' JSON Lines in the response include information about non-terminal errors
+#' found in the dataset. Non terminal errors are reported in `errors` lists
+#' within each JSON Line. The same information is reported in the training
+#' and testing validation result manifests that Amazon Rekognition Custom
+#' Labels creates during model training.
+#' 
+#' You can filter the response in variety of ways, such as choosing which
+#' labels to return and returning JSON Lines created after a specific date.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:ListDatasetEntries` action.
+#'
+#' @usage
+#' rekognition_list_dataset_entries(DatasetArn, ContainsLabels, Labeled,
+#'   SourceRefContains, HasErrors, NextToken, MaxResults)
+#'
+#' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) for the dataset that you want to use.
+#' @param ContainsLabels Specifies a label filter for the response. The response includes an
+#' entry only if one or more of the labels in `ContainsLabels` exist in the
+#' entry.
+#' @param Labeled Specify `true` to get only the JSON Lines where the image is labeled.
+#' Specify `false` to get only the JSON Lines where the image isn't
+#' labeled. If you don't specify `Labeled`,
+#' [`list_dataset_entries`][rekognition_list_dataset_entries] returns JSON
+#' Lines for labeled and unlabeled images.
+#' @param SourceRefContains If specified, [`list_dataset_entries`][rekognition_list_dataset_entries]
+#' only returns JSON Lines where the value of `SourceRefContains` is part
+#' of the `source-ref` field. The `source-ref` field contains the Amazon S3
+#' location of the image. You can use `SouceRefContains` for tasks such as
+#' getting the JSON Line for a single image, or gettting JSON Lines for all
+#' images within a specific folder.
+#' @param HasErrors Specifies an error filter for the response. Specify `True` to only
+#' include entries that have errors.
+#' @param NextToken If the previous response was incomplete (because there is more results
+#' to retrieve), Amazon Rekognition Custom Labels returns a pagination
+#' token in the response. You can use this pagination token to retrieve the
+#' next set of results.
+#' @param MaxResults The maximum number of results to return per paginated call. The largest
+#' value you can specify is 100. If you specify a value greater than 100, a
+#' ValidationException error occurs. The default value is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetEntries = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_dataset_entries(
+#'   DatasetArn = "string",
+#'   ContainsLabels = list(
+#'     "string"
+#'   ),
+#'   Labeled = TRUE|FALSE,
+#'   SourceRefContains = "string",
+#'   HasErrors = TRUE|FALSE,
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_list_dataset_entries
+rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, Labeled = NULL, SourceRefContains = NULL, HasErrors = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListDatasetEntries",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$list_dataset_entries_input(DatasetArn = DatasetArn, ContainsLabels = ContainsLabels, Labeled = Labeled, SourceRefContains = SourceRefContains, HasErrors = HasErrors, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .rekognition$list_dataset_entries_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$list_dataset_entries <- rekognition_list_dataset_entries
+
+#' Lists the labels in a dataset
+#'
+#' @description
+#' Lists the labels in a dataset. Amazon Rekognition Custom Labels uses
+#' labels to describe images. For more information, see [Labeling
+#' images](https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/md-labeling-images.html).
+#' 
+#' Lists the labels in a dataset. Amazon Rekognition Custom Labels uses
+#' labels to describe images. For more information, see Labeling images in
+#' the *Amazon Rekognition Custom Labels Developer Guide*.
+#'
+#' @usage
+#' rekognition_list_dataset_labels(DatasetArn, NextToken, MaxResults)
+#'
+#' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset that you want to use.
+#' @param NextToken If the previous response was incomplete (because there is more results
+#' to retrieve), Amazon Rekognition Custom Labels returns a pagination
+#' token in the response. You can use this pagination token to retrieve the
+#' next set of results.
+#' @param MaxResults The maximum number of results to return per paginated call. The largest
+#' value you can specify is 100. If you specify a value greater than 100, a
+#' ValidationException error occurs. The default value is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetLabelDescriptions = list(
+#'     list(
+#'       LabelName = "string",
+#'       LabelStats = list(
+#'         EntryCount = 123,
+#'         BoundingBoxCount = 123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_dataset_labels(
+#'   DatasetArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_list_dataset_labels
+rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListDatasetLabels",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$list_dataset_labels_input(DatasetArn = DatasetArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .rekognition$list_dataset_labels_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$list_dataset_labels <- rekognition_list_dataset_labels
+
 #' Returns metadata for faces in the specified collection
 #'
 #' @description
@@ -3935,7 +4661,8 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #'       ),
 #'       ImageId = "string",
 #'       ExternalImageId = "string",
-#'       Confidence = 123.0
+#'       Confidence = 123.0,
+#'       IndexFacesModelVersion = "string"
 #'     )
 #'   ),
 #'   NextToken = "string",
@@ -4006,7 +4733,7 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 #'   StreamProcessors = list(
 #'     list(
 #'       Name = "string",
-#'       Status = "STOPPED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"
+#'       Status = "STOPPED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"UPDATING"
 #'     )
 #'   )
 #' )
@@ -4040,19 +4767,73 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 }
 .rekognition$operations$list_stream_processors <- rekognition_list_stream_processors
 
+#' Returns a list of tags in an Amazon Rekognition collection, stream
+#' processor, or Custom Labels model
+#'
+#' @description
+#' Returns a list of tags in an Amazon Rekognition collection, stream
+#' processor, or Custom Labels model.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:ListTagsForResource` action.
+#'
+#' @usage
+#' rekognition_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the model, collection, or stream processor
+#' that contains the tags that you want a list of.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_list_tags_for_resource
+rekognition_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .rekognition$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$list_tags_for_resource <- rekognition_list_tags_for_resource
+
 #' Returns an array of celebrities recognized in the input image
 #'
 #' @description
 #' Returns an array of celebrities recognized in the input image. For more
-#' information, see Recognizing Celebrities in the Amazon Rekognition
+#' information, see Recognizing celebrities in the Amazon Rekognition
 #' Developer Guide.
 #' 
 #' [`recognize_celebrities`][rekognition_recognize_celebrities] returns the
-#' 64 largest faces in the image. It lists recognized celebrities in the
-#' `CelebrityFaces` array and unrecognized faces in the `UnrecognizedFaces`
-#' array. [`recognize_celebrities`][rekognition_recognize_celebrities]
-#' doesn't return celebrities whose faces aren't among the largest 64 faces
-#' in the image.
+#' 64 largest faces in the image. It lists the recognized celebrities in
+#' the `CelebrityFaces` array and any unrecognized faces in the
+#' `UnrecognizedFaces` array.
+#' [`recognize_celebrities`][rekognition_recognize_celebrities] doesn't
+#' return celebrities whose faces aren't among the largest 64 faces in the
+#' image.
 #' 
 #' For each celebrity recognized,
 #' [`recognize_celebrities`][rekognition_recognize_celebrities] returns a
@@ -4075,7 +4856,7 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #' call Amazon Rekognition operations, passing image bytes is not
 #' supported. The image must be either a PNG or JPEG formatted file.
 #' 
-#' For an example, see Recognizing Celebrities in an Image in the Amazon
+#' For an example, see Recognizing celebrities in an image in the Amazon
 #' Rekognition Developer Guide.
 #' 
 #' This operation requires permissions to perform the
@@ -4126,9 +4907,22 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #'         Quality = list(
 #'           Brightness = 123.0,
 #'           Sharpness = 123.0
+#'         ),
+#'         Emotions = list(
+#'           list(
+#'             Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'             Confidence = 123.0
+#'           )
+#'         ),
+#'         Smile = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
 #'         )
 #'       ),
-#'       MatchConfidence = 123.0
+#'       MatchConfidence = 123.0,
+#'       KnownGender = list(
+#'         Type = "Male"|"Female"|"Nonbinary"|"Unlisted"
+#'       )
 #'     )
 #'   ),
 #'   UnrecognizedFaces = list(
@@ -4155,6 +4949,16 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #'       Quality = list(
 #'         Brightness = 123.0,
 #'         Sharpness = 123.0
+#'       ),
+#'       Emotions = list(
+#'         list(
+#'           Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'           Confidence = 123.0
+#'         )
+#'       ),
+#'       Smile = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
 #'       )
 #'     )
 #'   ),
@@ -4216,7 +5020,7 @@ rekognition_recognize_celebrities <- function(Image) {
 #' face match, indicating the confidence that the specific face matches the
 #' input face.
 #' 
-#' For an example, see Searching for a Face Using Its Face ID in the Amazon
+#' For an example, see Searching for a face using its face ID in the Amazon
 #' Rekognition Developer Guide.
 #' 
 #' This operation requires permissions to perform the
@@ -4252,7 +5056,8 @@ rekognition_recognize_celebrities <- function(Image) {
 #'         ),
 #'         ImageId = "string",
 #'         ExternalImageId = "string",
-#'         Confidence = 123.0
+#'         Confidence = 123.0,
+#'         IndexFacesModelVersion = "string"
 #'       )
 #'     )
 #'   ),
@@ -4334,6 +5139,10 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' the bounding box (and a confidence level that the bounding box contains
 #' a face) of the face that Amazon Rekognition used for the input image.
 #' 
+#' If no faces are detected in the input image,
+#' [`search_faces_by_image`][rekognition_search_faces_by_image] returns an
+#' `InvalidParameterException` error.
+#' 
 #' For an example, Searching for a Face Using an Image in the Amazon
 #' Rekognition Developer Guide.
 #' 
@@ -4407,7 +5216,8 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #'         ),
 #'         ImageId = "string",
 #'         ExternalImageId = "string",
-#'         Confidence = 123.0
+#'         Confidence = 123.0,
+#'         IndexFacesModelVersion = "string"
 #'       )
 #'     )
 #'   ),
@@ -4490,7 +5300,7 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 #' pass the job identifier (`JobId`) from the initial call to
 #' [`start_celebrity_recognition`][rekognition_start_celebrity_recognition].
 #' 
-#' For more information, see Recognizing Celebrities in the Amazon
+#' For more information, see Recognizing celebrities in the Amazon
 #' Rekognition Developer Guide.
 #'
 #' @usage
@@ -4506,6 +5316,9 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 #' prevent the same job from being accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Rekognition Video to
 #' publish the completion status of the celebrity recognition analysis to.
+#' The Amazon SNS topic must have a topic name that begins with
+#' *AmazonRekognition* if you are using the AmazonRekognitionServiceRole
+#' permissions policy.
 #' @param JobTag An identifier you specify that's returned in the completion notification
 #' that's published to your Amazon Simple Notification Service topic. For
 #' example, you can use `JobTag` to group related jobs and identify them in
@@ -4558,35 +5371,39 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 }
 .rekognition$operations$start_celebrity_recognition <- rekognition_start_celebrity_recognition
 
-#' Starts asynchronous detection of unsafe content in a stored video
+#' Starts asynchronous detection of inappropriate, unwanted, or offensive
+#' content in a stored video
 #'
 #' @description
-#' Starts asynchronous detection of unsafe content in a stored video.
+#' Starts asynchronous detection of inappropriate, unwanted, or offensive
+#' content in a stored video. For a list of moderation labels in Amazon
+#' Rekognition, see [Using the image and video moderation
+#' APIs](https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html#moderation-api).
 #' 
 #' Amazon Rekognition Video can moderate content in a video stored in an
 #' Amazon S3 bucket. Use Video to specify the bucket name and the filename
 #' of the video.
 #' [`start_content_moderation`][rekognition_start_content_moderation]
 #' returns a job identifier (`JobId`) which you use to get the results of
-#' the analysis. When unsafe content analysis is finished, Amazon
-#' Rekognition Video publishes a completion status to the Amazon Simple
-#' Notification Service topic that you specify in `NotificationChannel`.
+#' the analysis. When content analysis is finished, Amazon Rekognition
+#' Video publishes a completion status to the Amazon Simple Notification
+#' Service topic that you specify in `NotificationChannel`.
 #' 
-#' To get the results of the unsafe content analysis, first check that the
-#' status value published to the Amazon SNS topic is `SUCCEEDED`. If so,
-#' call [`get_content_moderation`][rekognition_get_content_moderation] and
-#' pass the job identifier (`JobId`) from the initial call to
+#' To get the results of the content analysis, first check that the status
+#' value published to the Amazon SNS topic is `SUCCEEDED`. If so, call
+#' [`get_content_moderation`][rekognition_get_content_moderation] and pass
+#' the job identifier (`JobId`) from the initial call to
 #' [`start_content_moderation`][rekognition_start_content_moderation].
 #' 
-#' For more information, see Detecting Unsafe Content in the Amazon
-#' Rekognition Developer Guide.
+#' For more information, see Moderating content in the Amazon Rekognition
+#' Developer Guide.
 #'
 #' @usage
 #' rekognition_start_content_moderation(Video, MinConfidence,
 #'   ClientRequestToken, NotificationChannel, JobTag)
 #'
-#' @param Video &#91;required&#93; The video in which you want to detect unsafe content. The video must be
-#' stored in an Amazon S3 bucket.
+#' @param Video &#91;required&#93; The video in which you want to detect inappropriate, unwanted, or
+#' offensive content. The video must be stored in an Amazon S3 bucket.
 #' @param MinConfidence Specifies the minimum confidence that Amazon Rekognition must have in
 #' order to return a moderated content label. Confidence represents how
 #' certain Amazon Rekognition is that the moderated content is correctly
@@ -4602,7 +5419,10 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #' requests, the same `JobId` is returned. Use `ClientRequestToken` to
 #' prevent the same job from being accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Rekognition Video to
-#' publish the completion status of the unsafe content analysis to.
+#' publish the completion status of the content analysis to. The Amazon SNS
+#' topic must have a topic name that begins with *AmazonRekognition* if you
+#' are using the AmazonRekognitionServiceRole permissions policy to access
+#' the topic.
 #' @param JobTag An identifier you specify that's returned in the completion notification
 #' that's published to your Amazon Simple Notification Service topic. For
 #' example, you can use `JobTag` to group related jobs and identify them in
@@ -4674,7 +5494,7 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 #' identifier (`JobId`) from the initial call to
 #' [`start_face_detection`][rekognition_start_face_detection].
 #' 
-#' For more information, see Detecting Faces in a Stored Video in the
+#' For more information, see Detecting faces in a stored video in the
 #' Amazon Rekognition Developer Guide.
 #'
 #' @usage
@@ -4690,6 +5510,9 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 #' job from being accidently started more than once.
 #' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 #' Video to publish the completion status of the face detection operation.
+#' The Amazon SNS topic must have a topic name that begins with
+#' *AmazonRekognition* if you are using the AmazonRekognitionServiceRole
+#' permissions policy.
 #' @param FaceAttributes The face attributes you want returned.
 #' 
 #' `DEFAULT` - The following subset of facial attributes are returned:
@@ -4768,7 +5591,8 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' [`get_face_search`][rekognition_get_face_search] and pass the job
 #' identifier (`JobId`) from the initial call to
 #' [`start_face_search`][rekognition_start_face_search]. For more
-#' information, see procedure-person-search-videos.
+#' information, see [Searching stored videos for
+#' faces](https://docs.aws.amazon.com/rekognition/latest/dg/procedure-person-search-videos.html).
 #'
 #' @usage
 #' rekognition_start_face_search(Video, ClientRequestToken,
@@ -4785,7 +5609,10 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' default value is 80%.
 #' @param CollectionId &#91;required&#93; ID of the collection that contains the faces you want to search for.
 #' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
-#' Video to publish the completion status of the search.
+#' Video to publish the completion status of the search. The Amazon SNS
+#' topic must have a topic name that begins with *AmazonRekognition* if you
+#' are using the AmazonRekognitionServiceRole permissions policy to access
+#' the topic.
 #' @param JobTag An identifier you specify that's returned in the completion notification
 #' that's published to your Amazon Simple Notification Service topic. For
 #' example, you can use `JobTag` to group related jobs and identify them in
@@ -4886,7 +5713,9 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #' If you don't specify `MinConfidence`, the operation returns labels with
 #' confidence values greater than or equal to 50 percent.
 #' @param NotificationChannel The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
-#' the completion status of the label detection operation to.
+#' the completion status of the label detection operation to. The Amazon
+#' SNS topic must have a topic name that begins with *AmazonRekognition* if
+#' you are using the AmazonRekognitionServiceRole permissions policy.
 #' @param JobTag An identifier you specify that's returned in the completion notification
 #' that's published to your Amazon Simple Notification Service topic. For
 #' example, you can use `JobTag` to group related jobs and identify them in
@@ -4972,7 +5801,9 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 #' the same `JobId` is returned. Use `ClientRequestToken` to prevent the
 #' same job from being accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
-#' the completion status of the people detection operation to.
+#' the completion status of the people detection operation to. The Amazon
+#' SNS topic must have a topic name that begins with *AmazonRekognition* if
+#' you are using the AmazonRekognitionServiceRole permissions policy.
 #' @param JobTag An identifier you specify that's returned in the completion notification
 #' that's published to your Amazon Simple Notification Service topic. For
 #' example, you can use `JobTag` to group related jobs and identify them in
@@ -5039,18 +5870,30 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #' stop a running model, call
 #' [`stop_project_version`][rekognition_stop_project_version].
 #' 
+#' For more information, see *Running a trained Amazon Rekognition Custom
+#' Labels model* in the Amazon Rekognition Custom Labels Guide.
+#' 
 #' This operation requires permissions to perform the
 #' `rekognition:StartProjectVersion` action.
 #'
 #' @usage
-#' rekognition_start_project_version(ProjectVersionArn, MinInferenceUnits)
+#' rekognition_start_project_version(ProjectVersionArn, MinInferenceUnits,
+#'   MaxInferenceUnits)
 #'
 #' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name(ARN) of the model version that you want to
 #' start.
 #' @param MinInferenceUnits &#91;required&#93; The minimum number of inference units to use. A single inference unit
-#' represents 1 hour of processing and can support up to 5 Transaction Pers
-#' Second (TPS). Use a higher number to increase the TPS throughput of your
-#' model. You are charged for the number of inference units that you use.
+#' represents 1 hour of processing.
+#' 
+#' For information about the number of transactions per second (TPS) that
+#' an inference unit can support, see *Running a trained Amazon Rekognition
+#' Custom Labels model* in the Amazon Rekognition Custom Labels Guide.
+#' 
+#' Use a higher number to increase the TPS throughput of your model. You
+#' are charged for the number of inference units that you use.
+#' @param MaxInferenceUnits The maximum number of inference units to use for auto-scaling the model.
+#' If you don't specify a value, Amazon Rekognition Custom Labels doesn't
+#' auto-scale the model.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5064,21 +5907,22 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #' ```
 #' svc$start_project_version(
 #'   ProjectVersionArn = "string",
-#'   MinInferenceUnits = 123
+#'   MinInferenceUnits = 123,
+#'   MaxInferenceUnits = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_start_project_version
-rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUnits) {
+rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUnits, MaxInferenceUnits = NULL) {
   op <- new_operation(
     name = "StartProjectVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$start_project_version_input(ProjectVersionArn = ProjectVersionArn, MinInferenceUnits = MinInferenceUnits)
+  input <- .rekognition$start_project_version_input(ProjectVersionArn = ProjectVersionArn, MinInferenceUnits = MinInferenceUnits, MaxInferenceUnits = MaxInferenceUnits)
   output <- .rekognition$start_project_version_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -5114,7 +5958,7 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 #' and pass the job identifier (`JobId`) from the initial call to
 #' [`start_segment_detection`][rekognition_start_segment_detection].
 #' 
-#' For more information, see Detecting Video Segments in Stored Video in
+#' For more information, see Detecting video segments in stored video in
 #' the Amazon Rekognition Developer Guide.
 #'
 #' @usage
@@ -5129,7 +5973,9 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 #' prevent the same job from being accidently started more than once.
 #' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 #' Video to publish the completion status of the segment detection
-#' operation.
+#' operation. Note that the Amazon SNS topic must have a topic name that
+#' begins with *AmazonRekognition* if you are using the
+#' AmazonRekognitionServiceRole permissions policy to access the topic.
 #' @param JobTag An identifier you specify that's returned in the completion notification
 #' that's published to your Amazon Simple Notification Service topic. For
 #' example, you can use `JobTag` to group related jobs and identify them in
@@ -5164,7 +6010,11 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 #'   JobTag = "string",
 #'   Filters = list(
 #'     TechnicalCueFilter = list(
-#'       MinSegmentConfidence = 123.0
+#'       MinSegmentConfidence = 123.0,
+#'       BlackFrame = list(
+#'         MaxPixelThreshold = 123.0,
+#'         MinCoveragePercentage = 123.0
+#'       )
 #'     ),
 #'     ShotFilter = list(
 #'       MinSegmentConfidence = 123.0
@@ -5206,33 +6056,63 @@ rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL
 #' which stream processor to start, use the value of the `Name` field
 #' specified in the call to
 #' [`create_stream_processor`][rekognition_create_stream_processor].
+#' 
+#' If you are using a label detection stream processor to detect labels,
+#' you need to provide a `Start selector` and a `Stop selector` to
+#' determine the length of the stream processing time.
 #'
 #' @usage
-#' rekognition_start_stream_processor(Name)
+#' rekognition_start_stream_processor(Name, StartSelector, StopSelector)
 #'
 #' @param Name &#91;required&#93; The name of the stream processor to start processing.
+#' @param StartSelector Specifies the starting point in the Kinesis stream to start processing.
+#' You can use the producer timestamp or the fragment number. For more
+#' information, see
+#' [Fragment](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_reader_Fragment.html).
+#' 
+#' This is a required parameter for label detection stream processors and
+#' should not be used to start a face search stream processor.
+#' @param StopSelector Specifies when to stop processing the stream. You can specify a maximum
+#' amount of time to process the video.
+#' 
+#' This is a required parameter for label detection stream processors and
+#' should not be used to start a face search stream processor.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SessionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$start_stream_processor(
-#'   Name = "string"
+#'   Name = "string",
+#'   StartSelector = list(
+#'     KVSStreamStartSelector = list(
+#'       ProducerTimestamp = 123,
+#'       FragmentNumber = "string"
+#'     )
+#'   ),
+#'   StopSelector = list(
+#'     MaxDurationInSeconds = 123
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_start_stream_processor
-rekognition_start_stream_processor <- function(Name) {
+rekognition_start_stream_processor <- function(Name, StartSelector = NULL, StopSelector = NULL) {
   op <- new_operation(
     name = "StartStreamProcessor",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$start_stream_processor_input(Name = Name)
+  input <- .rekognition$start_stream_processor_input(Name = Name, StartSelector = StartSelector, StopSelector = StopSelector)
   output <- .rekognition$start_stream_processor_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -5315,6 +6195,12 @@ rekognition_start_stream_processor <- function(Name) {
 #'           Height = 123.0,
 #'           Left = 123.0,
 #'           Top = 123.0
+#'         ),
+#'         Polygon = list(
+#'           list(
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
 #'         )
 #'       )
 #'     )
@@ -5435,3 +6321,264 @@ rekognition_stop_stream_processor <- function(Name) {
   return(response)
 }
 .rekognition$operations$stop_stream_processor <- rekognition_stop_stream_processor
+
+#' Adds one or more key-value tags to an Amazon Rekognition collection,
+#' stream processor, or Custom Labels model
+#'
+#' @description
+#' Adds one or more key-value tags to an Amazon Rekognition collection,
+#' stream processor, or Custom Labels model. For more information, see
+#' [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:TagResource` action.
+#'
+#' @usage
+#' rekognition_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the model, collection, or stream processor
+#' that you want to assign the tags to.
+#' @param Tags &#91;required&#93; The key-value tags to assign to the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_tag_resource
+rekognition_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .rekognition$tag_resource_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$tag_resource <- rekognition_tag_resource
+
+#' Removes one or more tags from an Amazon Rekognition collection, stream
+#' processor, or Custom Labels model
+#'
+#' @description
+#' Removes one or more tags from an Amazon Rekognition collection, stream
+#' processor, or Custom Labels model.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:UntagResource` action.
+#'
+#' @usage
+#' rekognition_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the model, collection, or stream processor
+#' that you want to remove the tags from.
+#' @param TagKeys &#91;required&#93; A list of the tags that you want to remove.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_untag_resource
+rekognition_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .rekognition$untag_resource_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$untag_resource <- rekognition_untag_resource
+
+#' Adds or updates one or more entries (images) in a dataset
+#'
+#' @description
+#' Adds or updates one or more entries (images) in a dataset. An entry is a
+#' JSON Line which contains the information for a single image, including
+#' the image location, assigned labels, and object location bounding boxes.
+#' For more information, see Image-Level labels in manifest files and
+#' Object localization in manifest files in the *Amazon Rekognition Custom
+#' Labels Developer Guide*.
+#' 
+#' If the `source-ref` field in the JSON line references an existing image,
+#' the existing image in the dataset is updated. If `source-ref` field
+#' doesn't reference an existing image, the image is added as a new image
+#' to the dataset.
+#' 
+#' You specify the changes that you want to make in the `Changes` input
+#' parameter. There isn't a limit to the number JSON Lines that you can
+#' change, but the size of `Changes` must be less than 5MB.
+#' 
+#' [`update_dataset_entries`][rekognition_update_dataset_entries] returns
+#' immediatly, but the dataset update might take a while to complete. Use
+#' [`describe_dataset`][rekognition_describe_dataset] to check the current
+#' status. The dataset updated successfully if the value of `Status` is
+#' `UPDATE_COMPLETE`.
+#' 
+#' To check if any non-terminal errors occured, call
+#' [`list_dataset_entries`][rekognition_list_dataset_entries] and check for
+#' the presence of `errors` lists in the JSON Lines.
+#' 
+#' Dataset update fails if a terminal error occurs (`Status` =
+#' `UPDATE_FAILED`). Currently, you can't access the terminal error
+#' information from the Amazon Rekognition Custom Labels SDK.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:UpdateDatasetEntries` action.
+#'
+#' @usage
+#' rekognition_update_dataset_entries(DatasetArn, Changes)
+#'
+#' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset that you want to update.
+#' @param Changes &#91;required&#93; The changes that you want to make to the dataset.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_dataset_entries(
+#'   DatasetArn = "string",
+#'   Changes = list(
+#'     GroundTruth = raw
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_update_dataset_entries
+rekognition_update_dataset_entries <- function(DatasetArn, Changes) {
+  op <- new_operation(
+    name = "UpdateDatasetEntries",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$update_dataset_entries_input(DatasetArn = DatasetArn, Changes = Changes)
+  output <- .rekognition$update_dataset_entries_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$update_dataset_entries <- rekognition_update_dataset_entries
+
+#' Allows you to update a stream processor
+#'
+#' @description
+#' Allows you to update a stream processor. You can change some settings
+#' and regions of interest and delete certain parameters.
+#'
+#' @usage
+#' rekognition_update_stream_processor(Name, SettingsForUpdate,
+#'   RegionsOfInterestForUpdate, DataSharingPreferenceForUpdate,
+#'   ParametersToDelete)
+#'
+#' @param Name &#91;required&#93; Name of the stream processor that you want to update.
+#' @param SettingsForUpdate The stream processor settings that you want to update. Label detection
+#' settings can be updated to detect different labels with a different
+#' minimum confidence.
+#' @param RegionsOfInterestForUpdate Specifies locations in the frames where Amazon Rekognition checks for
+#' objects or people. This is an optional parameter for label detection
+#' stream processors.
+#' @param DataSharingPreferenceForUpdate Shows whether you are sharing data with Rekognition to improve model
+#' performance. You can choose this option at the account level or on a
+#' per-stream basis. Note that if you opt out at the account level this
+#' setting is ignored on individual streams.
+#' @param ParametersToDelete A list of parameters you want to delete from the stream processor.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_stream_processor(
+#'   Name = "string",
+#'   SettingsForUpdate = list(
+#'     ConnectedHomeForUpdate = list(
+#'       Labels = list(
+#'         "string"
+#'       ),
+#'       MinConfidence = 123.0
+#'     )
+#'   ),
+#'   RegionsOfInterestForUpdate = list(
+#'     list(
+#'       BoundingBox = list(
+#'         Width = 123.0,
+#'         Height = 123.0,
+#'         Left = 123.0,
+#'         Top = 123.0
+#'       ),
+#'       Polygon = list(
+#'         list(
+#'           X = 123.0,
+#'           Y = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DataSharingPreferenceForUpdate = list(
+#'     OptIn = TRUE|FALSE
+#'   ),
+#'   ParametersToDelete = list(
+#'     "ConnectedHomeMinConfidence"|"RegionsOfInterest"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_update_stream_processor
+rekognition_update_stream_processor <- function(Name, SettingsForUpdate = NULL, RegionsOfInterestForUpdate = NULL, DataSharingPreferenceForUpdate = NULL, ParametersToDelete = NULL) {
+  op <- new_operation(
+    name = "UpdateStreamProcessor",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$update_stream_processor_input(Name = Name, SettingsForUpdate = SettingsForUpdate, RegionsOfInterestForUpdate = RegionsOfInterestForUpdate, DataSharingPreferenceForUpdate = DataSharingPreferenceForUpdate, ParametersToDelete = ParametersToDelete)
+  output <- .rekognition$update_stream_processor_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$update_stream_processor <- rekognition_update_stream_processor

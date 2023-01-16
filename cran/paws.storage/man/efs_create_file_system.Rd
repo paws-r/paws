@@ -4,8 +4,17 @@
 \alias{efs_create_file_system}
 \title{Creates a new, empty file system}
 \usage{
-efs_create_file_system(CreationToken, PerformanceMode, Encrypted,
-  KmsKeyId, ThroughputMode, ProvisionedThroughputInMibps, Tags)
+efs_create_file_system(
+  CreationToken,
+  PerformanceMode = NULL,
+  Encrypted = NULL,
+  KmsKeyId = NULL,
+  ThroughputMode = NULL,
+  ProvisionedThroughputInMibps = NULL,
+  AvailabilityZoneName = NULL,
+  Backup = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{CreationToken}{[required] A string of up to 64 ASCII characters. Amazon EFS uses this to ensure
@@ -16,19 +25,22 @@ performance mode for most file systems. File systems using the \code{maxIO}
 performance mode can scale to higher levels of aggregate throughput and
 operations per second with a tradeoff of slightly higher latencies for
 most file operations. The performance mode can't be changed after the
-file system has been created.}
+file system has been created.
+
+The \code{maxIO} mode is not supported on file systems using One Zone storage
+classes.}
 
 \item{Encrypted}{A Boolean value that, if true, creates an encrypted file system. When
-creating an encrypted file system, you have the option of specifying
-CreateFileSystemRequest$KmsKeyId for an existing AWS Key Management
-Service (AWS KMS) customer master key (CMK). If you don't specify a CMK,
-then the default CMK for Amazon EFS, \verb{/aws/elasticfilesystem}, is used
-to protect the encrypted file system.}
+creating an encrypted file system, you have the option of specifying an
+existing Key Management Service key (KMS key). If you don't specify a
+KMS key, then the default KMS key for Amazon EFS,
+\verb{/aws/elasticfilesystem}, is used to protect the encrypted file system.}
 
-\item{KmsKeyId}{The ID of the AWS KMS CMK to be used to protect the encrypted file
-system. This parameter is only required if you want to use a nondefault
-CMK. If this parameter is not specified, the default CMK for Amazon EFS
-is used. This ID can be in one of the following formats:
+\item{KmsKeyId}{The ID of the KMS key that you want to use to protect the encrypted file
+system. This parameter is required only if you want to use a non-default
+KMS key. If this parameter is not specified, the default KMS key for
+Amazon EFS is used. You can specify a KMS key ID using the following
+formats:
 \itemize{
 \item Key ID - A unique identifier of the key, for example
 \verb{1234abcd-12ab-34cd-56ef-1234567890ab}.
@@ -40,154 +52,61 @@ is used. This ID can be in one of the following formats:
 \code{arn:aws:kms:us-west-2:444455556666:alias/projectKey1}.
 }
 
-If \code{KmsKeyId} is specified, the CreateFileSystemRequest$Encrypted
-parameter must be set to true.
+If you use \code{KmsKeyId}, you must set the
+CreateFileSystemRequest$Encrypted parameter to true.
 
-EFS accepts only symmetric CMKs. You cannot use asymmetric CMKs with EFS
-file systems.}
+EFS accepts only symmetric KMS keys. You cannot use asymmetric KMS keys
+with Amazon EFS file systems.}
 
-\item{ThroughputMode}{The throughput mode for the file system to be created. There are two
-throughput modes to choose from for your file system: \code{bursting} and
+\item{ThroughputMode}{Specifies the throughput mode for the file system, either \code{bursting} or
 \code{provisioned}. If you set \code{ThroughputMode} to \code{provisioned}, you must
-also set a value for \code{ProvisionedThroughPutInMibps}. You can decrease
-your file system's throughput in Provisioned Throughput mode or change
-between the throughput modes as long as it’s been more than 24 hours
-since the last decrease or throughput mode change. For more, see
-\href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput}{Specifying Throughput with Provisioned Mode}
-in the \emph{Amazon EFS User Guide.}}
+also set a value for \code{ProvisionedThroughputInMibps}. After you create
+the file system, you can decrease your file system's throughput in
+Provisioned Throughput mode or change between the throughput modes, as
+long as it’s been more than 24 hours since the last decrease or
+throughput mode change. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput}{Specifying throughput with provisioned mode}
+in the \emph{Amazon EFS User Guide}.
+
+Default is \code{bursting}.}
 
 \item{ProvisionedThroughputInMibps}{The throughput, measured in MiB/s, that you want to provision for a file
 system that you're creating. Valid values are 1-1024. Required if
 \code{ThroughputMode} is set to \code{provisioned}. The upper limit for throughput
-is 1024 MiB/s. You can get this limit increased by contacting AWS
-Support. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS Limits That You Can Increase}
-in the \emph{Amazon EFS User Guide.}}
+is 1024 MiB/s. To increase this limit, contact Amazon Web Services
+Support. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS quotas that you can increase}
+in the \emph{Amazon EFS User Guide}.}
 
-\item{Tags}{A value that specifies to create one or more tags associated with the
-file system. Each tag is a user-defined key-value pair. Name your file
-system on creation by including a \verb{"Key":"Name","Value":"\{value\}"}
-key-value pair.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OwnerId = "string",
-  CreationToken = "string",
-  FileSystemId = "string",
-  FileSystemArn = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
-  Name = "string",
-  NumberOfMountTargets = 123,
-  SizeInBytes = list(
-    Value = 123,
-    Timestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ValueInIA = 123,
-    ValueInStandard = 123
-  ),
-  PerformanceMode = "generalPurpose"|"maxIO",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  ThroughputMode = "bursting"|"provisioned",
-  ProvisionedThroughputInMibps = 123.0,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
+\item{AvailabilityZoneName}{Used to create a file system that uses One Zone storage classes. It
+specifies the Amazon Web Services Availability Zone in which to create
+the file system. Use the format \verb{us-east-1a} to specify the Availability
+Zone. For more information about One Zone storage classes, see \href{https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html}{Using EFS storage classes}
+in the \emph{Amazon EFS User Guide}.
+
+One Zone storage classes are not available in all Availability Zones in
+Amazon Web Services Regions where Amazon EFS is available.}
+
+\item{Backup}{Specifies whether automatic backups are enabled on the file system that
+you are creating. Set the value to \code{true} to enable automatic backups.
+If you are creating a file system that uses One Zone storage classes,
+automatic backups are enabled by default. For more information, see
+\href{https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html#automatic-backups}{Automatic backups}
+in the \emph{Amazon EFS User Guide}.
+
+Default is \code{false}. However, if you specify an \code{AvailabilityZoneName},
+the default is \code{true}.
+
+Backup is not available in all Amazon Web Services Regions where Amazon
+EFS is available.}
+
+\item{Tags}{Use to create one or more tags associated with the file system. Each tag
+is a user-defined key-value pair. Name your file system on creation by
+including a \verb{"Key":"Name","Value":"\{value\}"} key-value pair. Each key
+must be unique. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+in the \emph{Amazon Web Services General Reference Guide}.}
 }
 \description{
-Creates a new, empty file system. The operation requires a creation
-token in the request that Amazon EFS uses to ensure idempotent creation
-(calling the operation with same creation token has no effect). If a
-file system does not currently exist that is owned by the caller's AWS
-account with the specified creation token, this operation does the
-following:
-\itemize{
-\item Creates a new, empty file system. The file system will have an
-Amazon EFS assigned ID, and an initial lifecycle state \code{creating}.
-\item Returns with the description of the created file system.
-}
+Creates a new, empty file system. The operation requires a creation token in the request that Amazon EFS uses to ensure idempotent creation (calling the operation with same creation token has no effect). If a file system does not currently exist that is owned by the caller's Amazon Web Services account with the specified creation token, this operation does the following:
 
-Otherwise, this operation returns a \code{FileSystemAlreadyExists} error with
-the ID of the existing file system.
-
-For basic use cases, you can use a randomly generated UUID for the
-creation token.
-
-The idempotent operation allows you to retry a
-\code{\link[=efs_create_file_system]{create_file_system}} call without risk of
-creating an extra file system. This can happen when an initial call
-fails in a way that leaves it uncertain whether or not a file system was
-actually created. An example might be that a transport level timeout
-occurred or your connection was reset. As long as you use the same
-creation token, if the initial call had succeeded in creating a file
-system, the client can learn of its existence from the
-\code{FileSystemAlreadyExists} error.
-
-The \code{\link[=efs_create_file_system]{create_file_system}} call returns while
-the file system's lifecycle state is still \code{creating}. You can check the
-file system creation status by calling the
-\code{\link[=efs_describe_file_systems]{describe_file_systems}} operation, which
-among other things returns the file system state.
-
-This operation also takes an optional \code{PerformanceMode} parameter that
-you choose for your file system. We recommend \code{generalPurpose}
-performance mode for most file systems. File systems using the \code{maxIO}
-performance mode can scale to higher levels of aggregate throughput and
-operations per second with a tradeoff of slightly higher latencies for
-most file operations. The performance mode can't be changed after the
-file system has been created. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html}{Amazon EFS: Performance Modes}.
-
-After the file system is fully created, Amazon EFS sets its lifecycle
-state to \code{available}, at which point you can create one or more mount
-targets for the file system in your VPC. For more information, see
-\code{\link[=efs_create_mount_target]{create_mount_target}}. You mount your Amazon
-EFS file system on an EC2 instances in your VPC by using the mount
-target. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html}{Amazon EFS: How it Works}.
-
-This operation requires permissions for the
-\code{elasticfilesystem:CreateFileSystem} action.
-}
-\section{Request syntax}{
-\preformatted{svc$create_file_system(
-  CreationToken = "string",
-  PerformanceMode = "generalPurpose"|"maxIO",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  ThroughputMode = "bursting"|"provisioned",
-  ProvisionedThroughputInMibps = 123.0,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation creates a new file system with the default generalpurpose
-# performance mode.
-svc$create_file_system(
-  CreationToken = "tokenstring",
-  PerformanceMode = "generalPurpose",
-  Tags = list(
-    list(
-      Key = "Name",
-      Value = "MyFileSystem"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/efs/create_file_system.html} for full documentation.
 }
 \keyword{internal}

@@ -9,28 +9,9 @@ backup_delete_backup_plan(BackupPlanId)
 \arguments{
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupPlanId = "string",
-  BackupPlanArn = "string",
-  DeletionDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  VersionId = "string"
-)
-}
-}
 \description{
-Deletes a backup plan. A backup plan can only be deleted after all
-associated selections of resources have been deleted. Deleting a backup
-plan deletes the current version of a backup plan. Previous versions, if
-any, will still exist.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_backup_plan(
-  BackupPlanId = "string"
-)
-}
-}
+Deletes a backup plan. A backup plan can only be deleted after all associated selections of resources have been deleted. Deleting a backup plan deletes the current version of a backup plan. Previous versions, if any, will still exist.
 
+See \url{https://paws-r.github.io/docs/backup/delete_backup_plan.html} for full documentation.
+}
 \keyword{internal}

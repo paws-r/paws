@@ -4,8 +4,14 @@
 \alias{athena_create_named_query}
 \title{Creates a named query in the specified workgroup}
 \usage{
-athena_create_named_query(Name, Description, Database, QueryString,
-  ClientRequestToken, WorkGroup)
+athena_create_named_query(
+  Name,
+  Description = NULL,
+  Database,
+  QueryString,
+  ClientRequestToken = NULL,
+  WorkGroup = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The query name.}
@@ -23,36 +29,17 @@ the same response is returned and another query is not created. If a
 parameter has changed, for example, the \code{QueryString}, an error is
 returned.
 
-This token is listed as not required because AWS SDKs (for example the
-AWS SDK for Java) auto-generate the token for users. If you are not
-using the AWS SDK or the AWS CLI, you must provide this token or the
-action will fail.}
+This token is listed as not required because Amazon Web Services SDKs
+(for example the Amazon Web Services SDK for Java) auto-generate the
+token for users. If you are not using the Amazon Web Services SDK or the
+Amazon Web Services CLI, you must provide this token or the action will
+fail.}
 
 \item{WorkGroup}{The name of the workgroup in which the named query is being created.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NamedQueryId = "string"
-)
-}
-}
 \description{
-Creates a named query in the specified workgroup. Requires that you have
-access to the workgroup.
+Creates a named query in the specified workgroup. Requires that you have access to the workgroup.
 
-For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
-in the \emph{Amazon Athena User Guide}.
+See \url{https://paws-r.github.io/docs/athena/create_named_query.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_named_query(
-  Name = "string",
-  Description = "string",
-  Database = "string",
-  QueryString = "string",
-  ClientRequestToken = "string",
-  WorkGroup = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -9,17 +9,9 @@ redshift_delete_scheduled_action(ScheduledActionName)
 \arguments{
 \item{ScheduledActionName}{[required] The name of the scheduled action to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a scheduled action.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_scheduled_action(
-  ScheduledActionName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/delete_scheduled_action.html} for full documentation.
+}
 \keyword{internal}

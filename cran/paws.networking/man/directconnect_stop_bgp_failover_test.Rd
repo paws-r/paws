@@ -9,35 +9,9 @@ directconnect_stop_bgp_failover_test(virtualInterfaceId)
 \arguments{
 \item{virtualInterfaceId}{[required] The ID of the virtual interface you no longer want to test.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualInterfaceTest = list(
-    testId = "string",
-    virtualInterfaceId = "string",
-    bgpPeers = list(
-      "string"
-    ),
-    status = "string",
-    ownerAccount = "string",
-    testDurationInMinutes = 123,
-    startTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    endTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Stops the virtual interface failover test.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_bgp_failover_test(
-  virtualInterfaceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directconnect/stop_bgp_failover_test.html} for full documentation.
+}
 \keyword{internal}

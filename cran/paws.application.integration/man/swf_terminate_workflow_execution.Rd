@@ -5,8 +5,14 @@
 \title{Records a WorkflowExecutionTerminated event and forces closure of the
 workflow execution identified by the given domain, runId, and workflowId}
 \usage{
-swf_terminate_workflow_execution(domain, workflowId, runId, reason,
-  details, childPolicy)
+swf_terminate_workflow_execution(
+  domain,
+  workflowId,
+  runId = NULL,
+  reason = NULL,
+  details = NULL,
+  childPolicy = NULL
+)
 }
 \arguments{
 \item{domain}{[required] The domain of the workflow execution to terminate.}
@@ -40,58 +46,9 @@ default for the workflow type or through this parameter. If neither this
 parameter is set nor a default child policy was specified at
 registration time then a fault is returned.}
 }
-\value{
-An empty list.
-}
 \description{
-Records a \code{WorkflowExecutionTerminated} event and forces closure of the
-workflow execution identified by the given domain, runId, and
-workflowId. The child policy, registered with the workflow type or
-specified when starting this execution, is applied to any open child
-workflow executions of this workflow execution.
+Records a \code{WorkflowExecutionTerminated} event and forces closure of the workflow execution identified by the given domain, runId, and workflowId. The child policy, registered with the workflow type or specified when starting this execution, is applied to any open child workflow executions of this workflow execution.
 
-If the identified workflow execution was in progress, it is terminated
-immediately.
-
-If a runId isn't specified, then the \code{WorkflowExecutionTerminated} event
-is recorded in the history of the current open workflow with the
-matching workflowId in the domain.
-
-You should consider using
-\code{\link[=swf_request_cancel_workflow_execution]{request_cancel_workflow_execution}}
-action instead because it allows the workflow to gracefully close while
-\code{\link[=swf_terminate_workflow_execution]{terminate_workflow_execution}}
-doesn't.
-
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item You cannot use an IAM policy to constrain this action's parameters.
+See \url{https://paws-r.github.io/docs/swf/terminate_workflow_execution.html} for full documentation.
 }
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$terminate_workflow_execution(
-  domain = "string",
-  workflowId = "string",
-  runId = "string",
-  reason = "string",
-  details = "string",
-  childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON"
-)
-}
-}
-
 \keyword{internal}

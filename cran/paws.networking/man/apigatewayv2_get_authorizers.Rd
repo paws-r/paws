@@ -4,7 +4,7 @@
 \alias{apigatewayv2_get_authorizers}
 \title{Gets the Authorizers for an API}
 \usage{
-apigatewayv2_get_authorizers(ApiId, MaxResults, NextToken)
+apigatewayv2_get_authorizers(ApiId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -14,44 +14,9 @@ apigatewayv2_get_authorizers(ApiId, MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Items = list(
-    list(
-      AuthorizerCredentialsArn = "string",
-      AuthorizerId = "string",
-      AuthorizerPayloadFormatVersion = "string",
-      AuthorizerResultTtlInSeconds = 123,
-      AuthorizerType = "REQUEST"|"JWT",
-      AuthorizerUri = "string",
-      EnableSimpleResponses = TRUE|FALSE,
-      IdentitySource = list(
-        "string"
-      ),
-      IdentityValidationExpression = "string",
-      JwtConfiguration = list(
-        Audience = list(
-          "string"
-        ),
-        Issuer = "string"
-      ),
-      Name = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets the Authorizers for an API.
-}
-\section{Request syntax}{
-\preformatted{svc$get_authorizers(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_authorizers.html} for full documentation.
+}
 \keyword{internal}

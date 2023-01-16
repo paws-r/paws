@@ -2,17 +2,24 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_app}
 \alias{sagemaker_create_app}
-\title{Creates a running App for the specified UserProfile}
+\title{Creates a running app for the specified UserProfile}
 \usage{
-sagemaker_create_app(DomainId, UserProfileName, AppType, AppName, Tags,
-  ResourceSpec)
+sagemaker_create_app(
+  DomainId,
+  UserProfileName,
+  AppType,
+  AppName,
+  Tags = NULL,
+  ResourceSpec = NULL
+)
 }
 \arguments{
 \item{DomainId}{[required] The domain ID.}
 
 \item{UserProfileName}{[required] The user profile name.}
 
-\item{AppType}{[required] The type of app.}
+\item{AppType}{[required] The type of app. Supported apps are \code{JupyterServer} and \code{KernelGateway}.
+\code{TensorBoard} is not supported.}
 
 \item{AppName}{[required] The name of the app.}
 
@@ -20,40 +27,19 @@ sagemaker_create_app(DomainId, UserProfileName, AppType, AppName, Tags,
 unique per resource.}
 
 \item{ResourceSpec}{The instance type and the Amazon Resource Name (ARN) of the SageMaker
-image created on the instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AppArn = "string"
-)
-}
+image created on the instance.
+
+The value of \code{InstanceType} passed as part of the \code{ResourceSpec} in the
+\code{\link[=sagemaker_create_app]{create_app}} call overrides the value passed as
+part of the \code{ResourceSpec} configured for the user profile or the
+domain. If \code{InstanceType} is not specified in any of those three
+\code{ResourceSpec} values for a \code{KernelGateway} app, the
+\code{\link[=sagemaker_create_app]{create_app}} call fails with a request
+validation error.}
 }
 \description{
-Creates a running App for the specified UserProfile. Supported Apps are
-JupyterServer and KernelGateway. This operation is automatically invoked
-by Amazon SageMaker Studio upon access to the associated Domain, and
-when new kernel configurations are selected by the user. A user may have
-multiple Apps active simultaneously.
-}
-\section{Request syntax}{
-\preformatted{svc$create_app(
-  DomainId = "string",
-  UserProfileName = "string",
-  AppType = "JupyterServer"|"KernelGateway"|"TensorBoard",
-  AppName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ResourceSpec = list(
-    SageMakerImageArn = "string",
-    SageMakerImageVersionArn = "string",
-    InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
-  )
-)
-}
-}
+Creates a running app for the specified UserProfile. Supported apps are \code{JupyterServer} and \code{KernelGateway}. This operation is automatically invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_app.html} for full documentation.
+}
 \keyword{internal}

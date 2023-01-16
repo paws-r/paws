@@ -4,8 +4,11 @@
 \alias{codedeploy_list_on_premises_instances}
 \title{Gets a list of names for one or more on-premises instances}
 \usage{
-codedeploy_list_on_premises_instances(registrationStatus, tagFilters,
-  nextToken)
+codedeploy_list_on_premises_instances(
+  registrationStatus = NULL,
+  tagFilters = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{registrationStatus}{The registration status of the on-premises instances:
@@ -23,35 +26,9 @@ instance names returned.}
 call. It can be used to return the next set of on-premises instances in
 the list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  instanceNames = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Gets a list of names for one or more on-premises instances.
 
-Unless otherwise specified, both registered and deregistered on-premises
-instance names are listed. To list only registered or deregistered
-on-premises instance names, use the registration status parameter.
+See \url{https://paws-r.github.io/docs/codedeploy/list_on_premises_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_on_premises_instances(
-  registrationStatus = "Registered"|"Deregistered",
-  tagFilters = list(
-    list(
-      Key = "string",
-      Value = "string",
-      Type = "KEY_ONLY"|"VALUE_ONLY"|"KEY_AND_VALUE"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
-
 \keyword{internal}

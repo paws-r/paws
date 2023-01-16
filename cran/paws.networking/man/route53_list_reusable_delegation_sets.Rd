@@ -3,9 +3,9 @@
 \name{route53_list_reusable_delegation_sets}
 \alias{route53_list_reusable_delegation_sets}
 \title{Retrieves a list of the reusable delegation sets that are associated
-with the current AWS account}
+with the current Amazon Web Services account}
 \usage{
-route53_list_reusable_delegation_sets(Marker, MaxItems)
+route53_list_reusable_delegation_sets(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{If the value of \code{IsTruncated} in the previous response was \code{true}, you
@@ -24,34 +24,9 @@ there are no more reusable delegation sets to get.}
 return in the response to this request. If you specify a value greater
 than 100, Route 53 returns only the first 100 reusable delegation sets.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DelegationSets = list(
-    list(
-      Id = "string",
-      CallerReference = "string",
-      NameServers = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string",
-  IsTruncated = TRUE|FALSE,
-  NextMarker = "string",
-  MaxItems = "string"
-)
-}
-}
 \description{
-Retrieves a list of the reusable delegation sets that are associated
-with the current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_reusable_delegation_sets(
-  Marker = "string",
-  MaxItems = "string"
-)
-}
-}
+Retrieves a list of the reusable delegation sets that are associated with the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/route53/list_reusable_delegation_sets.html} for full documentation.
+}
 \keyword{internal}

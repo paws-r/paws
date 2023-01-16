@@ -4,7 +4,13 @@
 \alias{apigatewayv2_create_model}
 \title{Creates a Model for an API}
 \usage{
-apigatewayv2_create_model(ApiId, ContentType, Description, Name, Schema)
+apigatewayv2_create_model(
+  ApiId,
+  ContentType = NULL,
+  Description = NULL,
+  Name,
+  Schema
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -18,28 +24,9 @@ apigatewayv2_create_model(ApiId, ContentType, Description, Name, Schema)
 \item{Schema}{[required] The schema for the model. For application/json models, this should be
 JSON schema draft 4 model.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContentType = "string",
-  Description = "string",
-  ModelId = "string",
-  Name = "string",
-  Schema = "string"
-)
-}
-}
 \description{
 Creates a Model for an API.
-}
-\section{Request syntax}{
-\preformatted{svc$create_model(
-  ApiId = "string",
-  ContentType = "string",
-  Description = "string",
-  Name = "string",
-  Schema = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/create_model.html} for full documentation.
+}
 \keyword{internal}

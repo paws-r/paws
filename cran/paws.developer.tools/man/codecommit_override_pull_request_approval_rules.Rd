@@ -5,8 +5,11 @@
 \title{Sets aside (overrides) all approval rule requirements for a specified
 pull request}
 \usage{
-codecommit_override_pull_request_approval_rules(pullRequestId,
-  revisionId, overrideStatus)
+codecommit_override_pull_request_approval_rules(
+  pullRequestId,
+  revisionId,
+  overrideStatus
+)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request for which you want to
@@ -21,20 +24,9 @@ revision of a pull request. To get the revision ID, use GetPullRequest.}
 request (OVERRIDE) or revoke a previous override and apply approval rule
 requirements (REVOKE). REVOKE status is not stored.}
 }
-\value{
-An empty list.
-}
 \description{
-Sets aside (overrides) all approval rule requirements for a specified
-pull request.
-}
-\section{Request syntax}{
-\preformatted{svc$override_pull_request_approval_rules(
-  pullRequestId = "string",
-  revisionId = "string",
-  overrideStatus = "OVERRIDE"|"REVOKE"
-)
-}
-}
+Sets aside (overrides) all approval rule requirements for a specified pull request.
 
+See \url{https://paws-r.github.io/docs/codecommit/override_pull_request_approval_rules.html} for full documentation.
+}
 \keyword{internal}

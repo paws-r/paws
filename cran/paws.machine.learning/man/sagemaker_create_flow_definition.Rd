@@ -4,9 +4,15 @@
 \alias{sagemaker_create_flow_definition}
 \title{Creates a flow definition}
 \usage{
-sagemaker_create_flow_definition(FlowDefinitionName,
-  HumanLoopRequestSource, HumanLoopActivationConfig, HumanLoopConfig,
-  OutputConfig, RoleArn, Tags)
+sagemaker_create_flow_definition(
+  FlowDefinitionName,
+  HumanLoopRequestSource = NULL,
+  HumanLoopActivationConfig = NULL,
+  HumanLoopConfig,
+  OutputConfig,
+  RoleArn,
+  Tags = NULL
+)
 }
 \arguments{
 \item{FlowDefinitionName}{[required] The name of your flow definition.}
@@ -32,58 +38,9 @@ on your behalf. For example,
 and organize a flow definition. Each tag consists of a key and a value,
 both of which you define.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FlowDefinitionArn = "string"
-)
-}
-}
 \description{
 Creates a flow definition.
-}
-\section{Request syntax}{
-\preformatted{svc$create_flow_definition(
-  FlowDefinitionName = "string",
-  HumanLoopRequestSource = list(
-    AwsManagedHumanLoopRequestSource = "AWS/Rekognition/DetectModerationLabels/Image/V3"|"AWS/Textract/AnalyzeDocument/Forms/V1"
-  ),
-  HumanLoopActivationConfig = list(
-    HumanLoopActivationConditionsConfig = list(
-      HumanLoopActivationConditions = "string"
-    )
-  ),
-  HumanLoopConfig = list(
-    WorkteamArn = "string",
-    HumanTaskUiArn = "string",
-    TaskTitle = "string",
-    TaskDescription = "string",
-    TaskCount = 123,
-    TaskAvailabilityLifetimeInSeconds = 123,
-    TaskTimeLimitInSeconds = 123,
-    TaskKeywords = list(
-      "string"
-    ),
-    PublicWorkforceTaskPrice = list(
-      AmountInUsd = list(
-        Dollars = 123,
-        Cents = 123,
-        TenthFractionsOfACent = 123
-      )
-    )
-  ),
-  OutputConfig = list(
-    S3OutputPath = "string",
-    KmsKeyId = "string"
-  ),
-  RoleArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_flow_definition.html} for full documentation.
+}
 \keyword{internal}

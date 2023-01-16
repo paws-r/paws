@@ -7,7 +7,19 @@
 glacier(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -50,7 +62,9 @@ archives, retrieving the job output, and deleting archives.
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- glacier(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- glacier(
   config = list(
     credentials = list(
       creds = list(
@@ -58,51 +72,55 @@ archives, retrieving the job output, and deleting archives.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=glacier_abort_multipart_upload]{abort_multipart_upload} \tab This operation aborts a multipart upload identified by the upload ID\cr
-\link[=glacier_abort_vault_lock]{abort_vault_lock} \tab This operation aborts the vault locking process if the vault lock is not in the Locked state\cr
-\link[=glacier_add_tags_to_vault]{add_tags_to_vault} \tab This operation adds the specified tags to a vault\cr
-\link[=glacier_complete_multipart_upload]{complete_multipart_upload} \tab You call this operation to inform Amazon S3 Glacier (Glacier) that all the archive parts have been uploaded and that Glacier can now assemble the archive from the uploaded parts\cr
-\link[=glacier_complete_vault_lock]{complete_vault_lock} \tab This operation completes the vault locking process by transitioning the vault lock from the InProgress state to the Locked state, which causes the vault lock policy to become unchangeable\cr
-\link[=glacier_create_vault]{create_vault} \tab This operation creates a new vault with the specified name\cr
-\link[=glacier_delete_archive]{delete_archive} \tab This operation deletes an archive from a vault\cr
-\link[=glacier_delete_vault]{delete_vault} \tab This operation deletes a vault\cr
-\link[=glacier_delete_vault_access_policy]{delete_vault_access_policy} \tab This operation deletes the access policy associated with the specified vault\cr
-\link[=glacier_delete_vault_notifications]{delete_vault_notifications} \tab This operation deletes the notification configuration set for a vault\cr
-\link[=glacier_describe_job]{describe_job} \tab This operation returns information about a job you previously initiated, including the job initiation date, the user who initiated the job, the job status code/message and the Amazon SNS topic to notify after Amazon S3 Glacier (Glacier) completes the job\cr
-\link[=glacier_describe_vault]{describe_vault} \tab This operation returns information about a vault, including the vault's Amazon Resource Name (ARN), the date the vault was created, the number of archives it contains, and the total size of all the archives in the vault\cr
-\link[=glacier_get_data_retrieval_policy]{get_data_retrieval_policy} \tab This operation returns the current data retrieval policy for the account and region specified in the GET request\cr
-\link[=glacier_get_job_output]{get_job_output} \tab This operation downloads the output of the job you initiated using InitiateJob\cr
-\link[=glacier_get_vault_access_policy]{get_vault_access_policy} \tab This operation retrieves the access-policy subresource set on the vault; for more information on setting this subresource, see Set Vault Access Policy (PUT access-policy)\cr
-\link[=glacier_get_vault_lock]{get_vault_lock} \tab This operation retrieves the following attributes from the lock-policy subresource set on the specified vault:\cr
-\link[=glacier_get_vault_notifications]{get_vault_notifications} \tab This operation retrieves the notification-configuration subresource of the specified vault\cr
-\link[=glacier_initiate_job]{initiate_job} \tab This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval\cr
-\link[=glacier_initiate_multipart_upload]{initiate_multipart_upload} \tab This operation initiates a multipart upload\cr
-\link[=glacier_initiate_vault_lock]{initiate_vault_lock} \tab This operation initiates the vault locking process by doing the following:\cr
-\link[=glacier_list_jobs]{list_jobs} \tab This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished\cr
-\link[=glacier_list_multipart_uploads]{list_multipart_uploads} \tab This operation lists in-progress multipart uploads for the specified vault\cr
-\link[=glacier_list_parts]{list_parts} \tab This operation lists the parts of an archive that have been uploaded in a specific multipart upload\cr
-\link[=glacier_list_provisioned_capacity]{list_provisioned_capacity} \tab This operation lists the provisioned capacity units for the specified AWS account\cr
-\link[=glacier_list_tags_for_vault]{list_tags_for_vault} \tab This operation lists all the tags attached to a vault\cr
-\link[=glacier_list_vaults]{list_vaults} \tab This operation lists all vaults owned by the calling user's account\cr
-\link[=glacier_purchase_provisioned_capacity]{purchase_provisioned_capacity} \tab This operation purchases a provisioned capacity unit for an AWS account\cr
-\link[=glacier_remove_tags_from_vault]{remove_tags_from_vault} \tab This operation removes one or more tags from the set of tags attached to a vault\cr
-\link[=glacier_set_data_retrieval_policy]{set_data_retrieval_policy} \tab This operation sets and then enacts a data retrieval policy in the region specified in the PUT request\cr
-\link[=glacier_set_vault_access_policy]{set_vault_access_policy} \tab This operation configures an access policy for a vault and will overwrite an existing policy\cr
-\link[=glacier_set_vault_notifications]{set_vault_notifications} \tab This operation configures notifications that will be sent when specific events happen to a vault\cr
-\link[=glacier_upload_archive]{upload_archive} \tab This operation adds an archive to a vault\cr
-\link[=glacier_upload_multipart_part]{upload_multipart_part} \tab This operation uploads a part of an archive
+\link[paws.storage:glacier_abort_multipart_upload]{abort_multipart_upload} \tab This operation aborts a multipart upload identified by the upload ID\cr
+\link[paws.storage:glacier_abort_vault_lock]{abort_vault_lock} \tab This operation aborts the vault locking process if the vault lock is not in the Locked state\cr
+\link[paws.storage:glacier_add_tags_to_vault]{add_tags_to_vault} \tab This operation adds the specified tags to a vault\cr
+\link[paws.storage:glacier_complete_multipart_upload]{complete_multipart_upload} \tab You call this operation to inform Amazon S3 Glacier (Glacier) that all the archive parts have been uploaded and that Glacier can now assemble the archive from the uploaded parts\cr
+\link[paws.storage:glacier_complete_vault_lock]{complete_vault_lock} \tab This operation completes the vault locking process by transitioning the vault lock from the InProgress state to the Locked state, which causes the vault lock policy to become unchangeable\cr
+\link[paws.storage:glacier_create_vault]{create_vault} \tab This operation creates a new vault with the specified name\cr
+\link[paws.storage:glacier_delete_archive]{delete_archive} \tab This operation deletes an archive from a vault\cr
+\link[paws.storage:glacier_delete_vault]{delete_vault} \tab This operation deletes a vault\cr
+\link[paws.storage:glacier_delete_vault_access_policy]{delete_vault_access_policy} \tab This operation deletes the access policy associated with the specified vault\cr
+\link[paws.storage:glacier_delete_vault_notifications]{delete_vault_notifications} \tab This operation deletes the notification configuration set for a vault\cr
+\link[paws.storage:glacier_describe_job]{describe_job} \tab This operation returns information about a job you previously initiated, including the job initiation date, the user who initiated the job, the job status code/message and the Amazon SNS topic to notify after Amazon S3 Glacier (Glacier) completes the job\cr
+\link[paws.storage:glacier_describe_vault]{describe_vault} \tab This operation returns information about a vault, including the vault's Amazon Resource Name (ARN), the date the vault was created, the number of archives it contains, and the total size of all the archives in the vault\cr
+\link[paws.storage:glacier_get_data_retrieval_policy]{get_data_retrieval_policy} \tab This operation returns the current data retrieval policy for the account and region specified in the GET request\cr
+\link[paws.storage:glacier_get_job_output]{get_job_output} \tab This operation downloads the output of the job you initiated using InitiateJob\cr
+\link[paws.storage:glacier_get_vault_access_policy]{get_vault_access_policy} \tab This operation retrieves the access-policy subresource set on the vault; for more information on setting this subresource, see Set Vault Access Policy (PUT access-policy)\cr
+\link[paws.storage:glacier_get_vault_lock]{get_vault_lock} \tab This operation retrieves the following attributes from the lock-policy subresource set on the specified vault:\cr
+\link[paws.storage:glacier_get_vault_notifications]{get_vault_notifications} \tab This operation retrieves the notification-configuration subresource of the specified vault\cr
+\link[paws.storage:glacier_initiate_job]{initiate_job} \tab This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval\cr
+\link[paws.storage:glacier_initiate_multipart_upload]{initiate_multipart_upload} \tab This operation initiates a multipart upload\cr
+\link[paws.storage:glacier_initiate_vault_lock]{initiate_vault_lock} \tab This operation initiates the vault locking process by doing the following:\cr
+\link[paws.storage:glacier_list_jobs]{list_jobs} \tab This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished\cr
+\link[paws.storage:glacier_list_multipart_uploads]{list_multipart_uploads} \tab This operation lists in-progress multipart uploads for the specified vault\cr
+\link[paws.storage:glacier_list_parts]{list_parts} \tab This operation lists the parts of an archive that have been uploaded in a specific multipart upload\cr
+\link[paws.storage:glacier_list_provisioned_capacity]{list_provisioned_capacity} \tab This operation lists the provisioned capacity units for the specified AWS account\cr
+\link[paws.storage:glacier_list_tags_for_vault]{list_tags_for_vault} \tab This operation lists all the tags attached to a vault\cr
+\link[paws.storage:glacier_list_vaults]{list_vaults} \tab This operation lists all vaults owned by the calling user's account\cr
+\link[paws.storage:glacier_purchase_provisioned_capacity]{purchase_provisioned_capacity} \tab This operation purchases a provisioned capacity unit for an AWS account\cr
+\link[paws.storage:glacier_remove_tags_from_vault]{remove_tags_from_vault} \tab This operation removes one or more tags from the set of tags attached to a vault\cr
+\link[paws.storage:glacier_set_data_retrieval_policy]{set_data_retrieval_policy} \tab This operation sets and then enacts a data retrieval policy in the region specified in the PUT request\cr
+\link[paws.storage:glacier_set_vault_access_policy]{set_vault_access_policy} \tab This operation configures an access policy for a vault and will overwrite an existing policy\cr
+\link[paws.storage:glacier_set_vault_notifications]{set_vault_notifications} \tab This operation configures notifications that will be sent when specific events happen to a vault\cr
+\link[paws.storage:glacier_upload_archive]{upload_archive} \tab This operation adds an archive to a vault\cr
+\link[paws.storage:glacier_upload_multipart_part]{upload_multipart_part} \tab This operation uploads a part of an archive
 }
 }
 

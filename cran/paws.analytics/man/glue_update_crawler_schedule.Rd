@@ -4,7 +4,7 @@
 \alias{glue_update_crawler_schedule}
 \title{Updates the schedule of a crawler using a cron expression}
 \usage{
-glue_update_crawler_schedule(CrawlerName, Schedule)
+glue_update_crawler_schedule(CrawlerName, Schedule = NULL)
 }
 \arguments{
 \item{CrawlerName}{[required] The name of the crawler whose schedule to update.}
@@ -14,18 +14,9 @@ glue_update_crawler_schedule(CrawlerName, Schedule)
 For example, to run something every day at 12:15 UTC, you would specify:
 \verb{cron(15 12 * * ? *)}.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the schedule of a crawler using a \code{cron} expression.
-}
-\section{Request syntax}{
-\preformatted{svc$update_crawler_schedule(
-  CrawlerName = "string",
-  Schedule = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/update_crawler_schedule.html} for full documentation.
+}
 \keyword{internal}

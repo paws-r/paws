@@ -4,28 +4,38 @@
 \alias{s3_list_parts}
 \title{Lists the parts that have been uploaded for a specific multipart upload}
 \usage{
-s3_list_parts(Bucket, Key, MaxParts, PartNumberMarker, UploadId,
-  RequestPayer, ExpectedBucketOwner)
+s3_list_parts(
+  Bucket,
+  Key,
+  MaxParts = NULL,
+  PartNumberMarker = NULL,
+  UploadId,
+  RequestPayer = NULL,
+  ExpectedBucketOwner = NULL,
+  SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL,
+  SSECustomerKeyMD5 = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket to which the parts are being uploaded.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Object key for which the multipart upload was initiated.}
 
@@ -38,97 +48,28 @@ higher part numbers will be listed.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AbortDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  AbortRuleId = "string",
-  Bucket = "string",
-  Key = "string",
-  UploadId = "string",
-  PartNumberMarker = 123,
-  NextPartNumberMarker = 123,
-  MaxParts = 123,
-  IsTruncated = TRUE|FALSE,
-  Parts = list(
-    list(
-      PartNumber = 123,
-      LastModified = as.POSIXct(
-        "2015-01-01"
-      ),
-      ETag = "string",
-      Size = 123
-    )
-  ),
-  Initiator = list(
-    ID = "string",
-    DisplayName = "string"
-  ),
-  Owner = list(
-    DisplayName = "string",
-    ID = "string"
-  ),
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
-  RequestCharged = "requester"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
+
+\item{SSECustomerAlgorithm}{The server-side encryption (SSE) algorithm used to encrypt the object.
+This parameter is needed only when the object was created using a
+checksum algorithm. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{SSECustomerKey}{The server-side encryption (SSE) customer managed key. This parameter is
+needed only when the object was created using a checksum algorithm. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{SSECustomerKeyMD5}{The MD5 server-side encryption (SSE) customer managed key. This
+parameter is needed only when the object was created using a checksum
+algorithm. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
 }
 \description{
-Lists the parts that have been uploaded for a specific multipart upload.
-This operation must include the upload ID, which you obtain by sending
-the initiate multipart upload request (see
-\code{\link[=s3_create_multipart_upload]{create_multipart_upload}}). This request
-returns a maximum of 1,000 uploaded parts. The default number of parts
-returned is 1,000 parts. You can restrict the number of parts returned
-by specifying the \code{max-parts} request parameter. If your multipart
-upload consists of more than 1,000 parts, the response returns an
-\code{IsTruncated} field with the value of true, and a \code{NextPartNumberMarker}
-element. In subsequent \code{\link[=s3_list_parts]{list_parts}} requests you can
-include the part-number-marker query string parameter and set its value
-to the \code{NextPartNumberMarker} field value from the previous response.
+Lists the parts that have been uploaded for a specific multipart upload. This operation must include the upload ID, which you obtain by sending the initiate multipart upload request (see \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}). This request returns a maximum of 1,000 uploaded parts. The default number of parts returned is 1,000 parts. You can restrict the number of parts returned by specifying the \code{max-parts} request parameter. If your multipart upload consists of more than 1,000 parts, the response returns an \code{IsTruncated} field with the value of true, and a \code{NextPartNumberMarker} element. In subsequent \code{\link[=s3_list_parts]{list_parts}} requests you can include the part-number-marker query string parameter and set its value to the \code{NextPartNumberMarker} field value from the previous response.
 
-For more information on multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading Objects Using Multipart Upload}.
-
-For information on permissions required to use the multipart upload API,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}.
-
-The following operations are related to \code{\link[=s3_list_parts]{list_parts}}:
-\itemize{
-\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
-\item \code{\link[=s3_upload_part]{upload_part}}
-\item \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
-\item \code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}
-\item \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_parts(
-  Bucket = "string",
-  Key = "string",
-  MaxParts = 123,
-  PartNumberMarker = 123,
-  UploadId = "string",
-  RequestPayer = "requester",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists parts uploaded for a specific multipart
-# upload.
-svc$list_parts(
-  Bucket = "examplebucket",
-  Key = "bigobject",
-  UploadId = "example7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LA..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/list_parts.html} for full documentation.
 }
 \keyword{internal}

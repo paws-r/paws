@@ -9,47 +9,9 @@ sagemaker_describe_project(ProjectName)
 \arguments{
 \item{ProjectName}{[required] The name of the project to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProjectArn = "string",
-  ProjectName = "string",
-  ProjectId = "string",
-  ProjectDescription = "string",
-  ServiceCatalogProvisioningDetails = list(
-    ProductId = "string",
-    ProvisioningArtifactId = "string",
-    PathId = "string",
-    ProvisioningParameters = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  ),
-  ServiceCatalogProvisionedProductDetails = list(
-    ProvisionedProductId = "string",
-    ProvisionedProductStatusMessage = "string"
-  ),
-  ProjectStatus = "Pending"|"CreateInProgress"|"CreateCompleted"|"CreateFailed"|"DeleteInProgress"|"DeleteFailed"|"DeleteCompleted",
-  CreatedBy = list(
-    UserProfileArn = "string",
-    UserProfileName = "string",
-    DomainId = "string"
-  ),
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Describes the details of a project.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_project(
-  ProjectName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_project.html} for full documentation.
+}
 \keyword{internal}

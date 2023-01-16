@@ -2,8 +2,8 @@
 % Please edit documentation in R/servicediscovery_operations.R
 \name{servicediscovery_deregister_instance}
 \alias{servicediscovery_deregister_instance}
-\title{Deletes the Amazon Route 53 DNS records and health check, if any, that
-AWS Cloud Map created for the specified instance}
+\title{Deletes the Amazon Route 53 DNS records and health check, if any, that
+Cloud Map created for the specified instance}
 \usage{
 servicediscovery_deregister_instance(ServiceId, InstanceId)
 }
@@ -13,32 +13,9 @@ servicediscovery_deregister_instance(ServiceId, InstanceId)
 \item{InstanceId}{[required] The value that you specified for \code{Id} in the
 \code{\link[=servicediscovery_register_instance]{register_instance}} request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
-}
 \description{
-Deletes the Amazon Route 53 DNS records and health check, if any, that
-AWS Cloud Map created for the specified instance.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_instance(
-  ServiceId = "string",
-  InstanceId = "string"
-)
-}
-}
+Deletes the Amazon Route 53 DNS records and health check, if any, that Cloud Map created for the specified instance.
 
-\examples{
-\dontrun{
-# Example: Deregister a service instance
-svc$deregister_instance(
-  InstanceId = "myservice-53",
-  ServiceId = "srv-p5zdwlg5uvvzjita"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/deregister_instance.html} for full documentation.
 }
 \keyword{internal}

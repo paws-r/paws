@@ -3,9 +3,13 @@
 \name{eventbridge_list_event_sources}
 \alias{eventbridge_list_event_sources}
 \title{You can use this to see all the partner event sources that have been
-shared with your AWS account}
+shared with your Amazon Web Services account}
 \usage{
-eventbridge_list_event_sources(NamePrefix, NextToken, Limit)
+eventbridge_list_event_sources(
+  NamePrefix = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{NamePrefix}{Specifying this limits the results to only those partner event sources
@@ -18,38 +22,9 @@ results.}
 The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventSources = list(
-    list(
-      Arn = "string",
-      CreatedBy = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ExpirationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Name = "string",
-      State = "PENDING"|"ACTIVE"|"DELETED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-You can use this to see all the partner event sources that have been
-shared with your AWS account. For more information about partner event
-sources, see \code{\link[=eventbridge_create_event_bus]{create_event_bus}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_event_sources(
-  NamePrefix = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+You can use this to see all the partner event sources that have been shared with your Amazon Web Services account. For more information about partner event sources, see \code{\link[=eventbridge_create_event_bus]{create_event_bus}}.
 
+See \url{https://paws-r.github.io/docs/eventbridge/list_event_sources.html} for full documentation.
+}
 \keyword{internal}

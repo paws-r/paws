@@ -11,44 +11,9 @@ cloudsearch_define_expression(DomainName, Expression)
 
 \item{Expression}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Expression = list(
-    Options = list(
-      ExpressionName = "string",
-      ExpressionValue = "string"
-    ),
-    Status = list(
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateVersion = 123,
-      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-      PendingDeletion = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Configures an \code{Expression} for the search domain. Used to create new
-expressions and modify existing ones. If the expression exists, the new
-configuration replaces the old one. For more information, see
-\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions}
-in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$define_expression(
-  DomainName = "string",
-  Expression = list(
-    ExpressionName = "string",
-    ExpressionValue = "string"
-  )
-)
-}
-}
+Configures an \code{Expression} for the search domain. Used to create new expressions and modify existing ones. If the expression exists, the new configuration replaces the old one. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the \emph{Amazon CloudSearch Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/define_expression.html} for full documentation.
+}
 \keyword{internal}

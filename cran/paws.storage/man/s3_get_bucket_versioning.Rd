@@ -4,55 +4,18 @@
 \alias{s3_get_bucket_versioning}
 \title{Returns the versioning state of a bucket}
 \usage{
-s3_get_bucket_versioning(Bucket, ExpectedBucketOwner)
+s3_get_bucket_versioning(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to get the versioning information.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "Enabled"|"Suspended",
-  MFADelete = "Enabled"|"Disabled"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
 Returns the versioning state of a bucket.
 
-To retrieve the versioning state of a bucket, you must be the bucket
-owner.
-
-This implementation also returns the MFA Delete status of the versioning
-state. If the MFA Delete status is \code{enabled}, the bucket owner must use
-an authentication device to change the versioning state of the bucket.
-
-The following operations are related to
-\code{\link[=s3_get_bucket_versioning]{get_bucket_versioning}}:
-\itemize{
-\item \code{\link[=s3_get_object]{get_object}}
-\item \code{\link[=s3_put_object]{put_object}}
-\item \code{\link[=s3_delete_object]{delete_object}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_versioning(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example retrieves bucket versioning configuration.
-svc$get_bucket_versioning(
-  Bucket = "examplebucket"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/get_bucket_versioning.html} for full documentation.
 }
 \keyword{internal}

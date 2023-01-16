@@ -2,13 +2,18 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_routing_profile_queues}
 \alias{connect_list_routing_profile_queues}
-\title{List the queues associated with a routing profile}
+\title{Lists the queues associated with a routing profile}
 \usage{
-connect_list_routing_profile_queues(InstanceId, RoutingProfileId,
-  NextToken, MaxResults)
+connect_list_routing_profile_queues(
+  InstanceId,
+  RoutingProfileId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{RoutingProfileId}{[required] The identifier of the routing profile.}
 
@@ -16,35 +21,11 @@ connect_list_routing_profile_queues(InstanceId, RoutingProfileId,
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  RoutingProfileQueueConfigSummaryList = list(
-    list(
-      QueueId = "string",
-      QueueArn = "string",
-      QueueName = "string",
-      Priority = 123,
-      Delay = 123,
-      Channel = "VOICE"|"CHAT"|"TASK"
-    )
-  )
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-List the queues associated with a routing profile.
-}
-\section{Request syntax}{
-\preformatted{svc$list_routing_profile_queues(
-  InstanceId = "string",
-  RoutingProfileId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists the queues associated with a routing profile.
 
+See \url{https://paws-r.github.io/docs/connect/list_routing_profile_queues.html} for full documentation.
+}
 \keyword{internal}

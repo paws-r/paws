@@ -2,7 +2,7 @@
 % Please edit documentation in R/xray_operations.R
 \name{xray_put_trace_segments}
 \alias{xray_put_trace_segments}
-\title{Uploads segment documents to AWS X-Ray}
+\title{Uploads segment documents to Amazon Web Services X-Ray}
 \usage{
 xray_put_trace_segments(TraceSegmentDocuments)
 }
@@ -10,69 +10,9 @@ xray_put_trace_segments(TraceSegmentDocuments)
 \item{TraceSegmentDocuments}{[required] A string containing a JSON document defining one or more segments or
 subsegments.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UnprocessedTraceSegments = list(
-    list(
-      Id = "string",
-      ErrorCode = "string",
-      Message = "string"
-    )
-  )
-)
-}
-}
 \description{
-Uploads segment documents to AWS X-Ray. The \href{https://docs.aws.amazon.com/xray/index.html}{X-Ray SDK} generates segment
-documents and sends them to the X-Ray daemon, which uploads them in
-batches. A segment document can be a completed segment, an in-progress
-segment, or an array of subsegments.
+Uploads segment documents to Amazon Web Services X-Ray. The \href{https://docs.aws.amazon.com/xray/index.html}{X-Ray SDK} generates segment documents and sends them to the X-Ray daemon, which uploads them in batches. A segment document can be a completed segment, an in-progress segment, or an array of subsegments.
 
-Segments must include the following fields. For the full segment
-document schema, see \href{https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html}{AWS X-Ray Segment Documents}
-in the \emph{AWS X-Ray Developer Guide}.
-
-\strong{Required segment document fields}
-\itemize{
-\item \code{name} - The name of the service that handled the request.
-\item \code{id} - A 64-bit identifier for the segment, unique among segments in
-the same trace, in 16 hexadecimal digits.
-\item \code{trace_id} - A unique identifier that connects all segments and
-subsegments originating from a single client request.
-\item \code{start_time} - Time the segment or subsegment was created, in
-floating point seconds in epoch time, accurate to milliseconds. For
-example, \code{1480615200.010} or \code{1.480615200010E9}.
-\item \code{end_time} - Time the segment or subsegment was closed. For example,
-\code{1480615200.090} or \code{1.480615200090E9}. Specify either an \code{end_time}
-or \code{in_progress}.
-\item \code{in_progress} - Set to \code{true} instead of specifying an \code{end_time} to
-record that a segment has been started, but is not complete. Send an
-in-progress segment when your application receives a request that
-will take a long time to serve, to trace that the request was
-received. When the response is sent, send the complete segment to
-overwrite the in-progress segment.
+See \url{https://paws-r.github.io/docs/xray/put_trace_segments.html} for full documentation.
 }
-
-A \code{trace_id} consists of three numbers separated by hyphens. For
-example, 1-58406520-a006649127e371903a2de979. This includes:
-
-\strong{Trace ID Format}
-\itemize{
-\item The version number, for instance, \code{1}.
-\item The time of the original request, in Unix epoch time, in 8
-hexadecimal digits. For example, 10:00AM December 2nd, 2016 PST in
-epoch time is \code{1480615200} seconds, or \code{58406520} in hexadecimal.
-\item A 96-bit identifier for the trace, globally unique, in 24
-hexadecimal digits.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_trace_segments(
-  TraceSegmentDocuments = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

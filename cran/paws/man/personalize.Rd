@@ -7,7 +7,19 @@
 personalize(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -20,7 +32,9 @@ Amazon Personalize is a machine learning service that makes it easy to
 add individualized recommendations to customers.
 }
 \section{Service syntax}{
-\preformatted{svc <- personalize(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- personalize(
   config = list(
     credentials = list(
       creds = list(
@@ -28,61 +42,82 @@ add individualized recommendations to customers.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=personalize_create_batch_inference_job]{create_batch_inference_job} \tab Creates a batch inference job\cr
-\link[=personalize_create_campaign]{create_campaign} \tab Creates a campaign by deploying a solution version\cr
-\link[=personalize_create_dataset]{create_dataset} \tab Creates an empty dataset and adds it to the specified dataset group\cr
-\link[=personalize_create_dataset_group]{create_dataset_group} \tab Creates an empty dataset group\cr
-\link[=personalize_create_dataset_import_job]{create_dataset_import_job} \tab Creates a job that imports training data from your data source (an Amazon S3 bucket) to an Amazon Personalize dataset\cr
-\link[=personalize_create_event_tracker]{create_event_tracker} \tab Creates an event tracker that you use when sending event data to the specified dataset group using the PutEvents API\cr
-\link[=personalize_create_filter]{create_filter} \tab Creates a recommendation filter\cr
-\link[=personalize_create_schema]{create_schema} \tab Creates an Amazon Personalize schema from the specified schema string\cr
-\link[=personalize_create_solution]{create_solution} \tab Creates the configuration for training a model\cr
-\link[=personalize_create_solution_version]{create_solution_version} \tab Trains or retrains an active solution\cr
-\link[=personalize_delete_campaign]{delete_campaign} \tab Removes a campaign by deleting the solution deployment\cr
-\link[=personalize_delete_dataset]{delete_dataset} \tab Deletes a dataset\cr
-\link[=personalize_delete_dataset_group]{delete_dataset_group} \tab Deletes a dataset group\cr
-\link[=personalize_delete_event_tracker]{delete_event_tracker} \tab Deletes the event tracker\cr
-\link[=personalize_delete_filter]{delete_filter} \tab Deletes a filter\cr
-\link[=personalize_delete_schema]{delete_schema} \tab Deletes a schema\cr
-\link[=personalize_delete_solution]{delete_solution} \tab Deletes all versions of a solution and the Solution object itself\cr
-\link[=personalize_describe_algorithm]{describe_algorithm} \tab Describes the given algorithm\cr
-\link[=personalize_describe_batch_inference_job]{describe_batch_inference_job} \tab Gets the properties of a batch inference job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate the recommendations\cr
-\link[=personalize_describe_campaign]{describe_campaign} \tab Describes the given campaign, including its status\cr
-\link[=personalize_describe_dataset]{describe_dataset} \tab Describes the given dataset\cr
-\link[=personalize_describe_dataset_group]{describe_dataset_group} \tab Describes the given dataset group\cr
-\link[=personalize_describe_dataset_import_job]{describe_dataset_import_job} \tab Describes the dataset import job created by CreateDatasetImportJob, including the import job status\cr
-\link[=personalize_describe_event_tracker]{describe_event_tracker} \tab Describes an event tracker\cr
-\link[=personalize_describe_feature_transformation]{describe_feature_transformation} \tab Describes the given feature transformation\cr
-\link[=personalize_describe_filter]{describe_filter} \tab Describes a filter's properties\cr
-\link[=personalize_describe_recipe]{describe_recipe} \tab Describes a recipe\cr
-\link[=personalize_describe_schema]{describe_schema} \tab Describes a schema\cr
-\link[=personalize_describe_solution]{describe_solution} \tab Describes a solution\cr
-\link[=personalize_describe_solution_version]{describe_solution_version} \tab Describes a specific version of a solution\cr
-\link[=personalize_get_solution_metrics]{get_solution_metrics} \tab Gets the metrics for the specified solution version\cr
-\link[=personalize_list_batch_inference_jobs]{list_batch_inference_jobs} \tab Gets a list of the batch inference jobs that have been performed off of a solution version\cr
-\link[=personalize_list_campaigns]{list_campaigns} \tab Returns a list of campaigns that use the given solution\cr
-\link[=personalize_list_dataset_groups]{list_dataset_groups} \tab Returns a list of dataset groups\cr
-\link[=personalize_list_dataset_import_jobs]{list_dataset_import_jobs} \tab Returns a list of dataset import jobs that use the given dataset\cr
-\link[=personalize_list_datasets]{list_datasets} \tab Returns the list of datasets contained in the given dataset group\cr
-\link[=personalize_list_event_trackers]{list_event_trackers} \tab Returns the list of event trackers associated with the account\cr
-\link[=personalize_list_filters]{list_filters} \tab Lists all filters that belong to a given dataset group\cr
-\link[=personalize_list_recipes]{list_recipes} \tab Returns a list of available recipes\cr
-\link[=personalize_list_schemas]{list_schemas} \tab Returns the list of schemas associated with the account\cr
-\link[=personalize_list_solutions]{list_solutions} \tab Returns a list of solutions that use the given dataset group\cr
-\link[=personalize_list_solution_versions]{list_solution_versions} \tab Returns a list of solution versions for the given solution\cr
-\link[=personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter
+\link[paws.machine.learning:personalize_create_batch_inference_job]{create_batch_inference_job} \tab Creates a batch inference job\cr
+\link[paws.machine.learning:personalize_create_batch_segment_job]{create_batch_segment_job} \tab Creates a batch segment job\cr
+\link[paws.machine.learning:personalize_create_campaign]{create_campaign} \tab Creates a campaign that deploys a solution version\cr
+\link[paws.machine.learning:personalize_create_dataset]{create_dataset} \tab Creates an empty dataset and adds it to the specified dataset group\cr
+\link[paws.machine.learning:personalize_create_dataset_export_job]{create_dataset_export_job} \tab Creates a job that exports data from your dataset to an Amazon S3 bucket\cr
+\link[paws.machine.learning:personalize_create_dataset_group]{create_dataset_group} \tab Creates an empty dataset group\cr
+\link[paws.machine.learning:personalize_create_dataset_import_job]{create_dataset_import_job} \tab Creates a job that imports training data from your data source (an Amazon S3 bucket) to an Amazon Personalize dataset\cr
+\link[paws.machine.learning:personalize_create_event_tracker]{create_event_tracker} \tab Creates an event tracker that you use when adding event data to a specified dataset group using the PutEvents API\cr
+\link[paws.machine.learning:personalize_create_filter]{create_filter} \tab Creates a recommendation filter\cr
+\link[paws.machine.learning:personalize_create_recommender]{create_recommender} \tab Creates a recommender with the recipe (a Domain dataset group use case) you specify\cr
+\link[paws.machine.learning:personalize_create_schema]{create_schema} \tab Creates an Amazon Personalize schema from the specified schema string\cr
+\link[paws.machine.learning:personalize_create_solution]{create_solution} \tab Creates the configuration for training a model\cr
+\link[paws.machine.learning:personalize_create_solution_version]{create_solution_version} \tab Trains or retrains an active solution in a Custom dataset group\cr
+\link[paws.machine.learning:personalize_delete_campaign]{delete_campaign} \tab Removes a campaign by deleting the solution deployment\cr
+\link[paws.machine.learning:personalize_delete_dataset]{delete_dataset} \tab Deletes a dataset\cr
+\link[paws.machine.learning:personalize_delete_dataset_group]{delete_dataset_group} \tab Deletes a dataset group\cr
+\link[paws.machine.learning:personalize_delete_event_tracker]{delete_event_tracker} \tab Deletes the event tracker\cr
+\link[paws.machine.learning:personalize_delete_filter]{delete_filter} \tab Deletes a filter\cr
+\link[paws.machine.learning:personalize_delete_recommender]{delete_recommender} \tab Deactivates and removes a recommender\cr
+\link[paws.machine.learning:personalize_delete_schema]{delete_schema} \tab Deletes a schema\cr
+\link[paws.machine.learning:personalize_delete_solution]{delete_solution} \tab Deletes all versions of a solution and the Solution object itself\cr
+\link[paws.machine.learning:personalize_describe_algorithm]{describe_algorithm} \tab Describes the given algorithm\cr
+\link[paws.machine.learning:personalize_describe_batch_inference_job]{describe_batch_inference_job} \tab Gets the properties of a batch inference job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate the recommendations\cr
+\link[paws.machine.learning:personalize_describe_batch_segment_job]{describe_batch_segment_job} \tab Gets the properties of a batch segment job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate segments\cr
+\link[paws.machine.learning:personalize_describe_campaign]{describe_campaign} \tab Describes the given campaign, including its status\cr
+\link[paws.machine.learning:personalize_describe_dataset]{describe_dataset} \tab Describes the given dataset\cr
+\link[paws.machine.learning:personalize_describe_dataset_export_job]{describe_dataset_export_job} \tab Describes the dataset export job created by CreateDatasetExportJob, including the export job status\cr
+\link[paws.machine.learning:personalize_describe_dataset_group]{describe_dataset_group} \tab Describes the given dataset group\cr
+\link[paws.machine.learning:personalize_describe_dataset_import_job]{describe_dataset_import_job} \tab Describes the dataset import job created by CreateDatasetImportJob, including the import job status\cr
+\link[paws.machine.learning:personalize_describe_event_tracker]{describe_event_tracker} \tab Describes an event tracker\cr
+\link[paws.machine.learning:personalize_describe_feature_transformation]{describe_feature_transformation} \tab Describes the given feature transformation\cr
+\link[paws.machine.learning:personalize_describe_filter]{describe_filter} \tab Describes a filter's properties\cr
+\link[paws.machine.learning:personalize_describe_recipe]{describe_recipe} \tab Describes a recipe\cr
+\link[paws.machine.learning:personalize_describe_recommender]{describe_recommender} \tab Describes the given recommender, including its status\cr
+\link[paws.machine.learning:personalize_describe_schema]{describe_schema} \tab Describes a schema\cr
+\link[paws.machine.learning:personalize_describe_solution]{describe_solution} \tab Describes a solution\cr
+\link[paws.machine.learning:personalize_describe_solution_version]{describe_solution_version} \tab Describes a specific version of a solution\cr
+\link[paws.machine.learning:personalize_get_solution_metrics]{get_solution_metrics} \tab Gets the metrics for the specified solution version\cr
+\link[paws.machine.learning:personalize_list_batch_inference_jobs]{list_batch_inference_jobs} \tab Gets a list of the batch inference jobs that have been performed off of a solution version\cr
+\link[paws.machine.learning:personalize_list_batch_segment_jobs]{list_batch_segment_jobs} \tab Gets a list of the batch segment jobs that have been performed off of a solution version that you specify\cr
+\link[paws.machine.learning:personalize_list_campaigns]{list_campaigns} \tab Returns a list of campaigns that use the given solution\cr
+\link[paws.machine.learning:personalize_list_dataset_export_jobs]{list_dataset_export_jobs} \tab Returns a list of dataset export jobs that use the given dataset\cr
+\link[paws.machine.learning:personalize_list_dataset_groups]{list_dataset_groups} \tab Returns a list of dataset groups\cr
+\link[paws.machine.learning:personalize_list_dataset_import_jobs]{list_dataset_import_jobs} \tab Returns a list of dataset import jobs that use the given dataset\cr
+\link[paws.machine.learning:personalize_list_datasets]{list_datasets} \tab Returns the list of datasets contained in the given dataset group\cr
+\link[paws.machine.learning:personalize_list_event_trackers]{list_event_trackers} \tab Returns the list of event trackers associated with the account\cr
+\link[paws.machine.learning:personalize_list_filters]{list_filters} \tab Lists all filters that belong to a given dataset group\cr
+\link[paws.machine.learning:personalize_list_recipes]{list_recipes} \tab Returns a list of available recipes\cr
+\link[paws.machine.learning:personalize_list_recommenders]{list_recommenders} \tab Returns a list of recommenders in a given Domain dataset group\cr
+\link[paws.machine.learning:personalize_list_schemas]{list_schemas} \tab Returns the list of schemas associated with the account\cr
+\link[paws.machine.learning:personalize_list_solutions]{list_solutions} \tab Returns a list of solutions that use the given dataset group\cr
+\link[paws.machine.learning:personalize_list_solution_versions]{list_solution_versions} \tab Returns a list of solution versions for the given solution\cr
+\link[paws.machine.learning:personalize_list_tags_for_resource]{list_tags_for_resource} \tab Get a list of tags attached to a resource\cr
+\link[paws.machine.learning:personalize_start_recommender]{start_recommender} \tab Starts a recommender that is INACTIVE\cr
+\link[paws.machine.learning:personalize_stop_recommender]{stop_recommender} \tab Stops a recommender that is ACTIVE\cr
+\link[paws.machine.learning:personalize_stop_solution_version_creation]{stop_solution_version_creation} \tab Stops creating a solution version that is in a state of CREATE_PENDING or CREATE IN_PROGRESS\cr
+\link[paws.machine.learning:personalize_tag_resource]{tag_resource} \tab Add a list of tags to a resource\cr
+\link[paws.machine.learning:personalize_untag_resource]{untag_resource} \tab Remove tags that are attached to a resource\cr
+\link[paws.machine.learning:personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter\cr
+\link[paws.machine.learning:personalize_update_recommender]{update_recommender} \tab Updates the recommender to modify the recommender configuration
 }
 }
 

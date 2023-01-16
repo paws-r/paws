@@ -4,11 +4,15 @@
 \alias{quicksight_update_theme_permissions}
 \title{Updates the resource permissions for a theme}
 \usage{
-quicksight_update_theme_permissions(AwsAccountId, ThemeId,
-  GrantPermissions, RevokePermissions)
+quicksight_update_theme_permissions(
+  AwsAccountId,
+  ThemeId,
+  GrantPermissions = NULL,
+  RevokePermissions = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the theme.}
 
 \item{ThemeId}{[required] The ID for the theme.}
 
@@ -16,78 +20,9 @@ quicksight_update_theme_permissions(AwsAccountId, ThemeId,
 
 \item{RevokePermissions}{A list of resource permissions to be revoked from the theme.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThemeId = "string",
-  ThemeArn = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-Updates the resource permissions for a theme. Permissions apply to the
-action to grant or revoke permissions on, for example
-\code{"quicksight:DescribeTheme"}.
+Updates the resource permissions for a theme. Permissions apply to the action to grant or revoke permissions on, for example \code{"quicksight:DescribeTheme"}.
 
-Theme permissions apply in groupings. Valid groupings include the
-following for the three levels of permissions, which are user, owner, or
-no permissions:
-\itemize{
-\item User
-\itemize{
-\item \code{"quicksight:DescribeTheme"}
-\item \code{"quicksight:DescribeThemeAlias"}
-\item \code{"quicksight:ListThemeAliases"}
-\item \code{"quicksight:ListThemeVersions"}
+See \url{https://paws-r.github.io/docs/quicksight/update_theme_permissions.html} for full documentation.
 }
-\item Owner
-\itemize{
-\item \code{"quicksight:DescribeTheme"}
-\item \code{"quicksight:DescribeThemeAlias"}
-\item \code{"quicksight:ListThemeAliases"}
-\item \code{"quicksight:ListThemeVersions"}
-\item \code{"quicksight:DeleteTheme"}
-\item \code{"quicksight:UpdateTheme"}
-\item \code{"quicksight:CreateThemeAlias"}
-\item \code{"quicksight:DeleteThemeAlias"}
-\item \code{"quicksight:UpdateThemeAlias"}
-\item \code{"quicksight:UpdateThemePermissions"}
-\item \code{"quicksight:DescribeThemePermissions"}
-}
-\item To specify no permissions, omit the permissions list.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$update_theme_permissions(
-  AwsAccountId = "string",
-  ThemeId = "string",
-  GrantPermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RevokePermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

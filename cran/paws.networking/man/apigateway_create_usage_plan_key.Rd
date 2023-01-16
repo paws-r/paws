@@ -7,34 +7,16 @@
 apigateway_create_usage_plan_key(usagePlanId, keyId, keyType)
 }
 \arguments{
-\item{usagePlanId}{[required] [Required] The Id of the UsagePlan resource representing the usage
-plan containing the to-be-created UsagePlanKey resource representing a
-plan customer.}
+\item{usagePlanId}{[required] The Id of the UsagePlan resource representing the usage plan containing
+the to-be-created UsagePlanKey resource representing a plan customer.}
 
-\item{keyId}{[required] [Required] The identifier of a UsagePlanKey resource for a plan
-customer.}
+\item{keyId}{[required] The identifier of a UsagePlanKey resource for a plan customer.}
 
-\item{keyType}{[required] [Required] The type of a UsagePlanKey resource for a plan customer.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  type = "string",
-  value = "string",
-  name = "string"
-)
-}
+\item{keyType}{[required] The type of a UsagePlanKey resource for a plan customer.}
 }
 \description{
 Creates a usage plan key for adding an existing API key to a usage plan.
-}
-\section{Request syntax}{
-\preformatted{svc$create_usage_plan_key(
-  usagePlanId = "string",
-  keyId = "string",
-  keyType = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/create_usage_plan_key.html} for full documentation.
+}
 \keyword{internal}

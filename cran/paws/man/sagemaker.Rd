@@ -7,7 +7,19 @@
 sagemaker(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,16 +28,18 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Provides APIs for creating and managing Amazon SageMaker resources.
+Provides APIs for creating and managing SageMaker resources.
 
 Other Resources:
 \itemize{
-\item \href{https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html#first-time-user}{Amazon SageMaker Developer Guide}
+\item \href{https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html#first-time-user}{SageMaker Developer Guide}
 \item \href{https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html}{Amazon Augmented AI Runtime API Reference}
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- sagemaker(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sagemaker(
   config = list(
     credentials = list(
       creds = list(
@@ -33,251 +47,285 @@ Other Resources:
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=sagemaker_add_association]{add_association} \tab Creates an association between the source and the destination\cr
-\link[=sagemaker_add_tags]{add_tags} \tab Adds or overwrites one or more tags for the specified Amazon SageMaker resource\cr
-\link[=sagemaker_associate_trial_component]{associate_trial_component} \tab Associates a trial component with a trial\cr
-\link[=sagemaker_create_action]{create_action} \tab Creates an action\cr
-\link[=sagemaker_create_algorithm]{create_algorithm} \tab Create a machine learning algorithm that you can use in Amazon SageMaker and list in the AWS Marketplace\cr
-\link[=sagemaker_create_app]{create_app} \tab Creates a running App for the specified UserProfile\cr
-\link[=sagemaker_create_app_image_config]{create_app_image_config} \tab Creates a configuration for running a SageMaker image as a KernelGateway app\cr
-\link[=sagemaker_create_artifact]{create_artifact} \tab Creates an artifact\cr
-\link[=sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job\cr
-\link[=sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your Amazon SageMaker account\cr
-\link[=sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job\cr
-\link[=sagemaker_create_context]{create_context} \tab Creates a context\cr
-\link[=sagemaker_create_data_quality_job_definition]{create_data_quality_job_definition} \tab Creates a definition for a job that monitors data quality and drift\cr
-\link[=sagemaker_create_device_fleet]{create_device_fleet} \tab Creates a device fleet\cr
-\link[=sagemaker_create_domain]{create_domain} \tab Creates a Domain used by Amazon SageMaker Studio\cr
-\link[=sagemaker_create_edge_packaging_job]{create_edge_packaging_job} \tab Starts a SageMaker Edge Manager model packaging job\cr
-\link[=sagemaker_create_endpoint]{create_endpoint} \tab Creates an endpoint using the endpoint configuration specified in the request\cr
-\link[=sagemaker_create_endpoint_config]{create_endpoint_config} \tab Creates an endpoint configuration that Amazon SageMaker hosting services uses to deploy models\cr
-\link[=sagemaker_create_experiment]{create_experiment} \tab Creates an SageMaker experiment\cr
-\link[=sagemaker_create_feature_group]{create_feature_group} \tab Create a new FeatureGroup\cr
-\link[=sagemaker_create_flow_definition]{create_flow_definition} \tab Creates a flow definition\cr
-\link[=sagemaker_create_human_task_ui]{create_human_task_ui} \tab Defines the settings you will use for the human review workflow user interface\cr
-\link[=sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job\cr
-\link[=sagemaker_create_image]{create_image} \tab Creates a custom SageMaker image\cr
-\link[=sagemaker_create_image_version]{create_image_version} \tab Creates a version of the SageMaker image specified by ImageName\cr
-\link[=sagemaker_create_labeling_job]{create_labeling_job} \tab Creates a job that uses workers to label the data objects in your input dataset\cr
-\link[=sagemaker_create_model]{create_model} \tab Creates a model in Amazon SageMaker\cr
-\link[=sagemaker_create_model_bias_job_definition]{create_model_bias_job_definition} \tab Creates the definition for a model bias job\cr
-\link[=sagemaker_create_model_explainability_job_definition]{create_model_explainability_job_definition} \tab Creates the definition for a model explainability job\cr
-\link[=sagemaker_create_model_package]{create_model_package} \tab Creates a model package that you can use to create Amazon SageMaker models or list on AWS Marketplace, or a versioned model that is part of a model group\cr
-\link[=sagemaker_create_model_package_group]{create_model_package_group} \tab Creates a model group\cr
-\link[=sagemaker_create_model_quality_job_definition]{create_model_quality_job_definition} \tab Creates a definition for a job that monitors model quality and drift\cr
-\link[=sagemaker_create_monitoring_schedule]{create_monitoring_schedule} \tab Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endoint\cr
-\link[=sagemaker_create_notebook_instance]{create_notebook_instance} \tab Creates an Amazon SageMaker notebook instance\cr
-\link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config} \tab Creates a lifecycle configuration that you can associate with a notebook instance\cr
-\link[=sagemaker_create_pipeline]{create_pipeline} \tab Creates a pipeline using a JSON pipeline definition\cr
-\link[=sagemaker_create_presigned_domain_url]{create_presigned_domain_url} \tab Creates a URL for a specified UserProfile in a Domain\cr
-\link[=sagemaker_create_presigned_notebook_instance_url]{create_presigned_notebook_instance_url} \tab Returns a URL that you can use to connect to the Jupyter server from a notebook instance\cr
-\link[=sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job\cr
-\link[=sagemaker_create_project]{create_project} \tab Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model\cr
-\link[=sagemaker_create_training_job]{create_training_job} \tab Starts a model training job\cr
-\link[=sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job\cr
-\link[=sagemaker_create_trial]{create_trial} \tab Creates an Amazon SageMaker trial\cr
-\link[=sagemaker_create_trial_component]{create_trial_component} \tab Creates a trial component, which is a stage of a machine learning trial\cr
-\link[=sagemaker_create_user_profile]{create_user_profile} \tab Creates a user profile\cr
-\link[=sagemaker_create_workforce]{create_workforce} \tab Use this operation to create a workforce\cr
-\link[=sagemaker_create_workteam]{create_workteam} \tab Creates a new work team for labeling your data\cr
-\link[=sagemaker_delete_action]{delete_action} \tab Deletes an action\cr
-\link[=sagemaker_delete_algorithm]{delete_algorithm} \tab Removes the specified algorithm from your account\cr
-\link[=sagemaker_delete_app]{delete_app} \tab Used to stop and delete an app\cr
-\link[=sagemaker_delete_app_image_config]{delete_app_image_config} \tab Deletes an AppImageConfig\cr
-\link[=sagemaker_delete_artifact]{delete_artifact} \tab Deletes an artifact\cr
-\link[=sagemaker_delete_association]{delete_association} \tab Deletes an association\cr
-\link[=sagemaker_delete_code_repository]{delete_code_repository} \tab Deletes the specified Git repository from your account\cr
-\link[=sagemaker_delete_context]{delete_context} \tab Deletes an context\cr
-\link[=sagemaker_delete_data_quality_job_definition]{delete_data_quality_job_definition} \tab Deletes a data quality monitoring job definition\cr
-\link[=sagemaker_delete_device_fleet]{delete_device_fleet} \tab Deletes a fleet\cr
-\link[=sagemaker_delete_domain]{delete_domain} \tab Used to delete a domain\cr
-\link[=sagemaker_delete_endpoint]{delete_endpoint} \tab Deletes an endpoint\cr
-\link[=sagemaker_delete_endpoint_config]{delete_endpoint_config} \tab Deletes an endpoint configuration\cr
-\link[=sagemaker_delete_experiment]{delete_experiment} \tab Deletes an Amazon SageMaker experiment\cr
-\link[=sagemaker_delete_feature_group]{delete_feature_group} \tab Delete the FeatureGroup and any data that was written to the OnlineStore of the FeatureGroup\cr
-\link[=sagemaker_delete_flow_definition]{delete_flow_definition} \tab Deletes the specified flow definition\cr
-\link[=sagemaker_delete_human_task_ui]{delete_human_task_ui} \tab Use this operation to delete a human task user interface (worker task template)\cr
-\link[=sagemaker_delete_image]{delete_image} \tab Deletes a SageMaker image and all versions of the image\cr
-\link[=sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker image\cr
-\link[=sagemaker_delete_model]{delete_model} \tab Deletes a model\cr
-\link[=sagemaker_delete_model_bias_job_definition]{delete_model_bias_job_definition} \tab Deletes an Amazon SageMaker model bias job definition\cr
-\link[=sagemaker_delete_model_explainability_job_definition]{delete_model_explainability_job_definition} \tab Deletes an Amazon SageMaker model explainability job definition\cr
-\link[=sagemaker_delete_model_package]{delete_model_package} \tab Deletes a model package\cr
-\link[=sagemaker_delete_model_package_group]{delete_model_package_group} \tab Deletes the specified model group\cr
-\link[=sagemaker_delete_model_package_group_policy]{delete_model_package_group_policy} \tab Deletes a model group resource policy\cr
-\link[=sagemaker_delete_model_quality_job_definition]{delete_model_quality_job_definition} \tab Deletes the secified model quality monitoring job definition\cr
-\link[=sagemaker_delete_monitoring_schedule]{delete_monitoring_schedule} \tab Deletes a monitoring schedule\cr
-\link[=sagemaker_delete_notebook_instance]{delete_notebook_instance} \tab Deletes an Amazon SageMaker notebook instance\cr
-\link[=sagemaker_delete_notebook_instance_lifecycle_config]{delete_notebook_instance_lifecycle_config} \tab Deletes a notebook instance lifecycle configuration\cr
-\link[=sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no in-progress executions\cr
-\link[=sagemaker_delete_project]{delete_project} \tab Delete the specified project\cr
-\link[=sagemaker_delete_tags]{delete_tags} \tab Deletes the specified tags from an Amazon SageMaker resource\cr
-\link[=sagemaker_delete_trial]{delete_trial} \tab Deletes the specified trial\cr
-\link[=sagemaker_delete_trial_component]{delete_trial_component} \tab Deletes the specified trial component\cr
-\link[=sagemaker_delete_user_profile]{delete_user_profile} \tab Deletes a user profile\cr
-\link[=sagemaker_delete_workforce]{delete_workforce} \tab Use this operation to delete a workforce\cr
-\link[=sagemaker_delete_workteam]{delete_workteam} \tab Deletes an existing work team\cr
-\link[=sagemaker_deregister_devices]{deregister_devices} \tab Deregisters the specified devices\cr
-\link[=sagemaker_describe_action]{describe_action} \tab Describes an action\cr
-\link[=sagemaker_describe_algorithm]{describe_algorithm} \tab Returns a description of the specified algorithm that is in your account\cr
-\link[=sagemaker_describe_app]{describe_app} \tab Describes the app\cr
-\link[=sagemaker_describe_app_image_config]{describe_app_image_config} \tab Describes an AppImageConfig\cr
-\link[=sagemaker_describe_artifact]{describe_artifact} \tab Describes an artifact\cr
-\link[=sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an Amazon SageMaker job\cr
-\link[=sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
-\link[=sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job\cr
-\link[=sagemaker_describe_context]{describe_context} \tab Describes a context\cr
-\link[=sagemaker_describe_data_quality_job_definition]{describe_data_quality_job_definition} \tab Gets the details of a data quality monitoring job definition\cr
-\link[=sagemaker_describe_device]{describe_device} \tab Describes the device\cr
-\link[=sagemaker_describe_device_fleet]{describe_device_fleet} \tab A description of the fleet the device belongs to\cr
-\link[=sagemaker_describe_domain]{describe_domain} \tab The description of the domain\cr
-\link[=sagemaker_describe_edge_packaging_job]{describe_edge_packaging_job} \tab A description of edge packaging jobs\cr
-\link[=sagemaker_describe_endpoint]{describe_endpoint} \tab Returns the description of an endpoint\cr
-\link[=sagemaker_describe_endpoint_config]{describe_endpoint_config} \tab Returns the description of an endpoint configuration created using the CreateEndpointConfig API\cr
-\link[=sagemaker_describe_experiment]{describe_experiment} \tab Provides a list of an experiment's properties\cr
-\link[=sagemaker_describe_feature_group]{describe_feature_group} \tab Use this operation to describe a FeatureGroup\cr
-\link[=sagemaker_describe_flow_definition]{describe_flow_definition} \tab Returns information about the specified flow definition\cr
-\link[=sagemaker_describe_human_task_ui]{describe_human_task_ui} \tab Returns information about the requested human task user interface (worker task template)\cr
-\link[=sagemaker_describe_hyper_parameter_tuning_job]{describe_hyper_parameter_tuning_job} \tab Gets a description of a hyperparameter tuning job\cr
-\link[=sagemaker_describe_image]{describe_image} \tab Describes a SageMaker image\cr
-\link[=sagemaker_describe_image_version]{describe_image_version} \tab Describes a version of a SageMaker image\cr
-\link[=sagemaker_describe_labeling_job]{describe_labeling_job} \tab Gets information about a labeling job\cr
-\link[=sagemaker_describe_model]{describe_model} \tab Describes a model that you created using the CreateModel API\cr
-\link[=sagemaker_describe_model_bias_job_definition]{describe_model_bias_job_definition} \tab Returns a description of a model bias job definition\cr
-\link[=sagemaker_describe_model_explainability_job_definition]{describe_model_explainability_job_definition} \tab Returns a description of a model explainability job definition\cr
-\link[=sagemaker_describe_model_package]{describe_model_package} \tab Returns a description of the specified model package, which is used to create Amazon SageMaker models or list them on AWS Marketplace\cr
-\link[=sagemaker_describe_model_package_group]{describe_model_package_group} \tab Gets a description for the specified model group\cr
-\link[=sagemaker_describe_model_quality_job_definition]{describe_model_quality_job_definition} \tab Returns a description of a model quality job definition\cr
-\link[=sagemaker_describe_monitoring_schedule]{describe_monitoring_schedule} \tab Describes the schedule for a monitoring job\cr
-\link[=sagemaker_describe_notebook_instance]{describe_notebook_instance} \tab Returns information about a notebook instance\cr
-\link[=sagemaker_describe_notebook_instance_lifecycle_config]{describe_notebook_instance_lifecycle_config} \tab Returns a description of a notebook instance lifecycle configuration\cr
-\link[=sagemaker_describe_pipeline]{describe_pipeline} \tab Describes the details of a pipeline\cr
-\link[=sagemaker_describe_pipeline_definition_for_execution]{describe_pipeline_definition_for_execution} \tab Describes the details of an execution's pipeline definition\cr
-\link[=sagemaker_describe_pipeline_execution]{describe_pipeline_execution} \tab Describes the details of a pipeline execution\cr
-\link[=sagemaker_describe_processing_job]{describe_processing_job} \tab Returns a description of a processing job\cr
-\link[=sagemaker_describe_project]{describe_project} \tab Describes the details of a project\cr
-\link[=sagemaker_describe_subscribed_workteam]{describe_subscribed_workteam} \tab Gets information about a work team provided by a vendor\cr
-\link[=sagemaker_describe_training_job]{describe_training_job} \tab Returns information about a training job\cr
-\link[=sagemaker_describe_transform_job]{describe_transform_job} \tab Returns information about a transform job\cr
-\link[=sagemaker_describe_trial]{describe_trial} \tab Provides a list of a trial's properties\cr
-\link[=sagemaker_describe_trial_component]{describe_trial_component} \tab Provides a list of a trials component's properties\cr
-\link[=sagemaker_describe_user_profile]{describe_user_profile} \tab Describes a user profile\cr
-\link[=sagemaker_describe_workforce]{describe_workforce} \tab Lists private workforce information, including workforce name, Amazon Resource Name (ARN), and, if applicable, allowed IP address ranges (CIDRs)\cr
-\link[=sagemaker_describe_workteam]{describe_workteam} \tab Gets information about a specific work team\cr
-\link[=sagemaker_disable_sagemaker_servicecatalog_portfolio]{disable_sagemaker_servicecatalog_portfolio} \tab Disables using Service Catalog in SageMaker\cr
-\link[=sagemaker_disassociate_trial_component]{disassociate_trial_component} \tab Disassociates a trial component from a trial\cr
-\link[=sagemaker_enable_sagemaker_servicecatalog_portfolio]{enable_sagemaker_servicecatalog_portfolio} \tab Enables using Service Catalog in SageMaker\cr
-\link[=sagemaker_get_device_fleet_report]{get_device_fleet_report} \tab Describes a fleet\cr
-\link[=sagemaker_get_model_package_group_policy]{get_model_package_group_policy} \tab Gets a resource policy that manages access for a model group\cr
-\link[=sagemaker_get_sagemaker_servicecatalog_portfolio_status]{get_sagemaker_servicecatalog_portfolio_status} \tab Gets the status of Service Catalog in SageMaker\cr
-\link[=sagemaker_get_search_suggestions]{get_search_suggestions} \tab An auto-complete API for the search functionality in the Amazon SageMaker console\cr
-\link[=sagemaker_list_actions]{list_actions} \tab Lists the actions in your account and their properties\cr
-\link[=sagemaker_list_algorithms]{list_algorithms} \tab Lists the machine learning algorithms that have been created\cr
-\link[=sagemaker_list_app_image_configs]{list_app_image_configs} \tab Lists the AppImageConfigs in your account and their properties\cr
-\link[=sagemaker_list_apps]{list_apps} \tab Lists apps\cr
-\link[=sagemaker_list_artifacts]{list_artifacts} \tab Lists the artifacts in your account and their properties\cr
-\link[=sagemaker_list_associations]{list_associations} \tab Lists the associations in your account and their properties\cr
-\link[=sagemaker_list_auto_ml_jobs]{list_auto_ml_jobs} \tab Request a list of jobs\cr
-\link[=sagemaker_list_candidates_for_auto_ml_job]{list_candidates_for_auto_ml_job} \tab List the Candidates created for the job\cr
-\link[=sagemaker_list_code_repositories]{list_code_repositories} \tab Gets a list of the Git repositories in your account\cr
-\link[=sagemaker_list_compilation_jobs]{list_compilation_jobs} \tab Lists model compilation jobs that satisfy various filters\cr
-\link[=sagemaker_list_contexts]{list_contexts} \tab Lists the contexts in your account and their properties\cr
-\link[=sagemaker_list_data_quality_job_definitions]{list_data_quality_job_definitions} \tab Lists the data quality job definitions in your account\cr
-\link[=sagemaker_list_device_fleets]{list_device_fleets} \tab Returns a list of devices in the fleet\cr
-\link[=sagemaker_list_devices]{list_devices} \tab A list of devices\cr
-\link[=sagemaker_list_domains]{list_domains} \tab Lists the domains\cr
-\link[=sagemaker_list_edge_packaging_jobs]{list_edge_packaging_jobs} \tab Returns a list of edge packaging jobs\cr
-\link[=sagemaker_list_endpoint_configs]{list_endpoint_configs} \tab Lists endpoint configurations\cr
-\link[=sagemaker_list_endpoints]{list_endpoints} \tab Lists endpoints\cr
-\link[=sagemaker_list_experiments]{list_experiments} \tab Lists all the experiments in your account\cr
-\link[=sagemaker_list_feature_groups]{list_feature_groups} \tab List FeatureGroups based on given filter and order\cr
-\link[=sagemaker_list_flow_definitions]{list_flow_definitions} \tab Returns information about the flow definitions in your account\cr
-\link[=sagemaker_list_human_task_uis]{list_human_task_uis} \tab Returns information about the human task user interfaces in your account\cr
-\link[=sagemaker_list_hyper_parameter_tuning_jobs]{list_hyper_parameter_tuning_jobs} \tab Gets a list of HyperParameterTuningJobSummary objects that describe the hyperparameter tuning jobs launched in your account\cr
-\link[=sagemaker_list_images]{list_images} \tab Lists the images in your account and their properties\cr
-\link[=sagemaker_list_image_versions]{list_image_versions} \tab Lists the versions of a specified image and their properties\cr
-\link[=sagemaker_list_labeling_jobs]{list_labeling_jobs} \tab Gets a list of labeling jobs\cr
-\link[=sagemaker_list_labeling_jobs_for_workteam]{list_labeling_jobs_for_workteam} \tab Gets a list of labeling jobs assigned to a specified work team\cr
-\link[=sagemaker_list_model_bias_job_definitions]{list_model_bias_job_definitions} \tab Lists model bias jobs definitions that satisfy various filters\cr
-\link[=sagemaker_list_model_explainability_job_definitions]{list_model_explainability_job_definitions} \tab Lists model explainability job definitions that satisfy various filters\cr
-\link[=sagemaker_list_model_package_groups]{list_model_package_groups} \tab Gets a list of the model groups in your AWS account\cr
-\link[=sagemaker_list_model_packages]{list_model_packages} \tab Lists the model packages that have been created\cr
-\link[=sagemaker_list_model_quality_job_definitions]{list_model_quality_job_definitions} \tab Gets a list of model quality monitoring job definitions in your account\cr
-\link[=sagemaker_list_models]{list_models} \tab Lists models created with the CreateModel API\cr
-\link[=sagemaker_list_monitoring_executions]{list_monitoring_executions} \tab Returns list of all monitoring job executions\cr
-\link[=sagemaker_list_monitoring_schedules]{list_monitoring_schedules} \tab Returns list of all monitoring schedules\cr
-\link[=sagemaker_list_notebook_instance_lifecycle_configs]{list_notebook_instance_lifecycle_configs} \tab Lists notebook instance lifestyle configurations created with the CreateNotebookInstanceLifecycleConfig API\cr
-\link[=sagemaker_list_notebook_instances]{list_notebook_instances} \tab Returns a list of the Amazon SageMaker notebook instances in the requester's account in an AWS Region\cr
-\link[=sagemaker_list_pipeline_executions]{list_pipeline_executions} \tab Gets a list of the pipeline executions\cr
-\link[=sagemaker_list_pipeline_execution_steps]{list_pipeline_execution_steps} \tab Gets a list of PipeLineExecutionStep objects\cr
-\link[=sagemaker_list_pipeline_parameters_for_execution]{list_pipeline_parameters_for_execution} \tab Gets a list of parameters for a pipeline execution\cr
-\link[=sagemaker_list_pipelines]{list_pipelines} \tab Gets a list of pipelines\cr
-\link[=sagemaker_list_processing_jobs]{list_processing_jobs} \tab Lists processing jobs that satisfy various filters\cr
-\link[=sagemaker_list_projects]{list_projects} \tab Gets a list of the projects in an AWS account\cr
-\link[=sagemaker_list_subscribed_workteams]{list_subscribed_workteams} \tab Gets a list of the work teams that you are subscribed to in the AWS Marketplace\cr
-\link[=sagemaker_list_tags]{list_tags} \tab Returns the tags for the specified Amazon SageMaker resource\cr
-\link[=sagemaker_list_training_jobs]{list_training_jobs} \tab Lists training jobs\cr
-\link[=sagemaker_list_training_jobs_for_hyper_parameter_tuning_job]{list_training_jobs_for_hyper_parameter_tuning_job} \tab Gets a list of TrainingJobSummary objects that describe the training jobs that a hyperparameter tuning job launched\cr
-\link[=sagemaker_list_transform_jobs]{list_transform_jobs} \tab Lists transform jobs\cr
-\link[=sagemaker_list_trial_components]{list_trial_components} \tab Lists the trial components in your account\cr
-\link[=sagemaker_list_trials]{list_trials} \tab Lists the trials in your account\cr
-\link[=sagemaker_list_user_profiles]{list_user_profiles} \tab Lists user profiles\cr
-\link[=sagemaker_list_workforces]{list_workforces} \tab Use this operation to list all private and vendor workforces in an AWS Region\cr
-\link[=sagemaker_list_workteams]{list_workteams} \tab Gets a list of private work teams that you have defined in a region\cr
-\link[=sagemaker_put_model_package_group_policy]{put_model_package_group_policy} \tab Adds a resouce policy to control access to a model group\cr
-\link[=sagemaker_register_devices]{register_devices} \tab Register devices\cr
-\link[=sagemaker_render_ui_template]{render_ui_template} \tab Renders the UI template so that you can preview the worker's experience\cr
-\link[=sagemaker_search]{search} \tab Finds Amazon SageMaker resources that match a search query\cr
-\link[=sagemaker_start_monitoring_schedule]{start_monitoring_schedule} \tab Starts a previously stopped monitoring schedule\cr
-\link[=sagemaker_start_notebook_instance]{start_notebook_instance} \tab Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume\cr
-\link[=sagemaker_start_pipeline_execution]{start_pipeline_execution} \tab Starts a pipeline execution\cr
-\link[=sagemaker_stop_auto_ml_job]{stop_auto_ml_job} \tab A method for forcing the termination of a running job\cr
-\link[=sagemaker_stop_compilation_job]{stop_compilation_job} \tab Stops a model compilation job\cr
-\link[=sagemaker_stop_edge_packaging_job]{stop_edge_packaging_job} \tab Request to stop an edge packaging job\cr
-\link[=sagemaker_stop_hyper_parameter_tuning_job]{stop_hyper_parameter_tuning_job} \tab Stops a running hyperparameter tuning job and all running training jobs that the tuning job launched\cr
-\link[=sagemaker_stop_labeling_job]{stop_labeling_job} \tab Stops a running labeling job\cr
-\link[=sagemaker_stop_monitoring_schedule]{stop_monitoring_schedule} \tab Stops a previously started monitoring schedule\cr
-\link[=sagemaker_stop_notebook_instance]{stop_notebook_instance} \tab Terminates the ML compute instance\cr
-\link[=sagemaker_stop_pipeline_execution]{stop_pipeline_execution} \tab Stops a pipeline execution\cr
-\link[=sagemaker_stop_processing_job]{stop_processing_job} \tab Stops a processing job\cr
-\link[=sagemaker_stop_training_job]{stop_training_job} \tab Stops a training job\cr
-\link[=sagemaker_stop_transform_job]{stop_transform_job} \tab Stops a transform job\cr
-\link[=sagemaker_update_action]{update_action} \tab Updates an action\cr
-\link[=sagemaker_update_app_image_config]{update_app_image_config} \tab Updates the properties of an AppImageConfig\cr
-\link[=sagemaker_update_artifact]{update_artifact} \tab Updates an artifact\cr
-\link[=sagemaker_update_code_repository]{update_code_repository} \tab Updates the specified Git repository with the specified values\cr
-\link[=sagemaker_update_context]{update_context} \tab Updates a context\cr
-\link[=sagemaker_update_device_fleet]{update_device_fleet} \tab Updates a fleet of devices\cr
-\link[=sagemaker_update_devices]{update_devices} \tab Updates one or more devices in a fleet\cr
-\link[=sagemaker_update_domain]{update_domain} \tab Updates the default settings for new user profiles in the domain\cr
-\link[=sagemaker_update_endpoint]{update_endpoint} \tab Deploys the new EndpointConfig specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous EndpointConfig (there is no availability loss)\cr
-\link[=sagemaker_update_endpoint_weights_and_capacities]{update_endpoint_weights_and_capacities} \tab Updates variant weight of one or more variants associated with an existing endpoint, or capacity of one variant associated with an existing endpoint\cr
-\link[=sagemaker_update_experiment]{update_experiment} \tab Adds, updates, or removes the description of an experiment\cr
-\link[=sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker image\cr
-\link[=sagemaker_update_model_package]{update_model_package} \tab Updates a versioned model\cr
-\link[=sagemaker_update_monitoring_schedule]{update_monitoring_schedule} \tab Updates a previously created schedule\cr
-\link[=sagemaker_update_notebook_instance]{update_notebook_instance} \tab Updates a notebook instance\cr
-\link[=sagemaker_update_notebook_instance_lifecycle_config]{update_notebook_instance_lifecycle_config} \tab Updates a notebook instance lifecycle configuration created with the CreateNotebookInstanceLifecycleConfig API\cr
-\link[=sagemaker_update_pipeline]{update_pipeline} \tab Updates a pipeline\cr
-\link[=sagemaker_update_pipeline_execution]{update_pipeline_execution} \tab Updates a pipeline execution\cr
-\link[=sagemaker_update_training_job]{update_training_job} \tab Update a model training job to request a new Debugger profiling configuration\cr
-\link[=sagemaker_update_trial]{update_trial} \tab Updates the display name of a trial\cr
-\link[=sagemaker_update_trial_component]{update_trial_component} \tab Updates one or more properties of a trial component\cr
-\link[=sagemaker_update_user_profile]{update_user_profile} \tab Updates a user profile\cr
-\link[=sagemaker_update_workforce]{update_workforce} \tab Use this operation to update your workforce\cr
-\link[=sagemaker_update_workteam]{update_workteam} \tab Updates an existing work team with new member definitions or description
+\link[paws.machine.learning:sagemaker_add_association]{add_association} \tab Creates an association between the source and the destination\cr
+\link[paws.machine.learning:sagemaker_add_tags]{add_tags} \tab Adds or overwrites one or more tags for the specified SageMaker resource\cr
+\link[paws.machine.learning:sagemaker_associate_trial_component]{associate_trial_component} \tab Associates a trial component with a trial\cr
+\link[paws.machine.learning:sagemaker_batch_describe_model_package]{batch_describe_model_package} \tab This action batch describes a list of versioned model packages\cr
+\link[paws.machine.learning:sagemaker_create_action]{create_action} \tab Creates an action\cr
+\link[paws.machine.learning:sagemaker_create_algorithm]{create_algorithm} \tab Create a machine learning algorithm that you can use in SageMaker and list in the Amazon Web Services Marketplace\cr
+\link[paws.machine.learning:sagemaker_create_app]{create_app} \tab Creates a running app for the specified UserProfile\cr
+\link[paws.machine.learning:sagemaker_create_app_image_config]{create_app_image_config} \tab Creates a configuration for running a SageMaker image as a KernelGateway app\cr
+\link[paws.machine.learning:sagemaker_create_artifact]{create_artifact} \tab Creates an artifact\cr
+\link[paws.machine.learning:sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job\cr
+\link[paws.machine.learning:sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your SageMaker account\cr
+\link[paws.machine.learning:sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job\cr
+\link[paws.machine.learning:sagemaker_create_context]{create_context} \tab Creates a context\cr
+\link[paws.machine.learning:sagemaker_create_data_quality_job_definition]{create_data_quality_job_definition} \tab Creates a definition for a job that monitors data quality and drift\cr
+\link[paws.machine.learning:sagemaker_create_device_fleet]{create_device_fleet} \tab Creates a device fleet\cr
+\link[paws.machine.learning:sagemaker_create_domain]{create_domain} \tab Creates a Domain used by Amazon SageMaker Studio\cr
+\link[paws.machine.learning:sagemaker_create_edge_deployment_plan]{create_edge_deployment_plan} \tab Creates an edge deployment plan, consisting of multiple stages\cr
+\link[paws.machine.learning:sagemaker_create_edge_deployment_stage]{create_edge_deployment_stage} \tab Creates a new stage in an existing edge deployment plan\cr
+\link[paws.machine.learning:sagemaker_create_edge_packaging_job]{create_edge_packaging_job} \tab Starts a SageMaker Edge Manager model packaging job\cr
+\link[paws.machine.learning:sagemaker_create_endpoint]{create_endpoint} \tab Creates an endpoint using the endpoint configuration specified in the request\cr
+\link[paws.machine.learning:sagemaker_create_endpoint_config]{create_endpoint_config} \tab Creates an endpoint configuration that SageMaker hosting services uses to deploy models\cr
+\link[paws.machine.learning:sagemaker_create_experiment]{create_experiment} \tab Creates an SageMaker experiment\cr
+\link[paws.machine.learning:sagemaker_create_feature_group]{create_feature_group} \tab Create a new FeatureGroup\cr
+\link[paws.machine.learning:sagemaker_create_flow_definition]{create_flow_definition} \tab Creates a flow definition\cr
+\link[paws.machine.learning:sagemaker_create_human_task_ui]{create_human_task_ui} \tab Defines the settings you will use for the human review workflow user interface\cr
+\link[paws.machine.learning:sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job\cr
+\link[paws.machine.learning:sagemaker_create_image]{create_image} \tab Creates a custom SageMaker image\cr
+\link[paws.machine.learning:sagemaker_create_image_version]{create_image_version} \tab Creates a version of the SageMaker image specified by ImageName\cr
+\link[paws.machine.learning:sagemaker_create_inference_recommendations_job]{create_inference_recommendations_job} \tab Starts a recommendation job\cr
+\link[paws.machine.learning:sagemaker_create_labeling_job]{create_labeling_job} \tab Creates a job that uses workers to label the data objects in your input dataset\cr
+\link[paws.machine.learning:sagemaker_create_model]{create_model} \tab Creates a model in SageMaker\cr
+\link[paws.machine.learning:sagemaker_create_model_bias_job_definition]{create_model_bias_job_definition} \tab Creates the definition for a model bias job\cr
+\link[paws.machine.learning:sagemaker_create_model_explainability_job_definition]{create_model_explainability_job_definition} \tab Creates the definition for a model explainability job\cr
+\link[paws.machine.learning:sagemaker_create_model_package]{create_model_package} \tab Creates a model package that you can use to create SageMaker models or list on Amazon Web Services Marketplace, or a versioned model that is part of a model group\cr
+\link[paws.machine.learning:sagemaker_create_model_package_group]{create_model_package_group} \tab Creates a model group\cr
+\link[paws.machine.learning:sagemaker_create_model_quality_job_definition]{create_model_quality_job_definition} \tab Creates a definition for a job that monitors model quality and drift\cr
+\link[paws.machine.learning:sagemaker_create_monitoring_schedule]{create_monitoring_schedule} \tab Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endoint\cr
+\link[paws.machine.learning:sagemaker_create_notebook_instance]{create_notebook_instance} \tab Creates an SageMaker notebook instance\cr
+\link[paws.machine.learning:sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config} \tab Creates a lifecycle configuration that you can associate with a notebook instance\cr
+\link[paws.machine.learning:sagemaker_create_pipeline]{create_pipeline} \tab Creates a pipeline using a JSON pipeline definition\cr
+\link[paws.machine.learning:sagemaker_create_presigned_domain_url]{create_presigned_domain_url} \tab Creates a URL for a specified UserProfile in a Domain\cr
+\link[paws.machine.learning:sagemaker_create_presigned_notebook_instance_url]{create_presigned_notebook_instance_url} \tab Returns a URL that you can use to connect to the Jupyter server from a notebook instance\cr
+\link[paws.machine.learning:sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job\cr
+\link[paws.machine.learning:sagemaker_create_project]{create_project} \tab Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model\cr
+\link[paws.machine.learning:sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Studio Lifecycle Configuration\cr
+\link[paws.machine.learning:sagemaker_create_training_job]{create_training_job} \tab Starts a model training job\cr
+\link[paws.machine.learning:sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job\cr
+\link[paws.machine.learning:sagemaker_create_trial]{create_trial} \tab Creates an SageMaker trial\cr
+\link[paws.machine.learning:sagemaker_create_trial_component]{create_trial_component} \tab Creates a trial component, which is a stage of a machine learning trial\cr
+\link[paws.machine.learning:sagemaker_create_user_profile]{create_user_profile} \tab Creates a user profile\cr
+\link[paws.machine.learning:sagemaker_create_workforce]{create_workforce} \tab Use this operation to create a workforce\cr
+\link[paws.machine.learning:sagemaker_create_workteam]{create_workteam} \tab Creates a new work team for labeling your data\cr
+\link[paws.machine.learning:sagemaker_delete_action]{delete_action} \tab Deletes an action\cr
+\link[paws.machine.learning:sagemaker_delete_algorithm]{delete_algorithm} \tab Removes the specified algorithm from your account\cr
+\link[paws.machine.learning:sagemaker_delete_app]{delete_app} \tab Used to stop and delete an app\cr
+\link[paws.machine.learning:sagemaker_delete_app_image_config]{delete_app_image_config} \tab Deletes an AppImageConfig\cr
+\link[paws.machine.learning:sagemaker_delete_artifact]{delete_artifact} \tab Deletes an artifact\cr
+\link[paws.machine.learning:sagemaker_delete_association]{delete_association} \tab Deletes an association\cr
+\link[paws.machine.learning:sagemaker_delete_code_repository]{delete_code_repository} \tab Deletes the specified Git repository from your account\cr
+\link[paws.machine.learning:sagemaker_delete_context]{delete_context} \tab Deletes an context\cr
+\link[paws.machine.learning:sagemaker_delete_data_quality_job_definition]{delete_data_quality_job_definition} \tab Deletes a data quality monitoring job definition\cr
+\link[paws.machine.learning:sagemaker_delete_device_fleet]{delete_device_fleet} \tab Deletes a fleet\cr
+\link[paws.machine.learning:sagemaker_delete_domain]{delete_domain} \tab Used to delete a domain\cr
+\link[paws.machine.learning:sagemaker_delete_edge_deployment_plan]{delete_edge_deployment_plan} \tab Deletes an edge deployment plan if (and only if) all the stages in the plan are inactive or there are no stages in the plan\cr
+\link[paws.machine.learning:sagemaker_delete_edge_deployment_stage]{delete_edge_deployment_stage} \tab Delete a stage in an edge deployment plan if (and only if) the stage is inactive\cr
+\link[paws.machine.learning:sagemaker_delete_endpoint]{delete_endpoint} \tab Deletes an endpoint\cr
+\link[paws.machine.learning:sagemaker_delete_endpoint_config]{delete_endpoint_config} \tab Deletes an endpoint configuration\cr
+\link[paws.machine.learning:sagemaker_delete_experiment]{delete_experiment} \tab Deletes an SageMaker experiment\cr
+\link[paws.machine.learning:sagemaker_delete_feature_group]{delete_feature_group} \tab Delete the FeatureGroup and any data that was written to the OnlineStore of the FeatureGroup\cr
+\link[paws.machine.learning:sagemaker_delete_flow_definition]{delete_flow_definition} \tab Deletes the specified flow definition\cr
+\link[paws.machine.learning:sagemaker_delete_human_task_ui]{delete_human_task_ui} \tab Use this operation to delete a human task user interface (worker task template)\cr
+\link[paws.machine.learning:sagemaker_delete_image]{delete_image} \tab Deletes a SageMaker image and all versions of the image\cr
+\link[paws.machine.learning:sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker image\cr
+\link[paws.machine.learning:sagemaker_delete_model]{delete_model} \tab Deletes a model\cr
+\link[paws.machine.learning:sagemaker_delete_model_bias_job_definition]{delete_model_bias_job_definition} \tab Deletes an Amazon SageMaker model bias job definition\cr
+\link[paws.machine.learning:sagemaker_delete_model_explainability_job_definition]{delete_model_explainability_job_definition} \tab Deletes an Amazon SageMaker model explainability job definition\cr
+\link[paws.machine.learning:sagemaker_delete_model_package]{delete_model_package} \tab Deletes a model package\cr
+\link[paws.machine.learning:sagemaker_delete_model_package_group]{delete_model_package_group} \tab Deletes the specified model group\cr
+\link[paws.machine.learning:sagemaker_delete_model_package_group_policy]{delete_model_package_group_policy} \tab Deletes a model group resource policy\cr
+\link[paws.machine.learning:sagemaker_delete_model_quality_job_definition]{delete_model_quality_job_definition} \tab Deletes the secified model quality monitoring job definition\cr
+\link[paws.machine.learning:sagemaker_delete_monitoring_schedule]{delete_monitoring_schedule} \tab Deletes a monitoring schedule\cr
+\link[paws.machine.learning:sagemaker_delete_notebook_instance]{delete_notebook_instance} \tab Deletes an SageMaker notebook instance\cr
+\link[paws.machine.learning:sagemaker_delete_notebook_instance_lifecycle_config]{delete_notebook_instance_lifecycle_config} \tab Deletes a notebook instance lifecycle configuration\cr
+\link[paws.machine.learning:sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no running instances of the pipeline\cr
+\link[paws.machine.learning:sagemaker_delete_project]{delete_project} \tab Delete the specified project\cr
+\link[paws.machine.learning:sagemaker_delete_studio_lifecycle_config]{delete_studio_lifecycle_config} \tab Deletes the Studio Lifecycle Configuration\cr
+\link[paws.machine.learning:sagemaker_delete_tags]{delete_tags} \tab Deletes the specified tags from an SageMaker resource\cr
+\link[paws.machine.learning:sagemaker_delete_trial]{delete_trial} \tab Deletes the specified trial\cr
+\link[paws.machine.learning:sagemaker_delete_trial_component]{delete_trial_component} \tab Deletes the specified trial component\cr
+\link[paws.machine.learning:sagemaker_delete_user_profile]{delete_user_profile} \tab Deletes a user profile\cr
+\link[paws.machine.learning:sagemaker_delete_workforce]{delete_workforce} \tab Use this operation to delete a workforce\cr
+\link[paws.machine.learning:sagemaker_delete_workteam]{delete_workteam} \tab Deletes an existing work team\cr
+\link[paws.machine.learning:sagemaker_deregister_devices]{deregister_devices} \tab Deregisters the specified devices\cr
+\link[paws.machine.learning:sagemaker_describe_action]{describe_action} \tab Describes an action\cr
+\link[paws.machine.learning:sagemaker_describe_algorithm]{describe_algorithm} \tab Returns a description of the specified algorithm that is in your account\cr
+\link[paws.machine.learning:sagemaker_describe_app]{describe_app} \tab Describes the app\cr
+\link[paws.machine.learning:sagemaker_describe_app_image_config]{describe_app_image_config} \tab Describes an AppImageConfig\cr
+\link[paws.machine.learning:sagemaker_describe_artifact]{describe_artifact} \tab Describes an artifact\cr
+\link[paws.machine.learning:sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an Amazon SageMaker AutoML job\cr
+\link[paws.machine.learning:sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
+\link[paws.machine.learning:sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job\cr
+\link[paws.machine.learning:sagemaker_describe_context]{describe_context} \tab Describes a context\cr
+\link[paws.machine.learning:sagemaker_describe_data_quality_job_definition]{describe_data_quality_job_definition} \tab Gets the details of a data quality monitoring job definition\cr
+\link[paws.machine.learning:sagemaker_describe_device]{describe_device} \tab Describes the device\cr
+\link[paws.machine.learning:sagemaker_describe_device_fleet]{describe_device_fleet} \tab A description of the fleet the device belongs to\cr
+\link[paws.machine.learning:sagemaker_describe_domain]{describe_domain} \tab The description of the domain\cr
+\link[paws.machine.learning:sagemaker_describe_edge_deployment_plan]{describe_edge_deployment_plan} \tab Describes an edge deployment plan with deployment status per stage\cr
+\link[paws.machine.learning:sagemaker_describe_edge_packaging_job]{describe_edge_packaging_job} \tab A description of edge packaging jobs\cr
+\link[paws.machine.learning:sagemaker_describe_endpoint]{describe_endpoint} \tab Returns the description of an endpoint\cr
+\link[paws.machine.learning:sagemaker_describe_endpoint_config]{describe_endpoint_config} \tab Returns the description of an endpoint configuration created using the CreateEndpointConfig API\cr
+\link[paws.machine.learning:sagemaker_describe_experiment]{describe_experiment} \tab Provides a list of an experiment's properties\cr
+\link[paws.machine.learning:sagemaker_describe_feature_group]{describe_feature_group} \tab Use this operation to describe a FeatureGroup\cr
+\link[paws.machine.learning:sagemaker_describe_feature_metadata]{describe_feature_metadata} \tab Shows the metadata for a feature within a feature group\cr
+\link[paws.machine.learning:sagemaker_describe_flow_definition]{describe_flow_definition} \tab Returns information about the specified flow definition\cr
+\link[paws.machine.learning:sagemaker_describe_human_task_ui]{describe_human_task_ui} \tab Returns information about the requested human task user interface (worker task template)\cr
+\link[paws.machine.learning:sagemaker_describe_hyper_parameter_tuning_job]{describe_hyper_parameter_tuning_job} \tab Gets a description of a hyperparameter tuning job\cr
+\link[paws.machine.learning:sagemaker_describe_image]{describe_image} \tab Describes a SageMaker image\cr
+\link[paws.machine.learning:sagemaker_describe_image_version]{describe_image_version} \tab Describes a version of a SageMaker image\cr
+\link[paws.machine.learning:sagemaker_describe_inference_recommendations_job]{describe_inference_recommendations_job} \tab Provides the results of the Inference Recommender job\cr
+\link[paws.machine.learning:sagemaker_describe_labeling_job]{describe_labeling_job} \tab Gets information about a labeling job\cr
+\link[paws.machine.learning:sagemaker_describe_lineage_group]{describe_lineage_group} \tab Provides a list of properties for the requested lineage group\cr
+\link[paws.machine.learning:sagemaker_describe_model]{describe_model} \tab Describes a model that you created using the CreateModel API\cr
+\link[paws.machine.learning:sagemaker_describe_model_bias_job_definition]{describe_model_bias_job_definition} \tab Returns a description of a model bias job definition\cr
+\link[paws.machine.learning:sagemaker_describe_model_explainability_job_definition]{describe_model_explainability_job_definition} \tab Returns a description of a model explainability job definition\cr
+\link[paws.machine.learning:sagemaker_describe_model_package]{describe_model_package} \tab Returns a description of the specified model package, which is used to create SageMaker models or list them on Amazon Web Services Marketplace\cr
+\link[paws.machine.learning:sagemaker_describe_model_package_group]{describe_model_package_group} \tab Gets a description for the specified model group\cr
+\link[paws.machine.learning:sagemaker_describe_model_quality_job_definition]{describe_model_quality_job_definition} \tab Returns a description of a model quality job definition\cr
+\link[paws.machine.learning:sagemaker_describe_monitoring_schedule]{describe_monitoring_schedule} \tab Describes the schedule for a monitoring job\cr
+\link[paws.machine.learning:sagemaker_describe_notebook_instance]{describe_notebook_instance} \tab Returns information about a notebook instance\cr
+\link[paws.machine.learning:sagemaker_describe_notebook_instance_lifecycle_config]{describe_notebook_instance_lifecycle_config} \tab Returns a description of a notebook instance lifecycle configuration\cr
+\link[paws.machine.learning:sagemaker_describe_pipeline]{describe_pipeline} \tab Describes the details of a pipeline\cr
+\link[paws.machine.learning:sagemaker_describe_pipeline_definition_for_execution]{describe_pipeline_definition_for_execution} \tab Describes the details of an execution's pipeline definition\cr
+\link[paws.machine.learning:sagemaker_describe_pipeline_execution]{describe_pipeline_execution} \tab Describes the details of a pipeline execution\cr
+\link[paws.machine.learning:sagemaker_describe_processing_job]{describe_processing_job} \tab Returns a description of a processing job\cr
+\link[paws.machine.learning:sagemaker_describe_project]{describe_project} \tab Describes the details of a project\cr
+\link[paws.machine.learning:sagemaker_describe_studio_lifecycle_config]{describe_studio_lifecycle_config} \tab Describes the Studio Lifecycle Configuration\cr
+\link[paws.machine.learning:sagemaker_describe_subscribed_workteam]{describe_subscribed_workteam} \tab Gets information about a work team provided by a vendor\cr
+\link[paws.machine.learning:sagemaker_describe_training_job]{describe_training_job} \tab Returns information about a training job\cr
+\link[paws.machine.learning:sagemaker_describe_transform_job]{describe_transform_job} \tab Returns information about a transform job\cr
+\link[paws.machine.learning:sagemaker_describe_trial]{describe_trial} \tab Provides a list of a trial's properties\cr
+\link[paws.machine.learning:sagemaker_describe_trial_component]{describe_trial_component} \tab Provides a list of a trials component's properties\cr
+\link[paws.machine.learning:sagemaker_describe_user_profile]{describe_user_profile} \tab Describes a user profile\cr
+\link[paws.machine.learning:sagemaker_describe_workforce]{describe_workforce} \tab Lists private workforce information, including workforce name, Amazon Resource Name (ARN), and, if applicable, allowed IP address ranges (CIDRs)\cr
+\link[paws.machine.learning:sagemaker_describe_workteam]{describe_workteam} \tab Gets information about a specific work team\cr
+\link[paws.machine.learning:sagemaker_disable_sagemaker_servicecatalog_portfolio]{disable_sagemaker_servicecatalog_portfolio} \tab Disables using Service Catalog in SageMaker\cr
+\link[paws.machine.learning:sagemaker_disassociate_trial_component]{disassociate_trial_component} \tab Disassociates a trial component from a trial\cr
+\link[paws.machine.learning:sagemaker_enable_sagemaker_servicecatalog_portfolio]{enable_sagemaker_servicecatalog_portfolio} \tab Enables using Service Catalog in SageMaker\cr
+\link[paws.machine.learning:sagemaker_get_device_fleet_report]{get_device_fleet_report} \tab Describes a fleet\cr
+\link[paws.machine.learning:sagemaker_get_lineage_group_policy]{get_lineage_group_policy} \tab The resource policy for the lineage group\cr
+\link[paws.machine.learning:sagemaker_get_model_package_group_policy]{get_model_package_group_policy} \tab Gets a resource policy that manages access for a model group\cr
+\link[paws.machine.learning:sagemaker_get_sagemaker_servicecatalog_portfolio_status]{get_sagemaker_servicecatalog_portfolio_status} \tab Gets the status of Service Catalog in SageMaker\cr
+\link[paws.machine.learning:sagemaker_get_search_suggestions]{get_search_suggestions} \tab An auto-complete API for the search functionality in the Amazon SageMaker console\cr
+\link[paws.machine.learning:sagemaker_list_actions]{list_actions} \tab Lists the actions in your account and their properties\cr
+\link[paws.machine.learning:sagemaker_list_algorithms]{list_algorithms} \tab Lists the machine learning algorithms that have been created\cr
+\link[paws.machine.learning:sagemaker_list_app_image_configs]{list_app_image_configs} \tab Lists the AppImageConfigs in your account and their properties\cr
+\link[paws.machine.learning:sagemaker_list_apps]{list_apps} \tab Lists apps\cr
+\link[paws.machine.learning:sagemaker_list_artifacts]{list_artifacts} \tab Lists the artifacts in your account and their properties\cr
+\link[paws.machine.learning:sagemaker_list_associations]{list_associations} \tab Lists the associations in your account and their properties\cr
+\link[paws.machine.learning:sagemaker_list_auto_ml_jobs]{list_auto_ml_jobs} \tab Request a list of jobs\cr
+\link[paws.machine.learning:sagemaker_list_candidates_for_auto_ml_job]{list_candidates_for_auto_ml_job} \tab List the candidates created for the job\cr
+\link[paws.machine.learning:sagemaker_list_code_repositories]{list_code_repositories} \tab Gets a list of the Git repositories in your account\cr
+\link[paws.machine.learning:sagemaker_list_compilation_jobs]{list_compilation_jobs} \tab Lists model compilation jobs that satisfy various filters\cr
+\link[paws.machine.learning:sagemaker_list_contexts]{list_contexts} \tab Lists the contexts in your account and their properties\cr
+\link[paws.machine.learning:sagemaker_list_data_quality_job_definitions]{list_data_quality_job_definitions} \tab Lists the data quality job definitions in your account\cr
+\link[paws.machine.learning:sagemaker_list_device_fleets]{list_device_fleets} \tab Returns a list of devices in the fleet\cr
+\link[paws.machine.learning:sagemaker_list_devices]{list_devices} \tab A list of devices\cr
+\link[paws.machine.learning:sagemaker_list_domains]{list_domains} \tab Lists the domains\cr
+\link[paws.machine.learning:sagemaker_list_edge_deployment_plans]{list_edge_deployment_plans} \tab Lists all edge deployment plans\cr
+\link[paws.machine.learning:sagemaker_list_edge_packaging_jobs]{list_edge_packaging_jobs} \tab Returns a list of edge packaging jobs\cr
+\link[paws.machine.learning:sagemaker_list_endpoint_configs]{list_endpoint_configs} \tab Lists endpoint configurations\cr
+\link[paws.machine.learning:sagemaker_list_endpoints]{list_endpoints} \tab Lists endpoints\cr
+\link[paws.machine.learning:sagemaker_list_experiments]{list_experiments} \tab Lists all the experiments in your account\cr
+\link[paws.machine.learning:sagemaker_list_feature_groups]{list_feature_groups} \tab List FeatureGroups based on given filter and order\cr
+\link[paws.machine.learning:sagemaker_list_flow_definitions]{list_flow_definitions} \tab Returns information about the flow definitions in your account\cr
+\link[paws.machine.learning:sagemaker_list_human_task_uis]{list_human_task_uis} \tab Returns information about the human task user interfaces in your account\cr
+\link[paws.machine.learning:sagemaker_list_hyper_parameter_tuning_jobs]{list_hyper_parameter_tuning_jobs} \tab Gets a list of HyperParameterTuningJobSummary objects that describe the hyperparameter tuning jobs launched in your account\cr
+\link[paws.machine.learning:sagemaker_list_images]{list_images} \tab Lists the images in your account and their properties\cr
+\link[paws.machine.learning:sagemaker_list_image_versions]{list_image_versions} \tab Lists the versions of a specified image and their properties\cr
+\link[paws.machine.learning:sagemaker_list_inference_recommendations_jobs]{list_inference_recommendations_jobs} \tab Lists recommendation jobs that satisfy various filters\cr
+\link[paws.machine.learning:sagemaker_list_labeling_jobs]{list_labeling_jobs} \tab Gets a list of labeling jobs\cr
+\link[paws.machine.learning:sagemaker_list_labeling_jobs_for_workteam]{list_labeling_jobs_for_workteam} \tab Gets a list of labeling jobs assigned to a specified work team\cr
+\link[paws.machine.learning:sagemaker_list_lineage_groups]{list_lineage_groups} \tab A list of lineage groups shared with your Amazon Web Services account\cr
+\link[paws.machine.learning:sagemaker_list_model_bias_job_definitions]{list_model_bias_job_definitions} \tab Lists model bias jobs definitions that satisfy various filters\cr
+\link[paws.machine.learning:sagemaker_list_model_explainability_job_definitions]{list_model_explainability_job_definitions} \tab Lists model explainability job definitions that satisfy various filters\cr
+\link[paws.machine.learning:sagemaker_list_model_metadata]{list_model_metadata} \tab Lists the domain, framework, task, and model name of standard machine learning models found in common model zoos\cr
+\link[paws.machine.learning:sagemaker_list_model_package_groups]{list_model_package_groups} \tab Gets a list of the model groups in your Amazon Web Services account\cr
+\link[paws.machine.learning:sagemaker_list_model_packages]{list_model_packages} \tab Lists the model packages that have been created\cr
+\link[paws.machine.learning:sagemaker_list_model_quality_job_definitions]{list_model_quality_job_definitions} \tab Gets a list of model quality monitoring job definitions in your account\cr
+\link[paws.machine.learning:sagemaker_list_models]{list_models} \tab Lists models created with the CreateModel API\cr
+\link[paws.machine.learning:sagemaker_list_monitoring_executions]{list_monitoring_executions} \tab Returns list of all monitoring job executions\cr
+\link[paws.machine.learning:sagemaker_list_monitoring_schedules]{list_monitoring_schedules} \tab Returns list of all monitoring schedules\cr
+\link[paws.machine.learning:sagemaker_list_notebook_instance_lifecycle_configs]{list_notebook_instance_lifecycle_configs} \tab Lists notebook instance lifestyle configurations created with the CreateNotebookInstanceLifecycleConfig API\cr
+\link[paws.machine.learning:sagemaker_list_notebook_instances]{list_notebook_instances} \tab Returns a list of the SageMaker notebook instances in the requester's account in an Amazon Web Services Region\cr
+\link[paws.machine.learning:sagemaker_list_pipeline_executions]{list_pipeline_executions} \tab Gets a list of the pipeline executions\cr
+\link[paws.machine.learning:sagemaker_list_pipeline_execution_steps]{list_pipeline_execution_steps} \tab Gets a list of PipeLineExecutionStep objects\cr
+\link[paws.machine.learning:sagemaker_list_pipeline_parameters_for_execution]{list_pipeline_parameters_for_execution} \tab Gets a list of parameters for a pipeline execution\cr
+\link[paws.machine.learning:sagemaker_list_pipelines]{list_pipelines} \tab Gets a list of pipelines\cr
+\link[paws.machine.learning:sagemaker_list_processing_jobs]{list_processing_jobs} \tab Lists processing jobs that satisfy various filters\cr
+\link[paws.machine.learning:sagemaker_list_projects]{list_projects} \tab Gets a list of the projects in an Amazon Web Services account\cr
+\link[paws.machine.learning:sagemaker_list_stage_devices]{list_stage_devices} \tab Lists devices allocated to the stage, containing detailed device information and deployment status\cr
+\link[paws.machine.learning:sagemaker_list_studio_lifecycle_configs]{list_studio_lifecycle_configs} \tab Lists the Studio Lifecycle Configurations in your Amazon Web Services Account\cr
+\link[paws.machine.learning:sagemaker_list_subscribed_workteams]{list_subscribed_workteams} \tab Gets a list of the work teams that you are subscribed to in the Amazon Web Services Marketplace\cr
+\link[paws.machine.learning:sagemaker_list_tags]{list_tags} \tab Returns the tags for the specified SageMaker resource\cr
+\link[paws.machine.learning:sagemaker_list_training_jobs]{list_training_jobs} \tab Lists training jobs\cr
+\link[paws.machine.learning:sagemaker_list_training_jobs_for_hyper_parameter_tuning_job]{list_training_jobs_for_hyper_parameter_tuning_job} \tab Gets a list of TrainingJobSummary objects that describe the training jobs that a hyperparameter tuning job launched\cr
+\link[paws.machine.learning:sagemaker_list_transform_jobs]{list_transform_jobs} \tab Lists transform jobs\cr
+\link[paws.machine.learning:sagemaker_list_trial_components]{list_trial_components} \tab Lists the trial components in your account\cr
+\link[paws.machine.learning:sagemaker_list_trials]{list_trials} \tab Lists the trials in your account\cr
+\link[paws.machine.learning:sagemaker_list_user_profiles]{list_user_profiles} \tab Lists user profiles\cr
+\link[paws.machine.learning:sagemaker_list_workforces]{list_workforces} \tab Use this operation to list all private and vendor workforces in an Amazon Web Services Region\cr
+\link[paws.machine.learning:sagemaker_list_workteams]{list_workteams} \tab Gets a list of private work teams that you have defined in a region\cr
+\link[paws.machine.learning:sagemaker_put_model_package_group_policy]{put_model_package_group_policy} \tab Adds a resouce policy to control access to a model group\cr
+\link[paws.machine.learning:sagemaker_query_lineage]{query_lineage} \tab Use this action to inspect your lineage and discover relationships between entities\cr
+\link[paws.machine.learning:sagemaker_register_devices]{register_devices} \tab Register devices\cr
+\link[paws.machine.learning:sagemaker_render_ui_template]{render_ui_template} \tab Renders the UI template so that you can preview the worker's experience\cr
+\link[paws.machine.learning:sagemaker_retry_pipeline_execution]{retry_pipeline_execution} \tab Retry the execution of the pipeline\cr
+\link[paws.machine.learning:sagemaker_search]{search} \tab Finds Amazon SageMaker resources that match a search query\cr
+\link[paws.machine.learning:sagemaker_send_pipeline_execution_step_failure]{send_pipeline_execution_step_failure} \tab Notifies the pipeline that the execution of a callback step failed, along with a message describing why\cr
+\link[paws.machine.learning:sagemaker_send_pipeline_execution_step_success]{send_pipeline_execution_step_success} \tab Notifies the pipeline that the execution of a callback step succeeded and provides a list of the step's output parameters\cr
+\link[paws.machine.learning:sagemaker_start_edge_deployment_stage]{start_edge_deployment_stage} \tab Starts a stage in an edge deployment plan\cr
+\link[paws.machine.learning:sagemaker_start_monitoring_schedule]{start_monitoring_schedule} \tab Starts a previously stopped monitoring schedule\cr
+\link[paws.machine.learning:sagemaker_start_notebook_instance]{start_notebook_instance} \tab Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume\cr
+\link[paws.machine.learning:sagemaker_start_pipeline_execution]{start_pipeline_execution} \tab Starts a pipeline execution\cr
+\link[paws.machine.learning:sagemaker_stop_auto_ml_job]{stop_auto_ml_job} \tab A method for forcing the termination of a running job\cr
+\link[paws.machine.learning:sagemaker_stop_compilation_job]{stop_compilation_job} \tab Stops a model compilation job\cr
+\link[paws.machine.learning:sagemaker_stop_edge_deployment_stage]{stop_edge_deployment_stage} \tab Stops a stage in an edge deployment plan\cr
+\link[paws.machine.learning:sagemaker_stop_edge_packaging_job]{stop_edge_packaging_job} \tab Request to stop an edge packaging job\cr
+\link[paws.machine.learning:sagemaker_stop_hyper_parameter_tuning_job]{stop_hyper_parameter_tuning_job} \tab Stops a running hyperparameter tuning job and all running training jobs that the tuning job launched\cr
+\link[paws.machine.learning:sagemaker_stop_inference_recommendations_job]{stop_inference_recommendations_job} \tab Stops an Inference Recommender job\cr
+\link[paws.machine.learning:sagemaker_stop_labeling_job]{stop_labeling_job} \tab Stops a running labeling job\cr
+\link[paws.machine.learning:sagemaker_stop_monitoring_schedule]{stop_monitoring_schedule} \tab Stops a previously started monitoring schedule\cr
+\link[paws.machine.learning:sagemaker_stop_notebook_instance]{stop_notebook_instance} \tab Terminates the ML compute instance\cr
+\link[paws.machine.learning:sagemaker_stop_pipeline_execution]{stop_pipeline_execution} \tab Stops a pipeline execution\cr
+\link[paws.machine.learning:sagemaker_stop_processing_job]{stop_processing_job} \tab Stops a processing job\cr
+\link[paws.machine.learning:sagemaker_stop_training_job]{stop_training_job} \tab Stops a training job\cr
+\link[paws.machine.learning:sagemaker_stop_transform_job]{stop_transform_job} \tab Stops a batch transform job\cr
+\link[paws.machine.learning:sagemaker_update_action]{update_action} \tab Updates an action\cr
+\link[paws.machine.learning:sagemaker_update_app_image_config]{update_app_image_config} \tab Updates the properties of an AppImageConfig\cr
+\link[paws.machine.learning:sagemaker_update_artifact]{update_artifact} \tab Updates an artifact\cr
+\link[paws.machine.learning:sagemaker_update_code_repository]{update_code_repository} \tab Updates the specified Git repository with the specified values\cr
+\link[paws.machine.learning:sagemaker_update_context]{update_context} \tab Updates a context\cr
+\link[paws.machine.learning:sagemaker_update_device_fleet]{update_device_fleet} \tab Updates a fleet of devices\cr
+\link[paws.machine.learning:sagemaker_update_devices]{update_devices} \tab Updates one or more devices in a fleet\cr
+\link[paws.machine.learning:sagemaker_update_domain]{update_domain} \tab Updates the default settings for new user profiles in the domain\cr
+\link[paws.machine.learning:sagemaker_update_endpoint]{update_endpoint} \tab Deploys the new EndpointConfig specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous EndpointConfig (there is no availability loss)\cr
+\link[paws.machine.learning:sagemaker_update_endpoint_weights_and_capacities]{update_endpoint_weights_and_capacities} \tab Updates variant weight of one or more variants associated with an existing endpoint, or capacity of one variant associated with an existing endpoint\cr
+\link[paws.machine.learning:sagemaker_update_experiment]{update_experiment} \tab Adds, updates, or removes the description of an experiment\cr
+\link[paws.machine.learning:sagemaker_update_feature_group]{update_feature_group} \tab Updates the feature group\cr
+\link[paws.machine.learning:sagemaker_update_feature_metadata]{update_feature_metadata} \tab Updates the description and parameters of the feature group\cr
+\link[paws.machine.learning:sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker image\cr
+\link[paws.machine.learning:sagemaker_update_model_package]{update_model_package} \tab Updates a versioned model\cr
+\link[paws.machine.learning:sagemaker_update_monitoring_schedule]{update_monitoring_schedule} \tab Updates a previously created schedule\cr
+\link[paws.machine.learning:sagemaker_update_notebook_instance]{update_notebook_instance} \tab Updates a notebook instance\cr
+\link[paws.machine.learning:sagemaker_update_notebook_instance_lifecycle_config]{update_notebook_instance_lifecycle_config} \tab Updates a notebook instance lifecycle configuration created with the CreateNotebookInstanceLifecycleConfig API\cr
+\link[paws.machine.learning:sagemaker_update_pipeline]{update_pipeline} \tab Updates a pipeline\cr
+\link[paws.machine.learning:sagemaker_update_pipeline_execution]{update_pipeline_execution} \tab Updates a pipeline execution\cr
+\link[paws.machine.learning:sagemaker_update_project]{update_project} \tab Updates a machine learning (ML) project that is created from a template that sets up an ML pipeline from training to deploying an approved model\cr
+\link[paws.machine.learning:sagemaker_update_training_job]{update_training_job} \tab Update a model training job to request a new Debugger profiling configuration\cr
+\link[paws.machine.learning:sagemaker_update_trial]{update_trial} \tab Updates the display name of a trial\cr
+\link[paws.machine.learning:sagemaker_update_trial_component]{update_trial_component} \tab Updates one or more properties of a trial component\cr
+\link[paws.machine.learning:sagemaker_update_user_profile]{update_user_profile} \tab Updates a user profile\cr
+\link[paws.machine.learning:sagemaker_update_workforce]{update_workforce} \tab Use this operation to update your workforce\cr
+\link[paws.machine.learning:sagemaker_update_workteam]{update_workteam} \tab Updates an existing work team with new member definitions or description
 }
 }
 

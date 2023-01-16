@@ -4,8 +4,13 @@
 \alias{neptune_describe_db_parameters}
 \title{Returns the detailed parameter list for a particular DB parameter group}
 \usage{
-neptune_describe_db_parameters(DBParameterGroupName, Source, Filters,
-  MaxRecords, Marker)
+neptune_describe_db_parameters(
+  DBParameterGroupName,
+  Source = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBParameterGroupName}{[required] The name of a specific DB parameter group to return details for.
@@ -37,45 +42,9 @@ Constraints: Minimum 20, maximum 100.}
 this parameter is specified, the response includes only records beyond
 the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      ApplyType = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string",
-      ApplyMethod = "immediate"|"pending-reboot"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
 Returns the detailed parameter list for a particular DB parameter group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_parameters(
-  DBParameterGroupName = "string",
-  Source = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/neptune/describe_db_parameters.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{connect_update_contact_flow_name}
 \title{The name of the contact flow}
 \usage{
-connect_update_contact_flow_name(InstanceId, ContactFlowId, Name,
-  Description)
+connect_update_contact_flow_name(
+  InstanceId,
+  ContactFlowId,
+  Name = NULL,
+  Description = NULL
+)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
@@ -16,22 +20,9 @@ connect_update_contact_flow_name(InstanceId, ContactFlowId, Name,
 
 \item{Description}{The description of the contact flow.}
 }
-\value{
-An empty list.
-}
 \description{
 The name of the contact flow.
 
-You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
+See \url{https://paws-r.github.io/docs/connect/update_contact_flow_name.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_contact_flow_name(
-  InstanceId = "string",
-  ContactFlowId = "string",
-  Name = "string",
-  Description = "string"
-)
-}
-}
-
 \keyword{internal}

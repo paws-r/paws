@@ -2,48 +2,25 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_update_quick_connect_config}
 \alias{connect_update_quick_connect_config}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Updates the configuration settings for the specified quick connect}
 \usage{
-connect_update_quick_connect_config(InstanceId, QuickConnectId,
-  QuickConnectConfig)
+connect_update_quick_connect_config(
+  InstanceId,
+  QuickConnectId,
+  QuickConnectConfig
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{QuickConnectId}{[required] The identifier for the quick connect.}
 
 \item{QuickConnectConfig}{[required] Information about the configuration settings for the quick connect.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Updates the configuration settings for the specified quick connect.
-}
-\section{Request syntax}{
-\preformatted{svc$update_quick_connect_config(
-  InstanceId = "string",
-  QuickConnectId = "string",
-  QuickConnectConfig = list(
-    QuickConnectType = "USER"|"QUEUE"|"PHONE_NUMBER",
-    UserConfig = list(
-      UserId = "string",
-      ContactFlowId = "string"
-    ),
-    QueueConfig = list(
-      QueueId = "string",
-      ContactFlowId = "string"
-    ),
-    PhoneConfig = list(
-      PhoneNumber = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/update_quick_connect_config.html} for full documentation.
+}
 \keyword{internal}

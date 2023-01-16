@@ -9,27 +9,9 @@ dynamodb_describe_kinesis_streaming_destination(TableName)
 \arguments{
 \item{TableName}{[required] The name of the table being described.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TableName = "string",
-  KinesisDataStreamDestinations = list(
-    list(
-      StreamArn = "string",
-      DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED",
-      DestinationStatusDescription = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns information about the status of Kinesis streaming.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_kinesis_streaming_destination(
-  TableName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/dynamodb/describe_kinesis_streaming_destination.html} for full documentation.
+}
 \keyword{internal}

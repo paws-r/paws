@@ -4,8 +4,13 @@
 \alias{budgets_describe_subscribers_for_notification}
 \title{Lists the subscribers that are associated with a notification}
 \usage{
-budgets_describe_subscribers_for_notification(AccountId, BudgetName,
-  Notification, MaxResults, NextToken)
+budgets_describe_subscribers_for_notification(
+  AccountId,
+  BudgetName,
+  Notification,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget whose subscribers you
@@ -21,36 +26,9 @@ response contains. The maximum is 100.}
 \item{NextToken}{The pagination token that you include in your request to indicate the
 next set of results that you want to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Subscribers = list(
-    list(
-      SubscriptionType = "SNS"|"EMAIL",
-      Address = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the subscribers that are associated with a notification.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_subscribers_for_notification(
-  AccountId = "string",
-  BudgetName = "string",
-  Notification = list(
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-    Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-    NotificationState = "OK"|"ALARM"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/budgets/describe_subscribers_for_notification.html} for full documentation.
+}
 \keyword{internal}

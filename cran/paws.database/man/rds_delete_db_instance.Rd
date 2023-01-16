@@ -4,8 +4,12 @@
 \alias{rds_delete_db_instance}
 \title{The DeleteDBInstance action deletes a previously provisioned DB instance}
 \usage{
-rds_delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot,
-  FinalDBSnapshotIdentifier, DeleteAutomatedBackups)
+rds_delete_db_instance(
+  DBInstanceIdentifier,
+  SkipFinalSnapshot = NULL,
+  FinalDBSnapshotIdentifier = NULL,
+  DeleteAutomatedBackups = NULL
+)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier for the DB instance to be deleted. This
@@ -17,25 +21,30 @@ Constraints:
 }}
 
 \item{SkipFinalSnapshot}{A value that indicates whether to skip the creation of a final DB
-snapshot before the DB instance is deleted. If skip is specified, no DB
-snapshot is created. If skip isn't specified, a DB snapshot is created
-before the DB instance is deleted. By default, skip isn't specified, and
-the DB snapshot is created.
+snapshot before deleting the instance. If you enable this parameter, RDS
+doesn't create a DB snapshot. If you don't enable this parameter, RDS
+creates a DB snapshot before the DB instance is deleted. By default,
+skip isn't enabled, and the DB snapshot is created.
 
-When a DB instance is in a failure state and has a status of 'failed',
-'incompatible-restore', or 'incompatible-network', it can only be
-deleted when skip is specified.
+If you don't enable this parameter, you must specify the
+\code{FinalDBSnapshotIdentifier} parameter.
 
-Specify skip when deleting a read replica.
+When a DB instance is in a failure state and has a status of \code{failed},
+\code{incompatible-restore}, or \code{incompatible-network}, RDS can delete the
+instance only if you enable this parameter.
 
-The FinalDBSnapshotIdentifier parameter must be specified if skip isn't
-specified.}
+If you delete a read replica or an RDS Custom instance, you must enable
+this setting.
+
+This setting is required for RDS Custom.}
 
 \item{FinalDBSnapshotIdentifier}{The \code{DBSnapshotIdentifier} of the new \code{DBSnapshot} created when the
 \code{SkipFinalSnapshot} parameter is disabled.
 
-Specifying this parameter and also specifying to skip final DB snapshot
-creation in SkipFinalShapshot results in an error.
+If you enable this parameter and also enable SkipFinalShapshot, the
+command results in an error.
+
+This setting doesn't apply to RDS Custom.
 
 Constraints:
 \itemize{
@@ -50,236 +59,9 @@ after the DB instance is deleted. This parameter isn't case-sensitive.
 The default is to remove automated backups immediately after the DB
 instance is deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBInstance = list(
-    DBInstanceIdentifier = "string",
-    DBInstanceClass = "string",
-    Engine = "string",
-    DBInstanceStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    AllocatedStorage = 123,
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredBackupWindow = "string",
-    BackupRetentionPeriod = 123,
-    DBSecurityGroups = list(
-      list(
-        DBSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    DBParameterGroups = list(
-      list(
-        DBParameterGroupName = "string",
-        ParameterApplyStatus = "string"
-      )
-    ),
-    AvailabilityZone = "string",
-    DBSubnetGroup = list(
-      DBSubnetGroupName = "string",
-      DBSubnetGroupDescription = "string",
-      VpcId = "string",
-      SubnetGroupStatus = "string",
-      Subnets = list(
-        list(
-          SubnetIdentifier = "string",
-          SubnetAvailabilityZone = list(
-            Name = "string"
-          ),
-          SubnetOutpost = list(
-            Arn = "string"
-          ),
-          SubnetStatus = "string"
-        )
-      ),
-      DBSubnetGroupArn = "string"
-    ),
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      DBInstanceClass = "string",
-      AllocatedStorage = 123,
-      MasterUserPassword = "string",
-      Port = 123,
-      BackupRetentionPeriod = 123,
-      MultiAZ = TRUE|FALSE,
-      EngineVersion = "string",
-      LicenseModel = "string",
-      Iops = 123,
-      DBInstanceIdentifier = "string",
-      StorageType = "string",
-      CACertificateIdentifier = "string",
-      DBSubnetGroupName = "string",
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      ),
-      ProcessorFeatures = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-    ),
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MultiAZ = TRUE|FALSE,
-    EngineVersion = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    ReadReplicaSourceDBInstanceIdentifier = "string",
-    ReadReplicaDBInstanceIdentifiers = list(
-      "string"
-    ),
-    ReadReplicaDBClusterIdentifiers = list(
-      "string"
-    ),
-    ReplicaMode = "open-read-only"|"mounted",
-    LicenseModel = "string",
-    Iops = 123,
-    OptionGroupMemberships = list(
-      list(
-        OptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    CharacterSetName = "string",
-    NcharCharacterSetName = "string",
-    SecondaryAvailabilityZone = "string",
-    PubliclyAccessible = TRUE|FALSE,
-    StatusInfos = list(
-      list(
-        StatusType = "string",
-        Normal = TRUE|FALSE,
-        Status = "string",
-        Message = "string"
-      )
-    ),
-    StorageType = "string",
-    TdeCredentialArn = "string",
-    DbInstancePort = 123,
-    DBClusterIdentifier = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbiResourceId = "string",
-    CACertificateIdentifier = "string",
-    DomainMemberships = list(
-      list(
-        Domain = "string",
-        Status = "string",
-        FQDN = "string",
-        IAMRoleName = "string"
-      )
-    ),
-    CopyTagsToSnapshot = TRUE|FALSE,
-    MonitoringInterval = 123,
-    EnhancedMonitoringResourceArn = "string",
-    MonitoringRoleArn = "string",
-    PromotionTier = 123,
-    DBInstanceArn = "string",
-    Timezone = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    PerformanceInsightsEnabled = TRUE|FALSE,
-    PerformanceInsightsKMSKeyId = "string",
-    PerformanceInsightsRetentionPeriod = 123,
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    ProcessorFeatures = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    DeletionProtection = TRUE|FALSE,
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        FeatureName = "string",
-        Status = "string"
-      )
-    ),
-    ListenerEndpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    MaxAllocatedStorage = 123,
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    DBInstanceAutomatedBackupsReplications = list(
-      list(
-        DBInstanceAutomatedBackupsArn = "string"
-      )
-    ),
-    CustomerOwnedIpEnabled = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-The DeleteDBInstance action deletes a previously provisioned DB
-instance. When you delete a DB instance, all automated backups for that
-instance are deleted and can't be recovered. Manual DB snapshots of the
-DB instance to be deleted by
-\code{\link[=rds_delete_db_instance]{delete_db_instance}} are not deleted.
+The DeleteDBInstance action deletes a previously provisioned DB instance. When you delete a DB instance, all automated backups for that instance are deleted and can't be recovered. Manual DB snapshots of the DB instance to be deleted by \code{\link[=rds_delete_db_instance]{delete_db_instance}} are not deleted.
 
-If you request a final DB snapshot the status of the Amazon RDS DB
-instance is \code{deleting} until the DB snapshot is created. The API action
-\code{DescribeDBInstance} is used to monitor the status of this operation.
-The action can't be canceled or reverted once submitted.
-
-When a DB instance is in a failure state and has a status of \code{failed},
-\code{incompatible-restore}, or \code{incompatible-network}, you can only delete
-it when you skip creation of the final snapshot with the
-\code{SkipFinalSnapshot} parameter.
-
-If the specified DB instance is part of an Amazon Aurora DB cluster, you
-can't delete the DB instance if both of the following conditions are
-true:
-\itemize{
-\item The DB cluster is a read replica of another Amazon Aurora DB
-cluster.
-\item The DB instance is the only instance in the DB cluster.
+See \url{https://paws-r.github.io/docs/rds/delete_db_instance.html} for full documentation.
 }
-
-To delete a DB instance in this case, first call the
-\code{\link[=rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster}}
-API action to promote the DB cluster so it's no longer a read replica.
-After the promotion completes, then call the
-\code{\link[=rds_delete_db_instance]{delete_db_instance}} API action to delete the
-final instance in the DB cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_db_instance(
-  DBInstanceIdentifier = "string",
-  SkipFinalSnapshot = TRUE|FALSE,
-  FinalDBSnapshotIdentifier = "string",
-  DeleteAutomatedBackups = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

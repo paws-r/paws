@@ -4,8 +4,12 @@
 \alias{simpledb_get_attributes}
 \title{Returns all of the attributes associated with the specified item}
 \usage{
-simpledb_get_attributes(DomainName, ItemName, AttributeNames,
-  ConsistentRead)
+simpledb_get_attributes(
+  DomainName,
+  ItemName,
+  AttributeNames = NULL,
+  ConsistentRead = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain in which to perform the operation.}
@@ -20,41 +24,9 @@ SimpleDB will be returned. Otherwise, results will be consistent
 eventually, and the client may not see data that was written immediately
 before your read.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      Name = "string",
-      AlternateNameEncoding = "string",
-      Value = "string",
-      AlternateValueEncoding = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns all of the attributes associated with the specified item.
-Optionally, the attributes returned can be limited to one or more
-attributes by specifying an attribute name parameter.
+Returns all of the attributes associated with the specified item. Optionally, the attributes returned can be limited to one or more attributes by specifying an attribute name parameter.
 
-If the item does not exist on the replica that was accessed for this
-operation, an empty set is returned. The system does not return an error
-as it cannot guarantee the item does not exist on other replicas.
-
-If GetAttributes is called without being passed any attribute names, all
-the attributes for the item are returned.
+See \url{https://paws-r.github.io/docs/simpledb/get_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_attributes(
-  DomainName = "string",
-  ItemName = "string",
-  AttributeNames = list(
-    "string"
-  ),
-  ConsistentRead = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

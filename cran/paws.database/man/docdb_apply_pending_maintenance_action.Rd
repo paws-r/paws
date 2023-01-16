@@ -5,8 +5,11 @@
 \title{Applies a pending maintenance action to a resource (for example, to an
 Amazon DocumentDB instance)}
 \usage{
-docdb_apply_pending_maintenance_action(ResourceIdentifier, ApplyAction,
-  OptInType)
+docdb_apply_pending_maintenance_action(
+  ResourceIdentifier,
+  ApplyAction,
+  OptInType
+)
 }
 \arguments{
 \item{ResourceIdentifier}{[required] The Amazon Resource Name (ARN) of the resource that the pending
@@ -28,41 +31,9 @@ maintenance window for the resource.
 requests.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourcePendingMaintenanceActions = list(
-    ResourceIdentifier = "string",
-    PendingMaintenanceActionDetails = list(
-      list(
-        Action = "string",
-        AutoAppliedAfterDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        ForcedApplyDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        OptInStatus = "string",
-        CurrentApplyDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        Description = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Applies a pending maintenance action to a resource (for example, to an
-Amazon DocumentDB instance).
-}
-\section{Request syntax}{
-\preformatted{svc$apply_pending_maintenance_action(
-  ResourceIdentifier = "string",
-  ApplyAction = "string",
-  OptInType = "string"
-)
-}
-}
+Applies a pending maintenance action to a resource (for example, to an Amazon DocumentDB instance).
 
+See \url{https://paws-r.github.io/docs/docdb/apply_pending_maintenance_action.html} for full documentation.
+}
 \keyword{internal}

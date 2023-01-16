@@ -6,25 +6,9 @@ NULL
 #' Creates a new version of the bot based on the $LATEST version
 #'
 #' @description
-#' Creates a new version of the bot based on the `$LATEST` version. If the
-#' `$LATEST` version of this resource hasn't changed since you created the
-#' last version, Amazon Lex doesn't create a new version. It returns the
-#' last created version.
-#' 
-#' You can update only the `$LATEST` version of the bot. You can't update
-#' the numbered versions that you create with the
-#' [`create_bot_version`][lexmodelbuildingservice_create_bot_version]
-#' operation.
-#' 
-#' When you create the first version of a bot, Amazon Lex sets the version
-#' to 1. Subsequent versions increment by 1. For more information, see
-#' versioning-intro.
-#' 
-#' This operation requires permission for the `lex:CreateBotVersion`
-#' action.
+#' Creates a new version of the bot based on the `$LATEST` version. If the `$LATEST` version of this resource hasn't changed since you created the last version, Amazon Lex doesn't create a new version. It returns the last created version.
 #'
-#' @usage
-#' lexmodelbuildingservice_create_bot_version(name, checksum)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/create_bot_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/create_bot_version.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot that you want to create a new version of. The name
 #' is case sensitive.
@@ -33,66 +17,6 @@ NULL
 #' different checksum, a `PreconditionFailedException` exception is
 #' returned and Amazon Lex doesn't publish a new version. If you don't
 #' specify a checksum, Amazon Lex publishes the `$LATEST` version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   intents = list(
-#'     list(
-#'       intentName = "string",
-#'       intentVersion = "string"
-#'     )
-#'   ),
-#'   clarificationPrompt = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     maxAttempts = 123,
-#'     responseCard = "string"
-#'   ),
-#'   abortStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
-#'   failureReason = "string",
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   idleSessionTTLInSeconds = 123,
-#'   voiceId = "string",
-#'   checksum = "string",
-#'   version = "string",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-#'   childDirected = TRUE|FALSE,
-#'   enableModelImprovements = TRUE|FALSE,
-#'   detectSentiment = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_bot_version(
-#'   name = "string",
-#'   checksum = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -118,25 +42,9 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
 #' intent
 #'
 #' @description
-#' Creates a new version of an intent based on the `$LATEST` version of the
-#' intent. If the `$LATEST` version of this intent hasn't changed since you
-#' last updated it, Amazon Lex doesn't create a new version. It returns the
-#' last version you created.
-#' 
-#' You can update only the `$LATEST` version of the intent. You can't
-#' update the numbered versions that you create with the
-#' [`create_intent_version`][lexmodelbuildingservice_create_intent_version]
-#' operation.
-#' 
-#' When you create a version of an intent, Amazon Lex sets the version to
-#' 1. Subsequent versions increment by 1. For more information, see
-#' versioning-intro.
-#' 
-#' This operation requires permissions to perform the
-#' `lex:CreateIntentVersion` action.
+#' Creates a new version of an intent based on the `$LATEST` version of the intent. If the `$LATEST` version of this intent hasn't changed since you last updated it, Amazon Lex doesn't create a new version. It returns the last version you created.
 #'
-#' @usage
-#' lexmodelbuildingservice_create_intent_version(name, checksum)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/create_intent_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/create_intent_version.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent that you want to create a new version of. The
 #' name is case sensitive.
@@ -146,150 +54,6 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
 #' `PreconditionFailedException` exception and doesn't publish a new
 #' version. If you don't specify a checksum, Amazon Lex publishes the
 #' `$LATEST` version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   slots = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       slotConstraint = "Required"|"Optional",
-#'       slotType = "string",
-#'       slotTypeVersion = "string",
-#'       valueElicitationPrompt = list(
-#'         messages = list(
-#'           list(
-#'             contentType = "PlainText"|"SSML"|"CustomPayload",
-#'             content = "string",
-#'             groupNumber = 123
-#'           )
-#'         ),
-#'         maxAttempts = 123,
-#'         responseCard = "string"
-#'       ),
-#'       priority = 123,
-#'       sampleUtterances = list(
-#'         "string"
-#'       ),
-#'       responseCard = "string",
-#'       obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
-#'       defaultValueSpec = list(
-#'         defaultValueList = list(
-#'           list(
-#'             defaultValue = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   sampleUtterances = list(
-#'     "string"
-#'   ),
-#'   confirmationPrompt = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     maxAttempts = 123,
-#'     responseCard = "string"
-#'   ),
-#'   rejectionStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   followUpPrompt = list(
-#'     prompt = list(
-#'       messages = list(
-#'         list(
-#'           contentType = "PlainText"|"SSML"|"CustomPayload",
-#'           content = "string",
-#'           groupNumber = 123
-#'         )
-#'       ),
-#'       maxAttempts = 123,
-#'       responseCard = "string"
-#'     ),
-#'     rejectionStatement = list(
-#'       messages = list(
-#'         list(
-#'           contentType = "PlainText"|"SSML"|"CustomPayload",
-#'           content = "string",
-#'           groupNumber = 123
-#'         )
-#'       ),
-#'       responseCard = "string"
-#'     )
-#'   ),
-#'   conclusionStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   dialogCodeHook = list(
-#'     uri = "string",
-#'     messageVersion = "string"
-#'   ),
-#'   fulfillmentActivity = list(
-#'     type = "ReturnIntent"|"CodeHook",
-#'     codeHook = list(
-#'       uri = "string",
-#'       messageVersion = "string"
-#'     )
-#'   ),
-#'   parentIntentSignature = "string",
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   checksum = "string",
-#'   kendraConfiguration = list(
-#'     kendraIndex = "string",
-#'     queryFilterString = "string",
-#'     role = "string"
-#'   ),
-#'   inputContexts = list(
-#'     list(
-#'       name = "string"
-#'     )
-#'   ),
-#'   outputContexts = list(
-#'     list(
-#'       name = "string",
-#'       timeToLiveInSeconds = 123,
-#'       turnsToLive = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_intent_version(
-#'   name = "string",
-#'   checksum = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -315,25 +79,9 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
 #' specified slot type
 #'
 #' @description
-#' Creates a new version of a slot type based on the `$LATEST` version of
-#' the specified slot type. If the `$LATEST` version of this resource has
-#' not changed since the last version that you created, Amazon Lex doesn't
-#' create a new version. It returns the last version that you created.
-#' 
-#' You can update only the `$LATEST` version of a slot type. You can't
-#' update the numbered versions that you create with the
-#' [`create_slot_type_version`][lexmodelbuildingservice_create_slot_type_version]
-#' operation.
-#' 
-#' When you create a version of a slot type, Amazon Lex sets the version to
-#' 1. Subsequent versions increment by 1. For more information, see
-#' versioning-intro.
-#' 
-#' This operation requires permissions for the `lex:CreateSlotTypeVersion`
-#' action.
+#' Creates a new version of a slot type based on the `$LATEST` version of the specified slot type. If the `$LATEST` version of this resource has not changed since the last version that you created, Amazon Lex doesn't create a new version. It returns the last version that you created.
 #'
-#' @usage
-#' lexmodelbuildingservice_create_slot_type_version(name, checksum)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/create_slot_type_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/create_slot_type_version.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type that you want to create a new version for. The
 #' name is case sensitive.
@@ -343,48 +91,6 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
 #' `PreconditionFailedException` exception and doesn't publish the new
 #' version. If you don't specify a checksum, Amazon Lex publishes the
 #' `$LATEST` version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   enumerationValues = list(
-#'     list(
-#'       value = "string",
-#'       synonyms = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   checksum = "string",
-#'   valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-#'   parentSlotTypeSignature = "string",
-#'   slotTypeConfigurations = list(
-#'     list(
-#'       regexConfiguration = list(
-#'         pattern = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_slot_type_version(
-#'   name = "string",
-#'   checksum = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -409,43 +115,11 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
 #' Deletes all versions of the bot, including the $LATEST version
 #'
 #' @description
-#' Deletes all versions of the bot, including the `$LATEST` version. To
-#' delete a specific version of the bot, use the
-#' [`delete_bot_version`][lexmodelbuildingservice_delete_bot_version]
-#' operation. The [`delete_bot`][lexmodelbuildingservice_delete_bot]
-#' operation doesn't immediately remove the bot schema. Instead, it is
-#' marked for deletion and removed later.
-#' 
-#' Amazon Lex stores utterances indefinitely for improving the ability of
-#' your bot to respond to user inputs. These utterances are not removed
-#' when the bot is deleted. To remove the utterances, use the
-#' [`delete_utterances`][lexmodelbuildingservice_delete_utterances]
-#' operation.
-#' 
-#' If a bot has an alias, you can't delete it. Instead, the
-#' [`delete_bot`][lexmodelbuildingservice_delete_bot] operation returns a
-#' `ResourceInUseException` exception that includes a reference to the
-#' alias that refers to the bot. To remove the reference to the bot, delete
-#' the alias. If you get the same exception again, delete the referring
-#' alias until the [`delete_bot`][lexmodelbuildingservice_delete_bot]
-#' operation is successful.
-#' 
-#' This operation requires permissions for the `lex:DeleteBot` action.
+#' Deletes all versions of the bot, including the `$LATEST` version. To delete a specific version of the bot, use the [`delete_bot_version`][lexmodelbuildingservice_delete_bot_version] operation. The [`delete_bot`][lexmodelbuildingservice_delete_bot] operation doesn't immediately remove the bot schema. Instead, it is marked for deletion and removed later.
 #'
-#' @usage
-#' lexmodelbuildingservice_delete_bot(name)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot. The name is case sensitive.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_bot(
-#'   name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -471,33 +145,11 @@ lexmodelbuildingservice_delete_bot <- function(name) {
 #'
 #' @description
 #' Deletes an alias for the specified bot.
-#' 
-#' You can't delete an alias that is used in the association between a bot
-#' and a messaging channel. If an alias is used in a channel association,
-#' the [`delete_bot`][lexmodelbuildingservice_delete_bot] operation returns
-#' a `ResourceInUseException` exception that includes a reference to the
-#' channel association that refers to the bot. You can remove the reference
-#' to the alias by deleting the channel association. If you get the same
-#' exception again, delete the referring association until the
-#' [`delete_bot_alias`][lexmodelbuildingservice_delete_bot_alias] operation
-#' is successful.
 #'
-#' @usage
-#' lexmodelbuildingservice_delete_bot_alias(name, botName)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_alias.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_alias.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the alias to delete. The name is case sensitive.
 #' @param botName &#91;required&#93; The name of the bot that the alias points to.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_bot_alias(
-#'   name = "string",
-#'   botName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -523,32 +175,14 @@ lexmodelbuildingservice_delete_bot_alias <- function(name, botName) {
 #' platform
 #'
 #' @description
-#' Deletes the association between an Amazon Lex bot and a messaging
-#' platform.
-#' 
-#' This operation requires permission for the
-#' `lex:DeleteBotChannelAssociation` action.
+#' Deletes the association between an Amazon Lex bot and a messaging platform.
 #'
-#' @usage
-#' lexmodelbuildingservice_delete_bot_channel_association(name, botName,
-#'   botAlias)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_channel_association.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_channel_association.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the association. The name is case sensitive.
 #' @param botName &#91;required&#93; The name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; An alias that points to the specific version of the Amazon Lex bot to
 #' which this association is being made.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_bot_channel_association(
-#'   name = "string",
-#'   botName = "string",
-#'   botAlias = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -573,30 +207,14 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
 #' Deletes a specific version of a bot
 #'
 #' @description
-#' Deletes a specific version of a bot. To delete all versions of a bot,
-#' use the [`delete_bot`][lexmodelbuildingservice_delete_bot] operation.
-#' 
-#' This operation requires permissions for the `lex:DeleteBotVersion`
-#' action.
+#' Deletes a specific version of a bot. To delete all versions of a bot, use the [`delete_bot`][lexmodelbuildingservice_delete_bot] operation.
 #'
-#' @usage
-#' lexmodelbuildingservice_delete_bot_version(name, version)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_version.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot.
 #' @param version &#91;required&#93; The version of the bot to delete. You cannot delete the `$LATEST`
 #' version of the bot. To delete the `$LATEST` version, use the
 #' [`delete_bot`][lexmodelbuildingservice_delete_bot] operation.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_bot_version(
-#'   name = "string",
-#'   version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -621,38 +239,11 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
 #' Deletes all versions of the intent, including the $LATEST version
 #'
 #' @description
-#' Deletes all versions of the intent, including the `$LATEST` version. To
-#' delete a specific version of the intent, use the
-#' [`delete_intent_version`][lexmodelbuildingservice_delete_intent_version]
-#' operation.
-#' 
-#' You can delete a version of an intent only if it is not referenced. To
-#' delete an intent that is referred to in one or more bots (see
-#' how-it-works), you must remove those references first.
-#' 
-#' If you get the `ResourceInUseException` exception, it provides an
-#' example reference that shows where the intent is referenced. To remove
-#' the reference to the intent, either update the bot or delete it. If you
-#' get the same exception when you attempt to delete the intent again,
-#' repeat until the intent has no references and the call to
-#' [`delete_intent`][lexmodelbuildingservice_delete_intent] is successful.
-#' 
-#' This operation requires permission for the `lex:DeleteIntent` action.
+#' Deletes all versions of the intent, including the `$LATEST` version. To delete a specific version of the intent, use the [`delete_intent_version`][lexmodelbuildingservice_delete_intent_version] operation.
 #'
-#' @usage
-#' lexmodelbuildingservice_delete_intent(name)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_intent.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_intent.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent. The name is case sensitive.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_intent(
-#'   name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -677,31 +268,14 @@ lexmodelbuildingservice_delete_intent <- function(name) {
 #' Deletes a specific version of an intent
 #'
 #' @description
-#' Deletes a specific version of an intent. To delete all versions of a
-#' intent, use the [`delete_intent`][lexmodelbuildingservice_delete_intent]
-#' operation.
-#' 
-#' This operation requires permissions for the `lex:DeleteIntentVersion`
-#' action.
+#' Deletes a specific version of an intent. To delete all versions of a intent, use the [`delete_intent`][lexmodelbuildingservice_delete_intent] operation.
 #'
-#' @usage
-#' lexmodelbuildingservice_delete_intent_version(name, version)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_intent_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_intent_version.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent.
 #' @param version &#91;required&#93; The version of the intent to delete. You cannot delete the `$LATEST`
 #' version of the intent. To delete the `$LATEST` version, use the
 #' [`delete_intent`][lexmodelbuildingservice_delete_intent] operation.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_intent_version(
-#'   name = "string",
-#'   version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -726,40 +300,11 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
 #' Deletes all versions of the slot type, including the $LATEST version
 #'
 #' @description
-#' Deletes all versions of the slot type, including the `$LATEST` version.
-#' To delete a specific version of the slot type, use the
-#' [`delete_slot_type_version`][lexmodelbuildingservice_delete_slot_type_version]
-#' operation.
-#' 
-#' You can delete a version of a slot type only if it is not referenced. To
-#' delete a slot type that is referred to in one or more intents, you must
-#' remove those references first.
-#' 
-#' If you get the `ResourceInUseException` exception, the exception
-#' provides an example reference that shows the intent where the slot type
-#' is referenced. To remove the reference to the slot type, either update
-#' the intent or delete it. If you get the same exception when you attempt
-#' to delete the slot type again, repeat until the slot type has no
-#' references and the
-#' [`delete_slot_type`][lexmodelbuildingservice_delete_slot_type] call is
-#' successful.
-#' 
-#' This operation requires permission for the `lex:DeleteSlotType` action.
+#' Deletes all versions of the slot type, including the `$LATEST` version. To delete a specific version of the slot type, use the [`delete_slot_type_version`][lexmodelbuildingservice_delete_slot_type_version] operation.
 #'
-#' @usage
-#' lexmodelbuildingservice_delete_slot_type(name)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type. The name is case sensitive.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_slot_type(
-#'   name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -784,33 +329,15 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
 #' Deletes a specific version of a slot type
 #'
 #' @description
-#' Deletes a specific version of a slot type. To delete all versions of a
-#' slot type, use the
-#' [`delete_slot_type`][lexmodelbuildingservice_delete_slot_type]
-#' operation.
-#' 
-#' This operation requires permissions for the `lex:DeleteSlotTypeVersion`
-#' action.
+#' Deletes a specific version of a slot type. To delete all versions of a slot type, use the [`delete_slot_type`][lexmodelbuildingservice_delete_slot_type] operation.
 #'
-#' @usage
-#' lexmodelbuildingservice_delete_slot_type_version(name, version)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type_version.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type.
 #' @param version &#91;required&#93; The version of the slot type to delete. You cannot delete the `$LATEST`
 #' version of the slot type. To delete the `$LATEST` version, use the
 #' [`delete_slot_type`][lexmodelbuildingservice_delete_slot_type]
 #' operation.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_slot_type_version(
-#'   name = "string",
-#'   version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -836,27 +363,8 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 #'
 #' @description
 #' Deletes stored utterances.
-#' 
-#' Amazon Lex stores the utterances that users send to your bot. Utterances
-#' are stored for 15 days for use with the
-#' [`get_utterances_view`][lexmodelbuildingservice_get_utterances_view]
-#' operation, and then stored indefinitely for use in improving the ability
-#' of your bot to respond to user input.
-#' 
-#' Use the [`delete_utterances`][lexmodelbuildingservice_delete_utterances]
-#' operation to manually delete stored utterances for a specific user. When
-#' you use the
-#' [`delete_utterances`][lexmodelbuildingservice_delete_utterances]
-#' operation, utterances stored for improving your bot's ability to respond
-#' to user input are deleted immediately. Utterances stored for use with
-#' the [`get_utterances_view`][lexmodelbuildingservice_get_utterances_view]
-#' operation are deleted after 15 days.
-#' 
-#' This operation requires permissions for the `lex:DeleteUtterances`
-#' action.
 #'
-#' @usage
-#' lexmodelbuildingservice_delete_utterances(botName, userId)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_utterances.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_utterances.html) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot that stored the utterances.
 #' @param userId &#91;required&#93; The unique identifier for the user that made the utterances. This is the
@@ -865,17 +373,6 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 #' or
 #' [PostText](https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
 #' operation request that contained the utterance.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_utterances(
-#'   botName = "string",
-#'   userId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -900,86 +397,12 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 #' Returns metadata information for a specific bot
 #'
 #' @description
-#' Returns metadata information for a specific bot. You must provide the
-#' bot name and the bot version or alias.
-#' 
-#' This operation requires permissions for the `lex:GetBot` action.
+#' Returns metadata information for a specific bot. You must provide the bot name and the bot version or alias.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_bot(name, versionOrAlias)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot. The name is case sensitive.
 #' @param versionOrAlias &#91;required&#93; The version or alias of the bot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   intents = list(
-#'     list(
-#'       intentName = "string",
-#'       intentVersion = "string"
-#'     )
-#'   ),
-#'   enableModelImprovements = TRUE|FALSE,
-#'   nluIntentConfidenceThreshold = 123.0,
-#'   clarificationPrompt = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     maxAttempts = 123,
-#'     responseCard = "string"
-#'   ),
-#'   abortStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
-#'   failureReason = "string",
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   idleSessionTTLInSeconds = 123,
-#'   voiceId = "string",
-#'   checksum = "string",
-#'   version = "string",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-#'   childDirected = TRUE|FALSE,
-#'   detectSentiment = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_bot(
-#'   name = "string",
-#'   versionOrAlias = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example shows how to get configuration information for a bot.
-#' svc$get_bot(
-#'   name = "DocOrderPizza",
-#'   versionOrAlias = "$LATEST"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1004,54 +427,12 @@ lexmodelbuildingservice_get_bot <- function(name, versionOrAlias) {
 #' Returns information about an Amazon Lex bot alias
 #'
 #' @description
-#' Returns information about an Amazon Lex bot alias. For more information
-#' about aliases, see versioning-aliases.
-#' 
-#' This operation requires permissions for the `lex:GetBotAlias` action.
+#' Returns information about an Amazon Lex bot alias. For more information about aliases, see versioning-aliases.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_bot_alias(name, botName)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_alias.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_alias.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot alias. The name is case sensitive.
 #' @param botName &#91;required&#93; The name of the bot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   botVersion = "string",
-#'   botName = "string",
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   checksum = "string",
-#'   conversationLogs = list(
-#'     logSettings = list(
-#'       list(
-#'         logType = "AUDIO"|"TEXT",
-#'         destination = "CLOUDWATCH_LOGS"|"S3",
-#'         kmsKeyArn = "string",
-#'         resourceArn = "string",
-#'         resourcePrefix = "string"
-#'       )
-#'     ),
-#'     iamRoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_bot_alias(
-#'   name = "string",
-#'   botName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1077,12 +458,8 @@ lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
 #'
 #' @description
 #' Returns a list of aliases for a specified Amazon Lex bot.
-#' 
-#' This operation requires permissions for the `lex:GetBotAliases` action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_bot_aliases(botName, nextToken, maxResults,
-#'   nameContains)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_aliases.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_aliases.html) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot.
 #' @param nextToken A pagination token for fetching the next page of aliases. If the
@@ -1094,51 +471,6 @@ lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
 #' @param nameContains Substring to match in bot alias names. An alias will be returned if any
 #' part of its name matches the substring. For example, "xyz" matches both
 #' "xyzabc" and "abcxyz."
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BotAliases = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       botVersion = "string",
-#'       botName = "string",
-#'       lastUpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       checksum = "string",
-#'       conversationLogs = list(
-#'         logSettings = list(
-#'           list(
-#'             logType = "AUDIO"|"TEXT",
-#'             destination = "CLOUDWATCH_LOGS"|"S3",
-#'             kmsKeyArn = "string",
-#'             resourceArn = "string",
-#'             resourcePrefix = "string"
-#'           )
-#'         ),
-#'         iamRoleArn = "string"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_bot_aliases(
-#'   botName = "string",
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   nameContains = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1164,50 +496,15 @@ lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, m
 #' a messaging platform
 #'
 #' @description
-#' Returns information about the association between an Amazon Lex bot and
-#' a messaging platform.
-#' 
-#' This operation requires permissions for the
-#' `lex:GetBotChannelAssociation` action.
+#' Returns information about the association between an Amazon Lex bot and a messaging platform.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_bot_channel_association(name, botName,
-#'   botAlias)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_association.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_association.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the association between the bot and the channel. The name is
 #' case sensitive.
 #' @param botName &#91;required&#93; The name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; An alias pointing to the specific version of the Amazon Lex bot to which
 #' this association is being made.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   botAlias = "string",
-#'   botName = "string",
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   type = "Facebook"|"Slack"|"Twilio-Sms"|"Kik",
-#'   botConfiguration = list(
-#'     "string"
-#'   ),
-#'   status = "IN_PROGRESS"|"CREATED"|"FAILED",
-#'   failureReason = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_bot_channel_association(
-#'   name = "string",
-#'   botName = "string",
-#'   botAlias = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1233,15 +530,8 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
 #'
 #' @description
 #' Returns a list of all of the channels associated with the specified bot.
-#' 
-#' The
-#' [`get_bot_channel_associations`][lexmodelbuildingservice_get_bot_channel_associations]
-#' operation requires permissions for the `lex:GetBotChannelAssociations`
-#' action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_bot_channel_associations(botName, botAlias,
-#'   nextToken, maxResults, nameContains)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_associations.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_associations.html) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the Amazon Lex bot in the association.
 #' @param botAlias &#91;required&#93; An alias pointing to the specific version of the Amazon Lex bot to which
@@ -1256,42 +546,6 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
 #' returned if any part of its name matches the substring. For example,
 #' "xyz" matches both "xyzabc" and "abcxyz." To return all bot channel
 #' associations, use a hyphen ("-") as the `nameContains` parameter.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   botChannelAssociations = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       botAlias = "string",
-#'       botName = "string",
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       type = "Facebook"|"Slack"|"Twilio-Sms"|"Kik",
-#'       botConfiguration = list(
-#'         "string"
-#'       ),
-#'       status = "IN_PROGRESS"|"CREATED"|"FAILED",
-#'       failureReason = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_bot_channel_associations(
-#'   botName = "string",
-#'   botAlias = "string",
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   nameContains = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1317,21 +571,8 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
 #'
 #' @description
 #' Gets information about all of the versions of a bot.
-#' 
-#' The [`get_bot_versions`][lexmodelbuildingservice_get_bot_versions]
-#' operation returns a `BotMetadata` object for each version of a bot. For
-#' example, if a bot has three numbered versions, the
-#' [`get_bot_versions`][lexmodelbuildingservice_get_bot_versions] operation
-#' returns four `BotMetadata` objects in the response, one for each
-#' numbered version and one for the `$LATEST` version.
-#' 
-#' The [`get_bot_versions`][lexmodelbuildingservice_get_bot_versions]
-#' operation always returns at least one version, the `$LATEST` version.
-#' 
-#' This operation requires permissions for the `lex:GetBotVersions` action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_bot_versions(name, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_versions.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_versions.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot for which versions should be returned.
 #' @param nextToken A pagination token for fetching the next page of bot versions. If the
@@ -1340,37 +581,6 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
 #' pagination token in the next request.
 #' @param maxResults The maximum number of bot versions to return in the response. The
 #' default is 10.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   bots = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
-#'       lastUpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       version = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_bot_versions(
-#'   name = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1396,18 +606,8 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 #'
 #' @description
 #' Returns bot information as follows:
-#' 
-#' -   If you provide the `nameContains` field, the response includes
-#'     information for the `$LATEST` version of all bots whose name
-#'     contains the specified string.
-#' 
-#' -   If you don't specify the `nameContains` field, the operation returns
-#'     information about the `$LATEST` version of all of your bots.
-#' 
-#' This operation requires permission for the `lex:GetBots` action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_bots(nextToken, maxResults, nameContains)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bots.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bots.html) for full documentation.
 #'
 #' @param nextToken A pagination token that fetches the next page of bots. If the response
 #' to this call is truncated, Amazon Lex returns a pagination token in the
@@ -1418,46 +618,6 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 #' @param nameContains Substring to match in bot names. A bot will be returned if any part of
 #' its name matches the substring. For example, "xyz" matches both "xyzabc"
 #' and "abcxyz."
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   bots = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
-#'       lastUpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       version = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_bots(
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   nameContains = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example shows how to get a list of all of the bots in your account.
-#' svc$get_bots(
-#'   maxResults = 5L,
-#'   nextToken = ""
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1483,40 +643,13 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #'
 #' @description
 #' Returns information about a built-in intent.
-#' 
-#' This operation requires permission for the `lex:GetBuiltinIntent`
-#' action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_builtin_intent(signature)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intent.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intent.html) for full documentation.
 #'
 #' @param signature &#91;required&#93; The unique identifier for a built-in intent. To find the signature for
 #' an intent, see [Standard Built-in
 #' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
 #' in the *Alexa Skills Kit*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   signature = "string",
-#'   supportedLocales = list(
-#'     "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
-#'   ),
-#'   slots = list(
-#'     list(
-#'       name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_builtin_intent(
-#'   signature = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1542,13 +675,8 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #'
 #' @description
 #' Gets a list of built-in intents that meet the specified criteria.
-#' 
-#' This operation requires permission for the `lex:GetBuiltinIntents`
-#' action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_builtin_intents(locale, signatureContains,
-#'   nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intents.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intents.html) for full documentation.
 #'
 #' @param locale A list of locales that the intent supports.
 #' @param signatureContains Substring to match in built-in intent signatures. An intent will be
@@ -1563,32 +691,6 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' the next request.
 #' @param maxResults The maximum number of intents to return in the response. The default is
 #' 10.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   intents = list(
-#'     list(
-#'       signature = "string",
-#'       supportedLocales = list(
-#'         "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_builtin_intents(
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-#'   signatureContains = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1614,17 +716,8 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #'
 #' @description
 #' Gets a list of built-in slot types that meet the specified criteria.
-#' 
-#' For a list of built-in slot types, see [Slot Type
-#' Reference](https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html)
-#' in the *Alexa Skills Kit*.
-#' 
-#' This operation requires permission for the `lex:GetBuiltInSlotTypes`
-#' action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_builtin_slot_types(locale,
-#'   signatureContains, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_slot_types.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_slot_types.html) for full documentation.
 #'
 #' @param locale A list of locales that the slot type supports.
 #' @param signatureContains Substring to match in built-in slot type signatures. A slot type will be
@@ -1636,32 +729,6 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' pagination token in the next request.
 #' @param maxResults The maximum number of slot types to return in the response. The default
 #' is 10.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   slotTypes = list(
-#'     list(
-#'       signature = "string",
-#'       supportedLocales = list(
-#'         "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_builtin_slot_types(
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-#'   signatureContains = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1688,38 +755,12 @@ lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signat
 #' @description
 #' Exports the contents of a Amazon Lex resource in a specified format.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_export(name, version, resourceType,
-#'   exportType)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_export.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_export.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot to export.
 #' @param version &#91;required&#93; The version of the bot to export.
 #' @param resourceType &#91;required&#93; The type of resource to export.
 #' @param exportType &#91;required&#93; The format of the exported data.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   version = "string",
-#'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-#'   exportType = "ALEXA_SKILLS_KIT"|"LEX",
-#'   exportStatus = "IN_PROGRESS"|"READY"|"FAILED",
-#'   failureReason = "string",
-#'   url = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_export(
-#'   name = "string",
-#'   version = "string",
-#'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-#'   exportType = "ALEXA_SKILLS_KIT"|"LEX"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1745,38 +786,11 @@ lexmodelbuildingservice_get_export <- function(name, version, resourceType, expo
 #' operation
 #'
 #' @description
-#' Gets information about an import job started with the
-#' [`start_import`][lexmodelbuildingservice_start_import] operation.
+#' Gets information about an import job started with the [`start_import`][lexmodelbuildingservice_start_import] operation.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_import(importId)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_import.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_import.html) for full documentation.
 #'
 #' @param importId &#91;required&#93; The identifier of the import job information to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-#'   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
-#'   importId = "string",
-#'   importStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED",
-#'   failureReason = list(
-#'     "string"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_import(
-#'   importId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1801,170 +815,12 @@ lexmodelbuildingservice_get_import <- function(importId) {
 #' Returns information about an intent
 #'
 #' @description
-#' Returns information about an intent. In addition to the intent name, you
-#' must specify the intent version.
-#' 
-#' This operation requires permissions to perform the `lex:GetIntent`
-#' action.
+#' Returns information about an intent. In addition to the intent name, you must specify the intent version.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_intent(name, version)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_intent.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_intent.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent. The name is case sensitive.
 #' @param version &#91;required&#93; The version of the intent.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   slots = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       slotConstraint = "Required"|"Optional",
-#'       slotType = "string",
-#'       slotTypeVersion = "string",
-#'       valueElicitationPrompt = list(
-#'         messages = list(
-#'           list(
-#'             contentType = "PlainText"|"SSML"|"CustomPayload",
-#'             content = "string",
-#'             groupNumber = 123
-#'           )
-#'         ),
-#'         maxAttempts = 123,
-#'         responseCard = "string"
-#'       ),
-#'       priority = 123,
-#'       sampleUtterances = list(
-#'         "string"
-#'       ),
-#'       responseCard = "string",
-#'       obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
-#'       defaultValueSpec = list(
-#'         defaultValueList = list(
-#'           list(
-#'             defaultValue = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   sampleUtterances = list(
-#'     "string"
-#'   ),
-#'   confirmationPrompt = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     maxAttempts = 123,
-#'     responseCard = "string"
-#'   ),
-#'   rejectionStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   followUpPrompt = list(
-#'     prompt = list(
-#'       messages = list(
-#'         list(
-#'           contentType = "PlainText"|"SSML"|"CustomPayload",
-#'           content = "string",
-#'           groupNumber = 123
-#'         )
-#'       ),
-#'       maxAttempts = 123,
-#'       responseCard = "string"
-#'     ),
-#'     rejectionStatement = list(
-#'       messages = list(
-#'         list(
-#'           contentType = "PlainText"|"SSML"|"CustomPayload",
-#'           content = "string",
-#'           groupNumber = 123
-#'         )
-#'       ),
-#'       responseCard = "string"
-#'     )
-#'   ),
-#'   conclusionStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   dialogCodeHook = list(
-#'     uri = "string",
-#'     messageVersion = "string"
-#'   ),
-#'   fulfillmentActivity = list(
-#'     type = "ReturnIntent"|"CodeHook",
-#'     codeHook = list(
-#'       uri = "string",
-#'       messageVersion = "string"
-#'     )
-#'   ),
-#'   parentIntentSignature = "string",
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   checksum = "string",
-#'   kendraConfiguration = list(
-#'     kendraIndex = "string",
-#'     queryFilterString = "string",
-#'     role = "string"
-#'   ),
-#'   inputContexts = list(
-#'     list(
-#'       name = "string"
-#'     )
-#'   ),
-#'   outputContexts = list(
-#'     list(
-#'       name = "string",
-#'       timeToLiveInSeconds = 123,
-#'       turnsToLive = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_intent(
-#'   name = "string",
-#'   version = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example shows how to get information about an intent.
-#' svc$get_intent(
-#'   version = "$LATEST",
-#'   name = "DocOrderPizza"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1990,22 +846,8 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
 #'
 #' @description
 #' Gets information about all of the versions of an intent.
-#' 
-#' The [`get_intent_versions`][lexmodelbuildingservice_get_intent_versions]
-#' operation returns an `IntentMetadata` object for each version of an
-#' intent. For example, if an intent has three numbered versions, the
-#' [`get_intent_versions`][lexmodelbuildingservice_get_intent_versions]
-#' operation returns four `IntentMetadata` objects in the response, one for
-#' each numbered version and one for the `$LATEST` version.
-#' 
-#' The [`get_intent_versions`][lexmodelbuildingservice_get_intent_versions]
-#' operation always returns at least one version, the `$LATEST` version.
-#' 
-#' This operation requires permissions for the `lex:GetIntentVersions`
-#' action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_intent_versions(name, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_intent_versions.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_intent_versions.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent for which versions should be returned.
 #' @param nextToken A pagination token for fetching the next page of intent versions. If the
@@ -2014,36 +856,6 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
 #' pagination token in the next request.
 #' @param maxResults The maximum number of intent versions to return in the response. The
 #' default is 10.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   intents = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       lastUpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       version = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_intent_versions(
-#'   name = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2069,17 +881,8 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 #'
 #' @description
 #' Returns intent information as follows:
-#' 
-#' -   If you specify the `nameContains` field, returns the `$LATEST`
-#'     version of all intents that contain the specified string.
-#' 
-#' -   If you don't specify the `nameContains` field, returns information
-#'     about the `$LATEST` version of all intents.
-#' 
-#' The operation requires permission for the `lex:GetIntents` action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_intents(nextToken, maxResults, nameContains)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_intents.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_intents.html) for full documentation.
 #'
 #' @param nextToken A pagination token that fetches the next page of intents. If the
 #' response to this API call is truncated, Amazon Lex returns a pagination
@@ -2090,46 +893,6 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 #' @param nameContains Substring to match in intent names. An intent will be returned if any
 #' part of its name matches the substring. For example, "xyz" matches both
 #' "xyzabc" and "abcxyz."
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   intents = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       lastUpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       version = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_intents(
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   nameContains = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example shows how to get a list of all of the intents in your
-#' # account.
-#' svc$get_intents(
-#'   maxResults = 10L,
-#'   nextToken = ""
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2151,71 +914,86 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
 }
 .lexmodelbuildingservice$operations$get_intents <- lexmodelbuildingservice_get_intents
 
+#' Provides details about an ongoing or complete migration from an Amazon
+#' Lex V1 bot to an Amazon Lex V2 bot
+#'
+#' @description
+#' Provides details about an ongoing or complete migration from an Amazon Lex V1 bot to an Amazon Lex V2 bot. Use this operation to view the migration alerts and warnings related to the migration.
+#'
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_migration.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_migration.html) for full documentation.
+#'
+#' @param migrationId &#91;required&#93; The unique identifier of the migration to view. The `migrationID` is
+#' returned by the operation.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelbuildingservice_get_migration
+lexmodelbuildingservice_get_migration <- function(migrationId) {
+  op <- new_operation(
+    name = "GetMigration",
+    http_method = "GET",
+    http_path = "/migrations/{migrationId}",
+    paginator = list()
+  )
+  input <- .lexmodelbuildingservice$get_migration_input(migrationId = migrationId)
+  output <- .lexmodelbuildingservice$get_migration_output()
+  config <- get_config()
+  svc <- .lexmodelbuildingservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelbuildingservice$operations$get_migration <- lexmodelbuildingservice_get_migration
+
+#' Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2
+#'
+#' @description
+#' Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2.
+#'
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_migrations.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_migrations.html) for full documentation.
+#'
+#' @param sortByAttribute The field to sort the list of migrations by. You can sort by the Amazon
+#' Lex V1 bot name or the date and time that the migration was started.
+#' @param sortByOrder The order so sort the list.
+#' @param v1BotNameContains Filters the list to contain only bots whose name contains the specified
+#' string. The string is matched anywhere in bot name.
+#' @param migrationStatusEquals Filters the list to contain only migrations in the specified state.
+#' @param maxResults The maximum number of migrations to return in the response. The default
+#' is 10.
+#' @param nextToken A pagination token that fetches the next page of migrations. If the
+#' response to this operation is truncated, Amazon Lex returns a pagination
+#' token in the response. To fetch the next page of migrations, specify the
+#' pagination token in the request.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelbuildingservice_get_migrations
+lexmodelbuildingservice_get_migrations <- function(sortByAttribute = NULL, sortByOrder = NULL, v1BotNameContains = NULL, migrationStatusEquals = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetMigrations",
+    http_method = "GET",
+    http_path = "/migrations",
+    paginator = list()
+  )
+  input <- .lexmodelbuildingservice$get_migrations_input(sortByAttribute = sortByAttribute, sortByOrder = sortByOrder, v1BotNameContains = v1BotNameContains, migrationStatusEquals = migrationStatusEquals, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelbuildingservice$get_migrations_output()
+  config <- get_config()
+  svc <- .lexmodelbuildingservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelbuildingservice$operations$get_migrations <- lexmodelbuildingservice_get_migrations
+
 #' Returns information about a specific version of a slot type
 #'
 #' @description
-#' Returns information about a specific version of a slot type. In addition
-#' to specifying the slot type name, you must specify the slot type
-#' version.
-#' 
-#' This operation requires permissions for the `lex:GetSlotType` action.
+#' Returns information about a specific version of a slot type. In addition to specifying the slot type name, you must specify the slot type version.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_slot_type(name, version)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_type.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_type.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type. The name is case sensitive.
 #' @param version &#91;required&#93; The version of the slot type.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   enumerationValues = list(
-#'     list(
-#'       value = "string",
-#'       synonyms = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   checksum = "string",
-#'   valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-#'   parentSlotTypeSignature = "string",
-#'   slotTypeConfigurations = list(
-#'     list(
-#'       regexConfiguration = list(
-#'         pattern = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_slot_type(
-#'   name = "string",
-#'   version = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example shows how to get information about a slot type.
-#' svc$get_slot_type(
-#'   version = "$LATEST",
-#'   name = "DocPizzaCrustType"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2241,25 +1019,8 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
 #'
 #' @description
 #' Gets information about all versions of a slot type.
-#' 
-#' The
-#' [`get_slot_type_versions`][lexmodelbuildingservice_get_slot_type_versions]
-#' operation returns a `SlotTypeMetadata` object for each version of a slot
-#' type. For example, if a slot type has three numbered versions, the
-#' [`get_slot_type_versions`][lexmodelbuildingservice_get_slot_type_versions]
-#' operation returns four `SlotTypeMetadata` objects in the response, one
-#' for each numbered version and one for the `$LATEST` version.
-#' 
-#' The
-#' [`get_slot_type_versions`][lexmodelbuildingservice_get_slot_type_versions]
-#' operation always returns at least one version, the `$LATEST` version.
-#' 
-#' This operation requires permissions for the `lex:GetSlotTypeVersions`
-#' action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_slot_type_versions(name, nextToken,
-#'   maxResults)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_type_versions.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_type_versions.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type for which versions should be returned.
 #' @param nextToken A pagination token for fetching the next page of slot type versions. If
@@ -2268,36 +1029,6 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
 #' pagination token in the next request.
 #' @param maxResults The maximum number of slot type versions to return in the response. The
 #' default is 10.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   slotTypes = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       lastUpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       version = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_slot_type_versions(
-#'   name = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2323,18 +1054,8 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 #'
 #' @description
 #' Returns slot type information as follows:
-#' 
-#' -   If you specify the `nameContains` field, returns the `$LATEST`
-#'     version of all slot types that contain the specified string.
-#' 
-#' -   If you don't specify the `nameContains` field, returns information
-#'     about the `$LATEST` version of all slot types.
-#' 
-#' The operation requires permission for the `lex:GetSlotTypes` action.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_slot_types(nextToken, maxResults,
-#'   nameContains)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_types.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_types.html) for full documentation.
 #'
 #' @param nextToken A pagination token that fetches the next page of slot types. If the
 #' response to this API call is truncated, Amazon Lex returns a pagination
@@ -2345,46 +1066,6 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 #' @param nameContains Substring to match in slot type names. A slot type will be returned if
 #' any part of its name matches the substring. For example, "xyz" matches
 #' both "xyzabc" and "abcxyz."
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   slotTypes = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       lastUpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       createdDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       version = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_slot_types(
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   nameContains = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example shows how to get a list of all of the slot types in your
-#' # account.
-#' svc$get_slot_types(
-#'   maxResults = 10L,
-#'   nextToken = ""
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2410,83 +1091,15 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
 #' utterances that your users have made to your bot
 #'
 #' @description
-#' Use the
-#' [`get_utterances_view`][lexmodelbuildingservice_get_utterances_view]
-#' operation to get information about the utterances that your users have
-#' made to your bot. You can use this list to tune the utterances that your
-#' bot responds to.
-#' 
-#' For example, say that you have created a bot to order flowers. After
-#' your users have used your bot for a while, use the
-#' [`get_utterances_view`][lexmodelbuildingservice_get_utterances_view]
-#' operation to see the requests that they have made and whether they have
-#' been successful. You might find that the utterance "I want flowers" is
-#' not being recognized. You could add this utterance to the `OrderFlowers`
-#' intent so that your bot recognizes that utterance.
-#' 
-#' After you publish a new version of a bot, you can get information about
-#' the old version and the new so that you can compare the performance
-#' across the two versions.
-#' 
-#' Utterance statistics are generated once a day. Data is available for the
-#' last 15 days. You can request information for up to 5 versions of your
-#' bot in each request. Amazon Lex returns the most frequent utterances
-#' received by the bot in the last 15 days. The response contains
-#' information about a maximum of 100 utterances for each version.
-#' 
-#' If you set `childDirected` field to true when you created your bot, or
-#' if you opted out of participating in improving Amazon Lex, utterances
-#' are not available.
-#' 
-#' This operation requires permissions for the `lex:GetUtterancesView`
-#' action.
+#' Use the [`get_utterances_view`][lexmodelbuildingservice_get_utterances_view] operation to get information about the utterances that your users have made to your bot. You can use this list to tune the utterances that your bot responds to.
 #'
-#' @usage
-#' lexmodelbuildingservice_get_utterances_view(botName, botVersions,
-#'   statusType)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_utterances_view.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_utterances_view.html) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot for which utterance information should be returned.
 #' @param botVersions &#91;required&#93; An array of bot versions for which utterance information should be
 #' returned. The limit is 5 versions per request.
 #' @param statusType &#91;required&#93; To return utterances that were recognized and handled, use `Detected`.
 #' To return utterances that were not recognized, use `Missed`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   botName = "string",
-#'   utterances = list(
-#'     list(
-#'       botVersion = "string",
-#'       utterances = list(
-#'         list(
-#'           utteranceString = "string",
-#'           count = 123,
-#'           distinctUsers = 123,
-#'           firstUtteredDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           lastUtteredDate = as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_utterances_view(
-#'   botName = "string",
-#'   botVersions = list(
-#'     "string"
-#'   ),
-#'   statusType = "Detected"|"Missed"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2511,34 +1124,12 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' Gets a list of tags associated with the specified resource
 #'
 #' @description
-#' Gets a list of tags associated with the specified resource. Only bots,
-#' bot aliases, and bot channels can have tags associated with them.
+#' Gets a list of tags associated with the specified resource. Only bots, bot aliases, and bot channels can have tags associated with them.
 #'
-#' @usage
-#' lexmodelbuildingservice_list_tags_for_resource(resourceArn)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/list_tags_for_resource.html](https://paws-r.github.io/docs/lexmodelbuildingservice/list_tags_for_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get a list of tags
 #' for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   resourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2563,31 +1154,9 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' Creates an Amazon Lex conversational bot or replaces an existing bot
 #'
 #' @description
-#' Creates an Amazon Lex conversational bot or replaces an existing bot.
-#' When you create or update a bot you are only required to specify a name,
-#' a locale, and whether the bot is directed toward children under age 13.
-#' You can use this to add intents later, or to remove intents from an
-#' existing bot. When you create a bot with the minimum information, the
-#' bot is created or updated but Amazon Lex returns the `` response
-#' `FAILED`. You can build the bot after you add one or more intents. For
-#' more information about Amazon Lex bots, see how-it-works.
-#' 
-#' If you specify the name of an existing bot, the fields in the request
-#' replace the existing values in the `$LATEST` version of the bot. Amazon
-#' Lex removes any fields that you don't provide values for in the request,
-#' except for the `idleTTLInSeconds` and `privacySettings` fields, which
-#' are set to their default values. If you don't specify values for
-#' required fields, Amazon Lex throws an exception.
-#' 
-#' This operation requires permissions for the `lex:PutBot` action. For
-#' more information, see security-iam.
+#' Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the `` response `FAILED`. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see how-it-works.
 #'
-#' @usage
-#' lexmodelbuildingservice_put_bot(name, description, intents,
-#'   enableModelImprovements, nluIntentConfidenceThreshold,
-#'   clarificationPrompt, abortStatement, idleSessionTTLInSeconds, voiceId,
-#'   checksum, processBehavior, locale, childDirected, detectSentiment,
-#'   createVersion, tags)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot.html](https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot. The name is *not* case sensitive.
 #' @param description A description of the bot.
@@ -2789,161 +1358,6 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' operation to update the tags on a bot. To update tags, use the
 #' [`tag_resource`][lexmodelbuildingservice_tag_resource] operation.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   intents = list(
-#'     list(
-#'       intentName = "string",
-#'       intentVersion = "string"
-#'     )
-#'   ),
-#'   enableModelImprovements = TRUE|FALSE,
-#'   nluIntentConfidenceThreshold = 123.0,
-#'   clarificationPrompt = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     maxAttempts = 123,
-#'     responseCard = "string"
-#'   ),
-#'   abortStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
-#'   failureReason = "string",
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   idleSessionTTLInSeconds = 123,
-#'   voiceId = "string",
-#'   checksum = "string",
-#'   version = "string",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-#'   childDirected = TRUE|FALSE,
-#'   createVersion = TRUE|FALSE,
-#'   detectSentiment = TRUE|FALSE,
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_bot(
-#'   name = "string",
-#'   description = "string",
-#'   intents = list(
-#'     list(
-#'       intentName = "string",
-#'       intentVersion = "string"
-#'     )
-#'   ),
-#'   enableModelImprovements = TRUE|FALSE,
-#'   nluIntentConfidenceThreshold = 123.0,
-#'   clarificationPrompt = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     maxAttempts = 123,
-#'     responseCard = "string"
-#'   ),
-#'   abortStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   idleSessionTTLInSeconds = 123,
-#'   voiceId = "string",
-#'   checksum = "string",
-#'   processBehavior = "SAVE"|"BUILD",
-#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-#'   childDirected = TRUE|FALSE,
-#'   detectSentiment = TRUE|FALSE,
-#'   createVersion = TRUE|FALSE,
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example shows how to create a bot for ordering pizzas.
-#' svc$put_bot(
-#'   name = "DocOrderPizzaBot",
-#'   abortStatement = list(
-#'     messages = list(
-#'       list(
-#'         content = "I don't understand. Can you try again?",
-#'         contentType = "PlainText"
-#'       ),
-#'       list(
-#'         content = "I'm sorry, I don't understand.",
-#'         contentType = "PlainText"
-#'       )
-#'     )
-#'   ),
-#'   childDirected = TRUE,
-#'   clarificationPrompt = list(
-#'     maxAttempts = 1L,
-#'     messages = list(
-#'       list(
-#'         content = "I'm sorry, I didn't hear that. Can you repeat what you just said?",
-#'         contentType = "PlainText"
-#'       ),
-#'       list(
-#'         content = "Can you say that again?",
-#'         contentType = "PlainText"
-#'       )
-#'     )
-#'   ),
-#'   description = "Orders a pizza from a local pizzeria.",
-#'   idleSessionTTLInSeconds = 300L,
-#'   intents = list(
-#'     list(
-#'       intentName = "DocOrderPizza",
-#'       intentVersion = "$LATEST"
-#'     )
-#'   ),
-#'   locale = "en-US",
-#'   processBehavior = "SAVE"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_bot
@@ -2968,16 +1382,9 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #' alias for the specified bot
 #'
 #' @description
-#' Creates an alias for the specified version of the bot or replaces an
-#' alias for the specified bot. To change the version of the bot that the
-#' alias points to, replace the alias. For more information about aliases,
-#' see versioning-aliases.
-#' 
-#' This operation requires permissions for the `lex:PutBotAlias` action.
+#' Creates an alias for the specified version of the bot or replaces an alias for the specified bot. To change the version of the bot that the alias points to, replace the alias. For more information about aliases, see versioning-aliases.
 #'
-#' @usage
-#' lexmodelbuildingservice_put_bot_alias(name, description, botVersion,
-#'   botName, checksum, conversationLogs, tags)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot_alias.html](https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot_alias.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the alias. The name is *not* case sensitive.
 #' @param description A description of the alias.
@@ -2999,70 +1406,6 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #' [`put_bot_alias`][lexmodelbuildingservice_put_bot_alias] operation to
 #' update the tags on a bot alias. To update tags, use the
 #' [`tag_resource`][lexmodelbuildingservice_tag_resource] operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   botVersion = "string",
-#'   botName = "string",
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   checksum = "string",
-#'   conversationLogs = list(
-#'     logSettings = list(
-#'       list(
-#'         logType = "AUDIO"|"TEXT",
-#'         destination = "CLOUDWATCH_LOGS"|"S3",
-#'         kmsKeyArn = "string",
-#'         resourceArn = "string",
-#'         resourcePrefix = "string"
-#'       )
-#'     ),
-#'     iamRoleArn = "string"
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_bot_alias(
-#'   name = "string",
-#'   description = "string",
-#'   botVersion = "string",
-#'   botName = "string",
-#'   checksum = "string",
-#'   conversationLogs = list(
-#'     logSettings = list(
-#'       list(
-#'         logType = "AUDIO"|"TEXT",
-#'         destination = "CLOUDWATCH_LOGS"|"S3",
-#'         kmsKeyArn = "string",
-#'         resourceArn = "string"
-#'       )
-#'     ),
-#'     iamRoleArn = "string"
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3088,60 +1431,8 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'
 #' @description
 #' Creates an intent or replaces an existing intent.
-#' 
-#' To define the interaction between the user and your bot, you use one or
-#' more intents. For a pizza ordering bot, for example, you would create an
-#' `OrderPizza` intent.
-#' 
-#' To create an intent or replace an existing intent, you must provide the
-#' following:
-#' 
-#' -   Intent name. For example, `OrderPizza`.
-#' 
-#' -   Sample utterances. For example, "Can I order a pizza, please." and
-#'     "I want to order a pizza."
-#' 
-#' -   Information to be gathered. You specify slot types for the
-#'     information that your bot will request from the user. You can
-#'     specify standard slot types, such as a date or a time, or custom
-#'     slot types such as the size and crust of a pizza.
-#' 
-#' -   How the intent will be fulfilled. You can provide a Lambda function
-#'     or configure the intent to return the intent information to the
-#'     client application. If you use a Lambda function, when all of the
-#'     intent information is available, Amazon Lex invokes your Lambda
-#'     function. If you configure your intent to return the intent
-#'     information to the client application.
-#' 
-#' You can specify other optional information in the request, such as:
-#' 
-#' -   A confirmation prompt to ask the user to confirm an intent. For
-#'     example, "Shall I order your pizza?"
-#' 
-#' -   A conclusion statement to send to the user after the intent has been
-#'     fulfilled. For example, "I placed your pizza order."
-#' 
-#' -   A follow-up prompt that asks the user for additional activity. For
-#'     example, asking "Do you want to order a drink with your pizza?"
-#' 
-#' If you specify an existing intent name to update the intent, Amazon Lex
-#' replaces the values in the `$LATEST` version of the intent with the
-#' values in the request. Amazon Lex removes fields that you don't provide
-#' in the request. If you don't specify the required fields, Amazon Lex
-#' throws an exception. When you update the `$LATEST` version of an intent,
-#' the `status` field of any bot that uses the `$LATEST` version of the
-#' intent is set to `NOT_BUILT`.
-#' 
-#' For more information, see how-it-works.
-#' 
-#' This operation requires permissions for the `lex:PutIntent` action.
 #'
-#' @usage
-#' lexmodelbuildingservice_put_intent(name, description, slots,
-#'   sampleUtterances, confirmationPrompt, rejectionStatement,
-#'   followUpPrompt, conclusionStatement, dialogCodeHook,
-#'   fulfillmentActivity, parentIntentSignature, checksum, createVersion,
-#'   kendraConfiguration, inputContexts, outputContexts)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/put_intent.html](https://paws-r.github.io/docs/lexmodelbuildingservice/put_intent.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent. The name is *not* case sensitive.
 #' 
@@ -3256,406 +1547,6 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' @param outputContexts An array of `OutputContext` objects that lists the contexts that the
 #' intent activates when the intent is fulfilled.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   slots = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       slotConstraint = "Required"|"Optional",
-#'       slotType = "string",
-#'       slotTypeVersion = "string",
-#'       valueElicitationPrompt = list(
-#'         messages = list(
-#'           list(
-#'             contentType = "PlainText"|"SSML"|"CustomPayload",
-#'             content = "string",
-#'             groupNumber = 123
-#'           )
-#'         ),
-#'         maxAttempts = 123,
-#'         responseCard = "string"
-#'       ),
-#'       priority = 123,
-#'       sampleUtterances = list(
-#'         "string"
-#'       ),
-#'       responseCard = "string",
-#'       obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
-#'       defaultValueSpec = list(
-#'         defaultValueList = list(
-#'           list(
-#'             defaultValue = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   sampleUtterances = list(
-#'     "string"
-#'   ),
-#'   confirmationPrompt = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     maxAttempts = 123,
-#'     responseCard = "string"
-#'   ),
-#'   rejectionStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   followUpPrompt = list(
-#'     prompt = list(
-#'       messages = list(
-#'         list(
-#'           contentType = "PlainText"|"SSML"|"CustomPayload",
-#'           content = "string",
-#'           groupNumber = 123
-#'         )
-#'       ),
-#'       maxAttempts = 123,
-#'       responseCard = "string"
-#'     ),
-#'     rejectionStatement = list(
-#'       messages = list(
-#'         list(
-#'           contentType = "PlainText"|"SSML"|"CustomPayload",
-#'           content = "string",
-#'           groupNumber = 123
-#'         )
-#'       ),
-#'       responseCard = "string"
-#'     )
-#'   ),
-#'   conclusionStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   dialogCodeHook = list(
-#'     uri = "string",
-#'     messageVersion = "string"
-#'   ),
-#'   fulfillmentActivity = list(
-#'     type = "ReturnIntent"|"CodeHook",
-#'     codeHook = list(
-#'       uri = "string",
-#'       messageVersion = "string"
-#'     )
-#'   ),
-#'   parentIntentSignature = "string",
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   checksum = "string",
-#'   createVersion = TRUE|FALSE,
-#'   kendraConfiguration = list(
-#'     kendraIndex = "string",
-#'     queryFilterString = "string",
-#'     role = "string"
-#'   ),
-#'   inputContexts = list(
-#'     list(
-#'       name = "string"
-#'     )
-#'   ),
-#'   outputContexts = list(
-#'     list(
-#'       name = "string",
-#'       timeToLiveInSeconds = 123,
-#'       turnsToLive = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_intent(
-#'   name = "string",
-#'   description = "string",
-#'   slots = list(
-#'     list(
-#'       name = "string",
-#'       description = "string",
-#'       slotConstraint = "Required"|"Optional",
-#'       slotType = "string",
-#'       slotTypeVersion = "string",
-#'       valueElicitationPrompt = list(
-#'         messages = list(
-#'           list(
-#'             contentType = "PlainText"|"SSML"|"CustomPayload",
-#'             content = "string",
-#'             groupNumber = 123
-#'           )
-#'         ),
-#'         maxAttempts = 123,
-#'         responseCard = "string"
-#'       ),
-#'       priority = 123,
-#'       sampleUtterances = list(
-#'         "string"
-#'       ),
-#'       responseCard = "string",
-#'       obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
-#'       defaultValueSpec = list(
-#'         defaultValueList = list(
-#'           list(
-#'             defaultValue = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   sampleUtterances = list(
-#'     "string"
-#'   ),
-#'   confirmationPrompt = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     maxAttempts = 123,
-#'     responseCard = "string"
-#'   ),
-#'   rejectionStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   followUpPrompt = list(
-#'     prompt = list(
-#'       messages = list(
-#'         list(
-#'           contentType = "PlainText"|"SSML"|"CustomPayload",
-#'           content = "string",
-#'           groupNumber = 123
-#'         )
-#'       ),
-#'       maxAttempts = 123,
-#'       responseCard = "string"
-#'     ),
-#'     rejectionStatement = list(
-#'       messages = list(
-#'         list(
-#'           contentType = "PlainText"|"SSML"|"CustomPayload",
-#'           content = "string",
-#'           groupNumber = 123
-#'         )
-#'       ),
-#'       responseCard = "string"
-#'     )
-#'   ),
-#'   conclusionStatement = list(
-#'     messages = list(
-#'       list(
-#'         contentType = "PlainText"|"SSML"|"CustomPayload",
-#'         content = "string",
-#'         groupNumber = 123
-#'       )
-#'     ),
-#'     responseCard = "string"
-#'   ),
-#'   dialogCodeHook = list(
-#'     uri = "string",
-#'     messageVersion = "string"
-#'   ),
-#'   fulfillmentActivity = list(
-#'     type = "ReturnIntent"|"CodeHook",
-#'     codeHook = list(
-#'       uri = "string",
-#'       messageVersion = "string"
-#'     )
-#'   ),
-#'   parentIntentSignature = "string",
-#'   checksum = "string",
-#'   createVersion = TRUE|FALSE,
-#'   kendraConfiguration = list(
-#'     kendraIndex = "string",
-#'     queryFilterString = "string",
-#'     role = "string"
-#'   ),
-#'   inputContexts = list(
-#'     list(
-#'       name = "string"
-#'     )
-#'   ),
-#'   outputContexts = list(
-#'     list(
-#'       name = "string",
-#'       timeToLiveInSeconds = 123,
-#'       turnsToLive = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example shows how to create an intent for ordering pizzas.
-#' svc$put_intent(
-#'   name = "DocOrderPizza",
-#'   conclusionStatement = list(
-#'     messages = list(
-#'       list(
-#'         content = "All right, I ordered  you a {Crust} crust {Type} pizza with {Sauce} sauce.",
-#'         contentType = "PlainText"
-#'       ),
-#'       list(
-#'         content = "OK, your {Crust} crust {Type} pizza with {Sauce} sauce is on the way.",
-#'         contentType = "PlainText"
-#'       )
-#'     ),
-#'     responseCard = "foo"
-#'   ),
-#'   confirmationPrompt = list(
-#'     maxAttempts = 1L,
-#'     messages = list(
-#'       list(
-#'         content = "Should I order  your {Crust} crust {Type} pizza with {Sauce} sauce?",
-#'         contentType = "PlainText"
-#'       )
-#'     )
-#'   ),
-#'   description = "Order a pizza from a local pizzeria.",
-#'   fulfillmentActivity = list(
-#'     type = "ReturnIntent"
-#'   ),
-#'   rejectionStatement = list(
-#'     messages = list(
-#'       list(
-#'         content = "Ok, I'll cancel your order.",
-#'         contentType = "PlainText"
-#'       ),
-#'       list(
-#'         content = "I cancelled your order.",
-#'         contentType = "PlainText"
-#'       )
-#'     )
-#'   ),
-#'   sampleUtterances = list(
-#'     "Order me a pizza.",
-#'     "Order me a {Type} pizza.",
-#'     "I want a {Crust} crust {Type} pizza",
-#'     "I want a {Crust} crust {Type} pizza with {Sauce} sauce."
-#'   ),
-#'   slots = list(
-#'     list(
-#'       name = "Type",
-#'       description = "The type of pizza to order.",
-#'       priority = 1L,
-#'       sampleUtterances = list(
-#'         "Get me a {Type} pizza.",
-#'         "A {Type} pizza please.",
-#'         "I'd like a {Type} pizza."
-#'       ),
-#'       slotConstraint = "Required",
-#'       slotType = "DocPizzaType",
-#'       slotTypeVersion = "$LATEST",
-#'       valueElicitationPrompt = list(
-#'         maxAttempts = 1L,
-#'         messages = list(
-#'           list(
-#'             content = "What type of pizza would you like?",
-#'             contentType = "PlainText"
-#'           ),
-#'           list(
-#'             content = "Vegie or cheese pizza?",
-#'             contentType = "PlainText"
-#'           ),
-#'           list(
-#'             content = "I can get you a vegie or a cheese pizza.",
-#'             contentType = "PlainText"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     list(
-#'       name = "Crust",
-#'       description = "The type of pizza crust to order.",
-#'       priority = 2L,
-#'       sampleUtterances = list(
-#'         "Make it a {Crust} crust.",
-#'         "I'd like a {Crust} crust."
-#'       ),
-#'       slotConstraint = "Required",
-#'       slotType = "DocPizzaCrustType",
-#'       slotTypeVersion = "$LATEST",
-#'       valueElicitationPrompt = list(
-#'         maxAttempts = 1L,
-#'         messages = list(
-#'           list(
-#'             content = "What type of crust would you like?",
-#'             contentType = "PlainText"
-#'           ),
-#'           list(
-#'             content = "Thick or thin crust?",
-#'             contentType = "PlainText"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     list(
-#'       name = "Sauce",
-#'       description = "The type of sauce to use on the pizza.",
-#'       priority = 3L,
-#'       sampleUtterances = list(
-#'         "Make it {Sauce} sauce.",
-#'         "I'd like {Sauce} sauce."
-#'       ),
-#'       slotConstraint = "Required",
-#'       slotType = "DocPizzaSauceType",
-#'       slotTypeVersion = "$LATEST",
-#'       valueElicitationPrompt = list(
-#'         maxAttempts = 1L,
-#'         messages = list(
-#'           list(
-#'             content = "White or red sauce?",
-#'             contentType = "PlainText"
-#'           ),
-#'           list(
-#'             content = "Garlic or tomato sauce?",
-#'             contentType = "PlainText"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_intent
@@ -3680,25 +1571,8 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #'
 #' @description
 #' Creates a custom slot type or replaces an existing custom slot type.
-#' 
-#' To create a custom slot type, specify a name for the slot type and a set
-#' of enumeration values, which are the values that a slot of this type can
-#' assume. For more information, see how-it-works.
-#' 
-#' If you specify the name of an existing slot type, the fields in the
-#' request replace the existing values in the `$LATEST` version of the slot
-#' type. Amazon Lex removes the fields that you don't provide in the
-#' request. If you don't specify required fields, Amazon Lex throws an
-#' exception. When you update the `$LATEST` version of a slot type, if a
-#' bot uses the `$LATEST` version of an intent that contains the slot type,
-#' the bot's `status` field is set to `NOT_BUILT`.
-#' 
-#' This operation requires permissions for the `lex:PutSlotType` action.
 #'
-#' @usage
-#' lexmodelbuildingservice_put_slot_type(name, description,
-#'   enumerationValues, checksum, valueSelectionStrategy, createVersion,
-#'   parentSlotTypeSignature, slotTypeConfigurations)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/put_slot_type.html](https://paws-r.github.io/docs/lexmodelbuildingservice/put_slot_type.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type. The name is *not* case sensitive.
 #' 
@@ -3761,86 +1635,6 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' @param slotTypeConfigurations Configuration information that extends the parent built-in slot type.
 #' The configuration is added to the settings for the parent slot type.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   description = "string",
-#'   enumerationValues = list(
-#'     list(
-#'       value = "string",
-#'       synonyms = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   lastUpdatedDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   version = "string",
-#'   checksum = "string",
-#'   valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-#'   createVersion = TRUE|FALSE,
-#'   parentSlotTypeSignature = "string",
-#'   slotTypeConfigurations = list(
-#'     list(
-#'       regexConfiguration = list(
-#'         pattern = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_slot_type(
-#'   name = "string",
-#'   description = "string",
-#'   enumerationValues = list(
-#'     list(
-#'       value = "string",
-#'       synonyms = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   checksum = "string",
-#'   valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-#'   createVersion = TRUE|FALSE,
-#'   parentSlotTypeSignature = "string",
-#'   slotTypeConfigurations = list(
-#'     list(
-#'       regexConfiguration = list(
-#'         pattern = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example shows how to create a slot type that describes pizza
-#' # sauces.
-#' svc$put_slot_type(
-#'   name = "PizzaSauceType",
-#'   description = "Available pizza sauces",
-#'   enumerationValues = list(
-#'     list(
-#'       value = "red"
-#'     ),
-#'     list(
-#'       value = "white"
-#'     )
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_slot_type
@@ -3866,9 +1660,7 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 #' @description
 #' Starts a job to import a resource to Amazon Lex.
 #'
-#' @usage
-#' lexmodelbuildingservice_start_import(payload, resourceType,
-#'   mergeStrategy, tags)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/start_import.html](https://paws-r.github.io/docs/lexmodelbuildingservice/start_import.html) for full documentation.
 #'
 #' @param payload &#91;required&#93; A zip archive in binary format. The archive should contain one file, a
 #' JSON file containing the resource to import. The resource should match
@@ -3895,42 +1687,6 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 #' @param tags A list of tags to add to the imported bot. You can only add tags when
 #' you import a bot, you can't add tags to an intent or slot type.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   name = "string",
-#'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-#'   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
-#'   importId = "string",
-#'   importStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   createdDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_import(
-#'   payload = raw,
-#'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-#'   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_start_import
@@ -3951,35 +1707,67 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
 }
 .lexmodelbuildingservice$operations$start_import <- lexmodelbuildingservice_start_import
 
+#' Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2
+#'
+#' @description
+#' Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2. Migrate your bot when you want to take advantage of the new features of Amazon Lex V2.
+#'
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/start_migration.html](https://paws-r.github.io/docs/lexmodelbuildingservice/start_migration.html) for full documentation.
+#'
+#' @param v1BotName &#91;required&#93; The name of the Amazon Lex V1 bot that you are migrating to Amazon Lex
+#' V2.
+#' @param v1BotVersion &#91;required&#93; The version of the bot to migrate to Amazon Lex V2. You can migrate the
+#' `$LATEST` version as well as any numbered version.
+#' @param v2BotName &#91;required&#93; The name of the Amazon Lex V2 bot that you are migrating the Amazon Lex
+#' V1 bot to.
+#' 
+#' -   If the Amazon Lex V2 bot doesn't exist, you must use the
+#'     `CREATE_NEW` migration strategy.
+#' 
+#' -   If the Amazon Lex V2 bot exists, you must use the `UPDATE_EXISTING`
+#'     migration strategy to change the contents of the Amazon Lex V2 bot.
+#' @param v2BotRole &#91;required&#93; The IAM role that Amazon Lex uses to run the Amazon Lex V2 bot.
+#' @param migrationStrategy &#91;required&#93; The strategy used to conduct the migration.
+#' 
+#' -   `CREATE_NEW` - Creates a new Amazon Lex V2 bot and migrates the
+#'     Amazon Lex V1 bot to the new bot.
+#' 
+#' -   `UPDATE_EXISTING` - Overwrites the existing Amazon Lex V2 bot
+#'     metadata and the locale being migrated. It doesn't change any other
+#'     locales in the Amazon Lex V2 bot. If the locale doesn't exist, a new
+#'     locale is created in the Amazon Lex V2 bot.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelbuildingservice_start_migration
+lexmodelbuildingservice_start_migration <- function(v1BotName, v1BotVersion, v2BotName, v2BotRole, migrationStrategy) {
+  op <- new_operation(
+    name = "StartMigration",
+    http_method = "POST",
+    http_path = "/migrations",
+    paginator = list()
+  )
+  input <- .lexmodelbuildingservice$start_migration_input(v1BotName = v1BotName, v1BotVersion = v1BotVersion, v2BotName = v2BotName, v2BotRole = v2BotRole, migrationStrategy = migrationStrategy)
+  output <- .lexmodelbuildingservice$start_migration_output()
+  config <- get_config()
+  svc <- .lexmodelbuildingservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelbuildingservice$operations$start_migration <- lexmodelbuildingservice_start_migration
+
 #' Adds the specified tags to the specified resource
 #'
 #' @description
-#' Adds the specified tags to the specified resource. If a tag key already
-#' exists, the existing value is replaced with the new value.
+#' Adds the specified tags to the specified resource. If a tag key already exists, the existing value is replaced with the new value.
 #'
-#' @usage
-#' lexmodelbuildingservice_tag_resource(resourceArn, tags)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/tag_resource.html](https://paws-r.github.io/docs/lexmodelbuildingservice/tag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the bot, bot alias, or bot channel to
 #' tag.
 #' @param tags &#91;required&#93; A list of tag keys to add to the resource. If a tag key already exists,
 #' the existing value is replaced with the new value.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceArn = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4006,25 +1794,11 @@ lexmodelbuildingservice_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from a bot, bot alias or bot channel.
 #'
-#' @usage
-#' lexmodelbuildingservice_untag_resource(resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/untag_resource.html](https://paws-r.github.io/docs/lexmodelbuildingservice/untag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove the tags from.
 #' @param tagKeys &#91;required&#93; A list of tag keys to remove from the resource. If a tag key does not
 #' exist on the resource, it is ignored.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

@@ -4,7 +4,7 @@
 \alias{eventbridge_disable_rule}
 \title{Disables the specified rule}
 \usage{
-eventbridge_disable_rule(Name, EventBusName)
+eventbridge_disable_rule(Name, EventBusName = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the rule.}
@@ -12,22 +12,9 @@ eventbridge_disable_rule(Name, EventBusName)
 \item{EventBusName}{The name or ARN of the event bus associated with the rule. If you omit
 this, the default event bus is used.}
 }
-\value{
-An empty list.
-}
 \description{
-Disables the specified rule. A disabled rule won't match any events, and
-won't self-trigger if it has a schedule expression.
+Disables the specified rule. A disabled rule won't match any events, and won't self-trigger if it has a schedule expression.
 
-When you disable a rule, incoming events might continue to match to the
-disabled rule. Allow a short period of time for changes to take effect.
+See \url{https://paws-r.github.io/docs/eventbridge/disable_rule.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disable_rule(
-  Name = "string",
-  EventBusName = "string"
-)
-}
-}
-
 \keyword{internal}

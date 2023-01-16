@@ -160,7 +160,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       ),
 #'       secondaryArtifacts = list(
 #'         list(
@@ -169,7 +170,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #'           md5sum = "string",
 #'           overrideArtifactName = TRUE|FALSE,
 #'           encryptionDisabled = TRUE|FALSE,
-#'           artifactIdentifier = "string"
+#'           artifactIdentifier = "string",
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       cache = list(
@@ -208,7 +210,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #'         s3Logs = list(
 #'           status = "ENABLED"|"DISABLED",
 #'           location = "string",
-#'           encryptionDisabled = TRUE|FALSE
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       buildTimeoutInMinutes = 123,
@@ -244,7 +247,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #'             "string"
 #'           )
 #'         ),
-#'         timeoutInMins = 123
+#'         timeoutInMins = 123,
+#'         batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
 #'       ),
 #'       buildGroups = list(
 #'         list(
@@ -294,7 +298,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       debugSessionEnabled = TRUE|FALSE
 #'     )
 #'   ),
 #'   buildBatchesNotFound = list(
@@ -435,7 +440,8 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       ),
 #'       secondaryArtifacts = list(
 #'         list(
@@ -444,7 +450,8 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'           md5sum = "string",
 #'           overrideArtifactName = TRUE|FALSE,
 #'           encryptionDisabled = TRUE|FALSE,
-#'           artifactIdentifier = "string"
+#'           artifactIdentifier = "string",
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       cache = list(
@@ -489,7 +496,8 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'         s3Logs = list(
 #'           status = "ENABLED"|"DISABLED",
 #'           location = "string",
-#'           encryptionDisabled = TRUE|FALSE
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       timeoutInMinutes = 123,
@@ -550,18 +558,6 @@ codebuild_batch_get_build_batches <- function(ids) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example gets information about builds with the specified
-#' # build IDs.
-#' svc$batch_get_builds(
-#'   ids = list(
-#'     "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
-#'     "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname codebuild_batch_get_builds
@@ -591,8 +587,8 @@ codebuild_batch_get_builds <- function(ids) {
 #' codebuild_batch_get_projects(names)
 #'
 #' @param names &#91;required&#93; The names or ARNs of the build projects. To get information about a
-#' project shared with your AWS account, its ARN must be specified. You
-#' cannot specify a shared project using its name.
+#' project shared with your Amazon Web Services account, its ARN must be
+#' specified. You cannot specify a shared project using its name.
 #'
 #' @return
 #' A list with the following syntax:
@@ -661,7 +657,8 @@ codebuild_batch_get_builds <- function(ids) {
 #'         packaging = "NONE"|"ZIP",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       ),
 #'       secondaryArtifacts = list(
 #'         list(
@@ -673,7 +670,8 @@ codebuild_batch_get_builds <- function(ids) {
 #'           packaging = "NONE"|"ZIP",
 #'           overrideArtifactName = TRUE|FALSE,
 #'           encryptionDisabled = TRUE|FALSE,
-#'           artifactIdentifier = "string"
+#'           artifactIdentifier = "string",
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       cache = list(
@@ -759,7 +757,8 @@ codebuild_batch_get_builds <- function(ids) {
 #'         s3Logs = list(
 #'           status = "ENABLED"|"DISABLED",
 #'           location = "string",
-#'           encryptionDisabled = TRUE|FALSE
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'         )
 #'       ),
 #'       fileSystemLocations = list(
@@ -780,8 +779,13 @@ codebuild_batch_get_builds <- function(ids) {
 #'             "string"
 #'           )
 #'         ),
-#'         timeoutInMins = 123
-#'       )
+#'         timeoutInMins = 123,
+#'         batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
+#'       ),
+#'       concurrentBuildLimit = 123,
+#'       projectVisibility = "PUBLIC_READ"|"PRIVATE",
+#'       publicProjectAlias = "string",
+#'       resourceAccessRole = "string"
 #'     )
 #'   ),
 #'   projectsNotFound = list(
@@ -842,6 +846,7 @@ codebuild_batch_get_projects <- function(names) {
 #'         exportConfigType = "S3"|"NO_EXPORT",
 #'         s3Destination = list(
 #'           bucket = "string",
+#'           bucketOwner = "string",
 #'           path = "string",
 #'           packaging = "ZIP"|"NONE",
 #'           encryptionKey = "string",
@@ -930,6 +935,7 @@ codebuild_batch_get_report_groups <- function(reportGroupArns) {
 #'         exportConfigType = "S3"|"NO_EXPORT",
 #'         s3Destination = list(
 #'           bucket = "string",
+#'           bucketOwner = "string",
 #'           path = "string",
 #'           packaging = "ZIP"|"NONE",
 #'           encryptionKey = "string",
@@ -999,7 +1005,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
 #'   cache, environment, serviceRole, timeoutInMinutes,
 #'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-#'   logsConfig, fileSystemLocations, buildBatchConfig)
+#'   logsConfig, fileSystemLocations, buildBatchConfig, concurrentBuildLimit)
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' @param description A description that makes the build project easy to identify.
@@ -1008,7 +1014,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @param sourceVersion A version of the build input to be built for this project. If not
 #' specified, the latest version is used. If specified, it must be one of:
 #' 
-#' -   For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+#' -   For CodeCommit: the commit ID, branch, or Git tag to use.
 #' 
 #' -   For GitHub: the commit ID, pull request ID, branch name, or tag name
 #'     that corresponds to the version of the source code you want to
@@ -1022,15 +1028,15 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     a branch name is specified, the branch's HEAD commit ID is used. If
 #'     not specified, the default branch's HEAD commit ID is used.
 #' 
-#' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
-#'     object that represents the build input ZIP file to use.
+#' -   For Amazon S3: the version ID of the object that represents the
+#'     build input ZIP file to use.
 #' 
 #' If `sourceVersion` is specified at the build level, then that version
 #' takes precedence over this `sourceVersion` (at the project level).
 #' 
 #' For more information, see [Source Version Sample with
 #' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-#' in the *AWS CodeBuild User Guide*.
+#' in the *CodeBuild User Guide*.
 #' @param secondarySourceVersions An array of `ProjectSourceVersion` objects. If `secondarySourceVersions`
 #' is specified at the build level, then they take precedence over these
 #' `secondarySourceVersions` (at the project level).
@@ -1039,16 +1045,16 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @param cache Stores recently used information so that it can be quickly accessed at a
 #' later time.
 #' @param environment &#91;required&#93; Information about the build environment for the build project.
-#' @param serviceRole &#91;required&#93; The ARN of the AWS Identity and Access Management (IAM) role that
-#' enables AWS CodeBuild to interact with dependent AWS services on behalf
-#' of the AWS account.
-#' @param timeoutInMinutes How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait
+#' @param serviceRole &#91;required&#93; The ARN of the IAM role that enables CodeBuild to interact with
+#' dependent Amazon Web Services services on behalf of the Amazon Web
+#' Services account.
+#' @param timeoutInMinutes How long, in minutes, from 5 to 480 (8 hours), for CodeBuild to wait
 #' before it times out any build that has not been marked as completed. The
 #' default is 60 minutes.
 #' @param queuedTimeoutInMinutes The number of minutes a build is allowed to be queued before it times
 #' out.
-#' @param encryptionKey The AWS Key Management Service (AWS KMS) customer master key (CMK) to be
-#' used for encrypting the build output artifacts.
+#' @param encryptionKey The Key Management Service customer master key (CMK) to be used for
+#' encrypting the build output artifacts.
 #' 
 #' You can use a cross-account KMS key to encrypt the build output
 #' artifacts if your service role has permission to that key.
@@ -1057,19 +1063,25 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' available, the CMK's alias (using the format `alias/<alias-name>`).
 #' @param tags A list of tag key and value pairs associated with this build project.
 #' 
-#' These tags are available for use by AWS services that support AWS
-#' CodeBuild build project tags.
-#' @param vpcConfig VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
+#' These tags are available for use by Amazon Web Services services that
+#' support CodeBuild build project tags.
+#' @param vpcConfig VpcConfig enables CodeBuild to access resources in an Amazon VPC.
 #' @param badgeEnabled Set this to true to generate a publicly accessible URL for your
 #' project's build badge.
 #' @param logsConfig Information about logs for the build project. These can be logs in
-#' Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.
+#' CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.
 #' @param fileSystemLocations An array of `ProjectFileSystemLocation` objects for a CodeBuild build
 #' project. A `ProjectFileSystemLocation` object specifies the
 #' `identifier`, `location`, `mountOptions`, `mountPoint`, and `type` of a
 #' file system created using Amazon Elastic File System.
 #' @param buildBatchConfig A ProjectBuildBatchConfig object that defines the batch build options
 #' for the project.
+#' @param concurrentBuildLimit The maximum number of concurrent builds that are allowed for this
+#' project.
+#' 
+#' New builds are only started if the current number of builds is less than
+#' or equal to this limit. If the current build count meets this limit, new
+#' builds are throttled and are not run.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1137,7 +1149,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -1149,7 +1162,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'         packaging = "NONE"|"ZIP",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -1235,7 +1249,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     fileSystemLocations = list(
@@ -1256,8 +1271,13 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'           "string"
 #'         )
 #'       ),
-#'       timeoutInMins = 123
-#'     )
+#'       timeoutInMins = 123,
+#'       batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
+#'     ),
+#'     concurrentBuildLimit = 123,
+#'     projectVisibility = "PUBLIC_READ"|"PRIVATE",
+#'     publicProjectAlias = "string",
+#'     resourceAccessRole = "string"
 #'   )
 #' )
 #' ```
@@ -1325,7 +1345,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     packaging = "NONE"|"ZIP",
 #'     overrideArtifactName = TRUE|FALSE,
 #'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
+#'     artifactIdentifier = "string",
+#'     bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'   ),
 #'   secondaryArtifacts = list(
 #'     list(
@@ -1337,7 +1358,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   cache = list(
@@ -1395,7 +1417,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
 #'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
+#'       encryptionDisabled = TRUE|FALSE,
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   fileSystemLocations = list(
@@ -1416,22 +1439,24 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'         "string"
 #'       )
 #'     ),
-#'     timeoutInMins = 123
-#'   )
+#'     timeoutInMins = 123,
+#'     batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
+#'   ),
+#'   concurrentBuildLimit = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_create_project
-codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL) {
+codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig)
+  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
   output <- .codebuild$create_project_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -1455,8 +1480,8 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #' report group test results are exported.
 #' @param tags A list of tag key and value pairs associated with this report group.
 #' 
-#' These tags are available for use by AWS services that support AWS
-#' CodeBuild report group tags.
+#' These tags are available for use by Amazon Web Services services that
+#' support CodeBuild report group tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1470,6 +1495,7 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #'       exportConfigType = "S3"|"NO_EXPORT",
 #'       s3Destination = list(
 #'         bucket = "string",
+#'         bucketOwner = "string",
 #'         path = "string",
 #'         packaging = "ZIP"|"NONE",
 #'         encryptionKey = "string",
@@ -1502,6 +1528,7 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #'     exportConfigType = "S3"|"NO_EXPORT",
 #'     s3Destination = list(
 #'       bucket = "string",
+#'       bucketOwner = "string",
 #'       path = "string",
 #'       packaging = "ZIP"|"NONE",
 #'       encryptionKey = "string",
@@ -1537,32 +1564,32 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 }
 .codebuild$operations$create_report_group <- codebuild_create_report_group
 
-#' For an existing AWS CodeBuild build project that has its source code
-#' stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
-#' start rebuilding the source code every time a code change is pushed to
-#' the repository
+#' For an existing CodeBuild build project that has its source code stored
+#' in a GitHub or Bitbucket repository, enables CodeBuild to start
+#' rebuilding the source code every time a code change is pushed to the
+#' repository
 #'
 #' @description
-#' For an existing AWS CodeBuild build project that has its source code
-#' stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
-#' start rebuilding the source code every time a code change is pushed to
-#' the repository.
+#' For an existing CodeBuild build project that has its source code stored
+#' in a GitHub or Bitbucket repository, enables CodeBuild to start
+#' rebuilding the source code every time a code change is pushed to the
+#' repository.
 #' 
-#' If you enable webhooks for an AWS CodeBuild project, and the project is
-#' used as a build step in AWS CodePipeline, then two identical builds are
-#' created for each commit. One build is triggered through webhooks, and
-#' one through AWS CodePipeline. Because billing is on a per-build basis,
-#' you are billed for both builds. Therefore, if you are using AWS
-#' CodePipeline, we recommend that you disable webhooks in AWS CodeBuild.
-#' In the AWS CodeBuild console, clear the Webhook box. For more
-#' information, see step 5 in [Change a Build Project's
+#' If you enable webhooks for an CodeBuild project, and the project is used
+#' as a build step in CodePipeline, then two identical builds are created
+#' for each commit. One build is triggered through webhooks, and one
+#' through CodePipeline. Because billing is on a per-build basis, you are
+#' billed for both builds. Therefore, if you are using CodePipeline, we
+#' recommend that you disable webhooks in CodeBuild. In the CodeBuild
+#' console, clear the Webhook box. For more information, see step 5 in
+#' [Change a Build Project's
 #' Settings](https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 #'
 #' @usage
 #' codebuild_create_webhook(projectName, branchFilter, filterGroups,
 #'   buildType)
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
+#' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are
 #' built when a webhook is triggered. If the name of a branch matches the
 #' regular expression, then it is built. If `branchFilter` is empty, then
@@ -1915,21 +1942,19 @@ codebuild_delete_source_credentials <- function(arn) {
 }
 .codebuild$operations$delete_source_credentials <- codebuild_delete_source_credentials
 
-#' For an existing AWS CodeBuild build project that has its source code
-#' stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
-#' rebuilding the source code every time a code change is pushed to the
-#' repository
+#' For an existing CodeBuild build project that has its source code stored
+#' in a GitHub or Bitbucket repository, stops CodeBuild from rebuilding the
+#' source code every time a code change is pushed to the repository
 #'
 #' @description
-#' For an existing AWS CodeBuild build project that has its source code
-#' stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
-#' rebuilding the source code every time a code change is pushed to the
-#' repository.
+#' For an existing CodeBuild build project that has its source code stored
+#' in a GitHub or Bitbucket repository, stops CodeBuild from rebuilding the
+#' source code every time a code change is pushed to the repository.
 #'
 #' @usage
 #' codebuild_delete_webhook(projectName)
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
+#' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #'
 #' @return
 #' An empty list.
@@ -1979,11 +2004,11 @@ codebuild_delete_webhook <- function(projectName) {
 #' @param sortOrder Specifies if the results are sorted in ascending or descending order.
 #' @param sortBy Specifies how the results are sorted. Possible values are:
 #' 
-#' ### FILE_PATH
+#' **FILE_PATH**
 #' 
 #' The results are sorted by file path.
 #' 
-#' ### LINE_COVERAGE_PERCENTAGE
+#' **LINE_COVERAGE_PERCENTAGE**
 #' 
 #' The results are sorted by the percentage of lines that are covered.
 #' @param minLineCoveragePercentage The minimum line coverage percentage to report.
@@ -2122,18 +2147,66 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
 }
 .codebuild$operations$describe_test_cases <- codebuild_describe_test_cases
 
-#' Get report group trend
+#' Analyzes and accumulates test report values for the specified test
+#' reports
 #'
 #' @description
-#' Get report group trend
+#' Analyzes and accumulates test report values for the specified test
+#' reports.
 #'
 #' @usage
 #' codebuild_get_report_group_trend(reportGroupArn, numOfReports,
 #'   trendField)
 #'
-#' @param reportGroupArn &#91;required&#93; 
-#' @param numOfReports 
-#' @param trendField &#91;required&#93; 
+#' @param reportGroupArn &#91;required&#93; The ARN of the report group that contains the reports to analyze.
+#' @param numOfReports The number of reports to analyze. This operation always retrieves the
+#' most recent reports.
+#' 
+#' If this parameter is omitted, the most recent 100 reports are analyzed.
+#' @param trendField &#91;required&#93; The test report value to accumulate. This must be one of the following
+#' values:
+#' 
+#' **Test reports:**
+#' 
+#' **DURATION**
+#' 
+#' Accumulate the test run times for the specified reports.
+#' 
+#' **PASS_RATE**
+#' 
+#' Accumulate the percentage of tests that passed for the specified test
+#' reports.
+#' 
+#' **TOTAL**
+#' 
+#' Accumulate the total number of tests for the specified test reports.
+#' 
+#' **Code coverage reports:**
+#' 
+#' **BRANCH_COVERAGE**
+#' 
+#' Accumulate the branch coverage percentages for the specified test
+#' reports.
+#' 
+#' **BRANCHES_COVERED**
+#' 
+#' Accumulate the branches covered values for the specified test reports.
+#' 
+#' **BRANCHES_MISSED**
+#' 
+#' Accumulate the branches missed values for the specified test reports.
+#' 
+#' **LINE_COVERAGE**
+#' 
+#' Accumulate the line coverage percentages for the specified test reports.
+#' 
+#' **LINES_COVERED**
+#' 
+#' Accumulate the lines covered values for the specified test reports.
+#' 
+#' **LINES_MISSED**
+#' 
+#' Accumulate the lines not covered values for the specified test reports.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2227,29 +2300,27 @@ codebuild_get_resource_policy <- function(resourceArn) {
 }
 .codebuild$operations$get_resource_policy <- codebuild_get_resource_policy
 
-#' Imports the source repository credentials for an AWS CodeBuild project
-#' that has its source code stored in a GitHub, GitHub Enterprise, or
-#' Bitbucket repository
+#' Imports the source repository credentials for an CodeBuild project that
+#' has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket
+#' repository
 #'
 #' @description
-#' Imports the source repository credentials for an AWS CodeBuild project
-#' that has its source code stored in a GitHub, GitHub Enterprise, or
-#' Bitbucket repository.
+#' Imports the source repository credentials for an CodeBuild project that
+#' has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket
+#' repository.
 #'
 #' @usage
 #' codebuild_import_source_credentials(username, token, serverType,
 #'   authType, shouldOverwrite)
 #'
-#' @param username The Bitbucket username when the `authType` is BASIC_AUTH. This
-#' parameter is not valid for other types of source providers or
-#' connections.
+#' @param username The Bitbucket username when the `authType` is BASIC_AUTH. This parameter
+#' is not valid for other types of source providers or connections.
 #' @param token &#91;required&#93; For GitHub or GitHub Enterprise, this is the personal access token. For
 #' Bitbucket, this is the app password.
 #' @param serverType &#91;required&#93; The source provider used for this project.
 #' @param authType &#91;required&#93; The type of authentication used to connect to a GitHub, GitHub
 #' Enterprise, or Bitbucket repository. An OAUTH connection is not
-#' supported by the API and must be created using the AWS CodeBuild
-#' console.
+#' supported by the API and must be created using the CodeBuild console.
 #' @param shouldOverwrite Set to `false` to prevent overwriting the repository source credentials.
 #' Set to `true` to overwrite the repository source credentials. The
 #' default value is `true`.
@@ -2301,7 +2372,7 @@ codebuild_import_source_credentials <- function(username = NULL, token, serverTy
 #' @usage
 #' codebuild_invalidate_project_cache(projectName)
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild build project that the cache is reset for.
+#' @param projectName &#91;required&#93; The name of the CodeBuild build project that the cache is reset for.
 #'
 #' @return
 #' An empty list.
@@ -2526,22 +2597,31 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
 }
 .codebuild$operations$list_builds <- codebuild_list_builds
 
-#' Gets a list of build IDs for the specified build project, with each
-#' build ID representing a single build
+#' Gets a list of build identifiers for the specified build project, with
+#' each build identifier representing a single build
 #'
 #' @description
-#' Gets a list of build IDs for the specified build project, with each
-#' build ID representing a single build.
+#' Gets a list of build identifiers for the specified build project, with
+#' each build identifier representing a single build.
 #'
 #' @usage
 #' codebuild_list_builds_for_project(projectName, sortOrder, nextToken)
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
-#' @param sortOrder The order to list build IDs. Valid values include:
+#' @param projectName &#91;required&#93; The name of the CodeBuild project.
+#' @param sortOrder The order to sort the results in. The results are sorted by build
+#' number, not the build identifier. If this is not specified, the results
+#' are sorted in descending order.
 #' 
-#' -   `ASCENDING`: List the build IDs in ascending order by build ID.
+#' Valid values include:
 #' 
-#' -   `DESCENDING`: List the build IDs in descending order by build ID.
+#' -   `ASCENDING`: List the build identifiers in ascending order, by build
+#'     number.
+#' 
+#' -   `DESCENDING`: List the build identifiers in descending order, by
+#'     build number.
+#' 
+#' If the project has more than 100 builds, setting the sort order will
+#' result in an error.
 #' @param nextToken During a previous call, if there are more than 100 items in the list,
 #' only the first 100 items are returned, along with a unique string called
 #' a *nextToken*. To get the next batch of items in the list, call this
@@ -2589,10 +2669,10 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
 }
 .codebuild$operations$list_builds_for_project <- codebuild_list_builds_for_project
 
-#' Gets information about Docker images that are managed by AWS CodeBuild
+#' Gets information about Docker images that are managed by CodeBuild
 #'
 #' @description
-#' Gets information about Docker images that are managed by AWS CodeBuild.
+#' Gets information about Docker images that are managed by CodeBuild.
 #'
 #' @usage
 #' codebuild_list_curated_environment_images()
@@ -2725,10 +2805,12 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
 }
 .codebuild$operations$list_projects <- codebuild_list_projects
 
-#' Gets a list ARNs for the report groups in the current AWS account
+#' Gets a list ARNs for the report groups in the current Amazon Web
+#' Services account
 #'
 #' @description
-#' Gets a list ARNs for the report groups in the current AWS account.
+#' Gets a list ARNs for the report groups in the current Amazon Web
+#' Services account.
 #'
 #' @usage
 #' codebuild_list_report_groups(sortOrder, sortBy, nextToken, maxResults)
@@ -2796,10 +2878,12 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
 }
 .codebuild$operations$list_report_groups <- codebuild_list_report_groups
 
-#' Returns a list of ARNs for the reports in the current AWS account
+#' Returns a list of ARNs for the reports in the current Amazon Web
+#' Services account
 #'
 #' @description
-#' Returns a list of ARNs for the reports in the current AWS account.
+#' Returns a list of ARNs for the reports in the current Amazon Web
+#' Services account.
 #'
 #' @usage
 #' codebuild_list_reports(sortOrder, nextToken, maxResults, filter)
@@ -2935,17 +3019,18 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
 }
 .codebuild$operations$list_reports_for_report_group <- codebuild_list_reports_for_report_group
 
-#' Gets a list of projects that are shared with other AWS accounts or users
+#' Gets a list of projects that are shared with other Amazon Web Services
+#' accounts or users
 #'
 #' @description
-#' Gets a list of projects that are shared with other AWS accounts or
-#' users.
+#' Gets a list of projects that are shared with other Amazon Web Services
+#' accounts or users.
 #'
 #' @usage
 #' codebuild_list_shared_projects(sortBy, sortOrder, maxResults, nextToken)
 #'
 #' @param sortBy The criterion to be used to list build projects shared with the current
-#' AWS account or user. Valid values include:
+#' Amazon Web Services account or user. Valid values include:
 #' 
 #' -   `ARN`: List based on the ARN.
 #' 
@@ -3008,12 +3093,12 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
 }
 .codebuild$operations$list_shared_projects <- codebuild_list_shared_projects
 
-#' Gets a list of report groups that are shared with other AWS accounts or
-#' users
+#' Gets a list of report groups that are shared with other Amazon Web
+#' Services accounts or users
 #'
 #' @description
-#' Gets a list of report groups that are shared with other AWS accounts or
-#' users.
+#' Gets a list of report groups that are shared with other Amazon Web
+#' Services accounts or users.
 #'
 #' @usage
 #' codebuild_list_shared_report_groups(sortOrder, sortBy, nextToken,
@@ -3025,7 +3110,7 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
 #' 
 #' -   `DESCENDING`: List in descending order.
 #' @param sortBy The criterion to be used to list report groups shared with the current
-#' AWS account or user. Valid values include:
+#' Amazon Web Services account or user. Valid values include:
 #' 
 #' -   `ARN`: List based on the ARN.
 #' 
@@ -3143,7 +3228,7 @@ codebuild_list_source_credentials <- function() {
 #' Project](https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share)
 #' and [Sharing a Report
 #' Group](https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share)
-#' in the *AWS CodeBuild User Guide*.
+#' in the *CodeBuild User Guide*.
 #' @param resourceArn &#91;required&#93; The ARN of the `Project` or `ReportGroup` resource you want to associate
 #' with a resource policy.
 #'
@@ -3197,7 +3282,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' token is included in the [`retry_build`][codebuild_retry_build] request
 #' and is valid for five minutes. If you repeat the
 #' [`retry_build`][codebuild_retry_build] request with the same token, but
-#' change a parameter, AWS CodeBuild returns a parameter mismatch error.
+#' change a parameter, CodeBuild returns a parameter mismatch error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3291,7 +3376,8 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -3300,7 +3386,8 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -3345,7 +3432,8 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     timeoutInMinutes = 123,
@@ -3437,8 +3525,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #' [`retry_build_batch`][codebuild_retry_build_batch] request and is valid
 #' for five minutes. If you repeat the
 #' [`retry_build_batch`][codebuild_retry_build_batch] request with the same
-#' token, but change a parameter, AWS CodeBuild returns a parameter
-#' mismatch error.
+#' token, but change a parameter, CodeBuild returns a parameter mismatch
+#' error.
 #' @param retryType Specifies the type of retry to perform.
 #'
 #' @return
@@ -3532,7 +3620,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -3541,7 +3630,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -3580,7 +3670,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     buildTimeoutInMinutes = 123,
@@ -3616,7 +3707,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'           "string"
 #'         )
 #'       ),
-#'       timeoutInMins = 123
+#'       timeoutInMins = 123,
+#'       batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
 #'     ),
 #'     buildGroups = list(
 #'       list(
@@ -3666,7 +3758,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     debugSessionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -3719,7 +3812,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'   logsConfigOverride, registryCredentialOverride,
 #'   imagePullCredentialsTypeOverride, debugSessionEnabled)
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild build project to start running a build.
+#' @param projectName &#91;required&#93; The name of the CodeBuild build project to start running a build.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects.
 #' @param secondarySourcesVersionOverride An array of `ProjectSourceVersion` objects that specify one or more
 #' versions of the project's secondary sources to be used for this build
@@ -3728,11 +3821,11 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' specified, the latest version is used. If specified, the contents
 #' depends on the source provider:
 #' 
-#' ### AWS CodeCommit
+#' **CodeCommit**
 #' 
 #' The commit ID, branch, or Git tag to use.
 #' 
-#' ### GitHub
+#' **GitHub**
 #' 
 #' The commit ID, pull request ID, branch name, or tag name that
 #' corresponds to the version of the source code you want to build. If a
@@ -3741,14 +3834,14 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' specified, the branch's HEAD commit ID is used. If not specified, the
 #' default branch's HEAD commit ID is used.
 #' 
-#' ### Bitbucket
+#' **Bitbucket**
 #' 
 #' The commit ID, branch name, or tag name that corresponds to the version
 #' of the source code you want to build. If a branch name is specified, the
 #' branch's HEAD commit ID is used. If not specified, the default branch's
 #' HEAD commit ID is used.
 #' 
-#' ### Amazon Simple Storage Service (Amazon S3)
+#' **Amazon S3**
 #' 
 #' The version ID of the object that represents the build input ZIP file to
 #' use.
@@ -3758,7 +3851,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' 
 #' For more information, see [Source Version Sample with
 #' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-#' in the *AWS CodeBuild User Guide*.
+#' in the *CodeBuild User Guide*.
 #' @param artifactsOverride Build output artifact settings that override, for this build only, the
 #' latest ones already defined in the build project.
 #' @param secondaryArtifactsOverride An array of `ProjectArtifacts` objects.
@@ -3775,15 +3868,15 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' overrides, for this build only, any previous depth of history defined in
 #' the build project.
 #' @param gitSubmodulesConfigOverride Information about the Git submodules configuration for this build of an
-#' AWS CodeBuild build project.
+#' CodeBuild build project.
 #' @param buildspecOverride A buildspec file declaration that overrides, for this build only, the
 #' latest one already defined in the build project.
 #' 
 #' If this value is set, it can be either an inline buildspec definition,
 #' the path to an alternate buildspec file relative to the value of the
 #' built-in `CODEBUILD_SRC_DIR` environment variable, or the path to an S3
-#' bucket. The bucket must be in the same AWS Region as the build project.
-#' Specify the buildspec file using its ARN (for example,
+#' bucket. The bucket must be in the same Amazon Web Services Region as the
+#' build project. Specify the buildspec file using its ARN (for example,
 #' `arn:aws:s3:::my-codebuild-sample2/buildspec.yml`). If this value is not
 #' provided or is set to an empty string, the source code must contain a
 #' buildspec file in its root directory. For more information, see
@@ -3796,7 +3889,14 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @param reportBuildStatusOverride Set to true to report to your source provider the status of a build's
 #' start and completion. If you use this option with a source provider
 #' other than GitHub, GitHub Enterprise, or Bitbucket, an
-#' invalidInputException is thrown.
+#' `invalidInputException` is thrown.
+#' 
+#' To be able to report the build status to the source provider, the user
+#' associated with the source provider must have write access to the repo.
+#' If the user does not have write access, the build status cannot be
+#' updated. For more information, see [Source provider
+#' access](https://docs.aws.amazon.com/codebuild/latest/userguide/access-tokens.html)
+#' in the *CodeBuild User Guide*.
 #' 
 #' The status of a build triggered by a webhook is always reported to your
 #' source provider.
@@ -3821,9 +3921,9 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' the build project.
 #' @param queuedTimeoutInMinutesOverride The number of minutes a build is allowed to be queued before it times
 #' out.
-#' @param encryptionKeyOverride The AWS Key Management Service (AWS KMS) customer master key (CMK) that
-#' overrides the one specified in the build project. The CMK key encrypts
-#' the build output artifacts.
+#' @param encryptionKeyOverride The Key Management Service customer master key (CMK) that overrides the
+#' one specified in the build project. The CMK key encrypts the build
+#' output artifacts.
 #' 
 #' You can use a cross-account KMS key to encrypt the build output
 #' artifacts if your service role has permission to that key.
@@ -3833,27 +3933,27 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
 #' idempotency of the StartBuild request. The token is included in the
 #' StartBuild request and is valid for 5 minutes. If you repeat the
-#' StartBuild request with the same token, but change a parameter, AWS
+#' StartBuild request with the same token, but change a parameter,
 #' CodeBuild returns a parameter mismatch error.
 #' @param logsConfigOverride Log settings for this build that override the log settings defined in
 #' the build project.
 #' @param registryCredentialOverride The credentials for access to a private registry.
-#' @param imagePullCredentialsTypeOverride The type of credentials AWS CodeBuild uses to pull images in your build.
+#' @param imagePullCredentialsTypeOverride The type of credentials CodeBuild uses to pull images in your build.
 #' There are two valid values:
 #' 
-#' ### CODEBUILD
+#' **CODEBUILD**
 #' 
-#' Specifies that AWS CodeBuild uses its own credentials. This requires
-#' that you modify your ECR repository policy to trust AWS CodeBuild's
-#' service principal.
+#' Specifies that CodeBuild uses its own credentials. This requires that
+#' you modify your ECR repository policy to trust CodeBuild's service
+#' principal.
 #' 
-#' ### SERVICE_ROLE
+#' **SERVICE_ROLE**
 #' 
-#' Specifies that AWS CodeBuild uses your build project's service role.
+#' Specifies that CodeBuild uses your build project's service role.
 #' 
 #' When using a cross-account or private registry image, you must use
-#' `SERVICE_ROLE` credentials. When using an AWS CodeBuild curated image,
-#' you must use `CODEBUILD` credentials.
+#' `SERVICE_ROLE` credentials. When using an CodeBuild curated image, you
+#' must use `CODEBUILD` credentials.
 #' @param debugSessionEnabled Specifies if session debugging is enabled for this build. For more
 #' information, see [Viewing a running build in Session
 #' Manager](https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html).
@@ -3950,7 +4050,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -3959,7 +4060,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -4004,7 +4106,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     timeoutInMinutes = 123,
@@ -4094,7 +4197,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'     packaging = "NONE"|"ZIP",
 #'     overrideArtifactName = TRUE|FALSE,
 #'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
+#'     artifactIdentifier = "string",
+#'     bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'   ),
 #'   secondaryArtifactsOverride = list(
 #'     list(
@@ -4106,7 +4210,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   environmentVariablesOverride = list(
@@ -4159,7 +4264,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
 #'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
+#'       encryptionDisabled = TRUE|FALSE,
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   registryCredentialOverride = list(
@@ -4208,7 +4314,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'   privilegedModeOverride, buildTimeoutInMinutesOverride,
 #'   queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
 #'   logsConfigOverride, registryCredentialOverride,
-#'   imagePullCredentialsTypeOverride, buildBatchConfigOverride)
+#'   imagePullCredentialsTypeOverride, buildBatchConfigOverride,
+#'   debugSessionEnabled)
 #'
 #' @param projectName &#91;required&#93; The name of the project.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects that override the secondary sources
@@ -4219,11 +4326,11 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' If not specified, the latest version is used. If specified, the contents
 #' depends on the source provider:
 #' 
-#' ### AWS CodeCommit
+#' **CodeCommit**
 #' 
 #' The commit ID, branch, or Git tag to use.
 #' 
-#' ### GitHub
+#' **GitHub**
 #' 
 #' The commit ID, pull request ID, branch name, or tag name that
 #' corresponds to the version of the source code you want to build. If a
@@ -4232,14 +4339,14 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' specified, the branch's HEAD commit ID is used. If not specified, the
 #' default branch's HEAD commit ID is used.
 #' 
-#' ### Bitbucket
+#' **Bitbucket**
 #' 
 #' The commit ID, branch name, or tag name that corresponds to the version
 #' of the source code you want to build. If a branch name is specified, the
 #' branch's HEAD commit ID is used. If not specified, the default branch's
 #' HEAD commit ID is used.
 #' 
-#' ### Amazon Simple Storage Service (Amazon S3)
+#' **Amazon S3**
 #' 
 #' The version ID of the object that represents the build input ZIP file to
 #' use.
@@ -4249,7 +4356,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' 
 #' For more information, see [Source Version Sample with
 #' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-#' in the *AWS CodeBuild User Guide*.
+#' in the *CodeBuild User Guide*.
 #' @param artifactsOverride An array of `ProjectArtifacts` objects that contains information about
 #' the build output artifact overrides for the build project.
 #' @param secondaryArtifactsOverride An array of `ProjectArtifacts` objects that override the secondary
@@ -4274,8 +4381,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' If this value is set, it can be either an inline buildspec definition,
 #' the path to an alternate buildspec file relative to the value of the
 #' built-in `CODEBUILD_SRC_DIR` environment variable, or the path to an S3
-#' bucket. The bucket must be in the same AWS Region as the build project.
-#' Specify the buildspec file using its ARN (for example,
+#' bucket. The bucket must be in the same Amazon Web Services Region as the
+#' build project. Specify the buildspec file using its ARN (for example,
 #' `arn:aws:s3:::my-codebuild-sample2/buildspec.yml`). If this value is not
 #' provided or is set to an empty string, the source code must contain a
 #' buildspec file in its root directory. For more information, see
@@ -4307,9 +4414,9 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' @param buildTimeoutInMinutesOverride Overrides the build timeout specified in the batch build project.
 #' @param queuedTimeoutInMinutesOverride The number of minutes a batch build is allowed to be queued before it
 #' times out.
-#' @param encryptionKeyOverride The AWS Key Management Service (AWS KMS) customer master key (CMK) that
-#' overrides the one specified in the batch build project. The CMK key
-#' encrypts the build output artifacts.
+#' @param encryptionKeyOverride The Key Management Service customer master key (CMK) that overrides the
+#' one specified in the batch build project. The CMK key encrypts the build
+#' output artifacts.
 #' 
 #' You can use a cross-account KMS key to encrypt the build output
 #' artifacts if your service role has permission to that key.
@@ -4322,30 +4429,34 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' [`start_build_batch`][codebuild_start_build_batch] request and is valid
 #' for five minutes. If you repeat the
 #' [`start_build_batch`][codebuild_start_build_batch] request with the same
-#' token, but change a parameter, AWS CodeBuild returns a parameter
-#' mismatch error.
+#' token, but change a parameter, CodeBuild returns a parameter mismatch
+#' error.
 #' @param logsConfigOverride A `LogsConfig` object that override the log settings defined in the
 #' batch build project.
 #' @param registryCredentialOverride A `RegistryCredential` object that overrides credentials for access to a
 #' private registry.
-#' @param imagePullCredentialsTypeOverride The type of credentials AWS CodeBuild uses to pull images in your batch
+#' @param imagePullCredentialsTypeOverride The type of credentials CodeBuild uses to pull images in your batch
 #' build. There are two valid values:
 #' 
-#' ### CODEBUILD
+#' **CODEBUILD**
 #' 
-#' Specifies that AWS CodeBuild uses its own credentials. This requires
-#' that you modify your ECR repository policy to trust AWS CodeBuild's
-#' service principal.
+#' Specifies that CodeBuild uses its own credentials. This requires that
+#' you modify your ECR repository policy to trust CodeBuild's service
+#' principal.
 #' 
-#' ### SERVICE_ROLE
+#' **SERVICE_ROLE**
 #' 
-#' Specifies that AWS CodeBuild uses your build project's service role.
+#' Specifies that CodeBuild uses your build project's service role.
 #' 
 #' When using a cross-account or private registry image, you must use
-#' `SERVICE_ROLE` credentials. When using an AWS CodeBuild curated image,
-#' you must use `CODEBUILD` credentials.
+#' `SERVICE_ROLE` credentials. When using an CodeBuild curated image, you
+#' must use `CODEBUILD` credentials.
 #' @param buildBatchConfigOverride A `BuildBatchConfigOverride` object that contains batch build
 #' configuration overrides.
+#' @param debugSessionEnabled Specifies if session debugging is enabled for this batch build. For more
+#' information, see [Viewing a running build in Session
+#' Manager](https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html).
+#' Batch session debugging is not supported for matrix batch builds.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4438,7 +4549,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -4447,7 +4559,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -4486,7 +4599,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     buildTimeoutInMinutes = 123,
@@ -4522,7 +4636,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'           "string"
 #'         )
 #'       ),
-#'       timeoutInMins = 123
+#'       timeoutInMins = 123,
+#'       batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
 #'     ),
 #'     buildGroups = list(
 #'       list(
@@ -4572,7 +4687,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     debugSessionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -4619,7 +4735,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'     packaging = "NONE"|"ZIP",
 #'     overrideArtifactName = TRUE|FALSE,
 #'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
+#'     artifactIdentifier = "string",
+#'     bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'   ),
 #'   secondaryArtifactsOverride = list(
 #'     list(
@@ -4631,7 +4748,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   environmentVariablesOverride = list(
@@ -4680,7 +4798,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
 #'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
+#'       encryptionDisabled = TRUE|FALSE,
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   registryCredentialOverride = list(
@@ -4697,22 +4816,24 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'         "string"
 #'       )
 #'     ),
-#'     timeoutInMins = 123
-#'   )
+#'     timeoutInMins = 123,
+#'     batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
+#'   ),
+#'   debugSessionEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_start_build_batch
-codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildBatchStatusOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, buildTimeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, buildBatchConfigOverride = NULL) {
+codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildBatchStatusOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, buildTimeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, buildBatchConfigOverride = NULL, debugSessionEnabled = NULL) {
   op <- new_operation(
     name = "StartBuildBatch",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$start_build_batch_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildBatchStatusOverride = reportBuildBatchStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, buildTimeoutInMinutesOverride = buildTimeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, buildBatchConfigOverride = buildBatchConfigOverride)
+  input <- .codebuild$start_build_batch_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildBatchStatusOverride = reportBuildBatchStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, buildTimeoutInMinutesOverride = buildTimeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, buildBatchConfigOverride = buildBatchConfigOverride, debugSessionEnabled = debugSessionEnabled)
   output <- .codebuild$start_build_batch_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -4824,7 +4945,8 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -4833,7 +4955,8 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -4878,7 +5001,8 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     timeoutInMinutes = 123,
@@ -5054,7 +5178,8 @@ codebuild_stop_build <- function(id) {
 #'       md5sum = "string",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -5063,7 +5188,8 @@ codebuild_stop_build <- function(id) {
 #'         md5sum = "string",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -5102,7 +5228,8 @@ codebuild_stop_build <- function(id) {
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     buildTimeoutInMinutes = 123,
@@ -5138,7 +5265,8 @@ codebuild_stop_build <- function(id) {
 #'           "string"
 #'         )
 #'       ),
-#'       timeoutInMins = 123
+#'       timeoutInMins = 123,
+#'       batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
 #'     ),
 #'     buildGroups = list(
 #'       list(
@@ -5188,7 +5316,8 @@ codebuild_stop_build <- function(id) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     debugSessionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -5230,7 +5359,7 @@ codebuild_stop_build_batch <- function(id) {
 #'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
 #'   cache, environment, serviceRole, timeoutInMinutes,
 #'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-#'   logsConfig, fileSystemLocations, buildBatchConfig)
+#'   logsConfig, fileSystemLocations, buildBatchConfig, concurrentBuildLimit)
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' 
@@ -5242,7 +5371,7 @@ codebuild_stop_build_batch <- function(id) {
 #' @param sourceVersion A version of the build input to be built for this project. If not
 #' specified, the latest version is used. If specified, it must be one of:
 #' 
-#' -   For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+#' -   For CodeCommit: the commit ID, branch, or Git tag to use.
 #' 
 #' -   For GitHub: the commit ID, pull request ID, branch name, or tag name
 #'     that corresponds to the version of the source code you want to
@@ -5256,35 +5385,35 @@ codebuild_stop_build_batch <- function(id) {
 #'     a branch name is specified, the branch's HEAD commit ID is used. If
 #'     not specified, the default branch's HEAD commit ID is used.
 #' 
-#' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
-#'     object that represents the build input ZIP file to use.
+#' -   For Amazon S3: the version ID of the object that represents the
+#'     build input ZIP file to use.
 #' 
 #' If `sourceVersion` is specified at the build level, then that version
 #' takes precedence over this `sourceVersion` (at the project level).
 #' 
 #' For more information, see [Source Version Sample with
 #' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-#' in the *AWS CodeBuild User Guide*.
+#' in the *CodeBuild User Guide*.
 #' @param secondarySourceVersions An array of `ProjectSourceVersion` objects. If `secondarySourceVersions`
 #' is specified at the build level, then they take over these
 #' `secondarySourceVersions` (at the project level).
 #' @param artifacts Information to be changed about the build output artifacts for the build
 #' project.
-#' @param secondaryArtifacts An array of `ProjectSource` objects.
+#' @param secondaryArtifacts An array of `ProjectArtifact` objects.
 #' @param cache Stores recently used information so that it can be quickly accessed at a
 #' later time.
 #' @param environment Information to be changed about the build environment for the build
 #' project.
-#' @param serviceRole The replacement ARN of the AWS Identity and Access Management (IAM) role
-#' that enables AWS CodeBuild to interact with dependent AWS services on
-#' behalf of the AWS account.
-#' @param timeoutInMinutes The replacement value in minutes, from 5 to 480 (8 hours), for AWS
-#' CodeBuild to wait before timing out any related build that did not get
-#' marked as completed.
+#' @param serviceRole The replacement ARN of the IAM role that enables CodeBuild to interact
+#' with dependent Amazon Web Services services on behalf of the Amazon Web
+#' Services account.
+#' @param timeoutInMinutes The replacement value in minutes, from 5 to 480 (8 hours), for CodeBuild
+#' to wait before timing out any related build that did not get marked as
+#' completed.
 #' @param queuedTimeoutInMinutes The number of minutes a build is allowed to be queued before it times
 #' out.
-#' @param encryptionKey The AWS Key Management Service (AWS KMS) customer master key (CMK) to be
-#' used for encrypting the build output artifacts.
+#' @param encryptionKey The Key Management Service customer master key (CMK) to be used for
+#' encrypting the build output artifacts.
 #' 
 #' You can use a cross-account KMS key to encrypt the build output
 #' artifacts if your service role has permission to that key.
@@ -5294,18 +5423,26 @@ codebuild_stop_build_batch <- function(id) {
 #' @param tags An updated list of tag key and value pairs associated with this build
 #' project.
 #' 
-#' These tags are available for use by AWS services that support AWS
-#' CodeBuild build project tags.
-#' @param vpcConfig VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
+#' These tags are available for use by Amazon Web Services services that
+#' support CodeBuild build project tags.
+#' @param vpcConfig VpcConfig enables CodeBuild to access resources in an Amazon VPC.
 #' @param badgeEnabled Set this to true to generate a publicly accessible URL for your
 #' project's build badge.
 #' @param logsConfig Information about logs for the build project. A project can create logs
-#' in Amazon CloudWatch Logs, logs in an S3 bucket, or both.
+#' in CloudWatch Logs, logs in an S3 bucket, or both.
 #' @param fileSystemLocations An array of `ProjectFileSystemLocation` objects for a CodeBuild build
 #' project. A `ProjectFileSystemLocation` object specifies the
 #' `identifier`, `location`, `mountOptions`, `mountPoint`, and `type` of a
 #' file system created using Amazon Elastic File System.
 #' @param buildBatchConfig 
+#' @param concurrentBuildLimit The maximum number of concurrent builds that are allowed for this
+#' project.
+#' 
+#' New builds are only started if the current number of builds is less than
+#' or equal to this limit. If the current build count meets this limit, new
+#' builds are throttled and are not run.
+#' 
+#' To remove this limit, set this value to -1.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5373,7 +5510,8 @@ codebuild_stop_build_batch <- function(id) {
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     ),
 #'     secondaryArtifacts = list(
 #'       list(
@@ -5385,7 +5523,8 @@ codebuild_stop_build_batch <- function(id) {
 #'         packaging = "NONE"|"ZIP",
 #'         overrideArtifactName = TRUE|FALSE,
 #'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
+#'         artifactIdentifier = "string",
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     cache = list(
@@ -5471,7 +5610,8 @@ codebuild_stop_build_batch <- function(id) {
 #'       s3Logs = list(
 #'         status = "ENABLED"|"DISABLED",
 #'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'       )
 #'     ),
 #'     fileSystemLocations = list(
@@ -5492,8 +5632,13 @@ codebuild_stop_build_batch <- function(id) {
 #'           "string"
 #'         )
 #'       ),
-#'       timeoutInMins = 123
-#'     )
+#'       timeoutInMins = 123,
+#'       batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
+#'     ),
+#'     concurrentBuildLimit = 123,
+#'     projectVisibility = "PUBLIC_READ"|"PRIVATE",
+#'     publicProjectAlias = "string",
+#'     resourceAccessRole = "string"
 #'   )
 #' )
 #' ```
@@ -5561,7 +5706,8 @@ codebuild_stop_build_batch <- function(id) {
 #'     packaging = "NONE"|"ZIP",
 #'     overrideArtifactName = TRUE|FALSE,
 #'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
+#'     artifactIdentifier = "string",
+#'     bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'   ),
 #'   secondaryArtifacts = list(
 #'     list(
@@ -5573,7 +5719,8 @@ codebuild_stop_build_batch <- function(id) {
 #'       packaging = "NONE"|"ZIP",
 #'       overrideArtifactName = TRUE|FALSE,
 #'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
+#'       artifactIdentifier = "string",
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   cache = list(
@@ -5631,7 +5778,8 @@ codebuild_stop_build_batch <- function(id) {
 #'     s3Logs = list(
 #'       status = "ENABLED"|"DISABLED",
 #'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
+#'       encryptionDisabled = TRUE|FALSE,
+#'       bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
 #'     )
 #'   ),
 #'   fileSystemLocations = list(
@@ -5652,22 +5800,24 @@ codebuild_stop_build_batch <- function(id) {
 #'         "string"
 #'       )
 #'     ),
-#'     timeoutInMins = 123
-#'   )
+#'     timeoutInMins = 123,
+#'     batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
+#'   ),
+#'   concurrentBuildLimit = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_update_project
-codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL) {
+codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig)
+  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
   output <- .codebuild$update_project_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -5676,6 +5826,92 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
   return(response)
 }
 .codebuild$operations$update_project <- codebuild_update_project
+
+#' Changes the public visibility for a project
+#'
+#' @description
+#' Changes the public visibility for a project. The project's build
+#' results, logs, and artifacts are available to the general public. For
+#' more information, see [Public build
+#' projects](https://docs.aws.amazon.com/codebuild/latest/userguide/public-builds.html)
+#' in the *CodeBuild User Guide*.
+#' 
+#' The following should be kept in mind when making your projects public:
+#' 
+#' -   All of a project's build results, logs, and artifacts, including
+#'     builds that were run when the project was private, are available to
+#'     the general public.
+#' 
+#' -   All build logs and artifacts are available to the public.
+#'     Environment variables, source code, and other sensitive information
+#'     may have been output to the build logs and artifacts. You must be
+#'     careful about what information is output to the build logs. Some
+#'     best practice are:
+#' 
+#'     -   Do not store sensitive values, especially Amazon Web Services
+#'         access key IDs and secret access keys, in environment variables.
+#'         We recommend that you use an Amazon EC2 Systems Manager
+#'         Parameter Store or Secrets Manager to store sensitive values.
+#' 
+#'     -   Follow [Best practices for using
+#'         webhooks](https://docs.aws.amazon.com/codebuild/latest/userguide/webhooks.html#webhook-best-practices)
+#'         in the *CodeBuild User Guide* to limit which entities can
+#'         trigger a build, and do not store the buildspec in the project
+#'         itself, to ensure that your webhooks are as secure as possible.
+#' 
+#' -   A malicious user can use public builds to distribute malicious
+#'     artifacts. We recommend that you review all pull requests to verify
+#'     that the pull request is a legitimate change. We also recommend that
+#'     you validate any artifacts with their checksums to make sure that
+#'     the correct artifacts are being downloaded.
+#'
+#' @usage
+#' codebuild_update_project_visibility(projectArn, projectVisibility,
+#'   resourceAccessRole)
+#'
+#' @param projectArn &#91;required&#93; The Amazon Resource Name (ARN) of the build project.
+#' @param projectVisibility &#91;required&#93; 
+#' @param resourceAccessRole The ARN of the IAM role that enables CodeBuild to access the CloudWatch
+#' Logs and Amazon S3 artifacts for the project's builds.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   projectArn = "string",
+#'   publicProjectAlias = "string",
+#'   projectVisibility = "PUBLIC_READ"|"PRIVATE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_project_visibility(
+#'   projectArn = "string",
+#'   projectVisibility = "PUBLIC_READ"|"PRIVATE",
+#'   resourceAccessRole = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_update_project_visibility
+codebuild_update_project_visibility <- function(projectArn, projectVisibility, resourceAccessRole = NULL) {
+  op <- new_operation(
+    name = "UpdateProjectVisibility",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codebuild$update_project_visibility_input(projectArn = projectArn, projectVisibility = projectVisibility, resourceAccessRole = resourceAccessRole)
+  output <- .codebuild$update_project_visibility_output()
+  config <- get_config()
+  svc <- .codebuild$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$update_project_visibility <- codebuild_update_project_visibility
 
 #' Updates a report group
 #'
@@ -5694,8 +5930,8 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #' @param tags An updated list of tag key and value pairs associated with this report
 #' group.
 #' 
-#' These tags are available for use by AWS services that support AWS
-#' CodeBuild report group tags.
+#' These tags are available for use by Amazon Web Services services that
+#' support CodeBuild report group tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5709,6 +5945,7 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #'       exportConfigType = "S3"|"NO_EXPORT",
 #'       s3Destination = list(
 #'         bucket = "string",
+#'         bucketOwner = "string",
 #'         path = "string",
 #'         packaging = "ZIP"|"NONE",
 #'         encryptionKey = "string",
@@ -5740,6 +5977,7 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #'     exportConfigType = "S3"|"NO_EXPORT",
 #'     s3Destination = list(
 #'       bucket = "string",
+#'       bucketOwner = "string",
 #'       path = "string",
 #'       packaging = "ZIP"|"NONE",
 #'       encryptionKey = "string",
@@ -5775,10 +6013,10 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 }
 .codebuild$operations$update_report_group <- codebuild_update_report_group
 
-#' Updates the webhook associated with an AWS CodeBuild build project
+#' Updates the webhook associated with an CodeBuild build project
 #'
 #' @description
-#' Updates the webhook associated with an AWS CodeBuild build project.
+#' Updates the webhook associated with an CodeBuild build project.
 #' 
 #' If you use Bitbucket for your repository, `rotateSecret` is ignored.
 #'
@@ -5786,7 +6024,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #' codebuild_update_webhook(projectName, branchFilter, rotateSecret,
 #'   filterGroups, buildType)
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
+#' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are
 #' built when a webhook is triggered. If the name of a branch matches the
 #' regular expression, then it is built. If `branchFilter` is empty, then

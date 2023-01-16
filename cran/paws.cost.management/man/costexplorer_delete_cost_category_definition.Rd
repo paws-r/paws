@@ -9,22 +9,9 @@ costexplorer_delete_cost_category_definition(CostCategoryArn)
 \arguments{
 \item{CostCategoryArn}{[required] The unique identifier for your Cost Category.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CostCategoryArn = "string",
-  EffectiveEnd = "string"
-)
-}
-}
 \description{
-Deletes a Cost Category. Expenses from this month going forward will no
-longer be categorized with this Cost Category.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_cost_category_definition(
-  CostCategoryArn = "string"
-)
-}
-}
+Deletes a Cost Category. Expenses from this month going forward will no longer be categorized with this Cost Category.
 
+See \url{https://paws-r.github.io/docs/costexplorer/delete_cost_category_definition.html} for full documentation.
+}
 \keyword{internal}

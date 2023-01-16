@@ -4,8 +4,12 @@
 \alias{sagemaker_update_context}
 \title{Updates a context}
 \usage{
-sagemaker_update_context(ContextName, Description, Properties,
-  PropertiesToRemove)
+sagemaker_update_context(
+  ContextName,
+  Description = NULL,
+  Properties = NULL,
+  PropertiesToRemove = NULL
+)
 }
 \arguments{
 \item{ContextName}{[required] The name of the context to update.}
@@ -16,27 +20,9 @@ sagemaker_update_context(ContextName, Description, Properties,
 
 \item{PropertiesToRemove}{A list of properties to remove.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContextArn = "string"
-)
-}
-}
 \description{
 Updates a context.
-}
-\section{Request syntax}{
-\preformatted{svc$update_context(
-  ContextName = "string",
-  Description = "string",
-  Properties = list(
-    "string"
-  ),
-  PropertiesToRemove = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_context.html} for full documentation.
+}
 \keyword{internal}

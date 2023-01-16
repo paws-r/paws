@@ -9,43 +9,9 @@ storagegateway_start_gateway(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Starts a gateway that you previously shut down (see
-\code{\link[=storagegateway_shutdown_gateway]{shutdown_gateway}}). After the
-gateway starts, you can then make other API calls, your applications can
-read from or write to the gateway's storage volumes and you will be able
-to take snapshot backups.
+Starts a gateway that you previously shut down (see \code{\link[=storagegateway_shutdown_gateway]{shutdown_gateway}}). After the gateway starts, you can then make other API calls, your applications can read from or write to the gateway's storage volumes and you will be able to take snapshot backups.
 
-When you make a request, you will get a 200 OK success response
-immediately. However, it might take some time for the gateway to be
-ready. You should call
-\code{\link[=storagegateway_describe_gateway_information]{describe_gateway_information}}
-and check the status before making any additional API calls. For more
-information, see \code{\link[=storagegateway_activate_gateway]{activate_gateway}}.
-
-To specify which gateway to start, use the Amazon Resource Name (ARN) of
-the gateway in your request.
-}
-\section{Request syntax}{
-\preformatted{svc$start_gateway(
-  GatewayARN = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Starts a gateway service that was previously shut down.
-svc$start_gateway(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/start_gateway.html} for full documentation.
 }
 \keyword{internal}

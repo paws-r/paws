@@ -9,33 +9,9 @@ personalize_describe_filter(filterArn)
 \arguments{
 \item{filterArn}{[required] The ARN of the filter to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  filter = list(
-    name = "string",
-    filterArn = "string",
-    creationDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastUpdatedDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    datasetGroupArn = "string",
-    failureReason = "string",
-    filterExpression = "string",
-    status = "string"
-  )
-)
-}
-}
 \description{
 Describes a filter's properties.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_filter(
-  filterArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/personalize/describe_filter.html} for full documentation.
+}
 \keyword{internal}

@@ -3,40 +3,21 @@
 #' @include rds_service.R
 NULL
 
-#' Associates an Identity and Access Management (IAM) role from an Amazon
-#' Aurora DB cluster
+#' Associates an Identity and Access Management (IAM) role with a DB
+#' cluster
 #'
 #' @description
-#' Associates an Identity and Access Management (IAM) role from an Amazon
-#' Aurora DB cluster. For more information, see [Authorizing Amazon Aurora
-#' MySQL to Access Other AWS Services on Your
-#' Behalf](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html)
-#' in the *Amazon Aurora User Guide*.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Associates an Identity and Access Management (IAM) role with a DB cluster.
 #'
-#' @usage
-#' rds_add_role_to_db_cluster(DBClusterIdentifier, RoleArn, FeatureName)
+#' See [https://paws-r.github.io/docs/rds/add_role_to_db_cluster.html](https://paws-r.github.io/docs/rds/add_role_to_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to associate the IAM role with.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with the
-#' Aurora DB cluster, for example,
+#' Aurora DB cluster, for example
 #' `arn:aws:iam::123456789012:role/AuroraAccessRole`.
 #' @param FeatureName The name of the feature for the DB cluster that the IAM role is to be
-#' associated with. For the list of supported feature names, see
+#' associated with. For information about supported feature names, see
 #' DBEngineVersion.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_role_to_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   RoleArn = "string",
-#'   FeatureName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -58,37 +39,20 @@ rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName
 }
 .rds$operations$add_role_to_db_cluster <- rds_add_role_to_db_cluster
 
-#' Associates an AWS Identity and Access Management (IAM) role with a DB
-#' instance
+#' Associates an Amazon Web Services Identity and Access Management (IAM)
+#' role with a DB instance
 #'
 #' @description
-#' Associates an AWS Identity and Access Management (IAM) role with a DB
-#' instance.
-#' 
-#' To add a role to a DB instance, the status of the DB instance must be
-#' `available`.
+#' Associates an Amazon Web Services Identity and Access Management (IAM) role with a DB instance.
 #'
-#' @usage
-#' rds_add_role_to_db_instance(DBInstanceIdentifier, RoleArn, FeatureName)
+#' See [https://paws-r.github.io/docs/rds/add_role_to_db_instance.html](https://paws-r.github.io/docs/rds/add_role_to_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The name of the DB instance to associate the IAM role with.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with the DB
 #' instance, for example `arn:aws:iam::123456789012:role/AccessRole`.
 #' @param FeatureName &#91;required&#93; The name of the feature for the DB instance that the IAM role is to be
-#' associated with. For the list of supported feature names, see
+#' associated with. For information about supported feature names, see
 #' DBEngineVersion.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_role_to_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   RoleArn = "string",
-#'   FeatureName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -114,12 +78,9 @@ rds_add_role_to_db_instance <- function(DBInstanceIdentifier, RoleArn, FeatureNa
 #' subscription
 #'
 #' @description
-#' Adds a source identifier to an existing RDS event notification
-#' subscription.
+#' Adds a source identifier to an existing RDS event notification subscription.
 #'
-#' @usage
-#' rds_add_source_identifier_to_subscription(SubscriptionName,
-#'   SourceIdentifier)
+#' See [https://paws-r.github.io/docs/rds/add_source_identifier_to_subscription.html](https://paws-r.github.io/docs/rds/add_source_identifier_to_subscription.html) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the RDS event notification subscription you want to add a
 #' source identifier to.
@@ -144,37 +105,9 @@ rds_add_role_to_db_instance <- function(DBInstanceIdentifier, RoleArn, FeatureNa
 #' 
 #' -   If the source type is a DB cluster snapshot, a
 #'     `DBClusterSnapshotIdentifier` value must be supplied.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSubscription = list(
-#'     CustomerAwsId = "string",
-#'     CustSubscriptionId = "string",
-#'     SnsTopicArn = "string",
-#'     Status = "string",
-#'     SubscriptionCreationTime = "string",
-#'     SourceType = "string",
-#'     SourceIdsList = list(
-#'       "string"
-#'     ),
-#'     EventCategoriesList = list(
-#'       "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     EventSubscriptionArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_source_identifier_to_subscription(
-#'   SubscriptionName = "string",
-#'   SourceIdentifier = "string"
-#' )
-#' ```
+#' 
+#' -   If the source type is an RDS Proxy, a `DBProxyName` value must be
+#'     supplied.
 #'
 #' @keywords internal
 #'
@@ -199,38 +132,15 @@ rds_add_source_identifier_to_subscription <- function(SubscriptionName, SourceId
 #' Adds metadata tags to an Amazon RDS resource
 #'
 #' @description
-#' Adds metadata tags to an Amazon RDS resource. These tags can also be
-#' used with cost allocation reporting to track cost associated with Amazon
-#' RDS resources, or used in a Condition statement in an IAM policy for
-#' Amazon RDS.
-#' 
-#' For an overview on tagging Amazon RDS resources, see [Tagging Amazon RDS
-#' Resources](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html).
+#' Adds metadata tags to an Amazon RDS resource. These tags can also be used with cost allocation reporting to track cost associated with Amazon RDS resources, or used in a Condition statement in an IAM policy for Amazon RDS.
 #'
-#' @usage
-#' rds_add_tags_to_resource(ResourceName, Tags)
+#' See [https://paws-r.github.io/docs/rds/add_tags_to_resource.html](https://paws-r.github.io/docs/rds/add_tags_to_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon RDS resource that the tags are added to. This value is an
 #' Amazon Resource Name (ARN). For information about creating an ARN, see
 #' [Constructing an RDS Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
 #' @param Tags &#91;required&#93; The tags to be assigned to the Amazon RDS resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$add_tags_to_resource(
-#'   ResourceName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -256,12 +166,9 @@ rds_add_tags_to_resource <- function(ResourceName, Tags) {
 #' instance)
 #'
 #' @description
-#' Applies a pending maintenance action to a resource (for example, to a DB
-#' instance).
+#' Applies a pending maintenance action to a resource (for example, to a DB instance).
 #'
-#' @usage
-#' rds_apply_pending_maintenance_action(ResourceIdentifier, ApplyAction,
-#'   OptInType)
+#' See [https://paws-r.github.io/docs/rds/apply_pending_maintenance_action.html](https://paws-r.github.io/docs/rds/apply_pending_maintenance_action.html) for full documentation.
 #'
 #' @param ResourceIdentifier &#91;required&#93; The RDS Amazon Resource Name (ARN) of the resource that the pending
 #' maintenance action applies to. For information about creating an ARN,
@@ -283,41 +190,6 @@ rds_add_tags_to_resource <- function(ResourceName, Tags) {
 #' 
 #' -   `undo-opt-in` - Cancel any existing `next-maintenance` opt-in
 #'     requests.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourcePendingMaintenanceActions = list(
-#'     ResourceIdentifier = "string",
-#'     PendingMaintenanceActionDetails = list(
-#'       list(
-#'         Action = "string",
-#'         AutoAppliedAfterDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ForcedApplyDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         OptInStatus = "string",
-#'         CurrentApplyDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Description = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$apply_pending_maintenance_action(
-#'   ResourceIdentifier = "string",
-#'   ApplyAction = "string",
-#'   OptInType = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -343,26 +215,9 @@ rds_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAction
 #' authorization
 #'
 #' @description
-#' Enables ingress to a DBSecurityGroup using one of two forms of
-#' authorization. First, EC2 or VPC security groups can be added to the
-#' DBSecurityGroup if the application using the database is running on EC2
-#' or VPC instances. Second, IP ranges are available if the application
-#' accessing your database is running on the Internet. Required parameters
-#' for this API are one of CIDR range, EC2SecurityGroupId for VPC, or
-#' (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
-#' EC2SecurityGroupId for non-VPC).
-#' 
-#' You can't authorize ingress from an EC2 security group in one AWS Region
-#' to an Amazon RDS DB instance in another. You can't authorize ingress
-#' from a VPC security group in one VPC to an Amazon RDS DB instance in
-#' another.
-#' 
-#' For an overview of CIDR ranges, go to the [Wikipedia
-#' Tutorial](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+#' Enables ingress to a DBSecurityGroup using one of two forms of authorization. First, EC2 or VPC security groups can be added to the DBSecurityGroup if the application using the database is running on EC2 or VPC instances. Second, IP ranges are available if the application accessing your database is running on the internet. Required parameters for this API are one of CIDR range, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId for non-VPC).
 #'
-#' @usage
-#' rds_authorize_db_security_group_ingress(DBSecurityGroupName, CIDRIP,
-#'   EC2SecurityGroupName, EC2SecurityGroupId, EC2SecurityGroupOwnerId)
+#' See [https://paws-r.github.io/docs/rds/authorize_db_security_group_ingress.html](https://paws-r.github.io/docs/rds/authorize_db_security_group_ingress.html) for full documentation.
 #'
 #' @param DBSecurityGroupName &#91;required&#93; The name of the DB security group to add authorization to.
 #' @param CIDRIP The IP range to authorize.
@@ -374,50 +229,12 @@ rds_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAction
 #' `EC2SecurityGroupId` must be provided. Otherwise,
 #' `EC2SecurityGroupOwnerId` and either `EC2SecurityGroupName` or
 #' `EC2SecurityGroupId` must be provided.
-#' @param EC2SecurityGroupOwnerId AWS account number of the owner of the EC2 security group specified in
-#' the `EC2SecurityGroupName` parameter. The AWS access key ID isn't an
-#' acceptable value. For VPC DB security groups, `EC2SecurityGroupId` must
-#' be provided. Otherwise, `EC2SecurityGroupOwnerId` and either
-#' `EC2SecurityGroupName` or `EC2SecurityGroupId` must be provided.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSecurityGroup = list(
-#'     OwnerId = "string",
-#'     DBSecurityGroupName = "string",
-#'     DBSecurityGroupDescription = "string",
-#'     VpcId = "string",
-#'     EC2SecurityGroups = list(
-#'       list(
-#'         Status = "string",
-#'         EC2SecurityGroupName = "string",
-#'         EC2SecurityGroupId = "string",
-#'         EC2SecurityGroupOwnerId = "string"
-#'       )
-#'     ),
-#'     IPRanges = list(
-#'       list(
-#'         Status = "string",
-#'         CIDRIP = "string"
-#'       )
-#'     ),
-#'     DBSecurityGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$authorize_db_security_group_ingress(
-#'   DBSecurityGroupName = "string",
-#'   CIDRIP = "string",
-#'   EC2SecurityGroupName = "string",
-#'   EC2SecurityGroupId = "string",
-#'   EC2SecurityGroupOwnerId = "string"
-#' )
-#' ```
+#' @param EC2SecurityGroupOwnerId Amazon Web Services account number of the owner of the EC2 security
+#' group specified in the `EC2SecurityGroupName` parameter. The Amazon Web
+#' Services access key ID isn't an acceptable value. For VPC DB security
+#' groups, `EC2SecurityGroupId` must be provided. Otherwise,
+#' `EC2SecurityGroupOwnerId` and either `EC2SecurityGroupName` or
+#' `EC2SecurityGroupId` must be provided.
 #'
 #' @keywords internal
 #'
@@ -443,18 +260,9 @@ rds_authorize_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP 
 #' cluster
 #'
 #' @description
-#' Backtracks a DB cluster to a specific time, without creating a new DB
-#' cluster.
-#' 
-#' For more information on backtracking, see [Backtracking an Aurora DB
-#' Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Managing.Backtrack.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora MySQL DB clusters.
+#' Backtracks a DB cluster to a specific time, without creating a new DB cluster.
 #'
-#' @usage
-#' rds_backtrack_db_cluster(DBClusterIdentifier, BacktrackTo, Force,
-#'   UseEarliestTimeOnPointInTimeUnavailable)
+#' See [https://paws-r.github.io/docs/rds/backtrack_db_cluster.html](https://paws-r.github.io/docs/rds/backtrack_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the DB cluster to be backtracked. This
 #' parameter is stored as a lowercase string.
@@ -492,37 +300,6 @@ rds_authorize_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP 
 #' is disabled and *BacktrackTo* is set to a timestamp earlier than the
 #' earliest backtrack time, an error occurs.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterIdentifier = "string",
-#'   BacktrackIdentifier = "string",
-#'   BacktrackTo = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   BacktrackedFrom = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   BacktrackRequestCreationTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Status = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$backtrack_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   BacktrackTo = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Force = TRUE|FALSE,
-#'   UseEarliestTimeOnPointInTimeUnavailable = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_backtrack_db_cluster
@@ -547,51 +324,11 @@ rds_backtrack_db_cluster <- function(DBClusterIdentifier, BacktrackTo, Force = N
 #' Amazon S3
 #'
 #' @description
-#' Cancels an export task in progress that is exporting a snapshot to
-#' Amazon S3. Any data that has already been written to the S3 bucket isn't
-#' removed.
+#' Cancels an export task in progress that is exporting a snapshot to Amazon S3. Any data that has already been written to the S3 bucket isn't removed.
 #'
-#' @usage
-#' rds_cancel_export_task(ExportTaskIdentifier)
+#' See [https://paws-r.github.io/docs/rds/cancel_export_task.html](https://paws-r.github.io/docs/rds/cancel_export_task.html) for full documentation.
 #'
 #' @param ExportTaskIdentifier &#91;required&#93; The identifier of the snapshot export task to cancel.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ExportTaskIdentifier = "string",
-#'   SourceArn = "string",
-#'   ExportOnly = list(
-#'     "string"
-#'   ),
-#'   SnapshotTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   TaskStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   TaskEndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   S3Bucket = "string",
-#'   S3Prefix = "string",
-#'   IamRoleArn = "string",
-#'   KmsKeyId = "string",
-#'   Status = "string",
-#'   PercentProgress = 123,
-#'   TotalExtractedDataInGB = 123,
-#'   FailureCause = "string",
-#'   WarningMessage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$cancel_export_task(
-#'   ExportTaskIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -617,14 +354,8 @@ rds_cancel_export_task <- function(ExportTaskIdentifier) {
 #'
 #' @description
 #' Copies the specified DB cluster parameter group.
-#' 
-#' This action only applies to Aurora DB clusters.
 #'
-#' @usage
-#' rds_copy_db_cluster_parameter_group(
-#'   SourceDBClusterParameterGroupIdentifier,
-#'   TargetDBClusterParameterGroupIdentifier,
-#'   TargetDBClusterParameterGroupDescription, Tags)
+#' See [https://paws-r.github.io/docs/rds/copy_db_cluster_parameter_group.html](https://paws-r.github.io/docs/rds/copy_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param SourceDBClusterParameterGroupIdentifier &#91;required&#93; The identifier or Amazon Resource Name (ARN) for the source DB cluster
 #' parameter group. For information about creating an ARN, see
@@ -635,15 +366,6 @@ rds_cancel_export_task <- function(ExportTaskIdentifier) {
 #' Constraints:
 #' 
 #' -   Must specify a valid DB cluster parameter group.
-#' 
-#' -   If the source DB cluster parameter group is in the same AWS Region
-#'     as the copy, specify a valid DB parameter group identifier, for
-#'     example `my-db-cluster-param-group`, or a valid ARN.
-#' 
-#' -   If the source DB parameter group is in a different AWS Region than
-#'     the copy, specify a valid DB cluster parameter group ARN, for
-#'     example
-#'     `arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1`.
 #' @param TargetDBClusterParameterGroupIdentifier &#91;required&#93; The identifier for the copied DB cluster parameter group.
 #' 
 #' Constraints:
@@ -659,34 +381,6 @@ rds_cancel_export_task <- function(ExportTaskIdentifier) {
 #' Example: `my-cluster-param-group1`
 #' @param TargetDBClusterParameterGroupDescription &#91;required&#93; A description for the copied DB cluster parameter group.
 #' @param Tags 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroup = list(
-#'     DBClusterParameterGroupName = "string",
-#'     DBParameterGroupFamily = "string",
-#'     Description = "string",
-#'     DBClusterParameterGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_db_cluster_parameter_group(
-#'   SourceDBClusterParameterGroupIdentifier = "string",
-#'   TargetDBClusterParameterGroupIdentifier = "string",
-#'   TargetDBClusterParameterGroupDescription = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -712,113 +406,27 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #'
 #' @description
 #' Copies a snapshot of a DB cluster.
-#' 
-#' To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
-#' `SourceDBClusterSnapshotIdentifier` must be the Amazon Resource Name
-#' (ARN) of the shared DB cluster snapshot.
-#' 
-#' You can copy an encrypted DB cluster snapshot from another AWS Region.
-#' In that case, the AWS Region where you call the
-#' [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] action is the
-#' destination AWS Region for the encrypted DB cluster snapshot to be
-#' copied to. To copy an encrypted DB cluster snapshot from another AWS
-#' Region, you must provide the following values:
-#' 
-#' -   `KmsKeyId` - The AWS Key Management System (AWS KMS) key identifier
-#'     for the key to use to encrypt the copy of the DB cluster snapshot in
-#'     the destination AWS Region.
-#' 
-#' -   `PreSignedUrl` - A URL that contains a Signature Version 4 signed
-#'     request for the
-#'     [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] action to
-#'     be called in the source AWS Region where the DB cluster snapshot is
-#'     copied from. The pre-signed URL must be a valid request for the
-#'     [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] API
-#'     action that can be executed in the source AWS Region that contains
-#'     the encrypted DB cluster snapshot to be copied.
-#' 
-#'     The pre-signed URL request must contain the following parameter
-#'     values:
-#' 
-#'     -   `KmsKeyId` - The AWS KMS key identifier for the customer master
-#'         key (CMK) to use to encrypt the copy of the DB cluster snapshot
-#'         in the destination AWS Region. This is the same identifier for
-#'         both the
-#'         [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot]
-#'         action that is called in the destination AWS Region, and the
-#'         action contained in the pre-signed URL.
-#' 
-#'     -   `DestinationRegion` - The name of the AWS Region that the DB
-#'         cluster snapshot is to be created in.
-#' 
-#'     -   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot
-#'         identifier for the encrypted DB cluster snapshot to be copied.
-#'         This identifier must be in the Amazon Resource Name (ARN) format
-#'         for the source AWS Region. For example, if you are copying an
-#'         encrypted DB cluster snapshot from the us-west-2 AWS Region,
-#'         then your `SourceDBClusterSnapshotIdentifier` looks like the
-#'         following example:
-#'         `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
-#' 
-#'     To learn how to generate a Signature Version 4 signed request, see
-#'     [Authenticating Requests: Using Query Parameters (AWS Signature
-#'     Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
-#'     and [Signature Version 4 Signing
-#'     Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
-#' 
-#'     If you are using an AWS SDK tool or the AWS CLI, you can specify
-#'     `SourceRegion` (or `--source-region` for the AWS CLI) instead of
-#'     specifying `PreSignedUrl` manually. Specifying `SourceRegion`
-#'     autogenerates a pre-signed URL that is a valid request for the
-#'     operation that can be executed in the source AWS Region.
-#' 
-#' -   `TargetDBClusterSnapshotIdentifier` - The identifier for the new
-#'     copy of the DB cluster snapshot in the destination AWS Region.
-#' 
-#' -   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot
-#'     identifier for the encrypted DB cluster snapshot to be copied. This
-#'     identifier must be in the ARN format for the source AWS Region and
-#'     is the same value as the `SourceDBClusterSnapshotIdentifier` in the
-#'     pre-signed URL.
-#' 
-#' To cancel the copy operation once it is in progress, delete the target
-#' DB cluster snapshot identified by `TargetDBClusterSnapshotIdentifier`
-#' while that DB cluster snapshot is in "copying" status.
-#' 
-#' For more information on copying encrypted DB cluster snapshots from one
-#' AWS Region to another, see [Copying a
-#' Snapshot](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
 #'
-#' @usage
-#' rds_copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
-#'   TargetDBClusterSnapshotIdentifier, KmsKeyId, PreSignedUrl, CopyTags,
-#'   Tags, SourceRegion)
+#' See [https://paws-r.github.io/docs/rds/copy_db_cluster_snapshot.html](https://paws-r.github.io/docs/rds/copy_db_cluster_snapshot.html) for full documentation.
 #'
 #' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot to copy. This parameter isn't
 #' case-sensitive.
 #' 
-#' You can't copy an encrypted, shared DB cluster snapshot from one AWS
-#' Region to another.
+#' You can't copy an encrypted, shared DB cluster snapshot from one Amazon
+#' Web Services Region to another.
 #' 
 #' Constraints:
 #' 
 #' -   Must specify a valid system snapshot in the "available" state.
 #' 
-#' -   If the source snapshot is in the same AWS Region as the copy,
-#'     specify a valid DB snapshot identifier.
+#' -   If the source snapshot is in the same Amazon Web Services Region as
+#'     the copy, specify a valid DB snapshot identifier.
 #' 
-#' -   If the source snapshot is in a different AWS Region than the copy,
-#'     specify a valid DB cluster snapshot ARN. For more information, go to
-#'     [Copying Snapshots Across AWS
-#'     Regions](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CopySnapshot.html#USER_CopySnapshot.AcrossRegions)
-#'     in the *Amazon Aurora User Guide.*
+#' -   If the source snapshot is in a different Amazon Web Services Region
+#'     than the copy, specify a valid DB cluster snapshot ARN. For more
+#'     information, go to [Copying Snapshots Across Amazon Web Services
+#'     Regions](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-copy-snapshot.html#USER_CopySnapshot.AcrossRegions)
+#'     in the *Amazon Aurora User Guide*.
 #' 
 #' Example: `my-cluster-snapshot1`
 #' @param TargetDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the new DB cluster snapshot to create from the source
@@ -833,71 +441,80 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' -   Can't end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-snapshot2`
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted DB cluster snapshot. The AWS
-#' KMS key identifier is the key ARN, key ID, alias ARN, or alias name for
-#' the AWS KMS customer master key (CMK).
+#' @param KmsKeyId The Amazon Web Services KMS key identifier for an encrypted DB cluster
+#' snapshot. The Amazon Web Services KMS key identifier is the key ARN, key
+#' ID, alias ARN, or alias name for the Amazon Web Services KMS key.
 #' 
-#' If you copy an encrypted DB cluster snapshot from your AWS account, you
-#' can specify a value for `KmsKeyId` to encrypt the copy with a new AWS
-#' KMS CMK. If you don't specify a value for `KmsKeyId`, then the copy of
-#' the DB cluster snapshot is encrypted with the same AWS KMS key as the
-#' source DB cluster snapshot.
+#' If you copy an encrypted DB cluster snapshot from your Amazon Web
+#' Services account, you can specify a value for `KmsKeyId` to encrypt the
+#' copy with a new KMS key. If you don't specify a value for `KmsKeyId`,
+#' then the copy of the DB cluster snapshot is encrypted with the same KMS
+#' key as the source DB cluster snapshot.
 #' 
 #' If you copy an encrypted DB cluster snapshot that is shared from another
-#' AWS account, then you must specify a value for `KmsKeyId`.
+#' Amazon Web Services account, then you must specify a value for
+#' `KmsKeyId`.
 #' 
-#' To copy an encrypted DB cluster snapshot to another AWS Region, you must
-#' set `KmsKeyId` to the AWS KMS key identifier you want to use to encrypt
-#' the copy of the DB cluster snapshot in the destination AWS Region. AWS
-#' KMS CMKs are specific to the AWS Region that they are created in, and
-#' you can't use CMKs from one AWS Region in another AWS Region.
+#' To copy an encrypted DB cluster snapshot to another Amazon Web Services
+#' Region, you must set `KmsKeyId` to the Amazon Web Services KMS key
+#' identifier you want to use to encrypt the copy of the DB cluster
+#' snapshot in the destination Amazon Web Services Region. KMS keys are
+#' specific to the Amazon Web Services Region that they are created in, and
+#' you can't use KMS keys from one Amazon Web Services Region in another
+#' Amazon Web Services Region.
 #' 
 #' If you copy an unencrypted DB cluster snapshot and specify a value for
 #' the `KmsKeyId` parameter, an error is returned.
-#' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
-#' [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] API action in
-#' the AWS Region that contains the source DB cluster snapshot to copy. The
-#' `PreSignedUrl` parameter must be used when copying an encrypted DB
-#' cluster snapshot from another AWS Region. Don't specify `PreSignedUrl`
-#' when you are copying an encrypted DB cluster snapshot in the same AWS
-#' Region.
+#' @param PreSignedUrl When you are copying a DB cluster snapshot from one Amazon Web Services
+#' GovCloud (US) Region to another, the URL that contains a Signature
+#' Version 4 signed request for the
+#' [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] API operation
+#' in the Amazon Web Services Region that contains the source DB cluster
+#' snapshot to copy. Use the `PreSignedUrl` parameter when copying an
+#' encrypted DB cluster snapshot from another Amazon Web Services Region.
+#' Don't specify `PreSignedUrl` when copying an encrypted DB cluster
+#' snapshot in the same Amazon Web Services Region.
 #' 
-#' The pre-signed URL must be a valid request for the
-#' [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] API action
-#' that can be executed in the source AWS Region that contains the
-#' encrypted DB cluster snapshot to be copied. The pre-signed URL request
-#' must contain the following parameter values:
+#' This setting applies only to Amazon Web Services GovCloud (US) Regions.
+#' It's ignored in other Amazon Web Services Regions.
 #' 
-#' -   `KmsKeyId` - The AWS KMS key identifier for the customer master key
-#'     (CMK) to use to encrypt the copy of the DB cluster snapshot in the
-#'     destination AWS Region. This is the same identifier for both the
-#'     [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] action
-#'     that is called in the destination AWS Region, and the action
-#'     contained in the pre-signed URL.
+#' The presigned URL must be a valid request for the
+#' [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] API operation
+#' that can run in the source Amazon Web Services Region that contains the
+#' encrypted DB cluster snapshot to copy. The presigned URL request must
+#' contain the following parameter values:
 #' 
-#' -   `DestinationRegion` - The name of the AWS Region that the DB cluster
-#'     snapshot is to be created in.
+#' -   `KmsKeyId` - The KMS key identifier for the KMS key to use to
+#'     encrypt the copy of the DB cluster snapshot in the destination
+#'     Amazon Web Services Region. This is the same identifier for both the
+#'     [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] operation
+#'     that is called in the destination Amazon Web Services Region, and
+#'     the operation contained in the presigned URL.
+#' 
+#' -   `DestinationRegion` - The name of the Amazon Web Services Region
+#'     that the DB cluster snapshot is to be created in.
 #' 
 #' -   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot
 #'     identifier for the encrypted DB cluster snapshot to be copied. This
 #'     identifier must be in the Amazon Resource Name (ARN) format for the
-#'     source AWS Region. For example, if you are copying an encrypted DB
-#'     cluster snapshot from the us-west-2 AWS Region, then your
-#'     `SourceDBClusterSnapshotIdentifier` looks like the following
-#'     example:
+#'     source Amazon Web Services Region. For example, if you are copying
+#'     an encrypted DB cluster snapshot from the us-west-2 Amazon Web
+#'     Services Region, then your `SourceDBClusterSnapshotIdentifier` looks
+#'     like the following example:
 #'     `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`.
 #' 
 #' To learn how to generate a Signature Version 4 signed request, see
-#' [Authenticating Requests: Using Query Parameters (AWS Signature Version
+#' [Authenticating Requests: Using Query Parameters (Amazon Web Services
+#' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
-#' If you are using an AWS SDK tool or the AWS CLI, you can specify
-#' `SourceRegion` (or `--source-region` for the AWS CLI) instead of
+#' If you are using an Amazon Web Services SDK tool or the CLI, you can
+#' specify `SourceRegion` (or `--source-region` for the CLI) instead of
 #' specifying `PreSignedUrl` manually. Specifying `SourceRegion`
-#' autogenerates a pre-signed URL that is a valid request for the operation
-#' that can be executed in the source AWS Region.
+#' autogenerates a presigned URL that is a valid request for the operation
+#' that can run in the source Amazon Web Services Region.
 #' 
 #' If you supply a value for this operation's `SourceRegion` parameter, a
 #' pre-signed URL will be calculated on your behalf.
@@ -906,65 +523,6 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' not copied.
 #' @param Tags 
 #' @param SourceRegion The ID of the region that contains the snapshot to be copied.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshot = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     VpcId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     SnapshotType = "string",
-#'     PercentProgress = 123,
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_db_cluster_snapshot(
-#'   SourceDBClusterSnapshotIdentifier = "string",
-#'   TargetDBClusterSnapshotIdentifier = "string",
-#'   KmsKeyId = "string",
-#'   PreSignedUrl = "string",
-#'   CopyTags = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   SourceRegion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -991,10 +549,7 @@ rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Targ
 #' @description
 #' Copies the specified DB parameter group.
 #'
-#' @usage
-#' rds_copy_db_parameter_group(SourceDBParameterGroupIdentifier,
-#'   TargetDBParameterGroupIdentifier, TargetDBParameterGroupDescription,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/rds/copy_db_parameter_group.html](https://paws-r.github.io/docs/rds/copy_db_parameter_group.html) for full documentation.
 #'
 #' @param SourceDBParameterGroupIdentifier &#91;required&#93; The identifier or ARN for the source DB parameter group. For information
 #' about creating an ARN, see [Constructing an ARN for Amazon
@@ -1004,9 +559,6 @@ rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Targ
 #' Constraints:
 #' 
 #' -   Must specify a valid DB parameter group.
-#' 
-#' -   Must specify a valid DB parameter group identifier, for example
-#'     `my-db-param-group`, or a valid ARN.
 #' @param TargetDBParameterGroupIdentifier &#91;required&#93; The identifier for the copied DB parameter group.
 #' 
 #' Constraints:
@@ -1022,34 +574,6 @@ rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Targ
 #' Example: `my-db-parameter-group`
 #' @param TargetDBParameterGroupDescription &#91;required&#93; A description for the copied DB parameter group.
 #' @param Tags 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBParameterGroup = list(
-#'     DBParameterGroupName = "string",
-#'     DBParameterGroupFamily = "string",
-#'     Description = "string",
-#'     DBParameterGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_db_parameter_group(
-#'   SourceDBParameterGroupIdentifier = "string",
-#'   TargetDBParameterGroupIdentifier = "string",
-#'   TargetDBParameterGroupDescription = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1074,39 +598,26 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #' Copies the specified DB snapshot
 #'
 #' @description
-#' Copies the specified DB snapshot. The source DB snapshot must be in the
-#' `available` state.
-#' 
-#' You can copy a snapshot from one AWS Region to another. In that case,
-#' the AWS Region where you call the
-#' [`copy_db_snapshot`][rds_copy_db_snapshot] action is the destination AWS
-#' Region for the DB snapshot copy.
-#' 
-#' For more information about copying snapshots, see [Copying a DB
-#' Snapshot](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot)
-#' in the *Amazon RDS User Guide.*
+#' Copies the specified DB snapshot. The source DB snapshot must be in the `available` state.
 #'
-#' @usage
-#' rds_copy_db_snapshot(SourceDBSnapshotIdentifier,
-#'   TargetDBSnapshotIdentifier, KmsKeyId, Tags, CopyTags, PreSignedUrl,
-#'   OptionGroupName, TargetCustomAvailabilityZone, SourceRegion)
+#' See [https://paws-r.github.io/docs/rds/copy_db_snapshot.html](https://paws-r.github.io/docs/rds/copy_db_snapshot.html) for full documentation.
 #'
 #' @param SourceDBSnapshotIdentifier &#91;required&#93; The identifier for the source DB snapshot.
 #' 
-#' If the source snapshot is in the same AWS Region as the copy, specify a
-#' valid DB snapshot identifier. For example, you might specify
-#' `rds:mysql-instance1-snapshot-20130805`.
+#' If the source snapshot is in the same Amazon Web Services Region as the
+#' copy, specify a valid DB snapshot identifier. For example, you might
+#' specify `rds:mysql-instance1-snapshot-20130805`.
 #' 
-#' If the source snapshot is in a different AWS Region than the copy,
-#' specify a valid DB snapshot ARN. For example, you might specify
+#' If the source snapshot is in a different Amazon Web Services Region than
+#' the copy, specify a valid DB snapshot ARN. For example, you might
+#' specify
 #' `arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805`.
 #' 
 #' If you are copying from a shared manual DB snapshot, this parameter must
 #' be the Amazon Resource Name (ARN) of the shared DB snapshot.
 #' 
 #' If you are copying an encrypted snapshot this parameter must be in the
-#' ARN format for the source AWS Region, and must match the
-#' `SourceDBSnapshotIdentifier` in the `PreSignedUrl` parameter.
+#' ARN format for the source Amazon Web Services Region.
 #' 
 #' Constraints:
 #' 
@@ -1129,172 +640,111 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #' -   Can't end with a hyphen or contain two consecutive hyphens
 #' 
 #' Example: `my-db-snapshot`
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted DB snapshot. The AWS KMS key
-#' identifier is the key ARN, key ID, alias ARN, or alias name for the AWS
-#' KMS customer master key (CMK).
+#' @param KmsKeyId The Amazon Web Services KMS key identifier for an encrypted DB snapshot.
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key.
 #' 
-#' If you copy an encrypted DB snapshot from your AWS account, you can
-#' specify a value for this parameter to encrypt the copy with a new AWS
-#' KMS CMK. If you don't specify a value for this parameter, then the copy
-#' of the DB snapshot is encrypted with the same AWS KMS key as the source
-#' DB snapshot.
+#' If you copy an encrypted DB snapshot from your Amazon Web Services
+#' account, you can specify a value for this parameter to encrypt the copy
+#' with a new KMS key. If you don't specify a value for this parameter,
+#' then the copy of the DB snapshot is encrypted with the same Amazon Web
+#' Services KMS key as the source DB snapshot.
 #' 
-#' If you copy an encrypted DB snapshot that is shared from another AWS
-#' account, then you must specify a value for this parameter.
+#' If you copy an encrypted DB snapshot that is shared from another Amazon
+#' Web Services account, then you must specify a value for this parameter.
 #' 
 #' If you specify this parameter when you copy an unencrypted snapshot, the
 #' copy is encrypted.
 #' 
-#' If you copy an encrypted snapshot to a different AWS Region, then you
-#' must specify a AWS KMS key identifier for the destination AWS Region.
-#' AWS KMS CMKs are specific to the AWS Region that they are created in,
-#' and you can't use CMKs from one AWS Region in another AWS Region.
+#' If you copy an encrypted snapshot to a different Amazon Web Services
+#' Region, then you must specify an Amazon Web Services KMS key identifier
+#' for the destination Amazon Web Services Region. KMS keys are specific to
+#' the Amazon Web Services Region that they are created in, and you can't
+#' use KMS keys from one Amazon Web Services Region in another Amazon Web
+#' Services Region.
 #' @param Tags 
 #' @param CopyTags A value that indicates whether to copy all tags from the source DB
 #' snapshot to the target DB snapshot. By default, tags are not copied.
-#' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
-#' [`copy_db_snapshot`][rds_copy_db_snapshot] API action in the source AWS
-#' Region that contains the source DB snapshot to copy.
+#' @param PreSignedUrl When you are copying a snapshot from one Amazon Web Services GovCloud
+#' (US) Region to another, the URL that contains a Signature Version 4
+#' signed request for the [`copy_db_snapshot`][rds_copy_db_snapshot] API
+#' operation in the source Amazon Web Services Region that contains the
+#' source DB snapshot to copy.
+#' 
+#' This setting applies only to Amazon Web Services GovCloud (US) Regions.
+#' It's ignored in other Amazon Web Services Regions.
 #' 
 #' You must specify this parameter when you copy an encrypted DB snapshot
-#' from another AWS Region by using the Amazon RDS API. Don't specify
-#' `PreSignedUrl` when you are copying an encrypted DB snapshot in the same
-#' AWS Region.
+#' from another Amazon Web Services Region by using the Amazon RDS API.
+#' Don't specify `PreSignedUrl` when you are copying an encrypted DB
+#' snapshot in the same Amazon Web Services Region.
 #' 
 #' The presigned URL must be a valid request for the
-#' [`copy_db_snapshot`][rds_copy_db_snapshot] API action that can be
-#' executed in the source AWS Region that contains the encrypted DB
-#' snapshot to be copied. The presigned URL request must contain the
-#' following parameter values:
+#' [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] API operation
+#' that can run in the source Amazon Web Services Region that contains the
+#' encrypted DB cluster snapshot to copy. The presigned URL request must
+#' contain the following parameter values:
 #' 
-#' -   `DestinationRegion` - The AWS Region that the encrypted DB snapshot
-#'     is copied to. This AWS Region is the same one where the
-#'     [`copy_db_snapshot`][rds_copy_db_snapshot] action is called that
-#'     contains this presigned URL.
+#' -   `DestinationRegion` - The Amazon Web Services Region that the
+#'     encrypted DB snapshot is copied to. This Amazon Web Services Region
+#'     is the same one where the [`copy_db_snapshot`][rds_copy_db_snapshot]
+#'     operation is called that contains this presigned URL.
 #' 
 #'     For example, if you copy an encrypted DB snapshot from the us-west-2
-#'     AWS Region to the us-east-1 AWS Region, then you call the
-#'     [`copy_db_snapshot`][rds_copy_db_snapshot] action in the us-east-1
-#'     AWS Region and provide a presigned URL that contains a call to the
-#'     [`copy_db_snapshot`][rds_copy_db_snapshot] action in the us-west-2
-#'     AWS Region. For this example, the `DestinationRegion` in the
-#'     presigned URL must be set to the us-east-1 AWS Region.
+#'     Amazon Web Services Region to the us-east-1 Amazon Web Services
+#'     Region, then you call the [`copy_db_snapshot`][rds_copy_db_snapshot]
+#'     operation in the us-east-1 Amazon Web Services Region and provide a
+#'     presigned URL that contains a call to the
+#'     [`copy_db_snapshot`][rds_copy_db_snapshot] operation in the
+#'     us-west-2 Amazon Web Services Region. For this example, the
+#'     `DestinationRegion` in the presigned URL must be set to the
+#'     us-east-1 Amazon Web Services Region.
 #' 
-#' -   `KmsKeyId` - The AWS KMS key identifier for the customer master key
-#'     (CMK) to use to encrypt the copy of the DB snapshot in the
-#'     destination AWS Region. This is the same identifier for both the
-#'     [`copy_db_snapshot`][rds_copy_db_snapshot] action that is called in
-#'     the destination AWS Region, and the action contained in the
-#'     presigned URL.
+#' -   `KmsKeyId` - The KMS key identifier for the KMS key to use to
+#'     encrypt the copy of the DB snapshot in the destination Amazon Web
+#'     Services Region. This is the same identifier for both the
+#'     [`copy_db_snapshot`][rds_copy_db_snapshot] operation that is called
+#'     in the destination Amazon Web Services Region, and the operation
+#'     contained in the presigned URL.
 #' 
 #' -   `SourceDBSnapshotIdentifier` - The DB snapshot identifier for the
 #'     encrypted snapshot to be copied. This identifier must be in the
-#'     Amazon Resource Name (ARN) format for the source AWS Region. For
-#'     example, if you are copying an encrypted DB snapshot from the
-#'     us-west-2 AWS Region, then your `SourceDBSnapshotIdentifier` looks
-#'     like the following example:
+#'     Amazon Resource Name (ARN) format for the source Amazon Web Services
+#'     Region. For example, if you are copying an encrypted DB snapshot
+#'     from the us-west-2 Amazon Web Services Region, then your
+#'     `SourceDBSnapshotIdentifier` looks like the following example:
 #'     `arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115`.
 #' 
 #' To learn how to generate a Signature Version 4 signed request, see
-#' [Authenticating Requests: Using Query Parameters (AWS Signature Version
+#' [Authenticating Requests: Using Query Parameters (Amazon Web Services
+#' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
-#' If you are using an AWS SDK tool or the AWS CLI, you can specify
-#' `SourceRegion` (or `--source-region` for the AWS CLI) instead of
+#' If you are using an Amazon Web Services SDK tool or the CLI, you can
+#' specify `SourceRegion` (or `--source-region` for the CLI) instead of
 #' specifying `PreSignedUrl` manually. Specifying `SourceRegion`
-#' autogenerates a pre-signed URL that is a valid request for the operation
-#' that can be executed in the source AWS Region.
+#' autogenerates a presigned URL that is a valid request for the operation
+#' that can run in the source Amazon Web Services Region.
 #' 
 #' If you supply a value for this operation's `SourceRegion` parameter, a
 #' pre-signed URL will be calculated on your behalf.
 #' @param OptionGroupName The name of an option group to associate with the copy of the snapshot.
 #' 
-#' Specify this option if you are copying a snapshot from one AWS Region to
-#' another, and your DB instance uses a nondefault option group. If your
-#' source DB instance uses Transparent Data Encryption for Oracle or
-#' Microsoft SQL Server, you must specify this option when copying across
-#' AWS Regions. For more information, see [Option group
+#' Specify this option if you are copying a snapshot from one Amazon Web
+#' Services Region to another, and your DB instance uses a nondefault
+#' option group. If your source DB instance uses Transparent Data
+#' Encryption for Oracle or Microsoft SQL Server, you must specify this
+#' option when copying across Amazon Web Services Regions. For more
+#' information, see [Option group
 #' considerations](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options)
-#' in the *Amazon RDS User Guide.*
+#' in the *Amazon RDS User Guide*.
 #' @param TargetCustomAvailabilityZone The external custom Availability Zone (CAZ) identifier for the target
 #' CAZ.
 #' 
 #' Example: `rds-caz-aiqhTgQv`.
 #' @param SourceRegion The ID of the region that contains the snapshot to be copied.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSnapshot = list(
-#'     DBSnapshotIdentifier = "string",
-#'     DBInstanceIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     AvailabilityZone = "string",
-#'     VpcId = "string",
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     SnapshotType = "string",
-#'     Iops = 123,
-#'     OptionGroupName = "string",
-#'     PercentProgress = 123,
-#'     SourceRegion = "string",
-#'     SourceDBSnapshotIdentifier = "string",
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     Encrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBSnapshotArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DbiResourceId = "string",
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_db_snapshot(
-#'   SourceDBSnapshotIdentifier = "string",
-#'   TargetDBSnapshotIdentifier = "string",
-#'   KmsKeyId = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   CopyTags = TRUE|FALSE,
-#'   PreSignedUrl = "string",
-#'   OptionGroupName = "string",
-#'   TargetCustomAvailabilityZone = "string",
-#'   SourceRegion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1321,9 +771,7 @@ rds_copy_db_snapshot <- function(SourceDBSnapshotIdentifier, TargetDBSnapshotIde
 #' @description
 #' Copies the specified option group.
 #'
-#' @usage
-#' rds_copy_option_group(SourceOptionGroupIdentifier,
-#'   TargetOptionGroupIdentifier, TargetOptionGroupDescription, Tags)
+#' See [https://paws-r.github.io/docs/rds/copy_option_group.html](https://paws-r.github.io/docs/rds/copy_option_group.html) for full documentation.
 #'
 #' @param SourceOptionGroupIdentifier &#91;required&#93; The identifier for the source option group.
 #' 
@@ -1346,72 +794,6 @@ rds_copy_db_snapshot <- function(SourceDBSnapshotIdentifier, TargetDBSnapshotIde
 #' @param TargetOptionGroupDescription &#91;required&#93; The description for the copied option group.
 #' @param Tags 
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OptionGroup = list(
-#'     OptionGroupName = "string",
-#'     OptionGroupDescription = "string",
-#'     EngineName = "string",
-#'     MajorEngineVersion = "string",
-#'     Options = list(
-#'       list(
-#'         OptionName = "string",
-#'         OptionDescription = "string",
-#'         Persistent = TRUE|FALSE,
-#'         Permanent = TRUE|FALSE,
-#'         Port = 123,
-#'         OptionVersion = "string",
-#'         OptionSettings = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string",
-#'             DefaultValue = "string",
-#'             Description = "string",
-#'             ApplyType = "string",
-#'             DataType = "string",
-#'             AllowedValues = "string",
-#'             IsModifiable = TRUE|FALSE,
-#'             IsCollection = TRUE|FALSE
-#'           )
-#'         ),
-#'         DBSecurityGroupMemberships = list(
-#'           list(
-#'             DBSecurityGroupName = "string",
-#'             Status = "string"
-#'           )
-#'         ),
-#'         VpcSecurityGroupMemberships = list(
-#'           list(
-#'             VpcSecurityGroupId = "string",
-#'             Status = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
-#'     VpcId = "string",
-#'     OptionGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_option_group(
-#'   SourceOptionGroupIdentifier = "string",
-#'   TargetOptionGroupIdentifier = "string",
-#'   TargetOptionGroupDescription = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_copy_option_group
@@ -1432,118 +814,108 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 }
 .rds$operations$copy_option_group <- rds_copy_option_group
 
-#' Creates a custom Availability Zone (AZ)
+#' Creates a custom DB engine version (CEV)
 #'
 #' @description
-#' Creates a custom Availability Zone (AZ).
-#' 
-#' A custom AZ is an on-premises AZ that is integrated with a VMware
-#' vSphere cluster.
-#' 
-#' For more information about RDS on VMware, see the [RDS on VMware User
-#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
+#' Creates a custom DB engine version (CEV). A CEV is a binary volume snapshot of a database engine and specific AMI. The supported engines are the following:
 #'
-#' @usage
-#' rds_create_custom_availability_zone(CustomAvailabilityZoneName,
-#'   ExistingVpnId, NewVpnTunnelName, VpnTunnelOriginatorIP)
+#' See [https://paws-r.github.io/docs/rds/create_custom_db_engine_version.html](https://paws-r.github.io/docs/rds/create_custom_db_engine_version.html) for full documentation.
 #'
-#' @param CustomAvailabilityZoneName &#91;required&#93; The name of the custom Availability Zone (AZ).
-#' @param ExistingVpnId The ID of an existing virtual private network (VPN) between the Amazon
-#' RDS website and the VMware vSphere cluster.
-#' @param NewVpnTunnelName The name of a new VPN tunnel between the Amazon RDS website and the
-#' VMware vSphere cluster.
+#' @param Engine &#91;required&#93; The database engine to use for your custom engine version (CEV). The
+#' only supported value is `custom-oracle-ee`.
+#' @param EngineVersion &#91;required&#93; The name of your CEV. The name format is `19.customized_string `. For
+#' example, a valid name is `19.my_cev1`. This setting is required for RDS
+#' Custom for Oracle, but optional for Amazon RDS. The combination of
+#' `Engine` and `EngineVersion` is unique per customer per Region.
+#' @param DatabaseInstallationFilesS3BucketName &#91;required&#93; The name of an Amazon S3 bucket that contains database installation
+#' files for your CEV. For example, a valid bucket name is
+#' `my-custom-installation-files`.
+#' @param DatabaseInstallationFilesS3Prefix The Amazon S3 directory that contains the database installation files
+#' for your CEV. For example, a valid bucket name is `123456789012/cev1`.
+#' If this setting isn't specified, no prefix is assumed.
+#' @param KMSKeyId &#91;required&#93; The Amazon Web Services KMS key identifier for an encrypted CEV. A
+#' symmetric KMS key is required for RDS Custom, but optional for Amazon
+#' RDS.
 #' 
-#' Specify this parameter only if `ExistingVpnId` isn't specified.
-#' @param VpnTunnelOriginatorIP The IP address of network traffic from your on-premises data center. A
-#' custom AZ receives the network traffic.
+#' If you have an existing symmetric KMS key in your account, you can use
+#' it with RDS Custom. No further action is necessary. If you don't already
+#' have a symmetric KMS key in your account, follow the instructions in
+#' [Creating symmetric KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#create-symmetric-cmk)
+#' in the *Amazon Web Services Key Management Service Developer Guide*.
 #' 
-#' Specify this parameter only if `ExistingVpnId` isn't specified.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CustomAvailabilityZone = list(
-#'     CustomAvailabilityZoneId = "string",
-#'     CustomAvailabilityZoneName = "string",
-#'     CustomAvailabilityZoneStatus = "string",
-#'     VpnDetails = list(
-#'       VpnId = "string",
-#'       VpnTunnelOriginatorIP = "string",
-#'       VpnGatewayIp = "string",
-#'       VpnPSK = "string",
-#'       VpnName = "string",
-#'       VpnState = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_custom_availability_zone(
-#'   CustomAvailabilityZoneName = "string",
-#'   ExistingVpnId = "string",
-#'   NewVpnTunnelName = "string",
-#'   VpnTunnelOriginatorIP = "string"
-#' )
-#' ```
+#' You can choose the same symmetric key when you create a CEV and a DB
+#' instance, or choose different keys.
+#' @param Description An optional description of your CEV.
+#' @param Manifest &#91;required&#93; The CEV manifest, which is a JSON document that describes the
+#' installation .zip files stored in Amazon S3. Specify the name/value
+#' pairs in a file or a quoted string. RDS Custom applies the patches in
+#' the order in which they are listed.
+#' 
+#' The following JSON fields are valid:
+#' 
+#' **MediaImportTemplateVersion**
+#' 
+#' Version of the CEV manifest. The date is in the format `YYYY-MM-DD`.
+#' 
+#' **databaseInstallationFileNames**
+#' 
+#' Ordered list of installation files for the CEV.
+#' 
+#' **opatchFileNames**
+#' 
+#' Ordered list of OPatch installers used for the Oracle DB engine.
+#' 
+#' **psuRuPatchFileNames**
+#' 
+#' The PSU and RU patches for this CEV.
+#' 
+#' **OtherPatchFileNames**
+#' 
+#' The patches that are not in the list of PSU and RU patches. Amazon RDS
+#' applies these patches after applying the PSU and RU patches.
+#' 
+#' For more information, see [Creating the CEV
+#' manifest](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.preparing.manifest)
+#' in the *Amazon RDS User Guide*.
+#' @param Tags 
 #'
 #' @keywords internal
 #'
-#' @rdname rds_create_custom_availability_zone
-rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, ExistingVpnId = NULL, NewVpnTunnelName = NULL, VpnTunnelOriginatorIP = NULL) {
+#' @rdname rds_create_custom_db_engine_version
+rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseInstallationFilesS3BucketName, DatabaseInstallationFilesS3Prefix = NULL, KMSKeyId, Description = NULL, Manifest, Tags = NULL) {
   op <- new_operation(
-    name = "CreateCustomAvailabilityZone",
+    name = "CreateCustomDBEngineVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$create_custom_availability_zone_input(CustomAvailabilityZoneName = CustomAvailabilityZoneName, ExistingVpnId = ExistingVpnId, NewVpnTunnelName = NewVpnTunnelName, VpnTunnelOriginatorIP = VpnTunnelOriginatorIP)
-  output <- .rds$create_custom_availability_zone_output()
+  input <- .rds$create_custom_db_engine_version_input(Engine = Engine, EngineVersion = EngineVersion, DatabaseInstallationFilesS3BucketName = DatabaseInstallationFilesS3BucketName, DatabaseInstallationFilesS3Prefix = DatabaseInstallationFilesS3Prefix, KMSKeyId = KMSKeyId, Description = Description, Manifest = Manifest, Tags = Tags)
+  output <- .rds$create_custom_db_engine_version_output()
   config <- get_config()
   svc <- .rds$service(config)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
-.rds$operations$create_custom_availability_zone <- rds_create_custom_availability_zone
+.rds$operations$create_custom_db_engine_version <- rds_create_custom_db_engine_version
 
-#' Creates a new Amazon Aurora DB cluster
+#' Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster
 #'
 #' @description
-#' Creates a new Amazon Aurora DB cluster.
-#' 
-#' You can use the `ReplicationSourceIdentifier` parameter to create the DB
-#' cluster as a read replica of another DB cluster or Amazon RDS MySQL DB
-#' instance. For cross-region replication where the DB cluster identified
-#' by `ReplicationSourceIdentifier` is encrypted, you must also specify the
-#' `PreSignedUrl` parameter.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster.
 #'
-#' @usage
-#' rds_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
-#'   CharacterSetName, DatabaseName, DBClusterIdentifier,
-#'   DBClusterParameterGroupName, VpcSecurityGroupIds, DBSubnetGroupName,
-#'   Engine, EngineVersion, Port, MasterUsername, MasterUserPassword,
-#'   OptionGroupName, PreferredBackupWindow, PreferredMaintenanceWindow,
-#'   ReplicationSourceIdentifier, Tags, StorageEncrypted, KmsKeyId,
-#'   PreSignedUrl, EnableIAMDatabaseAuthentication, BacktrackWindow,
-#'   EnableCloudwatchLogsExports, EngineMode, ScalingConfiguration,
-#'   DeletionProtection, GlobalClusterIdentifier, EnableHttpEndpoint,
-#'   CopyTagsToSnapshot, Domain, DomainIAMRoleName,
-#'   EnableGlobalWriteForwarding, SourceRegion)
+#' See [https://paws-r.github.io/docs/rds/create_db_cluster.html](https://paws-r.github.io/docs/rds/create_db_cluster.html) for full documentation.
 #'
-#' @param AvailabilityZones A list of Availability Zones (AZs) where instances in the DB cluster can
-#' be created. For information on AWS Regions and Availability Zones, see
-#' [Choosing the Regions and Availability
+#' @param AvailabilityZones A list of Availability Zones (AZs) where DB instances in the DB cluster
+#' can be created.
+#' 
+#' For information on Amazon Web Services Regions and Availability Zones,
+#' see [Choosing the Regions and Availability
 #' Zones](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param BackupRetentionPeriod The number of days for which automated backups are retained.
 #' 
 #' Default: 1
@@ -1551,11 +923,17 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' Constraints:
 #' 
 #' -   Must be a value from 1 to 35
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param CharacterSetName A value that indicates that the DB cluster should be associated with the
 #' specified CharacterSet.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param DatabaseName The name for your database of up to 64 alphanumeric characters. If you
 #' do not provide a name, Amazon RDS doesn't create a database in the DB
 #' cluster you are creating.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier. This parameter is stored as a lowercase
 #' string.
 #' 
@@ -1568,6 +946,8 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' -   Can't end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster1`
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param DBClusterParameterGroupName The name of the DB cluster parameter group to associate with this DB
 #' cluster. If you do not specify a value, then the default DB cluster
 #' parameter group for the specified DB engine and version is used.
@@ -1576,47 +956,105 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' 
 #' -   If supplied, must match the name of an existing DB cluster parameter
 #'     group.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with this DB cluster.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param DBSubnetGroupName A DB subnet group to associate with this DB cluster.
+#' 
+#' This setting is required to create a Multi-AZ DB cluster.
 #' 
 #' Constraints: Must match the name of an existing DBSubnetGroup. Must not
 #' be default.
 #' 
-#' Example: `mySubnetgroup`
+#' Example: `mydbsubnetgroup`
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param Engine &#91;required&#93; The name of the database engine to be used for this DB cluster.
 #' 
-#' Valid Values: `aurora` (for MySQL 5.6-compatible Aurora), `aurora-mysql`
-#' (for MySQL 5.7-compatible Aurora), and `aurora-postgresql`
+#' Valid Values:
+#' 
+#' -   `aurora` (for MySQL 5.6-compatible Aurora)
+#' 
+#' -   `aurora-mysql` (for MySQL 5.7-compatible and MySQL 8.0-compatible
+#'     Aurora)
+#' 
+#' -   `aurora-postgresql`
+#' 
+#' -   `mysql`
+#' 
+#' -   `postgres`
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param EngineVersion The version number of the database engine to use.
 #' 
-#' To list all of the available engine versions for `aurora` (for MySQL
-#' 5.6-compatible Aurora), use the following command:
+#' To list all of the available engine versions for MySQL 5.6-compatible
+#' Aurora, use the following command:
 #' 
 #' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"`
 #' 
-#' To list all of the available engine versions for `aurora-mysql` (for
-#' MySQL 5.7-compatible Aurora), use the following command:
+#' To list all of the available engine versions for MySQL 5.7-compatible
+#' and MySQL 8.0-compatible Aurora, use the following command:
 #' 
 #' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"`
 #' 
-#' To list all of the available engine versions for `aurora-postgresql`,
-#' use the following command:
+#' To list all of the available engine versions for Aurora PostgreSQL, use
+#' the following command:
 #' 
 #' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"`
 #' 
+#' To list all of the available engine versions for RDS for MySQL, use the
+#' following command:
+#' 
+#' `aws rds describe-db-engine-versions --engine mysql --query "DBEngineVersions[].EngineVersion"`
+#' 
+#' To list all of the available engine versions for RDS for PostgreSQL, use
+#' the following command:
+#' 
+#' `aws rds describe-db-engine-versions --engine postgres --query "DBEngineVersions[].EngineVersion"`
+#' 
 #' **Aurora MySQL**
 #' 
-#' Example: `5.6.10a`, `5.6.mysql_aurora.1.19.2`, `5.7.12`,
-#' `5.7.mysql_aurora.2.04.5`
+#' For information, see [MySQL on Amazon RDS
+#' Versions](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html)
+#' in the *Amazon Aurora User Guide*.
 #' 
 #' **Aurora PostgreSQL**
 #' 
-#' Example: `9.6.3`, `10.7`
+#' For information, see [Amazon Aurora PostgreSQL releases and engine
+#' versions](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Updates.20180305.html)
+#' in the *Amazon Aurora User Guide*.
+#' 
+#' **MySQL**
+#' 
+#' For information, see [MySQL on Amazon RDS
+#' Versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' **PostgreSQL**
+#' 
+#' For information, see [Amazon RDS for PostgreSQL versions and
+#' extensions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param Port The port number on which the instances in the DB cluster accept
 #' connections.
 #' 
-#' Default: `3306` if engine is set as aurora or `5432` if set to
-#' aurora-postgresql.
+#' **RDS for MySQL and Aurora MySQL**
+#' 
+#' Default: `3306`
+#' 
+#' Valid values: `1150-65535`
+#' 
+#' **RDS for PostgreSQL and Aurora PostgreSQL**
+#' 
+#' Default: `5432`
+#' 
+#' Valid values: `1150-65535`
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param MasterUsername The name of the master user for the DB cluster.
 #' 
 #' Constraints:
@@ -1626,25 +1064,28 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' -   First character must be a letter.
 #' 
 #' -   Can't be a reserved word for the chosen database engine.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param MasterUserPassword The password for the master database user. This password can contain any
 #' printable ASCII character except "/", """, or "@@".
 #' 
 #' Constraints: Must contain from 8 to 41 characters.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param OptionGroupName A value that indicates that the DB cluster should be associated with the
 #' specified option group.
 #' 
-#' Permanent options can't be removed from an option group. The option
-#' group can't be removed from a DB cluster once it is associated with a DB
-#' cluster.
+#' DB clusters are associated with a default option group that can't be
+#' modified.
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
 #' automated backups are enabled using the `BackupRetentionPeriod`
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region. To see the time blocks available, see
-#' [Adjusting the Preferred DB Cluster Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
-#' in the *Amazon Aurora User Guide.*
+#' block of time for each Amazon Web Services Region. To view the time
+#' blocks available, see [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow)
+#' in the *Amazon Aurora User Guide*.
 #' 
 #' Constraints:
 #' 
@@ -1655,104 +1096,123 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' -   Must not conflict with the preferred maintenance window.
 #' 
 #' -   Must be at least 30 minutes.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param PreferredMaintenanceWindow The weekly time range during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC).
 #' 
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week. To see the time blocks available, see [Adjusting the Preferred DB
-#' Cluster Maintenance
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week. To see the time blocks available, see [Adjusting the
+#' Preferred DB Cluster Maintenance
 #' Window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
-#' in the *Amazon Aurora User Guide.*
+#' in the *Amazon Aurora User Guide*.
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 #' 
 #' Constraints: Minimum 30-minute window.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param ReplicationSourceIdentifier The Amazon Resource Name (ARN) of the source DB instance or DB cluster
 #' if this DB cluster is created as a read replica.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param Tags Tags to assign to the DB cluster.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param StorageEncrypted A value that indicates whether the DB cluster is encrypted.
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted DB cluster.
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS customer master key (CMK). To use a CMK in a
-#' different AWS account, specify the key ARN or alias ARN.
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param KmsKeyId The Amazon Web Services KMS key identifier for an encrypted DB cluster.
 #' 
-#' When a CMK isn't specified in `KmsKeyId`:
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
+#' 
+#' When a KMS key isn't specified in `KmsKeyId`:
 #' 
 #' -   If `ReplicationSourceIdentifier` identifies an encrypted source,
-#'     then Amazon RDS will use the CMK used to encrypt the source.
-#'     Otherwise, Amazon RDS will use your default CMK.
+#'     then Amazon RDS will use the KMS key used to encrypt the source.
+#'     Otherwise, Amazon RDS will use your default KMS key.
 #' 
 #' -   If the `StorageEncrypted` parameter is enabled and
 #'     `ReplicationSourceIdentifier` isn't specified, then Amazon RDS will
-#'     use your default CMK.
+#'     use your default KMS key.
 #' 
-#' There is a default CMK for your AWS account. Your AWS account has a
-#' different default CMK for each AWS Region.
+#' There is a default KMS key for your Amazon Web Services account. Your
+#' Amazon Web Services account has a different default KMS key for each
+#' Amazon Web Services Region.
 #' 
-#' If you create a read replica of an encrypted DB cluster in another AWS
-#' Region, you must set `KmsKeyId` to a AWS KMS key identifier that is
-#' valid in the destination AWS Region. This CMK is used to encrypt the
-#' read replica in that AWS Region.
-#' @param PreSignedUrl A URL that contains a Signature Version 4 signed request for the
-#' [`create_db_cluster`][rds_create_db_cluster] action to be called in the
-#' source AWS Region where the DB cluster is replicated from. You only need
-#' to specify `PreSignedUrl` when you are performing cross-region
+#' If you create a read replica of an encrypted DB cluster in another
+#' Amazon Web Services Region, you must set `KmsKeyId` to a KMS key
+#' identifier that is valid in the destination Amazon Web Services Region.
+#' This KMS key is used to encrypt the read replica in that Amazon Web
+#' Services Region.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param PreSignedUrl When you are replicating a DB cluster from one Amazon Web Services
+#' GovCloud (US) Region to another, an URL that contains a Signature
+#' Version 4 signed request for the
+#' [`create_db_cluster`][rds_create_db_cluster] operation to be called in
+#' the source Amazon Web Services Region where the DB cluster is replicated
+#' from. Specify `PreSignedUrl` only when you are performing cross-Region
 #' replication from an encrypted DB cluster.
 #' 
-#' The pre-signed URL must be a valid request for the
-#' [`create_db_cluster`][rds_create_db_cluster] API action that can be
-#' executed in the source AWS Region that contains the encrypted DB cluster
-#' to be copied.
+#' The presigned URL must be a valid request for the
+#' [`create_db_cluster`][rds_create_db_cluster] API operation that can run
+#' in the source Amazon Web Services Region that contains the encrypted DB
+#' cluster to copy.
 #' 
-#' The pre-signed URL request must contain the following parameter values:
+#' The presigned URL request must contain the following parameter values:
 #' 
-#' -   `KmsKeyId` - The AWS KMS key identifier for the key to use to
-#'     encrypt the copy of the DB cluster in the destination AWS Region.
-#'     This should refer to the same AWS KMS CMK for both the
-#'     [`create_db_cluster`][rds_create_db_cluster] action that is called
-#'     in the destination AWS Region, and the action contained in the
-#'     pre-signed URL.
+#' -   `KmsKeyId` - The KMS key identifier for the KMS key to use to
+#'     encrypt the copy of the DB cluster in the destination Amazon Web
+#'     Services Region. This should refer to the same KMS key for both the
+#'     [`create_db_cluster`][rds_create_db_cluster] operation that is
+#'     called in the destination Amazon Web Services Region, and the
+#'     operation contained in the presigned URL.
 #' 
-#' -   `DestinationRegion` - The name of the AWS Region that Aurora read
-#'     replica will be created in.
+#' -   `DestinationRegion` - The name of the Amazon Web Services Region
+#'     that Aurora read replica will be created in.
 #' 
 #' -   `ReplicationSourceIdentifier` - The DB cluster identifier for the
 #'     encrypted DB cluster to be copied. This identifier must be in the
-#'     Amazon Resource Name (ARN) format for the source AWS Region. For
-#'     example, if you are copying an encrypted DB cluster from the
-#'     us-west-2 AWS Region, then your `ReplicationSourceIdentifier` would
-#'     look like Example:
+#'     Amazon Resource Name (ARN) format for the source Amazon Web Services
+#'     Region. For example, if you are copying an encrypted DB cluster from
+#'     the us-west-2 Amazon Web Services Region, then your
+#'     `ReplicationSourceIdentifier` would look like Example:
 #'     `arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1`.
 #' 
 #' To learn how to generate a Signature Version 4 signed request, see
-#' [Authenticating Requests: Using Query Parameters (AWS Signature Version
+#' [Authenticating Requests: Using Query Parameters (Amazon Web Services
+#' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
-#' If you are using an AWS SDK tool or the AWS CLI, you can specify
-#' `SourceRegion` (or `--source-region` for the AWS CLI) instead of
+#' If you are using an Amazon Web Services SDK tool or the CLI, you can
+#' specify `SourceRegion` (or `--source-region` for the CLI) instead of
 #' specifying `PreSignedUrl` manually. Specifying `SourceRegion`
-#' autogenerates a pre-signed URL that is a valid request for the operation
-#' that can be executed in the source AWS Region.
+#' autogenerates a presigned URL that is a valid request for the operation
+#' that can run in the source Amazon Web Services Region.
+#' 
+#' Valid for: Aurora DB clusters only
 #' 
 #' If you supply a value for this operation's `SourceRegion` parameter, a
 #' pre-signed URL will be calculated on your behalf.
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping isn't enabled.
 #' 
 #' For more information, see [IAM Database
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
-#' in the *Amazon Aurora User Guide.*
+#' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param BacktrackWindow The target backtrack window, in seconds. To disable backtracking, set
 #' this value to 0.
-#' 
-#' Currently, Backtrack is only supported for Aurora MySQL DB clusters.
 #' 
 #' Default: 0
 #' 
@@ -1760,12 +1220,19 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' 
 #' -   If specified, this value must be set to a number from 0 to 259,200
 #'     (72 hours).
+#' 
+#' Valid for: Aurora MySQL DB clusters only
 #' @param EnableCloudwatchLogsExports The list of log types that need to be enabled for exporting to
 #' CloudWatch Logs. The values in the list depend on the DB engine being
-#' used. For more information, see [Publishing Database Logs to Amazon
-#' CloudWatch
-#' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
-#' in the *Amazon Aurora User Guide*.
+#' used.
+#' 
+#' **RDS for MySQL**
+#' 
+#' Possible values are `error`, `general`, and `slowquery`.
+#' 
+#' **RDS for PostgreSQL**
+#' 
+#' Possible values are `postgresql` and `upgrade`.
 #' 
 #' **Aurora MySQL**
 #' 
@@ -1773,9 +1240,21 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' 
 #' **Aurora PostgreSQL**
 #' 
-#' Possible values are `postgresql` and `upgrade`.
-#' @param EngineMode The DB engine mode of the DB cluster, either `provisioned` `serverless`,
-#' `parallelquery`, `global`, or `multimaster`.
+#' Possible value is `postgresql`.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon RDS, see
+#' [Publishing Database Logs to Amazon CloudWatch
+#' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon Aurora,
+#' see [Publishing Database Logs to Amazon CloudWatch
+#' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+#' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param EngineMode The DB engine mode of the DB cluster, either `provisioned`,
+#' `serverless`, `parallelquery`, `global`, or `multimaster`.
 #' 
 #' The `parallelquery` engine mode isn't required for Aurora MySQL version
 #' 1.23 and higher 1.x versions, and version 2.09 and higher 2.x versions.
@@ -1787,6 +1266,9 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' The `multimaster` engine mode only applies for DB clusters created with
 #' Aurora MySQL version 5.6.10a.
 #' 
+#' The `serverless` engine mode only applies for Aurora Serverless v1 DB
+#' clusters.
+#' 
 #' For Aurora PostgreSQL, the `global` engine mode isn't required, and both
 #' the `parallelquery` and the `multimaster` engine modes currently aren't
 #' supported.
@@ -1795,8 +1277,11 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' information, see the following sections in the *Amazon Aurora User
 #' Guide*:
 #' 
-#' -   [Limitations of Aurora
-#'     Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html#aurora-serverless.limitations)
+#' -   [Limitations of Aurora Serverless
+#'     v1](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html#aurora-serverless.limitations)
+#' 
+#' -   [Requirements for Aurora Serverless
+#'     v2](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.requirements.html)
 #' 
 #' -   [Limitations of Parallel
 #'     Query](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-mysql-parallel-query.html#aurora-mysql-parallel-query-limitations)
@@ -1806,246 +1291,229 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' 
 #' -   [Limitations of Multi-Master
 #'     Clusters](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-limitations)
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param ScalingConfiguration For DB clusters in `serverless` DB engine mode, the scaling properties
 #' of the DB cluster.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled.
+#' enabled. By default, deletion protection isn't enabled.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param GlobalClusterIdentifier The global cluster ID of an Aurora cluster that becomes the primary
 #' cluster in the new global database cluster.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param EnableHttpEndpoint A value that indicates whether to enable the HTTP endpoint for an Aurora
-#' Serverless DB cluster. By default, the HTTP endpoint is disabled.
+#' Serverless v1 DB cluster. By default, the HTTP endpoint is disabled.
 #' 
 #' When enabled, the HTTP endpoint provides a connectionless web service
-#' API for running SQL queries on the Aurora Serverless DB cluster. You can
-#' also query your database from inside the RDS console with the query
+#' API for running SQL queries on the Aurora Serverless v1 DB cluster. You
+#' can also query your database from inside the RDS console with the query
 #' editor.
 #' 
-#' For more information, see [Using the Data API for Aurora
-#' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
+#' For more information, see [Using the Data API for Aurora Serverless
+#' v1](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB cluster to
 #' snapshots of the DB cluster. The default is not to copy them.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param Domain The Active Directory directory ID to create the DB cluster in.
 #' 
 #' For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
-#' Authentication to authenticate users that connect to the DB cluster. For
-#' more information, see [Kerberos
-#' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html)
+#' authentication to authenticate users that connect to the DB cluster.
+#' 
+#' For more information, see [Kerberos
+#' authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
-#' @param EnableGlobalWriteForwarding A value that indicates whether to enable write operations to be
-#' forwarded from this cluster to the primary cluster in an Aurora global
-#' database. The resulting changes are replicated back to this cluster.
-#' This parameter only applies to DB clusters that are secondary clusters
-#' in an Aurora global database. By default, Aurora disallows write
-#' operations for secondary clusters.
+#' 
+#' Valid for: Aurora DB clusters only
+#' @param EnableGlobalWriteForwarding A value that indicates whether to enable this DB cluster to forward
+#' write operations to the primary cluster of an Aurora global database
+#' (GlobalCluster). By default, write operations are not allowed on Aurora
+#' DB clusters that are secondary clusters in an Aurora global database.
+#' 
+#' You can set this value only on Aurora DB clusters that are members of an
+#' Aurora global database. With this parameter enabled, a secondary cluster
+#' can forward writes to the current primary cluster and the resulting
+#' changes are replicated back to this cluster. For the primary DB cluster
+#' of an Aurora global database, this value is used immediately if the
+#' primary is demoted by the
+#' [`failover_global_cluster`][rds_failover_global_cluster] API operation,
+#' but it does nothing until then.
+#' 
+#' Valid for: Aurora DB clusters only
+#' @param DBClusterInstanceClass The compute and memory capacity of each DB instance in the Multi-AZ DB
+#' cluster, for example db.m6g.xlarge. Not all DB instance classes are
+#' available in all Amazon Web Services Regions, or for all database
+#' engines.
+#' 
+#' For the full list of DB instance classes and availability for your
+#' engine, see [DB instance
+#' class](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting is required to create a Multi-AZ DB cluster.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param AllocatedStorage The amount of storage in gibibytes (GiB) to allocate to each DB instance
+#' in the Multi-AZ DB cluster.
+#' 
+#' This setting is required to create a Multi-AZ DB cluster.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param StorageType Specifies the storage type to be associated with the DB cluster.
+#' 
+#' This setting is required to create a Multi-AZ DB cluster.
+#' 
+#' Valid values: `io1`
+#' 
+#' When specified, a value for the `Iops` parameter is required.
+#' 
+#' Default: `io1`
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
+#' be initially allocated for each DB instance in the Multi-AZ DB cluster.
+#' 
+#' For information about valid `Iops` values, see [Amazon RDS Provisioned
+#' IOPS storage to improve
+#' performance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting is required to create a Multi-AZ DB cluster.
+#' 
+#' Constraints: Must be a multiple between .5 and 50 of the storage amount
+#' for the DB cluster.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param PubliclyAccessible A value that indicates whether the DB cluster is publicly accessible.
+#' 
+#' When the DB cluster is publicly accessible, its Domain Name System (DNS)
+#' endpoint resolves to the private IP address from within the DB cluster's
+#' virtual private cloud (VPC). It resolves to the public IP address from
+#' outside of the DB cluster's VPC. Access to the DB cluster is ultimately
+#' controlled by the security group it uses. That public access isn't
+#' permitted if the security group assigned to the DB cluster doesn't
+#' permit it.
+#' 
+#' When the DB cluster isn't publicly accessible, it is an internal DB
+#' cluster with a DNS name that resolves to a private IP address.
+#' 
+#' Default: The default behavior varies depending on whether
+#' `DBSubnetGroupName` is specified.
+#' 
+#' If `DBSubnetGroupName` isn't specified, and `PubliclyAccessible` isn't
+#' specified, the following applies:
+#' 
+#' -   If the default VPC in the target Region doesn’t have an internet
+#'     gateway attached to it, the DB cluster is private.
+#' 
+#' -   If the default VPC in the target Region has an internet gateway
+#'     attached to it, the DB cluster is public.
+#' 
+#' If `DBSubnetGroupName` is specified, and `PubliclyAccessible` isn't
+#' specified, the following applies:
+#' 
+#' -   If the subnets are part of a VPC that doesn’t have an internet
+#'     gateway attached to it, the DB cluster is private.
+#' 
+#' -   If the subnets are part of a VPC that has an internet gateway
+#'     attached to it, the DB cluster is public.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param AutoMinorVersionUpgrade A value that indicates whether minor engine upgrades are applied
+#' automatically to the DB cluster during the maintenance window. By
+#' default, minor engine upgrades are applied automatically.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
+#' metrics are collected for the DB cluster. To turn off collecting
+#' Enhanced Monitoring metrics, specify 0. The default is 0.
+#' 
+#' If `MonitoringRoleArn` is specified, also set `MonitoringInterval` to a
+#' value other than 0.
+#' 
+#' Valid Values: `0, 1, 5, 10, 15, 30, 60`
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param MonitoringRoleArn The Amazon Resource Name (ARN) for the IAM role that permits RDS to send
+#' Enhanced Monitoring metrics to Amazon CloudWatch Logs. An example is
+#' `arn:aws:iam:123456789012:role/emaccess`. For information on creating a
+#' monitoring role, see [Setting up and enabling Enhanced
+#' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' If `MonitoringInterval` is set to a value other than 0, supply a
+#' `MonitoringRoleArn` value.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param EnablePerformanceInsights A value that indicates whether to turn on Performance Insights for the
+#' DB cluster.
+#' 
+#' For more information, see [Using Amazon Performance
+#' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param PerformanceInsightsKMSKeyId The Amazon Web Services KMS key identifier for encryption of Performance
+#' Insights data.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key.
+#' 
+#' If you don't specify a value for `PerformanceInsightsKMSKeyId`, then
+#' Amazon RDS uses your default KMS key. There is a default KMS key for
+#' your Amazon Web Services account. Your Amazon Web Services account has a
+#' different default KMS key for each Amazon Web Services Region.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param PerformanceInsightsRetentionPeriod The number of days to retain Performance Insights data. The default is 7
+#' days. The following values are valid:
+#' 
+#' -   7
+#' 
+#' -   *month* * 31, where *month* is a number of months from 1-23
+#' 
+#' -   731
+#' 
+#' For example, the following values are valid:
+#' 
+#' -   93 (3 months * 31)
+#' 
+#' -   341 (11 months * 31)
+#' 
+#' -   589 (19 months * 31)
+#' 
+#' -   731
+#' 
+#' If you specify a retention period such as 94, which isn't a valid value,
+#' RDS issues an error.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param ServerlessV2ScalingConfiguration 
 #' @param SourceRegion The ID of the region that contains the source for the read replica.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     CustomEndpoints = list(
-#'       "string"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EarliestBacktrackTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BacktrackWindow = 123,
-#'     BacktrackConsumedChangeRecords = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     Capacity = 123,
-#'     EngineMode = "string",
-#'     ScalingConfigurationInfo = list(
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       AutoPause = TRUE|FALSE,
-#'       SecondsUntilAutoPause = 123,
-#'       TimeoutAction = "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     HttpEndpointEnabled = TRUE|FALSE,
-#'     ActivityStreamMode = "sync"|"async",
-#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'     ActivityStreamKmsKeyId = "string",
-#'     ActivityStreamKinesisStreamName = "string",
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     CrossAccountClone = TRUE|FALSE,
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'     GlobalWriteForwardingRequested = TRUE|FALSE,
-#'     PendingModifiedValues = list(
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       MasterUserPassword = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       EngineVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster(
-#'   AvailabilityZones = list(
-#'     "string"
-#'   ),
-#'   BackupRetentionPeriod = 123,
-#'   CharacterSetName = "string",
-#'   DatabaseName = "string",
-#'   DBClusterIdentifier = "string",
-#'   DBClusterParameterGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   DBSubnetGroupName = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   Port = 123,
-#'   MasterUsername = "string",
-#'   MasterUserPassword = "string",
-#'   OptionGroupName = "string",
-#'   PreferredBackupWindow = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   ReplicationSourceIdentifier = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   StorageEncrypted = TRUE|FALSE,
-#'   KmsKeyId = "string",
-#'   PreSignedUrl = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   BacktrackWindow = 123,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   EngineMode = "string",
-#'   ScalingConfiguration = list(
-#'     MinCapacity = 123,
-#'     MaxCapacity = 123,
-#'     AutoPause = TRUE|FALSE,
-#'     SecondsUntilAutoPause = 123,
-#'     TimeoutAction = "string"
-#'   ),
-#'   DeletionProtection = TRUE|FALSE,
-#'   GlobalClusterIdentifier = "string",
-#'   EnableHttpEndpoint = TRUE|FALSE,
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   Domain = "string",
-#'   DomainIAMRoleName = "string",
-#'   EnableGlobalWriteForwarding = TRUE|FALSE,
-#'   SourceRegion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rds_create_db_cluster
-rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, ReplicationSourceIdentifier = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, EngineMode = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, EnableHttpEndpoint = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, EnableGlobalWriteForwarding = NULL, SourceRegion = NULL) {
+rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, ReplicationSourceIdentifier = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, EngineMode = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, EnableHttpEndpoint = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, EnableGlobalWriteForwarding = NULL, DBClusterInstanceClass = NULL, AllocatedStorage = NULL, StorageType = NULL, Iops = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, ServerlessV2ScalingConfiguration = NULL, SourceRegion = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, EngineMode = EngineMode, ScalingConfiguration = ScalingConfiguration, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, EnableHttpEndpoint = EnableHttpEndpoint, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, EnableGlobalWriteForwarding = EnableGlobalWriteForwarding, SourceRegion = SourceRegion)
+  input <- .rds$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, EngineMode = EngineMode, ScalingConfiguration = ScalingConfiguration, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, EnableHttpEndpoint = EnableHttpEndpoint, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, EnableGlobalWriteForwarding = EnableGlobalWriteForwarding, DBClusterInstanceClass = DBClusterInstanceClass, AllocatedStorage = AllocatedStorage, StorageType = StorageType, Iops = Iops, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, SourceRegion = SourceRegion)
   output <- .rds$create_db_cluster_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -2059,69 +1527,22 @@ rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPerio
 #' cluster
 #'
 #' @description
-#' Creates a new custom endpoint and associates it with an Amazon Aurora DB
-#' cluster.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster.
 #'
-#' @usage
-#' rds_create_db_cluster_endpoint(DBClusterIdentifier,
-#'   DBClusterEndpointIdentifier, EndpointType, StaticMembers,
-#'   ExcludedMembers, Tags)
+#' See [https://paws-r.github.io/docs/rds/create_db_cluster_endpoint.html](https://paws-r.github.io/docs/rds/create_db_cluster_endpoint.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the DB cluster associated with the
 #' endpoint. This parameter is stored as a lowercase string.
 #' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier to use for the new endpoint. This parameter is stored as
 #' a lowercase string.
-#' @param EndpointType &#91;required&#93; The type of the endpoint. One of: `READER`, `WRITER`, `ANY`.
+#' @param EndpointType &#91;required&#93; The type of the endpoint, one of: `READER`, `WRITER`, `ANY`.
 #' @param StaticMembers List of DB instance identifiers that are part of the custom endpoint
 #' group.
 #' @param ExcludedMembers List of DB instance identifiers that aren't part of the custom endpoint
 #' group. All other eligible instances are reachable through the custom
-#' endpoint. Only relevant if the list of static members is empty.
+#' endpoint. This parameter is relevant only if the list of static members
+#' is empty.
 #' @param Tags The tags to be assigned to the Amazon RDS resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterEndpointIdentifier = "string",
-#'   DBClusterIdentifier = "string",
-#'   DBClusterEndpointResourceIdentifier = "string",
-#'   Endpoint = "string",
-#'   Status = "string",
-#'   EndpointType = "string",
-#'   CustomEndpointType = "string",
-#'   StaticMembers = list(
-#'     "string"
-#'   ),
-#'   ExcludedMembers = list(
-#'     "string"
-#'   ),
-#'   DBClusterEndpointArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster_endpoint(
-#'   DBClusterIdentifier = "string",
-#'   DBClusterEndpointIdentifier = "string",
-#'   EndpointType = "string",
-#'   StaticMembers = list(
-#'     "string"
-#'   ),
-#'   ExcludedMembers = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2147,50 +1568,14 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #'
 #' @description
 #' Creates a new DB cluster parameter group.
-#' 
-#' Parameters in a DB cluster parameter group apply to all of the instances
-#' in a DB cluster.
-#' 
-#' A DB cluster parameter group is initially created with the default
-#' parameters for the database engine used by instances in the DB cluster.
-#' To provide custom values for any of the parameters, you must modify the
-#' group after creating it using
-#' [`modify_db_cluster_parameter_group`][rds_modify_db_cluster_parameter_group].
-#' Once you've created a DB cluster parameter group, you need to associate
-#' it with your DB cluster using
-#' [`modify_db_cluster`][rds_modify_db_cluster]. When you associate a new
-#' DB cluster parameter group with a running DB cluster, you need to reboot
-#' the DB instances in the DB cluster without failover for the new DB
-#' cluster parameter group and associated settings to take effect.
-#' 
-#' After you create a DB cluster parameter group, you should wait at least
-#' 5 minutes before creating your first DB cluster that uses that DB
-#' cluster parameter group as the default parameter group. This allows
-#' Amazon RDS to fully complete the create action before the DB cluster
-#' parameter group is used as the default for a new DB cluster. This is
-#' especially important for parameters that are critical when creating the
-#' default database for a DB cluster, such as the character set for the
-#' default database defined by the `character_set_database` parameter. You
-#' can use the *Parameter Groups* option of the Amazon RDS console or the
-#' [`describe_db_cluster_parameters`][rds_describe_db_cluster_parameters]
-#' action to verify that your DB cluster parameter group has been created
-#' or modified.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
 #'
-#' @usage
-#' rds_create_db_cluster_parameter_group(DBClusterParameterGroupName,
-#'   DBParameterGroupFamily, Description, Tags)
+#' See [https://paws-r.github.io/docs/rds/create_db_cluster_parameter_group.html](https://paws-r.github.io/docs/rds/create_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group.
 #' 
 #' Constraints:
 #' 
-#' -   Must match the name of an existing DB cluster parameter group.
+#' -   Must not match the name of an existing DB cluster parameter group.
 #' 
 #' This value is stored as a lowercase string.
 #' @param DBParameterGroupFamily &#91;required&#93; The DB cluster parameter group family name. A DB cluster parameter group
@@ -2201,41 +1586,46 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #' 
 #' **Aurora MySQL**
 #' 
-#' Example: `aurora5.6`, `aurora-mysql5.7`
+#' Example: `aurora5.6`, `aurora-mysql5.7`, `aurora-mysql8.0`
 #' 
 #' **Aurora PostgreSQL**
 #' 
 #' Example: `aurora-postgresql9.6`
+#' 
+#' **RDS for MySQL**
+#' 
+#' Example: `mysql8.0`
+#' 
+#' **RDS for PostgreSQL**
+#' 
+#' Example: `postgres12`
+#' 
+#' To list all of the available parameter group families for a DB engine,
+#' use the following command:
+#' 
+#' `aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily" --engine <engine>`
+#' 
+#' For example, to list all of the available parameter group families for
+#' the Aurora PostgreSQL DB engine, use the following command:
+#' 
+#' `aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily" --engine aurora-postgresql`
+#' 
+#' The output contains duplicates.
+#' 
+#' The following are the valid DB engine values:
+#' 
+#' -   `aurora` (for MySQL 5.6-compatible Aurora)
+#' 
+#' -   `aurora-mysql` (for MySQL 5.7-compatible and MySQL 8.0-compatible
+#'     Aurora)
+#' 
+#' -   `aurora-postgresql`
+#' 
+#' -   `mysql`
+#' 
+#' -   `postgres`
 #' @param Description &#91;required&#93; The description for the DB cluster parameter group.
 #' @param Tags Tags to assign to the DB cluster parameter group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroup = list(
-#'     DBClusterParameterGroupName = "string",
-#'     DBParameterGroupFamily = "string",
-#'     Description = "string",
-#'     DBClusterParameterGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string",
-#'   DBParameterGroupFamily = "string",
-#'   Description = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2260,16 +1650,9 @@ rds_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, D
 #' Creates a snapshot of a DB cluster
 #'
 #' @description
-#' Creates a snapshot of a DB cluster. For more information on Amazon
-#' Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Creates a snapshot of a DB cluster.
 #'
-#' @usage
-#' rds_create_db_cluster_snapshot(DBClusterSnapshotIdentifier,
-#'   DBClusterIdentifier, Tags)
+#' See [https://paws-r.github.io/docs/rds/create_db_cluster_snapshot.html](https://paws-r.github.io/docs/rds/create_db_cluster_snapshot.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot. This parameter is stored as a
 #' lowercase string.
@@ -2292,61 +1675,6 @@ rds_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, D
 #' 
 #' Example: `my-cluster1`
 #' @param Tags The tags to be assigned to the DB cluster snapshot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshot = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     VpcId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     SnapshotType = "string",
-#'     PercentProgress = 123,
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_cluster_snapshot(
-#'   DBClusterSnapshotIdentifier = "string",
-#'   DBClusterIdentifier = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2373,22 +1701,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' @description
 #' Creates a new DB instance.
 #'
-#' @usage
-#' rds_create_db_instance(DBName, DBInstanceIdentifier, AllocatedStorage,
-#'   DBInstanceClass, Engine, MasterUsername, MasterUserPassword,
-#'   DBSecurityGroups, VpcSecurityGroupIds, AvailabilityZone,
-#'   DBSubnetGroupName, PreferredMaintenanceWindow, DBParameterGroupName,
-#'   BackupRetentionPeriod, PreferredBackupWindow, Port, MultiAZ,
-#'   EngineVersion, AutoMinorVersionUpgrade, LicenseModel, Iops,
-#'   OptionGroupName, CharacterSetName, NcharCharacterSetName,
-#'   PubliclyAccessible, Tags, DBClusterIdentifier, StorageType,
-#'   TdeCredentialArn, TdeCredentialPassword, StorageEncrypted, KmsKeyId,
-#'   Domain, CopyTagsToSnapshot, MonitoringInterval, MonitoringRoleArn,
-#'   DomainIAMRoleName, PromotionTier, Timezone,
-#'   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
-#'   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
-#'   EnableCloudwatchLogsExports, ProcessorFeatures, DeletionProtection,
-#'   MaxAllocatedStorage, EnableCustomerOwnedIp)
+#' See [https://paws-r.github.io/docs/rds/create_db_instance.html](https://paws-r.github.io/docs/rds/create_db_instance.html) for full documentation.
 #'
 #' @param DBName The meaning of this parameter differs according to the database engine
 #' you use.
@@ -2426,8 +1739,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **PostgreSQL**
 #' 
 #' The name of the database to create when the DB instance is created. If
-#' this parameter isn't specified, no database is created in the DB
-#' instance.
+#' this parameter isn't specified, a database named `postgres` is created
+#' in the DB instance.
 #' 
 #' Constraints:
 #' 
@@ -2450,21 +1763,57 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' -   Can't be longer than 8 characters
 #' 
+#' **Amazon RDS Custom for Oracle**
+#' 
+#' The Oracle System ID (SID) of the created RDS Custom DB instance. If you
+#' don't specify a value, the default value is `ORCL`.
+#' 
+#' Default: `ORCL`
+#' 
+#' Constraints:
+#' 
+#' -   It must contain 1 to 8 alphanumeric characters.
+#' 
+#' -   It must contain a letter.
+#' 
+#' -   It can't be a word reserved by the database engine.
+#' 
+#' **Amazon RDS Custom for SQL Server**
+#' 
+#' Not applicable. Must be null.
+#' 
 #' **SQL Server**
 #' 
 #' Not applicable. Must be null.
 #' 
-#' **Amazon Aurora**
+#' **Amazon Aurora MySQL**
 #' 
-#' The name of the database to create when the primary instance of the DB
-#' cluster is created. If this parameter isn't specified, no database is
-#' created in the DB instance.
+#' The name of the database to create when the primary DB instance of the
+#' Aurora MySQL DB cluster is created. If this parameter isn't specified
+#' for an Aurora MySQL DB cluster, no database is created in the DB
+#' cluster.
 #' 
 #' Constraints:
 #' 
-#' -   Must contain 1 to 64 letters or numbers.
+#' -   It must contain 1 to 64 alphanumeric characters.
 #' 
-#' -   Can't be a word reserved by the specified database engine
+#' -   It can't be a word reserved by the database engine.
+#' 
+#' **Amazon Aurora PostgreSQL**
+#' 
+#' The name of the database to create when the primary DB instance of the
+#' Aurora PostgreSQL DB cluster is created. If this parameter isn't
+#' specified for an Aurora PostgreSQL DB cluster, a database named
+#' `postgres` is created in the DB cluster.
+#' 
+#' Constraints:
+#' 
+#' -   It must contain 1 to 63 alphanumeric characters.
+#' 
+#' -   It must begin with a letter or an underscore. Subsequent characters
+#'     can be letters, underscores, or digits (0 to 9).
+#' 
+#' -   It can't be a word reserved by the database engine.
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
 #' string.
 #' 
@@ -2477,7 +1826,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' -   Can't end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `mydbinstance`
-#' @param AllocatedStorage The amount of storage (in gibibytes) to allocate for the DB instance.
+#' @param AllocatedStorage The amount of storage in gibibytes (GiB) to allocate for the DB
+#' instance.
 #' 
 #' Type: Integer
 #' 
@@ -2487,16 +1837,28 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' of data in your database increases, though you are only charged for the
 #' space that you use in an Aurora cluster volume.
 #' 
+#' **Amazon RDS Custom**
+#' 
+#' Constraints to the amount of storage for each storage type are the
+#' following:
+#' 
+#' -   General Purpose (SSD) storage (gp2): Must be an integer from 40 to
+#'     65536 for RDS Custom for Oracle, 16384 for RDS Custom for SQL
+#'     Server.
+#' 
+#' -   Provisioned IOPS storage (io1): Must be an integer from 40 to 65536
+#'     for RDS Custom for Oracle, 16384 for RDS Custom for SQL Server.
+#' 
 #' **MySQL**
 #' 
 #' Constraints to the amount of storage for each storage type are the
 #' following:
 #' 
-#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 65536.
+#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+#'     65536.
 #' 
-#' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 65536.
+#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to
+#'     65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 5 to 3072.
 #' 
@@ -2505,11 +1867,11 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Constraints to the amount of storage for each storage type are the
 #' following:
 #' 
-#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 65536.
+#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+#'     65536.
 #' 
-#' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 65536.
+#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to
+#'     65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 5 to 3072.
 #' 
@@ -2518,11 +1880,11 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Constraints to the amount of storage for each storage type are the
 #' following:
 #' 
-#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 65536.
+#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+#'     65536.
 #' 
-#' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 65536.
+#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to
+#'     65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 5 to 3072.
 #' 
@@ -2531,11 +1893,11 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Constraints to the amount of storage for each storage type are the
 #' following:
 #' 
-#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20
-#'     to 65536.
+#' -   General Purpose (SSD) storage (gp2): Must be an integer from 20 to
+#'     65536.
 #' 
-#' -   Provisioned IOPS storage (io1): Must be an integer from 100
-#'     to 65536.
+#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to
+#'     65536.
 #' 
 #' -   Magnetic storage (standard): Must be an integer from 10 to 3072.
 #' 
@@ -2546,41 +1908,53 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' -   General Purpose (SSD) storage (gp2):
 #' 
-#'     -   Enterprise and Standard editions: Must be an integer from 200
-#'         to 16384.
+#'     -   Enterprise and Standard editions: Must be an integer from 20 to
+#'         16384.
 #' 
 #'     -   Web and Express editions: Must be an integer from 20 to 16384.
 #' 
 #' -   Provisioned IOPS storage (io1):
 #' 
-#'     -   Enterprise and Standard editions: Must be an integer from 200
-#'         to 16384.
+#'     -   Enterprise and Standard editions: Must be an integer from 100 to
+#'         16384.
 #' 
 #'     -   Web and Express editions: Must be an integer from 100 to 16384.
 #' 
 #' -   Magnetic storage (standard):
 #' 
-#'     -   Enterprise and Standard editions: Must be an integer from 200
-#'         to 1024.
+#'     -   Enterprise and Standard editions: Must be an integer from 20 to
+#'         1024.
 #' 
 #'     -   Web and Express editions: Must be an integer from 20 to 1024.
-#' @param DBInstanceClass &#91;required&#93; The compute and memory capacity of the DB instance, for example,
-#' `db.m4.large`. Not all DB instance classes are available in all AWS
-#' Regions, or for all database engines. For the full list of DB instance
-#' classes, and availability for your engine, see [DB Instance
-#' Class](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-#' in the *Amazon RDS User Guide.*
+#' @param DBInstanceClass &#91;required&#93; The compute and memory capacity of the DB instance, for example
+#' db.m5.large. Not all DB instance classes are available in all Amazon Web
+#' Services Regions, or for all database engines. For the full list of DB
+#' instance classes, and availability for your engine, see [DB instance
+#' classes](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+#' in the *Amazon RDS User Guide* or [Aurora DB instance
+#' classes](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.DBInstanceClass.html)
+#' in the *Amazon Aurora User Guide*.
 #' @param Engine &#91;required&#93; The name of the database engine to be used for this instance.
 #' 
-#' Not every database engine is available for every AWS Region.
+#' Not every database engine is available for every Amazon Web Services
+#' Region.
 #' 
 #' Valid Values:
 #' 
 #' -   `aurora` (for MySQL 5.6-compatible Aurora)
 #' 
-#' -   `aurora-mysql` (for MySQL 5.7-compatible Aurora)
+#' -   `aurora-mysql` (for MySQL 5.7-compatible and MySQL 8.0-compatible
+#'     Aurora)
 #' 
 #' -   `aurora-postgresql`
+#' 
+#' -   `custom-oracle-ee (for RDS Custom for Oracle instances)`
+#' 
+#' -   `custom-sqlserver-ee (for RDS Custom for SQL Server instances)`
+#' 
+#' -   `custom-sqlserver-se (for RDS Custom for SQL Server instances)`
+#' 
+#' -   `custom-sqlserver-web (for RDS Custom for SQL Server instances)`
 #' 
 #' -   `mariadb`
 #' 
@@ -2588,11 +1962,11 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' -   `oracle-ee`
 #' 
+#' -   `oracle-ee-cdb`
+#' 
 #' -   `oracle-se2`
 #' 
-#' -   `oracle-se1`
-#' 
-#' -   `oracle-se`
+#' -   `oracle-se2-cdb`
 #' 
 #' -   `postgres`
 #' 
@@ -2610,59 +1984,13 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Not applicable. The name for the master user is managed by the DB
 #' cluster.
 #' 
-#' **MariaDB**
+#' **Amazon RDS**
 #' 
 #' Constraints:
 #' 
-#' -   Required for MariaDB.
+#' -   Required.
 #' 
-#' -   Must be 1 to 16 letters or numbers.
-#' 
-#' -   Can't be a reserved word for the chosen database engine.
-#' 
-#' **Microsoft SQL Server**
-#' 
-#' Constraints:
-#' 
-#' -   Required for SQL Server.
-#' 
-#' -   Must be 1 to 128 letters or numbers.
-#' 
-#' -   The first character must be a letter.
-#' 
-#' -   Can't be a reserved word for the chosen database engine.
-#' 
-#' **MySQL**
-#' 
-#' Constraints:
-#' 
-#' -   Required for MySQL.
-#' 
-#' -   Must be 1 to 16 letters or numbers.
-#' 
-#' -   First character must be a letter.
-#' 
-#' -   Can't be a reserved word for the chosen database engine.
-#' 
-#' **Oracle**
-#' 
-#' Constraints:
-#' 
-#' -   Required for Oracle.
-#' 
-#' -   Must be 1 to 30 letters or numbers.
-#' 
-#' -   First character must be a letter.
-#' 
-#' -   Can't be a reserved word for the chosen database engine.
-#' 
-#' **PostgreSQL**
-#' 
-#' Constraints:
-#' 
-#' -   Required for PostgreSQL.
-#' 
-#' -   Must be 1 to 63 letters or numbers.
+#' -   Must be 1 to 16 letters, numbers, or underscores.
 #' 
 #' -   First character must be a letter.
 #' 
@@ -2696,7 +2024,9 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Constraints: Must contain from 8 to 128 characters.
 #' @param DBSecurityGroups A list of DB security groups to associate with this DB instance.
 #' 
-#' Default: The default DB security group for the database engine.
+#' This setting applies to the legacy EC2-Classic platform, which is no
+#' longer used to create new DB instances. Use the `VpcSecurityGroupIds`
+#' setting instead.
 #' @param VpcSecurityGroupIds A list of Amazon EC2 VPC security groups to associate with this DB
 #' instance.
 #' 
@@ -2708,28 +2038,31 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Default: The default EC2 VPC security group for the DB subnet group's
 #' VPC.
 #' @param AvailabilityZone The Availability Zone (AZ) where the database will be created. For
-#' information on AWS Regions and Availability Zones, see [Regions and
-#' Availability
+#' information on Amazon Web Services Regions and Availability Zones, see
+#' [Regions and Availability
 #' Zones](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 #' 
-#' Default: A random, system-chosen Availability Zone in the endpoint's AWS
-#' Region.
+#' **Amazon Aurora**
+#' 
+#' Each Aurora DB cluster hosts copies of its storage in three separate
+#' Availability Zones. Specify one of these Availability Zones. Aurora
+#' automatically chooses an appropriate Availability Zone if you don't
+#' specify one.
+#' 
+#' Default: A random, system-chosen Availability Zone in the endpoint's
+#' Amazon Web Services Region.
 #' 
 #' Example: `us-east-1d`
 #' 
 #' Constraint: The `AvailabilityZone` parameter can't be specified if the
 #' DB instance is a Multi-AZ deployment. The specified Availability Zone
-#' must be in the same AWS Region as the current endpoint.
-#' 
-#' If you're creating a DB instance in an RDS on VMware environment,
-#' specify the identifier of the custom Availability Zone to create the DB
-#' instance in.
-#' 
-#' For more information about RDS on VMware, see the [RDS on VMware User
-#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
+#' must be in the same Amazon Web Services Region as the current endpoint.
 #' @param DBSubnetGroupName A DB subnet group to associate with this DB instance.
 #' 
-#' If there is no DB subnet group, then it is a non-VPC DB instance.
+#' Constraints: Must match the name of an existing DBSubnetGroup. Must not
+#' be default.
+#' 
+#' Example: `mydbsubnetgroup`
 #' @param PreferredMaintenanceWindow The time range each week during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC). For more information, see [Amazon RDS
 #' Maintenance
@@ -2738,8 +2071,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week.
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week.
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 #' 
@@ -2747,6 +2080,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' @param DBParameterGroupName The name of the DB parameter group to associate with this DB instance.
 #' If you do not specify a value, then the default DB parameter group for
 #' the specified DB engine and version is used.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Constraints:
 #' 
@@ -2771,22 +2106,20 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' -   Must be a value from 0 to 35
 #' 
 #' -   Can't be set to 0 if the DB instance is a source to read replicas
+#' 
+#' -   Can't be set to 0 for an RDS Custom for Oracle DB instance
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
 #' automated backups are enabled, using the `BackupRetentionPeriod`
-#' parameter. For more information, see [The Backup
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+#' parameter. The default is a 30-minute window selected at random from an
+#' 8-hour block of time for each Amazon Web Services Region. For more
+#' information, see [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
 #' in the *Amazon RDS User Guide*.
 #' 
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The daily time range for creating automated backups is
 #' managed by the DB cluster.
-#' 
-#' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region. To see the time blocks available, see
-#' [Adjusting the Preferred DB Instance Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow)
-#' in the *Amazon RDS User Guide*.
 #' 
 #' Constraints:
 #' 
@@ -2846,89 +2179,138 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' @param MultiAZ A value that indicates whether the DB instance is a Multi-AZ deployment.
 #' You can't set the `AvailabilityZone` parameter if the DB instance is a
 #' Multi-AZ deployment.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable. DB instance Availability Zones (AZs) are managed by the
+#' DB cluster.
 #' @param EngineVersion The version number of the database engine to use.
 #' 
 #' For a list of valid engine versions, use the
-#' [`describe_db_engine_versions`][rds_describe_db_engine_versions] action.
+#' [`describe_db_engine_versions`][rds_describe_db_engine_versions]
+#' operation.
 #' 
 #' The following are the database engines and links to information about
 #' the major and minor versions that are available with Amazon RDS. Not
-#' every database engine is available for every AWS Region.
+#' every database engine is available for every Amazon Web Services Region.
 #' 
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The version number of the database engine to be used by
 #' the DB instance is managed by the DB cluster.
 #' 
+#' **Amazon RDS Custom for Oracle**
+#' 
+#' A custom engine version (CEV) that you have previously created. This
+#' setting is required for RDS Custom for Oracle. The CEV name has the
+#' following format: `19.customized_string `. An example identifier is
+#' `19.my_cev1`. For more information, see [Creating an RDS Custom for
+#' Oracle DB
+#' instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-creating.html#custom-creating.create)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' **Amazon RDS Custom for SQL Server**
+#' 
+#' See [RDS Custom for SQL Server general
+#' requirements](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-reqs-limits-MS.html)
+#' in the *Amazon RDS User Guide*.
+#' 
 #' **MariaDB**
 #' 
-#' See [MariaDB on Amazon RDS
+#' For information, see [MariaDB on Amazon RDS
 #' Versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt)
-#' in the *Amazon RDS User Guide.*
+#' in the *Amazon RDS User Guide*.
 #' 
 #' **Microsoft SQL Server**
 #' 
-#' See [Microsoft SQL Server Versions on Amazon
+#' For information, see [Microsoft SQL Server Versions on Amazon
 #' RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport)
-#' in the *Amazon RDS User Guide.*
+#' in the *Amazon RDS User Guide*.
 #' 
 #' **MySQL**
 #' 
-#' See [MySQL on Amazon RDS
+#' For information, see [MySQL on Amazon RDS
 #' Versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt)
-#' in the *Amazon RDS User Guide.*
+#' in the *Amazon RDS User Guide*.
 #' 
 #' **Oracle**
 #' 
-#' See [Oracle Database Engine Release
-#' Notes](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.PatchComposition.html)
-#' in the *Amazon RDS User Guide.*
+#' For information, see [Oracle Database Engine Release
+#' Notes](https://docs.aws.amazon.com/AmazonRDS/latest/OracleReleaseNotes/Welcome.html)
+#' in the *Amazon RDS User Guide*.
 #' 
 #' **PostgreSQL**
 #' 
-#' See [Supported PostgreSQL Database
-#' Versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts.General.DBVersions)
-#' in the *Amazon RDS User Guide.*
+#' For information, see [Amazon RDS for PostgreSQL versions and
+#' extensions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts)
+#' in the *Amazon RDS User Guide*.
 #' @param AutoMinorVersionUpgrade A value that indicates whether minor engine upgrades are applied
 #' automatically to the DB instance during the maintenance window. By
 #' default, minor engine upgrades are applied automatically.
+#' 
+#' If you create an RDS Custom DB instance, you must set
+#' `AutoMinorVersionUpgrade` to `false`.
 #' @param LicenseModel License model information for this DB instance.
 #' 
 #' Valid values: `license-included` | `bring-your-own-license` |
 #' `general-public-license`
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable.
 #' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
 #' be initially allocated for the DB instance. For information about valid
-#' Iops values, see [Amazon RDS Provisioned IOPS Storage to Improve
-#' Performance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+#' `Iops` values, see [Amazon RDS Provisioned IOPS storage to improve
+#' performance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
 #' in the *Amazon RDS User Guide*.
 #' 
 #' Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances,
 #' must be a multiple between .5 and 50 of the storage amount for the DB
 #' instance. For SQL Server DB instances, must be a multiple between 1 and
 #' 50 of the storage amount for the DB instance.
-#' @param OptionGroupName Indicates that the DB instance should be associated with the specified
-#' option group.
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable. Storage is managed by the DB cluster.
+#' @param OptionGroupName A value that indicates that the DB instance should be associated with
+#' the specified option group.
 #' 
 #' Permanent options, such as the TDE option for Oracle Advanced Security
 #' TDE, can't be removed from an option group. Also, that option group
-#' can't be removed from a DB instance once it is associated with a DB
-#' instance
-#' @param CharacterSetName For supported engines, indicates that the DB instance should be
-#' associated with the specified CharacterSet.
+#' can't be removed from a DB instance after it is associated with a DB
+#' instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable.
+#' @param CharacterSetName For supported engines, this value indicates that the DB instance should
+#' be associated with the specified `CharacterSet`.
+#' 
+#' This setting doesn't apply to RDS Custom. However, if you need to change
+#' the character set, you can change it on the database itself.
 #' 
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The character set is managed by the DB cluster. For more
 #' information, see [`create_db_cluster`][rds_create_db_cluster].
 #' @param NcharCharacterSetName The name of the NCHAR character set for the Oracle DB instance.
+#' 
+#' This parameter doesn't apply to RDS Custom.
 #' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
 #' 
-#' When the DB instance is publicly accessible, its DNS endpoint resolves
-#' to the private IP address from within the DB instance's VPC, and to the
-#' public IP address from outside of the DB instance's VPC. Access to the
-#' DB instance is ultimately controlled by the security group it uses, and
-#' that public access is not permitted if the security group assigned to
-#' the DB instance doesn't permit it.
+#' When the DB instance is publicly accessible, its Domain Name System
+#' (DNS) endpoint resolves to the private IP address from within the DB
+#' instance's virtual private cloud (VPC). It resolves to the public IP
+#' address from outside of the DB instance's VPC. Access to the DB instance
+#' is ultimately controlled by the security group it uses. That public
+#' access is not permitted if the security group assigned to the DB
+#' instance doesn't permit it.
 #' 
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
@@ -2939,22 +2321,24 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' If `DBSubnetGroupName` isn't specified, and `PubliclyAccessible` isn't
 #' specified, the following applies:
 #' 
-#' -   If the default VPC in the target region doesn’t have an Internet
+#' -   If the default VPC in the target Region doesn’t have an internet
 #'     gateway attached to it, the DB instance is private.
 #' 
-#' -   If the default VPC in the target region has an Internet gateway
+#' -   If the default VPC in the target Region has an internet gateway
 #'     attached to it, the DB instance is public.
 #' 
 #' If `DBSubnetGroupName` is specified, and `PubliclyAccessible` isn't
 #' specified, the following applies:
 #' 
-#' -   If the subnets are part of a VPC that doesn’t have an Internet
+#' -   If the subnets are part of a VPC that doesn’t have an internet
 #'     gateway attached to it, the DB instance is private.
 #' 
-#' -   If the subnets are part of a VPC that has an Internet gateway
+#' -   If the subnets are part of a VPC that has an internet gateway
 #'     attached to it, the DB instance is public.
 #' @param Tags Tags to assign to the DB instance.
 #' @param DBClusterIdentifier The identifier of the DB cluster that the instance will belong to.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param StorageType Specifies the storage type to be associated with the DB instance.
 #' 
 #' Valid values: `standard | gp2 | io1`
@@ -2963,32 +2347,57 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' parameter.
 #' 
 #' Default: `io1` if the `Iops` parameter is specified, otherwise `gp2`
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable. Storage is managed by the DB cluster.
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
 #' device.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param StorageEncrypted A value that indicates whether the DB instance is encrypted. By default,
 #' it isn't encrypted.
+#' 
+#' For RDS Custom instances, either set this parameter to `true` or leave
+#' it unset. If you set this parameter to `false`, RDS reports an error.
 #' 
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The encryption for DB instances is managed by the DB
 #' cluster.
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted DB instance.
+#' @param KmsKeyId The Amazon Web Services KMS key identifier for an encrypted DB instance.
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS customer master key (CMK). To use a CMK in a
-#' different AWS account, specify the key ARN or alias ARN.
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
 #' 
 #' **Amazon Aurora**
 #' 
-#' Not applicable. The AWS KMS key identifier is managed by the DB cluster.
-#' For more information, see [`create_db_cluster`][rds_create_db_cluster].
+#' Not applicable. The Amazon Web Services KMS key identifier is managed by
+#' the DB cluster. For more information, see
+#' [`create_db_cluster`][rds_create_db_cluster].
 #' 
 #' If `StorageEncrypted` is enabled, and you do not specify a value for the
-#' `KmsKeyId` parameter, then Amazon RDS uses your default CMK. There is a
-#' default CMK for your AWS account. Your AWS account has a different
-#' default CMK for each AWS Region.
+#' `KmsKeyId` parameter, then Amazon RDS uses your default KMS key. There
+#' is a default KMS key for your Amazon Web Services account. Your Amazon
+#' Web Services account has a different default KMS key for each Amazon Web
+#' Services Region.
+#' 
+#' **Amazon RDS Custom**
+#' 
+#' A KMS key is required for RDS Custom instances. For most RDS engines, if
+#' you leave this parameter empty while enabling `StorageEncrypted`, the
+#' engine uses the default KMS key. However, RDS Custom doesn't use the
+#' default key when this parameter is empty. You must explicitly specify a
+#' key.
 #' @param Domain The Active Directory directory ID to create the DB instance in.
 #' Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
 #' instances can be created in an Active Directory Domain.
@@ -2996,6 +2405,12 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' For more information, see [Kerberos
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html)
 #' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable. The domain is managed by the DB cluster.
 #' @param CopyTagsToSnapshot A value that indicates whether to copy tags from the DB instance to
 #' snapshots of the DB instance. By default, tags are not copied.
 #' 
@@ -3005,29 +2420,41 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Setting this value for an Aurora DB instance has no effect on the DB
 #' cluster setting.
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
-#' metrics are collected for the DB instance. To disable collecting
+#' metrics are collected for the DB instance. To disable collection of
 #' Enhanced Monitoring metrics, specify 0. The default is 0.
 #' 
-#' If `MonitoringRoleArn` is specified, then you must also set
+#' If `MonitoringRoleArn` is specified, then you must set
 #' `MonitoringInterval` to a value other than 0.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Valid Values: `0, 1, 5, 10, 15, 30, 60`
 #' @param MonitoringRoleArn The ARN for the IAM role that permits RDS to send enhanced monitoring
 #' metrics to Amazon CloudWatch Logs. For example,
 #' `arn:aws:iam:123456789012:role/emaccess`. For information on creating a
-#' monitoring role, go to [Setting Up and Enabling Enhanced
+#' monitoring role, see [Setting Up and Enabling Enhanced
 #' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling)
 #' in the *Amazon RDS User Guide*.
 #' 
 #' If `MonitoringInterval` is set to a value other than 0, then you must
 #' supply a `MonitoringRoleArn` value.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable. The domain is managed by the DB cluster.
 #' @param PromotionTier A value that specifies the order in which an Aurora Replica is promoted
 #' to the primary instance after a failure of the existing primary
 #' instance. For more information, see [Fault Tolerance for an Aurora DB
 #' Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Default: 1
 #' 
@@ -3035,43 +2462,74 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' @param Timezone The time zone of the DB instance. The time zone parameter is currently
 #' supported only by [Microsoft SQL
 #' Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone).
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
-#' 
-#' This setting doesn't apply to Amazon Aurora. Mapping AWS IAM accounts to
-#' database accounts is managed by the DB cluster.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping isn't enabled.
 #' 
 #' For more information, see [IAM Database Authentication for MySQL and
 #' PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
-#' in the *Amazon RDS User Guide.*
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable. Mapping Amazon Web Services IAM accounts to database
+#' accounts is managed by the DB cluster.
 #' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the DB
-#' instance.
-#' 
-#' For more information, see [Using Amazon Performance
+#' instance. For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
-#' in the *Amazon Relational Database Service User Guide*.
-#' @param PerformanceInsightsKMSKeyId The AWS KMS key identifier for encryption of Performance Insights data.
+#' in the *Amazon RDS User Guide*.
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS customer master key (CMK).
+#' This setting doesn't apply to RDS Custom.
+#' @param PerformanceInsightsKMSKeyId The Amazon Web Services KMS key identifier for encryption of Performance
+#' Insights data.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key.
 #' 
 #' If you do not specify a value for `PerformanceInsightsKMSKeyId`, then
-#' Amazon RDS uses your default CMK. There is a default CMK for your AWS
-#' account. Your AWS account has a different default CMK for each AWS
-#' Region.
-#' @param PerformanceInsightsRetentionPeriod The amount of time, in days, to retain Performance Insights data. Valid
-#' values are 7 or 731 (2 years).
+#' Amazon RDS uses your default KMS key. There is a default KMS key for
+#' your Amazon Web Services account. Your Amazon Web Services account has a
+#' different default KMS key for each Amazon Web Services Region.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' @param PerformanceInsightsRetentionPeriod The number of days to retain Performance Insights data. The default is 7
+#' days. The following values are valid:
+#' 
+#' -   7
+#' 
+#' -   *month* * 31, where *month* is a number of months from 1-23
+#' 
+#' -   731
+#' 
+#' For example, the following values are valid:
+#' 
+#' -   93 (3 months * 31)
+#' 
+#' -   341 (11 months * 31)
+#' 
+#' -   589 (19 months * 31)
+#' 
+#' -   731
+#' 
+#' If you specify a retention period such as 94, which isn't a valid value,
+#' RDS issues an error.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param EnableCloudwatchLogsExports The list of log types that need to be enabled for exporting to
-#' CloudWatch Logs. The values in the list depend on the DB engine being
-#' used. For more information, see [Publishing Database Logs to Amazon
-#' CloudWatch
+#' CloudWatch Logs. The values in the list depend on the DB engine. For
+#' more information, see [Publishing Database Logs to Amazon CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
-#' in the *Amazon Relational Database Service User Guide*.
+#' in the *Amazon RDS User Guide*.
 #' 
 #' **Amazon Aurora**
 #' 
 #' Not applicable. CloudWatch Logs exports are managed by the DB cluster.
+#' 
+#' **RDS Custom**
+#' 
+#' Not applicable.
 #' 
 #' **MariaDB**
 #' 
@@ -3087,16 +2545,23 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' **Oracle**
 #' 
-#' Possible values are `alert`, `audit`, `listener`, and `trace`.
+#' Possible values are `alert`, `audit`, `listener`, `trace`, and
+#' `oemagent`.
 #' 
 #' **PostgreSQL**
 #' 
 #' Possible values are `postgresql` and `upgrade`.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable.
 #' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled. For more
+#' enabled. By default, deletion protection isn't enabled. For more
 #' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #' 
@@ -3107,8 +2572,20 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' [`create_db_cluster`][rds_create_db_cluster]. DB instances in a DB
 #' cluster can be deleted even when deletion protection is enabled for the
 #' DB cluster.
-#' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
-#' of the DB instance.
+#' @param MaxAllocatedStorage The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
+#' scale the storage of the DB instance.
+#' 
+#' For more information about this setting, including limitations that
+#' apply to it, see [Managing capacity automatically with Amazon RDS
+#' storage
+#' autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' 
+#' **Amazon Aurora**
+#' 
+#' Not applicable. Storage is managed by the DB cluster.
 #' @param EnableCustomerOwnedIp A value that indicates whether to enable a customer-owned IP address
 #' (CoIP) for an RDS on Outposts DB instance.
 #' 
@@ -3118,286 +2595,67 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' outside of its virtual private cloud (VPC) on your local network.
 #' 
 #' For more information about RDS on Outposts, see [Working with Amazon RDS
-#' on AWS
+#' on Amazon Web Services
 #' Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
 #' in the *Amazon RDS User Guide*.
 #' 
 #' For more information about CoIPs, see [Customer-owned IP
-#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-#' in the *AWS Outposts User Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_instance(
-#'   DBName = "string",
-#'   DBInstanceIdentifier = "string",
-#'   AllocatedStorage = 123,
-#'   DBInstanceClass = "string",
-#'   Engine = "string",
-#'   MasterUsername = "string",
-#'   MasterUserPassword = "string",
-#'   DBSecurityGroups = list(
-#'     "string"
-#'   ),
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   AvailabilityZone = "string",
-#'   DBSubnetGroupName = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   DBParameterGroupName = "string",
-#'   BackupRetentionPeriod = 123,
-#'   PreferredBackupWindow = "string",
-#'   Port = 123,
-#'   MultiAZ = TRUE|FALSE,
-#'   EngineVersion = "string",
-#'   AutoMinorVersionUpgrade = TRUE|FALSE,
-#'   LicenseModel = "string",
-#'   Iops = 123,
-#'   OptionGroupName = "string",
-#'   CharacterSetName = "string",
-#'   NcharCharacterSetName = "string",
-#'   PubliclyAccessible = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   DBClusterIdentifier = "string",
-#'   StorageType = "string",
-#'   TdeCredentialArn = "string",
-#'   TdeCredentialPassword = "string",
-#'   StorageEncrypted = TRUE|FALSE,
-#'   KmsKeyId = "string",
-#'   Domain = "string",
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   MonitoringInterval = 123,
-#'   MonitoringRoleArn = "string",
-#'   DomainIAMRoleName = "string",
-#'   PromotionTier = 123,
-#'   Timezone = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   EnablePerformanceInsights = TRUE|FALSE,
-#'   PerformanceInsightsKMSKeyId = "string",
-#'   PerformanceInsightsRetentionPeriod = 123,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   ProcessorFeatures = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   DeletionProtection = TRUE|FALSE,
-#'   MaxAllocatedStorage = 123,
-#'   EnableCustomerOwnedIp = TRUE|FALSE
-#' )
-#' ```
+#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing)
+#' in the *Amazon Web Services Outposts User Guide*.
+#' @param CustomIamInstanceProfile The instance profile associated with the underlying Amazon EC2 instance
+#' of an RDS Custom DB instance. The instance profile must meet the
+#' following requirements:
+#' 
+#' -   The profile must exist in your account.
+#' 
+#' -   The profile must have an IAM role that Amazon EC2 has permissions to
+#'     assume.
+#' 
+#' -   The instance profile name and the associated IAM role name must
+#'     start with the prefix `AWSRDSCustom`.
+#' 
+#' For the list of permissions required for the IAM role, see [Configure
+#' IAM and your
+#' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting is required for RDS Custom.
+#' @param BackupTarget Specifies where automated backups and manual snapshots are stored.
+#' 
+#' Possible values are `outposts` (Amazon Web Services Outposts) and
+#' `region` (Amazon Web Services Region). The default is `region`.
+#' 
+#' For more information, see [Working with Amazon RDS on Amazon Web
+#' Services
+#' Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
+#' in the *Amazon RDS User Guide*.
+#' @param NetworkType The network type of the DB instance.
+#' 
+#' Valid values:
+#' 
+#' -   `IPV4`
+#' 
+#' -   `DUAL`
+#' 
+#' The network type is determined by the `DBSubnetGroup` specified for the
+#' DB instance. A `DBSubnetGroup` can support only the IPv4 protocol or the
+#' IPv4 and the IPv6 protocols (`DUAL`).
+#' 
+#' For more information, see [Working with a DB instance in a
+#' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html)
+#' in the *Amazon RDS User Guide.*
 #'
 #' @keywords internal
 #'
 #' @rdname rds_create_db_instance
-rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass, Engine, MasterUsername = NULL, MasterUserPassword = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, PreferredMaintenanceWindow = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, Port = NULL, MultiAZ = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, CharacterSetName = NULL, NcharCharacterSetName = NULL, PubliclyAccessible = NULL, Tags = NULL, DBClusterIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, Timezone = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, EnableCustomerOwnedIp = NULL) {
+rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass, Engine, MasterUsername = NULL, MasterUserPassword = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, PreferredMaintenanceWindow = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, Port = NULL, MultiAZ = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, CharacterSetName = NULL, NcharCharacterSetName = NULL, PubliclyAccessible = NULL, Tags = NULL, DBClusterIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, Timezone = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, EnableCustomerOwnedIp = NULL, CustomIamInstanceProfile = NULL, BackupTarget = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$create_db_instance_input(DBName = DBName, DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, Engine = Engine, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, Port = Port, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, CharacterSetName = CharacterSetName, NcharCharacterSetName = NcharCharacterSetName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, Timezone = Timezone, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, EnableCustomerOwnedIp = EnableCustomerOwnedIp)
+  input <- .rds$create_db_instance_input(DBName = DBName, DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, Engine = Engine, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, Port = Port, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, CharacterSetName = CharacterSetName, NcharCharacterSetName = NcharCharacterSetName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, Timezone = Timezone, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, EnableCustomerOwnedIp = EnableCustomerOwnedIp, CustomIamInstanceProfile = CustomIamInstanceProfile, BackupTarget = BackupTarget, NetworkType = NetworkType)
   output <- .rds$create_db_instance_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -3411,36 +2669,9 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' source DB instance
 #'
 #' @description
-#' Creates a new DB instance that acts as a read replica for an existing
-#' source DB instance. You can create a read replica for a DB instance
-#' running MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server. For more
-#' information, see [Working with Read
-#' Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html)
-#' in the *Amazon RDS User Guide*.
-#' 
-#' Amazon Aurora doesn't support this action. Call the
-#' [`create_db_instance`][rds_create_db_instance] action to create a DB
-#' instance for an Aurora DB cluster.
-#' 
-#' All read replica DB instances are created with backups disabled. All
-#' other DB instance attributes (including DB security groups and DB
-#' parameter groups) are inherited from the source DB instance, except as
-#' specified.
-#' 
-#' Your source DB instance must have backup retention enabled.
+#' Creates a new DB instance that acts as a read replica for an existing source DB instance. You can create a read replica for a DB instance running MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server. For more information, see [Working with Read Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html) in the *Amazon RDS User Guide*.
 #'
-#' @usage
-#' rds_create_db_instance_read_replica(DBInstanceIdentifier,
-#'   SourceDBInstanceIdentifier, DBInstanceClass, AvailabilityZone, Port,
-#'   MultiAZ, AutoMinorVersionUpgrade, Iops, OptionGroupName,
-#'   DBParameterGroupName, PubliclyAccessible, Tags, DBSubnetGroupName,
-#'   VpcSecurityGroupIds, StorageType, CopyTagsToSnapshot,
-#'   MonitoringInterval, MonitoringRoleArn, KmsKeyId, PreSignedUrl,
-#'   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
-#'   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
-#'   EnableCloudwatchLogsExports, ProcessorFeatures,
-#'   UseDefaultProcessorFeatures, DeletionProtection, Domain,
-#'   DomainIAMRoleName, ReplicaMode, MaxAllocatedStorage, SourceRegion)
+#' See [https://paws-r.github.io/docs/rds/create_db_instance_read_replica.html](https://paws-r.github.io/docs/rds/create_db_instance_read_replica.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier of the read replica. This identifier is the
 #' unique key that identifies a DB instance. This parameter is stored as a
@@ -3467,33 +2698,33 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #'     in the *Amazon RDS User Guide*.
 #' 
 #' -   Can specify a PostgreSQL DB instance only if the source is running
-#'     PostgreSQL 9.3.5 or later (9.4.7 and higher for cross-region
+#'     PostgreSQL 9.3.5 or later (9.4.7 and higher for cross-Region
 #'     replication).
 #' 
 #' -   The specified DB instance must have automatic backups enabled, that
 #'     is, its backup retention period must be greater than 0.
 #' 
-#' -   If the source DB instance is in the same AWS Region as the read
-#'     replica, specify a valid DB instance identifier.
+#' -   If the source DB instance is in the same Amazon Web Services Region
+#'     as the read replica, specify a valid DB instance identifier.
 #' 
-#' -   If the source DB instance is in a different AWS Region from the read
-#'     replica, specify a valid DB instance ARN. For more information, see
-#'     [Constructing an ARN for Amazon
+#' -   If the source DB instance is in a different Amazon Web Services
+#'     Region from the read replica, specify a valid DB instance ARN. For
+#'     more information, see [Constructing an ARN for Amazon
 #'     RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
-#'     in the *Amazon RDS User Guide*. This doesn't apply to SQL Server,
-#'     which doesn't support cross-region replicas.
-#' @param DBInstanceClass The compute and memory capacity of the read replica, for example,
-#' `db.m4.large`. Not all DB instance classes are available in all AWS
-#' Regions, or for all database engines. For the full list of DB instance
-#' classes, and availability for your engine, see [DB Instance
+#'     in the *Amazon RDS User Guide*. This doesn't apply to SQL Server or
+#'     RDS Custom, which don't support cross-Region replicas.
+#' @param DBInstanceClass The compute and memory capacity of the read replica, for example
+#' db.m4.large. Not all DB instance classes are available in all Amazon Web
+#' Services Regions, or for all database engines. For the full list of DB
+#' instance classes, and availability for your engine, see [DB Instance
 #' Class](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-#' in the *Amazon RDS User Guide.*
+#' in the *Amazon RDS User Guide*.
 #' 
 #' Default: Inherits from the source DB instance.
 #' @param AvailabilityZone The Availability Zone (AZ) where the read replica will be created.
 #' 
-#' Default: A random, system-chosen Availability Zone in the endpoint's AWS
-#' Region.
+#' Default: A random, system-chosen Availability Zone in the endpoint's
+#' Amazon Web Services Region.
 #' 
 #' Example: `us-east-1d`
 #' @param Port The port number that the DB instance uses for connections.
@@ -3509,8 +2740,12 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' support for the replica. Creating your read replica as a Multi-AZ DB
 #' instance is independent of whether the source database is a Multi-AZ DB
 #' instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param AutoMinorVersionUpgrade A value that indicates whether minor engine upgrades are applied
 #' automatically to the read replica during the maintenance window.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Default: Inherits from the source DB instance
 #' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
@@ -3520,15 +2755,17 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' 
 #' For SQL Server, you must use the option group associated with the source
 #' instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param DBParameterGroupName The name of the DB parameter group to associate with this DB instance.
 #' 
 #' If you do not specify a value for `DBParameterGroupName`, then Amazon
-#' RDS uses the `DBParameterGroup` of source DB instance for a same region
+#' RDS uses the `DBParameterGroup` of source DB instance for a same Region
 #' read replica, or the default `DBParameterGroup` for the specified DB
-#' engine for a cross region read replica.
+#' engine for a cross-Region read replica.
 #' 
-#' Currently, specifying a parameter group for this operation is only
-#' supported for Oracle DB instances.
+#' Specifying a parameter group for this operation is only supported for
+#' MySQL and Oracle DB instances. It isn't supported for RDS Custom.
 #' 
 #' Constraints:
 #' 
@@ -3539,12 +2776,13 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' -   Can't end with a hyphen or contain two consecutive hyphens
 #' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
 #' 
-#' When the DB instance is publicly accessible, its DNS endpoint resolves
-#' to the private IP address from within the DB instance's VPC, and to the
-#' public IP address from outside of the DB instance's VPC. Access to the
-#' DB instance is ultimately controlled by the security group it uses, and
-#' that public access is not permitted if the security group assigned to
-#' the DB instance doesn't permit it.
+#' When the DB cluster is publicly accessible, its Domain Name System (DNS)
+#' endpoint resolves to the private IP address from within the DB cluster's
+#' virtual private cloud (VPC). It resolves to the public IP address from
+#' outside of the DB cluster's VPC. Access to the DB cluster is ultimately
+#' controlled by the security group it uses. That public access isn't
+#' permitted if the security group assigned to the DB cluster doesn't
+#' permit it.
 #' 
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
@@ -3559,15 +2797,15 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' Constraints:
 #' 
 #' -   Can only be specified if the source DB instance identifier specifies
-#'     a DB instance in another AWS Region.
+#'     a DB instance in another Amazon Web Services Region.
 #' 
 #' -   If supplied, must match the name of an existing DBSubnetGroup.
 #' 
-#' -   The specified DB subnet group must be in the same AWS Region in
-#'     which the operation is running.
+#' -   The specified DB subnet group must be in the same Amazon Web
+#'     Services Region in which the operation is running.
 #' 
-#' -   All read replicas in one AWS Region that are created from the same
-#'     source DB instance must either:&gt;
+#' -   All read replicas in one Amazon Web Services Region that are created
+#'     from the same source DB instance must either:\>
 #' 
 #'     -   Specify DB subnet groups from the same VPC. All these read
 #'         replicas are created in the same VPC.
@@ -3575,8 +2813,11 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #'     -   Not specify a DB subnet group. All these read replicas are
 #'         created outside of any VPC.
 #' 
-#' Example: `mySubnetgroup`
-#' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with the read replica.
+#' Example: `mydbsubnetgroup`
+#' @param VpcSecurityGroupIds A list of Amazon EC2 VPC security groups to associate with the read
+#' replica.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Default: The default EC2 VPC security group for the DB subnet group's
 #' VPC.
@@ -3597,135 +2838,190 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' If `MonitoringRoleArn` is specified, then you must also set
 #' `MonitoringInterval` to a value other than 0.
 #' 
+#' This setting doesn't apply to RDS Custom.
+#' 
 #' Valid Values: `0, 1, 5, 10, 15, 30, 60`
 #' @param MonitoringRoleArn The ARN for the IAM role that permits RDS to send enhanced monitoring
 #' metrics to Amazon CloudWatch Logs. For example,
 #' `arn:aws:iam:123456789012:role/emaccess`. For information on creating a
 #' monitoring role, go to [To create an IAM role for Amazon RDS Enhanced
-#' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Monitoring.html#USER_Monitoring)
+#' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
 #' in the *Amazon RDS User Guide*.
 #' 
 #' If `MonitoringInterval` is set to a value other than 0, then you must
 #' supply a `MonitoringRoleArn` value.
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted read replica.
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS CMK.
+#' This setting doesn't apply to RDS Custom.
+#' @param KmsKeyId The Amazon Web Services KMS key identifier for an encrypted read
+#' replica.
 #' 
-#' If you create an encrypted read replica in the same AWS Region as the
-#' source DB instance, then do not specify a value for this parameter. A
-#' read replica in the same Region is always encrypted with the same AWS
-#' KMS CMK as the source DB instance.
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key.
 #' 
-#' If you create an encrypted read replica in a different AWS Region, then
-#' you must specify a AWS KMS key identifier for the destination AWS
-#' Region. AWS KMS CMKs are specific to the AWS Region that they are
-#' created in, and you can't use CMKs from one AWS Region in another AWS
-#' Region.
+#' If you create an encrypted read replica in the same Amazon Web Services
+#' Region as the source DB instance, then do not specify a value for this
+#' parameter. A read replica in the same Amazon Web Services Region is
+#' always encrypted with the same KMS key as the source DB instance.
+#' 
+#' If you create an encrypted read replica in a different Amazon Web
+#' Services Region, then you must specify a KMS key identifier for the
+#' destination Amazon Web Services Region. KMS keys are specific to the
+#' Amazon Web Services Region that they are created in, and you can't use
+#' KMS keys from one Amazon Web Services Region in another Amazon Web
+#' Services Region.
 #' 
 #' You can't create an encrypted read replica from an unencrypted DB
 #' instance.
-#' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
+#' 
+#' This setting doesn't apply to RDS Custom, which uses the same KMS key as
+#' the primary replica.
+#' @param PreSignedUrl When you are creating a read replica from one Amazon Web Services
+#' GovCloud (US) Region to another or from one China Amazon Web Services
+#' Region to another, the URL that contains a Signature Version 4 signed
+#' request for the
 #' [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
-#' API action in the source AWS Region that contains the source DB
-#' instance.
+#' API operation in the source Amazon Web Services Region that contains the
+#' source DB instance.
+#' 
+#' This setting applies only to Amazon Web Services GovCloud (US) Regions
+#' and China Amazon Web Services Regions. It's ignored in other Amazon Web
+#' Services Regions.
 #' 
 #' You must specify this parameter when you create an encrypted read
-#' replica from another AWS Region by using the Amazon RDS API. Don't
-#' specify `PreSignedUrl` when you are creating an encrypted read replica
-#' in the same AWS Region.
+#' replica from another Amazon Web Services Region by using the Amazon RDS
+#' API. Don't specify `PreSignedUrl` when you are creating an encrypted
+#' read replica in the same Amazon Web Services Region.
 #' 
 #' The presigned URL must be a valid request for the
 #' [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
-#' API action that can be executed in the source AWS Region that contains
-#' the encrypted source DB instance. The presigned URL request must contain
-#' the following parameter values:
+#' API operation that can run in the source Amazon Web Services Region that
+#' contains the encrypted source DB instance. The presigned URL request
+#' must contain the following parameter values:
 #' 
-#' -   `DestinationRegion` - The AWS Region that the encrypted read replica
-#'     is created in. This AWS Region is the same one where the
+#' -   `DestinationRegion` - The Amazon Web Services Region that the
+#'     encrypted read replica is created in. This Amazon Web Services
+#'     Region is the same one where the
 #'     [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
-#'     action is called that contains this presigned URL.
+#'     operation is called that contains this presigned URL.
 #' 
 #'     For example, if you create an encrypted DB instance in the us-west-1
-#'     AWS Region, from a source DB instance in the us-east-2 AWS Region,
-#'     then you call the
+#'     Amazon Web Services Region, from a source DB instance in the
+#'     us-east-2 Amazon Web Services Region, then you call the
 #'     [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
-#'     action in the us-east-1 AWS Region and provide a presigned URL that
-#'     contains a call to the
+#'     operation in the us-east-1 Amazon Web Services Region and provide a
+#'     presigned URL that contains a call to the
 #'     [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
-#'     action in the us-west-2 AWS Region. For this example, the
-#'     `DestinationRegion` in the presigned URL must be set to the
-#'     us-east-1 AWS Region.
+#'     operation in the us-west-2 Amazon Web Services Region. For this
+#'     example, the `DestinationRegion` in the presigned URL must be set to
+#'     the us-east-1 Amazon Web Services Region.
 #' 
-#' -   `KmsKeyId` - The AWS KMS key identifier for the key to use to
-#'     encrypt the read replica in the destination AWS Region. This is the
-#'     same identifier for both the
+#' -   `KmsKeyId` - The KMS key identifier for the key to use to encrypt
+#'     the read replica in the destination Amazon Web Services Region. This
+#'     is the same identifier for both the
 #'     [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
-#'     action that is called in the destination AWS Region, and the action
-#'     contained in the presigned URL.
+#'     operation that is called in the destination Amazon Web Services
+#'     Region, and the operation contained in the presigned URL.
 #' 
 #' -   `SourceDBInstanceIdentifier` - The DB instance identifier for the
 #'     encrypted DB instance to be replicated. This identifier must be in
-#'     the Amazon Resource Name (ARN) format for the source AWS Region. For
-#'     example, if you are creating an encrypted read replica from a DB
-#'     instance in the us-west-2 AWS Region, then your
-#'     `SourceDBInstanceIdentifier` looks like the following example:
+#'     the Amazon Resource Name (ARN) format for the source Amazon Web
+#'     Services Region. For example, if you are creating an encrypted read
+#'     replica from a DB instance in the us-west-2 Amazon Web Services
+#'     Region, then your `SourceDBInstanceIdentifier` looks like the
+#'     following example:
 #'     `arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115`.
 #' 
 #' To learn how to generate a Signature Version 4 signed request, see
-#' [Authenticating Requests: Using Query Parameters (AWS Signature Version
+#' [Authenticating Requests: Using Query Parameters (Amazon Web Services
+#' Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
 #' and [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
-#' If you are using an AWS SDK tool or the AWS CLI, you can specify
-#' `SourceRegion` (or `--source-region` for the AWS CLI) instead of
+#' If you are using an Amazon Web Services SDK tool or the CLI, you can
+#' specify `SourceRegion` (or `--source-region` for the CLI) instead of
 #' specifying `PreSignedUrl` manually. Specifying `SourceRegion`
 #' autogenerates a presigned URL that is a valid request for the operation
-#' that can be executed in the source AWS Region.
+#' that can run in the source Amazon Web Services Region.
 #' 
-#' `SourceRegion` isn't supported for SQL Server, because SQL Server on
-#' Amazon RDS doesn't support cross-region read replicas.
+#' `SourceRegion` isn't supported for SQL Server, because Amazon RDS for
+#' SQL Server doesn't support cross-Region read replicas.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' If you supply a value for this operation's `SourceRegion` parameter, a
 #' pre-signed URL will be calculated on your behalf.
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping isn't enabled.
 #' 
 #' For more information about IAM database authentication, see [IAM
 #' Database Authentication for MySQL and
 #' PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
-#' in the *Amazon RDS User Guide.*
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the
 #' read replica.
 #' 
 #' For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
 #' in the *Amazon RDS User Guide*.
-#' @param PerformanceInsightsKMSKeyId The AWS KMS key identifier for encryption of Performance Insights data.
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS customer master key (CMK).
+#' This setting doesn't apply to RDS Custom.
+#' @param PerformanceInsightsKMSKeyId The Amazon Web Services KMS key identifier for encryption of Performance
+#' Insights data.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key.
 #' 
 #' If you do not specify a value for `PerformanceInsightsKMSKeyId`, then
-#' Amazon RDS uses your default CMK. There is a default CMK for your AWS
-#' account. Your AWS account has a different default CMK for each AWS
-#' Region.
-#' @param PerformanceInsightsRetentionPeriod The amount of time, in days, to retain Performance Insights data. Valid
-#' values are 7 or 731 (2 years).
+#' Amazon RDS uses your default KMS key. There is a default KMS key for
+#' your Amazon Web Services account. Your Amazon Web Services account has a
+#' different default KMS key for each Amazon Web Services Region.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' @param PerformanceInsightsRetentionPeriod The number of days to retain Performance Insights data. The default is 7
+#' days. The following values are valid:
+#' 
+#' -   7
+#' 
+#' -   *month* * 31, where *month* is a number of months from 1-23
+#' 
+#' -   731
+#' 
+#' For example, the following values are valid:
+#' 
+#' -   93 (3 months * 31)
+#' 
+#' -   341 (11 months * 31)
+#' 
+#' -   589 (19 months * 31)
+#' 
+#' -   731
+#' 
+#' If you specify a retention period such as 94, which isn't a valid value,
+#' RDS issues an error.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param EnableCloudwatchLogsExports The list of logs that the new DB instance is to export to CloudWatch
 #' Logs. The values in the list depend on the DB engine being used. For
 #' more information, see [Publishing Database Logs to Amazon CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 #' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param UseDefaultProcessorFeatures A value that indicates whether the DB instance class of the DB instance
 #' uses its default processor features.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled. For more
+#' enabled. By default, deletion protection isn't enabled. For more
 #' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #' @param Domain The Active Directory directory ID to create the DB instance in.
@@ -3735,282 +3031,85 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' For more information, see [Kerberos
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html)
 #' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param ReplicaMode The open mode of the replica database: mounted or read-only.
 #' 
 #' This parameter is only supported for Oracle DB instances.
 #' 
-#' Mounted DB replicas are included in Oracle Enterprise Edition. The main
-#' use case for mounted replicas is cross-Region disaster recovery. The
-#' primary database doesn't use Active Data Guard to transmit information
-#' to the mounted replica. Because it doesn't accept user connections, a
-#' mounted replica can't serve a read-only workload.
+#' Mounted DB replicas are included in Oracle Database Enterprise Edition.
+#' The main use case for mounted replicas is cross-Region disaster
+#' recovery. The primary database doesn't use Active Data Guard to transmit
+#' information to the mounted replica. Because it doesn't accept user
+#' connections, a mounted replica can't serve a read-only workload.
 #' 
 #' You can create a combination of mounted and read-only DB replicas for
 #' the same primary DB instance. For more information, see [Working with
 #' Oracle Read Replicas for Amazon
 #' RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html)
 #' in the *Amazon RDS User Guide*.
-#' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
-#' of the DB instance.
+#' 
+#' For RDS Custom, you must specify this parameter and set it to `mounted`.
+#' The value won't be set by default. After replica creation, you can
+#' manage the open mode manually.
+#' @param MaxAllocatedStorage The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
+#' scale the storage of the DB instance.
+#' 
+#' For more information about this setting, including limitations that
+#' apply to it, see [Managing capacity automatically with Amazon RDS
+#' storage
+#' autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+#' in the *Amazon RDS User Guide*.
+#' @param CustomIamInstanceProfile The instance profile associated with the underlying Amazon EC2 instance
+#' of an RDS Custom DB instance. The instance profile must meet the
+#' following requirements:
+#' 
+#' -   The profile must exist in your account.
+#' 
+#' -   The profile must have an IAM role that Amazon EC2 has permissions to
+#'     assume.
+#' 
+#' -   The instance profile name and the associated IAM role name must
+#'     start with the prefix `AWSRDSCustom`.
+#' 
+#' For the list of permissions required for the IAM role, see [Configure
+#' IAM and your
+#' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting is required for RDS Custom.
+#' @param NetworkType The network type of the DB instance.
+#' 
+#' Valid values:
+#' 
+#' -   `IPV4`
+#' 
+#' -   `DUAL`
+#' 
+#' The network type is determined by the `DBSubnetGroup` specified for read
+#' replica. A `DBSubnetGroup` can support only the IPv4 protocol or the
+#' IPv4 and the IPv6 protocols (`DUAL`).
+#' 
+#' For more information, see [Working with a DB instance in a
+#' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html)
+#' in the *Amazon RDS User Guide.*
 #' @param SourceRegion The ID of the region that contains the source for the read replica.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_instance_read_replica(
-#'   DBInstanceIdentifier = "string",
-#'   SourceDBInstanceIdentifier = "string",
-#'   DBInstanceClass = "string",
-#'   AvailabilityZone = "string",
-#'   Port = 123,
-#'   MultiAZ = TRUE|FALSE,
-#'   AutoMinorVersionUpgrade = TRUE|FALSE,
-#'   Iops = 123,
-#'   OptionGroupName = "string",
-#'   DBParameterGroupName = "string",
-#'   PubliclyAccessible = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   DBSubnetGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   StorageType = "string",
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   MonitoringInterval = 123,
-#'   MonitoringRoleArn = "string",
-#'   KmsKeyId = "string",
-#'   PreSignedUrl = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   EnablePerformanceInsights = TRUE|FALSE,
-#'   PerformanceInsightsKMSKeyId = "string",
-#'   PerformanceInsightsRetentionPeriod = 123,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   ProcessorFeatures = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   UseDefaultProcessorFeatures = TRUE|FALSE,
-#'   DeletionProtection = TRUE|FALSE,
-#'   Domain = "string",
-#'   DomainIAMRoleName = "string",
-#'   ReplicaMode = "open-read-only"|"mounted",
-#'   MaxAllocatedStorage = 123,
-#'   SourceRegion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
 #' @rdname rds_create_db_instance_read_replica
-rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBInstanceIdentifier, DBInstanceClass = NULL, AvailabilityZone = NULL, Port = NULL, MultiAZ = NULL, AutoMinorVersionUpgrade = NULL, Iops = NULL, OptionGroupName = NULL, DBParameterGroupName = NULL, PubliclyAccessible = NULL, Tags = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, StorageType = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, Domain = NULL, DomainIAMRoleName = NULL, ReplicaMode = NULL, MaxAllocatedStorage = NULL, SourceRegion = NULL) {
+rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBInstanceIdentifier, DBInstanceClass = NULL, AvailabilityZone = NULL, Port = NULL, MultiAZ = NULL, AutoMinorVersionUpgrade = NULL, Iops = NULL, OptionGroupName = NULL, DBParameterGroupName = NULL, PubliclyAccessible = NULL, Tags = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, StorageType = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, Domain = NULL, DomainIAMRoleName = NULL, ReplicaMode = NULL, MaxAllocatedStorage = NULL, CustomIamInstanceProfile = NULL, NetworkType = NULL, SourceRegion = NULL) {
   op <- new_operation(
     name = "CreateDBInstanceReadReplica",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$create_db_instance_read_replica_input(DBInstanceIdentifier = DBInstanceIdentifier, SourceDBInstanceIdentifier = SourceDBInstanceIdentifier, DBInstanceClass = DBInstanceClass, AvailabilityZone = AvailabilityZone, Port = Port, MultiAZ = MultiAZ, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Iops = Iops, OptionGroupName = OptionGroupName, DBParameterGroupName = DBParameterGroupName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, StorageType = StorageType, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ReplicaMode = ReplicaMode, MaxAllocatedStorage = MaxAllocatedStorage, SourceRegion = SourceRegion)
+  input <- .rds$create_db_instance_read_replica_input(DBInstanceIdentifier = DBInstanceIdentifier, SourceDBInstanceIdentifier = SourceDBInstanceIdentifier, DBInstanceClass = DBInstanceClass, AvailabilityZone = AvailabilityZone, Port = Port, MultiAZ = MultiAZ, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Iops = Iops, OptionGroupName = OptionGroupName, DBParameterGroupName = DBParameterGroupName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, StorageType = StorageType, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ReplicaMode = ReplicaMode, MaxAllocatedStorage = MaxAllocatedStorage, CustomIamInstanceProfile = CustomIamInstanceProfile, NetworkType = NetworkType, SourceRegion = SourceRegion)
   output <- .rds$create_db_instance_read_replica_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -4024,31 +3123,8 @@ rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBIn
 #'
 #' @description
 #' Creates a new DB parameter group.
-#' 
-#' A DB parameter group is initially created with the default parameters
-#' for the database engine used by the DB instance. To provide custom
-#' values for any of the parameters, you must modify the group after
-#' creating it using *ModifyDBParameterGroup*. Once you've created a DB
-#' parameter group, you need to associate it with your DB instance using
-#' *ModifyDBInstance*. When you associate a new DB parameter group with a
-#' running DB instance, you need to reboot the DB instance without failover
-#' for the new DB parameter group and associated settings to take effect.
-#' 
-#' After you create a DB parameter group, you should wait at least 5
-#' minutes before creating your first DB instance that uses that DB
-#' parameter group as the default parameter group. This allows Amazon RDS
-#' to fully complete the create action before the parameter group is used
-#' as the default for a new DB instance. This is especially important for
-#' parameters that are critical when creating the default database for a DB
-#' instance, such as the character set for the default database defined by
-#' the `character_set_database` parameter. You can use the *Parameter
-#' Groups* option of the Amazon RDS console or the *DescribeDBParameters*
-#' command to verify that your DB parameter group has been created or
-#' modified.
 #'
-#' @usage
-#' rds_create_db_parameter_group(DBParameterGroupName,
-#'   DBParameterGroupFamily, Description, Tags)
+#' See [https://paws-r.github.io/docs/rds/create_db_parameter_group.html](https://paws-r.github.io/docs/rds/create_db_parameter_group.html) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -4066,42 +3142,50 @@ rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBIn
 #' applied only to a DB instance running a database engine and engine
 #' version compatible with that DB parameter group family.
 #' 
-#' To list all of the available parameter group families, use the following
-#' command:
+#' To list all of the available parameter group families for a DB engine,
+#' use the following command:
 #' 
-#' `aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily"`
+#' `aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily" --engine <engine>`
+#' 
+#' For example, to list all of the available parameter group families for
+#' the MySQL DB engine, use the following command:
+#' 
+#' `aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily" --engine mysql`
 #' 
 #' The output contains duplicates.
+#' 
+#' The following are the valid DB engine values:
+#' 
+#' -   `aurora` (for MySQL 5.6-compatible Aurora)
+#' 
+#' -   `aurora-mysql` (for MySQL 5.7-compatible and MySQL 8.0-compatible
+#'     Aurora)
+#' 
+#' -   `aurora-postgresql`
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-ee-cdb`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se2-cdb`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param Description &#91;required&#93; The description for the DB parameter group.
 #' @param Tags Tags to assign to the DB parameter group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBParameterGroup = list(
-#'     DBParameterGroupName = "string",
-#'     DBParameterGroupFamily = "string",
-#'     Description = "string",
-#'     DBParameterGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_parameter_group(
-#'   DBParameterGroupName = "string",
-#'   DBParameterGroupFamily = "string",
-#'   Description = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4128,23 +3212,22 @@ rds_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroup
 #' @description
 #' Creates a new DB proxy.
 #'
-#' @usage
-#' rds_create_db_proxy(DBProxyName, EngineFamily, Auth, RoleArn,
-#'   VpcSubnetIds, VpcSecurityGroupIds, RequireTLS, IdleClientTimeout,
-#'   DebugLogging, Tags)
+#' See [https://paws-r.github.io/docs/rds/create_db_proxy.html](https://paws-r.github.io/docs/rds/create_db_proxy.html) for full documentation.
 #'
 #' @param DBProxyName &#91;required&#93; The identifier for the proxy. This name must be unique for all proxies
-#' owned by your AWS account in the specified AWS Region. An identifier
-#' must begin with a letter and must contain only ASCII letters, digits,
-#' and hyphens; it can't end with a hyphen or contain two consecutive
-#' hyphens.
+#' owned by your Amazon Web Services account in the specified Amazon Web
+#' Services Region. An identifier must begin with a letter and must contain
+#' only ASCII letters, digits, and hyphens; it can't end with a hyphen or
+#' contain two consecutive hyphens.
 #' @param EngineFamily &#91;required&#93; The kinds of databases that the proxy can connect to. This value
 #' determines which database network protocol the proxy recognizes when it
-#' interprets network traffic to and from the database. The engine family
-#' applies to MySQL and PostgreSQL for both RDS and Aurora.
+#' interprets network traffic to and from the database. For Aurora MySQL,
+#' RDS for MariaDB, and RDS for MySQL databases, specify `MYSQL`. For
+#' Aurora PostgreSQL and RDS for PostgreSQL databases, specify
+#' `POSTGRESQL`.
 #' @param Auth &#91;required&#93; The authorization mechanism that the proxy uses.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that the proxy uses to
-#' access secrets in AWS Secrets Manager.
+#' access secrets in Amazon Web Services Secrets Manager.
 #' @param VpcSubnetIds &#91;required&#93; One or more VPC subnet IDs to associate with the new proxy.
 #' @param VpcSecurityGroupIds One or more VPC security group IDs to associate with the new proxy.
 #' @param RequireTLS A Boolean parameter that specifies whether Transport Layer Security
@@ -4162,78 +3245,6 @@ rds_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroup
 #' safeguard any sensitive information that appears in the logs.
 #' @param Tags An optional set of key-value pairs to associate arbitrary data of your
 #' choosing with the proxy.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBProxy = list(
-#'     DBProxyName = "string",
-#'     DBProxyArn = "string",
-#'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
-#'     EngineFamily = "string",
-#'     VpcSecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     VpcSubnetIds = list(
-#'       "string"
-#'     ),
-#'     Auth = list(
-#'       list(
-#'         Description = "string",
-#'         UserName = "string",
-#'         AuthScheme = "SECRETS",
-#'         SecretArn = "string",
-#'         IAMAuth = "DISABLED"|"REQUIRED"
-#'       )
-#'     ),
-#'     RoleArn = "string",
-#'     Endpoint = "string",
-#'     RequireTLS = TRUE|FALSE,
-#'     IdleClientTimeout = 123,
-#'     DebugLogging = TRUE|FALSE,
-#'     CreatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_proxy(
-#'   DBProxyName = "string",
-#'   EngineFamily = "MYSQL"|"POSTGRESQL",
-#'   Auth = list(
-#'     list(
-#'       Description = "string",
-#'       UserName = "string",
-#'       AuthScheme = "SECRETS",
-#'       SecretArn = "string",
-#'       IAMAuth = "DISABLED"|"REQUIRED"
-#'     )
-#'   ),
-#'   RoleArn = "string",
-#'   VpcSubnetIds = list(
-#'     "string"
-#'   ),
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   RequireTLS = TRUE|FALSE,
-#'   IdleClientTimeout = 123,
-#'   DebugLogging = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4255,18 +3266,52 @@ rds_create_db_proxy <- function(DBProxyName, EngineFamily, Auth, RoleArn, VpcSub
 }
 .rds$operations$create_db_proxy <- rds_create_db_proxy
 
+#' Creates a DBProxyEndpoint
+#'
+#' @description
+#' Creates a `DBProxyEndpoint`. Only applies to proxies that are associated with Aurora DB clusters. You can use DB proxy endpoints to specify read/write or read-only access to the DB cluster. You can also use DB proxy endpoints to access a DB proxy through a different VPC than the proxy's default VPC.
+#'
+#' See [https://paws-r.github.io/docs/rds/create_db_proxy_endpoint.html](https://paws-r.github.io/docs/rds/create_db_proxy_endpoint.html) for full documentation.
+#'
+#' @param DBProxyName &#91;required&#93; The name of the DB proxy associated with the DB proxy endpoint that you
+#' create.
+#' @param DBProxyEndpointName &#91;required&#93; The name of the DB proxy endpoint to create.
+#' @param VpcSubnetIds &#91;required&#93; The VPC subnet IDs for the DB proxy endpoint that you create. You can
+#' specify a different set of subnet IDs than for the original DB proxy.
+#' @param VpcSecurityGroupIds The VPC security group IDs for the DB proxy endpoint that you create.
+#' You can specify a different set of security group IDs than for the
+#' original DB proxy. The default is the default security group for the
+#' VPC.
+#' @param TargetRole A value that indicates whether the DB proxy endpoint can be used for
+#' read/write or read-only operations. The default is `READ_WRITE`.
+#' @param Tags 
+#'
+#' @keywords internal
+#'
+#' @rdname rds_create_db_proxy_endpoint
+rds_create_db_proxy_endpoint <- function(DBProxyName, DBProxyEndpointName, VpcSubnetIds, VpcSecurityGroupIds = NULL, TargetRole = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateDBProxyEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$create_db_proxy_endpoint_input(DBProxyName = DBProxyName, DBProxyEndpointName = DBProxyEndpointName, VpcSubnetIds = VpcSubnetIds, VpcSecurityGroupIds = VpcSecurityGroupIds, TargetRole = TargetRole, Tags = Tags)
+  output <- .rds$create_db_proxy_endpoint_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$create_db_proxy_endpoint <- rds_create_db_proxy_endpoint
+
 #' Creates a new DB security group
 #'
 #' @description
-#' Creates a new DB security group. DB security groups control access to a
-#' DB instance.
-#' 
-#' A DB security group controls access to EC2-Classic DB instances that are
-#' not in a VPC.
+#' Creates a new DB security group. DB security groups control access to a DB instance.
 #'
-#' @usage
-#' rds_create_db_security_group(DBSecurityGroupName,
-#'   DBSecurityGroupDescription, Tags)
+#' See [https://paws-r.github.io/docs/rds/create_db_security_group.html](https://paws-r.github.io/docs/rds/create_db_security_group.html) for full documentation.
 #'
 #' @param DBSecurityGroupName &#91;required&#93; The name for the DB security group. This value is stored as a lowercase
 #' string.
@@ -4284,48 +3329,6 @@ rds_create_db_proxy <- function(DBProxyName, EngineFamily, Auth, RoleArn, VpcSub
 #' Example: `mysecuritygroup`
 #' @param DBSecurityGroupDescription &#91;required&#93; The description for the DB security group.
 #' @param Tags Tags to assign to the DB security group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSecurityGroup = list(
-#'     OwnerId = "string",
-#'     DBSecurityGroupName = "string",
-#'     DBSecurityGroupDescription = "string",
-#'     VpcId = "string",
-#'     EC2SecurityGroups = list(
-#'       list(
-#'         Status = "string",
-#'         EC2SecurityGroupName = "string",
-#'         EC2SecurityGroupId = "string",
-#'         EC2SecurityGroupOwnerId = "string"
-#'       )
-#'     ),
-#'     IPRanges = list(
-#'       list(
-#'         Status = "string",
-#'         CIDRIP = "string"
-#'       )
-#'     ),
-#'     DBSecurityGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_security_group(
-#'   DBSecurityGroupName = "string",
-#'   DBSecurityGroupDescription = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4350,11 +3353,9 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 #' Creates a snapshot of a DB instance
 #'
 #' @description
-#' Creates a snapshot of a DB instance. The source DB instance must be in
-#' the `available` or `storage-optimization` state.
+#' Creates a snapshot of a DB instance. The source DB instance must be in the `available` or `storage-optimization` state.
 #'
-#' @usage
-#' rds_create_db_snapshot(DBSnapshotIdentifier, DBInstanceIdentifier, Tags)
+#' See [https://paws-r.github.io/docs/rds/create_db_snapshot.html](https://paws-r.github.io/docs/rds/create_db_snapshot.html) for full documentation.
 #'
 #' @param DBSnapshotIdentifier &#91;required&#93; The identifier for the DB snapshot.
 #' 
@@ -4376,72 +3377,6 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 #' 
 #' -   Must match the identifier of an existing DBInstance.
 #' @param Tags 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSnapshot = list(
-#'     DBSnapshotIdentifier = "string",
-#'     DBInstanceIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     AvailabilityZone = "string",
-#'     VpcId = "string",
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     SnapshotType = "string",
-#'     Iops = 123,
-#'     OptionGroupName = "string",
-#'     PercentProgress = 123,
-#'     SourceRegion = "string",
-#'     SourceDBSnapshotIdentifier = "string",
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     Encrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBSnapshotArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DbiResourceId = "string",
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_snapshot(
-#'   DBSnapshotIdentifier = "string",
-#'   DBInstanceIdentifier = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4466,66 +3401,26 @@ rds_create_db_snapshot <- function(DBSnapshotIdentifier, DBInstanceIdentifier, T
 #' Creates a new DB subnet group
 #'
 #' @description
-#' Creates a new DB subnet group. DB subnet groups must contain at least
-#' one subnet in at least two AZs in the AWS Region.
+#' Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the Amazon Web Services Region.
 #'
-#' @usage
-#' rds_create_db_subnet_group(DBSubnetGroupName, DBSubnetGroupDescription,
-#'   SubnetIds, Tags)
+#' See [https://paws-r.github.io/docs/rds/create_db_subnet_group.html](https://paws-r.github.io/docs/rds/create_db_subnet_group.html) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the DB subnet group. This value is stored as a lowercase
 #' string.
 #' 
-#' Constraints: Must contain no more than 255 letters, numbers, periods,
-#' underscores, spaces, or hyphens. Must not be default.
+#' Constraints:
 #' 
-#' Example: `mySubnetgroup`
+#' -   Must contain no more than 255 letters, numbers, periods,
+#'     underscores, spaces, or hyphens.
+#' 
+#' -   Must not be default.
+#' 
+#' -   First character must be a letter.
+#' 
+#' Example: `mydbsubnetgroup`
 #' @param DBSubnetGroupDescription &#91;required&#93; The description for the DB subnet group.
 #' @param SubnetIds &#91;required&#93; The EC2 Subnet IDs for the DB subnet group.
 #' @param Tags Tags to assign to the DB subnet group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSubnetGroup = list(
-#'     DBSubnetGroupName = "string",
-#'     DBSubnetGroupDescription = "string",
-#'     VpcId = "string",
-#'     SubnetGroupStatus = "string",
-#'     Subnets = list(
-#'       list(
-#'         SubnetIdentifier = "string",
-#'         SubnetAvailabilityZone = list(
-#'           Name = "string"
-#'         ),
-#'         SubnetOutpost = list(
-#'           Arn = "string"
-#'         ),
-#'         SubnetStatus = "string"
-#'       )
-#'     ),
-#'     DBSubnetGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_db_subnet_group(
-#'   DBSubnetGroupName = "string",
-#'   DBSubnetGroupDescription = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4550,36 +3445,9 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' Creates an RDS event notification subscription
 #'
 #' @description
-#' Creates an RDS event notification subscription. This action requires a
-#' topic Amazon Resource Name (ARN) created by either the RDS console, the
-#' SNS console, or the SNS API. To obtain an ARN with SNS, you must create
-#' a topic in Amazon SNS and subscribe to the topic. The ARN is displayed
-#' in the SNS console.
-#' 
-#' You can specify the type of source (`SourceType`) that you want to be
-#' notified of and provide a list of RDS sources (`SourceIds`) that
-#' triggers the events. You can also provide a list of event categories
-#' (`EventCategories`) for events that you want to be notified of. For
-#' example, you can specify `SourceType` = `db-instance`, `SourceIds` =
-#' `mydbinstance1`, `mydbinstance2` and `EventCategories` = `Availability`,
-#' `Backup`.
-#' 
-#' If you specify both the `SourceType` and `SourceIds`, such as
-#' `SourceType` = `db-instance` and `SourceIdentifier` = `myDBInstance1`,
-#' you are notified of all the `db-instance` events for the specified
-#' source. If you specify a `SourceType` but do not specify a
-#' `SourceIdentifier`, you receive notice of the events for that source
-#' type for all your RDS sources. If you don't specify either the
-#' SourceType or the `SourceIdentifier`, you are notified of events
-#' generated from all RDS sources belonging to your customer account.
-#' 
-#' RDS event notification is only available for unencrypted SNS topics. If
-#' you specify an encrypted SNS topic, event notifications aren't sent for
-#' the topic.
+#' Creates an RDS event notification subscription. This operation requires a topic Amazon Resource Name (ARN) created by either the RDS console, the SNS console, or the SNS API. To obtain an ARN with SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console.
 #'
-#' @usage
-#' rds_create_event_subscription(SubscriptionName, SnsTopicArn, SourceType,
-#'   EventCategories, SourceIds, Enabled, Tags)
+#' See [https://paws-r.github.io/docs/rds/create_event_subscription.html](https://paws-r.github.io/docs/rds/create_event_subscription.html) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the subscription.
 #' 
@@ -4589,16 +3457,19 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' and subscribe to it.
 #' @param SourceType The type of source that is generating the events. For example, if you
 #' want to be notified of events generated by a DB instance, you set this
-#' parameter to `db-instance`. If this value isn't specified, all events
-#' are returned.
+#' parameter to `db-instance`. For RDS Proxy events, specify `db-proxy`. If
+#' this value isn't specified, all events are returned.
 #' 
 #' Valid values: `db-instance` | `db-cluster` | `db-parameter-group` |
-#' `db-security-group` | `db-snapshot` | `db-cluster-snapshot`
+#' `db-security-group` | `db-snapshot` | `db-cluster-snapshot` | `db-proxy`
 #' @param EventCategories A list of event categories for a particular source type (`SourceType`)
 #' that you want to subscribe to. You can see a list of the categories for
-#' a given source type in
-#' [Events](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-#' in the *Amazon RDS User Guide* or by using the
+#' a given source type in the "Amazon RDS event categories and event
+#' messages" section of the [*Amazon RDS User
+#' Guide*](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html)
+#' or the [*Amazon Aurora User
+#' Guide*](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html)
+#' . You can also see this list by using the
 #' [`describe_event_categories`][rds_describe_event_categories] operation.
 #' @param SourceIds The list of identifiers of the event sources for which events are
 #' returned. If not specified, then all sources are included in the
@@ -4608,8 +3479,7 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' 
 #' Constraints:
 #' 
-#' -   If a `SourceIds` value is supplied, `SourceType` must also be
-#'     provided.
+#' -   If `SourceIds` are supplied, `SourceType` must also be provided.
 #' 
 #' -   If the source type is a DB instance, a `DBInstanceIdentifier` value
 #'     must be supplied.
@@ -4628,55 +3498,13 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' 
 #' -   If the source type is a DB cluster snapshot, a
 #'     `DBClusterSnapshotIdentifier` value must be supplied.
+#' 
+#' -   If the source type is an RDS Proxy, a `DBProxyName` value must be
+#'     supplied.
 #' @param Enabled A value that indicates whether to activate the subscription. If the
 #' event notification subscription isn't activated, the subscription is
 #' created but not active.
 #' @param Tags 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSubscription = list(
-#'     CustomerAwsId = "string",
-#'     CustSubscriptionId = "string",
-#'     SnsTopicArn = "string",
-#'     Status = "string",
-#'     SubscriptionCreationTime = "string",
-#'     SourceType = "string",
-#'     SourceIdsList = list(
-#'       "string"
-#'     ),
-#'     EventCategoriesList = list(
-#'       "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     EventSubscriptionArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_event_subscription(
-#'   SubscriptionName = "string",
-#'   SnsTopicArn = "string",
-#'   SourceType = "string",
-#'   EventCategories = list(
-#'     "string"
-#'   ),
-#'   SourceIds = list(
-#'     "string"
-#'   ),
-#'   Enabled = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4698,26 +3526,13 @@ rds_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceT
 }
 .rds$operations$create_event_subscription <- rds_create_event_subscription
 
-#' Creates an Aurora global database spread across multiple AWS Regions
+#' Creates an Aurora global database spread across multiple Amazon Web
+#' Services Regions
 #'
 #' @description
-#' Creates an Aurora global database spread across multiple AWS Regions.
-#' The global database contains a single primary cluster with read-write
-#' capability, and a read-only secondary cluster that receives data from
-#' the primary cluster through high-speed replication performed by the
-#' Aurora storage subsystem.
-#' 
-#' You can create a global database that is initially empty, and then add a
-#' primary cluster and a secondary cluster to it. Or you can specify an
-#' existing Aurora cluster during the create operation, and this cluster
-#' becomes the primary cluster of the global database.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Creates an Aurora global database spread across multiple Amazon Web Services Regions. The global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.
 #'
-#' @usage
-#' rds_create_global_cluster(GlobalClusterIdentifier,
-#'   SourceDBClusterIdentifier, Engine, EngineVersion, DeletionProtection,
-#'   DatabaseName, StorageEncrypted)
+#' See [https://paws-r.github.io/docs/rds/create_global_cluster.html](https://paws-r.github.io/docs/rds/create_global_cluster.html) for full documentation.
 #'
 #' @param GlobalClusterIdentifier The cluster identifier of the new global database cluster.
 #' @param SourceDBClusterIdentifier The Amazon Resource Name (ARN) to use as the primary cluster of the
@@ -4726,51 +3541,10 @@ rds_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceT
 #' @param EngineVersion The engine version of the Aurora global database.
 #' @param DeletionProtection The deletion protection setting for the new global database. The global
 #' database can't be deleted when deletion protection is enabled.
-#' @param DatabaseName The name for your database of up to 64 alpha-numeric characters. If you
+#' @param DatabaseName The name for your database of up to 64 alphanumeric characters. If you
 #' do not provide a name, Amazon Aurora will not create a database in the
 #' global database cluster you are creating.
 #' @param StorageEncrypted The storage encryption setting for the new global database cluster.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GlobalCluster = list(
-#'     GlobalClusterIdentifier = "string",
-#'     GlobalClusterResourceId = "string",
-#'     GlobalClusterArn = "string",
-#'     Status = "string",
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     DatabaseName = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     DeletionProtection = TRUE|FALSE,
-#'     GlobalClusterMembers = list(
-#'       list(
-#'         DBClusterArn = "string",
-#'         Readers = list(
-#'           "string"
-#'         ),
-#'         IsWriter = TRUE|FALSE,
-#'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_global_cluster(
-#'   GlobalClusterIdentifier = "string",
-#'   SourceDBClusterIdentifier = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   DeletionProtection = TRUE|FALSE,
-#'   DatabaseName = "string",
-#'   StorageEncrypted = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4797,9 +3571,7 @@ rds_create_global_cluster <- function(GlobalClusterIdentifier = NULL, SourceDBCl
 #' @description
 #' Creates a new option group. You can create up to 20 option groups.
 #'
-#' @usage
-#' rds_create_option_group(OptionGroupName, EngineName, MajorEngineVersion,
-#'   OptionGroupDescription, Tags)
+#' See [https://paws-r.github.io/docs/rds/create_option_group.html](https://paws-r.github.io/docs/rds/create_option_group.html) for full documentation.
 #'
 #' @param OptionGroupName &#91;required&#93; Specifies the name of the option group to be created.
 #' 
@@ -4814,77 +3586,34 @@ rds_create_global_cluster <- function(GlobalClusterIdentifier = NULL, SourceDBCl
 #' Example: `myoptiongroup`
 #' @param EngineName &#91;required&#93; Specifies the name of the engine that this option group should be
 #' associated with.
+#' 
+#' Valid Values:
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-ee-cdb`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se2-cdb`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param MajorEngineVersion &#91;required&#93; Specifies the major version of the engine that this option group should
 #' be associated with.
 #' @param OptionGroupDescription &#91;required&#93; The description of the option group.
 #' @param Tags Tags to assign to the option group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OptionGroup = list(
-#'     OptionGroupName = "string",
-#'     OptionGroupDescription = "string",
-#'     EngineName = "string",
-#'     MajorEngineVersion = "string",
-#'     Options = list(
-#'       list(
-#'         OptionName = "string",
-#'         OptionDescription = "string",
-#'         Persistent = TRUE|FALSE,
-#'         Permanent = TRUE|FALSE,
-#'         Port = 123,
-#'         OptionVersion = "string",
-#'         OptionSettings = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string",
-#'             DefaultValue = "string",
-#'             Description = "string",
-#'             ApplyType = "string",
-#'             DataType = "string",
-#'             AllowedValues = "string",
-#'             IsModifiable = TRUE|FALSE,
-#'             IsCollection = TRUE|FALSE
-#'           )
-#'         ),
-#'         DBSecurityGroupMemberships = list(
-#'           list(
-#'             DBSecurityGroupName = "string",
-#'             Status = "string"
-#'           )
-#'         ),
-#'         VpcSecurityGroupMemberships = list(
-#'           list(
-#'             VpcSecurityGroupId = "string",
-#'             Status = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
-#'     VpcId = "string",
-#'     OptionGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_option_group(
-#'   OptionGroupName = "string",
-#'   EngineName = "string",
-#'   MajorEngineVersion = "string",
-#'   OptionGroupDescription = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4906,86 +3635,45 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 }
 .rds$operations$create_option_group <- rds_create_option_group
 
-#' Deletes a custom Availability Zone (AZ)
+#' Deletes a custom engine version
 #'
 #' @description
-#' Deletes a custom Availability Zone (AZ).
-#' 
-#' A custom AZ is an on-premises AZ that is integrated with a VMware
-#' vSphere cluster.
-#' 
-#' For more information about RDS on VMware, see the [RDS on VMware User
-#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
+#' Deletes a custom engine version. To run this command, make sure you meet the following prerequisites:
 #'
-#' @usage
-#' rds_delete_custom_availability_zone(CustomAvailabilityZoneId)
+#' See [https://paws-r.github.io/docs/rds/delete_custom_db_engine_version.html](https://paws-r.github.io/docs/rds/delete_custom_db_engine_version.html) for full documentation.
 #'
-#' @param CustomAvailabilityZoneId &#91;required&#93; The custom AZ identifier.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CustomAvailabilityZone = list(
-#'     CustomAvailabilityZoneId = "string",
-#'     CustomAvailabilityZoneName = "string",
-#'     CustomAvailabilityZoneStatus = "string",
-#'     VpnDetails = list(
-#'       VpnId = "string",
-#'       VpnTunnelOriginatorIP = "string",
-#'       VpnGatewayIp = "string",
-#'       VpnPSK = "string",
-#'       VpnName = "string",
-#'       VpnState = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_custom_availability_zone(
-#'   CustomAvailabilityZoneId = "string"
-#' )
-#' ```
+#' @param Engine &#91;required&#93; The database engine. The only supported engine is `custom-oracle-ee`.
+#' @param EngineVersion &#91;required&#93; The custom engine version (CEV) for your DB instance. This option is
+#' required for RDS Custom, but optional for Amazon RDS. The combination of
+#' `Engine` and `EngineVersion` is unique per customer per Amazon Web
+#' Services Region.
 #'
 #' @keywords internal
 #'
-#' @rdname rds_delete_custom_availability_zone
-rds_delete_custom_availability_zone <- function(CustomAvailabilityZoneId) {
+#' @rdname rds_delete_custom_db_engine_version
+rds_delete_custom_db_engine_version <- function(Engine, EngineVersion) {
   op <- new_operation(
-    name = "DeleteCustomAvailabilityZone",
+    name = "DeleteCustomDBEngineVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$delete_custom_availability_zone_input(CustomAvailabilityZoneId = CustomAvailabilityZoneId)
-  output <- .rds$delete_custom_availability_zone_output()
+  input <- .rds$delete_custom_db_engine_version_input(Engine = Engine, EngineVersion = EngineVersion)
+  output <- .rds$delete_custom_db_engine_version_output()
   config <- get_config()
   svc <- .rds$service(config)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
-.rds$operations$delete_custom_availability_zone <- rds_delete_custom_availability_zone
+.rds$operations$delete_custom_db_engine_version <- rds_delete_custom_db_engine_version
 
 #' The DeleteDBCluster action deletes a previously provisioned DB cluster
 #'
 #' @description
-#' The DeleteDBCluster action deletes a previously provisioned DB cluster.
-#' When you delete a DB cluster, all automated backups for that DB cluster
-#' are deleted and can't be recovered. Manual DB cluster snapshots of the
-#' specified DB cluster are not deleted.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a DB cluster, all automated backups for that DB cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified DB cluster are not deleted.
 #'
-#' @usage
-#' rds_delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot,
-#'   FinalDBSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/rds/delete_db_cluster.html](https://paws-r.github.io/docs/rds/delete_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier for the DB cluster to be deleted. This
 #' parameter isn't case-sensitive.
@@ -5017,150 +3705,6 @@ rds_delete_custom_availability_zone <- function(CustomAvailabilityZoneId) {
 #' 
 #' -   Can't end with a hyphen or contain two consecutive hyphens
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     CustomEndpoints = list(
-#'       "string"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EarliestBacktrackTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BacktrackWindow = 123,
-#'     BacktrackConsumedChangeRecords = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     Capacity = 123,
-#'     EngineMode = "string",
-#'     ScalingConfigurationInfo = list(
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       AutoPause = TRUE|FALSE,
-#'       SecondsUntilAutoPause = 123,
-#'       TimeoutAction = "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     HttpEndpointEnabled = TRUE|FALSE,
-#'     ActivityStreamMode = "sync"|"async",
-#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'     ActivityStreamKmsKeyId = "string",
-#'     ActivityStreamKinesisStreamName = "string",
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     CrossAccountClone = TRUE|FALSE,
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'     GlobalWriteForwardingRequested = TRUE|FALSE,
-#'     PendingModifiedValues = list(
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       MasterUserPassword = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       EngineVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   SkipFinalSnapshot = TRUE|FALSE,
-#'   FinalDBSnapshotIdentifier = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_cluster
@@ -5185,44 +3729,12 @@ rds_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL,
 #' cluster
 #'
 #' @description
-#' Deletes a custom endpoint and removes it from an Amazon Aurora DB
-#' cluster.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster.
 #'
-#' @usage
-#' rds_delete_db_cluster_endpoint(DBClusterEndpointIdentifier)
+#' See [https://paws-r.github.io/docs/rds/delete_db_cluster_endpoint.html](https://paws-r.github.io/docs/rds/delete_db_cluster_endpoint.html) for full documentation.
 #'
 #' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier associated with the custom endpoint. This parameter is
 #' stored as a lowercase string.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterEndpointIdentifier = "string",
-#'   DBClusterIdentifier = "string",
-#'   DBClusterEndpointResourceIdentifier = "string",
-#'   Endpoint = "string",
-#'   Status = "string",
-#'   EndpointType = "string",
-#'   CustomEndpointType = "string",
-#'   StaticMembers = list(
-#'     "string"
-#'   ),
-#'   ExcludedMembers = list(
-#'     "string"
-#'   ),
-#'   DBClusterEndpointArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster_endpoint(
-#'   DBClusterEndpointIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5247,17 +3759,9 @@ rds_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 #' Deletes a specified DB cluster parameter group
 #'
 #' @description
-#' Deletes a specified DB cluster parameter group. The DB cluster parameter
-#' group to be deleted can't be associated with any DB clusters.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Deletes a specified DB cluster parameter group. The DB cluster parameter group to be deleted can't be associated with any DB clusters.
 #'
-#' @usage
-#' rds_delete_db_cluster_parameter_group(DBClusterParameterGroupName)
+#' See [https://paws-r.github.io/docs/rds/delete_db_cluster_parameter_group.html](https://paws-r.github.io/docs/rds/delete_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group.
 #' 
@@ -5268,16 +3772,6 @@ rds_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 #' -   You can't delete a default DB cluster parameter group.
 #' 
 #' -   Can't be associated with any DB clusters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5302,72 +3796,14 @@ rds_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName) {
 #' Deletes a DB cluster snapshot
 #'
 #' @description
-#' Deletes a DB cluster snapshot. If the snapshot is being copied, the copy
-#' operation is terminated.
-#' 
-#' The DB cluster snapshot must be in the `available` state to be deleted.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Deletes a DB cluster snapshot. If the snapshot is being copied, the copy operation is terminated.
 #'
-#' @usage
-#' rds_delete_db_cluster_snapshot(DBClusterSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/rds/delete_db_cluster_snapshot.html](https://paws-r.github.io/docs/rds/delete_db_cluster_snapshot.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot to delete.
 #' 
 #' Constraints: Must be the name of an existing DB cluster snapshot in the
 #' `available` state.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshot = list(
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     VpcId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     SnapshotType = "string",
-#'     PercentProgress = 123,
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_cluster_snapshot(
-#'   DBClusterSnapshotIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5392,41 +3828,9 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' The DeleteDBInstance action deletes a previously provisioned DB instance
 #'
 #' @description
-#' The DeleteDBInstance action deletes a previously provisioned DB
-#' instance. When you delete a DB instance, all automated backups for that
-#' instance are deleted and can't be recovered. Manual DB snapshots of the
-#' DB instance to be deleted by
-#' [`delete_db_instance`][rds_delete_db_instance] are not deleted.
-#' 
-#' If you request a final DB snapshot the status of the Amazon RDS DB
-#' instance is `deleting` until the DB snapshot is created. The API action
-#' `DescribeDBInstance` is used to monitor the status of this operation.
-#' The action can't be canceled or reverted once submitted.
-#' 
-#' When a DB instance is in a failure state and has a status of `failed`,
-#' `incompatible-restore`, or `incompatible-network`, you can only delete
-#' it when you skip creation of the final snapshot with the
-#' `SkipFinalSnapshot` parameter.
-#' 
-#' If the specified DB instance is part of an Amazon Aurora DB cluster, you
-#' can't delete the DB instance if both of the following conditions are
-#' true:
-#' 
-#' -   The DB cluster is a read replica of another Amazon Aurora DB
-#'     cluster.
-#' 
-#' -   The DB instance is the only instance in the DB cluster.
-#' 
-#' To delete a DB instance in this case, first call the
-#' [`promote_read_replica_db_cluster`][rds_promote_read_replica_db_cluster]
-#' API action to promote the DB cluster so it's no longer a read replica.
-#' After the promotion completes, then call the
-#' [`delete_db_instance`][rds_delete_db_instance] API action to delete the
-#' final instance in the DB cluster.
+#' The DeleteDBInstance action deletes a previously provisioned DB instance. When you delete a DB instance, all automated backups for that instance are deleted and can't be recovered. Manual DB snapshots of the DB instance to be deleted by [`delete_db_instance`][rds_delete_db_instance] are not deleted.
 #'
-#' @usage
-#' rds_delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot,
-#'   FinalDBSnapshotIdentifier, DeleteAutomatedBackups)
+#' See [https://paws-r.github.io/docs/rds/delete_db_instance.html](https://paws-r.github.io/docs/rds/delete_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier for the DB instance to be deleted. This
 #' parameter isn't case-sensitive.
@@ -5435,24 +3839,29 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' 
 #' -   Must match the name of an existing DB instance.
 #' @param SkipFinalSnapshot A value that indicates whether to skip the creation of a final DB
-#' snapshot before the DB instance is deleted. If skip is specified, no DB
-#' snapshot is created. If skip isn't specified, a DB snapshot is created
-#' before the DB instance is deleted. By default, skip isn't specified, and
-#' the DB snapshot is created.
+#' snapshot before deleting the instance. If you enable this parameter, RDS
+#' doesn't create a DB snapshot. If you don't enable this parameter, RDS
+#' creates a DB snapshot before the DB instance is deleted. By default,
+#' skip isn't enabled, and the DB snapshot is created.
 #' 
-#' When a DB instance is in a failure state and has a status of 'failed',
-#' 'incompatible-restore', or 'incompatible-network', it can only be
-#' deleted when skip is specified.
+#' If you don't enable this parameter, you must specify the
+#' `FinalDBSnapshotIdentifier` parameter.
 #' 
-#' Specify skip when deleting a read replica.
+#' When a DB instance is in a failure state and has a status of `failed`,
+#' `incompatible-restore`, or `incompatible-network`, RDS can delete the
+#' instance only if you enable this parameter.
 #' 
-#' The FinalDBSnapshotIdentifier parameter must be specified if skip isn't
-#' specified.
+#' If you delete a read replica or an RDS Custom instance, you must enable
+#' this setting.
+#' 
+#' This setting is required for RDS Custom.
 #' @param FinalDBSnapshotIdentifier The `DBSnapshotIdentifier` of the new `DBSnapshot` created when the
 #' `SkipFinalSnapshot` parameter is disabled.
 #' 
-#' Specifying this parameter and also specifying to skip final DB snapshot
-#' creation in SkipFinalShapshot results in an error.
+#' If you enable this parameter and also enable SkipFinalShapshot, the
+#' command results in an error.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Constraints:
 #' 
@@ -5467,207 +3876,6 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' after the DB instance is deleted. This parameter isn't case-sensitive.
 #' The default is to remove automated backups immediately after the DB
 #' instance is deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   SkipFinalSnapshot = TRUE|FALSE,
-#'   FinalDBSnapshotIdentifier = "string",
-#'   DeleteAutomatedBackups = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5693,74 +3901,17 @@ rds_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot = NUL
 #' instance or the Amazon Resource Name (ARN) of the automated backups
 #'
 #' @description
-#' Deletes automated backups using the `DbiResourceId` value of the source
-#' DB instance or the Amazon Resource Name (ARN) of the automated backups.
+#' Deletes automated backups using the `DbiResourceId` value of the source DB instance or the Amazon Resource Name (ARN) of the automated backups.
 #'
-#' @usage
-#' rds_delete_db_instance_automated_backup(DbiResourceId,
-#'   DBInstanceAutomatedBackupsArn)
+#' See [https://paws-r.github.io/docs/rds/delete_db_instance_automated_backup.html](https://paws-r.github.io/docs/rds/delete_db_instance_automated_backup.html) for full documentation.
 #'
 #' @param DbiResourceId The identifier for the source DB instance, which can't be changed and
-#' which is unique to an AWS Region.
+#' which is unique to an Amazon Web Services Region.
 #' @param DBInstanceAutomatedBackupsArn The Amazon Resource Name (ARN) of the automated backups to delete, for
 #' example,
 #' `arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstanceAutomatedBackup = list(
-#'     DBInstanceArn = "string",
-#'     DbiResourceId = "string",
-#'     Region = "string",
-#'     DBInstanceIdentifier = "string",
-#'     RestoreWindow = list(
-#'       EarliestTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LatestTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     AvailabilityZone = "string",
-#'     VpcId = "string",
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupName = "string",
-#'     TdeCredentialArn = "string",
-#'     Encrypted = TRUE|FALSE,
-#'     StorageType = "string",
-#'     KmsKeyId = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     BackupRetentionPeriod = 123,
-#'     DBInstanceAutomatedBackupsArn = "string",
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_instance_automated_backup(
-#'   DbiResourceId = "string",
-#'   DBInstanceAutomatedBackupsArn = "string"
-#' )
-#' ```
+#' 
+#' This setting doesn't apply to RDS Custom.
 #'
 #' @keywords internal
 #'
@@ -5785,11 +3936,9 @@ rds_delete_db_instance_automated_backup <- function(DbiResourceId = NULL, DBInst
 #' Deletes a specified DB parameter group
 #'
 #' @description
-#' Deletes a specified DB parameter group. The DB parameter group to be
-#' deleted can't be associated with any DB instances.
+#' Deletes a specified DB parameter group. The DB parameter group to be deleted can't be associated with any DB instances.
 #'
-#' @usage
-#' rds_delete_db_parameter_group(DBParameterGroupName)
+#' See [https://paws-r.github.io/docs/rds/delete_db_parameter_group.html](https://paws-r.github.io/docs/rds/delete_db_parameter_group.html) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -5800,16 +3949,6 @@ rds_delete_db_instance_automated_backup <- function(DbiResourceId = NULL, DBInst
 #' -   You can't delete a default DB parameter group
 #' 
 #' -   Can't be associated with any DB instances
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_parameter_group(
-#'   DBParameterGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5831,61 +3970,14 @@ rds_delete_db_parameter_group <- function(DBParameterGroupName) {
 }
 .rds$operations$delete_db_parameter_group <- rds_delete_db_parameter_group
 
-#' Deletes an existing proxy
+#' Deletes an existing DB proxy
 #'
 #' @description
-#' Deletes an existing proxy.
+#' Deletes an existing DB proxy.
 #'
-#' @usage
-#' rds_delete_db_proxy(DBProxyName)
+#' See [https://paws-r.github.io/docs/rds/delete_db_proxy.html](https://paws-r.github.io/docs/rds/delete_db_proxy.html) for full documentation.
 #'
 #' @param DBProxyName &#91;required&#93; The name of the DB proxy to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBProxy = list(
-#'     DBProxyName = "string",
-#'     DBProxyArn = "string",
-#'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
-#'     EngineFamily = "string",
-#'     VpcSecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     VpcSubnetIds = list(
-#'       "string"
-#'     ),
-#'     Auth = list(
-#'       list(
-#'         Description = "string",
-#'         UserName = "string",
-#'         AuthScheme = "SECRETS",
-#'         SecretArn = "string",
-#'         IAMAuth = "DISABLED"|"REQUIRED"
-#'       )
-#'     ),
-#'     RoleArn = "string",
-#'     Endpoint = "string",
-#'     RequireTLS = TRUE|FALSE,
-#'     IdleClientTimeout = 123,
-#'     DebugLogging = TRUE|FALSE,
-#'     CreatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_proxy(
-#'   DBProxyName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5907,16 +3999,41 @@ rds_delete_db_proxy <- function(DBProxyName) {
 }
 .rds$operations$delete_db_proxy <- rds_delete_db_proxy
 
+#' Deletes a DBProxyEndpoint
+#'
+#' @description
+#' Deletes a `DBProxyEndpoint`. Doing so removes the ability to access the DB proxy using the endpoint that you defined. The endpoint that you delete might have provided capabilities such as read/write or read-only operations, or using a different VPC than the DB proxy's default VPC.
+#'
+#' See [https://paws-r.github.io/docs/rds/delete_db_proxy_endpoint.html](https://paws-r.github.io/docs/rds/delete_db_proxy_endpoint.html) for full documentation.
+#'
+#' @param DBProxyEndpointName &#91;required&#93; The name of the DB proxy endpoint to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname rds_delete_db_proxy_endpoint
+rds_delete_db_proxy_endpoint <- function(DBProxyEndpointName) {
+  op <- new_operation(
+    name = "DeleteDBProxyEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$delete_db_proxy_endpoint_input(DBProxyEndpointName = DBProxyEndpointName)
+  output <- .rds$delete_db_proxy_endpoint_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$delete_db_proxy_endpoint <- rds_delete_db_proxy_endpoint
+
 #' Deletes a DB security group
 #'
 #' @description
 #' Deletes a DB security group.
-#' 
-#' The specified DB security group must not be associated with any DB
-#' instances.
 #'
-#' @usage
-#' rds_delete_db_security_group(DBSecurityGroupName)
+#' See [https://paws-r.github.io/docs/rds/delete_db_security_group.html](https://paws-r.github.io/docs/rds/delete_db_security_group.html) for full documentation.
 #'
 #' @param DBSecurityGroupName &#91;required&#93; The name of the DB security group to delete.
 #' 
@@ -5931,16 +4048,6 @@ rds_delete_db_proxy <- function(DBProxyName) {
 #' -   Can't end with a hyphen or contain two consecutive hyphens
 #' 
 #' -   Must not be "Default"
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_security_group(
-#'   DBSecurityGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5965,77 +4072,14 @@ rds_delete_db_security_group <- function(DBSecurityGroupName) {
 #' Deletes a DB snapshot
 #'
 #' @description
-#' Deletes a DB snapshot. If the snapshot is being copied, the copy
-#' operation is terminated.
-#' 
-#' The DB snapshot must be in the `available` state to be deleted.
+#' Deletes a DB snapshot. If the snapshot is being copied, the copy operation is terminated.
 #'
-#' @usage
-#' rds_delete_db_snapshot(DBSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/rds/delete_db_snapshot.html](https://paws-r.github.io/docs/rds/delete_db_snapshot.html) for full documentation.
 #'
 #' @param DBSnapshotIdentifier &#91;required&#93; The DB snapshot identifier.
 #' 
 #' Constraints: Must be the name of an existing DB snapshot in the
 #' `available` state.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSnapshot = list(
-#'     DBSnapshotIdentifier = "string",
-#'     DBInstanceIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     AvailabilityZone = "string",
-#'     VpcId = "string",
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     SnapshotType = "string",
-#'     Iops = 123,
-#'     OptionGroupName = "string",
-#'     PercentProgress = 123,
-#'     SourceRegion = "string",
-#'     SourceDBSnapshotIdentifier = "string",
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     Encrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBSnapshotArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DbiResourceId = "string",
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_snapshot(
-#'   DBSnapshotIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6061,33 +4105,17 @@ rds_delete_db_snapshot <- function(DBSnapshotIdentifier) {
 #'
 #' @description
 #' Deletes a DB subnet group.
-#' 
-#' The specified database subnet group must not be associated with any DB
-#' instances.
 #'
-#' @usage
-#' rds_delete_db_subnet_group(DBSubnetGroupName)
+#' See [https://paws-r.github.io/docs/rds/delete_db_subnet_group.html](https://paws-r.github.io/docs/rds/delete_db_subnet_group.html) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name of the database subnet group to delete.
 #' 
 #' You can't delete the default subnet group.
 #' 
-#' Constraints:
-#' 
 #' Constraints: Must match the name of an existing DBSubnetGroup. Must not
 #' be default.
 #' 
-#' Example: `mySubnetgroup`
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_db_subnet_group(
-#'   DBSubnetGroupName = "string"
-#' )
-#' ```
+#' Example: `mydbsubnetgroup`
 #'
 #' @keywords internal
 #'
@@ -6114,40 +4142,9 @@ rds_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' @description
 #' Deletes an RDS event notification subscription.
 #'
-#' @usage
-#' rds_delete_event_subscription(SubscriptionName)
+#' See [https://paws-r.github.io/docs/rds/delete_event_subscription.html](https://paws-r.github.io/docs/rds/delete_event_subscription.html) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the RDS event notification subscription you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSubscription = list(
-#'     CustomerAwsId = "string",
-#'     CustSubscriptionId = "string",
-#'     SnsTopicArn = "string",
-#'     Status = "string",
-#'     SubscriptionCreationTime = "string",
-#'     SourceType = "string",
-#'     SourceIdsList = list(
-#'       "string"
-#'     ),
-#'     EventCategoriesList = list(
-#'       "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     EventSubscriptionArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_event_subscription(
-#'   SubscriptionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6172,50 +4169,11 @@ rds_delete_event_subscription <- function(SubscriptionName) {
 #' Deletes a global database cluster
 #'
 #' @description
-#' Deletes a global database cluster. The primary and secondary clusters
-#' must already be detached or destroyed first.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Deletes a global database cluster. The primary and secondary clusters must already be detached or destroyed first.
 #'
-#' @usage
-#' rds_delete_global_cluster(GlobalClusterIdentifier)
+#' See [https://paws-r.github.io/docs/rds/delete_global_cluster.html](https://paws-r.github.io/docs/rds/delete_global_cluster.html) for full documentation.
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the global database cluster being deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GlobalCluster = list(
-#'     GlobalClusterIdentifier = "string",
-#'     GlobalClusterResourceId = "string",
-#'     GlobalClusterArn = "string",
-#'     Status = "string",
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     DatabaseName = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     DeletionProtection = TRUE|FALSE,
-#'     GlobalClusterMembers = list(
-#'       list(
-#'         DBClusterArn = "string",
-#'         Readers = list(
-#'           "string"
-#'         ),
-#'         IsWriter = TRUE|FALSE,
-#'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_global_cluster(
-#'   GlobalClusterIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6237,83 +4195,16 @@ rds_delete_global_cluster <- function(GlobalClusterIdentifier) {
 }
 .rds$operations$delete_global_cluster <- rds_delete_global_cluster
 
-#' Deletes the installation medium for a DB engine that requires an
-#' on-premises customer provided license, such as Microsoft SQL Server
-#'
-#' @description
-#' Deletes the installation medium for a DB engine that requires an
-#' on-premises customer provided license, such as Microsoft SQL Server.
-#'
-#' @usage
-#' rds_delete_installation_media(InstallationMediaId)
-#'
-#' @param InstallationMediaId &#91;required&#93; The installation medium ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InstallationMediaId = "string",
-#'   CustomAvailabilityZoneId = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   EngineInstallationMediaPath = "string",
-#'   OSInstallationMediaPath = "string",
-#'   Status = "string",
-#'   FailureCause = list(
-#'     Message = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_installation_media(
-#'   InstallationMediaId = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname rds_delete_installation_media
-rds_delete_installation_media <- function(InstallationMediaId) {
-  op <- new_operation(
-    name = "DeleteInstallationMedia",
-    http_method = "POST",
-    http_path = "/",
-    paginator = list()
-  )
-  input <- .rds$delete_installation_media_input(InstallationMediaId = InstallationMediaId)
-  output <- .rds$delete_installation_media_output()
-  config <- get_config()
-  svc <- .rds$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.rds$operations$delete_installation_media <- rds_delete_installation_media
-
 #' Deletes an existing option group
 #'
 #' @description
 #' Deletes an existing option group.
 #'
-#' @usage
-#' rds_delete_option_group(OptionGroupName)
+#' See [https://paws-r.github.io/docs/rds/delete_option_group.html](https://paws-r.github.io/docs/rds/delete_option_group.html) for full documentation.
 #'
 #' @param OptionGroupName &#91;required&#93; The name of the option group to be deleted.
 #' 
 #' You can't delete default option groups.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_option_group(
-#'   OptionGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6339,35 +4230,15 @@ rds_delete_option_group <- function(OptionGroupName) {
 #' and a DBProxyTargetGroup
 #'
 #' @description
-#' Remove the association between one or more `DBProxyTarget` data
-#' structures and a `DBProxyTargetGroup`.
+#' Remove the association between one or more `DBProxyTarget` data structures and a `DBProxyTargetGroup`.
 #'
-#' @usage
-#' rds_deregister_db_proxy_targets(DBProxyName, TargetGroupName,
-#'   DBInstanceIdentifiers, DBClusterIdentifiers)
+#' See [https://paws-r.github.io/docs/rds/deregister_db_proxy_targets.html](https://paws-r.github.io/docs/rds/deregister_db_proxy_targets.html) for full documentation.
 #'
 #' @param DBProxyName &#91;required&#93; The identifier of the `DBProxy` that is associated with the
 #' `DBProxyTargetGroup`.
 #' @param TargetGroupName The identifier of the `DBProxyTargetGroup`.
 #' @param DBInstanceIdentifiers One or more DB instance identifiers.
 #' @param DBClusterIdentifiers One or more DB cluster identifiers.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_db_proxy_targets(
-#'   DBProxyName = "string",
-#'   TargetGroupName = "string",
-#'   DBInstanceIdentifiers = list(
-#'     "string"
-#'   ),
-#'   DBClusterIdentifiers = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6392,34 +4263,9 @@ rds_deregister_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL,
 #' Lists all of the attributes for a customer account
 #'
 #' @description
-#' Lists all of the attributes for a customer account. The attributes
-#' include Amazon RDS quotas for the account, such as the number of DB
-#' instances allowed. The description for a quota includes the quota name,
-#' current usage toward that quota, and the quota's maximum value.
-#' 
-#' This command doesn't take any parameters.
+#' Lists all of the attributes for a customer account. The attributes include Amazon RDS quotas for the account, such as the number of DB instances allowed. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
 #'
-#' @usage
-#' rds_describe_account_attributes()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountQuotas = list(
-#'     list(
-#'       AccountQuotaName = "string",
-#'       Used = 123,
-#'       Max = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_account_attributes()
-#' ```
+#' See [https://paws-r.github.io/docs/rds/describe_account_attributes.html](https://paws-r.github.io/docs/rds/describe_account_attributes.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -6441,16 +4287,13 @@ rds_describe_account_attributes <- function() {
 }
 .rds$operations$describe_account_attributes <- rds_describe_account_attributes
 
-#' Lists the set of CA certificates provided by Amazon RDS for this AWS
-#' account
+#' Lists the set of CA certificates provided by Amazon RDS for this Amazon
+#' Web Services account
 #'
 #' @description
-#' Lists the set of CA certificates provided by Amazon RDS for this AWS
-#' account.
+#' Lists the set of CA certificates provided by Amazon RDS for this Amazon Web Services account.
 #'
-#' @usage
-#' rds_describe_certificates(CertificateIdentifier, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_certificates.html](https://paws-r.github.io/docs/rds/describe_certificates.html) for full documentation.
 #'
 #' @param CertificateIdentifier The user-supplied certificate identifier. If this parameter is
 #' specified, information for only the identified certificate is returned.
@@ -6473,49 +4316,6 @@ rds_describe_account_attributes <- function() {
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Certificates = list(
-#'     list(
-#'       CertificateIdentifier = "string",
-#'       CertificateType = "string",
-#'       Thumbprint = "string",
-#'       ValidFrom = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ValidTill = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CertificateArn = "string",
-#'       CustomerOverride = TRUE|FALSE,
-#'       CustomerOverrideValidTill = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_certificates(
-#'   CertificateIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_describe_certificates
@@ -6536,111 +4336,12 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
 }
 .rds$operations$describe_certificates <- rds_describe_certificates
 
-#' Returns information about custom Availability Zones (AZs)
-#'
-#' @description
-#' Returns information about custom Availability Zones (AZs).
-#' 
-#' A custom AZ is an on-premises AZ that is integrated with a VMware
-#' vSphere cluster.
-#' 
-#' For more information about RDS on VMware, see the [RDS on VMware User
-#' Guide.](https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
-#'
-#' @usage
-#' rds_describe_custom_availability_zones(CustomAvailabilityZoneId,
-#'   Filters, MaxRecords, Marker)
-#'
-#' @param CustomAvailabilityZoneId The custom AZ identifier. If this parameter is specified, information
-#' from only the specific custom AZ is returned.
-#' @param Filters A filter that specifies one or more custom AZs to describe.
-#' @param MaxRecords The maximum number of records to include in the response. If more
-#' records exist than the specified `MaxRecords` value, a pagination token
-#' called a marker is included in the response so you can retrieve the
-#' remaining results.
-#' 
-#' Default: 100
-#' 
-#' Constraints: Minimum 20, maximum 100.
-#' @param Marker An optional pagination token provided by a previous
-#' [`describe_custom_availability_zones`][rds_describe_custom_availability_zones]
-#' request. If this parameter is specified, the response includes only
-#' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   CustomAvailabilityZones = list(
-#'     list(
-#'       CustomAvailabilityZoneId = "string",
-#'       CustomAvailabilityZoneName = "string",
-#'       CustomAvailabilityZoneStatus = "string",
-#'       VpnDetails = list(
-#'         VpnId = "string",
-#'         VpnTunnelOriginatorIP = "string",
-#'         VpnGatewayIp = "string",
-#'         VpnPSK = "string",
-#'         VpnName = "string",
-#'         VpnState = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_custom_availability_zones(
-#'   CustomAvailabilityZoneId = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname rds_describe_custom_availability_zones
-rds_describe_custom_availability_zones <- function(CustomAvailabilityZoneId = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
-  op <- new_operation(
-    name = "DescribeCustomAvailabilityZones",
-    http_method = "POST",
-    http_path = "/",
-    paginator = list()
-  )
-  input <- .rds$describe_custom_availability_zones_input(CustomAvailabilityZoneId = CustomAvailabilityZoneId, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
-  output <- .rds$describe_custom_availability_zones_output()
-  config <- get_config()
-  svc <- .rds$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.rds$operations$describe_custom_availability_zones <- rds_describe_custom_availability_zones
-
 #' Returns information about backtracks for a DB cluster
 #'
 #' @description
 #' Returns information about backtracks for a DB cluster.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora MySQL DB clusters.
 #'
-#' @usage
-#' rds_describe_db_cluster_backtracks(DBClusterIdentifier,
-#'   BacktrackIdentifier, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_db_cluster_backtracks.html](https://paws-r.github.io/docs/rds/describe_db_cluster_backtracks.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the DB cluster to be described. This
 #' parameter is stored as a lowercase string.
@@ -6697,48 +4398,6 @@ rds_describe_custom_availability_zones <- function(CustomAvailabilityZoneId = NU
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusterBacktracks = list(
-#'     list(
-#'       DBClusterIdentifier = "string",
-#'       BacktrackIdentifier = "string",
-#'       BacktrackTo = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       BacktrackedFrom = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       BacktrackRequestCreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_backtracks(
-#'   DBClusterIdentifier = "string",
-#'   BacktrackIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_cluster_backtracks
@@ -6763,12 +4422,8 @@ rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIde
 #'
 #' @description
 #' Returns information about endpoints for an Amazon Aurora DB cluster.
-#' 
-#' This action only applies to Aurora DB clusters.
 #'
-#' @usage
-#' rds_describe_db_cluster_endpoints(DBClusterIdentifier,
-#'   DBClusterEndpointIdentifier, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_db_cluster_endpoints.html](https://paws-r.github.io/docs/rds/describe_db_cluster_endpoints.html) for full documentation.
 #'
 #' @param DBClusterIdentifier The DB cluster identifier of the DB cluster associated with the
 #' endpoint. This parameter is stored as a lowercase string.
@@ -6798,50 +4453,6 @@ rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIde
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusterEndpoints = list(
-#'     list(
-#'       DBClusterEndpointIdentifier = "string",
-#'       DBClusterIdentifier = "string",
-#'       DBClusterEndpointResourceIdentifier = "string",
-#'       Endpoint = "string",
-#'       Status = "string",
-#'       EndpointType = "string",
-#'       CustomEndpointType = "string",
-#'       StaticMembers = list(
-#'         "string"
-#'       ),
-#'       ExcludedMembers = list(
-#'         "string"
-#'       ),
-#'       DBClusterEndpointArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_endpoints(
-#'   DBClusterIdentifier = "string",
-#'   DBClusterEndpointIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_cluster_endpoints
@@ -6865,20 +4476,9 @@ rds_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DBClus
 #' Returns a list of DBClusterParameterGroup descriptions
 #'
 #' @description
-#' Returns a list of `DBClusterParameterGroup` descriptions. If a
-#' `DBClusterParameterGroupName` parameter is specified, the list will
-#' contain only the description of the specified DB cluster parameter
-#' group.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Returns a list of `DBClusterParameterGroup` descriptions. If a `DBClusterParameterGroupName` parameter is specified, the list will contain only the description of the specified DB cluster parameter group.
 #'
-#' @usage
-#' rds_describe_db_cluster_parameter_groups(DBClusterParameterGroupName,
-#'   Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_db_cluster_parameter_groups.html](https://paws-r.github.io/docs/rds/describe_db_cluster_parameter_groups.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName The name of a specific DB cluster parameter group to return details for.
 #' 
@@ -6899,39 +4499,6 @@ rds_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DBClus
 #' [`describe_db_cluster_parameter_groups`][rds_describe_db_cluster_parameter_groups]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusterParameterGroups = list(
-#'     list(
-#'       DBClusterParameterGroupName = "string",
-#'       DBParameterGroupFamily = "string",
-#'       Description = "string",
-#'       DBClusterParameterGroupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_parameter_groups(
-#'   DBClusterParameterGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6957,18 +4524,9 @@ rds_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName
 #' parameter group
 #'
 #' @description
-#' Returns the detailed parameter list for a particular DB cluster
-#' parameter group.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Returns the detailed parameter list for a particular DB cluster parameter group.
 #'
-#' @usage
-#' rds_describe_db_cluster_parameters(DBClusterParameterGroupName, Source,
-#'   Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_db_cluster_parameters.html](https://paws-r.github.io/docs/rds/describe_db_cluster_parameters.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of a specific DB cluster parameter group to return parameter
 #' details for.
@@ -6992,49 +4550,6 @@ rds_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName
 #' [`describe_db_cluster_parameters`][rds_describe_db_cluster_parameters]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot",
-#'       SupportedEngineModes = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_parameters(
-#'   DBClusterParameterGroupName = "string",
-#'   Source = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7060,55 +4575,12 @@ rds_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Sour
 #' manual DB cluster snapshot
 #'
 #' @description
-#' Returns a list of DB cluster snapshot attribute names and values for a
-#' manual DB cluster snapshot.
-#' 
-#' When sharing snapshots with other AWS accounts,
-#' [`describe_db_cluster_snapshot_attributes`][rds_describe_db_cluster_snapshot_attributes]
-#' returns the `restore` attribute and a list of IDs for the AWS accounts
-#' that are authorized to copy or restore the manual DB cluster snapshot.
-#' If `all` is included in the list of values for the `restore` attribute,
-#' then the manual DB cluster snapshot is public and can be copied or
-#' restored by all AWS accounts.
-#' 
-#' To add or remove access for an AWS account to copy or restore a manual
-#' DB cluster snapshot, or to make the manual DB cluster snapshot public or
-#' private, use the
-#' [`modify_db_cluster_snapshot_attribute`][rds_modify_db_cluster_snapshot_attribute]
-#' API action.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot.
 #'
-#' @usage
-#' rds_describe_db_cluster_snapshot_attributes(DBClusterSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/rds/describe_db_cluster_snapshot_attributes.html](https://paws-r.github.io/docs/rds/describe_db_cluster_snapshot_attributes.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the DB cluster snapshot to describe the attributes
 #' for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshotAttributesResult = list(
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterSnapshotAttributes = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeValues = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_snapshot_attributes(
-#'   DBClusterSnapshotIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7133,19 +4605,9 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #' Returns information about DB cluster snapshots
 #'
 #' @description
-#' Returns information about DB cluster snapshots. This API action supports
-#' pagination.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Returns information about DB cluster snapshots. This API action supports pagination.
 #'
-#' @usage
-#' rds_describe_db_cluster_snapshots(DBClusterIdentifier,
-#'   DBClusterSnapshotIdentifier, SnapshotType, Filters, MaxRecords, Marker,
-#'   IncludeShared, IncludePublic)
+#' See [https://paws-r.github.io/docs/rds/describe_db_cluster_snapshots.html](https://paws-r.github.io/docs/rds/describe_db_cluster_snapshots.html) for full documentation.
 #'
 #' @param DBClusterIdentifier The ID of the DB cluster to retrieve the list of DB cluster snapshots
 #' for. This parameter can't be used in conjunction with the
@@ -7170,13 +4632,14 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #' the following values:
 #' 
 #' -   `automated` - Return all DB cluster snapshots that have been
-#'     automatically taken by Amazon RDS for my AWS account.
+#'     automatically taken by Amazon RDS for my Amazon Web Services
+#'     account.
 #' 
 #' -   `manual` - Return all DB cluster snapshots that have been taken by
-#'     my AWS account.
+#'     my Amazon Web Services account.
 #' 
 #' -   `shared` - Return all manual DB cluster snapshots that have been
-#'     shared to my AWS account.
+#'     shared to my Amazon Web Services account.
 #' 
 #' -   `public` - Return all DB cluster snapshots that have been marked as
 #'     public.
@@ -7217,86 +4680,22 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #' @param IncludeShared A value that indicates whether to include shared manual DB cluster
-#' snapshots from other AWS accounts that this AWS account has been given
-#' permission to copy or restore. By default, these snapshots are not
-#' included.
+#' snapshots from other Amazon Web Services accounts that this Amazon Web
+#' Services account has been given permission to copy or restore. By
+#' default, these snapshots are not included.
 #' 
-#' You can give an AWS account permission to restore a manual DB cluster
-#' snapshot from another AWS account by the
+#' You can give an Amazon Web Services account permission to restore a
+#' manual DB cluster snapshot from another Amazon Web Services account by
+#' the
 #' [`modify_db_cluster_snapshot_attribute`][rds_modify_db_cluster_snapshot_attribute]
 #' API action.
 #' @param IncludePublic A value that indicates whether to include manual DB cluster snapshots
-#' that are public and can be copied or restored by any AWS account. By
-#' default, the public snapshots are not included.
+#' that are public and can be copied or restored by any Amazon Web Services
+#' account. By default, the public snapshots are not included.
 #' 
 #' You can share a manual DB cluster snapshot as public by using the
 #' [`modify_db_cluster_snapshot_attribute`][rds_modify_db_cluster_snapshot_attribute]
 #' API action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusterSnapshots = list(
-#'     list(
-#'       AvailabilityZones = list(
-#'         "string"
-#'       ),
-#'       DBClusterSnapshotIdentifier = "string",
-#'       DBClusterIdentifier = "string",
-#'       SnapshotCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Engine = "string",
-#'       AllocatedStorage = 123,
-#'       Status = "string",
-#'       Port = 123,
-#'       VpcId = "string",
-#'       ClusterCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       MasterUsername = "string",
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       SnapshotType = "string",
-#'       PercentProgress = 123,
-#'       StorageEncrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       DBClusterSnapshotArn = "string",
-#'       SourceDBClusterSnapshotArn = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       TagList = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_cluster_snapshots(
-#'   DBClusterIdentifier = "string",
-#'   DBClusterSnapshotIdentifier = "string",
-#'   SnapshotType = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string",
-#'   IncludeShared = TRUE|FALSE,
-#'   IncludePublic = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7318,22 +4717,13 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 }
 .rds$operations$describe_db_cluster_snapshots <- rds_describe_db_cluster_snapshots
 
-#' Returns information about provisioned Aurora DB clusters
+#' Returns information about Amazon Aurora DB clusters and Multi-AZ DB
+#' clusters
 #'
 #' @description
-#' Returns information about provisioned Aurora DB clusters. This API
-#' supports pagination.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This operation can also return information for Amazon Neptune DB
-#' instances and Amazon DocumentDB instances.
+#' Returns information about Amazon Aurora DB clusters and Multi-AZ DB clusters. This API supports pagination.
 #'
-#' @usage
-#' rds_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
-#'   Marker, IncludeShared)
+#' See [https://paws-r.github.io/docs/rds/describe_db_clusters.html](https://paws-r.github.io/docs/rds/describe_db_clusters.html) for full documentation.
 #'
 #' @param DBClusterIdentifier The user-supplied DB cluster identifier. If this parameter is specified,
 #' information from only the specific DB cluster is returned. This
@@ -7346,9 +4736,20 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #' 
 #' Supported filters:
 #' 
+#' -   `clone-group-id` - Accepts clone group identifiers. The results list
+#'     only includes information about the DB clusters associated with
+#'     these clone groups.
+#' 
 #' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster
-#'     Amazon Resource Names (ARNs). The results list will only include
+#'     Amazon Resource Names (ARNs). The results list only includes
 #'     information about the DB clusters identified by these ARNs.
+#' 
+#' -   `domain` - Accepts Active Directory directory IDs. The results list
+#'     only includes information about the DB clusters associated with
+#'     these domains.
+#' 
+#' -   `engine` - Accepts engine names. The results list only includes
+#'     information about the DB clusters for these engines.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so you can retrieve the
@@ -7362,163 +4763,8 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #' @param IncludeShared Optional Boolean parameter that specifies whether the output includes
-#' information about clusters shared from other AWS accounts.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBClusters = list(
-#'     list(
-#'       AllocatedStorage = 123,
-#'       AvailabilityZones = list(
-#'         "string"
-#'       ),
-#'       BackupRetentionPeriod = 123,
-#'       CharacterSetName = "string",
-#'       DatabaseName = "string",
-#'       DBClusterIdentifier = "string",
-#'       DBClusterParameterGroup = "string",
-#'       DBSubnetGroup = "string",
-#'       Status = "string",
-#'       PercentProgress = "string",
-#'       EarliestRestorableTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Endpoint = "string",
-#'       ReaderEndpoint = "string",
-#'       CustomEndpoints = list(
-#'         "string"
-#'       ),
-#'       MultiAZ = TRUE|FALSE,
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       LatestRestorableTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Port = 123,
-#'       MasterUsername = "string",
-#'       DBClusterOptionGroupMemberships = list(
-#'         list(
-#'           DBClusterOptionGroupName = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       PreferredBackupWindow = "string",
-#'       PreferredMaintenanceWindow = "string",
-#'       ReplicationSourceIdentifier = "string",
-#'       ReadReplicaIdentifiers = list(
-#'         "string"
-#'       ),
-#'       DBClusterMembers = list(
-#'         list(
-#'           DBInstanceIdentifier = "string",
-#'           IsClusterWriter = TRUE|FALSE,
-#'           DBClusterParameterGroupStatus = "string",
-#'           PromotionTier = 123
-#'         )
-#'       ),
-#'       VpcSecurityGroups = list(
-#'         list(
-#'           VpcSecurityGroupId = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       HostedZoneId = "string",
-#'       StorageEncrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       DbClusterResourceId = "string",
-#'       DBClusterArn = "string",
-#'       AssociatedRoles = list(
-#'         list(
-#'           RoleArn = "string",
-#'           Status = "string",
-#'           FeatureName = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       CloneGroupId = "string",
-#'       ClusterCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EarliestBacktrackTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       BacktrackWindow = 123,
-#'       BacktrackConsumedChangeRecords = 123,
-#'       EnabledCloudwatchLogsExports = list(
-#'         "string"
-#'       ),
-#'       Capacity = 123,
-#'       EngineMode = "string",
-#'       ScalingConfigurationInfo = list(
-#'         MinCapacity = 123,
-#'         MaxCapacity = 123,
-#'         AutoPause = TRUE|FALSE,
-#'         SecondsUntilAutoPause = 123,
-#'         TimeoutAction = "string"
-#'       ),
-#'       DeletionProtection = TRUE|FALSE,
-#'       HttpEndpointEnabled = TRUE|FALSE,
-#'       ActivityStreamMode = "sync"|"async",
-#'       ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'       ActivityStreamKmsKeyId = "string",
-#'       ActivityStreamKinesisStreamName = "string",
-#'       CopyTagsToSnapshot = TRUE|FALSE,
-#'       CrossAccountClone = TRUE|FALSE,
-#'       DomainMemberships = list(
-#'         list(
-#'           Domain = "string",
-#'           Status = "string",
-#'           FQDN = "string",
-#'           IAMRoleName = "string"
-#'         )
-#'       ),
-#'       TagList = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'       GlobalWriteForwardingRequested = TRUE|FALSE,
-#'       PendingModifiedValues = list(
-#'         PendingCloudwatchLogsExports = list(
-#'           LogTypesToEnable = list(
-#'             "string"
-#'           ),
-#'           LogTypesToDisable = list(
-#'             "string"
-#'           )
-#'         ),
-#'         DBClusterIdentifier = "string",
-#'         MasterUserPassword = "string",
-#'         IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'         EngineVersion = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_clusters(
-#'   DBClusterIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string",
-#'   IncludeShared = TRUE|FALSE
-#' )
-#' ```
+#' information about clusters shared from other Amazon Web Services
+#' accounts.
 #'
 #' @keywords internal
 #'
@@ -7545,12 +4791,40 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #' @description
 #' Returns a list of the available DB engines.
 #'
-#' @usage
-#' rds_describe_db_engine_versions(Engine, EngineVersion,
-#'   DBParameterGroupFamily, Filters, MaxRecords, Marker, DefaultOnly,
-#'   ListSupportedCharacterSets, ListSupportedTimezones, IncludeAll)
+#' See [https://paws-r.github.io/docs/rds/describe_db_engine_versions.html](https://paws-r.github.io/docs/rds/describe_db_engine_versions.html) for full documentation.
 #'
 #' @param Engine The database engine to return.
+#' 
+#' Valid Values:
+#' 
+#' -   `aurora` (for MySQL 5.6-compatible Aurora)
+#' 
+#' -   `aurora-mysql` (for MySQL 5.7-compatible and MySQL 8.0-compatible
+#'     Aurora)
+#' 
+#' -   `aurora-postgresql`
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-ee-cdb`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se2-cdb`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param EngineVersion The database engine version to return.
 #' 
 #' Example: `5.1.49`
@@ -7559,7 +4833,42 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #' Constraints:
 #' 
 #' -   If supplied, must match an existing DBParameterGroupFamily.
-#' @param Filters This parameter isn't currently supported.
+#' @param Filters A filter that specifies one or more DB engine versions to describe.
+#' 
+#' Supported filters:
+#' 
+#' -   `db-parameter-group-family` - Accepts parameter groups family names.
+#'     The results list only includes information about the DB engine
+#'     versions for these parameter group families.
+#' 
+#' -   `engine` - Accepts engine names. The results list only includes
+#'     information about the DB engine versions for these engines.
+#' 
+#' -   `engine-mode` - Accepts DB engine modes. The results list only
+#'     includes information about the DB engine versions for these engine
+#'     modes. Valid DB engine modes are the following:
+#' 
+#'     -   `global`
+#' 
+#'     -   `multimaster`
+#' 
+#'     -   `parallelquery`
+#' 
+#'     -   `provisioned`
+#' 
+#'     -   `serverless`
+#' 
+#' -   `engine-version` - Accepts engine versions. The results list only
+#'     includes information about the DB engine versions for these engine
+#'     versions.
+#' 
+#' -   `status` - Accepts engine version statuses. The results list only
+#'     includes information about the DB engine versions for these
+#'     statuses. Valid statuses are the following:
+#' 
+#'     -   `available`
+#' 
+#'     -   `deprecated`
 #' @param MaxRecords The maximum number of records to include in the response. If more than
 #' the `MaxRecords` value is available, a pagination token called a marker
 #' is included in the response so you can retrieve the remaining results.
@@ -7579,6 +4888,10 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #' `CharacterSetName` parameter for
 #' [`create_db_instance`][rds_create_db_instance], the response includes a
 #' list of supported character sets for each engine version.
+#' 
+#' For RDS Custom, the default is not to list supported character sets. If
+#' you set `ListSupportedCharacterSets` to `true`, RDS Custom returns no
+#' results.
 #' @param ListSupportedTimezones A value that indicates whether to list the supported time zones for each
 #' engine version.
 #' 
@@ -7586,93 +4899,12 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #' `TimeZone` parameter for [`create_db_instance`][rds_create_db_instance],
 #' the response includes a list of supported time zones for each engine
 #' version.
+#' 
+#' For RDS Custom, the default is not to list supported time zones. If you
+#' set `ListSupportedTimezones` to `true`, RDS Custom returns no results.
 #' @param IncludeAll A value that indicates whether to include engine versions that aren't
 #' available in the list. The default is to list only available engine
 #' versions.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBEngineVersions = list(
-#'     list(
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       DBParameterGroupFamily = "string",
-#'       DBEngineDescription = "string",
-#'       DBEngineVersionDescription = "string",
-#'       DefaultCharacterSet = list(
-#'         CharacterSetName = "string",
-#'         CharacterSetDescription = "string"
-#'       ),
-#'       SupportedCharacterSets = list(
-#'         list(
-#'           CharacterSetName = "string",
-#'           CharacterSetDescription = "string"
-#'         )
-#'       ),
-#'       SupportedNcharCharacterSets = list(
-#'         list(
-#'           CharacterSetName = "string",
-#'           CharacterSetDescription = "string"
-#'         )
-#'       ),
-#'       ValidUpgradeTarget = list(
-#'         list(
-#'           Engine = "string",
-#'           EngineVersion = "string",
-#'           Description = "string",
-#'           AutoUpgrade = TRUE|FALSE,
-#'           IsMajorVersionUpgrade = TRUE|FALSE
-#'         )
-#'       ),
-#'       SupportedTimezones = list(
-#'         list(
-#'           TimezoneName = "string"
-#'         )
-#'       ),
-#'       ExportableLogTypes = list(
-#'         "string"
-#'       ),
-#'       SupportsLogExportsToCloudwatchLogs = TRUE|FALSE,
-#'       SupportsReadReplica = TRUE|FALSE,
-#'       SupportedEngineModes = list(
-#'         "string"
-#'       ),
-#'       SupportedFeatureNames = list(
-#'         "string"
-#'       ),
-#'       Status = "string",
-#'       SupportsParallelQuery = TRUE|FALSE,
-#'       SupportsGlobalDatabases = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_engine_versions(
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   DBParameterGroupFamily = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string",
-#'   DefaultOnly = TRUE|FALSE,
-#'   ListSupportedCharacterSets = TRUE|FALSE,
-#'   ListSupportedTimezones = TRUE|FALSE,
-#'   IncludeAll = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7697,19 +4929,9 @@ rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL,
 #' Displays backups for both current and deleted instances
 #'
 #' @description
-#' Displays backups for both current and deleted instances. For example,
-#' use this operation to find details about automated backups for
-#' previously deleted instances. Current instances with retention periods
-#' greater than zero (0) are returned for both the
-#' [`describe_db_instance_automated_backups`][rds_describe_db_instance_automated_backups]
-#' and [`describe_db_instances`][rds_describe_db_instances] operations.
-#' 
-#' All parameters are optional.
+#' Displays backups for both current and deleted instances. For example, use this operation to find details about automated backups for previously deleted instances. Current instances with retention periods greater than zero (0) are returned for both the [`describe_db_instance_automated_backups`][rds_describe_db_instance_automated_backups] and [`describe_db_instances`][rds_describe_db_instances] operations.
 #'
-#' @usage
-#' rds_describe_db_instance_automated_backups(DbiResourceId,
-#'   DBInstanceIdentifier, Filters, MaxRecords, Marker,
-#'   DBInstanceAutomatedBackupsArn)
+#' See [https://paws-r.github.io/docs/rds/describe_db_instance_automated_backups.html](https://paws-r.github.io/docs/rds/describe_db_instance_automated_backups.html) for full documentation.
 #'
 #' @param DbiResourceId The resource ID of the DB instance that is the source of the automated
 #' backup. This parameter isn't case-sensitive.
@@ -7751,76 +4973,8 @@ rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL,
 #' @param DBInstanceAutomatedBackupsArn The Amazon Resource Name (ARN) of the replicated automated backups, for
 #' example,
 #' `arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBInstanceAutomatedBackups = list(
-#'     list(
-#'       DBInstanceArn = "string",
-#'       DbiResourceId = "string",
-#'       Region = "string",
-#'       DBInstanceIdentifier = "string",
-#'       RestoreWindow = list(
-#'         EarliestTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         LatestTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       AllocatedStorage = 123,
-#'       Status = "string",
-#'       Port = 123,
-#'       AvailabilityZone = "string",
-#'       VpcId = "string",
-#'       InstanceCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       MasterUsername = "string",
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       OptionGroupName = "string",
-#'       TdeCredentialArn = "string",
-#'       Encrypted = TRUE|FALSE,
-#'       StorageType = "string",
-#'       KmsKeyId = "string",
-#'       Timezone = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       BackupRetentionPeriod = 123,
-#'       DBInstanceAutomatedBackupsArn = "string",
-#'       DBInstanceAutomatedBackupsReplications = list(
-#'         list(
-#'           DBInstanceAutomatedBackupsArn = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_instance_automated_backups(
-#'   DbiResourceId = "string",
-#'   DBInstanceIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string",
-#'   DBInstanceAutomatedBackupsArn = "string"
-#' )
-#' ```
+#' 
+#' This setting doesn't apply to RDS Custom.
 #'
 #' @keywords internal
 #'
@@ -7845,15 +4999,9 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #' Returns information about provisioned RDS instances
 #'
 #' @description
-#' Returns information about provisioned RDS instances. This API supports
-#' pagination.
-#' 
-#' This operation can also return information for Amazon Neptune DB
-#' instances and Amazon DocumentDB instances.
+#' Returns information about provisioned RDS instances. This API supports pagination.
 #'
-#' @usage
-#' rds_describe_db_instances(DBInstanceIdentifier, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_db_instances.html](https://paws-r.github.io/docs/rds/describe_db_instances.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier The user-supplied instance identifier. If this parameter is specified,
 #' information from only the specific DB instance is returned. This
@@ -7867,12 +5015,12 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #' Supported filters:
 #' 
 #' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster
-#'     Amazon Resource Names (ARNs). The results list will only include
+#'     Amazon Resource Names (ARNs). The results list only includes
 #'     information about the DB instances associated with the DB clusters
 #'     identified by these ARNs.
 #' 
 #' -   `db-instance-id` - Accepts DB instance identifiers and DB instance
-#'     Amazon Resource Names (ARNs). The results list will only include
+#'     Amazon Resource Names (ARNs). The results list only includes
 #'     information about the DB instances identified by these ARNs.
 #' 
 #' -   `dbi-resource-id` - Accepts DB instance resource identifiers. The
@@ -7880,10 +5028,10 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #'     identified by these DB instance resource identifiers.
 #' 
 #' -   `domain` - Accepts Active Directory directory IDs. The results list
-#'     will only include information about the DB instances associated with
+#'     only includes information about the DB instances associated with
 #'     these domains.
 #' 
-#' -   `engine` - Accepts engine names. The results list will only include
+#' -   `engine` - Accepts engine names. The results list only includes
 #'     information about the DB instances for these engines.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -7897,217 +5045,6 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #' [`describe_db_instances`][rds_describe_db_instances] request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBInstances = list(
-#'     list(
-#'       DBInstanceIdentifier = "string",
-#'       DBInstanceClass = "string",
-#'       Engine = "string",
-#'       DBInstanceStatus = "string",
-#'       MasterUsername = "string",
-#'       DBName = "string",
-#'       Endpoint = list(
-#'         Address = "string",
-#'         Port = 123,
-#'         HostedZoneId = "string"
-#'       ),
-#'       AllocatedStorage = 123,
-#'       InstanceCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       PreferredBackupWindow = "string",
-#'       BackupRetentionPeriod = 123,
-#'       DBSecurityGroups = list(
-#'         list(
-#'           DBSecurityGroupName = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       VpcSecurityGroups = list(
-#'         list(
-#'           VpcSecurityGroupId = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       DBParameterGroups = list(
-#'         list(
-#'           DBParameterGroupName = "string",
-#'           ParameterApplyStatus = "string"
-#'         )
-#'       ),
-#'       AvailabilityZone = "string",
-#'       DBSubnetGroup = list(
-#'         DBSubnetGroupName = "string",
-#'         DBSubnetGroupDescription = "string",
-#'         VpcId = "string",
-#'         SubnetGroupStatus = "string",
-#'         Subnets = list(
-#'           list(
-#'             SubnetIdentifier = "string",
-#'             SubnetAvailabilityZone = list(
-#'               Name = "string"
-#'             ),
-#'             SubnetOutpost = list(
-#'               Arn = "string"
-#'             ),
-#'             SubnetStatus = "string"
-#'           )
-#'         ),
-#'         DBSubnetGroupArn = "string"
-#'       ),
-#'       PreferredMaintenanceWindow = "string",
-#'       PendingModifiedValues = list(
-#'         DBInstanceClass = "string",
-#'         AllocatedStorage = 123,
-#'         MasterUserPassword = "string",
-#'         Port = 123,
-#'         BackupRetentionPeriod = 123,
-#'         MultiAZ = TRUE|FALSE,
-#'         EngineVersion = "string",
-#'         LicenseModel = "string",
-#'         Iops = 123,
-#'         DBInstanceIdentifier = "string",
-#'         StorageType = "string",
-#'         CACertificateIdentifier = "string",
-#'         DBSubnetGroupName = "string",
-#'         PendingCloudwatchLogsExports = list(
-#'           LogTypesToEnable = list(
-#'             "string"
-#'           ),
-#'           LogTypesToDisable = list(
-#'             "string"
-#'           )
-#'         ),
-#'         ProcessorFeatures = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'       ),
-#'       LatestRestorableTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       AutoMinorVersionUpgrade = TRUE|FALSE,
-#'       ReadReplicaSourceDBInstanceIdentifier = "string",
-#'       ReadReplicaDBInstanceIdentifiers = list(
-#'         "string"
-#'       ),
-#'       ReadReplicaDBClusterIdentifiers = list(
-#'         "string"
-#'       ),
-#'       ReplicaMode = "open-read-only"|"mounted",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       OptionGroupMemberships = list(
-#'         list(
-#'           OptionGroupName = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       CharacterSetName = "string",
-#'       NcharCharacterSetName = "string",
-#'       SecondaryAvailabilityZone = "string",
-#'       PubliclyAccessible = TRUE|FALSE,
-#'       StatusInfos = list(
-#'         list(
-#'           StatusType = "string",
-#'           Normal = TRUE|FALSE,
-#'           Status = "string",
-#'           Message = "string"
-#'         )
-#'       ),
-#'       StorageType = "string",
-#'       TdeCredentialArn = "string",
-#'       DbInstancePort = 123,
-#'       DBClusterIdentifier = "string",
-#'       StorageEncrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       DbiResourceId = "string",
-#'       CACertificateIdentifier = "string",
-#'       DomainMemberships = list(
-#'         list(
-#'           Domain = "string",
-#'           Status = "string",
-#'           FQDN = "string",
-#'           IAMRoleName = "string"
-#'         )
-#'       ),
-#'       CopyTagsToSnapshot = TRUE|FALSE,
-#'       MonitoringInterval = 123,
-#'       EnhancedMonitoringResourceArn = "string",
-#'       MonitoringRoleArn = "string",
-#'       PromotionTier = 123,
-#'       DBInstanceArn = "string",
-#'       Timezone = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       PerformanceInsightsEnabled = TRUE|FALSE,
-#'       PerformanceInsightsKMSKeyId = "string",
-#'       PerformanceInsightsRetentionPeriod = 123,
-#'       EnabledCloudwatchLogsExports = list(
-#'         "string"
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       DeletionProtection = TRUE|FALSE,
-#'       AssociatedRoles = list(
-#'         list(
-#'           RoleArn = "string",
-#'           FeatureName = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       ListenerEndpoint = list(
-#'         Address = "string",
-#'         Port = 123,
-#'         HostedZoneId = "string"
-#'       ),
-#'       MaxAllocatedStorage = 123,
-#'       TagList = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       DBInstanceAutomatedBackupsReplications = list(
-#'         list(
-#'           DBInstanceAutomatedBackupsArn = "string"
-#'         )
-#'       ),
-#'       CustomerOwnedIpEnabled = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_instances(
-#'   DBInstanceIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8134,9 +5071,7 @@ rds_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = NUL
 #' @description
 #' Returns a list of DB log files for the DB instance.
 #'
-#' @usage
-#' rds_describe_db_log_files(DBInstanceIdentifier, FilenameContains,
-#'   FileLastWritten, FileSize, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_db_log_files.html](https://paws-r.github.io/docs/rds/describe_db_log_files.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The customer-assigned name of the DB instance that contains the log
 #' files you want to list.
@@ -8158,41 +5093,6 @@ rds_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = NUL
 #' @param Marker The pagination token provided in the previous request. If this parameter
 #' is specified the response includes only records beyond the marker, up to
 #' MaxRecords.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DescribeDBLogFiles = list(
-#'     list(
-#'       LogFileName = "string",
-#'       LastWritten = 123,
-#'       Size = 123
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_log_files(
-#'   DBInstanceIdentifier = "string",
-#'   FilenameContains = "string",
-#'   FileLastWritten = 123,
-#'   FileSize = 123,
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8217,13 +5117,9 @@ rds_describe_db_log_files <- function(DBInstanceIdentifier, FilenameContains = N
 #' Returns a list of DBParameterGroup descriptions
 #'
 #' @description
-#' Returns a list of `DBParameterGroup` descriptions. If a
-#' `DBParameterGroupName` is specified, the list will contain only the
-#' description of the specified DB parameter group.
+#' Returns a list of `DBParameterGroup` descriptions. If a `DBParameterGroupName` is specified, the list will contain only the description of the specified DB parameter group.
 #'
-#' @usage
-#' rds_describe_db_parameter_groups(DBParameterGroupName, Filters,
-#'   MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_db_parameter_groups.html](https://paws-r.github.io/docs/rds/describe_db_parameter_groups.html) for full documentation.
 #'
 #' @param DBParameterGroupName The name of a specific DB parameter group to return details for.
 #' 
@@ -8244,39 +5140,6 @@ rds_describe_db_log_files <- function(DBInstanceIdentifier, FilenameContains = N
 #' [`describe_db_parameter_groups`][rds_describe_db_parameter_groups]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBParameterGroups = list(
-#'     list(
-#'       DBParameterGroupName = "string",
-#'       DBParameterGroupFamily = "string",
-#'       Description = "string",
-#'       DBParameterGroupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_parameter_groups(
-#'   DBParameterGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8303,9 +5166,7 @@ rds_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filter
 #' @description
 #' Returns the detailed parameter list for a particular DB parameter group.
 #'
-#' @usage
-#' rds_describe_db_parameters(DBParameterGroupName, Source, Filters,
-#'   MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_db_parameters.html](https://paws-r.github.io/docs/rds/describe_db_parameters.html) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of a specific DB parameter group to return details for.
 #' 
@@ -8330,49 +5191,6 @@ rds_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filter
 #' [`describe_db_parameters`][rds_describe_db_parameters] request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot",
-#'       SupportedEngineModes = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_parameters(
-#'   DBParameterGroupName = "string",
-#'   Source = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8399,10 +5217,11 @@ rds_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filt
 #' @description
 #' Returns information about DB proxies.
 #'
-#' @usage
-#' rds_describe_db_proxies(DBProxyName, Filters, Marker, MaxRecords)
+#' See [https://paws-r.github.io/docs/rds/describe_db_proxies.html](https://paws-r.github.io/docs/rds/describe_db_proxies.html) for full documentation.
 #'
-#' @param DBProxyName The name of the DB proxy.
+#' @param DBProxyName The name of the DB proxy. If you omit this parameter, the output
+#' includes information about all DB proxies owned by your Amazon Web
+#' Services account ID.
 #' @param Filters This parameter is not currently supported.
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
@@ -8415,65 +5234,6 @@ rds_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filt
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBProxies = list(
-#'     list(
-#'       DBProxyName = "string",
-#'       DBProxyArn = "string",
-#'       Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
-#'       EngineFamily = "string",
-#'       VpcSecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       VpcSubnetIds = list(
-#'         "string"
-#'       ),
-#'       Auth = list(
-#'         list(
-#'           Description = "string",
-#'           UserName = "string",
-#'           AuthScheme = "SECRETS",
-#'           SecretArn = "string",
-#'           IAMAuth = "DISABLED"|"REQUIRED"
-#'         )
-#'       ),
-#'       RoleArn = "string",
-#'       Endpoint = "string",
-#'       RequireTLS = TRUE|FALSE,
-#'       IdleClientTimeout = 123,
-#'       DebugLogging = TRUE|FALSE,
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_proxies(
-#'   DBProxyName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   MaxRecords = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8495,16 +5255,59 @@ rds_describe_db_proxies <- function(DBProxyName = NULL, Filters = NULL, Marker =
 }
 .rds$operations$describe_db_proxies <- rds_describe_db_proxies
 
+#' Returns information about DB proxy endpoints
+#'
+#' @description
+#' Returns information about DB proxy endpoints.
+#'
+#' See [https://paws-r.github.io/docs/rds/describe_db_proxy_endpoints.html](https://paws-r.github.io/docs/rds/describe_db_proxy_endpoints.html) for full documentation.
+#'
+#' @param DBProxyName The name of the DB proxy whose endpoints you want to describe. If you
+#' omit this parameter, the output includes information about all DB proxy
+#' endpoints associated with all your DB proxies.
+#' @param DBProxyEndpointName The name of a DB proxy endpoint to describe. If you omit this parameter,
+#' the output includes information about all DB proxy endpoints associated
+#' with the specified proxy.
+#' @param Filters This parameter is not currently supported.
+#' @param Marker An optional pagination token provided by a previous request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a marker is included in the response so that the remaining
+#' results can be retrieved.
+#' 
+#' Default: 100
+#' 
+#' Constraints: Minimum 20, maximum 100.
+#'
+#' @keywords internal
+#'
+#' @rdname rds_describe_db_proxy_endpoints
+rds_describe_db_proxy_endpoints <- function(DBProxyName = NULL, DBProxyEndpointName = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
+  op <- new_operation(
+    name = "DescribeDBProxyEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$describe_db_proxy_endpoints_input(DBProxyName = DBProxyName, DBProxyEndpointName = DBProxyEndpointName, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
+  output <- .rds$describe_db_proxy_endpoints_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$describe_db_proxy_endpoints <- rds_describe_db_proxy_endpoints
+
 #' Returns information about DB proxy target groups, represented by
 #' DBProxyTargetGroup data structures
 #'
 #' @description
-#' Returns information about DB proxy target groups, represented by
-#' `DBProxyTargetGroup` data structures.
+#' Returns information about DB proxy target groups, represented by `DBProxyTargetGroup` data structures.
 #'
-#' @usage
-#' rds_describe_db_proxy_target_groups(DBProxyName, TargetGroupName,
-#'   Filters, Marker, MaxRecords)
+#' See [https://paws-r.github.io/docs/rds/describe_db_proxy_target_groups.html](https://paws-r.github.io/docs/rds/describe_db_proxy_target_groups.html) for full documentation.
 #'
 #' @param DBProxyName &#91;required&#93; The identifier of the `DBProxy` associated with the target group.
 #' @param TargetGroupName The identifier of the `DBProxyTargetGroup` to describe.
@@ -8520,56 +5323,6 @@ rds_describe_db_proxies <- function(DBProxyName = NULL, Filters = NULL, Marker =
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TargetGroups = list(
-#'     list(
-#'       DBProxyName = "string",
-#'       TargetGroupName = "string",
-#'       TargetGroupArn = "string",
-#'       IsDefault = TRUE|FALSE,
-#'       Status = "string",
-#'       ConnectionPoolConfig = list(
-#'         MaxConnectionsPercent = 123,
-#'         MaxIdleConnectionsPercent = 123,
-#'         ConnectionBorrowTimeout = 123,
-#'         SessionPinningFilters = list(
-#'           "string"
-#'         ),
-#'         InitQuery = "string"
-#'       ),
-#'       CreatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdatedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_proxy_target_groups(
-#'   DBProxyName = "string",
-#'   TargetGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   MaxRecords = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8594,12 +5347,9 @@ rds_describe_db_proxy_target_groups <- function(DBProxyName, TargetGroupName = N
 #' Returns information about DBProxyTarget objects
 #'
 #' @description
-#' Returns information about `DBProxyTarget` objects. This API supports
-#' pagination.
+#' Returns information about `DBProxyTarget` objects. This API supports pagination.
 #'
-#' @usage
-#' rds_describe_db_proxy_targets(DBProxyName, TargetGroupName, Filters,
-#'   Marker, MaxRecords)
+#' See [https://paws-r.github.io/docs/rds/describe_db_proxy_targets.html](https://paws-r.github.io/docs/rds/describe_db_proxy_targets.html) for full documentation.
 #'
 #' @param DBProxyName &#91;required&#93; The identifier of the `DBProxyTarget` to describe.
 #' @param TargetGroupName The identifier of the `DBProxyTargetGroup` to describe.
@@ -8615,47 +5365,6 @@ rds_describe_db_proxy_target_groups <- function(DBProxyName, TargetGroupName = N
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Targets = list(
-#'     list(
-#'       TargetArn = "string",
-#'       Endpoint = "string",
-#'       TrackedClusterId = "string",
-#'       RdsResourceId = "string",
-#'       Port = 123,
-#'       Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
-#'       TargetHealth = list(
-#'         State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
-#'         Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
-#'         Description = "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_proxy_targets(
-#'   DBProxyName = "string",
-#'   TargetGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   MaxRecords = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8680,13 +5389,9 @@ rds_describe_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, F
 #' Returns a list of DBSecurityGroup descriptions
 #'
 #' @description
-#' Returns a list of `DBSecurityGroup` descriptions. If a
-#' `DBSecurityGroupName` is specified, the list will contain only the
-#' descriptions of the specified DB security group.
+#' Returns a list of `DBSecurityGroup` descriptions. If a `DBSecurityGroupName` is specified, the list will contain only the descriptions of the specified DB security group.
 #'
-#' @usage
-#' rds_describe_db_security_groups(DBSecurityGroupName, Filters,
-#'   MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_db_security_groups.html](https://paws-r.github.io/docs/rds/describe_db_security_groups.html) for full documentation.
 #'
 #' @param DBSecurityGroupName The name of the DB security group to return details for.
 #' @param Filters This parameter isn't currently supported.
@@ -8702,54 +5407,6 @@ rds_describe_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, F
 #' [`describe_db_security_groups`][rds_describe_db_security_groups]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBSecurityGroups = list(
-#'     list(
-#'       OwnerId = "string",
-#'       DBSecurityGroupName = "string",
-#'       DBSecurityGroupDescription = "string",
-#'       VpcId = "string",
-#'       EC2SecurityGroups = list(
-#'         list(
-#'           Status = "string",
-#'           EC2SecurityGroupName = "string",
-#'           EC2SecurityGroupId = "string",
-#'           EC2SecurityGroupOwnerId = "string"
-#'         )
-#'       ),
-#'       IPRanges = list(
-#'         list(
-#'           Status = "string",
-#'           CIDRIP = "string"
-#'         )
-#'       ),
-#'       DBSecurityGroupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_security_groups(
-#'   DBSecurityGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8775,51 +5432,11 @@ rds_describe_db_security_groups <- function(DBSecurityGroupName = NULL, Filters 
 #' snapshot
 #'
 #' @description
-#' Returns a list of DB snapshot attribute names and values for a manual DB
-#' snapshot.
-#' 
-#' When sharing snapshots with other AWS accounts,
-#' [`describe_db_snapshot_attributes`][rds_describe_db_snapshot_attributes]
-#' returns the `restore` attribute and a list of IDs for the AWS accounts
-#' that are authorized to copy or restore the manual DB snapshot. If `all`
-#' is included in the list of values for the `restore` attribute, then the
-#' manual DB snapshot is public and can be copied or restored by all AWS
-#' accounts.
-#' 
-#' To add or remove access for an AWS account to copy or restore a manual
-#' DB snapshot, or to make the manual DB snapshot public or private, use
-#' the [`modify_db_snapshot_attribute`][rds_modify_db_snapshot_attribute]
-#' API action.
+#' Returns a list of DB snapshot attribute names and values for a manual DB snapshot.
 #'
-#' @usage
-#' rds_describe_db_snapshot_attributes(DBSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/rds/describe_db_snapshot_attributes.html](https://paws-r.github.io/docs/rds/describe_db_snapshot_attributes.html) for full documentation.
 #'
 #' @param DBSnapshotIdentifier &#91;required&#93; The identifier for the DB snapshot to describe the attributes for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSnapshotAttributesResult = list(
-#'     DBSnapshotIdentifier = "string",
-#'     DBSnapshotAttributes = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeValues = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_snapshot_attributes(
-#'   DBSnapshotIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8844,24 +5461,18 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
 #' Returns information about DB snapshots
 #'
 #' @description
-#' Returns information about DB snapshots. This API action supports
-#' pagination.
+#' Returns information about DB snapshots. This API action supports pagination.
 #'
-#' @usage
-#' rds_describe_db_snapshots(DBInstanceIdentifier, DBSnapshotIdentifier,
-#'   SnapshotType, Filters, MaxRecords, Marker, IncludeShared, IncludePublic,
-#'   DbiResourceId)
+#' See [https://paws-r.github.io/docs/rds/describe_db_snapshots.html](https://paws-r.github.io/docs/rds/describe_db_snapshots.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier The ID of the DB instance to retrieve the list of DB snapshots for. This
-#' parameter can't be used in conjunction with `DBSnapshotIdentifier`. This
 #' parameter isn't case-sensitive.
 #' 
 #' Constraints:
 #' 
 #' -   If supplied, must match the identifier of an existing DBInstance.
-#' @param DBSnapshotIdentifier A specific DB snapshot identifier to describe. This parameter can't be
-#' used in conjunction with `DBInstanceIdentifier`. This value is stored as
-#' a lowercase string.
+#' @param DBSnapshotIdentifier A specific DB snapshot identifier to describe. This value is stored as a
+#' lowercase string.
 #' 
 #' Constraints:
 #' 
@@ -8873,20 +5484,21 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
 #' following values:
 #' 
 #' -   `automated` - Return all DB snapshots that have been automatically
-#'     taken by Amazon RDS for my AWS account.
+#'     taken by Amazon RDS for my Amazon Web Services account.
 #' 
-#' -   `manual` - Return all DB snapshots that have been taken by my AWS
-#'     account.
+#' -   `manual` - Return all DB snapshots that have been taken by my Amazon
+#'     Web Services account.
 #' 
 #' -   `shared` - Return all manual DB snapshots that have been shared to
-#'     my AWS account.
+#'     my Amazon Web Services account.
 #' 
 #' -   `public` - Return all DB snapshots that have been marked as public.
 #' 
-#' -   `awsbackup` - Return the DB snapshots managed by the AWS Backup
-#'     service.
+#' -   `awsbackup` - Return the DB snapshots managed by the Amazon Web
+#'     Services Backup service.
 #' 
-#'     For information about AWS Backup, see the [*AWS Backup Developer
+#'     For information about Amazon Web Services Backup, see the [*Amazon
+#'     Web Services Backup Developer
 #'     Guide.*](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html)
 #' 
 #'     The `awsbackup` type does not apply to Aurora.
@@ -8930,98 +5542,25 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #' @param IncludeShared A value that indicates whether to include shared manual DB cluster
-#' snapshots from other AWS accounts that this AWS account has been given
-#' permission to copy or restore. By default, these snapshots are not
-#' included.
+#' snapshots from other Amazon Web Services accounts that this Amazon Web
+#' Services account has been given permission to copy or restore. By
+#' default, these snapshots are not included.
 #' 
-#' You can give an AWS account permission to restore a manual DB snapshot
-#' from another AWS account by using the
+#' You can give an Amazon Web Services account permission to restore a
+#' manual DB snapshot from another Amazon Web Services account by using the
 #' [`modify_db_snapshot_attribute`][rds_modify_db_snapshot_attribute] API
 #' action.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param IncludePublic A value that indicates whether to include manual DB cluster snapshots
-#' that are public and can be copied or restored by any AWS account. By
-#' default, the public snapshots are not included.
+#' that are public and can be copied or restored by any Amazon Web Services
+#' account. By default, the public snapshots are not included.
 #' 
 #' You can share a manual DB snapshot as public by using the
 #' [`modify_db_snapshot_attribute`][rds_modify_db_snapshot_attribute] API.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param DbiResourceId A specific DB resource ID to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBSnapshots = list(
-#'     list(
-#'       DBSnapshotIdentifier = "string",
-#'       DBInstanceIdentifier = "string",
-#'       SnapshotCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Engine = "string",
-#'       AllocatedStorage = 123,
-#'       Status = "string",
-#'       Port = 123,
-#'       AvailabilityZone = "string",
-#'       VpcId = "string",
-#'       InstanceCreateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       MasterUsername = "string",
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       SnapshotType = "string",
-#'       Iops = 123,
-#'       OptionGroupName = "string",
-#'       PercentProgress = 123,
-#'       SourceRegion = "string",
-#'       SourceDBSnapshotIdentifier = "string",
-#'       StorageType = "string",
-#'       TdeCredentialArn = "string",
-#'       Encrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       DBSnapshotArn = "string",
-#'       Timezone = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       DbiResourceId = "string",
-#'       TagList = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_snapshots(
-#'   DBInstanceIdentifier = "string",
-#'   DBSnapshotIdentifier = "string",
-#'   SnapshotType = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string",
-#'   IncludeShared = TRUE|FALSE,
-#'   IncludePublic = TRUE|FALSE,
-#'   DbiResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9046,16 +5585,9 @@ rds_describe_db_snapshots <- function(DBInstanceIdentifier = NULL, DBSnapshotIde
 #' Returns a list of DBSubnetGroup descriptions
 #'
 #' @description
-#' Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is
-#' specified, the list will contain only the descriptions of the specified
-#' DBSubnetGroup.
-#' 
-#' For an overview of CIDR ranges, go to the [Wikipedia
-#' Tutorial](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+#' Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specified, the list will contain only the descriptions of the specified DBSubnetGroup.
 #'
-#' @usage
-#' rds_describe_db_subnet_groups(DBSubnetGroupName, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_db_subnet_groups.html](https://paws-r.github.io/docs/rds/describe_db_subnet_groups.html) for full documentation.
 #'
 #' @param DBSubnetGroupName The name of the DB subnet group to return details for.
 #' @param Filters This parameter isn't currently supported.
@@ -9071,52 +5603,6 @@ rds_describe_db_snapshots <- function(DBInstanceIdentifier = NULL, DBSnapshotIde
 #' DescribeDBSubnetGroups request. If this parameter is specified, the
 #' response includes only records beyond the marker, up to the value
 #' specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   DBSubnetGroups = list(
-#'     list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_db_subnet_groups(
-#'   DBSubnetGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9142,16 +5628,9 @@ rds_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NU
 #' cluster database engine
 #'
 #' @description
-#' Returns the default engine and system parameter information for the
-#' cluster database engine.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
+#' Returns the default engine and system parameter information for the cluster database engine.
 #'
-#' @usage
-#' rds_describe_engine_default_cluster_parameters(DBParameterGroupFamily,
-#'   Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_engine_default_cluster_parameters.html](https://paws-r.github.io/docs/rds/describe_engine_default_cluster_parameters.html) for full documentation.
 #'
 #' @param DBParameterGroupFamily &#91;required&#93; The name of the DB cluster parameter group family to return engine
 #' parameter information for.
@@ -9168,51 +5647,6 @@ rds_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NU
 #' [`describe_engine_default_cluster_parameters`][rds_describe_engine_default_cluster_parameters]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EngineDefaults = list(
-#'     DBParameterGroupFamily = "string",
-#'     Marker = "string",
-#'     Parameters = list(
-#'       list(
-#'         ParameterName = "string",
-#'         ParameterValue = "string",
-#'         Description = "string",
-#'         Source = "string",
-#'         ApplyType = "string",
-#'         DataType = "string",
-#'         AllowedValues = "string",
-#'         IsModifiable = TRUE|FALSE,
-#'         MinimumEngineVersion = "string",
-#'         ApplyMethod = "immediate"|"pending-reboot",
-#'         SupportedEngineModes = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_engine_default_cluster_parameters(
-#'   DBParameterGroupFamily = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9238,14 +5672,91 @@ rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamil
 #' specified database engine
 #'
 #' @description
-#' Returns the default engine and system parameter information for the
-#' specified database engine.
+#' Returns the default engine and system parameter information for the specified database engine.
 #'
-#' @usage
-#' rds_describe_engine_default_parameters(DBParameterGroupFamily, Filters,
-#'   MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_engine_default_parameters.html](https://paws-r.github.io/docs/rds/describe_engine_default_parameters.html) for full documentation.
 #'
 #' @param DBParameterGroupFamily &#91;required&#93; The name of the DB parameter group family.
+#' 
+#' Valid Values:
+#' 
+#' -   `aurora5.6`
+#' 
+#' -   `aurora-mysql5.7`
+#' 
+#' -   `aurora-mysql8.0`
+#' 
+#' -   `aurora-postgresql10`
+#' 
+#' -   `aurora-postgresql11`
+#' 
+#' -   `aurora-postgresql12`
+#' 
+#' -   `aurora-postgresql13`
+#' 
+#' -   `mariadb10.2`
+#' 
+#' -   `mariadb10.3`
+#' 
+#' -   `mariadb10.4`
+#' 
+#' -   `mariadb10.5`
+#' 
+#' -   `mariadb10.6`
+#' 
+#' -   `mysql5.7`
+#' 
+#' -   `mysql8.0`
+#' 
+#' -   `postgres10`
+#' 
+#' -   `postgres11`
+#' 
+#' -   `postgres12`
+#' 
+#' -   `postgres13`
+#' 
+#' -   `postgres14`
+#' 
+#' -   `sqlserver-ee-11.0`
+#' 
+#' -   `sqlserver-ee-12.0`
+#' 
+#' -   `sqlserver-ee-13.0`
+#' 
+#' -   `sqlserver-ee-14.0`
+#' 
+#' -   `sqlserver-ee-15.0`
+#' 
+#' -   `sqlserver-ex-11.0`
+#' 
+#' -   `sqlserver-ex-12.0`
+#' 
+#' -   `sqlserver-ex-13.0`
+#' 
+#' -   `sqlserver-ex-14.0`
+#' 
+#' -   `sqlserver-ex-15.0`
+#' 
+#' -   `sqlserver-se-11.0`
+#' 
+#' -   `sqlserver-se-12.0`
+#' 
+#' -   `sqlserver-se-13.0`
+#' 
+#' -   `sqlserver-se-14.0`
+#' 
+#' -   `sqlserver-se-15.0`
+#' 
+#' -   `sqlserver-web-11.0`
+#' 
+#' -   `sqlserver-web-12.0`
+#' 
+#' -   `sqlserver-web-13.0`
+#' 
+#' -   `sqlserver-web-14.0`
+#' 
+#' -   `sqlserver-web-15.0`
 #' @param Filters This parameter isn't currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -9259,51 +5770,6 @@ rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamil
 #' [`describe_engine_default_parameters`][rds_describe_engine_default_parameters]
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EngineDefaults = list(
-#'     DBParameterGroupFamily = "string",
-#'     Marker = "string",
-#'     Parameters = list(
-#'       list(
-#'         ParameterName = "string",
-#'         ParameterValue = "string",
-#'         Description = "string",
-#'         Source = "string",
-#'         ApplyType = "string",
-#'         DataType = "string",
-#'         AllowedValues = "string",
-#'         IsModifiable = TRUE|FALSE,
-#'         MinimumEngineVersion = "string",
-#'         ApplyMethod = "immediate"|"pending-reboot",
-#'         SupportedEngineModes = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_engine_default_parameters(
-#'   DBParameterGroupFamily = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9329,50 +5795,16 @@ rds_describe_engine_default_parameters <- function(DBParameterGroupFamily, Filte
 #' specified, for a specified source type
 #'
 #' @description
-#' Displays a list of categories for all event source types, or, if
-#' specified, for a specified source type. You can see a list of the event
-#' categories and source types in
-#' [Events](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-#' in the *Amazon RDS User Guide.*
+#' Displays a list of categories for all event source types, or, if specified, for a specified source type. You can also see this list in the "Amazon RDS event categories and event messages" section of the [*Amazon RDS User Guide*](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html) or the [*Amazon Aurora User Guide*](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html) .
 #'
-#' @usage
-#' rds_describe_event_categories(SourceType, Filters)
+#' See [https://paws-r.github.io/docs/rds/describe_event_categories.html](https://paws-r.github.io/docs/rds/describe_event_categories.html) for full documentation.
 #'
-#' @param SourceType The type of source that is generating the events.
+#' @param SourceType The type of source that is generating the events. For RDS Proxy events,
+#' specify `db-proxy`.
 #' 
 #' Valid values: `db-instance` | `db-cluster` | `db-parameter-group` |
-#' `db-security-group` | `db-snapshot` | `db-cluster-snapshot`
+#' `db-security-group` | `db-snapshot` | `db-cluster-snapshot` | `db-proxy`
 #' @param Filters This parameter isn't currently supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventCategoriesMapList = list(
-#'     list(
-#'       SourceType = "string",
-#'       EventCategories = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_event_categories(
-#'   SourceType = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9397,17 +5829,9 @@ rds_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 #' Lists all the subscription descriptions for a customer account
 #'
 #' @description
-#' Lists all the subscription descriptions for a customer account. The
-#' description for a subscription includes `SubscriptionName`,
-#' `SNSTopicARN`, `CustomerID`, `SourceType`, `SourceID`, `CreationTime`,
-#' and `Status`.
-#' 
-#' If you specify a `SubscriptionName`, lists the description for that
-#' subscription.
+#' Lists all the subscription descriptions for a customer account. The description for a subscription includes `SubscriptionName`, `SNSTopicARN`, `CustomerID`, `SourceType`, `SourceID`, `CreationTime`, and `Status`.
 #'
-#' @usage
-#' rds_describe_event_subscriptions(SubscriptionName, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_event_subscriptions.html](https://paws-r.github.io/docs/rds/describe_event_subscriptions.html) for full documentation.
 #'
 #' @param SubscriptionName The name of the RDS event notification subscription you want to
 #' describe.
@@ -9424,49 +5848,6 @@ rds_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 #' DescribeOrderableDBInstanceOptions request. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
 #' the value specified by `MaxRecords` .
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   EventSubscriptionsList = list(
-#'     list(
-#'       CustomerAwsId = "string",
-#'       CustSubscriptionId = "string",
-#'       SnsTopicArn = "string",
-#'       Status = "string",
-#'       SubscriptionCreationTime = "string",
-#'       SourceType = "string",
-#'       SourceIdsList = list(
-#'         "string"
-#'       ),
-#'       EventCategoriesList = list(
-#'         "string"
-#'       ),
-#'       Enabled = TRUE|FALSE,
-#'       EventSubscriptionArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_event_subscriptions(
-#'   SubscriptionName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9489,22 +5870,13 @@ rds_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = 
 .rds$operations$describe_event_subscriptions <- rds_describe_event_subscriptions
 
 #' Returns events related to DB instances, DB clusters, DB parameter
-#' groups, DB security groups, DB snapshots, and DB cluster snapshots for
-#' the past 14 days
+#' groups, DB security groups, DB snapshots, DB cluster snapshots, and RDS
+#' Proxies for the past 14 days
 #'
 #' @description
-#' Returns events related to DB instances, DB clusters, DB parameter
-#' groups, DB security groups, DB snapshots, and DB cluster snapshots for
-#' the past 14 days. Events specific to a particular DB instances, DB
-#' clusters, DB parameter groups, DB security groups, DB snapshots, and DB
-#' cluster snapshots group can be obtained by providing the name as a
-#' parameter.
-#' 
-#' By default, the past hour of events are returned.
+#' Returns events related to DB instances, DB clusters, DB parameter groups, DB security groups, DB snapshots, DB cluster snapshots, and RDS Proxies for the past 14 days. Events specific to a particular DB instance, DB cluster, DB parameter group, DB security group, DB snapshot, DB cluster snapshot group, or RDS Proxy can be obtained by providing the name as a parameter.
 #'
-#' @usage
-#' rds_describe_events(SourceIdentifier, SourceType, StartTime, EndTime,
-#'   Duration, EventCategories, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_events.html](https://paws-r.github.io/docs/rds/describe_events.html) for full documentation.
 #'
 #' @param SourceIdentifier The identifier of the event source for which events are returned. If not
 #' specified, then all sources are included in the response.
@@ -9531,6 +5903,9 @@ rds_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = 
 #' 
 #' -   If the source type is a DB cluster snapshot, a
 #'     `DBClusterSnapshotIdentifier` value must be supplied.
+#' 
+#' -   If the source type is an RDS Proxy, a `DBProxyName` value must be
+#'     supplied.
 #' 
 #' -   Can't end with a hyphen or contain two consecutive hyphens.
 #' @param SourceType The event source to retrieve events for. If no value is specified, all
@@ -9563,56 +5938,6 @@ rds_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = 
 #' request. If this parameter is specified, the response includes only
 #' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   Events = list(
-#'     list(
-#'       SourceIdentifier = "string",
-#'       SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-#'       Message = "string",
-#'       EventCategories = list(
-#'         "string"
-#'       ),
-#'       Date = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       SourceArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_events(
-#'   SourceIdentifier = "string",
-#'   SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Duration = 123,
-#'   EventCategories = list(
-#'     "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_describe_events
@@ -9636,12 +5961,9 @@ rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, Star
 #' Returns information about a snapshot export to Amazon S3
 #'
 #' @description
-#' Returns information about a snapshot export to Amazon S3. This API
-#' operation supports pagination.
+#' Returns information about a snapshot export to Amazon S3. This API operation supports pagination.
 #'
-#' @usage
-#' rds_describe_export_tasks(ExportTaskIdentifier, SourceArn, Filters,
-#'   Marker, MaxRecords)
+#' See [https://paws-r.github.io/docs/rds/describe_export_tasks.html](https://paws-r.github.io/docs/rds/describe_export_tasks.html) for full documentation.
 #'
 #' @param ExportTaskIdentifier The identifier of the snapshot export task to be described.
 #' @param SourceArn The Amazon Resource Name (ARN) of the snapshot exported to Amazon S3.
@@ -9659,8 +5981,20 @@ rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, Star
 #' -   `source-arn` - The Amazon Resource Name (ARN) of the snapshot
 #'     exported to Amazon S3
 #' 
-#' -   `status` - The status of the export task. Must be lowercase, for
-#'     example, `complete`.
+#' -   `status` - The status of the export task. Must be lowercase. Valid
+#'     statuses are the following:
+#' 
+#'     -   `canceled`
+#' 
+#'     -   `canceling`
+#' 
+#'     -   `complete`
+#' 
+#'     -   `failed`
+#' 
+#'     -   `in_progress`
+#' 
+#'     -   `starting`
 #' @param Marker An optional pagination token provided by a previous
 #' [`describe_export_tasks`][rds_describe_export_tasks] request. If you
 #' specify this parameter, the response includes only records beyond the
@@ -9674,59 +6008,6 @@ rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, Star
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   ExportTasks = list(
-#'     list(
-#'       ExportTaskIdentifier = "string",
-#'       SourceArn = "string",
-#'       ExportOnly = list(
-#'         "string"
-#'       ),
-#'       SnapshotTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TaskStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TaskEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       S3Bucket = "string",
-#'       S3Prefix = "string",
-#'       IamRoleArn = "string",
-#'       KmsKeyId = "string",
-#'       Status = "string",
-#'       PercentProgress = 123,
-#'       TotalExtractedDataInGB = 123,
-#'       FailureCause = "string",
-#'       WarningMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_export_tasks(
-#'   ExportTaskIdentifier = "string",
-#'   SourceArn = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   MaxRecords = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9751,18 +6032,9 @@ rds_describe_export_tasks <- function(ExportTaskIdentifier = NULL, SourceArn = N
 #' Returns information about Aurora global database clusters
 #'
 #' @description
-#' Returns information about Aurora global database clusters. This API
-#' supports pagination.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Returns information about Aurora global database clusters. This API supports pagination.
 #'
-#' @usage
-#' rds_describe_global_clusters(GlobalClusterIdentifier, Filters,
-#'   MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_global_clusters.html](https://paws-r.github.io/docs/rds/describe_global_clusters.html) for full documentation.
 #'
 #' @param GlobalClusterIdentifier The user-supplied DB cluster identifier. If this parameter is specified,
 #' information from only the specific DB cluster is returned. This
@@ -9771,13 +6043,7 @@ rds_describe_export_tasks <- function(ExportTaskIdentifier = NULL, SourceArn = N
 #' Constraints:
 #' 
 #' -   If supplied, must match an existing DBClusterIdentifier.
-#' @param Filters A filter that specifies one or more global DB clusters to describe.
-#' 
-#' Supported filters:
-#' 
-#' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster
-#'     Amazon Resource Names (ARNs). The results list will only include
-#'     information about the DB clusters identified by these ARNs.
+#' @param Filters This parameter isn't currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so that you can retrieve the
@@ -9790,54 +6056,6 @@ rds_describe_export_tasks <- function(ExportTaskIdentifier = NULL, SourceArn = N
 #' [`describe_global_clusters`][rds_describe_global_clusters] request. If
 #' this parameter is specified, the response includes only records beyond
 #' the marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   GlobalClusters = list(
-#'     list(
-#'       GlobalClusterIdentifier = "string",
-#'       GlobalClusterResourceId = "string",
-#'       GlobalClusterArn = "string",
-#'       Status = "string",
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       DatabaseName = "string",
-#'       StorageEncrypted = TRUE|FALSE,
-#'       DeletionProtection = TRUE|FALSE,
-#'       GlobalClusterMembers = list(
-#'         list(
-#'           DBClusterArn = "string",
-#'           Readers = list(
-#'             "string"
-#'           ),
-#'           IsWriter = TRUE|FALSE,
-#'           GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_global_clusters(
-#'   GlobalClusterIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9859,109 +6077,39 @@ rds_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters
 }
 .rds$operations$describe_global_clusters <- rds_describe_global_clusters
 
-#' Describes the available installation media for a DB engine that requires
-#' an on-premises customer provided license, such as Microsoft SQL Server
-#'
-#' @description
-#' Describes the available installation media for a DB engine that requires
-#' an on-premises customer provided license, such as Microsoft SQL Server.
-#'
-#' @usage
-#' rds_describe_installation_media(InstallationMediaId, Filters,
-#'   MaxRecords, Marker)
-#'
-#' @param InstallationMediaId The installation medium ID.
-#' @param Filters A filter that specifies one or more installation media to describe.
-#' Supported filters include the following:
-#' 
-#' -   `custom-availability-zone-id` - Accepts custom Availability Zone
-#'     (AZ) identifiers. The results list includes information about only
-#'     the custom AZs identified by these identifiers.
-#' 
-#' -   `engine` - Accepts database engines. The results list includes
-#'     information about only the database engines identified by these
-#'     identifiers.
-#' 
-#'     For more information about the valid engines for installation media,
-#'     see [`import_installation_media`][rds_import_installation_media].
-#' @param MaxRecords An optional pagination token provided by a previous
-#' DescribeInstallationMedia request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
-#' @param Marker An optional pagination token provided by a previous request. If this
-#' parameter is specified, the response includes only records beyond the
-#' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   InstallationMedia = list(
-#'     list(
-#'       InstallationMediaId = "string",
-#'       CustomAvailabilityZoneId = "string",
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       EngineInstallationMediaPath = "string",
-#'       OSInstallationMediaPath = "string",
-#'       Status = "string",
-#'       FailureCause = list(
-#'         Message = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_installation_media(
-#'   InstallationMediaId = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname rds_describe_installation_media
-rds_describe_installation_media <- function(InstallationMediaId = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
-  op <- new_operation(
-    name = "DescribeInstallationMedia",
-    http_method = "POST",
-    http_path = "/",
-    paginator = list()
-  )
-  input <- .rds$describe_installation_media_input(InstallationMediaId = InstallationMediaId, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
-  output <- .rds$describe_installation_media_output()
-  config <- get_config()
-  svc <- .rds$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.rds$operations$describe_installation_media <- rds_describe_installation_media
-
 #' Describes all available options
 #'
 #' @description
 #' Describes all available options.
 #'
-#' @usage
-#' rds_describe_option_group_options(EngineName, MajorEngineVersion,
-#'   Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_option_group_options.html](https://paws-r.github.io/docs/rds/describe_option_group_options.html) for full documentation.
 #'
 #' @param EngineName &#91;required&#93; A required parameter. Options available for the given engine name are
 #' described.
+#' 
+#' Valid Values:
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-ee-cdb`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se2-cdb`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param MajorEngineVersion If specified, filters the results to include only options for the
 #' specified major engine version.
 #' @param Filters This parameter isn't currently supported.
@@ -9976,77 +6124,6 @@ rds_describe_installation_media <- function(InstallationMediaId = NULL, Filters 
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OptionGroupOptions = list(
-#'     list(
-#'       Name = "string",
-#'       Description = "string",
-#'       EngineName = "string",
-#'       MajorEngineVersion = "string",
-#'       MinimumRequiredMinorEngineVersion = "string",
-#'       PortRequired = TRUE|FALSE,
-#'       DefaultPort = 123,
-#'       OptionsDependedOn = list(
-#'         "string"
-#'       ),
-#'       OptionsConflictsWith = list(
-#'         "string"
-#'       ),
-#'       Persistent = TRUE|FALSE,
-#'       Permanent = TRUE|FALSE,
-#'       RequiresAutoMinorEngineVersionUpgrade = TRUE|FALSE,
-#'       VpcOnly = TRUE|FALSE,
-#'       SupportsOptionVersionDowngrade = TRUE|FALSE,
-#'       OptionGroupOptionSettings = list(
-#'         list(
-#'           SettingName = "string",
-#'           SettingDescription = "string",
-#'           DefaultValue = "string",
-#'           ApplyType = "string",
-#'           AllowedValues = "string",
-#'           IsModifiable = TRUE|FALSE,
-#'           IsRequired = TRUE|FALSE,
-#'           MinimumEngineVersionPerAllowedValue = list(
-#'             list(
-#'               AllowedValue = "string",
-#'               MinimumEngineVersion = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       OptionGroupOptionVersions = list(
-#'         list(
-#'           Version = "string",
-#'           IsDefault = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_option_group_options(
-#'   EngineName = "string",
-#'   MajorEngineVersion = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10073,9 +6150,7 @@ rds_describe_option_group_options <- function(EngineName, MajorEngineVersion = N
 #' @description
 #' Describes the available option groups.
 #'
-#' @usage
-#' rds_describe_option_groups(OptionGroupName, Filters, Marker, MaxRecords,
-#'   EngineName, MajorEngineVersion)
+#' See [https://paws-r.github.io/docs/rds/describe_option_groups.html](https://paws-r.github.io/docs/rds/describe_option_groups.html) for full documentation.
 #'
 #' @param OptionGroupName The name of the option group to describe. Can't be supplied together
 #' with EngineName or MajorEngineVersion.
@@ -10093,82 +6168,33 @@ rds_describe_option_group_options <- function(EngineName, MajorEngineVersion = N
 #' Constraints: Minimum 20, maximum 100.
 #' @param EngineName Filters the list of option groups to only include groups associated with
 #' a specific database engine.
+#' 
+#' Valid Values:
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-ee-cdb`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se2-cdb`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param MajorEngineVersion Filters the list of option groups to only include groups associated with
 #' a specific database engine version. If specified, then EngineName must
 #' also be specified.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OptionGroupsList = list(
-#'     list(
-#'       OptionGroupName = "string",
-#'       OptionGroupDescription = "string",
-#'       EngineName = "string",
-#'       MajorEngineVersion = "string",
-#'       Options = list(
-#'         list(
-#'           OptionName = "string",
-#'           OptionDescription = "string",
-#'           Persistent = TRUE|FALSE,
-#'           Permanent = TRUE|FALSE,
-#'           Port = 123,
-#'           OptionVersion = "string",
-#'           OptionSettings = list(
-#'             list(
-#'               Name = "string",
-#'               Value = "string",
-#'               DefaultValue = "string",
-#'               Description = "string",
-#'               ApplyType = "string",
-#'               DataType = "string",
-#'               AllowedValues = "string",
-#'               IsModifiable = TRUE|FALSE,
-#'               IsCollection = TRUE|FALSE
-#'             )
-#'           ),
-#'           DBSecurityGroupMemberships = list(
-#'             list(
-#'               DBSecurityGroupName = "string",
-#'               Status = "string"
-#'             )
-#'           ),
-#'           VpcSecurityGroupMemberships = list(
-#'             list(
-#'               VpcSecurityGroupId = "string",
-#'               Status = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
-#'       VpcId = "string",
-#'       OptionGroupArn = "string"
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_option_groups(
-#'   OptionGroupName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   MaxRecords = 123,
-#'   EngineName = "string",
-#'   MajorEngineVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10190,31 +6216,67 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 }
 .rds$operations$describe_option_groups <- rds_describe_option_groups
 
-#' Returns a list of orderable DB instance options for the specified engine
+#' Returns a list of orderable DB instance options for the specified DB
+#' engine, DB engine version, and DB instance class
 #'
 #' @description
-#' Returns a list of orderable DB instance options for the specified
-#' engine.
+#' Returns a list of orderable DB instance options for the specified DB engine, DB engine version, and DB instance class.
 #'
-#' @usage
-#' rds_describe_orderable_db_instance_options(Engine, EngineVersion,
-#'   DBInstanceClass, LicenseModel, AvailabilityZoneGroup, Vpc, Filters,
-#'   MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_orderable_db_instance_options.html](https://paws-r.github.io/docs/rds/describe_orderable_db_instance_options.html) for full documentation.
 #'
 #' @param Engine &#91;required&#93; The name of the engine to retrieve DB instance options for.
+#' 
+#' Valid Values:
+#' 
+#' -   `aurora` (for MySQL 5.6-compatible Aurora)
+#' 
+#' -   `aurora-mysql` (for MySQL 5.7-compatible and MySQL 8.0-compatible
+#'     Aurora)
+#' 
+#' -   `aurora-postgresql`
+#' 
+#' -   `mariadb`
+#' 
+#' -   `mysql`
+#' 
+#' -   `oracle-ee`
+#' 
+#' -   `oracle-ee-cdb`
+#' 
+#' -   `oracle-se2`
+#' 
+#' -   `oracle-se2-cdb`
+#' 
+#' -   `postgres`
+#' 
+#' -   `sqlserver-ee`
+#' 
+#' -   `sqlserver-se`
+#' 
+#' -   `sqlserver-ex`
+#' 
+#' -   `sqlserver-web`
 #' @param EngineVersion The engine version filter value. Specify this parameter to show only the
 #' available offerings matching the specified engine version.
 #' @param DBInstanceClass The DB instance class filter value. Specify this parameter to show only
 #' the available offerings matching the specified DB instance class.
 #' @param LicenseModel The license model filter value. Specify this parameter to show only the
 #' available offerings matching the specified license model.
+#' 
+#' RDS Custom supports only the BYOL licensing model.
 #' @param AvailabilityZoneGroup The Availability Zone group associated with a Local Zone. Specify this
 #' parameter to retrieve available offerings for the Local Zones in the
 #' group.
 #' 
-#' Omit this parameter to show the available offerings in the specified AWS
-#' Region.
+#' Omit this parameter to show the available offerings in the specified
+#' Amazon Web Services Region.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param Vpc A value that indicates whether to show only VPC or non-VPC offerings.
+#' RDS Custom supports only VPC offerings.
+#' 
+#' RDS Custom supports only VPC offerings. If you describe non-VPC
+#' offerings for RDS Custom, the output shows VPC offerings.
 #' @param Filters This parameter isn't currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -10223,84 +6285,11 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 #' 
 #' Default: 100
 #' 
-#' Constraints: Minimum 20, maximum 100.
+#' Constraints: Minimum 20, maximum 10000.
 #' @param Marker An optional pagination token provided by a previous
 #' DescribeOrderableDBInstanceOptions request. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
-#' the value specified by `MaxRecords` .
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrderableDBInstanceOptions = list(
-#'     list(
-#'       Engine = "string",
-#'       EngineVersion = "string",
-#'       DBInstanceClass = "string",
-#'       LicenseModel = "string",
-#'       AvailabilityZoneGroup = "string",
-#'       AvailabilityZones = list(
-#'         list(
-#'           Name = "string"
-#'         )
-#'       ),
-#'       MultiAZCapable = TRUE|FALSE,
-#'       ReadReplicaCapable = TRUE|FALSE,
-#'       Vpc = TRUE|FALSE,
-#'       SupportsStorageEncryption = TRUE|FALSE,
-#'       StorageType = "string",
-#'       SupportsIops = TRUE|FALSE,
-#'       SupportsEnhancedMonitoring = TRUE|FALSE,
-#'       SupportsIAMDatabaseAuthentication = TRUE|FALSE,
-#'       SupportsPerformanceInsights = TRUE|FALSE,
-#'       MinStorageSize = 123,
-#'       MaxStorageSize = 123,
-#'       MinIopsPerDbInstance = 123,
-#'       MaxIopsPerDbInstance = 123,
-#'       MinIopsPerGib = 123.0,
-#'       MaxIopsPerGib = 123.0,
-#'       AvailableProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           DefaultValue = "string",
-#'           AllowedValues = "string"
-#'         )
-#'       ),
-#'       SupportedEngineModes = list(
-#'         "string"
-#'       ),
-#'       SupportsStorageAutoscaling = TRUE|FALSE,
-#'       SupportsKerberosAuthentication = TRUE|FALSE,
-#'       OutpostCapable = TRUE|FALSE,
-#'       SupportsGlobalDatabases = TRUE|FALSE
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_orderable_db_instance_options(
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   DBInstanceClass = "string",
-#'   LicenseModel = "string",
-#'   AvailabilityZoneGroup = "string",
-#'   Vpc = TRUE|FALSE,
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
+#' the value specified by `MaxRecords`.
 #'
 #' @keywords internal
 #'
@@ -10326,12 +6315,9 @@ rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = N
 #' least one pending maintenance action
 #'
 #' @description
-#' Returns a list of resources (for example, DB instances) that have at
-#' least one pending maintenance action.
+#' Returns a list of resources (for example, DB instances) that have at least one pending maintenance action.
 #'
-#' @usage
-#' rds_describe_pending_maintenance_actions(ResourceIdentifier, Filters,
-#'   Marker, MaxRecords)
+#' See [https://paws-r.github.io/docs/rds/describe_pending_maintenance_actions.html](https://paws-r.github.io/docs/rds/describe_pending_maintenance_actions.html) for full documentation.
 #'
 #' @param ResourceIdentifier The ARN of a resource to return pending maintenance actions for.
 #' @param Filters A filter that specifies one or more resources to return pending
@@ -10340,13 +6326,12 @@ rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = N
 #' Supported filters:
 #' 
 #' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster
-#'     Amazon Resource Names (ARNs). The results list will only include
-#'     pending maintenance actions for the DB clusters identified by these
-#'     ARNs.
+#'     Amazon Resource Names (ARNs). The results list only includes pending
+#'     maintenance actions for the DB clusters identified by these ARNs.
 #' 
 #' -   `db-instance-id` - Accepts DB instance identifiers and DB instance
-#'     ARNs. The results list will only include pending maintenance actions
-#'     for the DB instances identified by these ARNs.
+#'     ARNs. The results list only includes pending maintenance actions for
+#'     the DB instances identified by these ARNs.
 #' @param Marker An optional pagination token provided by a previous
 #' [`describe_pending_maintenance_actions`][rds_describe_pending_maintenance_actions]
 #' request. If this parameter is specified, the response includes only
@@ -10360,52 +6345,6 @@ rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = N
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PendingMaintenanceActions = list(
-#'     list(
-#'       ResourceIdentifier = "string",
-#'       PendingMaintenanceActionDetails = list(
-#'         list(
-#'           Action = "string",
-#'           AutoAppliedAfterDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           ForcedApplyDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           OptInStatus = "string",
-#'           CurrentApplyDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           Description = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_pending_maintenance_actions(
-#'   ResourceIdentifier = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Marker = "string",
-#'   MaxRecords = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10431,14 +6370,9 @@ rds_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, 
 #' about a specified reserved DB instance
 #'
 #' @description
-#' Returns information about reserved DB instances for this account, or
-#' about a specified reserved DB instance.
+#' Returns information about reserved DB instances for this account, or about a specified reserved DB instance.
 #'
-#' @usage
-#' rds_describe_reserved_db_instances(ReservedDBInstanceId,
-#'   ReservedDBInstancesOfferingId, DBInstanceClass, Duration,
-#'   ProductDescription, OfferingType, MultiAZ, LeaseId, Filters, MaxRecords,
-#'   Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_reserved_db_instances.html](https://paws-r.github.io/docs/rds/describe_reserved_db_instances.html) for full documentation.
 #'
 #' @param ReservedDBInstanceId The reserved DB instance identifier filter value. Specify this parameter
 #' to show only the reservation that matches the specified reservation ID.
@@ -10461,8 +6395,8 @@ rds_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, 
 #' @param LeaseId The lease identifier filter value. Specify this parameter to show only
 #' the reservation that matches the specified lease ID.
 #' 
-#' AWS Support might request the lease ID for an issue related to a
-#' reserved DB instance.
+#' Amazon Web Services Support might request the lease ID for an issue
+#' related to a reserved DB instance.
 #' @param Filters This parameter isn't currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more than
 #' the `MaxRecords` value is available, a pagination token called a marker
@@ -10474,65 +6408,6 @@ rds_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, 
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   ReservedDBInstances = list(
-#'     list(
-#'       ReservedDBInstanceId = "string",
-#'       ReservedDBInstancesOfferingId = "string",
-#'       DBInstanceClass = "string",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Duration = 123,
-#'       FixedPrice = 123.0,
-#'       UsagePrice = 123.0,
-#'       CurrencyCode = "string",
-#'       DBInstanceCount = 123,
-#'       ProductDescription = "string",
-#'       OfferingType = "string",
-#'       MultiAZ = TRUE|FALSE,
-#'       State = "string",
-#'       RecurringCharges = list(
-#'         list(
-#'           RecurringChargeAmount = 123.0,
-#'           RecurringChargeFrequency = "string"
-#'         )
-#'       ),
-#'       ReservedDBInstanceArn = "string",
-#'       LeaseId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_reserved_db_instances(
-#'   ReservedDBInstanceId = "string",
-#'   ReservedDBInstancesOfferingId = "string",
-#'   DBInstanceClass = "string",
-#'   Duration = "string",
-#'   ProductDescription = "string",
-#'   OfferingType = "string",
-#'   MultiAZ = TRUE|FALSE,
-#'   LeaseId = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10559,10 +6434,7 @@ rds_describe_reserved_db_instances <- function(ReservedDBInstanceId = NULL, Rese
 #' @description
 #' Lists available reserved DB instance offerings.
 #'
-#' @usage
-#' rds_describe_reserved_db_instances_offerings(
-#'   ReservedDBInstancesOfferingId, DBInstanceClass, Duration,
-#'   ProductDescription, OfferingType, MultiAZ, Filters, MaxRecords, Marker)
+#' See [https://paws-r.github.io/docs/rds/describe_reserved_db_instances_offerings.html](https://paws-r.github.io/docs/rds/describe_reserved_db_instances_offerings.html) for full documentation.
 #'
 #' @param ReservedDBInstancesOfferingId The offering identifier filter value. Specify this parameter to show
 #' only the available offering that matches the specified reservation
@@ -10597,55 +6469,6 @@ rds_describe_reserved_db_instances <- function(ReservedDBInstanceId = NULL, Rese
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   ReservedDBInstancesOfferings = list(
-#'     list(
-#'       ReservedDBInstancesOfferingId = "string",
-#'       DBInstanceClass = "string",
-#'       Duration = 123,
-#'       FixedPrice = 123.0,
-#'       UsagePrice = 123.0,
-#'       CurrencyCode = "string",
-#'       ProductDescription = "string",
-#'       OfferingType = "string",
-#'       MultiAZ = TRUE|FALSE,
-#'       RecurringCharges = list(
-#'         list(
-#'           RecurringChargeAmount = 123.0,
-#'           RecurringChargeFrequency = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_reserved_db_instances_offerings(
-#'   ReservedDBInstancesOfferingId = "string",
-#'   DBInstanceClass = "string",
-#'   Duration = "string",
-#'   ProductDescription = "string",
-#'   OfferingType = "string",
-#'   MultiAZ = TRUE|FALSE,
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxRecords = 123,
-#'   Marker = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_describe_reserved_db_instances_offerings
@@ -10666,23 +6489,20 @@ rds_describe_reserved_db_instances_offerings <- function(ReservedDBInstancesOffe
 }
 .rds$operations$describe_reserved_db_instances_offerings <- rds_describe_reserved_db_instances_offerings
 
-#' Returns a list of the source AWS Regions where the current AWS Region
-#' can create a read replica, copy a DB snapshot from, or replicate
-#' automated backups from
+#' Returns a list of the source Amazon Web Services Regions where the
+#' current Amazon Web Services Region can create a read replica, copy a DB
+#' snapshot from, or replicate automated backups from
 #'
 #' @description
-#' Returns a list of the source AWS Regions where the current AWS Region
-#' can create a read replica, copy a DB snapshot from, or replicate
-#' automated backups from. This API action supports pagination.
+#' Returns a list of the source Amazon Web Services Regions where the current Amazon Web Services Region can create a read replica, copy a DB snapshot from, or replicate automated backups from. This API action supports pagination.
 #'
-#' @usage
-#' rds_describe_source_regions(RegionName, MaxRecords, Marker, Filters)
+#' See [https://paws-r.github.io/docs/rds/describe_source_regions.html](https://paws-r.github.io/docs/rds/describe_source_regions.html) for full documentation.
 #'
-#' @param RegionName The source AWS Region name. For example, `us-east-1`.
+#' @param RegionName The source Amazon Web Services Region name. For example, `us-east-1`.
 #' 
 #' Constraints:
 #' 
-#' -   Must specify a valid AWS Region name.
+#' -   Must specify a valid Amazon Web Services Region name.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so you can retrieve the
@@ -10696,39 +6516,6 @@ rds_describe_reserved_db_instances_offerings <- function(ReservedDBInstancesOffe
 #' this parameter is specified, the response includes only records beyond
 #' the marker, up to the value specified by `MaxRecords`.
 #' @param Filters This parameter isn't currently supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   SourceRegions = list(
-#'     list(
-#'       RegionName = "string",
-#'       Endpoint = "string",
-#'       Status = "string",
-#'       SupportsDBInstanceAutomatedBackupsReplication = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_source_regions(
-#'   RegionName = "string",
-#'   MaxRecords = 123,
-#'   Marker = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10754,65 +6541,11 @@ rds_describe_source_regions <- function(RegionName = NULL, MaxRecords = NULL, Ma
 #' modifications you can make to your DB instance
 #'
 #' @description
-#' You can call
-#' [`describe_valid_db_instance_modifications`][rds_describe_valid_db_instance_modifications]
-#' to learn what modifications you can make to your DB instance. You can
-#' use this information when you call
-#' [`modify_db_instance`][rds_modify_db_instance].
+#' You can call [`describe_valid_db_instance_modifications`][rds_describe_valid_db_instance_modifications] to learn what modifications you can make to your DB instance. You can use this information when you call [`modify_db_instance`][rds_modify_db_instance].
 #'
-#' @usage
-#' rds_describe_valid_db_instance_modifications(DBInstanceIdentifier)
+#' See [https://paws-r.github.io/docs/rds/describe_valid_db_instance_modifications.html](https://paws-r.github.io/docs/rds/describe_valid_db_instance_modifications.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The customer identifier or the ARN of your DB instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ValidDBInstanceModificationsMessage = list(
-#'     Storage = list(
-#'       list(
-#'         StorageType = "string",
-#'         StorageSize = list(
-#'           list(
-#'             From = 123,
-#'             To = 123,
-#'             Step = 123
-#'           )
-#'         ),
-#'         ProvisionedIops = list(
-#'           list(
-#'             From = 123,
-#'             To = 123,
-#'             Step = 123
-#'           )
-#'         ),
-#'         IopsToStorageRatio = list(
-#'           list(
-#'             From = 123.0,
-#'             To = 123.0
-#'           )
-#'         ),
-#'         SupportsStorageAutoscaling = TRUE|FALSE
-#'       )
-#'     ),
-#'     ValidProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         DefaultValue = "string",
-#'         AllowedValues = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_valid_db_instance_modifications(
-#'   DBInstanceIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10837,12 +6570,9 @@ rds_describe_valid_db_instance_modifications <- function(DBInstanceIdentifier) {
 #' Downloads all or a portion of the specified log file, up to 1 MB in size
 #'
 #' @description
-#' Downloads all or a portion of the specified log file, up to 1 MB in
-#' size.
+#' Downloads all or a portion of the specified log file, up to 1 MB in size.
 #'
-#' @usage
-#' rds_download_db_log_file_portion(DBInstanceIdentifier, LogFileName,
-#'   Marker, NumberOfLines)
+#' See [https://paws-r.github.io/docs/rds/download_db_log_file_portion.html](https://paws-r.github.io/docs/rds/download_db_log_file_portion.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The customer-assigned name of the DB instance that contains the log
 #' files you want to list.
@@ -10879,26 +6609,6 @@ rds_describe_valid_db_instance_modifications <- function(DBInstanceIdentifier) {
 #'     Marker value for the next request, continuing until the
 #'     AdditionalDataPending response element returns false.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LogFileData = "string",
-#'   Marker = "string",
-#'   AdditionalDataPending = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$download_db_log_file_portion(
-#'   DBInstanceIdentifier = "string",
-#'   LogFileName = "string",
-#'   Marker = "string",
-#'   NumberOfLines = 123
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_download_db_log_file_portion
@@ -10923,26 +6633,8 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
 #'
 #' @description
 #' Forces a failover for a DB cluster.
-#' 
-#' A failover for a DB cluster promotes one of the Aurora Replicas
-#' (read-only instances) in the DB cluster to be the primary instance (the
-#' cluster writer).
-#' 
-#' Amazon Aurora will automatically fail over to an Aurora Replica, if one
-#' exists, when the primary instance fails. You can force a failover when
-#' you want to simulate a failure of a primary instance for testing.
-#' Because each instance in a DB cluster has its own endpoint address, you
-#' will need to clean up and re-establish any existing connections that use
-#' those endpoint addresses when the failover is complete.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
 #'
-#' @usage
-#' rds_failover_db_cluster(DBClusterIdentifier, TargetDBInstanceIdentifier)
+#' See [https://paws-r.github.io/docs/rds/failover_db_cluster.html](https://paws-r.github.io/docs/rds/failover_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; A DB cluster identifier to force a failover for. This parameter isn't
 #' case-sensitive.
@@ -10950,153 +6642,12 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing DBCluster.
-#' @param TargetDBInstanceIdentifier The name of the instance to promote to the primary instance.
+#' @param TargetDBInstanceIdentifier The name of the DB instance to promote to the primary DB instance.
 #' 
-#' You must specify the instance identifier for an Aurora Replica in the DB
-#' cluster. For example, `mydbcluster-replica1`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     CustomEndpoints = list(
-#'       "string"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EarliestBacktrackTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BacktrackWindow = 123,
-#'     BacktrackConsumedChangeRecords = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     Capacity = 123,
-#'     EngineMode = "string",
-#'     ScalingConfigurationInfo = list(
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       AutoPause = TRUE|FALSE,
-#'       SecondsUntilAutoPause = 123,
-#'       TimeoutAction = "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     HttpEndpointEnabled = TRUE|FALSE,
-#'     ActivityStreamMode = "sync"|"async",
-#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'     ActivityStreamKmsKeyId = "string",
-#'     ActivityStreamKinesisStreamName = "string",
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     CrossAccountClone = TRUE|FALSE,
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'     GlobalWriteForwardingRequested = TRUE|FALSE,
-#'     PendingModifiedValues = list(
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       MasterUserPassword = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       EngineVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$failover_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   TargetDBInstanceIdentifier = "string"
-#' )
-#' ```
+#' Specify the DB instance identifier for an Aurora Replica or a Multi-AZ
+#' readable standby in the DB cluster, for example `mydbcluster-replica1`.
+#' 
+#' This setting isn't supported for RDS for MySQL Multi-AZ DB clusters.
 #'
 #' @keywords internal
 #'
@@ -11118,116 +6669,54 @@ rds_failover_db_cluster <- function(DBClusterIdentifier, TargetDBInstanceIdentif
 }
 .rds$operations$failover_db_cluster <- rds_failover_db_cluster
 
-#' Imports the installation media for a DB engine that requires an
-#' on-premises customer provided license, such as SQL Server
+#' Initiates the failover process for an Aurora global database
+#' (GlobalCluster)
 #'
 #' @description
-#' Imports the installation media for a DB engine that requires an
-#' on-premises customer provided license, such as SQL Server.
+#' Initiates the failover process for an Aurora global database (GlobalCluster).
 #'
-#' @usage
-#' rds_import_installation_media(CustomAvailabilityZoneId, Engine,
-#'   EngineVersion, EngineInstallationMediaPath, OSInstallationMediaPath)
+#' See [https://paws-r.github.io/docs/rds/failover_global_cluster.html](https://paws-r.github.io/docs/rds/failover_global_cluster.html) for full documentation.
 #'
-#' @param CustomAvailabilityZoneId &#91;required&#93; The identifier of the custom Availability Zone (AZ) to import the
-#' installation media to.
-#' @param Engine &#91;required&#93; The name of the database engine to be used for this instance.
+#' @param GlobalClusterIdentifier &#91;required&#93; Identifier of the Aurora global database (GlobalCluster) that should be
+#' failed over. The identifier is the unique key assigned by the user when
+#' the Aurora global database was created. In other words, it's the name of
+#' the Aurora global database that you want to fail over.
 #' 
-#' The list only includes supported DB engines that require an on-premises
-#' customer provided license.
+#' Constraints:
 #' 
-#' Valid Values:
-#' 
-#' -   `sqlserver-ee`
-#' 
-#' -   `sqlserver-se`
-#' 
-#' -   `sqlserver-ex`
-#' 
-#' -   `sqlserver-web`
-#' @param EngineVersion &#91;required&#93; The version number of the database engine to use.
-#' 
-#' For a list of valid engine versions, call
-#' [`describe_db_engine_versions`][rds_describe_db_engine_versions].
-#' 
-#' The following are the database engines and links to information about
-#' the major and minor versions. The list only includes DB engines that
-#' require an on-premises customer provided license.
-#' 
-#' **Microsoft SQL Server**
-#' 
-#' See [Microsoft SQL Server Versions on Amazon
-#' RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport)
-#' in the *Amazon RDS User Guide.*
-#' @param EngineInstallationMediaPath &#91;required&#93; The path to the installation medium for the specified DB engine.
-#' 
-#' Example:
-#' `SQLServerISO/en_sql_server_2016_enterprise_x64_dvd_8701793.iso`
-#' @param OSInstallationMediaPath &#91;required&#93; The path to the installation medium for the operating system associated
-#' with the specified DB engine.
-#' 
-#' Example: `WindowsISO/en_windows_server_2016_x64_dvd_9327751.iso`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InstallationMediaId = "string",
-#'   CustomAvailabilityZoneId = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   EngineInstallationMediaPath = "string",
-#'   OSInstallationMediaPath = "string",
-#'   Status = "string",
-#'   FailureCause = list(
-#'     Message = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_installation_media(
-#'   CustomAvailabilityZoneId = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   EngineInstallationMediaPath = "string",
-#'   OSInstallationMediaPath = "string"
-#' )
-#' ```
+#' -   Must match the identifier of an existing GlobalCluster (Aurora
+#'     global database).
+#' @param TargetDbClusterIdentifier &#91;required&#93; Identifier of the secondary Aurora DB cluster that you want to promote
+#' to primary for the Aurora global database (GlobalCluster.) Use the
+#' Amazon Resource Name (ARN) for the identifier so that Aurora can locate
+#' the cluster in its Amazon Web Services Region.
 #'
 #' @keywords internal
 #'
-#' @rdname rds_import_installation_media
-rds_import_installation_media <- function(CustomAvailabilityZoneId, Engine, EngineVersion, EngineInstallationMediaPath, OSInstallationMediaPath) {
+#' @rdname rds_failover_global_cluster
+rds_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier) {
   op <- new_operation(
-    name = "ImportInstallationMedia",
+    name = "FailoverGlobalCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$import_installation_media_input(CustomAvailabilityZoneId = CustomAvailabilityZoneId, Engine = Engine, EngineVersion = EngineVersion, EngineInstallationMediaPath = EngineInstallationMediaPath, OSInstallationMediaPath = OSInstallationMediaPath)
-  output <- .rds$import_installation_media_output()
+  input <- .rds$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
+  output <- .rds$failover_global_cluster_output()
   config <- get_config()
   svc <- .rds$service(config)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
-.rds$operations$import_installation_media <- rds_import_installation_media
+.rds$operations$failover_global_cluster <- rds_failover_global_cluster
 
 #' Lists all tags on an Amazon RDS resource
 #'
 #' @description
 #' Lists all tags on an Amazon RDS resource.
-#' 
-#' For an overview on tagging an Amazon RDS resource, see [Tagging Amazon
-#' RDS
-#' Resources](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html)
-#' in the *Amazon RDS User Guide*.
 #'
-#' @usage
-#' rds_list_tags_for_resource(ResourceName, Filters)
+#' See [https://paws-r.github.io/docs/rds/list_tags_for_resource.html](https://paws-r.github.io/docs/rds/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon RDS resource with tags to be listed. This value is an Amazon
 #' Resource Name (ARN). For information about creating an ARN, see
@@ -11235,34 +6724,6 @@ rds_import_installation_media <- function(CustomAvailabilityZoneId, Engine, Engi
 #' RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
 #' in the *Amazon RDS User Guide*.
 #' @param Filters This parameter isn't currently supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceName = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11284,86 +6745,57 @@ rds_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 }
 .rds$operations$list_tags_for_resource <- rds_list_tags_for_resource
 
-#' Override the system-default Secure Sockets Layer/Transport Layer
-#' Security (SSL/TLS) certificate for Amazon RDS for new DB instances
-#' temporarily, or remove the override
+#' Changes the audit policy state of a database activity stream to either
+#' locked (default) or unlocked
 #'
 #' @description
-#' Override the system-default Secure Sockets Layer/Transport Layer
-#' Security (SSL/TLS) certificate for Amazon RDS for new DB instances
-#' temporarily, or remove the override.
-#' 
-#' By using this operation, you can specify an RDS-approved SSL/TLS
-#' certificate for new DB instances that is different from the default
-#' certificate provided by RDS. You can also use this operation to remove
-#' the override, so that new DB instances use the default certificate
-#' provided by RDS.
-#' 
-#' You might need to override the default certificate in the following
-#' situations:
-#' 
-#' -   You already migrated your applications to support the latest
-#'     certificate authority (CA) certificate, but the new CA certificate
-#'     is not yet the RDS default CA certificate for the specified AWS
-#'     Region.
-#' 
-#' -   RDS has already moved to a new default CA certificate for the
-#'     specified AWS Region, but you are still in the process of supporting
-#'     the new CA certificate. In this case, you temporarily need
-#'     additional time to finish your application changes.
-#' 
-#' For more information about rotating your SSL/TLS certificate for RDS DB
-#' engines, see [Rotating Your SSL/TLS
-#' Certificate](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html)
-#' in the *Amazon RDS User Guide*.
-#' 
-#' For more information about rotating your SSL/TLS certificate for Aurora
-#' DB engines, see [Rotating Your SSL/TLS
-#' Certificate](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html)
-#' in the *Amazon Aurora User Guide*.
+#' Changes the audit policy state of a database activity stream to either locked (default) or unlocked. A locked policy is read-only, whereas an unlocked policy is read/write. If your activity stream is started and locked, you can unlock it, customize your audit policy, and then lock your activity stream. Restarting the activity stream isn't required. For more information, see [Modifying a database activity stream](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.Modifying.html) in the *Amazon RDS User Guide*.
 #'
-#' @usage
-#' rds_modify_certificates(CertificateIdentifier, RemoveCustomerOverride)
+#' See [https://paws-r.github.io/docs/rds/modify_activity_stream.html](https://paws-r.github.io/docs/rds/modify_activity_stream.html) for full documentation.
+#'
+#' @param ResourceArn The Amazon Resource Name (ARN) of the RDS for Oracle DB instance, for
+#' example, `arn:aws:rds:us-east-1:12345667890:instance:my-orcl-db`.
+#' @param AuditPolicyState The audit policy state. When a policy is unlocked, it is read/write.
+#' When it is locked, it is read-only. You can edit your audit policy only
+#' when the activity stream is unlocked or stopped.
+#'
+#' @keywords internal
+#'
+#' @rdname rds_modify_activity_stream
+rds_modify_activity_stream <- function(ResourceArn = NULL, AuditPolicyState = NULL) {
+  op <- new_operation(
+    name = "ModifyActivityStream",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$modify_activity_stream_input(ResourceArn = ResourceArn, AuditPolicyState = AuditPolicyState)
+  output <- .rds$modify_activity_stream_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$modify_activity_stream <- rds_modify_activity_stream
+
+#' Override the system-default Secure Sockets Layer/Transport Layer
+#' Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or
+#' remove the override
+#'
+#' @description
+#' Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or remove the override.
+#'
+#' See [https://paws-r.github.io/docs/rds/modify_certificates.html](https://paws-r.github.io/docs/rds/modify_certificates.html) for full documentation.
 #'
 #' @param CertificateIdentifier The new default certificate identifier to override the current one with.
 #' 
-#' To determine the valid values, use the `describe-certificates` AWS CLI
+#' To determine the valid values, use the `describe-certificates` CLI
 #' command or the [`describe_certificates`][rds_describe_certificates] API
 #' operation.
 #' @param RemoveCustomerOverride A value that indicates whether to remove the override for the default
 #' certificate. If the override is removed, the default certificate is the
 #' system default.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Certificate = list(
-#'     CertificateIdentifier = "string",
-#'     CertificateType = "string",
-#'     Thumbprint = "string",
-#'     ValidFrom = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ValidTill = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CertificateArn = "string",
-#'     CustomerOverride = TRUE|FALSE,
-#'     CustomerOverrideValidTill = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_certificates(
-#'   CertificateIdentifier = "string",
-#'   RemoveCustomerOverride = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11385,39 +6817,13 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 }
 .rds$operations$modify_certificates <- rds_modify_certificates
 
-#' Set the capacity of an Aurora Serverless DB cluster to a specific value
+#' Set the capacity of an Aurora Serverless v1 DB cluster to a specific
+#' value
 #'
 #' @description
-#' Set the capacity of an Aurora Serverless DB cluster to a specific value.
-#' 
-#' Aurora Serverless scales seamlessly based on the workload on the DB
-#' cluster. In some cases, the capacity might not scale fast enough to meet
-#' a sudden change in workload, such as a large number of new transactions.
-#' Call
-#' [`modify_current_db_cluster_capacity`][rds_modify_current_db_cluster_capacity]
-#' to set the capacity explicitly.
-#' 
-#' After this call sets the DB cluster capacity, Aurora Serverless can
-#' automatically scale the DB cluster based on the cooldown period for
-#' scaling up and the cooldown period for scaling down.
-#' 
-#' For more information about Aurora Serverless, see [Using Amazon Aurora
-#' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
-#' in the *Amazon Aurora User Guide*.
-#' 
-#' If you call
-#' [`modify_current_db_cluster_capacity`][rds_modify_current_db_cluster_capacity]
-#' with the default `TimeoutAction`, connections that prevent Aurora
-#' Serverless from finding a scaling point might be dropped. For more
-#' information about scaling points, see [Autoscaling for Aurora
-#' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling)
-#' in the *Amazon Aurora User Guide*.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Set the capacity of an Aurora Serverless v1 DB cluster to a specific value.
 #'
-#' @usage
-#' rds_modify_current_db_cluster_capacity(DBClusterIdentifier, Capacity,
-#'   SecondsBeforeTimeout, TimeoutAction)
+#' See [https://paws-r.github.io/docs/rds/modify_current_db_cluster_capacity.html](https://paws-r.github.io/docs/rds/modify_current_db_cluster_capacity.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier for the cluster being modified. This parameter
 #' isn't case-sensitive.
@@ -11427,8 +6833,8 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 #' -   Must match the identifier of an existing DB cluster.
 #' @param Capacity The DB cluster capacity.
 #' 
-#' When you change the capacity of a paused Aurora Serverless DB cluster,
-#' it automatically resumes.
+#' When you change the capacity of a paused Aurora Serverless v1 DB
+#' cluster, it automatically resumes.
 #' 
 #' Constraints:
 #' 
@@ -11437,11 +6843,11 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 #' 
 #' -   For Aurora PostgreSQL, valid capacity values are `2`, `4`, `8`,
 #'     `16`, `32`, `64`, `192`, and `384`.
-#' @param SecondsBeforeTimeout The amount of time, in seconds, that Aurora Serverless tries to find a
-#' scaling point to perform seamless scaling before enforcing the timeout
+#' @param SecondsBeforeTimeout The amount of time, in seconds, that Aurora Serverless v1 tries to find
+#' a scaling point to perform seamless scaling before enforcing the timeout
 #' action. The default is 300.
 #' 
-#' -   Value must be from 10 through 600.
+#' Specify a value between 10 and 600 seconds.
 #' @param TimeoutAction The action to take when the timeout is reached, either
 #' `ForceApplyCapacityChange` or `RollbackCapacityChange`.
 #' 
@@ -11450,28 +6856,6 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 #' 
 #' `RollbackCapacityChange` ignores the capacity change if a scaling point
 #' isn't found in the timeout period.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterIdentifier = "string",
-#'   PendingCapacity = 123,
-#'   CurrentCapacity = 123,
-#'   SecondsBeforeTimeout = 123,
-#'   TimeoutAction = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_current_db_cluster_capacity(
-#'   DBClusterIdentifier = "string",
-#'   Capacity = 123,
-#'   SecondsBeforeTimeout = 123,
-#'   TimeoutAction = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11493,34 +6877,74 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 }
 .rds$operations$modify_current_db_cluster_capacity <- rds_modify_current_db_cluster_capacity
 
-#' Modify a setting for an Amazon Aurora DB cluster
+#' Modifies the status of a custom engine version (CEV)
 #'
 #' @description
-#' Modify a setting for an Amazon Aurora DB cluster. You can change one or
-#' more database configuration parameters by specifying these parameters
-#' and the new values in the request. For more information on Amazon
-#' Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Modifies the status of a custom engine version (CEV). You can find CEVs to modify by calling [`describe_db_engine_versions`][rds_describe_db_engine_versions].
 #'
-#' @usage
-#' rds_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
-#'   ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
-#'   VpcSecurityGroupIds, Port, MasterUserPassword, OptionGroupName,
-#'   PreferredBackupWindow, PreferredMaintenanceWindow,
-#'   EnableIAMDatabaseAuthentication, BacktrackWindow,
-#'   CloudwatchLogsExportConfiguration, EngineVersion,
-#'   AllowMajorVersionUpgrade, DBInstanceParameterGroupName, Domain,
-#'   DomainIAMRoleName, ScalingConfiguration, DeletionProtection,
-#'   EnableHttpEndpoint, CopyTagsToSnapshot, EnableGlobalWriteForwarding)
+#' See [https://paws-r.github.io/docs/rds/modify_custom_db_engine_version.html](https://paws-r.github.io/docs/rds/modify_custom_db_engine_version.html) for full documentation.
+#'
+#' @param Engine &#91;required&#93; The DB engine. The only supported value is `custom-oracle-ee`.
+#' @param EngineVersion &#91;required&#93; The custom engine version (CEV) that you want to modify. This option is
+#' required for RDS Custom for Oracle, but optional for Amazon RDS. The
+#' combination of `Engine` and `EngineVersion` is unique per customer per
+#' Amazon Web Services Region.
+#' @param Description An optional description of your CEV.
+#' @param Status The availability status to be assigned to the CEV. Valid values are as
+#' follows:
+#' 
+#' **available**
+#' 
+#' You can use this CEV to create a new RDS Custom DB instance.
+#' 
+#' **inactive**
+#' 
+#' You can create a new RDS Custom instance by restoring a DB snapshot with
+#' this CEV. You can't patch or create new instances with this CEV.
+#' 
+#' You can change any status to any status. A typical reason to change
+#' status is to prevent the accidental use of a CEV, or to make a
+#' deprecated CEV eligible for use again. For example, you might change the
+#' status of your CEV from `available` to `inactive`, and from `inactive`
+#' back to `available`. To change the availability status of the CEV, it
+#' must not currently be in use by an RDS Custom instance, snapshot, or
+#' automated backup.
+#'
+#' @keywords internal
+#'
+#' @rdname rds_modify_custom_db_engine_version
+rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Description = NULL, Status = NULL) {
+  op <- new_operation(
+    name = "ModifyCustomDBEngineVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$modify_custom_db_engine_version_input(Engine = Engine, EngineVersion = EngineVersion, Description = Description, Status = Status)
+  output <- .rds$modify_custom_db_engine_version_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$modify_custom_db_engine_version <- rds_modify_custom_db_engine_version
+
+#' Modify the settings for an Amazon Aurora DB cluster or a Multi-AZ DB
+#' cluster
+#'
+#' @description
+#' Modify the settings for an Amazon Aurora DB cluster or a Multi-AZ DB cluster. You can change one or more settings by specifying these parameters and the new values in the request.
+#'
+#' See [https://paws-r.github.io/docs/rds/modify_db_cluster.html](https://paws-r.github.io/docs/rds/modify_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier for the cluster being modified. This parameter
 #' isn't case-sensitive.
 #' 
 #' Constraints: This identifier must match the identifier of an existing DB
 #' cluster.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param NewDBClusterIdentifier The new DB cluster identifier for the DB cluster when renaming a DB
 #' cluster. This value is stored as a lowercase string.
 #' 
@@ -11533,6 +6957,8 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' -   Can't end with a hyphen or contain two consecutive hyphens
 #' 
 #' Example: `my-cluster2`
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param ApplyImmediately A value that indicates whether the modifications in this request and any
 #' pending modifications are asynchronously applied as soon as possible,
 #' regardless of the `PreferredMaintenanceWindow` setting for the DB
@@ -11549,46 +6975,51 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' parameter.
 #' 
 #' By default, this parameter is disabled.
-#' @param BackupRetentionPeriod The number of days for which automated backups are retained. You must
-#' specify a minimum value of 1.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param BackupRetentionPeriod The number of days for which automated backups are retained. Specify a
+#' minimum value of 1.
 #' 
 #' Default: 1
 #' 
 #' Constraints:
 #' 
 #' -   Must be a value from 1 to 35
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param DBClusterParameterGroupName The name of the DB cluster parameter group to use for the DB cluster.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param VpcSecurityGroupIds A list of VPC security groups that the DB cluster will belong to.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param Port The port number on which the DB cluster accepts connections.
 #' 
 #' Constraints: Value must be `1150-65535`
 #' 
 #' Default: The same port as the original DB cluster.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param MasterUserPassword The new password for the master database user. This password can contain
 #' any printable ASCII character except "/", """, or "@@".
 #' 
 #' Constraints: Must contain from 8 to 41 characters.
-#' @param OptionGroupName A value that indicates that the DB cluster should be associated with the
-#' specified option group. Changing this parameter doesn't result in an
-#' outage except in the following case, and the change is applied during
-#' the next maintenance window unless the `ApplyImmediately` is enabled for
-#' this request. If the parameter change results in an option group that
-#' enables OEM, this change can cause a brief (sub-second) period during
-#' which new connections are rejected but existing connections are not
-#' interrupted.
 #' 
-#' Permanent options can't be removed from an option group. The option
-#' group can't be removed from a DB cluster once it is associated with a DB
-#' cluster.
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param OptionGroupName A value that indicates that the DB cluster should be associated with the
+#' specified option group.
+#' 
+#' DB clusters are associated with a default option group that can't be
+#' modified.
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
 #' automated backups are enabled, using the `BackupRetentionPeriod`
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region. To see the time blocks available, see
-#' [Adjusting the Preferred DB Cluster Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
-#' in the *Amazon Aurora User Guide.*
+#' block of time for each Amazon Web Services Region. To view the time
+#' blocks available, see [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow)
+#' in the *Amazon Aurora User Guide*.
 #' 
 #' Constraints:
 #' 
@@ -11599,32 +7030,36 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' -   Must not conflict with the preferred maintenance window.
 #' 
 #' -   Must be at least 30 minutes.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param PreferredMaintenanceWindow The weekly time range during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC).
 #' 
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week. To see the time blocks available, see [Adjusting the Preferred DB
-#' Cluster Maintenance
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week. To see the time blocks available, see [Adjusting the
+#' Preferred DB Cluster Maintenance
 #' Window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
-#' in the *Amazon Aurora User Guide.*
+#' in the *Amazon Aurora User Guide*.
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 #' 
 #' Constraints: Minimum 30-minute window.
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping isn't enabled.
 #' 
 #' For more information, see [IAM Database
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
-#' in the *Amazon Aurora User Guide.*
+#' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param BacktrackWindow The target backtrack window, in seconds. To disable backtracking, set
 #' this value to 0.
-#' 
-#' Currently, Backtrack is only supported for Aurora MySQL DB clusters.
 #' 
 #' Default: 0
 #' 
@@ -11632,38 +7067,83 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' 
 #' -   If specified, this value must be set to a number from 0 to 259,200
 #'     (72 hours).
+#' 
+#' Valid for: Aurora MySQL DB clusters only
 #' @param CloudwatchLogsExportConfiguration The configuration setting for the log types to be enabled for export to
-#' CloudWatch Logs for a specific DB cluster.
+#' CloudWatch Logs for a specific DB cluster. The values in the list depend
+#' on the DB engine being used.
+#' 
+#' **RDS for MySQL**
+#' 
+#' Possible values are `error`, `general`, and `slowquery`.
+#' 
+#' **RDS for PostgreSQL**
+#' 
+#' Possible values are `postgresql` and `upgrade`.
+#' 
+#' **Aurora MySQL**
+#' 
+#' Possible values are `audit`, `error`, `general`, and `slowquery`.
+#' 
+#' **Aurora PostgreSQL**
+#' 
+#' Possible value is `postgresql`.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon RDS, see
+#' [Publishing Database Logs to Amazon CloudWatch
+#' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon Aurora,
+#' see [Publishing Database Logs to Amazon CloudWatch
+#' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+#' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param EngineVersion The version number of the database engine to which you want to upgrade.
 #' Changing this parameter results in an outage. The change is applied
 #' during the next maintenance window unless `ApplyImmediately` is enabled.
 #' 
-#' To list all of the available engine versions for `aurora` (for MySQL
-#' 5.6-compatible Aurora), use the following command:
+#' To list all of the available engine versions for MySQL 5.6-compatible
+#' Aurora, use the following command:
 #' 
 #' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"`
 #' 
-#' To list all of the available engine versions for `aurora-mysql` (for
-#' MySQL 5.7-compatible Aurora), use the following command:
+#' To list all of the available engine versions for MySQL 5.7-compatible
+#' and MySQL 8.0-compatible Aurora, use the following command:
 #' 
 #' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"`
 #' 
-#' To list all of the available engine versions for `aurora-postgresql`,
-#' use the following command:
+#' To list all of the available engine versions for Aurora PostgreSQL, use
+#' the following command:
 #' 
 #' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"`
+#' 
+#' To list all of the available engine versions for RDS for MySQL, use the
+#' following command:
+#' 
+#' `aws rds describe-db-engine-versions --engine mysql --query "DBEngineVersions[].EngineVersion"`
+#' 
+#' To list all of the available engine versions for RDS for PostgreSQL, use
+#' the following command:
+#' 
+#' `aws rds describe-db-engine-versions --engine postgres --query "DBEngineVersions[].EngineVersion"`
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
 #' 
 #' Constraints: You must allow major version upgrades when specifying a
 #' value for the `EngineVersion` parameter that is a different major
 #' version than the DB cluster's current version.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param DBInstanceParameterGroupName The name of the DB parameter group to apply to all instances of the DB
 #' cluster.
 #' 
 #' When you apply a parameter group using the
 #' `DBInstanceParameterGroupName` parameter, the DB cluster isn't rebooted
-#' automatically. Also, parameter changes aren't applied during the next
-#' maintenance window but instead are applied immediately.
+#' automatically. Also, parameter changes are applied immediately rather
+#' than during the next maintenance window.
 #' 
 #' Default: The existing name setting
 #' 
@@ -11672,8 +7152,11 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' -   The DB parameter group must be in the same DB parameter group family
 #'     as this DB cluster.
 #' 
-#' -   The `DBInstanceParameterGroupName` parameter is only valid in
-#'     combination with the `AllowMajorVersionUpgrade` parameter.
+#' -   The `DBInstanceParameterGroupName` parameter is valid in combination
+#'     with the `AllowMajorVersionUpgrade` parameter for a major version
+#'     upgrade only.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param Domain The Active Directory directory ID to move the DB cluster to. Specify
 #' `none` to remove the cluster from its current domain. The domain must be
 #' created prior to this operation.
@@ -11681,224 +7164,173 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' For more information, see [Kerberos
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param ScalingConfiguration The scaling properties of the DB cluster. You can only modify scaling
 #' properties for DB clusters in `serverless` DB engine mode.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled.
+#' enabled. By default, deletion protection isn't enabled.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param EnableHttpEndpoint A value that indicates whether to enable the HTTP endpoint for an Aurora
-#' Serverless DB cluster. By default, the HTTP endpoint is disabled.
+#' Serverless v1 DB cluster. By default, the HTTP endpoint is disabled.
 #' 
 #' When enabled, the HTTP endpoint provides a connectionless web service
-#' API for running SQL queries on the Aurora Serverless DB cluster. You can
-#' also query your database from inside the RDS console with the query
+#' API for running SQL queries on the Aurora Serverless v1 DB cluster. You
+#' can also query your database from inside the RDS console with the query
 #' editor.
 #' 
-#' For more information, see [Using the Data API for Aurora
-#' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
+#' For more information, see [Using the Data API for Aurora Serverless
+#' v1](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB cluster to
 #' snapshots of the DB cluster. The default is not to copy them.
-#' @param EnableGlobalWriteForwarding A value that indicates whether to enable write operations to be
-#' forwarded from this cluster to the primary cluster in an Aurora global
-#' database. The resulting changes are replicated back to this cluster.
-#' This parameter only applies to DB clusters that are secondary clusters
-#' in an Aurora global database. By default, Aurora disallows write
-#' operations for secondary clusters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     CustomEndpoints = list(
-#'       "string"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EarliestBacktrackTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BacktrackWindow = 123,
-#'     BacktrackConsumedChangeRecords = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     Capacity = 123,
-#'     EngineMode = "string",
-#'     ScalingConfigurationInfo = list(
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       AutoPause = TRUE|FALSE,
-#'       SecondsUntilAutoPause = 123,
-#'       TimeoutAction = "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     HttpEndpointEnabled = TRUE|FALSE,
-#'     ActivityStreamMode = "sync"|"async",
-#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'     ActivityStreamKmsKeyId = "string",
-#'     ActivityStreamKinesisStreamName = "string",
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     CrossAccountClone = TRUE|FALSE,
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'     GlobalWriteForwardingRequested = TRUE|FALSE,
-#'     PendingModifiedValues = list(
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       MasterUserPassword = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       EngineVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   NewDBClusterIdentifier = "string",
-#'   ApplyImmediately = TRUE|FALSE,
-#'   BackupRetentionPeriod = 123,
-#'   DBClusterParameterGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Port = 123,
-#'   MasterUserPassword = "string",
-#'   OptionGroupName = "string",
-#'   PreferredBackupWindow = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   BacktrackWindow = 123,
-#'   CloudwatchLogsExportConfiguration = list(
-#'     EnableLogTypes = list(
-#'       "string"
-#'     ),
-#'     DisableLogTypes = list(
-#'       "string"
-#'     )
-#'   ),
-#'   EngineVersion = "string",
-#'   AllowMajorVersionUpgrade = TRUE|FALSE,
-#'   DBInstanceParameterGroupName = "string",
-#'   Domain = "string",
-#'   DomainIAMRoleName = "string",
-#'   ScalingConfiguration = list(
-#'     MinCapacity = 123,
-#'     MaxCapacity = 123,
-#'     AutoPause = TRUE|FALSE,
-#'     SecondsUntilAutoPause = 123,
-#'     TimeoutAction = "string"
-#'   ),
-#'   DeletionProtection = TRUE|FALSE,
-#'   EnableHttpEndpoint = TRUE|FALSE,
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   EnableGlobalWriteForwarding = TRUE|FALSE
-#' )
-#' ```
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param EnableGlobalWriteForwarding A value that indicates whether to enable this DB cluster to forward
+#' write operations to the primary cluster of an Aurora global database
+#' (GlobalCluster). By default, write operations are not allowed on Aurora
+#' DB clusters that are secondary clusters in an Aurora global database.
+#' 
+#' You can set this value only on Aurora DB clusters that are members of an
+#' Aurora global database. With this parameter enabled, a secondary cluster
+#' can forward writes to the current primary cluster and the resulting
+#' changes are replicated back to this cluster. For the primary DB cluster
+#' of an Aurora global database, this value is used immediately if the
+#' primary is demoted by the
+#' [`failover_global_cluster`][rds_failover_global_cluster] API operation,
+#' but it does nothing until then.
+#' 
+#' Valid for: Aurora DB clusters only
+#' @param DBClusterInstanceClass The compute and memory capacity of each DB instance in the Multi-AZ DB
+#' cluster, for example db.m6g.xlarge. Not all DB instance classes are
+#' available in all Amazon Web Services Regions, or for all database
+#' engines.
+#' 
+#' For the full list of DB instance classes and availability for your
+#' engine, see [DB Instance
+#' Class](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param AllocatedStorage The amount of storage in gibibytes (GiB) to allocate to each DB instance
+#' in the Multi-AZ DB cluster.
+#' 
+#' Type: Integer
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param StorageType Specifies the storage type to be associated with the DB cluster.
+#' 
+#' Valid values: `io1`
+#' 
+#' When specified, a value for the `Iops` parameter is required.
+#' 
+#' Default: `io1`
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
+#' be initially allocated for each DB instance in the Multi-AZ DB cluster.
+#' 
+#' For information about valid Iops values, see [Amazon RDS Provisioned
+#' IOPS Storage to Improve
+#' Performance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' Constraints: Must be a multiple between .5 and 50 of the storage amount
+#' for the DB cluster.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param AutoMinorVersionUpgrade A value that indicates whether minor engine upgrades are applied
+#' automatically to the DB cluster during the maintenance window. By
+#' default, minor engine upgrades are applied automatically.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
+#' metrics are collected for the DB cluster. To turn off collecting
+#' Enhanced Monitoring metrics, specify 0. The default is 0.
+#' 
+#' If `MonitoringRoleArn` is specified, also set `MonitoringInterval` to a
+#' value other than 0.
+#' 
+#' Valid Values: `0, 1, 5, 10, 15, 30, 60`
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param MonitoringRoleArn The Amazon Resource Name (ARN) for the IAM role that permits RDS to send
+#' Enhanced Monitoring metrics to Amazon CloudWatch Logs. An example is
+#' `arn:aws:iam:123456789012:role/emaccess`. For information on creating a
+#' monitoring role, see [To create an IAM role for Amazon RDS Enhanced
+#' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
+#' in the *Amazon RDS User Guide.*
+#' 
+#' If `MonitoringInterval` is set to a value other than 0, supply a
+#' `MonitoringRoleArn` value.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param EnablePerformanceInsights A value that indicates whether to turn on Performance Insights for the
+#' DB cluster.
+#' 
+#' For more information, see [Using Amazon Performance
+#' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param PerformanceInsightsKMSKeyId The Amazon Web Services KMS key identifier for encryption of Performance
+#' Insights data.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key.
+#' 
+#' If you don't specify a value for `PerformanceInsightsKMSKeyId`, then
+#' Amazon RDS uses your default KMS key. There is a default KMS key for
+#' your Amazon Web Services account. Your Amazon Web Services account has a
+#' different default KMS key for each Amazon Web Services Region.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param PerformanceInsightsRetentionPeriod The number of days to retain Performance Insights data. The default is 7
+#' days. The following values are valid:
+#' 
+#' -   7
+#' 
+#' -   *month* * 31, where *month* is a number of months from 1-23
+#' 
+#' -   731
+#' 
+#' For example, the following values are valid:
+#' 
+#' -   93 (3 months * 31)
+#' 
+#' -   341 (11 months * 31)
+#' 
+#' -   589 (19 months * 31)
+#' 
+#' -   731
+#' 
+#' If you specify a retention period such as 94, which isn't a valid value,
+#' RDS issues an error.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param ServerlessV2ScalingConfiguration 
 #'
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_cluster
-rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DBInstanceParameterGroupName = NULL, Domain = NULL, DomainIAMRoleName = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, EnableHttpEndpoint = NULL, CopyTagsToSnapshot = NULL, EnableGlobalWriteForwarding = NULL) {
+rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DBInstanceParameterGroupName = NULL, Domain = NULL, DomainIAMRoleName = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, EnableHttpEndpoint = NULL, CopyTagsToSnapshot = NULL, EnableGlobalWriteForwarding = NULL, DBClusterInstanceClass = NULL, AllocatedStorage = NULL, StorageType = NULL, Iops = NULL, AutoMinorVersionUpgrade = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, ServerlessV2ScalingConfiguration = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DBInstanceParameterGroupName = DBInstanceParameterGroupName, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ScalingConfiguration = ScalingConfiguration, DeletionProtection = DeletionProtection, EnableHttpEndpoint = EnableHttpEndpoint, CopyTagsToSnapshot = CopyTagsToSnapshot, EnableGlobalWriteForwarding = EnableGlobalWriteForwarding)
+  input <- .rds$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DBInstanceParameterGroupName = DBInstanceParameterGroupName, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ScalingConfiguration = ScalingConfiguration, DeletionProtection = DeletionProtection, EnableHttpEndpoint = EnableHttpEndpoint, CopyTagsToSnapshot = CopyTagsToSnapshot, EnableGlobalWriteForwarding = EnableGlobalWriteForwarding, DBClusterInstanceClass = DBClusterInstanceClass, AllocatedStorage = AllocatedStorage, StorageType = StorageType, Iops = Iops, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration)
   output <- .rds$modify_db_cluster_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -11912,12 +7344,8 @@ rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = 
 #'
 #' @description
 #' Modifies the properties of an endpoint in an Amazon Aurora DB cluster.
-#' 
-#' This action only applies to Aurora DB clusters.
 #'
-#' @usage
-#' rds_modify_db_cluster_endpoint(DBClusterEndpointIdentifier,
-#'   EndpointType, StaticMembers, ExcludedMembers)
+#' See [https://paws-r.github.io/docs/rds/modify_db_cluster_endpoint.html](https://paws-r.github.io/docs/rds/modify_db_cluster_endpoint.html) for full documentation.
 #'
 #' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier of the endpoint to modify. This parameter is stored as a
 #' lowercase string.
@@ -11927,41 +7355,6 @@ rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = 
 #' @param ExcludedMembers List of DB instance identifiers that aren't part of the custom endpoint
 #' group. All other eligible instances are reachable through the custom
 #' endpoint. Only relevant if the list of static members is empty.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterEndpointIdentifier = "string",
-#'   DBClusterIdentifier = "string",
-#'   DBClusterEndpointResourceIdentifier = "string",
-#'   Endpoint = "string",
-#'   Status = "string",
-#'   EndpointType = "string",
-#'   CustomEndpointType = "string",
-#'   StaticMembers = list(
-#'     "string"
-#'   ),
-#'   ExcludedMembers = list(
-#'     "string"
-#'   ),
-#'   DBClusterEndpointArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster_endpoint(
-#'   DBClusterEndpointIdentifier = "string",
-#'   EndpointType = "string",
-#'   StaticMembers = list(
-#'     "string"
-#'   ),
-#'   ExcludedMembers = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11986,78 +7379,23 @@ rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endpoint
 #' Modifies the parameters of a DB cluster parameter group
 #'
 #' @description
-#' Modifies the parameters of a DB cluster parameter group. To modify more
-#' than one parameter, submit a list of the following: `ParameterName`,
-#' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
-#' modified in a single request.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' Changes to dynamic parameters are applied immediately. Changes to static
-#' parameters require a reboot without failover to the DB cluster
-#' associated with the parameter group before the change can take effect.
-#' 
-#' After you create a DB cluster parameter group, you should wait at least
-#' 5 minutes before creating your first DB cluster that uses that DB
-#' cluster parameter group as the default parameter group. This allows
-#' Amazon RDS to fully complete the create action before the parameter
-#' group is used as the default for a new DB cluster. This is especially
-#' important for parameters that are critical when creating the default
-#' database for a DB cluster, such as the character set for the default
-#' database defined by the `character_set_database` parameter. You can use
-#' the *Parameter Groups* option of the Amazon RDS console or the
-#' [`describe_db_cluster_parameters`][rds_describe_db_cluster_parameters]
-#' action to verify that your DB cluster parameter group has been created
-#' or modified.
-#' 
-#' If the modified DB cluster parameter group is used by an Aurora
-#' Serverless cluster, Aurora applies the update immediately. The cluster
-#' restart might interrupt your workload. In that case, your application
-#' must reopen any connections and retry any transactions that were active
-#' when the parameter changes took effect.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Modifies the parameters of a DB cluster parameter group. To modify more than one parameter, submit a list of the following: `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be modified in a single request.
 #'
-#' @usage
-#' rds_modify_db_cluster_parameter_group(DBClusterParameterGroupName,
-#'   Parameters)
+#' See [https://paws-r.github.io/docs/rds/modify_db_cluster_parameter_group.html](https://paws-r.github.io/docs/rds/modify_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group to modify.
 #' @param Parameters &#91;required&#93; A list of parameters in the DB cluster parameter group to modify.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string",
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot",
-#'       SupportedEngineModes = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' 
+#' Valid Values (for the application method): `immediate | pending-reboot`
+#' 
+#' You can use the `immediate` value with dynamic parameters only. You can
+#' use the `pending-reboot` value for both dynamic and static parameters.
+#' 
+#' When the application method is `immediate`, changes to dynamic
+#' parameters are applied immediately to the DB clusters associated with
+#' the parameter group. When the application method is `pending-reboot`,
+#' changes to dynamic and static parameters are applied after a reboot
+#' without failover to the DB clusters associated with the parameter group.
 #'
 #' @keywords internal
 #'
@@ -12083,97 +7421,39 @@ rds_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, P
 #' from, a manual DB cluster snapshot
 #'
 #' @description
-#' Adds an attribute and values to, or removes an attribute and values
-#' from, a manual DB cluster snapshot.
-#' 
-#' To share a manual DB cluster snapshot with other AWS accounts, specify
-#' `restore` as the `AttributeName` and use the `ValuesToAdd` parameter to
-#' add a list of IDs of the AWS accounts that are authorized to restore the
-#' manual DB cluster snapshot. Use the value `all` to make the manual DB
-#' cluster snapshot public, which means that it can be copied or restored
-#' by all AWS accounts.
-#' 
-#' Don't add the `all` value for any manual DB cluster snapshots that
-#' contain private information that you don't want available to all AWS
-#' accounts.
-#' 
-#' If a manual DB cluster snapshot is encrypted, it can be shared, but only
-#' by specifying a list of authorized AWS account IDs for the `ValuesToAdd`
-#' parameter. You can't use `all` as a value for that parameter in this
-#' case.
-#' 
-#' To view which AWS accounts have access to copy or restore a manual DB
-#' cluster snapshot, or whether a manual DB cluster snapshot is public or
-#' private, use the
-#' [`describe_db_cluster_snapshot_attributes`][rds_describe_db_cluster_snapshot_attributes]
-#' API action. The accounts are returned as values for the `restore`
-#' attribute.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot.
 #'
-#' @usage
-#' rds_modify_db_cluster_snapshot_attribute(DBClusterSnapshotIdentifier,
-#'   AttributeName, ValuesToAdd, ValuesToRemove)
+#' See [https://paws-r.github.io/docs/rds/modify_db_cluster_snapshot_attribute.html](https://paws-r.github.io/docs/rds/modify_db_cluster_snapshot_attribute.html) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the DB cluster snapshot to modify the attributes for.
 #' @param AttributeName &#91;required&#93; The name of the DB cluster snapshot attribute to modify.
 #' 
-#' To manage authorization for other AWS accounts to copy or restore a
-#' manual DB cluster snapshot, set this value to `restore`.
+#' To manage authorization for other Amazon Web Services accounts to copy
+#' or restore a manual DB cluster snapshot, set this value to `restore`.
 #' 
 #' To view the list of attributes available to modify, use the
 #' [`describe_db_cluster_snapshot_attributes`][rds_describe_db_cluster_snapshot_attributes]
-#' API action.
+#' API operation.
 #' @param ValuesToAdd A list of DB cluster snapshot attributes to add to the attribute
 #' specified by `AttributeName`.
 #' 
-#' To authorize other AWS accounts to copy or restore a manual DB cluster
-#' snapshot, set this list to include one or more AWS account IDs, or `all`
-#' to make the manual DB cluster snapshot restorable by any AWS account. Do
-#' not add the `all` value for any manual DB cluster snapshots that contain
-#' private information that you don't want available to all AWS accounts.
+#' To authorize other Amazon Web Services accounts to copy or restore a
+#' manual DB cluster snapshot, set this list to include one or more Amazon
+#' Web Services account IDs, or `all` to make the manual DB cluster
+#' snapshot restorable by any Amazon Web Services account. Do not add the
+#' `all` value for any manual DB cluster snapshots that contain private
+#' information that you don't want available to all Amazon Web Services
+#' accounts.
 #' @param ValuesToRemove A list of DB cluster snapshot attributes to remove from the attribute
 #' specified by `AttributeName`.
 #' 
-#' To remove authorization for other AWS accounts to copy or restore a
-#' manual DB cluster snapshot, set this list to include one or more AWS
-#' account identifiers, or `all` to remove authorization for any AWS
-#' account to copy or restore the DB cluster snapshot. If you specify
-#' `all`, an AWS account whose account ID is explicitly added to the
-#' `restore` attribute can still copy or restore a manual DB cluster
-#' snapshot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterSnapshotAttributesResult = list(
-#'     DBClusterSnapshotIdentifier = "string",
-#'     DBClusterSnapshotAttributes = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeValues = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_cluster_snapshot_attribute(
-#'   DBClusterSnapshotIdentifier = "string",
-#'   AttributeName = "string",
-#'   ValuesToAdd = list(
-#'     "string"
-#'   ),
-#'   ValuesToRemove = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' To remove authorization for other Amazon Web Services accounts to copy
+#' or restore a manual DB cluster snapshot, set this list to include one or
+#' more Amazon Web Services account identifiers, or `all` to remove
+#' authorization for any Amazon Web Services account to copy or restore the
+#' DB cluster snapshot. If you specify `all`, an Amazon Web Services
+#' account whose account ID is explicitly added to the `restore` attribute
+#' can still copy or restore a manual DB cluster snapshot.
 #'
 #' @keywords internal
 #'
@@ -12198,36 +7478,16 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Modifies settings for a DB instance
 #'
 #' @description
-#' Modifies settings for a DB instance. You can change one or more database
-#' configuration parameters by specifying these parameters and the new
-#' values in the request. To learn what modifications you can make to your
-#' DB instance, call
-#' [`describe_valid_db_instance_modifications`][rds_describe_valid_db_instance_modifications]
-#' before you call [`modify_db_instance`][rds_modify_db_instance].
+#' Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call [`describe_valid_db_instance_modifications`][rds_describe_valid_db_instance_modifications] before you call [`modify_db_instance`][rds_modify_db_instance].
 #'
-#' @usage
-#' rds_modify_db_instance(DBInstanceIdentifier, AllocatedStorage,
-#'   DBInstanceClass, DBSubnetGroupName, DBSecurityGroups,
-#'   VpcSecurityGroupIds, ApplyImmediately, MasterUserPassword,
-#'   DBParameterGroupName, BackupRetentionPeriod, PreferredBackupWindow,
-#'   PreferredMaintenanceWindow, MultiAZ, EngineVersion,
-#'   AllowMajorVersionUpgrade, AutoMinorVersionUpgrade, LicenseModel, Iops,
-#'   OptionGroupName, NewDBInstanceIdentifier, StorageType, TdeCredentialArn,
-#'   TdeCredentialPassword, CACertificateIdentifier, Domain,
-#'   CopyTagsToSnapshot, MonitoringInterval, DBPortNumber,
-#'   PubliclyAccessible, MonitoringRoleArn, DomainIAMRoleName, PromotionTier,
-#'   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
-#'   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
-#'   CloudwatchLogsExportConfiguration, ProcessorFeatures,
-#'   UseDefaultProcessorFeatures, DeletionProtection, MaxAllocatedStorage,
-#'   CertificateRotationRestart, ReplicaMode, EnableCustomerOwnedIp)
+#' See [https://paws-r.github.io/docs/rds/modify_db_instance.html](https://paws-r.github.io/docs/rds/modify_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This value is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing DBInstance.
-#' @param AllocatedStorage The new amount of storage (in gibibytes) to allocate for the DB
+#' @param AllocatedStorage The new amount of storage in gibibytes (GiB) to allocate for the DB
 #' instance.
 #' 
 #' For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be
@@ -12237,16 +7497,20 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' For the valid values for allocated storage for each engine, see
 #' [`create_db_instance`][rds_create_db_instance].
-#' @param DBInstanceClass The new compute and memory capacity of the DB instance, for example,
-#' `db.m4.large`. Not all DB instance classes are available in all AWS
-#' Regions, or for all database engines. For the full list of DB instance
-#' classes, and availability for your engine, see [DB Instance
-#' Class](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-#' in the *Amazon RDS User Guide.*
+#' @param DBInstanceClass The new compute and memory capacity of the DB instance, for example
+#' db.m5.large. Not all DB instance classes are available in all Amazon Web
+#' Services Regions, or for all database engines. For the full list of DB
+#' instance classes, and availability for your engine, see [DB instance
+#' classes](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+#' in the *Amazon RDS User Guide* or [Aurora DB instance
+#' classes](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.DBInstanceClass.html)
+#' in the *Amazon Aurora User Guide*.
 #' 
 #' If you modify the DB instance class, an outage occurs during the change.
 #' The change is applied during the next maintenance window, unless
 #' `ApplyImmediately` is enabled for this request.
+#' 
+#' This setting doesn't apply to RDS Custom for Oracle.
 #' 
 #' Default: Uses existing setting
 #' @param DBSubnetGroupName The new DB subnet group for the DB instance. You can use this parameter
@@ -12254,25 +7518,31 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' in a VPC, you can also use this parameter to move your DB instance into
 #' a VPC. For more information, see [Working with a DB instance in a
 #' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC)
-#' in the *Amazon RDS User Guide.*
+#' in the *Amazon RDS User Guide*.
 #' 
 #' Changing the subnet group causes an outage during the change. The change
 #' is applied during the next maintenance window, unless you enable
 #' `ApplyImmediately`.
 #' 
+#' This parameter doesn't apply to RDS Custom.
+#' 
 #' Constraints: If supplied, must match the name of an existing
 #' DBSubnetGroup.
 #' 
-#' Example: `mySubnetGroup`
+#' Example: `mydbsubnetgroup`
 #' @param DBSecurityGroups A list of DB security groups to authorize on this DB instance. Changing
 #' this setting doesn't result in an outage and the change is
 #' asynchronously applied as soon as possible.
 #' 
+#' This setting doesn't apply to RDS Custom.
+#' 
 #' Constraints:
 #' 
 #' -   If supplied, must match existing DBSecurityGroups.
-#' @param VpcSecurityGroupIds A list of EC2 VPC security groups to authorize on this DB instance. This
-#' change is asynchronously applied as soon as possible.
+#' @param VpcSecurityGroupIds A list of Amazon EC2 VPC security groups to authorize on this DB
+#' instance. This change is asynchronously applied as soon as possible.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' **Amazon Aurora**
 #' 
@@ -12294,7 +7564,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' [`reboot_db_instance`][rds_reboot_db_instance], or the next failure
 #' reboot. Review the table of parameters in [Modifying a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
-#' in the *Amazon RDS User Guide.* to see the impact of enabling or
+#' in the *Amazon RDS User Guide* to see the impact of enabling or
 #' disabling `ApplyImmediately` for each modified parameter and to
 #' determine when the changes are applied.
 #' @param MasterUserPassword The new password for the master user. The password can include any
@@ -12305,6 +7575,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' request and the completion of the request, the `MasterUserPassword`
 #' element exists in the `PendingModifiedValues` element of the operation
 #' response.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' **Amazon Aurora**
 #' 
@@ -12334,31 +7606,38 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' Constraints: Must contain from 8 to 128 characters.
 #' 
-#' Amazon RDS API actions never return the password, so this action
+#' Amazon RDS API operations never return the password, so this action
 #' provides a way to regain access to a primary instance user if the
 #' password is lost. This includes restoring privileges that might have
 #' been accidentally revoked.
-#' @param DBParameterGroupName The name of the DB parameter group to apply to the DB instance. Changing
-#' this setting doesn't result in an outage. The parameter group name
-#' itself is changed immediately, but the actual parameter changes are not
-#' applied until you reboot the instance without failover. In this case,
-#' the DB instance isn't rebooted automatically and the parameter changes
-#' isn't applied during the next maintenance window.
+#' @param DBParameterGroupName The name of the DB parameter group to apply to the DB instance.
+#' 
+#' Changing this setting doesn't result in an outage. The parameter group
+#' name itself is changed immediately, but the actual parameter changes are
+#' not applied until you reboot the instance without failover. In this
+#' case, the DB instance isn't rebooted automatically, and the parameter
+#' changes aren't applied during the next maintenance window. However, if
+#' you modify dynamic parameters in the newly associated DB parameter
+#' group, these changes are applied immediately without a reboot.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Default: Uses existing setting
 #' 
 #' Constraints: The DB parameter group must be in the same DB parameter
-#' group family as this DB instance.
+#' group family as the DB instance.
 #' @param BackupRetentionPeriod The number of days to retain automated backups. Setting this parameter
 #' to a positive number enables backups. Setting this parameter to 0
 #' disables automated backups.
 #' 
-#' Changing this parameter can result in an outage if you change from 0 to
-#' a non-zero value or from a non-zero value to 0. These changes are
-#' applied during the next maintenance window unless the `ApplyImmediately`
-#' parameter is enabled for this request. If you change the parameter from
-#' one non-zero value to another non-zero value, the change is
-#' asynchronously applied as soon as possible.
+#' Enabling and disabling backups can result in a brief I/O suspension that
+#' lasts from a few seconds to a few minutes, depending on the size and
+#' class of your DB instance.
+#' 
+#' These changes are applied during the next maintenance window unless the
+#' `ApplyImmediately` parameter is enabled for this request. If you change
+#' the parameter from one non-zero value to another non-zero value, the
+#' change is asynchronously applied as soon as possible.
 #' 
 #' **Amazon Aurora**
 #' 
@@ -12370,20 +7649,24 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' Constraints:
 #' 
-#' -   Must be a value from 0 to 35
+#' -   It must be a value from 0 to 35. It can't be set to 0 if the DB
+#'     instance is a source to read replicas. It can't be set to 0 for an
+#'     RDS Custom for Oracle DB instance.
 #' 
-#' -   Can be specified for a MySQL read replica only if the source is
-#'     running MySQL 5.6 or later
+#' -   It can be specified for a MySQL read replica only if the source is
+#'     running MySQL 5.6 or later.
 #' 
-#' -   Can be specified for a PostgreSQL read replica only if the source is
-#'     running PostgreSQL 9.3.5
-#' 
-#' -   Can't be set to 0 if the DB instance is a source to read replicas
+#' -   It can be specified for a PostgreSQL read replica only if the source
+#'     is running PostgreSQL 9.3.5.
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
 #' automated backups are enabled, as determined by the
 #' `BackupRetentionPeriod` parameter. Changing this parameter doesn't
 #' result in an outage and the change is asynchronously applied as soon as
-#' possible.
+#' possible. The default is a 30-minute window selected at random from an
+#' 8-hour block of time for each Amazon Web Services Region. For more
+#' information, see [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+#' in the *Amazon RDS User Guide.*
 #' 
 #' **Amazon Aurora**
 #' 
@@ -12410,6 +7693,10 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' there must be at least 30 minutes between the current time and end of
 #' the window to ensure pending changes are applied.
 #' 
+#' For more information, see [Amazon RDS Maintenance
+#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance)
+#' in the *Amazon RDS User Guide.*
+#' 
 #' Default: Uses existing setting
 #' 
 #' Format: ddd:hh24:mi-ddd:hh24:mi
@@ -12418,9 +7705,11 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' Constraints: Must be at least 30 minutes
 #' @param MultiAZ A value that indicates whether the DB instance is a Multi-AZ deployment.
-#' Changing this parameter doesn't result in an outage and the change is
+#' Changing this parameter doesn't result in an outage. The change is
 #' applied during the next maintenance window unless the `ApplyImmediately`
 #' parameter is enabled for this request.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param EngineVersion The version number of the database engine to upgrade to. Changing this
 #' parameter results in an outage and the change is applied during the next
 #' maintenance window unless the `ApplyImmediately` parameter is enabled
@@ -12431,24 +7720,41 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' family for the new engine version must be specified. The new DB
 #' parameter group can be the default for that DB parameter group family.
 #' 
-#' For information about valid engine versions, see
+#' If you specify only a major version, Amazon RDS will update the DB
+#' instance to the default minor version if the current minor version is
+#' lower. For information about valid engine versions, see
 #' [`create_db_instance`][rds_create_db_instance], or call
 #' [`describe_db_engine_versions`][rds_describe_db_engine_versions].
+#' 
+#' In RDS Custom for Oracle, this parameter is supported for read replicas
+#' only if they are in the `PATCH_DB_FAILURE` lifecycle.
 #' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
 #' Changing this parameter doesn't result in an outage and the change is
 #' asynchronously applied as soon as possible.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Constraints: Major version upgrades must be allowed when specifying a
 #' value for the EngineVersion parameter that is a different major version
 #' than the DB instance's current version.
 #' @param AutoMinorVersionUpgrade A value that indicates whether minor version upgrades are applied
-#' automatically to the DB instance during the maintenance window. Changing
-#' this parameter doesn't result in an outage except in the following case
-#' and the change is asynchronously applied as soon as possible. An outage
-#' results if this parameter is enabled during the maintenance window, and
-#' a newer minor version is available, and RDS has enabled auto patching
-#' for that engine version.
+#' automatically to the DB instance during the maintenance window. An
+#' outage occurs when all the following conditions are met:
+#' 
+#' -   The automatic upgrade is enabled for the maintenance window.
+#' 
+#' -   A newer minor version is available.
+#' 
+#' -   RDS has enabled automatic patching for the engine version.
+#' 
+#' If any of the preceding conditions isn't met, RDS applies the change as
+#' soon as possible and doesn't cause an outage.
+#' 
+#' For an RDS Custom DB instance, set `AutoMinorVersionUpgrade` to `false`.
+#' Otherwise, the operation returns an error.
 #' @param LicenseModel The license model for the DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Valid values: `license-included` | `bring-your-own-license` |
 #' `general-public-license`
@@ -12483,23 +7789,29 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' so that they are 10% greater than the current value.
 #' 
 #' Default: Uses existing setting
-#' @param OptionGroupName Indicates that the DB instance should be associated with the specified
-#' option group. Changing this parameter doesn't result in an outage except
-#' in the following case and the change is applied during the next
-#' maintenance window unless the `ApplyImmediately` parameter is enabled
-#' for this request. If the parameter change results in an option group
-#' that enables OEM, this change can cause a brief (sub-second) period
-#' during which new connections are rejected but existing connections are
-#' not interrupted.
+#' @param OptionGroupName A value that indicates the DB instance should be associated with the
+#' specified option group.
+#' 
+#' Changing this parameter doesn't result in an outage, with one exception.
+#' If the parameter change results in an option group that enables OEM, it
+#' can cause a brief period, lasting less than a second, during which new
+#' connections are rejected but existing connections aren't interrupted.
+#' 
+#' The change is applied during the next maintenance window unless the
+#' `ApplyImmediately` parameter is enabled for this request.
 #' 
 #' Permanent options, such as the TDE option for Oracle Advanced Security
 #' TDE, can't be removed from an option group, and that option group can't
-#' be removed from a DB instance once it is associated with a DB instance
+#' be removed from a DB instance after it is associated with a DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param NewDBInstanceIdentifier The new DB instance identifier for the DB instance when renaming a DB
 #' instance. When you change the DB instance identifier, an instance reboot
 #' occurs immediately if you enable `ApplyImmediately`, or will occur
 #' during the next maintenance window if you disable Apply Immediately.
 #' This value is stored as a lowercase string.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Constraints:
 #' 
@@ -12535,18 +7847,26 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Default: `io1` if the `Iops` parameter is specified, otherwise `gp2`
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
 #' device.
-#' @param CACertificateIdentifier Indicates the certificate that needs to be associated with the instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' @param CACertificateIdentifier Specifies the certificate to associate with the DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param Domain The Active Directory directory ID to move the DB instance to. Specify
-#' `none` to remove the instance from its current domain. The domain must
-#' be created prior to this operation. Currently, only MySQL, Microsoft SQL
-#' Server, Oracle, and PostgreSQL DB instances can be created in an Active
+#' `none` to remove the instance from its current domain. You must create
+#' the domain before this operation. Currently, you can create only MySQL,
+#' Microsoft SQL Server, Oracle, and PostgreSQL DB instances in an Active
 #' Directory Domain.
 #' 
 #' For more information, see [Kerberos
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html)
 #' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB instance to
 #' snapshots of the DB instance. By default, tags are not copied.
 #' 
@@ -12558,10 +7878,12 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' [`modify_db_cluster`][rds_modify_db_cluster].
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
 #' metrics are collected for the DB instance. To disable collecting
-#' Enhanced Monitoring metrics, specify 0. The default is 0.
+#' Enhanced Monitoring metrics, specify 0, which is the default.
 #' 
-#' If `MonitoringRoleArn` is specified, then you must also set
-#' `MonitoringInterval` to a value other than 0.
+#' If `MonitoringRoleArn` is specified, set `MonitoringInterval` to a value
+#' other than 0.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Valid Values: `0, 1, 5, 10, 15, 30, 60`
 #' @param DBPortNumber The port number on which the database accepts connections.
@@ -12569,8 +7891,10 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' The value of the `DBPortNumber` parameter must not match any of the port
 #' values specified for options in the option group for the DB instance.
 #' 
-#' Your database will restart when you change the `DBPortNumber` value
+#' If you change the `DBPortNumber` value, your database restarts
 #' regardless of the value of the `ApplyImmediately` parameter.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' **MySQL**
 #' 
@@ -12612,12 +7936,13 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Valid values: `1150-65535`
 #' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
 #' 
-#' When the DB instance is publicly accessible, its DNS endpoint resolves
-#' to the private IP address from within the DB instance's VPC, and to the
-#' public IP address from outside of the DB instance's VPC. Access to the
-#' DB instance is ultimately controlled by the security group it uses, and
-#' that public access is not permitted if the security group assigned to
-#' the DB instance doesn't permit it.
+#' When the DB cluster is publicly accessible, its Domain Name System (DNS)
+#' endpoint resolves to the private IP address from within the DB cluster's
+#' virtual private cloud (VPC). It resolves to the public IP address from
+#' outside of the DB cluster's VPC. Access to the DB cluster is ultimately
+#' controlled by the security group it uses. That public access isn't
+#' permitted if the security group assigned to the DB cluster doesn't
+#' permit it.
 #' 
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
@@ -12631,68 +7956,116 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' @param MonitoringRoleArn The ARN for the IAM role that permits RDS to send enhanced monitoring
 #' metrics to Amazon CloudWatch Logs. For example,
 #' `arn:aws:iam:123456789012:role/emaccess`. For information on creating a
-#' monitoring role, go to [To create an IAM role for Amazon RDS Enhanced
-#' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Monitoring.html#USER_Monitoring)
+#' monitoring role, see [To create an IAM role for Amazon RDS Enhanced
+#' Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole)
 #' in the *Amazon RDS User Guide.*
 #' 
-#' If `MonitoringInterval` is set to a value other than 0, then you must
-#' supply a `MonitoringRoleArn` value.
+#' If `MonitoringInterval` is set to a value other than 0, supply a
+#' `MonitoringRoleArn` value.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param DomainIAMRoleName The name of the IAM role to use when making API calls to the Directory
 #' Service.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param PromotionTier A value that specifies the order in which an Aurora Replica is promoted
 #' to the primary instance after a failure of the existing primary
 #' instance. For more information, see [Fault Tolerance for an Aurora DB
 #' Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance)
 #' in the *Amazon Aurora User Guide*.
 #' 
+#' This setting doesn't apply to RDS Custom.
+#' 
 #' Default: 1
 #' 
 #' Valid Values: 0 - 15
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping isn't enabled.
 #' 
-#' This setting doesn't apply to Amazon Aurora. Mapping AWS IAM accounts to
-#' database accounts is managed by the DB cluster.
+#' This setting doesn't apply to Amazon Aurora. Mapping Amazon Web Services
+#' IAM accounts to database accounts is managed by the DB cluster.
 #' 
 #' For more information about IAM database authentication, see [IAM
 #' Database Authentication for MySQL and
 #' PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 #' in the *Amazon RDS User Guide.*
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the DB
 #' instance.
 #' 
 #' For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
-#' in the *Amazon Relational Database Service User Guide*.
-#' @param PerformanceInsightsKMSKeyId The AWS KMS key identifier for encryption of Performance Insights data.
+#' in the *Amazon RDS User Guide*.
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS customer master key (CMK).
+#' This setting doesn't apply to RDS Custom.
+#' @param PerformanceInsightsKMSKeyId The Amazon Web Services KMS key identifier for encryption of Performance
+#' Insights data.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key.
 #' 
 #' If you do not specify a value for `PerformanceInsightsKMSKeyId`, then
-#' Amazon RDS uses your default CMK. There is a default CMK for your AWS
-#' account. Your AWS account has a different default CMK for each AWS
-#' Region.
-#' @param PerformanceInsightsRetentionPeriod The amount of time, in days, to retain Performance Insights data. Valid
-#' values are 7 or 731 (2 years).
+#' Amazon RDS uses your default KMS key. There is a default KMS key for
+#' your Amazon Web Services account. Your Amazon Web Services account has a
+#' different default KMS key for each Amazon Web Services Region.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' @param PerformanceInsightsRetentionPeriod The number of days to retain Performance Insights data. The default is 7
+#' days. The following values are valid:
+#' 
+#' -   7
+#' 
+#' -   *month* * 31, where *month* is a number of months from 1-23
+#' 
+#' -   731
+#' 
+#' For example, the following values are valid:
+#' 
+#' -   93 (3 months * 31)
+#' 
+#' -   341 (11 months * 31)
+#' 
+#' -   589 (19 months * 31)
+#' 
+#' -   731
+#' 
+#' If you specify a retention period such as 94, which isn't a valid value,
+#' RDS issues an error.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param CloudwatchLogsExportConfiguration The configuration setting for the log types to be enabled for export to
 #' CloudWatch Logs for a specific DB instance.
 #' 
 #' A change to the `CloudwatchLogsExportConfiguration` parameter is always
 #' applied to the DB instance immediately. Therefore, the
 #' `ApplyImmediately` parameter has no effect.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param UseDefaultProcessorFeatures A value that indicates whether the DB instance class of the DB instance
 #' uses its default processor features.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled. For more
+#' enabled. By default, deletion protection isn't enabled. For more
 #' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
-#' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
-#' of the DB instance.
+#' @param MaxAllocatedStorage The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
+#' scale the storage of the DB instance.
+#' 
+#' For more information about this setting, including limitations that
+#' apply to it, see [Managing capacity automatically with Amazon RDS
+#' storage
+#' autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param CertificateRotationRestart A value that indicates whether the DB instance is restarted when you
 #' rotate your SSL/TLS certificate.
 #' 
@@ -12715,7 +8088,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' -   For more information about rotating your SSL/TLS certificate for
 #'     Aurora DB engines, see [Rotating Your SSL/TLS
 #'     Certificate](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html)
-#'     in the *Amazon Aurora User Guide.*
+#'     in the *Amazon Aurora User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param ReplicaMode A value that sets the open mode of a replica database to either mounted
 #' or read-only.
 #' 
@@ -12729,6 +8104,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' see [Working with Oracle Read Replicas for Amazon
 #' RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html)
 #' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param EnableCustomerOwnedIp A value that indicates whether to enable a customer-owned IP address
 #' (CoIP) for an RDS on Outposts DB instance.
 #' 
@@ -12738,282 +8115,51 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' outside of its virtual private cloud (VPC) on your local network.
 #' 
 #' For more information about RDS on Outposts, see [Working with Amazon RDS
-#' on AWS
+#' on Amazon Web Services
 #' Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
 #' in the *Amazon RDS User Guide*.
 #' 
 #' For more information about CoIPs, see [Customer-owned IP
-#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-#' in the *AWS Outposts User Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   AllocatedStorage = 123,
-#'   DBInstanceClass = "string",
-#'   DBSubnetGroupName = "string",
-#'   DBSecurityGroups = list(
-#'     "string"
-#'   ),
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   ApplyImmediately = TRUE|FALSE,
-#'   MasterUserPassword = "string",
-#'   DBParameterGroupName = "string",
-#'   BackupRetentionPeriod = 123,
-#'   PreferredBackupWindow = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   MultiAZ = TRUE|FALSE,
-#'   EngineVersion = "string",
-#'   AllowMajorVersionUpgrade = TRUE|FALSE,
-#'   AutoMinorVersionUpgrade = TRUE|FALSE,
-#'   LicenseModel = "string",
-#'   Iops = 123,
-#'   OptionGroupName = "string",
-#'   NewDBInstanceIdentifier = "string",
-#'   StorageType = "string",
-#'   TdeCredentialArn = "string",
-#'   TdeCredentialPassword = "string",
-#'   CACertificateIdentifier = "string",
-#'   Domain = "string",
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   MonitoringInterval = 123,
-#'   DBPortNumber = 123,
-#'   PubliclyAccessible = TRUE|FALSE,
-#'   MonitoringRoleArn = "string",
-#'   DomainIAMRoleName = "string",
-#'   PromotionTier = 123,
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   EnablePerformanceInsights = TRUE|FALSE,
-#'   PerformanceInsightsKMSKeyId = "string",
-#'   PerformanceInsightsRetentionPeriod = 123,
-#'   CloudwatchLogsExportConfiguration = list(
-#'     EnableLogTypes = list(
-#'       "string"
-#'     ),
-#'     DisableLogTypes = list(
-#'       "string"
-#'     )
-#'   ),
-#'   ProcessorFeatures = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   UseDefaultProcessorFeatures = TRUE|FALSE,
-#'   DeletionProtection = TRUE|FALSE,
-#'   MaxAllocatedStorage = 123,
-#'   CertificateRotationRestart = TRUE|FALSE,
-#'   ReplicaMode = "open-read-only"|"mounted",
-#'   EnableCustomerOwnedIp = TRUE|FALSE
-#' )
-#' ```
+#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing)
+#' in the *Amazon Web Services Outposts User Guide*.
+#' @param AwsBackupRecoveryPointArn The Amazon Resource Name (ARN) of the recovery point in Amazon Web
+#' Services Backup.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' @param AutomationMode The automation mode of the RDS Custom DB instance: `full` or
+#' `all paused`. If `full`, the DB instance automates monitoring and
+#' instance recovery. If `all paused`, the instance pauses automation for
+#' the duration set by `ResumeFullAutomationModeMinutes`.
+#' @param ResumeFullAutomationModeMinutes The number of minutes to pause the automation. When the time period
+#' ends, RDS Custom resumes full automation. The minimum value is `60`
+#' (default). The maximum value is `1,440`.
+#' @param NetworkType The network type of the DB instance.
+#' 
+#' Valid values:
+#' 
+#' -   `IPV4`
+#' 
+#' -   `DUAL`
+#' 
+#' The network type is determined by the `DBSubnetGroup` specified for the
+#' DB instance. A `DBSubnetGroup` can support only the IPv4 protocol or the
+#' IPv4 and the IPv6 protocols (`DUAL`).
+#' 
+#' For more information, see [Working with a DB instance in a
+#' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html)
+#' in the *Amazon RDS User Guide.*
 #'
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_instance
-rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass = NULL, DBSubnetGroupName = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ApplyImmediately = NULL, MasterUserPassword = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, NewDBInstanceIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, CACertificateIdentifier = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, DBPortNumber = NULL, PubliclyAccessible = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, CloudwatchLogsExportConfiguration = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, CertificateRotationRestart = NULL, ReplicaMode = NULL, EnableCustomerOwnedIp = NULL) {
+rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass = NULL, DBSubnetGroupName = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ApplyImmediately = NULL, MasterUserPassword = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, NewDBInstanceIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, CACertificateIdentifier = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, DBPortNumber = NULL, PubliclyAccessible = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, CloudwatchLogsExportConfiguration = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, CertificateRotationRestart = NULL, ReplicaMode = NULL, EnableCustomerOwnedIp = NULL, AwsBackupRecoveryPointArn = NULL, AutomationMode = NULL, ResumeFullAutomationModeMinutes = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, CertificateRotationRestart = CertificateRotationRestart, ReplicaMode = ReplicaMode, EnableCustomerOwnedIp = EnableCustomerOwnedIp)
+  input <- .rds$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, CertificateRotationRestart = CertificateRotationRestart, ReplicaMode = ReplicaMode, EnableCustomerOwnedIp = EnableCustomerOwnedIp, AwsBackupRecoveryPointArn = AwsBackupRecoveryPointArn, AutomationMode = AutomationMode, ResumeFullAutomationModeMinutes = ResumeFullAutomationModeMinutes, NetworkType = NetworkType)
   output <- .rds$modify_db_instance_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -13026,77 +8172,40 @@ rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL
 #' Modifies the parameters of a DB parameter group
 #'
 #' @description
-#' Modifies the parameters of a DB parameter group. To modify more than one
-#' parameter, submit a list of the following: `ParameterName`,
-#' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
-#' modified in a single request.
-#' 
-#' Changes to dynamic parameters are applied immediately. Changes to static
-#' parameters require a reboot without failover to the DB instance
-#' associated with the parameter group before the change can take effect.
-#' 
-#' After you modify a DB parameter group, you should wait at least 5
-#' minutes before creating your first DB instance that uses that DB
-#' parameter group as the default parameter group. This allows Amazon RDS
-#' to fully complete the modify action before the parameter group is used
-#' as the default for a new DB instance. This is especially important for
-#' parameters that are critical when creating the default database for a DB
-#' instance, such as the character set for the default database defined by
-#' the `character_set_database` parameter. You can use the *Parameter
-#' Groups* option of the Amazon RDS console or the *DescribeDBParameters*
-#' command to verify that your DB parameter group has been created or
-#' modified.
+#' Modifies the parameters of a DB parameter group. To modify more than one parameter, submit a list of the following: `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be modified in a single request.
 #'
-#' @usage
-#' rds_modify_db_parameter_group(DBParameterGroupName, Parameters)
+#' See [https://paws-r.github.io/docs/rds/modify_db_parameter_group.html](https://paws-r.github.io/docs/rds/modify_db_parameter_group.html) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
 #' Constraints:
 #' 
 #' -   If supplied, must match the name of an existing `DBParameterGroup`.
-#' @param Parameters &#91;required&#93; An array of parameter names, values, and the apply method for the
-#' parameter update. At least one parameter name, value, and apply method
-#' must be supplied; later arguments are optional. A maximum of 20
+#' @param Parameters &#91;required&#93; An array of parameter names, values, and the application methods for the
+#' parameter update. At least one parameter name, value, and application
+#' method must be supplied; later arguments are optional. A maximum of 20
 #' parameters can be modified in a single request.
 #' 
 #' Valid Values (for the application method): `immediate | pending-reboot`
 #' 
-#' You can use the immediate value with dynamic parameters only. You can
-#' use the pending-reboot value for both dynamic and static parameters, and
-#' changes are applied when you reboot the DB instance without failover.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBParameterGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_parameter_group(
-#'   DBParameterGroupName = "string",
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot",
-#'       SupportedEngineModes = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' You can use the `immediate` value with dynamic parameters only. You can
+#' use the `pending-reboot` value for both dynamic and static parameters.
+#' 
+#' When the application method is `immediate`, changes to dynamic
+#' parameters are applied immediately to the DB instances associated with
+#' the parameter group.
+#' 
+#' When the application method is `pending-reboot`, changes to dynamic and
+#' static parameters are applied after a reboot without failover to the DB
+#' instances associated with the parameter group.
+#' 
+#' You can't use `pending-reboot` with dynamic parameters on RDS for SQL
+#' Server DB instances. Use `immediate`.
+#' 
+#' For more information on modifying DB parameters, see [Working with DB
+#' parameter
+#' groups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html)
+#' in the *Amazon RDS User Guide*.
 #'
 #' @keywords internal
 #'
@@ -13123,9 +8232,7 @@ rds_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) {
 #' @description
 #' Changes the settings for an existing DB proxy.
 #'
-#' @usage
-#' rds_modify_db_proxy(DBProxyName, NewDBProxyName, Auth, RequireTLS,
-#'   IdleClientTimeout, DebugLogging, RoleArn, SecurityGroups)
+#' See [https://paws-r.github.io/docs/rds/modify_db_proxy.html](https://paws-r.github.io/docs/rds/modify_db_proxy.html) for full documentation.
 #'
 #' @param DBProxyName &#91;required&#93; The identifier for the `DBProxy` to modify.
 #' @param NewDBProxyName The new identifier for the `DBProxy`. An identifier must begin with a
@@ -13147,71 +8254,8 @@ rds_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) {
 #' debugging, and only when you have security measures in place to
 #' safeguard any sensitive information that appears in the logs.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role that the proxy uses to
-#' access secrets in AWS Secrets Manager.
+#' access secrets in Amazon Web Services Secrets Manager.
 #' @param SecurityGroups The new list of security groups for the `DBProxy`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBProxy = list(
-#'     DBProxyName = "string",
-#'     DBProxyArn = "string",
-#'     Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
-#'     EngineFamily = "string",
-#'     VpcSecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     VpcSubnetIds = list(
-#'       "string"
-#'     ),
-#'     Auth = list(
-#'       list(
-#'         Description = "string",
-#'         UserName = "string",
-#'         AuthScheme = "SECRETS",
-#'         SecretArn = "string",
-#'         IAMAuth = "DISABLED"|"REQUIRED"
-#'       )
-#'     ),
-#'     RoleArn = "string",
-#'     Endpoint = "string",
-#'     RequireTLS = TRUE|FALSE,
-#'     IdleClientTimeout = 123,
-#'     DebugLogging = TRUE|FALSE,
-#'     CreatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_proxy(
-#'   DBProxyName = "string",
-#'   NewDBProxyName = "string",
-#'   Auth = list(
-#'     list(
-#'       Description = "string",
-#'       UserName = "string",
-#'       AuthScheme = "SECRETS",
-#'       SecretArn = "string",
-#'       IAMAuth = "DISABLED"|"REQUIRED"
-#'     )
-#'   ),
-#'   RequireTLS = TRUE|FALSE,
-#'   IdleClientTimeout = 123,
-#'   DebugLogging = TRUE|FALSE,
-#'   RoleArn = "string",
-#'   SecurityGroups = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13233,69 +8277,56 @@ rds_modify_db_proxy <- function(DBProxyName, NewDBProxyName = NULL, Auth = NULL,
 }
 .rds$operations$modify_db_proxy <- rds_modify_db_proxy
 
+#' Changes the settings for an existing DB proxy endpoint
+#'
+#' @description
+#' Changes the settings for an existing DB proxy endpoint.
+#'
+#' See [https://paws-r.github.io/docs/rds/modify_db_proxy_endpoint.html](https://paws-r.github.io/docs/rds/modify_db_proxy_endpoint.html) for full documentation.
+#'
+#' @param DBProxyEndpointName &#91;required&#93; The name of the DB proxy sociated with the DB proxy endpoint that you
+#' want to modify.
+#' @param NewDBProxyEndpointName The new identifier for the `DBProxyEndpoint`. An identifier must begin
+#' with a letter and must contain only ASCII letters, digits, and hyphens;
+#' it can't end with a hyphen or contain two consecutive hyphens.
+#' @param VpcSecurityGroupIds The VPC security group IDs for the DB proxy endpoint. When the DB proxy
+#' endpoint uses a different VPC than the original proxy, you also specify
+#' a different set of security group IDs than for the original proxy.
+#'
+#' @keywords internal
+#'
+#' @rdname rds_modify_db_proxy_endpoint
+rds_modify_db_proxy_endpoint <- function(DBProxyEndpointName, NewDBProxyEndpointName = NULL, VpcSecurityGroupIds = NULL) {
+  op <- new_operation(
+    name = "ModifyDBProxyEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$modify_db_proxy_endpoint_input(DBProxyEndpointName = DBProxyEndpointName, NewDBProxyEndpointName = NewDBProxyEndpointName, VpcSecurityGroupIds = VpcSecurityGroupIds)
+  output <- .rds$modify_db_proxy_endpoint_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$modify_db_proxy_endpoint <- rds_modify_db_proxy_endpoint
+
 #' Modifies the properties of a DBProxyTargetGroup
 #'
 #' @description
 #' Modifies the properties of a `DBProxyTargetGroup`.
 #'
-#' @usage
-#' rds_modify_db_proxy_target_group(TargetGroupName, DBProxyName,
-#'   ConnectionPoolConfig, NewName)
+#' See [https://paws-r.github.io/docs/rds/modify_db_proxy_target_group.html](https://paws-r.github.io/docs/rds/modify_db_proxy_target_group.html) for full documentation.
 #'
-#' @param TargetGroupName &#91;required&#93; The name of the new target group to assign to the proxy.
-#' @param DBProxyName &#91;required&#93; The name of the new proxy to which to assign the target group.
+#' @param TargetGroupName &#91;required&#93; The name of the target group to modify.
+#' @param DBProxyName &#91;required&#93; The name of the proxy.
 #' @param ConnectionPoolConfig The settings that determine the size and behavior of the connection pool
 #' for the target group.
 #' @param NewName The new name for the modified `DBProxyTarget`. An identifier must begin
 #' with a letter and must contain only ASCII letters, digits, and hyphens;
 #' it can't end with a hyphen or contain two consecutive hyphens.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBProxyTargetGroup = list(
-#'     DBProxyName = "string",
-#'     TargetGroupName = "string",
-#'     TargetGroupArn = "string",
-#'     IsDefault = TRUE|FALSE,
-#'     Status = "string",
-#'     ConnectionPoolConfig = list(
-#'       MaxConnectionsPercent = 123,
-#'       MaxIdleConnectionsPercent = 123,
-#'       ConnectionBorrowTimeout = 123,
-#'       SessionPinningFilters = list(
-#'         "string"
-#'       ),
-#'       InitQuery = "string"
-#'     ),
-#'     CreatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_proxy_target_group(
-#'   TargetGroupName = "string",
-#'   DBProxyName = "string",
-#'   ConnectionPoolConfig = list(
-#'     MaxConnectionsPercent = 123,
-#'     MaxIdleConnectionsPercent = 123,
-#'     ConnectionBorrowTimeout = 123,
-#'     SessionPinningFilters = list(
-#'       "string"
-#'     ),
-#'     InitQuery = "string"
-#'   ),
-#'   NewName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13320,15 +8351,9 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
 #' Updates a manual DB snapshot with a new engine version
 #'
 #' @description
-#' Updates a manual DB snapshot with a new engine version. The snapshot can
-#' be encrypted or unencrypted, but not shared or public.
-#' 
-#' Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and
-#' PostgreSQL.
+#' Updates a manual DB snapshot with a new engine version. The snapshot can be encrypted or unencrypted, but not shared or public.
 #'
-#' @usage
-#' rds_modify_db_snapshot(DBSnapshotIdentifier, EngineVersion,
-#'   OptionGroupName)
+#' See [https://paws-r.github.io/docs/rds/modify_db_snapshot.html](https://paws-r.github.io/docs/rds/modify_db_snapshot.html) for full documentation.
 #'
 #' @param DBSnapshotIdentifier &#91;required&#93; The identifier of the DB snapshot to modify.
 #' @param EngineVersion The engine version to upgrade the DB snapshot to.
@@ -13361,67 +8386,6 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
 #' considerations](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Oracle.html#USER_UpgradeDBInstance.Oracle.OGPG.OG)
 #' in the *Amazon RDS User Guide.*
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSnapshot = list(
-#'     DBSnapshotIdentifier = "string",
-#'     DBInstanceIdentifier = "string",
-#'     SnapshotCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Engine = "string",
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     AvailabilityZone = "string",
-#'     VpcId = "string",
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     SnapshotType = "string",
-#'     Iops = 123,
-#'     OptionGroupName = "string",
-#'     PercentProgress = 123,
-#'     SourceRegion = "string",
-#'     SourceDBSnapshotIdentifier = "string",
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     Encrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DBSnapshotArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DbiResourceId = "string",
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_snapshot(
-#'   DBSnapshotIdentifier = "string",
-#'   EngineVersion = "string",
-#'   OptionGroupName = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_snapshot
@@ -13446,91 +8410,38 @@ rds_modify_db_snapshot <- function(DBSnapshotIdentifier, EngineVersion = NULL, O
 #' from, a manual DB snapshot
 #'
 #' @description
-#' Adds an attribute and values to, or removes an attribute and values
-#' from, a manual DB snapshot.
-#' 
-#' To share a manual DB snapshot with other AWS accounts, specify `restore`
-#' as the `AttributeName` and use the `ValuesToAdd` parameter to add a list
-#' of IDs of the AWS accounts that are authorized to restore the manual DB
-#' snapshot. Uses the value `all` to make the manual DB snapshot public,
-#' which means it can be copied or restored by all AWS accounts.
-#' 
-#' Don't add the `all` value for any manual DB snapshots that contain
-#' private information that you don't want available to all AWS accounts.
-#' 
-#' If the manual DB snapshot is encrypted, it can be shared, but only by
-#' specifying a list of authorized AWS account IDs for the `ValuesToAdd`
-#' parameter. You can't use `all` as a value for that parameter in this
-#' case.
-#' 
-#' To view which AWS accounts have access to copy or restore a manual DB
-#' snapshot, or whether a manual DB snapshot public or private, use the
-#' [`describe_db_snapshot_attributes`][rds_describe_db_snapshot_attributes]
-#' API action. The accounts are returned as values for the `restore`
-#' attribute.
+#' Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot.
 #'
-#' @usage
-#' rds_modify_db_snapshot_attribute(DBSnapshotIdentifier, AttributeName,
-#'   ValuesToAdd, ValuesToRemove)
+#' See [https://paws-r.github.io/docs/rds/modify_db_snapshot_attribute.html](https://paws-r.github.io/docs/rds/modify_db_snapshot_attribute.html) for full documentation.
 #'
 #' @param DBSnapshotIdentifier &#91;required&#93; The identifier for the DB snapshot to modify the attributes for.
 #' @param AttributeName &#91;required&#93; The name of the DB snapshot attribute to modify.
 #' 
-#' To manage authorization for other AWS accounts to copy or restore a
-#' manual DB snapshot, set this value to `restore`.
+#' To manage authorization for other Amazon Web Services accounts to copy
+#' or restore a manual DB snapshot, set this value to `restore`.
 #' 
 #' To view the list of attributes available to modify, use the
 #' [`describe_db_snapshot_attributes`][rds_describe_db_snapshot_attributes]
-#' API action.
+#' API operation.
 #' @param ValuesToAdd A list of DB snapshot attributes to add to the attribute specified by
 #' `AttributeName`.
 #' 
-#' To authorize other AWS accounts to copy or restore a manual snapshot,
-#' set this list to include one or more AWS account IDs, or `all` to make
-#' the manual DB snapshot restorable by any AWS account. Do not add the
-#' `all` value for any manual DB snapshots that contain private information
-#' that you don't want available to all AWS accounts.
+#' To authorize other Amazon Web Services accounts to copy or restore a
+#' manual snapshot, set this list to include one or more Amazon Web
+#' Services account IDs, or `all` to make the manual DB snapshot restorable
+#' by any Amazon Web Services account. Do not add the `all` value for any
+#' manual DB snapshots that contain private information that you don't want
+#' available to all Amazon Web Services accounts.
 #' @param ValuesToRemove A list of DB snapshot attributes to remove from the attribute specified
 #' by `AttributeName`.
 #' 
-#' To remove authorization for other AWS accounts to copy or restore a
-#' manual snapshot, set this list to include one or more AWS account
-#' identifiers, or `all` to remove authorization for any AWS account to
-#' copy or restore the DB snapshot. If you specify `all`, an AWS account
-#' whose account ID is explicitly added to the `restore` attribute can
-#' still copy or restore the manual DB snapshot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSnapshotAttributesResult = list(
-#'     DBSnapshotIdentifier = "string",
-#'     DBSnapshotAttributes = list(
-#'       list(
-#'         AttributeName = "string",
-#'         AttributeValues = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_snapshot_attribute(
-#'   DBSnapshotIdentifier = "string",
-#'   AttributeName = "string",
-#'   ValuesToAdd = list(
-#'     "string"
-#'   ),
-#'   ValuesToRemove = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' To remove authorization for other Amazon Web Services accounts to copy
+#' or restore a manual snapshot, set this list to include one or more
+#' Amazon Web Services account identifiers, or `all` to remove
+#' authorization for any Amazon Web Services account to copy or restore the
+#' DB snapshot. If you specify `all`, an Amazon Web Services account whose
+#' account ID is explicitly added to the `restore` attribute can still copy
+#' or restore the manual DB snapshot.
 #'
 #' @keywords internal
 #'
@@ -13555,12 +8466,9 @@ rds_modify_db_snapshot_attribute <- function(DBSnapshotIdentifier, AttributeName
 #' Modifies an existing DB subnet group
 #'
 #' @description
-#' Modifies an existing DB subnet group. DB subnet groups must contain at
-#' least one subnet in at least two AZs in the AWS Region.
+#' Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the Amazon Web Services Region.
 #'
-#' @usage
-#' rds_modify_db_subnet_group(DBSubnetGroupName, DBSubnetGroupDescription,
-#'   SubnetIds)
+#' See [https://paws-r.github.io/docs/rds/modify_db_subnet_group.html](https://paws-r.github.io/docs/rds/modify_db_subnet_group.html) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the DB subnet group. This value is stored as a lowercase
 #' string. You can't modify the default subnet group.
@@ -13568,46 +8476,9 @@ rds_modify_db_snapshot_attribute <- function(DBSnapshotIdentifier, AttributeName
 #' Constraints: Must match the name of an existing DBSubnetGroup. Must not
 #' be default.
 #' 
-#' Example: `mySubnetgroup`
+#' Example: `mydbsubnetgroup`
 #' @param DBSubnetGroupDescription The description for the DB subnet group.
 #' @param SubnetIds &#91;required&#93; The EC2 subnet IDs for the DB subnet group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSubnetGroup = list(
-#'     DBSubnetGroupName = "string",
-#'     DBSubnetGroupDescription = "string",
-#'     VpcId = "string",
-#'     SubnetGroupStatus = "string",
-#'     Subnets = list(
-#'       list(
-#'         SubnetIdentifier = "string",
-#'         SubnetAvailabilityZone = list(
-#'           Name = "string"
-#'         ),
-#'         SubnetOutpost = list(
-#'           Arn = "string"
-#'         ),
-#'         SubnetStatus = "string"
-#'       )
-#'     ),
-#'     DBSubnetGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_db_subnet_group(
-#'   DBSubnetGroupName = "string",
-#'   DBSubnetGroupDescription = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13632,23 +8503,9 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' Modifies an existing RDS event notification subscription
 #'
 #' @description
-#' Modifies an existing RDS event notification subscription. You can't
-#' modify the source identifiers using this call. To change source
-#' identifiers for a subscription, use the
-#' [`add_source_identifier_to_subscription`][rds_add_source_identifier_to_subscription]
-#' and
-#' [`remove_source_identifier_from_subscription`][rds_remove_source_identifier_from_subscription]
-#' calls.
-#' 
-#' You can see a list of the event categories for a given source type
-#' (`SourceType`) in
-#' [Events](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-#' in the *Amazon RDS User Guide* or by using the
-#' [`describe_event_categories`][rds_describe_event_categories] operation.
+#' Modifies an existing RDS event notification subscription. You can't modify the source identifiers using this call. To change source identifiers for a subscription, use the [`add_source_identifier_to_subscription`][rds_add_source_identifier_to_subscription] and [`remove_source_identifier_from_subscription`][rds_remove_source_identifier_from_subscription] calls.
 #'
-#' @usage
-#' rds_modify_event_subscription(SubscriptionName, SnsTopicArn, SourceType,
-#'   EventCategories, Enabled)
+#' See [https://paws-r.github.io/docs/rds/modify_event_subscription.html](https://paws-r.github.io/docs/rds/modify_event_subscription.html) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the RDS event notification subscription.
 #' @param SnsTopicArn The Amazon Resource Name (ARN) of the SNS topic created for event
@@ -13656,11 +8513,11 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' and subscribe to it.
 #' @param SourceType The type of source that is generating the events. For example, if you
 #' want to be notified of events generated by a DB instance, you would set
-#' this parameter to db-instance. If this value isn't specified, all events
-#' are returned.
+#' this parameter to db-instance. For RDS Proxy events, specify `db-proxy`.
+#' If this value isn't specified, all events are returned.
 #' 
 #' Valid values: `db-instance` | `db-cluster` | `db-parameter-group` |
-#' `db-security-group` | `db-snapshot` | `db-cluster-snapshot`
+#' `db-security-group` | `db-snapshot` | `db-cluster-snapshot` | `db-proxy`
 #' @param EventCategories A list of event categories for a source type (`SourceType`) that you
 #' want to subscribe to. You can see a list of the categories for a given
 #' source type in
@@ -13668,42 +8525,6 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' in the *Amazon RDS User Guide* or by using the
 #' [`describe_event_categories`][rds_describe_event_categories] operation.
 #' @param Enabled A value that indicates whether to activate the subscription.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSubscription = list(
-#'     CustomerAwsId = "string",
-#'     CustSubscriptionId = "string",
-#'     SnsTopicArn = "string",
-#'     Status = "string",
-#'     SubscriptionCreationTime = "string",
-#'     SourceType = "string",
-#'     SourceIdsList = list(
-#'       "string"
-#'     ),
-#'     EventCategoriesList = list(
-#'       "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     EventSubscriptionArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_event_subscription(
-#'   SubscriptionName = "string",
-#'   SnsTopicArn = "string",
-#'   SourceType = "string",
-#'   EventCategories = list(
-#'     "string"
-#'   ),
-#'   Enabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13728,18 +8549,9 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 #' Modify a setting for an Amazon Aurora global cluster
 #'
 #' @description
-#' Modify a setting for an Amazon Aurora global cluster. You can change one
-#' or more database configuration parameters by specifying these parameters
-#' and the new values in the request. For more information on Amazon
-#' Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Modify a setting for an Amazon Aurora global cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see [What is Amazon Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html) in the *Amazon Aurora User Guide*.
 #'
-#' @usage
-#' rds_modify_global_cluster(GlobalClusterIdentifier,
-#'   NewGlobalClusterIdentifier, DeletionProtection)
+#' See [https://paws-r.github.io/docs/rds/modify_global_cluster.html](https://paws-r.github.io/docs/rds/modify_global_cluster.html) for full documentation.
 #'
 #' @param GlobalClusterIdentifier The DB cluster identifier for the global cluster being modified. This
 #' parameter isn't case-sensitive.
@@ -13763,55 +8575,47 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 #' @param DeletionProtection Indicates if the global database cluster has deletion protection
 #' enabled. The global database cluster can't be deleted when deletion
 #' protection is enabled.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GlobalCluster = list(
-#'     GlobalClusterIdentifier = "string",
-#'     GlobalClusterResourceId = "string",
-#'     GlobalClusterArn = "string",
-#'     Status = "string",
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     DatabaseName = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     DeletionProtection = TRUE|FALSE,
-#'     GlobalClusterMembers = list(
-#'       list(
-#'         DBClusterArn = "string",
-#'         Readers = list(
-#'           "string"
-#'         ),
-#'         IsWriter = TRUE|FALSE,
-#'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_global_cluster(
-#'   GlobalClusterIdentifier = "string",
-#'   NewGlobalClusterIdentifier = "string",
-#'   DeletionProtection = TRUE|FALSE
-#' )
-#' ```
+#' @param EngineVersion The version number of the database engine to which you want to upgrade.
+#' Changing this parameter results in an outage. The change is applied
+#' during the next maintenance window unless `ApplyImmediately` is enabled.
+#' 
+#' To list all of the available engine versions for `aurora` (for MySQL
+#' 5.6-compatible Aurora), use the following command:
+#' 
+#' `` aws rds describe-db-engine-versions --engine aurora --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]' ``
+#' 
+#' To list all of the available engine versions for `aurora-mysql` (for
+#' MySQL 5.7-compatible and MySQL 8.0-compatible Aurora), use the following
+#' command:
+#' 
+#' `` aws rds describe-db-engine-versions --engine aurora-mysql --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]' ``
+#' 
+#' To list all of the available engine versions for `aurora-postgresql`,
+#' use the following command:
+#' 
+#' `` aws rds describe-db-engine-versions --engine aurora-postgresql --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]' ``
+#' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
+#' 
+#' Constraints: You must allow major version upgrades when specifying a
+#' value for the `EngineVersion` parameter that is a different major
+#' version than the DB cluster's current version.
+#' 
+#' If you upgrade the major version of a global database, the cluster and
+#' DB instance parameter groups are set to the default parameter groups for
+#' the new version. Apply any custom parameter groups after completing the
+#' upgrade.
 #'
 #' @keywords internal
 #'
 #' @rdname rds_modify_global_cluster
-rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL) {
+rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL) {
   op <- new_operation(
     name = "ModifyGlobalCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection)
+  input <- .rds$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade)
   output <- .rds$modify_global_cluster_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -13826,9 +8630,7 @@ rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalC
 #' @description
 #' Modifies an existing option group.
 #'
-#' @usage
-#' rds_modify_option_group(OptionGroupName, OptionsToInclude,
-#'   OptionsToRemove, ApplyImmediately)
+#' See [https://paws-r.github.io/docs/rds/modify_option_group.html](https://paws-r.github.io/docs/rds/modify_option_group.html) for full documentation.
 #'
 #' @param OptionGroupName &#91;required&#93; The name of the option group to be modified.
 #' 
@@ -13842,94 +8644,6 @@ rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalC
 #' @param ApplyImmediately A value that indicates whether to apply the change immediately or during
 #' the next maintenance window for each instance associated with the option
 #' group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OptionGroup = list(
-#'     OptionGroupName = "string",
-#'     OptionGroupDescription = "string",
-#'     EngineName = "string",
-#'     MajorEngineVersion = "string",
-#'     Options = list(
-#'       list(
-#'         OptionName = "string",
-#'         OptionDescription = "string",
-#'         Persistent = TRUE|FALSE,
-#'         Permanent = TRUE|FALSE,
-#'         Port = 123,
-#'         OptionVersion = "string",
-#'         OptionSettings = list(
-#'           list(
-#'             Name = "string",
-#'             Value = "string",
-#'             DefaultValue = "string",
-#'             Description = "string",
-#'             ApplyType = "string",
-#'             DataType = "string",
-#'             AllowedValues = "string",
-#'             IsModifiable = TRUE|FALSE,
-#'             IsCollection = TRUE|FALSE
-#'           )
-#'         ),
-#'         DBSecurityGroupMemberships = list(
-#'           list(
-#'             DBSecurityGroupName = "string",
-#'             Status = "string"
-#'           )
-#'         ),
-#'         VpcSecurityGroupMemberships = list(
-#'           list(
-#'             VpcSecurityGroupId = "string",
-#'             Status = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
-#'     VpcId = "string",
-#'     OptionGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_option_group(
-#'   OptionGroupName = "string",
-#'   OptionsToInclude = list(
-#'     list(
-#'       OptionName = "string",
-#'       Port = 123,
-#'       OptionVersion = "string",
-#'       DBSecurityGroupMemberships = list(
-#'         "string"
-#'       ),
-#'       VpcSecurityGroupMemberships = list(
-#'         "string"
-#'       ),
-#'       OptionSettings = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string",
-#'           DefaultValue = "string",
-#'           Description = "string",
-#'           ApplyType = "string",
-#'           DataType = "string",
-#'           AllowedValues = "string",
-#'           IsModifiable = TRUE|FALSE,
-#'           IsCollection = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   OptionsToRemove = list(
-#'     "string"
-#'   ),
-#'   ApplyImmediately = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13955,21 +8669,8 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #'
 #' @description
 #' Promotes a read replica DB instance to a standalone DB instance.
-#' 
-#' -   Backup duration is a function of the amount of changes to the
-#'     database since the previous backup. If you plan to promote a read
-#'     replica to a standalone instance, we recommend that you enable
-#'     backups and complete at least one backup prior to promotion. In
-#'     addition, a read replica cannot be promoted to a standalone instance
-#'     when it is in the `backing-up` status. If you have enabled backups
-#'     on your read replica, configure the automated backup window so that
-#'     daily backups do not interfere with read replica promotion.
-#' 
-#' -   This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
 #'
-#' @usage
-#' rds_promote_read_replica(DBInstanceIdentifier, BackupRetentionPeriod,
-#'   PreferredBackupWindow)
+#' See [https://paws-r.github.io/docs/rds/promote_read_replica.html](https://paws-r.github.io/docs/rds/promote_read_replica.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This value is stored as a lowercase string.
 #' 
@@ -13994,8 +8695,8 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region. To see the time blocks available, see
-#' [Adjusting the Preferred Maintenance
+#' block of time for each Amazon Web Services Region. To see the time
+#' blocks available, see [Adjusting the Preferred Maintenance
 #' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) in the
 #' *Amazon RDS User Guide.*
 #' 
@@ -14008,206 +8709,6 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #' -   Must not conflict with the preferred maintenance window.
 #' 
 #' -   Must be at least 30 minutes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$promote_read_replica(
-#'   DBInstanceIdentifier = "string",
-#'   BackupRetentionPeriod = 123,
-#'   PreferredBackupWindow = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -14233,11 +8734,8 @@ rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod
 #'
 #' @description
 #' Promotes a read replica DB cluster to a standalone DB cluster.
-#' 
-#' This action only applies to Aurora DB clusters.
 #'
-#' @usage
-#' rds_promote_read_replica_db_cluster(DBClusterIdentifier)
+#' See [https://paws-r.github.io/docs/rds/promote_read_replica_db_cluster.html](https://paws-r.github.io/docs/rds/promote_read_replica_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the DB cluster read replica to promote. This parameter
 #' isn't case-sensitive.
@@ -14247,148 +8745,6 @@ rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod
 #' -   Must match the identifier of an existing DB cluster read replica.
 #' 
 #' Example: `my-cluster-replica1`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     CustomEndpoints = list(
-#'       "string"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EarliestBacktrackTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BacktrackWindow = 123,
-#'     BacktrackConsumedChangeRecords = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     Capacity = 123,
-#'     EngineMode = "string",
-#'     ScalingConfigurationInfo = list(
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       AutoPause = TRUE|FALSE,
-#'       SecondsUntilAutoPause = 123,
-#'       TimeoutAction = "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     HttpEndpointEnabled = TRUE|FALSE,
-#'     ActivityStreamMode = "sync"|"async",
-#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'     ActivityStreamKmsKeyId = "string",
-#'     ActivityStreamKinesisStreamName = "string",
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     CrossAccountClone = TRUE|FALSE,
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'     GlobalWriteForwardingRequested = TRUE|FALSE,
-#'     PendingModifiedValues = list(
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       MasterUserPassword = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       EngineVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$promote_read_replica_db_cluster(
-#'   DBClusterIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -14415,10 +8771,7 @@ rds_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #' @description
 #' Purchases a reserved DB instance offering.
 #'
-#' @usage
-#' rds_purchase_reserved_db_instances_offering(
-#'   ReservedDBInstancesOfferingId, ReservedDBInstanceId, DBInstanceCount,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/rds/purchase_reserved_db_instances_offering.html](https://paws-r.github.io/docs/rds/purchase_reserved_db_instances_offering.html) for full documentation.
 #'
 #' @param ReservedDBInstancesOfferingId &#91;required&#93; The ID of the Reserved DB instance offering to purchase.
 #' 
@@ -14430,53 +8783,6 @@ rds_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #' 
 #' Default: `1`
 #' @param Tags 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReservedDBInstance = list(
-#'     ReservedDBInstanceId = "string",
-#'     ReservedDBInstancesOfferingId = "string",
-#'     DBInstanceClass = "string",
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Duration = 123,
-#'     FixedPrice = 123.0,
-#'     UsagePrice = 123.0,
-#'     CurrencyCode = "string",
-#'     DBInstanceCount = 123,
-#'     ProductDescription = "string",
-#'     OfferingType = "string",
-#'     MultiAZ = TRUE|FALSE,
-#'     State = "string",
-#'     RecurringCharges = list(
-#'       list(
-#'         RecurringChargeAmount = 123.0,
-#'         RecurringChargeFrequency = "string"
-#'       )
-#'     ),
-#'     ReservedDBInstanceArn = "string",
-#'     LeaseId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$purchase_reserved_db_instances_offering(
-#'   ReservedDBInstancesOfferingId = "string",
-#'   ReservedDBInstanceId = "string",
-#'   DBInstanceCount = 123,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -14498,25 +8804,48 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 }
 .rds$operations$purchase_reserved_db_instances_offering <- rds_purchase_reserved_db_instances_offering
 
+#' You might need to reboot your DB cluster, usually for maintenance
+#' reasons
+#'
+#' @description
+#' You might need to reboot your DB cluster, usually for maintenance reasons. For example, if you make certain modifications, or if you change the DB cluster parameter group associated with the DB cluster, reboot the DB cluster for the changes to take effect.
+#'
+#' See [https://paws-r.github.io/docs/rds/reboot_db_cluster.html](https://paws-r.github.io/docs/rds/reboot_db_cluster.html) for full documentation.
+#'
+#' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier. This parameter is stored as a lowercase
+#' string.
+#' 
+#' Constraints:
+#' 
+#' -   Must match the identifier of an existing DBCluster.
+#'
+#' @keywords internal
+#'
+#' @rdname rds_reboot_db_cluster
+rds_reboot_db_cluster <- function(DBClusterIdentifier) {
+  op <- new_operation(
+    name = "RebootDBCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$reboot_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
+  output <- .rds$reboot_db_cluster_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$reboot_db_cluster <- rds_reboot_db_cluster
+
 #' You might need to reboot your DB instance, usually for maintenance
 #' reasons
 #'
 #' @description
-#' You might need to reboot your DB instance, usually for maintenance
-#' reasons. For example, if you make certain modifications, or if you
-#' change the DB parameter group associated with the DB instance, you must
-#' reboot the instance for the changes to take effect.
-#' 
-#' Rebooting a DB instance restarts the database engine service. Rebooting
-#' a DB instance results in a momentary outage, during which the DB
-#' instance status is set to rebooting.
-#' 
-#' For more information about rebooting, see [Rebooting a DB
-#' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html)
-#' in the *Amazon RDS User Guide.*
+#' You might need to reboot your DB instance, usually for maintenance reasons. For example, if you make certain modifications, or if you change the DB parameter group associated with the DB instance, you must reboot the instance for the changes to take effect.
 #'
-#' @usage
-#' rds_reboot_db_instance(DBInstanceIdentifier, ForceFailover)
+#' See [https://paws-r.github.io/docs/rds/reboot_db_instance.html](https://paws-r.github.io/docs/rds/reboot_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
 #' string.
@@ -14529,205 +8858,6 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 #' 
 #' Constraint: You can't enable force failover if the instance isn't
 #' configured for Multi-AZ.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reboot_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   ForceFailover = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -14753,54 +8883,15 @@ rds_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
 #' DBProxyTargetGroup
 #'
 #' @description
-#' Associate one or more `DBProxyTarget` data structures with a
-#' `DBProxyTargetGroup`.
+#' Associate one or more `DBProxyTarget` data structures with a `DBProxyTargetGroup`.
 #'
-#' @usage
-#' rds_register_db_proxy_targets(DBProxyName, TargetGroupName,
-#'   DBInstanceIdentifiers, DBClusterIdentifiers)
+#' See [https://paws-r.github.io/docs/rds/register_db_proxy_targets.html](https://paws-r.github.io/docs/rds/register_db_proxy_targets.html) for full documentation.
 #'
 #' @param DBProxyName &#91;required&#93; The identifier of the `DBProxy` that is associated with the
 #' `DBProxyTargetGroup`.
 #' @param TargetGroupName The identifier of the `DBProxyTargetGroup`.
 #' @param DBInstanceIdentifiers One or more DB instance identifiers.
 #' @param DBClusterIdentifiers One or more DB cluster identifiers.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBProxyTargets = list(
-#'     list(
-#'       TargetArn = "string",
-#'       Endpoint = "string",
-#'       TrackedClusterId = "string",
-#'       RdsResourceId = "string",
-#'       Port = 123,
-#'       Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
-#'       TargetHealth = list(
-#'         State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
-#'         Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
-#'         Description = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_db_proxy_targets(
-#'   DBProxyName = "string",
-#'   TargetGroupName = "string",
-#'   DBInstanceIdentifiers = list(
-#'     "string"
-#'   ),
-#'   DBClusterIdentifiers = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -14826,57 +8917,14 @@ rds_register_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, D
 #' cluster
 #'
 #' @description
-#' Detaches an Aurora secondary cluster from an Aurora global database
-#' cluster. The cluster becomes a standalone cluster with read-write
-#' capability instead of being read-only and receiving data from a primary
-#' cluster in a different region.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Detaches an Aurora secondary cluster from an Aurora global database cluster. The cluster becomes a standalone cluster with read-write capability instead of being read-only and receiving data from a primary cluster in a different Region.
 #'
-#' @usage
-#' rds_remove_from_global_cluster(GlobalClusterIdentifier,
-#'   DbClusterIdentifier)
+#' See [https://paws-r.github.io/docs/rds/remove_from_global_cluster.html](https://paws-r.github.io/docs/rds/remove_from_global_cluster.html) for full documentation.
 #'
 #' @param GlobalClusterIdentifier The cluster identifier to detach from the Aurora global database
 #' cluster.
 #' @param DbClusterIdentifier The Amazon Resource Name (ARN) identifying the cluster that was detached
 #' from the Aurora global database cluster.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GlobalCluster = list(
-#'     GlobalClusterIdentifier = "string",
-#'     GlobalClusterResourceId = "string",
-#'     GlobalClusterArn = "string",
-#'     Status = "string",
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     DatabaseName = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     DeletionProtection = TRUE|FALSE,
-#'     GlobalClusterMembers = list(
-#'       list(
-#'         DBClusterArn = "string",
-#'         Readers = list(
-#'           "string"
-#'         ),
-#'         IsWriter = TRUE|FALSE,
-#'         GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_from_global_cluster(
-#'   GlobalClusterIdentifier = "string",
-#'   DbClusterIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -14898,41 +8946,21 @@ rds_remove_from_global_cluster <- function(GlobalClusterIdentifier = NULL, DbClu
 }
 .rds$operations$remove_from_global_cluster <- rds_remove_from_global_cluster
 
-#' Disassociates an AWS Identity and Access Management (IAM) role from an
-#' Amazon Aurora DB cluster
+#' Removes the asssociation of an Amazon Web Services Identity and Access
+#' Management (IAM) role from a DB cluster
 #'
 #' @description
-#' Disassociates an AWS Identity and Access Management (IAM) role from an
-#' Amazon Aurora DB cluster. For more information, see [Authorizing Amazon
-#' Aurora MySQL to Access Other AWS Services on Your
-#' Behalf](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html)
-#' in the *Amazon Aurora User Guide*.
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Removes the asssociation of an Amazon Web Services Identity and Access Management (IAM) role from a DB cluster.
 #'
-#' @usage
-#' rds_remove_role_from_db_cluster(DBClusterIdentifier, RoleArn,
-#'   FeatureName)
+#' See [https://paws-r.github.io/docs/rds/remove_role_from_db_cluster.html](https://paws-r.github.io/docs/rds/remove_role_from_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to disassociate the IAM role from.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to disassociate from the
 #' Aurora DB cluster, for example
 #' `arn:aws:iam::123456789012:role/AuroraAccessRole`.
 #' @param FeatureName The name of the feature for the DB cluster that the IAM role is to be
-#' disassociated from. For the list of supported feature names, see
+#' disassociated from. For information about supported feature names, see
 #' DBEngineVersion.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_role_from_db_cluster(
-#'   DBClusterIdentifier = "string",
-#'   RoleArn = "string",
-#'   FeatureName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -14954,35 +8982,20 @@ rds_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Featur
 }
 .rds$operations$remove_role_from_db_cluster <- rds_remove_role_from_db_cluster
 
-#' Disassociates an AWS Identity and Access Management (IAM) role from a DB
-#' instance
+#' Disassociates an Amazon Web Services Identity and Access Management
+#' (IAM) role from a DB instance
 #'
 #' @description
-#' Disassociates an AWS Identity and Access Management (IAM) role from a DB
-#' instance.
+#' Disassociates an Amazon Web Services Identity and Access Management (IAM) role from a DB instance.
 #'
-#' @usage
-#' rds_remove_role_from_db_instance(DBInstanceIdentifier, RoleArn,
-#'   FeatureName)
+#' See [https://paws-r.github.io/docs/rds/remove_role_from_db_instance.html](https://paws-r.github.io/docs/rds/remove_role_from_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The name of the DB instance to disassociate the IAM role from.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to disassociate from the
 #' DB instance, for example, `arn:aws:iam::123456789012:role/AccessRole`.
 #' @param FeatureName &#91;required&#93; The name of the feature for the DB instance that the IAM role is to be
-#' disassociated from. For the list of supported feature names, see
+#' disassociated from. For information about supported feature names, see
 #' `DBEngineVersion`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_role_from_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   RoleArn = "string",
-#'   FeatureName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -15008,49 +9021,15 @@ rds_remove_role_from_db_instance <- function(DBInstanceIdentifier, RoleArn, Feat
 #' subscription
 #'
 #' @description
-#' Removes a source identifier from an existing RDS event notification
-#' subscription.
+#' Removes a source identifier from an existing RDS event notification subscription.
 #'
-#' @usage
-#' rds_remove_source_identifier_from_subscription(SubscriptionName,
-#'   SourceIdentifier)
+#' See [https://paws-r.github.io/docs/rds/remove_source_identifier_from_subscription.html](https://paws-r.github.io/docs/rds/remove_source_identifier_from_subscription.html) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the RDS event notification subscription you want to remove a
 #' source identifier from.
 #' @param SourceIdentifier &#91;required&#93; The source identifier to be removed from the subscription, such as the
 #' **DB instance identifier** for a DB instance or the name of a security
 #' group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSubscription = list(
-#'     CustomerAwsId = "string",
-#'     CustSubscriptionId = "string",
-#'     SnsTopicArn = "string",
-#'     Status = "string",
-#'     SubscriptionCreationTime = "string",
-#'     SourceType = "string",
-#'     SourceIdsList = list(
-#'       "string"
-#'     ),
-#'     EventCategoriesList = list(
-#'       "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     EventSubscriptionArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_source_identifier_from_subscription(
-#'   SubscriptionName = "string",
-#'   SourceIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -15076,14 +9055,8 @@ rds_remove_source_identifier_from_subscription <- function(SubscriptionName, Sou
 #'
 #' @description
 #' Removes metadata tags from an Amazon RDS resource.
-#' 
-#' For an overview on tagging an Amazon RDS resource, see [Tagging Amazon
-#' RDS
-#' Resources](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html)
-#' in the *Amazon RDS User Guide.*
 #'
-#' @usage
-#' rds_remove_tags_from_resource(ResourceName, TagKeys)
+#' See [https://paws-r.github.io/docs/rds/remove_tags_from_resource.html](https://paws-r.github.io/docs/rds/remove_tags_from_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon RDS resource that the tags are removed from. This value is an
 #' Amazon Resource Name (ARN). For information about creating an ARN, see
@@ -15091,19 +9064,6 @@ rds_remove_source_identifier_from_subscription <- function(SubscriptionName, Sou
 #' RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
 #' in the *Amazon RDS User Guide.*
 #' @param TagKeys &#91;required&#93; The tag key (name) of the tag to be removed.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_tags_from_resource(
-#'   ResourceName = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -15129,28 +9089,9 @@ rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' value
 #'
 #' @description
-#' Modifies the parameters of a DB cluster parameter group to the default
-#' value. To reset specific parameters submit a list of the following:
-#' `ParameterName` and `ApplyMethod`. To reset the entire DB cluster
-#' parameter group, specify the `DBClusterParameterGroupName` and
-#' `ResetAllParameters` parameters.
-#' 
-#' When resetting the entire group, dynamic parameters are updated
-#' immediately and static parameters are set to `pending-reboot` to take
-#' effect on the next DB instance restart or
-#' [`reboot_db_instance`][rds_reboot_db_instance] request. You must call
-#' [`reboot_db_instance`][rds_reboot_db_instance] for every DB instance in
-#' your DB cluster that you want the updated static parameter to apply to.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Modifies the parameters of a DB cluster parameter group to the default value. To reset specific parameters submit a list of the following: `ParameterName` and `ApplyMethod`. To reset the entire DB cluster parameter group, specify the `DBClusterParameterGroupName` and `ResetAllParameters` parameters.
 #'
-#' @usage
-#' rds_reset_db_cluster_parameter_group(DBClusterParameterGroupName,
-#'   ResetAllParameters, Parameters)
+#' See [https://paws-r.github.io/docs/rds/reset_db_cluster_parameter_group.html](https://paws-r.github.io/docs/rds/reset_db_cluster_parameter_group.html) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group to reset.
 #' @param ResetAllParameters A value that indicates whether to reset all parameters in the DB cluster
@@ -15160,39 +9101,6 @@ rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @param Parameters A list of parameter names in the DB cluster parameter group to reset to
 #' the default values. You can't use this parameter if the
 #' `ResetAllParameters` parameter is enabled.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBClusterParameterGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reset_db_cluster_parameter_group(
-#'   DBClusterParameterGroupName = "string",
-#'   ResetAllParameters = TRUE|FALSE,
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot",
-#'       SupportedEngineModes = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -15218,18 +9126,9 @@ rds_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Re
 #' default value
 #'
 #' @description
-#' Modifies the parameters of a DB parameter group to the engine/system
-#' default value. To reset specific parameters, provide a list of the
-#' following: `ParameterName` and `ApplyMethod`. To reset the entire DB
-#' parameter group, specify the `DBParameterGroup` name and
-#' `ResetAllParameters` parameters. When resetting the entire group,
-#' dynamic parameters are updated immediately and static parameters are set
-#' to `pending-reboot` to take effect on the next DB instance restart or
-#' [`reboot_db_instance`][rds_reboot_db_instance] request.
+#' Modifies the parameters of a DB parameter group to the engine/system default value. To reset specific parameters, provide a list of the following: `ParameterName` and `ApplyMethod`. To reset the entire DB parameter group, specify the `DBParameterGroup` name and `ResetAllParameters` parameters. When resetting the entire group, dynamic parameters are updated immediately and static parameters are set to `pending-reboot` to take effect on the next DB instance restart or [`reboot_db_instance`][rds_reboot_db_instance] request.
 #'
-#' @usage
-#' rds_reset_db_parameter_group(DBParameterGroupName, ResetAllParameters,
-#'   Parameters)
+#' See [https://paws-r.github.io/docs/rds/reset_db_parameter_group.html](https://paws-r.github.io/docs/rds/reset_db_parameter_group.html) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -15264,39 +9163,6 @@ rds_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Re
 #' 
 #' Valid Values (for Apply method): `pending-reboot`
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBParameterGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reset_db_parameter_group(
-#'   DBParameterGroupName = "string",
-#'   ResetAllParameters = TRUE|FALSE,
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string",
-#'       Description = "string",
-#'       Source = "string",
-#'       ApplyType = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = TRUE|FALSE,
-#'       MinimumEngineVersion = "string",
-#'       ApplyMethod = "immediate"|"pending-reboot",
-#'       SupportedEngineModes = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_reset_db_parameter_group
@@ -15321,39 +9187,9 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' S3 bucket
 #'
 #' @description
-#' Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon
-#' S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket
-#' and the data must be created using the Percona XtraBackup utility as
-#' described in [Migrating Data from MySQL by Using an Amazon S3
-#' Bucket](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3)
-#' in the *Amazon Aurora User Guide*.
-#' 
-#' This action only restores the DB cluster, not the DB instances for that
-#' DB cluster. You must invoke the
-#' [`create_db_instance`][rds_create_db_instance] action to create DB
-#' instances for the restored DB cluster, specifying the identifier of the
-#' restored DB cluster in `DBClusterIdentifier`. You can create DB
-#' instances only after the
-#' [`restore_db_cluster_from_s3`][rds_restore_db_cluster_from_s3] action
-#' has completed and the DB cluster is available.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters. The source DB engine
-#' must be MySQL.
+#' Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and the data must be created using the Percona XtraBackup utility as described in [Migrating Data from MySQL by Using an Amazon S3 Bucket](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3) in the *Amazon Aurora User Guide*.
 #'
-#' @usage
-#' rds_restore_db_cluster_from_s3(AvailabilityZones, BackupRetentionPeriod,
-#'   CharacterSetName, DatabaseName, DBClusterIdentifier,
-#'   DBClusterParameterGroupName, VpcSecurityGroupIds, DBSubnetGroupName,
-#'   Engine, EngineVersion, Port, MasterUsername, MasterUserPassword,
-#'   OptionGroupName, PreferredBackupWindow, PreferredMaintenanceWindow,
-#'   Tags, StorageEncrypted, KmsKeyId, EnableIAMDatabaseAuthentication,
-#'   SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix,
-#'   S3IngestionRoleArn, BacktrackWindow, EnableCloudwatchLogsExports,
-#'   DeletionProtection, CopyTagsToSnapshot, Domain, DomainIAMRoleName)
+#' See [https://paws-r.github.io/docs/rds/restore_db_cluster_from_s3.html](https://paws-r.github.io/docs/rds/restore_db_cluster_from_s3.html) for full documentation.
 #'
 #' @param AvailabilityZones A list of Availability Zones (AZs) where instances in the restored DB
 #' cluster can be created.
@@ -15395,11 +9231,12 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' Constraints: If supplied, must match the name of an existing
 #' DBSubnetGroup.
 #' 
-#' Example: `mySubnetgroup`
+#' Example: `mydbsubnetgroup`
 #' @param Engine &#91;required&#93; The name of the database engine to be used for this DB cluster.
 #' 
-#' Valid Values: `aurora` (for MySQL 5.6-compatible Aurora), `aurora-mysql`
-#' (for MySQL 5.7-compatible Aurora), and `aurora-postgresql`
+#' Valid Values: `aurora` (for MySQL 5.6-compatible Aurora) and
+#' `aurora-mysql` (for MySQL 5.7-compatible and MySQL 8.0-compatible
+#' Aurora)
 #' @param EngineVersion The version number of the database engine to use.
 #' 
 #' To list all of the available engine versions for `aurora` (for MySQL
@@ -15408,23 +9245,15 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' To list all of the available engine versions for `aurora-mysql` (for
-#' MySQL 5.7-compatible Aurora), use the following command:
+#' MySQL 5.7-compatible and MySQL 8.0-compatible Aurora), use the following
+#' command:
 #' 
 #' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"`
 #' 
-#' To list all of the available engine versions for `aurora-postgresql`,
-#' use the following command:
-#' 
-#' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"`
-#' 
 #' **Aurora MySQL**
 #' 
-#' Example: `5.6.10a`, `5.6.mysql_aurora.1.19.2`, `5.7.12`,
-#' `5.7.mysql_aurora.2.04.5`
-#' 
-#' **Aurora PostgreSQL**
-#' 
-#' Example: `9.6.3`, `10.7`
+#' Example: `5.6.10a`, `5.6.mysql_aurora.1.19.2`,
+#' `5.7.mysql_aurora.2.07.1`, `8.0.mysql_aurora.3.02.0`
 #' @param Port The port number on which the instances in the restored DB cluster accept
 #' connections.
 #' 
@@ -15453,10 +9282,10 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' parameter.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region. To see the time blocks available, see
-#' [Adjusting the Preferred Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
-#' in the *Amazon Aurora User Guide.*
+#' block of time for each Amazon Web Services Region. To view the time
+#' blocks available, see [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow)
+#' in the *Amazon Aurora User Guide*.
 #' 
 #' Constraints:
 #' 
@@ -15473,34 +9302,35 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' Format: `ddd:hh24:mi-ddd:hh24:mi`
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week. To see the time blocks available, see [Adjusting the Preferred
-#' Maintenance
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week. To see the time blocks available, see [Adjusting the
+#' Preferred Maintenance
 #' Window](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
-#' in the *Amazon Aurora User Guide.*
+#' in the *Amazon Aurora User Guide*.
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 #' 
 #' Constraints: Minimum 30-minute window.
 #' @param Tags 
 #' @param StorageEncrypted A value that indicates whether the restored DB cluster is encrypted.
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted DB cluster.
+#' @param KmsKeyId The Amazon Web Services KMS key identifier for an encrypted DB cluster.
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS customer master key (CMK). To use a CMK in a
-#' different AWS account, specify the key ARN or alias ARN.
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
 #' 
 #' If the StorageEncrypted parameter is enabled, and you do not specify a
 #' value for the `KmsKeyId` parameter, then Amazon RDS will use your
-#' default CMK. There is a default CMK for your AWS account. Your AWS
-#' account has a different default CMK for each AWS Region.
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
+#' default KMS key. There is a default KMS key for your Amazon Web Services
+#' account. Your Amazon Web Services account has a different default KMS
+#' key for each Amazon Web Services Region.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping isn't enabled.
 #' 
 #' For more information, see [IAM Database
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
-#' in the *Amazon Aurora User Guide.*
+#' in the *Amazon Aurora User Guide*.
 #' @param SourceEngine &#91;required&#93; The identifier for the database engine that was backed up to create the
 #' files stored in the Amazon S3 bucket.
 #' 
@@ -15516,9 +9346,9 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' create the Amazon Aurora DB cluster. If you do not specify a
 #' **SourceS3Prefix** value, then the Amazon Aurora DB cluster is created
 #' by using all of the files in the Amazon S3 bucket.
-#' @param S3IngestionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that authorizes Amazon RDS to access the Amazon S3 bucket on
-#' your behalf.
+#' @param S3IngestionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services Identity and
+#' Access Management (IAM) role that authorizes Amazon RDS to access the
+#' Amazon S3 bucket on your behalf.
 #' @param BacktrackWindow The target backtrack window, in seconds. To disable backtracking, set
 #' this value to 0.
 #' 
@@ -15531,13 +9361,23 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' -   If specified, this value must be set to a number from 0 to 259,200
 #'     (72 hours).
 #' @param EnableCloudwatchLogsExports The list of logs that the restored DB cluster is to export to CloudWatch
-#' Logs. The values in the list depend on the DB engine being used. For
-#' more information, see [Publishing Database Logs to Amazon CloudWatch
+#' Logs. The values in the list depend on the DB engine being used.
+#' 
+#' **Aurora MySQL**
+#' 
+#' Possible values are `audit`, `error`, `general`, and `slowquery`.
+#' 
+#' **Aurora PostgreSQL**
+#' 
+#' Possible value is `postgresql`.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon Aurora,
+#' see [Publishing Database Logs to Amazon CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 #' in the *Amazon Aurora User Guide*.
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled.
+#' enabled. By default, deletion protection isn't enabled.
 #' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the restored DB
 #' cluster to snapshots of the restored DB cluster. The default is not to
 #' copy them.
@@ -15551,201 +9391,19 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' in the *Amazon Aurora User Guide*.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     CustomEndpoints = list(
-#'       "string"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EarliestBacktrackTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BacktrackWindow = 123,
-#'     BacktrackConsumedChangeRecords = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     Capacity = 123,
-#'     EngineMode = "string",
-#'     ScalingConfigurationInfo = list(
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       AutoPause = TRUE|FALSE,
-#'       SecondsUntilAutoPause = 123,
-#'       TimeoutAction = "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     HttpEndpointEnabled = TRUE|FALSE,
-#'     ActivityStreamMode = "sync"|"async",
-#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'     ActivityStreamKmsKeyId = "string",
-#'     ActivityStreamKinesisStreamName = "string",
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     CrossAccountClone = TRUE|FALSE,
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'     GlobalWriteForwardingRequested = TRUE|FALSE,
-#'     PendingModifiedValues = list(
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       MasterUserPassword = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       EngineVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_db_cluster_from_s3(
-#'   AvailabilityZones = list(
-#'     "string"
-#'   ),
-#'   BackupRetentionPeriod = 123,
-#'   CharacterSetName = "string",
-#'   DatabaseName = "string",
-#'   DBClusterIdentifier = "string",
-#'   DBClusterParameterGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   DBSubnetGroupName = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   Port = 123,
-#'   MasterUsername = "string",
-#'   MasterUserPassword = "string",
-#'   OptionGroupName = "string",
-#'   PreferredBackupWindow = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   StorageEncrypted = TRUE|FALSE,
-#'   KmsKeyId = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   SourceEngine = "string",
-#'   SourceEngineVersion = "string",
-#'   S3BucketName = "string",
-#'   S3Prefix = "string",
-#'   S3IngestionRoleArn = "string",
-#'   BacktrackWindow = 123,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   DeletionProtection = TRUE|FALSE,
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   Domain = "string",
-#'   DomainIAMRoleName = "string"
-#' )
-#' ```
+#' @param ServerlessV2ScalingConfiguration 
 #'
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_cluster_from_s3
-rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername, MasterUserPassword, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix = NULL, S3IngestionRoleArn, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL) {
+rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername, MasterUserPassword, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix = NULL, S3IngestionRoleArn, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, ServerlessV2ScalingConfiguration = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromS3",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$restore_db_cluster_from_s3_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, SourceEngine = SourceEngine, SourceEngineVersion = SourceEngineVersion, S3BucketName = S3BucketName, S3Prefix = S3Prefix, S3IngestionRoleArn = S3IngestionRoleArn, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName)
+  input <- .rds$restore_db_cluster_from_s3_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, SourceEngine = SourceEngine, SourceEngineVersion = SourceEngineVersion, S3BucketName = S3BucketName, S3Prefix = S3Prefix, S3IngestionRoleArn = S3IngestionRoleArn, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration)
   output <- .rds$restore_db_cluster_from_s3_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -15758,39 +9416,14 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' Creates a new DB cluster from a DB snapshot or DB cluster snapshot
 #'
 #' @description
-#' Creates a new DB cluster from a DB snapshot or DB cluster snapshot. This
-#' action only applies to Aurora DB clusters.
-#' 
-#' The target DB cluster is created from the source snapshot with a default
-#' configuration. If you don't specify a security group, the new DB cluster
-#' is associated with the default security group.
-#' 
-#' This action only restores the DB cluster, not the DB instances for that
-#' DB cluster. You must invoke the
-#' [`create_db_instance`][rds_create_db_instance] action to create DB
-#' instances for the restored DB cluster, specifying the identifier of the
-#' restored DB cluster in `DBClusterIdentifier`. You can create DB
-#' instances only after the
-#' [`restore_db_cluster_from_snapshot`][rds_restore_db_cluster_from_snapshot]
-#' action has completed and the DB cluster is available.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
 #'
-#' @usage
-#' rds_restore_db_cluster_from_snapshot(AvailabilityZones,
-#'   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
-#'   DBSubnetGroupName, DatabaseName, OptionGroupName, VpcSecurityGroupIds,
-#'   Tags, KmsKeyId, EnableIAMDatabaseAuthentication, BacktrackWindow,
-#'   EnableCloudwatchLogsExports, EngineMode, ScalingConfiguration,
-#'   DBClusterParameterGroupName, DeletionProtection, CopyTagsToSnapshot,
-#'   Domain, DomainIAMRoleName)
+#' See [https://paws-r.github.io/docs/rds/restore_db_cluster_from_snapshot.html](https://paws-r.github.io/docs/rds/restore_db_cluster_from_snapshot.html) for full documentation.
 #'
 #' @param AvailabilityZones Provides the list of Availability Zones (AZs) where instances in the
 #' restored DB cluster can be created.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to create from the DB snapshot or DB cluster
 #' snapshot. This parameter isn't case-sensitive.
 #' 
@@ -15803,6 +9436,8 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' -   Can't end with a hyphen or contain two consecutive hyphens
 #' 
 #' Example: `my-snapshot-id`
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param SnapshotIdentifier &#91;required&#93; The identifier for the DB snapshot or DB cluster snapshot to restore
 #' from.
 #' 
@@ -15813,78 +9448,122 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing Snapshot.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param Engine &#91;required&#93; The database engine to use for the new DB cluster.
 #' 
 #' Default: The same as source
 #' 
 #' Constraint: Must be compatible with the engine of the source
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param EngineVersion The version of the database engine to use for the new DB cluster.
 #' 
-#' To list all of the available engine versions for `aurora` (for MySQL
-#' 5.6-compatible Aurora), use the following command:
+#' To list all of the available engine versions for MySQL 5.6-compatible
+#' Aurora, use the following command:
 #' 
 #' `aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"`
 #' 
-#' To list all of the available engine versions for `aurora-mysql` (for
-#' MySQL 5.7-compatible Aurora), use the following command:
+#' To list all of the available engine versions for MySQL 5.7-compatible
+#' and MySQL 8.0-compatible Aurora, use the following command:
 #' 
 #' `aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"`
 #' 
-#' To list all of the available engine versions for `aurora-postgresql`,
-#' use the following command:
+#' To list all of the available engine versions for Aurora PostgreSQL, use
+#' the following command:
 #' 
 #' `aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"`
 #' 
-#' If you aren't using the default engine version, then you must specify
-#' the engine version.
+#' To list all of the available engine versions for RDS for MySQL, use the
+#' following command:
+#' 
+#' `aws rds describe-db-engine-versions --engine mysql --query "DBEngineVersions[].EngineVersion"`
+#' 
+#' To list all of the available engine versions for RDS for PostgreSQL, use
+#' the following command:
+#' 
+#' `aws rds describe-db-engine-versions --engine postgres --query "DBEngineVersions[].EngineVersion"`
 #' 
 #' **Aurora MySQL**
 #' 
-#' Example: `5.6.10a`, `5.6.mysql_aurora.1.19.2`, `5.7.12`,
-#' `5.7.mysql_aurora.2.04.5`
+#' See [MySQL on Amazon RDS
+#' Versions](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html)
+#' in the *Amazon Aurora User Guide*.
 #' 
 #' **Aurora PostgreSQL**
 #' 
-#' Example: `9.6.3`, `10.7`
+#' See [Amazon Aurora PostgreSQL releases and engine
+#' versions](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Updates.20180305.html)
+#' in the *Amazon Aurora User Guide*.
+#' 
+#' **MySQL**
+#' 
+#' See [MySQL on Amazon RDS
+#' Versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt)
+#' in the *Amazon RDS User Guide.*
+#' 
+#' **PostgreSQL**
+#' 
+#' See [Amazon RDS for PostgreSQL versions and
+#' extensions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts)
+#' in the *Amazon RDS User Guide.*
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param Port The port number on which the new DB cluster accepts connections.
 #' 
 #' Constraints: This value must be `1150-65535`
 #' 
 #' Default: The same port as the original DB cluster.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param DBSubnetGroupName The name of the DB subnet group to use for the new DB cluster.
 #' 
 #' Constraints: If supplied, must match the name of an existing DB subnet
 #' group.
 #' 
-#' Example: `mySubnetgroup`
-#' @param DatabaseName The database name for the restored DB cluster.
-#' @param OptionGroupName The name of the option group to use for the restored DB cluster.
-#' @param VpcSecurityGroupIds A list of VPC security groups that the new DB cluster will belong to.
-#' @param Tags The tags to be assigned to the restored DB cluster.
-#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted DB cluster
-#' from a DB snapshot or DB cluster snapshot.
+#' Example: `mydbsubnetgroup`
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS customer master key (CMK). To use a CMK in a
-#' different AWS account, specify the key ARN or alias ARN.
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param DatabaseName The database name for the restored DB cluster.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param OptionGroupName The name of the option group to use for the restored DB cluster.
+#' 
+#' DB clusters are associated with a default option group that can't be
+#' modified.
+#' @param VpcSecurityGroupIds A list of VPC security groups that the new DB cluster will belong to.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param Tags The tags to be assigned to the restored DB cluster.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param KmsKeyId The Amazon Web Services KMS key identifier to use when restoring an
+#' encrypted DB cluster from a DB snapshot or DB cluster snapshot.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
 #' 
 #' When you don't specify a value for the `KmsKeyId` parameter, then the
 #' following occurs:
 #' 
 #' -   If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier` is
-#'     encrypted, then the restored DB cluster is encrypted using the AWS
-#'     KMS CMK that was used to encrypt the DB snapshot or DB cluster
-#'     snapshot.
+#'     encrypted, then the restored DB cluster is encrypted using the KMS
+#'     key that was used to encrypt the DB snapshot or DB cluster snapshot.
 #' 
 #' -   If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier`
 #'     isn't encrypted, then the restored DB cluster isn't encrypted.
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping isn't enabled.
 #' 
 #' For more information, see [IAM Database
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
-#' in the *Amazon Aurora User Guide.*
+#' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param BacktrackWindow The target backtrack window, in seconds. To disable backtracking, set
 #' this value to 0.
 #' 
@@ -15896,19 +9575,50 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' 
 #' -   If specified, this value must be set to a number from 0 to 259,200
 #'     (72 hours).
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param EnableCloudwatchLogsExports The list of logs that the restored DB cluster is to export to Amazon
 #' CloudWatch Logs. The values in the list depend on the DB engine being
-#' used. For more information, see [Publishing Database Logs to Amazon
-#' CloudWatch
+#' used.
+#' 
+#' **RDS for MySQL**
+#' 
+#' Possible values are `error`, `general`, and `slowquery`.
+#' 
+#' **RDS for PostgreSQL**
+#' 
+#' Possible values are `postgresql` and `upgrade`.
+#' 
+#' **Aurora MySQL**
+#' 
+#' Possible values are `audit`, `error`, `general`, and `slowquery`.
+#' 
+#' **Aurora PostgreSQL**
+#' 
+#' Possible value is `postgresql`.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon RDS, see
+#' [Publishing Database Logs to Amazon CloudWatch
+#' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon Aurora,
+#' see [Publishing Database Logs to Amazon CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param EngineMode The DB engine mode of the DB cluster, either `provisioned`,
 #' `serverless`, `parallelquery`, `global`, or `multimaster`.
 #' 
 #' For more information, see
 #' [CreateDBCluster](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBCluster.html).
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param ScalingConfiguration For DB clusters in `serverless` DB engine mode, the scaling properties
 #' of the DB cluster.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param DBClusterParameterGroupName The name of the DB cluster parameter group to associate with this DB
 #' cluster. If this argument is omitted, the default DB cluster parameter
 #' group for the specified engine is used.
@@ -15923,12 +9633,18 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' -   First character must be a letter.
 #' 
 #' -   Can't end with a hyphen or contain two consecutive hyphens.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled.
+#' enabled. By default, deletion protection isn't enabled.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the restored DB
 #' cluster to snapshots of the restored DB cluster. The default is not to
 #' copy them.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param Domain Specify the Active Directory directory ID to restore the DB cluster in.
 #' The domain must be created prior to this operation. Currently, only
 #' MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be
@@ -15937,200 +9653,93 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' For more information, see [Kerberos
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html)
 #' in the *Amazon RDS User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     CustomEndpoints = list(
-#'       "string"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EarliestBacktrackTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BacktrackWindow = 123,
-#'     BacktrackConsumedChangeRecords = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     Capacity = 123,
-#'     EngineMode = "string",
-#'     ScalingConfigurationInfo = list(
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       AutoPause = TRUE|FALSE,
-#'       SecondsUntilAutoPause = 123,
-#'       TimeoutAction = "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     HttpEndpointEnabled = TRUE|FALSE,
-#'     ActivityStreamMode = "sync"|"async",
-#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'     ActivityStreamKmsKeyId = "string",
-#'     ActivityStreamKinesisStreamName = "string",
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     CrossAccountClone = TRUE|FALSE,
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'     GlobalWriteForwardingRequested = TRUE|FALSE,
-#'     PendingModifiedValues = list(
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       MasterUserPassword = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       EngineVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_db_cluster_from_snapshot(
-#'   AvailabilityZones = list(
-#'     "string"
-#'   ),
-#'   DBClusterIdentifier = "string",
-#'   SnapshotIdentifier = "string",
-#'   Engine = "string",
-#'   EngineVersion = "string",
-#'   Port = 123,
-#'   DBSubnetGroupName = "string",
-#'   DatabaseName = "string",
-#'   OptionGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   KmsKeyId = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   BacktrackWindow = 123,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   EngineMode = "string",
-#'   ScalingConfiguration = list(
-#'     MinCapacity = 123,
-#'     MaxCapacity = 123,
-#'     AutoPause = TRUE|FALSE,
-#'     SecondsUntilAutoPause = 123,
-#'     TimeoutAction = "string"
-#'   ),
-#'   DBClusterParameterGroupName = "string",
-#'   DeletionProtection = TRUE|FALSE,
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   Domain = "string",
-#'   DomainIAMRoleName = "string"
-#' )
-#' ```
+#' 
+#' Valid for: Aurora DB clusters only
+#' @param DBClusterInstanceClass The compute and memory capacity of the each DB instance in the Multi-AZ
+#' DB cluster, for example db.m6g.xlarge. Not all DB instance classes are
+#' available in all Amazon Web Services Regions, or for all database
+#' engines.
+#' 
+#' For the full list of DB instance classes, and availability for your
+#' engine, see [DB Instance
+#' Class](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+#' in the *Amazon RDS User Guide.*
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param StorageType Specifies the storage type to be associated with the each DB instance in
+#' the Multi-AZ DB cluster.
+#' 
+#' Valid values: `io1`
+#' 
+#' When specified, a value for the `Iops` parameter is required.
+#' 
+#' Default: `io1`
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
+#' be initially allocated for each DB instance in the Multi-AZ DB cluster.
+#' 
+#' For information about valid Iops values, see [Amazon RDS Provisioned
+#' IOPS Storage to Improve
+#' Performance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' Constraints: Must be a multiple between .5 and 50 of the storage amount
+#' for the DB instance.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param PubliclyAccessible A value that indicates whether the DB cluster is publicly accessible.
+#' 
+#' When the DB cluster is publicly accessible, its Domain Name System (DNS)
+#' endpoint resolves to the private IP address from within the DB cluster's
+#' virtual private cloud (VPC). It resolves to the public IP address from
+#' outside of the DB cluster's VPC. Access to the DB cluster is ultimately
+#' controlled by the security group it uses. That public access is not
+#' permitted if the security group assigned to the DB cluster doesn't
+#' permit it.
+#' 
+#' When the DB cluster isn't publicly accessible, it is an internal DB
+#' cluster with a DNS name that resolves to a private IP address.
+#' 
+#' Default: The default behavior varies depending on whether
+#' `DBSubnetGroupName` is specified.
+#' 
+#' If `DBSubnetGroupName` isn't specified, and `PubliclyAccessible` isn't
+#' specified, the following applies:
+#' 
+#' -   If the default VPC in the target Region doesn’t have an internet
+#'     gateway attached to it, the DB cluster is private.
+#' 
+#' -   If the default VPC in the target Region has an internet gateway
+#'     attached to it, the DB cluster is public.
+#' 
+#' If `DBSubnetGroupName` is specified, and `PubliclyAccessible` isn't
+#' specified, the following applies:
+#' 
+#' -   If the subnets are part of a VPC that doesn’t have an internet
+#'     gateway attached to it, the DB cluster is private.
+#' 
+#' -   If the subnets are part of a VPC that has an internet gateway
+#'     attached to it, the DB cluster is public.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param ServerlessV2ScalingConfiguration 
 #'
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_cluster_from_snapshot
-rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, EngineMode = NULL, ScalingConfiguration = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL) {
+rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, EngineMode = NULL, ScalingConfiguration = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, DBClusterInstanceClass = NULL, StorageType = NULL, Iops = NULL, PubliclyAccessible = NULL, ServerlessV2ScalingConfiguration = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, EngineMode = EngineMode, ScalingConfiguration = ScalingConfiguration, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName)
+  input <- .rds$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, EngineMode = EngineMode, ScalingConfiguration = ScalingConfiguration, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, DBClusterInstanceClass = DBClusterInstanceClass, StorageType = StorageType, Iops = Iops, PubliclyAccessible = PubliclyAccessible, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration)
   output <- .rds$restore_db_cluster_from_snapshot_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -16143,36 +9752,9 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' Restores a DB cluster to an arbitrary point in time
 #'
 #' @description
-#' Restores a DB cluster to an arbitrary point in time. Users can restore
-#' to any point in time before `LatestRestorableTime` for up to
-#' `BackupRetentionPeriod` days. The target DB cluster is created from the
-#' source DB cluster with the same configuration as the original DB
-#' cluster, except that the new DB cluster is created with the default DB
-#' security group.
-#' 
-#' This action only restores the DB cluster, not the DB instances for that
-#' DB cluster. You must invoke the
-#' [`create_db_instance`][rds_create_db_instance] action to create DB
-#' instances for the restored DB cluster, specifying the identifier of the
-#' restored DB cluster in `DBClusterIdentifier`. You can create DB
-#' instances only after the
-#' [`restore_db_cluster_to_point_in_time`][rds_restore_db_cluster_to_point_in_time]
-#' action has completed and the DB cluster is available.
-#' 
-#' For more information on Amazon Aurora, see [What Is Amazon
-#' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before `LatestRestorableTime` for up to `BackupRetentionPeriod` days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.
 #'
-#' @usage
-#' rds_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
-#'   RestoreType, SourceDBClusterIdentifier, RestoreToTime,
-#'   UseLatestRestorableTime, Port, DBSubnetGroupName, OptionGroupName,
-#'   VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-#'   BacktrackWindow, EnableCloudwatchLogsExports,
-#'   DBClusterParameterGroupName, DeletionProtection, CopyTagsToSnapshot,
-#'   Domain, DomainIAMRoleName)
+#' See [https://paws-r.github.io/docs/rds/restore_db_cluster_to_point_in_time.html](https://paws-r.github.io/docs/rds/restore_db_cluster_to_point_in_time.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the new DB cluster to be created.
 #' 
@@ -16183,6 +9765,8 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' -   First character must be a letter
 #' 
 #' -   Can't end with a hyphen or contain two consecutive hyphens
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param RestoreType The type of restore to be performed. You can specify one of the
 #' following values:
 #' 
@@ -16197,11 +9781,15 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' 
 #' If you don't specify a `RestoreType` value, then the new DB cluster is
 #' restored as a full copy of the source DB cluster.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param SourceDBClusterIdentifier &#91;required&#93; The identifier of the source DB cluster from which to restore.
 #' 
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing DBCluster.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param RestoreToTime The date and time to restore the DB cluster to.
 #' 
 #' Valid Values: Value must be a time in Universal Coordinated Time (UTC)
@@ -16220,61 +9808,76 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' -   Can't be specified if the `RestoreType` parameter is `copy-on-write`
 #' 
 #' Example: `2015-03-07T23:45:00Z`
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param UseLatestRestorableTime A value that indicates whether to restore the DB cluster to the latest
 #' restorable backup time. By default, the DB cluster isn't restored to the
 #' latest restorable backup time.
 #' 
 #' Constraints: Can't be specified if `RestoreToTime` parameter is
 #' provided.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param Port The port number on which the new DB cluster accepts connections.
 #' 
 #' Constraints: A value from `1150-65535`.
 #' 
 #' Default: The default port for the engine.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param DBSubnetGroupName The DB subnet group name to use for the new DB cluster.
 #' 
 #' Constraints: If supplied, must match the name of an existing
 #' DBSubnetGroup.
 #' 
-#' Example: `mySubnetgroup`
-#' @param OptionGroupName The name of the option group for the new DB cluster.
-#' @param VpcSecurityGroupIds A list of VPC security groups that the new DB cluster belongs to.
-#' @param Tags 
-#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted DB cluster
-#' from an encrypted DB cluster.
+#' Example: `mydbsubnetgroup`
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS customer master key (CMK). To use a CMK in a
-#' different AWS account, specify the key ARN or alias ARN.
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param OptionGroupName The name of the option group for the new DB cluster.
+#' 
+#' DB clusters are associated with a default option group that can't be
+#' modified.
+#' @param VpcSecurityGroupIds A list of VPC security groups that the new DB cluster belongs to.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param Tags 
+#' @param KmsKeyId The Amazon Web Services KMS key identifier to use when restoring an
+#' encrypted DB cluster from an encrypted DB cluster.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
 #' 
 #' You can restore to a new DB cluster and encrypt the new DB cluster with
-#' a AWS KMS CMK that is different than the AWS KMS key used to encrypt the
-#' source DB cluster. The new DB cluster is encrypted with the AWS KMS CMK
-#' identified by the `KmsKeyId` parameter.
+#' a KMS key that is different from the KMS key used to encrypt the source
+#' DB cluster. The new DB cluster is encrypted with the KMS key identified
+#' by the `KmsKeyId` parameter.
 #' 
 #' If you don't specify a value for the `KmsKeyId` parameter, then the
 #' following occurs:
 #' 
 #' -   If the DB cluster is encrypted, then the restored DB cluster is
-#'     encrypted using the AWS KMS CMK that was used to encrypt the source
-#'     DB cluster.
+#'     encrypted using the KMS key that was used to encrypt the source DB
+#'     cluster.
 #' 
 #' -   If the DB cluster isn't encrypted, then the restored DB cluster
 #'     isn't encrypted.
 #' 
 #' If `DBClusterIdentifier` refers to a DB cluster that isn't encrypted,
 #' then the restore request is rejected.
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping isn't enabled.
 #' 
 #' For more information, see [IAM Database
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
-#' in the *Amazon Aurora User Guide.*
+#' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param BacktrackWindow The target backtrack window, in seconds. To disable backtracking, set
 #' this value to 0.
-#' 
-#' Currently, Backtrack is only supported for Aurora MySQL DB clusters.
 #' 
 #' Default: 0
 #' 
@@ -16282,11 +9885,38 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' 
 #' -   If specified, this value must be set to a number from 0 to 259,200
 #'     (72 hours).
+#' 
+#' Valid for: Aurora MySQL DB clusters only
 #' @param EnableCloudwatchLogsExports The list of logs that the restored DB cluster is to export to CloudWatch
-#' Logs. The values in the list depend on the DB engine being used. For
-#' more information, see [Publishing Database Logs to Amazon CloudWatch
+#' Logs. The values in the list depend on the DB engine being used.
+#' 
+#' **RDS for MySQL**
+#' 
+#' Possible values are `error`, `general`, and `slowquery`.
+#' 
+#' **RDS for PostgreSQL**
+#' 
+#' Possible values are `postgresql` and `upgrade`.
+#' 
+#' **Aurora MySQL**
+#' 
+#' Possible values are `audit`, `error`, `general`, and `slowquery`.
+#' 
+#' **Aurora PostgreSQL**
+#' 
+#' Possible value is `postgresql`.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon RDS, see
+#' [Publishing Database Logs to Amazon CloudWatch
+#' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon Aurora,
+#' see [Publishing Database Logs to Amazon CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param DBClusterParameterGroupName The name of the DB cluster parameter group to associate with this DB
 #' cluster. If this argument is omitted, the default DB cluster parameter
 #' group for the specified engine is used.
@@ -16301,12 +9931,18 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' -   First character must be a letter.
 #' 
 #' -   Can't end with a hyphen or contain two consecutive hyphens.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled.
+#' enabled. By default, deletion protection isn't enabled.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the restored DB
 #' cluster to snapshots of the restored DB cluster. The default is not to
 #' copy them.
+#' 
+#' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param Domain Specify the Active Directory directory ID to restore the DB cluster in.
 #' The domain must be created prior to this operation.
 #' 
@@ -16315,191 +9951,105 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' more information, see [Kerberos
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     CustomEndpoints = list(
-#'       "string"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EarliestBacktrackTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BacktrackWindow = 123,
-#'     BacktrackConsumedChangeRecords = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     Capacity = 123,
-#'     EngineMode = "string",
-#'     ScalingConfigurationInfo = list(
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       AutoPause = TRUE|FALSE,
-#'       SecondsUntilAutoPause = 123,
-#'       TimeoutAction = "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     HttpEndpointEnabled = TRUE|FALSE,
-#'     ActivityStreamMode = "sync"|"async",
-#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'     ActivityStreamKmsKeyId = "string",
-#'     ActivityStreamKinesisStreamName = "string",
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     CrossAccountClone = TRUE|FALSE,
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'     GlobalWriteForwardingRequested = TRUE|FALSE,
-#'     PendingModifiedValues = list(
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       MasterUserPassword = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       EngineVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_db_cluster_to_point_in_time(
-#'   DBClusterIdentifier = "string",
-#'   RestoreType = "string",
-#'   SourceDBClusterIdentifier = "string",
-#'   RestoreToTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   UseLatestRestorableTime = TRUE|FALSE,
-#'   Port = 123,
-#'   DBSubnetGroupName = "string",
-#'   OptionGroupName = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   KmsKeyId = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   BacktrackWindow = 123,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   DBClusterParameterGroupName = "string",
-#'   DeletionProtection = TRUE|FALSE,
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   Domain = "string",
-#'   DomainIAMRoleName = "string"
-#' )
-#' ```
+#' 
+#' Valid for: Aurora DB clusters only
+#' @param ScalingConfiguration For DB clusters in `serverless` DB engine mode, the scaling properties
+#' of the DB cluster.
+#' 
+#' Valid for: Aurora DB clusters only
+#' @param EngineMode The engine mode of the new cluster. Specify `provisioned` or
+#' `serverless`, depending on the type of the cluster you are creating. You
+#' can create an Aurora Serverless v1 clone from a provisioned cluster, or
+#' a provisioned clone from an Aurora Serverless v1 cluster. To create a
+#' clone that is an Aurora Serverless v1 cluster, the original cluster must
+#' be an Aurora Serverless v1 cluster or an encrypted provisioned cluster.
+#' 
+#' Valid for: Aurora DB clusters only
+#' @param DBClusterInstanceClass The compute and memory capacity of the each DB instance in the Multi-AZ
+#' DB cluster, for example db.m6g.xlarge. Not all DB instance classes are
+#' available in all Amazon Web Services Regions, or for all database
+#' engines.
+#' 
+#' For the full list of DB instance classes, and availability for your
+#' engine, see [DB instance
+#' class](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+#' in the *Amazon RDS User Guide.*
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param StorageType Specifies the storage type to be associated with the each DB instance in
+#' the Multi-AZ DB cluster.
+#' 
+#' Valid values: `io1`
+#' 
+#' When specified, a value for the `Iops` parameter is required.
+#' 
+#' Default: `io1`
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param PubliclyAccessible A value that indicates whether the DB cluster is publicly accessible.
+#' 
+#' When the DB cluster is publicly accessible, its Domain Name System (DNS)
+#' endpoint resolves to the private IP address from within the DB cluster's
+#' virtual private cloud (VPC). It resolves to the public IP address from
+#' outside of the DB cluster's VPC. Access to the DB cluster is ultimately
+#' controlled by the security group it uses. That public access is not
+#' permitted if the security group assigned to the DB cluster doesn't
+#' permit it.
+#' 
+#' When the DB cluster isn't publicly accessible, it is an internal DB
+#' cluster with a DNS name that resolves to a private IP address.
+#' 
+#' Default: The default behavior varies depending on whether
+#' `DBSubnetGroupName` is specified.
+#' 
+#' If `DBSubnetGroupName` isn't specified, and `PubliclyAccessible` isn't
+#' specified, the following applies:
+#' 
+#' -   If the default VPC in the target Region doesn’t have an internet
+#'     gateway attached to it, the DB cluster is private.
+#' 
+#' -   If the default VPC in the target Region has an internet gateway
+#'     attached to it, the DB cluster is public.
+#' 
+#' If `DBSubnetGroupName` is specified, and `PubliclyAccessible` isn't
+#' specified, the following applies:
+#' 
+#' -   If the subnets are part of a VPC that doesn’t have an internet
+#'     gateway attached to it, the DB cluster is private.
+#' 
+#' -   If the subnets are part of a VPC that has an internet gateway
+#'     attached to it, the DB cluster is public.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
+#' be initially allocated for each DB instance in the Multi-AZ DB cluster.
+#' 
+#' For information about valid `Iops` values, see [Amazon RDS Provisioned
+#' IOPS storage to improve
+#' performance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' Constraints: Must be a multiple between .5 and 50 of the storage amount
+#' for the DB instance.
+#' 
+#' Valid for: Multi-AZ DB clusters only
+#' @param ServerlessV2ScalingConfiguration 
 #'
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_cluster_to_point_in_time
-rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL) {
+rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, ScalingConfiguration = NULL, EngineMode = NULL, DBClusterInstanceClass = NULL, StorageType = NULL, PubliclyAccessible = NULL, Iops = NULL, ServerlessV2ScalingConfiguration = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName)
+  input <- .rds$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ScalingConfiguration = ScalingConfiguration, EngineMode = EngineMode, DBClusterInstanceClass = DBClusterInstanceClass, StorageType = StorageType, PubliclyAccessible = PubliclyAccessible, Iops = Iops, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration)
   output <- .rds$restore_db_cluster_to_point_in_time_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -16512,40 +10062,9 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' Creates a new DB instance from a DB snapshot
 #'
 #' @description
-#' Creates a new DB instance from a DB snapshot. The target database is
-#' created from the source database restore point with most of the source's
-#' original configuration, including the default security group and DB
-#' parameter group. By default, the new DB instance is created as a
-#' Single-AZ deployment, except when the instance is a SQL Server instance
-#' that has an option group associated with mirroring. In this case, the
-#' instance becomes a Multi-AZ deployment, not a Single-AZ deployment.
-#' 
-#' If you want to replace your original DB instance with the new, restored
-#' DB instance, then rename your original DB instance before you call the
-#' RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB
-#' instances with the same name. After you have renamed your original DB
-#' instance with a different identifier, then you can pass the original
-#' name of the DB instance as the DBInstanceIdentifier in the call to the
-#' RestoreDBInstanceFromDBSnapshot action. The result is that you replace
-#' the original DB instance with the DB instance created from the snapshot.
-#' 
-#' If you are restoring from a shared manual DB snapshot, the
-#' `DBSnapshotIdentifier` must be the ARN of the shared DB snapshot.
-#' 
-#' This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora, use
-#' [`restore_db_cluster_from_snapshot`][rds_restore_db_cluster_from_snapshot].
+#' Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with most of the source's original configuration, including the default security group and DB parameter group. By default, the new DB instance is created as a Single-AZ deployment, except when the instance is a SQL Server instance that has an option group associated with mirroring. In this case, the instance becomes a Multi-AZ deployment, not a Single-AZ deployment.
 #'
-#' @usage
-#' rds_restore_db_instance_from_db_snapshot(DBInstanceIdentifier,
-#'   DBSnapshotIdentifier, DBInstanceClass, Port, AvailabilityZone,
-#'   DBSubnetGroupName, MultiAZ, PubliclyAccessible, AutoMinorVersionUpgrade,
-#'   LicenseModel, DBName, Engine, Iops, OptionGroupName, Tags, StorageType,
-#'   TdeCredentialArn, TdeCredentialPassword, VpcSecurityGroupIds, Domain,
-#'   CopyTagsToSnapshot, DomainIAMRoleName, EnableIAMDatabaseAuthentication,
-#'   EnableCloudwatchLogsExports, ProcessorFeatures,
-#'   UseDefaultProcessorFeatures, DBParameterGroupName, DeletionProtection,
-#'   EnableCustomerOwnedIp)
+#' See [https://paws-r.github.io/docs/rds/restore_db_instance_from_db_snapshot.html](https://paws-r.github.io/docs/rds/restore_db_instance_from_db_snapshot.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; Name of the DB instance to create from the DB snapshot. This parameter
 #' isn't case-sensitive.
@@ -16568,9 +10087,10 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' -   If you are restoring from a shared manual DB snapshot, the
 #'     `DBSnapshotIdentifier` must be the ARN of the shared DB snapshot.
 #' @param DBInstanceClass The compute and memory capacity of the Amazon RDS DB instance, for
-#' example, `db.m4.large`. Not all DB instance classes are available in all
-#' AWS Regions, or for all database engines. For the full list of DB
-#' instance classes, and availability for your engine, see [DB Instance
+#' example db.m4.large. Not all DB instance classes are available in all
+#' Amazon Web Services Regions, or for all database engines. For the full
+#' list of DB instance classes, and availability for your engine, see [DB
+#' Instance
 #' Class](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 #' in the *Amazon RDS User Guide.*
 #' 
@@ -16593,19 +10113,22 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' Constraints: If supplied, must match the name of an existing
 #' DBSubnetGroup.
 #' 
-#' Example: `mySubnetgroup`
+#' Example: `mydbsubnetgroup`
 #' @param MultiAZ A value that indicates whether the DB instance is a Multi-AZ deployment.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Constraint: You can't specify the `AvailabilityZone` parameter if the DB
 #' instance is a Multi-AZ deployment.
 #' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
 #' 
-#' When the DB instance is publicly accessible, its DNS endpoint resolves
-#' to the private IP address from within the DB instance's VPC, and to the
-#' public IP address from outside of the DB instance's VPC. Access to the
-#' DB instance is ultimately controlled by the security group it uses, and
-#' that public access is not permitted if the security group assigned to
-#' the DB instance doesn't permit it.
+#' When the DB instance is publicly accessible, its Domain Name System
+#' (DNS) endpoint resolves to the private IP address from within the DB
+#' instance's virtual private cloud (VPC). It resolves to the public IP
+#' address from outside of the DB instance's VPC. Access to the DB instance
+#' is ultimately controlled by the security group it uses. That public
+#' access is not permitted if the security group assigned to the DB
+#' instance doesn't permit it.
 #' 
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
@@ -16614,7 +10137,12 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' [`create_db_instance`][rds_create_db_instance].
 #' @param AutoMinorVersionUpgrade A value that indicates whether minor version upgrades are applied
 #' automatically to the DB instance during the maintenance window.
+#' 
+#' If you restore an RDS Custom DB instance, you must disable this
+#' parameter.
 #' @param LicenseModel License model information for the restored DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Default: Same as source.
 #' 
@@ -16623,8 +10151,10 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' @param DBName The database name for the restored DB instance.
 #' 
 #' This parameter doesn't apply to the MySQL, PostgreSQL, or MariaDB
-#' engines.
+#' engines. It also doesn't apply to RDS Custom DB instances.
 #' @param Engine The database engine to use for the new instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Default: The same as source
 #' 
@@ -16640,11 +10170,11 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' 
 #' -   `oracle-ee`
 #' 
+#' -   `oracle-ee-cdb`
+#' 
 #' -   `oracle-se2`
 #' 
-#' -   `oracle-se1`
-#' 
-#' -   `oracle-se`
+#' -   `oracle-se2-cdb`
 #' 
 #' -   `postgres`
 #' 
@@ -16673,7 +10203,9 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' 
 #' Permanent options, such as the TDE option for Oracle Advanced Security
 #' TDE, can't be removed from an option group, and that option group can't
-#' be removed from a DB instance once it is associated with a DB instance
+#' be removed from a DB instance after it is associated with a DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param Tags 
 #' @param StorageType Specifies the storage type to be associated with the DB instance.
 #' 
@@ -16685,47 +10217,75 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' Default: `io1` if the `Iops` parameter is specified, otherwise `gp2`
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
 #' device.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with this DB instance.
 #' 
 #' Default: The default EC2 VPC security group for the DB subnet group's
 #' VPC.
 #' @param Domain Specify the Active Directory directory ID to restore the DB instance in.
-#' The domain must be created prior to this operation. Currently, only
-#' MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be
-#' created in an Active Directory Domain.
+#' The domain/ must be created prior to this operation. Currently, you can
+#' create only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
+#' instances in an Active Directory Domain.
 #' 
 #' For more information, see [Kerberos
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html)
 #' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the restored DB
-#' instance to snapshots of the DB instance. By default, tags are not
-#' copied.
+#' instance to snapshots of the DB instance.
+#' 
+#' In most cases, tags aren't copied by default. However, when you restore
+#' a DB instance from a DB snapshot, RDS checks whether you specify new
+#' tags. If yes, the new tags are added to the restored DB instance. If
+#' there are no new tags, RDS looks for the tags from the source DB
+#' instance for the DB snapshot, and then adds those tags to the restored
+#' DB instance.
+#' 
+#' For more information, see [Copying tags to DB instance
+#' snapshots](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.CopyTags)
+#' in the *Amazon RDS User Guide*.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping is disabled.
 #' 
 #' For more information about IAM database authentication, see [IAM
 #' Database Authentication for MySQL and
 #' PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 #' in the *Amazon RDS User Guide.*
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param EnableCloudwatchLogsExports The list of logs that the restored DB instance is to export to
 #' CloudWatch Logs. The values in the list depend on the DB engine being
 #' used. For more information, see [Publishing Database Logs to Amazon
 #' CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 #' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param UseDefaultProcessorFeatures A value that indicates whether the DB instance class of the DB instance
 #' uses its default processor features.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param DBParameterGroupName The name of the DB parameter group to associate with this DB instance.
 #' 
-#' If you do not specify a value for `DBParameterGroupName`, then the
-#' default `DBParameterGroup` for the specified DB engine is used.
+#' If you don't specify a value for `DBParameterGroupName`, then RDS uses
+#' the default `DBParameterGroup` for the specified DB engine.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Constraints:
 #' 
@@ -16738,7 +10298,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' -   Can't end with a hyphen or contain two consecutive hyphens.
 #' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled. For more
+#' enabled. By default, deletion protection isn't enabled. For more
 #' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #' @param EnableCustomerOwnedIp A value that indicates whether to enable a customer-owned IP address
@@ -16749,266 +10309,71 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' CoIP can provide lower latency for connections to the DB instance from
 #' outside of its virtual private cloud (VPC) on your local network.
 #' 
+#' This setting doesn't apply to RDS Custom.
+#' 
 #' For more information about RDS on Outposts, see [Working with Amazon RDS
-#' on AWS
+#' on Amazon Web Services
 #' Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
 #' in the *Amazon RDS User Guide*.
 #' 
 #' For more information about CoIPs, see [Customer-owned IP
-#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-#' in the *AWS Outposts User Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_db_instance_from_db_snapshot(
-#'   DBInstanceIdentifier = "string",
-#'   DBSnapshotIdentifier = "string",
-#'   DBInstanceClass = "string",
-#'   Port = 123,
-#'   AvailabilityZone = "string",
-#'   DBSubnetGroupName = "string",
-#'   MultiAZ = TRUE|FALSE,
-#'   PubliclyAccessible = TRUE|FALSE,
-#'   AutoMinorVersionUpgrade = TRUE|FALSE,
-#'   LicenseModel = "string",
-#'   DBName = "string",
-#'   Engine = "string",
-#'   Iops = 123,
-#'   OptionGroupName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   StorageType = "string",
-#'   TdeCredentialArn = "string",
-#'   TdeCredentialPassword = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Domain = "string",
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   DomainIAMRoleName = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   ProcessorFeatures = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   UseDefaultProcessorFeatures = TRUE|FALSE,
-#'   DBParameterGroupName = "string",
-#'   DeletionProtection = TRUE|FALSE,
-#'   EnableCustomerOwnedIp = TRUE|FALSE
-#' )
-#' ```
+#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing)
+#' in the *Amazon Web Services Outposts User Guide*.
+#' @param CustomIamInstanceProfile The instance profile associated with the underlying Amazon EC2 instance
+#' of an RDS Custom DB instance. The instance profile must meet the
+#' following requirements:
+#' 
+#' -   The profile must exist in your account.
+#' 
+#' -   The profile must have an IAM role that Amazon EC2 has permissions to
+#'     assume.
+#' 
+#' -   The instance profile name and the associated IAM role name must
+#'     start with the prefix `AWSRDSCustom`.
+#' 
+#' For the list of permissions required for the IAM role, see [Configure
+#' IAM and your
+#' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting is required for RDS Custom.
+#' @param BackupTarget Specifies where automated backups and manual snapshots are stored for
+#' the restored DB instance.
+#' 
+#' Possible values are `outposts` (Amazon Web Services Outposts) and
+#' `region` (Amazon Web Services Region). The default is `region`.
+#' 
+#' For more information, see [Working with Amazon RDS on Amazon Web
+#' Services
+#' Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
+#' in the *Amazon RDS User Guide*.
+#' @param NetworkType The network type of the DB instance.
+#' 
+#' Valid values:
+#' 
+#' -   `IPV4`
+#' 
+#' -   `DUAL`
+#' 
+#' The network type is determined by the `DBSubnetGroup` specified for the
+#' DB instance. A `DBSubnetGroup` can support only the IPv4 protocol or the
+#' IPv4 and the IPv6 protocols (`DUAL`).
+#' 
+#' For more information, see [Working with a DB instance in a
+#' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html)
+#' in the *Amazon RDS User Guide.*
 #'
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_instance_from_db_snapshot
-rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSnapshotIdentifier, DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, OptionGroupName = NULL, Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, DeletionProtection = NULL, EnableCustomerOwnedIp = NULL) {
+rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSnapshotIdentifier, DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, OptionGroupName = NULL, Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, DeletionProtection = NULL, EnableCustomerOwnedIp = NULL, CustomIamInstanceProfile = NULL, BackupTarget = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "RestoreDBInstanceFromDBSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$restore_db_instance_from_db_snapshot_input(DBInstanceIdentifier = DBInstanceIdentifier, DBSnapshotIdentifier = DBSnapshotIdentifier, DBInstanceClass = DBInstanceClass, Port = Port, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, MultiAZ = MultiAZ, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, Iops = Iops, OptionGroupName = OptionGroupName, Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, DomainIAMRoleName = DomainIAMRoleName, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, EnableCustomerOwnedIp = EnableCustomerOwnedIp)
+  input <- .rds$restore_db_instance_from_db_snapshot_input(DBInstanceIdentifier = DBInstanceIdentifier, DBSnapshotIdentifier = DBSnapshotIdentifier, DBInstanceClass = DBInstanceClass, Port = Port, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, MultiAZ = MultiAZ, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, Iops = Iops, OptionGroupName = OptionGroupName, Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, DomainIAMRoleName = DomainIAMRoleName, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, EnableCustomerOwnedIp = EnableCustomerOwnedIp, CustomIamInstanceProfile = CustomIamInstanceProfile, BackupTarget = BackupTarget, NetworkType = NetworkType)
   output <- .rds$restore_db_instance_from_db_snapshot_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -17022,30 +10387,9 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' databases by using backup files
 #'
 #' @description
-#' Amazon Relational Database Service (Amazon RDS) supports importing MySQL
-#' databases by using backup files. You can create a backup of your
-#' on-premises database, store it on Amazon Simple Storage Service (Amazon
-#' S3), and then restore the backup file onto a new Amazon RDS DB instance
-#' running MySQL. For more information, see [Importing Data into an Amazon
-#' RDS MySQL DB
-#' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html)
-#' in the *Amazon RDS User Guide.*
+#' Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see [Importing Data into an Amazon RDS MySQL DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html) in the *Amazon RDS User Guide.*
 #'
-#' @usage
-#' rds_restore_db_instance_from_s3(DBName, DBInstanceIdentifier,
-#'   AllocatedStorage, DBInstanceClass, Engine, MasterUsername,
-#'   MasterUserPassword, DBSecurityGroups, VpcSecurityGroupIds,
-#'   AvailabilityZone, DBSubnetGroupName, PreferredMaintenanceWindow,
-#'   DBParameterGroupName, BackupRetentionPeriod, PreferredBackupWindow,
-#'   Port, MultiAZ, EngineVersion, AutoMinorVersionUpgrade, LicenseModel,
-#'   Iops, OptionGroupName, PubliclyAccessible, Tags, StorageType,
-#'   StorageEncrypted, KmsKeyId, CopyTagsToSnapshot, MonitoringInterval,
-#'   MonitoringRoleArn, EnableIAMDatabaseAuthentication, SourceEngine,
-#'   SourceEngineVersion, S3BucketName, S3Prefix, S3IngestionRoleArn,
-#'   EnablePerformanceInsights, PerformanceInsightsKMSKeyId,
-#'   PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports,
-#'   ProcessorFeatures, UseDefaultProcessorFeatures, DeletionProtection,
-#'   MaxAllocatedStorage)
+#' See [https://paws-r.github.io/docs/rds/restore_db_instance_from_s3.html](https://paws-r.github.io/docs/rds/restore_db_instance_from_s3.html) for full documentation.
 #'
 #' @param DBName The name of the database to create when the DB instance is created.
 #' Follow the naming rules specified in
@@ -17069,10 +10413,10 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' Be sure to allocate enough memory for your new DB instance so that the
 #' restore operation can succeed. You can also allocate additional memory
 #' for future growth.
-#' @param DBInstanceClass &#91;required&#93; The compute and memory capacity of the DB instance, for example,
-#' `db.m4.large`. Not all DB instance classes are available in all AWS
-#' Regions, or for all database engines. For the full list of DB instance
-#' classes, and availability for your engine, see [DB Instance
+#' @param DBInstanceClass &#91;required&#93; The compute and memory capacity of the DB instance, for example
+#' db.m4.large. Not all DB instance classes are available in all Amazon Web
+#' Services Regions, or for all database engines. For the full list of DB
+#' instance classes, and availability for your engine, see [DB Instance
 #' Class](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 #' in the *Amazon RDS User Guide.*
 #' 
@@ -17099,20 +10443,25 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' Default: The default DB security group for the database engine.
 #' @param VpcSecurityGroupIds A list of VPC security groups to associate with this DB instance.
 #' @param AvailabilityZone The Availability Zone that the DB instance is created in. For
-#' information about AWS Regions and Availability Zones, see [Regions and
-#' Availability
+#' information about Amazon Web Services Regions and Availability Zones,
+#' see [Regions and Availability
 #' Zones](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html)
 #' in the *Amazon RDS User Guide.*
 #' 
-#' Default: A random, system-chosen Availability Zone in the endpoint's AWS
-#' Region.
+#' Default: A random, system-chosen Availability Zone in the endpoint's
+#' Amazon Web Services Region.
 #' 
 #' Example: `us-east-1d`
 #' 
 #' Constraint: The `AvailabilityZone` parameter can't be specified if the
 #' DB instance is a Multi-AZ deployment. The specified Availability Zone
-#' must be in the same AWS Region as the current endpoint.
+#' must be in the same Amazon Web Services Region as the current endpoint.
 #' @param DBSubnetGroupName A DB subnet group to associate with this DB instance.
+#' 
+#' Constraints: If supplied, must match the name of an existing
+#' DBSubnetGroup.
+#' 
+#' Example: `mydbsubnetgroup`
 #' @param PreferredMaintenanceWindow The time range each week during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC). For more information, see [Amazon RDS
 #' Maintenance
@@ -17138,8 +10487,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' this parameter to a positive number enables backups. For more
 #' information, see [`create_db_instance`][rds_create_db_instance].
 #' @param PreferredBackupWindow The time range each day during which automated backups are created if
-#' automated backups are enabled. For more information, see [The Backup
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+#' automated backups are enabled. For more information, see [Backup
+#' window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
 #' in the *Amazon RDS User Guide.*
 #' 
 #' Constraints:
@@ -17179,12 +10528,13 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' is used.
 #' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
 #' 
-#' When the DB instance is publicly accessible, its DNS endpoint resolves
-#' to the private IP address from within the DB instance's VPC, and to the
-#' public IP address from outside of the DB instance's VPC. Access to the
-#' DB instance is ultimately controlled by the security group it uses, and
-#' that public access is not permitted if the security group assigned to
-#' the DB instance doesn't permit it.
+#' When the DB instance is publicly accessible, its Domain Name System
+#' (DNS) endpoint resolves to the private IP address from within the DB
+#' instance's virtual private cloud (VPC). It resolves to the public IP
+#' address from outside of the DB instance's VPC. Access to the DB instance
+#' is ultimately controlled by the security group it uses. That public
+#' access is not permitted if the security group assigned to the DB
+#' instance doesn't permit it.
 #' 
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
@@ -17204,16 +10554,17 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' 
 #' Default: `io1` if the `Iops` parameter is specified; otherwise `gp2`
 #' @param StorageEncrypted A value that indicates whether the new DB instance is encrypted or not.
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted DB instance.
+#' @param KmsKeyId The Amazon Web Services KMS key identifier for an encrypted DB instance.
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS customer master key (CMK). To use a CMK in a
-#' different AWS account, specify the key ARN or alias ARN.
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
 #' 
 #' If the `StorageEncrypted` parameter is enabled, and you do not specify a
 #' value for the `KmsKeyId` parameter, then Amazon RDS will use your
-#' default CMK. There is a default CMK for your AWS account. Your AWS
-#' account has a different default CMK for each AWS Region.
+#' default KMS key. There is a default KMS key for your Amazon Web Services
+#' account. Your Amazon Web Services account has a different default KMS
+#' key for each Amazon Web Services Region.
 #' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the DB instance to
 #' snapshots of the DB instance. By default, tags are not copied.
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
@@ -17235,9 +10586,9 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' 
 #' If `MonitoringInterval` is set to a value other than 0, then you must
 #' supply a `MonitoringRoleArn` value.
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping isn't enabled.
 #' 
 #' For more information about IAM database authentication, see [IAM
 #' Database Authentication for MySQL and
@@ -17254,25 +10605,45 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' @param S3BucketName &#91;required&#93; The name of your Amazon S3 bucket that contains your database backup
 #' file.
 #' @param S3Prefix The prefix of your Amazon S3 bucket.
-#' @param S3IngestionRoleArn &#91;required&#93; An AWS Identity and Access Management (IAM) role to allow Amazon RDS to
-#' access your Amazon S3 bucket.
+#' @param S3IngestionRoleArn &#91;required&#93; An Amazon Web Services Identity and Access Management (IAM) role to
+#' allow Amazon RDS to access your Amazon S3 bucket.
 #' @param EnablePerformanceInsights A value that indicates whether to enable Performance Insights for the DB
 #' instance.
 #' 
 #' For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
-#' in the *Amazon Relational Database Service User Guide*.
-#' @param PerformanceInsightsKMSKeyId The AWS KMS key identifier for encryption of Performance Insights data.
+#' in the *Amazon RDS User Guide*.
+#' @param PerformanceInsightsKMSKeyId The Amazon Web Services KMS key identifier for encryption of Performance
+#' Insights data.
 #' 
-#' The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-#' name for the AWS KMS customer master key (CMK).
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key.
 #' 
 #' If you do not specify a value for `PerformanceInsightsKMSKeyId`, then
-#' Amazon RDS uses your default CMK. There is a default CMK for your AWS
-#' account. Your AWS account has a different default CMK for each AWS
-#' Region.
-#' @param PerformanceInsightsRetentionPeriod The amount of time, in days, to retain Performance Insights data. Valid
-#' values are 7 or 731 (2 years).
+#' Amazon RDS uses your default KMS key. There is a default KMS key for
+#' your Amazon Web Services account. Your Amazon Web Services account has a
+#' different default KMS key for each Amazon Web Services Region.
+#' @param PerformanceInsightsRetentionPeriod The number of days to retain Performance Insights data. The default is 7
+#' days. The following values are valid:
+#' 
+#' -   7
+#' 
+#' -   *month* * 31, where *month* is a number of months from 1-23
+#' 
+#' -   731
+#' 
+#' For example, the following values are valid:
+#' 
+#' -   93 (3 months * 31)
+#' 
+#' -   341 (11 months * 31)
+#' 
+#' -   589 (19 months * 31)
+#' 
+#' -   731
+#' 
+#' If you specify a retention period such as 94, which isn't a valid value,
+#' RDS issues an error.
 #' @param EnableCloudwatchLogsExports The list of logs that the restored DB instance is to export to
 #' CloudWatch Logs. The values in the list depend on the DB engine being
 #' used. For more information, see [Publishing Database Logs to Amazon
@@ -17285,280 +10656,44 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' uses its default processor features.
 #' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled. For more
+#' enabled. By default, deletion protection isn't enabled. For more
 #' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
-#' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
-#' of the DB instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_db_instance_from_s3(
-#'   DBName = "string",
-#'   DBInstanceIdentifier = "string",
-#'   AllocatedStorage = 123,
-#'   DBInstanceClass = "string",
-#'   Engine = "string",
-#'   MasterUsername = "string",
-#'   MasterUserPassword = "string",
-#'   DBSecurityGroups = list(
-#'     "string"
-#'   ),
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   AvailabilityZone = "string",
-#'   DBSubnetGroupName = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   DBParameterGroupName = "string",
-#'   BackupRetentionPeriod = 123,
-#'   PreferredBackupWindow = "string",
-#'   Port = 123,
-#'   MultiAZ = TRUE|FALSE,
-#'   EngineVersion = "string",
-#'   AutoMinorVersionUpgrade = TRUE|FALSE,
-#'   LicenseModel = "string",
-#'   Iops = 123,
-#'   OptionGroupName = "string",
-#'   PubliclyAccessible = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   StorageType = "string",
-#'   StorageEncrypted = TRUE|FALSE,
-#'   KmsKeyId = "string",
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   MonitoringInterval = 123,
-#'   MonitoringRoleArn = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   SourceEngine = "string",
-#'   SourceEngineVersion = "string",
-#'   S3BucketName = "string",
-#'   S3Prefix = "string",
-#'   S3IngestionRoleArn = "string",
-#'   EnablePerformanceInsights = TRUE|FALSE,
-#'   PerformanceInsightsKMSKeyId = "string",
-#'   PerformanceInsightsRetentionPeriod = 123,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   ProcessorFeatures = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   UseDefaultProcessorFeatures = TRUE|FALSE,
-#'   DeletionProtection = TRUE|FALSE,
-#'   MaxAllocatedStorage = 123
-#' )
-#' ```
+#' @param MaxAllocatedStorage The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
+#' scale the storage of the DB instance.
+#' 
+#' For more information about this setting, including limitations that
+#' apply to it, see [Managing capacity automatically with Amazon RDS
+#' storage
+#' autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+#' in the *Amazon RDS User Guide*.
+#' @param NetworkType The network type of the DB instance.
+#' 
+#' Valid values:
+#' 
+#' -   `IPV4`
+#' 
+#' -   `DUAL`
+#' 
+#' The network type is determined by the `DBSubnetGroup` specified for the
+#' DB instance. A `DBSubnetGroup` can support only the IPv4 protocol or the
+#' IPv4 and the IPv6 protocols (`DUAL`).
+#' 
+#' For more information, see [Working with a DB instance in a
+#' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html)
+#' in the *Amazon RDS User Guide.*
 #'
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_instance_from_s3
-rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass, Engine, MasterUsername = NULL, MasterUserPassword = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, PreferredMaintenanceWindow = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, Port = NULL, MultiAZ = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, PubliclyAccessible = NULL, Tags = NULL, StorageType = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnableIAMDatabaseAuthentication = NULL, SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix = NULL, S3IngestionRoleArn, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL) {
+rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass, Engine, MasterUsername = NULL, MasterUserPassword = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, PreferredMaintenanceWindow = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, Port = NULL, MultiAZ = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, PubliclyAccessible = NULL, Tags = NULL, StorageType = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnableIAMDatabaseAuthentication = NULL, SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix = NULL, S3IngestionRoleArn, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "RestoreDBInstanceFromS3",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$restore_db_instance_from_s3_input(DBName = DBName, DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, Engine = Engine, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, Port = Port, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, StorageType = StorageType, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, SourceEngine = SourceEngine, SourceEngineVersion = SourceEngineVersion, S3BucketName = S3BucketName, S3Prefix = S3Prefix, S3IngestionRoleArn = S3IngestionRoleArn, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage)
+  input <- .rds$restore_db_instance_from_s3_input(DBName = DBName, DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, Engine = Engine, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, Port = Port, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, StorageType = StorageType, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, SourceEngine = SourceEngine, SourceEngineVersion = SourceEngineVersion, S3BucketName = S3BucketName, S3Prefix = S3Prefix, S3IngestionRoleArn = S3IngestionRoleArn, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, NetworkType = NetworkType)
   output <- .rds$restore_db_instance_from_s3_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -17571,35 +10706,9 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' Restores a DB instance to an arbitrary point in time
 #'
 #' @description
-#' Restores a DB instance to an arbitrary point in time. You can restore to
-#' any point in time before the time identified by the LatestRestorableTime
-#' property. You can restore to a point up to the number of days specified
-#' by the BackupRetentionPeriod property.
-#' 
-#' The target database is created with most of the original configuration,
-#' but in a system-selected Availability Zone, with the default security
-#' group, the default subnet group, and the default DB parameter group. By
-#' default, the new DB instance is created as a single-AZ deployment except
-#' when the instance is a SQL Server instance that has an option group that
-#' is associated with mirroring; in this case, the instance becomes a
-#' mirrored deployment and not a single-AZ deployment.
-#' 
-#' This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora, use
-#' [`restore_db_cluster_to_point_in_time`][rds_restore_db_cluster_to_point_in_time].
+#' Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the LatestRestorableTime property. You can restore to a point up to the number of days specified by the BackupRetentionPeriod property.
 #'
-#' @usage
-#' rds_restore_db_instance_to_point_in_time(SourceDBInstanceIdentifier,
-#'   TargetDBInstanceIdentifier, RestoreTime, UseLatestRestorableTime,
-#'   DBInstanceClass, Port, AvailabilityZone, DBSubnetGroupName, MultiAZ,
-#'   PubliclyAccessible, AutoMinorVersionUpgrade, LicenseModel, DBName,
-#'   Engine, Iops, OptionGroupName, CopyTagsToSnapshot, Tags, StorageType,
-#'   TdeCredentialArn, TdeCredentialPassword, VpcSecurityGroupIds, Domain,
-#'   DomainIAMRoleName, EnableIAMDatabaseAuthentication,
-#'   EnableCloudwatchLogsExports, ProcessorFeatures,
-#'   UseDefaultProcessorFeatures, DBParameterGroupName, DeletionProtection,
-#'   SourceDbiResourceId, MaxAllocatedStorage,
-#'   SourceDBInstanceAutomatedBackupsArn, EnableCustomerOwnedIp)
+#' See [https://paws-r.github.io/docs/rds/restore_db_instance_to_point_in_time.html](https://paws-r.github.io/docs/rds/restore_db_instance_to_point_in_time.html) for full documentation.
 #'
 #' @param SourceDBInstanceIdentifier The identifier of the source DB instance from which to restore.
 #' 
@@ -17635,11 +10744,12 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' Constraints: Can't be specified if the `RestoreTime` parameter is
 #' provided.
 #' @param DBInstanceClass The compute and memory capacity of the Amazon RDS DB instance, for
-#' example, `db.m4.large`. Not all DB instance classes are available in all
-#' AWS Regions, or for all database engines. For the full list of DB
-#' instance classes, and availability for your engine, see [DB Instance
+#' example db.m4.large. Not all DB instance classes are available in all
+#' Amazon Web Services Regions, or for all database engines. For the full
+#' list of DB instance classes, and availability for your engine, see [DB
+#' Instance
 #' Class](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
-#' in the *Amazon RDS User Guide.*
+#' in the *Amazon RDS User Guide*.
 #' 
 #' Default: The same DBInstanceClass as the original DB instance.
 #' @param Port The port number on which the database accepts connections.
@@ -17660,19 +10770,22 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' Constraints: If supplied, must match the name of an existing
 #' DBSubnetGroup.
 #' 
-#' Example: `mySubnetgroup`
+#' Example: `mydbsubnetgroup`
 #' @param MultiAZ A value that indicates whether the DB instance is a Multi-AZ deployment.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Constraint: You can't specify the `AvailabilityZone` parameter if the DB
 #' instance is a Multi-AZ deployment.
 #' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
 #' 
-#' When the DB instance is publicly accessible, its DNS endpoint resolves
-#' to the private IP address from within the DB instance's VPC, and to the
-#' public IP address from outside of the DB instance's VPC. Access to the
-#' DB instance is ultimately controlled by the security group it uses, and
-#' that public access is not permitted if the security group assigned to
-#' the DB instance doesn't permit it.
+#' When the DB cluster is publicly accessible, its Domain Name System (DNS)
+#' endpoint resolves to the private IP address from within the DB cluster's
+#' virtual private cloud (VPC). It resolves to the public IP address from
+#' outside of the DB cluster's VPC. Access to the DB cluster is ultimately
+#' controlled by the security group it uses. That public access isn't
+#' permitted if the security group assigned to the DB cluster doesn't
+#' permit it.
 #' 
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
@@ -17681,7 +10794,11 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' [`create_db_instance`][rds_create_db_instance].
 #' @param AutoMinorVersionUpgrade A value that indicates whether minor version upgrades are applied
 #' automatically to the DB instance during the maintenance window.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param LicenseModel License model information for the restored DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Default: Same as source.
 #' 
@@ -17689,8 +10806,11 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' `general-public-license`
 #' @param DBName The database name for the restored DB instance.
 #' 
-#' This parameter isn't used for the MySQL or MariaDB engines.
+#' This parameter isn't supported for the MySQL or MariaDB engines. It also
+#' doesn't apply to RDS Custom.
 #' @param Engine The database engine to use for the new instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Default: The same as source
 #' 
@@ -17704,11 +10824,11 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' 
 #' -   `oracle-ee`
 #' 
+#' -   `oracle-ee-cdb`
+#' 
 #' -   `oracle-se2`
 #' 
-#' -   `oracle-se1`
-#' 
-#' -   `oracle-se`
+#' -   `oracle-se2-cdb`
 #' 
 #' -   `postgres`
 #' 
@@ -17732,7 +10852,9 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' 
 #' Permanent options, such as the TDE option for Oracle Advanced Security
 #' TDE, can't be removed from an option group, and that option group can't
-#' be removed from a DB instance once it is associated with a DB instance
+#' be removed from a DB instance after it is associated with a DB instance
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param CopyTagsToSnapshot A value that indicates whether to copy all tags from the restored DB
 #' instance to snapshots of the DB instance. By default, tags are not
 #' copied.
@@ -17747,25 +10869,35 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' Default: `io1` if the `Iops` parameter is specified, otherwise `gp2`
 #' @param TdeCredentialArn The ARN from the key store with which to associate the instance for TDE
 #' encryption.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param TdeCredentialPassword The password for the given ARN from the key store in order to access the
 #' device.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with this DB instance.
 #' 
 #' Default: The default EC2 VPC security group for the DB subnet group's
 #' VPC.
 #' @param Domain Specify the Active Directory directory ID to restore the DB instance in.
-#' The domain must be created prior to this operation. Currently, only
-#' MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be
-#' created in an Active Directory Domain.
+#' Create the domain before running this command. Currently, you can create
+#' only the MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
+#' instances in an Active Directory Domain.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' For more information, see [Kerberos
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html)
 #' in the *Amazon RDS User Guide*.
 #' @param DomainIAMRoleName Specify the name of the IAM role to be used when making API calls to the
 #' Directory Service.
-#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of AWS Identity and
-#' Access Management (IAM) accounts to database accounts. By default,
-#' mapping is disabled.
+#' 
+#' This setting doesn't apply to RDS Custom.
+#' @param EnableIAMDatabaseAuthentication A value that indicates whether to enable mapping of Amazon Web Services
+#' Identity and Access Management (IAM) accounts to database accounts. By
+#' default, mapping isn't enabled.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' For more information about IAM database authentication, see [IAM
 #' Database Authentication for MySQL and
@@ -17777,14 +10909,22 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 #' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param UseDefaultProcessorFeatures A value that indicates whether the DB instance class of the DB instance
 #' uses its default processor features.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param DBParameterGroupName The name of the DB parameter group to associate with this DB instance.
 #' 
 #' If you do not specify a value for `DBParameterGroupName`, then the
 #' default `DBParameterGroup` for the specified DB engine is used.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' 
 #' Constraints:
 #' 
@@ -17797,15 +10937,25 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' -   Can't end with a hyphen or contain two consecutive hyphens.
 #' @param DeletionProtection A value that indicates whether the DB instance has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
-#' enabled. By default, deletion protection is disabled. For more
+#' enabled. By default, deletion protection isn't enabled. For more
 #' information, see [Deleting a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #' @param SourceDbiResourceId The resource ID of the source DB instance from which to restore.
-#' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
-#' of the DB instance.
+#' @param MaxAllocatedStorage The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
+#' scale the storage of the DB instance.
+#' 
+#' For more information about this setting, including limitations that
+#' apply to it, see [Managing capacity automatically with Amazon RDS
+#' storage
+#' autoscaling](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param SourceDBInstanceAutomatedBackupsArn The Amazon Resource Name (ARN) of the replicated automated backups from
 #' which to restore, for example,
 #' `arn:aws:rds:useast-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE`.
+#' 
+#' This setting doesn't apply to RDS Custom.
 #' @param EnableCustomerOwnedIp A value that indicates whether to enable a customer-owned IP address
 #' (CoIP) for an RDS on Outposts DB instance.
 #' 
@@ -17814,273 +10964,71 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' CoIP can provide lower latency for connections to the DB instance from
 #' outside of its virtual private cloud (VPC) on your local network.
 #' 
+#' This setting doesn't apply to RDS Custom.
+#' 
 #' For more information about RDS on Outposts, see [Working with Amazon RDS
-#' on AWS
+#' on Amazon Web Services
 #' Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
 #' in the *Amazon RDS User Guide*.
 #' 
 #' For more information about CoIPs, see [Customer-owned IP
-#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-#' in the *AWS Outposts User Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_db_instance_to_point_in_time(
-#'   SourceDBInstanceIdentifier = "string",
-#'   TargetDBInstanceIdentifier = "string",
-#'   RestoreTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   UseLatestRestorableTime = TRUE|FALSE,
-#'   DBInstanceClass = "string",
-#'   Port = 123,
-#'   AvailabilityZone = "string",
-#'   DBSubnetGroupName = "string",
-#'   MultiAZ = TRUE|FALSE,
-#'   PubliclyAccessible = TRUE|FALSE,
-#'   AutoMinorVersionUpgrade = TRUE|FALSE,
-#'   LicenseModel = "string",
-#'   DBName = "string",
-#'   Engine = "string",
-#'   Iops = 123,
-#'   OptionGroupName = "string",
-#'   CopyTagsToSnapshot = TRUE|FALSE,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   StorageType = "string",
-#'   TdeCredentialArn = "string",
-#'   TdeCredentialPassword = "string",
-#'   VpcSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Domain = "string",
-#'   DomainIAMRoleName = "string",
-#'   EnableIAMDatabaseAuthentication = TRUE|FALSE,
-#'   EnableCloudwatchLogsExports = list(
-#'     "string"
-#'   ),
-#'   ProcessorFeatures = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   UseDefaultProcessorFeatures = TRUE|FALSE,
-#'   DBParameterGroupName = "string",
-#'   DeletionProtection = TRUE|FALSE,
-#'   SourceDbiResourceId = "string",
-#'   MaxAllocatedStorage = 123,
-#'   SourceDBInstanceAutomatedBackupsArn = "string",
-#'   EnableCustomerOwnedIp = TRUE|FALSE
-#' )
-#' ```
+#' addresses](https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing)
+#' in the *Amazon Web Services Outposts User Guide*.
+#' @param CustomIamInstanceProfile The instance profile associated with the underlying Amazon EC2 instance
+#' of an RDS Custom DB instance. The instance profile must meet the
+#' following requirements:
+#' 
+#' -   The profile must exist in your account.
+#' 
+#' -   The profile must have an IAM role that Amazon EC2 has permissions to
+#'     assume.
+#' 
+#' -   The instance profile name and the associated IAM role name must
+#'     start with the prefix `AWSRDSCustom`.
+#' 
+#' For the list of permissions required for the IAM role, see [Configure
+#' IAM and your
+#' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' This setting is required for RDS Custom.
+#' @param BackupTarget Specifies where automated backups and manual snapshots are stored for
+#' the restored DB instance.
+#' 
+#' Possible values are `outposts` (Amazon Web Services Outposts) and
+#' `region` (Amazon Web Services Region). The default is `region`.
+#' 
+#' For more information, see [Working with Amazon RDS on Amazon Web
+#' Services
+#' Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
+#' in the *Amazon RDS User Guide*.
+#' @param NetworkType The network type of the DB instance.
+#' 
+#' Valid values:
+#' 
+#' -   `IPV4`
+#' 
+#' -   `DUAL`
+#' 
+#' The network type is determined by the `DBSubnetGroup` specified for the
+#' DB instance. A `DBSubnetGroup` can support only the IPv4 protocol or the
+#' IPv4 and the IPv6 protocols (`DUAL`).
+#' 
+#' For more information, see [Working with a DB instance in a
+#' VPC](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html)
+#' in the *Amazon RDS User Guide.*
 #'
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_instance_to_point_in_time
-rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier = NULL, TargetDBInstanceIdentifier, RestoreTime = NULL, UseLatestRestorableTime = NULL, DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, OptionGroupName = NULL, CopyTagsToSnapshot = NULL, Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, Domain = NULL, DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, DeletionProtection = NULL, SourceDbiResourceId = NULL, MaxAllocatedStorage = NULL, SourceDBInstanceAutomatedBackupsArn = NULL, EnableCustomerOwnedIp = NULL) {
+rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier = NULL, TargetDBInstanceIdentifier, RestoreTime = NULL, UseLatestRestorableTime = NULL, DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, OptionGroupName = NULL, CopyTagsToSnapshot = NULL, Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, Domain = NULL, DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, DeletionProtection = NULL, SourceDbiResourceId = NULL, MaxAllocatedStorage = NULL, SourceDBInstanceAutomatedBackupsArn = NULL, EnableCustomerOwnedIp = NULL, CustomIamInstanceProfile = NULL, BackupTarget = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "RestoreDBInstanceToPointInTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$restore_db_instance_to_point_in_time_input(SourceDBInstanceIdentifier = SourceDBInstanceIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier, RestoreTime = RestoreTime, UseLatestRestorableTime = UseLatestRestorableTime, DBInstanceClass = DBInstanceClass, Port = Port, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, MultiAZ = MultiAZ, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, Iops = Iops, OptionGroupName = OptionGroupName, CopyTagsToSnapshot = CopyTagsToSnapshot, Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, SourceDbiResourceId = SourceDbiResourceId, MaxAllocatedStorage = MaxAllocatedStorage, SourceDBInstanceAutomatedBackupsArn = SourceDBInstanceAutomatedBackupsArn, EnableCustomerOwnedIp = EnableCustomerOwnedIp)
+  input <- .rds$restore_db_instance_to_point_in_time_input(SourceDBInstanceIdentifier = SourceDBInstanceIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier, RestoreTime = RestoreTime, UseLatestRestorableTime = UseLatestRestorableTime, DBInstanceClass = DBInstanceClass, Port = Port, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, MultiAZ = MultiAZ, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, Iops = Iops, OptionGroupName = OptionGroupName, CopyTagsToSnapshot = CopyTagsToSnapshot, Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, SourceDbiResourceId = SourceDbiResourceId, MaxAllocatedStorage = MaxAllocatedStorage, SourceDBInstanceAutomatedBackupsArn = SourceDBInstanceAutomatedBackupsArn, EnableCustomerOwnedIp = EnableCustomerOwnedIp, CustomIamInstanceProfile = CustomIamInstanceProfile, BackupTarget = BackupTarget, NetworkType = NetworkType)
   output <- .rds$restore_db_instance_to_point_in_time_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -18091,18 +11039,12 @@ rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier 
 .rds$operations$restore_db_instance_to_point_in_time <- rds_restore_db_instance_to_point_in_time
 
 #' Revokes ingress from a DBSecurityGroup for previously authorized IP
-#' ranges or EC2 or VPC Security Groups
+#' ranges or EC2 or VPC security groups
 #'
 #' @description
-#' Revokes ingress from a DBSecurityGroup for previously authorized IP
-#' ranges or EC2 or VPC Security Groups. Required parameters for this API
-#' are one of CIDRIP, EC2SecurityGroupId for VPC, or
-#' (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
-#' EC2SecurityGroupId).
+#' Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC security groups. Required parameters for this API are one of CIDRIP, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId).
 #'
-#' @usage
-#' rds_revoke_db_security_group_ingress(DBSecurityGroupName, CIDRIP,
-#'   EC2SecurityGroupName, EC2SecurityGroupId, EC2SecurityGroupOwnerId)
+#' See [https://paws-r.github.io/docs/rds/revoke_db_security_group_ingress.html](https://paws-r.github.io/docs/rds/revoke_db_security_group_ingress.html) for full documentation.
 #'
 #' @param DBSecurityGroupName &#91;required&#93; The name of the DB security group to revoke ingress from.
 #' @param CIDRIP The IP range to revoke access from. Must be a valid CIDR range. If
@@ -18116,50 +11058,12 @@ rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier 
 #' security groups, `EC2SecurityGroupId` must be provided. Otherwise,
 #' EC2SecurityGroupOwnerId and either `EC2SecurityGroupName` or
 #' `EC2SecurityGroupId` must be provided.
-#' @param EC2SecurityGroupOwnerId The AWS account number of the owner of the EC2 security group specified
-#' in the `EC2SecurityGroupName` parameter. The AWS access key ID isn't an
-#' acceptable value. For VPC DB security groups, `EC2SecurityGroupId` must
-#' be provided. Otherwise, EC2SecurityGroupOwnerId and either
-#' `EC2SecurityGroupName` or `EC2SecurityGroupId` must be provided.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBSecurityGroup = list(
-#'     OwnerId = "string",
-#'     DBSecurityGroupName = "string",
-#'     DBSecurityGroupDescription = "string",
-#'     VpcId = "string",
-#'     EC2SecurityGroups = list(
-#'       list(
-#'         Status = "string",
-#'         EC2SecurityGroupName = "string",
-#'         EC2SecurityGroupId = "string",
-#'         EC2SecurityGroupOwnerId = "string"
-#'       )
-#'     ),
-#'     IPRanges = list(
-#'       list(
-#'         Status = "string",
-#'         CIDRIP = "string"
-#'       )
-#'     ),
-#'     DBSecurityGroupArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$revoke_db_security_group_ingress(
-#'   DBSecurityGroupName = "string",
-#'   CIDRIP = "string",
-#'   EC2SecurityGroupName = "string",
-#'   EC2SecurityGroupId = "string",
-#'   EC2SecurityGroupOwnerId = "string"
-#' )
-#' ```
+#' @param EC2SecurityGroupOwnerId The Amazon Web Services account number of the owner of the EC2 security
+#' group specified in the `EC2SecurityGroupName` parameter. The Amazon Web
+#' Services access key ID isn't an acceptable value. For VPC DB security
+#' groups, `EC2SecurityGroupId` must be provided. Otherwise,
+#' EC2SecurityGroupOwnerId and either `EC2SecurityGroupName` or
+#' `EC2SecurityGroupId` must be provided.
 #'
 #' @keywords internal
 #'
@@ -18184,58 +11088,35 @@ rds_revoke_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP = N
 #' Starts a database activity stream to monitor activity on the database
 #'
 #' @description
-#' Starts a database activity stream to monitor activity on the database.
-#' For more information, see [Database Activity
-#' Streams](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html)
-#' in the *Amazon Aurora User Guide*.
+#' Starts a database activity stream to monitor activity on the database. For more information, see [Database Activity Streams](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html) in the *Amazon Aurora User Guide*.
 #'
-#' @usage
-#' rds_start_activity_stream(ResourceArn, Mode, KmsKeyId, ApplyImmediately)
+#' See [https://paws-r.github.io/docs/rds/start_activity_stream.html](https://paws-r.github.io/docs/rds/start_activity_stream.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the DB cluster, for example,
 #' `arn:aws:rds:us-east-1:12345667890:cluster:das-cluster`.
 #' @param Mode &#91;required&#93; Specifies the mode of the database activity stream. Database events such
 #' as a change or access generate an activity stream event. The database
 #' session can handle these events either synchronously or asynchronously.
-#' @param KmsKeyId &#91;required&#93; The AWS KMS key identifier for encrypting messages in the database
-#' activity stream. The AWS KMS key identifier is the key ARN, key ID,
-#' alias ARN, or alias name for the AWS KMS customer master key (CMK).
+#' @param KmsKeyId &#91;required&#93; The Amazon Web Services KMS key identifier for encrypting messages in
+#' the database activity stream. The Amazon Web Services KMS key identifier
+#' is the key ARN, key ID, alias ARN, or alias name for the KMS key.
 #' @param ApplyImmediately Specifies whether or not the database activity stream is to start as
 #' soon as possible, regardless of the maintenance window for the database.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   KmsKeyId = "string",
-#'   KinesisStreamName = "string",
-#'   Status = "stopped"|"starting"|"started"|"stopping",
-#'   Mode = "sync"|"async",
-#'   ApplyImmediately = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_activity_stream(
-#'   ResourceArn = "string",
-#'   Mode = "sync"|"async",
-#'   KmsKeyId = "string",
-#'   ApplyImmediately = TRUE|FALSE
-#' )
-#' ```
+#' @param EngineNativeAuditFieldsIncluded Specifies whether the database activity stream includes engine-native
+#' audit fields. This option only applies to an Oracle DB instance. By
+#' default, no engine-native audit fields are included.
 #'
 #' @keywords internal
 #'
 #' @rdname rds_start_activity_stream
-rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediately = NULL) {
+rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediately = NULL, EngineNativeAuditFieldsIncluded = NULL) {
   op <- new_operation(
     name = "StartActivityStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$start_activity_stream_input(ResourceArn = ResourceArn, Mode = Mode, KmsKeyId = KmsKeyId, ApplyImmediately = ApplyImmediately)
+  input <- .rds$start_activity_stream_input(ResourceArn = ResourceArn, Mode = Mode, KmsKeyId = KmsKeyId, ApplyImmediately = ApplyImmediately, EngineNativeAuditFieldsIncluded = EngineNativeAuditFieldsIncluded)
   output <- .rds$start_activity_stream_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -18245,168 +11126,17 @@ rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediat
 }
 .rds$operations$start_activity_stream <- rds_start_activity_stream
 
-#' Starts an Amazon Aurora DB cluster that was stopped using the AWS
-#' console, the stop-db-cluster AWS CLI command, or the StopDBCluster
+#' Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web
+#' Services console, the stop-db-cluster CLI command, or the StopDBCluster
 #' action
 #'
 #' @description
-#' Starts an Amazon Aurora DB cluster that was stopped using the AWS
-#' console, the stop-db-cluster AWS CLI command, or the StopDBCluster
-#' action.
-#' 
-#' For more information, see [Stopping and Starting an Aurora
-#' Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web Services console, the stop-db-cluster CLI command, or the StopDBCluster action.
 #'
-#' @usage
-#' rds_start_db_cluster(DBClusterIdentifier)
+#' See [https://paws-r.github.io/docs/rds/start_db_cluster.html](https://paws-r.github.io/docs/rds/start_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the Amazon Aurora DB cluster to be started.
 #' This parameter is stored as a lowercase string.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     CustomEndpoints = list(
-#'       "string"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EarliestBacktrackTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BacktrackWindow = 123,
-#'     BacktrackConsumedChangeRecords = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     Capacity = 123,
-#'     EngineMode = "string",
-#'     ScalingConfigurationInfo = list(
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       AutoPause = TRUE|FALSE,
-#'       SecondsUntilAutoPause = 123,
-#'       TimeoutAction = "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     HttpEndpointEnabled = TRUE|FALSE,
-#'     ActivityStreamMode = "sync"|"async",
-#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'     ActivityStreamKmsKeyId = "string",
-#'     ActivityStreamKinesisStreamName = "string",
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     CrossAccountClone = TRUE|FALSE,
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'     GlobalWriteForwardingRequested = TRUE|FALSE,
-#'     PendingModifiedValues = list(
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       MasterUserPassword = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       EngineVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_db_cluster(
-#'   DBClusterIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -18428,224 +11158,16 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
 }
 .rds$operations$start_db_cluster <- rds_start_db_cluster
 
-#' Starts an Amazon RDS DB instance that was stopped using the AWS console,
-#' the stop-db-instance AWS CLI command, or the StopDBInstance action
+#' Starts an Amazon RDS DB instance that was stopped using the Amazon Web
+#' Services console, the stop-db-instance CLI command, or the
+#' StopDBInstance action
 #'
 #' @description
-#' Starts an Amazon RDS DB instance that was stopped using the AWS console,
-#' the stop-db-instance AWS CLI command, or the StopDBInstance action.
-#' 
-#' For more information, see [Starting an Amazon RDS DB instance That Was
-#' Previously
-#' Stopped](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html)
-#' in the *Amazon RDS User Guide.*
-#' 
-#' This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora DB clusters, use [`start_db_cluster`][rds_start_db_cluster]
-#' instead.
+#' Starts an Amazon RDS DB instance that was stopped using the Amazon Web Services console, the stop-db-instance CLI command, or the StopDBInstance action.
 #'
-#' @usage
-#' rds_start_db_instance(DBInstanceIdentifier)
+#' See [https://paws-r.github.io/docs/rds/start_db_instance.html](https://paws-r.github.io/docs/rds/start_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The user-supplied instance identifier.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_db_instance(
-#'   DBInstanceIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -18667,91 +11189,47 @@ rds_start_db_instance <- function(DBInstanceIdentifier) {
 }
 .rds$operations$start_db_instance <- rds_start_db_instance
 
-#' Enables replication of automated backups to a different AWS Region
+#' Enables replication of automated backups to a different Amazon Web
+#' Services Region
 #'
 #' @description
-#' Enables replication of automated backups to a different AWS Region.
-#' 
-#' For more information, see [Replicating Automated Backups to Another AWS
-#' Region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html)
-#' in the *Amazon RDS User Guide.*
+#' Enables replication of automated backups to a different Amazon Web Services Region.
 #'
-#' @usage
-#' rds_start_db_instance_automated_backups_replication(SourceDBInstanceArn,
-#'   BackupRetentionPeriod, KmsKeyId, PreSignedUrl)
+#' See [https://paws-r.github.io/docs/rds/start_db_instance_automated_backups_replication.html](https://paws-r.github.io/docs/rds/start_db_instance_automated_backups_replication.html) for full documentation.
 #'
 #' @param SourceDBInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the source DB instance for the
 #' replicated automated backups, for example,
 #' `arn:aws:rds:us-west-2:123456789012:db:mydatabase`.
 #' @param BackupRetentionPeriod The retention period for the replicated automated backups.
-#' @param KmsKeyId The AWS KMS key identifier for encryption of the replicated automated
-#' backups. The KMS key ID is the Amazon Resource Name (ARN) for the KMS
-#' encryption key in the destination AWS Region, for example,
+#' @param KmsKeyId The Amazon Web Services KMS key identifier for encryption of the
+#' replicated automated backups. The KMS key ID is the Amazon Resource Name
+#' (ARN) for the KMS encryption key in the destination Amazon Web Services
+#' Region, for example,
 #' `arn:aws:kms:us-east-1:123456789012:key/AKIAIOSFODNN7EXAMPLE`.
-#' @param PreSignedUrl A URL that contains a Signature Version 4 signed request for the
-#' StartDBInstanceAutomatedBackupsReplication action to be called in the
-#' AWS Region of the source DB instance. The presigned URL must be a valid
-#' request for the StartDBInstanceAutomatedBackupsReplication API action
-#' that can be executed in the AWS Region that contains the source DB
-#' instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstanceAutomatedBackup = list(
-#'     DBInstanceArn = "string",
-#'     DbiResourceId = "string",
-#'     Region = "string",
-#'     DBInstanceIdentifier = "string",
-#'     RestoreWindow = list(
-#'       EarliestTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LatestTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     AvailabilityZone = "string",
-#'     VpcId = "string",
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupName = "string",
-#'     TdeCredentialArn = "string",
-#'     Encrypted = TRUE|FALSE,
-#'     StorageType = "string",
-#'     KmsKeyId = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     BackupRetentionPeriod = 123,
-#'     DBInstanceAutomatedBackupsArn = "string",
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_db_instance_automated_backups_replication(
-#'   SourceDBInstanceArn = "string",
-#'   BackupRetentionPeriod = 123,
-#'   KmsKeyId = "string",
-#'   PreSignedUrl = "string"
-#' )
-#' ```
+#' @param PreSignedUrl In an Amazon Web Services GovCloud (US) Region, an URL that contains a
+#' Signature Version 4 signed request for the
+#' [`start_db_instance_automated_backups_replication`][rds_start_db_instance_automated_backups_replication]
+#' operation to call in the Amazon Web Services Region of the source DB
+#' instance. The presigned URL must be a valid request for the
+#' [`start_db_instance_automated_backups_replication`][rds_start_db_instance_automated_backups_replication]
+#' API operation that can run in the Amazon Web Services Region that
+#' contains the source DB instance.
+#' 
+#' This setting applies only to Amazon Web Services GovCloud (US) Regions.
+#' It's ignored in other Amazon Web Services Regions.
+#' 
+#' To learn how to generate a Signature Version 4 signed request, see
+#' [Authenticating Requests: Using Query Parameters (Amazon Web Services
+#' Signature Version
+#' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+#' and [Signature Version 4 Signing
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' 
+#' If you are using an Amazon Web Services SDK tool or the CLI, you can
+#' specify `SourceRegion` (or `--source-region` for the CLI) instead of
+#' specifying `PreSignedUrl` manually. Specifying `SourceRegion`
+#' autogenerates a presigned URL that is a valid request for the operation
+#' that can run in the source Amazon Web Services Region.
 #'
 #' @keywords internal
 #'
@@ -18776,12 +11254,9 @@ rds_start_db_instance_automated_backups_replication <- function(SourceDBInstance
 #' Starts an export of a snapshot to Amazon S3
 #'
 #' @description
-#' Starts an export of a snapshot to Amazon S3. The provided IAM role must
-#' have access to the S3 bucket.
+#' Starts an export of a snapshot to Amazon S3. The provided IAM role must have access to the S3 bucket.
 #'
-#' @usage
-#' rds_start_export_task(ExportTaskIdentifier, SourceArn, S3BucketName,
-#'   IamRoleArn, KmsKeyId, S3Prefix, ExportOnly)
+#' See [https://paws-r.github.io/docs/rds/start_export_task.html](https://paws-r.github.io/docs/rds/start_export_task.html) for full documentation.
 #'
 #' @param ExportTaskIdentifier &#91;required&#93; A unique identifier for the snapshot export task. This ID isn't an
 #' identifier for the Amazon S3 bucket where the snapshot is to be exported
@@ -18790,11 +11265,11 @@ rds_start_db_instance_automated_backups_replication <- function(SourceDBInstance
 #' @param S3BucketName &#91;required&#93; The name of the Amazon S3 bucket to export the snapshot to.
 #' @param IamRoleArn &#91;required&#93; The name of the IAM role to use for writing to the Amazon S3 bucket when
 #' exporting a snapshot.
-#' @param KmsKeyId &#91;required&#93; The ID of the AWS KMS customer master key (CMK) to use to encrypt the
-#' snapshot exported to Amazon S3. The AWS KMS key identifier is the key
-#' ARN, key ID, alias ARN, or alias name for the AWS KMS customer master
-#' key (CMK). The caller of this operation must be authorized to execute
-#' the following operations. These can be set in the AWS KMS key policy:
+#' @param KmsKeyId &#91;required&#93; The ID of the Amazon Web Services KMS key to use to encrypt the snapshot
+#' exported to Amazon S3. The Amazon Web Services KMS key identifier is the
+#' key ARN, key ID, alias ARN, or alias name for the KMS key. The caller of
+#' this operation must be authorized to execute the following operations.
+#' These can be set in the Amazon Web Services KMS key policy:
 #' 
 #' -   GrantOperation.Encrypt
 #' 
@@ -18833,51 +11308,6 @@ rds_start_db_instance_automated_backups_replication <- function(SourceDBInstance
 #'     database schema. This format is valid only for RDS for PostgreSQL
 #'     and Aurora PostgreSQL.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ExportTaskIdentifier = "string",
-#'   SourceArn = "string",
-#'   ExportOnly = list(
-#'     "string"
-#'   ),
-#'   SnapshotTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   TaskStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   TaskEndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   S3Bucket = "string",
-#'   S3Prefix = "string",
-#'   IamRoleArn = "string",
-#'   KmsKeyId = "string",
-#'   Status = "string",
-#'   PercentProgress = 123,
-#'   TotalExtractedDataInGB = 123,
-#'   FailureCause = "string",
-#'   WarningMessage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_export_task(
-#'   ExportTaskIdentifier = "string",
-#'   SourceArn = "string",
-#'   S3BucketName = "string",
-#'   IamRoleArn = "string",
-#'   KmsKeyId = "string",
-#'   S3Prefix = "string",
-#'   ExportOnly = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname rds_start_export_task
@@ -18898,45 +11328,20 @@ rds_start_export_task <- function(ExportTaskIdentifier, SourceArn, S3BucketName,
 }
 .rds$operations$start_export_task <- rds_start_export_task
 
-#' Stops a database activity stream that was started using the AWS console,
-#' the start-activity-stream AWS CLI command, or the StartActivityStream
-#' action
+#' Stops a database activity stream that was started using the Amazon Web
+#' Services console, the start-activity-stream CLI command, or the
+#' StartActivityStream action
 #'
 #' @description
-#' Stops a database activity stream that was started using the AWS console,
-#' the `start-activity-stream` AWS CLI command, or the
-#' [`start_activity_stream`][rds_start_activity_stream] action.
-#' 
-#' For more information, see [Database Activity
-#' Streams](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html)
-#' in the *Amazon Aurora User Guide*.
+#' Stops a database activity stream that was started using the Amazon Web Services console, the `start-activity-stream` CLI command, or the [`start_activity_stream`][rds_start_activity_stream] action.
 #'
-#' @usage
-#' rds_stop_activity_stream(ResourceArn, ApplyImmediately)
+#' See [https://paws-r.github.io/docs/rds/stop_activity_stream.html](https://paws-r.github.io/docs/rds/stop_activity_stream.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the DB cluster for the database
 #' activity stream. For example,
 #' `arn:aws:rds:us-east-1:12345667890:cluster:das-cluster`.
 #' @param ApplyImmediately Specifies whether or not the database activity stream is to stop as soon
 #' as possible, regardless of the maintenance window for the database.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   KmsKeyId = "string",
-#'   KinesisStreamName = "string",
-#'   Status = "stopped"|"starting"|"started"|"stopping"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_activity_stream(
-#'   ResourceArn = "string",
-#'   ApplyImmediately = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -18961,164 +11366,12 @@ rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
 #' Stops an Amazon Aurora DB cluster
 #'
 #' @description
-#' Stops an Amazon Aurora DB cluster. When you stop a DB cluster, Aurora
-#' retains the DB cluster's metadata, including its endpoints and DB
-#' parameter groups. Aurora also retains the transaction logs so you can do
-#' a point-in-time restore if necessary.
-#' 
-#' For more information, see [Stopping and Starting an Aurora
-#' Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html)
-#' in the *Amazon Aurora User Guide.*
-#' 
-#' This action only applies to Aurora DB clusters.
+#' Stops an Amazon Aurora DB cluster. When you stop a DB cluster, Aurora retains the DB cluster's metadata, including its endpoints and DB parameter groups. Aurora also retains the transaction logs so you can do a point-in-time restore if necessary.
 #'
-#' @usage
-#' rds_stop_db_cluster(DBClusterIdentifier)
+#' See [https://paws-r.github.io/docs/rds/stop_db_cluster.html](https://paws-r.github.io/docs/rds/stop_db_cluster.html) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the Amazon Aurora DB cluster to be stopped.
 #' This parameter is stored as a lowercase string.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBCluster = list(
-#'     AllocatedStorage = 123,
-#'     AvailabilityZones = list(
-#'       "string"
-#'     ),
-#'     BackupRetentionPeriod = 123,
-#'     CharacterSetName = "string",
-#'     DatabaseName = "string",
-#'     DBClusterIdentifier = "string",
-#'     DBClusterParameterGroup = "string",
-#'     DBSubnetGroup = "string",
-#'     Status = "string",
-#'     PercentProgress = "string",
-#'     EarliestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Endpoint = "string",
-#'     ReaderEndpoint = "string",
-#'     CustomEndpoints = list(
-#'       "string"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Port = 123,
-#'     MasterUsername = "string",
-#'     DBClusterOptionGroupMemberships = list(
-#'       list(
-#'         DBClusterOptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     PreferredMaintenanceWindow = "string",
-#'     ReplicationSourceIdentifier = "string",
-#'     ReadReplicaIdentifiers = list(
-#'       "string"
-#'     ),
-#'     DBClusterMembers = list(
-#'       list(
-#'         DBInstanceIdentifier = "string",
-#'         IsClusterWriter = TRUE|FALSE,
-#'         DBClusterParameterGroupStatus = "string",
-#'         PromotionTier = 123
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     HostedZoneId = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbClusterResourceId = "string",
-#'     DBClusterArn = "string",
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         Status = "string",
-#'         FeatureName = "string"
-#'       )
-#'     ),
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     CloneGroupId = "string",
-#'     ClusterCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EarliestBacktrackTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     BacktrackWindow = 123,
-#'     BacktrackConsumedChangeRecords = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     Capacity = 123,
-#'     EngineMode = "string",
-#'     ScalingConfigurationInfo = list(
-#'       MinCapacity = 123,
-#'       MaxCapacity = 123,
-#'       AutoPause = TRUE|FALSE,
-#'       SecondsUntilAutoPause = 123,
-#'       TimeoutAction = "string"
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     HttpEndpointEnabled = TRUE|FALSE,
-#'     ActivityStreamMode = "sync"|"async",
-#'     ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-#'     ActivityStreamKmsKeyId = "string",
-#'     ActivityStreamKinesisStreamName = "string",
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     CrossAccountClone = TRUE|FALSE,
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-#'     GlobalWriteForwardingRequested = TRUE|FALSE,
-#'     PendingModifiedValues = list(
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DBClusterIdentifier = "string",
-#'       MasterUserPassword = "string",
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'       EngineVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_db_cluster(
-#'   DBClusterIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -19143,223 +11396,13 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
 #' Stops an Amazon RDS DB instance
 #'
 #' @description
-#' Stops an Amazon RDS DB instance. When you stop a DB instance, Amazon RDS
-#' retains the DB instance's metadata, including its endpoint, DB parameter
-#' group, and option group membership. Amazon RDS also retains the
-#' transaction logs so you can do a point-in-time restore if necessary.
-#' 
-#' For more information, see [Stopping an Amazon RDS DB Instance
-#' Temporarily](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html)
-#' in the *Amazon RDS User Guide.*
-#' 
-#' This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora clusters, use [`stop_db_cluster`][rds_stop_db_cluster] instead.
+#' Stops an Amazon RDS DB instance. When you stop a DB instance, Amazon RDS retains the DB instance's metadata, including its endpoint, DB parameter group, and option group membership. Amazon RDS also retains the transaction logs so you can do a point-in-time restore if necessary.
 #'
-#' @usage
-#' rds_stop_db_instance(DBInstanceIdentifier, DBSnapshotIdentifier)
+#' See [https://paws-r.github.io/docs/rds/stop_db_instance.html](https://paws-r.github.io/docs/rds/stop_db_instance.html) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The user-supplied instance identifier.
 #' @param DBSnapshotIdentifier The user-supplied instance identifier of the DB Snapshot created
 #' immediately before the DB instance is stopped.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstance = list(
-#'     DBInstanceIdentifier = "string",
-#'     DBInstanceClass = "string",
-#'     Engine = "string",
-#'     DBInstanceStatus = "string",
-#'     MasterUsername = "string",
-#'     DBName = "string",
-#'     Endpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     AllocatedStorage = 123,
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PreferredBackupWindow = "string",
-#'     BackupRetentionPeriod = 123,
-#'     DBSecurityGroups = list(
-#'       list(
-#'         DBSecurityGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     VpcSecurityGroups = list(
-#'       list(
-#'         VpcSecurityGroupId = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     DBParameterGroups = list(
-#'       list(
-#'         DBParameterGroupName = "string",
-#'         ParameterApplyStatus = "string"
-#'       )
-#'     ),
-#'     AvailabilityZone = "string",
-#'     DBSubnetGroup = list(
-#'       DBSubnetGroupName = "string",
-#'       DBSubnetGroupDescription = "string",
-#'       VpcId = "string",
-#'       SubnetGroupStatus = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = list(
-#'             Name = "string"
-#'           ),
-#'           SubnetOutpost = list(
-#'             Arn = "string"
-#'           ),
-#'           SubnetStatus = "string"
-#'         )
-#'       ),
-#'       DBSubnetGroupArn = "string"
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     PendingModifiedValues = list(
-#'       DBInstanceClass = "string",
-#'       AllocatedStorage = 123,
-#'       MasterUserPassword = "string",
-#'       Port = 123,
-#'       BackupRetentionPeriod = 123,
-#'       MultiAZ = TRUE|FALSE,
-#'       EngineVersion = "string",
-#'       LicenseModel = "string",
-#'       Iops = 123,
-#'       DBInstanceIdentifier = "string",
-#'       StorageType = "string",
-#'       CACertificateIdentifier = "string",
-#'       DBSubnetGroupName = "string",
-#'       PendingCloudwatchLogsExports = list(
-#'         LogTypesToEnable = list(
-#'           "string"
-#'         ),
-#'         LogTypesToDisable = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ProcessorFeatures = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-#'     ),
-#'     LatestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MultiAZ = TRUE|FALSE,
-#'     EngineVersion = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE,
-#'     ReadReplicaSourceDBInstanceIdentifier = "string",
-#'     ReadReplicaDBInstanceIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReadReplicaDBClusterIdentifiers = list(
-#'       "string"
-#'     ),
-#'     ReplicaMode = "open-read-only"|"mounted",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupMemberships = list(
-#'       list(
-#'         OptionGroupName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     CharacterSetName = "string",
-#'     NcharCharacterSetName = "string",
-#'     SecondaryAvailabilityZone = "string",
-#'     PubliclyAccessible = TRUE|FALSE,
-#'     StatusInfos = list(
-#'       list(
-#'         StatusType = "string",
-#'         Normal = TRUE|FALSE,
-#'         Status = "string",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     StorageType = "string",
-#'     TdeCredentialArn = "string",
-#'     DbInstancePort = 123,
-#'     DBClusterIdentifier = "string",
-#'     StorageEncrypted = TRUE|FALSE,
-#'     KmsKeyId = "string",
-#'     DbiResourceId = "string",
-#'     CACertificateIdentifier = "string",
-#'     DomainMemberships = list(
-#'       list(
-#'         Domain = "string",
-#'         Status = "string",
-#'         FQDN = "string",
-#'         IAMRoleName = "string"
-#'       )
-#'     ),
-#'     CopyTagsToSnapshot = TRUE|FALSE,
-#'     MonitoringInterval = 123,
-#'     EnhancedMonitoringResourceArn = "string",
-#'     MonitoringRoleArn = "string",
-#'     PromotionTier = 123,
-#'     DBInstanceArn = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     PerformanceInsightsEnabled = TRUE|FALSE,
-#'     PerformanceInsightsKMSKeyId = "string",
-#'     PerformanceInsightsRetentionPeriod = 123,
-#'     EnabledCloudwatchLogsExports = list(
-#'       "string"
-#'     ),
-#'     ProcessorFeatures = list(
-#'       list(
-#'         Name = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DeletionProtection = TRUE|FALSE,
-#'     AssociatedRoles = list(
-#'       list(
-#'         RoleArn = "string",
-#'         FeatureName = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     ListenerEndpoint = list(
-#'       Address = "string",
-#'       Port = 123,
-#'       HostedZoneId = "string"
-#'     ),
-#'     MaxAllocatedStorage = 123,
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     ),
-#'     CustomerOwnedIpEnabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_db_instance(
-#'   DBInstanceIdentifier = "string",
-#'   DBSnapshotIdentifier = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -19385,72 +11428,12 @@ rds_stop_db_instance <- function(DBInstanceIdentifier, DBSnapshotIdentifier = NU
 #'
 #' @description
 #' Stops automated backup replication for a DB instance.
-#' 
-#' For more information, see [Replicating Automated Backups to Another AWS
-#' Region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html)
-#' in the *Amazon RDS User Guide.*
 #'
-#' @usage
-#' rds_stop_db_instance_automated_backups_replication(SourceDBInstanceArn)
+#' See [https://paws-r.github.io/docs/rds/stop_db_instance_automated_backups_replication.html](https://paws-r.github.io/docs/rds/stop_db_instance_automated_backups_replication.html) for full documentation.
 #'
 #' @param SourceDBInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the source DB instance for which to
 #' stop replicating automated backups, for example,
 #' `arn:aws:rds:us-west-2:123456789012:db:mydatabase`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DBInstanceAutomatedBackup = list(
-#'     DBInstanceArn = "string",
-#'     DbiResourceId = "string",
-#'     Region = "string",
-#'     DBInstanceIdentifier = "string",
-#'     RestoreWindow = list(
-#'       EarliestTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LatestTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     AllocatedStorage = 123,
-#'     Status = "string",
-#'     Port = 123,
-#'     AvailabilityZone = "string",
-#'     VpcId = "string",
-#'     InstanceCreateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     MasterUsername = "string",
-#'     Engine = "string",
-#'     EngineVersion = "string",
-#'     LicenseModel = "string",
-#'     Iops = 123,
-#'     OptionGroupName = "string",
-#'     TdeCredentialArn = "string",
-#'     Encrypted = TRUE|FALSE,
-#'     StorageType = "string",
-#'     KmsKeyId = "string",
-#'     Timezone = "string",
-#'     IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-#'     BackupRetentionPeriod = 123,
-#'     DBInstanceAutomatedBackupsArn = "string",
-#'     DBInstanceAutomatedBackupsReplications = list(
-#'       list(
-#'         DBInstanceAutomatedBackupsArn = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_db_instance_automated_backups_replication(
-#'   SourceDBInstanceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

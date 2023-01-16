@@ -4,7 +4,7 @@
 \alias{personalize_list_dataset_groups}
 \title{Returns a list of dataset groups}
 \usage{
-personalize_list_dataset_groups(nextToken, maxResults)
+personalize_list_dataset_groups(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{A token returned from the previous call to
@@ -13,38 +13,9 @@ next set of dataset groups (if they exist).}
 
 \item{maxResults}{The maximum number of dataset groups to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  datasetGroups = list(
-    list(
-      name = "string",
-      datasetGroupArn = "string",
-      status = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      failureReason = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of dataset groups. The response provides the properties
-for each dataset group, including the Amazon Resource Name (ARN). For
-more information on dataset groups, see
-\code{\link[=personalize_create_dataset_group]{create_dataset_group}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_dataset_groups(
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns a list of dataset groups. The response provides the properties for each dataset group, including the Amazon Resource Name (ARN). For more information on dataset groups, see \code{\link[=personalize_create_dataset_group]{create_dataset_group}}.
 
+See \url{https://paws-r.github.io/docs/personalize/list_dataset_groups.html} for full documentation.
+}
 \keyword{internal}

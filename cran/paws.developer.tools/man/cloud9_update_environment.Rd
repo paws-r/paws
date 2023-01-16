@@ -2,9 +2,14 @@
 % Please edit documentation in R/cloud9_operations.R
 \name{cloud9_update_environment}
 \alias{cloud9_update_environment}
-\title{Changes the settings of an existing AWS Cloud9 development environment}
+\title{Changes the settings of an existing Cloud9 development environment}
 \usage{
-cloud9_update_environment(environmentId, name, description)
+cloud9_update_environment(
+  environmentId,
+  name = NULL,
+  description = NULL,
+  managedCredentialsAction = NULL
+)
 }
 \arguments{
 \item{environmentId}{[required] The ID of the environment to change settings.}
@@ -12,31 +17,23 @@ cloud9_update_environment(environmentId, name, description)
 \item{name}{A replacement name for the environment.}
 
 \item{description}{Any new or replacement description for the environment.}
+
+\item{managedCredentialsAction}{Allows the environment owner to turn on or turn off the Amazon Web
+Services managed temporary credentials for an Cloud9 environment by
+using one of the following values:
+\itemize{
+\item \code{ENABLE}
+\item \code{DISABLE}
 }
-\value{
-An empty list.
+
+Only the environment owner can change the status of managed temporary
+credentials. An \code{AccessDeniedException} is thrown if an attempt to turn
+on or turn off managed temporary credentials is made by an account
+that's not the environment owner.}
 }
 \description{
-Changes the settings of an existing AWS Cloud9 development environment.
-}
-\section{Request syntax}{
-\preformatted{svc$update_environment(
-  environmentId = "string",
-  name = "string",
-  description = "string"
-)
-}
-}
+Changes the settings of an existing Cloud9 development environment.
 
-\examples{
-\dontrun{
-# 
-svc$update_environment(
-  name = "my-changed-demo-environment",
-  description = "This is my changed demonstration environment.",
-  environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-)
-}
-
+See \url{https://paws-r.github.io/docs/cloud9/update_environment.html} for full documentation.
 }
 \keyword{internal}

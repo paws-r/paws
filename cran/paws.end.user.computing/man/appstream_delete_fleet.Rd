@@ -9,17 +9,9 @@ appstream_delete_fleet(Name)
 \arguments{
 \item{Name}{[required] The name of the fleet.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_fleet(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appstream/delete_fleet.html} for full documentation.
+}
 \keyword{internal}

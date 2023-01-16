@@ -4,8 +4,12 @@
 \alias{redshift_describe_cluster_versions}
 \title{Returns descriptions of the available Amazon Redshift cluster versions}
 \usage{
-redshift_describe_cluster_versions(ClusterVersion,
-  ClusterParameterGroupFamily, MaxRecords, Marker)
+redshift_describe_cluster_versions(
+  ClusterVersion = NULL,
+  ClusterParameterGroupFamily = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ClusterVersion}{The specific cluster version to return.
@@ -35,39 +39,14 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_cluster_versions]{describe_cluster_versions}}
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ClusterVersions = list(
-    list(
-      ClusterVersion = "string",
-      ClusterParameterGroupFamily = "string",
-      Description = "string"
-    )
-  )
-)
-}
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.}
 }
 \description{
-Returns descriptions of the available Amazon Redshift cluster versions.
-You can call this operation even before creating any clusters to learn
-more about the Amazon Redshift versions. For more information about
-managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
-in the \emph{Amazon Redshift Cluster Management Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_cluster_versions(
-  ClusterVersion = "string",
-  ClusterParameterGroupFamily = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns descriptions of the available Amazon Redshift cluster versions. You can call this operation even before creating any clusters to learn more about the Amazon Redshift versions. For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
 
+See \url{https://paws-r.github.io/docs/redshift/describe_cluster_versions.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{neptune_delete_db_cluster}
 \title{The DeleteDBCluster action deletes a previously provisioned DB cluster}
 \usage{
-neptune_delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot,
-  FinalDBSnapshotIdentifier)
+neptune_delete_db_cluster(
+  DBClusterIdentifier,
+  SkipFinalSnapshot = NULL,
+  FinalDBSnapshotIdentifier = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the DB cluster to be deleted. This
@@ -39,102 +42,9 @@ Constraints:
 \item Cannot end with a hyphen or contain two consecutive hyphens
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AllocatedStorage = 123,
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    CharacterSetName = "string",
-    DatabaseName = "string",
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    DBClusterOptionGroupMemberships = list(
-      list(
-        DBClusterOptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    ReplicationSourceIdentifier = "string",
-    ReadReplicaIdentifiers = list(
-      "string"
-    ),
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string",
-        FeatureName = "string"
-      )
-    ),
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    CloneGroupId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-The DeleteDBCluster action deletes a previously provisioned DB cluster.
-When you delete a DB cluster, all automated backups for that DB cluster
-are deleted and can't be recovered. Manual DB cluster snapshots of the
-specified DB cluster are not deleted.
+The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a DB cluster, all automated backups for that DB cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified DB cluster are not deleted.
 
-Note that the DB Cluster cannot be deleted if deletion protection is
-enabled. To delete it, you must first set its \code{DeletionProtection} field
-to \code{False}.
+See \url{https://paws-r.github.io/docs/neptune/delete_db_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_db_cluster(
-  DBClusterIdentifier = "string",
-  SkipFinalSnapshot = TRUE|FALSE,
-  FinalDBSnapshotIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

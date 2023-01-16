@@ -4,52 +4,19 @@
 \alias{apigateway_update_deployment}
 \title{Changes information about a Deployment resource}
 \usage{
-apigateway_update_deployment(restApiId, deploymentId, patchOperations)
+apigateway_update_deployment(restApiId, deploymentId, patchOperations = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
 \item{deploymentId}{[required] The replacement identifier for the Deployment resource to change
 information about.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  description = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  apiSummary = list(
-    list(
-      list(
-        authorizationType = "string",
-        apiKeyRequired = TRUE|FALSE
-      )
-    )
-  )
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Changes information about a Deployment resource.
-}
-\section{Request syntax}{
-\preformatted{svc$update_deployment(
-  restApiId = "string",
-  deploymentId = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_deployment.html} for full documentation.
+}
 \keyword{internal}

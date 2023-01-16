@@ -5,8 +5,11 @@
 \title{Gets a list of distribution IDs for distributions that have a cache
 behavior that’s associated with the specified cache policy}
 \usage{
-cloudfront_list_distributions_by_cache_policy_id(Marker, MaxItems,
-  CachePolicyId)
+cloudfront_list_distributions_by_cache_policy_id(
+  Marker = NULL,
+  MaxItems = NULL,
+  CachePolicyId
+)
 }
 \arguments{
 \item{Marker}{Use this field when paginating results to indicate where to begin in
@@ -20,39 +23,9 @@ page’s response.}
 \item{CachePolicyId}{[required] The ID of the cache policy whose associated distribution IDs you want to
 list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DistributionIdList = list(
-    Marker = "string",
-    NextMarker = "string",
-    MaxItems = 123,
-    IsTruncated = TRUE|FALSE,
-    Quantity = 123,
-    Items = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets a list of distribution IDs for distributions that have a cache
-behavior that’s associated with the specified cache policy.
+Gets a list of distribution IDs for distributions that have a cache behavior that’s associated with the specified cache policy.
 
-You can optionally specify the maximum number of items to receive in the
-response. If the total number of items in the list exceeds the maximum
-that you specify, or the default maximum, the response is paginated. To
-get the next page of items, send a subsequent request that specifies the
-\code{NextMarker} value from the current response as the \code{Marker} value in
-the subsequent request.
+See \url{https://paws-r.github.io/docs/cloudfront/list_distributions_by_cache_policy_id.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_distributions_by_cache_policy_id(
-  Marker = "string",
-  MaxItems = "string",
-  CachePolicyId = "string"
-)
-}
-}
-
 \keyword{internal}

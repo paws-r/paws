@@ -4,8 +4,12 @@
 \alias{docdb_describe_db_clusters}
 \title{Returns information about provisioned Amazon DocumentDB clusters}
 \usage{
-docdb_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
-  Marker)
+docdb_describe_db_clusters(
+  DBClusterIdentifier = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{The user-provided cluster identifier. If this parameter is specified,
@@ -39,95 +43,9 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBClusters = list(
-    list(
-      AvailabilityZones = list(
-        "string"
-      ),
-      BackupRetentionPeriod = 123,
-      DBClusterIdentifier = "string",
-      DBClusterParameterGroup = "string",
-      DBSubnetGroup = "string",
-      Status = "string",
-      PercentProgress = "string",
-      EarliestRestorableTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Endpoint = "string",
-      ReaderEndpoint = "string",
-      MultiAZ = TRUE|FALSE,
-      Engine = "string",
-      EngineVersion = "string",
-      LatestRestorableTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Port = 123,
-      MasterUsername = "string",
-      PreferredBackupWindow = "string",
-      PreferredMaintenanceWindow = "string",
-      DBClusterMembers = list(
-        list(
-          DBInstanceIdentifier = "string",
-          IsClusterWriter = TRUE|FALSE,
-          DBClusterParameterGroupStatus = "string",
-          PromotionTier = 123
-        )
-      ),
-      VpcSecurityGroups = list(
-        list(
-          VpcSecurityGroupId = "string",
-          Status = "string"
-        )
-      ),
-      HostedZoneId = "string",
-      StorageEncrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      DbClusterResourceId = "string",
-      DBClusterArn = "string",
-      AssociatedRoles = list(
-        list(
-          RoleArn = "string",
-          Status = "string"
-        )
-      ),
-      ClusterCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EnabledCloudwatchLogsExports = list(
-        "string"
-      ),
-      DeletionProtection = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Returns information about provisioned Amazon DocumentDB clusters. This
-API operation supports pagination. For certain management features such
-as cluster and instance lifecycle management, Amazon DocumentDB
-leverages operational technology that is shared with Amazon RDS and
-Amazon Neptune. Use the \verb{filterName=engine,Values=docdb} filter
-parameter to return only Amazon DocumentDB clusters.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_clusters(
-  DBClusterIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns information about provisioned Amazon DocumentDB clusters. This API operation supports pagination. For certain management features such as cluster and instance lifecycle management, Amazon DocumentDB leverages operational technology that is shared with Amazon RDS and Amazon Neptune. Use the \verb{filterName=engine,Values=docdb} filter parameter to return only Amazon DocumentDB clusters.
 
+See \url{https://paws-r.github.io/docs/docdb/describe_db_clusters.html} for full documentation.
+}
 \keyword{internal}

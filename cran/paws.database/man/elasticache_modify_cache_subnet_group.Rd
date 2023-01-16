@@ -4,8 +4,11 @@
 \alias{elasticache_modify_cache_subnet_group}
 \title{Modifies an existing cache subnet group}
 \usage{
-elasticache_modify_cache_subnet_group(CacheSubnetGroupName,
-  CacheSubnetGroupDescription, SubnetIds)
+elasticache_modify_cache_subnet_group(
+  CacheSubnetGroupName,
+  CacheSubnetGroupDescription = NULL,
+  SubnetIds = NULL
+)
 }
 \arguments{
 \item{CacheSubnetGroupName}{[required] The name for the cache subnet group. This value is stored as a lowercase
@@ -20,40 +23,9 @@ Example: \code{mysubnetgroup}}
 
 \item{SubnetIds}{The EC2 subnet IDs for the cache subnet group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CacheSubnetGroup = list(
-    CacheSubnetGroupName = "string",
-    CacheSubnetGroupDescription = "string",
-    VpcId = "string",
-    Subnets = list(
-      list(
-        SubnetIdentifier = "string",
-        SubnetAvailabilityZone = list(
-          Name = "string"
-        ),
-        SubnetOutpost = list(
-          SubnetOutpostArn = "string"
-        )
-      )
-    ),
-    ARN = "string"
-  )
-)
-}
-}
 \description{
 Modifies an existing cache subnet group.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_cache_subnet_group(
-  CacheSubnetGroupName = "string",
-  CacheSubnetGroupDescription = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticache/modify_cache_subnet_group.html} for full documentation.
+}
 \keyword{internal}

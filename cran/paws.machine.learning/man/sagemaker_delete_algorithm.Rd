@@ -9,17 +9,9 @@ sagemaker_delete_algorithm(AlgorithmName)
 \arguments{
 \item{AlgorithmName}{[required] The name of the algorithm to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes the specified algorithm from your account.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_algorithm(
-  AlgorithmName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_algorithm.html} for full documentation.
+}
 \keyword{internal}

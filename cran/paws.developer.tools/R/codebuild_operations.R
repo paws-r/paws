@@ -8,35 +8,9 @@ NULL
 #' @description
 #' Deletes one or more builds.
 #'
-#' @usage
-#' codebuild_batch_delete_builds(ids)
+#' See [https://paws-r.github.io/docs/codebuild/batch_delete_builds.html](https://paws-r.github.io/docs/codebuild/batch_delete_builds.html) for full documentation.
 #'
 #' @param ids &#91;required&#93; The IDs of the builds to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   buildsDeleted = list(
-#'     "string"
-#'   ),
-#'   buildsNotDeleted = list(
-#'     list(
-#'       id = "string",
-#'       statusCode = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_delete_builds(
-#'   ids = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -63,254 +37,9 @@ codebuild_batch_delete_builds <- function(ids) {
 #' @description
 #' Retrieves information about one or more batch builds.
 #'
-#' @usage
-#' codebuild_batch_get_build_batches(ids)
+#' See [https://paws-r.github.io/docs/codebuild/batch_get_build_batches.html](https://paws-r.github.io/docs/codebuild/batch_get_build_batches.html) for full documentation.
 #'
 #' @param ids &#91;required&#93; An array that contains the batch build identifiers to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   buildBatches = list(
-#'     list(
-#'       id = "string",
-#'       arn = "string",
-#'       startTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       endTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       currentPhase = "string",
-#'       buildBatchStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'       sourceVersion = "string",
-#'       resolvedSourceVersion = "string",
-#'       projectName = "string",
-#'       phases = list(
-#'         list(
-#'           phaseType = "SUBMITTED"|"DOWNLOAD_BATCHSPEC"|"IN_PROGRESS"|"COMBINE_ARTIFACTS"|"SUCCEEDED"|"FAILED"|"STOPPED",
-#'           phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'           startTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           endTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           durationInSeconds = 123,
-#'           contexts = list(
-#'             list(
-#'               statusCode = "string",
-#'               message = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       source = list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       ),
-#'       secondarySources = list(
-#'         list(
-#'           type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'           location = "string",
-#'           gitCloneDepth = 123,
-#'           gitSubmodulesConfig = list(
-#'             fetchSubmodules = TRUE|FALSE
-#'           ),
-#'           buildspec = "string",
-#'           auth = list(
-#'             type = "OAUTH",
-#'             resource = "string"
-#'           ),
-#'           reportBuildStatus = TRUE|FALSE,
-#'           buildStatusConfig = list(
-#'             context = "string",
-#'             targetUrl = "string"
-#'           ),
-#'           insecureSsl = TRUE|FALSE,
-#'           sourceIdentifier = "string"
-#'         )
-#'       ),
-#'       secondarySourceVersions = list(
-#'         list(
-#'           sourceIdentifier = "string",
-#'           sourceVersion = "string"
-#'         )
-#'       ),
-#'       artifacts = list(
-#'         location = "string",
-#'         sha256sum = "string",
-#'         md5sum = "string",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       ),
-#'       secondaryArtifacts = list(
-#'         list(
-#'           location = "string",
-#'           sha256sum = "string",
-#'           md5sum = "string",
-#'           overrideArtifactName = TRUE|FALSE,
-#'           encryptionDisabled = TRUE|FALSE,
-#'           artifactIdentifier = "string"
-#'         )
-#'       ),
-#'       cache = list(
-#'         type = "NO_CACHE"|"S3"|"LOCAL",
-#'         location = "string",
-#'         modes = list(
-#'           "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'         )
-#'       ),
-#'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'         environmentVariables = list(
-#'           list(
-#'             name = "string",
-#'             value = "string",
-#'             type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'           )
-#'         ),
-#'         privilegedMode = TRUE|FALSE,
-#'         certificate = "string",
-#'         registryCredential = list(
-#'           credential = "string",
-#'           credentialProvider = "SECRETS_MANAGER"
-#'         ),
-#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'       ),
-#'       serviceRole = "string",
-#'       logConfig = list(
-#'         cloudWatchLogs = list(
-#'           status = "ENABLED"|"DISABLED",
-#'           groupName = "string",
-#'           streamName = "string"
-#'         ),
-#'         s3Logs = list(
-#'           status = "ENABLED"|"DISABLED",
-#'           location = "string",
-#'           encryptionDisabled = TRUE|FALSE
-#'         )
-#'       ),
-#'       buildTimeoutInMinutes = 123,
-#'       queuedTimeoutInMinutes = 123,
-#'       complete = TRUE|FALSE,
-#'       initiator = "string",
-#'       vpcConfig = list(
-#'         vpcId = "string",
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroupIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       encryptionKey = "string",
-#'       buildBatchNumber = 123,
-#'       fileSystemLocations = list(
-#'         list(
-#'           type = "EFS",
-#'           location = "string",
-#'           mountPoint = "string",
-#'           identifier = "string",
-#'           mountOptions = "string"
-#'         )
-#'       ),
-#'       buildBatchConfig = list(
-#'         serviceRole = "string",
-#'         combineArtifacts = TRUE|FALSE,
-#'         restrictions = list(
-#'           maximumBuildsAllowed = 123,
-#'           computeTypesAllowed = list(
-#'             "string"
-#'           )
-#'         ),
-#'         timeoutInMins = 123
-#'       ),
-#'       buildGroups = list(
-#'         list(
-#'           identifier = "string",
-#'           dependsOn = list(
-#'             "string"
-#'           ),
-#'           ignoreFailure = TRUE|FALSE,
-#'           currentBuildSummary = list(
-#'             arn = "string",
-#'             requestedOn = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'             primaryArtifact = list(
-#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'               location = "string",
-#'               identifier = "string"
-#'             ),
-#'             secondaryArtifacts = list(
-#'               list(
-#'                 type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'                 location = "string",
-#'                 identifier = "string"
-#'               )
-#'             )
-#'           ),
-#'           priorBuildSummaryList = list(
-#'             list(
-#'               arn = "string",
-#'               requestedOn = as.POSIXct(
-#'                 "2015-01-01"
-#'               ),
-#'               buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'               primaryArtifact = list(
-#'                 type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'                 location = "string",
-#'                 identifier = "string"
-#'               ),
-#'               secondaryArtifacts = list(
-#'                 list(
-#'                   type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'                   location = "string",
-#'                   identifier = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   buildBatchesNotFound = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_build_batches(
-#'   ids = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -337,230 +66,9 @@ codebuild_batch_get_build_batches <- function(ids) {
 #' @description
 #' Gets information about one or more builds.
 #'
-#' @usage
-#' codebuild_batch_get_builds(ids)
+#' See [https://paws-r.github.io/docs/codebuild/batch_get_builds.html](https://paws-r.github.io/docs/codebuild/batch_get_builds.html) for full documentation.
 #'
 #' @param ids &#91;required&#93; The IDs of the builds.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   builds = list(
-#'     list(
-#'       id = "string",
-#'       arn = "string",
-#'       buildNumber = 123,
-#'       startTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       endTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       currentPhase = "string",
-#'       buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'       sourceVersion = "string",
-#'       resolvedSourceVersion = "string",
-#'       projectName = "string",
-#'       phases = list(
-#'         list(
-#'           phaseType = "SUBMITTED"|"QUEUED"|"PROVISIONING"|"DOWNLOAD_SOURCE"|"INSTALL"|"PRE_BUILD"|"BUILD"|"POST_BUILD"|"UPLOAD_ARTIFACTS"|"FINALIZING"|"COMPLETED",
-#'           phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'           startTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           endTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           durationInSeconds = 123,
-#'           contexts = list(
-#'             list(
-#'               statusCode = "string",
-#'               message = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       source = list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       ),
-#'       secondarySources = list(
-#'         list(
-#'           type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'           location = "string",
-#'           gitCloneDepth = 123,
-#'           gitSubmodulesConfig = list(
-#'             fetchSubmodules = TRUE|FALSE
-#'           ),
-#'           buildspec = "string",
-#'           auth = list(
-#'             type = "OAUTH",
-#'             resource = "string"
-#'           ),
-#'           reportBuildStatus = TRUE|FALSE,
-#'           buildStatusConfig = list(
-#'             context = "string",
-#'             targetUrl = "string"
-#'           ),
-#'           insecureSsl = TRUE|FALSE,
-#'           sourceIdentifier = "string"
-#'         )
-#'       ),
-#'       secondarySourceVersions = list(
-#'         list(
-#'           sourceIdentifier = "string",
-#'           sourceVersion = "string"
-#'         )
-#'       ),
-#'       artifacts = list(
-#'         location = "string",
-#'         sha256sum = "string",
-#'         md5sum = "string",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       ),
-#'       secondaryArtifacts = list(
-#'         list(
-#'           location = "string",
-#'           sha256sum = "string",
-#'           md5sum = "string",
-#'           overrideArtifactName = TRUE|FALSE,
-#'           encryptionDisabled = TRUE|FALSE,
-#'           artifactIdentifier = "string"
-#'         )
-#'       ),
-#'       cache = list(
-#'         type = "NO_CACHE"|"S3"|"LOCAL",
-#'         location = "string",
-#'         modes = list(
-#'           "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'         )
-#'       ),
-#'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'         environmentVariables = list(
-#'           list(
-#'             name = "string",
-#'             value = "string",
-#'             type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'           )
-#'         ),
-#'         privilegedMode = TRUE|FALSE,
-#'         certificate = "string",
-#'         registryCredential = list(
-#'           credential = "string",
-#'           credentialProvider = "SECRETS_MANAGER"
-#'         ),
-#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'       ),
-#'       serviceRole = "string",
-#'       logs = list(
-#'         groupName = "string",
-#'         streamName = "string",
-#'         deepLink = "string",
-#'         s3DeepLink = "string",
-#'         cloudWatchLogsArn = "string",
-#'         s3LogsArn = "string",
-#'         cloudWatchLogs = list(
-#'           status = "ENABLED"|"DISABLED",
-#'           groupName = "string",
-#'           streamName = "string"
-#'         ),
-#'         s3Logs = list(
-#'           status = "ENABLED"|"DISABLED",
-#'           location = "string",
-#'           encryptionDisabled = TRUE|FALSE
-#'         )
-#'       ),
-#'       timeoutInMinutes = 123,
-#'       queuedTimeoutInMinutes = 123,
-#'       buildComplete = TRUE|FALSE,
-#'       initiator = "string",
-#'       vpcConfig = list(
-#'         vpcId = "string",
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroupIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       networkInterface = list(
-#'         subnetId = "string",
-#'         networkInterfaceId = "string"
-#'       ),
-#'       encryptionKey = "string",
-#'       exportedEnvironmentVariables = list(
-#'         list(
-#'           name = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       reportArns = list(
-#'         "string"
-#'       ),
-#'       fileSystemLocations = list(
-#'         list(
-#'           type = "EFS",
-#'           location = "string",
-#'           mountPoint = "string",
-#'           identifier = "string",
-#'           mountOptions = "string"
-#'         )
-#'       ),
-#'       debugSession = list(
-#'         sessionEnabled = TRUE|FALSE,
-#'         sessionTarget = "string"
-#'       ),
-#'       buildBatchArn = "string"
-#'     )
-#'   ),
-#'   buildsNotFound = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_builds(
-#'   ids = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example gets information about builds with the specified
-#' # build IDs.
-#' svc$batch_get_builds(
-#'   ids = list(
-#'     "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
-#'     "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -587,217 +95,11 @@ codebuild_batch_get_builds <- function(ids) {
 #' @description
 #' Gets information about one or more build projects.
 #'
-#' @usage
-#' codebuild_batch_get_projects(names)
+#' See [https://paws-r.github.io/docs/codebuild/batch_get_projects.html](https://paws-r.github.io/docs/codebuild/batch_get_projects.html) for full documentation.
 #'
 #' @param names &#91;required&#93; The names or ARNs of the build projects. To get information about a
-#' project shared with your AWS account, its ARN must be specified. You
-#' cannot specify a shared project using its name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   projects = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       description = "string",
-#'       source = list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       ),
-#'       secondarySources = list(
-#'         list(
-#'           type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'           location = "string",
-#'           gitCloneDepth = 123,
-#'           gitSubmodulesConfig = list(
-#'             fetchSubmodules = TRUE|FALSE
-#'           ),
-#'           buildspec = "string",
-#'           auth = list(
-#'             type = "OAUTH",
-#'             resource = "string"
-#'           ),
-#'           reportBuildStatus = TRUE|FALSE,
-#'           buildStatusConfig = list(
-#'             context = "string",
-#'             targetUrl = "string"
-#'           ),
-#'           insecureSsl = TRUE|FALSE,
-#'           sourceIdentifier = "string"
-#'         )
-#'       ),
-#'       sourceVersion = "string",
-#'       secondarySourceVersions = list(
-#'         list(
-#'           sourceIdentifier = "string",
-#'           sourceVersion = "string"
-#'         )
-#'       ),
-#'       artifacts = list(
-#'         type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'         location = "string",
-#'         path = "string",
-#'         namespaceType = "NONE"|"BUILD_ID",
-#'         name = "string",
-#'         packaging = "NONE"|"ZIP",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       ),
-#'       secondaryArtifacts = list(
-#'         list(
-#'           type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'           location = "string",
-#'           path = "string",
-#'           namespaceType = "NONE"|"BUILD_ID",
-#'           name = "string",
-#'           packaging = "NONE"|"ZIP",
-#'           overrideArtifactName = TRUE|FALSE,
-#'           encryptionDisabled = TRUE|FALSE,
-#'           artifactIdentifier = "string"
-#'         )
-#'       ),
-#'       cache = list(
-#'         type = "NO_CACHE"|"S3"|"LOCAL",
-#'         location = "string",
-#'         modes = list(
-#'           "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'         )
-#'       ),
-#'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'         environmentVariables = list(
-#'           list(
-#'             name = "string",
-#'             value = "string",
-#'             type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'           )
-#'         ),
-#'         privilegedMode = TRUE|FALSE,
-#'         certificate = "string",
-#'         registryCredential = list(
-#'           credential = "string",
-#'           credentialProvider = "SECRETS_MANAGER"
-#'         ),
-#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'       ),
-#'       serviceRole = "string",
-#'       timeoutInMinutes = 123,
-#'       queuedTimeoutInMinutes = 123,
-#'       encryptionKey = "string",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       created = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastModified = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       webhook = list(
-#'         url = "string",
-#'         payloadUrl = "string",
-#'         secret = "string",
-#'         branchFilter = "string",
-#'         filterGroups = list(
-#'           list(
-#'             list(
-#'               type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-#'               pattern = "string",
-#'               excludeMatchedPattern = TRUE|FALSE
-#'             )
-#'           )
-#'         ),
-#'         buildType = "BUILD"|"BUILD_BATCH",
-#'         lastModifiedSecret = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       vpcConfig = list(
-#'         vpcId = "string",
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroupIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       badge = list(
-#'         badgeEnabled = TRUE|FALSE,
-#'         badgeRequestUrl = "string"
-#'       ),
-#'       logsConfig = list(
-#'         cloudWatchLogs = list(
-#'           status = "ENABLED"|"DISABLED",
-#'           groupName = "string",
-#'           streamName = "string"
-#'         ),
-#'         s3Logs = list(
-#'           status = "ENABLED"|"DISABLED",
-#'           location = "string",
-#'           encryptionDisabled = TRUE|FALSE
-#'         )
-#'       ),
-#'       fileSystemLocations = list(
-#'         list(
-#'           type = "EFS",
-#'           location = "string",
-#'           mountPoint = "string",
-#'           identifier = "string",
-#'           mountOptions = "string"
-#'         )
-#'       ),
-#'       buildBatchConfig = list(
-#'         serviceRole = "string",
-#'         combineArtifacts = TRUE|FALSE,
-#'         restrictions = list(
-#'           maximumBuildsAllowed = 123,
-#'           computeTypesAllowed = list(
-#'             "string"
-#'           )
-#'         ),
-#'         timeoutInMins = 123
-#'       )
-#'     )
-#'   ),
-#'   projectsNotFound = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_projects(
-#'   names = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' project shared with your Amazon Web Services account, its ARN must be
+#' specified. You cannot specify a shared project using its name.
 #'
 #' @keywords internal
 #'
@@ -824,59 +126,9 @@ codebuild_batch_get_projects <- function(names) {
 #' @description
 #' Returns an array of report groups.
 #'
-#' @usage
-#' codebuild_batch_get_report_groups(reportGroupArns)
+#' See [https://paws-r.github.io/docs/codebuild/batch_get_report_groups.html](https://paws-r.github.io/docs/codebuild/batch_get_report_groups.html) for full documentation.
 #'
 #' @param reportGroupArns &#91;required&#93; An array of report group ARNs that identify the report groups to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   reportGroups = list(
-#'     list(
-#'       arn = "string",
-#'       name = "string",
-#'       type = "TEST"|"CODE_COVERAGE",
-#'       exportConfig = list(
-#'         exportConfigType = "S3"|"NO_EXPORT",
-#'         s3Destination = list(
-#'           bucket = "string",
-#'           path = "string",
-#'           packaging = "ZIP"|"NONE",
-#'           encryptionKey = "string",
-#'           encryptionDisabled = TRUE|FALSE
-#'         )
-#'       ),
-#'       created = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastModified = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       status = "ACTIVE"|"DELETING"
-#'     )
-#'   ),
-#'   reportGroupsNotFound = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_report_groups(
-#'   reportGroupArns = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -903,71 +155,9 @@ codebuild_batch_get_report_groups <- function(reportGroupArns) {
 #' @description
 #' Returns an array of reports.
 #'
-#' @usage
-#' codebuild_batch_get_reports(reportArns)
+#' See [https://paws-r.github.io/docs/codebuild/batch_get_reports.html](https://paws-r.github.io/docs/codebuild/batch_get_reports.html) for full documentation.
 #'
 #' @param reportArns &#91;required&#93; An array of ARNs that identify the `Report` objects to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   reports = list(
-#'     list(
-#'       arn = "string",
-#'       type = "TEST"|"CODE_COVERAGE",
-#'       name = "string",
-#'       reportGroupArn = "string",
-#'       executionId = "string",
-#'       status = "GENERATING"|"SUCCEEDED"|"FAILED"|"INCOMPLETE"|"DELETING",
-#'       created = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       expired = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       exportConfig = list(
-#'         exportConfigType = "S3"|"NO_EXPORT",
-#'         s3Destination = list(
-#'           bucket = "string",
-#'           path = "string",
-#'           packaging = "ZIP"|"NONE",
-#'           encryptionKey = "string",
-#'           encryptionDisabled = TRUE|FALSE
-#'         )
-#'       ),
-#'       truncated = TRUE|FALSE,
-#'       testSummary = list(
-#'         total = 123,
-#'         statusCounts = list(
-#'           123
-#'         ),
-#'         durationInNanoSeconds = 123
-#'       ),
-#'       codeCoverageSummary = list(
-#'         lineCoveragePercentage = 123.0,
-#'         linesCovered = 123,
-#'         linesMissed = 123,
-#'         branchCoveragePercentage = 123.0,
-#'         branchesCovered = 123,
-#'         branchesMissed = 123
-#'       )
-#'     )
-#'   ),
-#'   reportsNotFound = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_reports(
-#'   reportArns = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -994,12 +184,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @description
 #' Creates a build project.
 #'
-#' @usage
-#' codebuild_create_project(name, description, source, secondarySources,
-#'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
-#'   cache, environment, serviceRole, timeoutInMinutes,
-#'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-#'   logsConfig, fileSystemLocations, buildBatchConfig)
+#' See [https://paws-r.github.io/docs/codebuild/create_project.html](https://paws-r.github.io/docs/codebuild/create_project.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' @param description A description that makes the build project easy to identify.
@@ -1008,7 +193,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @param sourceVersion A version of the build input to be built for this project. If not
 #' specified, the latest version is used. If specified, it must be one of:
 #' 
-#' -   For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+#' -   For CodeCommit: the commit ID, branch, or Git tag to use.
 #' 
 #' -   For GitHub: the commit ID, pull request ID, branch name, or tag name
 #'     that corresponds to the version of the source code you want to
@@ -1022,15 +207,15 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     a branch name is specified, the branch's HEAD commit ID is used. If
 #'     not specified, the default branch's HEAD commit ID is used.
 #' 
-#' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
-#'     object that represents the build input ZIP file to use.
+#' -   For Amazon S3: the version ID of the object that represents the
+#'     build input ZIP file to use.
 #' 
 #' If `sourceVersion` is specified at the build level, then that version
 #' takes precedence over this `sourceVersion` (at the project level).
 #' 
 #' For more information, see [Source Version Sample with
 #' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-#' in the *AWS CodeBuild User Guide*.
+#' in the *CodeBuild User Guide*.
 #' @param secondarySourceVersions An array of `ProjectSourceVersion` objects. If `secondarySourceVersions`
 #' is specified at the build level, then they take precedence over these
 #' `secondarySourceVersions` (at the project level).
@@ -1039,16 +224,16 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @param cache Stores recently used information so that it can be quickly accessed at a
 #' later time.
 #' @param environment &#91;required&#93; Information about the build environment for the build project.
-#' @param serviceRole &#91;required&#93; The ARN of the AWS Identity and Access Management (IAM) role that
-#' enables AWS CodeBuild to interact with dependent AWS services on behalf
-#' of the AWS account.
-#' @param timeoutInMinutes How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait
+#' @param serviceRole &#91;required&#93; The ARN of the IAM role that enables CodeBuild to interact with
+#' dependent Amazon Web Services services on behalf of the Amazon Web
+#' Services account.
+#' @param timeoutInMinutes How long, in minutes, from 5 to 480 (8 hours), for CodeBuild to wait
 #' before it times out any build that has not been marked as completed. The
 #' default is 60 minutes.
 #' @param queuedTimeoutInMinutes The number of minutes a build is allowed to be queued before it times
 #' out.
-#' @param encryptionKey The AWS Key Management Service (AWS KMS) customer master key (CMK) to be
-#' used for encrypting the build output artifacts.
+#' @param encryptionKey The Key Management Service customer master key (CMK) to be used for
+#' encrypting the build output artifacts.
 #' 
 #' You can use a cross-account KMS key to encrypt the build output
 #' artifacts if your service role has permission to that key.
@@ -1057,381 +242,37 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' available, the CMK's alias (using the format `alias/<alias-name>`).
 #' @param tags A list of tag key and value pairs associated with this build project.
 #' 
-#' These tags are available for use by AWS services that support AWS
-#' CodeBuild build project tags.
-#' @param vpcConfig VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
+#' These tags are available for use by Amazon Web Services services that
+#' support CodeBuild build project tags.
+#' @param vpcConfig VpcConfig enables CodeBuild to access resources in an Amazon VPC.
 #' @param badgeEnabled Set this to true to generate a publicly accessible URL for your
 #' project's build badge.
 #' @param logsConfig Information about logs for the build project. These can be logs in
-#' Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.
+#' CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.
 #' @param fileSystemLocations An array of `ProjectFileSystemLocation` objects for a CodeBuild build
 #' project. A `ProjectFileSystemLocation` object specifies the
 #' `identifier`, `location`, `mountOptions`, `mountPoint`, and `type` of a
 #' file system created using Amazon Elastic File System.
 #' @param buildBatchConfig A ProjectBuildBatchConfig object that defines the batch build options
 #' for the project.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   project = list(
-#'     name = "string",
-#'     arn = "string",
-#'     description = "string",
-#'     source = list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     ),
-#'     secondarySources = list(
-#'       list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       )
-#'     ),
-#'     sourceVersion = "string",
-#'     secondarySourceVersions = list(
-#'       list(
-#'         sourceIdentifier = "string",
-#'         sourceVersion = "string"
-#'       )
-#'     ),
-#'     artifacts = list(
-#'       type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'       location = "string",
-#'       path = "string",
-#'       namespaceType = "NONE"|"BUILD_ID",
-#'       name = "string",
-#'       packaging = "NONE"|"ZIP",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     ),
-#'     secondaryArtifacts = list(
-#'       list(
-#'         type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'         location = "string",
-#'         path = "string",
-#'         namespaceType = "NONE"|"BUILD_ID",
-#'         name = "string",
-#'         packaging = "NONE"|"ZIP",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       )
-#'     ),
-#'     cache = list(
-#'       type = "NO_CACHE"|"S3"|"LOCAL",
-#'       location = "string",
-#'       modes = list(
-#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
-#'     ),
-#'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'       environmentVariables = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'         )
-#'       ),
-#'       privilegedMode = TRUE|FALSE,
-#'       certificate = "string",
-#'       registryCredential = list(
-#'         credential = "string",
-#'         credentialProvider = "SECRETS_MANAGER"
-#'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'     ),
-#'     serviceRole = "string",
-#'     timeoutInMinutes = 123,
-#'     queuedTimeoutInMinutes = 123,
-#'     encryptionKey = "string",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     created = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModified = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     webhook = list(
-#'       url = "string",
-#'       payloadUrl = "string",
-#'       secret = "string",
-#'       branchFilter = "string",
-#'       filterGroups = list(
-#'         list(
-#'           list(
-#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-#'             pattern = "string",
-#'             excludeMatchedPattern = TRUE|FALSE
-#'           )
-#'         )
-#'       ),
-#'       buildType = "BUILD"|"BUILD_BATCH",
-#'       lastModifiedSecret = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     vpcConfig = list(
-#'       vpcId = "string",
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     badge = list(
-#'       badgeEnabled = TRUE|FALSE,
-#'       badgeRequestUrl = "string"
-#'     ),
-#'     logsConfig = list(
-#'       cloudWatchLogs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         groupName = "string",
-#'         streamName = "string"
-#'       ),
-#'       s3Logs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     fileSystemLocations = list(
-#'       list(
-#'         type = "EFS",
-#'         location = "string",
-#'         mountPoint = "string",
-#'         identifier = "string",
-#'         mountOptions = "string"
-#'       )
-#'     ),
-#'     buildBatchConfig = list(
-#'       serviceRole = "string",
-#'       combineArtifacts = TRUE|FALSE,
-#'       restrictions = list(
-#'         maximumBuildsAllowed = 123,
-#'         computeTypesAllowed = list(
-#'           "string"
-#'         )
-#'       ),
-#'       timeoutInMins = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_project(
-#'   name = "string",
-#'   description = "string",
-#'   source = list(
-#'     type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'     location = "string",
-#'     gitCloneDepth = 123,
-#'     gitSubmodulesConfig = list(
-#'       fetchSubmodules = TRUE|FALSE
-#'     ),
-#'     buildspec = "string",
-#'     auth = list(
-#'       type = "OAUTH",
-#'       resource = "string"
-#'     ),
-#'     reportBuildStatus = TRUE|FALSE,
-#'     buildStatusConfig = list(
-#'       context = "string",
-#'       targetUrl = "string"
-#'     ),
-#'     insecureSsl = TRUE|FALSE,
-#'     sourceIdentifier = "string"
-#'   ),
-#'   secondarySources = list(
-#'     list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     )
-#'   ),
-#'   sourceVersion = "string",
-#'   secondarySourceVersions = list(
-#'     list(
-#'       sourceIdentifier = "string",
-#'       sourceVersion = "string"
-#'     )
-#'   ),
-#'   artifacts = list(
-#'     type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'     location = "string",
-#'     path = "string",
-#'     namespaceType = "NONE"|"BUILD_ID",
-#'     name = "string",
-#'     packaging = "NONE"|"ZIP",
-#'     overrideArtifactName = TRUE|FALSE,
-#'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
-#'   ),
-#'   secondaryArtifacts = list(
-#'     list(
-#'       type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'       location = "string",
-#'       path = "string",
-#'       namespaceType = "NONE"|"BUILD_ID",
-#'       name = "string",
-#'       packaging = "NONE"|"ZIP",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     )
-#'   ),
-#'   cache = list(
-#'     type = "NO_CACHE"|"S3"|"LOCAL",
-#'     location = "string",
-#'     modes = list(
-#'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'     )
-#'   ),
-#'   environment = list(
-#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'     image = "string",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'     environmentVariables = list(
-#'       list(
-#'         name = "string",
-#'         value = "string",
-#'         type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'       )
-#'     ),
-#'     privilegedMode = TRUE|FALSE,
-#'     certificate = "string",
-#'     registryCredential = list(
-#'       credential = "string",
-#'       credentialProvider = "SECRETS_MANAGER"
-#'     ),
-#'     imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'   ),
-#'   serviceRole = "string",
-#'   timeoutInMinutes = 123,
-#'   queuedTimeoutInMinutes = 123,
-#'   encryptionKey = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   vpcConfig = list(
-#'     vpcId = "string",
-#'     subnets = list(
-#'       "string"
-#'     ),
-#'     securityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   badgeEnabled = TRUE|FALSE,
-#'   logsConfig = list(
-#'     cloudWatchLogs = list(
-#'       status = "ENABLED"|"DISABLED",
-#'       groupName = "string",
-#'       streamName = "string"
-#'     ),
-#'     s3Logs = list(
-#'       status = "ENABLED"|"DISABLED",
-#'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   fileSystemLocations = list(
-#'     list(
-#'       type = "EFS",
-#'       location = "string",
-#'       mountPoint = "string",
-#'       identifier = "string",
-#'       mountOptions = "string"
-#'     )
-#'   ),
-#'   buildBatchConfig = list(
-#'     serviceRole = "string",
-#'     combineArtifacts = TRUE|FALSE,
-#'     restrictions = list(
-#'       maximumBuildsAllowed = 123,
-#'       computeTypesAllowed = list(
-#'         "string"
-#'       )
-#'     ),
-#'     timeoutInMins = 123
-#'   )
-#' )
-#' ```
+#' @param concurrentBuildLimit The maximum number of concurrent builds that are allowed for this
+#' project.
+#' 
+#' New builds are only started if the current number of builds is less than
+#' or equal to this limit. If the current build count meets this limit, new
+#' builds are throttled and are not run.
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_create_project
-codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL) {
+codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig)
+  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
   output <- .codebuild$create_project_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -1446,8 +287,7 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #' @description
 #' Creates a report group. A report group contains a collection of reports.
 #'
-#' @usage
-#' codebuild_create_report_group(name, type, exportConfig, tags)
+#' See [https://paws-r.github.io/docs/codebuild/create_report_group.html](https://paws-r.github.io/docs/codebuild/create_report_group.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the report group.
 #' @param type &#91;required&#93; The type of report group.
@@ -1455,67 +295,8 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #' report group test results are exported.
 #' @param tags A list of tag key and value pairs associated with this report group.
 #' 
-#' These tags are available for use by AWS services that support AWS
-#' CodeBuild report group tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   reportGroup = list(
-#'     arn = "string",
-#'     name = "string",
-#'     type = "TEST"|"CODE_COVERAGE",
-#'     exportConfig = list(
-#'       exportConfigType = "S3"|"NO_EXPORT",
-#'       s3Destination = list(
-#'         bucket = "string",
-#'         path = "string",
-#'         packaging = "ZIP"|"NONE",
-#'         encryptionKey = "string",
-#'         encryptionDisabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     created = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModified = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     status = "ACTIVE"|"DELETING"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_report_group(
-#'   name = "string",
-#'   type = "TEST"|"CODE_COVERAGE",
-#'   exportConfig = list(
-#'     exportConfigType = "S3"|"NO_EXPORT",
-#'     s3Destination = list(
-#'       bucket = "string",
-#'       path = "string",
-#'       packaging = "ZIP"|"NONE",
-#'       encryptionKey = "string",
-#'       encryptionDisabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' These tags are available for use by Amazon Web Services services that
+#' support CodeBuild report group tags.
 #'
 #' @keywords internal
 #'
@@ -1537,32 +318,17 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 }
 .codebuild$operations$create_report_group <- codebuild_create_report_group
 
-#' For an existing AWS CodeBuild build project that has its source code
-#' stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
-#' start rebuilding the source code every time a code change is pushed to
-#' the repository
+#' For an existing CodeBuild build project that has its source code stored
+#' in a GitHub or Bitbucket repository, enables CodeBuild to start
+#' rebuilding the source code every time a code change is pushed to the
+#' repository
 #'
 #' @description
-#' For an existing AWS CodeBuild build project that has its source code
-#' stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
-#' start rebuilding the source code every time a code change is pushed to
-#' the repository.
-#' 
-#' If you enable webhooks for an AWS CodeBuild project, and the project is
-#' used as a build step in AWS CodePipeline, then two identical builds are
-#' created for each commit. One build is triggered through webhooks, and
-#' one through AWS CodePipeline. Because billing is on a per-build basis,
-#' you are billed for both builds. Therefore, if you are using AWS
-#' CodePipeline, we recommend that you disable webhooks in AWS CodeBuild.
-#' In the AWS CodeBuild console, clear the Webhook box. For more
-#' information, see step 5 in [Change a Build Project's
-#' Settings](https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
+#' For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.
 #'
-#' @usage
-#' codebuild_create_webhook(projectName, branchFilter, filterGroups,
-#'   buildType)
+#' See [https://paws-r.github.io/docs/codebuild/create_webhook.html](https://paws-r.github.io/docs/codebuild/create_webhook.html) for full documentation.
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
+#' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are
 #' built when a webhook is triggered. If the name of a branch matches the
 #' regular expression, then it is built. If `branchFilter` is empty, then
@@ -1577,50 +343,6 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' `filterGroups` array must pass. For a filter group to pass, each of its
 #' filters must pass.
 #' @param buildType Specifies the type of build this webhook will trigger.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   webhook = list(
-#'     url = "string",
-#'     payloadUrl = "string",
-#'     secret = "string",
-#'     branchFilter = "string",
-#'     filterGroups = list(
-#'       list(
-#'         list(
-#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-#'           pattern = "string",
-#'           excludeMatchedPattern = TRUE|FALSE
-#'         )
-#'       )
-#'     ),
-#'     buildType = "BUILD"|"BUILD_BATCH",
-#'     lastModifiedSecret = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_webhook(
-#'   projectName = "string",
-#'   branchFilter = "string",
-#'   filterGroups = list(
-#'     list(
-#'       list(
-#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-#'         pattern = "string",
-#'         excludeMatchedPattern = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   buildType = "BUILD"|"BUILD_BATCH"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1647,34 +369,9 @@ codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGro
 #' @description
 #' Deletes a batch build.
 #'
-#' @usage
-#' codebuild_delete_build_batch(id)
+#' See [https://paws-r.github.io/docs/codebuild/delete_build_batch.html](https://paws-r.github.io/docs/codebuild/delete_build_batch.html) for full documentation.
 #'
 #' @param id &#91;required&#93; The identifier of the batch build to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   statusCode = "string",
-#'   buildsDeleted = list(
-#'     "string"
-#'   ),
-#'   buildsNotDeleted = list(
-#'     list(
-#'       id = "string",
-#'       statusCode = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_build_batch(
-#'   id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1699,23 +396,11 @@ codebuild_delete_build_batch <- function(id) {
 #' Deletes a build project
 #'
 #' @description
-#' Deletes a build project. When you delete a project, its builds are not
-#' deleted.
+#' Deletes a build project. When you delete a project, its builds are not deleted.
 #'
-#' @usage
-#' codebuild_delete_project(name)
+#' See [https://paws-r.github.io/docs/codebuild/delete_project.html](https://paws-r.github.io/docs/codebuild/delete_project.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the build project.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_project(
-#'   name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1742,20 +427,9 @@ codebuild_delete_project <- function(name) {
 #' @description
 #' Deletes a report.
 #'
-#' @usage
-#' codebuild_delete_report(arn)
+#' See [https://paws-r.github.io/docs/codebuild/delete_report.html](https://paws-r.github.io/docs/codebuild/delete_report.html) for full documentation.
 #'
 #' @param arn &#91;required&#93; The ARN of the report to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_report(
-#'   arn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1780,11 +454,9 @@ codebuild_delete_report <- function(arn) {
 #' Deletes a report group
 #'
 #' @description
-#' Deletes a report group. Before you delete a report group, you must
-#' delete its reports.
+#' Deletes a report group. Before you delete a report group, you must delete its reports.
 #'
-#' @usage
-#' codebuild_delete_report_group(arn, deleteReports)
+#' See [https://paws-r.github.io/docs/codebuild/delete_report_group.html](https://paws-r.github.io/docs/codebuild/delete_report_group.html) for full documentation.
 #'
 #' @param arn &#91;required&#93; The ARN of the report group to delete.
 #' @param deleteReports If `true`, deletes any reports that belong to a report group before
@@ -1796,17 +468,6 @@ codebuild_delete_report <- function(arn) {
 #' [`delete_report`][codebuild_delete_report] to delete the reports. If you
 #' call [`delete_report_group`][codebuild_delete_report_group] for a report
 #' group that contains one or more reports, an exception is thrown.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_report_group(
-#'   arn = "string",
-#'   deleteReports = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1833,20 +494,9 @@ codebuild_delete_report_group <- function(arn, deleteReports = NULL) {
 #' @description
 #' Deletes a resource policy that is identified by its resource ARN.
 #'
-#' @usage
-#' codebuild_delete_resource_policy(resourceArn)
+#' See [https://paws-r.github.io/docs/codebuild/delete_resource_policy.html](https://paws-r.github.io/docs/codebuild/delete_resource_policy.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource that is associated with the resource policy.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_resource_policy(
-#'   resourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1872,28 +522,11 @@ codebuild_delete_resource_policy <- function(resourceArn) {
 #' credentials
 #'
 #' @description
-#' Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
-#' credentials.
+#' Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
 #'
-#' @usage
-#' codebuild_delete_source_credentials(arn)
+#' See [https://paws-r.github.io/docs/codebuild/delete_source_credentials.html](https://paws-r.github.io/docs/codebuild/delete_source_credentials.html) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   arn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_source_credentials(
-#'   arn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1915,31 +548,16 @@ codebuild_delete_source_credentials <- function(arn) {
 }
 .codebuild$operations$delete_source_credentials <- codebuild_delete_source_credentials
 
-#' For an existing AWS CodeBuild build project that has its source code
-#' stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
-#' rebuilding the source code every time a code change is pushed to the
-#' repository
+#' For an existing CodeBuild build project that has its source code stored
+#' in a GitHub or Bitbucket repository, stops CodeBuild from rebuilding the
+#' source code every time a code change is pushed to the repository
 #'
 #' @description
-#' For an existing AWS CodeBuild build project that has its source code
-#' stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
-#' rebuilding the source code every time a code change is pushed to the
-#' repository.
+#' For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops CodeBuild from rebuilding the source code every time a code change is pushed to the repository.
 #'
-#' @usage
-#' codebuild_delete_webhook(projectName)
+#' See [https://paws-r.github.io/docs/codebuild/delete_webhook.html](https://paws-r.github.io/docs/codebuild/delete_webhook.html) for full documentation.
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_webhook(
-#'   projectName = "string"
-#' )
-#' ```
+#' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #'
 #' @keywords internal
 #'
@@ -1966,9 +584,7 @@ codebuild_delete_webhook <- function(projectName) {
 #' @description
 #' Retrieves one or more code coverage reports.
 #'
-#' @usage
-#' codebuild_describe_code_coverages(reportArn, nextToken, maxResults,
-#'   sortOrder, sortBy, minLineCoveragePercentage, maxLineCoveragePercentage)
+#' See [https://paws-r.github.io/docs/codebuild/describe_code_coverages.html](https://paws-r.github.io/docs/codebuild/describe_code_coverages.html) for full documentation.
 #'
 #' @param reportArn &#91;required&#93; The ARN of the report for which test cases are returned.
 #' @param nextToken The `nextToken` value returned from a previous call to
@@ -1979,52 +595,15 @@ codebuild_delete_webhook <- function(projectName) {
 #' @param sortOrder Specifies if the results are sorted in ascending or descending order.
 #' @param sortBy Specifies how the results are sorted. Possible values are:
 #' 
-#' ### FILE_PATH
+#' **FILE_PATH**
 #' 
 #' The results are sorted by file path.
 #' 
-#' ### LINE_COVERAGE_PERCENTAGE
+#' **LINE_COVERAGE_PERCENTAGE**
 #' 
 #' The results are sorted by the percentage of lines that are covered.
 #' @param minLineCoveragePercentage The minimum line coverage percentage to report.
 #' @param maxLineCoveragePercentage The maximum line coverage percentage to report.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   codeCoverages = list(
-#'     list(
-#'       id = "string",
-#'       reportARN = "string",
-#'       filePath = "string",
-#'       lineCoveragePercentage = 123.0,
-#'       linesCovered = 123,
-#'       linesMissed = 123,
-#'       branchCoveragePercentage = 123.0,
-#'       branchesCovered = 123,
-#'       branchesMissed = 123,
-#'       expired = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_code_coverages(
-#'   reportArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   sortBy = "LINE_COVERAGE_PERCENTAGE"|"FILE_PATH",
-#'   minLineCoveragePercentage = 123.0,
-#'   maxLineCoveragePercentage = 123.0
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2051,8 +630,7 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
 #' @description
 #' Returns a list of details about test cases for a report.
 #'
-#' @usage
-#' codebuild_describe_test_cases(reportArn, nextToken, maxResults, filter)
+#' See [https://paws-r.github.io/docs/codebuild/describe_test_cases.html](https://paws-r.github.io/docs/codebuild/describe_test_cases.html) for full documentation.
 #'
 #' @param reportArn &#91;required&#93; The ARN of the report for which test cases are returned.
 #' @param nextToken During a previous call, the maximum number of items that can be returned
@@ -2066,41 +644,6 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
 #' `nextToken` to iterate pages in the list of returned `TestCase` objects.
 #' The default value is 100.
 #' @param filter A `TestCaseFilter` object used to filter the returned reports.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   testCases = list(
-#'     list(
-#'       reportArn = "string",
-#'       testRawDataPath = "string",
-#'       prefix = "string",
-#'       name = "string",
-#'       status = "string",
-#'       durationInNanoSeconds = 123,
-#'       message = "string",
-#'       expired = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_test_cases(
-#'   reportArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   filter = list(
-#'     status = "string",
-#'     keyword = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2122,45 +665,63 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
 }
 .codebuild$operations$describe_test_cases <- codebuild_describe_test_cases
 
-#' Get report group trend
+#' Analyzes and accumulates test report values for the specified test
+#' reports
 #'
 #' @description
-#' Get report group trend
+#' Analyzes and accumulates test report values for the specified test reports.
 #'
-#' @usage
-#' codebuild_get_report_group_trend(reportGroupArn, numOfReports,
-#'   trendField)
+#' See [https://paws-r.github.io/docs/codebuild/get_report_group_trend.html](https://paws-r.github.io/docs/codebuild/get_report_group_trend.html) for full documentation.
 #'
-#' @param reportGroupArn &#91;required&#93; 
-#' @param numOfReports 
-#' @param trendField &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   stats = list(
-#'     average = "string",
-#'     max = "string",
-#'     min = "string"
-#'   ),
-#'   rawData = list(
-#'     list(
-#'       reportArn = "string",
-#'       data = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_report_group_trend(
-#'   reportGroupArn = "string",
-#'   numOfReports = 123,
-#'   trendField = "PASS_RATE"|"DURATION"|"TOTAL"|"LINE_COVERAGE"|"LINES_COVERED"|"LINES_MISSED"|"BRANCH_COVERAGE"|"BRANCHES_COVERED"|"BRANCHES_MISSED"
-#' )
-#' ```
+#' @param reportGroupArn &#91;required&#93; The ARN of the report group that contains the reports to analyze.
+#' @param numOfReports The number of reports to analyze. This operation always retrieves the
+#' most recent reports.
+#' 
+#' If this parameter is omitted, the most recent 100 reports are analyzed.
+#' @param trendField &#91;required&#93; The test report value to accumulate. This must be one of the following
+#' values:
+#' 
+#' **Test reports:**
+#' 
+#' **DURATION**
+#' 
+#' Accumulate the test run times for the specified reports.
+#' 
+#' **PASS_RATE**
+#' 
+#' Accumulate the percentage of tests that passed for the specified test
+#' reports.
+#' 
+#' **TOTAL**
+#' 
+#' Accumulate the total number of tests for the specified test reports.
+#' 
+#' **Code coverage reports:**
+#' 
+#' **BRANCH_COVERAGE**
+#' 
+#' Accumulate the branch coverage percentages for the specified test
+#' reports.
+#' 
+#' **BRANCHES_COVERED**
+#' 
+#' Accumulate the branches covered values for the specified test reports.
+#' 
+#' **BRANCHES_MISSED**
+#' 
+#' Accumulate the branches missed values for the specified test reports.
+#' 
+#' **LINE_COVERAGE**
+#' 
+#' Accumulate the line coverage percentages for the specified test reports.
+#' 
+#' **LINES_COVERED**
+#' 
+#' Accumulate the lines covered values for the specified test reports.
+#' 
+#' **LINES_MISSED**
+#' 
+#' Accumulate the lines not covered values for the specified test reports.
 #'
 #' @keywords internal
 #'
@@ -2187,25 +748,9 @@ codebuild_get_report_group_trend <- function(reportGroupArn, numOfReports = NULL
 #' @description
 #' Gets a resource policy that is identified by its resource ARN.
 #'
-#' @usage
-#' codebuild_get_resource_policy(resourceArn)
+#' See [https://paws-r.github.io/docs/codebuild/get_resource_policy.html](https://paws-r.github.io/docs/codebuild/get_resource_policy.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource that is associated with the resource policy.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   policy = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resource_policy(
-#'   resourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2227,51 +772,26 @@ codebuild_get_resource_policy <- function(resourceArn) {
 }
 .codebuild$operations$get_resource_policy <- codebuild_get_resource_policy
 
-#' Imports the source repository credentials for an AWS CodeBuild project
-#' that has its source code stored in a GitHub, GitHub Enterprise, or
-#' Bitbucket repository
+#' Imports the source repository credentials for an CodeBuild project that
+#' has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket
+#' repository
 #'
 #' @description
-#' Imports the source repository credentials for an AWS CodeBuild project
-#' that has its source code stored in a GitHub, GitHub Enterprise, or
-#' Bitbucket repository.
+#' Imports the source repository credentials for an CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
 #'
-#' @usage
-#' codebuild_import_source_credentials(username, token, serverType,
-#'   authType, shouldOverwrite)
+#' See [https://paws-r.github.io/docs/codebuild/import_source_credentials.html](https://paws-r.github.io/docs/codebuild/import_source_credentials.html) for full documentation.
 #'
-#' @param username The Bitbucket username when the `authType` is BASIC_AUTH. This
-#' parameter is not valid for other types of source providers or
-#' connections.
+#' @param username The Bitbucket username when the `authType` is BASIC_AUTH. This parameter
+#' is not valid for other types of source providers or connections.
 #' @param token &#91;required&#93; For GitHub or GitHub Enterprise, this is the personal access token. For
 #' Bitbucket, this is the app password.
 #' @param serverType &#91;required&#93; The source provider used for this project.
 #' @param authType &#91;required&#93; The type of authentication used to connect to a GitHub, GitHub
 #' Enterprise, or Bitbucket repository. An OAUTH connection is not
-#' supported by the API and must be created using the AWS CodeBuild
-#' console.
+#' supported by the API and must be created using the CodeBuild console.
 #' @param shouldOverwrite Set to `false` to prevent overwriting the repository source credentials.
 #' Set to `true` to overwrite the repository source credentials. The
 #' default value is `true`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   arn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_source_credentials(
-#'   username = "string",
-#'   token = "string",
-#'   serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
-#'   authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN",
-#'   shouldOverwrite = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2298,20 +818,9 @@ codebuild_import_source_credentials <- function(username = NULL, token, serverTy
 #' @description
 #' Resets the cache for a project.
 #'
-#' @usage
-#' codebuild_invalidate_project_cache(projectName)
+#' See [https://paws-r.github.io/docs/codebuild/invalidate_project_cache.html](https://paws-r.github.io/docs/codebuild/invalidate_project_cache.html) for full documentation.
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild build project that the cache is reset for.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$invalidate_project_cache(
-#'   projectName = "string"
-#' )
-#' ```
+#' @param projectName &#91;required&#93; The name of the CodeBuild build project that the cache is reset for.
 #'
 #' @keywords internal
 #'
@@ -2338,8 +847,7 @@ codebuild_invalidate_project_cache <- function(projectName) {
 #' @description
 #' Retrieves the identifiers of your build batches in the current region.
 #'
-#' @usage
-#' codebuild_list_build_batches(filter, maxResults, sortOrder, nextToken)
+#' See [https://paws-r.github.io/docs/codebuild/list_build_batches.html](https://paws-r.github.io/docs/codebuild/list_build_batches.html) for full documentation.
 #'
 #' @param filter A `BuildBatchFilter` object that specifies the filters for the search.
 #' @param maxResults The maximum number of results to return.
@@ -2354,29 +862,6 @@ codebuild_invalidate_project_cache <- function(projectName) {
 #' [`list_build_batches`][codebuild_list_build_batches]. This specifies the
 #' next item to return. To return the beginning of the list, exclude this
 #' parameter.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ids = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_build_batches(
-#'   filter = list(
-#'     status = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED"
-#'   ),
-#'   maxResults = 123,
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2403,9 +888,7 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
 #' @description
 #' Retrieves the identifiers of the build batches for a specific project.
 #'
-#' @usage
-#' codebuild_list_build_batches_for_project(projectName, filter,
-#'   maxResults, sortOrder, nextToken)
+#' See [https://paws-r.github.io/docs/codebuild/list_build_batches_for_project.html](https://paws-r.github.io/docs/codebuild/list_build_batches_for_project.html) for full documentation.
 #'
 #' @param projectName The name of the project.
 #' @param filter A `BuildBatchFilter` object that specifies the filters for the search.
@@ -2421,30 +904,6 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
 #' [`list_build_batches_for_project`][codebuild_list_build_batches_for_project].
 #' This specifies the next item to return. To return the beginning of the
 #' list, exclude this parameter.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ids = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_build_batches_for_project(
-#'   projectName = "string",
-#'   filter = list(
-#'     status = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED"
-#'   ),
-#'   maxResults = 123,
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2469,11 +928,9 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
 #' Gets a list of build IDs, with each build ID representing a single build
 #'
 #' @description
-#' Gets a list of build IDs, with each build ID representing a single
-#' build.
+#' Gets a list of build IDs, with each build ID representing a single build.
 #'
-#' @usage
-#' codebuild_list_builds(sortOrder, nextToken)
+#' See [https://paws-r.github.io/docs/codebuild/list_builds.html](https://paws-r.github.io/docs/codebuild/list_builds.html) for full documentation.
 #'
 #' @param sortOrder The order to list build IDs. Valid values include:
 #' 
@@ -2486,25 +943,6 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
 #' operation again, adding the next token to the call. To get all of the
 #' items in the list, keep calling this operation with each subsequent next
 #' token that is returned, until no more next tokens are returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ids = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_builds(
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2526,48 +964,35 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
 }
 .codebuild$operations$list_builds <- codebuild_list_builds
 
-#' Gets a list of build IDs for the specified build project, with each
-#' build ID representing a single build
+#' Gets a list of build identifiers for the specified build project, with
+#' each build identifier representing a single build
 #'
 #' @description
-#' Gets a list of build IDs for the specified build project, with each
-#' build ID representing a single build.
+#' Gets a list of build identifiers for the specified build project, with each build identifier representing a single build.
 #'
-#' @usage
-#' codebuild_list_builds_for_project(projectName, sortOrder, nextToken)
+#' See [https://paws-r.github.io/docs/codebuild/list_builds_for_project.html](https://paws-r.github.io/docs/codebuild/list_builds_for_project.html) for full documentation.
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
-#' @param sortOrder The order to list build IDs. Valid values include:
+#' @param projectName &#91;required&#93; The name of the CodeBuild project.
+#' @param sortOrder The order to sort the results in. The results are sorted by build
+#' number, not the build identifier. If this is not specified, the results
+#' are sorted in descending order.
 #' 
-#' -   `ASCENDING`: List the build IDs in ascending order by build ID.
+#' Valid values include:
 #' 
-#' -   `DESCENDING`: List the build IDs in descending order by build ID.
+#' -   `ASCENDING`: List the build identifiers in ascending order, by build
+#'     number.
+#' 
+#' -   `DESCENDING`: List the build identifiers in descending order, by
+#'     build number.
+#' 
+#' If the project has more than 100 builds, setting the sort order will
+#' result in an error.
 #' @param nextToken During a previous call, if there are more than 100 items in the list,
 #' only the first 100 items are returned, along with a unique string called
 #' a *nextToken*. To get the next batch of items in the list, call this
 #' operation again, adding the next token to the call. To get all of the
 #' items in the list, keep calling this operation with each subsequent next
 #' token that is returned, until no more next tokens are returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ids = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_builds_for_project(
-#'   projectName = "string",
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2589,44 +1014,12 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
 }
 .codebuild$operations$list_builds_for_project <- codebuild_list_builds_for_project
 
-#' Gets information about Docker images that are managed by AWS CodeBuild
+#' Gets information about Docker images that are managed by CodeBuild
 #'
 #' @description
-#' Gets information about Docker images that are managed by AWS CodeBuild.
+#' Gets information about Docker images that are managed by CodeBuild.
 #'
-#' @usage
-#' codebuild_list_curated_environment_images()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   platforms = list(
-#'     list(
-#'       platform = "DEBIAN"|"AMAZON_LINUX"|"UBUNTU"|"WINDOWS_SERVER",
-#'       languages = list(
-#'         list(
-#'           language = "JAVA"|"PYTHON"|"NODE_JS"|"RUBY"|"GOLANG"|"DOCKER"|"ANDROID"|"DOTNET"|"BASE"|"PHP",
-#'           images = list(
-#'             list(
-#'               name = "string",
-#'               description = "string",
-#'               versions = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_curated_environment_images()
-#' ```
+#' See [https://paws-r.github.io/docs/codebuild/list_curated_environment_images.html](https://paws-r.github.io/docs/codebuild/list_curated_environment_images.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -2652,11 +1045,9 @@ codebuild_list_curated_environment_images <- function() {
 #' representing a single build project
 #'
 #' @description
-#' Gets a list of build project names, with each build project name
-#' representing a single build project.
+#' Gets a list of build project names, with each build project name representing a single build project.
 #'
-#' @usage
-#' codebuild_list_projects(sortBy, sortOrder, nextToken)
+#' See [https://paws-r.github.io/docs/codebuild/list_projects.html](https://paws-r.github.io/docs/codebuild/list_projects.html) for full documentation.
 #'
 #' @param sortBy The criterion to be used to list build project names. Valid values
 #' include:
@@ -2685,26 +1076,6 @@ codebuild_list_curated_environment_images <- function() {
 #' items in the list, keep calling this operation with each subsequent next
 #' token that is returned, until no more next tokens are returned.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   projects = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_projects(
-#'   sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   nextToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codebuild_list_projects
@@ -2725,13 +1096,13 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
 }
 .codebuild$operations$list_projects <- codebuild_list_projects
 
-#' Gets a list ARNs for the report groups in the current AWS account
+#' Gets a list ARNs for the report groups in the current Amazon Web
+#' Services account
 #'
 #' @description
-#' Gets a list ARNs for the report groups in the current AWS account.
+#' Gets a list ARNs for the report groups in the current Amazon Web Services account.
 #'
-#' @usage
-#' codebuild_list_report_groups(sortOrder, sortBy, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codebuild/list_report_groups.html](https://paws-r.github.io/docs/codebuild/list_report_groups.html) for full documentation.
 #'
 #' @param sortOrder Used to specify the order to sort the list of returned report groups.
 #' Valid values are `ASCENDING` and `DESCENDING`.
@@ -2755,27 +1126,6 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
 #' `nextToken` to iterate pages in the list of returned `ReportGroup`
 #' objects. The default value is 100.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   reportGroups = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_report_groups(
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   sortBy = "NAME"|"CREATED_TIME"|"LAST_MODIFIED_TIME",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codebuild_list_report_groups
@@ -2796,13 +1146,13 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
 }
 .codebuild$operations$list_report_groups <- codebuild_list_report_groups
 
-#' Returns a list of ARNs for the reports in the current AWS account
+#' Returns a list of ARNs for the reports in the current Amazon Web
+#' Services account
 #'
 #' @description
-#' Returns a list of ARNs for the reports in the current AWS account.
+#' Returns a list of ARNs for the reports in the current Amazon Web Services account.
 #'
-#' @usage
-#' codebuild_list_reports(sortOrder, nextToken, maxResults, filter)
+#' See [https://paws-r.github.io/docs/codebuild/list_reports.html](https://paws-r.github.io/docs/codebuild/list_reports.html) for full documentation.
 #'
 #' @param sortOrder Specifies the sort order for the list of returned reports. Valid values
 #' are:
@@ -2823,29 +1173,6 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
 #' `nextToken` to iterate pages in the list of returned `Report` objects.
 #' The default value is 100.
 #' @param filter A `ReportFilter` object used to filter the returned reports.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   reports = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_reports(
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   nextToken = "string",
-#'   maxResults = 123,
-#'   filter = list(
-#'     status = "GENERATING"|"SUCCEEDED"|"FAILED"|"INCOMPLETE"|"DELETING"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2872,9 +1199,7 @@ codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResult
 #' @description
 #' Returns a list of ARNs for the reports that belong to a `ReportGroup`.
 #'
-#' @usage
-#' codebuild_list_reports_for_report_group(reportGroupArn, nextToken,
-#'   sortOrder, maxResults, filter)
+#' See [https://paws-r.github.io/docs/codebuild/list_reports_for_report_group.html](https://paws-r.github.io/docs/codebuild/list_reports_for_report_group.html) for full documentation.
 #'
 #' @param reportGroupArn &#91;required&#93; The ARN of the report group for which you want to return report ARNs.
 #' @param nextToken During a previous call, the maximum number of items that can be returned
@@ -2890,30 +1215,6 @@ codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResult
 #' per response. Use `nextToken` to iterate pages in the list of returned
 #' `Report` objects. The default value is 100.
 #' @param filter A `ReportFilter` object used to filter the returned reports.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   reports = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_reports_for_report_group(
-#'   reportGroupArn = "string",
-#'   nextToken = "string",
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   maxResults = 123,
-#'   filter = list(
-#'     status = "GENERATING"|"SUCCEEDED"|"FAILED"|"INCOMPLETE"|"DELETING"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2935,17 +1236,16 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
 }
 .codebuild$operations$list_reports_for_report_group <- codebuild_list_reports_for_report_group
 
-#' Gets a list of projects that are shared with other AWS accounts or users
+#' Gets a list of projects that are shared with other Amazon Web Services
+#' accounts or users
 #'
 #' @description
-#' Gets a list of projects that are shared with other AWS accounts or
-#' users.
+#' Gets a list of projects that are shared with other Amazon Web Services accounts or users.
 #'
-#' @usage
-#' codebuild_list_shared_projects(sortBy, sortOrder, maxResults, nextToken)
+#' See [https://paws-r.github.io/docs/codebuild/list_shared_projects.html](https://paws-r.github.io/docs/codebuild/list_shared_projects.html) for full documentation.
 #'
 #' @param sortBy The criterion to be used to list build projects shared with the current
-#' AWS account or user. Valid values include:
+#' Amazon Web Services account or user. Valid values include:
 #' 
 #' -   `ARN`: List based on the ARN.
 #' 
@@ -2967,27 +1267,6 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
 #' this operation with each subsequent next token that is returned, until
 #' no more next tokens are returned.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   projects = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_shared_projects(
-#'   sortBy = "ARN"|"MODIFIED_TIME",
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codebuild_list_shared_projects
@@ -3008,16 +1287,13 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
 }
 .codebuild$operations$list_shared_projects <- codebuild_list_shared_projects
 
-#' Gets a list of report groups that are shared with other AWS accounts or
-#' users
+#' Gets a list of report groups that are shared with other Amazon Web
+#' Services accounts or users
 #'
 #' @description
-#' Gets a list of report groups that are shared with other AWS accounts or
-#' users.
+#' Gets a list of report groups that are shared with other Amazon Web Services accounts or users.
 #'
-#' @usage
-#' codebuild_list_shared_report_groups(sortOrder, sortBy, nextToken,
-#'   maxResults)
+#' See [https://paws-r.github.io/docs/codebuild/list_shared_report_groups.html](https://paws-r.github.io/docs/codebuild/list_shared_report_groups.html) for full documentation.
 #'
 #' @param sortOrder The order in which to list shared report groups. Valid values include:
 #' 
@@ -3025,7 +1301,7 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
 #' 
 #' -   `DESCENDING`: List in descending order.
 #' @param sortBy The criterion to be used to list report groups shared with the current
-#' AWS account or user. Valid values include:
+#' Amazon Web Services account or user. Valid values include:
 #' 
 #' -   `ARN`: List based on the ARN.
 #' 
@@ -3041,27 +1317,6 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
 #' @param maxResults The maximum number of paginated shared report groups per response. Use
 #' `nextToken` to iterate pages in the list of returned `ReportGroup`
 #' objects. The default value is 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nextToken = "string",
-#'   reportGroups = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_shared_report_groups(
-#'   sortOrder = "ASCENDING"|"DESCENDING",
-#'   sortBy = "ARN"|"MODIFIED_TIME",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3088,27 +1343,7 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
 #' @description
 #' Returns a list of `SourceCredentialsInfo` objects.
 #'
-#' @usage
-#' codebuild_list_source_credentials()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   sourceCredentialsInfos = list(
-#'     list(
-#'       arn = "string",
-#'       serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
-#'       authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_source_credentials()
-#' ```
+#' See [https://paws-r.github.io/docs/codebuild/list_source_credentials.html](https://paws-r.github.io/docs/codebuild/list_source_credentials.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3133,35 +1368,17 @@ codebuild_list_source_credentials <- function() {
 #' Stores a resource policy for the ARN of a Project or ReportGroup object
 #'
 #' @description
-#' Stores a resource policy for the ARN of a `Project` or `ReportGroup`
-#' object.
+#' Stores a resource policy for the ARN of a `Project` or `ReportGroup` object.
 #'
-#' @usage
-#' codebuild_put_resource_policy(policy, resourceArn)
+#' See [https://paws-r.github.io/docs/codebuild/put_resource_policy.html](https://paws-r.github.io/docs/codebuild/put_resource_policy.html) for full documentation.
 #'
 #' @param policy &#91;required&#93; A JSON-formatted resource policy. For more information, see [Sharing a
 #' Project](https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share)
 #' and [Sharing a Report
 #' Group](https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share)
-#' in the *AWS CodeBuild User Guide*.
+#' in the *CodeBuild User Guide*.
 #' @param resourceArn &#91;required&#93; The ARN of the `Project` or `ReportGroup` resource you want to associate
 #' with a resource policy.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   resourceArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_resource_policy(
-#'   policy = "string",
-#'   resourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3188,8 +1405,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' @description
 #' Restarts a build.
 #'
-#' @usage
-#' codebuild_retry_build(id, idempotencyToken)
+#' See [https://paws-r.github.io/docs/codebuild/retry_build.html](https://paws-r.github.io/docs/codebuild/retry_build.html) for full documentation.
 #'
 #' @param id Specifies the identifier of the build to restart.
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
@@ -3197,209 +1413,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' token is included in the [`retry_build`][codebuild_retry_build] request
 #' and is valid for five minutes. If you repeat the
 #' [`retry_build`][codebuild_retry_build] request with the same token, but
-#' change a parameter, AWS CodeBuild returns a parameter mismatch error.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   build = list(
-#'     id = "string",
-#'     arn = "string",
-#'     buildNumber = 123,
-#'     startTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     endTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     currentPhase = "string",
-#'     buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'     sourceVersion = "string",
-#'     resolvedSourceVersion = "string",
-#'     projectName = "string",
-#'     phases = list(
-#'       list(
-#'         phaseType = "SUBMITTED"|"QUEUED"|"PROVISIONING"|"DOWNLOAD_SOURCE"|"INSTALL"|"PRE_BUILD"|"BUILD"|"POST_BUILD"|"UPLOAD_ARTIFACTS"|"FINALIZING"|"COMPLETED",
-#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'         startTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         endTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         durationInSeconds = 123,
-#'         contexts = list(
-#'           list(
-#'             statusCode = "string",
-#'             message = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     source = list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     ),
-#'     secondarySources = list(
-#'       list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       )
-#'     ),
-#'     secondarySourceVersions = list(
-#'       list(
-#'         sourceIdentifier = "string",
-#'         sourceVersion = "string"
-#'       )
-#'     ),
-#'     artifacts = list(
-#'       location = "string",
-#'       sha256sum = "string",
-#'       md5sum = "string",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     ),
-#'     secondaryArtifacts = list(
-#'       list(
-#'         location = "string",
-#'         sha256sum = "string",
-#'         md5sum = "string",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       )
-#'     ),
-#'     cache = list(
-#'       type = "NO_CACHE"|"S3"|"LOCAL",
-#'       location = "string",
-#'       modes = list(
-#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
-#'     ),
-#'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'       environmentVariables = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'         )
-#'       ),
-#'       privilegedMode = TRUE|FALSE,
-#'       certificate = "string",
-#'       registryCredential = list(
-#'         credential = "string",
-#'         credentialProvider = "SECRETS_MANAGER"
-#'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'     ),
-#'     serviceRole = "string",
-#'     logs = list(
-#'       groupName = "string",
-#'       streamName = "string",
-#'       deepLink = "string",
-#'       s3DeepLink = "string",
-#'       cloudWatchLogsArn = "string",
-#'       s3LogsArn = "string",
-#'       cloudWatchLogs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         groupName = "string",
-#'         streamName = "string"
-#'       ),
-#'       s3Logs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     timeoutInMinutes = 123,
-#'     queuedTimeoutInMinutes = 123,
-#'     buildComplete = TRUE|FALSE,
-#'     initiator = "string",
-#'     vpcConfig = list(
-#'       vpcId = "string",
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     networkInterface = list(
-#'       subnetId = "string",
-#'       networkInterfaceId = "string"
-#'     ),
-#'     encryptionKey = "string",
-#'     exportedEnvironmentVariables = list(
-#'       list(
-#'         name = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     reportArns = list(
-#'       "string"
-#'     ),
-#'     fileSystemLocations = list(
-#'       list(
-#'         type = "EFS",
-#'         location = "string",
-#'         mountPoint = "string",
-#'         identifier = "string",
-#'         mountOptions = "string"
-#'       )
-#'     ),
-#'     debugSession = list(
-#'       sessionEnabled = TRUE|FALSE,
-#'       sessionTarget = "string"
-#'     ),
-#'     buildBatchArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$retry_build(
-#'   id = "string",
-#'   idempotencyToken = "string"
-#' )
-#' ```
+#' change a parameter, CodeBuild returns a parameter mismatch error.
 #'
 #' @keywords internal
 #'
@@ -3424,11 +1438,9 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #' Restarts a failed batch build
 #'
 #' @description
-#' Restarts a failed batch build. Only batch builds that have failed can be
-#' retried.
+#' Restarts a failed batch build. Only batch builds that have failed can be retried.
 #'
-#' @usage
-#' codebuild_retry_build_batch(id, idempotencyToken, retryType)
+#' See [https://paws-r.github.io/docs/codebuild/retry_build_batch.html](https://paws-r.github.io/docs/codebuild/retry_build_batch.html) for full documentation.
 #'
 #' @param id Specifies the identifier of the batch build to restart.
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
@@ -3437,248 +1449,9 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #' [`retry_build_batch`][codebuild_retry_build_batch] request and is valid
 #' for five minutes. If you repeat the
 #' [`retry_build_batch`][codebuild_retry_build_batch] request with the same
-#' token, but change a parameter, AWS CodeBuild returns a parameter
-#' mismatch error.
+#' token, but change a parameter, CodeBuild returns a parameter mismatch
+#' error.
 #' @param retryType Specifies the type of retry to perform.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   buildBatch = list(
-#'     id = "string",
-#'     arn = "string",
-#'     startTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     endTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     currentPhase = "string",
-#'     buildBatchStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'     sourceVersion = "string",
-#'     resolvedSourceVersion = "string",
-#'     projectName = "string",
-#'     phases = list(
-#'       list(
-#'         phaseType = "SUBMITTED"|"DOWNLOAD_BATCHSPEC"|"IN_PROGRESS"|"COMBINE_ARTIFACTS"|"SUCCEEDED"|"FAILED"|"STOPPED",
-#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'         startTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         endTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         durationInSeconds = 123,
-#'         contexts = list(
-#'           list(
-#'             statusCode = "string",
-#'             message = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     source = list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     ),
-#'     secondarySources = list(
-#'       list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       )
-#'     ),
-#'     secondarySourceVersions = list(
-#'       list(
-#'         sourceIdentifier = "string",
-#'         sourceVersion = "string"
-#'       )
-#'     ),
-#'     artifacts = list(
-#'       location = "string",
-#'       sha256sum = "string",
-#'       md5sum = "string",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     ),
-#'     secondaryArtifacts = list(
-#'       list(
-#'         location = "string",
-#'         sha256sum = "string",
-#'         md5sum = "string",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       )
-#'     ),
-#'     cache = list(
-#'       type = "NO_CACHE"|"S3"|"LOCAL",
-#'       location = "string",
-#'       modes = list(
-#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
-#'     ),
-#'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'       environmentVariables = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'         )
-#'       ),
-#'       privilegedMode = TRUE|FALSE,
-#'       certificate = "string",
-#'       registryCredential = list(
-#'         credential = "string",
-#'         credentialProvider = "SECRETS_MANAGER"
-#'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'     ),
-#'     serviceRole = "string",
-#'     logConfig = list(
-#'       cloudWatchLogs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         groupName = "string",
-#'         streamName = "string"
-#'       ),
-#'       s3Logs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     buildTimeoutInMinutes = 123,
-#'     queuedTimeoutInMinutes = 123,
-#'     complete = TRUE|FALSE,
-#'     initiator = "string",
-#'     vpcConfig = list(
-#'       vpcId = "string",
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     encryptionKey = "string",
-#'     buildBatchNumber = 123,
-#'     fileSystemLocations = list(
-#'       list(
-#'         type = "EFS",
-#'         location = "string",
-#'         mountPoint = "string",
-#'         identifier = "string",
-#'         mountOptions = "string"
-#'       )
-#'     ),
-#'     buildBatchConfig = list(
-#'       serviceRole = "string",
-#'       combineArtifacts = TRUE|FALSE,
-#'       restrictions = list(
-#'         maximumBuildsAllowed = 123,
-#'         computeTypesAllowed = list(
-#'           "string"
-#'         )
-#'       ),
-#'       timeoutInMins = 123
-#'     ),
-#'     buildGroups = list(
-#'       list(
-#'         identifier = "string",
-#'         dependsOn = list(
-#'           "string"
-#'         ),
-#'         ignoreFailure = TRUE|FALSE,
-#'         currentBuildSummary = list(
-#'           arn = "string",
-#'           requestedOn = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'           primaryArtifact = list(
-#'             type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'             location = "string",
-#'             identifier = "string"
-#'           ),
-#'           secondaryArtifacts = list(
-#'             list(
-#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'               location = "string",
-#'               identifier = "string"
-#'             )
-#'           )
-#'         ),
-#'         priorBuildSummaryList = list(
-#'           list(
-#'             arn = "string",
-#'             requestedOn = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'             primaryArtifact = list(
-#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'               location = "string",
-#'               identifier = "string"
-#'             ),
-#'             secondaryArtifacts = list(
-#'               list(
-#'                 type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'                 location = "string",
-#'                 identifier = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$retry_build_batch(
-#'   id = "string",
-#'   idempotencyToken = "string",
-#'   retryType = "RETRY_ALL_BUILDS"|"RETRY_FAILED_BUILDS"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3705,21 +1478,9 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @description
 #' Starts running a build.
 #'
-#' @usage
-#' codebuild_start_build(projectName, secondarySourcesOverride,
-#'   secondarySourcesVersionOverride, sourceVersion, artifactsOverride,
-#'   secondaryArtifactsOverride, environmentVariablesOverride,
-#'   sourceTypeOverride, sourceLocationOverride, sourceAuthOverride,
-#'   gitCloneDepthOverride, gitSubmodulesConfigOverride, buildspecOverride,
-#'   insecureSslOverride, reportBuildStatusOverride,
-#'   buildStatusConfigOverride, environmentTypeOverride, imageOverride,
-#'   computeTypeOverride, certificateOverride, cacheOverride,
-#'   serviceRoleOverride, privilegedModeOverride, timeoutInMinutesOverride,
-#'   queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
-#'   logsConfigOverride, registryCredentialOverride,
-#'   imagePullCredentialsTypeOverride, debugSessionEnabled)
+#' See [https://paws-r.github.io/docs/codebuild/start_build.html](https://paws-r.github.io/docs/codebuild/start_build.html) for full documentation.
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild build project to start running a build.
+#' @param projectName &#91;required&#93; The name of the CodeBuild build project to start running a build.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects.
 #' @param secondarySourcesVersionOverride An array of `ProjectSourceVersion` objects that specify one or more
 #' versions of the project's secondary sources to be used for this build
@@ -3728,11 +1489,11 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' specified, the latest version is used. If specified, the contents
 #' depends on the source provider:
 #' 
-#' ### AWS CodeCommit
+#' **CodeCommit**
 #' 
 #' The commit ID, branch, or Git tag to use.
 #' 
-#' ### GitHub
+#' **GitHub**
 #' 
 #' The commit ID, pull request ID, branch name, or tag name that
 #' corresponds to the version of the source code you want to build. If a
@@ -3741,14 +1502,14 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' specified, the branch's HEAD commit ID is used. If not specified, the
 #' default branch's HEAD commit ID is used.
 #' 
-#' ### Bitbucket
+#' **Bitbucket**
 #' 
 #' The commit ID, branch name, or tag name that corresponds to the version
 #' of the source code you want to build. If a branch name is specified, the
 #' branch's HEAD commit ID is used. If not specified, the default branch's
 #' HEAD commit ID is used.
 #' 
-#' ### Amazon Simple Storage Service (Amazon S3)
+#' **Amazon S3**
 #' 
 #' The version ID of the object that represents the build input ZIP file to
 #' use.
@@ -3758,7 +1519,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' 
 #' For more information, see [Source Version Sample with
 #' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-#' in the *AWS CodeBuild User Guide*.
+#' in the *CodeBuild User Guide*.
 #' @param artifactsOverride Build output artifact settings that override, for this build only, the
 #' latest ones already defined in the build project.
 #' @param secondaryArtifactsOverride An array of `ProjectArtifacts` objects.
@@ -3775,15 +1536,15 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' overrides, for this build only, any previous depth of history defined in
 #' the build project.
 #' @param gitSubmodulesConfigOverride Information about the Git submodules configuration for this build of an
-#' AWS CodeBuild build project.
+#' CodeBuild build project.
 #' @param buildspecOverride A buildspec file declaration that overrides, for this build only, the
 #' latest one already defined in the build project.
 #' 
 #' If this value is set, it can be either an inline buildspec definition,
 #' the path to an alternate buildspec file relative to the value of the
 #' built-in `CODEBUILD_SRC_DIR` environment variable, or the path to an S3
-#' bucket. The bucket must be in the same AWS Region as the build project.
-#' Specify the buildspec file using its ARN (for example,
+#' bucket. The bucket must be in the same Amazon Web Services Region as the
+#' build project. Specify the buildspec file using its ARN (for example,
 #' `arn:aws:s3:::my-codebuild-sample2/buildspec.yml`). If this value is not
 #' provided or is set to an empty string, the source code must contain a
 #' buildspec file in its root directory. For more information, see
@@ -3796,7 +1557,14 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @param reportBuildStatusOverride Set to true to report to your source provider the status of a build's
 #' start and completion. If you use this option with a source provider
 #' other than GitHub, GitHub Enterprise, or Bitbucket, an
-#' invalidInputException is thrown.
+#' `invalidInputException` is thrown.
+#' 
+#' To be able to report the build status to the source provider, the user
+#' associated with the source provider must have write access to the repo.
+#' If the user does not have write access, the build status cannot be
+#' updated. For more information, see [Source provider
+#' access](https://docs.aws.amazon.com/codebuild/latest/userguide/access-tokens.html)
+#' in the *CodeBuild User Guide*.
 #' 
 #' The status of a build triggered by a webhook is always reported to your
 #' source provider.
@@ -3821,9 +1589,9 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' the build project.
 #' @param queuedTimeoutInMinutesOverride The number of minutes a build is allowed to be queued before it times
 #' out.
-#' @param encryptionKeyOverride The AWS Key Management Service (AWS KMS) customer master key (CMK) that
-#' overrides the one specified in the build project. The CMK key encrypts
-#' the build output artifacts.
+#' @param encryptionKeyOverride The Key Management Service customer master key (CMK) that overrides the
+#' one specified in the build project. The CMK key encrypts the build
+#' output artifacts.
 #' 
 #' You can use a cross-account KMS key to encrypt the build output
 #' artifacts if your service role has permission to that key.
@@ -3833,343 +1601,30 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
 #' idempotency of the StartBuild request. The token is included in the
 #' StartBuild request and is valid for 5 minutes. If you repeat the
-#' StartBuild request with the same token, but change a parameter, AWS
+#' StartBuild request with the same token, but change a parameter,
 #' CodeBuild returns a parameter mismatch error.
 #' @param logsConfigOverride Log settings for this build that override the log settings defined in
 #' the build project.
 #' @param registryCredentialOverride The credentials for access to a private registry.
-#' @param imagePullCredentialsTypeOverride The type of credentials AWS CodeBuild uses to pull images in your build.
+#' @param imagePullCredentialsTypeOverride The type of credentials CodeBuild uses to pull images in your build.
 #' There are two valid values:
 #' 
-#' ### CODEBUILD
+#' **CODEBUILD**
 #' 
-#' Specifies that AWS CodeBuild uses its own credentials. This requires
-#' that you modify your ECR repository policy to trust AWS CodeBuild's
-#' service principal.
+#' Specifies that CodeBuild uses its own credentials. This requires that
+#' you modify your ECR repository policy to trust CodeBuild's service
+#' principal.
 #' 
-#' ### SERVICE_ROLE
+#' **SERVICE_ROLE**
 #' 
-#' Specifies that AWS CodeBuild uses your build project's service role.
+#' Specifies that CodeBuild uses your build project's service role.
 #' 
 #' When using a cross-account or private registry image, you must use
-#' `SERVICE_ROLE` credentials. When using an AWS CodeBuild curated image,
-#' you must use `CODEBUILD` credentials.
+#' `SERVICE_ROLE` credentials. When using an CodeBuild curated image, you
+#' must use `CODEBUILD` credentials.
 #' @param debugSessionEnabled Specifies if session debugging is enabled for this build. For more
 #' information, see [Viewing a running build in Session
 #' Manager](https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   build = list(
-#'     id = "string",
-#'     arn = "string",
-#'     buildNumber = 123,
-#'     startTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     endTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     currentPhase = "string",
-#'     buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'     sourceVersion = "string",
-#'     resolvedSourceVersion = "string",
-#'     projectName = "string",
-#'     phases = list(
-#'       list(
-#'         phaseType = "SUBMITTED"|"QUEUED"|"PROVISIONING"|"DOWNLOAD_SOURCE"|"INSTALL"|"PRE_BUILD"|"BUILD"|"POST_BUILD"|"UPLOAD_ARTIFACTS"|"FINALIZING"|"COMPLETED",
-#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'         startTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         endTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         durationInSeconds = 123,
-#'         contexts = list(
-#'           list(
-#'             statusCode = "string",
-#'             message = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     source = list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     ),
-#'     secondarySources = list(
-#'       list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       )
-#'     ),
-#'     secondarySourceVersions = list(
-#'       list(
-#'         sourceIdentifier = "string",
-#'         sourceVersion = "string"
-#'       )
-#'     ),
-#'     artifacts = list(
-#'       location = "string",
-#'       sha256sum = "string",
-#'       md5sum = "string",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     ),
-#'     secondaryArtifacts = list(
-#'       list(
-#'         location = "string",
-#'         sha256sum = "string",
-#'         md5sum = "string",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       )
-#'     ),
-#'     cache = list(
-#'       type = "NO_CACHE"|"S3"|"LOCAL",
-#'       location = "string",
-#'       modes = list(
-#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
-#'     ),
-#'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'       environmentVariables = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'         )
-#'       ),
-#'       privilegedMode = TRUE|FALSE,
-#'       certificate = "string",
-#'       registryCredential = list(
-#'         credential = "string",
-#'         credentialProvider = "SECRETS_MANAGER"
-#'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'     ),
-#'     serviceRole = "string",
-#'     logs = list(
-#'       groupName = "string",
-#'       streamName = "string",
-#'       deepLink = "string",
-#'       s3DeepLink = "string",
-#'       cloudWatchLogsArn = "string",
-#'       s3LogsArn = "string",
-#'       cloudWatchLogs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         groupName = "string",
-#'         streamName = "string"
-#'       ),
-#'       s3Logs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     timeoutInMinutes = 123,
-#'     queuedTimeoutInMinutes = 123,
-#'     buildComplete = TRUE|FALSE,
-#'     initiator = "string",
-#'     vpcConfig = list(
-#'       vpcId = "string",
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     networkInterface = list(
-#'       subnetId = "string",
-#'       networkInterfaceId = "string"
-#'     ),
-#'     encryptionKey = "string",
-#'     exportedEnvironmentVariables = list(
-#'       list(
-#'         name = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     reportArns = list(
-#'       "string"
-#'     ),
-#'     fileSystemLocations = list(
-#'       list(
-#'         type = "EFS",
-#'         location = "string",
-#'         mountPoint = "string",
-#'         identifier = "string",
-#'         mountOptions = "string"
-#'       )
-#'     ),
-#'     debugSession = list(
-#'       sessionEnabled = TRUE|FALSE,
-#'       sessionTarget = "string"
-#'     ),
-#'     buildBatchArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_build(
-#'   projectName = "string",
-#'   secondarySourcesOverride = list(
-#'     list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     )
-#'   ),
-#'   secondarySourcesVersionOverride = list(
-#'     list(
-#'       sourceIdentifier = "string",
-#'       sourceVersion = "string"
-#'     )
-#'   ),
-#'   sourceVersion = "string",
-#'   artifactsOverride = list(
-#'     type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'     location = "string",
-#'     path = "string",
-#'     namespaceType = "NONE"|"BUILD_ID",
-#'     name = "string",
-#'     packaging = "NONE"|"ZIP",
-#'     overrideArtifactName = TRUE|FALSE,
-#'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
-#'   ),
-#'   secondaryArtifactsOverride = list(
-#'     list(
-#'       type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'       location = "string",
-#'       path = "string",
-#'       namespaceType = "NONE"|"BUILD_ID",
-#'       name = "string",
-#'       packaging = "NONE"|"ZIP",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     )
-#'   ),
-#'   environmentVariablesOverride = list(
-#'     list(
-#'       name = "string",
-#'       value = "string",
-#'       type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'     )
-#'   ),
-#'   sourceTypeOverride = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'   sourceLocationOverride = "string",
-#'   sourceAuthOverride = list(
-#'     type = "OAUTH",
-#'     resource = "string"
-#'   ),
-#'   gitCloneDepthOverride = 123,
-#'   gitSubmodulesConfigOverride = list(
-#'     fetchSubmodules = TRUE|FALSE
-#'   ),
-#'   buildspecOverride = "string",
-#'   insecureSslOverride = TRUE|FALSE,
-#'   reportBuildStatusOverride = TRUE|FALSE,
-#'   buildStatusConfigOverride = list(
-#'     context = "string",
-#'     targetUrl = "string"
-#'   ),
-#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'   imageOverride = "string",
-#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'   certificateOverride = "string",
-#'   cacheOverride = list(
-#'     type = "NO_CACHE"|"S3"|"LOCAL",
-#'     location = "string",
-#'     modes = list(
-#'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'     )
-#'   ),
-#'   serviceRoleOverride = "string",
-#'   privilegedModeOverride = TRUE|FALSE,
-#'   timeoutInMinutesOverride = 123,
-#'   queuedTimeoutInMinutesOverride = 123,
-#'   encryptionKeyOverride = "string",
-#'   idempotencyToken = "string",
-#'   logsConfigOverride = list(
-#'     cloudWatchLogs = list(
-#'       status = "ENABLED"|"DISABLED",
-#'       groupName = "string",
-#'       streamName = "string"
-#'     ),
-#'     s3Logs = list(
-#'       status = "ENABLED"|"DISABLED",
-#'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   registryCredentialOverride = list(
-#'     credential = "string",
-#'     credentialProvider = "SECRETS_MANAGER"
-#'   ),
-#'   imagePullCredentialsTypeOverride = "CODEBUILD"|"SERVICE_ROLE",
-#'   debugSessionEnabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4196,19 +1651,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' @description
 #' Starts a batch build for a project.
 #'
-#' @usage
-#' codebuild_start_build_batch(projectName, secondarySourcesOverride,
-#'   secondarySourcesVersionOverride, sourceVersion, artifactsOverride,
-#'   secondaryArtifactsOverride, environmentVariablesOverride,
-#'   sourceTypeOverride, sourceLocationOverride, sourceAuthOverride,
-#'   gitCloneDepthOverride, gitSubmodulesConfigOverride, buildspecOverride,
-#'   insecureSslOverride, reportBuildBatchStatusOverride,
-#'   environmentTypeOverride, imageOverride, computeTypeOverride,
-#'   certificateOverride, cacheOverride, serviceRoleOverride,
-#'   privilegedModeOverride, buildTimeoutInMinutesOverride,
-#'   queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
-#'   logsConfigOverride, registryCredentialOverride,
-#'   imagePullCredentialsTypeOverride, buildBatchConfigOverride)
+#' See [https://paws-r.github.io/docs/codebuild/start_build_batch.html](https://paws-r.github.io/docs/codebuild/start_build_batch.html) for full documentation.
 #'
 #' @param projectName &#91;required&#93; The name of the project.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects that override the secondary sources
@@ -4219,11 +1662,11 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' If not specified, the latest version is used. If specified, the contents
 #' depends on the source provider:
 #' 
-#' ### AWS CodeCommit
+#' **CodeCommit**
 #' 
 #' The commit ID, branch, or Git tag to use.
 #' 
-#' ### GitHub
+#' **GitHub**
 #' 
 #' The commit ID, pull request ID, branch name, or tag name that
 #' corresponds to the version of the source code you want to build. If a
@@ -4232,14 +1675,14 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' specified, the branch's HEAD commit ID is used. If not specified, the
 #' default branch's HEAD commit ID is used.
 #' 
-#' ### Bitbucket
+#' **Bitbucket**
 #' 
 #' The commit ID, branch name, or tag name that corresponds to the version
 #' of the source code you want to build. If a branch name is specified, the
 #' branch's HEAD commit ID is used. If not specified, the default branch's
 #' HEAD commit ID is used.
 #' 
-#' ### Amazon Simple Storage Service (Amazon S3)
+#' **Amazon S3**
 #' 
 #' The version ID of the object that represents the build input ZIP file to
 #' use.
@@ -4249,7 +1692,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' 
 #' For more information, see [Source Version Sample with
 #' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-#' in the *AWS CodeBuild User Guide*.
+#' in the *CodeBuild User Guide*.
 #' @param artifactsOverride An array of `ProjectArtifacts` objects that contains information about
 #' the build output artifact overrides for the build project.
 #' @param secondaryArtifactsOverride An array of `ProjectArtifacts` objects that override the secondary
@@ -4274,8 +1717,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' If this value is set, it can be either an inline buildspec definition,
 #' the path to an alternate buildspec file relative to the value of the
 #' built-in `CODEBUILD_SRC_DIR` environment variable, or the path to an S3
-#' bucket. The bucket must be in the same AWS Region as the build project.
-#' Specify the buildspec file using its ARN (for example,
+#' bucket. The bucket must be in the same Amazon Web Services Region as the
+#' build project. Specify the buildspec file using its ARN (for example,
 #' `arn:aws:s3:::my-codebuild-sample2/buildspec.yml`). If this value is not
 #' provided or is set to an empty string, the source code must contain a
 #' buildspec file in its root directory. For more information, see
@@ -4307,9 +1750,9 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' @param buildTimeoutInMinutesOverride Overrides the build timeout specified in the batch build project.
 #' @param queuedTimeoutInMinutesOverride The number of minutes a batch build is allowed to be queued before it
 #' times out.
-#' @param encryptionKeyOverride The AWS Key Management Service (AWS KMS) customer master key (CMK) that
-#' overrides the one specified in the batch build project. The CMK key
-#' encrypts the build output artifacts.
+#' @param encryptionKeyOverride The Key Management Service customer master key (CMK) that overrides the
+#' one specified in the batch build project. The CMK key encrypts the build
+#' output artifacts.
 #' 
 #' You can use a cross-account KMS key to encrypt the build output
 #' artifacts if your service role has permission to that key.
@@ -4322,397 +1765,46 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' [`start_build_batch`][codebuild_start_build_batch] request and is valid
 #' for five minutes. If you repeat the
 #' [`start_build_batch`][codebuild_start_build_batch] request with the same
-#' token, but change a parameter, AWS CodeBuild returns a parameter
-#' mismatch error.
+#' token, but change a parameter, CodeBuild returns a parameter mismatch
+#' error.
 #' @param logsConfigOverride A `LogsConfig` object that override the log settings defined in the
 #' batch build project.
 #' @param registryCredentialOverride A `RegistryCredential` object that overrides credentials for access to a
 #' private registry.
-#' @param imagePullCredentialsTypeOverride The type of credentials AWS CodeBuild uses to pull images in your batch
+#' @param imagePullCredentialsTypeOverride The type of credentials CodeBuild uses to pull images in your batch
 #' build. There are two valid values:
 #' 
-#' ### CODEBUILD
+#' **CODEBUILD**
 #' 
-#' Specifies that AWS CodeBuild uses its own credentials. This requires
-#' that you modify your ECR repository policy to trust AWS CodeBuild's
-#' service principal.
+#' Specifies that CodeBuild uses its own credentials. This requires that
+#' you modify your ECR repository policy to trust CodeBuild's service
+#' principal.
 #' 
-#' ### SERVICE_ROLE
+#' **SERVICE_ROLE**
 #' 
-#' Specifies that AWS CodeBuild uses your build project's service role.
+#' Specifies that CodeBuild uses your build project's service role.
 #' 
 #' When using a cross-account or private registry image, you must use
-#' `SERVICE_ROLE` credentials. When using an AWS CodeBuild curated image,
-#' you must use `CODEBUILD` credentials.
+#' `SERVICE_ROLE` credentials. When using an CodeBuild curated image, you
+#' must use `CODEBUILD` credentials.
 #' @param buildBatchConfigOverride A `BuildBatchConfigOverride` object that contains batch build
 #' configuration overrides.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   buildBatch = list(
-#'     id = "string",
-#'     arn = "string",
-#'     startTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     endTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     currentPhase = "string",
-#'     buildBatchStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'     sourceVersion = "string",
-#'     resolvedSourceVersion = "string",
-#'     projectName = "string",
-#'     phases = list(
-#'       list(
-#'         phaseType = "SUBMITTED"|"DOWNLOAD_BATCHSPEC"|"IN_PROGRESS"|"COMBINE_ARTIFACTS"|"SUCCEEDED"|"FAILED"|"STOPPED",
-#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'         startTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         endTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         durationInSeconds = 123,
-#'         contexts = list(
-#'           list(
-#'             statusCode = "string",
-#'             message = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     source = list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     ),
-#'     secondarySources = list(
-#'       list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       )
-#'     ),
-#'     secondarySourceVersions = list(
-#'       list(
-#'         sourceIdentifier = "string",
-#'         sourceVersion = "string"
-#'       )
-#'     ),
-#'     artifacts = list(
-#'       location = "string",
-#'       sha256sum = "string",
-#'       md5sum = "string",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     ),
-#'     secondaryArtifacts = list(
-#'       list(
-#'         location = "string",
-#'         sha256sum = "string",
-#'         md5sum = "string",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       )
-#'     ),
-#'     cache = list(
-#'       type = "NO_CACHE"|"S3"|"LOCAL",
-#'       location = "string",
-#'       modes = list(
-#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
-#'     ),
-#'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'       environmentVariables = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'         )
-#'       ),
-#'       privilegedMode = TRUE|FALSE,
-#'       certificate = "string",
-#'       registryCredential = list(
-#'         credential = "string",
-#'         credentialProvider = "SECRETS_MANAGER"
-#'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'     ),
-#'     serviceRole = "string",
-#'     logConfig = list(
-#'       cloudWatchLogs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         groupName = "string",
-#'         streamName = "string"
-#'       ),
-#'       s3Logs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     buildTimeoutInMinutes = 123,
-#'     queuedTimeoutInMinutes = 123,
-#'     complete = TRUE|FALSE,
-#'     initiator = "string",
-#'     vpcConfig = list(
-#'       vpcId = "string",
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     encryptionKey = "string",
-#'     buildBatchNumber = 123,
-#'     fileSystemLocations = list(
-#'       list(
-#'         type = "EFS",
-#'         location = "string",
-#'         mountPoint = "string",
-#'         identifier = "string",
-#'         mountOptions = "string"
-#'       )
-#'     ),
-#'     buildBatchConfig = list(
-#'       serviceRole = "string",
-#'       combineArtifacts = TRUE|FALSE,
-#'       restrictions = list(
-#'         maximumBuildsAllowed = 123,
-#'         computeTypesAllowed = list(
-#'           "string"
-#'         )
-#'       ),
-#'       timeoutInMins = 123
-#'     ),
-#'     buildGroups = list(
-#'       list(
-#'         identifier = "string",
-#'         dependsOn = list(
-#'           "string"
-#'         ),
-#'         ignoreFailure = TRUE|FALSE,
-#'         currentBuildSummary = list(
-#'           arn = "string",
-#'           requestedOn = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'           primaryArtifact = list(
-#'             type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'             location = "string",
-#'             identifier = "string"
-#'           ),
-#'           secondaryArtifacts = list(
-#'             list(
-#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'               location = "string",
-#'               identifier = "string"
-#'             )
-#'           )
-#'         ),
-#'         priorBuildSummaryList = list(
-#'           list(
-#'             arn = "string",
-#'             requestedOn = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'             primaryArtifact = list(
-#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'               location = "string",
-#'               identifier = "string"
-#'             ),
-#'             secondaryArtifacts = list(
-#'               list(
-#'                 type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'                 location = "string",
-#'                 identifier = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_build_batch(
-#'   projectName = "string",
-#'   secondarySourcesOverride = list(
-#'     list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     )
-#'   ),
-#'   secondarySourcesVersionOverride = list(
-#'     list(
-#'       sourceIdentifier = "string",
-#'       sourceVersion = "string"
-#'     )
-#'   ),
-#'   sourceVersion = "string",
-#'   artifactsOverride = list(
-#'     type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'     location = "string",
-#'     path = "string",
-#'     namespaceType = "NONE"|"BUILD_ID",
-#'     name = "string",
-#'     packaging = "NONE"|"ZIP",
-#'     overrideArtifactName = TRUE|FALSE,
-#'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
-#'   ),
-#'   secondaryArtifactsOverride = list(
-#'     list(
-#'       type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'       location = "string",
-#'       path = "string",
-#'       namespaceType = "NONE"|"BUILD_ID",
-#'       name = "string",
-#'       packaging = "NONE"|"ZIP",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     )
-#'   ),
-#'   environmentVariablesOverride = list(
-#'     list(
-#'       name = "string",
-#'       value = "string",
-#'       type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'     )
-#'   ),
-#'   sourceTypeOverride = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'   sourceLocationOverride = "string",
-#'   sourceAuthOverride = list(
-#'     type = "OAUTH",
-#'     resource = "string"
-#'   ),
-#'   gitCloneDepthOverride = 123,
-#'   gitSubmodulesConfigOverride = list(
-#'     fetchSubmodules = TRUE|FALSE
-#'   ),
-#'   buildspecOverride = "string",
-#'   insecureSslOverride = TRUE|FALSE,
-#'   reportBuildBatchStatusOverride = TRUE|FALSE,
-#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'   imageOverride = "string",
-#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'   certificateOverride = "string",
-#'   cacheOverride = list(
-#'     type = "NO_CACHE"|"S3"|"LOCAL",
-#'     location = "string",
-#'     modes = list(
-#'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'     )
-#'   ),
-#'   serviceRoleOverride = "string",
-#'   privilegedModeOverride = TRUE|FALSE,
-#'   buildTimeoutInMinutesOverride = 123,
-#'   queuedTimeoutInMinutesOverride = 123,
-#'   encryptionKeyOverride = "string",
-#'   idempotencyToken = "string",
-#'   logsConfigOverride = list(
-#'     cloudWatchLogs = list(
-#'       status = "ENABLED"|"DISABLED",
-#'       groupName = "string",
-#'       streamName = "string"
-#'     ),
-#'     s3Logs = list(
-#'       status = "ENABLED"|"DISABLED",
-#'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   registryCredentialOverride = list(
-#'     credential = "string",
-#'     credentialProvider = "SECRETS_MANAGER"
-#'   ),
-#'   imagePullCredentialsTypeOverride = "CODEBUILD"|"SERVICE_ROLE",
-#'   buildBatchConfigOverride = list(
-#'     serviceRole = "string",
-#'     combineArtifacts = TRUE|FALSE,
-#'     restrictions = list(
-#'       maximumBuildsAllowed = 123,
-#'       computeTypesAllowed = list(
-#'         "string"
-#'       )
-#'     ),
-#'     timeoutInMins = 123
-#'   )
-#' )
-#' ```
+#' @param debugSessionEnabled Specifies if session debugging is enabled for this batch build. For more
+#' information, see [Viewing a running build in Session
+#' Manager](https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html).
+#' Batch session debugging is not supported for matrix batch builds.
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_start_build_batch
-codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildBatchStatusOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, buildTimeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, buildBatchConfigOverride = NULL) {
+codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildBatchStatusOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, buildTimeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, buildBatchConfigOverride = NULL, debugSessionEnabled = NULL) {
   op <- new_operation(
     name = "StartBuildBatch",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$start_build_batch_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildBatchStatusOverride = reportBuildBatchStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, buildTimeoutInMinutesOverride = buildTimeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, buildBatchConfigOverride = buildBatchConfigOverride)
+  input <- .codebuild$start_build_batch_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildBatchStatusOverride = reportBuildBatchStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, buildTimeoutInMinutesOverride = buildTimeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, buildBatchConfigOverride = buildBatchConfigOverride, debugSessionEnabled = debugSessionEnabled)
   output <- .codebuild$start_build_batch_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -4727,211 +1819,9 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #' @description
 #' Attempts to stop running a build.
 #'
-#' @usage
-#' codebuild_stop_build(id)
+#' See [https://paws-r.github.io/docs/codebuild/stop_build.html](https://paws-r.github.io/docs/codebuild/stop_build.html) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the build.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   build = list(
-#'     id = "string",
-#'     arn = "string",
-#'     buildNumber = 123,
-#'     startTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     endTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     currentPhase = "string",
-#'     buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'     sourceVersion = "string",
-#'     resolvedSourceVersion = "string",
-#'     projectName = "string",
-#'     phases = list(
-#'       list(
-#'         phaseType = "SUBMITTED"|"QUEUED"|"PROVISIONING"|"DOWNLOAD_SOURCE"|"INSTALL"|"PRE_BUILD"|"BUILD"|"POST_BUILD"|"UPLOAD_ARTIFACTS"|"FINALIZING"|"COMPLETED",
-#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'         startTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         endTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         durationInSeconds = 123,
-#'         contexts = list(
-#'           list(
-#'             statusCode = "string",
-#'             message = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     source = list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     ),
-#'     secondarySources = list(
-#'       list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       )
-#'     ),
-#'     secondarySourceVersions = list(
-#'       list(
-#'         sourceIdentifier = "string",
-#'         sourceVersion = "string"
-#'       )
-#'     ),
-#'     artifacts = list(
-#'       location = "string",
-#'       sha256sum = "string",
-#'       md5sum = "string",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     ),
-#'     secondaryArtifacts = list(
-#'       list(
-#'         location = "string",
-#'         sha256sum = "string",
-#'         md5sum = "string",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       )
-#'     ),
-#'     cache = list(
-#'       type = "NO_CACHE"|"S3"|"LOCAL",
-#'       location = "string",
-#'       modes = list(
-#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
-#'     ),
-#'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'       environmentVariables = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'         )
-#'       ),
-#'       privilegedMode = TRUE|FALSE,
-#'       certificate = "string",
-#'       registryCredential = list(
-#'         credential = "string",
-#'         credentialProvider = "SECRETS_MANAGER"
-#'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'     ),
-#'     serviceRole = "string",
-#'     logs = list(
-#'       groupName = "string",
-#'       streamName = "string",
-#'       deepLink = "string",
-#'       s3DeepLink = "string",
-#'       cloudWatchLogsArn = "string",
-#'       s3LogsArn = "string",
-#'       cloudWatchLogs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         groupName = "string",
-#'         streamName = "string"
-#'       ),
-#'       s3Logs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     timeoutInMinutes = 123,
-#'     queuedTimeoutInMinutes = 123,
-#'     buildComplete = TRUE|FALSE,
-#'     initiator = "string",
-#'     vpcConfig = list(
-#'       vpcId = "string",
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     networkInterface = list(
-#'       subnetId = "string",
-#'       networkInterfaceId = "string"
-#'     ),
-#'     encryptionKey = "string",
-#'     exportedEnvironmentVariables = list(
-#'       list(
-#'         name = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     reportArns = list(
-#'       "string"
-#'     ),
-#'     fileSystemLocations = list(
-#'       list(
-#'         type = "EFS",
-#'         location = "string",
-#'         mountPoint = "string",
-#'         identifier = "string",
-#'         mountOptions = "string"
-#'       )
-#'     ),
-#'     debugSession = list(
-#'       sessionEnabled = TRUE|FALSE,
-#'       sessionTarget = "string"
-#'     ),
-#'     buildBatchArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_build(
-#'   id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4958,247 +1848,9 @@ codebuild_stop_build <- function(id) {
 #' @description
 #' Stops a running batch build.
 #'
-#' @usage
-#' codebuild_stop_build_batch(id)
+#' See [https://paws-r.github.io/docs/codebuild/stop_build_batch.html](https://paws-r.github.io/docs/codebuild/stop_build_batch.html) for full documentation.
 #'
 #' @param id &#91;required&#93; The identifier of the batch build to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   buildBatch = list(
-#'     id = "string",
-#'     arn = "string",
-#'     startTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     endTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     currentPhase = "string",
-#'     buildBatchStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'     sourceVersion = "string",
-#'     resolvedSourceVersion = "string",
-#'     projectName = "string",
-#'     phases = list(
-#'       list(
-#'         phaseType = "SUBMITTED"|"DOWNLOAD_BATCHSPEC"|"IN_PROGRESS"|"COMBINE_ARTIFACTS"|"SUCCEEDED"|"FAILED"|"STOPPED",
-#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'         startTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         endTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         durationInSeconds = 123,
-#'         contexts = list(
-#'           list(
-#'             statusCode = "string",
-#'             message = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     source = list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     ),
-#'     secondarySources = list(
-#'       list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       )
-#'     ),
-#'     secondarySourceVersions = list(
-#'       list(
-#'         sourceIdentifier = "string",
-#'         sourceVersion = "string"
-#'       )
-#'     ),
-#'     artifacts = list(
-#'       location = "string",
-#'       sha256sum = "string",
-#'       md5sum = "string",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     ),
-#'     secondaryArtifacts = list(
-#'       list(
-#'         location = "string",
-#'         sha256sum = "string",
-#'         md5sum = "string",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       )
-#'     ),
-#'     cache = list(
-#'       type = "NO_CACHE"|"S3"|"LOCAL",
-#'       location = "string",
-#'       modes = list(
-#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
-#'     ),
-#'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'       environmentVariables = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'         )
-#'       ),
-#'       privilegedMode = TRUE|FALSE,
-#'       certificate = "string",
-#'       registryCredential = list(
-#'         credential = "string",
-#'         credentialProvider = "SECRETS_MANAGER"
-#'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'     ),
-#'     serviceRole = "string",
-#'     logConfig = list(
-#'       cloudWatchLogs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         groupName = "string",
-#'         streamName = "string"
-#'       ),
-#'       s3Logs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     buildTimeoutInMinutes = 123,
-#'     queuedTimeoutInMinutes = 123,
-#'     complete = TRUE|FALSE,
-#'     initiator = "string",
-#'     vpcConfig = list(
-#'       vpcId = "string",
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     encryptionKey = "string",
-#'     buildBatchNumber = 123,
-#'     fileSystemLocations = list(
-#'       list(
-#'         type = "EFS",
-#'         location = "string",
-#'         mountPoint = "string",
-#'         identifier = "string",
-#'         mountOptions = "string"
-#'       )
-#'     ),
-#'     buildBatchConfig = list(
-#'       serviceRole = "string",
-#'       combineArtifacts = TRUE|FALSE,
-#'       restrictions = list(
-#'         maximumBuildsAllowed = 123,
-#'         computeTypesAllowed = list(
-#'           "string"
-#'         )
-#'       ),
-#'       timeoutInMins = 123
-#'     ),
-#'     buildGroups = list(
-#'       list(
-#'         identifier = "string",
-#'         dependsOn = list(
-#'           "string"
-#'         ),
-#'         ignoreFailure = TRUE|FALSE,
-#'         currentBuildSummary = list(
-#'           arn = "string",
-#'           requestedOn = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'           primaryArtifact = list(
-#'             type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'             location = "string",
-#'             identifier = "string"
-#'           ),
-#'           secondaryArtifacts = list(
-#'             list(
-#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'               location = "string",
-#'               identifier = "string"
-#'             )
-#'           )
-#'         ),
-#'         priorBuildSummaryList = list(
-#'           list(
-#'             arn = "string",
-#'             requestedOn = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-#'             primaryArtifact = list(
-#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'               location = "string",
-#'               identifier = "string"
-#'             ),
-#'             secondaryArtifacts = list(
-#'               list(
-#'                 type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'                 location = "string",
-#'                 identifier = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_build_batch(
-#'   id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5225,12 +1877,7 @@ codebuild_stop_build_batch <- function(id) {
 #' @description
 #' Changes the settings of a build project.
 #'
-#' @usage
-#' codebuild_update_project(name, description, source, secondarySources,
-#'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
-#'   cache, environment, serviceRole, timeoutInMinutes,
-#'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-#'   logsConfig, fileSystemLocations, buildBatchConfig)
+#' See [https://paws-r.github.io/docs/codebuild/update_project.html](https://paws-r.github.io/docs/codebuild/update_project.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' 
@@ -5242,7 +1889,7 @@ codebuild_stop_build_batch <- function(id) {
 #' @param sourceVersion A version of the build input to be built for this project. If not
 #' specified, the latest version is used. If specified, it must be one of:
 #' 
-#' -   For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+#' -   For CodeCommit: the commit ID, branch, or Git tag to use.
 #' 
 #' -   For GitHub: the commit ID, pull request ID, branch name, or tag name
 #'     that corresponds to the version of the source code you want to
@@ -5256,35 +1903,35 @@ codebuild_stop_build_batch <- function(id) {
 #'     a branch name is specified, the branch's HEAD commit ID is used. If
 #'     not specified, the default branch's HEAD commit ID is used.
 #' 
-#' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
-#'     object that represents the build input ZIP file to use.
+#' -   For Amazon S3: the version ID of the object that represents the
+#'     build input ZIP file to use.
 #' 
 #' If `sourceVersion` is specified at the build level, then that version
 #' takes precedence over this `sourceVersion` (at the project level).
 #' 
 #' For more information, see [Source Version Sample with
 #' CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-#' in the *AWS CodeBuild User Guide*.
+#' in the *CodeBuild User Guide*.
 #' @param secondarySourceVersions An array of `ProjectSourceVersion` objects. If `secondarySourceVersions`
 #' is specified at the build level, then they take over these
 #' `secondarySourceVersions` (at the project level).
 #' @param artifacts Information to be changed about the build output artifacts for the build
 #' project.
-#' @param secondaryArtifacts An array of `ProjectSource` objects.
+#' @param secondaryArtifacts An array of `ProjectArtifact` objects.
 #' @param cache Stores recently used information so that it can be quickly accessed at a
 #' later time.
 #' @param environment Information to be changed about the build environment for the build
 #' project.
-#' @param serviceRole The replacement ARN of the AWS Identity and Access Management (IAM) role
-#' that enables AWS CodeBuild to interact with dependent AWS services on
-#' behalf of the AWS account.
-#' @param timeoutInMinutes The replacement value in minutes, from 5 to 480 (8 hours), for AWS
-#' CodeBuild to wait before timing out any related build that did not get
-#' marked as completed.
+#' @param serviceRole The replacement ARN of the IAM role that enables CodeBuild to interact
+#' with dependent Amazon Web Services services on behalf of the Amazon Web
+#' Services account.
+#' @param timeoutInMinutes The replacement value in minutes, from 5 to 480 (8 hours), for CodeBuild
+#' to wait before timing out any related build that did not get marked as
+#' completed.
 #' @param queuedTimeoutInMinutes The number of minutes a build is allowed to be queued before it times
 #' out.
-#' @param encryptionKey The AWS Key Management Service (AWS KMS) customer master key (CMK) to be
-#' used for encrypting the build output artifacts.
+#' @param encryptionKey The Key Management Service customer master key (CMK) to be used for
+#' encrypting the build output artifacts.
 #' 
 #' You can use a cross-account KMS key to encrypt the build output
 #' artifacts if your service role has permission to that key.
@@ -5294,380 +1941,38 @@ codebuild_stop_build_batch <- function(id) {
 #' @param tags An updated list of tag key and value pairs associated with this build
 #' project.
 #' 
-#' These tags are available for use by AWS services that support AWS
-#' CodeBuild build project tags.
-#' @param vpcConfig VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
+#' These tags are available for use by Amazon Web Services services that
+#' support CodeBuild build project tags.
+#' @param vpcConfig VpcConfig enables CodeBuild to access resources in an Amazon VPC.
 #' @param badgeEnabled Set this to true to generate a publicly accessible URL for your
 #' project's build badge.
 #' @param logsConfig Information about logs for the build project. A project can create logs
-#' in Amazon CloudWatch Logs, logs in an S3 bucket, or both.
+#' in CloudWatch Logs, logs in an S3 bucket, or both.
 #' @param fileSystemLocations An array of `ProjectFileSystemLocation` objects for a CodeBuild build
 #' project. A `ProjectFileSystemLocation` object specifies the
 #' `identifier`, `location`, `mountOptions`, `mountPoint`, and `type` of a
 #' file system created using Amazon Elastic File System.
 #' @param buildBatchConfig 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   project = list(
-#'     name = "string",
-#'     arn = "string",
-#'     description = "string",
-#'     source = list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     ),
-#'     secondarySources = list(
-#'       list(
-#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'         location = "string",
-#'         gitCloneDepth = 123,
-#'         gitSubmodulesConfig = list(
-#'           fetchSubmodules = TRUE|FALSE
-#'         ),
-#'         buildspec = "string",
-#'         auth = list(
-#'           type = "OAUTH",
-#'           resource = "string"
-#'         ),
-#'         reportBuildStatus = TRUE|FALSE,
-#'         buildStatusConfig = list(
-#'           context = "string",
-#'           targetUrl = "string"
-#'         ),
-#'         insecureSsl = TRUE|FALSE,
-#'         sourceIdentifier = "string"
-#'       )
-#'     ),
-#'     sourceVersion = "string",
-#'     secondarySourceVersions = list(
-#'       list(
-#'         sourceIdentifier = "string",
-#'         sourceVersion = "string"
-#'       )
-#'     ),
-#'     artifacts = list(
-#'       type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'       location = "string",
-#'       path = "string",
-#'       namespaceType = "NONE"|"BUILD_ID",
-#'       name = "string",
-#'       packaging = "NONE"|"ZIP",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     ),
-#'     secondaryArtifacts = list(
-#'       list(
-#'         type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'         location = "string",
-#'         path = "string",
-#'         namespaceType = "NONE"|"BUILD_ID",
-#'         name = "string",
-#'         packaging = "NONE"|"ZIP",
-#'         overrideArtifactName = TRUE|FALSE,
-#'         encryptionDisabled = TRUE|FALSE,
-#'         artifactIdentifier = "string"
-#'       )
-#'     ),
-#'     cache = list(
-#'       type = "NO_CACHE"|"S3"|"LOCAL",
-#'       location = "string",
-#'       modes = list(
-#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
-#'     ),
-#'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'       environmentVariables = list(
-#'         list(
-#'           name = "string",
-#'           value = "string",
-#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'         )
-#'       ),
-#'       privilegedMode = TRUE|FALSE,
-#'       certificate = "string",
-#'       registryCredential = list(
-#'         credential = "string",
-#'         credentialProvider = "SECRETS_MANAGER"
-#'       ),
-#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'     ),
-#'     serviceRole = "string",
-#'     timeoutInMinutes = 123,
-#'     queuedTimeoutInMinutes = 123,
-#'     encryptionKey = "string",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     created = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModified = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     webhook = list(
-#'       url = "string",
-#'       payloadUrl = "string",
-#'       secret = "string",
-#'       branchFilter = "string",
-#'       filterGroups = list(
-#'         list(
-#'           list(
-#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-#'             pattern = "string",
-#'             excludeMatchedPattern = TRUE|FALSE
-#'           )
-#'         )
-#'       ),
-#'       buildType = "BUILD"|"BUILD_BATCH",
-#'       lastModifiedSecret = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     vpcConfig = list(
-#'       vpcId = "string",
-#'       subnets = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     badge = list(
-#'       badgeEnabled = TRUE|FALSE,
-#'       badgeRequestUrl = "string"
-#'     ),
-#'     logsConfig = list(
-#'       cloudWatchLogs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         groupName = "string",
-#'         streamName = "string"
-#'       ),
-#'       s3Logs = list(
-#'         status = "ENABLED"|"DISABLED",
-#'         location = "string",
-#'         encryptionDisabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     fileSystemLocations = list(
-#'       list(
-#'         type = "EFS",
-#'         location = "string",
-#'         mountPoint = "string",
-#'         identifier = "string",
-#'         mountOptions = "string"
-#'       )
-#'     ),
-#'     buildBatchConfig = list(
-#'       serviceRole = "string",
-#'       combineArtifacts = TRUE|FALSE,
-#'       restrictions = list(
-#'         maximumBuildsAllowed = 123,
-#'         computeTypesAllowed = list(
-#'           "string"
-#'         )
-#'       ),
-#'       timeoutInMins = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_project(
-#'   name = "string",
-#'   description = "string",
-#'   source = list(
-#'     type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'     location = "string",
-#'     gitCloneDepth = 123,
-#'     gitSubmodulesConfig = list(
-#'       fetchSubmodules = TRUE|FALSE
-#'     ),
-#'     buildspec = "string",
-#'     auth = list(
-#'       type = "OAUTH",
-#'       resource = "string"
-#'     ),
-#'     reportBuildStatus = TRUE|FALSE,
-#'     buildStatusConfig = list(
-#'       context = "string",
-#'       targetUrl = "string"
-#'     ),
-#'     insecureSsl = TRUE|FALSE,
-#'     sourceIdentifier = "string"
-#'   ),
-#'   secondarySources = list(
-#'     list(
-#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-#'       location = "string",
-#'       gitCloneDepth = 123,
-#'       gitSubmodulesConfig = list(
-#'         fetchSubmodules = TRUE|FALSE
-#'       ),
-#'       buildspec = "string",
-#'       auth = list(
-#'         type = "OAUTH",
-#'         resource = "string"
-#'       ),
-#'       reportBuildStatus = TRUE|FALSE,
-#'       buildStatusConfig = list(
-#'         context = "string",
-#'         targetUrl = "string"
-#'       ),
-#'       insecureSsl = TRUE|FALSE,
-#'       sourceIdentifier = "string"
-#'     )
-#'   ),
-#'   sourceVersion = "string",
-#'   secondarySourceVersions = list(
-#'     list(
-#'       sourceIdentifier = "string",
-#'       sourceVersion = "string"
-#'     )
-#'   ),
-#'   artifacts = list(
-#'     type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'     location = "string",
-#'     path = "string",
-#'     namespaceType = "NONE"|"BUILD_ID",
-#'     name = "string",
-#'     packaging = "NONE"|"ZIP",
-#'     overrideArtifactName = TRUE|FALSE,
-#'     encryptionDisabled = TRUE|FALSE,
-#'     artifactIdentifier = "string"
-#'   ),
-#'   secondaryArtifacts = list(
-#'     list(
-#'       type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-#'       location = "string",
-#'       path = "string",
-#'       namespaceType = "NONE"|"BUILD_ID",
-#'       name = "string",
-#'       packaging = "NONE"|"ZIP",
-#'       overrideArtifactName = TRUE|FALSE,
-#'       encryptionDisabled = TRUE|FALSE,
-#'       artifactIdentifier = "string"
-#'     )
-#'   ),
-#'   cache = list(
-#'     type = "NO_CACHE"|"S3"|"LOCAL",
-#'     location = "string",
-#'     modes = list(
-#'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'     )
-#'   ),
-#'   environment = list(
-#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-#'     image = "string",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-#'     environmentVariables = list(
-#'       list(
-#'         name = "string",
-#'         value = "string",
-#'         type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-#'       )
-#'     ),
-#'     privilegedMode = TRUE|FALSE,
-#'     certificate = "string",
-#'     registryCredential = list(
-#'       credential = "string",
-#'       credentialProvider = "SECRETS_MANAGER"
-#'     ),
-#'     imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-#'   ),
-#'   serviceRole = "string",
-#'   timeoutInMinutes = 123,
-#'   queuedTimeoutInMinutes = 123,
-#'   encryptionKey = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   vpcConfig = list(
-#'     vpcId = "string",
-#'     subnets = list(
-#'       "string"
-#'     ),
-#'     securityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   badgeEnabled = TRUE|FALSE,
-#'   logsConfig = list(
-#'     cloudWatchLogs = list(
-#'       status = "ENABLED"|"DISABLED",
-#'       groupName = "string",
-#'       streamName = "string"
-#'     ),
-#'     s3Logs = list(
-#'       status = "ENABLED"|"DISABLED",
-#'       location = "string",
-#'       encryptionDisabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   fileSystemLocations = list(
-#'     list(
-#'       type = "EFS",
-#'       location = "string",
-#'       mountPoint = "string",
-#'       identifier = "string",
-#'       mountOptions = "string"
-#'     )
-#'   ),
-#'   buildBatchConfig = list(
-#'     serviceRole = "string",
-#'     combineArtifacts = TRUE|FALSE,
-#'     restrictions = list(
-#'       maximumBuildsAllowed = 123,
-#'       computeTypesAllowed = list(
-#'         "string"
-#'       )
-#'     ),
-#'     timeoutInMins = 123
-#'   )
-#' )
-#' ```
+#' @param concurrentBuildLimit The maximum number of concurrent builds that are allowed for this
+#' project.
+#' 
+#' New builds are only started if the current number of builds is less than
+#' or equal to this limit. If the current build count meets this limit, new
+#' builds are throttled and are not run.
+#' 
+#' To remove this limit, set this value to -1.
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_update_project
-codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL) {
+codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig)
+  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
   output <- .codebuild$update_project_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -5677,13 +1982,44 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 }
 .codebuild$operations$update_project <- codebuild_update_project
 
+#' Changes the public visibility for a project
+#'
+#' @description
+#' Changes the public visibility for a project. The project's build results, logs, and artifacts are available to the general public. For more information, see [Public build projects](https://docs.aws.amazon.com/codebuild/latest/userguide/public-builds.html) in the *CodeBuild User Guide*.
+#'
+#' See [https://paws-r.github.io/docs/codebuild/update_project_visibility.html](https://paws-r.github.io/docs/codebuild/update_project_visibility.html) for full documentation.
+#'
+#' @param projectArn &#91;required&#93; The Amazon Resource Name (ARN) of the build project.
+#' @param projectVisibility &#91;required&#93; 
+#' @param resourceAccessRole The ARN of the IAM role that enables CodeBuild to access the CloudWatch
+#' Logs and Amazon S3 artifacts for the project's builds.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_update_project_visibility
+codebuild_update_project_visibility <- function(projectArn, projectVisibility, resourceAccessRole = NULL) {
+  op <- new_operation(
+    name = "UpdateProjectVisibility",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codebuild$update_project_visibility_input(projectArn = projectArn, projectVisibility = projectVisibility, resourceAccessRole = resourceAccessRole)
+  output <- .codebuild$update_project_visibility_output()
+  config <- get_config()
+  svc <- .codebuild$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$update_project_visibility <- codebuild_update_project_visibility
+
 #' Updates a report group
 #'
 #' @description
 #' Updates a report group.
 #'
-#' @usage
-#' codebuild_update_report_group(arn, exportConfig, tags)
+#' See [https://paws-r.github.io/docs/codebuild/update_report_group.html](https://paws-r.github.io/docs/codebuild/update_report_group.html) for full documentation.
 #'
 #' @param arn &#91;required&#93; The ARN of the report group to update.
 #' @param exportConfig Used to specify an updated export type. Valid values are:
@@ -5694,66 +2030,8 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #' @param tags An updated list of tag key and value pairs associated with this report
 #' group.
 #' 
-#' These tags are available for use by AWS services that support AWS
-#' CodeBuild report group tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   reportGroup = list(
-#'     arn = "string",
-#'     name = "string",
-#'     type = "TEST"|"CODE_COVERAGE",
-#'     exportConfig = list(
-#'       exportConfigType = "S3"|"NO_EXPORT",
-#'       s3Destination = list(
-#'         bucket = "string",
-#'         path = "string",
-#'         packaging = "ZIP"|"NONE",
-#'         encryptionKey = "string",
-#'         encryptionDisabled = TRUE|FALSE
-#'       )
-#'     ),
-#'     created = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModified = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     status = "ACTIVE"|"DELETING"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_report_group(
-#'   arn = "string",
-#'   exportConfig = list(
-#'     exportConfigType = "S3"|"NO_EXPORT",
-#'     s3Destination = list(
-#'       bucket = "string",
-#'       path = "string",
-#'       packaging = "ZIP"|"NONE",
-#'       encryptionKey = "string",
-#'       encryptionDisabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' These tags are available for use by Amazon Web Services services that
+#' support CodeBuild report group tags.
 #'
 #' @keywords internal
 #'
@@ -5775,18 +2053,14 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 }
 .codebuild$operations$update_report_group <- codebuild_update_report_group
 
-#' Updates the webhook associated with an AWS CodeBuild build project
+#' Updates the webhook associated with an CodeBuild build project
 #'
 #' @description
-#' Updates the webhook associated with an AWS CodeBuild build project.
-#' 
-#' If you use Bitbucket for your repository, `rotateSecret` is ignored.
+#' Updates the webhook associated with an CodeBuild build project.
 #'
-#' @usage
-#' codebuild_update_webhook(projectName, branchFilter, rotateSecret,
-#'   filterGroups, buildType)
+#' See [https://paws-r.github.io/docs/codebuild/update_webhook.html](https://paws-r.github.io/docs/codebuild/update_webhook.html) for full documentation.
 #'
-#' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
+#' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are
 #' built when a webhook is triggered. If the name of a branch matches the
 #' regular expression, then it is built. If `branchFilter` is empty, then
@@ -5800,51 +2074,6 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #' webhook event can trigger a build. A filter group must contain at least
 #' one `EVENT` `WebhookFilter`.
 #' @param buildType Specifies the type of build this webhook will trigger.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   webhook = list(
-#'     url = "string",
-#'     payloadUrl = "string",
-#'     secret = "string",
-#'     branchFilter = "string",
-#'     filterGroups = list(
-#'       list(
-#'         list(
-#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-#'           pattern = "string",
-#'           excludeMatchedPattern = TRUE|FALSE
-#'         )
-#'       )
-#'     ),
-#'     buildType = "BUILD"|"BUILD_BATCH",
-#'     lastModifiedSecret = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_webhook(
-#'   projectName = "string",
-#'   branchFilter = "string",
-#'   rotateSecret = TRUE|FALSE,
-#'   filterGroups = list(
-#'     list(
-#'       list(
-#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-#'         pattern = "string",
-#'         excludeMatchedPattern = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   buildType = "BUILD"|"BUILD_BATCH"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

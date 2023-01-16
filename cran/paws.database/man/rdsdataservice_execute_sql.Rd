@@ -4,12 +4,20 @@
 \alias{rdsdataservice_execute_sql}
 \title{Runs one or more SQL statements}
 \usage{
-rdsdataservice_execute_sql(awsSecretStoreArn, database,
-  dbClusterOrInstanceArn, schema, sqlStatements)
+rdsdataservice_execute_sql(
+  awsSecretStoreArn,
+  database = NULL,
+  dbClusterOrInstanceArn,
+  schema = NULL,
+  sqlStatements
+)
 }
 \arguments{
 \item{awsSecretStoreArn}{[required] The Amazon Resource Name (ARN) of the secret that enables access to the
-DB cluster.}
+DB cluster. Enter the database user name and password for the
+credentials in the secret.
+
+For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html}{Create a database secret}.}
 
 \item{database}{The name of the database.}
 
@@ -23,79 +31,9 @@ You can separate SQL statements from each other with a semicolon (;).
 Any valid SQL statement is permitted, including data definition, data
 manipulation, and commit statements.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  sqlStatementResults = list(
-    list(
-      numberOfRecordsUpdated = 123,
-      resultFrame = list(
-        records = list(
-          list(
-            values = list(
-              list(
-                arrayValues = list(
-                  list()
-                ),
-                bigIntValue = 123,
-                bitValue = TRUE|FALSE,
-                blobValue = raw,
-                doubleValue = 123.0,
-                intValue = 123,
-                isNull = TRUE|FALSE,
-                realValue = 123.0,
-                stringValue = "string",
-                structValue = list(
-                  attributes = list(
-                    list()
-                  )
-                )
-              )
-            )
-          )
-        ),
-        resultSetMetadata = list(
-          columnCount = 123,
-          columnMetadata = list(
-            list(
-              arrayBaseColumnType = 123,
-              isAutoIncrement = TRUE|FALSE,
-              isCaseSensitive = TRUE|FALSE,
-              isCurrency = TRUE|FALSE,
-              isSigned = TRUE|FALSE,
-              label = "string",
-              name = "string",
-              nullable = 123,
-              precision = 123,
-              scale = 123,
-              schemaName = "string",
-              tableName = "string",
-              type = 123,
-              typeName = "string"
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Runs one or more SQL statements.
 
-This operation is deprecated. Use the
-\code{\link[=rdsdataservice_batch_execute_statement]{batch_execute_statement}} or
-\code{\link[=rdsdataservice_execute_statement]{execute_statement}} operation.
+See \url{https://paws-r.github.io/docs/rdsdataservice/execute_sql.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$execute_sql(
-  awsSecretStoreArn = "string",
-  database = "string",
-  dbClusterOrInstanceArn = "string",
-  schema = "string",
-  sqlStatements = "string"
-)
-}
-}
-
 \keyword{internal}

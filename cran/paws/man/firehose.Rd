@@ -7,7 +7,19 @@
 firehose(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -24,7 +36,9 @@ Service (Amazon S3), Amazon Elasticsearch Service (Amazon ES), Amazon
 Redshift, and Splunk.
 }
 \section{Service syntax}{
-\preformatted{svc <- firehose(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- firehose(
   config = list(
     credentials = list(
       creds = list(
@@ -32,30 +46,34 @@ Redshift, and Splunk.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=firehose_create_delivery_stream]{create_delivery_stream} \tab Creates a Kinesis Data Firehose delivery stream\cr
-\link[=firehose_delete_delivery_stream]{delete_delivery_stream} \tab Deletes a delivery stream and its data\cr
-\link[=firehose_describe_delivery_stream]{describe_delivery_stream} \tab Describes the specified delivery stream and its status\cr
-\link[=firehose_list_delivery_streams]{list_delivery_streams} \tab Lists your delivery streams in alphabetical order of their names\cr
-\link[=firehose_list_tags_for_delivery_stream]{list_tags_for_delivery_stream} \tab Lists the tags for the specified delivery stream\cr
-\link[=firehose_put_record]{put_record} \tab Writes a single data record into an Amazon Kinesis Data Firehose delivery stream\cr
-\link[=firehose_put_record_batch]{put_record_batch} \tab Writes multiple data records into a delivery stream in a single call, which can achieve higher throughput per producer than when writing single records\cr
-\link[=firehose_start_delivery_stream_encryption]{start_delivery_stream_encryption} \tab Enables server-side encryption (SSE) for the delivery stream\cr
-\link[=firehose_stop_delivery_stream_encryption]{stop_delivery_stream_encryption} \tab Disables server-side encryption (SSE) for the delivery stream\cr
-\link[=firehose_tag_delivery_stream]{tag_delivery_stream} \tab Adds or updates tags for the specified delivery stream\cr
-\link[=firehose_untag_delivery_stream]{untag_delivery_stream} \tab Removes tags from the specified delivery stream\cr
-\link[=firehose_update_destination]{update_destination} \tab Updates the specified destination of the specified delivery stream
+\link[paws.analytics:firehose_create_delivery_stream]{create_delivery_stream} \tab Creates a Kinesis Data Firehose delivery stream\cr
+\link[paws.analytics:firehose_delete_delivery_stream]{delete_delivery_stream} \tab Deletes a delivery stream and its data\cr
+\link[paws.analytics:firehose_describe_delivery_stream]{describe_delivery_stream} \tab Describes the specified delivery stream and its status\cr
+\link[paws.analytics:firehose_list_delivery_streams]{list_delivery_streams} \tab Lists your delivery streams in alphabetical order of their names\cr
+\link[paws.analytics:firehose_list_tags_for_delivery_stream]{list_tags_for_delivery_stream} \tab Lists the tags for the specified delivery stream\cr
+\link[paws.analytics:firehose_put_record]{put_record} \tab Writes a single data record into an Amazon Kinesis Data Firehose delivery stream\cr
+\link[paws.analytics:firehose_put_record_batch]{put_record_batch} \tab Writes multiple data records into a delivery stream in a single call, which can achieve higher throughput per producer than when writing single records\cr
+\link[paws.analytics:firehose_start_delivery_stream_encryption]{start_delivery_stream_encryption} \tab Enables server-side encryption (SSE) for the delivery stream\cr
+\link[paws.analytics:firehose_stop_delivery_stream_encryption]{stop_delivery_stream_encryption} \tab Disables server-side encryption (SSE) for the delivery stream\cr
+\link[paws.analytics:firehose_tag_delivery_stream]{tag_delivery_stream} \tab Adds or updates tags for the specified delivery stream\cr
+\link[paws.analytics:firehose_untag_delivery_stream]{untag_delivery_stream} \tab Removes tags from the specified delivery stream\cr
+\link[paws.analytics:firehose_update_destination]{update_destination} \tab Updates the specified destination of the specified delivery stream
 }
 }
 

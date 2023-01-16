@@ -8,22 +8,12 @@ change}
 connect_delete_instance(InstanceId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-An empty list.
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Deletes the Amazon Connect instance.
+See \url{https://paws-r.github.io/docs/connect/delete_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_instance(
-  InstanceId = "string"
-)
-}
-}
-
 \keyword{internal}

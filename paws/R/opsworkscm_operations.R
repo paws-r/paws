@@ -297,24 +297,24 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' `Monolithic` for Puppet and `Single` for Chef.
 #' @param EngineVersion The major release version of the engine that you want to use. For a Chef
 #' server, the valid value for EngineVersion is currently `2`. For a Puppet
-#' server, the valid value is `2017`.
+#' server, valid values are `2019` or `2017`.
 #' @param EngineAttributes Optional engine attributes on a specified server.
 #' 
 #' **Attributes accepted in a Chef createServer request:**
 #' 
 #' -   `CHEF_AUTOMATE_PIVOTAL_KEY`: A base64-encoded RSA public key. The
 #'     corresponding private key is required to access the Chef API. When
-#'     no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated
-#'     and returned in the response.
+#'     no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+#'     returned in the response.
 #' 
 #' -   `CHEF_AUTOMATE_ADMIN_PASSWORD`: The password for the administrative
 #'     user in the Chef Automate web-based dashboard. The password length
 #'     is a minimum of eight characters, and a maximum of 32. The password
-#'     can contain letters, numbers, and special characters
-#'     (!/@@\#$%^&+=_). The password must contain at least one lower case
-#'     letter, one upper case letter, one number, and one special
-#'     character. When no CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is
-#'     generated and returned in the response.
+#'     can contain letters, numbers, and special characters (!/@@#$%^&+=_).
+#'     The password must contain at least one lower case letter, one upper
+#'     case letter, one number, and one special character. When no
+#'     CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned
+#'     in the response.
 #' 
 #' **Attributes accepted in a Puppet createServer request:**
 #' 
@@ -1282,7 +1282,48 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
 #' helpful if the administrator no longer has the SSH key.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Server = list(
+#'     AssociatePublicIpAddress = TRUE|FALSE,
+#'     BackupRetentionCount = 123,
+#'     ServerName = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CloudFormationStackArn = "string",
+#'     CustomDomain = "string",
+#'     DisableAutomatedBackup = TRUE|FALSE,
+#'     Endpoint = "string",
+#'     Engine = "string",
+#'     EngineModel = "string",
+#'     EngineAttributes = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     EngineVersion = "string",
+#'     InstanceProfileArn = "string",
+#'     InstanceType = "string",
+#'     KeyPair = "string",
+#'     MaintenanceStatus = "SUCCESS"|"FAILED",
+#'     PreferredMaintenanceWindow = "string",
+#'     PreferredBackupWindow = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     ServiceRoleArn = "string",
+#'     Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
+#'     StatusReason = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     ServerArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

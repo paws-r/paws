@@ -5,49 +5,20 @@
 \title{Displays a list of categories for all event source types, or, if
 specified, for a specified source type}
 \usage{
-rds_describe_event_categories(SourceType, Filters)
+rds_describe_event_categories(SourceType = NULL, Filters = NULL)
 }
 \arguments{
-\item{SourceType}{The type of source that is generating the events.
+\item{SourceType}{The type of source that is generating the events. For RDS Proxy events,
+specify \code{db-proxy}.
 
 Valid values: \code{db-instance} | \code{db-cluster} | \code{db-parameter-group} |
-\code{db-security-group} | \code{db-snapshot} | \code{db-cluster-snapshot}}
+\code{db-security-group} | \code{db-snapshot} | \code{db-cluster-snapshot} | \code{db-proxy}}
 
 \item{Filters}{This parameter isn't currently supported.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventCategoriesMapList = list(
-    list(
-      SourceType = "string",
-      EventCategories = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Displays a list of categories for all event source types, or, if
-specified, for a specified source type. You can see a list of the event
-categories and source types in
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html}{Events}
-in the \emph{Amazon RDS User Guide.}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_event_categories(
-  SourceType = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
+Displays a list of categories for all event source types, or, if specified, for a specified source type. You can also see this list in the "Amazon RDS event categories and event messages" section of the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html}{\emph{Amazon RDS User Guide}} or the \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html}{\emph{Amazon Aurora User Guide}} .
 
+See \url{https://paws-r.github.io/docs/rds/describe_event_categories.html} for full documentation.
+}
 \keyword{internal}

@@ -4,9 +4,17 @@
 \alias{sagemaker_list_code_repositories}
 \title{Gets a list of the Git repositories in your account}
 \usage{
-sagemaker_list_code_repositories(CreationTimeAfter, CreationTimeBefore,
-  LastModifiedTimeAfter, LastModifiedTimeBefore, MaxResults, NameContains,
-  NextToken, SortBy, SortOrder)
+sagemaker_list_code_repositories(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  NextToken = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only Git repositories that were created after the
@@ -34,53 +42,9 @@ repositories, use the token in the next request.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CodeRepositorySummaryList = list(
-    list(
-      CodeRepositoryName = "string",
-      CodeRepositoryArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      GitConfig = list(
-        RepositoryUrl = "string",
-        Branch = "string",
-        SecretArn = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of the Git repositories in your account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_code_repositories(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxResults = 123,
-  NameContains = "string",
-  NextToken = "string",
-  SortBy = "Name"|"CreationTime"|"LastModifiedTime",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_code_repositories.html} for full documentation.
+}
 \keyword{internal}

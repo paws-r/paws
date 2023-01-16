@@ -13,38 +13,9 @@ tags from.}
 \item{TagKeys}{[required] The keys of the tags you want to remove from the specified resource. A
 tag is composed of a key-value pair.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceARN = "string"
-)
-}
-}
 \description{
-Removes one or more tags from the specified resource. This operation is
-supported in storage gateways of all types.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_tags_from_resource(
-  ResourceARN = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes one or more tags from the specified resource. This operation is supported in storage gateways of all types.
 
-\examples{
-\dontrun{
-# Lists the iSCSI stored volumes of a gateway. Removes one or more tags
-# from the specified resource.
-svc$remove_tags_from_resource(
-  ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B",
-  TagKeys = list(
-    "Dev Gatgeway Region",
-    "East Coast"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/remove_tags_from_resource.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{codecommit_get_comment_reactions}
 \title{Returns information about reactions to a specified comment ID}
 \usage{
-codecommit_get_comment_reactions(commentId, reactionUserArn, nextToken,
-  maxResults)
+codecommit_get_comment_reactions(
+  commentId,
+  reactionUserArn = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{commentId}{[required] The ID of the comment for which you want to get reactions information.}
@@ -19,37 +23,9 @@ batch of the results.}
 \item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
 results. The default is the same as the allowed maximum, 1,000.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  reactionsForComment = list(
-    list(
-      reaction = list(
-        emoji = "string",
-        shortCode = "string",
-        unicode = "string"
-      ),
-      reactionUsers = list(
-        "string"
-      ),
-      reactionsFromDeletedUsersCount = 123
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns information about reactions to a specified comment ID. Reactions
-from users who have been deleted will not be included in the count.
-}
-\section{Request syntax}{
-\preformatted{svc$get_comment_reactions(
-  commentId = "string",
-  reactionUserArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns information about reactions to a specified comment ID. Reactions from users who have been deleted will not be included in the count.
 
+See \url{https://paws-r.github.io/docs/codecommit/get_comment_reactions.html} for full documentation.
+}
 \keyword{internal}

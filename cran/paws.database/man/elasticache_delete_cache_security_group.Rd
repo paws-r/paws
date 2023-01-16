@@ -11,20 +11,9 @@ elasticache_delete_cache_security_group(CacheSecurityGroupName)
 
 You cannot delete the default security group.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a cache security group.
 
-You cannot delete a cache security group if it is associated with any
-clusters.
+See \url{https://paws-r.github.io/docs/elasticache/delete_cache_security_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_cache_security_group(
-  CacheSecurityGroupName = "string"
-)
-}
-}
-
 \keyword{internal}

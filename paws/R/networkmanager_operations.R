@@ -3,6 +3,151 @@
 #' @include networkmanager_service.R
 NULL
 
+#' Accepts a core network attachment request
+#'
+#' @description
+#' Accepts a core network attachment request.
+#' 
+#' Once the attachment request is accepted by a core network owner, the
+#' attachment is created and connected to a core network.
+#'
+#' @usage
+#' networkmanager_accept_attachment(AttachmentId)
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the attachment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attachment = list(
+#'     CoreNetworkId = "string",
+#'     CoreNetworkArn = "string",
+#'     AttachmentId = "string",
+#'     OwnerAccountId = "string",
+#'     AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'     State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'     EdgeLocation = "string",
+#'     ResourceArn = "string",
+#'     AttachmentPolicyRuleNumber = 123,
+#'     SegmentName = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ProposedSegmentChange = list(
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$accept_attachment(
+#'   AttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_accept_attachment
+networkmanager_accept_attachment <- function(AttachmentId) {
+  op <- new_operation(
+    name = "AcceptAttachment",
+    http_method = "POST",
+    http_path = "/attachments/{attachmentId}/accept",
+    paginator = list()
+  )
+  input <- .networkmanager$accept_attachment_input(AttachmentId = AttachmentId)
+  output <- .networkmanager$accept_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$accept_attachment <- networkmanager_accept_attachment
+
+#' Associates a core network Connect peer with a device and optionally,
+#' with a link
+#'
+#' @description
+#' Associates a core network Connect peer with a device and optionally,
+#' with a link.
+#' 
+#' If you specify a link, it must be associated with the specified device.
+#' You can only associate core network Connect peers that have been created
+#' on a core network Connect attachment on a core network.
+#'
+#' @usage
+#' networkmanager_associate_connect_peer(GlobalNetworkId, ConnectPeerId,
+#'   DeviceId, LinkId)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of your global network.
+#' @param ConnectPeerId &#91;required&#93; The ID of the Connect peer.
+#' @param DeviceId &#91;required&#93; The ID of the device.
+#' @param LinkId The ID of the link.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectPeerAssociation = list(
+#'     ConnectPeerId = "string",
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     LinkId = "string",
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_connect_peer(
+#'   GlobalNetworkId = "string",
+#'   ConnectPeerId = "string",
+#'   DeviceId = "string",
+#'   LinkId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_associate_connect_peer
+networkmanager_associate_connect_peer <- function(GlobalNetworkId, ConnectPeerId, DeviceId, LinkId = NULL) {
+  op <- new_operation(
+    name = "AssociateConnectPeer",
+    http_method = "POST",
+    http_path = "/global-networks/{globalNetworkId}/connect-peer-associations",
+    paginator = list()
+  )
+  input <- .networkmanager$associate_connect_peer_input(GlobalNetworkId = GlobalNetworkId, ConnectPeerId = ConnectPeerId, DeviceId = DeviceId, LinkId = LinkId)
+  output <- .networkmanager$associate_connect_peer_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$associate_connect_peer <- networkmanager_associate_connect_peer
+
 #' Associates a customer gateway with a device and optionally, with a link
 #'
 #' @description
@@ -10,11 +155,11 @@ NULL
 #' If you specify a link, it must be associated with the specified device.
 #' 
 #' You can only associate customer gateways that are connected to a VPN
-#' attachment on a transit gateway. The transit gateway must be registered
-#' in your global network. When you register a transit gateway, customer
-#' gateways that are connected to the transit gateway are automatically
-#' included in the global network. To list customer gateways that are
-#' connected to a transit gateway, use the
+#' attachment on a transit gateway or core network registered in your
+#' global network. When you register a transit gateway or core network,
+#' customer gateways that are connected to the transit gateway are
+#' automatically included in the global network. To list customer gateways
+#' that are connected to a transit gateway, use the
 #' [DescribeVpnConnections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConnections.html)
 #' EC2 API and filter by `transit-gateway-id`.
 #' 
@@ -25,9 +170,7 @@ NULL
 #' networkmanager_associate_customer_gateway(CustomerGatewayArn,
 #'   GlobalNetworkId, DeviceId, LinkId)
 #'
-#' @param CustomerGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the customer gateway. For more
-#' information, see [Resources Defined by Amazon
-#' EC2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html#amazonec2-resources-for-iam-policies).
+#' @param CustomerGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the customer gateway.
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the device.
 #' @param LinkId The ID of the link.
@@ -199,6 +342,218 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 }
 .networkmanager$operations$associate_transit_gateway_connect_peer <- networkmanager_associate_transit_gateway_connect_peer
 
+#' Creates a core network Connect attachment from a specified core network
+#' attachment
+#'
+#' @description
+#' Creates a core network Connect attachment from a specified core network
+#' attachment.
+#' 
+#' A core network Connect attachment is a GRE-based tunnel attachment that
+#' you can use to establish a connection between a core network and an
+#' appliance. A core network Connect attachment uses an existing VPC
+#' attachment as the underlying transport mechanism.
+#'
+#' @usage
+#' networkmanager_create_connect_attachment(CoreNetworkId, EdgeLocation,
+#'   TransportAttachmentId, Options, Tags, ClientToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network where you want to create the attachment.
+#' @param EdgeLocation &#91;required&#93; The Region where the edge is located.
+#' @param TransportAttachmentId &#91;required&#93; The ID of the attachment between the two connections.
+#' @param Options &#91;required&#93; Options for creating an attachment.
+#' @param Tags The list of key-value tags associated with the request.
+#' @param ClientToken The client token associated with the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TransportAttachmentId = "string",
+#'     Options = list(
+#'       Protocol = "GRE"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connect_attachment(
+#'   CoreNetworkId = "string",
+#'   EdgeLocation = "string",
+#'   TransportAttachmentId = "string",
+#'   Options = list(
+#'     Protocol = "GRE"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_connect_attachment
+networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation, TransportAttachmentId, Options, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateConnectAttachment",
+    http_method = "POST",
+    http_path = "/connect-attachments",
+    paginator = list()
+  )
+  input <- .networkmanager$create_connect_attachment_input(CoreNetworkId = CoreNetworkId, EdgeLocation = EdgeLocation, TransportAttachmentId = TransportAttachmentId, Options = Options, Tags = Tags, ClientToken = ClientToken)
+  output <- .networkmanager$create_connect_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_connect_attachment <- networkmanager_create_connect_attachment
+
+#' Creates a core network Connect peer for a specified core network connect
+#' attachment between a core network and an appliance
+#'
+#' @description
+#' Creates a core network Connect peer for a specified core network connect
+#' attachment between a core network and an appliance. The peer address and
+#' transit gateway address must be the same IP address family (IPv4 or
+#' IPv6).
+#'
+#' @usage
+#' networkmanager_create_connect_peer(ConnectAttachmentId,
+#'   CoreNetworkAddress, PeerAddress, BgpOptions, InsideCidrBlocks, Tags,
+#'   ClientToken)
+#'
+#' @param ConnectAttachmentId &#91;required&#93; The ID of the connection attachment.
+#' @param CoreNetworkAddress A Connect peer core network address.
+#' @param PeerAddress &#91;required&#93; The Connect peer address.
+#' @param BgpOptions The Connect peer BGP options.
+#' @param InsideCidrBlocks &#91;required&#93; The inside IP addresses used for BGP peering.
+#' @param Tags The tags associated with the peer request.
+#' @param ClientToken The client token associated with the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectPeer = list(
+#'     CoreNetworkId = "string",
+#'     ConnectAttachmentId = "string",
+#'     ConnectPeerId = "string",
+#'     EdgeLocation = "string",
+#'     State = "CREATING"|"FAILED"|"AVAILABLE"|"DELETING",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Configuration = list(
+#'       CoreNetworkAddress = "string",
+#'       PeerAddress = "string",
+#'       InsideCidrBlocks = list(
+#'         "string"
+#'       ),
+#'       Protocol = "GRE",
+#'       BgpConfigurations = list(
+#'         list(
+#'           CoreNetworkAsn = 123,
+#'           PeerAsn = 123,
+#'           CoreNetworkAddress = "string",
+#'           PeerAddress = "string"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connect_peer(
+#'   ConnectAttachmentId = "string",
+#'   CoreNetworkAddress = "string",
+#'   PeerAddress = "string",
+#'   BgpOptions = list(
+#'     PeerAsn = 123
+#'   ),
+#'   InsideCidrBlocks = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_connect_peer
+networkmanager_create_connect_peer <- function(ConnectAttachmentId, CoreNetworkAddress = NULL, PeerAddress, BgpOptions = NULL, InsideCidrBlocks, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateConnectPeer",
+    http_method = "POST",
+    http_path = "/connect-peers",
+    paginator = list()
+  )
+  input <- .networkmanager$create_connect_peer_input(ConnectAttachmentId = ConnectAttachmentId, CoreNetworkAddress = CoreNetworkAddress, PeerAddress = PeerAddress, BgpOptions = BgpOptions, InsideCidrBlocks = InsideCidrBlocks, Tags = Tags, ClientToken = ClientToken)
+  output <- .networkmanager$create_connect_peer_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_connect_peer <- networkmanager_create_connect_peer
+
 #' Creates a connection between two devices
 #'
 #' @description
@@ -286,6 +641,102 @@ networkmanager_create_connection <- function(GlobalNetworkId, DeviceId, Connecte
 }
 .networkmanager$operations$create_connection <- networkmanager_create_connection
 
+#' Creates a core network as part of your global network, and optionally,
+#' with a core network policy
+#'
+#' @description
+#' Creates a core network as part of your global network, and optionally,
+#' with a core network policy.
+#'
+#' @usage
+#' networkmanager_create_core_network(GlobalNetworkId, Description, Tags,
+#'   PolicyDocument, ClientToken)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network that a core network will be a part of.
+#' @param Description The description of a core network.
+#' @param Tags Key-value tags associated with a core network request.
+#' @param PolicyDocument The policy document for creating a core network.
+#' @param ClientToken The client token associated with a core network request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetwork = list(
+#'     GlobalNetworkId = "string",
+#'     CoreNetworkId = "string",
+#'     CoreNetworkArn = "string",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "CREATING"|"UPDATING"|"AVAILABLE"|"DELETING",
+#'     Segments = list(
+#'       list(
+#'         Name = "string",
+#'         EdgeLocations = list(
+#'           "string"
+#'         ),
+#'         SharedSegments = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Edges = list(
+#'       list(
+#'         EdgeLocation = "string",
+#'         Asn = 123,
+#'         InsideCidrBlocks = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_core_network(
+#'   GlobalNetworkId = "string",
+#'   Description = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   PolicyDocument = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_core_network
+networkmanager_create_core_network <- function(GlobalNetworkId, Description = NULL, Tags = NULL, PolicyDocument = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateCoreNetwork",
+    http_method = "POST",
+    http_path = "/core-networks",
+    paginator = list()
+  )
+  input <- .networkmanager$create_core_network_input(GlobalNetworkId = GlobalNetworkId, Description = Description, Tags = Tags, PolicyDocument = PolicyDocument, ClientToken = ClientToken)
+  output <- .networkmanager$create_core_network_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_core_network <- networkmanager_create_core_network
+
 #' Creates a new device in a global network
 #'
 #' @description
@@ -298,20 +749,21 @@ networkmanager_create_connection <- function(GlobalNetworkId, DeviceId, Connecte
 #'   Type, Vendor, Model, SerialNumber, Location, SiteId, Tags)
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
-#' @param AWSLocation The AWS location of the device.
+#' @param AWSLocation The Amazon Web Services location of the device, if applicable. For an
+#' on-premises device, you can omit this parameter.
 #' @param Description A description of the device.
 #' 
-#' Length Constraints: Maximum length of 256 characters.
+#' Constraints: Maximum length of 256 characters.
 #' @param Type The type of the device.
 #' @param Vendor The vendor of the device.
 #' 
-#' Length Constraints: Maximum length of 128 characters.
+#' Constraints: Maximum length of 128 characters.
 #' @param Model The model of the device.
 #' 
-#' Length Constraints: Maximum length of 128 characters.
+#' Constraints: Maximum length of 128 characters.
 #' @param SerialNumber The serial number of the device.
 #' 
-#' Length Constraints: Maximum length of 128 characters.
+#' Constraints: Maximum length of 128 characters.
 #' @param Location The location of the device.
 #' @param SiteId The ID of the site.
 #' @param Tags The tags to apply to the resource during creation.
@@ -411,7 +863,7 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 #'
 #' @param Description A description of the global network.
 #' 
-#' Length Constraints: Maximum length of 256 characters.
+#' Constraints: Maximum length of 256 characters.
 #' @param Tags The tags to apply to the resource during creation.
 #'
 #' @return
@@ -481,18 +933,16 @@ networkmanager_create_global_network <- function(Description = NULL, Tags = NULL
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param Description A description of the link.
 #' 
-#' Length Constraints: Maximum length of 256 characters.
+#' Constraints: Maximum length of 256 characters.
 #' @param Type The type of the link.
 #' 
-#' Constraints: Cannot include the following characters: | \\ ^
-#' 
-#' Length Constraints: Maximum length of 128 characters.
+#' Constraints: Maximum length of 128 characters. Cannot include the
+#' following characters: | \\ ^
 #' @param Bandwidth &#91;required&#93; The upload speed and download speed in Mbps.
 #' @param Provider The provider of the link.
 #' 
-#' Constraints: Cannot include the following characters: | \\ ^
-#' 
-#' Length Constraints: Maximum length of 128 characters.
+#' Constraints: Maximum length of 128 characters. Cannot include the
+#' following characters: | \\ ^
 #' @param SiteId &#91;required&#93; The ID of the site.
 #' @param Tags The tags to apply to the resource during creation.
 #'
@@ -578,7 +1028,7 @@ networkmanager_create_link <- function(GlobalNetworkId, Description = NULL, Type
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param Description A description of your site.
 #' 
-#' Length Constraints: Maximum length of 256 characters.
+#' Constraints: Maximum length of 256 characters.
 #' @param Location The site location. This information is used for visualization in the
 #' Network Manager console. If you specify the address, the latitude and
 #' longitude are automatically calculated.
@@ -657,6 +1107,534 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 }
 .networkmanager$operations$create_site <- networkmanager_create_site
 
+#' Creates an Amazon Web Services site-to-site VPN attachment on an edge
+#' location of a core network
+#'
+#' @description
+#' Creates an Amazon Web Services site-to-site VPN attachment on an edge
+#' location of a core network.
+#'
+#' @usage
+#' networkmanager_create_site_to_site_vpn_attachment(CoreNetworkId,
+#'   VpnConnectionArn, Tags, ClientToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network where you're creating a site-to-site VPN
+#' attachment.
+#' @param VpnConnectionArn &#91;required&#93; The ARN identifying the VPN attachment.
+#' @param Tags The tags associated with the request.
+#' @param ClientToken The client token associated with the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SiteToSiteVpnAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     VpnConnectionArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_site_to_site_vpn_attachment(
+#'   CoreNetworkId = "string",
+#'   VpnConnectionArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_site_to_site_vpn_attachment
+networkmanager_create_site_to_site_vpn_attachment <- function(CoreNetworkId, VpnConnectionArn, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateSiteToSiteVpnAttachment",
+    http_method = "POST",
+    http_path = "/site-to-site-vpn-attachments",
+    paginator = list()
+  )
+  input <- .networkmanager$create_site_to_site_vpn_attachment_input(CoreNetworkId = CoreNetworkId, VpnConnectionArn = VpnConnectionArn, Tags = Tags, ClientToken = ClientToken)
+  output <- .networkmanager$create_site_to_site_vpn_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_site_to_site_vpn_attachment <- networkmanager_create_site_to_site_vpn_attachment
+
+#' Creates a transit gateway peering connection
+#'
+#' @description
+#' Creates a transit gateway peering connection.
+#'
+#' @usage
+#' networkmanager_create_transit_gateway_peering(CoreNetworkId,
+#'   TransitGatewayArn, Tags, ClientToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network.
+#' @param TransitGatewayArn &#91;required&#93; The ARN of the transit gateway for the peering request.
+#' @param Tags The list of key-value tags associated with the request.
+#' @param ClientToken The client token associated with the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPeering = list(
+#'     Peering = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       PeeringId = "string",
+#'       OwnerAccountId = "string",
+#'       PeeringType = "TRANSIT_GATEWAY",
+#'       State = "CREATING"|"FAILED"|"AVAILABLE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TransitGatewayArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_transit_gateway_peering(
+#'   CoreNetworkId = "string",
+#'   TransitGatewayArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_transit_gateway_peering
+networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, TransitGatewayArn, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateTransitGatewayPeering",
+    http_method = "POST",
+    http_path = "/transit-gateway-peerings",
+    paginator = list()
+  )
+  input <- .networkmanager$create_transit_gateway_peering_input(CoreNetworkId = CoreNetworkId, TransitGatewayArn = TransitGatewayArn, Tags = Tags, ClientToken = ClientToken)
+  output <- .networkmanager$create_transit_gateway_peering_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_transit_gateway_peering <- networkmanager_create_transit_gateway_peering
+
+#' Creates a transit gateway route table attachment
+#'
+#' @description
+#' Creates a transit gateway route table attachment.
+#'
+#' @usage
+#' networkmanager_create_transit_gateway_route_table_attachment(PeeringId,
+#'   TransitGatewayRouteTableArn, Tags, ClientToken)
+#'
+#' @param PeeringId &#91;required&#93; The ID of the peer for the
+#' @param TransitGatewayRouteTableArn &#91;required&#93; The ARN of the transit gateway route table for the attachment request.
+#' @param Tags The list of key-value tags associated with the request.
+#' @param ClientToken The client token associated with the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayRouteTableAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     PeeringId = "string",
+#'     TransitGatewayRouteTableArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_transit_gateway_route_table_attachment(
+#'   PeeringId = "string",
+#'   TransitGatewayRouteTableArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_transit_gateway_route_table_attachment
+networkmanager_create_transit_gateway_route_table_attachment <- function(PeeringId, TransitGatewayRouteTableArn, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateTransitGatewayRouteTableAttachment",
+    http_method = "POST",
+    http_path = "/transit-gateway-route-table-attachments",
+    paginator = list()
+  )
+  input <- .networkmanager$create_transit_gateway_route_table_attachment_input(PeeringId = PeeringId, TransitGatewayRouteTableArn = TransitGatewayRouteTableArn, Tags = Tags, ClientToken = ClientToken)
+  output <- .networkmanager$create_transit_gateway_route_table_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_transit_gateway_route_table_attachment <- networkmanager_create_transit_gateway_route_table_attachment
+
+#' Creates a VPC attachment on an edge location of a core network
+#'
+#' @description
+#' Creates a VPC attachment on an edge location of a core network.
+#'
+#' @usage
+#' networkmanager_create_vpc_attachment(CoreNetworkId, VpcArn, SubnetArns,
+#'   Options, Tags, ClientToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network for the VPC attachment.
+#' @param VpcArn &#91;required&#93; The ARN of the VPC.
+#' @param SubnetArns &#91;required&#93; The subnet ARN of the VPC attachment.
+#' @param Options Options for the VPC attachment.
+#' @param Tags The key-value tags associated with the request.
+#' @param ClientToken The client token associated with the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     SubnetArns = list(
+#'       "string"
+#'     ),
+#'     Options = list(
+#'       Ipv6Support = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_vpc_attachment(
+#'   CoreNetworkId = "string",
+#'   VpcArn = "string",
+#'   SubnetArns = list(
+#'     "string"
+#'   ),
+#'   Options = list(
+#'     Ipv6Support = TRUE|FALSE
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_vpc_attachment
+networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetArns, Options = NULL, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateVpcAttachment",
+    http_method = "POST",
+    http_path = "/vpc-attachments",
+    paginator = list()
+  )
+  input <- .networkmanager$create_vpc_attachment_input(CoreNetworkId = CoreNetworkId, VpcArn = VpcArn, SubnetArns = SubnetArns, Options = Options, Tags = Tags, ClientToken = ClientToken)
+  output <- .networkmanager$create_vpc_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_vpc_attachment <- networkmanager_create_vpc_attachment
+
+#' Deletes an attachment
+#'
+#' @description
+#' Deletes an attachment. Supports all attachment types.
+#'
+#' @usage
+#' networkmanager_delete_attachment(AttachmentId)
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the attachment to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attachment = list(
+#'     CoreNetworkId = "string",
+#'     CoreNetworkArn = "string",
+#'     AttachmentId = "string",
+#'     OwnerAccountId = "string",
+#'     AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'     State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'     EdgeLocation = "string",
+#'     ResourceArn = "string",
+#'     AttachmentPolicyRuleNumber = 123,
+#'     SegmentName = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ProposedSegmentChange = list(
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_attachment(
+#'   AttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_delete_attachment
+networkmanager_delete_attachment <- function(AttachmentId) {
+  op <- new_operation(
+    name = "DeleteAttachment",
+    http_method = "DELETE",
+    http_path = "/attachments/{attachmentId}",
+    paginator = list()
+  )
+  input <- .networkmanager$delete_attachment_input(AttachmentId = AttachmentId)
+  output <- .networkmanager$delete_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$delete_attachment <- networkmanager_delete_attachment
+
+#' Deletes a Connect peer
+#'
+#' @description
+#' Deletes a Connect peer.
+#'
+#' @usage
+#' networkmanager_delete_connect_peer(ConnectPeerId)
+#'
+#' @param ConnectPeerId &#91;required&#93; The ID of the deleted Connect peer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectPeer = list(
+#'     CoreNetworkId = "string",
+#'     ConnectAttachmentId = "string",
+#'     ConnectPeerId = "string",
+#'     EdgeLocation = "string",
+#'     State = "CREATING"|"FAILED"|"AVAILABLE"|"DELETING",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Configuration = list(
+#'       CoreNetworkAddress = "string",
+#'       PeerAddress = "string",
+#'       InsideCidrBlocks = list(
+#'         "string"
+#'       ),
+#'       Protocol = "GRE",
+#'       BgpConfigurations = list(
+#'         list(
+#'           CoreNetworkAsn = 123,
+#'           PeerAsn = 123,
+#'           CoreNetworkAddress = "string",
+#'           PeerAddress = "string"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connect_peer(
+#'   ConnectPeerId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_delete_connect_peer
+networkmanager_delete_connect_peer <- function(ConnectPeerId) {
+  op <- new_operation(
+    name = "DeleteConnectPeer",
+    http_method = "DELETE",
+    http_path = "/connect-peers/{connectPeerId}",
+    paginator = list()
+  )
+  input <- .networkmanager$delete_connect_peer_input(ConnectPeerId = ConnectPeerId)
+  output <- .networkmanager$delete_connect_peer_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$delete_connect_peer <- networkmanager_delete_connect_peer
+
 #' Deletes the specified connection in your global network
 #'
 #' @description
@@ -722,6 +1700,153 @@ networkmanager_delete_connection <- function(GlobalNetworkId, ConnectionId) {
   return(response)
 }
 .networkmanager$operations$delete_connection <- networkmanager_delete_connection
+
+#' Deletes a core network along with all core network policies
+#'
+#' @description
+#' Deletes a core network along with all core network policies. This can
+#' only be done if there are no attachments on a core network.
+#'
+#' @usage
+#' networkmanager_delete_core_network(CoreNetworkId)
+#'
+#' @param CoreNetworkId &#91;required&#93; The network ID of the deleted core network.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetwork = list(
+#'     GlobalNetworkId = "string",
+#'     CoreNetworkId = "string",
+#'     CoreNetworkArn = "string",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "CREATING"|"UPDATING"|"AVAILABLE"|"DELETING",
+#'     Segments = list(
+#'       list(
+#'         Name = "string",
+#'         EdgeLocations = list(
+#'           "string"
+#'         ),
+#'         SharedSegments = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Edges = list(
+#'       list(
+#'         EdgeLocation = "string",
+#'         Asn = 123,
+#'         InsideCidrBlocks = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_core_network(
+#'   CoreNetworkId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_delete_core_network
+networkmanager_delete_core_network <- function(CoreNetworkId) {
+  op <- new_operation(
+    name = "DeleteCoreNetwork",
+    http_method = "DELETE",
+    http_path = "/core-networks/{coreNetworkId}",
+    paginator = list()
+  )
+  input <- .networkmanager$delete_core_network_input(CoreNetworkId = CoreNetworkId)
+  output <- .networkmanager$delete_core_network_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$delete_core_network <- networkmanager_delete_core_network
+
+#' Deletes a policy version from a core network
+#'
+#' @description
+#' Deletes a policy version from a core network. You can't delete the
+#' current LIVE policy.
+#'
+#' @usage
+#' networkmanager_delete_core_network_policy_version(CoreNetworkId,
+#'   PolicyVersionId)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network for the deleted policy.
+#' @param PolicyVersionId &#91;required&#93; The version ID of the deleted policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkPolicy = list(
+#'     CoreNetworkId = "string",
+#'     PolicyVersionId = 123,
+#'     Alias = "LIVE"|"LATEST",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ChangeSetState = "PENDING_GENERATION"|"FAILED_GENERATION"|"READY_TO_EXECUTE"|"EXECUTING"|"EXECUTION_SUCCEEDED"|"OUT_OF_DATE",
+#'     PolicyErrors = list(
+#'       list(
+#'         ErrorCode = "string",
+#'         Message = "string",
+#'         Path = "string"
+#'       )
+#'     ),
+#'     PolicyDocument = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_core_network_policy_version(
+#'   CoreNetworkId = "string",
+#'   PolicyVersionId = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_delete_core_network_policy_version
+networkmanager_delete_core_network_policy_version <- function(CoreNetworkId, PolicyVersionId) {
+  op <- new_operation(
+    name = "DeleteCoreNetworkPolicyVersion",
+    http_method = "DELETE",
+    http_path = "/core-networks/{coreNetworkId}/core-network-policy-versions/{policyVersionId}",
+    paginator = list()
+  )
+  input <- .networkmanager$delete_core_network_policy_version_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId)
+  output <- .networkmanager$delete_core_network_policy_version_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$delete_core_network_policy_version <- networkmanager_delete_core_network_policy_version
 
 #' Deletes an existing device
 #'
@@ -804,8 +1929,8 @@ networkmanager_delete_device <- function(GlobalNetworkId, DeviceId) {
 #'
 #' @description
 #' Deletes an existing global network. You must first delete all global
-#' network objects (devices, links, and sites) and deregister all transit
-#' gateways.
+#' network objects (devices, links, and sites), deregister all transit
+#' gateways, and delete any core networks.
 #'
 #' @usage
 #' networkmanager_delete_global_network(GlobalNetworkId)
@@ -930,6 +2055,110 @@ networkmanager_delete_link <- function(GlobalNetworkId, LinkId) {
   return(response)
 }
 .networkmanager$operations$delete_link <- networkmanager_delete_link
+
+#' Deletes an existing peering connection
+#'
+#' @description
+#' Deletes an existing peering connection.
+#'
+#' @usage
+#' networkmanager_delete_peering(PeeringId)
+#'
+#' @param PeeringId &#91;required&#93; The ID of the peering connection to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Peering = list(
+#'     CoreNetworkId = "string",
+#'     CoreNetworkArn = "string",
+#'     PeeringId = "string",
+#'     OwnerAccountId = "string",
+#'     PeeringType = "TRANSIT_GATEWAY",
+#'     State = "CREATING"|"FAILED"|"AVAILABLE"|"DELETING",
+#'     EdgeLocation = "string",
+#'     ResourceArn = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_peering(
+#'   PeeringId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_delete_peering
+networkmanager_delete_peering <- function(PeeringId) {
+  op <- new_operation(
+    name = "DeletePeering",
+    http_method = "DELETE",
+    http_path = "/peerings/{peeringId}",
+    paginator = list()
+  )
+  input <- .networkmanager$delete_peering_input(PeeringId = PeeringId)
+  output <- .networkmanager$delete_peering_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$delete_peering <- networkmanager_delete_peering
+
+#' Deletes a resource policy for the specified resource
+#'
+#' @description
+#' Deletes a resource policy for the specified resource. This revokes the
+#' access of the principals specified in the resource policy.
+#'
+#' @usage
+#' networkmanager_delete_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the policy to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_delete_resource_policy
+networkmanager_delete_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/resource-policy/{resourceArn}",
+    paginator = list()
+  )
+  input <- .networkmanager$delete_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .networkmanager$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$delete_resource_policy <- networkmanager_delete_resource_policy
 
 #' Deletes an existing site
 #'
@@ -1129,6 +2358,59 @@ networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, Max
 }
 .networkmanager$operations$describe_global_networks <- networkmanager_describe_global_networks
 
+#' Disassociates a core network Connect peer from a device and a link
+#'
+#' @description
+#' Disassociates a core network Connect peer from a device and a link.
+#'
+#' @usage
+#' networkmanager_disassociate_connect_peer(GlobalNetworkId, ConnectPeerId)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param ConnectPeerId &#91;required&#93; The ID of the Connect peer to disassociate from a device.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectPeerAssociation = list(
+#'     ConnectPeerId = "string",
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     LinkId = "string",
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_connect_peer(
+#'   GlobalNetworkId = "string",
+#'   ConnectPeerId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_disassociate_connect_peer
+networkmanager_disassociate_connect_peer <- function(GlobalNetworkId, ConnectPeerId) {
+  op <- new_operation(
+    name = "DisassociateConnectPeer",
+    http_method = "DELETE",
+    http_path = "/global-networks/{globalNetworkId}/connect-peer-associations/{connectPeerId}",
+    paginator = list()
+  )
+  input <- .networkmanager$disassociate_connect_peer_input(GlobalNetworkId = GlobalNetworkId, ConnectPeerId = ConnectPeerId)
+  output <- .networkmanager$disassociate_connect_peer_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$disassociate_connect_peer <- networkmanager_disassociate_connect_peer
+
 #' Disassociates a customer gateway from a device and a link
 #'
 #' @description
@@ -1139,9 +2421,7 @@ networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, Max
 #'   CustomerGatewayArn)
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
-#' @param CustomerGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the customer gateway. For more
-#' information, see [Resources Defined by Amazon
-#' EC2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html#amazonec2-resources-for-iam-policies).
+#' @param CustomerGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the customer gateway.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1294,6 +2574,273 @@ networkmanager_disassociate_transit_gateway_connect_peer <- function(GlobalNetwo
 }
 .networkmanager$operations$disassociate_transit_gateway_connect_peer <- networkmanager_disassociate_transit_gateway_connect_peer
 
+#' Executes a change set on your core network
+#'
+#' @description
+#' Executes a change set on your core network. Deploys changes globally
+#' based on the policy submitted..
+#'
+#' @usage
+#' networkmanager_execute_core_network_change_set(CoreNetworkId,
+#'   PolicyVersionId)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network.
+#' @param PolicyVersionId &#91;required&#93; The ID of the policy version.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$execute_core_network_change_set(
+#'   CoreNetworkId = "string",
+#'   PolicyVersionId = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_execute_core_network_change_set
+networkmanager_execute_core_network_change_set <- function(CoreNetworkId, PolicyVersionId) {
+  op <- new_operation(
+    name = "ExecuteCoreNetworkChangeSet",
+    http_method = "POST",
+    http_path = "/core-networks/{coreNetworkId}/core-network-change-sets/{policyVersionId}/execute",
+    paginator = list()
+  )
+  input <- .networkmanager$execute_core_network_change_set_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId)
+  output <- .networkmanager$execute_core_network_change_set_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$execute_core_network_change_set <- networkmanager_execute_core_network_change_set
+
+#' Returns information about a core network Connect attachment
+#'
+#' @description
+#' Returns information about a core network Connect attachment.
+#'
+#' @usage
+#' networkmanager_get_connect_attachment(AttachmentId)
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the attachment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TransportAttachmentId = "string",
+#'     Options = list(
+#'       Protocol = "GRE"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connect_attachment(
+#'   AttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_connect_attachment
+networkmanager_get_connect_attachment <- function(AttachmentId) {
+  op <- new_operation(
+    name = "GetConnectAttachment",
+    http_method = "GET",
+    http_path = "/connect-attachments/{attachmentId}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_connect_attachment_input(AttachmentId = AttachmentId)
+  output <- .networkmanager$get_connect_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_connect_attachment <- networkmanager_get_connect_attachment
+
+#' Returns information about a core network Connect peer
+#'
+#' @description
+#' Returns information about a core network Connect peer.
+#'
+#' @usage
+#' networkmanager_get_connect_peer(ConnectPeerId)
+#'
+#' @param ConnectPeerId &#91;required&#93; The ID of the Connect peer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectPeer = list(
+#'     CoreNetworkId = "string",
+#'     ConnectAttachmentId = "string",
+#'     ConnectPeerId = "string",
+#'     EdgeLocation = "string",
+#'     State = "CREATING"|"FAILED"|"AVAILABLE"|"DELETING",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Configuration = list(
+#'       CoreNetworkAddress = "string",
+#'       PeerAddress = "string",
+#'       InsideCidrBlocks = list(
+#'         "string"
+#'       ),
+#'       Protocol = "GRE",
+#'       BgpConfigurations = list(
+#'         list(
+#'           CoreNetworkAsn = 123,
+#'           PeerAsn = 123,
+#'           CoreNetworkAddress = "string",
+#'           PeerAddress = "string"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connect_peer(
+#'   ConnectPeerId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_connect_peer
+networkmanager_get_connect_peer <- function(ConnectPeerId) {
+  op <- new_operation(
+    name = "GetConnectPeer",
+    http_method = "GET",
+    http_path = "/connect-peers/{connectPeerId}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_connect_peer_input(ConnectPeerId = ConnectPeerId)
+  output <- .networkmanager$get_connect_peer_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_connect_peer <- networkmanager_get_connect_peer
+
+#' Returns information about a core network Connect peer associations
+#'
+#' @description
+#' Returns information about a core network Connect peer associations.
+#'
+#' @usage
+#' networkmanager_get_connect_peer_associations(GlobalNetworkId,
+#'   ConnectPeerIds, MaxResults, NextToken)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param ConnectPeerIds The IDs of the Connect peers.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectPeerAssociations = list(
+#'     list(
+#'       ConnectPeerId = "string",
+#'       GlobalNetworkId = "string",
+#'       DeviceId = "string",
+#'       LinkId = "string",
+#'       State = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connect_peer_associations(
+#'   GlobalNetworkId = "string",
+#'   ConnectPeerIds = list(
+#'     "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_connect_peer_associations
+networkmanager_get_connect_peer_associations <- function(GlobalNetworkId, ConnectPeerIds = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetConnectPeerAssociations",
+    http_method = "GET",
+    http_path = "/global-networks/{globalNetworkId}/connect-peer-associations",
+    paginator = list()
+  )
+  input <- .networkmanager$get_connect_peer_associations_input(GlobalNetworkId = GlobalNetworkId, ConnectPeerIds = ConnectPeerIds, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$get_connect_peer_associations_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_connect_peer_associations <- networkmanager_get_connect_peer_associations
+
 #' Gets information about one or more of your connections in a global
 #' network
 #'
@@ -1374,6 +2921,315 @@ networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL
 }
 .networkmanager$operations$get_connections <- networkmanager_get_connections
 
+#' Returns information about the LIVE policy for a core network
+#'
+#' @description
+#' Returns information about the LIVE policy for a core network.
+#'
+#' @usage
+#' networkmanager_get_core_network(CoreNetworkId)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetwork = list(
+#'     GlobalNetworkId = "string",
+#'     CoreNetworkId = "string",
+#'     CoreNetworkArn = "string",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "CREATING"|"UPDATING"|"AVAILABLE"|"DELETING",
+#'     Segments = list(
+#'       list(
+#'         Name = "string",
+#'         EdgeLocations = list(
+#'           "string"
+#'         ),
+#'         SharedSegments = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Edges = list(
+#'       list(
+#'         EdgeLocation = "string",
+#'         Asn = 123,
+#'         InsideCidrBlocks = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_core_network(
+#'   CoreNetworkId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_core_network
+networkmanager_get_core_network <- function(CoreNetworkId) {
+  op <- new_operation(
+    name = "GetCoreNetwork",
+    http_method = "GET",
+    http_path = "/core-networks/{coreNetworkId}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_core_network_input(CoreNetworkId = CoreNetworkId)
+  output <- .networkmanager$get_core_network_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_core_network <- networkmanager_get_core_network
+
+#' Returns information about a core network change event
+#'
+#' @description
+#' Returns information about a core network change event.
+#'
+#' @usage
+#' networkmanager_get_core_network_change_events(CoreNetworkId,
+#'   PolicyVersionId, MaxResults, NextToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network.
+#' @param PolicyVersionId &#91;required&#93; The ID of the policy version.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkChangeEvents = list(
+#'     list(
+#'       Type = "CORE_NETWORK_SEGMENT"|"CORE_NETWORK_EDGE"|"ATTACHMENT_MAPPING"|"ATTACHMENT_ROUTE_PROPAGATION"|"ATTACHMENT_ROUTE_STATIC"|"CORE_NETWORK_CONFIGURATION"|"SEGMENTS_CONFIGURATION"|"SEGMENT_ACTIONS_CONFIGURATION"|"ATTACHMENT_POLICIES_CONFIGURATION",
+#'       Action = "ADD"|"MODIFY"|"REMOVE",
+#'       IdentifierPath = "string",
+#'       EventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"FAILED",
+#'       Values = list(
+#'         EdgeLocation = "string",
+#'         SegmentName = "string",
+#'         AttachmentId = "string",
+#'         Cidr = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_core_network_change_events(
+#'   CoreNetworkId = "string",
+#'   PolicyVersionId = 123,
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_core_network_change_events
+networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyVersionId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetCoreNetworkChangeEvents",
+    http_method = "GET",
+    http_path = "/core-networks/{coreNetworkId}/core-network-change-events/{policyVersionId}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_core_network_change_events_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$get_core_network_change_events_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_core_network_change_events <- networkmanager_get_core_network_change_events
+
+#' Returns a change set between the LIVE core network policy and a
+#' submitted policy
+#'
+#' @description
+#' Returns a change set between the LIVE core network policy and a
+#' submitted policy.
+#'
+#' @usage
+#' networkmanager_get_core_network_change_set(CoreNetworkId,
+#'   PolicyVersionId, MaxResults, NextToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network.
+#' @param PolicyVersionId &#91;required&#93; The ID of the policy version.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkChanges = list(
+#'     list(
+#'       Type = "CORE_NETWORK_SEGMENT"|"CORE_NETWORK_EDGE"|"ATTACHMENT_MAPPING"|"ATTACHMENT_ROUTE_PROPAGATION"|"ATTACHMENT_ROUTE_STATIC"|"CORE_NETWORK_CONFIGURATION"|"SEGMENTS_CONFIGURATION"|"SEGMENT_ACTIONS_CONFIGURATION"|"ATTACHMENT_POLICIES_CONFIGURATION",
+#'       Action = "ADD"|"MODIFY"|"REMOVE",
+#'       Identifier = "string",
+#'       PreviousValues = list(
+#'         SegmentName = "string",
+#'         EdgeLocations = list(
+#'           "string"
+#'         ),
+#'         Asn = 123,
+#'         Cidr = "string",
+#'         DestinationIdentifier = "string",
+#'         InsideCidrBlocks = list(
+#'           "string"
+#'         ),
+#'         SharedSegments = list(
+#'           "string"
+#'         )
+#'       ),
+#'       NewValues = list(
+#'         SegmentName = "string",
+#'         EdgeLocations = list(
+#'           "string"
+#'         ),
+#'         Asn = 123,
+#'         Cidr = "string",
+#'         DestinationIdentifier = "string",
+#'         InsideCidrBlocks = list(
+#'           "string"
+#'         ),
+#'         SharedSegments = list(
+#'           "string"
+#'         )
+#'       ),
+#'       IdentifierPath = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_core_network_change_set(
+#'   CoreNetworkId = "string",
+#'   PolicyVersionId = 123,
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_core_network_change_set
+networkmanager_get_core_network_change_set <- function(CoreNetworkId, PolicyVersionId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetCoreNetworkChangeSet",
+    http_method = "GET",
+    http_path = "/core-networks/{coreNetworkId}/core-network-change-sets/{policyVersionId}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_core_network_change_set_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$get_core_network_change_set_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_core_network_change_set <- networkmanager_get_core_network_change_set
+
+#' Returns details about a core network policy
+#'
+#' @description
+#' Returns details about a core network policy. You can get details about
+#' your current live policy or any previous policy version.
+#'
+#' @usage
+#' networkmanager_get_core_network_policy(CoreNetworkId, PolicyVersionId,
+#'   Alias)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network.
+#' @param PolicyVersionId The ID of a core network policy version.
+#' @param Alias The alias of a core network policy
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkPolicy = list(
+#'     CoreNetworkId = "string",
+#'     PolicyVersionId = 123,
+#'     Alias = "LIVE"|"LATEST",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ChangeSetState = "PENDING_GENERATION"|"FAILED_GENERATION"|"READY_TO_EXECUTE"|"EXECUTING"|"EXECUTION_SUCCEEDED"|"OUT_OF_DATE",
+#'     PolicyErrors = list(
+#'       list(
+#'         ErrorCode = "string",
+#'         Message = "string",
+#'         Path = "string"
+#'       )
+#'     ),
+#'     PolicyDocument = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_core_network_policy(
+#'   CoreNetworkId = "string",
+#'   PolicyVersionId = 123,
+#'   Alias = "LIVE"|"LATEST"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_core_network_policy
+networkmanager_get_core_network_policy <- function(CoreNetworkId, PolicyVersionId = NULL, Alias = NULL) {
+  op <- new_operation(
+    name = "GetCoreNetworkPolicy",
+    http_method = "GET",
+    http_path = "/core-networks/{coreNetworkId}/core-network-policy",
+    paginator = list()
+  )
+  input <- .networkmanager$get_core_network_policy_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId, Alias = Alias)
+  output <- .networkmanager$get_core_network_policy_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_core_network_policy <- networkmanager_get_core_network_policy
+
 #' Gets the association information for customer gateways that are
 #' associated with devices and links in your global network
 #'
@@ -1386,10 +3242,8 @@ networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL
 #'   CustomerGatewayArns, MaxResults, NextToken)
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
-#' @param CustomerGatewayArns One or more customer gateway Amazon Resource Names (ARNs). For more
-#' information, see [Resources Defined by Amazon
-#' EC2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html#amazonec2-resources-for-iam-policies).
-#' The maximum is 10.
+#' @param CustomerGatewayArns One or more customer gateway Amazon Resource Names (ARNs). The maximum
+#' is 10.
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
 #'
@@ -1682,6 +3536,807 @@ networkmanager_get_links <- function(GlobalNetworkId, LinkIds = NULL, SiteId = N
 }
 .networkmanager$operations$get_links <- networkmanager_get_links
 
+#' Gets the count of network resources, by resource type, for the specified
+#' global network
+#'
+#' @description
+#' Gets the count of network resources, by resource type, for the specified
+#' global network.
+#'
+#' @usage
+#' networkmanager_get_network_resource_counts(GlobalNetworkId,
+#'   ResourceType, MaxResults, NextToken)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param ResourceType The resource type.
+#' 
+#' The following are the supported resource types for Direct Connect:
+#' 
+#' -   `dxcon`
+#' 
+#' -   `dx-gateway`
+#' 
+#' -   `dx-vif`
+#' 
+#' The following are the supported resource types for Network Manager:
+#' 
+#' -   `connection`
+#' 
+#' -   `device`
+#' 
+#' -   `link`
+#' 
+#' -   `site`
+#' 
+#' The following are the supported resource types for Amazon VPC:
+#' 
+#' -   `customer-gateway`
+#' 
+#' -   `transit-gateway`
+#' 
+#' -   `transit-gateway-attachment`
+#' 
+#' -   `transit-gateway-connect-peer`
+#' 
+#' -   `transit-gateway-route-table`
+#' 
+#' -   `vpn-connection`
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkResourceCounts = list(
+#'     list(
+#'       ResourceType = "string",
+#'       Count = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_network_resource_counts(
+#'   GlobalNetworkId = "string",
+#'   ResourceType = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_network_resource_counts
+networkmanager_get_network_resource_counts <- function(GlobalNetworkId, ResourceType = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetNetworkResourceCounts",
+    http_method = "GET",
+    http_path = "/global-networks/{globalNetworkId}/network-resource-count",
+    paginator = list()
+  )
+  input <- .networkmanager$get_network_resource_counts_input(GlobalNetworkId = GlobalNetworkId, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$get_network_resource_counts_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_network_resource_counts <- networkmanager_get_network_resource_counts
+
+#' Gets the network resource relationships for the specified global network
+#'
+#' @description
+#' Gets the network resource relationships for the specified global
+#' network.
+#'
+#' @usage
+#' networkmanager_get_network_resource_relationships(GlobalNetworkId,
+#'   CoreNetworkId, RegisteredGatewayArn, AwsRegion, AccountId, ResourceType,
+#'   ResourceArn, MaxResults, NextToken)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param CoreNetworkId The ID of a core network.
+#' @param RegisteredGatewayArn The ARN of the registered gateway.
+#' @param AwsRegion The Amazon Web Services Region.
+#' @param AccountId The Amazon Web Services account ID.
+#' @param ResourceType The resource type.
+#' 
+#' The following are the supported resource types for Direct Connect:
+#' 
+#' -   `dxcon`
+#' 
+#' -   `dx-gateway`
+#' 
+#' -   `dx-vif`
+#' 
+#' The following are the supported resource types for Network Manager:
+#' 
+#' -   `connection`
+#' 
+#' -   `device`
+#' 
+#' -   `link`
+#' 
+#' -   `site`
+#' 
+#' The following are the supported resource types for Amazon VPC:
+#' 
+#' -   `customer-gateway`
+#' 
+#' -   `transit-gateway`
+#' 
+#' -   `transit-gateway-attachment`
+#' 
+#' -   `transit-gateway-connect-peer`
+#' 
+#' -   `transit-gateway-route-table`
+#' 
+#' -   `vpn-connection`
+#' @param ResourceArn The ARN of the gateway.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Relationships = list(
+#'     list(
+#'       From = "string",
+#'       To = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_network_resource_relationships(
+#'   GlobalNetworkId = "string",
+#'   CoreNetworkId = "string",
+#'   RegisteredGatewayArn = "string",
+#'   AwsRegion = "string",
+#'   AccountId = "string",
+#'   ResourceType = "string",
+#'   ResourceArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_network_resource_relationships
+networkmanager_get_network_resource_relationships <- function(GlobalNetworkId, CoreNetworkId = NULL, RegisteredGatewayArn = NULL, AwsRegion = NULL, AccountId = NULL, ResourceType = NULL, ResourceArn = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetNetworkResourceRelationships",
+    http_method = "GET",
+    http_path = "/global-networks/{globalNetworkId}/network-resource-relationships",
+    paginator = list()
+  )
+  input <- .networkmanager$get_network_resource_relationships_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$get_network_resource_relationships_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_network_resource_relationships <- networkmanager_get_network_resource_relationships
+
+#' Describes the network resources for the specified global network
+#'
+#' @description
+#' Describes the network resources for the specified global network.
+#' 
+#' The results include information from the corresponding Describe call for
+#' the resource, minus any sensitive information such as pre-shared keys.
+#'
+#' @usage
+#' networkmanager_get_network_resources(GlobalNetworkId, CoreNetworkId,
+#'   RegisteredGatewayArn, AwsRegion, AccountId, ResourceType, ResourceArn,
+#'   MaxResults, NextToken)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param CoreNetworkId The ID of a core network.
+#' @param RegisteredGatewayArn The ARN of the gateway.
+#' @param AwsRegion The Amazon Web Services Region.
+#' @param AccountId The Amazon Web Services account ID.
+#' @param ResourceType The resource type.
+#' 
+#' The following are the supported resource types for Direct Connect:
+#' 
+#' -   `dxcon` - The definition model is
+#'     [Connection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_Connection.html).
+#' 
+#' -   `dx-gateway` - The definition model is
+#'     [DirectConnectGateway](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DirectConnectGateway.html).
+#' 
+#' -   `dx-vif` - The definition model is
+#'     [VirtualInterface](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_VirtualInterface.html).
+#' 
+#' The following are the supported resource types for Network Manager:
+#' 
+#' -   `connection` - The definition model is
+#'     [Connection](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Connection.html).
+#' 
+#' -   `device` - The definition model is
+#'     [Device](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Device.html).
+#' 
+#' -   `link` - The definition model is
+#'     [Link](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Link.html).
+#' 
+#' -   `site` - The definition model is
+#'     [Site](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Site.html).
+#' 
+#' The following are the supported resource types for Amazon VPC:
+#' 
+#' -   `customer-gateway` - The definition model is
+#'     [CustomerGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CustomerGateway.html).
+#' 
+#' -   `transit-gateway` - The definition model is
+#'     [TransitGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGateway.html).
+#' 
+#' -   `transit-gateway-attachment` - The definition model is
+#'     [TransitGatewayAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayAttachment.html).
+#' 
+#' -   `transit-gateway-connect-peer` - The definition model is
+#'     [TransitGatewayConnectPeer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayConnectPeer.html).
+#' 
+#' -   `transit-gateway-route-table` - The definition model is
+#'     [TransitGatewayRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRouteTable.html).
+#' 
+#' -   `vpn-connection` - The definition model is
+#'     [VpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnConnection.html).
+#' @param ResourceArn The ARN of the resource.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkResources = list(
+#'     list(
+#'       RegisteredGatewayArn = "string",
+#'       CoreNetworkId = "string",
+#'       AwsRegion = "string",
+#'       AccountId = "string",
+#'       ResourceType = "string",
+#'       ResourceId = "string",
+#'       ResourceArn = "string",
+#'       Definition = "string",
+#'       DefinitionTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Metadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_network_resources(
+#'   GlobalNetworkId = "string",
+#'   CoreNetworkId = "string",
+#'   RegisteredGatewayArn = "string",
+#'   AwsRegion = "string",
+#'   AccountId = "string",
+#'   ResourceType = "string",
+#'   ResourceArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_network_resources
+networkmanager_get_network_resources <- function(GlobalNetworkId, CoreNetworkId = NULL, RegisteredGatewayArn = NULL, AwsRegion = NULL, AccountId = NULL, ResourceType = NULL, ResourceArn = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetNetworkResources",
+    http_method = "GET",
+    http_path = "/global-networks/{globalNetworkId}/network-resources",
+    paginator = list()
+  )
+  input <- .networkmanager$get_network_resources_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$get_network_resources_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_network_resources <- networkmanager_get_network_resources
+
+#' Gets the network routes of the specified global network
+#'
+#' @description
+#' Gets the network routes of the specified global network.
+#'
+#' @usage
+#' networkmanager_get_network_routes(GlobalNetworkId, RouteTableIdentifier,
+#'   ExactCidrMatches, LongestPrefixMatches, SubnetOfMatches,
+#'   SupernetOfMatches, PrefixListIds, States, Types, DestinationFilters)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param RouteTableIdentifier &#91;required&#93; The ID of the route table.
+#' @param ExactCidrMatches An exact CIDR block.
+#' @param LongestPrefixMatches The most specific route that matches the traffic (longest prefix match).
+#' @param SubnetOfMatches The routes with a subnet that match the specified CIDR filter.
+#' @param SupernetOfMatches The routes with a CIDR that encompasses the CIDR filter. Example: If you
+#' specify 10.0.1.0/30, then the result returns 10.0.1.0/29.
+#' @param PrefixListIds The IDs of the prefix lists.
+#' @param States The route states.
+#' @param Types The route types.
+#' @param DestinationFilters Filter by route table destination. Possible Values:
+#' TRANSIT_GATEWAY_ATTACHMENT_ID, RESOURCE_ID, or RESOURCE_TYPE.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RouteTableArn = "string",
+#'   CoreNetworkSegmentEdge = list(
+#'     CoreNetworkId = "string",
+#'     SegmentName = "string",
+#'     EdgeLocation = "string"
+#'   ),
+#'   RouteTableType = "TRANSIT_GATEWAY_ROUTE_TABLE"|"CORE_NETWORK_SEGMENT",
+#'   RouteTableTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NetworkRoutes = list(
+#'     list(
+#'       DestinationCidrBlock = "string",
+#'       Destinations = list(
+#'         list(
+#'           CoreNetworkAttachmentId = "string",
+#'           TransitGatewayAttachmentId = "string",
+#'           SegmentName = "string",
+#'           EdgeLocation = "string",
+#'           ResourceType = "string",
+#'           ResourceId = "string"
+#'         )
+#'       ),
+#'       PrefixListId = "string",
+#'       State = "ACTIVE"|"BLACKHOLE",
+#'       Type = "PROPAGATED"|"STATIC"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_network_routes(
+#'   GlobalNetworkId = "string",
+#'   RouteTableIdentifier = list(
+#'     TransitGatewayRouteTableArn = "string",
+#'     CoreNetworkSegmentEdge = list(
+#'       CoreNetworkId = "string",
+#'       SegmentName = "string",
+#'       EdgeLocation = "string"
+#'     )
+#'   ),
+#'   ExactCidrMatches = list(
+#'     "string"
+#'   ),
+#'   LongestPrefixMatches = list(
+#'     "string"
+#'   ),
+#'   SubnetOfMatches = list(
+#'     "string"
+#'   ),
+#'   SupernetOfMatches = list(
+#'     "string"
+#'   ),
+#'   PrefixListIds = list(
+#'     "string"
+#'   ),
+#'   States = list(
+#'     "ACTIVE"|"BLACKHOLE"
+#'   ),
+#'   Types = list(
+#'     "PROPAGATED"|"STATIC"
+#'   ),
+#'   DestinationFilters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_network_routes
+networkmanager_get_network_routes <- function(GlobalNetworkId, RouteTableIdentifier, ExactCidrMatches = NULL, LongestPrefixMatches = NULL, SubnetOfMatches = NULL, SupernetOfMatches = NULL, PrefixListIds = NULL, States = NULL, Types = NULL, DestinationFilters = NULL) {
+  op <- new_operation(
+    name = "GetNetworkRoutes",
+    http_method = "POST",
+    http_path = "/global-networks/{globalNetworkId}/network-routes",
+    paginator = list()
+  )
+  input <- .networkmanager$get_network_routes_input(GlobalNetworkId = GlobalNetworkId, RouteTableIdentifier = RouteTableIdentifier, ExactCidrMatches = ExactCidrMatches, LongestPrefixMatches = LongestPrefixMatches, SubnetOfMatches = SubnetOfMatches, SupernetOfMatches = SupernetOfMatches, PrefixListIds = PrefixListIds, States = States, Types = Types, DestinationFilters = DestinationFilters)
+  output <- .networkmanager$get_network_routes_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_network_routes <- networkmanager_get_network_routes
+
+#' Gets the network telemetry of the specified global network
+#'
+#' @description
+#' Gets the network telemetry of the specified global network.
+#'
+#' @usage
+#' networkmanager_get_network_telemetry(GlobalNetworkId, CoreNetworkId,
+#'   RegisteredGatewayArn, AwsRegion, AccountId, ResourceType, ResourceArn,
+#'   MaxResults, NextToken)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param CoreNetworkId The ID of a core network.
+#' @param RegisteredGatewayArn The ARN of the gateway.
+#' @param AwsRegion The Amazon Web Services Region.
+#' @param AccountId The Amazon Web Services account ID.
+#' @param ResourceType The resource type.
+#' 
+#' The following are the supported resource types for Direct Connect:
+#' 
+#' -   `dxcon`
+#' 
+#' -   `dx-gateway`
+#' 
+#' -   `dx-vif`
+#' 
+#' The following are the supported resource types for Network Manager:
+#' 
+#' -   `connection`
+#' 
+#' -   `device`
+#' 
+#' -   `link`
+#' 
+#' -   `site`
+#' 
+#' The following are the supported resource types for Amazon VPC:
+#' 
+#' -   `customer-gateway`
+#' 
+#' -   `transit-gateway`
+#' 
+#' -   `transit-gateway-attachment`
+#' 
+#' -   `transit-gateway-connect-peer`
+#' 
+#' -   `transit-gateway-route-table`
+#' 
+#' -   `vpn-connection`
+#' @param ResourceArn The ARN of the resource.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkTelemetry = list(
+#'     list(
+#'       RegisteredGatewayArn = "string",
+#'       CoreNetworkId = "string",
+#'       AwsRegion = "string",
+#'       AccountId = "string",
+#'       ResourceType = "string",
+#'       ResourceId = "string",
+#'       ResourceArn = "string",
+#'       Address = "string",
+#'       Health = list(
+#'         Type = "BGP"|"IPSEC",
+#'         Status = "UP"|"DOWN",
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_network_telemetry(
+#'   GlobalNetworkId = "string",
+#'   CoreNetworkId = "string",
+#'   RegisteredGatewayArn = "string",
+#'   AwsRegion = "string",
+#'   AccountId = "string",
+#'   ResourceType = "string",
+#'   ResourceArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_network_telemetry
+networkmanager_get_network_telemetry <- function(GlobalNetworkId, CoreNetworkId = NULL, RegisteredGatewayArn = NULL, AwsRegion = NULL, AccountId = NULL, ResourceType = NULL, ResourceArn = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetNetworkTelemetry",
+    http_method = "GET",
+    http_path = "/global-networks/{globalNetworkId}/network-telemetry",
+    paginator = list()
+  )
+  input <- .networkmanager$get_network_telemetry_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$get_network_telemetry_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_network_telemetry <- networkmanager_get_network_telemetry
+
+#' Returns information about a resource policy
+#'
+#' @description
+#' Returns information about a resource policy.
+#'
+#' @usage
+#' networkmanager_get_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyDocument = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_resource_policy
+networkmanager_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/resource-policy/{resourceArn}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .networkmanager$get_resource_policy_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_resource_policy <- networkmanager_get_resource_policy
+
+#' Gets information about the specified route analysis
+#'
+#' @description
+#' Gets information about the specified route analysis.
+#'
+#' @usage
+#' networkmanager_get_route_analysis(GlobalNetworkId, RouteAnalysisId)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param RouteAnalysisId &#91;required&#93; The ID of the route analysis.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RouteAnalysis = list(
+#'     GlobalNetworkId = "string",
+#'     OwnerAccountId = "string",
+#'     RouteAnalysisId = "string",
+#'     StartTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "RUNNING"|"COMPLETED"|"FAILED",
+#'     Source = list(
+#'       TransitGatewayAttachmentArn = "string",
+#'       TransitGatewayArn = "string",
+#'       IpAddress = "string"
+#'     ),
+#'     Destination = list(
+#'       TransitGatewayAttachmentArn = "string",
+#'       TransitGatewayArn = "string",
+#'       IpAddress = "string"
+#'     ),
+#'     IncludeReturnPath = TRUE|FALSE,
+#'     UseMiddleboxes = TRUE|FALSE,
+#'     ForwardPath = list(
+#'       CompletionStatus = list(
+#'         ResultCode = "CONNECTED"|"NOT_CONNECTED",
+#'         ReasonCode = "TRANSIT_GATEWAY_ATTACHMENT_NOT_FOUND"|"TRANSIT_GATEWAY_ATTACHMENT_NOT_IN_TRANSIT_GATEWAY"|"CYCLIC_PATH_DETECTED"|"TRANSIT_GATEWAY_ATTACHMENT_STABLE_ROUTE_TABLE_NOT_FOUND"|"ROUTE_NOT_FOUND"|"BLACKHOLE_ROUTE_FOR_DESTINATION_FOUND"|"INACTIVE_ROUTE_FOR_DESTINATION_FOUND"|"TRANSIT_GATEWAY_ATTACHMENT_ATTACH_ARN_NO_MATCH"|"MAX_HOPS_EXCEEDED"|"POSSIBLE_MIDDLEBOX"|"NO_DESTINATION_ARN_PROVIDED",
+#'         ReasonContext = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Path = list(
+#'         list(
+#'           Sequence = 123,
+#'           Resource = list(
+#'             RegisteredGatewayArn = "string",
+#'             ResourceArn = "string",
+#'             ResourceType = "string",
+#'             Definition = "string",
+#'             NameTag = "string",
+#'             IsMiddlebox = TRUE|FALSE
+#'           ),
+#'           DestinationCidrBlock = "string"
+#'         )
+#'       )
+#'     ),
+#'     ReturnPath = list(
+#'       CompletionStatus = list(
+#'         ResultCode = "CONNECTED"|"NOT_CONNECTED",
+#'         ReasonCode = "TRANSIT_GATEWAY_ATTACHMENT_NOT_FOUND"|"TRANSIT_GATEWAY_ATTACHMENT_NOT_IN_TRANSIT_GATEWAY"|"CYCLIC_PATH_DETECTED"|"TRANSIT_GATEWAY_ATTACHMENT_STABLE_ROUTE_TABLE_NOT_FOUND"|"ROUTE_NOT_FOUND"|"BLACKHOLE_ROUTE_FOR_DESTINATION_FOUND"|"INACTIVE_ROUTE_FOR_DESTINATION_FOUND"|"TRANSIT_GATEWAY_ATTACHMENT_ATTACH_ARN_NO_MATCH"|"MAX_HOPS_EXCEEDED"|"POSSIBLE_MIDDLEBOX"|"NO_DESTINATION_ARN_PROVIDED",
+#'         ReasonContext = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Path = list(
+#'         list(
+#'           Sequence = 123,
+#'           Resource = list(
+#'             RegisteredGatewayArn = "string",
+#'             ResourceArn = "string",
+#'             ResourceType = "string",
+#'             Definition = "string",
+#'             NameTag = "string",
+#'             IsMiddlebox = TRUE|FALSE
+#'           ),
+#'           DestinationCidrBlock = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_route_analysis(
+#'   GlobalNetworkId = "string",
+#'   RouteAnalysisId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_route_analysis
+networkmanager_get_route_analysis <- function(GlobalNetworkId, RouteAnalysisId) {
+  op <- new_operation(
+    name = "GetRouteAnalysis",
+    http_method = "GET",
+    http_path = "/global-networks/{globalNetworkId}/route-analyses/{routeAnalysisId}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_route_analysis_input(GlobalNetworkId = GlobalNetworkId, RouteAnalysisId = RouteAnalysisId)
+  output <- .networkmanager$get_route_analysis_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_route_analysis <- networkmanager_get_route_analysis
+
+#' Returns information about a site-to-site VPN attachment
+#'
+#' @description
+#' Returns information about a site-to-site VPN attachment.
+#'
+#' @usage
+#' networkmanager_get_site_to_site_vpn_attachment(AttachmentId)
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the attachment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SiteToSiteVpnAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     VpnConnectionArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_site_to_site_vpn_attachment(
+#'   AttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_site_to_site_vpn_attachment
+networkmanager_get_site_to_site_vpn_attachment <- function(AttachmentId) {
+  op <- new_operation(
+    name = "GetSiteToSiteVpnAttachment",
+    http_method = "GET",
+    http_path = "/site-to-site-vpn-attachments/{attachmentId}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_site_to_site_vpn_attachment_input(AttachmentId = AttachmentId)
+  output <- .networkmanager$get_site_to_site_vpn_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_site_to_site_vpn_attachment <- networkmanager_get_site_to_site_vpn_attachment
+
 #' Gets information about one or more of your sites in a global network
 #'
 #' @description
@@ -1824,6 +4479,72 @@ networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalN
 }
 .networkmanager$operations$get_transit_gateway_connect_peer_associations <- networkmanager_get_transit_gateway_connect_peer_associations
 
+#' Returns information about a transit gateway peer
+#'
+#' @description
+#' Returns information about a transit gateway peer.
+#'
+#' @usage
+#' networkmanager_get_transit_gateway_peering(PeeringId)
+#'
+#' @param PeeringId &#91;required&#93; The ID of the peering request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPeering = list(
+#'     Peering = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       PeeringId = "string",
+#'       OwnerAccountId = "string",
+#'       PeeringType = "TRANSIT_GATEWAY",
+#'       State = "CREATING"|"FAILED"|"AVAILABLE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TransitGatewayArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_transit_gateway_peering(
+#'   PeeringId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_transit_gateway_peering
+networkmanager_get_transit_gateway_peering <- function(PeeringId) {
+  op <- new_operation(
+    name = "GetTransitGatewayPeering",
+    http_method = "GET",
+    http_path = "/transit-gateway-peerings/{peeringId}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_transit_gateway_peering_input(PeeringId = PeeringId)
+  output <- .networkmanager$get_transit_gateway_peering_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_transit_gateway_peering <- networkmanager_get_transit_gateway_peering
+
 #' Gets information about the transit gateway registrations in a specified
 #' global network
 #'
@@ -1891,6 +4612,599 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
 }
 .networkmanager$operations$get_transit_gateway_registrations <- networkmanager_get_transit_gateway_registrations
 
+#' Returns information about a transit gateway route table attachment
+#'
+#' @description
+#' Returns information about a transit gateway route table attachment.
+#'
+#' @usage
+#' networkmanager_get_transit_gateway_route_table_attachment(AttachmentId)
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the transit gateway route table attachment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayRouteTableAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     PeeringId = "string",
+#'     TransitGatewayRouteTableArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_transit_gateway_route_table_attachment(
+#'   AttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_transit_gateway_route_table_attachment
+networkmanager_get_transit_gateway_route_table_attachment <- function(AttachmentId) {
+  op <- new_operation(
+    name = "GetTransitGatewayRouteTableAttachment",
+    http_method = "GET",
+    http_path = "/transit-gateway-route-table-attachments/{attachmentId}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_transit_gateway_route_table_attachment_input(AttachmentId = AttachmentId)
+  output <- .networkmanager$get_transit_gateway_route_table_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_transit_gateway_route_table_attachment <- networkmanager_get_transit_gateway_route_table_attachment
+
+#' Returns information about a VPC attachment
+#'
+#' @description
+#' Returns information about a VPC attachment.
+#'
+#' @usage
+#' networkmanager_get_vpc_attachment(AttachmentId)
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the attachment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     SubnetArns = list(
+#'       "string"
+#'     ),
+#'     Options = list(
+#'       Ipv6Support = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_vpc_attachment(
+#'   AttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_vpc_attachment
+networkmanager_get_vpc_attachment <- function(AttachmentId) {
+  op <- new_operation(
+    name = "GetVpcAttachment",
+    http_method = "GET",
+    http_path = "/vpc-attachments/{attachmentId}",
+    paginator = list()
+  )
+  input <- .networkmanager$get_vpc_attachment_input(AttachmentId = AttachmentId)
+  output <- .networkmanager$get_vpc_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_vpc_attachment <- networkmanager_get_vpc_attachment
+
+#' Returns a list of core network attachments
+#'
+#' @description
+#' Returns a list of core network attachments.
+#'
+#' @usage
+#' networkmanager_list_attachments(CoreNetworkId, AttachmentType,
+#'   EdgeLocation, State, MaxResults, NextToken)
+#'
+#' @param CoreNetworkId The ID of a core network.
+#' @param AttachmentType The type of attachment.
+#' @param EdgeLocation The Region where the edge is located.
+#' @param State The state of the attachment.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attachments = list(
+#'     list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_attachments(
+#'   CoreNetworkId = "string",
+#'   AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'   EdgeLocation = "string",
+#'   State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_list_attachments
+networkmanager_list_attachments <- function(CoreNetworkId = NULL, AttachmentType = NULL, EdgeLocation = NULL, State = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAttachments",
+    http_method = "GET",
+    http_path = "/attachments",
+    paginator = list()
+  )
+  input <- .networkmanager$list_attachments_input(CoreNetworkId = CoreNetworkId, AttachmentType = AttachmentType, EdgeLocation = EdgeLocation, State = State, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$list_attachments_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$list_attachments <- networkmanager_list_attachments
+
+#' Returns a list of core network Connect peers
+#'
+#' @description
+#' Returns a list of core network Connect peers.
+#'
+#' @usage
+#' networkmanager_list_connect_peers(CoreNetworkId, ConnectAttachmentId,
+#'   MaxResults, NextToken)
+#'
+#' @param CoreNetworkId The ID of a core network.
+#' @param ConnectAttachmentId The ID of the attachment.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectPeers = list(
+#'     list(
+#'       CoreNetworkId = "string",
+#'       ConnectAttachmentId = "string",
+#'       ConnectPeerId = "string",
+#'       EdgeLocation = "string",
+#'       ConnectPeerState = "CREATING"|"FAILED"|"AVAILABLE"|"DELETING",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connect_peers(
+#'   CoreNetworkId = "string",
+#'   ConnectAttachmentId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_list_connect_peers
+networkmanager_list_connect_peers <- function(CoreNetworkId = NULL, ConnectAttachmentId = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListConnectPeers",
+    http_method = "GET",
+    http_path = "/connect-peers",
+    paginator = list()
+  )
+  input <- .networkmanager$list_connect_peers_input(CoreNetworkId = CoreNetworkId, ConnectAttachmentId = ConnectAttachmentId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$list_connect_peers_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$list_connect_peers <- networkmanager_list_connect_peers
+
+#' Returns a list of core network policy versions
+#'
+#' @description
+#' Returns a list of core network policy versions.
+#'
+#' @usage
+#' networkmanager_list_core_network_policy_versions(CoreNetworkId,
+#'   MaxResults, NextToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkPolicyVersions = list(
+#'     list(
+#'       CoreNetworkId = "string",
+#'       PolicyVersionId = 123,
+#'       Alias = "LIVE"|"LATEST",
+#'       Description = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ChangeSetState = "PENDING_GENERATION"|"FAILED_GENERATION"|"READY_TO_EXECUTE"|"EXECUTING"|"EXECUTION_SUCCEEDED"|"OUT_OF_DATE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_core_network_policy_versions(
+#'   CoreNetworkId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_list_core_network_policy_versions
+networkmanager_list_core_network_policy_versions <- function(CoreNetworkId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCoreNetworkPolicyVersions",
+    http_method = "GET",
+    http_path = "/core-networks/{coreNetworkId}/core-network-policy-versions",
+    paginator = list()
+  )
+  input <- .networkmanager$list_core_network_policy_versions_input(CoreNetworkId = CoreNetworkId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$list_core_network_policy_versions_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$list_core_network_policy_versions <- networkmanager_list_core_network_policy_versions
+
+#' Returns a list of owned and shared core networks
+#'
+#' @description
+#' Returns a list of owned and shared core networks.
+#'
+#' @usage
+#' networkmanager_list_core_networks(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworks = list(
+#'     list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       GlobalNetworkId = "string",
+#'       OwnerAccountId = "string",
+#'       State = "CREATING"|"UPDATING"|"AVAILABLE"|"DELETING",
+#'       Description = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_core_networks(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_list_core_networks
+networkmanager_list_core_networks <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCoreNetworks",
+    http_method = "GET",
+    http_path = "/core-networks",
+    paginator = list()
+  )
+  input <- .networkmanager$list_core_networks_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$list_core_networks_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$list_core_networks <- networkmanager_list_core_networks
+
+#' Gets the status of the Service Linked Role (SLR) deployment for the
+#' accounts in a given Amazon Web Services Organization
+#'
+#' @description
+#' Gets the status of the Service Linked Role (SLR) deployment for the
+#' accounts in a given Amazon Web Services Organization.
+#'
+#' @usage
+#' networkmanager_list_organization_service_access_status(MaxResults,
+#'   NextToken)
+#'
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationStatus = list(
+#'     OrganizationId = "string",
+#'     OrganizationAwsServiceAccessStatus = "string",
+#'     SLRDeploymentStatus = "string",
+#'     AccountStatusList = list(
+#'       list(
+#'         AccountId = "string",
+#'         SLRDeploymentStatus = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_organization_service_access_status(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_list_organization_service_access_status
+networkmanager_list_organization_service_access_status <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListOrganizationServiceAccessStatus",
+    http_method = "GET",
+    http_path = "/organizations/service-access",
+    paginator = list()
+  )
+  input <- .networkmanager$list_organization_service_access_status_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$list_organization_service_access_status_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$list_organization_service_access_status <- networkmanager_list_organization_service_access_status
+
+#' Lists the peerings for a core network
+#'
+#' @description
+#' Lists the peerings for a core network.
+#'
+#' @usage
+#' networkmanager_list_peerings(CoreNetworkId, PeeringType, EdgeLocation,
+#'   State, MaxResults, NextToken)
+#'
+#' @param CoreNetworkId The ID of a core network.
+#' @param PeeringType Returns a list of a peering requests.
+#' @param EdgeLocation Returns a list edge locations for the
+#' @param State Returns a list of the peering request states.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Peerings = list(
+#'     list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       PeeringId = "string",
+#'       OwnerAccountId = "string",
+#'       PeeringType = "TRANSIT_GATEWAY",
+#'       State = "CREATING"|"FAILED"|"AVAILABLE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_peerings(
+#'   CoreNetworkId = "string",
+#'   PeeringType = "TRANSIT_GATEWAY",
+#'   EdgeLocation = "string",
+#'   State = "CREATING"|"FAILED"|"AVAILABLE"|"DELETING",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_list_peerings
+networkmanager_list_peerings <- function(CoreNetworkId = NULL, PeeringType = NULL, EdgeLocation = NULL, State = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListPeerings",
+    http_method = "GET",
+    http_path = "/peerings",
+    paginator = list()
+  )
+  input <- .networkmanager$list_peerings_input(CoreNetworkId = CoreNetworkId, PeeringType = PeeringType, EdgeLocation = EdgeLocation, State = State, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$list_peerings_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$list_peerings <- networkmanager_list_peerings
+
 #' Lists the tags for a specified resource
 #'
 #' @description
@@ -1941,22 +5255,135 @@ networkmanager_list_tags_for_resource <- function(ResourceArn) {
 }
 .networkmanager$operations$list_tags_for_resource <- networkmanager_list_tags_for_resource
 
+#' Creates a new, immutable version of a core network policy
+#'
+#' @description
+#' Creates a new, immutable version of a core network policy. A subsequent
+#' change set is created showing the differences between the LIVE policy
+#' and the submitted policy.
+#'
+#' @usage
+#' networkmanager_put_core_network_policy(CoreNetworkId, PolicyDocument,
+#'   Description, LatestVersionId, ClientToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network.
+#' @param PolicyDocument &#91;required&#93; The policy document.
+#' @param Description a core network policy description.
+#' @param LatestVersionId The ID of a core network policy.
+#' @param ClientToken The client token associated with the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkPolicy = list(
+#'     CoreNetworkId = "string",
+#'     PolicyVersionId = 123,
+#'     Alias = "LIVE"|"LATEST",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ChangeSetState = "PENDING_GENERATION"|"FAILED_GENERATION"|"READY_TO_EXECUTE"|"EXECUTING"|"EXECUTION_SUCCEEDED"|"OUT_OF_DATE",
+#'     PolicyErrors = list(
+#'       list(
+#'         ErrorCode = "string",
+#'         Message = "string",
+#'         Path = "string"
+#'       )
+#'     ),
+#'     PolicyDocument = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_core_network_policy(
+#'   CoreNetworkId = "string",
+#'   PolicyDocument = "string",
+#'   Description = "string",
+#'   LatestVersionId = 123,
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_put_core_network_policy
+networkmanager_put_core_network_policy <- function(CoreNetworkId, PolicyDocument, Description = NULL, LatestVersionId = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "PutCoreNetworkPolicy",
+    http_method = "POST",
+    http_path = "/core-networks/{coreNetworkId}/core-network-policy",
+    paginator = list()
+  )
+  input <- .networkmanager$put_core_network_policy_input(CoreNetworkId = CoreNetworkId, PolicyDocument = PolicyDocument, Description = Description, LatestVersionId = LatestVersionId, ClientToken = ClientToken)
+  output <- .networkmanager$put_core_network_policy_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$put_core_network_policy <- networkmanager_put_core_network_policy
+
+#' Creates or updates a resource policy
+#'
+#' @description
+#' Creates or updates a resource policy.
+#'
+#' @usage
+#' networkmanager_put_resource_policy(PolicyDocument, ResourceArn)
+#'
+#' @param PolicyDocument &#91;required&#93; The JSON resource policy document.
+#' @param ResourceArn &#91;required&#93; The ARN of the resource policy.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   PolicyDocument = "string",
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_put_resource_policy
+networkmanager_put_resource_policy <- function(PolicyDocument, ResourceArn) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/resource-policy/{resourceArn}",
+    paginator = list()
+  )
+  input <- .networkmanager$put_resource_policy_input(PolicyDocument = PolicyDocument, ResourceArn = ResourceArn)
+  output <- .networkmanager$put_resource_policy_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$put_resource_policy <- networkmanager_put_resource_policy
+
 #' Registers a transit gateway in your global network
 #'
 #' @description
 #' Registers a transit gateway in your global network. The transit gateway
-#' can be in any AWS Region, but it must be owned by the same AWS account
-#' that owns the global network. You cannot register a transit gateway in
-#' more than one global network.
+#' can be in any Amazon Web Services Region, but it must be owned by the
+#' same Amazon Web Services account that owns the global network. You
+#' cannot register a transit gateway in more than one global network.
 #'
 #' @usage
 #' networkmanager_register_transit_gateway(GlobalNetworkId,
 #'   TransitGatewayArn)
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
-#' @param TransitGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the transit gateway. For more
-#' information, see [Resources Defined by Amazon
-#' EC2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html#amazonec2-resources-for-iam-policies).
+#' @param TransitGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the transit gateway.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2000,6 +5427,341 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
   return(response)
 }
 .networkmanager$operations$register_transit_gateway <- networkmanager_register_transit_gateway
+
+#' Rejects a core network attachment request
+#'
+#' @description
+#' Rejects a core network attachment request.
+#'
+#' @usage
+#' networkmanager_reject_attachment(AttachmentId)
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the attachment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attachment = list(
+#'     CoreNetworkId = "string",
+#'     CoreNetworkArn = "string",
+#'     AttachmentId = "string",
+#'     OwnerAccountId = "string",
+#'     AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'     State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'     EdgeLocation = "string",
+#'     ResourceArn = "string",
+#'     AttachmentPolicyRuleNumber = 123,
+#'     SegmentName = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ProposedSegmentChange = list(
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reject_attachment(
+#'   AttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_reject_attachment
+networkmanager_reject_attachment <- function(AttachmentId) {
+  op <- new_operation(
+    name = "RejectAttachment",
+    http_method = "POST",
+    http_path = "/attachments/{attachmentId}/reject",
+    paginator = list()
+  )
+  input <- .networkmanager$reject_attachment_input(AttachmentId = AttachmentId)
+  output <- .networkmanager$reject_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$reject_attachment <- networkmanager_reject_attachment
+
+#' Restores a previous policy version as a new, immutable version of a core
+#' network policy
+#'
+#' @description
+#' Restores a previous policy version as a new, immutable version of a core
+#' network policy. A subsequent change set is created showing the
+#' differences between the LIVE policy and restored policy.
+#'
+#' @usage
+#' networkmanager_restore_core_network_policy_version(CoreNetworkId,
+#'   PolicyVersionId)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network.
+#' @param PolicyVersionId &#91;required&#93; The ID of the policy version to restore.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetworkPolicy = list(
+#'     CoreNetworkId = "string",
+#'     PolicyVersionId = 123,
+#'     Alias = "LIVE"|"LATEST",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ChangeSetState = "PENDING_GENERATION"|"FAILED_GENERATION"|"READY_TO_EXECUTE"|"EXECUTING"|"EXECUTION_SUCCEEDED"|"OUT_OF_DATE",
+#'     PolicyErrors = list(
+#'       list(
+#'         ErrorCode = "string",
+#'         Message = "string",
+#'         Path = "string"
+#'       )
+#'     ),
+#'     PolicyDocument = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$restore_core_network_policy_version(
+#'   CoreNetworkId = "string",
+#'   PolicyVersionId = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_restore_core_network_policy_version
+networkmanager_restore_core_network_policy_version <- function(CoreNetworkId, PolicyVersionId) {
+  op <- new_operation(
+    name = "RestoreCoreNetworkPolicyVersion",
+    http_method = "POST",
+    http_path = "/core-networks/{coreNetworkId}/core-network-policy-versions/{policyVersionId}/restore",
+    paginator = list()
+  )
+  input <- .networkmanager$restore_core_network_policy_version_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId)
+  output <- .networkmanager$restore_core_network_policy_version_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$restore_core_network_policy_version <- networkmanager_restore_core_network_policy_version
+
+#' Enables for the Network Manager service for an Amazon Web Services
+#' Organization
+#'
+#' @description
+#' Enables for the Network Manager service for an Amazon Web Services
+#' Organization. This can only be called by a management account within the
+#' organization.
+#'
+#' @usage
+#' networkmanager_start_organization_service_access_update(Action)
+#'
+#' @param Action &#91;required&#93; The action to take for the update request. This can be either `ENABLE`
+#' or `DISABLE`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationStatus = list(
+#'     OrganizationId = "string",
+#'     OrganizationAwsServiceAccessStatus = "string",
+#'     SLRDeploymentStatus = "string",
+#'     AccountStatusList = list(
+#'       list(
+#'         AccountId = "string",
+#'         SLRDeploymentStatus = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_organization_service_access_update(
+#'   Action = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_start_organization_service_access_update
+networkmanager_start_organization_service_access_update <- function(Action) {
+  op <- new_operation(
+    name = "StartOrganizationServiceAccessUpdate",
+    http_method = "POST",
+    http_path = "/organizations/service-access",
+    paginator = list()
+  )
+  input <- .networkmanager$start_organization_service_access_update_input(Action = Action)
+  output <- .networkmanager$start_organization_service_access_update_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$start_organization_service_access_update <- networkmanager_start_organization_service_access_update
+
+#' Starts analyzing the routing path between the specified source and
+#' destination
+#'
+#' @description
+#' Starts analyzing the routing path between the specified source and
+#' destination. For more information, see [Route
+#' Analyzer](https://docs.aws.amazon.com/network-manager/latest/tgwnm/route-analyzer.html).
+#'
+#' @usage
+#' networkmanager_start_route_analysis(GlobalNetworkId, Source,
+#'   Destination, IncludeReturnPath, UseMiddleboxes)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param Source &#91;required&#93; The source from which traffic originates.
+#' @param Destination &#91;required&#93; The destination.
+#' @param IncludeReturnPath Indicates whether to analyze the return path. The default is `false`.
+#' @param UseMiddleboxes Indicates whether to include the location of middlebox appliances in the
+#' route analysis. The default is `false`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RouteAnalysis = list(
+#'     GlobalNetworkId = "string",
+#'     OwnerAccountId = "string",
+#'     RouteAnalysisId = "string",
+#'     StartTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "RUNNING"|"COMPLETED"|"FAILED",
+#'     Source = list(
+#'       TransitGatewayAttachmentArn = "string",
+#'       TransitGatewayArn = "string",
+#'       IpAddress = "string"
+#'     ),
+#'     Destination = list(
+#'       TransitGatewayAttachmentArn = "string",
+#'       TransitGatewayArn = "string",
+#'       IpAddress = "string"
+#'     ),
+#'     IncludeReturnPath = TRUE|FALSE,
+#'     UseMiddleboxes = TRUE|FALSE,
+#'     ForwardPath = list(
+#'       CompletionStatus = list(
+#'         ResultCode = "CONNECTED"|"NOT_CONNECTED",
+#'         ReasonCode = "TRANSIT_GATEWAY_ATTACHMENT_NOT_FOUND"|"TRANSIT_GATEWAY_ATTACHMENT_NOT_IN_TRANSIT_GATEWAY"|"CYCLIC_PATH_DETECTED"|"TRANSIT_GATEWAY_ATTACHMENT_STABLE_ROUTE_TABLE_NOT_FOUND"|"ROUTE_NOT_FOUND"|"BLACKHOLE_ROUTE_FOR_DESTINATION_FOUND"|"INACTIVE_ROUTE_FOR_DESTINATION_FOUND"|"TRANSIT_GATEWAY_ATTACHMENT_ATTACH_ARN_NO_MATCH"|"MAX_HOPS_EXCEEDED"|"POSSIBLE_MIDDLEBOX"|"NO_DESTINATION_ARN_PROVIDED",
+#'         ReasonContext = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Path = list(
+#'         list(
+#'           Sequence = 123,
+#'           Resource = list(
+#'             RegisteredGatewayArn = "string",
+#'             ResourceArn = "string",
+#'             ResourceType = "string",
+#'             Definition = "string",
+#'             NameTag = "string",
+#'             IsMiddlebox = TRUE|FALSE
+#'           ),
+#'           DestinationCidrBlock = "string"
+#'         )
+#'       )
+#'     ),
+#'     ReturnPath = list(
+#'       CompletionStatus = list(
+#'         ResultCode = "CONNECTED"|"NOT_CONNECTED",
+#'         ReasonCode = "TRANSIT_GATEWAY_ATTACHMENT_NOT_FOUND"|"TRANSIT_GATEWAY_ATTACHMENT_NOT_IN_TRANSIT_GATEWAY"|"CYCLIC_PATH_DETECTED"|"TRANSIT_GATEWAY_ATTACHMENT_STABLE_ROUTE_TABLE_NOT_FOUND"|"ROUTE_NOT_FOUND"|"BLACKHOLE_ROUTE_FOR_DESTINATION_FOUND"|"INACTIVE_ROUTE_FOR_DESTINATION_FOUND"|"TRANSIT_GATEWAY_ATTACHMENT_ATTACH_ARN_NO_MATCH"|"MAX_HOPS_EXCEEDED"|"POSSIBLE_MIDDLEBOX"|"NO_DESTINATION_ARN_PROVIDED",
+#'         ReasonContext = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Path = list(
+#'         list(
+#'           Sequence = 123,
+#'           Resource = list(
+#'             RegisteredGatewayArn = "string",
+#'             ResourceArn = "string",
+#'             ResourceType = "string",
+#'             Definition = "string",
+#'             NameTag = "string",
+#'             IsMiddlebox = TRUE|FALSE
+#'           ),
+#'           DestinationCidrBlock = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_route_analysis(
+#'   GlobalNetworkId = "string",
+#'   Source = list(
+#'     TransitGatewayAttachmentArn = "string",
+#'     IpAddress = "string"
+#'   ),
+#'   Destination = list(
+#'     TransitGatewayAttachmentArn = "string",
+#'     IpAddress = "string"
+#'   ),
+#'   IncludeReturnPath = TRUE|FALSE,
+#'   UseMiddleboxes = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_start_route_analysis
+networkmanager_start_route_analysis <- function(GlobalNetworkId, Source, Destination, IncludeReturnPath = NULL, UseMiddleboxes = NULL) {
+  op <- new_operation(
+    name = "StartRouteAnalysis",
+    http_method = "POST",
+    http_path = "/global-networks/{globalNetworkId}/route-analyses",
+    paginator = list()
+  )
+  input <- .networkmanager$start_route_analysis_input(GlobalNetworkId = GlobalNetworkId, Source = Source, Destination = Destination, IncludeReturnPath = IncludeReturnPath, UseMiddleboxes = UseMiddleboxes)
+  output <- .networkmanager$start_route_analysis_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$start_route_analysis <- networkmanager_start_route_analysis
 
 #' Tags a specified resource
 #'
@@ -2168,6 +5930,88 @@ networkmanager_update_connection <- function(GlobalNetworkId, ConnectionId, Link
 }
 .networkmanager$operations$update_connection <- networkmanager_update_connection
 
+#' Updates the description of a core network
+#'
+#' @description
+#' Updates the description of a core network.
+#'
+#' @usage
+#' networkmanager_update_core_network(CoreNetworkId, Description)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of a core network.
+#' @param Description The description of the update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoreNetwork = list(
+#'     GlobalNetworkId = "string",
+#'     CoreNetworkId = "string",
+#'     CoreNetworkArn = "string",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "CREATING"|"UPDATING"|"AVAILABLE"|"DELETING",
+#'     Segments = list(
+#'       list(
+#'         Name = "string",
+#'         EdgeLocations = list(
+#'           "string"
+#'         ),
+#'         SharedSegments = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Edges = list(
+#'       list(
+#'         EdgeLocation = "string",
+#'         Asn = 123,
+#'         InsideCidrBlocks = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_core_network(
+#'   CoreNetworkId = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_update_core_network
+networkmanager_update_core_network <- function(CoreNetworkId, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateCoreNetwork",
+    http_method = "PATCH",
+    http_path = "/core-networks/{coreNetworkId}",
+    paginator = list()
+  )
+  input <- .networkmanager$update_core_network_input(CoreNetworkId = CoreNetworkId, Description = Description)
+  output <- .networkmanager$update_core_network_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$update_core_network <- networkmanager_update_core_network
+
 #' Updates the details for an existing device
 #'
 #' @description
@@ -2180,20 +6024,21 @@ networkmanager_update_connection <- function(GlobalNetworkId, ConnectionId, Link
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the device.
-#' @param AWSLocation The AWS location of the device.
+#' @param AWSLocation The Amazon Web Services location of the device, if applicable. For an
+#' on-premises device, you can omit this parameter.
 #' @param Description A description of the device.
 #' 
-#' Length Constraints: Maximum length of 256 characters.
+#' Constraints: Maximum length of 256 characters.
 #' @param Type The type of the device.
 #' @param Vendor The vendor of the device.
 #' 
-#' Length Constraints: Maximum length of 128 characters.
+#' Constraints: Maximum length of 128 characters.
 #' @param Model The model of the device.
 #' 
-#' Length Constraints: Maximum length of 128 characters.
+#' Constraints: Maximum length of 128 characters.
 #' @param SerialNumber The serial number of the device.
 #' 
-#' Length Constraints: Maximum length of 128 characters.
+#' Constraints: Maximum length of 128 characters.
 #' @param Location 
 #' @param SiteId The ID of the site.
 #'
@@ -2289,7 +6134,7 @@ networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation 
 #' @param GlobalNetworkId &#91;required&#93; The ID of your global network.
 #' @param Description A description of the global network.
 #' 
-#' Length Constraints: Maximum length of 256 characters.
+#' Constraints: Maximum length of 256 characters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2355,14 +6200,14 @@ networkmanager_update_global_network <- function(GlobalNetworkId, Description = 
 #' @param LinkId &#91;required&#93; The ID of the link.
 #' @param Description A description of the link.
 #' 
-#' Length Constraints: Maximum length of 256 characters.
+#' Constraints: Maximum length of 256 characters.
 #' @param Type The type of the link.
 #' 
-#' Length Constraints: Maximum length of 128 characters.
+#' Constraints: Maximum length of 128 characters.
 #' @param Bandwidth The upload and download speed in Mbps.
 #' @param Provider The provider of the link.
 #' 
-#' Length Constraints: Maximum length of 128 characters.
+#' Constraints: Maximum length of 128 characters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2429,6 +6274,61 @@ networkmanager_update_link <- function(GlobalNetworkId, LinkId, Description = NU
 }
 .networkmanager$operations$update_link <- networkmanager_update_link
 
+#' Updates the resource metadata for the specified global network
+#'
+#' @description
+#' Updates the resource metadata for the specified global network.
+#'
+#' @usage
+#' networkmanager_update_network_resource_metadata(GlobalNetworkId,
+#'   ResourceArn, Metadata)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param ResourceArn &#91;required&#93; The ARN of the resource.
+#' @param Metadata &#91;required&#93; The resource metadata.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   Metadata = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_network_resource_metadata(
+#'   GlobalNetworkId = "string",
+#'   ResourceArn = "string",
+#'   Metadata = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_update_network_resource_metadata
+networkmanager_update_network_resource_metadata <- function(GlobalNetworkId, ResourceArn, Metadata) {
+  op <- new_operation(
+    name = "UpdateNetworkResourceMetadata",
+    http_method = "PATCH",
+    http_path = "/global-networks/{globalNetworkId}/network-resources/{resourceArn}/metadata",
+    paginator = list()
+  )
+  input <- .networkmanager$update_network_resource_metadata_input(GlobalNetworkId = GlobalNetworkId, ResourceArn = ResourceArn, Metadata = Metadata)
+  output <- .networkmanager$update_network_resource_metadata_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$update_network_resource_metadata <- networkmanager_update_network_resource_metadata
+
 #' Updates the information for an existing site
 #'
 #' @description
@@ -2443,7 +6343,7 @@ networkmanager_update_link <- function(GlobalNetworkId, LinkId, Description = NU
 #' @param SiteId &#91;required&#93; The ID of your site.
 #' @param Description A description of your site.
 #' 
-#' Length Constraints: Maximum length of 256 characters.
+#' Constraints: Maximum length of 256 characters.
 #' @param Location The site location:
 #' 
 #' -   `Address`: The physical address of the site.
@@ -2513,3 +6413,102 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
   return(response)
 }
 .networkmanager$operations$update_site <- networkmanager_update_site
+
+#' Updates a VPC attachment
+#'
+#' @description
+#' Updates a VPC attachment.
+#'
+#' @usage
+#' networkmanager_update_vpc_attachment(AttachmentId, AddSubnetArns,
+#'   RemoveSubnetArns, Options)
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the attachment.
+#' @param AddSubnetArns Adds a subnet ARN to the VPC attachment.
+#' @param RemoveSubnetArns Removes a subnet ARN from the attachment.
+#' @param Options Additional options for updating the VPC attachment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     SubnetArns = list(
+#'       "string"
+#'     ),
+#'     Options = list(
+#'       Ipv6Support = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_vpc_attachment(
+#'   AttachmentId = "string",
+#'   AddSubnetArns = list(
+#'     "string"
+#'   ),
+#'   RemoveSubnetArns = list(
+#'     "string"
+#'   ),
+#'   Options = list(
+#'     Ipv6Support = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_update_vpc_attachment
+networkmanager_update_vpc_attachment <- function(AttachmentId, AddSubnetArns = NULL, RemoveSubnetArns = NULL, Options = NULL) {
+  op <- new_operation(
+    name = "UpdateVpcAttachment",
+    http_method = "PATCH",
+    http_path = "/vpc-attachments/{attachmentId}",
+    paginator = list()
+  )
+  input <- .networkmanager$update_vpc_attachment_input(AttachmentId = AttachmentId, AddSubnetArns = AddSubnetArns, RemoveSubnetArns = RemoveSubnetArns, Options = Options)
+  output <- .networkmanager$update_vpc_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$update_vpc_attachment <- networkmanager_update_vpc_attachment

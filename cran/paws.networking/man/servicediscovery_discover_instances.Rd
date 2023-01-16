@@ -4,82 +4,63 @@
 \alias{servicediscovery_discover_instances}
 \title{Discovers registered instances for a specified namespace and service}
 \usage{
-servicediscovery_discover_instances(NamespaceName, ServiceName,
-  MaxResults, QueryParameters, OptionalParameters, HealthStatus)
+servicediscovery_discover_instances(
+  NamespaceName,
+  ServiceName,
+  MaxResults = NULL,
+  QueryParameters = NULL,
+  OptionalParameters = NULL,
+  HealthStatus = NULL
+)
 }
 \arguments{
-\item{NamespaceName}{[required] The name of the namespace that you specified when you registered the
-instance.}
+\item{NamespaceName}{[required] The \code{HttpName} name of the namespace. It's found in the \code{HttpProperties}
+member of the \code{Properties} member of the namespace.}
 
 \item{ServiceName}{[required] The name of the service that you specified when you registered the
 instance.}
 
-\item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in
-the response to a
+\item{MaxResults}{The maximum number of instances that you want Cloud Map to return in the
+response to a
 \code{\link[=servicediscovery_discover_instances]{discover_instances}} request. If
-you don't specify a value for \code{MaxResults}, AWS Cloud Map returns up to
-100 instances.}
+you don't specify a value for \code{MaxResults}, Cloud Map returns up to 100
+instances.}
 
-\item{QueryParameters}{Filters to scope the results based on custom attributes for the
-instance. For example, \verb{\{version=v1, az=1a\}}. Only instances that match
-all the specified key-value pairs will be returned.}
+\item{QueryParameters}{Filters to scope the results based on custom attributes for the instance
+(for example, \verb{\{version=v1, az=1a\}}). Only instances that match all the
+specified key-value pairs are returned.}
 
 \item{OptionalParameters}{Opportunistic filters to scope the results based on custom attributes.
 If there are instances that match both the filters specified in both the
-\code{QueryParameters} parameter and this parameter, they are returned.
-Otherwise, these filters are ignored and only instances that match the
-filters specified in the \code{QueryParameters} parameter are returned.}
+\code{QueryParameters} parameter and this parameter, all of these instances
+are returned. Otherwise, the filters are ignored, and only instances
+that match the filters that are specified in the \code{QueryParameters}
+parameter are returned.}
 
-\item{HealthStatus}{The health status of the instances that you want to discover.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Instances = list(
-    list(
-      InstanceId = "string",
-      NamespaceName = "string",
-      ServiceName = "string",
-      HealthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
-      Attributes = list(
-        "string"
-      )
-    )
-  )
-)
-}
+\item{HealthStatus}{The health status of the instances that you want to discover. This
+parameter is ignored for services that don't have a health check
+configured, and all instances are returned.
+
+\strong{HEALTHY}
+
+Returns healthy instances.
+
+\strong{UNHEALTHY}
+
+Returns unhealthy instances.
+
+\strong{ALL}
+
+Returns all instances.
+
+\strong{HEALTHY_OR_ELSE_ALL}
+
+Returns healthy instances, unless none are reporting a healthy state. In
+that case, return all instances. This is also called failing open.}
 }
 \description{
-Discovers registered instances for a specified namespace and service.
-You can use \code{\link[=servicediscovery_discover_instances]{discover_instances}}
-to discover instances for any type of namespace. For public and private
-DNS namespaces, you can also use DNS queries to discover instances.
-}
-\section{Request syntax}{
-\preformatted{svc$discover_instances(
-  NamespaceName = "string",
-  ServiceName = "string",
-  MaxResults = 123,
-  QueryParameters = list(
-    "string"
-  ),
-  OptionalParameters = list(
-    "string"
-  ),
-  HealthStatus = "HEALTHY"|"UNHEALTHY"|"ALL"
-)
-}
-}
+Discovers registered instances for a specified namespace and service. You can use \code{\link[=servicediscovery_discover_instances]{discover_instances}} to discover instances for any type of namespace. For public and private DNS namespaces, you can also use DNS queries to discover instances.
 
-\examples{
-\dontrun{
-# Example: Discover registered instances
-svc$discover_instances(
-  HealthStatus = "ALL",
-  MaxResults = 10L,
-  NamespaceName = "example.com",
-  ServiceName = "myservice"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/discover_instances.html} for full documentation.
 }
 \keyword{internal}

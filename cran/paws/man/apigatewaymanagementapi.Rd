@@ -7,7 +7,19 @@
 apigatewaymanagementapi(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -25,7 +37,9 @@ or will be the endpoint corresponding to your API's custom domain and
 base path, if applicable.
 }
 \section{Service syntax}{
-\preformatted{svc <- apigatewaymanagementapi(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- apigatewaymanagementapi(
   config = list(
     credentials = list(
       creds = list(
@@ -33,21 +47,25 @@ base path, if applicable.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=apigatewaymanagementapi_delete_connection]{delete_connection} \tab Delete the connection with the provided id\cr
-\link[=apigatewaymanagementapi_get_connection]{get_connection} \tab Get information about the connection with the provided id\cr
-\link[=apigatewaymanagementapi_post_to_connection]{post_to_connection} \tab Sends the provided data to the specified connection
+\link[paws.networking:apigatewaymanagementapi_delete_connection]{delete_connection} \tab Delete the connection with the provided id\cr
+\link[paws.networking:apigatewaymanagementapi_get_connection]{get_connection} \tab Get information about the connection with the provided id\cr
+\link[paws.networking:apigatewaymanagementapi_post_to_connection]{post_to_connection} \tab Sends the provided data to the specified connection
 }
 }
 

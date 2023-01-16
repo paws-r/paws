@@ -4,7 +4,7 @@
 \alias{cloudfront_list_realtime_log_configs}
 \title{Gets a list of real-time log configurations}
 \usage{
-cloudfront_list_realtime_log_configs(MaxItems, Marker)
+cloudfront_list_realtime_log_configs(MaxItems = NULL, Marker = NULL)
 }
 \arguments{
 \item{MaxItems}{The maximum number of real-time log configurations that you want in the
@@ -16,52 +16,9 @@ real-time log configurations in the list that occur after the marker. To
 get the next page of the list, set this field’s value to the value of
 \code{NextMarker} from the current page’s response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RealtimeLogConfigs = list(
-    MaxItems = 123,
-    Items = list(
-      list(
-        ARN = "string",
-        Name = "string",
-        SamplingRate = 123,
-        EndPoints = list(
-          list(
-            StreamType = "string",
-            KinesisStreamConfig = list(
-              RoleARN = "string",
-              StreamARN = "string"
-            )
-          )
-        ),
-        Fields = list(
-          "string"
-        )
-      )
-    ),
-    IsTruncated = TRUE|FALSE,
-    Marker = "string",
-    NextMarker = "string"
-  )
-)
-}
-}
 \description{
 Gets a list of real-time log configurations.
 
-You can optionally specify the maximum number of items to receive in the
-response. If the total number of items in the list exceeds the maximum
-that you specify, or the default maximum, the response is paginated. To
-get the next page of items, send a subsequent request that specifies the
-\code{NextMarker} value from the current response as the \code{Marker} value in
-the subsequent request.
+See \url{https://paws-r.github.io/docs/cloudfront/list_realtime_log_configs.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_realtime_log_configs(
-  MaxItems = "string",
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

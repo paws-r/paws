@@ -9,17 +9,9 @@ sagemaker_delete_flow_definition(FlowDefinitionName)
 \arguments{
 \item{FlowDefinitionName}{[required] The name of the flow definition you are deleting.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified flow definition.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_flow_definition(
-  FlowDefinitionName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_flow_definition.html} for full documentation.
+}
 \keyword{internal}

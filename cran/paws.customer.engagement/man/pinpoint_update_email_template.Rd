@@ -5,8 +5,12 @@
 \title{Updates an existing message template for messages that are sent through
 the email channel}
 \usage{
-pinpoint_update_email_template(CreateNewVersion, EmailTemplateRequest,
-  TemplateName, Version)
+pinpoint_update_email_template(
+  CreateNewVersion = NULL,
+  EmailTemplateRequest,
+  TemplateName,
+  Version = NULL
+)
 }
 \arguments{
 \item{CreateNewVersion}{Specifies whether to save the updates as a new version of the message
@@ -48,37 +52,9 @@ parameter isn't used or is set to false.
 of the template.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageBody = list(
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Updates an existing message template for messages that are sent through
-the email channel.
-}
-\section{Request syntax}{
-\preformatted{svc$update_email_template(
-  CreateNewVersion = TRUE|FALSE,
-  EmailTemplateRequest = list(
-    DefaultSubstitutions = "string",
-    HtmlPart = "string",
-    RecommenderId = "string",
-    Subject = "string",
-    tags = list(
-      "string"
-    ),
-    TemplateDescription = "string",
-    TextPart = "string"
-  ),
-  TemplateName = "string",
-  Version = "string"
-)
-}
-}
+Updates an existing message template for messages that are sent through the email channel.
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_email_template.html} for full documentation.
+}
 \keyword{internal}

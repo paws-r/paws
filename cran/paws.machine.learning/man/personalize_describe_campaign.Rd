@@ -9,68 +9,9 @@ personalize_describe_campaign(campaignArn)
 \arguments{
 \item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  campaign = list(
-    name = "string",
-    campaignArn = "string",
-    solutionVersionArn = "string",
-    minProvisionedTPS = 123,
-    campaignConfig = list(
-      itemExplorationConfig = list(
-        "string"
-      )
-    ),
-    status = "string",
-    failureReason = "string",
-    creationDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastUpdatedDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    latestCampaignUpdate = list(
-      solutionVersionArn = "string",
-      minProvisionedTPS = 123,
-      campaignConfig = list(
-        itemExplorationConfig = list(
-          "string"
-        )
-      ),
-      status = "string",
-      failureReason = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Describes the given campaign, including its status.
 
-A campaign can be in one of the following states:
-\itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
-\item DELETE PENDING > DELETE IN_PROGRESS
+See \url{https://paws-r.github.io/docs/personalize/describe_campaign.html} for full documentation.
 }
-
-When the \code{status} is \verb{CREATE FAILED}, the response includes the
-\code{failureReason} key, which describes why.
-
-For more information on campaigns, see
-\code{\link[=personalize_create_campaign]{create_campaign}}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_campaign(
-  campaignArn = "string"
-)
-}
-}
-
 \keyword{internal}

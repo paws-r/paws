@@ -5,7 +5,7 @@
 \title{Returns information about a repository branch, including its name and
 the last commit ID}
 \usage{
-codecommit_get_branch(repositoryName, branchName)
+codecommit_get_branch(repositoryName = NULL, branchName = NULL)
 }
 \arguments{
 \item{repositoryName}{The name of the repository that contains the branch for which you want
@@ -13,25 +13,9 @@ to retrieve information.}
 
 \item{branchName}{The name of the branch for which you want to retrieve information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  branch = list(
-    branchName = "string",
-    commitId = "string"
-  )
-)
-}
-}
 \description{
-Returns information about a repository branch, including its name and
-the last commit ID.
-}
-\section{Request syntax}{
-\preformatted{svc$get_branch(
-  repositoryName = "string",
-  branchName = "string"
-)
-}
-}
+Returns information about a repository branch, including its name and the last commit ID.
 
+See \url{https://paws-r.github.io/docs/codecommit/get_branch.html} for full documentation.
+}
 \keyword{internal}

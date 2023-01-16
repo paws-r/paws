@@ -4,8 +4,15 @@
 \alias{sagemaker_list_pipelines}
 \title{Gets a list of pipelines}
 \usage{
-sagemaker_list_pipelines(PipelineNamePrefix, CreatedAfter,
-  CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
+sagemaker_list_pipelines(
+  PipelineNamePrefix = NULL,
+  CreatedAfter = NULL,
+  CreatedBefore = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{PipelineNamePrefix}{The prefix of the pipeline name.}
@@ -27,48 +34,9 @@ use the token in the next request.}
 
 \item{MaxResults}{The maximum number of pipelines to return in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineSummaries = list(
-    list(
-      PipelineArn = "string",
-      PipelineName = "string",
-      PipelineDisplayName = "string",
-      PipelineDescription = "string",
-      RoleArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastExecutionTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of pipelines.
-}
-\section{Request syntax}{
-\preformatted{svc$list_pipelines(
-  PipelineNamePrefix = "string",
-  CreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_pipelines.html} for full documentation.
+}
 \keyword{internal}

@@ -11,41 +11,9 @@ rekognition_delete_faces(CollectionId, FaceIds)
 
 \item{FaceIds}{[required] An array of face IDs to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeletedFaces = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Deletes faces from a collection. You specify a collection ID and an
-array of face IDs to remove from the collection.
+Deletes faces from a collection. You specify a collection ID and an array of face IDs to remove from the collection.
 
-This operation requires permissions to perform the
-\code{rekognition:DeleteFaces} action.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_faces(
-  CollectionId = "string",
-  FaceIds = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation deletes one or more faces from a Rekognition collection.
-svc$delete_faces(
-  CollectionId = "myphotos",
-  FaceIds = list(
-    "ff43d742-0c13-5d16-a3e8-03d3f58e980b"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/rekognition/delete_faces.html} for full documentation.
 }
 \keyword{internal}

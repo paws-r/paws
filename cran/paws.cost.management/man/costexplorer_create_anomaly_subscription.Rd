@@ -4,44 +4,38 @@
 \alias{costexplorer_create_anomaly_subscription}
 \title{Adds a subscription to a cost anomaly detection monitor}
 \usage{
-costexplorer_create_anomaly_subscription(AnomalySubscription)
+costexplorer_create_anomaly_subscription(
+  AnomalySubscription,
+  ResourceTags = NULL
+)
 }
 \arguments{
 \item{AnomalySubscription}{[required] The cost anomaly subscription object that you want to create.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SubscriptionArn = "string"
-)
-}
+
+\item{ResourceTags}{An optional list of tags to associate with the specified
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AnomalySubscription.html}{\code{AnomalySubscription}}
+. You can use resource tags to control access to your \code{subscription}
+using IAM policies.
+
+Each tag consists of a key and a value, and each key must be unique for
+the resource. The following restrictions apply to resource tags:
+\itemize{
+\item Although the maximum number of array members is 200, you can assign
+a maximum of 50 user-tags to one resource. The remaining are
+reserved for Amazon Web Services use
+\item The maximum length of a key is 128 characters
+\item The maximum length of a value is 256 characters
+\item Keys and values can only contain alphanumeric characters, spaces,
+and any of the following: \verb{_.:/=+@-}
+\item Keys and values are case sensitive
+\item Keys and values are trimmed for any leading or trailing whitespaces
+\item Don’t use \verb{aws:} as a prefix for your keys. This prefix is reserved
+for Amazon Web Services use
+}}
 }
 \description{
-Adds a subscription to a cost anomaly detection monitor. You can use
-each subscription to define subscribers with email or SNS notifications.
-Email subscribers can set a dollar threshold and a time frequency for
-receiving notifications.
-}
-\section{Request syntax}{
-\preformatted{svc$create_anomaly_subscription(
-  AnomalySubscription = list(
-    SubscriptionArn = "string",
-    AccountId = "string",
-    MonitorArnList = list(
-      "string"
-    ),
-    Subscribers = list(
-      list(
-        Address = "string",
-        Type = "EMAIL"|"SNS",
-        Status = "CONFIRMED"|"DECLINED"
-      )
-    ),
-    Threshold = 123.0,
-    Frequency = "DAILY"|"IMMEDIATE"|"WEEKLY",
-    SubscriptionName = "string"
-  )
-)
-}
-}
+Adds a subscription to a cost anomaly detection monitor. You can use each subscription to define subscribers with email or SNS notifications. Email subscribers can set a dollar threshold and a time frequency for receiving notifications.
 
+See \url{https://paws-r.github.io/docs/costexplorer/create_anomaly_subscription.html} for full documentation.
+}
 \keyword{internal}

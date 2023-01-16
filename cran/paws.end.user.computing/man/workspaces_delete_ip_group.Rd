@@ -9,20 +9,9 @@ workspaces_delete_ip_group(GroupId)
 \arguments{
 \item{GroupId}{[required] The identifier of the IP access control group.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified IP access control group.
 
-You cannot delete an IP access control group that is associated with a
-directory.
+See \url{https://paws-r.github.io/docs/workspaces/delete_ip_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_ip_group(
-  GroupId = "string"
-)
-}
-}
-
 \keyword{internal}

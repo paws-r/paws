@@ -5,8 +5,12 @@
 \title{Enables the Availability Zones for the specified public subnets for the
 specified Application Load Balancer or Network Load Balancer}
 \usage{
-elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings,
-  IpAddressType)
+elbv2_set_subnets(
+  LoadBalancerArn,
+  Subnets = NULL,
+  SubnetMappings = NULL,
+  IpAddressType = NULL
+)
 }
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
@@ -50,69 +54,11 @@ balancer, you can specify one IPv6 address per subnet.}
 for your load balancer. The possible values are \code{ipv4} (for IPv4
 addresses) and \code{dualstack} (for IPv4 and IPv6 addresses). You can’t
 specify \code{dualstack} for a load balancer with a UDP or TCP_UDP listener.
-Internal load balancers must use \code{ipv4}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AvailabilityZones = list(
-    list(
-      ZoneName = "string",
-      SubnetId = "string",
-      OutpostId = "string",
-      LoadBalancerAddresses = list(
-        list(
-          IpAddress = "string",
-          AllocationId = "string",
-          PrivateIPv4Address = "string",
-          IPv6Address = "string"
-        )
-      )
-    )
-  ),
-  IpAddressType = "ipv4"|"dualstack"
-)
-}
+.}
 }
 \description{
-Enables the Availability Zones for the specified public subnets for the
-specified Application Load Balancer or Network Load Balancer. The
-specified subnets replace the previously enabled subnets.
+Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer. The specified subnets replace the previously enabled subnets.
 
-When you specify subnets for a Network Load Balancer, you must include
-all subnets that were enabled previously, with their existing
-configurations, plus any additional subnets.
-}
-\section{Request syntax}{
-\preformatted{svc$set_subnets(
-  LoadBalancerArn = "string",
-  Subnets = list(
-    "string"
-  ),
-  SubnetMappings = list(
-    list(
-      SubnetId = "string",
-      AllocationId = "string",
-      PrivateIPv4Address = "string",
-      IPv6Address = "string"
-    )
-  ),
-  IpAddressType = "ipv4"|"dualstack"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example enables the Availability Zones for the specified subnets
-# for the specified load balancer.
-svc$set_subnets(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
-  Subnets = list(
-    "subnet-8360a9e7",
-    "subnet-b7d581c0"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/set_subnets.html} for full documentation.
 }
 \keyword{internal}

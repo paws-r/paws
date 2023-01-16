@@ -5,44 +5,21 @@
 \title{Provides summary information about the security profiles for the
 specified Amazon Connect instance}
 \usage{
-connect_list_security_profiles(InstanceId, NextToken, MaxResults)
+connect_list_security_profiles(InstanceId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SecurityProfileSummaryList = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-Provides summary information about the security profiles for the
-specified Amazon Connect instance.
+Provides summary information about the security profiles for the specified Amazon Connect instance.
 
-For more information about security profiles, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html}{Security Profiles}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/list_security_profiles.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_security_profiles(
-  InstanceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

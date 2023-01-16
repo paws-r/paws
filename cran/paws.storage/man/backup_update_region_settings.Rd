@@ -4,31 +4,22 @@
 \alias{backup_update_region_settings}
 \title{Updates the current service opt-in settings for the Region}
 \usage{
-backup_update_region_settings(ResourceTypeOptInPreference)
+backup_update_region_settings(
+  ResourceTypeOptInPreference = NULL,
+  ResourceTypeManagementPreference = NULL
+)
 }
 \arguments{
 \item{ResourceTypeOptInPreference}{Updates the list of services along with the opt-in preferences for the
 Region.}
-}
-\value{
-An empty list.
+
+\item{ResourceTypeManagementPreference}{Enables or disables full Backup management of backups for a resource
+type. To enable full Backup management for DynamoDB along with \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/advanced-ddb-backup.html}{Backup's advanced DynamoDB backup features},
+follow the procedure to \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/advanced-ddb-backup.html#advanced-ddb-backup-enable-cli}{enable advanced DynamoDB backup programmatically}.}
 }
 \description{
-Updates the current service opt-in settings for the Region. If
-service-opt-in is enabled for a service, AWS Backup tries to protect
-that service's resources in this Region, when the resource is included
-in an on-demand backup or scheduled backup plan. Otherwise, AWS Backup
-does not try to protect that service's resources in this Region. Use the
-\code{\link[=backup_describe_region_settings]{describe_region_settings}} API to
-determine the resource types that are supported.
-}
-\section{Request syntax}{
-\preformatted{svc$update_region_settings(
-  ResourceTypeOptInPreference = list(
-    TRUE|FALSE
-  )
-)
-}
-}
+Updates the current service opt-in settings for the Region. If service-opt-in is enabled for a service, Backup tries to protect that service's resources in this Region, when the resource is included in an on-demand backup or scheduled backup plan. Otherwise, Backup does not try to protect that service's resources in this Region. Use the \code{\link[=backup_describe_region_settings]{describe_region_settings}} API to determine the resource types that are supported.
 
+See \url{https://paws-r.github.io/docs/backup/update_region_settings.html} for full documentation.
+}
 \keyword{internal}

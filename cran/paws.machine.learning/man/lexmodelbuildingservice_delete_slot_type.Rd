@@ -9,35 +9,9 @@ lexmodelbuildingservice_delete_slot_type(name)
 \arguments{
 \item{name}{[required] The name of the slot type. The name is case sensitive.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes all versions of the slot type, including the \verb{$LATEST} version.
-To delete a specific version of the slot type, use the
-\code{\link[=lexmodelbuildingservice_delete_slot_type_version]{delete_slot_type_version}}
-operation.
+Deletes all versions of the slot type, including the \verb{$LATEST} version. To delete a specific version of the slot type, use the \code{\link[=lexmodelbuildingservice_delete_slot_type_version]{delete_slot_type_version}} operation.
 
-You can delete a version of a slot type only if it is not referenced. To
-delete a slot type that is referred to in one or more intents, you must
-remove those references first.
-
-If you get the \code{ResourceInUseException} exception, the exception
-provides an example reference that shows the intent where the slot type
-is referenced. To remove the reference to the slot type, either update
-the intent or delete it. If you get the same exception when you attempt
-to delete the slot type again, repeat until the slot type has no
-references and the
-\code{\link[=lexmodelbuildingservice_delete_slot_type]{delete_slot_type}} call is
-successful.
-
-This operation requires permission for the \code{lex:DeleteSlotType} action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_slot_type(
-  name = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -9,17 +9,9 @@ eventbridge_delete_archive(ArchiveName)
 \arguments{
 \item{ArchiveName}{[required] The name of the archive to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified archive.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_archive(
-  ArchiveName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/eventbridge/delete_archive.html} for full documentation.
+}
 \keyword{internal}

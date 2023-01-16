@@ -4,8 +4,15 @@
 \alias{sagemaker_list_endpoint_configs}
 \title{Lists endpoint configurations}
 \usage{
-sagemaker_list_endpoint_configs(SortBy, SortOrder, NextToken,
-  MaxResults, NameContains, CreationTimeBefore, CreationTimeAfter)
+sagemaker_list_endpoint_configs(
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  NameContains = NULL,
+  CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL
+)
 }
 \arguments{
 \item{SortBy}{The field to sort results by. The default is \code{CreationTime}.}
@@ -27,39 +34,9 @@ specified time (timestamp).}
 \item{CreationTimeAfter}{A filter that returns only endpoint configurations with a creation time
 greater than or equal to the specified time (timestamp).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointConfigs = list(
-    list(
-      EndpointConfigName = "string",
-      EndpointConfigArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists endpoint configurations.
-}
-\section{Request syntax}{
-\preformatted{svc$list_endpoint_configs(
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123,
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_endpoint_configs.html} for full documentation.
+}
 \keyword{internal}

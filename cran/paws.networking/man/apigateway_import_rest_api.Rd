@@ -5,7 +5,7 @@
 \title{A feature of the API Gateway control service for creating a new API from
 an external API definition file}
 \usage{
-apigateway_import_rest_api(failOnWarnings, parameters, body)
+apigateway_import_rest_api(failOnWarnings = NULL, parameters = NULL, body)
 }
 \arguments{
 \item{failOnWarnings}{A query parameter to indicate whether to rollback the API creation
@@ -29,62 +29,17 @@ To handle imported \code{basepath}, set \code{parameters} as \code{basepath=igno
 \code{basepath=prepend} or \code{basepath=split}.
 
 For example, the AWS CLI command to exclude documentation from the
-imported API is:\preformatted{aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'
-}
+imported API is:
 
-The AWS CLI command to set the regional endpoint on the imported API is:\preformatted{aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'
-}}
+The AWS CLI command to set the regional endpoint on the imported API is:}
 
-\item{body}{[required] [Required] The POST request body containing external API definitions.
-Currently, only OpenAPI definition JSON/YAML files are supported. The
-maximum size of the API definition file is 6MB.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  version = "string",
-  warnings = list(
-    "string"
-  ),
-  binaryMediaTypes = list(
-    "string"
-  ),
-  minimumCompressionSize = 123,
-  apiKeySource = "HEADER"|"AUTHORIZER",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    ),
-    vpcEndpointIds = list(
-      "string"
-    )
-  ),
-  policy = "string",
-  tags = list(
-    "string"
-  ),
-  disableExecuteApiEndpoint = TRUE|FALSE
-)
-}
+\item{body}{[required] The POST request body containing external API definitions. Currently,
+only OpenAPI definition JSON/YAML files are supported. The maximum size
+of the API definition file is 6MB.}
 }
 \description{
-A feature of the API Gateway control service for creating a new API from
-an external API definition file.
-}
-\section{Request syntax}{
-\preformatted{svc$import_rest_api(
-  failOnWarnings = TRUE|FALSE,
-  parameters = list(
-    "string"
-  ),
-  body = raw
-)
-}
-}
+A feature of the API Gateway control service for creating a new API from an external API definition file.
 
+See \url{https://paws-r.github.io/docs/apigateway/import_rest_api.html} for full documentation.
+}
 \keyword{internal}

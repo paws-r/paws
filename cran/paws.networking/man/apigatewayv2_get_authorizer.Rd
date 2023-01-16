@@ -11,38 +11,9 @@ apigatewayv2_get_authorizer(ApiId, AuthorizerId)
 
 \item{AuthorizerId}{[required] The authorizer identifier.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AuthorizerCredentialsArn = "string",
-  AuthorizerId = "string",
-  AuthorizerPayloadFormatVersion = "string",
-  AuthorizerResultTtlInSeconds = 123,
-  AuthorizerType = "REQUEST"|"JWT",
-  AuthorizerUri = "string",
-  EnableSimpleResponses = TRUE|FALSE,
-  IdentitySource = list(
-    "string"
-  ),
-  IdentityValidationExpression = "string",
-  JwtConfiguration = list(
-    Audience = list(
-      "string"
-    ),
-    Issuer = "string"
-  ),
-  Name = "string"
-)
-}
-}
 \description{
 Gets an Authorizer.
-}
-\section{Request syntax}{
-\preformatted{svc$get_authorizer(
-  ApiId = "string",
-  AuthorizerId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_authorizer.html} for full documentation.
+}
 \keyword{internal}

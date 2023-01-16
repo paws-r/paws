@@ -5,8 +5,7 @@
 \title{Adds a source identifier to an existing RDS event notification
 subscription}
 \usage{
-rds_add_source_identifier_to_subscription(SubscriptionName,
-  SourceIdentifier)
+rds_add_source_identifier_to_subscription(SubscriptionName, SourceIdentifier)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the RDS event notification subscription you want to add a
@@ -28,39 +27,13 @@ value must be supplied.
 must be supplied.
 \item If the source type is a DB cluster snapshot, a
 \code{DBClusterSnapshotIdentifier} value must be supplied.
+\item If the source type is an RDS Proxy, a \code{DBProxyName} value must be
+supplied.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventSubscription = list(
-    CustomerAwsId = "string",
-    CustSubscriptionId = "string",
-    SnsTopicArn = "string",
-    Status = "string",
-    SubscriptionCreationTime = "string",
-    SourceType = "string",
-    SourceIdsList = list(
-      "string"
-    ),
-    EventCategoriesList = list(
-      "string"
-    ),
-    Enabled = TRUE|FALSE,
-    EventSubscriptionArn = "string"
-  )
-)
-}
-}
 \description{
-Adds a source identifier to an existing RDS event notification
-subscription.
-}
-\section{Request syntax}{
-\preformatted{svc$add_source_identifier_to_subscription(
-  SubscriptionName = "string",
-  SourceIdentifier = "string"
-)
-}
-}
+Adds a source identifier to an existing RDS event notification subscription.
 
+See \url{https://paws-r.github.io/docs/rds/add_source_identifier_to_subscription.html} for full documentation.
+}
 \keyword{internal}

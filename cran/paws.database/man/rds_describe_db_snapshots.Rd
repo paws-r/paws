@@ -4,13 +4,20 @@
 \alias{rds_describe_db_snapshots}
 \title{Returns information about DB snapshots}
 \usage{
-rds_describe_db_snapshots(DBInstanceIdentifier, DBSnapshotIdentifier,
-  SnapshotType, Filters, MaxRecords, Marker, IncludeShared, IncludePublic,
-  DbiResourceId)
+rds_describe_db_snapshots(
+  DBInstanceIdentifier = NULL,
+  DBSnapshotIdentifier = NULL,
+  SnapshotType = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  IncludeShared = NULL,
+  IncludePublic = NULL,
+  DbiResourceId = NULL
+)
 }
 \arguments{
 \item{DBInstanceIdentifier}{The ID of the DB instance to retrieve the list of DB snapshots for. This
-parameter can't be used in conjunction with \code{DBSnapshotIdentifier}. This
 parameter isn't case-sensitive.
 
 Constraints:
@@ -18,9 +25,8 @@ Constraints:
 \item If supplied, must match the identifier of an existing DBInstance.
 }}
 
-\item{DBSnapshotIdentifier}{A specific DB snapshot identifier to describe. This parameter can't be
-used in conjunction with \code{DBInstanceIdentifier}. This value is stored as
-a lowercase string.
+\item{DBSnapshotIdentifier}{A specific DB snapshot identifier to describe. This value is stored as a
+lowercase string.
 
 Constraints:
 \itemize{
@@ -33,16 +39,16 @@ parameter must also be specified.
 following values:
 \itemize{
 \item \code{automated} - Return all DB snapshots that have been automatically
-taken by Amazon RDS for my AWS account.
-\item \code{manual} - Return all DB snapshots that have been taken by my AWS
-account.
+taken by Amazon RDS for my Amazon Web Services account.
+\item \code{manual} - Return all DB snapshots that have been taken by my Amazon
+Web Services account.
 \item \code{shared} - Return all manual DB snapshots that have been shared to
-my AWS account.
+my Amazon Web Services account.
 \item \code{public} - Return all DB snapshots that have been marked as public.
-\item \code{awsbackup} - Return the DB snapshots managed by the AWS Backup
-service.
+\item \code{awsbackup} - Return the DB snapshots managed by the Amazon Web
+Services Backup service.
 
-For information about AWS Backup, see the \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html}{\emph{AWS Backup Developer Guide.}}
+For information about Amazon Web Services Backup, see the \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html}{\emph{Amazon Web Services Backup Developer Guide.}}
 
 The \code{awsbackup} type does not apply to Aurora.
 }
@@ -87,101 +93,31 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 
 \item{IncludeShared}{A value that indicates whether to include shared manual DB cluster
-snapshots from other AWS accounts that this AWS account has been given
-permission to copy or restore. By default, these snapshots are not
-included.
+snapshots from other Amazon Web Services accounts that this Amazon Web
+Services account has been given permission to copy or restore. By
+default, these snapshots are not included.
 
-You can give an AWS account permission to restore a manual DB snapshot
-from another AWS account by using the
+You can give an Amazon Web Services account permission to restore a
+manual DB snapshot from another Amazon Web Services account by using the
 \code{\link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute}} API
-action.}
+action.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{IncludePublic}{A value that indicates whether to include manual DB cluster snapshots
-that are public and can be copied or restored by any AWS account. By
-default, the public snapshots are not included.
+that are public and can be copied or restored by any Amazon Web Services
+account. By default, the public snapshots are not included.
 
 You can share a manual DB snapshot as public by using the
-\code{\link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute}} API.}
+\code{\link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute}} API.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{DbiResourceId}{A specific DB resource ID to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBSnapshots = list(
-    list(
-      DBSnapshotIdentifier = "string",
-      DBInstanceIdentifier = "string",
-      SnapshotCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Engine = "string",
-      AllocatedStorage = 123,
-      Status = "string",
-      Port = 123,
-      AvailabilityZone = "string",
-      VpcId = "string",
-      InstanceCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      MasterUsername = "string",
-      EngineVersion = "string",
-      LicenseModel = "string",
-      SnapshotType = "string",
-      Iops = 123,
-      OptionGroupName = "string",
-      PercentProgress = 123,
-      SourceRegion = "string",
-      SourceDBSnapshotIdentifier = "string",
-      StorageType = "string",
-      TdeCredentialArn = "string",
-      Encrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      DBSnapshotArn = "string",
-      Timezone = "string",
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-      ProcessorFeatures = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      DbiResourceId = "string",
-      TagList = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns information about DB snapshots. This API action supports
-pagination.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_snapshots(
-  DBInstanceIdentifier = "string",
-  DBSnapshotIdentifier = "string",
-  SnapshotType = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string",
-  IncludeShared = TRUE|FALSE,
-  IncludePublic = TRUE|FALSE,
-  DbiResourceId = "string"
-)
-}
-}
+Returns information about DB snapshots. This API action supports pagination.
 
+See \url{https://paws-r.github.io/docs/rds/describe_db_snapshots.html} for full documentation.
+}
 \keyword{internal}

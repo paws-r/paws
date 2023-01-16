@@ -5,57 +5,27 @@
 \title{Returns a list of all Outposts buckets in an Outpost that are owned by
 the authenticated sender of the request}
 \usage{
-s3control_list_regional_buckets(AccountId, NextToken, MaxResults,
-  OutpostId)
+s3control_list_regional_buckets(
+  AccountId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  OutpostId = NULL
+)
 }
 \arguments{
-\item{AccountId}{[required] The AWS account ID of the Outposts bucket.}
+\item{AccountId}{[required] The Amazon Web Services account ID of the Outposts bucket.}
 
 \item{NextToken}{}
 
 \item{MaxResults}{}
 
-\item{OutpostId}{The ID of the AWS Outposts.
+\item{OutpostId}{The ID of the Outposts.
 
 This is required by Amazon S3 on Outposts buckets.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegionalBucketList = list(
-    list(
-      Bucket = "string",
-      BucketArn = "string",
-      PublicAccessBlockEnabled = TRUE|FALSE,
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      OutpostId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of all Outposts buckets in an Outpost that are owned by
-the authenticated sender of the request. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+Returns a list of all Outposts buckets in an Outpost that are owned by the authenticated sender of the request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts} in the \emph{Amazon S3 User Guide}.
 
-For an example of the request syntax for Amazon S3 on Outposts that uses
-the S3 on Outposts endpoint hostname prefix and \code{x-amz-outpost-id} in
-your request, see the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListRegionalBuckets.html#API_control_ListRegionalBuckets_Examples}{Examples}
-section.
+See \url{https://paws-r.github.io/docs/s3control/list_regional_buckets.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_regional_buckets(
-  AccountId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  OutpostId = "string"
-)
-}
-}
-
 \keyword{internal}

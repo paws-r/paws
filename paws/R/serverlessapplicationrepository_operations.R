@@ -30,10 +30,10 @@ NULL
 #' 
 #' Minimum length=1. Maximum length=127. Maximum number of labels: 10
 #' 
-#' Pattern: "^\[a-zA-Z0-9+\\\\-_:\\\\/@@\]+$";
+#' Pattern: "^\[a-zA-Z0-9+\\-_:\\/@@\]+$";
 #' @param LicenseBody A local text file that contains the license of the app that matches the
 #' spdxLicenseID value of your application. The file has the format
-#' file://&lt;path&gt;/&lt;filename&gt;.
+#' file://\<path\>/\<filename\>.
 #' 
 #' Maximum size 5 MB
 #' 
@@ -50,10 +50,10 @@ NULL
 #' 
 #' Minimum length=1. Maximum length=140
 #' 
-#' Pattern: "\[a-zA-Z0-9\\\\-\]+";
+#' Pattern: "\[a-zA-Z0-9\\-\]+";
 #' @param ReadmeBody A local text readme file in Markdown language that contains a more
 #' detailed description of the application and how it works. The file has
-#' the format file://&lt;path&gt;/&lt;filename&gt;.
+#' the format file://\<path\>/\<filename\>.
 #' 
 #' Maximum size 5 MB
 #' 
@@ -77,7 +77,7 @@ NULL
 #' for example the URL of a specific GitHub commit.
 #' @param SpdxLicenseId A valid identifier from <https://spdx.org/licenses/>.
 #' @param TemplateBody The local raw packaged AWS SAM template file of your application. The
-#' file has the format file://&lt;path&gt;/&lt;filename&gt;.
+#' file has the format file://\<path\>/\<filename\>.
 #' 
 #' You can specify only one of templateBody and templateUrl; otherwise an
 #' error results.
@@ -305,9 +305,8 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' and
 #' [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html).
 #' If the application contains IAM resources, you can specify either
-#' CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains
-#' IAM resources with custom names, you must specify
-#' CAPABILITY_NAMED_IAM.
+#' CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains IAM
+#' resources with custom names, you must specify CAPABILITY_NAMED_IAM.
 #' 
 #' The following resources require you to specify
 #' CAPABILITY_RESOURCE_POLICY:
@@ -327,40 +326,40 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' application before deploying. If you don't specify this parameter for an
 #' application that requires capabilities, the call will fail.
 #' @param ChangeSetName This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param ClientToken This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param Description This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param NotificationArns This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param ParameterOverrides A list of parameter values for the parameters of the application.
 #' @param ResourceTypes This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param RollbackConfiguration This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param SemanticVersion The semantic version of the application:
 #' 
 #' <https://semver.org/>
 #' @param StackName &#91;required&#93; This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param Tags This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param TemplateId The UUID returned by CreateCloudFormationTemplate.
 #' 
@@ -1070,7 +1069,7 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 #' 
 #' Minimum length=1. Maximum length=127. Maximum number of labels: 10
 #' 
-#' Pattern: "^\[a-zA-Z0-9+\\\\-_:\\\\/@@\]+$";
+#' Pattern: "^\[a-zA-Z0-9+\\-_:\\/@@\]+$";
 #' @param ReadmeBody A text readme file in Markdown language that contains a more detailed
 #' description of the application and how it works.
 #' 

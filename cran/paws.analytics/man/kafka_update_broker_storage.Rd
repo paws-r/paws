@@ -4,8 +4,11 @@
 \alias{kafka_update_broker_storage}
 \title{Updates the EBS storage associated with MSK brokers}
 \usage{
-kafka_update_broker_storage(ClusterArn, CurrentVersion,
-  TargetBrokerEBSVolumeInfo)
+kafka_update_broker_storage(
+  ClusterArn,
+  CurrentVersion,
+  TargetBrokerEBSVolumeInfo
+)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
@@ -16,28 +19,9 @@ generate a new version.}
 \item{TargetBrokerEBSVolumeInfo}{[required] Describes the target volume size and the ID of the broker to apply the
 update to.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterArn = "string",
-  ClusterOperationArn = "string"
-)
-}
-}
 \description{
 Updates the EBS storage associated with MSK brokers.
-}
-\section{Request syntax}{
-\preformatted{svc$update_broker_storage(
-  ClusterArn = "string",
-  CurrentVersion = "string",
-  TargetBrokerEBSVolumeInfo = list(
-    list(
-      KafkaBrokerNodeId = "string",
-      VolumeSizeGB = 123
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/update_broker_storage.html} for full documentation.
+}
 \keyword{internal}

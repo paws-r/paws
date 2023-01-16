@@ -1,11 +1,27 @@
 svc <- paws::glue()
 
+test_that("list_blueprints", {
+  expect_error(svc$list_blueprints(), NA)
+})
+
+test_that("list_blueprints", {
+  expect_error(svc$list_blueprints(MaxResults = 20), NA)
+})
+
 test_that("list_crawlers", {
   expect_error(svc$list_crawlers(), NA)
 })
 
 test_that("list_crawlers", {
   expect_error(svc$list_crawlers(MaxResults = 20), NA)
+})
+
+test_that("list_custom_entity_types", {
+  expect_error(svc$list_custom_entity_types(), NA)
+})
+
+test_that("list_custom_entity_types", {
+  expect_error(svc$list_custom_entity_types(MaxResults = 20), NA)
 })
 
 test_that("list_dev_endpoints", {
@@ -46,6 +62,14 @@ test_that("list_schemas", {
 
 test_that("list_schemas", {
   expect_error(svc$list_schemas(MaxResults = 20), NA)
+})
+
+test_that("list_sessions", {
+  expect_error(svc$list_sessions(), NA)
+})
+
+test_that("list_sessions", {
+  expect_error(svc$list_sessions(MaxResults = 20), NA)
 })
 
 test_that("list_triggers", {

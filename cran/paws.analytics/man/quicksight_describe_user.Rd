@@ -9,38 +9,15 @@ quicksight_describe_user(UserName, AwsAccountId, Namespace)
 \arguments{
 \item{UserName}{[required] The name of the user that you want to describe.}
 
-\item{AwsAccountId}{[required] The ID for the AWS account that the user is in. Currently, you use the
-ID for the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the user is in.
+Currently, you use the ID for the Amazon Web Services account that
+contains your Amazon QuickSight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  User = list(
-    Arn = "string",
-    UserName = "string",
-    Email = "string",
-    Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-    IdentityType = "IAM"|"QUICKSIGHT",
-    Active = TRUE|FALSE,
-    PrincipalId = "string",
-    CustomPermissionsName = "string"
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Returns information about a user, given the user name.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_user(
-  UserName = "string",
-  AwsAccountId = "string",
-  Namespace = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_user.html} for full documentation.
+}
 \keyword{internal}

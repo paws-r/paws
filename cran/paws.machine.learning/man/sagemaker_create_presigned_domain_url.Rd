@@ -4,43 +4,27 @@
 \alias{sagemaker_create_presigned_domain_url}
 \title{Creates a URL for a specified UserProfile in a Domain}
 \usage{
-sagemaker_create_presigned_domain_url(DomainId, UserProfileName,
-  SessionExpirationDurationInSeconds)
+sagemaker_create_presigned_domain_url(
+  DomainId,
+  UserProfileName,
+  SessionExpirationDurationInSeconds = NULL,
+  ExpiresInSeconds = NULL
+)
 }
 \arguments{
 \item{DomainId}{[required] The domain ID.}
 
 \item{UserProfileName}{[required] The name of the UserProfile to sign-in as.}
 
-\item{SessionExpirationDurationInSeconds}{The session expiration duration in seconds.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AuthorizedUrl = "string"
-)
-}
+\item{SessionExpirationDurationInSeconds}{The session expiration duration in seconds. This value defaults to
+43200.}
+
+\item{ExpiresInSeconds}{The number of seconds until the pre-signed URL expires. This value
+defaults to 300.}
 }
 \description{
-Creates a URL for a specified UserProfile in a Domain. When accessed in
-a web browser, the user will be automatically signed in to Amazon
-SageMaker Studio, and granted access to all of the Apps and files
-associated with the Domain's Amazon Elastic File System (EFS) volume.
-This operation can only be called when the authentication mode equals
-IAM.
+Creates a URL for a specified UserProfile in a Domain. When accessed in a web browser, the user will be automatically signed in to Amazon SageMaker Studio, and granted access to all of the Apps and files associated with the Domain's Amazon Elastic File System (EFS) volume. This operation can only be called when the authentication mode equals IAM.
 
-The URL that you get from a call to
-\code{\link[=sagemaker_create_presigned_domain_url]{create_presigned_domain_url}}
-is valid only for 5 minutes. If you try to use the URL after the
-5-minute limit expires, you are directed to the AWS console sign-in
-page.
+See \url{https://paws-r.github.io/docs/sagemaker/create_presigned_domain_url.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_presigned_domain_url(
-  DomainId = "string",
-  UserProfileName = "string",
-  SessionExpirationDurationInSeconds = 123
-)
-}
-}
-
 \keyword{internal}

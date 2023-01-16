@@ -5,8 +5,13 @@
 \title{Retrieves a document that describes services that process incoming
 requests, and downstream services that they call as a result}
 \usage{
-xray_get_service_graph(StartTime, EndTime, GroupName, GroupARN,
-  NextToken)
+xray_get_service_graph(
+  StartTime,
+  EndTime,
+  GroupName = NULL,
+  GroupARN = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{StartTime}{[required] The start of the time frame for which to generate a graph.}
@@ -20,125 +25,9 @@ generate a graph.}
 
 \item{NextToken}{Pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Services = list(
-    list(
-      ReferenceId = 123,
-      Name = "string",
-      Names = list(
-        "string"
-      ),
-      Root = TRUE|FALSE,
-      AccountId = "string",
-      Type = "string",
-      State = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Edges = list(
-        list(
-          ReferenceId = 123,
-          StartTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          EndTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          SummaryStatistics = list(
-            OkCount = 123,
-            ErrorStatistics = list(
-              ThrottleCount = 123,
-              OtherCount = 123,
-              TotalCount = 123
-            ),
-            FaultStatistics = list(
-              OtherCount = 123,
-              TotalCount = 123
-            ),
-            TotalCount = 123,
-            TotalResponseTime = 123.0
-          ),
-          ResponseTimeHistogram = list(
-            list(
-              Value = 123.0,
-              Count = 123
-            )
-          ),
-          Aliases = list(
-            list(
-              Name = "string",
-              Names = list(
-                "string"
-              ),
-              Type = "string"
-            )
-          )
-        )
-      ),
-      SummaryStatistics = list(
-        OkCount = 123,
-        ErrorStatistics = list(
-          ThrottleCount = 123,
-          OtherCount = 123,
-          TotalCount = 123
-        ),
-        FaultStatistics = list(
-          OtherCount = 123,
-          TotalCount = 123
-        ),
-        TotalCount = 123,
-        TotalResponseTime = 123.0
-      ),
-      DurationHistogram = list(
-        list(
-          Value = 123.0,
-          Count = 123
-        )
-      ),
-      ResponseTimeHistogram = list(
-        list(
-          Value = 123.0,
-          Count = 123
-        )
-      )
-    )
-  ),
-  ContainsOldGroupVersions = TRUE|FALSE,
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a document that describes services that process incoming
-requests, and downstream services that they call as a result. Root
-services process incoming requests and make calls to downstream
-services. Root services are applications that use the \href{https://docs.aws.amazon.com/xray/index.html}{AWS X-Ray SDK}. Downstream services
-can be other applications, AWS resources, HTTP web APIs, or SQL
-databases.
-}
-\section{Request syntax}{
-\preformatted{svc$get_service_graph(
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  GroupName = "string",
-  GroupARN = "string",
-  NextToken = "string"
-)
-}
-}
+Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result. Root services process incoming requests and make calls to downstream services. Root services are applications that use the \href{https://docs.aws.amazon.com/xray/index.html}{Amazon Web Services X-Ray SDK}. Downstream services can be other applications, Amazon Web Services resources, HTTP web APIs, or SQL databases.
 
+See \url{https://paws-r.github.io/docs/xray/get_service_graph.html} for full documentation.
+}
 \keyword{internal}

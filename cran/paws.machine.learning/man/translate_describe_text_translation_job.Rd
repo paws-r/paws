@@ -2,7 +2,7 @@
 % Please edit documentation in R/translate_operations.R
 \name{translate_describe_text_translation_job}
 \alias{translate_describe_text_translation_job}
-\title{Gets the properties associated with an asycnhronous batch translation
+\title{Gets the properties associated with an asynchronous batch translation
 job including name, ID, status, source and target languages,
 input/output S3 buckets, and so on}
 \usage{
@@ -13,56 +13,9 @@ translate_describe_text_translation_job(JobId)
 \code{\link[=translate_start_text_translation_job]{start_text_translation_job}}
 operation returns this identifier in its response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TextTranslationJobProperties = list(
-    JobId = "string",
-    JobName = "string",
-    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-    JobDetails = list(
-      TranslatedDocumentsCount = 123,
-      DocumentsWithErrorsCount = 123,
-      InputDocumentsCount = 123
-    ),
-    SourceLanguageCode = "string",
-    TargetLanguageCodes = list(
-      "string"
-    ),
-    TerminologyNames = list(
-      "string"
-    ),
-    ParallelDataNames = list(
-      "string"
-    ),
-    Message = "string",
-    SubmittedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    InputDataConfig = list(
-      S3Uri = "string",
-      ContentType = "string"
-    ),
-    OutputDataConfig = list(
-      S3Uri = "string"
-    ),
-    DataAccessRoleArn = "string"
-  )
-)
-}
-}
 \description{
-Gets the properties associated with an asycnhronous batch translation
-job including name, ID, status, source and target languages,
-input/output S3 buckets, and so on.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_text_translation_job(
-  JobId = "string"
-)
-}
-}
+Gets the properties associated with an asynchronous batch translation job including name, ID, status, source and target languages, input/output S3 buckets, and so on.
 
+See \url{https://paws-r.github.io/docs/translate/describe_text_translation_job.html} for full documentation.
+}
 \keyword{internal}

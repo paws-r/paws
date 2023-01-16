@@ -4,8 +4,12 @@
 \alias{lexmodelbuildingservice_get_builtin_slot_types}
 \title{Gets a list of built-in slot types that meet the specified criteria}
 \usage{
-lexmodelbuildingservice_get_builtin_slot_types(locale,
-  signatureContains, nextToken, maxResults)
+lexmodelbuildingservice_get_builtin_slot_types(
+  locale = NULL,
+  signatureContains = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{locale}{A list of locales that the slot type supports.}
@@ -22,37 +26,9 @@ pagination token in the next request.}
 \item{maxResults}{The maximum number of slot types to return in the response. The default
 is 10.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  slotTypes = list(
-    list(
-      signature = "string",
-      supportedLocales = list(
-        "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Gets a list of built-in slot types that meet the specified criteria.
 
-For a list of built-in slot types, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html}{Slot Type Reference}
-in the \emph{Alexa Skills Kit}.
-
-This operation requires permission for the \code{lex:GetBuiltInSlotTypes}
-action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_slot_types.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_builtin_slot_types(
-  locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-  signatureContains = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
-
 \keyword{internal}

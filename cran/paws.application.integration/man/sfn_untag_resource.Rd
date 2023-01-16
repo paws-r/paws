@@ -12,20 +12,9 @@ activity.}
 
 \item{tagKeys}{[required] The list of tags to remove from the resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Remove a tag from a Step Functions resource
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sfn/untag_resource.html} for full documentation.
+}
 \keyword{internal}

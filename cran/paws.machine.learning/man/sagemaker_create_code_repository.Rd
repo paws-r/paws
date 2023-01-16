@@ -2,9 +2,9 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_code_repository}
 \alias{sagemaker_create_code_repository}
-\title{Creates a Git repository as a resource in your Amazon SageMaker account}
+\title{Creates a Git repository as a resource in your SageMaker account}
 \usage{
-sagemaker_create_code_repository(CodeRepositoryName, GitConfig, Tags)
+sagemaker_create_code_repository(CodeRepositoryName, GitConfig, Tags = NULL)
 }
 \arguments{
 \item{CodeRepositoryName}{[required] The name of the Git repository. The name must have 1 to 63 characters.
@@ -14,43 +14,13 @@ Valid characters are a-z, A-Z, 0-9, and - (hyphen).}
 repository is located, the default branch, and credentials to use to
 access the repository.}
 
-\item{Tags}{An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CodeRepositoryArn = "string"
-)
-}
+\item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
 }
 \description{
-Creates a Git repository as a resource in your Amazon SageMaker account.
-You can associate the repository with notebook instances so that you can
-use Git source control for the notebooks you create. The Git repository
-is a resource in your Amazon SageMaker account, so it can be associated
-with more than one notebook instance, and it persists independently from
-the lifecycle of any notebook instances it is associated with.
+Creates a Git repository as a resource in your SageMaker account. You can associate the repository with notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a resource in your SageMaker account, so it can be associated with more than one notebook instance, and it persists independently from the lifecycle of any notebook instances it is associated with.
 
-The repository can be hosted either in \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit}
-or in any other Git repository.
+See \url{https://paws-r.github.io/docs/sagemaker/create_code_repository.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_code_repository(
-  CodeRepositoryName = "string",
-  GitConfig = list(
-    RepositoryUrl = "string",
-    Branch = "string",
-    SecretArn = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

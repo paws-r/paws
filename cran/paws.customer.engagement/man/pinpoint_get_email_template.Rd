@@ -5,7 +5,7 @@
 \title{Retrieves the content and settings of a message template for messages
 that are sent through the email channel}
 \usage{
-pinpoint_get_email_template(TemplateName, Version)
+pinpoint_get_email_template(TemplateName, Version = NULL)
 }
 \arguments{
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
@@ -35,38 +35,9 @@ parameter isn't used or is set to false.
 of the template.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EmailTemplateResponse = list(
-    Arn = "string",
-    CreationDate = "string",
-    DefaultSubstitutions = "string",
-    HtmlPart = "string",
-    LastModifiedDate = "string",
-    RecommenderId = "string",
-    Subject = "string",
-    tags = list(
-      "string"
-    ),
-    TemplateDescription = "string",
-    TemplateName = "string",
-    TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
-    TextPart = "string",
-    Version = "string"
-  )
-)
-}
-}
 \description{
-Retrieves the content and settings of a message template for messages
-that are sent through the email channel.
-}
-\section{Request syntax}{
-\preformatted{svc$get_email_template(
-  TemplateName = "string",
-  Version = "string"
-)
-}
-}
+Retrieves the content and settings of a message template for messages that are sent through the email channel.
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_email_template.html} for full documentation.
+}
 \keyword{internal}

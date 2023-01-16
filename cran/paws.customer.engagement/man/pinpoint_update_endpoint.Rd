@@ -15,70 +15,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{EndpointRequest}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageBody = list(
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Creates a new endpoint for an application or updates the settings and
-attributes of an existing endpoint for an application. You can also use
-this operation to define custom attributes for an endpoint. If an update
-includes one or more values for a custom attribute, Amazon Pinpoint
-replaces (overwrites) any existing values with the new values.
-}
-\section{Request syntax}{
-\preformatted{svc$update_endpoint(
-  ApplicationId = "string",
-  EndpointId = "string",
-  EndpointRequest = list(
-    Address = "string",
-    Attributes = list(
-      list(
-        "string"
-      )
-    ),
-    ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
-    Demographic = list(
-      AppVersion = "string",
-      Locale = "string",
-      Make = "string",
-      Model = "string",
-      ModelVersion = "string",
-      Platform = "string",
-      PlatformVersion = "string",
-      Timezone = "string"
-    ),
-    EffectiveDate = "string",
-    EndpointStatus = "string",
-    Location = list(
-      City = "string",
-      Country = "string",
-      Latitude = 123.0,
-      Longitude = 123.0,
-      PostalCode = "string",
-      Region = "string"
-    ),
-    Metrics = list(
-      123.0
-    ),
-    OptOut = "string",
-    RequestId = "string",
-    User = list(
-      UserAttributes = list(
-        list(
-          "string"
-        )
-      ),
-      UserId = "string"
-    )
-  )
-)
-}
-}
+Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an application. You can also use this operation to define custom attributes for an endpoint. If an update includes one or more values for a custom attribute, Amazon Pinpoint replaces (overwrites) any existing values with the new values.
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_endpoint.html} for full documentation.
+}
 \keyword{internal}

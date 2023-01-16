@@ -4,13 +4,21 @@
 \alias{sagemaker_create_feature_group}
 \title{Create a new FeatureGroup}
 \usage{
-sagemaker_create_feature_group(FeatureGroupName,
-  RecordIdentifierFeatureName, EventTimeFeatureName, FeatureDefinitions,
-  OnlineStoreConfig, OfflineStoreConfig, RoleArn, Description, Tags)
+sagemaker_create_feature_group(
+  FeatureGroupName,
+  RecordIdentifierFeatureName,
+  EventTimeFeatureName,
+  FeatureDefinitions,
+  OnlineStoreConfig = NULL,
+  OfflineStoreConfig = NULL,
+  RoleArn = NULL,
+  Description = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{FeatureGroupName}{[required] The name of the \code{FeatureGroup}. The name must be unique within an AWS
-Region in an AWS account. The name:
+\item{FeatureGroupName}{[required] The name of the \code{FeatureGroup}. The name must be unique within an Amazon
+Web Services Region in an Amazon Web Services account. The name:
 \itemize{
 \item Must start and end with an alphanumeric character.
 \item Can only contain alphanumeric character and hyphens. Spaces are not
@@ -67,17 +75,22 @@ You can create up to 2,500 \code{FeatureDefinition}s per \code{FeatureGroup}.}
 \code{EnableOnlineStore} flag in \code{OnlineStoreConfig}; the default value is
 \code{False}.
 
-You can also include an AWS KMS key ID (\code{KMSKeyId}) for at-rest
-encryption of the \code{OnlineStore}.}
+You can also include an Amazon Web Services KMS key ID (\code{KMSKeyId}) for
+at-rest encryption of the \code{OnlineStore}.}
 
 \item{OfflineStoreConfig}{Use this to configure an \code{OfflineFeatureStore}. This parameter allows
 you to specify:
 \itemize{
 \item The Amazon Simple Storage Service (Amazon S3) location of an
 \code{OfflineStore}.
-\item A configuration for an AWS Glue or AWS Hive data cataolgue.
+\item A configuration for an Amazon Web Services Glue or Amazon Web
+Services Hive data catalog.
 \item An KMS encryption key to encrypt the Amazon S3 location used for
-\code{OfflineStore}.
+\code{OfflineStore}. If KMS encryption key is not specified, by default
+we encrypt all data at rest using Amazon Web Services KMS key. By
+defining your \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{bucket-level key}
+for SSE, you can reduce Amazon Web Services KMS requests costs by up
+to 99 percent.
 }
 
 To learn more about this parameter, see OfflineStoreConfig.}
@@ -89,64 +102,9 @@ data into the \code{OfflineStore} if an \code{OfflineStoreConfig} is provided.}
 
 \item{Tags}{Tags used to identify \code{Features} in each \code{FeatureGroup}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FeatureGroupArn = "string"
-)
-}
-}
 \description{
-Create a new \code{FeatureGroup}. A \code{FeatureGroup} is a group of \code{Features}
-defined in the \code{FeatureStore} to describe a \code{Record}.
+Create a new \code{FeatureGroup}. A \code{FeatureGroup} is a group of \code{Features} defined in the \code{FeatureStore} to describe a \code{Record}.
 
-The \code{FeatureGroup} defines the schema and features contained in the
-FeatureGroup. A \code{FeatureGroup} definition is composed of a list of
-\code{Features}, a \code{RecordIdentifierFeatureName}, an \code{EventTimeFeatureName}
-and configurations for its \code{OnlineStore} and \code{OfflineStore}. Check \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{AWS service quotas}
-to see the \code{FeatureGroup}s quota for your AWS account.
-
-You must include at least one of \code{OnlineStoreConfig} and
-\code{OfflineStoreConfig} to create a \code{FeatureGroup}.
+See \url{https://paws-r.github.io/docs/sagemaker/create_feature_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_feature_group(
-  FeatureGroupName = "string",
-  RecordIdentifierFeatureName = "string",
-  EventTimeFeatureName = "string",
-  FeatureDefinitions = list(
-    list(
-      FeatureName = "string",
-      FeatureType = "Integral"|"Fractional"|"String"
-    )
-  ),
-  OnlineStoreConfig = list(
-    SecurityConfig = list(
-      KmsKeyId = "string"
-    ),
-    EnableOnlineStore = TRUE|FALSE
-  ),
-  OfflineStoreConfig = list(
-    S3StorageConfig = list(
-      S3Uri = "string",
-      KmsKeyId = "string"
-    ),
-    DisableGlueTableCreation = TRUE|FALSE,
-    DataCatalogConfig = list(
-      TableName = "string",
-      Catalog = "string",
-      Database = "string"
-    )
-  ),
-  RoleArn = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

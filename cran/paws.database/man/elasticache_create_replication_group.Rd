@@ -5,17 +5,42 @@
 \title{Creates a Redis (cluster mode disabled) or a Redis (cluster mode
 enabled) replication group}
 \usage{
-elasticache_create_replication_group(ReplicationGroupId,
-  ReplicationGroupDescription, GlobalReplicationGroupId, PrimaryClusterId,
-  AutomaticFailoverEnabled, MultiAZEnabled, NumCacheClusters,
-  PreferredCacheClusterAZs, NumNodeGroups, ReplicasPerNodeGroup,
-  NodeGroupConfiguration, CacheNodeType, Engine, EngineVersion,
-  CacheParameterGroupName, CacheSubnetGroupName, CacheSecurityGroupNames,
-  SecurityGroupIds, Tags, SnapshotArns, SnapshotName,
-  PreferredMaintenanceWindow, Port, NotificationTopicArn,
-  AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
-  AuthToken, TransitEncryptionEnabled, AtRestEncryptionEnabled, KmsKeyId,
-  UserGroupIds)
+elasticache_create_replication_group(
+  ReplicationGroupId,
+  ReplicationGroupDescription,
+  GlobalReplicationGroupId = NULL,
+  PrimaryClusterId = NULL,
+  AutomaticFailoverEnabled = NULL,
+  MultiAZEnabled = NULL,
+  NumCacheClusters = NULL,
+  PreferredCacheClusterAZs = NULL,
+  NumNodeGroups = NULL,
+  ReplicasPerNodeGroup = NULL,
+  NodeGroupConfiguration = NULL,
+  CacheNodeType = NULL,
+  Engine = NULL,
+  EngineVersion = NULL,
+  CacheParameterGroupName = NULL,
+  CacheSubnetGroupName = NULL,
+  CacheSecurityGroupNames = NULL,
+  SecurityGroupIds = NULL,
+  Tags = NULL,
+  SnapshotArns = NULL,
+  SnapshotName = NULL,
+  PreferredMaintenanceWindow = NULL,
+  Port = NULL,
+  NotificationTopicArn = NULL,
+  AutoMinorVersionUpgrade = NULL,
+  SnapshotRetentionLimit = NULL,
+  SnapshotWindow = NULL,
+  AuthToken = NULL,
+  TransitEncryptionEnabled = NULL,
+  AtRestEncryptionEnabled = NULL,
+  KmsKeyId = NULL,
+  UserGroupIds = NULL,
+  LogDeliveryConfigurations = NULL,
+  DataTieringEnabled = NULL
+)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The replication group identifier. This parameter is stored as a
@@ -30,7 +55,7 @@ Constraints:
 
 \item{ReplicationGroupDescription}{[required] A user-created description for the replication group.}
 
-\item{GlobalReplicationGroupId}{The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{The name of the Global datastore}
 
 \item{PrimaryClusterId}{The identifier of the cluster that serves as the primary for this
 replication group. This cluster must already exist and have a status of
@@ -114,15 +139,12 @@ previous generation counterparts.
 \item Current generation:
 
 \strong{M6g node types} (available only for Redis engine version
-5.0.6 onward and for Memcached engine version 1.5.16 onward).
-
+5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.m6g.large}, \code{cache.m6g.xlarge}, \code{cache.m6g.2xlarge},
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
 \code{cache.m6g.16xlarge}
 
-At this time, M6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{M5 node types:} \code{cache.m5.large}, \code{cache.m5.xlarge},
 \code{cache.m5.2xlarge}, \code{cache.m5.4xlarge}, \code{cache.m5.12xlarge},
@@ -131,12 +153,18 @@ eu-west-1 and ap-northeast-1.
 \strong{M4 node types:} \code{cache.m4.large}, \code{cache.m4.xlarge},
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
 
+\strong{T4g node types} (available only for Redis engine version
+5.0.6 onward and Memcached engine version 1.5.16 onward):
+\code{cache.t4g.micro}, \code{cache.t4g.small}, \code{cache.t4g.medium}
+
 \strong{T3 node types:} \code{cache.t3.micro}, \code{cache.t3.small},
 \code{cache.t3.medium}
 
 \strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
 \code{cache.t2.medium}
-\item Previous generation: (not recommended)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{T1 node types:} \code{cache.t1.micro}
 
@@ -148,9 +176,22 @@ eu-west-1 and ap-northeast-1.
 }
 \item Compute optimized:
 \itemize{
-\item Previous generation: (not recommended)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{C1 node types:} \code{cache.c1.xlarge}
+}
+\item Memory optimized with data tiering:
+\itemize{
+\item Current generation:
+
+\strong{R6gd node types} (available only for Redis engine version 6.2
+onward).
+
+\code{cache.r6gd.xlarge}, \code{cache.r6gd.2xlarge}, \code{cache.r6gd.4xlarge},
+\code{cache.r6gd.8xlarge}, \code{cache.r6gd.12xlarge},
+\code{cache.r6gd.16xlarge}
 }
 \item Memory optimized:
 \itemize{
@@ -163,9 +204,7 @@ eu-west-1 and ap-northeast-1.
 \code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
 \code{cache.r6g.16xlarge}
 
-At this time, R6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{R5 node types:} \code{cache.r5.large}, \code{cache.r5.xlarge},
 \code{cache.r5.2xlarge}, \code{cache.r5.4xlarge}, \code{cache.r5.12xlarge},
@@ -174,7 +213,9 @@ eu-west-1 and ap-northeast-1.
 \strong{R4 node types:} \code{cache.r4.large}, \code{cache.r4.xlarge},
 \code{cache.r4.2xlarge}, \code{cache.r4.4xlarge}, \code{cache.r4.8xlarge},
 \code{cache.r4.16xlarge}
-\item Previous generation: (not recommended)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{M2 node types:} \code{cache.m2.xlarge}, \code{cache.m2.2xlarge},
 \code{cache.m2.4xlarge}
@@ -197,7 +238,7 @@ supported on Redis version 2.8.22 and later.
 }}
 
 \item{Engine}{The name of the cache engine to be used for the clusters in this
-replication group.}
+replication group. Must be Redis.}
 
 \item{EngineVersion}{The version number of the cache engine to be used for the clusters in
 this replication group. To view the supported cache engine versions, use
@@ -214,10 +255,6 @@ the earlier engine version.}
 \item{CacheParameterGroupName}{The name of the parameter group to associate with this replication
 group. If this argument is omitted, the default cache parameter group
 for the specified engine is used.
-
-If you are restoring to an engine version that is different than the
-original, you must specify the default version of that version. For
-example, \code{CacheParameterGroupName=default.redis4.0}.
 
 If you are running Redis version 3.2.4 or later, only one node group
 (shard), and want to use a default parameter group, we recommend that
@@ -244,10 +281,11 @@ group.
 Use this parameter only when you are creating a replication group in an
 Amazon Virtual Private Cloud (Amazon VPC).}
 
-\item{Tags}{A list of cost allocation tags to be added to this resource. Tags are
-comma-separated key,value pairs (e.g. Key=\code{myKey}, Value=\code{myKeyValue}.
-You can include multiple tags as shown following: Key=\code{myKey},
-Value=\code{myKeyValue} Key=\code{mySecondKey}, Value=\code{mySecondKeyValue}.}
+\item{Tags}{A list of tags to be added to this resource. Tags are comma-separated
+key,value pairs (e.g. Key=\code{myKey}, Value=\code{myKeyValue}. You can include
+multiple tags as shown following: Key=\code{myKey}, Value=\code{myKeyValue}
+Key=\code{mySecondKey}, Value=\code{mySecondKeyValue}. Tags on replication groups
+will be replicated to all nodes.}
 
 \item{SnapshotArns}{A list of Amazon Resource Names (ARN) that uniquely identify the Redis
 RDB snapshot files stored in Amazon S3. The snapshot files are used to
@@ -295,7 +333,9 @@ connections.}
 
 The Amazon SNS topic owner must be the same as the cluster owner.}
 
-\item{AutoMinorVersionUpgrade}{This parameter is currently disabled.}
+\item{AutoMinorVersionUpgrade}{If you are running Redis engine version 6.0 or later, set this
+parameter to yes if you want to opt-in to the next auto minor version
+upgrade campaign. This parameter is disabled for previous versions.}
 
 \item{SnapshotRetentionLimit}{The number of days for which ElastiCache retains automatic snapshots
 before deleting them. For example, if you set \code{SnapshotRetentionLimit}
@@ -326,12 +366,12 @@ Password constraints:
 \item Must be only printable ASCII characters.
 \item Must be at least 16 characters and no more than 128 characters in
 length.
-\item The only permitted printable special characters are !, &, #, $, ^,
-<, >, and -. Other printable special characters cannot be used
-in the AUTH token.
+\item The only permitted printable special characters are !, &, \#, $, ^,
+\<, \>, and -. Other printable special characters cannot be used in
+the AUTH token.
 }
 
-For more information, see AUTH password at
+For more information, see \href{https://redis.io/commands/auth/}{AUTH password} at
 http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.
@@ -369,189 +409,17 @@ Default: \code{false}}
 
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the disk in the cluster.}
 
-\item{UserGroupIds}{The list of user groups to associate with the replication group.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ReplicationGroup = list(
-    ReplicationGroupId = "string",
-    Description = "string",
-    GlobalReplicationGroupInfo = list(
-      GlobalReplicationGroupId = "string",
-      GlobalReplicationGroupMemberRole = "string"
-    ),
-    Status = "string",
-    PendingModifiedValues = list(
-      PrimaryClusterId = "string",
-      AutomaticFailoverStatus = "enabled"|"disabled",
-      Resharding = list(
-        SlotMigration = list(
-          ProgressPercentage = 123.0
-        )
-      ),
-      AuthTokenStatus = "SETTING"|"ROTATING",
-      UserGroups = list(
-        UserGroupIdsToAdd = list(
-          "string"
-        ),
-        UserGroupIdsToRemove = list(
-          "string"
-        )
-      )
-    ),
-    MemberClusters = list(
-      "string"
-    ),
-    NodeGroups = list(
-      list(
-        NodeGroupId = "string",
-        Status = "string",
-        PrimaryEndpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        ReaderEndpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        Slots = "string",
-        NodeGroupMembers = list(
-          list(
-            CacheClusterId = "string",
-            CacheNodeId = "string",
-            ReadEndpoint = list(
-              Address = "string",
-              Port = 123
-            ),
-            PreferredAvailabilityZone = "string",
-            PreferredOutpostArn = "string",
-            CurrentRole = "string"
-          )
-        )
-      )
-    ),
-    SnapshottingClusterId = "string",
-    AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-    MultiAZ = "enabled"|"disabled",
-    ConfigurationEndpoint = list(
-      Address = "string",
-      Port = 123
-    ),
-    SnapshotRetentionLimit = 123,
-    SnapshotWindow = "string",
-    ClusterEnabled = TRUE|FALSE,
-    CacheNodeType = "string",
-    AuthTokenEnabled = TRUE|FALSE,
-    AuthTokenLastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    MemberClustersOutpostArns = list(
-      "string"
-    ),
-    KmsKeyId = "string",
-    ARN = "string",
-    UserGroupIds = list(
-      "string"
-    )
-  )
-)
-}
+\item{UserGroupIds}{The user group to associate with the replication group.}
+
+\item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
+
+\item{DataTieringEnabled}{Enables data tiering. Data tiering is only supported for replication
+groups using the r6gd node type. This parameter must be set to true when
+using r6gd nodes. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html}{Data tiering}.}
 }
 \description{
-Creates a Redis (cluster mode disabled) or a Redis (cluster mode
-enabled) replication group.
+Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group.
 
-This API can be used to create a standalone regional replication group
-or a secondary replication group associated with a Global Datastore.
-
-A Redis (cluster mode disabled) replication group is a collection of
-clusters, where one of the clusters is a read/write primary and the
-others are read-only replicas. Writes to the primary are asynchronously
-propagated to the replicas.
-
-A Redis (cluster mode enabled) replication group is a collection of 1 to
-90 node groups (shards). Each node group (shard) has one read/write
-primary node and up to 5 read-only replica nodes. Writes to the primary
-are asynchronously propagated to the replicas. Redis (cluster mode
-enabled) replication groups partition the data across node groups
-(shards).
-
-When a Redis (cluster mode disabled) replication group has been
-successfully created, you can add one or more read replicas to it, up to
-a total of 5 read replicas. If you need to increase or decrease the
-number of node groups (console: shards), you can avail yourself of
-ElastiCache for Redis' scaling. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html}{Scaling ElastiCache for Redis Clusters}
-in the \emph{ElastiCache User Guide}.
-
-This operation is valid for Redis only.
+See \url{https://paws-r.github.io/docs/elasticache/create_replication_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_replication_group(
-  ReplicationGroupId = "string",
-  ReplicationGroupDescription = "string",
-  GlobalReplicationGroupId = "string",
-  PrimaryClusterId = "string",
-  AutomaticFailoverEnabled = TRUE|FALSE,
-  MultiAZEnabled = TRUE|FALSE,
-  NumCacheClusters = 123,
-  PreferredCacheClusterAZs = list(
-    "string"
-  ),
-  NumNodeGroups = 123,
-  ReplicasPerNodeGroup = 123,
-  NodeGroupConfiguration = list(
-    list(
-      NodeGroupId = "string",
-      Slots = "string",
-      ReplicaCount = 123,
-      PrimaryAvailabilityZone = "string",
-      ReplicaAvailabilityZones = list(
-        "string"
-      ),
-      PrimaryOutpostArn = "string",
-      ReplicaOutpostArns = list(
-        "string"
-      )
-    )
-  ),
-  CacheNodeType = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  CacheParameterGroupName = "string",
-  CacheSubnetGroupName = "string",
-  CacheSecurityGroupNames = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  SnapshotArns = list(
-    "string"
-  ),
-  SnapshotName = "string",
-  PreferredMaintenanceWindow = "string",
-  Port = 123,
-  NotificationTopicArn = "string",
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  SnapshotRetentionLimit = 123,
-  SnapshotWindow = "string",
-  AuthToken = "string",
-  TransitEncryptionEnabled = TRUE|FALSE,
-  AtRestEncryptionEnabled = TRUE|FALSE,
-  KmsKeyId = "string",
-  UserGroupIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

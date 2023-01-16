@@ -11,18 +11,9 @@ apigatewayv2_delete_api_mapping(ApiMappingId, DomainName)
 
 \item{DomainName}{[required] The domain name.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an API mapping.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_api_mapping(
-  ApiMappingId = "string",
-  DomainName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_api_mapping.html} for full documentation.
+}
 \keyword{internal}

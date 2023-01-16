@@ -5,8 +5,14 @@
 \title{This operation lists jobs for a vault, including jobs that are
 in-progress and jobs that have recently finished}
 \usage{
-glacier_list_jobs(accountId, vaultName, limit, marker, statuscode,
-  completed)
+glacier_list_jobs(
+  accountId,
+  vaultName,
+  limit = NULL,
+  marker = NULL,
+  statuscode = NULL,
+  completed = NULL
+)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
@@ -32,153 +38,9 @@ request.}
 
 \item{completed}{The state of the jobs to return. You can specify \code{true} or \code{false}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobList = list(
-    list(
-      JobId = "string",
-      JobDescription = "string",
-      Action = "ArchiveRetrieval"|"InventoryRetrieval"|"Select",
-      ArchiveId = "string",
-      VaultARN = "string",
-      CreationDate = "string",
-      Completed = TRUE|FALSE,
-      StatusCode = "InProgress"|"Succeeded"|"Failed",
-      StatusMessage = "string",
-      ArchiveSizeInBytes = 123,
-      InventorySizeInBytes = 123,
-      SNSTopic = "string",
-      CompletionDate = "string",
-      SHA256TreeHash = "string",
-      ArchiveSHA256TreeHash = "string",
-      RetrievalByteRange = "string",
-      Tier = "string",
-      InventoryRetrievalParameters = list(
-        Format = "string",
-        StartDate = "string",
-        EndDate = "string",
-        Limit = "string",
-        Marker = "string"
-      ),
-      JobOutputPath = "string",
-      SelectParameters = list(
-        InputSerialization = list(
-          csv = list(
-            FileHeaderInfo = "USE"|"IGNORE"|"NONE",
-            Comments = "string",
-            QuoteEscapeCharacter = "string",
-            RecordDelimiter = "string",
-            FieldDelimiter = "string",
-            QuoteCharacter = "string"
-          )
-        ),
-        ExpressionType = "SQL",
-        Expression = "string",
-        OutputSerialization = list(
-          csv = list(
-            QuoteFields = "ALWAYS"|"ASNEEDED",
-            QuoteEscapeCharacter = "string",
-            RecordDelimiter = "string",
-            FieldDelimiter = "string",
-            QuoteCharacter = "string"
-          )
-        )
-      ),
-      OutputLocation = list(
-        S3 = list(
-          BucketName = "string",
-          Prefix = "string",
-          Encryption = list(
-            EncryptionType = "aws:kms"|"AES256",
-            KMSKeyId = "string",
-            KMSContext = "string"
-          ),
-          CannedACL = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control",
-          AccessControlList = list(
-            list(
-              Grantee = list(
-                Type = "AmazonCustomerByEmail"|"CanonicalUser"|"Group",
-                DisplayName = "string",
-                URI = "string",
-                ID = "string",
-                EmailAddress = "string"
-              ),
-              Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
-            )
-          ),
-          Tagging = list(
-            "string"
-          ),
-          UserMetadata = list(
-            "string"
-          ),
-          StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"
-        )
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-This operation lists jobs for a vault, including jobs that are
-in-progress and jobs that have recently finished. The List Job operation
-returns a list of these jobs sorted by job initiation time.
+This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished. The List Job operation returns a list of these jobs sorted by job initiation time.
 
-Amazon Glacier retains recently completed jobs for a period before
-deleting them; however, it eventually removes completed jobs. The output
-of completed jobs can be retrieved. Retaining completed jobs for a
-period of time after they have completed enables you to get a job output
-in the event you miss the job completion notification or your first
-attempt to download it fails. For example, suppose you start an archive
-retrieval job to download an archive. After the job completes, you start
-to download the archive but encounter a network error. In this scenario,
-you can retry and download the archive while the job exists.
-
-The List Jobs operation supports pagination. You should always check the
-response \code{Marker} field. If there are no more jobs to list, the \code{Marker}
-field is set to \code{null}. If there are more jobs to list, the \code{Marker}
-field is set to a non-null value, which you can use to continue the
-pagination of the list. To return a list of jobs that begins at a
-specific job, set the marker request parameter to the \code{Marker} value for
-that job that you obtained from a previous List Jobs request.
-
-You can set a maximum limit for the number of jobs returned in the
-response by specifying the \code{limit} parameter in the request. The default
-limit is 50. The number of jobs returned might be fewer than the limit,
-but the number of returned jobs never exceeds the limit.
-
-Additionally, you can filter the jobs list returned by specifying the
-optional \code{statuscode} parameter or \code{completed} parameter, or both. Using
-the \code{statuscode} parameter, you can specify to return only jobs that
-match either the \code{InProgress}, \code{Succeeded}, or \code{Failed} status. Using
-the \code{completed} parameter, you can specify to return only jobs that were
-completed (\code{true}) or jobs that were not completed (\code{false}).
-
-For more information about using this operation, see the documentation
-for the underlying REST API \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html}{List Jobs}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_jobs(
-  accountId = "string",
-  vaultName = "string",
-  limit = "string",
-  marker = "string",
-  statuscode = "string",
-  completed = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The example lists jobs for the vault named my-vault.
-svc$list_jobs(
-  accountId = "-",
-  vaultName = "my-vault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/list_jobs.html} for full documentation.
 }
 \keyword{internal}

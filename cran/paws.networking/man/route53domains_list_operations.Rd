@@ -6,7 +6,11 @@
 ID and that have ever been performed on domains that were registered by
 the current account}
 \usage{
-route53domains_list_operations(SubmittedSince, Marker, MaxItems)
+route53domains_list_operations(
+  SubmittedSince = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{SubmittedSince}{An optional parameter that lets you get information about all the
@@ -25,36 +29,9 @@ previous response, and submit another request that includes the value of
 
 Default: 20}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Operations = list(
-    list(
-      OperationId = "string",
-      Status = "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED",
-      Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
-      SubmittedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextPageMarker = "string"
-)
-}
-}
 \description{
-Returns information about all of the operations that return an operation
-ID and that have ever been performed on domains that were registered by
-the current account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_operations(
-  SubmittedSince = as.POSIXct(
-    "2015-01-01"
-  ),
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Returns information about all of the operations that return an operation ID and that have ever been performed on domains that were registered by the current account.
 
+See \url{https://paws-r.github.io/docs/route53domains/list_operations.html} for full documentation.
+}
 \keyword{internal}

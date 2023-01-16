@@ -15,28 +15,9 @@ CodeDeploy.}
 
 \item{version}{[required] The version of the custom action to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Marks a custom action as deleted.
-\code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} for the custom action
-fails after the action is marked for deletion. Used for custom actions
-only.
+Marks a custom action as deleted. \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} for the custom action fails after the action is marked for deletion. Used for custom actions only.
 
-To re-create a custom action after it has been deleted you must use a
-string in the version field that has never been used before. This string
-can be an incremented version number, for example. To restore a deleted
-custom action, use a JSON file that is identical to the deleted action,
-including the original string in the version field.
+See \url{https://paws-r.github.io/docs/codepipeline/delete_custom_action_type.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_custom_action_type(
-  category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-  provider = "string",
-  version = "string"
-)
-}
-}
-
 \keyword{internal}

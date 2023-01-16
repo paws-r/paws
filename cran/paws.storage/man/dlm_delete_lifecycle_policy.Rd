@@ -10,18 +10,9 @@ dlm_delete_lifecycle_policy(PolicyId)
 \arguments{
 \item{PolicyId}{[required] The identifier of the lifecycle policy.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified lifecycle policy and halts the automated
-operations that the policy specified.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_lifecycle_policy(
-  PolicyId = "string"
-)
-}
-}
+Deletes the specified lifecycle policy and halts the automated operations that the policy specified.
 
+See \url{https://paws-r.github.io/docs/dlm/delete_lifecycle_policy.html} for full documentation.
+}
 \keyword{internal}

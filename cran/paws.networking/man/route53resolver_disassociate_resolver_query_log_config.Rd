@@ -5,7 +5,9 @@
 \title{Disassociates a VPC from a query logging configuration}
 \usage{
 route53resolver_disassociate_resolver_query_log_config(
-  ResolverQueryLogConfigId, ResourceId)
+  ResolverQueryLogConfigId,
+  ResourceId
+)
 }
 \arguments{
 \item{ResolverQueryLogConfigId}{[required] The ID of the query logging configuration that you want to disassociate
@@ -14,40 +16,9 @@ a specified VPC from.}
 \item{ResourceId}{[required] The ID of the Amazon VPC that you want to disassociate from a specified
 query logging configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverQueryLogConfigAssociation = list(
-    Id = "string",
-    ResolverQueryLogConfigId = "string",
-    ResourceId = "string",
-    Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
-    Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
-    ErrorMessage = "string",
-    CreationTime = "string"
-  )
-)
-}
-}
 \description{
 Disassociates a VPC from a query logging configuration.
 
-Before you can delete a query logging configuration, you must first
-disassociate all VPCs from the configuration. If you used Resource
-Access Manager (RAM) to share a query logging configuration with other
-accounts, VPCs can be disassociated from the configuration in the
-following ways:
-\itemize{
-\item The accounts that you shared the configuration with can disassociate
-VPCs from the configuration.
-\item You can stop sharing the configuration.
+See \url{https://paws-r.github.io/docs/route53resolver/disassociate_resolver_query_log_config.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_resolver_query_log_config(
-  ResolverQueryLogConfigId = "string",
-  ResourceId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{sagemaker_list_domains}
 \title{Lists the domains}
 \usage{
-sagemaker_list_domains(NextToken, MaxResults)
+sagemaker_list_domains(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{If the previous response was truncated, you will receive this token. Use
@@ -12,36 +12,9 @@ it in your next request to receive the next set of results.}
 
 \item{MaxResults}{Returns a list up to a specified limit.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Domains = list(
-    list(
-      DomainArn = "string",
-      DomainId = "string",
-      DomainName = "string",
-      Status = "Deleting"|"Failed"|"InService"|"Pending"|"Updating"|"Update_Failed"|"Delete_Failed",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Url = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the domains.
-}
-\section{Request syntax}{
-\preformatted{svc$list_domains(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_domains.html} for full documentation.
+}
 \keyword{internal}

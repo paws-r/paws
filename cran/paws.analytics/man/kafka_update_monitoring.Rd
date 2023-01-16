@@ -4,8 +4,13 @@
 \alias{kafka_update_monitoring}
 \title{Updates the monitoring settings for the cluster}
 \usage{
-kafka_update_monitoring(ClusterArn, CurrentVersion, EnhancedMonitoring,
-  OpenMonitoring, LoggingInfo)
+kafka_update_monitoring(
+  ClusterArn,
+  CurrentVersion,
+  EnhancedMonitoring = NULL,
+  OpenMonitoring = NULL,
+  LoggingInfo = NULL
+)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
@@ -21,53 +26,9 @@ Amazon CloudWatch for this cluster.}
 
 \item{LoggingInfo}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterArn = "string",
-  ClusterOperationArn = "string"
-)
-}
-}
 \description{
-Updates the monitoring settings for the cluster. You can use this
-operation to specify which Apache Kafka metrics you want Amazon MSK to
-send to Amazon CloudWatch. You can also specify settings for open
-monitoring with Prometheus.
-}
-\section{Request syntax}{
-\preformatted{svc$update_monitoring(
-  ClusterArn = "string",
-  CurrentVersion = "string",
-  EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
-  OpenMonitoring = list(
-    Prometheus = list(
-      JmxExporter = list(
-        EnabledInBroker = TRUE|FALSE
-      ),
-      NodeExporter = list(
-        EnabledInBroker = TRUE|FALSE
-      )
-    )
-  ),
-  LoggingInfo = list(
-    BrokerLogs = list(
-      CloudWatchLogs = list(
-        Enabled = TRUE|FALSE,
-        LogGroup = "string"
-      ),
-      Firehose = list(
-        DeliveryStream = "string",
-        Enabled = TRUE|FALSE
-      ),
-      S3 = list(
-        Bucket = "string",
-        Enabled = TRUE|FALSE,
-        Prefix = "string"
-      )
-    )
-  )
-)
-}
-}
+Updates the monitoring settings for the cluster. You can use this operation to specify which Apache Kafka metrics you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for open monitoring with Prometheus.
 
+See \url{https://paws-r.github.io/docs/kafka/update_monitoring.html} for full documentation.
+}
 \keyword{internal}

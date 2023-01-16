@@ -9,28 +9,9 @@ cloudfront_get_cloud_front_origin_access_identity(Id)
 \arguments{
 \item{Id}{[required] The identity's ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CloudFrontOriginAccessIdentity = list(
-    Id = "string",
-    S3CanonicalUserId = "string",
-    CloudFrontOriginAccessIdentityConfig = list(
-      CallerReference = "string",
-      Comment = "string"
-    )
-  ),
-  ETag = "string"
-)
-}
-}
 \description{
 Get the information about an origin access identity.
-}
-\section{Request syntax}{
-\preformatted{svc$get_cloud_front_origin_access_identity(
-  Id = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/get_cloud_front_origin_access_identity.html} for full documentation.
+}
 \keyword{internal}

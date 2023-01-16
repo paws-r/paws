@@ -4,248 +4,40 @@
 \alias{quicksight_update_data_source}
 \title{Updates a data source}
 \usage{
-quicksight_update_data_source(AwsAccountId, DataSourceId, Name,
-  DataSourceParameters, Credentials, VpcConnectionProperties,
-  SslProperties)
+quicksight_update_data_source(
+  AwsAccountId,
+  DataSourceId,
+  Name,
+  DataSourceParameters = NULL,
+  Credentials = NULL,
+  VpcConnectionProperties = NULL,
+  SslProperties = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
-\item{DataSourceId}{[required] The ID of the data source. This ID is unique per AWS Region for each AWS
-account.}
+\item{DataSourceId}{[required] The ID of the data source. This ID is unique per Amazon Web Services
+Region for each Amazon Web Services account.}
 
 \item{Name}{[required] A display name for the data source.}
 
-\item{DataSourceParameters}{The parameters that QuickSight uses to connect to your underlying
+\item{DataSourceParameters}{The parameters that Amazon QuickSight uses to connect to your underlying
 source.}
 
-\item{Credentials}{The credentials that QuickSight that uses to connect to your underlying
-source. Currently, only credentials based on user name and password are
-supported.}
+\item{Credentials}{The credentials that Amazon QuickSight that uses to connect to your
+underlying source. Currently, only credentials based on user name and
+password are supported.}
 
-\item{VpcConnectionProperties}{Use this parameter only when you want QuickSight to use a VPC connection
-when connecting to your underlying source.}
+\item{VpcConnectionProperties}{Use this parameter only when you want Amazon QuickSight to use a VPC
+connection when connecting to your underlying source.}
 
-\item{SslProperties}{Secure Socket Layer (SSL) properties that apply when QuickSight connects
-to your underlying source.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  DataSourceId = "string",
-  UpdateStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-  RequestId = "string",
-  Status = 123
-)
-}
+\item{SslProperties}{Secure Socket Layer (SSL) properties that apply when Amazon QuickSight
+connects to your underlying source.}
 }
 \description{
 Updates a data source.
-}
-\section{Request syntax}{
-\preformatted{svc$update_data_source(
-  AwsAccountId = "string",
-  DataSourceId = "string",
-  Name = "string",
-  DataSourceParameters = list(
-    AmazonElasticsearchParameters = list(
-      Domain = "string"
-    ),
-    AthenaParameters = list(
-      WorkGroup = "string"
-    ),
-    AuroraParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    AuroraPostgreSqlParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    AwsIotAnalyticsParameters = list(
-      DataSetName = "string"
-    ),
-    JiraParameters = list(
-      SiteBaseUrl = "string"
-    ),
-    MariaDbParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    MySqlParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    OracleParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    PostgreSqlParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    PrestoParameters = list(
-      Host = "string",
-      Port = 123,
-      Catalog = "string"
-    ),
-    RdsParameters = list(
-      InstanceId = "string",
-      Database = "string"
-    ),
-    RedshiftParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string",
-      ClusterId = "string"
-    ),
-    S3Parameters = list(
-      ManifestFileLocation = list(
-        Bucket = "string",
-        Key = "string"
-      )
-    ),
-    ServiceNowParameters = list(
-      SiteBaseUrl = "string"
-    ),
-    SnowflakeParameters = list(
-      Host = "string",
-      Database = "string",
-      Warehouse = "string"
-    ),
-    SparkParameters = list(
-      Host = "string",
-      Port = 123
-    ),
-    SqlServerParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    TeradataParameters = list(
-      Host = "string",
-      Port = 123,
-      Database = "string"
-    ),
-    TwitterParameters = list(
-      Query = "string",
-      MaxRows = 123
-    )
-  ),
-  Credentials = list(
-    CredentialPair = list(
-      Username = "string",
-      Password = "string",
-      AlternateDataSourceParameters = list(
-        list(
-          AmazonElasticsearchParameters = list(
-            Domain = "string"
-          ),
-          AthenaParameters = list(
-            WorkGroup = "string"
-          ),
-          AuroraParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          AuroraPostgreSqlParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          AwsIotAnalyticsParameters = list(
-            DataSetName = "string"
-          ),
-          JiraParameters = list(
-            SiteBaseUrl = "string"
-          ),
-          MariaDbParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          MySqlParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          OracleParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          PostgreSqlParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          PrestoParameters = list(
-            Host = "string",
-            Port = 123,
-            Catalog = "string"
-          ),
-          RdsParameters = list(
-            InstanceId = "string",
-            Database = "string"
-          ),
-          RedshiftParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string",
-            ClusterId = "string"
-          ),
-          S3Parameters = list(
-            ManifestFileLocation = list(
-              Bucket = "string",
-              Key = "string"
-            )
-          ),
-          ServiceNowParameters = list(
-            SiteBaseUrl = "string"
-          ),
-          SnowflakeParameters = list(
-            Host = "string",
-            Database = "string",
-            Warehouse = "string"
-          ),
-          SparkParameters = list(
-            Host = "string",
-            Port = 123
-          ),
-          SqlServerParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          TeradataParameters = list(
-            Host = "string",
-            Port = 123,
-            Database = "string"
-          ),
-          TwitterParameters = list(
-            Query = "string",
-            MaxRows = 123
-          )
-        )
-      )
-    ),
-    CopySourceArn = "string"
-  ),
-  VpcConnectionProperties = list(
-    VpcConnectionArn = "string"
-  ),
-  SslProperties = list(
-    DisableSsl = TRUE|FALSE
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_data_source.html} for full documentation.
+}
 \keyword{internal}

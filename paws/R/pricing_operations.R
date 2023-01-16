@@ -59,7 +59,7 @@ NULL
 #'
 #' @examples
 #' \dontrun{
-#' #
+#' # Retrieves the service for the given Service Code.
 #' svc$describe_services(
 #'   FormatVersion = "aws_v1",
 #'   MaxResults = 1L,
@@ -90,11 +90,11 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
 #' Returns a list of attribute values
 #'
 #' @description
-#' Returns a list of attribute values. Attibutes are similar to the details
-#' in a Price List API offer file. For a list of available attributes, see
-#' [Offer File
+#' Returns a list of attribute values. Attributes are similar to the
+#' details in a Price List API offer file. For a list of available
+#' attributes, see [Offer File
 #' Definitions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs)
-#' in the [AWS Billing and Cost Management User
+#' in the [Billing and Cost Management User
 #' Guide](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html).
 #'
 #' @usage
@@ -172,7 +172,7 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' pricing_get_products(ServiceCode, Filters, FormatVersion, NextToken,
 #'   MaxResults)
 #'
-#' @param ServiceCode The code for the service whose products you want to retrieve.
+#' @param ServiceCode &#91;required&#93; The code for the service whose products you want to retrieve.
 #' @param Filters The list of filters that limit the returned products. only products that
 #' match all filters are returned.
 #' @param FormatVersion The format version that you want the response to be in.
@@ -211,31 +211,10 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation returns a list of products that match the given criteria.
-#' svc$get_products(
-#'   Filters = list(
-#'     list(
-#'       Field = "ServiceCode",
-#'       Type = "TERM_MATCH",
-#'       Value = "AmazonEC2"
-#'     ),
-#'     list(
-#'       Field = "volumeType",
-#'       Type = "TERM_MATCH",
-#'       Value = "Provisioned IOPS"
-#'     )
-#'   ),
-#'   FormatVersion = "aws_v1",
-#'   MaxResults = 1L
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname pricing_get_products
-pricing_get_products <- function(ServiceCode = NULL, Filters = NULL, FormatVersion = NULL, NextToken = NULL, MaxResults = NULL) {
+pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetProducts",
     http_method = "POST",

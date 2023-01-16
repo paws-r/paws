@@ -12,54 +12,9 @@ simpledb_batch_delete_attributes(DomainName, Items)
 
 \item{Items}{[required] A list of items on which to perform the operation.}
 }
-\value{
-An empty list.
-}
 \description{
-Performs multiple DeleteAttributes operations in a single call, which
-reduces round trips and latencies. This enables Amazon SimpleDB to
-optimize requests, which generally yields better throughput.
+Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies. This enables Amazon SimpleDB to optimize requests, which generally yields better throughput.
 
-If you specify BatchDeleteAttributes without attributes or values, all
-the attributes for the item are deleted.
-
-BatchDeleteAttributes is an idempotent operation; running it multiple
-times on the same item or attribute doesn't result in an error.
-
-The BatchDeleteAttributes operation succeeds or fails in its entirety.
-There are no partial deletes. You can execute multiple
-BatchDeleteAttributes operations and other operations in parallel.
-However, large numbers of concurrent BatchDeleteAttributes calls can
-result in Service Unavailable (503) responses.
-
-This operation is vulnerable to exceeding the maximum URL size when
-making a REST request using the HTTP GET method.
-
-This operation does not support conditions using Expected.X.Name,
-Expected.X.Value, or Expected.X.Exists.
-
-The following limitations are enforced for this operation:
-\itemize{
-\item 1 MB request size
-\item 25 item limit per BatchDeleteAttributes operation
+See \url{https://paws-r.github.io/docs/simpledb/batch_delete_attributes.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$batch_delete_attributes(
-  DomainName = "string",
-  Items = list(
-    list(
-      Name = "string",
-      Attributes = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

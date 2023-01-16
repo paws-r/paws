@@ -4,51 +4,17 @@
 \alias{rekognition_create_collection}
 \title{Creates a collection in an AWS Region}
 \usage{
-rekognition_create_collection(CollectionId)
+rekognition_create_collection(CollectionId, Tags = NULL)
 }
 \arguments{
 \item{CollectionId}{[required] ID for the collection that you are creating.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StatusCode = 123,
-  CollectionArn = "string",
-  FaceModelVersion = "string"
-)
-}
+
+\item{Tags}{A set of tags (key-value pairs) that you want to attach to the
+collection.}
 }
 \description{
-Creates a collection in an AWS Region. You can add faces to the
-collection using the \code{\link[=rekognition_index_faces]{index_faces}} operation.
+Creates a collection in an AWS Region. You can add faces to the collection using the \code{\link[=rekognition_index_faces]{index_faces}} operation.
 
-For example, you might create collections, one for each of your
-application users. A user can then index faces using the
-\code{\link[=rekognition_index_faces]{index_faces}} operation and persist results
-in a specific collection. Then, a user can search the collection for
-faces in the user-specific container.
-
-When you create a collection, it is associated with the latest version
-of the face model version.
-
-Collection names are case-sensitive.
-
-This operation requires permissions to perform the
-\code{rekognition:CreateCollection} action.
-}
-\section{Request syntax}{
-\preformatted{svc$create_collection(
-  CollectionId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation creates a Rekognition collection for storing image data.
-svc$create_collection(
-  CollectionId = "myphotos"
-)
-}
-
+See \url{https://paws-r.github.io/docs/rekognition/create_collection.html} for full documentation.
 }
 \keyword{internal}

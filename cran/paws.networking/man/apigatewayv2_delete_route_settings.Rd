@@ -14,19 +14,9 @@ apigatewayv2_delete_route_settings(ApiId, RouteKey, StageName)
 \item{StageName}{[required] The stage name. Stage names can only contain alphanumeric characters,
 hyphens, and underscores. Maximum length is 128 characters.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the RouteSettings for a stage.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_route_settings(
-  ApiId = "string",
-  RouteKey = "string",
-  StageName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_route_settings.html} for full documentation.
+}
 \keyword{internal}

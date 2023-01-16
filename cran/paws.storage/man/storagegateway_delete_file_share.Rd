@@ -2,37 +2,24 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_delete_file_share}
 \alias{storagegateway_delete_file_share}
-\title{Deletes a file share from a file gateway}
+\title{Deletes a file share from an S3 File Gateway}
 \usage{
-storagegateway_delete_file_share(FileShareARN, ForceDelete)
+storagegateway_delete_file_share(FileShareARN, ForceDelete = NULL)
 }
 \arguments{
 \item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the file share to be deleted.}
 
 \item{ForceDelete}{If this value is set to \code{true}, the operation deletes a file share
-immediately and aborts all data uploads to AWS. Otherwise, the file
-share is not deleted until all data is uploaded to AWS. This process
-aborts the data upload process, and the file share enters the
-\code{FORCE_DELETING} status.
+immediately and aborts all data uploads to Amazon Web Services.
+Otherwise, the file share is not deleted until all data is uploaded to
+Amazon Web Services. This process aborts the data upload process, and
+the file share enters the \code{FORCE_DELETING} status.
 
 Valid Values: \code{true} | \code{false}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FileShareARN = "string"
-)
-}
-}
 \description{
-Deletes a file share from a file gateway. This operation is only
-supported for file gateways.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_file_share(
-  FileShareARN = "string",
-  ForceDelete = TRUE|FALSE
-)
-}
-}
+Deletes a file share from an S3 File Gateway. This operation is only supported for S3 File Gateways.
 
+See \url{https://paws-r.github.io/docs/storagegateway/delete_file_share.html} for full documentation.
+}
 \keyword{internal}

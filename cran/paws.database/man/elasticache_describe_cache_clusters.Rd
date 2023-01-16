@@ -6,8 +6,13 @@
 identifier is specified, or about a specific cache cluster if a cluster
 identifier is supplied}
 \usage{
-elasticache_describe_cache_clusters(CacheClusterId, MaxRecords, Marker,
-  ShowCacheNodeInfo, ShowCacheClustersNotInReplicationGroups)
+elasticache_describe_cache_clusters(
+  CacheClusterId = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  ShowCacheNodeInfo = NULL,
+  ShowCacheClustersNotInReplicationGroups = NULL
+)
 }
 \arguments{
 \item{CacheClusterId}{The user-supplied cluster identifier. If this parameter is specified,
@@ -35,128 +40,9 @@ request to show only nodes (API/CLI: clusters) that are not members of a
 replication group. In practice, this mean Memcached and single node
 Redis clusters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  CacheClusters = list(
-    list(
-      CacheClusterId = "string",
-      ConfigurationEndpoint = list(
-        Address = "string",
-        Port = 123
-      ),
-      ClientDownloadLandingPage = "string",
-      CacheNodeType = "string",
-      Engine = "string",
-      EngineVersion = "string",
-      CacheClusterStatus = "string",
-      NumCacheNodes = 123,
-      PreferredAvailabilityZone = "string",
-      PreferredOutpostArn = "string",
-      CacheClusterCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      PreferredMaintenanceWindow = "string",
-      PendingModifiedValues = list(
-        NumCacheNodes = 123,
-        CacheNodeIdsToRemove = list(
-          "string"
-        ),
-        EngineVersion = "string",
-        CacheNodeType = "string",
-        AuthTokenStatus = "SETTING"|"ROTATING"
-      ),
-      NotificationConfiguration = list(
-        TopicArn = "string",
-        TopicStatus = "string"
-      ),
-      CacheSecurityGroups = list(
-        list(
-          CacheSecurityGroupName = "string",
-          Status = "string"
-        )
-      ),
-      CacheParameterGroup = list(
-        CacheParameterGroupName = "string",
-        ParameterApplyStatus = "string",
-        CacheNodeIdsToReboot = list(
-          "string"
-        )
-      ),
-      CacheSubnetGroupName = "string",
-      CacheNodes = list(
-        list(
-          CacheNodeId = "string",
-          CacheNodeStatus = "string",
-          CacheNodeCreateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          Endpoint = list(
-            Address = "string",
-            Port = 123
-          ),
-          ParameterGroupStatus = "string",
-          SourceCacheNodeId = "string",
-          CustomerAvailabilityZone = "string",
-          CustomerOutpostArn = "string"
-        )
-      ),
-      AutoMinorVersionUpgrade = TRUE|FALSE,
-      SecurityGroups = list(
-        list(
-          SecurityGroupId = "string",
-          Status = "string"
-        )
-      ),
-      ReplicationGroupId = "string",
-      SnapshotRetentionLimit = 123,
-      SnapshotWindow = "string",
-      AuthTokenEnabled = TRUE|FALSE,
-      AuthTokenLastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      TransitEncryptionEnabled = TRUE|FALSE,
-      AtRestEncryptionEnabled = TRUE|FALSE,
-      ARN = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns information about all provisioned clusters if no cluster
-identifier is specified, or about a specific cache cluster if a cluster
-identifier is supplied.
+Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cache cluster if a cluster identifier is supplied.
 
-By default, abbreviated information about the clusters is returned. You
-can use the optional \emph{ShowCacheNodeInfo} flag to retrieve detailed
-information about the cache nodes associated with the clusters. These
-details include the DNS address and port for the cache node endpoint.
-
-If the cluster is in the \emph{creating} state, only cluster-level
-information is displayed until all of the nodes are successfully
-provisioned.
-
-If the cluster is in the \emph{deleting} state, only cluster-level
-information is displayed.
-
-If cache nodes are currently being added to the cluster, node endpoint
-information and creation time for the additional nodes are not displayed
-until they are completely provisioned. When the cluster state is
-\emph{available}, the cluster is ready for use.
-
-If cache nodes are currently being removed from the cluster, no endpoint
-information for the removed nodes is displayed.
+See \url{https://paws-r.github.io/docs/elasticache/describe_cache_clusters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_cache_clusters(
-  CacheClusterId = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  ShowCacheNodeInfo = TRUE|FALSE,
-  ShowCacheClustersNotInReplicationGroups = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

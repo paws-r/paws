@@ -7,7 +7,19 @@
 sqs(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,36 +28,36 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Welcome to the \emph{Amazon Simple Queue Service API Reference}.
+Welcome to the \emph{Amazon SQS API Reference}.
 
-Amazon Simple Queue Service (Amazon SQS) is a reliable, highly-scalable
-hosted queue for storing messages as they travel between applications or
-microservices. Amazon SQS moves data between distributed application
-components and helps you decouple these components.
+Amazon SQS is a reliable, highly-scalable hosted queue for storing
+messages as they travel between applications or microservices. Amazon
+SQS moves data between distributed application components and helps you
+decouple these components.
 
 For information on the permissions you need to use this API, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html}{Identity and access management}
-in the \emph{Amazon Simple Queue Service Developer Guide.}
+in the \emph{Amazon SQS Developer Guide.}
 
-You can use \href{https://aws.amazon.com/tools/#sdk}{AWS SDKs} to access
-Amazon SQS using your favorite programming language. The SDKs perform
-tasks such as the following automatically:
+You can use \href{https://aws.amazon.com/developer/tools/#sdk}{Amazon Web Services SDKs} to access Amazon SQS
+using your favorite programming language. The SDKs perform tasks such as
+the following automatically:
 \itemize{
 \item Cryptographically sign your service requests
 \item Retry requests
 \item Handle error responses
 }
 
-\strong{Additional Information}
+\strong{Additional information}
 \itemize{
 \item \href{https://aws.amazon.com/sqs/}{Amazon SQS Product Page}
-\item \emph{Amazon Simple Queue Service Developer Guide}
+\item \emph{Amazon SQS Developer Guide}
 \itemize{
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html}{Making API Requests}
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes}{Amazon SQS Message Attributes}
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Amazon SQS Dead-Letter Queues}
 }
-\item \href{https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html}{Amazon SQS in the \emph{AWS CLI Command Reference}}
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html}{Amazon SQS in the \emph{Command Line Interface}}
 \item \emph{Amazon Web Services General Reference}
 \itemize{
 \item \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region}{Regions and Endpoints}
@@ -53,7 +65,9 @@ tasks such as the following automatically:
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- sqs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sqs(
   config = list(
     credentials = list(
       creds = list(
@@ -61,38 +75,42 @@ tasks such as the following automatically:
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=sqs_add_permission]{add_permission} \tab Adds a permission to a queue for a specific principal\cr
-\link[=sqs_change_message_visibility]{change_message_visibility} \tab Changes the visibility timeout of a specified message in a queue to a new value\cr
-\link[=sqs_change_message_visibility_batch]{change_message_visibility_batch} \tab Changes the visibility timeout of multiple messages\cr
-\link[=sqs_create_queue]{create_queue} \tab Creates a new standard or FIFO queue\cr
-\link[=sqs_delete_message]{delete_message} \tab Deletes the specified message from the specified queue\cr
-\link[=sqs_delete_message_batch]{delete_message_batch} \tab Deletes up to ten messages from the specified queue\cr
-\link[=sqs_delete_queue]{delete_queue} \tab Deletes the queue specified by the QueueUrl, regardless of the queue's contents\cr
-\link[=sqs_get_queue_attributes]{get_queue_attributes} \tab Gets attributes for the specified queue\cr
-\link[=sqs_get_queue_url]{get_queue_url} \tab Returns the URL of an existing Amazon SQS queue\cr
-\link[=sqs_list_dead_letter_source_queues]{list_dead_letter_source_queues} \tab Returns a list of your queues that have the RedrivePolicy queue attribute configured with a dead-letter queue\cr
-\link[=sqs_list_queues]{list_queues} \tab Returns a list of your queues in the current region\cr
-\link[=sqs_list_queue_tags]{list_queue_tags} \tab List all cost allocation tags added to the specified Amazon SQS queue\cr
-\link[=sqs_purge_queue]{purge_queue} \tab Deletes the messages in a queue specified by the QueueURL parameter\cr
-\link[=sqs_receive_message]{receive_message} \tab Retrieves one or more messages (up to 10), from the specified queue\cr
-\link[=sqs_remove_permission]{remove_permission} \tab Revokes any permissions in the queue policy that matches the specified Label parameter\cr
-\link[=sqs_send_message]{send_message} \tab Delivers a message to the specified queue\cr
-\link[=sqs_send_message_batch]{send_message_batch} \tab Delivers up to ten messages to the specified queue\cr
-\link[=sqs_set_queue_attributes]{set_queue_attributes} \tab Sets the value of one or more queue attributes\cr
-\link[=sqs_tag_queue]{tag_queue} \tab Add cost allocation tags to the specified Amazon SQS queue\cr
-\link[=sqs_untag_queue]{untag_queue} \tab Remove cost allocation tags from the specified Amazon SQS queue
+\link[paws.application.integration:sqs_add_permission]{add_permission} \tab Adds a permission to a queue for a specific principal\cr
+\link[paws.application.integration:sqs_change_message_visibility]{change_message_visibility} \tab Changes the visibility timeout of a specified message in a queue to a new value\cr
+\link[paws.application.integration:sqs_change_message_visibility_batch]{change_message_visibility_batch} \tab Changes the visibility timeout of multiple messages\cr
+\link[paws.application.integration:sqs_create_queue]{create_queue} \tab Creates a new standard or FIFO queue\cr
+\link[paws.application.integration:sqs_delete_message]{delete_message} \tab Deletes the specified message from the specified queue\cr
+\link[paws.application.integration:sqs_delete_message_batch]{delete_message_batch} \tab Deletes up to ten messages from the specified queue\cr
+\link[paws.application.integration:sqs_delete_queue]{delete_queue} \tab Deletes the queue specified by the QueueUrl, regardless of the queue's contents\cr
+\link[paws.application.integration:sqs_get_queue_attributes]{get_queue_attributes} \tab Gets attributes for the specified queue\cr
+\link[paws.application.integration:sqs_get_queue_url]{get_queue_url} \tab Returns the URL of an existing Amazon SQS queue\cr
+\link[paws.application.integration:sqs_list_dead_letter_source_queues]{list_dead_letter_source_queues} \tab Returns a list of your queues that have the RedrivePolicy queue attribute configured with a dead-letter queue\cr
+\link[paws.application.integration:sqs_list_queues]{list_queues} \tab Returns a list of your queues in the current region\cr
+\link[paws.application.integration:sqs_list_queue_tags]{list_queue_tags} \tab List all cost allocation tags added to the specified Amazon SQS queue\cr
+\link[paws.application.integration:sqs_purge_queue]{purge_queue} \tab Deletes the messages in a queue specified by the QueueURL parameter\cr
+\link[paws.application.integration:sqs_receive_message]{receive_message} \tab Retrieves one or more messages (up to 10), from the specified queue\cr
+\link[paws.application.integration:sqs_remove_permission]{remove_permission} \tab Revokes any permissions in the queue policy that matches the specified Label parameter\cr
+\link[paws.application.integration:sqs_send_message]{send_message} \tab Delivers a message to the specified queue\cr
+\link[paws.application.integration:sqs_send_message_batch]{send_message_batch} \tab Delivers up to ten messages to the specified queue\cr
+\link[paws.application.integration:sqs_set_queue_attributes]{set_queue_attributes} \tab Sets the value of one or more queue attributes\cr
+\link[paws.application.integration:sqs_tag_queue]{tag_queue} \tab Add cost allocation tags to the specified Amazon SQS queue\cr
+\link[paws.application.integration:sqs_untag_queue]{untag_queue} \tab Remove cost allocation tags from the specified Amazon SQS queue
 }
 }
 

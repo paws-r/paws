@@ -4,93 +4,49 @@
 \alias{s3_put_bucket_versioning}
 \title{Sets the versioning state of an existing bucket}
 \usage{
-s3_put_bucket_versioning(Bucket, ContentMD5, MFA,
-  VersioningConfiguration, ExpectedBucketOwner)
+s3_put_bucket_versioning(
+  Bucket,
+  ContentMD5 = NULL,
+  ChecksumAlgorithm = NULL,
+  MFA = NULL,
+  VersioningConfiguration,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name.}
 
-\item{ContentMD5}{>The base64-encoded 128-bit MD5 digest of the data. You must use this
+\item{ContentMD5}{\>The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
 not corrupted in transit. For more information, see \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.
 
-For requests made using the AWS Command Line Interface (CLI) or AWS
-SDKs, this field is calculated automatically.}
+For requests made using the Amazon Web Services Command Line Interface
+(CLI) or Amazon Web Services SDKs, this field is calculated
+automatically.}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
 
 \item{MFA}{The concatenation of the authentication device's serial number, a space,
 and the value that is displayed on your authentication device.}
 
 \item{VersioningConfiguration}{[required] Container for setting the versioning state.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Sets the versioning state of an existing bucket. To set the versioning
-state, you must be the bucket owner.
+Sets the versioning state of an existing bucket.
 
-You can set the versioning state with one of the following values:
-
-\strong{Enabled}—Enables versioning for the objects in the bucket. All
-objects added to the bucket receive a unique version ID.
-
-\strong{Suspended}—Disables versioning for the objects in the bucket. All
-objects added to the bucket receive the version ID null.
-
-If the versioning state has never been set on a bucket, it has no
-versioning state; a \code{\link[=s3_get_bucket_versioning]{get_bucket_versioning}}
-request does not return a versioning state value.
-
-If the bucket owner enables MFA Delete in the bucket versioning
-configuration, the bucket owner must include the \verb{x-amz-mfa request}
-header and the \code{Status} and the \code{MfaDelete} request elements in a
-request to set the versioning state of the bucket.
-
-If you have an object expiration lifecycle policy in your non-versioned
-bucket and you want to maintain the same permanent delete behavior when
-you enable versioning, you must add a noncurrent expiration policy. The
-noncurrent expiration lifecycle policy will manage the deletes of the
-noncurrent object versions in the version-enabled bucket. (A
-version-enabled bucket maintains one current and zero or more noncurrent
-object versions.) For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html#lifecycle-and-other-bucket-config}{Lifecycle and Versioning}.
-
-\strong{Related Resources}
-\itemize{
-\item \code{\link[=s3_create_bucket]{create_bucket}}
-\item \code{\link[=s3_delete_bucket]{delete_bucket}}
-\item \code{\link[=s3_get_bucket_versioning]{get_bucket_versioning}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_bucket_versioning(
-  Bucket = "string",
-  ContentMD5 = "string",
-  MFA = "string",
-  VersioningConfiguration = list(
-    MFADelete = "Enabled"|"Disabled",
-    Status = "Enabled"|"Suspended"
-  ),
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example sets versioning configuration on bucket. The
-# configuration enables versioning on the bucket.
-svc$put_bucket_versioning(
-  Bucket = "examplebucket",
-  VersioningConfiguration = list(
-    MFADelete = "Disabled",
-    Status = "Enabled"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/put_bucket_versioning.html} for full documentation.
 }
 \keyword{internal}

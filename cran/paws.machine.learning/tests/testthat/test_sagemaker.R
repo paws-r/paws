@@ -112,6 +112,14 @@ test_that("list_domains", {
   expect_error(svc$list_domains(MaxResults = 20), NA)
 })
 
+test_that("list_edge_deployment_plans", {
+  expect_error(svc$list_edge_deployment_plans(), NA)
+})
+
+test_that("list_edge_deployment_plans", {
+  expect_error(svc$list_edge_deployment_plans(MaxResults = 20), NA)
+})
+
 test_that("list_edge_packaging_jobs", {
   expect_error(svc$list_edge_packaging_jobs(), NA)
 })
@@ -184,12 +192,28 @@ test_that("list_images", {
   expect_error(svc$list_images(MaxResults = 20), NA)
 })
 
+test_that("list_inference_recommendations_jobs", {
+  expect_error(svc$list_inference_recommendations_jobs(), NA)
+})
+
+test_that("list_inference_recommendations_jobs", {
+  expect_error(svc$list_inference_recommendations_jobs(MaxResults = 20), NA)
+})
+
 test_that("list_labeling_jobs", {
   expect_error(svc$list_labeling_jobs(), NA)
 })
 
 test_that("list_labeling_jobs", {
   expect_error(svc$list_labeling_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_lineage_groups", {
+  expect_error(svc$list_lineage_groups(), NA)
+})
+
+test_that("list_lineage_groups", {
+  expect_error(svc$list_lineage_groups(MaxResults = 20), NA)
 })
 
 test_that("list_model_bias_job_definitions", {
@@ -206,6 +230,14 @@ test_that("list_model_explainability_job_definitions", {
 
 test_that("list_model_explainability_job_definitions", {
   expect_error(svc$list_model_explainability_job_definitions(MaxResults = 20), NA)
+})
+
+test_that("list_model_metadata", {
+  expect_error(svc$list_model_metadata(), NA)
+})
+
+test_that("list_model_metadata", {
+  expect_error(svc$list_model_metadata(MaxResults = 20), NA)
 })
 
 test_that("list_model_package_groups", {
@@ -302,6 +334,14 @@ test_that("list_projects", {
 
 test_that("list_projects", {
   expect_error(svc$list_projects(MaxResults = 20), NA)
+})
+
+test_that("list_studio_lifecycle_configs", {
+  expect_error(svc$list_studio_lifecycle_configs(), NA)
+})
+
+test_that("list_studio_lifecycle_configs", {
+  expect_error(svc$list_studio_lifecycle_configs(MaxResults = 20), NA)
 })
 
 test_that("list_subscribed_workteams", {

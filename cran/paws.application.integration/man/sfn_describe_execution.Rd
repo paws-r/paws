@@ -9,43 +9,9 @@ sfn_describe_execution(executionArn)
 \arguments{
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  executionArn = "string",
-  stateMachineArn = "string",
-  name = "string",
-  status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
-  startDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  stopDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  input = "string",
-  inputDetails = list(
-    included = TRUE|FALSE
-  ),
-  output = "string",
-  outputDetails = list(
-    included = TRUE|FALSE
-  ),
-  traceHeader = "string"
-)
-}
-}
 \description{
 Describes an execution.
 
-This operation is eventually consistent. The results are best effort and
-may not reflect very recent updates and changes.
-
-This API action is not supported by \code{EXPRESS} state machines.
+See \url{https://paws-r.github.io/docs/sfn/describe_execution.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_execution(
-  executionArn = "string"
-)
-}
-}
-
 \keyword{internal}

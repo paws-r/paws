@@ -2,205 +2,37 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_describe_backups}
 \alias{fsx_describe_backups}
-\title{Returns the description of specific Amazon FSx backups, if a BackupIds
+\title{Returns the description of a specific Amazon FSx backup, if a BackupIds
 value is provided for that backup}
 \usage{
-fsx_describe_backups(BackupIds, Filters, MaxResults, NextToken)
+fsx_describe_backups(
+  BackupIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{BackupIds}{IDs of the backups you want to retrieve (String). This overrides any
-filters. If any IDs are not found, BackupNotFound will be thrown.}
+\item{BackupIds}{The IDs of the backups that you want to retrieve. This parameter value
+overrides any filters. If any IDs aren't found, a \code{BackupNotFound} error
+occurs.}
 
-\item{Filters}{Filters structure. Supported names are file-system-id and backup-type.}
+\item{Filters}{The filters structure. The supported names are \code{file-system-id},
+\code{backup-type}, \code{file-system-type}, and \code{volume-id}.}
 
-\item{MaxResults}{Maximum number of backups to return in the response (integer). This
-parameter value must be greater than 0. The number of items that Amazon
-FSx returns is the minimum of the \code{MaxResults} parameter specified in
-the request and the service's internal maximum number of items per page.}
+\item{MaxResults}{Maximum number of backups to return in the response. This parameter
+value must be greater than 0. The number of items that Amazon FSx
+returns is the minimum of the \code{MaxResults} parameter specified in the
+request and the service's internal maximum number of items per page.}
 
-\item{NextToken}{Opaque pagination token returned from a previous
-\code{\link[=fsx_describe_backups]{describe_backups}} operation (String). If a
-token present, the action continues the list from where the returning
-call left off.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Backups = list(
-    list(
-      BackupId = "string",
-      Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING",
-      FailureDetails = list(
-        Message = "string"
-      ),
-      Type = "AUTOMATIC"|"USER_INITIATED"|"AWS_BACKUP",
-      ProgressPercent = 123,
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      KmsKeyId = "string",
-      ResourceARN = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      FileSystem = list(
-        OwnerId = "string",
-        CreationTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        FileSystemId = "string",
-        FileSystemType = "WINDOWS"|"LUSTRE",
-        Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-        FailureDetails = list(
-          Message = "string"
-        ),
-        StorageCapacity = 123,
-        StorageType = "SSD"|"HDD",
-        VpcId = "string",
-        SubnetIds = list(
-          "string"
-        ),
-        NetworkInterfaceIds = list(
-          "string"
-        ),
-        DNSName = "string",
-        KmsKeyId = "string",
-        ResourceARN = "string",
-        Tags = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        ),
-        WindowsConfiguration = list(
-          ActiveDirectoryId = "string",
-          SelfManagedActiveDirectoryConfiguration = list(
-            DomainName = "string",
-            OrganizationalUnitDistinguishedName = "string",
-            FileSystemAdministratorsGroup = "string",
-            UserName = "string",
-            DnsIps = list(
-              "string"
-            )
-          ),
-          DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-          RemoteAdministrationEndpoint = "string",
-          PreferredSubnetId = "string",
-          PreferredFileServerIp = "string",
-          ThroughputCapacity = 123,
-          MaintenanceOperationsInProgress = list(
-            "PATCHING"|"BACKING_UP"
-          ),
-          WeeklyMaintenanceStartTime = "string",
-          DailyAutomaticBackupStartTime = "string",
-          AutomaticBackupRetentionDays = 123,
-          CopyTagsToBackups = TRUE|FALSE,
-          Aliases = list(
-            list(
-              Name = "string",
-              Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-            )
-          )
-        ),
-        LustreConfiguration = list(
-          WeeklyMaintenanceStartTime = "string",
-          DataRepositoryConfiguration = list(
-            Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-            ImportPath = "string",
-            ExportPath = "string",
-            ImportedFileChunkSize = 123,
-            AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-            FailureDetails = list(
-              Message = "string"
-            )
-          ),
-          DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-          PerUnitStorageThroughput = 123,
-          MountName = "string",
-          DailyAutomaticBackupStartTime = "string",
-          AutomaticBackupRetentionDays = 123,
-          CopyTagsToBackups = TRUE|FALSE,
-          DriveCacheType = "NONE"|"READ"
-        ),
-        AdministrativeActions = list(
-          list(
-            AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-            ProgressPercent = 123,
-            RequestTime = as.POSIXct(
-              "2015-01-01"
-            ),
-            Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-            TargetFileSystemValues = list(),
-            FailureDetails = list(
-              Message = "string"
-            )
-          )
-        )
-      ),
-      DirectoryInformation = list(
-        DomainName = "string",
-        ActiveDirectoryId = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{NextToken}{An opaque pagination token returned from a previous
+\code{\link[=fsx_describe_backups]{describe_backups}} operation. If a token is
+present, the operation continues the list from where the returning call
+left off.}
 }
 \description{
-Returns the description of specific Amazon FSx backups, if a \code{BackupIds}
-value is provided for that backup. Otherwise, it returns all backups
-owned by your AWS account in the AWS Region of the endpoint that you're
-calling.
+Returns the description of a specific Amazon FSx backup, if a \code{BackupIds} value is provided for that backup. Otherwise, it returns all backups owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
-When retrieving all backups, you can optionally specify the \code{MaxResults}
-parameter to limit the number of backups in a response. If more backups
-remain, Amazon FSx returns a \code{NextToken} value in the response. In this
-case, send a later request with the \code{NextToken} request parameter set to
-the value of \code{NextToken} from the last response.
-
-This action is used in an iterative process to retrieve a list of your
-backups. \code{\link[=fsx_describe_backups]{describe_backups}} is called first
-without a \code{NextToken}value. Then the action continues to be called with
-the \code{NextToken} parameter set to the value of the last \code{NextToken} value
-until a response has no \code{NextToken}.
-
-When using this action, keep the following in mind:
-\itemize{
-\item The implementation might return fewer than \code{MaxResults} file system
-descriptions while still including a \code{NextToken} value.
-\item The order of backups returned in the response of one
-\code{\link[=fsx_describe_backups]{describe_backups}} call and the order of
-backups returned across the responses of a multi-call iteration is
-unspecified.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_backups(
-  BackupIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "file-system-id"|"backup-type"|"file-system-type",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation describes all of the Amazon FSx backups in an account.
-svc$describe_backups()
-}
-
+See \url{https://paws-r.github.io/docs/fsx/describe_backups.html} for full documentation.
 }
 \keyword{internal}

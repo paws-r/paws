@@ -2,13 +2,20 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_get_documentation_parts}
 \alias{apigateway_get_documentation_parts}
-\title{Get documentation parts}
+\title{Gets documentation parts}
 \usage{
-apigateway_get_documentation_parts(restApiId, type, nameQuery, path,
-  position, limit, locationStatus)
+apigateway_get_documentation_parts(
+  restApiId,
+  type = NULL,
+  nameQuery = NULL,
+  path = NULL,
+  position = NULL,
+  limit = NULL,
+  locationStatus = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
 \item{type}{The type of API entities of the to-be-retrieved documentation parts.}
 
@@ -25,39 +32,9 @@ and the maximum value is 500.}
 \code{DOCUMENTED} for retrieving DocumentationPart resources with content and
 \code{UNDOCUMENTED} for DocumentationPart resources without content.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  position = "string",
-  items = list(
-    list(
-      id = "string",
-      location = list(
-        type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-        path = "string",
-        method = "string",
-        statusCode = "string",
-        name = "string"
-      ),
-      properties = "string"
-    )
-  )
-)
-}
-}
 \description{
-Get documentation parts
-}
-\section{Request syntax}{
-\preformatted{svc$get_documentation_parts(
-  restApiId = "string",
-  type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
-  nameQuery = "string",
-  path = "string",
-  position = "string",
-  limit = 123,
-  locationStatus = "DOCUMENTED"|"UNDOCUMENTED"
-)
-}
-}
+Gets documentation parts.
 
+See \url{https://paws-r.github.io/docs/apigateway/get_documentation_parts.html} for full documentation.
+}
 \keyword{internal}

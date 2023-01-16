@@ -10,33 +10,14 @@ dax_update_parameter_group(ParameterGroupName, ParameterNameValues)
 \item{ParameterGroupName}{[required] The name of the parameter group.}
 
 \item{ParameterNameValues}{[required] An array of name-value pairs for the parameters in the group. Each
-element in the array represents a single parameter.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ParameterGroup = list(
-    ParameterGroupName = "string",
-    Description = "string"
-  )
-)
-}
+element in the array represents a single parameter.
+
+\code{record-ttl-millis} and \code{query-ttl-millis} are the only supported
+parameter names. For more details, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.cluster-management.html#DAX.cluster-management.custom-settings.ttl}{Configuring TTL Settings}.}
 }
 \description{
-Modifies the parameters of a parameter group. You can modify up to 20
-parameters in a single request by submitting a list parameter name and
-value pairs.
-}
-\section{Request syntax}{
-\preformatted{svc$update_parameter_group(
-  ParameterGroupName = "string",
-  ParameterNameValues = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string"
-    )
-  )
-)
-}
-}
+Modifies the parameters of a parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.
 
+See \url{https://paws-r.github.io/docs/dax/update_parameter_group.html} for full documentation.
+}
 \keyword{internal}

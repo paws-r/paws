@@ -4,58 +4,19 @@
 \alias{s3_get_public_access_block}
 \title{Retrieves the PublicAccessBlock configuration for an Amazon S3 bucket}
 \usage{
-s3_get_public_access_block(Bucket, ExpectedBucketOwner)
+s3_get_public_access_block(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose \code{PublicAccessBlock} configuration
 you want to retrieve.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PublicAccessBlockConfiguration = list(
-    BlockPublicAcls = TRUE|FALSE,
-    IgnorePublicAcls = TRUE|FALSE,
-    BlockPublicPolicy = TRUE|FALSE,
-    RestrictPublicBuckets = TRUE|FALSE
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Retrieves the \code{PublicAccessBlock} configuration for an Amazon S3 bucket.
-To use this operation, you must have the \code{s3:GetBucketPublicAccessBlock}
-permission. For more information about Amazon S3 permissions, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
+Retrieves the \code{PublicAccessBlock} configuration for an Amazon S3 bucket. To use this operation, you must have the \code{s3:GetBucketPublicAccessBlock} permission. For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
 
-When Amazon S3 evaluates the \code{PublicAccessBlock} configuration for a
-bucket or an object, it checks the \code{PublicAccessBlock} configuration for
-both the bucket (or the bucket that contains the object) and the bucket
-owner's account. If the \code{PublicAccessBlock} settings are different
-between the bucket and the account, Amazon S3 uses the most restrictive
-combination of the bucket-level and account-level settings.
-
-For more information about when Amazon S3 considers a bucket or an
-object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of "Public"}.
-
-The following operations are related to
-\code{\link[=s3_get_public_access_block]{get_public_access_block}}:
-\itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html}{Using Amazon S3 Block Public Access}
-\item \code{\link[=s3_put_public_access_block]{put_public_access_block}}
-\item \code{\link[=s3_get_public_access_block]{get_public_access_block}}
-\item \code{\link[=s3_delete_public_access_block]{delete_public_access_block}}
+See \url{https://paws-r.github.io/docs/s3/get_public_access_block.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_public_access_block(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

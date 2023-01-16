@@ -4,8 +4,12 @@
 \alias{budgets_describe_notifications_for_budget}
 \title{Lists the notifications that are associated with a budget}
 \usage{
-budgets_describe_notifications_for_budget(AccountId, BudgetName,
-  MaxResults, NextToken)
+budgets_describe_notifications_for_budget(
+  AccountId,
+  BudgetName,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget whose notifications
@@ -19,32 +23,9 @@ response contains. The maximum is 100.}
 \item{NextToken}{The pagination token that you include in your request to indicate the
 next set of results that you want to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Notifications = list(
-    list(
-      NotificationType = "ACTUAL"|"FORECASTED",
-      ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-      Threshold = 123.0,
-      ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-      NotificationState = "OK"|"ALARM"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the notifications that are associated with a budget.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_notifications_for_budget(
-  AccountId = "string",
-  BudgetName = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/budgets/describe_notifications_for_budget.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,14 @@
 \alias{sagemaker_create_workforce}
 \title{Use this operation to create a workforce}
 \usage{
-sagemaker_create_workforce(CognitoConfig, OidcConfig, SourceIpConfig,
-  WorkforceName, Tags)
+sagemaker_create_workforce(
+  CognitoConfig = NULL,
+  OidcConfig = NULL,
+  SourceIpConfig = NULL,
+  WorkforceName,
+  Tags = NULL,
+  WorkforceVpcConfig = NULL
+)
 }
 \arguments{
 \item{CognitoConfig}{Use this parameter to configure an Amazon Cognito private workforce. A
@@ -26,63 +32,12 @@ Do not use \code{CognitoConfig} if you specify values for \code{OidcConfig}.}
 \item{Tags}{An array of key-value pairs that contain metadata to help you categorize
 and organize our workforce. Each tag consists of a key and a value, both
 of which you define.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  WorkforceArn = "string"
-)
-}
+
+\item{WorkforceVpcConfig}{Use this parameter to configure a workforce using VPC.}
 }
 \description{
-Use this operation to create a workforce. This operation will return an
-error if a workforce already exists in the AWS Region that you specify.
-You can only create one workforce in each AWS Region per AWS account.
+Use this operation to create a workforce. This operation will return an error if a workforce already exists in the Amazon Web Services Region that you specify. You can only create one workforce in each Amazon Web Services Region per Amazon Web Services account.
 
-If you want to create a new workforce in an AWS Region where a workforce
-already exists, use the API operation to delete the existing workforce
-and then use \code{\link[=sagemaker_create_workforce]{create_workforce}} to create
-a new workforce.
-
-To create a private workforce using Amazon Cognito, you must specify a
-Cognito user pool in \code{CognitoConfig}. You can also create an Amazon
-Cognito workforce using the Amazon SageMaker console. For more
-information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-create-private.html}{Create a Private Workforce (Amazon Cognito)}.
-
-To create a private workforce using your own OIDC Identity Provider
-(IdP), specify your IdP configuration in \code{OidcConfig}. Your OIDC IdP
-must support \emph{groups} because groups are used by Ground Truth and Amazon
-A2I to create work teams. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-create-private-oidc.html}{Create a Private Workforce (OIDC IdP)}.
+See \url{https://paws-r.github.io/docs/sagemaker/create_workforce.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_workforce(
-  CognitoConfig = list(
-    UserPool = "string",
-    ClientId = "string"
-  ),
-  OidcConfig = list(
-    ClientId = "string",
-    ClientSecret = "string",
-    Issuer = "string",
-    AuthorizationEndpoint = "string",
-    TokenEndpoint = "string",
-    UserInfoEndpoint = "string",
-    LogoutEndpoint = "string",
-    JwksUri = "string"
-  ),
-  SourceIpConfig = list(
-    Cidrs = list(
-      "string"
-    )
-  ),
-  WorkforceName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{eventbridge_list_replays}
 \title{Lists your replays}
 \usage{
-eventbridge_list_replays(NamePrefix, State, EventSourceArn, NextToken,
-  Limit)
+eventbridge_list_replays(
+  NamePrefix = NULL,
+  State = NULL,
+  EventSourceArn = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{NamePrefix}{A name prefix to filter the replays returned. Only replays with name
@@ -13,56 +18,16 @@ that match the prefix are returned.}
 
 \item{State}{The state of the replay.}
 
-\item{EventSourceArn}{The ARN of the event source associated with the replay.}
+\item{EventSourceArn}{The ARN of the archive from which the events are replayed.}
 
 \item{NextToken}{The token returned by a previous call to retrieve the next set of
 results.}
 
 \item{Limit}{The maximum number of replays to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Replays = list(
-    list(
-      ReplayName = "string",
-      EventSourceArn = "string",
-      State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
-      StateReason = "string",
-      EventStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EventEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EventLastReplayedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ReplayStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ReplayEndTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists your replays. You can either list all the replays or you can
-provide a prefix to match to the replay names. Filter parameters are
-exclusive.
-}
-\section{Request syntax}{
-\preformatted{svc$list_replays(
-  NamePrefix = "string",
-  State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
-  EventSourceArn = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Lists your replays. You can either list all the replays or you can provide a prefix to match to the replay names. Filter parameters are exclusive.
 
+See \url{https://paws-r.github.io/docs/eventbridge/list_replays.html} for full documentation.
+}
 \keyword{internal}

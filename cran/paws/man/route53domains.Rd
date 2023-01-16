@@ -7,7 +7,19 @@
 route53domains(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -20,7 +32,9 @@ Amazon Route 53 API actions let you register domain names and perform
 related operations.
 }
 \section{Service syntax}{
-\preformatted{svc <- route53domains(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- route53domains(
   config = list(
     credentials = list(
       creds = list(
@@ -28,46 +42,52 @@ related operations.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=route53domains_accept_domain_transfer_from_another_aws_account]{accept_domain_transfer_from_another_aws_account} \tab Accepts the transfer of a domain from another AWS account to the current AWS account\cr
-\link[=route53domains_cancel_domain_transfer_to_another_aws_account]{cancel_domain_transfer_to_another_aws_account} \tab Cancels the transfer of a domain from the current AWS account to another AWS account\cr
-\link[=route53domains_check_domain_availability]{check_domain_availability} \tab This operation checks the availability of one domain name\cr
-\link[=route53domains_check_domain_transferability]{check_domain_transferability} \tab Checks whether a domain name can be transferred to Amazon Route 53\cr
-\link[=route53domains_delete_tags_for_domain]{delete_tags_for_domain} \tab This operation deletes the specified tags for a domain\cr
-\link[=route53domains_disable_domain_auto_renew]{disable_domain_auto_renew} \tab This operation disables automatic renewal of domain registration for the specified domain\cr
-\link[=route53domains_disable_domain_transfer_lock]{disable_domain_transfer_lock} \tab This operation removes the transfer lock on the domain (specifically the clientTransferProhibited status) to allow domain transfers\cr
-\link[=route53domains_enable_domain_auto_renew]{enable_domain_auto_renew} \tab This operation configures Amazon Route 53 to automatically renew the specified domain before the domain registration expires\cr
-\link[=route53domains_enable_domain_transfer_lock]{enable_domain_transfer_lock} \tab This operation sets the transfer lock on the domain (specifically the clientTransferProhibited status) to prevent domain transfers\cr
-\link[=route53domains_get_contact_reachability_status]{get_contact_reachability_status} \tab For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation returns information about whether the registrant contact has responded\cr
-\link[=route53domains_get_domain_detail]{get_domain_detail} \tab This operation returns detailed information about a specified domain that is associated with the current AWS account\cr
-\link[=route53domains_get_domain_suggestions]{get_domain_suggestions} \tab The GetDomainSuggestions operation returns a list of suggested domain names\cr
-\link[=route53domains_get_operation_detail]{get_operation_detail} \tab This operation returns the current status of an operation that is not completed\cr
-\link[=route53domains_list_domains]{list_domains} \tab This operation returns all the domain names registered with Amazon Route 53 for the current AWS account\cr
-\link[=route53domains_list_operations]{list_operations} \tab Returns information about all of the operations that return an operation ID and that have ever been performed on domains that were registered by the current account\cr
-\link[=route53domains_list_tags_for_domain]{list_tags_for_domain} \tab This operation returns all of the tags that are associated with the specified domain\cr
-\link[=route53domains_register_domain]{register_domain} \tab This operation registers a domain\cr
-\link[=route53domains_reject_domain_transfer_from_another_aws_account]{reject_domain_transfer_from_another_aws_account} \tab Rejects the transfer of a domain from another AWS account to the current AWS account\cr
-\link[=route53domains_renew_domain]{renew_domain} \tab This operation renews a domain for the specified number of years\cr
-\link[=route53domains_resend_contact_reachability_email]{resend_contact_reachability_email} \tab For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation resends the confirmation email to the current email address for the registrant contact\cr
-\link[=route53domains_retrieve_domain_auth_code]{retrieve_domain_auth_code} \tab This operation returns the AuthCode for the domain\cr
-\link[=route53domains_transfer_domain]{transfer_domain} \tab Transfers a domain from another registrar to Amazon Route 53\cr
-\link[=route53domains_transfer_domain_to_another_aws_account]{transfer_domain_to_another_aws_account} \tab Transfers a domain from the current AWS account to another AWS account\cr
-\link[=route53domains_update_domain_contact]{update_domain_contact} \tab This operation updates the contact information for a particular domain\cr
-\link[=route53domains_update_domain_contact_privacy]{update_domain_contact_privacy} \tab This operation updates the specified domain contact's privacy setting\cr
-\link[=route53domains_update_domain_nameservers]{update_domain_nameservers} \tab This operation replaces the current set of name servers for the domain with the specified set of name servers\cr
-\link[=route53domains_update_tags_for_domain]{update_tags_for_domain} \tab This operation adds or updates tags for a specified domain\cr
-\link[=route53domains_view_billing]{view_billing} \tab Returns all the domain-related billing records for the current AWS account for a specified period
+\link[paws.networking:route53domains_accept_domain_transfer_from_another_aws_account]{accept_domain_transfer_from_another_aws_account} \tab Accepts the transfer of a domain from another Amazon Web Services account to the currentAmazon Web Services account\cr
+\link[paws.networking:route53domains_cancel_domain_transfer_to_another_aws_account]{cancel_domain_transfer_to_another_aws_account} \tab Cancels the transfer of a domain from the current Amazon Web Services account to another Amazon Web Services account\cr
+\link[paws.networking:route53domains_check_domain_availability]{check_domain_availability} \tab This operation checks the availability of one domain name\cr
+\link[paws.networking:route53domains_check_domain_transferability]{check_domain_transferability} \tab Checks whether a domain name can be transferred to Amazon Route 53\cr
+\link[paws.networking:route53domains_delete_domain]{delete_domain} \tab This operation deletes the specified domain\cr
+\link[paws.networking:route53domains_delete_tags_for_domain]{delete_tags_for_domain} \tab This operation deletes the specified tags for a domain\cr
+\link[paws.networking:route53domains_disable_domain_auto_renew]{disable_domain_auto_renew} \tab This operation disables automatic renewal of domain registration for the specified domain\cr
+\link[paws.networking:route53domains_disable_domain_transfer_lock]{disable_domain_transfer_lock} \tab This operation removes the transfer lock on the domain (specifically the clientTransferProhibited status) to allow domain transfers\cr
+\link[paws.networking:route53domains_enable_domain_auto_renew]{enable_domain_auto_renew} \tab This operation configures Amazon Route 53 to automatically renew the specified domain before the domain registration expires\cr
+\link[paws.networking:route53domains_enable_domain_transfer_lock]{enable_domain_transfer_lock} \tab This operation sets the transfer lock on the domain (specifically the clientTransferProhibited status) to prevent domain transfers\cr
+\link[paws.networking:route53domains_get_contact_reachability_status]{get_contact_reachability_status} \tab For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation returns information about whether the registrant contact has responded\cr
+\link[paws.networking:route53domains_get_domain_detail]{get_domain_detail} \tab This operation returns detailed information about a specified domain that is associated with the current Amazon Web Services account\cr
+\link[paws.networking:route53domains_get_domain_suggestions]{get_domain_suggestions} \tab The GetDomainSuggestions operation returns a list of suggested domain names\cr
+\link[paws.networking:route53domains_get_operation_detail]{get_operation_detail} \tab This operation returns the current status of an operation that is not completed\cr
+\link[paws.networking:route53domains_list_domains]{list_domains} \tab This operation returns all the domain names registered with Amazon Route 53 for the current Amazon Web Services account if no filtering conditions are used\cr
+\link[paws.networking:route53domains_list_operations]{list_operations} \tab Returns information about all of the operations that return an operation ID and that have ever been performed on domains that were registered by the current account\cr
+\link[paws.networking:route53domains_list_prices]{list_prices} \tab Lists the following prices for either all the TLDs supported by Route 53, or the specified TLD:\cr
+\link[paws.networking:route53domains_list_tags_for_domain]{list_tags_for_domain} \tab This operation returns all of the tags that are associated with the specified domain\cr
+\link[paws.networking:route53domains_register_domain]{register_domain} \tab This operation registers a domain\cr
+\link[paws.networking:route53domains_reject_domain_transfer_from_another_aws_account]{reject_domain_transfer_from_another_aws_account} \tab Rejects the transfer of a domain from another Amazon Web Services account to the current Amazon Web Services account\cr
+\link[paws.networking:route53domains_renew_domain]{renew_domain} \tab This operation renews a domain for the specified number of years\cr
+\link[paws.networking:route53domains_resend_contact_reachability_email]{resend_contact_reachability_email} \tab For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation resends the confirmation email to the current email address for the registrant contact\cr
+\link[paws.networking:route53domains_retrieve_domain_auth_code]{retrieve_domain_auth_code} \tab This operation returns the AuthCode for the domain\cr
+\link[paws.networking:route53domains_transfer_domain]{transfer_domain} \tab Transfers a domain from another registrar to Amazon Route 53\cr
+\link[paws.networking:route53domains_transfer_domain_to_another_aws_account]{transfer_domain_to_another_aws_account} \tab Transfers a domain from the current Amazon Web Services account to another Amazon Web Services account\cr
+\link[paws.networking:route53domains_update_domain_contact]{update_domain_contact} \tab This operation updates the contact information for a particular domain\cr
+\link[paws.networking:route53domains_update_domain_contact_privacy]{update_domain_contact_privacy} \tab This operation updates the specified domain contact's privacy setting\cr
+\link[paws.networking:route53domains_update_domain_nameservers]{update_domain_nameservers} \tab This operation replaces the current set of name servers for the domain with the specified set of name servers\cr
+\link[paws.networking:route53domains_update_tags_for_domain]{update_tags_for_domain} \tab This operation adds or updates tags for a specified domain\cr
+\link[paws.networking:route53domains_view_billing]{view_billing} \tab Returns all the domain-related billing records for the current Amazon Web Services account for a specified period
 }
 }
 

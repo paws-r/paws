@@ -7,7 +7,19 @@
 rds(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -59,7 +71,9 @@ the user guide.
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- rds(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- rds(
   config = list(
     credentials = list(
       creds = list(
@@ -67,151 +81,159 @@ the user guide.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=rds_add_role_to_db_cluster]{add_role_to_db_cluster} \tab Associates an Identity and Access Management (IAM) role from an Amazon Aurora DB cluster\cr
-\link[=rds_add_role_to_db_instance]{add_role_to_db_instance} \tab Associates an AWS Identity and Access Management (IAM) role with a DB instance\cr
-\link[=rds_add_source_identifier_to_subscription]{add_source_identifier_to_subscription} \tab Adds a source identifier to an existing RDS event notification subscription\cr
-\link[=rds_add_tags_to_resource]{add_tags_to_resource} \tab Adds metadata tags to an Amazon RDS resource\cr
-\link[=rds_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to a DB instance)\cr
-\link[=rds_authorize_db_security_group_ingress]{authorize_db_security_group_ingress} \tab Enables ingress to a DBSecurityGroup using one of two forms of authorization\cr
-\link[=rds_backtrack_db_cluster]{backtrack_db_cluster} \tab Backtracks a DB cluster to a specific time, without creating a new DB cluster\cr
-\link[=rds_build_auth_token]{build_auth_token} \tab Return an authentication token for a database connection\cr
-\link[=rds_cancel_export_task]{cancel_export_task} \tab Cancels an export task in progress that is exporting a snapshot to Amazon S3\cr
-\link[=rds_copy_db_cluster_parameter_group]{copy_db_cluster_parameter_group} \tab Copies the specified DB cluster parameter group\cr
-\link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot} \tab Copies a snapshot of a DB cluster\cr
-\link[=rds_copy_db_parameter_group]{copy_db_parameter_group} \tab Copies the specified DB parameter group\cr
-\link[=rds_copy_db_snapshot]{copy_db_snapshot} \tab Copies the specified DB snapshot\cr
-\link[=rds_copy_option_group]{copy_option_group} \tab Copies the specified option group\cr
-\link[=rds_create_custom_availability_zone]{create_custom_availability_zone} \tab Creates a custom Availability Zone (AZ)\cr
-\link[=rds_create_db_cluster]{create_db_cluster} \tab Creates a new Amazon Aurora DB cluster\cr
-\link[=rds_create_db_cluster_endpoint]{create_db_cluster_endpoint} \tab Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster\cr
-\link[=rds_create_db_cluster_parameter_group]{create_db_cluster_parameter_group} \tab Creates a new DB cluster parameter group\cr
-\link[=rds_create_db_cluster_snapshot]{create_db_cluster_snapshot} \tab Creates a snapshot of a DB cluster\cr
-\link[=rds_create_db_instance]{create_db_instance} \tab Creates a new DB instance\cr
-\link[=rds_create_db_instance_read_replica]{create_db_instance_read_replica} \tab Creates a new DB instance that acts as a read replica for an existing source DB instance\cr
-\link[=rds_create_db_parameter_group]{create_db_parameter_group} \tab Creates a new DB parameter group\cr
-\link[=rds_create_db_proxy]{create_db_proxy} \tab Creates a new DB proxy\cr
-\link[=rds_create_db_security_group]{create_db_security_group} \tab Creates a new DB security group\cr
-\link[=rds_create_db_snapshot]{create_db_snapshot} \tab Creates a snapshot of a DB instance\cr
-\link[=rds_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group\cr
-\link[=rds_create_event_subscription]{create_event_subscription} \tab Creates an RDS event notification subscription\cr
-\link[=rds_create_global_cluster]{create_global_cluster} \tab Creates an Aurora global database spread across multiple AWS Regions\cr
-\link[=rds_create_option_group]{create_option_group} \tab Creates a new option group\cr
-\link[=rds_delete_custom_availability_zone]{delete_custom_availability_zone} \tab Deletes a custom Availability Zone (AZ)\cr
-\link[=rds_delete_db_cluster]{delete_db_cluster} \tab The DeleteDBCluster action deletes a previously provisioned DB cluster\cr
-\link[=rds_delete_db_cluster_endpoint]{delete_db_cluster_endpoint} \tab Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster\cr
-\link[=rds_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified DB cluster parameter group\cr
-\link[=rds_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a DB cluster snapshot\cr
-\link[=rds_delete_db_instance]{delete_db_instance} \tab The DeleteDBInstance action deletes a previously provisioned DB instance\cr
-\link[=rds_delete_db_instance_automated_backup]{delete_db_instance_automated_backup} \tab Deletes automated backups using the DbiResourceId value of the source DB instance or the Amazon Resource Name (ARN) of the automated backups\cr
-\link[=rds_delete_db_parameter_group]{delete_db_parameter_group} \tab Deletes a specified DB parameter group\cr
-\link[=rds_delete_db_proxy]{delete_db_proxy} \tab Deletes an existing proxy\cr
-\link[=rds_delete_db_security_group]{delete_db_security_group} \tab Deletes a DB security group\cr
-\link[=rds_delete_db_snapshot]{delete_db_snapshot} \tab Deletes a DB snapshot\cr
-\link[=rds_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group\cr
-\link[=rds_delete_event_subscription]{delete_event_subscription} \tab Deletes an RDS event notification subscription\cr
-\link[=rds_delete_global_cluster]{delete_global_cluster} \tab Deletes a global database cluster\cr
-\link[=rds_delete_installation_media]{delete_installation_media} \tab Deletes the installation medium for a DB engine that requires an on-premises customer provided license, such as Microsoft SQL Server\cr
-\link[=rds_delete_option_group]{delete_option_group} \tab Deletes an existing option group\cr
-\link[=rds_deregister_db_proxy_targets]{deregister_db_proxy_targets} \tab Remove the association between one or more DBProxyTarget data structures and a DBProxyTargetGroup\cr
-\link[=rds_describe_account_attributes]{describe_account_attributes} \tab Lists all of the attributes for a customer account\cr
-\link[=rds_describe_certificates]{describe_certificates} \tab Lists the set of CA certificates provided by Amazon RDS for this AWS account\cr
-\link[=rds_describe_custom_availability_zones]{describe_custom_availability_zones} \tab Returns information about custom Availability Zones (AZs)\cr
-\link[=rds_describe_db_cluster_backtracks]{describe_db_cluster_backtracks} \tab Returns information about backtracks for a DB cluster\cr
-\link[=rds_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Aurora DB cluster\cr
-\link[=rds_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions\cr
-\link[=rds_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular DB cluster parameter group\cr
-\link[=rds_describe_db_clusters]{describe_db_clusters} \tab Returns information about provisioned Aurora DB clusters\cr
-\link[=rds_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes} \tab Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot\cr
-\link[=rds_describe_db_cluster_snapshots]{describe_db_cluster_snapshots} \tab Returns information about DB cluster snapshots\cr
-\link[=rds_describe_db_engine_versions]{describe_db_engine_versions} \tab Returns a list of the available DB engines\cr
-\link[=rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups} \tab Displays backups for both current and deleted instances\cr
-\link[=rds_describe_db_instances]{describe_db_instances} \tab Returns information about provisioned RDS instances\cr
-\link[=rds_describe_db_log_files]{describe_db_log_files} \tab Returns a list of DB log files for the DB instance\cr
-\link[=rds_describe_db_parameter_groups]{describe_db_parameter_groups} \tab Returns a list of DBParameterGroup descriptions\cr
-\link[=rds_describe_db_parameters]{describe_db_parameters} \tab Returns the detailed parameter list for a particular DB parameter group\cr
-\link[=rds_describe_db_proxies]{describe_db_proxies} \tab Returns information about DB proxies\cr
-\link[=rds_describe_db_proxy_target_groups]{describe_db_proxy_target_groups} \tab Returns information about DB proxy target groups, represented by DBProxyTargetGroup data structures\cr
-\link[=rds_describe_db_proxy_targets]{describe_db_proxy_targets} \tab Returns information about DBProxyTarget objects\cr
-\link[=rds_describe_db_security_groups]{describe_db_security_groups} \tab Returns a list of DBSecurityGroup descriptions\cr
-\link[=rds_describe_db_snapshot_attributes]{describe_db_snapshot_attributes} \tab Returns a list of DB snapshot attribute names and values for a manual DB snapshot\cr
-\link[=rds_describe_db_snapshots]{describe_db_snapshots} \tab Returns information about DB snapshots\cr
-\link[=rds_describe_db_subnet_groups]{describe_db_subnet_groups} \tab Returns a list of DBSubnetGroup descriptions\cr
-\link[=rds_describe_engine_default_cluster_parameters]{describe_engine_default_cluster_parameters} \tab Returns the default engine and system parameter information for the cluster database engine\cr
-\link[=rds_describe_engine_default_parameters]{describe_engine_default_parameters} \tab Returns the default engine and system parameter information for the specified database engine\cr
-\link[=rds_describe_event_categories]{describe_event_categories} \tab Displays a list of categories for all event source types, or, if specified, for a specified source type\cr
-\link[=rds_describe_events]{describe_events} \tab Returns events related to DB instances, DB clusters, DB parameter groups, DB security groups, DB snapshots, and DB cluster snapshots for the past 14 days\cr
-\link[=rds_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account\cr
-\link[=rds_describe_export_tasks]{describe_export_tasks} \tab Returns information about a snapshot export to Amazon S3\cr
-\link[=rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters\cr
-\link[=rds_describe_installation_media]{describe_installation_media} \tab Describes the available installation media for a DB engine that requires an on-premises customer provided license, such as Microsoft SQL Server\cr
-\link[=rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options\cr
-\link[=rds_describe_option_groups]{describe_option_groups} \tab Describes the available option groups\cr
-\link[=rds_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable DB instance options for the specified engine\cr
-\link[=rds_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, DB instances) that have at least one pending maintenance action\cr
-\link[=rds_describe_reserved_db_instances]{describe_reserved_db_instances} \tab Returns information about reserved DB instances for this account, or about a specified reserved DB instance\cr
-\link[=rds_describe_reserved_db_instances_offerings]{describe_reserved_db_instances_offerings} \tab Lists available reserved DB instance offerings\cr
-\link[=rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source AWS Regions where the current AWS Region can create a read replica, copy a DB snapshot from, or replicate automated backups from\cr
-\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr
-\link[=rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size\cr
-\link[=rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
-\link[=rds_import_installation_media]{import_installation_media} \tab Imports the installation media for a DB engine that requires an on-premises customer provided license, such as SQL Server\cr
-\link[=rds_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon RDS resource\cr
-\link[=rds_modify_certificates]{modify_certificates} \tab Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances temporarily, or remove the override\cr
-\link[=rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity} \tab Set the capacity of an Aurora Serverless DB cluster to a specific value\cr
-\link[=rds_modify_db_cluster]{modify_db_cluster} \tab Modify a setting for an Amazon Aurora DB cluster\cr
-\link[=rds_modify_db_cluster_endpoint]{modify_db_cluster_endpoint} \tab Modifies the properties of an endpoint in an Amazon Aurora DB cluster\cr
-\link[=rds_modify_db_cluster_parameter_group]{modify_db_cluster_parameter_group} \tab Modifies the parameters of a DB cluster parameter group\cr
-\link[=rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot\cr
-\link[=rds_modify_db_instance]{modify_db_instance} \tab Modifies settings for a DB instance\cr
-\link[=rds_modify_db_parameter_group]{modify_db_parameter_group} \tab Modifies the parameters of a DB parameter group\cr
-\link[=rds_modify_db_proxy]{modify_db_proxy} \tab Changes the settings for an existing DB proxy\cr
-\link[=rds_modify_db_proxy_target_group]{modify_db_proxy_target_group} \tab Modifies the properties of a DBProxyTargetGroup\cr
-\link[=rds_modify_db_snapshot]{modify_db_snapshot} \tab Updates a manual DB snapshot with a new engine version\cr
-\link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot\cr
-\link[=rds_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group\cr
-\link[=rds_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing RDS event notification subscription\cr
-\link[=rds_modify_global_cluster]{modify_global_cluster} \tab Modify a setting for an Amazon Aurora global cluster\cr
-\link[=rds_modify_option_group]{modify_option_group} \tab Modifies an existing option group\cr
-\link[=rds_promote_read_replica]{promote_read_replica} \tab Promotes a read replica DB instance to a standalone DB instance\cr
-\link[=rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Promotes a read replica DB cluster to a standalone DB cluster\cr
-\link[=rds_purchase_reserved_db_instances_offering]{purchase_reserved_db_instances_offering} \tab Purchases a reserved DB instance offering\cr
-\link[=rds_reboot_db_instance]{reboot_db_instance} \tab You might need to reboot your DB instance, usually for maintenance reasons\cr
-\link[=rds_register_db_proxy_targets]{register_db_proxy_targets} \tab Associate one or more DBProxyTarget data structures with a DBProxyTargetGroup\cr
-\link[=rds_remove_from_global_cluster]{remove_from_global_cluster} \tab Detaches an Aurora secondary cluster from an Aurora global database cluster\cr
-\link[=rds_remove_role_from_db_cluster]{remove_role_from_db_cluster} \tab Disassociates an AWS Identity and Access Management (IAM) role from an Amazon Aurora DB cluster\cr
-\link[=rds_remove_role_from_db_instance]{remove_role_from_db_instance} \tab Disassociates an AWS Identity and Access Management (IAM) role from a DB instance\cr
-\link[=rds_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription} \tab Removes a source identifier from an existing RDS event notification subscription\cr
-\link[=rds_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes metadata tags from an Amazon RDS resource\cr
-\link[=rds_reset_db_cluster_parameter_group]{reset_db_cluster_parameter_group} \tab Modifies the parameters of a DB cluster parameter group to the default value\cr
-\link[=rds_reset_db_parameter_group]{reset_db_parameter_group} \tab Modifies the parameters of a DB parameter group to the engine/system default value\cr
-\link[=rds_restore_db_cluster_from_s3]{restore_db_cluster_from_s3} \tab Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket\cr
-\link[=rds_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot} \tab Creates a new DB cluster from a DB snapshot or DB cluster snapshot\cr
-\link[=rds_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time} \tab Restores a DB cluster to an arbitrary point in time\cr
-\link[=rds_restore_db_instance_from_db_snapshot]{restore_db_instance_from_db_snapshot} \tab Creates a new DB instance from a DB snapshot\cr
-\link[=rds_restore_db_instance_from_s3]{restore_db_instance_from_s3} \tab Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files\cr
-\link[=rds_restore_db_instance_to_point_in_time]{restore_db_instance_to_point_in_time} \tab Restores a DB instance to an arbitrary point in time\cr
-\link[=rds_revoke_db_security_group_ingress]{revoke_db_security_group_ingress} \tab Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC Security Groups\cr
-\link[=rds_start_activity_stream]{start_activity_stream} \tab Starts a database activity stream to monitor activity on the database\cr
-\link[=rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the AWS console, the stop-db-cluster AWS CLI command, or the StopDBCluster action\cr
-\link[=rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action\cr
-\link[=rds_start_db_instance_automated_backups_replication]{start_db_instance_automated_backups_replication} \tab Enables replication of automated backups to a different AWS Region\cr
-\link[=rds_start_export_task]{start_export_task} \tab Starts an export of a snapshot to Amazon S3\cr
-\link[=rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the AWS console, the start-activity-stream AWS CLI command, or the StartActivityStream action\cr
-\link[=rds_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Aurora DB cluster\cr
-\link[=rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance\cr
-\link[=rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance
+\link[paws.database:rds_add_role_to_db_cluster]{add_role_to_db_cluster} \tab Associates an Identity and Access Management (IAM) role with a DB cluster\cr
+\link[paws.database:rds_add_role_to_db_instance]{add_role_to_db_instance} \tab Associates an Amazon Web Services Identity and Access Management (IAM) role with a DB instance\cr
+\link[paws.database:rds_add_source_identifier_to_subscription]{add_source_identifier_to_subscription} \tab Adds a source identifier to an existing RDS event notification subscription\cr
+\link[paws.database:rds_add_tags_to_resource]{add_tags_to_resource} \tab Adds metadata tags to an Amazon RDS resource\cr
+\link[paws.database:rds_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to a DB instance)\cr
+\link[paws.database:rds_authorize_db_security_group_ingress]{authorize_db_security_group_ingress} \tab Enables ingress to a DBSecurityGroup using one of two forms of authorization\cr
+\link[paws.database:rds_backtrack_db_cluster]{backtrack_db_cluster} \tab Backtracks a DB cluster to a specific time, without creating a new DB cluster\cr
+\link[paws.database:rds_build_auth_token]{build_auth_token} \tab Return an authentication token for a database connection\cr
+\link[paws.database:rds_cancel_export_task]{cancel_export_task} \tab Cancels an export task in progress that is exporting a snapshot to Amazon S3\cr
+\link[paws.database:rds_copy_db_cluster_parameter_group]{copy_db_cluster_parameter_group} \tab Copies the specified DB cluster parameter group\cr
+\link[paws.database:rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot} \tab Copies a snapshot of a DB cluster\cr
+\link[paws.database:rds_copy_db_parameter_group]{copy_db_parameter_group} \tab Copies the specified DB parameter group\cr
+\link[paws.database:rds_copy_db_snapshot]{copy_db_snapshot} \tab Copies the specified DB snapshot\cr
+\link[paws.database:rds_copy_option_group]{copy_option_group} \tab Copies the specified option group\cr
+\link[paws.database:rds_create_custom_db_engine_version]{create_custom_db_engine_version} \tab Creates a custom DB engine version (CEV)\cr
+\link[paws.database:rds_create_db_cluster]{create_db_cluster} \tab Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster\cr
+\link[paws.database:rds_create_db_cluster_endpoint]{create_db_cluster_endpoint} \tab Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster\cr
+\link[paws.database:rds_create_db_cluster_parameter_group]{create_db_cluster_parameter_group} \tab Creates a new DB cluster parameter group\cr
+\link[paws.database:rds_create_db_cluster_snapshot]{create_db_cluster_snapshot} \tab Creates a snapshot of a DB cluster\cr
+\link[paws.database:rds_create_db_instance]{create_db_instance} \tab Creates a new DB instance\cr
+\link[paws.database:rds_create_db_instance_read_replica]{create_db_instance_read_replica} \tab Creates a new DB instance that acts as a read replica for an existing source DB instance\cr
+\link[paws.database:rds_create_db_parameter_group]{create_db_parameter_group} \tab Creates a new DB parameter group\cr
+\link[paws.database:rds_create_db_proxy]{create_db_proxy} \tab Creates a new DB proxy\cr
+\link[paws.database:rds_create_db_proxy_endpoint]{create_db_proxy_endpoint} \tab Creates a DBProxyEndpoint\cr
+\link[paws.database:rds_create_db_security_group]{create_db_security_group} \tab Creates a new DB security group\cr
+\link[paws.database:rds_create_db_snapshot]{create_db_snapshot} \tab Creates a snapshot of a DB instance\cr
+\link[paws.database:rds_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group\cr
+\link[paws.database:rds_create_event_subscription]{create_event_subscription} \tab Creates an RDS event notification subscription\cr
+\link[paws.database:rds_create_global_cluster]{create_global_cluster} \tab Creates an Aurora global database spread across multiple Amazon Web Services Regions\cr
+\link[paws.database:rds_create_option_group]{create_option_group} \tab Creates a new option group\cr
+\link[paws.database:rds_delete_custom_db_engine_version]{delete_custom_db_engine_version} \tab Deletes a custom engine version\cr
+\link[paws.database:rds_delete_db_cluster]{delete_db_cluster} \tab The DeleteDBCluster action deletes a previously provisioned DB cluster\cr
+\link[paws.database:rds_delete_db_cluster_endpoint]{delete_db_cluster_endpoint} \tab Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster\cr
+\link[paws.database:rds_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified DB cluster parameter group\cr
+\link[paws.database:rds_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a DB cluster snapshot\cr
+\link[paws.database:rds_delete_db_instance]{delete_db_instance} \tab The DeleteDBInstance action deletes a previously provisioned DB instance\cr
+\link[paws.database:rds_delete_db_instance_automated_backup]{delete_db_instance_automated_backup} \tab Deletes automated backups using the DbiResourceId value of the source DB instance or the Amazon Resource Name (ARN) of the automated backups\cr
+\link[paws.database:rds_delete_db_parameter_group]{delete_db_parameter_group} \tab Deletes a specified DB parameter group\cr
+\link[paws.database:rds_delete_db_proxy]{delete_db_proxy} \tab Deletes an existing DB proxy\cr
+\link[paws.database:rds_delete_db_proxy_endpoint]{delete_db_proxy_endpoint} \tab Deletes a DBProxyEndpoint\cr
+\link[paws.database:rds_delete_db_security_group]{delete_db_security_group} \tab Deletes a DB security group\cr
+\link[paws.database:rds_delete_db_snapshot]{delete_db_snapshot} \tab Deletes a DB snapshot\cr
+\link[paws.database:rds_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group\cr
+\link[paws.database:rds_delete_event_subscription]{delete_event_subscription} \tab Deletes an RDS event notification subscription\cr
+\link[paws.database:rds_delete_global_cluster]{delete_global_cluster} \tab Deletes a global database cluster\cr
+\link[paws.database:rds_delete_option_group]{delete_option_group} \tab Deletes an existing option group\cr
+\link[paws.database:rds_deregister_db_proxy_targets]{deregister_db_proxy_targets} \tab Remove the association between one or more DBProxyTarget data structures and a DBProxyTargetGroup\cr
+\link[paws.database:rds_describe_account_attributes]{describe_account_attributes} \tab Lists all of the attributes for a customer account\cr
+\link[paws.database:rds_describe_certificates]{describe_certificates} \tab Lists the set of CA certificates provided by Amazon RDS for this Amazon Web Services account\cr
+\link[paws.database:rds_describe_db_cluster_backtracks]{describe_db_cluster_backtracks} \tab Returns information about backtracks for a DB cluster\cr
+\link[paws.database:rds_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Aurora DB cluster\cr
+\link[paws.database:rds_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions\cr
+\link[paws.database:rds_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular DB cluster parameter group\cr
+\link[paws.database:rds_describe_db_clusters]{describe_db_clusters} \tab Returns information about Amazon Aurora DB clusters and Multi-AZ DB clusters\cr
+\link[paws.database:rds_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes} \tab Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot\cr
+\link[paws.database:rds_describe_db_cluster_snapshots]{describe_db_cluster_snapshots} \tab Returns information about DB cluster snapshots\cr
+\link[paws.database:rds_describe_db_engine_versions]{describe_db_engine_versions} \tab Returns a list of the available DB engines\cr
+\link[paws.database:rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups} \tab Displays backups for both current and deleted instances\cr
+\link[paws.database:rds_describe_db_instances]{describe_db_instances} \tab Returns information about provisioned RDS instances\cr
+\link[paws.database:rds_describe_db_log_files]{describe_db_log_files} \tab Returns a list of DB log files for the DB instance\cr
+\link[paws.database:rds_describe_db_parameter_groups]{describe_db_parameter_groups} \tab Returns a list of DBParameterGroup descriptions\cr
+\link[paws.database:rds_describe_db_parameters]{describe_db_parameters} \tab Returns the detailed parameter list for a particular DB parameter group\cr
+\link[paws.database:rds_describe_db_proxies]{describe_db_proxies} \tab Returns information about DB proxies\cr
+\link[paws.database:rds_describe_db_proxy_endpoints]{describe_db_proxy_endpoints} \tab Returns information about DB proxy endpoints\cr
+\link[paws.database:rds_describe_db_proxy_target_groups]{describe_db_proxy_target_groups} \tab Returns information about DB proxy target groups, represented by DBProxyTargetGroup data structures\cr
+\link[paws.database:rds_describe_db_proxy_targets]{describe_db_proxy_targets} \tab Returns information about DBProxyTarget objects\cr
+\link[paws.database:rds_describe_db_security_groups]{describe_db_security_groups} \tab Returns a list of DBSecurityGroup descriptions\cr
+\link[paws.database:rds_describe_db_snapshot_attributes]{describe_db_snapshot_attributes} \tab Returns a list of DB snapshot attribute names and values for a manual DB snapshot\cr
+\link[paws.database:rds_describe_db_snapshots]{describe_db_snapshots} \tab Returns information about DB snapshots\cr
+\link[paws.database:rds_describe_db_subnet_groups]{describe_db_subnet_groups} \tab Returns a list of DBSubnetGroup descriptions\cr
+\link[paws.database:rds_describe_engine_default_cluster_parameters]{describe_engine_default_cluster_parameters} \tab Returns the default engine and system parameter information for the cluster database engine\cr
+\link[paws.database:rds_describe_engine_default_parameters]{describe_engine_default_parameters} \tab Returns the default engine and system parameter information for the specified database engine\cr
+\link[paws.database:rds_describe_event_categories]{describe_event_categories} \tab Displays a list of categories for all event source types, or, if specified, for a specified source type\cr
+\link[paws.database:rds_describe_events]{describe_events} \tab Returns events related to DB instances, DB clusters, DB parameter groups, DB security groups, DB snapshots, DB cluster snapshots, and RDS Proxies for the past 14 days\cr
+\link[paws.database:rds_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account\cr
+\link[paws.database:rds_describe_export_tasks]{describe_export_tasks} \tab Returns information about a snapshot export to Amazon S3\cr
+\link[paws.database:rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters\cr
+\link[paws.database:rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options\cr
+\link[paws.database:rds_describe_option_groups]{describe_option_groups} \tab Describes the available option groups\cr
+\link[paws.database:rds_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable DB instance options for the specified DB engine, DB engine version, and DB instance class\cr
+\link[paws.database:rds_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, DB instances) that have at least one pending maintenance action\cr
+\link[paws.database:rds_describe_reserved_db_instances]{describe_reserved_db_instances} \tab Returns information about reserved DB instances for this account, or about a specified reserved DB instance\cr
+\link[paws.database:rds_describe_reserved_db_instances_offerings]{describe_reserved_db_instances_offerings} \tab Lists available reserved DB instance offerings\cr
+\link[paws.database:rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source Amazon Web Services Regions where the current Amazon Web Services Region can create a read replica, copy a DB snapshot from, or replicate automated backups from\cr
+\link[paws.database:rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr
+\link[paws.database:rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size\cr
+\link[paws.database:rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
+\link[paws.database:rds_failover_global_cluster]{failover_global_cluster} \tab Initiates the failover process for an Aurora global database (GlobalCluster)\cr
+\link[paws.database:rds_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon RDS resource\cr
+\link[paws.database:rds_modify_activity_stream]{modify_activity_stream} \tab Changes the audit policy state of a database activity stream to either locked (default) or unlocked\cr
+\link[paws.database:rds_modify_certificates]{modify_certificates} \tab Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or remove the override\cr
+\link[paws.database:rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity} \tab Set the capacity of an Aurora Serverless v1 DB cluster to a specific value\cr
+\link[paws.database:rds_modify_custom_db_engine_version]{modify_custom_db_engine_version} \tab Modifies the status of a custom engine version (CEV)\cr
+\link[paws.database:rds_modify_db_cluster]{modify_db_cluster} \tab Modify the settings for an Amazon Aurora DB cluster or a Multi-AZ DB cluster\cr
+\link[paws.database:rds_modify_db_cluster_endpoint]{modify_db_cluster_endpoint} \tab Modifies the properties of an endpoint in an Amazon Aurora DB cluster\cr
+\link[paws.database:rds_modify_db_cluster_parameter_group]{modify_db_cluster_parameter_group} \tab Modifies the parameters of a DB cluster parameter group\cr
+\link[paws.database:rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot\cr
+\link[paws.database:rds_modify_db_instance]{modify_db_instance} \tab Modifies settings for a DB instance\cr
+\link[paws.database:rds_modify_db_parameter_group]{modify_db_parameter_group} \tab Modifies the parameters of a DB parameter group\cr
+\link[paws.database:rds_modify_db_proxy]{modify_db_proxy} \tab Changes the settings for an existing DB proxy\cr
+\link[paws.database:rds_modify_db_proxy_endpoint]{modify_db_proxy_endpoint} \tab Changes the settings for an existing DB proxy endpoint\cr
+\link[paws.database:rds_modify_db_proxy_target_group]{modify_db_proxy_target_group} \tab Modifies the properties of a DBProxyTargetGroup\cr
+\link[paws.database:rds_modify_db_snapshot]{modify_db_snapshot} \tab Updates a manual DB snapshot with a new engine version\cr
+\link[paws.database:rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot\cr
+\link[paws.database:rds_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group\cr
+\link[paws.database:rds_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing RDS event notification subscription\cr
+\link[paws.database:rds_modify_global_cluster]{modify_global_cluster} \tab Modify a setting for an Amazon Aurora global cluster\cr
+\link[paws.database:rds_modify_option_group]{modify_option_group} \tab Modifies an existing option group\cr
+\link[paws.database:rds_promote_read_replica]{promote_read_replica} \tab Promotes a read replica DB instance to a standalone DB instance\cr
+\link[paws.database:rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Promotes a read replica DB cluster to a standalone DB cluster\cr
+\link[paws.database:rds_purchase_reserved_db_instances_offering]{purchase_reserved_db_instances_offering} \tab Purchases a reserved DB instance offering\cr
+\link[paws.database:rds_reboot_db_cluster]{reboot_db_cluster} \tab You might need to reboot your DB cluster, usually for maintenance reasons\cr
+\link[paws.database:rds_reboot_db_instance]{reboot_db_instance} \tab You might need to reboot your DB instance, usually for maintenance reasons\cr
+\link[paws.database:rds_register_db_proxy_targets]{register_db_proxy_targets} \tab Associate one or more DBProxyTarget data structures with a DBProxyTargetGroup\cr
+\link[paws.database:rds_remove_from_global_cluster]{remove_from_global_cluster} \tab Detaches an Aurora secondary cluster from an Aurora global database cluster\cr
+\link[paws.database:rds_remove_role_from_db_cluster]{remove_role_from_db_cluster} \tab Removes the asssociation of an Amazon Web Services Identity and Access Management (IAM) role from a DB cluster\cr
+\link[paws.database:rds_remove_role_from_db_instance]{remove_role_from_db_instance} \tab Disassociates an Amazon Web Services Identity and Access Management (IAM) role from a DB instance\cr
+\link[paws.database:rds_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription} \tab Removes a source identifier from an existing RDS event notification subscription\cr
+\link[paws.database:rds_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes metadata tags from an Amazon RDS resource\cr
+\link[paws.database:rds_reset_db_cluster_parameter_group]{reset_db_cluster_parameter_group} \tab Modifies the parameters of a DB cluster parameter group to the default value\cr
+\link[paws.database:rds_reset_db_parameter_group]{reset_db_parameter_group} \tab Modifies the parameters of a DB parameter group to the engine/system default value\cr
+\link[paws.database:rds_restore_db_cluster_from_s3]{restore_db_cluster_from_s3} \tab Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket\cr
+\link[paws.database:rds_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot} \tab Creates a new DB cluster from a DB snapshot or DB cluster snapshot\cr
+\link[paws.database:rds_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time} \tab Restores a DB cluster to an arbitrary point in time\cr
+\link[paws.database:rds_restore_db_instance_from_db_snapshot]{restore_db_instance_from_db_snapshot} \tab Creates a new DB instance from a DB snapshot\cr
+\link[paws.database:rds_restore_db_instance_from_s3]{restore_db_instance_from_s3} \tab Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files\cr
+\link[paws.database:rds_restore_db_instance_to_point_in_time]{restore_db_instance_to_point_in_time} \tab Restores a DB instance to an arbitrary point in time\cr
+\link[paws.database:rds_revoke_db_security_group_ingress]{revoke_db_security_group_ingress} \tab Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC security groups\cr
+\link[paws.database:rds_start_activity_stream]{start_activity_stream} \tab Starts a database activity stream to monitor activity on the database\cr
+\link[paws.database:rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web Services console, the stop-db-cluster CLI command, or the StopDBCluster action\cr
+\link[paws.database:rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the Amazon Web Services console, the stop-db-instance CLI command, or the StopDBInstance action\cr
+\link[paws.database:rds_start_db_instance_automated_backups_replication]{start_db_instance_automated_backups_replication} \tab Enables replication of automated backups to a different Amazon Web Services Region\cr
+\link[paws.database:rds_start_export_task]{start_export_task} \tab Starts an export of a snapshot to Amazon S3\cr
+\link[paws.database:rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the Amazon Web Services console, the start-activity-stream CLI command, or the StartActivityStream action\cr
+\link[paws.database:rds_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Aurora DB cluster\cr
+\link[paws.database:rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance\cr
+\link[paws.database:rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance
 }
 }
 

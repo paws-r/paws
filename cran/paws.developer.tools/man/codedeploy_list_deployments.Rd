@@ -5,8 +5,14 @@
 \title{Lists the deployments in a deployment group for an application
 registered with the IAM user or AWS account}
 \usage{
-codedeploy_list_deployments(applicationName, deploymentGroupName,
-  externalId, includeOnlyStatuses, createTimeRange, nextToken)
+codedeploy_list_deployments(
+  applicationName = NULL,
+  deploymentGroupName = NULL,
+  externalId = NULL,
+  includeOnlyStatuses = NULL,
+  createTimeRange = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{applicationName}{The name of an AWS CodeDeploy application associated with the IAM user
@@ -42,38 +48,9 @@ deployments.}
 \item{nextToken}{An identifier returned from the previous list deployments call. It can
 be used to return the next set of deployments in the list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  deployments = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the deployments in a deployment group for an application
-registered with the IAM user or AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_deployments(
-  applicationName = "string",
-  deploymentGroupName = "string",
-  externalId = "string",
-  includeOnlyStatuses = list(
-    "Created"|"Queued"|"InProgress"|"Baking"|"Succeeded"|"Failed"|"Stopped"|"Ready"
-  ),
-  createTimeRange = list(
-    start = as.POSIXct(
-      "2015-01-01"
-    ),
-    end = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
+Lists the deployments in a deployment group for an application registered with the IAM user or AWS account.
 
+See \url{https://paws-r.github.io/docs/codedeploy/list_deployments.html} for full documentation.
+}
 \keyword{internal}

@@ -5,10 +5,19 @@
 \title{Returns information about reserved DB instances for this account, or
 about a specified reserved DB instance}
 \usage{
-rds_describe_reserved_db_instances(ReservedDBInstanceId,
-  ReservedDBInstancesOfferingId, DBInstanceClass, Duration,
-  ProductDescription, OfferingType, MultiAZ, LeaseId, Filters, MaxRecords,
-  Marker)
+rds_describe_reserved_db_instances(
+  ReservedDBInstanceId = NULL,
+  ReservedDBInstancesOfferingId = NULL,
+  DBInstanceClass = NULL,
+  Duration = NULL,
+  ProductDescription = NULL,
+  OfferingType = NULL,
+  MultiAZ = NULL,
+  LeaseId = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ReservedDBInstanceId}{The reserved DB instance identifier filter value. Specify this parameter
@@ -39,8 +48,8 @@ support Multi-AZ.}
 \item{LeaseId}{The lease identifier filter value. Specify this parameter to show only
 the reservation that matches the specified lease ID.
 
-AWS Support might request the lease ID for an issue related to a
-reserved DB instance.}
+Amazon Web Services Support might request the lease ID for an issue
+related to a reserved DB instance.}
 
 \item{Filters}{This parameter isn't currently supported.}
 
@@ -56,65 +65,9 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ReservedDBInstances = list(
-    list(
-      ReservedDBInstanceId = "string",
-      ReservedDBInstancesOfferingId = "string",
-      DBInstanceClass = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Duration = 123,
-      FixedPrice = 123.0,
-      UsagePrice = 123.0,
-      CurrencyCode = "string",
-      DBInstanceCount = 123,
-      ProductDescription = "string",
-      OfferingType = "string",
-      MultiAZ = TRUE|FALSE,
-      State = "string",
-      RecurringCharges = list(
-        list(
-          RecurringChargeAmount = 123.0,
-          RecurringChargeFrequency = "string"
-        )
-      ),
-      ReservedDBInstanceArn = "string",
-      LeaseId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns information about reserved DB instances for this account, or
-about a specified reserved DB instance.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_reserved_db_instances(
-  ReservedDBInstanceId = "string",
-  ReservedDBInstancesOfferingId = "string",
-  DBInstanceClass = "string",
-  Duration = "string",
-  ProductDescription = "string",
-  OfferingType = "string",
-  MultiAZ = TRUE|FALSE,
-  LeaseId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns information about reserved DB instances for this account, or about a specified reserved DB instance.
 
+See \url{https://paws-r.github.io/docs/rds/describe_reserved_db_instances.html} for full documentation.
+}
 \keyword{internal}

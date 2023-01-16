@@ -15,47 +15,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
-\value{
-An empty list.
-}
 \description{
-This operation deletes a vault. Amazon S3 Glacier will delete a vault
-only if there are no archives in the vault as of the last inventory and
-there have been no writes to the vault since the last inventory. If
-either of these conditions is not satisfied, the vault deletion fails
-(that is, the vault is not removed) and Amazon S3 Glacier returns an
-error. You can use \code{\link[=glacier_describe_vault]{describe_vault}} to return
-the number of archives in a vault, and you can use \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job (POST jobs)}
-to initiate a new inventory retrieval for a vault. The inventory
-contains the archive IDs you use to delete archives using \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html}{Delete Archive (DELETE archive)}.
+This operation deletes a vault. Amazon S3 Glacier will delete a vault only if there are no archives in the vault as of the last inventory and there have been no writes to the vault since the last inventory. If either of these conditions is not satisfied, the vault deletion fails (that is, the vault is not removed) and Amazon S3 Glacier returns an error. You can use \code{\link[=glacier_describe_vault]{describe_vault}} to return the number of archives in a vault, and you can use \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job (POST jobs)} to initiate a new inventory retrieval for a vault. The inventory contains the archive IDs you use to delete archives using \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html}{Delete Archive (DELETE archive)}.
 
-This operation is idempotent.
-
-An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
-permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html}{Access Control Using AWS Identity and Access Management (IAM)}.
-
-For conceptual information and underlying REST API, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/deleting-vaults.html}{Deleting a Vault in Amazon Glacier}
-and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.html}{Delete Vault}
-in the \emph{Amazon S3 Glacier Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_vault(
-  accountId = "string",
-  vaultName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The example deletes a vault named my-vault:
-svc$delete_vault(
-  accountId = "-",
-  vaultName = "my-vault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/delete_vault.html} for full documentation.
 }
 \keyword{internal}

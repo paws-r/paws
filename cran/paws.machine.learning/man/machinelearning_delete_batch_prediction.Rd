@@ -9,31 +9,9 @@ machinelearning_delete_batch_prediction(BatchPredictionId)
 \arguments{
 \item{BatchPredictionId}{[required] A user-supplied ID that uniquely identifies the \code{BatchPrediction}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BatchPredictionId = "string"
-)
-}
-}
 \description{
-Assigns the DELETED status to a \code{BatchPrediction}, rendering it
-unusable.
+Assigns the DELETED status to a \code{BatchPrediction}, rendering it unusable.
 
-After using the
-\code{\link[=machinelearning_delete_batch_prediction]{delete_batch_prediction}}
-operation, you can use the
-\code{\link[=machinelearning_get_batch_prediction]{get_batch_prediction}} operation
-to verify that the status of the \code{BatchPrediction} changed to DELETED.
-
-\strong{Caution:} The result of the
-\code{\link[=machinelearning_delete_batch_prediction]{delete_batch_prediction}}
-operation is irreversible.
+See \url{https://paws-r.github.io/docs/machinelearning/delete_batch_prediction.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_batch_prediction(
-  BatchPredictionId = "string"
-)
-}
-}
-
 \keyword{internal}

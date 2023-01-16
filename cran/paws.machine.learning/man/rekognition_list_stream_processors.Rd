@@ -5,7 +5,7 @@
 \title{Gets a list of stream processors that you have created with
 CreateStreamProcessor}
 \usage{
-rekognition_list_stream_processors(NextToken, MaxResults)
+rekognition_list_stream_processors(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{If the previous response was incomplete (because there are more stream
@@ -16,28 +16,9 @@ next set of stream processors.}
 \item{MaxResults}{Maximum number of stream processors you want Amazon Rekognition Video to
 return in the response. The default is 1000.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  StreamProcessors = list(
-    list(
-      Name = "string",
-      Status = "STOPPED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"
-    )
-  )
-)
-}
-}
 \description{
-Gets a list of stream processors that you have created with
-\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_stream_processors(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Gets a list of stream processors that you have created with \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 
+See \url{https://paws-r.github.io/docs/rekognition/list_stream_processors.html} for full documentation.
+}
 \keyword{internal}

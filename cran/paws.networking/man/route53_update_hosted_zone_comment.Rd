@@ -4,7 +4,7 @@
 \alias{route53_update_hosted_zone_comment}
 \title{Updates the comment for a specified hosted zone}
 \usage{
-route53_update_hosted_zone_comment(Id, Comment)
+route53_update_hosted_zone_comment(Id, Comment = NULL)
 }
 \arguments{
 \item{Id}{[required] The ID for the hosted zone that you want to update the comment for.}
@@ -13,34 +13,9 @@ route53_update_hosted_zone_comment(Id, Comment)
 \code{Comment}, Amazon Route 53 deletes the existing value of the \code{Comment}
 element, if any.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HostedZone = list(
-    Id = "string",
-    Name = "string",
-    CallerReference = "string",
-    Config = list(
-      Comment = "string",
-      PrivateZone = TRUE|FALSE
-    ),
-    ResourceRecordSetCount = 123,
-    LinkedService = list(
-      ServicePrincipal = "string",
-      Description = "string"
-    )
-  )
-)
-}
-}
 \description{
 Updates the comment for a specified hosted zone.
-}
-\section{Request syntax}{
-\preformatted{svc$update_hosted_zone_comment(
-  Id = "string",
-  Comment = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/route53/update_hosted_zone_comment.html} for full documentation.
+}
 \keyword{internal}

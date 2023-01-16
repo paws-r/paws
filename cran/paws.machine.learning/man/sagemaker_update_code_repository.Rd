@@ -4,36 +4,22 @@
 \alias{sagemaker_update_code_repository}
 \title{Updates the specified Git repository with the specified values}
 \usage{
-sagemaker_update_code_repository(CodeRepositoryName, GitConfig)
+sagemaker_update_code_repository(CodeRepositoryName, GitConfig = NULL)
 }
 \arguments{
 \item{CodeRepositoryName}{[required] The name of the Git repository to update.}
 
 \item{GitConfig}{The configuration of the git repository, including the URL and the
-Amazon Resource Name (ARN) of the AWS Secrets Manager secret that
-contains the credentials used to access the repository. The secret must
-have a staging label of \code{AWSCURRENT} and must be in the following
-format:
+Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager
+secret that contains the credentials used to access the repository. The
+secret must have a staging label of \code{AWSCURRENT} and must be in the
+following format:
 
 \verb{\{"username": UserName, "password": Password\}}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CodeRepositoryArn = "string"
-)
-}
-}
 \description{
 Updates the specified Git repository with the specified values.
-}
-\section{Request syntax}{
-\preformatted{svc$update_code_repository(
-  CodeRepositoryName = "string",
-  GitConfig = list(
-    SecretArn = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_code_repository.html} for full documentation.
+}
 \keyword{internal}

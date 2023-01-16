@@ -17,54 +17,9 @@ representable in UTF-8 format, and the following special characters: + -
 = . _ : / @. The maximum length of a tag's key is 128 characters, and
 the maximum length for a tag's value is 256.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceARN = "string"
-)
-}
-}
 \description{
-Adds one or more tags to the specified resource. You use tags to add
-metadata to resources, which you can use to categorize these resources.
-For example, you can categorize resources by purpose, owner,
-environment, or team. Each tag consists of a key and a value, which you
-define. You can add tags to the following AWS Storage Gateway resources:
-\itemize{
-\item Storage gateways of all types
-\item Storage volumes
-\item Virtual tapes
-\item NFS and SMB file shares
-}
+Adds one or more tags to the specified resource. You use tags to add metadata to resources, which you can use to categorize these resources. For example, you can categorize resources by purpose, owner, environment, or team. Each tag consists of a key and a value, which you define. You can add tags to the following Storage Gateway resources:
 
-You can create a maximum of 50 tags for each resource. Virtual tapes and
-storage volumes that are recovered to a new gateway maintain their tags.
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
-  ResourceARN = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# Adds one or more tags to the specified resource.
-svc$add_tags_to_resource(
-  ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B",
-  Tags = list(
-    list(
-      Key = "Dev Gatgeway Region",
-      Value = "East Coast"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/add_tags_to_resource.html} for full documentation.
 }
 \keyword{internal}

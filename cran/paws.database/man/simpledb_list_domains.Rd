@@ -5,7 +5,7 @@
 \title{The ListDomains operation lists all domains associated with the Access
 Key ID}
 \usage{
-simpledb_list_domains(MaxNumberOfDomains, NextToken)
+simpledb_list_domains(MaxNumberOfDomains = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxNumberOfDomains}{The maximum number of domain names you want returned. The range is 1 to
@@ -14,30 +14,9 @@ simpledb_list_domains(MaxNumberOfDomains, NextToken)
 \item{NextToken}{A string informing Amazon SimpleDB where to start the next list of
 domain names.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainNames = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-The \code{\link[=simpledb_list_domains]{list_domains}} operation lists all domains
-associated with the Access Key ID. It returns domain names up to the
-limit set by MaxNumberOfDomains. A NextToken is returned if there are
-more than \code{MaxNumberOfDomains} domains. Calling
-\code{\link[=simpledb_list_domains]{list_domains}} successive times with the
-\code{NextToken} provided by the operation returns up to \code{MaxNumberOfDomains}
-more domain names with each successive operation call.
-}
-\section{Request syntax}{
-\preformatted{svc$list_domains(
-  MaxNumberOfDomains = 123,
-  NextToken = "string"
-)
-}
-}
+The \code{\link[=simpledb_list_domains]{list_domains}} operation lists all domains associated with the Access Key ID. It returns domain names up to the limit set by MaxNumberOfDomains. A NextToken is returned if there are more than \code{MaxNumberOfDomains} domains. Calling \code{\link[=simpledb_list_domains]{list_domains}} successive times with the \code{NextToken} provided by the operation returns up to \code{MaxNumberOfDomains} more domain names with each successive operation call.
 
+See \url{https://paws-r.github.io/docs/simpledb/list_domains.html} for full documentation.
+}
 \keyword{internal}

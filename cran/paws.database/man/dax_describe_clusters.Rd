@@ -6,7 +6,7 @@
 identifier is specified, or about a specific DAX cluster if a cluster
 identifier is supplied}
 \usage{
-dax_describe_clusters(ClusterNames, MaxResults, NextToken)
+dax_describe_clusters(ClusterNames = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ClusterNames}{The names of the DAX clusters being described.}
@@ -22,96 +22,9 @@ pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token, up to the value
 specified by \code{MaxResults}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  Clusters = list(
-    list(
-      ClusterName = "string",
-      Description = "string",
-      ClusterArn = "string",
-      TotalNodes = 123,
-      ActiveNodes = 123,
-      NodeType = "string",
-      Status = "string",
-      ClusterDiscoveryEndpoint = list(
-        Address = "string",
-        Port = 123
-      ),
-      NodeIdsToRemove = list(
-        "string"
-      ),
-      Nodes = list(
-        list(
-          NodeId = "string",
-          Endpoint = list(
-            Address = "string",
-            Port = 123
-          ),
-          NodeCreateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          AvailabilityZone = "string",
-          NodeStatus = "string",
-          ParameterGroupStatus = "string"
-        )
-      ),
-      PreferredMaintenanceWindow = "string",
-      NotificationConfiguration = list(
-        TopicArn = "string",
-        TopicStatus = "string"
-      ),
-      SubnetGroup = "string",
-      SecurityGroups = list(
-        list(
-          SecurityGroupIdentifier = "string",
-          Status = "string"
-        )
-      ),
-      IamRoleArn = "string",
-      ParameterGroup = list(
-        ParameterGroupName = "string",
-        ParameterApplyStatus = "string",
-        NodeIdsToReboot = list(
-          "string"
-        )
-      ),
-      SSEDescription = list(
-        Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns information about all provisioned DAX clusters if no cluster
-identifier is specified, or about a specific DAX cluster if a cluster
-identifier is supplied.
+Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied.
 
-If the cluster is in the CREATING state, only cluster level information
-will be displayed until all of the nodes are successfully provisioned.
-
-If the cluster is in the DELETING state, only cluster level information
-will be displayed.
-
-If nodes are currently being added to the DAX cluster, node endpoint
-information and creation time for the additional nodes will not be
-displayed until they are completely provisioned. When the DAX cluster
-state is \emph{available}, the cluster is ready for use.
-
-If nodes are currently being removed from the DAX cluster, no endpoint
-information for the removed nodes is displayed.
+See \url{https://paws-r.github.io/docs/dax/describe_clusters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_clusters(
-  ClusterNames = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

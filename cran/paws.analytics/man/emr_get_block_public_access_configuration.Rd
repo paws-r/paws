@@ -2,39 +2,14 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_get_block_public_access_configuration}
 \alias{emr_get_block_public_access_configuration}
-\title{Returns the Amazon EMR block public access configuration for your AWS
-account in the current Region}
+\title{Returns the Amazon EMR block public access configuration for your Amazon
+Web Services account in the current Region}
 \usage{
 emr_get_block_public_access_configuration()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BlockPublicAccessConfiguration = list(
-    BlockPublicSecurityGroupRules = TRUE|FALSE,
-    PermittedPublicSecurityGroupRuleRanges = list(
-      list(
-        MinRange = 123,
-        MaxRange = 123
-      )
-    )
-  ),
-  BlockPublicAccessConfigurationMetadata = list(
-    CreationDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreatedByArn = "string"
-  )
-)
-}
-}
 \description{
-Returns the Amazon EMR block public access configuration for your AWS
-account in the current Region. For more information see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Configure Block Public Access for Amazon EMR} in the
-\emph{Amazon EMR Management Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_block_public_access_configuration()
-}
-}
+Returns the Amazon EMR block public access configuration for your Amazon Web Services account in the current Region. For more information see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Configure Block Public Access for Amazon EMR} in the \emph{Amazon EMR Management Guide}.
 
+See \url{https://paws-r.github.io/docs/emr/get_block_public_access_configuration.html} for full documentation.
+}
 \keyword{internal}

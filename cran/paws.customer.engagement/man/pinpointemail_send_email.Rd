@@ -4,9 +4,15 @@
 \alias{pinpointemail_send_email}
 \title{Sends an email message}
 \usage{
-pinpointemail_send_email(FromEmailAddress, Destination,
-  ReplyToAddresses, FeedbackForwardingEmailAddress, Content, EmailTags,
-  ConfigurationSetName)
+pinpointemail_send_email(
+  FromEmailAddress = NULL,
+  Destination,
+  ReplyToAddresses = NULL,
+  FeedbackForwardingEmailAddress = NULL,
+  Content,
+  EmailTags = NULL,
+  ConfigurationSetName = NULL
+)
 }
 \arguments{
 \item{FromEmailAddress}{The email address that you want to use as the "From" address for the
@@ -31,78 +37,9 @@ define, so that you can publish email sending events.}
 \item{ConfigurationSetName}{The name of the configuration set that you want to use when sending the
 email.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageId = "string"
-)
-}
-}
 \description{
-Sends an email message. You can use the Amazon Pinpoint Email API to
-send two types of messages:
-\itemize{
-\item \strong{Simple} – A standard email message. When you create this type of
-message, you specify the sender, the recipient, and the message
-body, and Amazon Pinpoint assembles the message for you.
-\item \strong{Raw} – A raw, MIME-formatted email message. When you send this
-type of email, you have to specify all of the message headers, as
-well as the message body. You can use this message type to send
-messages that contain attachments. The message that you specify has
-to be a valid MIME message.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$send_email(
-  FromEmailAddress = "string",
-  Destination = list(
-    ToAddresses = list(
-      "string"
-    ),
-    CcAddresses = list(
-      "string"
-    ),
-    BccAddresses = list(
-      "string"
-    )
-  ),
-  ReplyToAddresses = list(
-    "string"
-  ),
-  FeedbackForwardingEmailAddress = "string",
-  Content = list(
-    Simple = list(
-      Subject = list(
-        Data = "string",
-        Charset = "string"
-      ),
-      Body = list(
-        Text = list(
-          Data = "string",
-          Charset = "string"
-        ),
-        Html = list(
-          Data = "string",
-          Charset = "string"
-        )
-      )
-    ),
-    Raw = list(
-      Data = raw
-    ),
-    Template = list(
-      TemplateArn = "string",
-      TemplateData = "string"
-    )
-  ),
-  EmailTags = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ConfigurationSetName = "string"
-)
-}
-}
+Sends an email message. You can use the Amazon Pinpoint Email API to send two types of messages:
 
+See \url{https://paws-r.github.io/docs/pinpointemail/send_email.html} for full documentation.
+}
 \keyword{internal}

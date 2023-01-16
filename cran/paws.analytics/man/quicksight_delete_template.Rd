@@ -4,11 +4,11 @@
 \alias{quicksight_delete_template}
 \title{Deletes a template}
 \usage{
-quicksight_delete_template(AwsAccountId, TemplateId, VersionNumber)
+quicksight_delete_template(AwsAccountId, TemplateId, VersionNumber = NULL)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you're
-deleting.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the template
+that you're deleting.}
 
 \item{TemplateId}{[required] An ID for the template you want to delete.}
 
@@ -17,25 +17,9 @@ don't provide a version number,
 \code{\link[=quicksight_delete_template]{delete_template}} deletes all versions of
 the template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestId = "string",
-  Arn = "string",
-  TemplateId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Deletes a template.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_template(
-  AwsAccountId = "string",
-  TemplateId = "string",
-  VersionNumber = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_template.html} for full documentation.
+}
 \keyword{internal}

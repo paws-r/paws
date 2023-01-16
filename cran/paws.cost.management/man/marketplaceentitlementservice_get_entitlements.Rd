@@ -4,8 +4,12 @@
 \alias{marketplaceentitlementservice_get_entitlements}
 \title{GetEntitlements retrieves entitlement values for a given product}
 \usage{
-marketplaceentitlementservice_get_entitlements(ProductCode, Filter,
-  NextToken, MaxResults)
+marketplaceentitlementservice_get_entitlements(
+  ProductCode,
+  Filter = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ProductCode}{[required] Product code is used to uniquely identify a product in AWS Marketplace.
@@ -24,45 +28,9 @@ previous GetEntitlementsResult.}
 operation. For pagination, use the NextToken field in subsequent calls
 to GetEntitlements.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Entitlements = list(
-    list(
-      ProductCode = "string",
-      Dimension = "string",
-      CustomerIdentifier = "string",
-      Value = list(
-        IntegerValue = 123,
-        DoubleValue = 123.0,
-        BooleanValue = TRUE|FALSE,
-        StringValue = "string"
-      ),
-      ExpirationDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-GetEntitlements retrieves entitlement values for a given product. The
-results can be filtered based on customer identifier or product
-dimensions.
-}
-\section{Request syntax}{
-\preformatted{svc$get_entitlements(
-  ProductCode = "string",
-  Filter = list(
-    list(
-      "string"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier or product dimensions.
 
+See \url{https://paws-r.github.io/docs/marketplaceentitlementservice/get_entitlements.html} for full documentation.
+}
 \keyword{internal}

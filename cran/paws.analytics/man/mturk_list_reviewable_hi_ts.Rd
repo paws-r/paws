@@ -6,7 +6,12 @@
 Reviewable or Status equal to Reviewing that belong to the Requester
 calling the operation}
 \usage{
-mturk_list_reviewable_hi_ts(HITTypeId, Status, NextToken, MaxResults)
+mturk_list_reviewable_hi_ts(
+  HITTypeId = NULL,
+  Status = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{HITTypeId}{The ID of the HIT type of the HITs to consider for the query. If not
@@ -19,71 +24,9 @@ value.}
 
 \item{MaxResults}{Limit the number of results returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  NumResults = 123,
-  HITs = list(
-    list(
-      HITId = "string",
-      HITTypeId = "string",
-      HITGroupId = "string",
-      HITLayoutId = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Title = "string",
-      Description = "string",
-      Question = "string",
-      Keywords = "string",
-      HITStatus = "Assignable"|"Unassignable"|"Reviewable"|"Reviewing"|"Disposed",
-      MaxAssignments = 123,
-      Reward = "string",
-      AutoApprovalDelayInSeconds = 123,
-      Expiration = as.POSIXct(
-        "2015-01-01"
-      ),
-      AssignmentDurationInSeconds = 123,
-      RequesterAnnotation = "string",
-      QualificationRequirements = list(
-        list(
-          QualificationTypeId = "string",
-          Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
-          IntegerValues = list(
-            123
-          ),
-          LocaleValues = list(
-            list(
-              Country = "string",
-              Subdivision = "string"
-            )
-          ),
-          RequiredToPreview = TRUE|FALSE,
-          ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
-        )
-      ),
-      HITReviewStatus = "NotReviewed"|"MarkedForReview"|"ReviewedAppropriate"|"ReviewedInappropriate",
-      NumberOfAssignmentsPending = 123,
-      NumberOfAssignmentsAvailable = 123,
-      NumberOfAssignmentsCompleted = 123
-    )
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_list_reviewable_hi_ts]{list_reviewable_hi_ts}} operation
-retrieves the HITs with Status equal to Reviewable or Status equal to
-Reviewing that belong to the Requester calling the operation.
-}
-\section{Request syntax}{
-\preformatted{svc$list_reviewable_hi_ts(
-  HITTypeId = "string",
-  Status = "Reviewable"|"Reviewing",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+The \code{\link[=mturk_list_reviewable_hi_ts]{list_reviewable_hi_ts}} operation retrieves the HITs with Status equal to Reviewable or Status equal to Reviewing that belong to the Requester calling the operation.
 
+See \url{https://paws-r.github.io/docs/mturk/list_reviewable_hi_ts.html} for full documentation.
+}
 \keyword{internal}

@@ -2,11 +2,10 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_remove_role_from_db_instance}
 \alias{rds_remove_role_from_db_instance}
-\title{Disassociates an AWS Identity and Access Management (IAM) role from a DB
-instance}
+\title{Disassociates an Amazon Web Services Identity and Access Management
+(IAM) role from a DB instance}
 \usage{
-rds_remove_role_from_db_instance(DBInstanceIdentifier, RoleArn,
-  FeatureName)
+rds_remove_role_from_db_instance(DBInstanceIdentifier, RoleArn, FeatureName)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The name of the DB instance to disassociate the IAM role from.}
@@ -15,23 +14,12 @@ rds_remove_role_from_db_instance(DBInstanceIdentifier, RoleArn,
 DB instance, for example, \verb{arn:aws:iam::123456789012:role/AccessRole}.}
 
 \item{FeatureName}{[required] The name of the feature for the DB instance that the IAM role is to be
-disassociated from. For the list of supported feature names, see
+disassociated from. For information about supported feature names, see
 \code{DBEngineVersion}.}
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates an AWS Identity and Access Management (IAM) role from a DB
-instance.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_role_from_db_instance(
-  DBInstanceIdentifier = "string",
-  RoleArn = "string",
-  FeatureName = "string"
-)
-}
-}
+Disassociates an Amazon Web Services Identity and Access Management (IAM) role from a DB instance.
 
+See \url{https://paws-r.github.io/docs/rds/remove_role_from_db_instance.html} for full documentation.
+}
 \keyword{internal}

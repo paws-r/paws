@@ -4,30 +4,37 @@
 \alias{s3_restore_object}
 \title{Restores an archived copy of an object back into Amazon S3}
 \usage{
-s3_restore_object(Bucket, Key, VersionId, RestoreRequest, RequestPayer,
-  ExpectedBucketOwner)
+s3_restore_object(
+  Bucket,
+  Key,
+  VersionId = NULL,
+  RestoreRequest = NULL,
+  RequestPayer = NULL,
+  ChecksumAlgorithm = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name containing the object to restore.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
-\item{Key}{[required] Object key for which the operation was initiated.}
+\item{Key}{[required] Object key for which the action was initiated.}
 
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
@@ -35,343 +42,24 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestCharged = "requester",
-  RestoreOutputPath = "string"
-)
-}
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
 Restores an archived copy of an object back into Amazon S3
 
-This action is not supported by Amazon S3 on Outposts.
-
-This action performs the following types of requests:
-\itemize{
-\item \code{select} - Perform a select query on an archived object
-\item \verb{restore an archive} - Restore an archived object
-}
-
-To use this operation, you must have permissions to perform the
-\code{s3:RestoreObject} action. The bucket owner has this permission by
-default and can grant this permission to others. For more information
-about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-\strong{Querying Archives with Select Requests}
-
-You use a select type of request to perform SQL queries on archived
-objects. The archived objects that are being queried by the select
-request must be formatted as uncompressed comma-separated values (CSV)
-files. You can run queries and custom analytics on your archived data
-without having to restore your data to a hotter Amazon S3 tier. For an
-overview about select requests, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/querying-glacier-archives.html}{Querying Archived Objects}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-When making a select request, do the following:
-\itemize{
-\item Define an output location for the select query's output. This must
-be an Amazon S3 bucket in the same AWS Region as the bucket that
-contains the archive object that is being queried. The AWS account
-that initiates the job must have permissions to write to the S3
-bucket. You can specify the storage class and encryption for the
-output objects stored in the bucket. For more information about
-output, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/querying-glacier-archives.html}{Querying Archived Objects}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-For more information about the \code{S3} structure in the request body,
-see the following:
-\itemize{
-\item \code{\link[=s3_put_object]{put_object}}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Managing Access with ACLs}
-in the \emph{Amazon Simple Storage Service Developer Guide}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
-in the \emph{Amazon Simple Storage Service Developer Guide}
-}
-\item Define the SQL expression for the \code{SELECT} type of restoration for
-your query in the request body's \code{SelectParameters} structure. You
-can use expressions like the following examples.
-\itemize{
-\item The following expression returns all records from the specified
-object.
-
-\verb{SELECT * FROM Object}
-\item Assuming that you are not using any headers for data stored in
-the object, you can specify columns with positional headers.
-
-\verb{SELECT s._1, s._2 FROM Object s WHERE s._3 > 100}
-\item If you have headers and you set the \code{fileHeaderInfo} in the
-\code{CSV} structure in the request body to \code{USE}, you can specify
-headers in the query. (If you set the \code{fileHeaderInfo} field to
-\code{IGNORE}, the first row is skipped for the query.) You cannot
-mix ordinal positions with header column names.
-
-\verb{SELECT s.Id, s.FirstName, s.SSN FROM S3Object s}
-}
-}
-
-For more information about using SQL with S3 Glacier Select restore, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-When making a select request, you can also do the following:
-\itemize{
-\item To expedite your queries, specify the \code{Expedited} tier. For more
-information about tiers, see "Restoring Archives," later in this
-topic.
-\item Specify details about the data serialization format of both the
-input object that is being queried and the serialization of the
-CSV-encoded query results.
-}
-
-The following are additional important facts about the select feature:
-\itemize{
-\item The output results are new Amazon S3 objects. Unlike archive
-retrievals, they are stored until explicitly deleted-manually or
-through a lifecycle policy.
-\item You can issue more than one select request on the same Amazon S3
-object. Amazon S3 doesn't deduplicate requests, so avoid issuing
-duplicate requests.
-\item Amazon S3 accepts a select request even if the object has already
-been restored. A select request doesn’t return error response \code{409}.
-}
-
-\strong{Restoring objects}
-
-Objects that you archive to the S3 Glacier or S3 Glacier Deep Archive
-storage class, and S3 Intelligent-Tiering Archive or S3
-Intelligent-Tiering Deep Archive tiers are not accessible in real time.
-For objects in Archive Access or Deep Archive Access tiers you must
-first initiate a restore request, and then wait until the object is
-moved into the Frequent Access tier. For objects in S3 Glacier or S3
-Glacier Deep Archive storage classes you must first initiate a restore
-request, and then wait until a temporary copy of the object is
-available. To access an archived object, you must restore the object for
-the duration (number of days) that you specify.
-
-To restore a specific object version, you can provide a version ID. If
-you don't provide a version ID, Amazon S3 restores the current version.
-
-When restoring an archived object (or using a select request), you can
-specify one of the following data access tier options in the \code{Tier}
-element of the request body:
-\itemize{
-\item \strong{\code{Expedited}} - Expedited retrievals allow you to quickly access
-your data stored in the S3 Glacier storage class or S3
-Intelligent-Tiering Archive tier when occasional urgent requests for
-a subset of archives are required. For all but the largest archived
-objects (250 MB+), data accessed using Expedited retrievals is
-typically made available within 1–5 minutes. Provisioned capacity
-ensures that retrieval capacity for Expedited retrievals is
-available when you need it. Expedited retrievals and provisioned
-capacity are not available for objects stored in the S3 Glacier Deep
-Archive storage class or S3 Intelligent-Tiering Deep Archive tier.
-\item \strong{\code{Standard}} - Standard retrievals allow you to access any of your
-archived objects within several hours. This is the default option
-for retrieval requests that do not specify the retrieval option.
-Standard retrievals typically finish within 3–5 hours for objects
-stored in the S3 Glacier storage class or S3 Intelligent-Tiering
-Archive tier. They typically finish within 12 hours for objects
-stored in the S3 Glacier Deep Archive storage class or S3
-Intelligent-Tiering Deep Archive tier. Standard retrievals are free
-for objects stored in S3 Intelligent-Tiering.
-\item \strong{\code{Bulk}} - Bulk retrievals are the lowest-cost retrieval option in
-S3 Glacier, enabling you to retrieve large amounts, even petabytes,
-of data inexpensively. Bulk retrievals typically finish within 5–12
-hours for objects stored in the S3 Glacier storage class or S3
-Intelligent-Tiering Archive tier. They typically finish within 48
-hours for objects stored in the S3 Glacier Deep Archive storage
-class or S3 Intelligent-Tiering Deep Archive tier. Bulk retrievals
-are free for objects stored in S3 Intelligent-Tiering.
-}
-
-For more information about archive retrieval options and provisioned
-capacity for \code{Expedited} data access, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects.html}{Restoring Archived Objects}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-You can use Amazon S3 restore speed upgrade to change the restore speed
-to a faster speed while it is in progress. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects.html#restoring-objects-upgrade-tier.title.html}{Upgrading the speed of an in-progress restore}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-To get the status of object restoration, you can send a \code{HEAD} request.
-Operations return the \code{x-amz-restore} header, which provides information
-about the restoration status, in the response. You can use Amazon S3
-event notifications to notify you when a restore is initiated or
-completed. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html}{Configuring Amazon S3 Event Notifications}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-After restoring an archived object, you can update the restoration
-period by reissuing the request with a new period. Amazon S3 updates the
-restoration period relative to the current time and charges only for the
-request-there are no data transfer charges. You cannot update the
-restoration period when Amazon S3 is actively processing your current
-restore request for the object.
-
-If your bucket has a lifecycle configuration with a rule that includes
-an expiration action, the object expiration overrides the life span that
-you specify in a restore request. For example, if you restore an object
-copy for 10 days, but the object is scheduled to expire in 3 days,
-Amazon S3 deletes the object in 3 days. For more information about
-lifecycle configuration, see
-\code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}
-in \emph{Amazon Simple Storage Service Developer Guide}.
-
-\strong{Responses}
-
-A successful operation returns either the \verb{200 OK} or \verb{202 Accepted}
-status code.
-\itemize{
-\item If the object is not previously restored, then Amazon S3 returns
-\verb{202 Accepted} in the response.
-\item If the object is previously restored, Amazon S3 returns \verb{200 OK} in
-the response.
-}
-
-\strong{Special Errors}
-\itemize{
-\item 
-\itemize{
-\item \emph{Code: RestoreAlreadyInProgress}
-\item \emph{Cause: Object restore is already in progress. (This error does
-not apply to SELECT type requests.)}
-\item \emph{HTTP Status Code: 409 Conflict}
-\item \emph{SOAP Fault Code Prefix: Client}
-}
-\item 
-\itemize{
-\item \emph{Code: GlacierExpeditedRetrievalNotAvailable}
-\item \emph{Cause: expedited retrievals are currently not available. Try
-again later. (Returned if there is insufficient capacity to
-process the Expedited request. This error applies only to
-Expedited retrievals and not to S3 Standard or Bulk
-retrievals.)}
-\item \emph{HTTP Status Code: 503}
-\item \emph{SOAP Fault Code Prefix: N/A}
-}
-}
-
-\strong{Related Resources}
-\itemize{
-\item \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
-\item \code{\link[=s3_get_bucket_notification_configuration]{get_bucket_notification_configuration}}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
-in the \emph{Amazon Simple Storage Service Developer Guide}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$restore_object(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string",
-  RestoreRequest = list(
-    Days = 123,
-    GlacierJobParameters = list(
-      Tier = "Standard"|"Bulk"|"Expedited"
-    ),
-    Type = "SELECT",
-    Tier = "Standard"|"Bulk"|"Expedited",
-    Description = "string",
-    SelectParameters = list(
-      InputSerialization = list(
-        CSV = list(
-          FileHeaderInfo = "USE"|"IGNORE"|"NONE",
-          Comments = "string",
-          QuoteEscapeCharacter = "string",
-          RecordDelimiter = "string",
-          FieldDelimiter = "string",
-          QuoteCharacter = "string",
-          AllowQuotedRecordDelimiter = TRUE|FALSE
-        ),
-        CompressionType = "NONE"|"GZIP"|"BZIP2",
-        JSON = list(
-          Type = "DOCUMENT"|"LINES"
-        ),
-        Parquet = list()
-      ),
-      ExpressionType = "SQL",
-      Expression = "string",
-      OutputSerialization = list(
-        CSV = list(
-          QuoteFields = "ALWAYS"|"ASNEEDED",
-          QuoteEscapeCharacter = "string",
-          RecordDelimiter = "string",
-          FieldDelimiter = "string",
-          QuoteCharacter = "string"
-        ),
-        JSON = list(
-          RecordDelimiter = "string"
-        )
-      )
-    ),
-    OutputLocation = list(
-      S3 = list(
-        BucketName = "string",
-        Prefix = "string",
-        Encryption = list(
-          EncryptionType = "AES256"|"aws:kms",
-          KMSKeyId = "string",
-          KMSContext = "string"
-        ),
-        CannedACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
-        AccessControlList = list(
-          list(
-            Grantee = list(
-              DisplayName = "string",
-              EmailAddress = "string",
-              ID = "string",
-              Type = "CanonicalUser"|"AmazonCustomerByEmail"|"Group",
-              URI = "string"
-            ),
-            Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
-          )
-        ),
-        Tagging = list(
-          TagSet = list(
-            list(
-              Key = "string",
-              Value = "string"
-            )
-          )
-        ),
-        UserMetadata = list(
-          list(
-            Name = "string",
-            Value = "string"
-          )
-        ),
-        StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"
-      )
-    )
-  ),
-  RequestPayer = "requester",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example restores for one day an archived copy of an object
-# back into Amazon S3 bucket.
-svc$restore_object(
-  Bucket = "examplebucket",
-  Key = "archivedobjectkey",
-  RestoreRequest = list(
-    Days = 1L,
-    GlacierJobParameters = list(
-      Tier = "Expedited"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/restore_object.html} for full documentation.
 }
 \keyword{internal}

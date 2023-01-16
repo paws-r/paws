@@ -10,30 +10,9 @@ workspaces_describe_client_properties(ResourceIds)
 \arguments{
 \item{ResourceIds}{[required] The resource identifier, in the form of directory IDs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientPropertiesList = list(
-    list(
-      ResourceId = "string",
-      ClientProperties = list(
-        ReconnectEnabled = "ENABLED"|"DISABLED"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieves a list that describes one or more specified Amazon WorkSpaces
-clients.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_client_properties(
-  ResourceIds = list(
-    "string"
-  )
-)
-}
-}
+Retrieves a list that describes one or more specified Amazon WorkSpaces clients.
 
+See \url{https://paws-r.github.io/docs/workspaces/describe_client_properties.html} for full documentation.
+}
 \keyword{internal}

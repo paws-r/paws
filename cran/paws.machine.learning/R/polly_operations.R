@@ -3,40 +3,16 @@
 #' @include polly_service.R
 NULL
 
-#' Deletes the specified pronunciation lexicon stored in an AWS Region
+#' Deletes the specified pronunciation lexicon stored in an Amazon Web
+#' Services Region
 #'
 #' @description
-#' Deletes the specified pronunciation lexicon stored in an AWS Region. A
-#' lexicon which has been deleted is not available for speech synthesis,
-#' nor is it possible to retrieve it using either the
-#' [`get_lexicon`][polly_get_lexicon] or `ListLexicon` APIs.
-#' 
-#' For more information, see [Managing
-#' Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
+#' Deletes the specified pronunciation lexicon stored in an Amazon Web Services Region. A lexicon which has been deleted is not available for speech synthesis, nor is it possible to retrieve it using either the [`get_lexicon`][polly_get_lexicon] or `ListLexicon` APIs.
 #'
-#' @usage
-#' polly_delete_lexicon(Name)
+#' See [https://paws-r.github.io/docs/polly/delete_lexicon.html](https://paws-r.github.io/docs/polly/delete_lexicon.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the lexicon to delete. Must be an existing lexicon in the
 #' region.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_lexicon(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Deletes a specified pronunciation lexicon stored in an AWS Region.
-#' svc$delete_lexicon(
-#'   Name = "example"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -62,31 +38,9 @@ polly_delete_lexicon <- function(Name) {
 #' speech synthesis
 #'
 #' @description
-#' Returns the list of voices that are available for use when requesting
-#' speech synthesis. Each voice speaks a specified language, is either male
-#' or female, and is identified by an ID, which is the ASCII version of the
-#' voice name.
-#' 
-#' When synthesizing speech (
-#' [`synthesize_speech`][polly_synthesize_speech] ), you provide the voice
-#' ID for the voice you want from the list of voices returned by
-#' [`describe_voices`][polly_describe_voices].
-#' 
-#' For example, you want your news reader application to read news in a
-#' specific language, but giving a user the option to choose the voice.
-#' Using the [`describe_voices`][polly_describe_voices] operation you can
-#' provide the user with a list of available voices to select from.
-#' 
-#' You can optionally specify a language code to filter the available
-#' voices. For example, if you specify `en-US`, the operation returns a
-#' list of all available US English voices.
-#' 
-#' This operation requires permissions to perform the
-#' `polly:DescribeVoices` action.
+#' Returns the list of voices that are available for use when requesting speech synthesis. Each voice speaks a specified language, is either male or female, and is identified by an ID, which is the ASCII version of the voice name.
 #'
-#' @usage
-#' polly_describe_voices(Engine, LanguageCode,
-#'   IncludeAdditionalLanguageCodes, NextToken)
+#' See [https://paws-r.github.io/docs/polly/describe_voices.html](https://paws-r.github.io/docs/polly/describe_voices.html) for full documentation.
 #'
 #' @param Engine Specifies the engine (`standard` or `neural`) used by Amazon Polly when
 #' processing input text for speech synthesis.
@@ -102,50 +56,6 @@ polly_delete_lexicon <- function(Name) {
 #' @param NextToken An opaque pagination token returned from the previous
 #' [`describe_voices`][polly_describe_voices] operation. If present, this
 #' indicates where to continue the listing.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Voices = list(
-#'     list(
-#'       Gender = "Female"|"Male",
-#'       Id = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu",
-#'       LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-#'       LanguageName = "string",
-#'       Name = "string",
-#'       AdditionalLanguageCodes = list(
-#'         "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
-#'       ),
-#'       SupportedEngines = list(
-#'         "standard"|"neural"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_voices(
-#'   Engine = "standard"|"neural",
-#'   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-#'   IncludeAdditionalLanguageCodes = TRUE|FALSE,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Returns the list of voices that are available for use when requesting
-#' # speech synthesis. Displayed languages are those within the specified
-#' # language code. If no language code is specified, voices for all
-#' # available languages are displayed.
-#' svc$describe_voices(
-#'   LanguageCode = "en-GB"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -168,54 +78,14 @@ polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdd
 .polly$operations$describe_voices <- polly_describe_voices
 
 #' Returns the content of the specified pronunciation lexicon stored in an
-#' AWS Region
+#' Amazon Web Services Region
 #'
 #' @description
-#' Returns the content of the specified pronunciation lexicon stored in an
-#' AWS Region. For more information, see [Managing
-#' Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
+#' Returns the content of the specified pronunciation lexicon stored in an Amazon Web Services Region. For more information, see [Managing Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 #'
-#' @usage
-#' polly_get_lexicon(Name)
+#' See [https://paws-r.github.io/docs/polly/get_lexicon.html](https://paws-r.github.io/docs/polly/get_lexicon.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the lexicon.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Lexicon = list(
-#'     Content = "string",
-#'     Name = "string"
-#'   ),
-#'   LexiconAttributes = list(
-#'     Alphabet = "string",
-#'     LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-#'     LastModified = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LexiconArn = "string",
-#'     LexemesCount = 123,
-#'     Size = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_lexicon(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Returns the content of the specified pronunciation lexicon stored in an
-#' # AWS Region.
-#' svc$get_lexicon(
-#'   Name = ""
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -240,52 +110,11 @@ polly_get_lexicon <- function(Name) {
 #' Retrieves a specific SpeechSynthesisTask object based on its TaskID
 #'
 #' @description
-#' Retrieves a specific SpeechSynthesisTask object based on its TaskID.
-#' This object contains information about the given speech synthesis task,
-#' including the status of the task, and a link to the S3 bucket containing
-#' the output of the task.
+#' Retrieves a specific SpeechSynthesisTask object based on its TaskID. This object contains information about the given speech synthesis task, including the status of the task, and a link to the S3 bucket containing the output of the task.
 #'
-#' @usage
-#' polly_get_speech_synthesis_task(TaskId)
+#' See [https://paws-r.github.io/docs/polly/get_speech_synthesis_task.html](https://paws-r.github.io/docs/polly/get_speech_synthesis_task.html) for full documentation.
 #'
 #' @param TaskId &#91;required&#93; The Amazon Polly generated identifier for a speech synthesis task.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SynthesisTask = list(
-#'     Engine = "standard"|"neural",
-#'     TaskId = "string",
-#'     TaskStatus = "scheduled"|"inProgress"|"completed"|"failed",
-#'     TaskStatusReason = "string",
-#'     OutputUri = "string",
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     RequestCharacters = 123,
-#'     SnsTopicArn = "string",
-#'     LexiconNames = list(
-#'       "string"
-#'     ),
-#'     OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
-#'     SampleRate = "string",
-#'     SpeechMarkTypes = list(
-#'       "sentence"|"ssml"|"viseme"|"word"
-#'     ),
-#'     TextType = "ssml"|"text",
-#'     VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu",
-#'     LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_speech_synthesis_task(
-#'   TaskId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -307,55 +136,17 @@ polly_get_speech_synthesis_task <- function(TaskId) {
 }
 .polly$operations$get_speech_synthesis_task <- polly_get_speech_synthesis_task
 
-#' Returns a list of pronunciation lexicons stored in an AWS Region
+#' Returns a list of pronunciation lexicons stored in an Amazon Web
+#' Services Region
 #'
 #' @description
-#' Returns a list of pronunciation lexicons stored in an AWS Region. For
-#' more information, see [Managing
-#' Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
+#' Returns a list of pronunciation lexicons stored in an Amazon Web Services Region. For more information, see [Managing Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 #'
-#' @usage
-#' polly_list_lexicons(NextToken)
+#' See [https://paws-r.github.io/docs/polly/list_lexicons.html](https://paws-r.github.io/docs/polly/list_lexicons.html) for full documentation.
 #'
 #' @param NextToken An opaque pagination token returned from previous
 #' [`list_lexicons`][polly_list_lexicons] operation. If present, indicates
 #' where to continue the list of lexicons.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Lexicons = list(
-#'     list(
-#'       Name = "string",
-#'       Attributes = list(
-#'         Alphabet = "string",
-#'         LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-#'         LastModified = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         LexiconArn = "string",
-#'         LexemesCount = 123,
-#'         Size = 123
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_lexicons(
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Returns a list of pronunciation lexicons stored in an AWS Region.
-#' svc$list_lexicons()
-#' }
 #'
 #' @keywords internal
 #'
@@ -381,59 +172,14 @@ polly_list_lexicons <- function(NextToken = NULL) {
 #' date
 #'
 #' @description
-#' Returns a list of SpeechSynthesisTask objects ordered by their creation
-#' date. This operation can filter the tasks by their status, for example,
-#' allowing users to list only tasks that are completed.
+#' Returns a list of SpeechSynthesisTask objects ordered by their creation date. This operation can filter the tasks by their status, for example, allowing users to list only tasks that are completed.
 #'
-#' @usage
-#' polly_list_speech_synthesis_tasks(MaxResults, NextToken, Status)
+#' See [https://paws-r.github.io/docs/polly/list_speech_synthesis_tasks.html](https://paws-r.github.io/docs/polly/list_speech_synthesis_tasks.html) for full documentation.
 #'
 #' @param MaxResults Maximum number of speech synthesis tasks returned in a List operation.
 #' @param NextToken The pagination token to use in the next request to continue the listing
 #' of speech synthesis tasks.
 #' @param Status Status of the speech synthesis tasks returned in a List operation
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   SynthesisTasks = list(
-#'     list(
-#'       Engine = "standard"|"neural",
-#'       TaskId = "string",
-#'       TaskStatus = "scheduled"|"inProgress"|"completed"|"failed",
-#'       TaskStatusReason = "string",
-#'       OutputUri = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       RequestCharacters = 123,
-#'       SnsTopicArn = "string",
-#'       LexiconNames = list(
-#'         "string"
-#'       ),
-#'       OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
-#'       SampleRate = "string",
-#'       SpeechMarkTypes = list(
-#'         "sentence"|"ssml"|"viseme"|"word"
-#'       ),
-#'       TextType = "ssml"|"text",
-#'       VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu",
-#'       LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_speech_synthesis_tasks(
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   Status = "scheduled"|"inProgress"|"completed"|"failed"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -455,45 +201,17 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 }
 .polly$operations$list_speech_synthesis_tasks <- polly_list_speech_synthesis_tasks
 
-#' Stores a pronunciation lexicon in an AWS Region
+#' Stores a pronunciation lexicon in an Amazon Web Services Region
 #'
 #' @description
-#' Stores a pronunciation lexicon in an AWS Region. If a lexicon with the
-#' same name already exists in the region, it is overwritten by the new
-#' lexicon. Lexicon operations have eventual consistency, therefore, it
-#' might take some time before the lexicon is available to the
-#' SynthesizeSpeech operation.
-#' 
-#' For more information, see [Managing
-#' Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
+#' Stores a pronunciation lexicon in an Amazon Web Services Region. If a lexicon with the same name already exists in the region, it is overwritten by the new lexicon. Lexicon operations have eventual consistency, therefore, it might take some time before the lexicon is available to the SynthesizeSpeech operation.
 #'
-#' @usage
-#' polly_put_lexicon(Name, Content)
+#' See [https://paws-r.github.io/docs/polly/put_lexicon.html](https://paws-r.github.io/docs/polly/put_lexicon.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the lexicon. The name must follow the regular express format
 #' \[0-9A-Za-z\]\{1,20\}. That is, the name is a case-sensitive
 #' alphanumeric string up to 20 characters long.
 #' @param Content &#91;required&#93; Content of the PLS lexicon as string data.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_lexicon(
-#'   Name = "string",
-#'   Content = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Stores a pronunciation lexicon in an AWS Region.
-#' svc$put_lexicon(
-#'   Content = "file://example.pls",
-#'   Name = "W3C"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -519,19 +237,9 @@ polly_put_lexicon <- function(Name, Content) {
 #' SpeechSynthesisTask
 #'
 #' @description
-#' Allows the creation of an asynchronous synthesis task, by starting a new
-#' `SpeechSynthesisTask`. This operation requires all the standard
-#' information needed for speech synthesis, plus the name of an Amazon S3
-#' bucket for the service to store the output of the synthesis task and two
-#' optional parameters (OutputS3KeyPrefix and SnsTopicArn). Once the
-#' synthesis task is created, this operation will return a
-#' SpeechSynthesisTask object, which will include an identifier of this
-#' task as well as the current status.
+#' Allows the creation of an asynchronous synthesis task, by starting a new `SpeechSynthesisTask`. This operation requires all the standard information needed for speech synthesis, plus the name of an Amazon S3 bucket for the service to store the output of the synthesis task and two optional parameters (`OutputS3KeyPrefix` and `SnsTopicArn`). Once the synthesis task is created, this operation will return a `SpeechSynthesisTask` object, which will include an identifier of this task as well as the current status. The `SpeechSynthesisTask` object is available for 72 hours after starting the asynchronous synthesis task.
 #'
-#' @usage
-#' polly_start_speech_synthesis_task(Engine, LanguageCode, LexiconNames,
-#'   OutputFormat, OutputS3BucketName, OutputS3KeyPrefix, SampleRate,
-#'   SnsTopicArn, SpeechMarkTypes, Text, TextType, VoiceId)
+#' See [https://paws-r.github.io/docs/polly/start_speech_synthesis_task.html](https://paws-r.github.io/docs/polly/start_speech_synthesis_task.html) for full documentation.
 #'
 #' @param Engine Specifies the engine (`standard` or `neural`) for Amazon Polly to use
 #' when processing input text for speech synthesis. Using a voice that is
@@ -541,7 +249,7 @@ polly_put_lexicon <- function(Name, Content) {
 #' for either Indian English (en-IN) or Hindi (hi-IN).
 #' 
 #' If a bilingual voice is used and no language code is specified, Amazon
-#' Polly will use the default language of the bilingual voice. The default
+#' Polly uses the default language of the bilingual voice. The default
 #' language for any voice is the one returned by the
 #' [`describe_voices`][polly_describe_voices] operation for the
 #' `LanguageCode` parameter. For example, if no language code is specified,
@@ -571,58 +279,6 @@ polly_put_lexicon <- function(Name, Content) {
 #' value is plain text.
 #' @param VoiceId &#91;required&#93; Voice ID to use for the synthesis.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SynthesisTask = list(
-#'     Engine = "standard"|"neural",
-#'     TaskId = "string",
-#'     TaskStatus = "scheduled"|"inProgress"|"completed"|"failed",
-#'     TaskStatusReason = "string",
-#'     OutputUri = "string",
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     RequestCharacters = 123,
-#'     SnsTopicArn = "string",
-#'     LexiconNames = list(
-#'       "string"
-#'     ),
-#'     OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
-#'     SampleRate = "string",
-#'     SpeechMarkTypes = list(
-#'       "sentence"|"ssml"|"viseme"|"word"
-#'     ),
-#'     TextType = "ssml"|"text",
-#'     VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu",
-#'     LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_speech_synthesis_task(
-#'   Engine = "standard"|"neural",
-#'   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-#'   LexiconNames = list(
-#'     "string"
-#'   ),
-#'   OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
-#'   OutputS3BucketName = "string",
-#'   OutputS3KeyPrefix = "string",
-#'   SampleRate = "string",
-#'   SnsTopicArn = "string",
-#'   SpeechMarkTypes = list(
-#'     "sentence"|"ssml"|"viseme"|"word"
-#'   ),
-#'   Text = "string",
-#'   TextType = "ssml"|"text",
-#'   VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname polly_start_speech_synthesis_task
@@ -646,16 +302,9 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes
 #'
 #' @description
-#' Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML
-#' input must be valid, well-formed SSML. Some alphabets might not be
-#' available with all the voices (for example, Cyrillic might not be read
-#' at all by English voices) unless phoneme mapping is used. For more
-#' information, see [How it
-#' Works](https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html).
+#' Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML input must be valid, well-formed SSML. Some alphabets might not be available with all the voices (for example, Cyrillic might not be read at all by English voices) unless phoneme mapping is used. For more information, see [How it Works](https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html).
 #'
-#' @usage
-#' polly_synthesize_speech(Engine, LanguageCode, LexiconNames,
-#'   OutputFormat, SampleRate, SpeechMarkTypes, Text, TextType, VoiceId)
+#' See [https://paws-r.github.io/docs/polly/synthesize_speech.html](https://paws-r.github.io/docs/polly/synthesize_speech.html) for full documentation.
 #'
 #' @param Engine Specifies the engine (`standard` or `neural`) for Amazon Polly to use
 #' when processing input text for speech synthesis. For information on
@@ -685,7 +334,7 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' for either Indian English (en-IN) or Hindi (hi-IN).
 #' 
 #' If a bilingual voice is used and no language code is specified, Amazon
-#' Polly will use the default language of the bilingual voice. The default
+#' Polly uses the default language of the bilingual voice. The default
 #' language for any voice is the one returned by the
 #' [`describe_voices`][polly_describe_voices] operation for the
 #' `LanguageCode` parameter. For example, if no language code is specified,
@@ -716,50 +365,6 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' SSML](https://docs.aws.amazon.com/polly/latest/dg/ssml.html).
 #' @param VoiceId &#91;required&#93; Voice ID to use for the synthesis. You can get a list of available voice
 #' IDs by calling the [`describe_voices`][polly_describe_voices] operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AudioStream = raw,
-#'   ContentType = "string",
-#'   RequestCharacters = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$synthesize_speech(
-#'   Engine = "standard"|"neural",
-#'   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-#'   LexiconNames = list(
-#'     "string"
-#'   ),
-#'   OutputFormat = "json"|"mp3"|"ogg_vorbis"|"pcm",
-#'   SampleRate = "string",
-#'   SpeechMarkTypes = list(
-#'     "sentence"|"ssml"|"viseme"|"word"
-#'   ),
-#'   Text = "string",
-#'   TextType = "ssml"|"text",
-#'   VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Synthesizes plain text or SSML into a file of human-like speech.
-#' svc$synthesize_speech(
-#'   LexiconNames = list(
-#'     "example"
-#'   ),
-#'   OutputFormat = "mp3",
-#'   SampleRate = "8000",
-#'   Text = "All Gaul is divided into three parts",
-#'   TextType = "text",
-#'   VoiceId = "Joanna"
-#' )
-#' }
 #'
 #' @keywords internal
 #'

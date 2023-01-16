@@ -9,30 +9,9 @@ directconnect_delete_direct_connect_gateway(directConnectGatewayId)
 \arguments{
 \item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  directConnectGateway = list(
-    directConnectGatewayId = "string",
-    directConnectGatewayName = "string",
-    amazonSideAsn = 123,
-    ownerAccount = "string",
-    directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
-    stateChangeError = "string"
-  )
-)
-}
-}
 \description{
-Deletes the specified Direct Connect gateway. You must first delete all
-virtual interfaces that are attached to the Direct Connect gateway and
-disassociate all virtual private gateways associated with the Direct
-Connect gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_direct_connect_gateway(
-  directConnectGatewayId = "string"
-)
-}
-}
+Deletes the specified Direct Connect gateway. You must first delete all virtual interfaces that are attached to the Direct Connect gateway and disassociate all virtual private gateways associated with the Direct Connect gateway.
 
+See \url{https://paws-r.github.io/docs/directconnect/delete_direct_connect_gateway.html} for full documentation.
+}
 \keyword{internal}

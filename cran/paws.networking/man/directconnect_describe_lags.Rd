@@ -4,77 +4,14 @@
 \alias{directconnect_describe_lags}
 \title{Describes all your link aggregation groups (LAG) or the specified LAG}
 \usage{
-directconnect_describe_lags(lagId)
+directconnect_describe_lags(lagId = NULL)
 }
 \arguments{
 \item{lagId}{The ID of the LAG.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  lags = list(
-    list(
-      connectionsBandwidth = "string",
-      numberOfConnections = 123,
-      lagId = "string",
-      ownerAccount = "string",
-      lagName = "string",
-      lagState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
-      location = "string",
-      region = "string",
-      minimumLinks = 123,
-      awsDevice = "string",
-      awsDeviceV2 = "string",
-      connections = list(
-        list(
-          ownerAccount = "string",
-          connectionId = "string",
-          connectionName = "string",
-          connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-          region = "string",
-          location = "string",
-          bandwidth = "string",
-          vlan = 123,
-          partnerName = "string",
-          loaIssueTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          lagId = "string",
-          awsDevice = "string",
-          jumboFrameCapable = TRUE|FALSE,
-          awsDeviceV2 = "string",
-          hasLogicalRedundancy = "unknown"|"yes"|"no",
-          tags = list(
-            list(
-              key = "string",
-              value = "string"
-            )
-          ),
-          providerName = "string"
-        )
-      ),
-      allowsHostedConnections = TRUE|FALSE,
-      jumboFrameCapable = TRUE|FALSE,
-      hasLogicalRedundancy = "unknown"|"yes"|"no",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      providerName = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes all your link aggregation groups (LAG) or the specified LAG.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_lags(
-  lagId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directconnect/describe_lags.html} for full documentation.
+}
 \keyword{internal}

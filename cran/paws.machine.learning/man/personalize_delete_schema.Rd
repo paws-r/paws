@@ -9,19 +9,9 @@ personalize_delete_schema(schemaArn)
 \arguments{
 \item{schemaArn}{[required] The Amazon Resource Name (ARN) of the schema to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a schema. Before deleting a schema, you must delete all datasets
-referencing the schema. For more information on schemas, see
-\code{\link[=personalize_create_schema]{create_schema}}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_schema(
-  schemaArn = "string"
-)
-}
-}
+Deletes a schema. Before deleting a schema, you must delete all datasets referencing the schema. For more information on schemas, see \code{\link[=personalize_create_schema]{create_schema}}.
 
+See \url{https://paws-r.github.io/docs/personalize/delete_schema.html} for full documentation.
+}
 \keyword{internal}

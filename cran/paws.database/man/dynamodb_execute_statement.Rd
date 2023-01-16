@@ -5,8 +5,14 @@
 \title{This operation allows you to perform reads and singleton writes on data
 stored in DynamoDB, using PartiQL}
 \usage{
-dynamodb_execute_statement(Statement, Parameters, ConsistentRead,
-  NextToken)
+dynamodb_execute_statement(
+  Statement,
+  Parameters = NULL,
+  ConsistentRead = NULL,
+  NextToken = NULL,
+  ReturnConsumedCapacity = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{Statement}{[required] The PartiQL statement representing the operation to run.}
@@ -19,74 +25,22 @@ used.}
 
 \item{NextToken}{Set this value to get remaining results, if \code{NextToken} was returned in
 the statement response.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Items = list(
-    list(
-      list(
-        S = "string",
-        N = "string",
-        B = raw,
-        SS = list(
-          "string"
-        ),
-        NS = list(
-          "string"
-        ),
-        BS = list(
-          raw
-        ),
-        M = list(
-          list()
-        ),
-        L = list(
-          list()
-        ),
-        NULL = TRUE|FALSE,
-        BOOL = TRUE|FALSE
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{ReturnConsumedCapacity}{}
+
+\item{Limit}{The maximum number of items to evaluate (not necessarily the number of
+matching items). If DynamoDB processes the number of items up to the
+limit while processing the results, it stops the operation and returns
+the matching values up to that point, along with a key in
+\code{LastEvaluatedKey} to apply in a subsequent operation so you can pick up
+where you left off. Also, if the processed dataset size exceeds 1 MB
+before DynamoDB reaches this limit, it stops the operation and returns
+the matching values up to the limit, and a key in \code{LastEvaluatedKey} to
+apply in a subsequent operation to continue the operation.}
 }
 \description{
-This operation allows you to perform reads and singleton writes on data
-stored in DynamoDB, using PartiQL.
-}
-\section{Request syntax}{
-\preformatted{svc$execute_statement(
-  Statement = "string",
-  Parameters = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ConsistentRead = TRUE|FALSE,
-  NextToken = "string"
-)
-}
-}
+This operation allows you to perform reads and singleton writes on data stored in DynamoDB, using PartiQL.
 
+See \url{https://paws-r.github.io/docs/dynamodb/execute_statement.html} for full documentation.
+}
 \keyword{internal}

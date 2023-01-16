@@ -2,90 +2,19 @@
 % Please edit documentation in R/dynamodb_operations.R
 \name{dynamodb_batch_execute_statement}
 \alias{dynamodb_batch_execute_statement}
-\title{This operation allows you to perform batch reads and writes on data
+\title{This operation allows you to perform batch reads or writes on data
 stored in DynamoDB, using PartiQL}
 \usage{
-dynamodb_batch_execute_statement(Statements)
+dynamodb_batch_execute_statement(Statements, ReturnConsumedCapacity = NULL)
 }
 \arguments{
 \item{Statements}{[required] The list of PartiQL statements representing the batch to run.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Responses = list(
-    list(
-      Error = list(
-        Code = "ConditionalCheckFailed"|"ItemCollectionSizeLimitExceeded"|"RequestLimitExceeded"|"ValidationError"|"ProvisionedThroughputExceeded"|"TransactionConflict"|"ThrottlingError"|"InternalServerError"|"ResourceNotFound"|"AccessDenied"|"DuplicateItem",
-        Message = "string"
-      ),
-      TableName = "string",
-      Item = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      )
-    )
-  )
-)
-}
+
+\item{ReturnConsumedCapacity}{}
 }
 \description{
-This operation allows you to perform batch reads and writes on data
-stored in DynamoDB, using PartiQL.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_execute_statement(
-  Statements = list(
-    list(
-      Statement = "string",
-      Parameters = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      ),
-      ConsistentRead = TRUE|FALSE
-    )
-  )
-)
-}
-}
+This operation allows you to perform batch reads or writes on data stored in DynamoDB, using PartiQL. Each read statement in a \code{\link[=dynamodb_batch_execute_statement]{batch_execute_statement}} must specify an equality condition on all key attributes. This enforces that each \code{SELECT} statement in a batch returns at most a single item.
 
+See \url{https://paws-r.github.io/docs/dynamodb/batch_execute_statement.html} for full documentation.
+}
 \keyword{internal}

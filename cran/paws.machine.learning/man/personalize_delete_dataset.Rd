@@ -9,20 +9,9 @@ personalize_delete_dataset(datasetArn)
 \arguments{
 \item{datasetArn}{[required] The Amazon Resource Name (ARN) of the dataset to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a dataset. You can't delete a dataset if an associated
-\code{DatasetImportJob} or \code{SolutionVersion} is in the CREATE PENDING or IN
-PROGRESS state. For more information on datasets, see
-\code{\link[=personalize_create_dataset]{create_dataset}}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_dataset(
-  datasetArn = "string"
-)
-}
-}
+Deletes a dataset. You can't delete a dataset if an associated \code{DatasetImportJob} or \code{SolutionVersion} is in the CREATE PENDING or IN PROGRESS state. For more information on datasets, see \code{\link[=personalize_create_dataset]{create_dataset}}.
 
+See \url{https://paws-r.github.io/docs/personalize/delete_dataset.html} for full documentation.
+}
 \keyword{internal}

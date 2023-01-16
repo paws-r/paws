@@ -7,7 +7,19 @@
 workdocs(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -50,7 +62,9 @@ above, as well as give users the ability to grant access on a selective
 basis using the IAM model.
 }
 \section{Service syntax}{
-\preformatted{svc <- workdocs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- workdocs(
   config = list(
     credentials = list(
       creds = list(
@@ -58,59 +72,63 @@ basis using the IAM model.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=workdocs_abort_document_version_upload]{abort_document_version_upload} \tab Aborts the upload of the specified document version that was previously initiated by InitiateDocumentVersionUpload\cr
-\link[=workdocs_activate_user]{activate_user} \tab Activates the specified user\cr
-\link[=workdocs_add_resource_permissions]{add_resource_permissions} \tab Creates a set of permissions for the specified folder or document\cr
-\link[=workdocs_create_comment]{create_comment} \tab Adds a new comment to the specified document version\cr
-\link[=workdocs_create_custom_metadata]{create_custom_metadata} \tab Adds one or more custom properties to the specified resource (a folder, document, or version)\cr
-\link[=workdocs_create_folder]{create_folder} \tab Creates a folder with the specified name and parent folder\cr
-\link[=workdocs_create_labels]{create_labels} \tab Adds the specified list of labels to the given resource (a document or folder)\cr
-\link[=workdocs_create_notification_subscription]{create_notification_subscription} \tab Configure Amazon WorkDocs to use Amazon SNS notifications\cr
-\link[=workdocs_create_user]{create_user} \tab Creates a user in a Simple AD or Microsoft AD directory\cr
-\link[=workdocs_deactivate_user]{deactivate_user} \tab Deactivates the specified user, which revokes the user's access to Amazon WorkDocs\cr
-\link[=workdocs_delete_comment]{delete_comment} \tab Deletes the specified comment from the document version\cr
-\link[=workdocs_delete_custom_metadata]{delete_custom_metadata} \tab Deletes custom metadata from the specified resource\cr
-\link[=workdocs_delete_document]{delete_document} \tab Permanently deletes the specified document and its associated metadata\cr
-\link[=workdocs_delete_folder]{delete_folder} \tab Permanently deletes the specified folder and its contents\cr
-\link[=workdocs_delete_folder_contents]{delete_folder_contents} \tab Deletes the contents of the specified folder\cr
-\link[=workdocs_delete_labels]{delete_labels} \tab Deletes the specified list of labels from a resource\cr
-\link[=workdocs_delete_notification_subscription]{delete_notification_subscription} \tab Deletes the specified subscription from the specified organization\cr
-\link[=workdocs_delete_user]{delete_user} \tab Deletes the specified user from a Simple AD or Microsoft AD directory\cr
-\link[=workdocs_describe_activities]{describe_activities} \tab Describes the user activities in a specified time period\cr
-\link[=workdocs_describe_comments]{describe_comments} \tab List all the comments for the specified document version\cr
-\link[=workdocs_describe_document_versions]{describe_document_versions} \tab Retrieves the document versions for the specified document\cr
-\link[=workdocs_describe_folder_contents]{describe_folder_contents} \tab Describes the contents of the specified folder, including its documents and subfolders\cr
-\link[=workdocs_describe_groups]{describe_groups} \tab Describes the groups specified by the query\cr
-\link[=workdocs_describe_notification_subscriptions]{describe_notification_subscriptions} \tab Lists the specified notification subscriptions\cr
-\link[=workdocs_describe_resource_permissions]{describe_resource_permissions} \tab Describes the permissions of a specified resource\cr
-\link[=workdocs_describe_root_folders]{describe_root_folders} \tab Describes the current user's special folders; the RootFolder and the RecycleBin\cr
-\link[=workdocs_describe_users]{describe_users} \tab Describes the specified users\cr
-\link[=workdocs_get_current_user]{get_current_user} \tab Retrieves details of the current user for whom the authentication token was generated\cr
-\link[=workdocs_get_document]{get_document} \tab Retrieves details of a document\cr
-\link[=workdocs_get_document_path]{get_document_path} \tab Retrieves the path information (the hierarchy from the root folder) for the requested document\cr
-\link[=workdocs_get_document_version]{get_document_version} \tab Retrieves version metadata for the specified document\cr
-\link[=workdocs_get_folder]{get_folder} \tab Retrieves the metadata of the specified folder\cr
-\link[=workdocs_get_folder_path]{get_folder_path} \tab Retrieves the path information (the hierarchy from the root folder) for the specified folder\cr
-\link[=workdocs_get_resources]{get_resources} \tab Retrieves a collection of resources, including folders and documents\cr
-\link[=workdocs_initiate_document_version_upload]{initiate_document_version_upload} \tab Creates a new document object and version object\cr
-\link[=workdocs_remove_all_resource_permissions]{remove_all_resource_permissions} \tab Removes all the permissions from the specified resource\cr
-\link[=workdocs_remove_resource_permission]{remove_resource_permission} \tab Removes the permission for the specified principal from the specified resource\cr
-\link[=workdocs_update_document]{update_document} \tab Updates the specified attributes of a document\cr
-\link[=workdocs_update_document_version]{update_document_version} \tab Changes the status of the document version to ACTIVE\cr
-\link[=workdocs_update_folder]{update_folder} \tab Updates the specified attributes of the specified folder\cr
-\link[=workdocs_update_user]{update_user} \tab Updates the specified attributes of the specified user, and grants or revokes administrative privileges to the Amazon WorkDocs site
+\link[paws.end.user.computing:workdocs_abort_document_version_upload]{abort_document_version_upload} \tab Aborts the upload of the specified document version that was previously initiated by InitiateDocumentVersionUpload\cr
+\link[paws.end.user.computing:workdocs_activate_user]{activate_user} \tab Activates the specified user\cr
+\link[paws.end.user.computing:workdocs_add_resource_permissions]{add_resource_permissions} \tab Creates a set of permissions for the specified folder or document\cr
+\link[paws.end.user.computing:workdocs_create_comment]{create_comment} \tab Adds a new comment to the specified document version\cr
+\link[paws.end.user.computing:workdocs_create_custom_metadata]{create_custom_metadata} \tab Adds one or more custom properties to the specified resource (a folder, document, or version)\cr
+\link[paws.end.user.computing:workdocs_create_folder]{create_folder} \tab Creates a folder with the specified name and parent folder\cr
+\link[paws.end.user.computing:workdocs_create_labels]{create_labels} \tab Adds the specified list of labels to the given resource (a document or folder)\cr
+\link[paws.end.user.computing:workdocs_create_notification_subscription]{create_notification_subscription} \tab Configure Amazon WorkDocs to use Amazon SNS notifications\cr
+\link[paws.end.user.computing:workdocs_create_user]{create_user} \tab Creates a user in a Simple AD or Microsoft AD directory\cr
+\link[paws.end.user.computing:workdocs_deactivate_user]{deactivate_user} \tab Deactivates the specified user, which revokes the user's access to Amazon WorkDocs\cr
+\link[paws.end.user.computing:workdocs_delete_comment]{delete_comment} \tab Deletes the specified comment from the document version\cr
+\link[paws.end.user.computing:workdocs_delete_custom_metadata]{delete_custom_metadata} \tab Deletes custom metadata from the specified resource\cr
+\link[paws.end.user.computing:workdocs_delete_document]{delete_document} \tab Permanently deletes the specified document and its associated metadata\cr
+\link[paws.end.user.computing:workdocs_delete_folder]{delete_folder} \tab Permanently deletes the specified folder and its contents\cr
+\link[paws.end.user.computing:workdocs_delete_folder_contents]{delete_folder_contents} \tab Deletes the contents of the specified folder\cr
+\link[paws.end.user.computing:workdocs_delete_labels]{delete_labels} \tab Deletes the specified list of labels from a resource\cr
+\link[paws.end.user.computing:workdocs_delete_notification_subscription]{delete_notification_subscription} \tab Deletes the specified subscription from the specified organization\cr
+\link[paws.end.user.computing:workdocs_delete_user]{delete_user} \tab Deletes the specified user from a Simple AD or Microsoft AD directory\cr
+\link[paws.end.user.computing:workdocs_describe_activities]{describe_activities} \tab Describes the user activities in a specified time period\cr
+\link[paws.end.user.computing:workdocs_describe_comments]{describe_comments} \tab List all the comments for the specified document version\cr
+\link[paws.end.user.computing:workdocs_describe_document_versions]{describe_document_versions} \tab Retrieves the document versions for the specified document\cr
+\link[paws.end.user.computing:workdocs_describe_folder_contents]{describe_folder_contents} \tab Describes the contents of the specified folder, including its documents and subfolders\cr
+\link[paws.end.user.computing:workdocs_describe_groups]{describe_groups} \tab Describes the groups specified by the query\cr
+\link[paws.end.user.computing:workdocs_describe_notification_subscriptions]{describe_notification_subscriptions} \tab Lists the specified notification subscriptions\cr
+\link[paws.end.user.computing:workdocs_describe_resource_permissions]{describe_resource_permissions} \tab Describes the permissions of a specified resource\cr
+\link[paws.end.user.computing:workdocs_describe_root_folders]{describe_root_folders} \tab Describes the current user's special folders; the RootFolder and the RecycleBin\cr
+\link[paws.end.user.computing:workdocs_describe_users]{describe_users} \tab Describes the specified users\cr
+\link[paws.end.user.computing:workdocs_get_current_user]{get_current_user} \tab Retrieves details of the current user for whom the authentication token was generated\cr
+\link[paws.end.user.computing:workdocs_get_document]{get_document} \tab Retrieves details of a document\cr
+\link[paws.end.user.computing:workdocs_get_document_path]{get_document_path} \tab Retrieves the path information (the hierarchy from the root folder) for the requested document\cr
+\link[paws.end.user.computing:workdocs_get_document_version]{get_document_version} \tab Retrieves version metadata for the specified document\cr
+\link[paws.end.user.computing:workdocs_get_folder]{get_folder} \tab Retrieves the metadata of the specified folder\cr
+\link[paws.end.user.computing:workdocs_get_folder_path]{get_folder_path} \tab Retrieves the path information (the hierarchy from the root folder) for the specified folder\cr
+\link[paws.end.user.computing:workdocs_get_resources]{get_resources} \tab Retrieves a collection of resources, including folders and documents\cr
+\link[paws.end.user.computing:workdocs_initiate_document_version_upload]{initiate_document_version_upload} \tab Creates a new document object and version object\cr
+\link[paws.end.user.computing:workdocs_remove_all_resource_permissions]{remove_all_resource_permissions} \tab Removes all the permissions from the specified resource\cr
+\link[paws.end.user.computing:workdocs_remove_resource_permission]{remove_resource_permission} \tab Removes the permission for the specified principal from the specified resource\cr
+\link[paws.end.user.computing:workdocs_update_document]{update_document} \tab Updates the specified attributes of a document\cr
+\link[paws.end.user.computing:workdocs_update_document_version]{update_document_version} \tab Changes the status of the document version to ACTIVE\cr
+\link[paws.end.user.computing:workdocs_update_folder]{update_folder} \tab Updates the specified attributes of the specified folder\cr
+\link[paws.end.user.computing:workdocs_update_user]{update_user} \tab Updates the specified attributes of the specified user, and grants or revokes administrative privileges to the Amazon WorkDocs site
 }
 }
 

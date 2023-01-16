@@ -4,9 +4,16 @@
 \alias{sagemaker_create_edge_packaging_job}
 \title{Starts a SageMaker Edge Manager model packaging job}
 \usage{
-sagemaker_create_edge_packaging_job(EdgePackagingJobName,
-  CompilationJobName, ModelName, ModelVersion, RoleArn, OutputConfig,
-  ResourceKey, Tags)
+sagemaker_create_edge_packaging_job(
+  EdgePackagingJobName,
+  CompilationJobName,
+  ModelName,
+  ModelVersion,
+  RoleArn,
+  OutputConfig,
+  ResourceKey = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{EdgePackagingJobName}{[required] The name of the edge packaging job.}
@@ -24,40 +31,14 @@ Neo.}
 
 \item{OutputConfig}{[required] Provides information about the output location for the packaged model.}
 
-\item{ResourceKey}{The CMK to use when encrypting the EBS volume the edge packaging job
-runs on.}
+\item{ResourceKey}{The Amazon Web Services KMS key to use when encrypting the EBS volume
+the edge packaging job runs on.}
 
 \item{Tags}{Creates tags for the packaging job.}
 }
-\value{
-An empty list.
-}
 \description{
-Starts a SageMaker Edge Manager model packaging job. Edge Manager will
-use the model artifacts from the Amazon Simple Storage Service bucket
-that you specify. After the model has been packaged, Amazon SageMaker
-saves the resulting artifacts to an S3 bucket that you specify.
-}
-\section{Request syntax}{
-\preformatted{svc$create_edge_packaging_job(
-  EdgePackagingJobName = "string",
-  CompilationJobName = "string",
-  ModelName = "string",
-  ModelVersion = "string",
-  RoleArn = "string",
-  OutputConfig = list(
-    S3OutputLocation = "string",
-    KmsKeyId = "string"
-  ),
-  ResourceKey = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Starts a SageMaker Edge Manager model packaging job. Edge Manager will use the model artifacts from the Amazon Simple Storage Service bucket that you specify. After the model has been packaged, Amazon SageMaker saves the resulting artifacts to an S3 bucket that you specify.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_edge_packaging_job.html} for full documentation.
+}
 \keyword{internal}

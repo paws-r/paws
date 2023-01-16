@@ -5,7 +5,9 @@
 \title{Associates an Amazon VPC with a specified query logging configuration}
 \usage{
 route53resolver_associate_resolver_query_log_config(
-  ResolverQueryLogConfigId, ResourceId)
+  ResolverQueryLogConfigId,
+  ResourceId
+)
 }
 \arguments{
 \item{ResolverQueryLogConfigId}{[required] The ID of the query logging configuration that you want to associate a
@@ -16,40 +18,9 @@ to log queries for.
 
 The VPCs and the query logging configuration must be in the same Region.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverQueryLogConfigAssociation = list(
-    Id = "string",
-    ResolverQueryLogConfigId = "string",
-    ResourceId = "string",
-    Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
-    Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
-    ErrorMessage = "string",
-    CreationTime = "string"
-  )
-)
-}
-}
 \description{
-Associates an Amazon VPC with a specified query logging configuration.
-Route 53 Resolver logs DNS queries that originate in all of the Amazon
-VPCs that are associated with a specified query logging configuration.
-To associate more than one VPC with a configuration, submit one
-\code{\link[=route53resolver_associate_resolver_query_log_config]{associate_resolver_query_log_config}}
-request for each VPC.
+Associates an Amazon VPC with a specified query logging configuration. Route 53 Resolver logs DNS queries that originate in all of the Amazon VPCs that are associated with a specified query logging configuration. To associate more than one VPC with a configuration, submit one \code{\link[=route53resolver_associate_resolver_query_log_config]{associate_resolver_query_log_config}} request for each VPC.
 
-The VPCs that you associate with a query logging configuration must be
-in the same Region as the configuration.
-
-To remove a VPC from a query logging configuration, see
-\code{\link[=route53resolver_disassociate_resolver_query_log_config]{disassociate_resolver_query_log_config}}.
+See \url{https://paws-r.github.io/docs/route53resolver/associate_resolver_query_log_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_resolver_query_log_config(
-  ResolverQueryLogConfigId = "string",
-  ResourceId = "string"
-)
-}
-}
-
 \keyword{internal}

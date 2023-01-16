@@ -5,8 +5,12 @@
 \title{Updates the description, compatibility setting, or version checkpoint
 for a schema set}
 \usage{
-glue_update_schema(SchemaId, SchemaVersionNumber, Compatibility,
-  Description)
+glue_update_schema(
+  SchemaId,
+  SchemaVersionNumber = NULL,
+  Compatibility = NULL,
+  Description = NULL
+)
 }
 \arguments{
 \item{SchemaId}{[required] This is a wrapper structure to contain schema identity fields. The
@@ -25,45 +29,9 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 
 \item{Description}{The new description for the schema.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaArn = "string",
-  SchemaName = "string",
-  RegistryName = "string"
-)
-}
-}
 \description{
-Updates the description, compatibility setting, or version checkpoint
-for a schema set.
+Updates the description, compatibility setting, or version checkpoint for a schema set.
 
-For updating the compatibility setting, the call will not validate
-compatibility for the entire set of schema versions with the new
-compatibility setting. If the value for \code{Compatibility} is provided, the
-\code{VersionNumber} (a checkpoint) is also required. The API will validate
-the checkpoint version number for consistency.
-
-If the value for the \code{VersionNumber} (checkpoint) is provided,
-\code{Compatibility} is optional and this can be used to set/reset a
-checkpoint for the schema.
-
-This update will happen only if the schema is in the AVAILABLE state.
+See \url{https://paws-r.github.io/docs/glue/update_schema.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_schema(
-  SchemaId = list(
-    SchemaArn = "string",
-    SchemaName = "string",
-    RegistryName = "string"
-  ),
-  SchemaVersionNumber = list(
-    LatestVersion = TRUE|FALSE,
-    VersionNumber = 123
-  ),
-  Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
-  Description = "string"
-)
-}
-}
-
 \keyword{internal}

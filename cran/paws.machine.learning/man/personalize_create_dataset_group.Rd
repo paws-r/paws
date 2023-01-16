@@ -4,79 +4,35 @@
 \alias{personalize_create_dataset_group}
 \title{Creates an empty dataset group}
 \usage{
-personalize_create_dataset_group(name, roleArn, kmsKeyArn)
+personalize_create_dataset_group(
+  name,
+  roleArn = NULL,
+  kmsKeyArn = NULL,
+  domain = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name for the new dataset group.}
 
-\item{roleArn}{The ARN of the IAM role that has permissions to access the KMS key.
-Supplying an IAM role is only valid when also specifying a KMS key.}
+\item{roleArn}{The ARN of the Identity and Access Management (IAM) role that has
+permissions to access the Key Management Service (KMS) key. Supplying an
+IAM role is only valid when also specifying a KMS key.}
 
-\item{kmsKeyArn}{The Amazon Resource Name (ARN) of a KMS key used to encrypt the
-datasets.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  datasetGroupArn = "string"
-)
-}
+\item{kmsKeyArn}{The Amazon Resource Name (ARN) of a Key Management Service (KMS) key
+used to encrypt the datasets.}
+
+\item{domain}{The domain of the dataset group. Specify a domain to create a Domain
+dataset group. The domain you specify determines the default schemas for
+datasets and the use cases available for recommenders. If you don't
+specify a domain, you create a Custom dataset group with solution
+versions that you deploy with a campaign.}
+
+\item{tags}{A list of tags to apply to the dataset group.}
 }
 \description{
-Creates an empty dataset group. A dataset group contains related
-datasets that supply data for training a model. A dataset group can
-contain at most three datasets, one for each type of dataset:
-\itemize{
-\item Interactions
-\item Items
-\item Users
+Creates an empty dataset group. A dataset group is a container for Amazon Personalize resources. A dataset group can contain at most three datasets, one for each type of dataset:
+
+See \url{https://paws-r.github.io/docs/personalize/create_dataset_group.html} for full documentation.
 }
-
-To train a model (create a solution), a dataset group that contains an
-\code{Interactions} dataset is required. Call
-\code{\link[=personalize_create_dataset]{create_dataset}} to add a dataset to the
-group.
-
-A dataset group can be in one of the following states:
-\itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
-\item DELETE PENDING
-}
-
-To get the status of the dataset group, call
-\code{\link[=personalize_describe_dataset_group]{describe_dataset_group}}. If the
-status shows as CREATE FAILED, the response includes a \code{failureReason}
-key, which describes why the creation failed.
-
-You must wait until the \code{status} of the dataset group is \code{ACTIVE} before
-adding a dataset to the group.
-
-You can specify an AWS Key Management Service (KMS) key to encrypt the
-datasets in the group. If you specify a KMS key, you must also include
-an AWS Identity and Access Management (IAM) role that has permission to
-access the key.
-
-\strong{APIs that require a dataset group ARN in the request}
-\itemize{
-\item \code{\link[=personalize_create_dataset]{create_dataset}}
-\item \code{\link[=personalize_create_event_tracker]{create_event_tracker}}
-\item \code{\link[=personalize_create_solution]{create_solution}}
-}
-
-\strong{Related APIs}
-\itemize{
-\item \code{\link[=personalize_list_dataset_groups]{list_dataset_groups}}
-\item \code{\link[=personalize_describe_dataset_group]{describe_dataset_group}}
-\item \code{\link[=personalize_delete_dataset_group]{delete_dataset_group}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_dataset_group(
-  name = "string",
-  roleArn = "string",
-  kmsKeyArn = "string"
-)
-}
-}
-
 \keyword{internal}

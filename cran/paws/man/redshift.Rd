@@ -7,7 +7,19 @@
 redshift(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -42,7 +54,9 @@ explains how to design, build, query, and maintain the databases that
 make up your data warehouse.
 }
 \section{Service syntax}{
-\preformatted{svc <- redshift(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- redshift(
   config = list(
     credentials = list(
       creds = list(
@@ -50,110 +64,141 @@ make up your data warehouse.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=redshift_accept_reserved_node_exchange]{accept_reserved_node_exchange} \tab Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to the configuration (term, payment type, or number of nodes) and no additional costs\cr
-\link[=redshift_authorize_cluster_security_group_ingress]{authorize_cluster_security_group_ingress} \tab Adds an inbound (ingress) rule to an Amazon Redshift security group\cr
-\link[=redshift_authorize_snapshot_access]{authorize_snapshot_access} \tab Authorizes the specified AWS customer account to restore the specified snapshot\cr
-\link[=redshift_batch_delete_cluster_snapshots]{batch_delete_cluster_snapshots} \tab Deletes a set of cluster snapshots\cr
-\link[=redshift_batch_modify_cluster_snapshots]{batch_modify_cluster_snapshots} \tab Modifies the settings for a set of cluster snapshots\cr
-\link[=redshift_cancel_resize]{cancel_resize} \tab Cancels a resize operation for a cluster\cr
-\link[=redshift_copy_cluster_snapshot]{copy_cluster_snapshot} \tab Copies the specified automated cluster snapshot to a new manual cluster snapshot\cr
-\link[=redshift_create_cluster]{create_cluster} \tab Creates a new cluster with the specified parameters\cr
-\link[=redshift_create_cluster_parameter_group]{create_cluster_parameter_group} \tab Creates an Amazon Redshift parameter group\cr
-\link[=redshift_create_cluster_security_group]{create_cluster_security_group} \tab Creates a new Amazon Redshift security group\cr
-\link[=redshift_create_cluster_snapshot]{create_cluster_snapshot} \tab Creates a manual snapshot of the specified cluster\cr
-\link[=redshift_create_cluster_subnet_group]{create_cluster_subnet_group} \tab Creates a new Amazon Redshift subnet group\cr
-\link[=redshift_create_event_subscription]{create_event_subscription} \tab Creates an Amazon Redshift event notification subscription\cr
-\link[=redshift_create_hsm_client_certificate]{create_hsm_client_certificate} \tab Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases\cr
-\link[=redshift_create_hsm_configuration]{create_hsm_configuration} \tab Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM)\cr
-\link[=redshift_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action\cr
-\link[=redshift_create_snapshot_copy_grant]{create_snapshot_copy_grant} \tab Creates a snapshot copy grant that permits Amazon Redshift to use a customer master key (CMK) from AWS Key Management Service (AWS KMS) to encrypt copied snapshots in a destination region\cr
-\link[=redshift_create_snapshot_schedule]{create_snapshot_schedule} \tab Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup schedule\cr
-\link[=redshift_create_tags]{create_tags} \tab Adds tags to a cluster\cr
-\link[=redshift_create_usage_limit]{create_usage_limit} \tab Creates a usage limit for a specified Amazon Redshift feature on a cluster\cr
-\link[=redshift_delete_cluster]{delete_cluster} \tab Deletes a previously provisioned cluster without its final snapshot being created\cr
-\link[=redshift_delete_cluster_parameter_group]{delete_cluster_parameter_group} \tab Deletes a specified Amazon Redshift parameter group\cr
-\link[=redshift_delete_cluster_security_group]{delete_cluster_security_group} \tab Deletes an Amazon Redshift security group\cr
-\link[=redshift_delete_cluster_snapshot]{delete_cluster_snapshot} \tab Deletes the specified manual snapshot\cr
-\link[=redshift_delete_cluster_subnet_group]{delete_cluster_subnet_group} \tab Deletes the specified cluster subnet group\cr
-\link[=redshift_delete_event_subscription]{delete_event_subscription} \tab Deletes an Amazon Redshift event notification subscription\cr
-\link[=redshift_delete_hsm_client_certificate]{delete_hsm_client_certificate} \tab Deletes the specified HSM client certificate\cr
-\link[=redshift_delete_hsm_configuration]{delete_hsm_configuration} \tab Deletes the specified Amazon Redshift HSM configuration\cr
-\link[=redshift_delete_scheduled_action]{delete_scheduled_action} \tab Deletes a scheduled action\cr
-\link[=redshift_delete_snapshot_copy_grant]{delete_snapshot_copy_grant} \tab Deletes the specified snapshot copy grant\cr
-\link[=redshift_delete_snapshot_schedule]{delete_snapshot_schedule} \tab Deletes a snapshot schedule\cr
-\link[=redshift_delete_tags]{delete_tags} \tab Deletes tags from a resource\cr
-\link[=redshift_delete_usage_limit]{delete_usage_limit} \tab Deletes a usage limit from a cluster\cr
-\link[=redshift_describe_account_attributes]{describe_account_attributes} \tab Returns a list of attributes attached to an account\cr
-\link[=redshift_describe_cluster_db_revisions]{describe_cluster_db_revisions} \tab Returns an array of ClusterDbRevision objects\cr
-\link[=redshift_describe_cluster_parameter_groups]{describe_cluster_parameter_groups} \tab Returns a list of Amazon Redshift parameter groups, including parameter groups you created and the default parameter group\cr
-\link[=redshift_describe_cluster_parameters]{describe_cluster_parameters} \tab Returns a detailed list of parameters contained within the specified Amazon Redshift parameter group\cr
-\link[=redshift_describe_clusters]{describe_clusters} \tab Returns properties of provisioned clusters including general cluster properties, cluster database properties, maintenance and backup properties, and security and access properties\cr
-\link[=redshift_describe_cluster_security_groups]{describe_cluster_security_groups} \tab Returns information about Amazon Redshift security groups\cr
-\link[=redshift_describe_cluster_snapshots]{describe_cluster_snapshots} \tab Returns one or more snapshot objects, which contain metadata about your cluster snapshots\cr
-\link[=redshift_describe_cluster_subnet_groups]{describe_cluster_subnet_groups} \tab Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups\cr
-\link[=redshift_describe_cluster_tracks]{describe_cluster_tracks} \tab Returns a list of all the available maintenance tracks\cr
-\link[=redshift_describe_cluster_versions]{describe_cluster_versions} \tab Returns descriptions of the available Amazon Redshift cluster versions\cr
-\link[=redshift_describe_default_cluster_parameters]{describe_default_cluster_parameters} \tab Returns a list of parameter settings for the specified parameter group family\cr
-\link[=redshift_describe_event_categories]{describe_event_categories} \tab Displays a list of event categories for all event source types, or for a specified source type\cr
-\link[=redshift_describe_events]{describe_events} \tab Returns events related to clusters, security groups, snapshots, and parameter groups for the past 14 days\cr
-\link[=redshift_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists descriptions of all the Amazon Redshift event notification subscriptions for a customer account\cr
-\link[=redshift_describe_hsm_client_certificates]{describe_hsm_client_certificates} \tab Returns information about the specified HSM client certificate\cr
-\link[=redshift_describe_hsm_configurations]{describe_hsm_configurations} \tab Returns information about the specified Amazon Redshift HSM configuration\cr
-\link[=redshift_describe_logging_status]{describe_logging_status} \tab Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster\cr
-\link[=redshift_describe_node_configuration_options]{describe_node_configuration_options} \tab Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type\cr
-\link[=redshift_describe_orderable_cluster_options]{describe_orderable_cluster_options} \tab Returns a list of orderable cluster options\cr
-\link[=redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings} \tab Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you\cr
-\link[=redshift_describe_reserved_nodes]{describe_reserved_nodes} \tab Returns the descriptions of the reserved nodes\cr
-\link[=redshift_describe_resize]{describe_resize} \tab Returns information about the last resize operation for the specified cluster\cr
-\link[=redshift_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes properties of scheduled actions\cr
-\link[=redshift_describe_snapshot_copy_grants]{describe_snapshot_copy_grants} \tab Returns a list of snapshot copy grants owned by the AWS account in the destination region\cr
-\link[=redshift_describe_snapshot_schedules]{describe_snapshot_schedules} \tab Returns a list of snapshot schedules\cr
-\link[=redshift_describe_storage]{describe_storage} \tab Returns account level backups storage size and provisional storage\cr
-\link[=redshift_describe_table_restore_status]{describe_table_restore_status} \tab Lists the status of one or more table restore requests made using the RestoreTableFromClusterSnapshot API action\cr
-\link[=redshift_describe_tags]{describe_tags} \tab Returns a list of tags\cr
-\link[=redshift_describe_usage_limits]{describe_usage_limits} \tab Shows usage limits on a cluster\cr
-\link[=redshift_disable_logging]{disable_logging} \tab Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster\cr
-\link[=redshift_disable_snapshot_copy]{disable_snapshot_copy} \tab Disables the automatic copying of snapshots from one region to another region for a specified cluster\cr
-\link[=redshift_enable_logging]{enable_logging} \tab Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster\cr
-\link[=redshift_enable_snapshot_copy]{enable_snapshot_copy} \tab Enables the automatic copy of snapshots from one region to another region for a specified cluster\cr
-\link[=redshift_get_cluster_credentials]{get_cluster_credentials} \tab Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database\cr
-\link[=redshift_get_reserved_node_exchange_offerings]{get_reserved_node_exchange_offerings} \tab Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node\cr
-\link[=redshift_modify_cluster]{modify_cluster} \tab Modifies the settings for a cluster\cr
-\link[=redshift_modify_cluster_db_revision]{modify_cluster_db_revision} \tab Modifies the database revision of a cluster\cr
-\link[=redshift_modify_cluster_iam_roles]{modify_cluster_iam_roles} \tab Modifies the list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services\cr
-\link[=redshift_modify_cluster_maintenance]{modify_cluster_maintenance} \tab Modifies the maintenance settings of a cluster\cr
-\link[=redshift_modify_cluster_parameter_group]{modify_cluster_parameter_group} \tab Modifies the parameters of a parameter group\cr
-\link[=redshift_modify_cluster_snapshot]{modify_cluster_snapshot} \tab Modifies the settings for a snapshot\cr
-\link[=redshift_modify_cluster_snapshot_schedule]{modify_cluster_snapshot_schedule} \tab Modifies a snapshot schedule for a cluster\cr
-\link[=redshift_modify_cluster_subnet_group]{modify_cluster_subnet_group} \tab Modifies a cluster subnet group to include the specified list of VPC subnets\cr
-\link[=redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription\cr
-\link[=redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modifies a scheduled action\cr
-\link[=redshift_modify_snapshot_copy_retention_period]{modify_snapshot_copy_retention_period} \tab Modifies the number of days to retain snapshots in the destination AWS Region after they are copied from the source AWS Region\cr
-\link[=redshift_modify_snapshot_schedule]{modify_snapshot_schedule} \tab Modifies a snapshot schedule\cr
-\link[=redshift_modify_usage_limit]{modify_usage_limit} \tab Modifies a usage limit in a cluster\cr
-\link[=redshift_pause_cluster]{pause_cluster} \tab Pauses a cluster\cr
-\link[=redshift_purchase_reserved_node_offering]{purchase_reserved_node_offering} \tab Allows you to purchase reserved nodes\cr
-\link[=redshift_reboot_cluster]{reboot_cluster} \tab Reboots a cluster\cr
-\link[=redshift_reset_cluster_parameter_group]{reset_cluster_parameter_group} \tab Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default"\cr
-\link[=redshift_resize_cluster]{resize_cluster} \tab Changes the size of the cluster\cr
-\link[=redshift_restore_from_cluster_snapshot]{restore_from_cluster_snapshot} \tab Creates a new cluster from a snapshot\cr
-\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot} \tab Creates a new table from a table in an Amazon Redshift cluster snapshot\cr
-\link[=redshift_resume_cluster]{resume_cluster} \tab Resumes a paused cluster\cr
-\link[=redshift_revoke_cluster_security_group_ingress]{revoke_cluster_security_group_ingress} \tab Revokes an ingress rule in an Amazon Redshift security group for a previously authorized IP range or Amazon EC2 security group\cr
-\link[=redshift_revoke_snapshot_access]{revoke_snapshot_access} \tab Removes the ability of the specified AWS customer account to restore the specified snapshot\cr
-\link[=redshift_rotate_encryption_key]{rotate_encryption_key} \tab Rotates the encryption keys for a cluster
+\link[paws.database:redshift_accept_reserved_node_exchange]{accept_reserved_node_exchange} \tab Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to the configuration (term, payment type, or number of nodes) and no additional costs\cr
+\link[paws.database:redshift_add_partner]{add_partner} \tab Adds a partner integration to a cluster\cr
+\link[paws.database:redshift_associate_data_share_consumer]{associate_data_share_consumer} \tab From a datashare consumer account, associates a datashare with the account (AssociateEntireAccount) or the specified namespace (ConsumerArn)\cr
+\link[paws.database:redshift_authorize_cluster_security_group_ingress]{authorize_cluster_security_group_ingress} \tab Adds an inbound (ingress) rule to an Amazon Redshift security group\cr
+\link[paws.database:redshift_authorize_data_share]{authorize_data_share} \tab From a data producer account, authorizes the sharing of a datashare with one or more consumer accounts or managing entities\cr
+\link[paws.database:redshift_authorize_endpoint_access]{authorize_endpoint_access} \tab Grants access to a cluster\cr
+\link[paws.database:redshift_authorize_snapshot_access]{authorize_snapshot_access} \tab Authorizes the specified Amazon Web Services account to restore the specified snapshot\cr
+\link[paws.database:redshift_batch_delete_cluster_snapshots]{batch_delete_cluster_snapshots} \tab Deletes a set of cluster snapshots\cr
+\link[paws.database:redshift_batch_modify_cluster_snapshots]{batch_modify_cluster_snapshots} \tab Modifies the settings for a set of cluster snapshots\cr
+\link[paws.database:redshift_cancel_resize]{cancel_resize} \tab Cancels a resize operation for a cluster\cr
+\link[paws.database:redshift_copy_cluster_snapshot]{copy_cluster_snapshot} \tab Copies the specified automated cluster snapshot to a new manual cluster snapshot\cr
+\link[paws.database:redshift_create_authentication_profile]{create_authentication_profile} \tab Creates an authentication profile with the specified parameters\cr
+\link[paws.database:redshift_create_cluster]{create_cluster} \tab Creates a new cluster with the specified parameters\cr
+\link[paws.database:redshift_create_cluster_parameter_group]{create_cluster_parameter_group} \tab Creates an Amazon Redshift parameter group\cr
+\link[paws.database:redshift_create_cluster_security_group]{create_cluster_security_group} \tab Creates a new Amazon Redshift security group\cr
+\link[paws.database:redshift_create_cluster_snapshot]{create_cluster_snapshot} \tab Creates a manual snapshot of the specified cluster\cr
+\link[paws.database:redshift_create_cluster_subnet_group]{create_cluster_subnet_group} \tab Creates a new Amazon Redshift subnet group\cr
+\link[paws.database:redshift_create_endpoint_access]{create_endpoint_access} \tab Creates a Redshift-managed VPC endpoint\cr
+\link[paws.database:redshift_create_event_subscription]{create_event_subscription} \tab Creates an Amazon Redshift event notification subscription\cr
+\link[paws.database:redshift_create_hsm_client_certificate]{create_hsm_client_certificate} \tab Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases\cr
+\link[paws.database:redshift_create_hsm_configuration]{create_hsm_configuration} \tab Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM)\cr
+\link[paws.database:redshift_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action\cr
+\link[paws.database:redshift_create_snapshot_copy_grant]{create_snapshot_copy_grant} \tab Creates a snapshot copy grant that permits Amazon Redshift to use an encrypted symmetric key from Key Management Service (KMS) to encrypt copied snapshots in a destination region\cr
+\link[paws.database:redshift_create_snapshot_schedule]{create_snapshot_schedule} \tab Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup schedule\cr
+\link[paws.database:redshift_create_tags]{create_tags} \tab Adds tags to a cluster\cr
+\link[paws.database:redshift_create_usage_limit]{create_usage_limit} \tab Creates a usage limit for a specified Amazon Redshift feature on a cluster\cr
+\link[paws.database:redshift_deauthorize_data_share]{deauthorize_data_share} \tab From a datashare producer account, removes authorization from the specified datashare\cr
+\link[paws.database:redshift_delete_authentication_profile]{delete_authentication_profile} \tab Deletes an authentication profile\cr
+\link[paws.database:redshift_delete_cluster]{delete_cluster} \tab Deletes a previously provisioned cluster without its final snapshot being created\cr
+\link[paws.database:redshift_delete_cluster_parameter_group]{delete_cluster_parameter_group} \tab Deletes a specified Amazon Redshift parameter group\cr
+\link[paws.database:redshift_delete_cluster_security_group]{delete_cluster_security_group} \tab Deletes an Amazon Redshift security group\cr
+\link[paws.database:redshift_delete_cluster_snapshot]{delete_cluster_snapshot} \tab Deletes the specified manual snapshot\cr
+\link[paws.database:redshift_delete_cluster_subnet_group]{delete_cluster_subnet_group} \tab Deletes the specified cluster subnet group\cr
+\link[paws.database:redshift_delete_endpoint_access]{delete_endpoint_access} \tab Deletes a Redshift-managed VPC endpoint\cr
+\link[paws.database:redshift_delete_event_subscription]{delete_event_subscription} \tab Deletes an Amazon Redshift event notification subscription\cr
+\link[paws.database:redshift_delete_hsm_client_certificate]{delete_hsm_client_certificate} \tab Deletes the specified HSM client certificate\cr
+\link[paws.database:redshift_delete_hsm_configuration]{delete_hsm_configuration} \tab Deletes the specified Amazon Redshift HSM configuration\cr
+\link[paws.database:redshift_delete_partner]{delete_partner} \tab Deletes a partner integration from a cluster\cr
+\link[paws.database:redshift_delete_scheduled_action]{delete_scheduled_action} \tab Deletes a scheduled action\cr
+\link[paws.database:redshift_delete_snapshot_copy_grant]{delete_snapshot_copy_grant} \tab Deletes the specified snapshot copy grant\cr
+\link[paws.database:redshift_delete_snapshot_schedule]{delete_snapshot_schedule} \tab Deletes a snapshot schedule\cr
+\link[paws.database:redshift_delete_tags]{delete_tags} \tab Deletes tags from a resource\cr
+\link[paws.database:redshift_delete_usage_limit]{delete_usage_limit} \tab Deletes a usage limit from a cluster\cr
+\link[paws.database:redshift_describe_account_attributes]{describe_account_attributes} \tab Returns a list of attributes attached to an account\cr
+\link[paws.database:redshift_describe_authentication_profiles]{describe_authentication_profiles} \tab Describes an authentication profile\cr
+\link[paws.database:redshift_describe_cluster_db_revisions]{describe_cluster_db_revisions} \tab Returns an array of ClusterDbRevision objects\cr
+\link[paws.database:redshift_describe_cluster_parameter_groups]{describe_cluster_parameter_groups} \tab Returns a list of Amazon Redshift parameter groups, including parameter groups you created and the default parameter group\cr
+\link[paws.database:redshift_describe_cluster_parameters]{describe_cluster_parameters} \tab Returns a detailed list of parameters contained within the specified Amazon Redshift parameter group\cr
+\link[paws.database:redshift_describe_clusters]{describe_clusters} \tab Returns properties of provisioned clusters including general cluster properties, cluster database properties, maintenance and backup properties, and security and access properties\cr
+\link[paws.database:redshift_describe_cluster_security_groups]{describe_cluster_security_groups} \tab Returns information about Amazon Redshift security groups\cr
+\link[paws.database:redshift_describe_cluster_snapshots]{describe_cluster_snapshots} \tab Returns one or more snapshot objects, which contain metadata about your cluster snapshots\cr
+\link[paws.database:redshift_describe_cluster_subnet_groups]{describe_cluster_subnet_groups} \tab Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups\cr
+\link[paws.database:redshift_describe_cluster_tracks]{describe_cluster_tracks} \tab Returns a list of all the available maintenance tracks\cr
+\link[paws.database:redshift_describe_cluster_versions]{describe_cluster_versions} \tab Returns descriptions of the available Amazon Redshift cluster versions\cr
+\link[paws.database:redshift_describe_data_shares]{describe_data_shares} \tab Shows the status of any inbound or outbound datashares available in the specified account\cr
+\link[paws.database:redshift_describe_data_shares_for_consumer]{describe_data_shares_for_consumer} \tab Returns a list of datashares where the account identifier being called is a consumer account identifier\cr
+\link[paws.database:redshift_describe_data_shares_for_producer]{describe_data_shares_for_producer} \tab Returns a list of datashares when the account identifier being called is a producer account identifier\cr
+\link[paws.database:redshift_describe_default_cluster_parameters]{describe_default_cluster_parameters} \tab Returns a list of parameter settings for the specified parameter group family\cr
+\link[paws.database:redshift_describe_endpoint_access]{describe_endpoint_access} \tab Describes a Redshift-managed VPC endpoint\cr
+\link[paws.database:redshift_describe_endpoint_authorization]{describe_endpoint_authorization} \tab Describes an endpoint authorization\cr
+\link[paws.database:redshift_describe_event_categories]{describe_event_categories} \tab Displays a list of event categories for all event source types, or for a specified source type\cr
+\link[paws.database:redshift_describe_events]{describe_events} \tab Returns events related to clusters, security groups, snapshots, and parameter groups for the past 14 days\cr
+\link[paws.database:redshift_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists descriptions of all the Amazon Redshift event notification subscriptions for a customer account\cr
+\link[paws.database:redshift_describe_hsm_client_certificates]{describe_hsm_client_certificates} \tab Returns information about the specified HSM client certificate\cr
+\link[paws.database:redshift_describe_hsm_configurations]{describe_hsm_configurations} \tab Returns information about the specified Amazon Redshift HSM configuration\cr
+\link[paws.database:redshift_describe_logging_status]{describe_logging_status} \tab Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster\cr
+\link[paws.database:redshift_describe_node_configuration_options]{describe_node_configuration_options} \tab Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type\cr
+\link[paws.database:redshift_describe_orderable_cluster_options]{describe_orderable_cluster_options} \tab Returns a list of orderable cluster options\cr
+\link[paws.database:redshift_describe_partners]{describe_partners} \tab Returns information about the partner integrations defined for a cluster\cr
+\link[paws.database:redshift_describe_reserved_node_exchange_status]{describe_reserved_node_exchange_status} \tab Returns exchange status details and associated metadata for a reserved-node exchange\cr
+\link[paws.database:redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings} \tab Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you\cr
+\link[paws.database:redshift_describe_reserved_nodes]{describe_reserved_nodes} \tab Returns the descriptions of the reserved nodes\cr
+\link[paws.database:redshift_describe_resize]{describe_resize} \tab Returns information about the last resize operation for the specified cluster\cr
+\link[paws.database:redshift_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes properties of scheduled actions\cr
+\link[paws.database:redshift_describe_snapshot_copy_grants]{describe_snapshot_copy_grants} \tab Returns a list of snapshot copy grants owned by the Amazon Web Services account in the destination region\cr
+\link[paws.database:redshift_describe_snapshot_schedules]{describe_snapshot_schedules} \tab Returns a list of snapshot schedules\cr
+\link[paws.database:redshift_describe_storage]{describe_storage} \tab Returns account level backups storage size and provisional storage\cr
+\link[paws.database:redshift_describe_table_restore_status]{describe_table_restore_status} \tab Lists the status of one or more table restore requests made using the RestoreTableFromClusterSnapshot API action\cr
+\link[paws.database:redshift_describe_tags]{describe_tags} \tab Returns a list of tags\cr
+\link[paws.database:redshift_describe_usage_limits]{describe_usage_limits} \tab Shows usage limits on a cluster\cr
+\link[paws.database:redshift_disable_logging]{disable_logging} \tab Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster\cr
+\link[paws.database:redshift_disable_snapshot_copy]{disable_snapshot_copy} \tab Disables the automatic copying of snapshots from one region to another region for a specified cluster\cr
+\link[paws.database:redshift_disassociate_data_share_consumer]{disassociate_data_share_consumer} \tab From a datashare consumer account, remove association for the specified datashare\cr
+\link[paws.database:redshift_enable_logging]{enable_logging} \tab Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster\cr
+\link[paws.database:redshift_enable_snapshot_copy]{enable_snapshot_copy} \tab Enables the automatic copy of snapshots from one region to another region for a specified cluster\cr
+\link[paws.database:redshift_get_cluster_credentials]{get_cluster_credentials} \tab Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database\cr
+\link[paws.database:redshift_get_cluster_credentials_with_iam]{get_cluster_credentials_with_iam} \tab Returns a database user name and temporary password with temporary authorization to log in to an Amazon Redshift database\cr
+\link[paws.database:redshift_get_reserved_node_exchange_configuration_options]{get_reserved_node_exchange_configuration_options} \tab Gets the configuration options for the reserved-node exchange\cr
+\link[paws.database:redshift_get_reserved_node_exchange_offerings]{get_reserved_node_exchange_offerings} \tab Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node\cr
+\link[paws.database:redshift_modify_aqua_configuration]{modify_aqua_configuration} \tab Modifies whether a cluster can use AQUA (Advanced Query Accelerator)\cr
+\link[paws.database:redshift_modify_authentication_profile]{modify_authentication_profile} \tab Modifies an authentication profile\cr
+\link[paws.database:redshift_modify_cluster]{modify_cluster} \tab Modifies the settings for a cluster\cr
+\link[paws.database:redshift_modify_cluster_db_revision]{modify_cluster_db_revision} \tab Modifies the database revision of a cluster\cr
+\link[paws.database:redshift_modify_cluster_iam_roles]{modify_cluster_iam_roles} \tab Modifies the list of Identity and Access Management (IAM) roles that can be used by the cluster to access other Amazon Web Services services\cr
+\link[paws.database:redshift_modify_cluster_maintenance]{modify_cluster_maintenance} \tab Modifies the maintenance settings of a cluster\cr
+\link[paws.database:redshift_modify_cluster_parameter_group]{modify_cluster_parameter_group} \tab Modifies the parameters of a parameter group\cr
+\link[paws.database:redshift_modify_cluster_snapshot]{modify_cluster_snapshot} \tab Modifies the settings for a snapshot\cr
+\link[paws.database:redshift_modify_cluster_snapshot_schedule]{modify_cluster_snapshot_schedule} \tab Modifies a snapshot schedule for a cluster\cr
+\link[paws.database:redshift_modify_cluster_subnet_group]{modify_cluster_subnet_group} \tab Modifies a cluster subnet group to include the specified list of VPC subnets\cr
+\link[paws.database:redshift_modify_endpoint_access]{modify_endpoint_access} \tab Modifies a Redshift-managed VPC endpoint\cr
+\link[paws.database:redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription\cr
+\link[paws.database:redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modifies a scheduled action\cr
+\link[paws.database:redshift_modify_snapshot_copy_retention_period]{modify_snapshot_copy_retention_period} \tab Modifies the number of days to retain snapshots in the destination Amazon Web Services Region after they are copied from the source Amazon Web Services Region\cr
+\link[paws.database:redshift_modify_snapshot_schedule]{modify_snapshot_schedule} \tab Modifies a snapshot schedule\cr
+\link[paws.database:redshift_modify_usage_limit]{modify_usage_limit} \tab Modifies a usage limit in a cluster\cr
+\link[paws.database:redshift_pause_cluster]{pause_cluster} \tab Pauses a cluster\cr
+\link[paws.database:redshift_purchase_reserved_node_offering]{purchase_reserved_node_offering} \tab Allows you to purchase reserved nodes\cr
+\link[paws.database:redshift_reboot_cluster]{reboot_cluster} \tab Reboots a cluster\cr
+\link[paws.database:redshift_reject_data_share]{reject_data_share} \tab From a datashare consumer account, rejects the specified datashare\cr
+\link[paws.database:redshift_reset_cluster_parameter_group]{reset_cluster_parameter_group} \tab Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default"\cr
+\link[paws.database:redshift_resize_cluster]{resize_cluster} \tab Changes the size of the cluster\cr
+\link[paws.database:redshift_restore_from_cluster_snapshot]{restore_from_cluster_snapshot} \tab Creates a new cluster from a snapshot\cr
+\link[paws.database:redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot} \tab Creates a new table from a table in an Amazon Redshift cluster snapshot\cr
+\link[paws.database:redshift_resume_cluster]{resume_cluster} \tab Resumes a paused cluster\cr
+\link[paws.database:redshift_revoke_cluster_security_group_ingress]{revoke_cluster_security_group_ingress} \tab Revokes an ingress rule in an Amazon Redshift security group for a previously authorized IP range or Amazon EC2 security group\cr
+\link[paws.database:redshift_revoke_endpoint_access]{revoke_endpoint_access} \tab Revokes access to a cluster\cr
+\link[paws.database:redshift_revoke_snapshot_access]{revoke_snapshot_access} \tab Removes the ability of the specified Amazon Web Services account to restore the specified snapshot\cr
+\link[paws.database:redshift_rotate_encryption_key]{rotate_encryption_key} \tab Rotates the encryption keys for a cluster\cr
+\link[paws.database:redshift_update_partner_status]{update_partner_status} \tab Updates the status of a partner integration
 }
 }
 

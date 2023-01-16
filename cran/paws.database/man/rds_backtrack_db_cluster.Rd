@@ -5,8 +5,12 @@
 \title{Backtracks a DB cluster to a specific time, without creating a new DB
 cluster}
 \usage{
-rds_backtrack_db_cluster(DBClusterIdentifier, BacktrackTo, Force,
-  UseEarliestTimeOnPointInTimeUnavailable)
+rds_backtrack_db_cluster(
+  DBClusterIdentifier,
+  BacktrackTo,
+  Force = NULL,
+  UseEarliestTimeOnPointInTimeUnavailable = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier of the DB cluster to be backtracked. This
@@ -46,42 +50,9 @@ timestamp earlier than the earliest backtrack time. When this parameter
 is disabled and \emph{BacktrackTo} is set to a timestamp earlier than the
 earliest backtrack time, an error occurs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterIdentifier = "string",
-  BacktrackIdentifier = "string",
-  BacktrackTo = as.POSIXct(
-    "2015-01-01"
-  ),
-  BacktrackedFrom = as.POSIXct(
-    "2015-01-01"
-  ),
-  BacktrackRequestCreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Status = "string"
-)
-}
-}
 \description{
-Backtracks a DB cluster to a specific time, without creating a new DB
-cluster.
+Backtracks a DB cluster to a specific time, without creating a new DB cluster.
 
-For more information on backtracking, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Managing.Backtrack.html}{Backtracking an Aurora DB Cluster}
-in the \emph{Amazon Aurora User Guide.}
-
-This action only applies to Aurora MySQL DB clusters.
+See \url{https://paws-r.github.io/docs/rds/backtrack_db_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$backtrack_db_cluster(
-  DBClusterIdentifier = "string",
-  BacktrackTo = as.POSIXct(
-    "2015-01-01"
-  ),
-  Force = TRUE|FALSE,
-  UseEarliestTimeOnPointInTimeUnavailable = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

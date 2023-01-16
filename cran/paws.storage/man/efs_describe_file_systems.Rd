@@ -5,7 +5,12 @@
 \title{Returns the description of a specific Amazon EFS file system if either
 the file system CreationToken or the FileSystemId is provided}
 \usage{
-efs_describe_file_systems(MaxItems, Marker, CreationToken, FileSystemId)
+efs_describe_file_systems(
+  MaxItems = NULL,
+  Marker = NULL,
+  CreationToken = NULL,
+  FileSystemId = NULL
+)
 }
 \arguments{
 \item{MaxItems}{(Optional) Specifies the maximum number of file systems to return in the
@@ -25,91 +30,9 @@ EFS file system.}
 \item{FileSystemId}{(Optional) ID of the file system whose description you want to retrieve
 (String).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  FileSystems = list(
-    list(
-      OwnerId = "string",
-      CreationToken = "string",
-      FileSystemId = "string",
-      FileSystemArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
-      Name = "string",
-      NumberOfMountTargets = 123,
-      SizeInBytes = list(
-        Value = 123,
-        Timestamp = as.POSIXct(
-          "2015-01-01"
-        ),
-        ValueInIA = 123,
-        ValueInStandard = 123
-      ),
-      PerformanceMode = "generalPurpose"|"maxIO",
-      Encrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      ThroughputMode = "bursting"|"provisioned",
-      ProvisionedThroughputInMibps = 123.0,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-Returns the description of a specific Amazon EFS file system if either
-the file system \code{CreationToken} or the \code{FileSystemId} is provided.
-Otherwise, it returns descriptions of all file systems owned by the
-caller's AWS account in the AWS Region of the endpoint that you're
-calling.
+Returns the description of a specific Amazon EFS file system if either the file system \code{CreationToken} or the \code{FileSystemId} is provided. Otherwise, it returns descriptions of all file systems owned by the caller's Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
-When retrieving all file system descriptions, you can optionally specify
-the \code{MaxItems} parameter to limit the number of descriptions in a
-response. Currently, this number is automatically set to 10. If more
-file system descriptions remain, Amazon EFS returns a \code{NextMarker}, an
-opaque token, in the response. In this case, you should send a
-subsequent request with the \code{Marker} request parameter set to the value
-of \code{NextMarker}.
-
-To retrieve a list of your file system descriptions, this operation is
-used in an iterative process, where
-\code{\link[=efs_describe_file_systems]{describe_file_systems}} is called first
-without the \code{Marker} and then the operation continues to call it with
-the \code{Marker} parameter set to the value of the \code{NextMarker} from the
-previous response until the response has no \code{NextMarker}.
-
-The order of file systems returned in the response of one
-\code{\link[=efs_describe_file_systems]{describe_file_systems}} call and the order
-of file systems returned across the responses of a multi-call iteration
-is unspecified.
-
-This operation requires permissions for the
-\code{elasticfilesystem:DescribeFileSystems} action.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_file_systems(
-  MaxItems = 123,
-  Marker = "string",
-  CreationToken = "string",
-  FileSystemId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation describes all of the EFS file systems in an account.
-svc$describe_file_systems()
-}
-
+See \url{https://paws-r.github.io/docs/efs/describe_file_systems.html} for full documentation.
 }
 \keyword{internal}

@@ -4,18 +4,29 @@
 \alias{sagemaker_create_transform_job}
 \title{Starts a transform job}
 \usage{
-sagemaker_create_transform_job(TransformJobName, ModelName,
-  MaxConcurrentTransforms, ModelClientConfig, MaxPayloadInMB,
-  BatchStrategy, Environment, TransformInput, TransformOutput,
-  TransformResources, DataProcessing, Tags, ExperimentConfig)
+sagemaker_create_transform_job(
+  TransformJobName,
+  ModelName,
+  MaxConcurrentTransforms = NULL,
+  ModelClientConfig = NULL,
+  MaxPayloadInMB = NULL,
+  BatchStrategy = NULL,
+  Environment = NULL,
+  TransformInput,
+  TransformOutput,
+  TransformResources,
+  DataProcessing = NULL,
+  Tags = NULL,
+  ExperimentConfig = NULL
+)
 }
 \arguments{
-\item{TransformJobName}{[required] The name of the transform job. The name must be unique within an AWS
-Region in an AWS account.}
+\item{TransformJobName}{[required] The name of the transform job. The name must be unique within an Amazon
+Web Services Region in an Amazon Web Services account.}
 
 \item{ModelName}{[required] The name of the model that you want to use for the transform job.
 \code{ModelName} must be the name of an existing Amazon SageMaker model
-within an AWS Region in an AWS account.}
+within an Amazon Web Services Region in an Amazon Web Services account.}
 
 \item{MaxConcurrentTransforms}{The maximum number of parallel requests that can be sent to each
 instance in a transform job. If \code{MaxConcurrentTransforms} is set to \code{0}
@@ -36,6 +47,10 @@ estimate the size of a record in MB, divide the size of your dataset by
 the number of records. To ensure that the records fit within the maximum
 payload size, we recommend using a slightly larger value. The default
 value is \code{6} MB.
+
+The value of \code{MaxPayloadInMB} cannot be greater than 100 MB. If you
+specify the \code{MaxConcurrentTransforms} parameter, the value of
+\code{(MaxConcurrentTransforms * MaxPayloadInMB)} also cannot exceed 100 MB.
 
 For cases where the payload might be arbitrarily large and is
 transmitted using HTTP chunked encoding, set the value to \code{0}. This
@@ -77,96 +92,13 @@ data relevant to interpreting the predictions in the output from the
 job. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html}{Associate Prediction Results with their Corresponding Input Records}.}
 
 \item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management User Guide}.}
+in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 
 \item{ExperimentConfig}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransformJobArn = "string"
-)
-}
-}
 \description{
-Starts a transform job. A transform job uses a trained model to get
-inferences on a dataset and saves these results to an Amazon S3 location
-that you specify.
+Starts a transform job. A transform job uses a trained model to get inferences on a dataset and saves these results to an Amazon S3 location that you specify.
 
-To perform batch transformations, you create a transform job and use the
-data that you have readily available.
-
-In the request body, you provide the following:
-\itemize{
-\item \code{TransformJobName} - Identifies the transform job. The name must be
-unique within an AWS Region in an AWS account.
-\item \code{ModelName} - Identifies the model to use. \code{ModelName} must be the
-name of an existing Amazon SageMaker model in the same AWS Region
-and AWS account. For information on creating a model, see
-\code{\link[=sagemaker_create_model]{create_model}}.
-\item \code{TransformInput} - Describes the dataset to be transformed and the
-Amazon S3 location where it is stored.
-\item \code{TransformOutput} - Identifies the Amazon S3 location where you want
-Amazon SageMaker to save the results from the transform job.
-\item \code{TransformResources} - Identifies the ML compute instances for the
-transform job.
+See \url{https://paws-r.github.io/docs/sagemaker/create_transform_job.html} for full documentation.
 }
-
-For more information about how batch transformation works, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html}{Batch Transform}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_transform_job(
-  TransformJobName = "string",
-  ModelName = "string",
-  MaxConcurrentTransforms = 123,
-  ModelClientConfig = list(
-    InvocationsTimeoutInSeconds = 123,
-    InvocationsMaxRetries = 123
-  ),
-  MaxPayloadInMB = 123,
-  BatchStrategy = "MultiRecord"|"SingleRecord",
-  Environment = list(
-    "string"
-  ),
-  TransformInput = list(
-    DataSource = list(
-      S3DataSource = list(
-        S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
-        S3Uri = "string"
-      )
-    ),
-    ContentType = "string",
-    CompressionType = "None"|"Gzip",
-    SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
-  ),
-  TransformOutput = list(
-    S3OutputPath = "string",
-    Accept = "string",
-    AssembleWith = "None"|"Line",
-    KmsKeyId = "string"
-  ),
-  TransformResources = list(
-    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge",
-    InstanceCount = 123,
-    VolumeKmsKeyId = "string"
-  ),
-  DataProcessing = list(
-    InputFilter = "string",
-    OutputFilter = "string",
-    JoinSource = "Input"|"None"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ExperimentConfig = list(
-    ExperimentName = "string",
-    TrialName = "string",
-    TrialComponentDisplayName = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

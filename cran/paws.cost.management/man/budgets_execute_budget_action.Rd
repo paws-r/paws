@@ -4,8 +4,7 @@
 \alias{budgets_execute_budget_action}
 \title{Executes a budget action}
 \usage{
-budgets_execute_budget_action(AccountId, BudgetName, ActionId,
-  ExecutionType)
+budgets_execute_budget_action(AccountId, BudgetName, ActionId, ExecutionType)
 }
 \arguments{
 \item{AccountId}{[required]}
@@ -16,26 +15,9 @@ budgets_execute_budget_action(AccountId, BudgetName, ActionId,
 
 \item{ExecutionType}{[required] The type of execution.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountId = "string",
-  BudgetName = "string",
-  ActionId = "string",
-  ExecutionType = "APPROVE_BUDGET_ACTION"|"RETRY_BUDGET_ACTION"|"REVERSE_BUDGET_ACTION"|"RESET_BUDGET_ACTION"
-)
-}
-}
 \description{
 Executes a budget action.
-}
-\section{Request syntax}{
-\preformatted{svc$execute_budget_action(
-  AccountId = "string",
-  BudgetName = "string",
-  ActionId = "string",
-  ExecutionType = "APPROVE_BUDGET_ACTION"|"RETRY_BUDGET_ACTION"|"REVERSE_BUDGET_ACTION"|"RESET_BUDGET_ACTION"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/budgets/execute_budget_action.html} for full documentation.
+}
 \keyword{internal}

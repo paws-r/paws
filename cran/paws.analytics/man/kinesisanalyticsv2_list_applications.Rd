@@ -4,44 +4,18 @@
 \alias{kinesisanalyticsv2_list_applications}
 \title{Returns a list of Kinesis Data Analytics applications in your account}
 \usage{
-kinesisanalyticsv2_list_applications(Limit, NextToken)
+kinesisanalyticsv2_list_applications(Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Limit}{The maximum number of applications to list.}
 
 \item{NextToken}{If a previous command returned a pagination token, pass it into this
 value to retrieve the next set of results. For more information about
-pagination, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html}{Using the AWS Command Line Interface's Pagination Options}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationSummaries = list(
-    list(
-      ApplicationName = "string",
-      ApplicationARN = "string",
-      ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING",
-      ApplicationVersionId = 123,
-      RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11"
-    )
-  ),
-  NextToken = "string"
-)
-}
+pagination, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html}{Using the Amazon Command Line Interface's Pagination Options}.}
 }
 \description{
-Returns a list of Kinesis Data Analytics applications in your account.
-For each application, the response includes the application name, Amazon
-Resource Name (ARN), and status.
+Returns a list of Kinesis Data Analytics applications in your account. For each application, the response includes the application name, Amazon Resource Name (ARN), and status.
 
-If you want detailed information about a specific application, use
-\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/list_applications.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_applications(
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

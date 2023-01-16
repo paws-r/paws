@@ -5,8 +5,12 @@
 \title{Returns the DNS aliases that are associated with the specified Amazon
 FSx for Windows File Server file system}
 \usage{
-fsx_describe_file_system_aliases(ClientRequestToken, FileSystemId,
-  MaxResults, NextToken)
+fsx_describe_file_system_aliases(
+  ClientRequestToken = NULL,
+  FileSystemId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ClientRequestToken}{}
@@ -24,33 +28,9 @@ the request and the service's internal maximum number of items per page.}
 operation (String). If a token is included in the request, the action
 continues the list from where the previous returning call left off.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Aliases = list(
-    list(
-      Name = "string",
-      Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the DNS aliases that are associated with the specified Amazon
-FSx for Windows File Server file system. A history of all DNS aliases
-that have been associated with and disassociated from the file system is
-available in the list of AdministrativeAction provided in the
-\code{\link[=fsx_describe_file_systems]{describe_file_systems}} operation response.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_file_system_aliases(
-  ClientRequestToken = "string",
-  FileSystemId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns the DNS aliases that are associated with the specified Amazon FSx for Windows File Server file system. A history of all DNS aliases that have been associated with and disassociated from the file system is available in the list of AdministrativeAction provided in the \code{\link[=fsx_describe_file_systems]{describe_file_systems}} operation response.
 
+See \url{https://paws-r.github.io/docs/fsx/describe_file_system_aliases.html} for full documentation.
+}
 \keyword{internal}

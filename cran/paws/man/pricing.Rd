@@ -7,7 +7,19 @@
 pricing(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,37 +28,40 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Price List Service API (AWS Price List Service) is a centralized and
-convenient way to programmatically query Amazon Web Services for
-services, products, and pricing information. The AWS Price List Service
-uses standardized product attributes such as \code{Location},
-\verb{Storage Class}, and \verb{Operating System}, and provides prices at the SKU
-level. You can use the AWS Price List Service to build cost control and
-scenario planning tools, reconcile billing data, forecast future spend
-for budgeting purposes, and provide cost benefit analysis that compare
-your internal workloads with AWS.
+Amazon Web Services Price List API is a centralized and convenient way
+to programmatically query Amazon Web Services for services, products,
+and pricing information. The Amazon Web Services Price List uses
+standardized product attributes such as \code{Location}, \verb{Storage Class}, and
+\verb{Operating System}, and provides prices at the SKU level. You can use
+the Amazon Web Services Price List to build cost control and scenario
+planning tools, reconcile billing data, forecast future spend for
+budgeting purposes, and provide cost benefit analysis that compare your
+internal workloads with Amazon Web Services.
 
 Use \code{GetServices} without a service code to retrieve the service codes
-for all AWS services, then \code{GetServices} with a service code to retreive
+for all AWS services, then \code{GetServices} with a service code to retrieve
 the attribute names for that service. After you have the service code
 and attribute names, you can use
-\code{\link[=pricing_get_attribute_values]{get_attribute_values}} to see what
+\code{get_attribute_values} to see what
 values are available for an attribute. With the service code and an
 attribute name and value, you can use
-\code{\link[=pricing_get_products]{get_products}} to find specific products that
+\code{get_products} to find specific products that
 you're interested in, such as an \code{AmazonEC2} instance, with a
 \verb{Provisioned IOPS} \code{volumeType}.
 
 Service Endpoint
 
-AWS Price List Service API provides the following two endpoints:
+Amazon Web Services Price List service API provides the following two
+endpoints:
 \itemize{
 \item https://api.pricing.us-east-1.amazonaws.com
 \item https://api.pricing.ap-south-1.amazonaws.com
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- pricing(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- pricing(
   config = list(
     credentials = list(
       creds = list(
@@ -54,27 +69,32 @@ AWS Price List Service API provides the following two endpoints:
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=pricing_describe_services]{describe_services} \tab Returns the metadata for one service or a list of the metadata for all services\cr
-\link[=pricing_get_attribute_values]{get_attribute_values} \tab Returns a list of attribute values\cr
-\link[=pricing_get_products]{get_products} \tab Returns a list of all products that match the filter criteria
+\link[paws.cost.management:pricing_describe_services]{describe_services} \tab Returns the metadata for one service or a list of the metadata for all services\cr
+\link[paws.cost.management:pricing_get_attribute_values]{get_attribute_values} \tab Returns a list of attribute values\cr
+\link[paws.cost.management:pricing_get_products]{get_products} \tab Returns a list of all products that match the filter criteria
 }
 }
 
 \examples{
 \dontrun{
 svc <- pricing()
+# Retrieves the service for the given Service Code.
 svc$describe_services(
   FormatVersion = "aws_v1",
   MaxResults = 1L,

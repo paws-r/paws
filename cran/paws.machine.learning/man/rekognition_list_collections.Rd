@@ -4,49 +4,16 @@
 \alias{rekognition_list_collections}
 \title{Returns list of collection IDs in your account}
 \usage{
-rekognition_list_collections(NextToken, MaxResults)
+rekognition_list_collections(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token from the previous response.}
 
 \item{MaxResults}{Maximum number of collection IDs to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CollectionIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  FaceModelVersions = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns list of collection IDs in your account. If the result is
-truncated, the response also provides a \code{NextToken} that you can use in
-the subsequent request to fetch the next set of collection IDs.
+Returns list of collection IDs in your account. If the result is truncated, the response also provides a \code{NextToken} that you can use in the subsequent request to fetch the next set of collection IDs.
 
-For an example, see Listing Collections in the Amazon Rekognition
-Developer Guide.
-
-This operation requires permissions to perform the
-\code{rekognition:ListCollections} action.
-}
-\section{Request syntax}{
-\preformatted{svc$list_collections(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation returns a list of Rekognition collections.
-svc$list_collections()
-}
-
+See \url{https://paws-r.github.io/docs/rekognition/list_collections.html} for full documentation.
 }
 \keyword{internal}

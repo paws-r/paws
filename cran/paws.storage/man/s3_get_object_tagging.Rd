@@ -4,97 +4,48 @@
 \alias{s3_get_object_tagging}
 \title{Returns the tag-set of an object}
 \usage{
-s3_get_object_tagging(Bucket, Key, VersionId, ExpectedBucketOwner)
+s3_get_object_tagging(
+  Bucket,
+  Key,
+  VersionId = NULL,
+  ExpectedBucketOwner = NULL,
+  RequestPayer = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name containing the object for which to get the tagging
 information.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Object key for which to get the tagging information.}
 
 \item{VersionId}{The versionId of the object for which to get the tagging information.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  VersionId = "string",
-  TagSet = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
+
+\item{RequestPayer}{}
 }
 \description{
-Returns the tag-set of an object. You send the GET request against the
-tagging subresource associated with the object.
+Returns the tag-set of an object. You send the GET request against the tagging subresource associated with the object.
 
-To use this operation, you must have permission to perform the
-\code{s3:GetObjectTagging} action. By default, the GET operation returns
-information about current version of an object. For a versioned bucket,
-you can have multiple versions of an object in your bucket. To retrieve
-tags of any other version, use the versionId query parameter. You also
-need permission for the \code{s3:GetObjectVersionTagging} action.
-
-By default, the bucket owner has this permission and can grant this
-permission to others.
-
-For information about the Amazon S3 object tagging feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html}{Object Tagging}.
-
-The following operation is related to
-\code{\link[=s3_get_object_tagging]{get_object_tagging}}:
-\itemize{
-\item \code{\link[=s3_put_object_tagging]{put_object_tagging}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_object_tagging(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example retrieves tag set of an object.
-svc$get_object_tagging(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
-)
-
-# The following example retrieves tag set of an object. The request
-# specifies object version.
-svc$get_object_tagging(
-  Bucket = "examplebucket",
-  Key = "exampleobject",
-  VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/get_object_tagging.html} for full documentation.
 }
 \keyword{internal}

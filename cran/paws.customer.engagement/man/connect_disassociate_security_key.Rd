@@ -8,26 +8,15 @@ change}
 connect_disassociate_security_key(InstanceId, AssociationId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{AssociationId}{[required] The existing association identifier that uniquely identifies the
 resource type and storage config for the given instance ID.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Deletes the specified security key.
+See \url{https://paws-r.github.io/docs/connect/disassociate_security_key.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_security_key(
-  InstanceId = "string",
-  AssociationId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,12 +4,17 @@
 \alias{glue_update_partition}
 \title{Updates a partition}
 \usage{
-glue_update_partition(CatalogId, DatabaseName, TableName,
-  PartitionValueList, PartitionInput)
+glue_update_partition(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  PartitionValueList,
+  PartitionInput
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partition to be updated resides. If
-none is provided, the AWS account ID is used by default.}
+none is provided, the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database in which the table in question resides.}
 
@@ -22,93 +27,9 @@ none is provided, the AWS account ID is used by default.}
 The \code{Values} property can't be changed. If you want to change the
 partition key values for a partition, delete and recreate the partition.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a partition.
-}
-\section{Request syntax}{
-\preformatted{svc$update_partition(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  PartitionValueList = list(
-    "string"
-  ),
-  PartitionInput = list(
-    Values = list(
-      "string"
-    ),
-    LastAccessTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    StorageDescriptor = list(
-      Columns = list(
-        list(
-          Name = "string",
-          Type = "string",
-          Comment = "string",
-          Parameters = list(
-            "string"
-          )
-        )
-      ),
-      Location = "string",
-      InputFormat = "string",
-      OutputFormat = "string",
-      Compressed = TRUE|FALSE,
-      NumberOfBuckets = 123,
-      SerdeInfo = list(
-        Name = "string",
-        SerializationLibrary = "string",
-        Parameters = list(
-          "string"
-        )
-      ),
-      BucketColumns = list(
-        "string"
-      ),
-      SortColumns = list(
-        list(
-          Column = "string",
-          SortOrder = 123
-        )
-      ),
-      Parameters = list(
-        "string"
-      ),
-      SkewedInfo = list(
-        SkewedColumnNames = list(
-          "string"
-        ),
-        SkewedColumnValues = list(
-          "string"
-        ),
-        SkewedColumnValueLocationMaps = list(
-          "string"
-        )
-      ),
-      StoredAsSubDirectories = TRUE|FALSE,
-      SchemaReference = list(
-        SchemaId = list(
-          SchemaArn = "string",
-          SchemaName = "string",
-          RegistryName = "string"
-        ),
-        SchemaVersionId = "string",
-        SchemaVersionNumber = 123
-      )
-    ),
-    Parameters = list(
-      "string"
-    ),
-    LastAnalyzedTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/update_partition.html} for full documentation.
+}
 \keyword{internal}

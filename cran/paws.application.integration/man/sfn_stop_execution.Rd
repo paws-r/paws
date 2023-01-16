@@ -4,7 +4,7 @@
 \alias{sfn_stop_execution}
 \title{Stops an execution}
 \usage{
-sfn_stop_execution(executionArn, error, cause)
+sfn_stop_execution(executionArn, error = NULL, cause = NULL)
 }
 \arguments{
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution to stop.}
@@ -13,26 +13,9 @@ sfn_stop_execution(executionArn, error, cause)
 
 \item{cause}{A more detailed explanation of the cause of the failure.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  stopDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Stops an execution.
 
-This API action is not supported by \code{EXPRESS} state machines.
+See \url{https://paws-r.github.io/docs/sfn/stop_execution.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_execution(
-  executionArn = "string",
-  error = "string",
-  cause = "string"
-)
-}
-}
-
 \keyword{internal}

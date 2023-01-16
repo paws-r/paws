@@ -5,8 +5,13 @@
 \title{Retrieve deliverability data for all the campaigns that used a specific
 domain to send email during a specified time range}
 \usage{
-pinpointemail_list_domain_deliverability_campaigns(StartDate, EndDate,
-  SubscribedDomain, NextToken, PageSize)
+pinpointemail_list_domain_deliverability_campaigns(
+  StartDate,
+  EndDate,
+  SubscribedDomain,
+  NextToken = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{StartDate}{[required] The first day, in Unix time format, that you want to obtain
@@ -30,58 +35,9 @@ operation. If the number of results is larger than the number that you
 specify in this parameter, the response includes a \code{NextToken} element,
 which you can use to obtain additional results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainDeliverabilityCampaigns = list(
-    list(
-      CampaignId = "string",
-      ImageUrl = "string",
-      Subject = "string",
-      FromAddress = "string",
-      SendingIps = list(
-        "string"
-      ),
-      FirstSeenDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastSeenDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      InboxCount = 123,
-      SpamCount = 123,
-      ReadRate = 123.0,
-      DeleteRate = 123.0,
-      ReadDeleteRate = 123.0,
-      ProjectedVolume = 123,
-      Esps = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieve deliverability data for all the campaigns that used a specific
-domain to send email during a specified time range. This data is
-available for a domain only if you enabled the Deliverability dashboard
-(\code{\link[=pinpointemail_put_deliverability_dashboard_option]{put_deliverability_dashboard_option}}
-operation) for the domain.
-}
-\section{Request syntax}{
-\preformatted{svc$list_domain_deliverability_campaigns(
-  StartDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  SubscribedDomain = "string",
-  NextToken = "string",
-  PageSize = 123
-)
-}
-}
+Retrieve deliverability data for all the campaigns that used a specific domain to send email during a specified time range. This data is available for a domain only if you enabled the Deliverability dashboard (\code{\link[=pinpointemail_put_deliverability_dashboard_option]{put_deliverability_dashboard_option}} operation) for the domain.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/list_domain_deliverability_campaigns.html} for full documentation.
+}
 \keyword{internal}

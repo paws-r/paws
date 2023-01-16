@@ -14,7 +14,10 @@ NULL
 #'
 #' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image whose creation you want to
 #' cancel.
-#' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
+#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
+#' the request. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -59,7 +62,13 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #'
 #' @description
 #' Creates a new component that can be used to build, validate, test, and
-#' assess your image.
+#' assess your image. The component is based on a YAML document that you
+#' specify using exactly one of the following methods:
+#' 
+#' -   Inline, using the `data` property in the request body.
+#' 
+#' -   A URL that points to a YAML document file stored in Amazon S3, using
+#'     the `uri` property in the request body.
 #'
 #' @usage
 #' imagebuilder_create_component(name, semanticVersion, description,
@@ -68,8 +77,21 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #'
 #' @param name &#91;required&#93; The name of the component.
 #' @param semanticVersion &#91;required&#93; The semantic version of the component. This version follows the semantic
-#' version syntax. For example, major.minor.patch. This could be versioned
-#' like software (2.0.1) or like a date (2019.12.01).
+#' version syntax.
+#' 
+#' The semantic version has four nodes:
+#' \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the
+#' first three, and can filter on all of them.
+#' 
+#' **Assignment:** For the first three nodes you can assign any positive
+#' integer value, including zero, with an upper limit of 2^30-1, or
+#' 1073741823 for each node. Image Builder automatically assigns the build
+#' number to the fourth node.
+#' 
+#' **Patterns:** You can use any numeric pattern that adheres to the
+#' assignment requirements for the nodes that you can assign. For example,
+#' you might choose a software version pattern, such as 1.0.0, or a date,
+#' such as 2021.01.01.
 #' @param description The description of the component. Describes the contents of the
 #' component.
 #' @param changeDescription The change description of the component. Describes what change has been
@@ -77,14 +99,18 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #' versions of this component.
 #' @param platform &#91;required&#93; The platform of the component.
 #' @param supportedOsVersions The operating system (OS) version supported by the component. If the OS
-#' information is available, a prefix match is performed against the parent
+#' information is available, a prefix match is performed against the base
 #' image OS version during image recipe creation.
-#' @param data The data of the component. Used to specify the data inline. Either
-#' `data` or `uri` can be used to specify the data within the component.
-#' @param uri The uri of the component. Must be an S3 URL and the requester must have
-#' permission to access the S3 bucket. If you use S3, you can specify
-#' component content up to your service quota. Either `data` or `uri` can
-#' be used to specify the data within the component.
+#' @param data Component `data` contains inline YAML document content for the
+#' component. Alternatively, you can specify the `uri` of a YAML document
+#' file stored in Amazon S3. However, you cannot specify both properties.
+#' @param uri The `uri` of a YAML component document file. This must be an S3 URL
+#' (`s3://bucket/key`), and the requester must have permission to access
+#' the S3 bucket it points to. If you use Amazon S3, you can specify
+#' component content up to your service quota.
+#' 
+#' Alternatively, you can specify the YAML document inline, using the
+#' component `data` property. You cannot specify both properties.
 #' @param kmsKeyId The ID of the KMS key that should be used to encrypt this component.
 #' @param tags The tags of the component.
 #' @param clientToken &#91;required&#93; The idempotency token of the component.
@@ -148,24 +174,40 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #'
 #' @usage
 #' imagebuilder_create_container_recipe(containerType, name, description,
-#'   semanticVersion, components, dockerfileTemplateData,
-#'   dockerfileTemplateUri, platformOverride, imageOsVersionOverride,
-#'   parentImage, tags, workingDirectory, targetRepository, kmsKeyId,
-#'   clientToken)
+#'   semanticVersion, components, instanceConfiguration,
+#'   dockerfileTemplateData, dockerfileTemplateUri, platformOverride,
+#'   imageOsVersionOverride, parentImage, tags, workingDirectory,
+#'   targetRepository, kmsKeyId, clientToken)
 #'
 #' @param containerType &#91;required&#93; The type of container to create.
 #' @param name &#91;required&#93; The name of the container recipe.
 #' @param description The description of the container recipe.
-#' @param semanticVersion &#91;required&#93; The semantic version of the container recipe
-#' (&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;).
+#' @param semanticVersion &#91;required&#93; The semantic version of the container recipe. This version follows the
+#' semantic version syntax.
+#' 
+#' The semantic version has four nodes:
+#' \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the
+#' first three, and can filter on all of them.
+#' 
+#' **Assignment:** For the first three nodes you can assign any positive
+#' integer value, including zero, with an upper limit of 2^30-1, or
+#' 1073741823 for each node. Image Builder automatically assigns the build
+#' number to the fourth node.
+#' 
+#' **Patterns:** You can use any numeric pattern that adheres to the
+#' assignment requirements for the nodes that you can assign. For example,
+#' you might choose a software version pattern, such as 1.0.0, or a date,
+#' such as 2021.01.01.
 #' @param components &#91;required&#93; Components for build and test that are included in the container recipe.
-#' @param dockerfileTemplateData &#91;required&#93; The Dockerfile template used to build your image as an inline data blob.
-#' @param dockerfileTemplateUri The S3 URI for the Dockerfile that will be used to build your container
+#' @param instanceConfiguration A group of options that can be used to configure an instance for
+#' building and testing container images.
+#' @param dockerfileTemplateData The Dockerfile template used to build your image as an inline data blob.
+#' @param dockerfileTemplateUri The Amazon S3 URI for the Dockerfile that will be used to build your
+#' container image.
+#' @param platformOverride Specifies the operating system platform when you use a custom base
 #' image.
-#' @param platformOverride Specifies the operating system platform when you use a custom source
-#' image.
-#' @param imageOsVersionOverride Specifies the operating system version for the source image.
-#' @param parentImage &#91;required&#93; The source image for the container recipe.
+#' @param imageOsVersionOverride Specifies the operating system version for the base image.
+#' @param parentImage &#91;required&#93; The base image for the container recipe.
 #' @param tags Tags that are attached to the container recipe.
 #' @param workingDirectory The working directory for use during build and test workflows.
 #' @param targetRepository &#91;required&#93; The destination repository for the container image.
@@ -191,7 +233,35 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #'   semanticVersion = "string",
 #'   components = list(
 #'     list(
-#'       componentArn = "string"
+#'       componentArn = "string",
+#'       parameters = list(
+#'         list(
+#'           name = "string",
+#'           value = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   instanceConfiguration = list(
+#'     image = "string",
+#'     blockDeviceMappings = list(
+#'       list(
+#'         deviceName = "string",
+#'         ebs = list(
+#'           encrypted = TRUE|FALSE,
+#'           deleteOnTermination = TRUE|FALSE,
+#'           iops = 123,
+#'           kmsKeyId = "string",
+#'           snapshotId = "string",
+#'           volumeSize = 123,
+#'           volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1",
+#'           throughput = 123
+#'         ),
+#'         virtualName = "string",
+#'         noDevice = "string"
+#'       )
 #'     )
 #'   ),
 #'   dockerfileTemplateData = "string",
@@ -215,14 +285,14 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_container_recipe
-imagebuilder_create_container_recipe <- function(containerType, name, description = NULL, semanticVersion, components, dockerfileTemplateData, dockerfileTemplateUri = NULL, platformOverride = NULL, imageOsVersionOverride = NULL, parentImage, tags = NULL, workingDirectory = NULL, targetRepository, kmsKeyId = NULL, clientToken) {
+imagebuilder_create_container_recipe <- function(containerType, name, description = NULL, semanticVersion, components, instanceConfiguration = NULL, dockerfileTemplateData = NULL, dockerfileTemplateUri = NULL, platformOverride = NULL, imageOsVersionOverride = NULL, parentImage, tags = NULL, workingDirectory = NULL, targetRepository, kmsKeyId = NULL, clientToken) {
   op <- new_operation(
     name = "CreateContainerRecipe",
     http_method = "PUT",
     http_path = "/CreateContainerRecipe",
     paginator = list()
   )
-  input <- .imagebuilder$create_container_recipe_input(containerType = containerType, name = name, description = description, semanticVersion = semanticVersion, components = components, dockerfileTemplateData = dockerfileTemplateData, dockerfileTemplateUri = dockerfileTemplateUri, platformOverride = platformOverride, imageOsVersionOverride = imageOsVersionOverride, parentImage = parentImage, tags = tags, workingDirectory = workingDirectory, targetRepository = targetRepository, kmsKeyId = kmsKeyId, clientToken = clientToken)
+  input <- .imagebuilder$create_container_recipe_input(containerType = containerType, name = name, description = description, semanticVersion = semanticVersion, components = components, instanceConfiguration = instanceConfiguration, dockerfileTemplateData = dockerfileTemplateData, dockerfileTemplateUri = dockerfileTemplateUri, platformOverride = platformOverride, imageOsVersionOverride = imageOsVersionOverride, parentImage = parentImage, tags = tags, workingDirectory = workingDirectory, targetRepository = targetRepository, kmsKeyId = kmsKeyId, clientToken = clientToken)
   output <- .imagebuilder$create_container_recipe_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)
@@ -282,6 +352,12 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #'           ),
 #'           userGroups = list(
 #'             "string"
+#'           ),
+#'           organizationArns = list(
+#'             "string"
+#'           ),
+#'           organizationalUnitArns = list(
+#'             "string"
 #'           )
 #'         )
 #'       ),
@@ -297,6 +373,34 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #'       ),
 #'       licenseConfigurationArns = list(
 #'         "string"
+#'       ),
+#'       launchTemplateConfigurations = list(
+#'         list(
+#'           launchTemplateId = "string",
+#'           accountId = "string",
+#'           setDefaultVersion = TRUE|FALSE
+#'         )
+#'       ),
+#'       s3ExportConfiguration = list(
+#'         roleName = "string",
+#'         diskImageFormat = "VMDK"|"RAW"|"VHD",
+#'         s3Bucket = "string",
+#'         s3Prefix = "string"
+#'       ),
+#'       fastLaunchConfigurations = list(
+#'         list(
+#'           enabled = TRUE|FALSE,
+#'           snapshotConfiguration = list(
+#'             targetResourceCount = 123
+#'           ),
+#'           maxParallelLaunches = 123,
+#'           launchTemplate = list(
+#'             launchTemplateId = "string",
+#'             launchTemplateName = "string",
+#'             launchTemplateVersion = "string"
+#'           ),
+#'           accountId = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -332,7 +436,8 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' @description
 #' Creates a new image. This request will create a new image along with all
 #' of the configured output resources defined in the distribution
-#' configuration.
+#' configuration. You must specify exactly one recipe for your image, using
+#' either a ContainerRecipeArn or an ImageRecipeArn.
 #'
 #' @usage
 #' imagebuilder_create_image(imageRecipeArn, containerRecipeArn,
@@ -464,6 +569,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #'   enhancedImageMetadataEnabled = TRUE|FALSE,
 #'   schedule = list(
 #'     scheduleExpression = "string",
+#'     timezone = "string",
 #'     pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
 #'   ),
 #'   status = "DISABLED"|"ENABLED",
@@ -503,23 +609,39 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @usage
 #' imagebuilder_create_image_recipe(name, description, semanticVersion,
 #'   components, parentImage, blockDeviceMappings, tags, workingDirectory,
-#'   clientToken)
+#'   additionalInstanceConfiguration, clientToken)
 #'
 #' @param name &#91;required&#93; The name of the image recipe.
 #' @param description The description of the image recipe.
-#' @param semanticVersion &#91;required&#93; The semantic version of the image recipe.
+#' @param semanticVersion &#91;required&#93; The semantic version of the image recipe. This version follows the
+#' semantic version syntax.
+#' 
+#' The semantic version has four nodes:
+#' \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the
+#' first three, and can filter on all of them.
+#' 
+#' **Assignment:** For the first three nodes you can assign any positive
+#' integer value, including zero, with an upper limit of 2^30-1, or
+#' 1073741823 for each node. Image Builder automatically assigns the build
+#' number to the fourth node.
+#' 
+#' **Patterns:** You can use any numeric pattern that adheres to the
+#' assignment requirements for the nodes that you can assign. For example,
+#' you might choose a software version pattern, such as 1.0.0, or a date,
+#' such as 2021.01.01.
 #' @param components &#91;required&#93; The components of the image recipe.
-#' @param parentImage &#91;required&#93; The parent image of the image recipe. The value of the string can be the
-#' ARN of the parent image or an AMI ID. The format for the ARN follows
-#' this example:
-#' `arn:aws:imagebuilder:us-west-2:aws:image/windows-server-2016-english-full-base-x86/xxxx.x.x`.
+#' @param parentImage &#91;required&#93; The base image of the image recipe. The value of the string can be the
+#' ARN of the base image or an AMI ID. The format for the ARN follows this
+#' example:
+#' `arn:aws:imagebuilder:us-west-2:aws:image/windows-server-2016-english-full-base-x86/x.x.x`.
 #' You can provide the specific version that you want to use, or you can
 #' use a wildcard in all of the fields. If you enter an AMI ID for the
 #' string value, you must have access to the AMI, and the AMI must be in
 #' the same Region in which you are using Image Builder.
 #' @param blockDeviceMappings The block device mappings of the image recipe.
 #' @param tags The tags of the image recipe.
-#' @param workingDirectory The working directory to be used during build and test workflows.
+#' @param workingDirectory The working directory used during build and test workflows.
+#' @param additionalInstanceConfiguration Specify additional settings and launch scripts for your build instances.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
 #'
 #' @return
@@ -540,7 +662,15 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #'   semanticVersion = "string",
 #'   components = list(
 #'     list(
-#'       componentArn = "string"
+#'       componentArn = "string",
+#'       parameters = list(
+#'         list(
+#'           name = "string",
+#'           value = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   parentImage = "string",
@@ -554,7 +684,8 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #'         kmsKeyId = "string",
 #'         snapshotId = "string",
 #'         volumeSize = 123,
-#'         volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"
+#'         volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1",
+#'         throughput = 123
 #'       ),
 #'       virtualName = "string",
 #'       noDevice = "string"
@@ -564,6 +695,12 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #'     "string"
 #'   ),
 #'   workingDirectory = "string",
+#'   additionalInstanceConfiguration = list(
+#'     systemsManagerAgent = list(
+#'       uninstallAfterBuild = TRUE|FALSE
+#'     ),
+#'     userDataOverride = "string"
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -571,14 +708,14 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_image_recipe
-imagebuilder_create_image_recipe <- function(name, description = NULL, semanticVersion, components, parentImage, blockDeviceMappings = NULL, tags = NULL, workingDirectory = NULL, clientToken) {
+imagebuilder_create_image_recipe <- function(name, description = NULL, semanticVersion, components, parentImage, blockDeviceMappings = NULL, tags = NULL, workingDirectory = NULL, additionalInstanceConfiguration = NULL, clientToken) {
   op <- new_operation(
     name = "CreateImageRecipe",
     http_method = "PUT",
     http_path = "/CreateImageRecipe",
     paginator = list()
   )
-  input <- .imagebuilder$create_image_recipe_input(name = name, description = description, semanticVersion = semanticVersion, components = components, parentImage = parentImage, blockDeviceMappings = blockDeviceMappings, tags = tags, workingDirectory = workingDirectory, clientToken = clientToken)
+  input <- .imagebuilder$create_image_recipe_input(name = name, description = description, semanticVersion = semanticVersion, components = components, parentImage = parentImage, blockDeviceMappings = blockDeviceMappings, tags = tags, workingDirectory = workingDirectory, additionalInstanceConfiguration = additionalInstanceConfiguration, clientToken = clientToken)
   output <- .imagebuilder$create_image_recipe_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)
@@ -598,8 +735,8 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' @usage
 #' imagebuilder_create_infrastructure_configuration(name, description,
 #'   instanceTypes, instanceProfileName, securityGroupIds, subnetId, logging,
-#'   keyPair, terminateInstanceOnFailure, snsTopicArn, resourceTags, tags,
-#'   clientToken)
+#'   keyPair, terminateInstanceOnFailure, snsTopicArn, resourceTags,
+#'   instanceMetadataOptions, tags, clientToken)
 #'
 #' @param name &#91;required&#93; The name of the infrastructure configuration.
 #' @param description The description of the infrastructure configuration.
@@ -607,20 +744,28 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' one or more instance types to use for this build. The service will pick
 #' one of these instance types based on availability.
 #' @param instanceProfileName &#91;required&#93; The instance profile to associate with the instance used to customize
-#' your EC2 AMI.
+#' your Amazon EC2 AMI.
 #' @param securityGroupIds The security group IDs to associate with the instance used to customize
-#' your EC2 AMI.
-#' @param subnetId The subnet ID in which to place the instance used to customize your EC2
-#' AMI.
+#' your Amazon EC2 AMI.
+#' @param subnetId The subnet ID in which to place the instance used to customize your
+#' Amazon EC2 AMI.
 #' @param logging The logging configuration of the infrastructure configuration.
-#' @param keyPair The key pair of the infrastructure configuration. This can be used to
+#' @param keyPair The key pair of the infrastructure configuration. You can use this to
 #' log on to and debug the instance used to create your image.
 #' @param terminateInstanceOnFailure The terminate instance on failure setting of the infrastructure
 #' configuration. Set to false if you want Image Builder to retain the
 #' instance used to configure your AMI if the build or test phase of your
 #' workflow fails.
-#' @param snsTopicArn The SNS topic on which to send image build events.
+#' @param snsTopicArn The Amazon Resource Name (ARN) for the SNS topic to which we send image
+#' build event notifications.
+#' 
+#' EC2 Image Builder is unable to send notifications to SNS topics that are
+#' encrypted using keys from other accounts. The key that is used to
+#' encrypt the SNS topic must reside in the account that the Image Builder
+#' service runs under.
 #' @param resourceTags The tags attached to the resource created by Image Builder.
+#' @param instanceMetadataOptions The instance metadata options that you can set for the HTTP requests
+#' that pipeline builds use to launch EC2 build and test instances.
 #' @param tags The tags of the infrastructure configuration.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
 #'
@@ -659,6 +804,10 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #'   resourceTags = list(
 #'     "string"
 #'   ),
+#'   instanceMetadataOptions = list(
+#'     httpTokens = "string",
+#'     httpPutResponseHopLimit = 123
+#'   ),
 #'   tags = list(
 #'     "string"
 #'   ),
@@ -669,14 +818,14 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_infrastructure_configuration
-imagebuilder_create_infrastructure_configuration <- function(name, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, resourceTags = NULL, tags = NULL, clientToken) {
+imagebuilder_create_infrastructure_configuration <- function(name, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, resourceTags = NULL, instanceMetadataOptions = NULL, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateInfrastructureConfiguration",
     http_method = "PUT",
     http_path = "/CreateInfrastructureConfiguration",
     paginator = list()
   )
-  input <- .imagebuilder$create_infrastructure_configuration_input(name = name, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, tags = tags, clientToken = clientToken)
+  input <- .imagebuilder$create_infrastructure_configuration_input(name = name, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_infrastructure_configuration_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)
@@ -826,15 +975,31 @@ imagebuilder_delete_distribution_configuration <- function(distributionConfigura
 }
 .imagebuilder$operations$delete_distribution_configuration <- imagebuilder_delete_distribution_configuration
 
-#' Deletes an image
+#' Deletes an Image Builder image resource
 #'
 #' @description
-#' Deletes an image.
+#' Deletes an Image Builder image resource. This does not delete any EC2
+#' AMIs or ECR container images that are created during the image build
+#' process. You must clean those up separately, using the appropriate
+#' Amazon EC2 or Amazon ECR console actions, or API or CLI commands.
+#' 
+#' -   To deregister an EC2 Linux AMI, see [Deregister your Linux
+#'     AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html)
+#'     in the *Amazon EC2 User Guide* .
+#' 
+#' -   To deregister an EC2 Windows AMI, see [Deregister your Windows
+#'     AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/deregister-ami.html)
+#'     in the *Amazon EC2 Windows Guide* .
+#' 
+#' -   To delete a container image from Amazon ECR, see [Deleting an
+#'     image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/delete_image.html)
+#'     in the *Amazon ECR User Guide*.
 #'
 #' @usage
 #' imagebuilder_delete_image(imageBuildVersionArn)
 #'
-#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image to delete.
+#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the Image Builder image resource to
+#' delete.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1039,6 +1204,20 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 #'     supportedOsVersions = list(
 #'       "string"
 #'     ),
+#'     state = list(
+#'       status = "DEPRECATED",
+#'       reason = "string"
+#'     ),
+#'     parameters = list(
+#'       list(
+#'         name = "string",
+#'         type = "string",
+#'         defaultValue = list(
+#'           "string"
+#'         ),
+#'         description = "string"
+#'       )
+#'     ),
 #'     owner = "string",
 #'     data = "string",
 #'     kmsKeyId = "string",
@@ -1150,7 +1329,35 @@ imagebuilder_get_component_policy <- function(componentArn) {
 #'     version = "string",
 #'     components = list(
 #'       list(
-#'         componentArn = "string"
+#'         componentArn = "string",
+#'         parameters = list(
+#'           list(
+#'             name = "string",
+#'             value = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     instanceConfiguration = list(
+#'       image = "string",
+#'       blockDeviceMappings = list(
+#'         list(
+#'           deviceName = "string",
+#'           ebs = list(
+#'             encrypted = TRUE|FALSE,
+#'             deleteOnTermination = TRUE|FALSE,
+#'             iops = 123,
+#'             kmsKeyId = "string",
+#'             snapshotId = "string",
+#'             volumeSize = 123,
+#'             volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1",
+#'             throughput = 123
+#'           ),
+#'           virtualName = "string",
+#'           noDevice = "string"
+#'         )
 #'       )
 #'     ),
 #'     dockerfileTemplateData = "string",
@@ -1284,6 +1491,12 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
 #'             ),
 #'             userGroups = list(
 #'               "string"
+#'             ),
+#'             organizationArns = list(
+#'               "string"
+#'             ),
+#'             organizationalUnitArns = list(
+#'               "string"
 #'             )
 #'           )
 #'         ),
@@ -1299,6 +1512,34 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
 #'         ),
 #'         licenseConfigurationArns = list(
 #'           "string"
+#'         ),
+#'         launchTemplateConfigurations = list(
+#'           list(
+#'             launchTemplateId = "string",
+#'             accountId = "string",
+#'             setDefaultVersion = TRUE|FALSE
+#'           )
+#'         ),
+#'         s3ExportConfiguration = list(
+#'           roleName = "string",
+#'           diskImageFormat = "VMDK"|"RAW"|"VHD",
+#'           s3Bucket = "string",
+#'           s3Prefix = "string"
+#'         ),
+#'         fastLaunchConfigurations = list(
+#'           list(
+#'             enabled = TRUE|FALSE,
+#'             snapshotConfiguration = list(
+#'               targetResourceCount = 123
+#'             ),
+#'             maxParallelLaunches = 123,
+#'             launchTemplate = list(
+#'               launchTemplateId = "string",
+#'               launchTemplateName = "string",
+#'               launchTemplateVersion = "string"
+#'             ),
+#'             accountId = "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1376,7 +1617,15 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'       version = "string",
 #'       components = list(
 #'         list(
-#'           componentArn = "string"
+#'           componentArn = "string",
+#'           parameters = list(
+#'             list(
+#'               name = "string",
+#'               value = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       parentImage = "string",
@@ -1390,7 +1639,8 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'             kmsKeyId = "string",
 #'             snapshotId = "string",
 #'             volumeSize = 123,
-#'             volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"
+#'             volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1",
+#'             throughput = 123
 #'           ),
 #'           virtualName = "string",
 #'           noDevice = "string"
@@ -1400,7 +1650,13 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       workingDirectory = "string"
+#'       workingDirectory = "string",
+#'       additionalInstanceConfiguration = list(
+#'         systemsManagerAgent = list(
+#'           uninstallAfterBuild = TRUE|FALSE
+#'         ),
+#'         userDataOverride = "string"
+#'       )
 #'     ),
 #'     containerRecipe = list(
 #'       arn = "string",
@@ -1412,7 +1668,35 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'       version = "string",
 #'       components = list(
 #'         list(
-#'           componentArn = "string"
+#'           componentArn = "string",
+#'           parameters = list(
+#'             list(
+#'               name = "string",
+#'               value = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       instanceConfiguration = list(
+#'         image = "string",
+#'         blockDeviceMappings = list(
+#'           list(
+#'             deviceName = "string",
+#'             ebs = list(
+#'               encrypted = TRUE|FALSE,
+#'               deleteOnTermination = TRUE|FALSE,
+#'               iops = 123,
+#'               kmsKeyId = "string",
+#'               snapshotId = "string",
+#'               volumeSize = 123,
+#'               volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1",
+#'               throughput = 123
+#'             ),
+#'             virtualName = "string",
+#'             noDevice = "string"
+#'           )
 #'         )
 #'       ),
 #'       dockerfileTemplateData = "string",
@@ -1457,6 +1741,10 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'       resourceTags = list(
 #'         "string"
 #'       ),
+#'       instanceMetadataOptions = list(
+#'         httpTokens = "string",
+#'         httpPutResponseHopLimit = 123
+#'       ),
 #'       tags = list(
 #'         "string"
 #'       )
@@ -1484,6 +1772,12 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'               ),
 #'               userGroups = list(
 #'                 "string"
+#'               ),
+#'               organizationArns = list(
+#'                 "string"
+#'               ),
+#'               organizationalUnitArns = list(
+#'                 "string"
 #'               )
 #'             )
 #'           ),
@@ -1499,6 +1793,34 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'           ),
 #'           licenseConfigurationArns = list(
 #'             "string"
+#'           ),
+#'           launchTemplateConfigurations = list(
+#'             list(
+#'               launchTemplateId = "string",
+#'               accountId = "string",
+#'               setDefaultVersion = TRUE|FALSE
+#'             )
+#'           ),
+#'           s3ExportConfiguration = list(
+#'             roleName = "string",
+#'             diskImageFormat = "VMDK"|"RAW"|"VHD",
+#'             s3Bucket = "string",
+#'             s3Prefix = "string"
+#'           ),
+#'           fastLaunchConfigurations = list(
+#'             list(
+#'               enabled = TRUE|FALSE,
+#'               snapshotConfiguration = list(
+#'                 targetResourceCount = 123
+#'               ),
+#'               maxParallelLaunches = 123,
+#'               launchTemplate = list(
+#'                 launchTemplateId = "string",
+#'                 launchTemplateName = "string",
+#'                 launchTemplateVersion = "string"
+#'               ),
+#'               accountId = "string"
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -1539,7 +1861,8 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'     ),
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT"
 #'   )
 #' )
 #' ```
@@ -1603,6 +1926,7 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
 #'     ),
 #'     schedule = list(
 #'       scheduleExpression = "string",
+#'       timezone = "string",
 #'       pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
 #'     ),
 #'     status = "DISABLED"|"ENABLED",
@@ -1717,7 +2041,15 @@ imagebuilder_get_image_policy <- function(imageArn) {
 #'     version = "string",
 #'     components = list(
 #'       list(
-#'         componentArn = "string"
+#'         componentArn = "string",
+#'         parameters = list(
+#'           list(
+#'             name = "string",
+#'             value = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     parentImage = "string",
@@ -1731,7 +2063,8 @@ imagebuilder_get_image_policy <- function(imageArn) {
 #'           kmsKeyId = "string",
 #'           snapshotId = "string",
 #'           volumeSize = 123,
-#'           volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"
+#'           volumeType = "standard"|"io1"|"io2"|"gp2"|"gp3"|"sc1"|"st1",
+#'           throughput = 123
 #'         ),
 #'         virtualName = "string",
 #'         noDevice = "string"
@@ -1741,7 +2074,13 @@ imagebuilder_get_image_policy <- function(imageArn) {
 #'     tags = list(
 #'       "string"
 #'     ),
-#'     workingDirectory = "string"
+#'     workingDirectory = "string",
+#'     additionalInstanceConfiguration = list(
+#'       systemsManagerAgent = list(
+#'         uninstallAfterBuild = TRUE|FALSE
+#'       ),
+#'       userDataOverride = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1863,6 +2202,10 @@ imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
 #'     resourceTags = list(
 #'       "string"
 #'     ),
+#'     instanceMetadataOptions = list(
+#'       httpTokens = "string",
+#'       httpPutResponseHopLimit = 123
+#'     ),
 #'     tags = list(
 #'       "string"
 #'     )
@@ -1909,23 +2252,32 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
 #'
 #' @param name &#91;required&#93; The name of the component.
 #' @param semanticVersion &#91;required&#93; The semantic version of the component. This version follows the semantic
-#' version syntax. For example, major.minor.patch. This could be versioned
-#' like software (2.0.1) or like a date (2019.12.01).
+#' version syntax.
+#' 
+#' The semantic version has four nodes:
+#' \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the
+#' first three, and can filter on all of them.
+#' 
+#' **Filtering:** With semantic versioning, you have the flexibility to use
+#' wildcards (x) to specify the most recent versions or nodes when
+#' selecting the base image or components for your recipe. When you use a
+#' wildcard in any node, all nodes to the right of the first wildcard must
+#' also be wildcards.
 #' @param description The description of the component. Describes the contents of the
 #' component.
 #' @param changeDescription The change description of the component. Describes what change has been
 #' made in this version, or what makes this version different from other
 #' versions of this component.
 #' @param type &#91;required&#93; The type of the component denotes whether the component is used to build
-#' the image or only to test it.
+#' the image, or only to test it.
 #' @param format &#91;required&#93; The format of the resource that you want to import as a component.
 #' @param platform &#91;required&#93; The platform of the component.
 #' @param data The data of the component. Used to specify the data inline. Either
 #' `data` or `uri` can be used to specify the data within the component.
-#' @param uri The uri of the component. Must be an S3 URL and the requester must have
-#' permission to access the S3 bucket. If you use S3, you can specify
-#' component content up to your service quota. Either `data` or `uri` can
-#' be used to specify the data within the component.
+#' @param uri The uri of the component. Must be an Amazon S3 URL and the requester
+#' must have permission to access the Amazon S3 bucket. If you use Amazon
+#' S3, you can specify component content up to your service quota. Either
+#' `data` or `uri` can be used to specify the data within the component.
 #' @param kmsKeyId The ID of the KMS key that should be used to encrypt this component.
 #' @param tags The tags of the component.
 #' @param clientToken &#91;required&#93; The idempotency token of the component.
@@ -1980,12 +2332,120 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 }
 .imagebuilder$operations$import_component <- imagebuilder_import_component
 
+#' When you export your virtual machine (VM) from its virtualization
+#' environment, that process creates a set of one or more disk container
+#' files that act as snapshots of your VM’s environment, settings, and data
+#'
+#' @description
+#' When you export your virtual machine (VM) from its virtualization
+#' environment, that process creates a set of one or more disk container
+#' files that act as snapshots of your VM’s environment, settings, and
+#' data. The Amazon EC2 API
+#' [ImportImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html)
+#' action uses those files to import your VM and create an AMI. To import
+#' using the CLI command, see
+#' [import-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html)
+#' 
+#' You can reference the task ID from the VM import to pull in the AMI that
+#' the import created as the base image for your Image Builder recipe.
+#'
+#' @usage
+#' imagebuilder_import_vm_image(name, semanticVersion, description,
+#'   platform, osVersion, vmImportTaskId, tags, clientToken)
+#'
+#' @param name &#91;required&#93; The name of the base image that is created by the import process.
+#' @param semanticVersion &#91;required&#93; The semantic version to attach to the base image that was created during
+#' the import process. This version follows the semantic version syntax.
+#' 
+#' The semantic version has four nodes:
+#' \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the
+#' first three, and can filter on all of them.
+#' 
+#' **Assignment:** For the first three nodes you can assign any positive
+#' integer value, including zero, with an upper limit of 2^30-1, or
+#' 1073741823 for each node. Image Builder automatically assigns the build
+#' number to the fourth node.
+#' 
+#' **Patterns:** You can use any numeric pattern that adheres to the
+#' assignment requirements for the nodes that you can assign. For example,
+#' you might choose a software version pattern, such as 1.0.0, or a date,
+#' such as 2021.01.01.
+#' @param description The description for the base image that is created by the import
+#' process.
+#' @param platform &#91;required&#93; The operating system platform for the imported VM.
+#' @param osVersion The operating system version for the imported VM.
+#' @param vmImportTaskId &#91;required&#93; The `importTaskId` (API) or `ImportTaskId` (CLI) from the Amazon EC2 VM
+#' import process. Image Builder retrieves information from the import
+#' process to pull in the AMI that is created from the VM source as the
+#' base image for your recipe.
+#' @param tags Tags that are attached to the import resources.
+#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
+#' the request. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' in the *Amazon EC2 API Reference*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imageArn = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$import_vm_image(
+#'   name = "string",
+#'   semanticVersion = "string",
+#'   description = "string",
+#'   platform = "Windows"|"Linux",
+#'   osVersion = "string",
+#'   vmImportTaskId = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_import_vm_image
+imagebuilder_import_vm_image <- function(name, semanticVersion, description = NULL, platform, osVersion = NULL, vmImportTaskId, tags = NULL, clientToken) {
+  op <- new_operation(
+    name = "ImportVmImage",
+    http_method = "PUT",
+    http_path = "/ImportVmImage",
+    paginator = list()
+  )
+  input <- .imagebuilder$import_vm_image_input(name = name, semanticVersion = semanticVersion, description = description, platform = platform, osVersion = osVersion, vmImportTaskId = vmImportTaskId, tags = tags, clientToken = clientToken)
+  output <- .imagebuilder$import_vm_image_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$import_vm_image <- imagebuilder_import_vm_image
+
 #' Returns the list of component build versions for the specified semantic
 #' version
 #'
 #' @description
 #' Returns the list of component build versions for the specified semantic
 #' version.
+#' 
+#' The semantic version has four nodes:
+#' \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the
+#' first three, and can filter on all of them.
+#' 
+#' **Filtering:** With semantic versioning, you have the flexibility to use
+#' wildcards (x) to specify the most recent versions or nodes when
+#' selecting the base image or components for your recipe. When you use a
+#' wildcard in any node, all nodes to the right of the first wildcard must
+#' also be wildcards.
 #'
 #' @usage
 #' imagebuilder_list_component_build_versions(componentVersionArn,
@@ -2010,6 +2470,10 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #'       platform = "Windows"|"Linux",
 #'       supportedOsVersions = list(
 #'         "string"
+#'       ),
+#'       state = list(
+#'         status = "DEPRECATED",
+#'         reason = "string"
 #'       ),
 #'       type = "BUILD"|"TEST",
 #'       owner = "string",
@@ -2060,6 +2524,16 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' @description
 #' Returns the list of component build versions for the specified semantic
 #' version.
+#' 
+#' The semantic version has four nodes:
+#' \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the
+#' first three, and can filter on all of them.
+#' 
+#' **Filtering:** With semantic versioning, you have the flexibility to use
+#' wildcards (x) to specify the most recent versions or nodes when
+#' selecting the base image or components for your recipe. When you use a
+#' wildcard in any node, all nodes to the right of the first wildcard must
+#' also be wildcards.
 #'
 #' @usage
 #' imagebuilder_list_components(owner, filters, byName, maxResults,
@@ -2070,9 +2544,20 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' this field to specify if you want to view components owned by yourself,
 #' by Amazon, or those components that have been shared with you by other
 #' customers.
-#' @param filters The filters.
-#' @param byName Returns the list of component build versions for the specified semantic
-#' version.
+#' @param filters Use the following filters to streamline results:
+#' 
+#' -   `description`
+#' 
+#' -   `name`
+#' 
+#' -   `platform`
+#' 
+#' -   `supportedOsVersion`
+#' 
+#' -   `type`
+#' 
+#' -   `version`
+#' @param byName Returns the list of component build versions for the specified name.
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -2151,8 +2636,15 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #' @param owner Returns container recipes belonging to the specified owner, that have
 #' been shared with you. You can omit this field to return container
 #' recipes belonging to your account.
-#' @param filters Request filters that are used to narrow the list of container images
-#' that are returned.
+#' @param filters Use the following filters to streamline results:
+#' 
+#' -   `containerType`
+#' 
+#' -   `name`
+#' 
+#' -   `parentImage`
+#' 
+#' -   `platform`
 #' @param maxResults The maximum number of results to return in the list.
 #' @param nextToken Provides a token for pagination, which determines where to begin the
 #' next set of results when the current set reaches the maximum for one
@@ -2227,9 +2719,7 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
 #' imagebuilder_list_distribution_configurations(filters, maxResults,
 #'   nextToken)
 #'
-#' @param filters The filters.
-#' 
-#' -   `name` - The name of this distribution configuration.
+#' @param filters You can filter on `name` to streamline results.
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -2305,7 +2795,17 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 #'
 #' @param imageVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image whose build versions you
 #' want to retrieve.
-#' @param filters The filters.
+#' @param filters Use the following filters to streamline results:
+#' 
+#' -   `name`
+#' 
+#' -   `osVersion`
+#' 
+#' -   `platform`
+#' 
+#' -   `type`
+#' 
+#' -   `version`
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -2354,7 +2854,8 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 #'       ),
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2398,6 +2899,70 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
 }
 .imagebuilder$operations$list_image_build_versions <- imagebuilder_list_image_build_versions
 
+#' List the Packages that are associated with an Image Build Version, as
+#' determined by Amazon Web Services Systems Manager Inventory at build
+#' time
+#'
+#' @description
+#' List the Packages that are associated with an Image Build Version, as
+#' determined by Amazon Web Services Systems Manager Inventory at build
+#' time.
+#'
+#' @usage
+#' imagebuilder_list_image_packages(imageBuildVersionArn, maxResults,
+#'   nextToken)
+#'
+#' @param imageBuildVersionArn &#91;required&#93; Filter results for the ListImagePackages request by the Image Build
+#' Version ARN
+#' @param maxResults The maxiumum number of results to return from the ListImagePackages
+#' request.
+#' @param nextToken A token to specify where to start paginating. This is the NextToken from
+#' a previously truncated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   imagePackageList = list(
+#'     list(
+#'       packageName = "string",
+#'       packageVersion = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_image_packages(
+#'   imageBuildVersionArn = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_list_image_packages
+imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListImagePackages",
+    http_method = "POST",
+    http_path = "/ListImagePackages",
+    paginator = list()
+  )
+  input <- .imagebuilder$list_image_packages_input(imageBuildVersionArn = imageBuildVersionArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .imagebuilder$list_image_packages_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$list_image_packages <- imagebuilder_list_image_packages
+
 #' Returns a list of images created by the specified pipeline
 #'
 #' @description
@@ -2409,7 +2974,11 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline whose images you
 #' want to view.
-#' @param filters The filters.
+#' @param filters Use the following filters to streamline results:
+#' 
+#' -   `name`
+#' 
+#' -   `version`
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -2458,7 +3027,8 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
 #'       ),
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2510,7 +3080,19 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 #' @usage
 #' imagebuilder_list_image_pipelines(filters, maxResults, nextToken)
 #'
-#' @param filters The filters.
+#' @param filters Use the following filters to streamline results:
+#' 
+#' -   `description`
+#' 
+#' -   `distributionConfigurationArn`
+#' 
+#' -   `imageRecipeArn`
+#' 
+#' -   `infrastructureConfigurationArn`
+#' 
+#' -   `name`
+#' 
+#' -   `status`
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -2537,6 +3119,7 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 #'       ),
 #'       schedule = list(
 #'         scheduleExpression = "string",
+#'         timezone = "string",
 #'         pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
 #'       ),
 #'       status = "DISABLED"|"ENABLED",
@@ -2602,7 +3185,13 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
 #' this field to specify if you want to view image recipes owned by
 #' yourself, by Amazon, or those image recipes that have been shared with
 #' you by other customers.
-#' @param filters The filters.
+#' @param filters Use the following filters to streamline results:
+#' 
+#' -   `name`
+#' 
+#' -   `parentImage`
+#' 
+#' -   `platform`
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -2680,7 +3269,17 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #' field to specify if you want to view images owned by yourself, by
 #' Amazon, or those images that have been shared with you by other
 #' customers.
-#' @param filters The filters.
+#' @param filters Use the following filters to streamline results:
+#' 
+#' -   `name`
+#' 
+#' -   `osVersion`
+#' 
+#' -   `platform`
+#' 
+#' -   `type`
+#' 
+#' -   `version`
 #' @param byName Requests a list of images with a specific recipe name.
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
@@ -2701,7 +3300,8 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #'       platform = "Windows"|"Linux",
 #'       osVersion = "string",
 #'       owner = "string",
-#'       dateCreated = "string"
+#'       dateCreated = "string",
+#'       buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2756,7 +3356,7 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
 #' imagebuilder_list_infrastructure_configurations(filters, maxResults,
 #'   nextToken)
 #'
-#' @param filters The filters.
+#' @param filters You can filter on `name` to streamline results.
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -2778,7 +3378,11 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
 #'       ),
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       instanceTypes = list(
+#'         "string"
+#'       ),
+#'       instanceProfileName = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2930,11 +3534,11 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
 #' @description
 #' Applies a policy to a container image. We recommend that you call the
 #' RAM API CreateResourceShare
-#' (https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
+#' (https://docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html)
 #' to share resources. If you call the Image Builder API
 #' `PutContainerImagePolicy`, you must also call the RAM API
 #' PromoteResourceShareCreatedFromPolicy
-#' (https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
+#' (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
 #' in order for the resource to be visible to all principals with whom the
 #' resource is shared.
 #'
@@ -3284,6 +3888,12 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #'           ),
 #'           userGroups = list(
 #'             "string"
+#'           ),
+#'           organizationArns = list(
+#'             "string"
+#'           ),
+#'           organizationalUnitArns = list(
+#'             "string"
 #'           )
 #'         )
 #'       ),
@@ -3299,6 +3909,34 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #'       ),
 #'       licenseConfigurationArns = list(
 #'         "string"
+#'       ),
+#'       launchTemplateConfigurations = list(
+#'         list(
+#'           launchTemplateId = "string",
+#'           accountId = "string",
+#'           setDefaultVersion = TRUE|FALSE
+#'         )
+#'       ),
+#'       s3ExportConfiguration = list(
+#'         roleName = "string",
+#'         diskImageFormat = "VMDK"|"RAW"|"VHD",
+#'         s3Bucket = "string",
+#'         s3Prefix = "string"
+#'       ),
+#'       fastLaunchConfigurations = list(
+#'         list(
+#'           enabled = TRUE|FALSE,
+#'           snapshotConfiguration = list(
+#'             targetResourceCount = 123
+#'           ),
+#'           maxParallelLaunches = 123,
+#'           launchTemplate = list(
+#'             launchTemplateId = "string",
+#'             launchTemplateName = "string",
+#'             launchTemplateVersion = "string"
+#'           ),
+#'           accountId = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -3326,11 +3964,15 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 }
 .imagebuilder$operations$update_distribution_configuration <- imagebuilder_update_distribution_configuration
 
-#' Updates a new image pipeline
+#' Updates an image pipeline
 #'
 #' @description
-#' Updates a new image pipeline. Image pipelines enable you to automate the
+#' Updates an image pipeline. Image pipelines enable you to automate the
 #' creation and distribution of images.
+#' 
+#' UpdateImagePipeline does not support selective updates for the pipeline.
+#' You must specify all of the required properties in the update request,
+#' not just the properties that have changed.
 #'
 #' @usage
 #' imagebuilder_update_image_pipeline(imagePipelineArn, description,
@@ -3384,6 +4026,7 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #'   enhancedImageMetadataEnabled = TRUE|FALSE,
 #'   schedule = list(
 #'     scheduleExpression = "string",
+#'     timezone = "string",
 #'     pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
 #'   ),
 #'   status = "DISABLED"|"ENABLED",
@@ -3422,7 +4065,8 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' imagebuilder_update_infrastructure_configuration(
 #'   infrastructureConfigurationArn, description, instanceTypes,
 #'   instanceProfileName, securityGroupIds, subnetId, logging, keyPair,
-#'   terminateInstanceOnFailure, snsTopicArn, clientToken, resourceTags)
+#'   terminateInstanceOnFailure, snsTopicArn, clientToken, resourceTags,
+#'   instanceMetadataOptions)
 #'
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that
 #' you want to update.
@@ -3431,20 +4075,39 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' one or more instance types to use for this build. The service will pick
 #' one of these instance types based on availability.
 #' @param instanceProfileName &#91;required&#93; The instance profile to associate with the instance used to customize
-#' your EC2 AMI.
+#' your Amazon EC2 AMI.
 #' @param securityGroupIds The security group IDs to associate with the instance used to customize
-#' your EC2 AMI.
-#' @param subnetId The subnet ID to place the instance used to customize your EC2 AMI in.
+#' your Amazon EC2 AMI.
+#' @param subnetId The subnet ID to place the instance used to customize your Amazon EC2
+#' AMI in.
 #' @param logging The logging configuration of the infrastructure configuration.
-#' @param keyPair The key pair of the infrastructure configuration. This can be used to
+#' @param keyPair The key pair of the infrastructure configuration. You can use this to
 #' log on to and debug the instance used to create your image.
 #' @param terminateInstanceOnFailure The terminate instance on failure setting of the infrastructure
 #' configuration. Set to false if you want Image Builder to retain the
 #' instance used to configure your AMI if the build or test phase of your
 #' workflow fails.
-#' @param snsTopicArn The SNS topic on which to send image build events.
+#' @param snsTopicArn The Amazon Resource Name (ARN) for the SNS topic to which we send image
+#' build event notifications.
+#' 
+#' EC2 Image Builder is unable to send notifications to SNS topics that are
+#' encrypted using keys from other accounts. The key that is used to
+#' encrypt the SNS topic must reside in the account that the Image Builder
+#' service runs under.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
 #' @param resourceTags The tags attached to the resource created by Image Builder.
+#' @param instanceMetadataOptions The instance metadata options that you can set for the HTTP requests
+#' that pipeline builds use to launch EC2 build and test instances. For
+#' more information about instance metadata options, see one of the
+#' following links:
+#' 
+#' -   [Configure the instance metadata
+#'     options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
+#'     in the *Amazon EC2 User Guide* for Linux instances.
+#' 
+#' -   [Configure the instance metadata
+#'     options](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/configuring-instance-metadata-options.html)
+#'     in the *Amazon EC2 Windows Guide* for Windows instances.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3481,6 +4144,10 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #'   clientToken = "string",
 #'   resourceTags = list(
 #'     "string"
+#'   ),
+#'   instanceMetadataOptions = list(
+#'     httpTokens = "string",
+#'     httpPutResponseHopLimit = 123
 #'   )
 #' )
 #' ```
@@ -3488,14 +4155,14 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' @keywords internal
 #'
 #' @rdname imagebuilder_update_infrastructure_configuration
-imagebuilder_update_infrastructure_configuration <- function(infrastructureConfigurationArn, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, clientToken, resourceTags = NULL) {
+imagebuilder_update_infrastructure_configuration <- function(infrastructureConfigurationArn, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, clientToken, resourceTags = NULL, instanceMetadataOptions = NULL) {
   op <- new_operation(
     name = "UpdateInfrastructureConfiguration",
     http_method = "PUT",
     http_path = "/UpdateInfrastructureConfiguration",
     paginator = list()
   )
-  input <- .imagebuilder$update_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, clientToken = clientToken, resourceTags = resourceTags)
+  input <- .imagebuilder$update_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, clientToken = clientToken, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions)
   output <- .imagebuilder$update_infrastructure_configuration_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)

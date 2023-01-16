@@ -167,12 +167,13 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' In the China (Ningxia) Region, you can copy images only within the same
 #' Region.
 #' 
-#' In the AWS GovCloud (US-West) Region, to copy images to and from other
-#' AWS Regions, contact AWS Support.
+#' In Amazon Web Services GovCloud (US), to copy images to and from other
+#' Regions, contact Amazon Web Services Support.
 #' 
 #' Before copying a shared image, be sure to verify that it has been shared
-#' from the correct AWS account. To determine if an image has been shared
-#' and to see the AWS account ID that owns an image, use the
+#' from the correct Amazon Web Services account. To determine if an image
+#' has been shared and to see the ID of the Amazon Web Services account
+#' that owns an image, use the
 #' [DescribeWorkSpaceImages](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html)
 #' and
 #' [`describe_workspace_image_permissions`][workspaces_describe_workspace_image_permissions]
@@ -232,6 +233,59 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
 }
 .workspaces$operations$copy_workspace_image <- workspaces_copy_workspace_image
 
+#' Creates a client-add-in for Amazon Connect within a directory
+#'
+#' @description
+#' Creates a client-add-in for Amazon Connect within a directory. You can
+#' create only one Amazon Connect client add-in within a directory.
+#' 
+#' This client add-in allows WorkSpaces users to seamlessly connect to
+#' Amazon Connect.
+#'
+#' @usage
+#' workspaces_create_connect_client_add_in(ResourceId, Name, URL)
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier for which to configure the client add-in.
+#' @param Name &#91;required&#93; The name of the client add-in.
+#' @param URL &#91;required&#93; The endpoint URL of the Amazon Connect client add-in.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AddInId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connect_client_add_in(
+#'   ResourceId = "string",
+#'   Name = "string",
+#'   URL = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_connect_client_add_in
+workspaces_create_connect_client_add_in <- function(ResourceId, Name, URL) {
+  op <- new_operation(
+    name = "CreateConnectClientAddIn",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_connect_client_add_in_input(ResourceId = ResourceId, Name = Name, URL = URL)
+  output <- .workspaces$create_connect_client_add_in_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_connect_client_add_in <- workspaces_create_connect_client_add_in
+
 #' Creates the specified connection alias for use with cross-Region
 #' redirection
 #'
@@ -248,10 +302,10 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
 #' such as `www.example.com`.
 #' 
 #' After you create a connection string, it is always associated to your
-#' AWS account. You cannot recreate the same connection string with a
-#' different account, even if you delete all instances of it from the
-#' original account. The connection string is globally reserved for your
-#' account.
+#' Amazon Web Services account. You cannot recreate the same connection
+#' string with a different account, even if you delete all instances of it
+#' from the original account. The connection string is globally reserved
+#' for your account.
 #' @param Tags The tags to associate with the connection alias.
 #'
 #' @return
@@ -419,6 +473,249 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 }
 .workspaces$operations$create_tags <- workspaces_create_tags
 
+#' Creates a new updated WorkSpace image based on the specified source
+#' image
+#'
+#' @description
+#' Creates a new updated WorkSpace image based on the specified source
+#' image. The new updated WorkSpace image has the latest drivers and other
+#' updates required by the Amazon WorkSpaces components.
+#' 
+#' To determine which WorkSpace images need to be updated with the latest
+#' Amazon WorkSpaces requirements, use
+#' [DescribeWorkspaceImages](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html).
+#' 
+#' -   Only Windows 10, Windows Sever 2016, and Windows Server 2019
+#'     WorkSpace images can be programmatically updated at this time.
+#' 
+#' -   Microsoft Windows updates and other application updates are not
+#'     included in the update process.
+#' 
+#' -   The source WorkSpace image is not deleted. You can delete the source
+#'     image after you've verified your new updated image and created a new
+#'     bundle.
+#'
+#' @usage
+#' workspaces_create_updated_workspace_image(Name, Description,
+#'   SourceImageId, Tags)
+#'
+#' @param Name &#91;required&#93; The name of the new updated WorkSpace image.
+#' @param Description &#91;required&#93; A description of whether updates for the WorkSpace image are available.
+#' @param SourceImageId &#91;required&#93; The identifier of the source WorkSpace image.
+#' @param Tags The tags that you want to add to the new updated WorkSpace image.
+#' 
+#' To add tags at the same time when you're creating the updated image, you
+#' must create an IAM policy that grants your IAM user permissions to use
+#' `workspaces:CreateTags`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_updated_workspace_image(
+#'   Name = "string",
+#'   Description = "string",
+#'   SourceImageId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_updated_workspace_image
+workspaces_create_updated_workspace_image <- function(Name, Description, SourceImageId, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateUpdatedWorkspaceImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_updated_workspace_image_input(Name = Name, Description = Description, SourceImageId = SourceImageId, Tags = Tags)
+  output <- .workspaces$create_updated_workspace_image_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_updated_workspace_image <- workspaces_create_updated_workspace_image
+
+#' Creates the specified WorkSpace bundle
+#'
+#' @description
+#' Creates the specified WorkSpace bundle. For more information about
+#' creating WorkSpace bundles, see [Create a Custom WorkSpaces Image and
+#' Bundle](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-custom-bundle.html).
+#'
+#' @usage
+#' workspaces_create_workspace_bundle(BundleName, BundleDescription,
+#'   ImageId, ComputeType, UserStorage, RootStorage, Tags)
+#'
+#' @param BundleName &#91;required&#93; The name of the bundle.
+#' @param BundleDescription &#91;required&#93; The description of the bundle.
+#' @param ImageId &#91;required&#93; The identifier of the image that is used to create the bundle.
+#' @param ComputeType &#91;required&#93; 
+#' @param UserStorage &#91;required&#93; 
+#' @param RootStorage 
+#' @param Tags The tags associated with the bundle.
+#' 
+#' To add tags at the same time when you're creating the bundle, you must
+#' create an IAM policy that grants your IAM user permissions to use
+#' `workspaces:CreateTags`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkspaceBundle = list(
+#'     BundleId = "string",
+#'     Name = "string",
+#'     Owner = "string",
+#'     Description = "string",
+#'     ImageId = "string",
+#'     RootStorage = list(
+#'       Capacity = "string"
+#'     ),
+#'     UserStorage = list(
+#'       Capacity = "string"
+#'     ),
+#'     ComputeType = list(
+#'       Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_workspace_bundle(
+#'   BundleName = "string",
+#'   BundleDescription = "string",
+#'   ImageId = "string",
+#'   ComputeType = list(
+#'     Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'   ),
+#'   UserStorage = list(
+#'     Capacity = "string"
+#'   ),
+#'   RootStorage = list(
+#'     Capacity = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_workspace_bundle
+workspaces_create_workspace_bundle <- function(BundleName, BundleDescription, ImageId, ComputeType, UserStorage, RootStorage = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateWorkspaceBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_workspace_bundle_input(BundleName = BundleName, BundleDescription = BundleDescription, ImageId = ImageId, ComputeType = ComputeType, UserStorage = UserStorage, RootStorage = RootStorage, Tags = Tags)
+  output <- .workspaces$create_workspace_bundle_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_workspace_bundle <- workspaces_create_workspace_bundle
+
+#' Creates a new WorkSpace image from an existing WorkSpace
+#'
+#' @description
+#' Creates a new WorkSpace image from an existing WorkSpace.
+#'
+#' @usage
+#' workspaces_create_workspace_image(Name, Description, WorkspaceId, Tags)
+#'
+#' @param Name &#91;required&#93; The name of the new WorkSpace image.
+#' @param Description &#91;required&#93; The description of the new WorkSpace image.
+#' @param WorkspaceId &#91;required&#93; The identifier of the source WorkSpace
+#' @param Tags The tags that you want to add to the new WorkSpace image. To add tags
+#' when you're creating the image, you must create an IAM policy that
+#' grants your IAM user permission to use `workspaces:CreateTags`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   OperatingSystem = list(
+#'     Type = "WINDOWS"|"LINUX"
+#'   ),
+#'   State = "AVAILABLE"|"PENDING"|"ERROR",
+#'   RequiredTenancy = "DEFAULT"|"DEDICATED",
+#'   Created = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   OwnerAccountId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_workspace_image(
+#'   Name = "string",
+#'   Description = "string",
+#'   WorkspaceId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_workspace_image
+workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateWorkspaceImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_workspace_image_input(Name = Name, Description = Description, WorkspaceId = WorkspaceId, Tags = Tags)
+  output <- .workspaces$create_workspace_image_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_workspace_image <- workspaces_create_workspace_image
+
 #' Creates one or more WorkSpaces
 #'
 #' @description
@@ -450,7 +747,7 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 #'           RunningModeAutoStopTimeoutInMinutes = 123,
 #'           RootVolumeSizeGib = 123,
 #'           UserVolumeSizeGib = 123,
-#'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'         ),
 #'         Tags = list(
 #'           list(
@@ -483,7 +780,7 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'       ),
 #'       ModificationStates = list(
 #'         list(
@@ -512,7 +809,7 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'       ),
 #'       Tags = list(
 #'         list(
@@ -544,6 +841,101 @@ workspaces_create_workspaces <- function(Workspaces) {
   return(response)
 }
 .workspaces$operations$create_workspaces <- workspaces_create_workspaces
+
+#' Deletes customized client branding
+#'
+#' @description
+#' Deletes customized client branding. Client branding allows you to
+#' customize your WorkSpace's client login portal. You can tailor your
+#' login portal company logo, the support email address, support link, link
+#' to reset password, and a custom message for users trying to sign in.
+#' 
+#' After you delete your customized client branding, your login portal
+#' reverts to the default client branding.
+#'
+#' @usage
+#' workspaces_delete_client_branding(ResourceId, Platforms)
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier of the WorkSpace for which you want to delete
+#' client branding.
+#' @param Platforms &#91;required&#93; The device type for which you want to delete client branding.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_client_branding(
+#'   ResourceId = "string",
+#'   Platforms = list(
+#'     "DeviceTypeWindows"|"DeviceTypeOsx"|"DeviceTypeAndroid"|"DeviceTypeIos"|"DeviceTypeLinux"|"DeviceTypeWeb"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_delete_client_branding
+workspaces_delete_client_branding <- function(ResourceId, Platforms) {
+  op <- new_operation(
+    name = "DeleteClientBranding",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$delete_client_branding_input(ResourceId = ResourceId, Platforms = Platforms)
+  output <- .workspaces$delete_client_branding_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$delete_client_branding <- workspaces_delete_client_branding
+
+#' Deletes a client-add-in for Amazon Connect that is configured within a
+#' directory
+#'
+#' @description
+#' Deletes a client-add-in for Amazon Connect that is configured within a
+#' directory.
+#'
+#' @usage
+#' workspaces_delete_connect_client_add_in(AddInId, ResourceId)
+#'
+#' @param AddInId &#91;required&#93; The identifier of the client add-in to delete.
+#' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connect_client_add_in(
+#'   AddInId = "string",
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_delete_connect_client_add_in
+workspaces_delete_connect_client_add_in <- function(AddInId, ResourceId) {
+  op <- new_operation(
+    name = "DeleteConnectClientAddIn",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$delete_connect_client_add_in_input(AddInId = AddInId, ResourceId = ResourceId)
+  output <- .workspaces$delete_connect_client_add_in_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$delete_connect_client_add_in <- workspaces_delete_connect_client_add_in
 
 #' Deletes the specified connection alias
 #'
@@ -689,6 +1081,48 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
 }
 .workspaces$operations$delete_tags <- workspaces_delete_tags
 
+#' Deletes the specified WorkSpace bundle
+#'
+#' @description
+#' Deletes the specified WorkSpace bundle. For more information about
+#' deleting WorkSpace bundles, see [Delete a Custom WorkSpaces Bundle or
+#' Image](https://docs.aws.amazon.com/workspaces/latest/adminguide/delete_bundle.html).
+#'
+#' @usage
+#' workspaces_delete_workspace_bundle(BundleId)
+#'
+#' @param BundleId The identifier of the bundle.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_workspace_bundle(
+#'   BundleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_delete_workspace_bundle
+workspaces_delete_workspace_bundle <- function(BundleId = NULL) {
+  op <- new_operation(
+    name = "DeleteWorkspaceBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$delete_workspace_bundle_input(BundleId = BundleId)
+  output <- .workspaces$delete_workspace_bundle_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$delete_workspace_bundle <- workspaces_delete_workspace_bundle
+
 #' Deletes the specified image from your account
 #'
 #' @description
@@ -743,8 +1177,8 @@ workspaces_delete_workspace_image <- function(ImageId) {
 #' use with WorkSpaces. If there are no WorkSpaces being used with your
 #' Simple AD or AD Connector directory for 30 consecutive days, this
 #' directory will be automatically deregistered for use with Amazon
-#' WorkSpaces, and you will be charged for this directory as per the [AWS
-#' Directory Services pricing
+#' WorkSpaces, and you will be charged for this directory as per the
+#' [Directory Service pricing
 #' terms](https://aws.amazon.com/directoryservice/pricing/).
 #' 
 #' To delete empty directories, see [Delete the Directory for Your
@@ -893,6 +1327,113 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
 }
 .workspaces$operations$describe_account_modifications <- workspaces_describe_account_modifications
 
+#' Describes the specified client branding
+#'
+#' @description
+#' Describes the specified client branding. Client branding allows you to
+#' customize the log in page of various device types for your users. You
+#' can add your company logo, the support email address, support link, link
+#' to reset password, and a custom message for users trying to sign in.
+#' 
+#' Only device types that have branding information configured will be
+#' shown in the response.
+#'
+#' @usage
+#' workspaces_describe_client_branding(ResourceId)
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier of the WorkSpace for which you want to view
+#' client branding information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceTypeWindows = list(
+#'     LogoUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeOsx = list(
+#'     LogoUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeAndroid = list(
+#'     LogoUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeIos = list(
+#'     LogoUrl = "string",
+#'     Logo2xUrl = "string",
+#'     Logo3xUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeLinux = list(
+#'     LogoUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeWeb = list(
+#'     LogoUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_client_branding(
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_client_branding
+workspaces_describe_client_branding <- function(ResourceId) {
+  op <- new_operation(
+    name = "DescribeClientBranding",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_client_branding_input(ResourceId = ResourceId)
+  output <- .workspaces$describe_client_branding_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_client_branding <- workspaces_describe_client_branding
+
 #' Retrieves a list that describes one or more specified Amazon WorkSpaces
 #' clients
 #'
@@ -949,13 +1490,75 @@ workspaces_describe_client_properties <- function(ResourceIds) {
 }
 .workspaces$operations$describe_client_properties <- workspaces_describe_client_properties
 
+#' Retrieves a list of Amazon Connect client add-ins that have been created
+#'
+#' @description
+#' Retrieves a list of Amazon Connect client add-ins that have been
+#' created.
+#'
+#' @usage
+#' workspaces_describe_connect_client_add_ins(ResourceId, NextToken,
+#'   MaxResults)
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#' @param MaxResults The maximum number of items to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AddIns = list(
+#'     list(
+#'       AddInId = "string",
+#'       ResourceId = "string",
+#'       Name = "string",
+#'       URL = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_connect_client_add_ins(
+#'   ResourceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_connect_client_add_ins
+workspaces_describe_connect_client_add_ins <- function(ResourceId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeConnectClientAddIns",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_connect_client_add_ins_input(ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .workspaces$describe_connect_client_add_ins_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_connect_client_add_ins <- workspaces_describe_connect_client_add_ins
+
 #' Describes the permissions that the owner of a connection alias has
-#' granted to another AWS account for the specified connection alias
+#' granted to another Amazon Web Services account for the specified
+#' connection alias
 #'
 #' @description
 #' Describes the permissions that the owner of a connection alias has
-#' granted to another AWS account for the specified connection alias. For
-#' more information, see [Cross-Region Redirection for Amazon
+#' granted to another Amazon Web Services account for the specified
+#' connection alias. For more information, see [Cross-Region Redirection
+#' for Amazon
 #' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
 #' @usage
@@ -1219,8 +1822,9 @@ workspaces_describe_tags <- function(ResourceId) {
 #' @param Owner The owner of the bundles. You cannot combine this parameter with any
 #' other filter.
 #' 
-#' Specify `AMAZON` to describe the bundles provided by AWS or null to
-#' describe the bundles that belong to your account.
+#' To describe the bundles provided by Amazon Web Services, specify
+#' `AMAZON`. To describe the bundles that belong to your account, don't
+#' specify a value.
 #' @param NextToken The token for the next set of results. (You received this token from a
 #' previous call.)
 #'
@@ -1242,9 +1846,12 @@ workspaces_describe_tags <- function(ResourceId) {
 #'         Capacity = "string"
 #'       ),
 #'       ComputeType = list(
-#'         Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'         Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'       ),
 #'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
 #'     )
@@ -1340,7 +1947,8 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'         DeviceTypeIos = "ALLOW"|"DENY",
 #'         DeviceTypeAndroid = "ALLOW"|"DENY",
 #'         DeviceTypeChromeOs = "ALLOW"|"DENY",
-#'         DeviceTypeZeroClient = "ALLOW"|"DENY"
+#'         DeviceTypeZeroClient = "ALLOW"|"DENY",
+#'         DeviceTypeLinux = "ALLOW"|"DENY"
 #'       ),
 #'       Tenancy = "DEDICATED"|"SHARED",
 #'       SelfservicePermissions = list(
@@ -1349,6 +1957,11 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'         ChangeComputeType = "ENABLED"|"DISABLED",
 #'         SwitchRunningMode = "ENABLED"|"DISABLED",
 #'         RebuildWorkspace = "ENABLED"|"DISABLED"
+#'       ),
+#'       SamlProperties = list(
+#'         Status = "DISABLED"|"ENABLED"|"ENABLED_WITH_DIRECTORY_LOGIN_FALLBACK",
+#'         UserAccessUrl = "string",
+#'         RelayStateParameterName = "string"
 #'       )
 #'     )
 #'   ),
@@ -1388,11 +2001,11 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
 .workspaces$operations$describe_workspace_directories <- workspaces_describe_workspace_directories
 
 #' Describes the permissions that the owner of an image has granted to
-#' other AWS accounts for an image
+#' other Amazon Web Services accounts for an image
 #'
 #' @description
 #' Describes the permissions that the owner of an image has granted to
-#' other AWS accounts for an image.
+#' other Amazon Web Services accounts for an image.
 #'
 #' @usage
 #' workspaces_describe_workspace_image_permissions(ImageId, NextToken,
@@ -1483,7 +2096,11 @@ workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken =
 #'       Created = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       OwnerAccountId = "string"
+#'       OwnerAccountId = "string",
+#'       Updates = list(
+#'         UpdateAvailable = TRUE|FALSE,
+#'         Description = "string"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1636,7 +2253,7 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'       ),
 #'       ModificationStates = list(
 #'         list(
@@ -1752,7 +2369,7 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 #' @description
 #' Disassociates a connection alias from a directory. Disassociating a
 #' connection alias disables cross-Region redirection between two
-#' directories in different AWS Regions. For more information, see
+#' directories in different Regions. For more information, see
 #' [Cross-Region Redirection for Amazon
 #' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #' 
@@ -1842,15 +2459,200 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 }
 .workspaces$operations$disassociate_ip_groups <- workspaces_disassociate_ip_groups
 
+#' Imports client branding
+#'
+#' @description
+#' Imports client branding. Client branding allows you to customize your
+#' WorkSpace's client login portal. You can tailor your login portal
+#' company logo, the support email address, support link, link to reset
+#' password, and a custom message for users trying to sign in.
+#' 
+#' After you import client branding, the default branding experience for
+#' the specified platform type is replaced with the imported experience
+#' 
+#' -   You must specify at least one platform type when importing client
+#'     branding.
+#' 
+#' -   You can import up to 6 MB of data with each request. If your request
+#'     exceeds this limit, you can import client branding for different
+#'     platform types using separate requests.
+#' 
+#' -   In each platform type, the `SupportEmail` and `SupportLink`
+#'     parameters are mutually exclusive. You can specify only one
+#'     parameter for each platform type, but not both.
+#' 
+#' -   Imported data can take up to a minute to appear in the WorkSpaces
+#'     client.
+#'
+#' @usage
+#' workspaces_import_client_branding(ResourceId, DeviceTypeWindows,
+#'   DeviceTypeOsx, DeviceTypeAndroid, DeviceTypeIos, DeviceTypeLinux,
+#'   DeviceTypeWeb)
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier of the WorkSpace for which you want to import
+#' client branding.
+#' @param DeviceTypeWindows The branding information to import for Windows devices.
+#' @param DeviceTypeOsx The branding information to import for macOS devices.
+#' @param DeviceTypeAndroid The branding information to import for Android devices.
+#' @param DeviceTypeIos The branding information to import for iOS devices.
+#' @param DeviceTypeLinux The branding information to import for Linux devices.
+#' @param DeviceTypeWeb The branding information to import for web access.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceTypeWindows = list(
+#'     LogoUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeOsx = list(
+#'     LogoUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeAndroid = list(
+#'     LogoUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeIos = list(
+#'     LogoUrl = "string",
+#'     Logo2xUrl = "string",
+#'     Logo3xUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeLinux = list(
+#'     LogoUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeWeb = list(
+#'     LogoUrl = "string",
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$import_client_branding(
+#'   ResourceId = "string",
+#'   DeviceTypeWindows = list(
+#'     Logo = raw,
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeOsx = list(
+#'     Logo = raw,
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeAndroid = list(
+#'     Logo = raw,
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeIos = list(
+#'     Logo = raw,
+#'     Logo2x = raw,
+#'     Logo3x = raw,
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeLinux = list(
+#'     Logo = raw,
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DeviceTypeWeb = list(
+#'     Logo = raw,
+#'     SupportEmail = "string",
+#'     SupportLink = "string",
+#'     ForgotPasswordLink = "string",
+#'     LoginMessage = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_import_client_branding
+workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NULL, DeviceTypeOsx = NULL, DeviceTypeAndroid = NULL, DeviceTypeIos = NULL, DeviceTypeLinux = NULL, DeviceTypeWeb = NULL) {
+  op <- new_operation(
+    name = "ImportClientBranding",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$import_client_branding_input(ResourceId = ResourceId, DeviceTypeWindows = DeviceTypeWindows, DeviceTypeOsx = DeviceTypeOsx, DeviceTypeAndroid = DeviceTypeAndroid, DeviceTypeIos = DeviceTypeIos, DeviceTypeLinux = DeviceTypeLinux, DeviceTypeWeb = DeviceTypeWeb)
+  output <- .workspaces$import_client_branding_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$import_client_branding <- workspaces_import_client_branding
+
 #' Imports the specified Windows 10 Bring Your Own License (BYOL) image
 #' into Amazon WorkSpaces
 #'
 #' @description
 #' Imports the specified Windows 10 Bring Your Own License (BYOL) image
 #' into Amazon WorkSpaces. The image must be an already licensed Amazon EC2
-#' image that is in your AWS account, and you must own the image. For more
-#' information about creating BYOL images, see [Bring Your Own Windows
-#' Desktop
+#' image that is in your Amazon Web Services account, and you must own the
+#' image. For more information about creating BYOL images, see [Bring Your
+#' Own Windows Desktop
 #' Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #'
 #' @usage
@@ -1890,7 +2692,7 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #' ```
 #' svc$import_workspace_image(
 #'   Ec2ImageId = "string",
-#'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO"|"BYOL_REGULAR_WSP",
+#'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO"|"BYOL_GRAPHICS_G4DN"|"BYOL_REGULAR_WSP",
 #'   ImageName = "string",
 #'   ImageDescription = "string",
 #'   Tags = list(
@@ -1934,9 +2736,9 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
 #' that you can use for the network management interface when you enable
 #' Bring Your Own License (BYOL).
 #' 
-#' This operation can be run only by AWS accounts that are enabled for
-#' BYOL. If your account isn't enabled for BYOL, you'll receive an
-#' `AccessDeniedException` error.
+#' This operation can be run only by Amazon Web Services accounts that are
+#' enabled for BYOL. If your account isn't enabled for BYOL, you'll receive
+#' an `AccessDeniedException` error.
 #' 
 #' The management network interface is connected to a secure Amazon
 #' WorkSpaces management network. It is used for interactive streaming of
@@ -2004,9 +2806,9 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
 #' The migration process recreates the WorkSpace by using a new root volume
 #' from the target bundle image and the user volume from the last available
 #' snapshot of the original WorkSpace. During migration, the original
-#' `D:\Users%USERNAME%` user profile folder is renamed to
-#' `D:\Users%USERNAME%MMddyyTHHmmss%.NotMigrated`. A new
-#' `D:\Users%USERNAME%\` folder is generated by the new OS. Certain files
+#' `D:\\Users%USERNAME%` user profile folder is renamed to
+#' `D:\\Users%USERNAME%MMddyyTHHmmss%.NotMigrated`. A new
+#' `D:\\Users%USERNAME%\` folder is generated by the new OS. Certain files
 #' in the old user profile are moved to the new user profile.
 #' 
 #' For available migration scenarios, details about what happens during
@@ -2151,6 +2953,68 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
 }
 .workspaces$operations$modify_client_properties <- workspaces_modify_client_properties
 
+#' Modifies multiple properties related to SAML 2
+#'
+#' @description
+#' Modifies multiple properties related to SAML 2.0 authentication,
+#' including the enablement status, user access URL, and relay state
+#' parameter name that are used for configuring federation with an SAML 2.0
+#' identity provider.
+#'
+#' @usage
+#' workspaces_modify_saml_properties(ResourceId, SamlProperties,
+#'   PropertiesToDelete)
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier for which you want to configure SAML
+#' properties.
+#' @param SamlProperties The properties for configuring SAML 2.0 authentication.
+#' @param PropertiesToDelete The SAML properties to delete as part of your request.
+#' 
+#' Specify one of the following options:
+#' 
+#' -   `SAML_PROPERTIES_USER_ACCESS_URL` to delete the user access URL.
+#' 
+#' -   `SAML_PROPERTIES_RELAY_STATE_PARAMETER_NAME` to delete the relay
+#'     state parameter name.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_saml_properties(
+#'   ResourceId = "string",
+#'   SamlProperties = list(
+#'     Status = "DISABLED"|"ENABLED"|"ENABLED_WITH_DIRECTORY_LOGIN_FALLBACK",
+#'     UserAccessUrl = "string",
+#'     RelayStateParameterName = "string"
+#'   ),
+#'   PropertiesToDelete = list(
+#'     "SAML_PROPERTIES_USER_ACCESS_URL"|"SAML_PROPERTIES_RELAY_STATE_PARAMETER_NAME"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_saml_properties
+workspaces_modify_saml_properties <- function(ResourceId, SamlProperties = NULL, PropertiesToDelete = NULL) {
+  op <- new_operation(
+    name = "ModifySamlProperties",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$modify_saml_properties_input(ResourceId = ResourceId, SamlProperties = SamlProperties, PropertiesToDelete = PropertiesToDelete)
+  output <- .workspaces$modify_saml_properties_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_saml_properties <- workspaces_modify_saml_properties
+
 #' Modifies the self-service WorkSpace management capabilities for your
 #' users
 #'
@@ -2233,7 +3097,8 @@ workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePer
 #'     DeviceTypeIos = "ALLOW"|"DENY",
 #'     DeviceTypeAndroid = "ALLOW"|"DENY",
 #'     DeviceTypeChromeOs = "ALLOW"|"DENY",
-#'     DeviceTypeZeroClient = "ALLOW"|"DENY"
+#'     DeviceTypeZeroClient = "ALLOW"|"DENY",
+#'     DeviceTypeLinux = "ALLOW"|"DENY"
 #'   )
 #' )
 #' ```
@@ -2333,7 +3198,7 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #'     RunningModeAutoStopTimeoutInMinutes = 123,
 #'     RootVolumeSizeGib = 123,
 #'     UserVolumeSizeGib = 123,
-#'     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'   )
 #' )
 #' ```
@@ -2564,8 +3429,8 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' @param EnableSelfService Indicates whether self-service capabilities are enabled or disabled.
 #' @param Tenancy Indicates whether your WorkSpace directory is dedicated or shared. To
 #' use Bring Your Own License (BYOL) images, this value must be set to
-#' `DEDICATED` and your AWS account must be enabled for BYOL. If your
-#' account has not been enabled for BYOL, you will receive an
+#' `DEDICATED` and your Amazon Web Services account must be enabled for
+#' BYOL. If your account has not been enabled for BYOL, you will receive an
 #' InvalidParameterValuesException error. For more information about BYOL
 #' images, see [Bring Your Own Windows Desktop
 #' Images](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
@@ -2830,7 +3695,7 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 #' 
 #' Terminating a WorkSpace is a permanent action and cannot be undone. The
 #' user's data is destroyed. If you need to archive any user data, contact
-#' AWS Support before terminating the WorkSpace.
+#' Amazon Web Services Support before terminating the WorkSpace.
 #' 
 #' You can terminate a WorkSpace that is in any state except `SUSPENDED`.
 #' 
@@ -2848,8 +3713,8 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 #' use with WorkSpaces. If there are no WorkSpaces being used with your
 #' Simple AD or AD Connector directory for 30 consecutive days, this
 #' directory will be automatically deregistered for use with Amazon
-#' WorkSpaces, and you will be charged for this directory as per the [AWS
-#' Directory Services pricing
+#' WorkSpaces, and you will be charged for this directory as per the
+#' [Directory Service pricing
 #' terms](https://aws.amazon.com/directoryservice/pricing/).
 #' 
 #' To delete empty directories, see [Delete the Directory for Your
@@ -2907,6 +3772,53 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
 }
 .workspaces$operations$terminate_workspaces <- workspaces_terminate_workspaces
 
+#' Updates a Amazon Connect client add-in
+#'
+#' @description
+#' Updates a Amazon Connect client add-in. Use this action to update the
+#' name and endpoint URL of a Amazon Connect client add-in.
+#'
+#' @usage
+#' workspaces_update_connect_client_add_in(AddInId, ResourceId, Name, URL)
+#'
+#' @param AddInId &#91;required&#93; The identifier of the client add-in to update.
+#' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
+#' @param Name The name of the client add-in.
+#' @param URL The endpoint URL of the Amazon Connect client add-in.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connect_client_add_in(
+#'   AddInId = "string",
+#'   ResourceId = "string",
+#'   Name = "string",
+#'   URL = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_update_connect_client_add_in
+workspaces_update_connect_client_add_in <- function(AddInId, ResourceId, Name = NULL, URL = NULL) {
+  op <- new_operation(
+    name = "UpdateConnectClientAddIn",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$update_connect_client_add_in_input(AddInId = AddInId, ResourceId = ResourceId, Name = Name, URL = URL)
+  output <- .workspaces$update_connect_client_add_in_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$update_connect_client_add_in <- workspaces_update_connect_client_add_in
+
 #' Shares or unshares a connection alias with one account by specifying
 #' whether that account has permission to associate the connection alias
 #' with a directory
@@ -2939,7 +3851,7 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
 #' @param AliasId &#91;required&#93; The identifier of the connection alias that you want to update
 #' permissions for.
 #' @param ConnectionAliasPermission &#91;required&#93; Indicates whether to share or unshare the connection alias with the
-#' specified AWS account.
+#' specified Amazon Web Services account.
 #'
 #' @return
 #' An empty list.
@@ -3024,24 +3936,74 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
 }
 .workspaces$operations$update_rules_of_ip_group <- workspaces_update_rules_of_ip_group
 
-#' Shares or unshares an image with one account in the same AWS Region by
-#' specifying whether that account has permission to copy the image
+#' Updates a WorkSpace bundle with a new image
 #'
 #' @description
-#' Shares or unshares an image with one account in the same AWS Region by
-#' specifying whether that account has permission to copy the image. If the
-#' copy image permission is granted, the image is shared with that account.
-#' If the copy image permission is revoked, the image is unshared with the
-#' account.
+#' Updates a WorkSpace bundle with a new image. For more information about
+#' updating WorkSpace bundles, see [Update a Custom WorkSpaces
+#' Bundle](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-custom-bundle.html).
+#' 
+#' Existing WorkSpaces aren't automatically updated when you update the
+#' bundle that they're based on. To update existing WorkSpaces that are
+#' based on a bundle that you've updated, you must either rebuild the
+#' WorkSpaces or delete and recreate them.
+#'
+#' @usage
+#' workspaces_update_workspace_bundle(BundleId, ImageId)
+#'
+#' @param BundleId The identifier of the bundle.
+#' @param ImageId The identifier of the image.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_workspace_bundle(
+#'   BundleId = "string",
+#'   ImageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_update_workspace_bundle
+workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) {
+  op <- new_operation(
+    name = "UpdateWorkspaceBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$update_workspace_bundle_input(BundleId = BundleId, ImageId = ImageId)
+  output <- .workspaces$update_workspace_bundle_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$update_workspace_bundle <- workspaces_update_workspace_bundle
+
+#' Shares or unshares an image with one account in the same Amazon Web
+#' Services Region by specifying whether that account has permission to
+#' copy the image
+#'
+#' @description
+#' Shares or unshares an image with one account in the same Amazon Web
+#' Services Region by specifying whether that account has permission to
+#' copy the image. If the copy image permission is granted, the image is
+#' shared with that account. If the copy image permission is revoked, the
+#' image is unshared with the account.
 #' 
 #' After an image has been shared, the recipient account can copy the image
-#' to other AWS Regions as needed.
+#' to other Regions as needed.
 #' 
 #' In the China (Ningxia) Region, you can copy images only within the same
 #' Region.
 #' 
-#' In the AWS GovCloud (US-West) Region, to copy images to and from other
-#' AWS Regions, contact AWS Support.
+#' In Amazon Web Services GovCloud (US), to copy images to and from other
+#' Regions, contact Amazon Web Services Support.
 #' 
 #' For more information about sharing images, see [Share or Unshare a
 #' Custom WorkSpaces
@@ -3050,10 +4012,11 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
 #' -   To delete an image that has been shared, you must unshare the image
 #'     before you delete it.
 #' 
-#' -   Sharing Bring Your Own License (BYOL) images across AWS accounts
-#'     isn't supported at this time in the AWS GovCloud (US-West) Region.
-#'     To share BYOL images across accounts in the AWS GovCloud (US-West)
-#'     Region, contact AWS Support.
+#' -   Sharing Bring Your Own License (BYOL) images across Amazon Web
+#'     Services accounts isn't supported at this time in Amazon Web
+#'     Services GovCloud (US). To share BYOL images across accounts in
+#'     Amazon Web Services GovCloud (US), contact Amazon Web Services
+#'     Support.
 #'
 #' @usage
 #' workspaces_update_workspace_image_permission(ImageId, AllowCopyImage,
@@ -3062,10 +4025,11 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
 #' @param ImageId &#91;required&#93; The identifier of the image.
 #' @param AllowCopyImage &#91;required&#93; The permission to copy the image. This permission can be revoked only
 #' after an image has been shared.
-#' @param SharedAccountId &#91;required&#93; The identifier of the AWS account to share or unshare the image with.
+#' @param SharedAccountId &#91;required&#93; The identifier of the Amazon Web Services account to share or unshare
+#' the image with.
 #' 
 #' Before sharing the image, confirm that you are sharing to the correct
-#' AWS account ID.
+#' Amazon Web Services account ID.
 #'
 #' @return
 #' An empty list.

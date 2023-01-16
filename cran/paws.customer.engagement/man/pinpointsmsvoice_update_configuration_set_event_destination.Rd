@@ -5,7 +5,10 @@
 \title{Update an event destination in a configuration set}
 \usage{
 pinpointsmsvoice_update_configuration_set_event_destination(
-  ConfigurationSetName, EventDestination, EventDestinationName)
+  ConfigurationSetName,
+  EventDestination = NULL,
+  EventDestinationName
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] ConfigurationSetName}
@@ -14,38 +17,9 @@ pinpointsmsvoice_update_configuration_set_event_destination(
 
 \item{EventDestinationName}{[required] EventDestinationName}
 }
-\value{
-An empty list.
-}
 \description{
-Update an event destination in a configuration set. An event destination
-is a location that you publish information about your voice calls to.
-For example, you can log an event to an Amazon CloudWatch destination
-when a call fails.
-}
-\section{Request syntax}{
-\preformatted{svc$update_configuration_set_event_destination(
-  ConfigurationSetName = "string",
-  EventDestination = list(
-    CloudWatchLogsDestination = list(
-      IamRoleArn = "string",
-      LogGroupArn = "string"
-    ),
-    Enabled = TRUE|FALSE,
-    KinesisFirehoseDestination = list(
-      DeliveryStreamArn = "string",
-      IamRoleArn = "string"
-    ),
-    MatchingEventTypes = list(
-      "INITIATED_CALL"|"RINGING"|"ANSWERED"|"COMPLETED_CALL"|"BUSY"|"FAILED"|"NO_ANSWER"
-    ),
-    SnsDestination = list(
-      TopicArn = "string"
-    )
-  ),
-  EventDestinationName = "string"
-)
-}
-}
+Update an event destination in a configuration set. An event destination is a location that you publish information about your voice calls to. For example, you can log an event to an Amazon CloudWatch destination when a call fails.
 
+See \url{https://paws-r.github.io/docs/pinpointsmsvoice/update_configuration_set_event_destination.html} for full documentation.
+}
 \keyword{internal}

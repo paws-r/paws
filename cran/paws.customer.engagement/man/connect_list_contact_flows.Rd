@@ -5,11 +5,16 @@
 \title{Provides information about the contact flows for the specified Amazon
 Connect instance}
 \usage{
-connect_list_contact_flows(InstanceId, ContactFlowTypes, NextToken,
-  MaxResults)
+connect_list_contact_flows(
+  InstanceId,
+  ContactFlowTypes = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{ContactFlowTypes}{The type of contact flow.}
 
@@ -17,41 +22,11 @@ connect_list_contact_flows(InstanceId, ContactFlowTypes, NextToken,
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ContactFlowSummaryList = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string",
-      ContactFlowType = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-Provides information about the contact flows for the specified Amazon
-Connect instance.
+Provides information about the contact flows for the specified Amazon Connect instance.
 
-You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
-
-For more information about contact flows, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html}{Contact Flows}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/list_contact_flows.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_contact_flows(
-  InstanceId = "string",
-  ContactFlowTypes = list(
-    "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

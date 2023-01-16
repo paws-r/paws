@@ -2,9 +2,9 @@
 % Please edit documentation in R/efs_operations.R
 \name{efs_describe_tags}
 \alias{efs_describe_tags}
-\title{Returns the tags associated with a file system}
+\title{DEPRECATED - The DescribeTags action is deprecated and not maintained}
 \usage{
-efs_describe_tags(MaxItems, Marker, FileSystemId)
+efs_describe_tags(MaxItems = NULL, Marker = NULL, FileSystemId)
 }
 \arguments{
 \item{MaxItems}{(Optional) The maximum number of file system tags to return in the
@@ -18,44 +18,9 @@ specifies to continue the list from where the previous call left off.}
 
 \item{FileSystemId}{[required] The ID of the file system whose tag set you want to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-Returns the tags associated with a file system. The order of tags
-returned in the response of one \code{\link[=efs_describe_tags]{describe_tags}}
-call and the order of tags returned across the responses of a
-multiple-call iteration (when using pagination) is unspecified.
+DEPRECATED - The \code{\link[=efs_describe_tags]{describe_tags}} action is deprecated and not maintained. To view tags associated with EFS resources, use the \code{\link[=efs_list_tags_for_resource]{list_tags_for_resource}} API action.
 
-This operation requires permissions for the
-\code{elasticfilesystem:DescribeTags} action.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_tags(
-  MaxItems = 123,
-  Marker = "string",
-  FileSystemId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation describes all of a file system's tags.
-svc$describe_tags(
-  FileSystemId = "fs-01234567"
-)
-}
-
+See \url{https://paws-r.github.io/docs/efs/describe_tags.html} for full documentation.
 }
 \keyword{internal}

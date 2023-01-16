@@ -4,7 +4,7 @@
 \alias{xray_delete_sampling_rule}
 \title{Deletes a sampling rule}
 \usage{
-xray_delete_sampling_rule(RuleName, RuleARN)
+xray_delete_sampling_rule(RuleName = NULL, RuleARN = NULL)
 }
 \arguments{
 \item{RuleName}{The name of the sampling rule. Specify a rule by either name or ARN, but
@@ -13,45 +13,9 @@ not both.}
 \item{RuleARN}{The ARN of the sampling rule. Specify a rule by either name or ARN, but
 not both.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SamplingRuleRecord = list(
-    SamplingRule = list(
-      RuleName = "string",
-      RuleARN = "string",
-      ResourceARN = "string",
-      Priority = 123,
-      FixedRate = 123.0,
-      ReservoirSize = 123,
-      ServiceName = "string",
-      ServiceType = "string",
-      Host = "string",
-      HTTPMethod = "string",
-      URLPath = "string",
-      Version = 123,
-      Attributes = list(
-        "string"
-      )
-    ),
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    ModifiedAt = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Deletes a sampling rule.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_sampling_rule(
-  RuleName = "string",
-  RuleARN = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/xray/delete_sampling_rule.html} for full documentation.
+}
 \keyword{internal}

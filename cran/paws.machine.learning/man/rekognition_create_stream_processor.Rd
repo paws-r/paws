@@ -3,81 +3,80 @@
 \name{rekognition_create_stream_processor}
 \alias{rekognition_create_stream_processor}
 \title{Creates an Amazon Rekognition stream processor that you can use to
-detect and recognize faces in a streaming video}
+detect and recognize faces or to detect labels in a streaming video}
 \usage{
-rekognition_create_stream_processor(Input, Output, Name, Settings,
-  RoleArn)
+rekognition_create_stream_processor(
+  Input,
+  Output,
+  Name,
+  Settings,
+  RoleArn,
+  Tags = NULL,
+  NotificationChannel = NULL,
+  KmsKeyId = NULL,
+  RegionsOfInterest = NULL,
+  DataSharingPreference = NULL
+)
 }
 \arguments{
 \item{Input}{[required] Kinesis video stream stream that provides the source streaming video. If
-you are using the AWS CLI, the parameter name is \code{StreamProcessorInput}.}
+you are using the AWS CLI, the parameter name is \code{StreamProcessorInput}.
+This is required for both face search and label detection stream
+processors.}
 
-\item{Output}{[required] Kinesis data stream stream to which Amazon Rekognition Video puts the
-analysis results. If you are using the AWS CLI, the parameter name is
-\code{StreamProcessorOutput}.}
+\item{Output}{[required] Kinesis data stream stream or Amazon S3 bucket location to which Amazon
+Rekognition Video puts the analysis results. If you are using the AWS
+CLI, the parameter name is \code{StreamProcessorOutput}. This must be a
+S3Destination of an Amazon S3 bucket that you own for a label detection
+stream processor or a Kinesis data stream ARN for a face search stream
+processor.}
 
 \item{Name}{[required] An identifier you assign to the stream processor. You can use \code{Name} to
 manage the stream processor. For example, you can get the current status
 of the stream processor by calling
 \code{\link[=rekognition_describe_stream_processor]{describe_stream_processor}}.
-\code{Name} is idempotent.}
+\code{Name} is idempotent. This is required for both face search and label
+detection stream processors.}
 
-\item{Settings}{[required] Face recognition input parameters to be used by the stream processor.
-Includes the collection to use for face recognition and the face
-attributes to detect.}
+\item{Settings}{[required] Input parameters used in a streaming video analyzed by a stream
+processor. You can use \code{FaceSearch} to recognize faces in a streaming
+video, or you can use \code{ConnectedHome} to detect labels.}
 
-\item{RoleArn}{[required] ARN of the IAM role that allows access to the stream processor.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StreamProcessorArn = "string"
-)
-}
+\item{RoleArn}{[required] The Amazon Resource Number (ARN) of the IAM role that allows access to
+the stream processor. The IAM role provides Rekognition read permissions
+for a Kinesis stream. It also provides write permissions to an Amazon S3
+bucket and Amazon Simple Notification Service topic for a label
+detection stream processor. This is required for both face search and
+label detection stream processors.}
+
+\item{Tags}{A set of tags (key-value pairs) that you want to attach to the stream
+processor.}
+
+\item{NotificationChannel}{}
+
+\item{KmsKeyId}{The identifier for your AWS Key Management Service key (AWS KMS key).
+This is an optional parameter for label detection stream processors and
+should not be used to create a face search stream processor. You can
+supply the Amazon Resource Name (ARN) of your KMS key, the ID of your
+KMS key, an alias for your KMS key, or an alias ARN. The key is used to
+encrypt results and data published to your Amazon S3 bucket, which
+includes image frames and hero images. Your source images are
+unaffected.}
+
+\item{RegionsOfInterest}{Specifies locations in the frames where Amazon Rekognition checks for
+objects or people. You can specify up to 10 regions of interest, and
+each region has either a polygon or a bounding box. This is an optional
+parameter for label detection stream processors and should not be used
+to create a face search stream processor.}
+
+\item{DataSharingPreference}{Shows whether you are sharing data with Rekognition to improve model
+performance. You can choose this option at the account level or on a
+per-stream basis. Note that if you opt out at the account level this
+setting is ignored on individual streams.}
 }
 \description{
-Creates an Amazon Rekognition stream processor that you can use to
-detect and recognize faces in a streaming video.
+Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces or to detect labels in a streaming video.
 
-Amazon Rekognition Video is a consumer of live video from Amazon Kinesis
-Video Streams. Amazon Rekognition Video sends analysis results to Amazon
-Kinesis Data Streams.
-
-You provide as input a Kinesis video stream (\code{Input}) and a Kinesis data
-stream (\code{Output}) stream. You also specify the face recognition criteria
-in \code{Settings}. For example, the collection containing faces that you
-want to recognize. Use \code{Name} to assign an identifier for the stream
-processor. You use \code{Name} to manage the stream processor. For example,
-you can start processing the source video by calling
-\code{\link[=rekognition_start_stream_processor]{start_stream_processor}} with the
-\code{Name} field.
-
-After you have finished analyzing a streaming video, use
-\code{\link[=rekognition_stop_stream_processor]{stop_stream_processor}} to stop
-processing. You can delete the stream processor by calling
-\code{\link[=rekognition_delete_stream_processor]{delete_stream_processor}}.
+See \url{https://paws-r.github.io/docs/rekognition/create_stream_processor.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_stream_processor(
-  Input = list(
-    KinesisVideoStream = list(
-      Arn = "string"
-    )
-  ),
-  Output = list(
-    KinesisDataStream = list(
-      Arn = "string"
-    )
-  ),
-  Name = "string",
-  Settings = list(
-    FaceSearch = list(
-      CollectionId = "string",
-      FaceMatchThreshold = 123.0
-    )
-  ),
-  RoleArn = "string"
-)
-}
-}
-
 \keyword{internal}

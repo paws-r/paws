@@ -9,28 +9,9 @@ sagemaker_delete_endpoint_config(EndpointConfigName)
 \arguments{
 \item{EndpointConfigName}{[required] The name of the endpoint configuration that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an endpoint configuration. The
-\code{\link[=sagemaker_delete_endpoint_config]{delete_endpoint_config}} API deletes
-only the specified configuration. It does not delete endpoints created
-using the configuration.
+Deletes an endpoint configuration. The \code{\link[=sagemaker_delete_endpoint_config]{delete_endpoint_config}} API deletes only the specified configuration. It does not delete endpoints created using the configuration.
 
-You must not delete an \code{EndpointConfig} in use by an endpoint that is
-live or while the \code{\link[=sagemaker_update_endpoint]{update_endpoint}} or
-\code{\link[=sagemaker_create_endpoint]{create_endpoint}} operations are being
-performed on the endpoint. If you delete the \code{EndpointConfig} of an
-endpoint that is active or being created or updated you may lose
-visibility into the instance type the endpoint is using. The endpoint
-must be deleted in order to stop incurring charges.
+See \url{https://paws-r.github.io/docs/sagemaker/delete_endpoint_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_endpoint_config(
-  EndpointConfigName = "string"
-)
-}
-}
-
 \keyword{internal}

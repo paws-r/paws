@@ -17,38 +17,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  policy = list(
-    Policy = "string"
-  )
-)
-}
-}
 \description{
-This operation retrieves the \code{access-policy} subresource set on the
-vault; for more information on setting this subresource, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-SetVaultAccessPolicy.html}{Set Vault Access Policy (PUT access-policy)}.
-If there is no access policy set on the vault, the operation returns a
-\verb{404 Not found} error. For more information about vault access policies,
-see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html}{Amazon Glacier Access Control with Vault Access Policies}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_vault_access_policy(
-  accountId = "string",
-  vaultName = "string"
-)
-}
-}
+This operation retrieves the \code{access-policy} subresource set on the vault; for more information on setting this subresource, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-SetVaultAccessPolicy.html}{Set Vault Access Policy (PUT access-policy)}. If there is no access policy set on the vault, the operation returns a \verb{404 Not found} error. For more information about vault access policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html}{Amazon Glacier Access Control with Vault Access Policies}.
 
-\examples{
-\dontrun{
-# The example retrieves the access-policy set on the vault named
-# example-vault.
-svc$get_vault_access_policy(
-  accountId = "-",
-  vaultName = "example-vault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/get_vault_access_policy.html} for full documentation.
 }
 \keyword{internal}

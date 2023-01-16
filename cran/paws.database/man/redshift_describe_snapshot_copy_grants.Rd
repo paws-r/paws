@@ -2,11 +2,16 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_describe_snapshot_copy_grants}
 \alias{redshift_describe_snapshot_copy_grants}
-\title{Returns a list of snapshot copy grants owned by the AWS account in the
-destination region}
+\title{Returns a list of snapshot copy grants owned by the Amazon Web Services
+account in the destination region}
 \usage{
-redshift_describe_snapshot_copy_grants(SnapshotCopyGrantName,
-  MaxRecords, Marker, TagKeys, TagValues)
+redshift_describe_snapshot_copy_grants(
+  SnapshotCopyGrantName = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  TagKeys = NULL,
+  TagValues = NULL
+)
 }
 \arguments{
 \item{SnapshotCopyGrantName}{The name of the snapshot copy grant.}
@@ -23,10 +28,10 @@ Constraints: minimum 20, maximum 100.}
 
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a \code{DescribeSnapshotCopyGrant}
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.
 
 Constraints: You can specify either the \strong{SnapshotCopyGrantName}
 parameter or the \strong{Marker} parameter, but not both.}
@@ -45,44 +50,9 @@ example, suppose that you have resources tagged with values called
 request, Amazon Redshift returns a response with all resources that have
 either or both of these tag values associated with them.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  SnapshotCopyGrants = list(
-    list(
-      SnapshotCopyGrantName = "string",
-      KmsKeyId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of snapshot copy grants owned by the AWS account in the
-destination region.
+Returns a list of snapshot copy grants owned by the Amazon Web Services account in the destination region.
 
-For more information about managing snapshot copy grants, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html}{Amazon Redshift Database Encryption}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/describe_snapshot_copy_grants.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_snapshot_copy_grants(
-  SnapshotCopyGrantName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

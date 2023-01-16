@@ -4,7 +4,11 @@
 \alias{glue_get_crawler_metrics}
 \title{Retrieves metrics about specified crawlers}
 \usage{
-glue_get_crawler_metrics(CrawlerNameList, MaxResults, NextToken)
+glue_get_crawler_metrics(
+  CrawlerNameList = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{CrawlerNameList}{A list of the names of crawlers about which to retrieve metrics.}
@@ -13,36 +17,9 @@ glue_get_crawler_metrics(CrawlerNameList, MaxResults, NextToken)
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CrawlerMetricsList = list(
-    list(
-      CrawlerName = "string",
-      TimeLeftSeconds = 123.0,
-      StillEstimating = TRUE|FALSE,
-      LastRuntimeSeconds = 123.0,
-      MedianRuntimeSeconds = 123.0,
-      TablesCreated = 123,
-      TablesUpdated = 123,
-      TablesDeleted = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves metrics about specified crawlers.
-}
-\section{Request syntax}{
-\preformatted{svc$get_crawler_metrics(
-  CrawlerNameList = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_crawler_metrics.html} for full documentation.
+}
 \keyword{internal}

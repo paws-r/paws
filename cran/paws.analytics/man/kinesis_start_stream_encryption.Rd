@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesis_operations.R
 \name{kinesis_start_stream_encryption}
 \alias{kinesis_start_stream_encryption}
-\title{Enables or updates server-side encryption using an AWS KMS key for a
-specified stream}
+\title{Enables or updates server-side encryption using an Amazon Web Services
+KMS key for a specified stream}
 \usage{
 kinesis_start_stream_encryption(StreamName, EncryptionType, KeyId)
 }
@@ -12,11 +12,11 @@ kinesis_start_stream_encryption(StreamName, EncryptionType, KeyId)
 
 \item{EncryptionType}{[required] The encryption type to use. The only valid value is \code{KMS}.}
 
-\item{KeyId}{[required] The GUID for the customer-managed AWS KMS key to use for encryption.
-This value can be a globally unique identifier, a fully specified Amazon
-Resource Name (ARN) to either an alias or a key, or an alias name
-prefixed by "alias/".You can also use a master key owned by Kinesis Data
-Streams by specifying the alias \code{aws/kinesis}.
+\item{KeyId}{[required] The GUID for the customer-managed Amazon Web Services KMS key to use for
+encryption. This value can be a globally unique identifier, a fully
+specified Amazon Resource Name (ARN) to either an alias or a key, or an
+alias name prefixed by "alias/".You can also use a master key owned by
+Kinesis Data Streams by specifying the alias \code{aws/kinesis}.
 \itemize{
 \item Key ARN example:
 \code{arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012}
@@ -28,38 +28,9 @@ Streams by specifying the alias \code{aws/kinesis}.
 \item Master key owned by Kinesis Data Streams: \code{alias/aws/kinesis}
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Enables or updates server-side encryption using an AWS KMS key for a
-specified stream.
+Enables or updates server-side encryption using an Amazon Web Services KMS key for a specified stream.
 
-Starting encryption is an asynchronous operation. Upon receiving the
-request, Kinesis Data Streams returns immediately and sets the status of
-the stream to \code{UPDATING}. After the update is complete, Kinesis Data
-Streams sets the status of the stream back to \code{ACTIVE}. Updating or
-applying encryption normally takes a few seconds to complete, but it can
-take minutes. You can continue to read and write data to your stream
-while its status is \code{UPDATING}. Once the status of the stream is
-\code{ACTIVE}, encryption begins for records written to the stream.
-
-API Limits: You can successfully apply a new AWS KMS key for server-side
-encryption 25 times in a rolling 24-hour period.
-
-Note: It can take up to 5 seconds after the stream is in an \code{ACTIVE}
-status before all records written to the stream are encrypted. After you
-enable encryption, you can verify that encryption is applied by
-inspecting the API response from \code{\link[=kinesis_put_record]{put_record}} or
-\code{\link[=kinesis_put_records]{put_records}}.
+See \url{https://paws-r.github.io/docs/kinesis/start_stream_encryption.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_stream_encryption(
-  StreamName = "string",
-  EncryptionType = "NONE"|"KMS",
-  KeyId = "string"
-)
-}
-}
-
 \keyword{internal}

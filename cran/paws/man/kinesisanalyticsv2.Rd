@@ -7,7 +7,19 @@
 kinesisanalyticsv2(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -23,7 +35,9 @@ against streaming sources to perform time series analytics, feed
 real-time dashboards, and create real-time metrics.
 }
 \section{Service syntax}{
-\preformatted{svc <- kinesisanalyticsv2(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- kinesisanalyticsv2(
   config = list(
     credentials = list(
       creds = list(
@@ -31,45 +45,53 @@ real-time dashboards, and create real-time metrics.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=kinesisanalyticsv2_add_application_cloud_watch_logging_option]{add_application_cloud_watch_logging_option} \tab Adds an Amazon CloudWatch log stream to monitor application configuration errors\cr
-\link[=kinesisanalyticsv2_add_application_input]{add_application_input} \tab Adds a streaming source to your SQL-based Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_add_application_input_processing_configuration]{add_application_input_processing_configuration} \tab Adds an InputProcessingConfiguration to a SQL-based Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_add_application_output]{add_application_output} \tab Adds an external destination to your SQL-based Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_add_application_reference_data_source]{add_application_reference_data_source} \tab Adds a reference data source to an existing SQL-based Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_add_application_vpc_configuration]{add_application_vpc_configuration} \tab Adds a Virtual Private Cloud (VPC) configuration to the application\cr
-\link[=kinesisanalyticsv2_create_application]{create_application} \tab Creates a Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_create_application_presigned_url]{create_application_presigned_url} \tab Creates and returns a URL that you can use to connect to an application's extension\cr
-\link[=kinesisanalyticsv2_create_application_snapshot]{create_application_snapshot} \tab Creates a snapshot of the application's state data\cr
-\link[=kinesisanalyticsv2_delete_application]{delete_application} \tab Deletes the specified application\cr
-\link[=kinesisanalyticsv2_delete_application_cloud_watch_logging_option]{delete_application_cloud_watch_logging_option} \tab Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_delete_application_input_processing_configuration]{delete_application_input_processing_configuration} \tab Deletes an InputProcessingConfiguration from an input\cr
-\link[=kinesisanalyticsv2_delete_application_output]{delete_application_output} \tab Deletes the output destination configuration from your SQL-based Kinesis Data Analytics application's configuration\cr
-\link[=kinesisanalyticsv2_delete_application_reference_data_source]{delete_application_reference_data_source} \tab Deletes a reference data source configuration from the specified SQL-based Kinesis Data Analytics application's configuration\cr
-\link[=kinesisanalyticsv2_delete_application_snapshot]{delete_application_snapshot} \tab Deletes a snapshot of application state\cr
-\link[=kinesisanalyticsv2_delete_application_vpc_configuration]{delete_application_vpc_configuration} \tab Removes a VPC configuration from a Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_describe_application]{describe_application} \tab Returns information about a specific Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_describe_application_snapshot]{describe_application_snapshot} \tab Returns information about a snapshot of application state data\cr
-\link[=kinesisanalyticsv2_discover_input_schema]{discover_input_schema} \tab Infers a schema for a SQL-based Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object\cr
-\link[=kinesisanalyticsv2_list_applications]{list_applications} \tab Returns a list of Kinesis Data Analytics applications in your account\cr
-\link[=kinesisanalyticsv2_list_application_snapshots]{list_application_snapshots} \tab Lists information about the current application snapshots\cr
-\link[=kinesisanalyticsv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the application\cr
-\link[=kinesisanalyticsv2_start_application]{start_application} \tab Starts the specified Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_stop_application]{stop_application} \tab Stops the application from processing data\cr
-\link[=kinesisanalyticsv2_tag_resource]{tag_resource} \tab Adds one or more key-value tags to a Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_untag_resource]{untag_resource} \tab Removes one or more tags from a Kinesis Data Analytics application\cr
-\link[=kinesisanalyticsv2_update_application]{update_application} \tab Updates an existing Kinesis Data Analytics application
+\link[paws.analytics:kinesisanalyticsv2_add_application_cloud_watch_logging_option]{add_application_cloud_watch_logging_option} \tab Adds an Amazon CloudWatch log stream to monitor application configuration errors\cr
+\link[paws.analytics:kinesisanalyticsv2_add_application_input]{add_application_input} \tab Adds a streaming source to your SQL-based Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_add_application_input_processing_configuration]{add_application_input_processing_configuration} \tab Adds an InputProcessingConfiguration to a SQL-based Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_add_application_output]{add_application_output} \tab Adds an external destination to your SQL-based Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_add_application_reference_data_source]{add_application_reference_data_source} \tab Adds a reference data source to an existing SQL-based Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_add_application_vpc_configuration]{add_application_vpc_configuration} \tab Adds a Virtual Private Cloud (VPC) configuration to the application\cr
+\link[paws.analytics:kinesisanalyticsv2_create_application]{create_application} \tab Creates a Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_create_application_presigned_url]{create_application_presigned_url} \tab Creates and returns a URL that you can use to connect to an application's extension\cr
+\link[paws.analytics:kinesisanalyticsv2_create_application_snapshot]{create_application_snapshot} \tab Creates a snapshot of the application's state data\cr
+\link[paws.analytics:kinesisanalyticsv2_delete_application]{delete_application} \tab Deletes the specified application\cr
+\link[paws.analytics:kinesisanalyticsv2_delete_application_cloud_watch_logging_option]{delete_application_cloud_watch_logging_option} \tab Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_delete_application_input_processing_configuration]{delete_application_input_processing_configuration} \tab Deletes an InputProcessingConfiguration from an input\cr
+\link[paws.analytics:kinesisanalyticsv2_delete_application_output]{delete_application_output} \tab Deletes the output destination configuration from your SQL-based Kinesis Data Analytics application's configuration\cr
+\link[paws.analytics:kinesisanalyticsv2_delete_application_reference_data_source]{delete_application_reference_data_source} \tab Deletes a reference data source configuration from the specified SQL-based Kinesis Data Analytics application's configuration\cr
+\link[paws.analytics:kinesisanalyticsv2_delete_application_snapshot]{delete_application_snapshot} \tab Deletes a snapshot of application state\cr
+\link[paws.analytics:kinesisanalyticsv2_delete_application_vpc_configuration]{delete_application_vpc_configuration} \tab Removes a VPC configuration from a Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_describe_application]{describe_application} \tab Returns information about a specific Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_describe_application_snapshot]{describe_application_snapshot} \tab Returns information about a snapshot of application state data\cr
+\link[paws.analytics:kinesisanalyticsv2_describe_application_version]{describe_application_version} \tab Provides a detailed description of a specified version of the application\cr
+\link[paws.analytics:kinesisanalyticsv2_discover_input_schema]{discover_input_schema} \tab Infers a schema for a SQL-based Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object\cr
+\link[paws.analytics:kinesisanalyticsv2_list_applications]{list_applications} \tab Returns a list of Kinesis Data Analytics applications in your account\cr
+\link[paws.analytics:kinesisanalyticsv2_list_application_snapshots]{list_application_snapshots} \tab Lists information about the current application snapshots\cr
+\link[paws.analytics:kinesisanalyticsv2_list_application_versions]{list_application_versions} \tab Lists all the versions for the specified application, including versions that were rolled back\cr
+\link[paws.analytics:kinesisanalyticsv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the application\cr
+\link[paws.analytics:kinesisanalyticsv2_rollback_application]{rollback_application} \tab Reverts the application to the previous running version\cr
+\link[paws.analytics:kinesisanalyticsv2_start_application]{start_application} \tab Starts the specified Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_stop_application]{stop_application} \tab Stops the application from processing data\cr
+\link[paws.analytics:kinesisanalyticsv2_tag_resource]{tag_resource} \tab Adds one or more key-value tags to a Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_untag_resource]{untag_resource} \tab Removes one or more tags from a Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_update_application]{update_application} \tab Updates an existing Kinesis Data Analytics application\cr
+\link[paws.analytics:kinesisanalyticsv2_update_application_maintenance_configuration]{update_application_maintenance_configuration} \tab Updates the maintenance configuration of the Kinesis Data Analytics application
 }
 }
 

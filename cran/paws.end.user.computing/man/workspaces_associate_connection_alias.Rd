@@ -12,28 +12,9 @@ workspaces_associate_connection_alias(AliasId, ResourceId)
 
 \item{ResourceId}{[required] The identifier of the directory to associate the connection alias with.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConnectionIdentifier = "string"
-)
-}
-}
 \description{
-Associates the specified connection alias with the specified directory
-to enable cross-Region redirection. For more information, see
-\href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
+Associates the specified connection alias with the specified directory to enable cross-Region redirection. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 
-Before performing this operation, call
-\href{https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html}{DescribeConnectionAliases}
-to make sure that the current state of the connection alias is
-\code{CREATED}.
+See \url{https://paws-r.github.io/docs/workspaces/associate_connection_alias.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_connection_alias(
-  AliasId = "string",
-  ResourceId = "string"
-)
-}
-}
-
 \keyword{internal}

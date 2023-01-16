@@ -4,53 +4,14 @@
 \alias{pinpoint_create_recommender_configuration}
 \title{Creates an Amazon Pinpoint configuration for a recommender model}
 \usage{
-pinpoint_create_recommender_configuration(
-  CreateRecommenderConfiguration)
+pinpoint_create_recommender_configuration(CreateRecommenderConfiguration)
 }
 \arguments{
 \item{CreateRecommenderConfiguration}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RecommenderConfigurationResponse = list(
-    Attributes = list(
-      "string"
-    ),
-    CreationDate = "string",
-    Description = "string",
-    Id = "string",
-    LastModifiedDate = "string",
-    Name = "string",
-    RecommendationProviderIdType = "string",
-    RecommendationProviderRoleArn = "string",
-    RecommendationProviderUri = "string",
-    RecommendationTransformerUri = "string",
-    RecommendationsDisplayName = "string",
-    RecommendationsPerMessage = 123
-  )
-)
-}
-}
 \description{
 Creates an Amazon Pinpoint configuration for a recommender model.
-}
-\section{Request syntax}{
-\preformatted{svc$create_recommender_configuration(
-  CreateRecommenderConfiguration = list(
-    Attributes = list(
-      "string"
-    ),
-    Description = "string",
-    Name = "string",
-    RecommendationProviderIdType = "string",
-    RecommendationProviderRoleArn = "string",
-    RecommendationProviderUri = "string",
-    RecommendationTransformerUri = "string",
-    RecommendationsDisplayName = "string",
-    RecommendationsPerMessage = 123
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpoint/create_recommender_configuration.html} for full documentation.
+}
 \keyword{internal}

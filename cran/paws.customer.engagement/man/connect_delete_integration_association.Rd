@@ -2,33 +2,20 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_delete_integration_association}
 \alias{connect_delete_integration_association}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Deletes an Amazon Web Services resource association from an Amazon
+Connect instance}
 \usage{
-connect_delete_integration_association(InstanceId,
-  IntegrationAssociationId)
+connect_delete_integration_association(InstanceId, IntegrationAssociationId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
-\item{IntegrationAssociationId}{[required] The identifier for the AppIntegration association.}
-}
-\value{
-An empty list.
+\item{IntegrationAssociationId}{[required] The identifier for the integration association.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+Deletes an Amazon Web Services resource association from an Amazon Connect instance. The association must not have any use cases associated with it.
 
-Deletes an AppIntegration association from an Amazon Connect instance.
-The association must not have any use cases associated with it.
+See \url{https://paws-r.github.io/docs/connect/delete_integration_association.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_integration_association(
-  InstanceId = "string",
-  IntegrationAssociationId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -7,7 +7,19 @@
 dlm(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -17,15 +29,17 @@ Operations section.
 }
 \description{
 With Amazon Data Lifecycle Manager, you can manage the lifecycle of your
-AWS resources. You create lifecycle policies, which are used to automate
-operations on the specified resources.
+Amazon Web Services resources. You create lifecycle policies, which are
+used to automate operations on the specified resources.
 
 Amazon DLM supports Amazon EBS volumes and snapshots. For information
 about using Amazon DLM with Amazon EBS, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html}{Automating the Amazon EBS Snapshot Lifecycle}
 in the \emph{Amazon EC2 User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- dlm(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- dlm(
   config = list(
     credentials = list(
       creds = list(
@@ -33,26 +47,30 @@ in the \emph{Amazon EC2 User Guide}.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=dlm_create_lifecycle_policy]{create_lifecycle_policy} \tab Creates a policy to manage the lifecycle of the specified AWS resources\cr
-\link[=dlm_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes the specified lifecycle policy and halts the automated operations that the policy specified\cr
-\link[=dlm_get_lifecycle_policies]{get_lifecycle_policies} \tab Gets summary information about all or the specified data lifecycle policies\cr
-\link[=dlm_get_lifecycle_policy]{get_lifecycle_policy} \tab Gets detailed information about the specified lifecycle policy\cr
-\link[=dlm_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
-\link[=dlm_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
-\link[=dlm_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
-\link[=dlm_update_lifecycle_policy]{update_lifecycle_policy} \tab Updates the specified lifecycle policy
+\link[paws.storage:dlm_create_lifecycle_policy]{create_lifecycle_policy} \tab Creates a policy to manage the lifecycle of the specified Amazon Web Services resources\cr
+\link[paws.storage:dlm_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes the specified lifecycle policy and halts the automated operations that the policy specified\cr
+\link[paws.storage:dlm_get_lifecycle_policies]{get_lifecycle_policies} \tab Gets summary information about all or the specified data lifecycle policies\cr
+\link[paws.storage:dlm_get_lifecycle_policy]{get_lifecycle_policy} \tab Gets detailed information about the specified lifecycle policy\cr
+\link[paws.storage:dlm_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
+\link[paws.storage:dlm_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
+\link[paws.storage:dlm_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
+\link[paws.storage:dlm_update_lifecycle_policy]{update_lifecycle_policy} \tab Updates the specified lifecycle policy
 }
 }
 

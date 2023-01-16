@@ -16,18 +16,9 @@ Constraints:
 \item Can't be associated with any DB instances
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a specified DB parameter group. The DB parameter group to be
-deleted can't be associated with any DB instances.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_db_parameter_group(
-  DBParameterGroupName = "string"
-)
-}
-}
+Deletes a specified DB parameter group. The DB parameter group to be deleted can't be associated with any DB instances.
 
+See \url{https://paws-r.github.io/docs/rds/delete_db_parameter_group.html} for full documentation.
+}
 \keyword{internal}

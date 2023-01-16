@@ -11,26 +11,12 @@ elbv2_set_ip_address_type(LoadBalancerArn, IpAddressType)
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 
 \item{IpAddressType}{[required] The IP address type. The possible values are \code{ipv4} (for IPv4 addresses)
-and \code{dualstack} (for IPv4 and IPv6 addresses). Internal load balancers
-must use \code{ipv4}. You can’t specify \code{dualstack} for a load balancer with
-a UDP or TCP_UDP listener.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  IpAddressType = "ipv4"|"dualstack"
-)
-}
+and \code{dualstack} (for IPv4 and IPv6 addresses). You can’t specify
+\code{dualstack} for a load balancer with a UDP or TCP_UDP listener.}
 }
 \description{
-Sets the type of IP addresses used by the subnets of the specified
-Application Load Balancer or Network Load Balancer.
-}
-\section{Request syntax}{
-\preformatted{svc$set_ip_address_type(
-  LoadBalancerArn = "string",
-  IpAddressType = "ipv4"|"dualstack"
-)
-}
-}
+Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer.
 
+See \url{https://paws-r.github.io/docs/elbv2/set_ip_address_type.html} for full documentation.
+}
 \keyword{internal}

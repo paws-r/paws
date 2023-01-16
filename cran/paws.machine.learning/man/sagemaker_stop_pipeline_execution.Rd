@@ -4,31 +4,18 @@
 \alias{sagemaker_stop_pipeline_execution}
 \title{Stops a pipeline execution}
 \usage{
-sagemaker_stop_pipeline_execution(PipelineExecutionArn,
-  ClientRequestToken)
+sagemaker_stop_pipeline_execution(PipelineExecutionArn, ClientRequestToken)
 }
 \arguments{
 \item{PipelineExecutionArn}{[required] The Amazon Resource Name (ARN) of the pipeline execution.}
 
 \item{ClientRequestToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the operation. An idempotent operation completes no more
-than one time.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineExecutionArn = "string"
-)
-}
+than once.}
 }
 \description{
 Stops a pipeline execution.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_pipeline_execution(
-  PipelineExecutionArn = "string",
-  ClientRequestToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/stop_pipeline_execution.html} for full documentation.
+}
 \keyword{internal}

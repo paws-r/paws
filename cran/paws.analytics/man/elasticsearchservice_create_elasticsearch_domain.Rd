@@ -4,11 +4,24 @@
 \alias{elasticsearchservice_create_elasticsearch_domain}
 \title{Creates a new Elasticsearch domain}
 \usage{
-elasticsearchservice_create_elasticsearch_domain(DomainName,
-  ElasticsearchVersion, ElasticsearchClusterConfig, EBSOptions,
-  AccessPolicies, SnapshotOptions, VPCOptions, CognitoOptions,
-  EncryptionAtRestOptions, NodeToNodeEncryptionOptions, AdvancedOptions,
-  LogPublishingOptions, DomainEndpointOptions, AdvancedSecurityOptions)
+elasticsearchservice_create_elasticsearch_domain(
+  DomainName,
+  ElasticsearchVersion = NULL,
+  ElasticsearchClusterConfig = NULL,
+  EBSOptions = NULL,
+  AccessPolicies = NULL,
+  SnapshotOptions = NULL,
+  VPCOptions = NULL,
+  CognitoOptions = NULL,
+  EncryptionAtRestOptions = NULL,
+  NodeToNodeEncryptionOptions = NULL,
+  AdvancedOptions = NULL,
+  LogPublishingOptions = NULL,
+  DomainEndpointOptions = NULL,
+  AdvancedSecurityOptions = NULL,
+  AutoTuneOptions = NULL,
+  TagList = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the Elasticsearch domain that you are creating. Domain names
@@ -17,8 +30,10 @@ Domain names must start with a lowercase letter and can contain the
 following characters: a-z (lowercase), 0-9, and - (hyphen).}
 
 \item{ElasticsearchVersion}{String of format X.Y to specify version for the Elasticsearch domain eg.
-"1.5" or "2.3". For more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains}
-in the \emph{Amazon Elasticsearch Service Developer Guide}.}
+"1.5" or "2.3". For more information, see <a
+href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains"
+target="_blank">Creating Elasticsearch Domains</a> in the \emph{Amazon
+Elasticsearch Service Developer Guide}.}
 
 \item{ElasticsearchClusterConfig}{Configuration options for an Elasticsearch domain. Specifies the
 instance type and number of instances in the domain cluster.}
@@ -32,11 +47,15 @@ volumes.}
 Default value is 0 hours.}
 
 \item{VPCOptions}{Options to specify the subnets and security groups for VPC endpoint. For
-more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc}{Creating a VPC}
-in \emph{VPC Endpoints for Amazon Elasticsearch Service Domains}}
+more information, see <a
+href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-creating-vpc"
+target="_blank">Creating a VPC</a> in \emph{VPC Endpoints for Amazon
+Elasticsearch Service Domains}}
 
 \item{CognitoOptions}{Options to specify the Cognito user and identity pools for Kibana
-authentication. For more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html}{Amazon Cognito Authentication for Kibana}.}
+authentication. For more information, see <a
+href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
+target="_blank">Amazon Cognito Authentication for Kibana</a>.}
 
 \item{EncryptionAtRestOptions}{Specifies the Encryption At Rest Options.}
 
@@ -44,8 +63,9 @@ authentication. For more information, see \href{https://docs.aws.amazon.com/elas
 
 \item{AdvancedOptions}{Option to allow references to indices in an HTTP request body. Must be
 \code{false} when configuring access to individual sub-resources. By default,
-the value is \code{true}. See \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options}{Configuration Advanced Options}
-for more information.}
+the value is \code{true}. See <a
+href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options"
+target="_blank">Configuration Advanced Options</a> for more information.}
 
 \item{LogPublishingOptions}{Map of \code{LogType} and \code{LogPublishingOption}, each containing options to
 publish a given type of Elasticsearch log.}
@@ -54,209 +74,14 @@ publish a given type of Elasticsearch log.}
 endpoint.}
 
 \item{AdvancedSecurityOptions}{Specifies advanced security options.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainStatus = list(
-    DomainId = "string",
-    DomainName = "string",
-    ARN = "string",
-    Created = TRUE|FALSE,
-    Deleted = TRUE|FALSE,
-    Endpoint = "string",
-    Endpoints = list(
-      "string"
-    ),
-    Processing = TRUE|FALSE,
-    UpgradeProcessing = TRUE|FALSE,
-    ElasticsearchVersion = "string",
-    ElasticsearchClusterConfig = list(
-      InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-      InstanceCount = 123,
-      DedicatedMasterEnabled = TRUE|FALSE,
-      ZoneAwarenessEnabled = TRUE|FALSE,
-      ZoneAwarenessConfig = list(
-        AvailabilityZoneCount = 123
-      ),
-      DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-      DedicatedMasterCount = 123,
-      WarmEnabled = TRUE|FALSE,
-      WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-      WarmCount = 123
-    ),
-    EBSOptions = list(
-      EBSEnabled = TRUE|FALSE,
-      VolumeType = "standard"|"gp2"|"io1",
-      VolumeSize = 123,
-      Iops = 123
-    ),
-    AccessPolicies = "string",
-    SnapshotOptions = list(
-      AutomatedSnapshotStartHour = 123
-    ),
-    VPCOptions = list(
-      VPCId = "string",
-      SubnetIds = list(
-        "string"
-      ),
-      AvailabilityZones = list(
-        "string"
-      ),
-      SecurityGroupIds = list(
-        "string"
-      )
-    ),
-    CognitoOptions = list(
-      Enabled = TRUE|FALSE,
-      UserPoolId = "string",
-      IdentityPoolId = "string",
-      RoleArn = "string"
-    ),
-    EncryptionAtRestOptions = list(
-      Enabled = TRUE|FALSE,
-      KmsKeyId = "string"
-    ),
-    NodeToNodeEncryptionOptions = list(
-      Enabled = TRUE|FALSE
-    ),
-    AdvancedOptions = list(
-      "string"
-    ),
-    LogPublishingOptions = list(
-      list(
-        CloudWatchLogsLogGroupArn = "string",
-        Enabled = TRUE|FALSE
-      )
-    ),
-    ServiceSoftwareOptions = list(
-      CurrentVersion = "string",
-      NewVersion = "string",
-      UpdateAvailable = TRUE|FALSE,
-      Cancellable = TRUE|FALSE,
-      UpdateStatus = "PENDING_UPDATE"|"IN_PROGRESS"|"COMPLETED"|"NOT_ELIGIBLE"|"ELIGIBLE",
-      Description = "string",
-      AutomatedUpdateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      OptionalDeployment = TRUE|FALSE
-    ),
-    DomainEndpointOptions = list(
-      EnforceHTTPS = TRUE|FALSE,
-      TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
-      CustomEndpointEnabled = TRUE|FALSE,
-      CustomEndpoint = "string",
-      CustomEndpointCertificateArn = "string"
-    ),
-    AdvancedSecurityOptions = list(
-      Enabled = TRUE|FALSE,
-      InternalUserDatabaseEnabled = TRUE|FALSE,
-      SAMLOptions = list(
-        Enabled = TRUE|FALSE,
-        Idp = list(
-          MetadataContent = "string",
-          EntityId = "string"
-        ),
-        SubjectKey = "string",
-        RolesKey = "string",
-        SessionTimeoutMinutes = 123
-      )
-    )
-  )
-)
-}
+
+\item{AutoTuneOptions}{Specifies Auto-Tune options.}
+
+\item{TagList}{A list of \code{Tag} added during domain creation.}
 }
 \description{
-Creates a new Elasticsearch domain. For more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains}
-in the \emph{Amazon Elasticsearch Service Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_elasticsearch_domain(
-  DomainName = "string",
-  ElasticsearchVersion = "string",
-  ElasticsearchClusterConfig = list(
-    InstanceType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-    InstanceCount = 123,
-    DedicatedMasterEnabled = TRUE|FALSE,
-    ZoneAwarenessEnabled = TRUE|FALSE,
-    ZoneAwarenessConfig = list(
-      AvailabilityZoneCount = 123
-    ),
-    DedicatedMasterType = "m3.medium.elasticsearch"|"m3.large.elasticsearch"|"m3.xlarge.elasticsearch"|"m3.2xlarge.elasticsearch"|"m4.large.elasticsearch"|"m4.xlarge.elasticsearch"|"m4.2xlarge.elasticsearch"|"m4.4xlarge.elasticsearch"|"m4.10xlarge.elasticsearch"|"m5.large.elasticsearch"|"m5.xlarge.elasticsearch"|"m5.2xlarge.elasticsearch"|"m5.4xlarge.elasticsearch"|"m5.12xlarge.elasticsearch"|"r5.large.elasticsearch"|"r5.xlarge.elasticsearch"|"r5.2xlarge.elasticsearch"|"r5.4xlarge.elasticsearch"|"r5.12xlarge.elasticsearch"|"c5.large.elasticsearch"|"c5.xlarge.elasticsearch"|"c5.2xlarge.elasticsearch"|"c5.4xlarge.elasticsearch"|"c5.9xlarge.elasticsearch"|"c5.18xlarge.elasticsearch"|"ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch"|"t2.micro.elasticsearch"|"t2.small.elasticsearch"|"t2.medium.elasticsearch"|"r3.large.elasticsearch"|"r3.xlarge.elasticsearch"|"r3.2xlarge.elasticsearch"|"r3.4xlarge.elasticsearch"|"r3.8xlarge.elasticsearch"|"i2.xlarge.elasticsearch"|"i2.2xlarge.elasticsearch"|"d2.xlarge.elasticsearch"|"d2.2xlarge.elasticsearch"|"d2.4xlarge.elasticsearch"|"d2.8xlarge.elasticsearch"|"c4.large.elasticsearch"|"c4.xlarge.elasticsearch"|"c4.2xlarge.elasticsearch"|"c4.4xlarge.elasticsearch"|"c4.8xlarge.elasticsearch"|"r4.large.elasticsearch"|"r4.xlarge.elasticsearch"|"r4.2xlarge.elasticsearch"|"r4.4xlarge.elasticsearch"|"r4.8xlarge.elasticsearch"|"r4.16xlarge.elasticsearch"|"i3.large.elasticsearch"|"i3.xlarge.elasticsearch"|"i3.2xlarge.elasticsearch"|"i3.4xlarge.elasticsearch"|"i3.8xlarge.elasticsearch"|"i3.16xlarge.elasticsearch",
-    DedicatedMasterCount = 123,
-    WarmEnabled = TRUE|FALSE,
-    WarmType = "ultrawarm1.medium.elasticsearch"|"ultrawarm1.large.elasticsearch",
-    WarmCount = 123
-  ),
-  EBSOptions = list(
-    EBSEnabled = TRUE|FALSE,
-    VolumeType = "standard"|"gp2"|"io1",
-    VolumeSize = 123,
-    Iops = 123
-  ),
-  AccessPolicies = "string",
-  SnapshotOptions = list(
-    AutomatedSnapshotStartHour = 123
-  ),
-  VPCOptions = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  CognitoOptions = list(
-    Enabled = TRUE|FALSE,
-    UserPoolId = "string",
-    IdentityPoolId = "string",
-    RoleArn = "string"
-  ),
-  EncryptionAtRestOptions = list(
-    Enabled = TRUE|FALSE,
-    KmsKeyId = "string"
-  ),
-  NodeToNodeEncryptionOptions = list(
-    Enabled = TRUE|FALSE
-  ),
-  AdvancedOptions = list(
-    "string"
-  ),
-  LogPublishingOptions = list(
-    list(
-      CloudWatchLogsLogGroupArn = "string",
-      Enabled = TRUE|FALSE
-    )
-  ),
-  DomainEndpointOptions = list(
-    EnforceHTTPS = TRUE|FALSE,
-    TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
-    CustomEndpointEnabled = TRUE|FALSE,
-    CustomEndpoint = "string",
-    CustomEndpointCertificateArn = "string"
-  ),
-  AdvancedSecurityOptions = list(
-    Enabled = TRUE|FALSE,
-    InternalUserDatabaseEnabled = TRUE|FALSE,
-    MasterUserOptions = list(
-      MasterUserARN = "string",
-      MasterUserName = "string",
-      MasterUserPassword = "string"
-    ),
-    SAMLOptions = list(
-      Enabled = TRUE|FALSE,
-      Idp = list(
-        MetadataContent = "string",
-        EntityId = "string"
-      ),
-      MasterUserName = "string",
-      MasterBackendRole = "string",
-      SubjectKey = "string",
-      RolesKey = "string",
-      SessionTimeoutMinutes = 123
-    )
-  )
-)
-}
-}
+Creates a new Elasticsearch domain. For more information, see <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the \emph{Amazon Elasticsearch Service Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/create_elasticsearch_domain.html} for full documentation.
+}
 \keyword{internal}

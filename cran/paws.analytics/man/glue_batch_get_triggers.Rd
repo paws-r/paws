@@ -10,65 +10,9 @@ glue_batch_get_triggers(TriggerNames)
 \item{TriggerNames}{[required] A list of trigger names, which may be the names returned from the
 \code{\link[=glue_list_triggers]{list_triggers}} operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Triggers = list(
-    list(
-      Name = "string",
-      WorkflowName = "string",
-      Id = "string",
-      Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-      State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-      Description = "string",
-      Schedule = "string",
-      Actions = list(
-        list(
-          JobName = "string",
-          Arguments = list(
-            "string"
-          ),
-          Timeout = 123,
-          SecurityConfiguration = "string",
-          NotificationProperty = list(
-            NotifyDelayAfter = 123
-          ),
-          CrawlerName = "string"
-        )
-      ),
-      Predicate = list(
-        Logical = "AND"|"ANY",
-        Conditions = list(
-          list(
-            LogicalOperator = "EQUALS",
-            JobName = "string",
-            State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-            CrawlerName = "string",
-            CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-          )
-        )
-      )
-    )
-  ),
-  TriggersNotFound = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns a list of resource metadata for a given list of trigger names.
-After calling the \code{\link[=glue_list_triggers]{list_triggers}} operation, you
-can call this operation to access the data to which you have been
-granted permissions. This operation supports all IAM permissions,
-including permission conditions that uses tags.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_get_triggers(
-  TriggerNames = list(
-    "string"
-  )
-)
-}
-}
+Returns a list of resource metadata for a given list of trigger names. After calling the \code{\link[=glue_list_triggers]{list_triggers}} operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 
+See \url{https://paws-r.github.io/docs/glue/batch_get_triggers.html} for full documentation.
+}
 \keyword{internal}

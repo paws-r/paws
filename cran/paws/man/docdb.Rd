@@ -7,7 +7,19 @@
 docdb(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -19,7 +31,9 @@ Operations section.
 Amazon DocumentDB API documentation
 }
 \section{Service syntax}{
-\preformatted{svc <- docdb(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- docdb(
   config = list(
     credentials = list(
       creds = list(
@@ -27,67 +41,82 @@ Amazon DocumentDB API documentation
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=docdb_add_tags_to_resource]{add_tags_to_resource} \tab Adds metadata tags to an Amazon DocumentDB resource\cr
-\link[=docdb_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to an Amazon DocumentDB instance)\cr
-\link[=docdb_copy_db_cluster_parameter_group]{copy_db_cluster_parameter_group} \tab Copies the specified cluster parameter group\cr
-\link[=docdb_copy_db_cluster_snapshot]{copy_db_cluster_snapshot} \tab Copies a snapshot of a cluster\cr
-\link[=docdb_create_db_cluster]{create_db_cluster} \tab Creates a new Amazon DocumentDB cluster\cr
-\link[=docdb_create_db_cluster_parameter_group]{create_db_cluster_parameter_group} \tab Creates a new cluster parameter group\cr
-\link[=docdb_create_db_cluster_snapshot]{create_db_cluster_snapshot} \tab Creates a snapshot of a cluster\cr
-\link[=docdb_create_db_instance]{create_db_instance} \tab Creates a new instance\cr
-\link[=docdb_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new subnet group\cr
-\link[=docdb_delete_db_cluster]{delete_db_cluster} \tab Deletes a previously provisioned cluster\cr
-\link[=docdb_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified cluster parameter group\cr
-\link[=docdb_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a cluster snapshot\cr
-\link[=docdb_delete_db_instance]{delete_db_instance} \tab Deletes a previously provisioned instance\cr
-\link[=docdb_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a subnet group\cr
-\link[=docdb_describe_certificates]{describe_certificates} \tab Returns a list of certificate authority (CA) certificates provided by Amazon DocumentDB for this AWS account\cr
-\link[=docdb_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions\cr
-\link[=docdb_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular cluster parameter group\cr
-\link[=docdb_describe_db_clusters]{describe_db_clusters} \tab Returns information about provisioned Amazon DocumentDB clusters\cr
-\link[=docdb_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes} \tab Returns a list of cluster snapshot attribute names and values for a manual DB cluster snapshot\cr
-\link[=docdb_describe_db_cluster_snapshots]{describe_db_cluster_snapshots} \tab Returns information about cluster snapshots\cr
-\link[=docdb_describe_db_engine_versions]{describe_db_engine_versions} \tab Returns a list of the available engines\cr
-\link[=docdb_describe_db_instances]{describe_db_instances} \tab Returns information about provisioned Amazon DocumentDB instances\cr
-\link[=docdb_describe_db_subnet_groups]{describe_db_subnet_groups} \tab Returns a list of DBSubnetGroup descriptions\cr
-\link[=docdb_describe_engine_default_cluster_parameters]{describe_engine_default_cluster_parameters} \tab Returns the default engine and system parameter information for the cluster database engine\cr
-\link[=docdb_describe_event_categories]{describe_event_categories} \tab Displays a list of categories for all event source types, or, if specified, for a specified source type\cr
-\link[=docdb_describe_events]{describe_events} \tab Returns events related to instances, security groups, snapshots, and DB parameter groups for the past 14 days\cr
-\link[=docdb_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable instance options for the specified engine\cr
-\link[=docdb_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, instances) that have at least one pending maintenance action\cr
-\link[=docdb_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a cluster\cr
-\link[=docdb_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon DocumentDB resource\cr
-\link[=docdb_modify_db_cluster]{modify_db_cluster} \tab Modifies a setting for an Amazon DocumentDB cluster\cr
-\link[=docdb_modify_db_cluster_parameter_group]{modify_db_cluster_parameter_group} \tab Modifies the parameters of a cluster parameter group\cr
-\link[=docdb_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot\cr
-\link[=docdb_modify_db_instance]{modify_db_instance} \tab Modifies settings for an instance\cr
-\link[=docdb_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing subnet group\cr
-\link[=docdb_reboot_db_instance]{reboot_db_instance} \tab You might need to reboot your instance, usually for maintenance reasons\cr
-\link[=docdb_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes metadata tags from an Amazon DocumentDB resource\cr
-\link[=docdb_reset_db_cluster_parameter_group]{reset_db_cluster_parameter_group} \tab Modifies the parameters of a cluster parameter group to the default value\cr
-\link[=docdb_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot} \tab Creates a new cluster from a snapshot or cluster snapshot\cr
-\link[=docdb_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time} \tab Restores a cluster to an arbitrary point in time\cr
-\link[=docdb_start_db_cluster]{start_db_cluster} \tab Restarts the stopped cluster that is specified by DBClusterIdentifier\cr
-\link[=docdb_stop_db_cluster]{stop_db_cluster} \tab Stops the running cluster that is specified by DBClusterIdentifier
+\link[paws.database:docdb_add_source_identifier_to_subscription]{add_source_identifier_to_subscription} \tab Adds a source identifier to an existing event notification subscription\cr
+\link[paws.database:docdb_add_tags_to_resource]{add_tags_to_resource} \tab Adds metadata tags to an Amazon DocumentDB resource\cr
+\link[paws.database:docdb_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to an Amazon DocumentDB instance)\cr
+\link[paws.database:docdb_copy_db_cluster_parameter_group]{copy_db_cluster_parameter_group} \tab Copies the specified cluster parameter group\cr
+\link[paws.database:docdb_copy_db_cluster_snapshot]{copy_db_cluster_snapshot} \tab Copies a snapshot of a cluster\cr
+\link[paws.database:docdb_create_db_cluster]{create_db_cluster} \tab Creates a new Amazon DocumentDB cluster\cr
+\link[paws.database:docdb_create_db_cluster_parameter_group]{create_db_cluster_parameter_group} \tab Creates a new cluster parameter group\cr
+\link[paws.database:docdb_create_db_cluster_snapshot]{create_db_cluster_snapshot} \tab Creates a snapshot of a cluster\cr
+\link[paws.database:docdb_create_db_instance]{create_db_instance} \tab Creates a new instance\cr
+\link[paws.database:docdb_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new subnet group\cr
+\link[paws.database:docdb_create_event_subscription]{create_event_subscription} \tab Creates an Amazon DocumentDB event notification subscription\cr
+\link[paws.database:docdb_create_global_cluster]{create_global_cluster} \tab Creates an Amazon DocumentDB global cluster that can span multiple multiple Amazon Web Services Regions\cr
+\link[paws.database:docdb_delete_db_cluster]{delete_db_cluster} \tab Deletes a previously provisioned cluster\cr
+\link[paws.database:docdb_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified cluster parameter group\cr
+\link[paws.database:docdb_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a cluster snapshot\cr
+\link[paws.database:docdb_delete_db_instance]{delete_db_instance} \tab Deletes a previously provisioned instance\cr
+\link[paws.database:docdb_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a subnet group\cr
+\link[paws.database:docdb_delete_event_subscription]{delete_event_subscription} \tab Deletes an Amazon DocumentDB event notification subscription\cr
+\link[paws.database:docdb_delete_global_cluster]{delete_global_cluster} \tab Deletes a global cluster\cr
+\link[paws.database:docdb_describe_certificates]{describe_certificates} \tab Returns a list of certificate authority (CA) certificates provided by Amazon DocumentDB for this Amazon Web Services account\cr
+\link[paws.database:docdb_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions\cr
+\link[paws.database:docdb_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular cluster parameter group\cr
+\link[paws.database:docdb_describe_db_clusters]{describe_db_clusters} \tab Returns information about provisioned Amazon DocumentDB clusters\cr
+\link[paws.database:docdb_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes} \tab Returns a list of cluster snapshot attribute names and values for a manual DB cluster snapshot\cr
+\link[paws.database:docdb_describe_db_cluster_snapshots]{describe_db_cluster_snapshots} \tab Returns information about cluster snapshots\cr
+\link[paws.database:docdb_describe_db_engine_versions]{describe_db_engine_versions} \tab Returns a list of the available engines\cr
+\link[paws.database:docdb_describe_db_instances]{describe_db_instances} \tab Returns information about provisioned Amazon DocumentDB instances\cr
+\link[paws.database:docdb_describe_db_subnet_groups]{describe_db_subnet_groups} \tab Returns a list of DBSubnetGroup descriptions\cr
+\link[paws.database:docdb_describe_engine_default_cluster_parameters]{describe_engine_default_cluster_parameters} \tab Returns the default engine and system parameter information for the cluster database engine\cr
+\link[paws.database:docdb_describe_event_categories]{describe_event_categories} \tab Displays a list of categories for all event source types, or, if specified, for a specified source type\cr
+\link[paws.database:docdb_describe_events]{describe_events} \tab Returns events related to instances, security groups, snapshots, and DB parameter groups for the past 14 days\cr
+\link[paws.database:docdb_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account\cr
+\link[paws.database:docdb_describe_global_clusters]{describe_global_clusters} \tab Returns information about Amazon DocumentDB global clusters\cr
+\link[paws.database:docdb_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable instance options for the specified engine\cr
+\link[paws.database:docdb_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, instances) that have at least one pending maintenance action\cr
+\link[paws.database:docdb_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a cluster\cr
+\link[paws.database:docdb_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon DocumentDB resource\cr
+\link[paws.database:docdb_modify_db_cluster]{modify_db_cluster} \tab Modifies a setting for an Amazon DocumentDB cluster\cr
+\link[paws.database:docdb_modify_db_cluster_parameter_group]{modify_db_cluster_parameter_group} \tab Modifies the parameters of a cluster parameter group\cr
+\link[paws.database:docdb_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual cluster snapshot\cr
+\link[paws.database:docdb_modify_db_instance]{modify_db_instance} \tab Modifies settings for an instance\cr
+\link[paws.database:docdb_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing subnet group\cr
+\link[paws.database:docdb_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon DocumentDB event notification subscription\cr
+\link[paws.database:docdb_modify_global_cluster]{modify_global_cluster} \tab Modify a setting for an Amazon DocumentDB global cluster\cr
+\link[paws.database:docdb_reboot_db_instance]{reboot_db_instance} \tab You might need to reboot your instance, usually for maintenance reasons\cr
+\link[paws.database:docdb_remove_from_global_cluster]{remove_from_global_cluster} \tab Detaches an Amazon DocumentDB secondary cluster from a global cluster\cr
+\link[paws.database:docdb_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription} \tab Removes a source identifier from an existing Amazon DocumentDB event notification subscription\cr
+\link[paws.database:docdb_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes metadata tags from an Amazon DocumentDB resource\cr
+\link[paws.database:docdb_reset_db_cluster_parameter_group]{reset_db_cluster_parameter_group} \tab Modifies the parameters of a cluster parameter group to the default value\cr
+\link[paws.database:docdb_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot} \tab Creates a new cluster from a snapshot or cluster snapshot\cr
+\link[paws.database:docdb_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time} \tab Restores a cluster to an arbitrary point in time\cr
+\link[paws.database:docdb_start_db_cluster]{start_db_cluster} \tab Restarts the stopped cluster that is specified by DBClusterIdentifier\cr
+\link[paws.database:docdb_stop_db_cluster]{stop_db_cluster} \tab Stops the running cluster that is specified by DBClusterIdentifier
 }
 }
 
 \examples{
 \dontrun{
 svc <- docdb()
-svc$add_tags_to_resource(
+svc$add_source_identifier_to_subscription(
   Foo = 123
 )
 }

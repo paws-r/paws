@@ -15,34 +15,9 @@ alphanumeric character and can contain a maximum of 128 characters. The
 characters can be alphanumeric characters, underscores (_), or hyphens
 (-). Template names are case sensitive.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CreateTemplateMessageBody = list(
-    Arn = "string",
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Creates a message template for messages that are sent through the SMS
-channel.
-}
-\section{Request syntax}{
-\preformatted{svc$create_sms_template(
-  SMSTemplateRequest = list(
-    Body = "string",
-    DefaultSubstitutions = "string",
-    RecommenderId = "string",
-    tags = list(
-      "string"
-    ),
-    TemplateDescription = "string"
-  ),
-  TemplateName = "string"
-)
-}
-}
+Creates a message template for messages that are sent through the SMS channel.
 
+See \url{https://paws-r.github.io/docs/pinpoint/create_sms_template.html} for full documentation.
+}
 \keyword{internal}

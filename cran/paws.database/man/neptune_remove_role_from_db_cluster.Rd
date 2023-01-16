@@ -5,8 +5,11 @@
 \title{Disassociates an Identity and Access Management (IAM) role from a DB
 cluster}
 \usage{
-neptune_remove_role_from_db_cluster(DBClusterIdentifier, RoleArn,
-  FeatureName)
+neptune_remove_role_from_db_cluster(
+  DBClusterIdentifier,
+  RoleArn,
+  FeatureName = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to disassociate the IAM role from.}
@@ -17,22 +20,11 @@ DB cluster, for example
 
 \item{FeatureName}{The name of the feature for the DB cluster that the IAM role is to be
 disassociated from. For the list of supported feature names, see
-DBEngineVersion.}
-}
-\value{
-An empty list.
+\code{\link[=neptune_describe_db_engine_versions]{describe_db_engine_versions}}.}
 }
 \description{
-Disassociates an Identity and Access Management (IAM) role from a DB
-cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_role_from_db_cluster(
-  DBClusterIdentifier = "string",
-  RoleArn = "string",
-  FeatureName = "string"
-)
-}
-}
+Disassociates an Identity and Access Management (IAM) role from a DB cluster.
 
+See \url{https://paws-r.github.io/docs/neptune/remove_role_from_db_cluster.html} for full documentation.
+}
 \keyword{internal}

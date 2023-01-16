@@ -4,14 +4,23 @@
 \alias{quicksight_create_theme}
 \title{Creates a theme}
 \usage{
-quicksight_create_theme(AwsAccountId, ThemeId, Name, BaseThemeId,
-  VersionDescription, Configuration, Permissions, Tags)
+quicksight_create_theme(
+  AwsAccountId,
+  ThemeId,
+  Name,
+  BaseThemeId,
+  VersionDescription = NULL,
+  Configuration,
+  Permissions = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account where you want to store the new theme.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account where you want to store the
+new theme.}
 
 \item{ThemeId}{[required] An ID for the theme that you want to create. The theme ID is unique per
-AWS Region in each AWS account.}
+Amazon Web Services Region in each Amazon Web Services account.}
 
 \item{Name}{[required] A display name for the theme.}
 
@@ -19,7 +28,7 @@ AWS Region in each AWS account.}
 inherit from one of the starting themes defined by Amazon QuickSight.
 For a list of the starting themes, use
 \code{\link[=quicksight_list_themes]{list_themes}} or choose \strong{Themes} from within
-a QuickSight analysis.}
+an analysis.}
 
 \item{VersionDescription}{A description of the first version of the theme that you're creating.
 Every time \code{\link[=quicksight_update_theme]{update_theme}} is called, a new
@@ -33,91 +42,9 @@ version in the \code{VersionDescription} field.}
 \item{Tags}{A map of the key-value pairs for the resource tag or tags that you want
 to add to the resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  VersionArn = "string",
-  ThemeId = "string",
-  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Creates a theme.
 
-A \emph{theme} is set of configuration options for color and layout. Themes
-apply to analyses and dashboards. For more information, see \href{https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html}{Using Themes in Amazon QuickSight}
-in the \emph{Amazon QuickSight User Guide}.
+See \url{https://paws-r.github.io/docs/quicksight/create_theme.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_theme(
-  AwsAccountId = "string",
-  ThemeId = "string",
-  Name = "string",
-  BaseThemeId = "string",
-  VersionDescription = "string",
-  Configuration = list(
-    DataColorPalette = list(
-      Colors = list(
-        "string"
-      ),
-      MinMaxGradient = list(
-        "string"
-      ),
-      EmptyFillColor = "string"
-    ),
-    UIColorPalette = list(
-      PrimaryForeground = "string",
-      PrimaryBackground = "string",
-      SecondaryForeground = "string",
-      SecondaryBackground = "string",
-      Accent = "string",
-      AccentForeground = "string",
-      Danger = "string",
-      DangerForeground = "string",
-      Warning = "string",
-      WarningForeground = "string",
-      Success = "string",
-      SuccessForeground = "string",
-      Dimension = "string",
-      DimensionForeground = "string",
-      Measure = "string",
-      MeasureForeground = "string"
-    ),
-    Sheet = list(
-      Tile = list(
-        Border = list(
-          Show = TRUE|FALSE
-        )
-      ),
-      TileLayout = list(
-        Gutter = list(
-          Show = TRUE|FALSE
-        ),
-        Margin = list(
-          Show = TRUE|FALSE
-        )
-      )
-    )
-  ),
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

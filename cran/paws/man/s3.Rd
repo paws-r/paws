@@ -7,7 +7,19 @@
 s3(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -19,7 +31,9 @@ Operations section.
 Amazon Simple Storage Service
 }
 \section{Service syntax}{
-\preformatted{svc <- s3(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- s3(
   config = list(
     credentials = list(
       creds = list(
@@ -27,114 +41,121 @@ Amazon Simple Storage Service
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=s3_abort_multipart_upload]{abort_multipart_upload} \tab This operation aborts a multipart upload\cr
-\link[=s3_complete_multipart_upload]{complete_multipart_upload} \tab Completes a multipart upload by assembling previously uploaded parts\cr
-\link[=s3_copy_object]{copy_object} \tab Creates a copy of an object that is already stored in Amazon S3\cr
-\link[=s3_create_bucket]{create_bucket} \tab Creates a new S3 bucket\cr
-\link[=s3_create_multipart_upload]{create_multipart_upload} \tab This operation initiates a multipart upload and returns an upload ID\cr
-\link[=s3_delete_bucket]{delete_bucket} \tab Deletes the S3 bucket\cr
-\link[=s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration} \tab Deletes an analytics configuration for the bucket (specified by the analytics configuration ID)\cr
-\link[=s3_delete_bucket_cors]{delete_bucket_cors} \tab Deletes the cors configuration information set for the bucket\cr
-\link[=s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This implementation of the DELETE operation removes default encryption from the bucket\cr
-\link[=s3_delete_bucket_intelligent_tiering_configuration]{delete_bucket_intelligent_tiering_configuration} \tab Deletes the S3 Intelligent-Tiering configuration from the specified bucket\cr
-\link[=s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration} \tab Deletes an inventory configuration (identified by the inventory ID) from the bucket\cr
-\link[=s3_delete_bucket_lifecycle]{delete_bucket_lifecycle} \tab Deletes the lifecycle configuration from the specified bucket\cr
-\link[=s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration} \tab Deletes a metrics configuration for the Amazon CloudWatch request metrics (specified by the metrics configuration ID) from the bucket\cr
-\link[=s3_delete_bucket_ownership_controls]{delete_bucket_ownership_controls} \tab Removes OwnershipControls for an Amazon S3 bucket\cr
-\link[=s3_delete_bucket_policy]{delete_bucket_policy} \tab This implementation of the DELETE operation uses the policy subresource to delete the policy of a specified bucket\cr
-\link[=s3_delete_bucket_replication]{delete_bucket_replication} \tab Deletes the replication configuration from the bucket\cr
-\link[=s3_delete_bucket_tagging]{delete_bucket_tagging} \tab Deletes the tags from the bucket\cr
-\link[=s3_delete_bucket_website]{delete_bucket_website} \tab This operation removes the website configuration for a bucket\cr
-\link[=s3_delete_object]{delete_object} \tab Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object\cr
-\link[=s3_delete_objects]{delete_objects} \tab This operation enables you to delete multiple objects from a bucket using a single HTTP request\cr
-\link[=s3_delete_object_tagging]{delete_object_tagging} \tab Removes the entire tag set from the specified object\cr
-\link[=s3_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon S3 bucket\cr
-\link[=s3_download_file]{download_file} \tab Download a file from S3 and store it at a specified file location\cr
-\link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This implementation of the GET operation uses the accelerate subresource to return the Transfer Acceleration state of a bucket, which is either Enabled or Suspended\cr
-\link[=s3_get_bucket_acl]{get_bucket_acl} \tab This implementation of the GET operation uses the acl subresource to return the access control list (ACL) of a bucket\cr
-\link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This implementation of the GET operation returns an analytics configuration (identified by the analytics configuration ID) from the bucket\cr
-\link[=s3_get_bucket_cors]{get_bucket_cors} \tab Returns the cors configuration information set for the bucket\cr
-\link[=s3_get_bucket_encryption]{get_bucket_encryption} \tab Returns the default encryption configuration for an Amazon S3 bucket\cr
-\link[=s3_get_bucket_intelligent_tiering_configuration]{get_bucket_intelligent_tiering_configuration} \tab Gets the S3 Intelligent-Tiering configuration from the specified bucket\cr
-\link[=s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration} \tab Returns an inventory configuration (identified by the inventory configuration ID) from the bucket\cr
-\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle} \tab For an updated version of this API, see GetBucketLifecycleConfiguration\cr
-\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name prefix, one or more object tags, or a combination of both\cr
-\link[=s3_get_bucket_location]{get_bucket_location} \tab Returns the Region the bucket resides in\cr
-\link[=s3_get_bucket_logging]{get_bucket_logging} \tab Returns the logging status of a bucket and the permissions users have to view and modify that status\cr
-\link[=s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration} \tab Gets a metrics configuration (specified by the metrics configuration ID) from the bucket\cr
-\link[=s3_get_bucket_notification]{get_bucket_notification} \tab No longer used, see GetBucketNotificationConfiguration\cr
-\link[=s3_get_bucket_notification_configuration]{get_bucket_notification_configuration} \tab Returns the notification configuration of a bucket\cr
-\link[=s3_get_bucket_ownership_controls]{get_bucket_ownership_controls} \tab Retrieves OwnershipControls for an Amazon S3 bucket\cr
-\link[=s3_get_bucket_policy]{get_bucket_policy} \tab Returns the policy of a specified bucket\cr
-\link[=s3_get_bucket_policy_status]{get_bucket_policy_status} \tab Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public\cr
-\link[=s3_get_bucket_replication]{get_bucket_replication} \tab Returns the replication configuration of a bucket\cr
-\link[=s3_get_bucket_request_payment]{get_bucket_request_payment} \tab Returns the request payment configuration of a bucket\cr
-\link[=s3_get_bucket_tagging]{get_bucket_tagging} \tab Returns the tag set associated with the bucket\cr
-\link[=s3_get_bucket_versioning]{get_bucket_versioning} \tab Returns the versioning state of a bucket\cr
-\link[=s3_get_bucket_website]{get_bucket_website} \tab Returns the website configuration for a bucket\cr
-\link[=s3_get_object]{get_object} \tab Retrieves objects from Amazon S3\cr
-\link[=s3_get_object_acl]{get_object_acl} \tab Returns the access control list (ACL) of an object\cr
-\link[=s3_get_object_legal_hold]{get_object_legal_hold} \tab Gets an object's current Legal Hold status\cr
-\link[=s3_get_object_lock_configuration]{get_object_lock_configuration} \tab Gets the Object Lock configuration for a bucket\cr
-\link[=s3_get_object_retention]{get_object_retention} \tab Retrieves an object's retention settings\cr
-\link[=s3_get_object_tagging]{get_object_tagging} \tab Returns the tag-set of an object\cr
-\link[=s3_get_object_torrent]{get_object_torrent} \tab Returns torrent files from a bucket\cr
-\link[=s3_get_public_access_block]{get_public_access_block} \tab Retrieves the PublicAccessBlock configuration for an Amazon S3 bucket\cr
-\link[=s3_head_bucket]{head_bucket} \tab This operation is useful to determine if a bucket exists and you have permission to access it\cr
-\link[=s3_head_object]{head_object} \tab The HEAD operation retrieves metadata from an object without returning the object itself\cr
-\link[=s3_list_bucket_analytics_configurations]{list_bucket_analytics_configurations} \tab Lists the analytics configurations for the bucket\cr
-\link[=s3_list_bucket_intelligent_tiering_configurations]{list_bucket_intelligent_tiering_configurations} \tab Lists the S3 Intelligent-Tiering configuration from the specified bucket\cr
-\link[=s3_list_bucket_inventory_configurations]{list_bucket_inventory_configurations} \tab Returns a list of inventory configurations for the bucket\cr
-\link[=s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations} \tab Lists the metrics configurations for the bucket\cr
-\link[=s3_list_buckets]{list_buckets} \tab Returns a list of all buckets owned by the authenticated sender of the request\cr
-\link[=s3_list_multipart_uploads]{list_multipart_uploads} \tab This operation lists in-progress multipart uploads\cr
-\link[=s3_list_objects]{list_objects} \tab Returns some or all (up to 1,000) of the objects in a bucket\cr
-\link[=s3_list_objects_v2]{list_objects_v2} \tab Returns some or all (up to 1,000) of the objects in a bucket\cr
-\link[=s3_list_object_versions]{list_object_versions} \tab Returns metadata about all versions of the objects in a bucket\cr
-\link[=s3_list_parts]{list_parts} \tab Lists the parts that have been uploaded for a specific multipart upload\cr
-\link[=s3_put_bucket_accelerate_configuration]{put_bucket_accelerate_configuration} \tab Sets the accelerate configuration of an existing bucket\cr
-\link[=s3_put_bucket_acl]{put_bucket_acl} \tab Sets the permissions on an existing bucket using access control lists (ACL)\cr
-\link[=s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration} \tab Sets an analytics configuration for the bucket (specified by the analytics configuration ID)\cr
-\link[=s3_put_bucket_cors]{put_bucket_cors} \tab Sets the cors configuration for your bucket\cr
-\link[=s3_put_bucket_encryption]{put_bucket_encryption} \tab This operation uses the encryption subresource to configure default encryption and Amazon S3 Bucket Key for an existing bucket\cr
-\link[=s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration} \tab Puts a S3 Intelligent-Tiering configuration to the specified bucket\cr
-\link[=s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This implementation of the PUT operation adds an inventory configuration (identified by the inventory ID) to the bucket\cr
-\link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab For an updated version of this API, see PutBucketLifecycleConfiguration\cr
-\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration\cr
-\link[=s3_put_bucket_logging]{put_bucket_logging} \tab Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters\cr
-\link[=s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration} \tab Sets a metrics configuration (specified by the metrics configuration ID) for the bucket\cr
-\link[=s3_put_bucket_notification]{put_bucket_notification} \tab No longer used, see the PutBucketNotificationConfiguration operation\cr
-\link[=s3_put_bucket_notification_configuration]{put_bucket_notification_configuration} \tab Enables notifications of specified events for a bucket\cr
-\link[=s3_put_bucket_ownership_controls]{put_bucket_ownership_controls} \tab Creates or modifies OwnershipControls for an Amazon S3 bucket\cr
-\link[=s3_put_bucket_policy]{put_bucket_policy} \tab Applies an Amazon S3 bucket policy to an Amazon S3 bucket\cr
-\link[=s3_put_bucket_replication]{put_bucket_replication} \tab Creates a replication configuration or replaces an existing one\cr
-\link[=s3_put_bucket_request_payment]{put_bucket_request_payment} \tab Sets the request payment configuration for a bucket\cr
-\link[=s3_put_bucket_tagging]{put_bucket_tagging} \tab Sets the tags for a bucket\cr
-\link[=s3_put_bucket_versioning]{put_bucket_versioning} \tab Sets the versioning state of an existing bucket\cr
-\link[=s3_put_bucket_website]{put_bucket_website} \tab Sets the configuration of the website that is specified in the website subresource\cr
-\link[=s3_put_object]{put_object} \tab Adds an object to a bucket\cr
-\link[=s3_put_object_acl]{put_object_acl} \tab Uses the acl subresource to set the access control list (ACL) permissions for a new or existing object in an S3 bucket\cr
-\link[=s3_put_object_legal_hold]{put_object_legal_hold} \tab Applies a Legal Hold configuration to the specified object\cr
-\link[=s3_put_object_lock_configuration]{put_object_lock_configuration} \tab Places an Object Lock configuration on the specified bucket\cr
-\link[=s3_put_object_retention]{put_object_retention} \tab Places an Object Retention configuration on an object\cr
-\link[=s3_put_object_tagging]{put_object_tagging} \tab Sets the supplied tag-set to an object that already exists in a bucket\cr
-\link[=s3_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket\cr
-\link[=s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3\cr
-\link[=s3_select_object_content]{select_object_content} \tab This operation filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement\cr
-\link[=s3_upload_part]{upload_part} \tab Uploads a part in a multipart upload\cr
-\link[=s3_upload_part_copy]{upload_part_copy} \tab Uploads a part by copying data from an existing object as data source
+\link[paws.storage:s3_abort_multipart_upload]{abort_multipart_upload} \tab This action aborts a multipart upload\cr
+\link[paws.storage:s3_complete_multipart_upload]{complete_multipart_upload} \tab Completes a multipart upload by assembling previously uploaded parts\cr
+\link[paws.storage:s3_copy_object]{copy_object} \tab Creates a copy of an object that is already stored in Amazon S3\cr
+\link[paws.storage:s3_create_bucket]{create_bucket} \tab Creates a new S3 bucket\cr
+\link[paws.storage:s3_create_multipart_upload]{create_multipart_upload} \tab This action initiates a multipart upload and returns an upload ID\cr
+\link[paws.storage:s3_delete_bucket]{delete_bucket} \tab Deletes the S3 bucket\cr
+\link[paws.storage:s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration} \tab Deletes an analytics configuration for the bucket (specified by the analytics configuration ID)\cr
+\link[paws.storage:s3_delete_bucket_cors]{delete_bucket_cors} \tab Deletes the cors configuration information set for the bucket\cr
+\link[paws.storage:s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This implementation of the DELETE action removes default encryption from the bucket\cr
+\link[paws.storage:s3_delete_bucket_intelligent_tiering_configuration]{delete_bucket_intelligent_tiering_configuration} \tab Deletes the S3 Intelligent-Tiering configuration from the specified bucket\cr
+\link[paws.storage:s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration} \tab Deletes an inventory configuration (identified by the inventory ID) from the bucket\cr
+\link[paws.storage:s3_delete_bucket_lifecycle]{delete_bucket_lifecycle} \tab Deletes the lifecycle configuration from the specified bucket\cr
+\link[paws.storage:s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration} \tab Deletes a metrics configuration for the Amazon CloudWatch request metrics (specified by the metrics configuration ID) from the bucket\cr
+\link[paws.storage:s3_delete_bucket_ownership_controls]{delete_bucket_ownership_controls} \tab Removes OwnershipControls for an Amazon S3 bucket\cr
+\link[paws.storage:s3_delete_bucket_policy]{delete_bucket_policy} \tab This implementation of the DELETE action uses the policy subresource to delete the policy of a specified bucket\cr
+\link[paws.storage:s3_delete_bucket_replication]{delete_bucket_replication} \tab Deletes the replication configuration from the bucket\cr
+\link[paws.storage:s3_delete_bucket_tagging]{delete_bucket_tagging} \tab Deletes the tags from the bucket\cr
+\link[paws.storage:s3_delete_bucket_website]{delete_bucket_website} \tab This action removes the website configuration for a bucket\cr
+\link[paws.storage:s3_delete_object]{delete_object} \tab Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object\cr
+\link[paws.storage:s3_delete_objects]{delete_objects} \tab This action enables you to delete multiple objects from a bucket using a single HTTP request\cr
+\link[paws.storage:s3_delete_object_tagging]{delete_object_tagging} \tab Removes the entire tag set from the specified object\cr
+\link[paws.storage:s3_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon S3 bucket\cr
+\link[paws.storage:s3_download_file]{download_file} \tab Download a file from S3 and store it at a specified file location\cr
+\link[paws.storage:s3_generate_presigned_url]{generate_presigned_url} \tab @title Generate a presigned url given a client, its method, and arguments\cr
+\link[paws.storage:s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This implementation of the GET action uses the accelerate subresource to return the Transfer Acceleration state of a bucket, which is either Enabled or Suspended\cr
+\link[paws.storage:s3_get_bucket_acl]{get_bucket_acl} \tab This implementation of the GET action uses the acl subresource to return the access control list (ACL) of a bucket\cr
+\link[paws.storage:s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This implementation of the GET action returns an analytics configuration (identified by the analytics configuration ID) from the bucket\cr
+\link[paws.storage:s3_get_bucket_cors]{get_bucket_cors} \tab Returns the Cross-Origin Resource Sharing (CORS) configuration information set for the bucket\cr
+\link[paws.storage:s3_get_bucket_encryption]{get_bucket_encryption} \tab Returns the default encryption configuration for an Amazon S3 bucket\cr
+\link[paws.storage:s3_get_bucket_intelligent_tiering_configuration]{get_bucket_intelligent_tiering_configuration} \tab Gets the S3 Intelligent-Tiering configuration from the specified bucket\cr
+\link[paws.storage:s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration} \tab Returns an inventory configuration (identified by the inventory configuration ID) from the bucket\cr
+\link[paws.storage:s3_get_bucket_lifecycle]{get_bucket_lifecycle} \tab For an updated version of this API, see GetBucketLifecycleConfiguration\cr
+\link[paws.storage:s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name prefix, one or more object tags, or a combination of both\cr
+\link[paws.storage:s3_get_bucket_location]{get_bucket_location} \tab Returns the Region the bucket resides in\cr
+\link[paws.storage:s3_get_bucket_logging]{get_bucket_logging} \tab Returns the logging status of a bucket and the permissions users have to view and modify that status\cr
+\link[paws.storage:s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration} \tab Gets a metrics configuration (specified by the metrics configuration ID) from the bucket\cr
+\link[paws.storage:s3_get_bucket_notification]{get_bucket_notification} \tab No longer used, see GetBucketNotificationConfiguration\cr
+\link[paws.storage:s3_get_bucket_notification_configuration]{get_bucket_notification_configuration} \tab Returns the notification configuration of a bucket\cr
+\link[paws.storage:s3_get_bucket_ownership_controls]{get_bucket_ownership_controls} \tab Retrieves OwnershipControls for an Amazon S3 bucket\cr
+\link[paws.storage:s3_get_bucket_policy]{get_bucket_policy} \tab Returns the policy of a specified bucket\cr
+\link[paws.storage:s3_get_bucket_policy_status]{get_bucket_policy_status} \tab Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public\cr
+\link[paws.storage:s3_get_bucket_replication]{get_bucket_replication} \tab Returns the replication configuration of a bucket\cr
+\link[paws.storage:s3_get_bucket_request_payment]{get_bucket_request_payment} \tab Returns the request payment configuration of a bucket\cr
+\link[paws.storage:s3_get_bucket_tagging]{get_bucket_tagging} \tab Returns the tag set associated with the bucket\cr
+\link[paws.storage:s3_get_bucket_versioning]{get_bucket_versioning} \tab Returns the versioning state of a bucket\cr
+\link[paws.storage:s3_get_bucket_website]{get_bucket_website} \tab Returns the website configuration for a bucket\cr
+\link[paws.storage:s3_get_object]{get_object} \tab Retrieves objects from Amazon S3\cr
+\link[paws.storage:s3_get_object_acl]{get_object_acl} \tab Returns the access control list (ACL) of an object\cr
+\link[paws.storage:s3_get_object_attributes]{get_object_attributes} \tab Retrieves all the metadata from an object without returning the object itself\cr
+\link[paws.storage:s3_get_object_legal_hold]{get_object_legal_hold} \tab Gets an object's current legal hold status\cr
+\link[paws.storage:s3_get_object_lock_configuration]{get_object_lock_configuration} \tab Gets the Object Lock configuration for a bucket\cr
+\link[paws.storage:s3_get_object_retention]{get_object_retention} \tab Retrieves an object's retention settings\cr
+\link[paws.storage:s3_get_object_tagging]{get_object_tagging} \tab Returns the tag-set of an object\cr
+\link[paws.storage:s3_get_object_torrent]{get_object_torrent} \tab Returns torrent files from a bucket\cr
+\link[paws.storage:s3_get_public_access_block]{get_public_access_block} \tab Retrieves the PublicAccessBlock configuration for an Amazon S3 bucket\cr
+\link[paws.storage:s3_head_bucket]{head_bucket} \tab This action is useful to determine if a bucket exists and you have permission to access it\cr
+\link[paws.storage:s3_head_object]{head_object} \tab The HEAD action retrieves metadata from an object without returning the object itself\cr
+\link[paws.storage:s3_list_bucket_analytics_configurations]{list_bucket_analytics_configurations} \tab Lists the analytics configurations for the bucket\cr
+\link[paws.storage:s3_list_bucket_intelligent_tiering_configurations]{list_bucket_intelligent_tiering_configurations} \tab Lists the S3 Intelligent-Tiering configuration from the specified bucket\cr
+\link[paws.storage:s3_list_bucket_inventory_configurations]{list_bucket_inventory_configurations} \tab Returns a list of inventory configurations for the bucket\cr
+\link[paws.storage:s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations} \tab Lists the metrics configurations for the bucket\cr
+\link[paws.storage:s3_list_buckets]{list_buckets} \tab Returns a list of all buckets owned by the authenticated sender of the request\cr
+\link[paws.storage:s3_list_multipart_uploads]{list_multipart_uploads} \tab This action lists in-progress multipart uploads\cr
+\link[paws.storage:s3_list_objects]{list_objects} \tab Returns some or all (up to 1,000) of the objects in a bucket\cr
+\link[paws.storage:s3_list_objects_v2]{list_objects_v2} \tab Returns some or all (up to 1,000) of the objects in a bucket with each request\cr
+\link[paws.storage:s3_list_object_versions]{list_object_versions} \tab Returns metadata about all versions of the objects in a bucket\cr
+\link[paws.storage:s3_list_parts]{list_parts} \tab Lists the parts that have been uploaded for a specific multipart upload\cr
+\link[paws.storage:s3_put_bucket_accelerate_configuration]{put_bucket_accelerate_configuration} \tab Sets the accelerate configuration of an existing bucket\cr
+\link[paws.storage:s3_put_bucket_acl]{put_bucket_acl} \tab Sets the permissions on an existing bucket using access control lists (ACL)\cr
+\link[paws.storage:s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration} \tab Sets an analytics configuration for the bucket (specified by the analytics configuration ID)\cr
+\link[paws.storage:s3_put_bucket_cors]{put_bucket_cors} \tab Sets the cors configuration for your bucket\cr
+\link[paws.storage:s3_put_bucket_encryption]{put_bucket_encryption} \tab This action uses the encryption subresource to configure default encryption and Amazon S3 Bucket Key for an existing bucket\cr
+\link[paws.storage:s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration} \tab Puts a S3 Intelligent-Tiering configuration to the specified bucket\cr
+\link[paws.storage:s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This implementation of the PUT action adds an inventory configuration (identified by the inventory ID) to the bucket\cr
+\link[paws.storage:s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab For an updated version of this API, see PutBucketLifecycleConfiguration\cr
+\link[paws.storage:s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration\cr
+\link[paws.storage:s3_put_bucket_logging]{put_bucket_logging} \tab Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters\cr
+\link[paws.storage:s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration} \tab Sets a metrics configuration (specified by the metrics configuration ID) for the bucket\cr
+\link[paws.storage:s3_put_bucket_notification]{put_bucket_notification} \tab No longer used, see the PutBucketNotificationConfiguration operation\cr
+\link[paws.storage:s3_put_bucket_notification_configuration]{put_bucket_notification_configuration} \tab Enables notifications of specified events for a bucket\cr
+\link[paws.storage:s3_put_bucket_ownership_controls]{put_bucket_ownership_controls} \tab Creates or modifies OwnershipControls for an Amazon S3 bucket\cr
+\link[paws.storage:s3_put_bucket_policy]{put_bucket_policy} \tab Applies an Amazon S3 bucket policy to an Amazon S3 bucket\cr
+\link[paws.storage:s3_put_bucket_replication]{put_bucket_replication} \tab Creates a replication configuration or replaces an existing one\cr
+\link[paws.storage:s3_put_bucket_request_payment]{put_bucket_request_payment} \tab Sets the request payment configuration for a bucket\cr
+\link[paws.storage:s3_put_bucket_tagging]{put_bucket_tagging} \tab Sets the tags for a bucket\cr
+\link[paws.storage:s3_put_bucket_versioning]{put_bucket_versioning} \tab Sets the versioning state of an existing bucket\cr
+\link[paws.storage:s3_put_bucket_website]{put_bucket_website} \tab Sets the configuration of the website that is specified in the website subresource\cr
+\link[paws.storage:s3_put_object]{put_object} \tab Adds an object to a bucket\cr
+\link[paws.storage:s3_put_object_acl]{put_object_acl} \tab Uses the acl subresource to set the access control list (ACL) permissions for a new or existing object in an S3 bucket\cr
+\link[paws.storage:s3_put_object_legal_hold]{put_object_legal_hold} \tab Applies a legal hold configuration to the specified object\cr
+\link[paws.storage:s3_put_object_lock_configuration]{put_object_lock_configuration} \tab Places an Object Lock configuration on the specified bucket\cr
+\link[paws.storage:s3_put_object_retention]{put_object_retention} \tab Places an Object Retention configuration on an object\cr
+\link[paws.storage:s3_put_object_tagging]{put_object_tagging} \tab Sets the supplied tag-set to an object that already exists in a bucket\cr
+\link[paws.storage:s3_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket\cr
+\link[paws.storage:s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3\cr
+\link[paws.storage:s3_select_object_content]{select_object_content} \tab This action filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement\cr
+\link[paws.storage:s3_upload_part]{upload_part} \tab Uploads a part in a multipart upload\cr
+\link[paws.storage:s3_upload_part_copy]{upload_part_copy} \tab Uploads a part by copying data from an existing object as data source\cr
+\link[paws.storage:s3_write_get_object_response]{write_get_object_response} \tab Passes transformed objects to a GetObject operation when using Object Lambda access points
 }
 }
 

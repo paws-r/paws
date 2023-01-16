@@ -4,8 +4,16 @@
 \alias{sagemaker_list_trials}
 \title{Lists the trials in your account}
 \usage{
-sagemaker_list_trials(ExperimentName, TrialComponentName, CreatedAfter,
-  CreatedBefore, SortBy, SortOrder, MaxResults, NextToken)
+sagemaker_list_trials(
+  ExperimentName = NULL,
+  TrialComponentName = NULL,
+  CreatedAfter = NULL,
+  CreatedBefore = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ExperimentName}{A filter that returns only trials that are part of the specified
@@ -29,53 +37,9 @@ value is 10.}
 return the full set of trials, the call returns a token for getting the
 next set of trials.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrialSummaries = list(
-    list(
-      TrialArn = "string",
-      TrialName = "string",
-      DisplayName = "string",
-      TrialSource = list(
-        SourceArn = "string",
-        SourceType = "string"
-      ),
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the trials in your account. Specify an experiment name to limit
-the list to the trials that are part of that experiment. Specify a trial
-component name to limit the list to the trials that associated with that
-trial component. The list can be filtered to show only trials that were
-created in a specific time range. The list can be sorted by trial name
-or creation time.
-}
-\section{Request syntax}{
-\preformatted{svc$list_trials(
-  ExperimentName = "string",
-  TrialComponentName = "string",
-  CreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists the trials in your account. Specify an experiment name to limit the list to the trials that are part of that experiment. Specify a trial component name to limit the list to the trials that associated with that trial component. The list can be filtered to show only trials that were created in a specific time range. The list can be sorted by trial name or creation time.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_trials.html} for full documentation.
+}
 \keyword{internal}

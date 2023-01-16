@@ -9,55 +9,9 @@ pinpointemail_get_deliverability_test_report(ReportId)
 \arguments{
 \item{ReportId}{[required] A unique string that identifies the predictive inbox placement test.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeliverabilityTestReport = list(
-    ReportId = "string",
-    ReportName = "string",
-    Subject = "string",
-    FromEmailAddress = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
-  ),
-  OverallPlacement = list(
-    InboxPercentage = 123.0,
-    SpamPercentage = 123.0,
-    MissingPercentage = 123.0,
-    SpfPercentage = 123.0,
-    DkimPercentage = 123.0
-  ),
-  IspPlacements = list(
-    list(
-      IspName = "string",
-      PlacementStatistics = list(
-        InboxPercentage = 123.0,
-        SpamPercentage = 123.0,
-        MissingPercentage = 123.0,
-        SpfPercentage = 123.0,
-        DkimPercentage = 123.0
-      )
-    )
-  ),
-  Message = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Retrieve the results of a predictive inbox placement test.
-}
-\section{Request syntax}{
-\preformatted{svc$get_deliverability_test_report(
-  ReportId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpointemail/get_deliverability_test_report.html} for full documentation.
+}
 \keyword{internal}

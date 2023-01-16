@@ -3,18 +3,18 @@
 #' @include macie_service.R
 NULL
 
-#' Associates a specified AWS account with Amazon Macie Classic as a member
-#' account
+#' (Discontinued) Associates a specified Amazon Web Services account with
+#' Amazon Macie Classic as a member account
 #'
 #' @description
-#' Associates a specified AWS account with Amazon Macie Classic as a member
-#' account.
+#' (Discontinued) Associates a specified Amazon Web Services account with
+#' Amazon Macie Classic as a member account.
 #'
 #' @usage
 #' macie_associate_member_account(memberAccountId)
 #'
-#' @param memberAccountId &#91;required&#93; The ID of the AWS account that you want to associate with Amazon Macie
-#' Classic as a member account.
+#' @param memberAccountId &#91;required&#93; (Discontinued) The ID of the Amazon Web Services account that you want
+#' to associate with Amazon Macie Classic as a member account.
 #'
 #' @return
 #' An empty list.
@@ -46,24 +46,24 @@ macie_associate_member_account <- function(memberAccountId) {
 }
 .macie$operations$associate_member_account <- macie_associate_member_account
 
-#' Associates specified S3 resources with Amazon Macie Classic for
-#' monitoring and data classification
+#' (Discontinued) Associates specified S3 resources with Amazon Macie
+#' Classic for monitoring and data classification
 #'
 #' @description
-#' Associates specified S3 resources with Amazon Macie Classic for
-#' monitoring and data classification. If memberAccountId isn't specified,
-#' the action associates specified S3 resources with Macie Classic for the
-#' current master account. If memberAccountId is specified, the action
-#' associates specified S3 resources with Macie Classic for the specified
-#' member account.
+#' (Discontinued) Associates specified S3 resources with Amazon Macie
+#' Classic for monitoring and data classification. If `memberAccountId`
+#' isn't specified, the action associates specified S3 resources with Macie
+#' Classic for the current Macie Classic administrator account. If
+#' `memberAccountId` is specified, the action associates specified S3
+#' resources with Macie Classic for the specified member account.
 #'
 #' @usage
 #' macie_associate_s3_resources(memberAccountId, s3Resources)
 #'
-#' @param memberAccountId The ID of the Amazon Macie Classic member account whose resources you
-#' want to associate with Macie Classic.
-#' @param s3Resources &#91;required&#93; The S3 resources that you want to associate with Amazon Macie Classic
-#' for monitoring and data classification.
+#' @param memberAccountId (Discontinued) The ID of the Amazon Macie Classic member account whose
+#' resources you want to associate with Macie Classic.
+#' @param s3Resources &#91;required&#93; (Discontinued) The S3 resources that you want to associate with Amazon
+#' Macie Classic for monitoring and data classification.
 #'
 #' @return
 #' A list with the following syntax:
@@ -119,16 +119,18 @@ macie_associate_s3_resources <- function(memberAccountId = NULL, s3Resources) {
 }
 .macie$operations$associate_s3_resources <- macie_associate_s3_resources
 
-#' Removes the specified member account from Amazon Macie Classic
+#' (Discontinued) Removes the specified member account from Amazon Macie
+#' Classic
 #'
 #' @description
-#' Removes the specified member account from Amazon Macie Classic.
+#' (Discontinued) Removes the specified member account from Amazon Macie
+#' Classic.
 #'
 #' @usage
 #' macie_disassociate_member_account(memberAccountId)
 #'
-#' @param memberAccountId &#91;required&#93; The ID of the member account that you want to remove from Amazon Macie
-#' Classic.
+#' @param memberAccountId &#91;required&#93; (Discontinued) The ID of the member account that you want to remove from
+#' Amazon Macie Classic.
 #'
 #' @return
 #' An empty list.
@@ -160,23 +162,24 @@ macie_disassociate_member_account <- function(memberAccountId) {
 }
 .macie$operations$disassociate_member_account <- macie_disassociate_member_account
 
-#' Removes specified S3 resources from being monitored by Amazon Macie
-#' Classic
+#' (Discontinued) Removes specified S3 resources from being monitored by
+#' Amazon Macie Classic
 #'
 #' @description
-#' Removes specified S3 resources from being monitored by Amazon Macie
-#' Classic. If memberAccountId isn't specified, the action removes
-#' specified S3 resources from Macie Classic for the current master
-#' account. If memberAccountId is specified, the action removes specified
-#' S3 resources from Macie Classic for the specified member account.
+#' (Discontinued) Removes specified S3 resources from being monitored by
+#' Amazon Macie Classic. If `memberAccountId` isn't specified, the action
+#' removes specified S3 resources from Macie Classic for the current Macie
+#' Classic administrator account. If `memberAccountId` is specified, the
+#' action removes specified S3 resources from Macie Classic for the
+#' specified member account.
 #'
 #' @usage
 #' macie_disassociate_s3_resources(memberAccountId, associatedS3Resources)
 #'
-#' @param memberAccountId The ID of the Amazon Macie Classic member account whose resources you
-#' want to remove from being monitored by Amazon Macie Classic.
-#' @param associatedS3Resources &#91;required&#93; The S3 resources (buckets or prefixes) that you want to remove from
-#' being monitored and classified by Amazon Macie Classic.
+#' @param memberAccountId (Discontinued) The ID of the Amazon Macie Classic member account whose
+#' resources you want to remove from being monitored by Macie Classic.
+#' @param associatedS3Resources &#91;required&#93; (Discontinued) The S3 resources (buckets or prefixes) that you want to
+#' remove from being monitored and classified by Amazon Macie Classic.
 #'
 #' @return
 #' A list with the following syntax:
@@ -228,22 +231,23 @@ macie_disassociate_s3_resources <- function(memberAccountId = NULL, associatedS3
 }
 .macie$operations$disassociate_s3_resources <- macie_disassociate_s3_resources
 
-#' Lists all Amazon Macie Classic member accounts for the current Amazon
-#' Macie Classic master account
+#' (Discontinued) Lists all Amazon Macie Classic member accounts for the
+#' current Macie Classic administrator account
 #'
 #' @description
-#' Lists all Amazon Macie Classic member accounts for the current Amazon
-#' Macie Classic master account.
+#' (Discontinued) Lists all Amazon Macie Classic member accounts for the
+#' current Macie Classic administrator account.
 #'
 #' @usage
 #' macie_list_member_accounts(nextToken, maxResults)
 #'
-#' @param nextToken Use this parameter when paginating results. Set the value of this
-#' parameter to null on your first call to the ListMemberAccounts action.
-#' Subsequent calls to the action fill nextToken in the request with the
-#' value of nextToken from the previous response to continue listing data.
-#' @param maxResults Use this parameter to indicate the maximum number of items that you want
-#' in the response. The default value is 250.
+#' @param nextToken (Discontinued) Use this parameter when paginating results. Set the value
+#' of this parameter to null on your first call to the
+#' [`list_member_accounts`][macie_list_member_accounts] action. Subsequent
+#' calls to the action fill `nextToken` in the request with the value of
+#' `nextToken` from the previous response to continue listing data.
+#' @param maxResults (Discontinued) Use this parameter to indicate the maximum number of
+#' items that you want in the response. The default value is 250.
 #'
 #' @return
 #' A list with the following syntax:
@@ -286,26 +290,29 @@ macie_list_member_accounts <- function(nextToken = NULL, maxResults = NULL) {
 }
 .macie$operations$list_member_accounts <- macie_list_member_accounts
 
-#' Lists all the S3 resources associated with Amazon Macie Classic
+#' (Discontinued) Lists all the S3 resources associated with Amazon Macie
+#' Classic
 #'
 #' @description
-#' Lists all the S3 resources associated with Amazon Macie Classic. If
-#' memberAccountId isn't specified, the action lists the S3 resources
-#' associated with Amazon Macie Classic for the current master account. If
-#' memberAccountId is specified, the action lists the S3 resources
-#' associated with Amazon Macie Classic for the specified member account.
+#' (Discontinued) Lists all the S3 resources associated with Amazon Macie
+#' Classic. If `memberAccountId` isn't specified, the action lists the S3
+#' resources associated with Macie Classic for the current Macie Classic
+#' administrator account. If `memberAccountId` is specified, the action
+#' lists the S3 resources associated with Macie Classic for the specified
+#' member account.
 #'
 #' @usage
 #' macie_list_s3_resources(memberAccountId, nextToken, maxResults)
 #'
-#' @param memberAccountId The Amazon Macie Classic member account ID whose associated S3 resources
-#' you want to list.
-#' @param nextToken Use this parameter when paginating results. Set its value to null on
-#' your first call to the ListS3Resources action. Subsequent calls to the
-#' action fill nextToken in the request with the value of nextToken from
-#' the previous response to continue listing data.
-#' @param maxResults Use this parameter to indicate the maximum number of items that you want
-#' in the response. The default value is 250.
+#' @param memberAccountId (Discontinued) The Amazon Macie Classic member account ID whose
+#' associated S3 resources you want to list.
+#' @param nextToken (Discontinued) Use this parameter when paginating results. Set its value
+#' to null on your first call to the
+#' [`list_s3_resources`][macie_list_s3_resources] action. Subsequent calls
+#' to the action fill `nextToken` in the request with the value of
+#' `nextToken` from the previous response to continue listing data.
+#' @param maxResults (Discontinued) Use this parameter to indicate the maximum number of
+#' items that you want in the response. The default value is 250.
 #'
 #' @return
 #' A list with the following syntax:
@@ -354,22 +361,26 @@ macie_list_s3_resources <- function(memberAccountId = NULL, nextToken = NULL, ma
 }
 .macie$operations$list_s3_resources <- macie_list_s3_resources
 
-#' Updates the classification types for the specified S3 resources
+#' (Discontinued) Updates the classification types for the specified S3
+#' resources
 #'
 #' @description
-#' Updates the classification types for the specified S3 resources. If
-#' memberAccountId isn't specified, the action updates the classification
-#' types of the S3 resources associated with Amazon Macie Classic for the
-#' current master account. If memberAccountId is specified, the action
-#' updates the classification types of the S3 resources associated with
-#' Amazon Macie Classic for the specified member account.
+#' (Discontinued) Updates the classification types for the specified S3
+#' resources. If `memberAccountId` isn't specified, the action updates the
+#' classification types of the S3 resources associated with Amazon Macie
+#' Classic for the current Macie Classic administrator account. If
+#' `memberAccountId` is specified, the action updates the classification
+#' types of the S3 resources associated with Macie Classic for the
+#' specified member account.
 #'
 #' @usage
 #' macie_update_s3_resources(memberAccountId, s3ResourcesUpdate)
 #'
-#' @param memberAccountId The AWS ID of the Amazon Macie Classic member account whose S3
-#' resources' classification types you want to update.
-#' @param s3ResourcesUpdate &#91;required&#93; The S3 resources whose classification types you want to update.
+#' @param memberAccountId (Discontinued) The Amazon Web Services account ID of the Amazon Macie
+#' Classic member account whose S3 resources' classification types you want
+#' to update.
+#' @param s3ResourcesUpdate &#91;required&#93; (Discontinued) The S3 resources whose classification types you want to
+#' update.
 #'
 #' @return
 #' A list with the following syntax:
