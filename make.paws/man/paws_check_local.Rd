@@ -2,14 +2,37 @@
 % Please edit documentation in R/sdk_helper.R
 \name{paws_check_local}
 \alias{paws_check_local}
+\alias{paws_check_local_sub_cat}
+\alias{paws_check_local_cat}
 \title{Check paws sdk}
 \usage{
-paws_check_local(in_dir = "../cran", path, keep_notes = FALSE)
+paws_check_local_sub_cat(
+  in_dir = "../cran",
+  path,
+  pkg_list = list(),
+  keep_notes = FALSE
+)
+
+paws_check_local_cat(
+  in_dir = "../cran",
+  path,
+  pkg_list = list(),
+  keep_notes = FALSE
+)
+
+paws_check_local(
+  in_dir = "../cran",
+  path,
+  pkg_list = list(),
+  keep_notes = FALSE
+)
 }
 \arguments{
 \item{in_dir}{Directory containing paws sdk packages.}
 
 \item{path}{Path to output paws sdk check results.}
+
+\item{pkg_list}{list of packages check locally, check all packages by default}
 
 \item{keep_notes}{Include note}
 }

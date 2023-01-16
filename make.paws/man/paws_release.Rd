@@ -6,11 +6,11 @@
 \alias{paws_release_cat}
 \title{Method to release paws sdk to cran}
 \usage{
-paws_release_sub_cat(in_dir = "../cran", pkg_list = "")
+paws_release_sub_cat(in_dir = "../cran", pkg_list = list())
 
-paws_release_cat(in_dir = "../cran", pkg_list = "")
+paws_release_cat(in_dir = "../cran", pkg_list = list())
 
-paws_release(in_dir = "../cran")
+paws_release(in_dir = "../cran", pkg_list = list())
 }
 \arguments{
 \item{in_dir}{Directory containing paws sdk packages.}
