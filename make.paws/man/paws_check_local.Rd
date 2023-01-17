@@ -2,11 +2,11 @@
 % Please edit documentation in R/sdk_helper.R
 \name{paws_check_local}
 \alias{paws_check_local}
-\alias{paws_check_local_sub_cat}
 \alias{paws_check_local_cat}
+\alias{paws_check_local_sub_cat}
 \title{Check paws sdk}
 \usage{
-paws_check_local_sub_cat(
+paws_check_local(
   in_dir = "../cran",
   path,
   pkg_list = list(),
@@ -20,7 +20,7 @@ paws_check_local_cat(
   keep_notes = FALSE
 )
 
-paws_check_local(
+paws_check_local_sub_cat(
   in_dir = "../cran",
   path,
   pkg_list = list(),
@@ -40,5 +40,5 @@ paws_check_local(
 A list of any warnings, errors and notes within paws sdk.
 }
 \description{
-Check paws sdk
+Check paws sdk locally using \code{devtools::check}
 }

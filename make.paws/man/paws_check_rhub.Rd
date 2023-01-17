@@ -2,24 +2,24 @@
 % Please edit documentation in R/sdk_helper.R
 \name{paws_check_rhub}
 \alias{paws_check_rhub}
-\alias{paws_check_rhub_sub_cat}
 \alias{paws_check_rhub_cat}
-\alias{paws_check_win_devel_sub_cat}
-\alias{paws_check_win_devel_cat}
+\alias{paws_check_rhub_sub_cat}
 \alias{paws_check_win_devel}
+\alias{paws_check_win_devel_cat}
+\alias{paws_check_win_devel_sub_cat}
 \title{Check paws using rhub}
 \usage{
-paws_check_rhub_sub_cat(in_dir = "../cran", pkg_list = list())
+paws_check_rhub(in_dir = "../cran")
 
 paws_check_rhub_cat(in_dir = "../cran", pkg_list = list())
 
-paws_check_rhub(in_dir = "../cran")
+paws_check_rhub_sub_cat(in_dir = "../cran", pkg_list = list())
 
-paws_check_win_devel_sub_cat(in_dir = "../cran", pkg_list = list())
+paws_check_win_devel(in_dir = "../cran")
 
 paws_check_win_devel_cat(in_dir = "../cran", pkg_list = list())
 
-paws_check_win_devel(in_dir = "../cran")
+paws_check_win_devel_sub_cat(in_dir = "../cran", pkg_list = list())
 }
 \arguments{
 \item{in_dir}{Directory containing paws sdk packages.}
