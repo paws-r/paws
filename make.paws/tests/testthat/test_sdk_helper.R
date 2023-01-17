@@ -24,7 +24,7 @@ test_that("check list paws packages restrict package", {
 
 test_that("check list paws category packages", {
   tmp_dir <- tempdir()
-  dir_list <- c("paws", "paws.cat1", "paws.cat2", "fake")
+  dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat2", "fake")
   sapply(file.path(tmp_dir, dir_list), dir.create)
 
   pkgs_list <- list_paws_pkgs(tmp_dir)
