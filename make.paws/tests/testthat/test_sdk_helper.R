@@ -4,8 +4,8 @@ test_that("check list paws packages", {
   sapply(file.path(tmp_dir, dir_list), dir.create)
 
   expect_equal(
-    basename(list_paws_pkgs(tmp_dir)),
-    c("paws", "paws.cat1", "paws.cat2")
+    list_paws_pkgs(tmp_dir),
+    file.path(tmp_dir, c("paws", "paws.cat1", "paws.cat2"))
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
@@ -16,8 +16,8 @@ test_that("check list paws packages restrict package", {
   sapply(file.path(tmp_dir, dir_list), dir.create)
 
   expect_equal(
-    basename(list_paws_pkgs(tmp_dir, "paws.cat1")),
-    "paws.cat1"
+    list_paws_pkgs(tmp_dir, "paws.cat1"),
+    file.path(tmp_dir, "paws.cat1")
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
@@ -30,8 +30,8 @@ test_that("check list paws category packages", {
   pkgs_list <- list_paws_pkgs(tmp_dir)
 
   expect_equal(
-    basename(list_cat_pkgs(pkgs_list)),
-    c("paws.cat1", "paws.cat2")
+    list_cat_pkgs(pkgs_list),
+    file.path(tmp_dir, c("paws.cat1", "paws.cat2"))
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
@@ -44,13 +44,13 @@ test_that("check list paws sub category packages", {
   pkgs_list <- list_paws_pkgs(tmp_dir)
 
   expect_equal(
-    basename(list_sub_cat_pkgs(pkgs_list)),
-    c("paws.cat1.p1", "paws.cat1.p2")
+    list_sub_cat_pkgs(pkgs_list),
+    file.path(tmp_dir, c("paws.cat1.p1", "paws.cat1.p2"))
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
 
-test_that("check local check_pkgs", {
+test_that("check local check_pkgs remove notes", {
   mock_devtools_check <- mock2(
     list(errors = "foo", warnings = "bar"),
     list(errors = "foo", warnings = "bar", notes = "cho"),
@@ -154,8 +154,8 @@ test_that("check paws_check_url", {
 
   check <- paws_check_url(tmp_dir)
   expect_equal(
-    sapply(mockery::mock_args(mock_url_check), function(x) basename(x[[1]])),
-    dir_list
+    sapply(mockery::mock_args(mock_url_check), function(x) x[[1]]),
+    file.path(tmp_dir, dir_list)
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
@@ -171,8 +171,8 @@ test_that("check paws_check_rhub_sub_cat", {
   check <- paws_check_rhub_sub_cat(tmp_dir)
 
   expect_equal(
-    sapply(mockery::mock_args(mock_check_rhub), function(x) basename(x[[1]])),
-    c("paws.cat1.p1", "paws.cat1.p2")
+    sapply(mockery::mock_args(mock_check_rhub), function(x) x[[1]]),
+    file.path(tmp_dir, c("paws.cat1.p1", "paws.cat1.p2"))
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
@@ -188,8 +188,8 @@ test_that("check paws_check_rhub_cat", {
   check <- paws_check_rhub_cat(tmp_dir)
 
   expect_equal(
-    sapply(mockery::mock_args(mock_check_rhub), function(x) basename(x[[1]])),
-    c("paws.cat1")
+    sapply(mockery::mock_args(mock_check_rhub), function(x) x[[1]]),
+    file.path(tmp_dir, c("paws.cat1"))
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
@@ -205,8 +205,8 @@ test_that("check paws_check_win_devel_sub_cat", {
   check <- paws_check_win_devel_sub_cat(tmp_dir)
 
   expect_equal(
-    sapply(mockery::mock_args(mock_check_rhub), function(x) basename(x[[1]])),
-    c("paws.cat1.p1", "paws.cat1.p2")
+    sapply(mockery::mock_args(mock_check_rhub), function(x) x[[1]]),
+    file.path(tmp_dir, c("paws.cat1.p1", "paws.cat1.p2"))
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
@@ -222,8 +222,8 @@ test_that("check paws_check_win_devel_cat", {
   check <- paws_check_win_devel_cat(tmp_dir)
 
   expect_equal(
-    sapply(mockery::mock_args(mock_check_rhub), function(x) basename(x[[1]])),
-    c("paws.cat1")
+    sapply(mockery::mock_args(mock_check_rhub), function(x) x[[1]]),
+    file.path(tmp_dir, c("paws.cat1"))
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
@@ -239,8 +239,8 @@ test_that("check paws_release_sub_cat", {
   check <- paws_release_sub_cat(tmp_dir)
 
   expect_equal(
-    sapply(mockery::mock_args(mock_release), function(x) basename(x[[1]])),
-    c("paws.cat1.p1", "paws.cat1.p2")
+    sapply(mockery::mock_args(mock_release), function(x) x[[1]]),
+    file.path(tmp_dir, c("paws.cat1.p1", "paws.cat1.p2"))
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
@@ -256,8 +256,8 @@ test_that("check paws_release_cat", {
   check <- paws_release_cat(tmp_dir)
 
   expect_equal(
-    sapply(mockery::mock_args(mock_release), function(x) basename(x[[1]])),
-    c("paws.cat1")
+    sapply(mockery::mock_args(mock_release), function(x) x[[1]]),
+    file.path(tmp_dir, c("paws.cat1"))
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
 })
@@ -279,11 +279,11 @@ test_that("check paws_install", {
     list(file.path(tmp_dir, "..", "paws.common"), force = TRUE)
   )
   expect_equal(
-    lapply(mockery::mock_args(mock_install_local_pkg_list), function(x) basename(x[[1]])),
+    lapply(mockery::mock_args(mock_install_local_pkg_list), function(x) x[[1]]),
     list(
-      c("paws.cat1.p1", "paws.cat1.p2"),
-      c("paws.cat1"),
-      c("paws")
+      file.path(tmp_dir, c("paws.cat1.p1", "paws.cat1.p2")),
+      file.path(tmp_dir, c("paws.cat1")),
+      file.path(tmp_dir, c("paws"))
     )
   )
   fs::dir_delete(file.path(tmp_dir, dir_list))
