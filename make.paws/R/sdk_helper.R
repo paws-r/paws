@@ -88,33 +88,38 @@ paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()){
 #' @title Check paws using rhub
 #' @param in_dir Directory containing paws sdk packages.
 #' @param pkg_list list of packages check through rhub, check all packages by default
+#' @param email address to notify, defaults to the maintainer address in the package.
 #' @name paws_check_rhub
 #' @export
-paws_check_rhub <- function(in_dir = "../cran"){
+paws_check_rhub <- function(in_dir = "../cran", email = NULL){
   paws_check_rhub_sub_cat(in_dir)
   paws_check_rhub_cat(in_dir)
   pkg <- file.path(in_dir, "paws")
-  devtools::check_rhub(pkg)
+  devtools::check_rhub(pkg, email = email)
 }
 
 #' @name paws_check_rhub
 #' @export
-paws_check_rhub_cat <- function(in_dir = "../cran", pkg_list = list()){
+paws_check_rhub_cat <- function(in_dir = "../cran",
+                                pkg_list = list(),
+                                email = NULL){
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
   for (pkg in pkgs){
-    devtools::check_rhub(pkg)
+    devtools::check_rhub(pkg, email = email)
   }
 }
 
 #' @rdname paws_check_rhub
 #' @export
-paws_check_rhub_sub_cat <- function(in_dir = "../cran", pkg_list = list()){
+paws_check_rhub_sub_cat <- function(in_dir = "../cran",
+                                    pkg_list = list(),
+                                    email = NULL){
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
     for (pkg in pkgs){
-      devtools::check_rhub(pkg)
+      devtools::check_rhub(pkg, email = email)
     }
   } else {
     warning("No sub-categories released.")
@@ -123,31 +128,35 @@ paws_check_rhub_sub_cat <- function(in_dir = "../cran", pkg_list = list()){
 
 #' @rdname paws_check_rhub
 #' @export
-paws_check_win_devel <- function(in_dir = "../cran"){
+paws_check_win_devel <- function(in_dir = "../cran", email = NULL){
   paws_check_win_devel_sub_cat(in_dir)
   paws_check_win_devel_cat(in_dir)
   pkg <- file.path(in_dir, "paws")
-  devtools::check_win_devel(pkg)
+  devtools::check_win_devel(pkg, email = email)
 }
 
 #' @rdname paws_check_rhub
 #' @export
-paws_check_win_devel_cat <- function(in_dir = "../cran", pkg_list = list()){
+paws_check_win_devel_cat <- function(in_dir = "../cran",
+                                     pkg_list = list(),
+                                     email = NULL){
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
   for (pkg in pkgs){
-    devtools::check_win_devel(pkg)
+    devtools::check_win_devel(pkg, email = email)
   }
 }
 
 #' @rdname paws_check_rhub
 #' @export
-paws_check_win_devel_sub_cat <- function(in_dir = "../cran", pkg_list = list()){
+paws_check_win_devel_sub_cat <- function(in_dir = "../cran",
+                                         pkg_list = list(),
+                                         email = NULL){
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
     for (pkg in pkgs){
-      devtools::check_win_devel(pkg)
+      devtools::check_win_devel(pkg, email = email)
     }
   } else {
     warning("No sub-categories released.")
