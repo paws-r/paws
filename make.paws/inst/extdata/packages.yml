@@ -529,7 +529,6 @@
     including data collection, management, and analysis for IoT devices.
     <https://aws.amazon.com/iot/>.
 
-
 - name: game.development
   services:
     - gamelift
@@ -538,4 +537,3 @@
   description: >-
     Interface to 'Amazon Web Services' game development services, including
     'GameLift' game server hosting <https://aws.amazon.com/gametech/>.
-...

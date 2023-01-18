@@ -2,15 +2,15 @@
 % Please edit documentation in R/sdk_helper.R
 \name{paws_release}
 \alias{paws_release}
-\alias{paws_release_sub_category}
-\alias{paws_release_category}
+\alias{paws_release_cat}
+\alias{paws_release_sub_cat}
 \title{Method to release paws sdk to cran}
 \usage{
-paws_release_sub_category(in_dir = "../cran", pkg_list = "")
+paws_release(in_dir = "../cran", pkg_list = list())
 
-paws_release_category(in_dir = "../cran", pkg_list = "")
+paws_release_cat(in_dir = "../cran", pkg_list = list())
 
-paws_release(in_dir = "../cran")
+paws_release_sub_cat(in_dir = "../cran", pkg_list = list())
 }
 \arguments{
 \item{in_dir}{Directory containing paws sdk packages.}

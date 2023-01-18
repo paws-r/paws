@@ -33,13 +33,12 @@ make_collection <- function(sdk_dir, out_dir, categories, service_names) {
 
 # Write the R source files for the collection package, which import and
 # re-export the API client objects for each AWS API.
-write_source_collection <- function(
-    sdk_dir,
-    out_dir,
-    categories,
-    service_names,
-    expand_doc_links = FALSE,
-    use_parents = FALSE) {
+write_source_collection <- function(sdk_dir,
+                                    out_dir,
+                                    categories,
+                                    service_names,
+                                    expand_doc_links = FALSE,
+                                    use_parents = FALSE) {
   clients <- list()
   for (category in categories) {
     for (service in category$service) {
@@ -52,10 +51,11 @@ write_source_collection <- function(
       if (expand_doc_links) {
         docs <- add_package_name_to_links(docs, get_package_name(category$name))
       }
-      if (use_parents && !is.null(category$parent))
+      if (use_parents && !is.null(category$parent)) {
         package <- get_package_name(category$parent)
-      else
+      } else {
         package <- get_package_name(category$name)
+      }
       source <- make_collection_client_source(package, service_name)
       client <- paste(docs, source, sep = "\n")
       clients[service_name] <- client
@@ -83,7 +83,7 @@ get_client_docs <- function(path, service) {
   lines <- readLines(file)
   client_line <- grep(sprintf("^%s", service), lines)
   blank_line <- which.max(lines[1:client_line] == "")
-  docs <- lines[(blank_line+1):(client_line-1)]
+  docs <- lines[(blank_line + 1):(client_line - 1)]
   docs <- delete_internal_links(docs) # Avoid broken link CRAN check warnings.
   paste(docs, collapse = "\n")
 }
@@ -105,7 +105,9 @@ make_collection_client_source <- function(package, service) {
 }
 
 service_exists <- function(path, service) {
-  if (length(service) == 0) return(FALSE)
+  if (length(service) == 0) {
+    return(FALSE)
+  }
   file <- file.path(path, "R", sprintf("%s_service.R", service))
   return(file.exists(file))
 }

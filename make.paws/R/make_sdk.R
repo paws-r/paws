@@ -1,6 +1,6 @@
 #' @include cran_category.R cran_collection.R cran_sub_category.R
 
-#' Make the AWS SDK R package
+#' @title Make the AWS SDK R package
 #'
 #' @param in_dir Directory containing AWS API input files.
 #' @param out_sdk_dir Directory to write the R packages to.
@@ -9,7 +9,7 @@
 #' @param only_cran Whether to include only the R packages already on CRAN.
 #' @param cache_dir Directory to store cached artifacts. Providing a non-`NULL`
 #'   value will greatly speed up subsequent runs that use the same value.
-#'
+#' @name make_sdk
 #' @export
 make_sdk <- function(
     in_dir = "./vendor/aws-sdk-js",
