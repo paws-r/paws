@@ -91,9 +91,11 @@ paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()){
 #' @param email address to notify, defaults to the maintainer address in the package.
 #' @name paws_check_rhub
 #' @export
-paws_check_rhub <- function(in_dir = "../cran", email = NULL){
-  paws_check_rhub_sub_cat(in_dir)
-  paws_check_rhub_cat(in_dir)
+paws_check_rhub <- function(in_dir = "../cran",
+                            pkg_list = list(),
+                            email = NULL){
+  paws_check_rhub_sub_cat(in_dir, pkg_list, email)
+  paws_check_rhub_cat(in_dir, pkg_list, email)
   pkg <- file.path(in_dir, "paws")
   devtools::check_rhub(pkg, email = email)
 }
@@ -128,9 +130,11 @@ paws_check_rhub_sub_cat <- function(in_dir = "../cran",
 
 #' @rdname paws_check_rhub
 #' @export
-paws_check_win_devel <- function(in_dir = "../cran", email = NULL){
-  paws_check_win_devel_sub_cat(in_dir)
-  paws_check_win_devel_cat(in_dir)
+paws_check_win_devel <- function(in_dir = "../cran",
+                                 pkg_list = list(),
+                                 email = NULL){
+  paws_check_win_devel_sub_cat(in_dir, pkg_list, email)
+  paws_check_win_devel_cat(in_dir, pkg_list, email)
   pkg <- file.path(in_dir, "paws")
   devtools::check_win_devel(pkg, email = email)
 }
