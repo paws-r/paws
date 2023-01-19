@@ -263,8 +263,8 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @param LicenseCount Number of licenses managed by the license configuration.
 #' @param LicenseCountHardLimit Indicates whether hard or soft license enforcement is used. Exceeding a
 #' hard limit blocks the launch of new instances.
-#' @param LicenseRules License rules. The syntax is \code{name=value} (for example,
-#' \code{allowedTenancy=EC2-DedicatedHost}). The available rules vary by
+#' @param LicenseRules License rules. The syntax is #name=value (for example,
+#' #allowedTenancy=EC2-DedicatedHost). The available rules vary by
 #' dimension, as follows.
 #'
 #' -   `Cores` dimension: `allowedTenancy` | `licenseAffinityToHost` |

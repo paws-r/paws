@@ -28,8 +28,8 @@ licensemanager_create_license_configuration(
 \item{LicenseCountHardLimit}{Indicates whether hard or soft license enforcement is used. Exceeding a
 hard limit blocks the launch of new instances.}
 
-\item{LicenseRules}{License rules. The syntax is \code{name=value} (for example,
-\code{allowedTenancy=EC2-DedicatedHost}). The available rules vary by
+\item{LicenseRules}{License rules. The syntax is #name=value (for example,
+#allowedTenancy=EC2-DedicatedHost). The available rules vary by
 dimension, as follows.
 \itemize{
 \item \code{Cores} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} |
