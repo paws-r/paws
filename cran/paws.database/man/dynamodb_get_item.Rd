@@ -59,7 +59,7 @@ name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{\#} character in an expression to dereference an attribute
+Use the \strong{#} character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
