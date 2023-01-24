@@ -7,7 +7,6 @@
 
 There were no ERRORs, or WARNINGs.
 
-
 ## Downstream dependencies
 
-All downstream dependencies ('paws') pass R CMD check.
+All downstream dependencies ('paws.management') pass R CMD check.
