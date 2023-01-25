@@ -9,11 +9,12 @@ There were no ERRORs, or WARNINGs.
 
 There was one NOTE.
 
-New maintainer:
-  Dyfan Jones <dyfan.r.jones@gmail.com>
-Old maintainer(s):
-  David Kretch <david.kretch@gmail.com>
+* checking CRAN incoming feasibility ... [160s] NOTE
+Maintainer: 'Dyfan Jones <dyfan.r.jones@gmail.com>'
+
+New submission
+
 
 ## Downstream dependencies
 
-All downstream dependencies ('paws') pass R CMD check.
+All downstream dependencies ('paws.management') pass R CMD check.

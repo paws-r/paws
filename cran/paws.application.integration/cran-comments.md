@@ -5,13 +5,7 @@
 
 ## R CMD check results
 
-There were no ERRORs, or WARNINGs.
-
-NOTE:
-New maintainer:
-Dyfan Jones <dyfan.r.jones@gmail.com>
-Old maintainer(s):
-David Kretch <david.kretch@gmail.com>
+There were no NOTEs, ERRORs, or WARNINGs.
 
 Update to package maintainer
 
