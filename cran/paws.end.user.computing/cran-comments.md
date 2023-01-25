@@ -10,10 +10,10 @@ There were no ERRORs or WARNINGs.
 
 There was one NOTE:
 
-> checking CRAN incoming feasibility ... NOTE
-  Maintainer: ‘David Kretch <david.kretch@gmail.com>’
-  
-  New submission
+New maintainer:
+  Dyfan Jones <dyfan.r.jones@gmail.com>
+Old maintainer(s):
+  David Kretch <david.kretch@gmail.com>
 
 ## Downstream dependencies
 

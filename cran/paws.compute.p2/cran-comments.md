@@ -7,6 +7,13 @@
 
 There were no ERRORs, or WARNINGs.
 
+There was one Note:
+
+* checking CRAN incoming feasibility ... [206s] NOTE
+Maintainer: 'Dyfan Jones <dyfan.r.jones@gmail.com>'
+
+New submission
+
 ## Downstream dependencies
 
 All downstream dependencies ('paws.compute') pass R CMD check.

@@ -7,13 +7,12 @@
 
 There were no ERRORs, or WARNINGs.
 
-There was one NOTE. We are working on a fix for the next release.
+There was one NOTE.
 
-checking installed package size ... NOTE
-  installed size is  5.1Mb
-  sub-directories of 1Mb or more:
-    R      2.0Mb
-    help   2.9Mb
+New maintainer:
+  Dyfan Jones <dyfan.r.jones@gmail.com>
+Old maintainer(s):
+  David Kretch <david.kretch@gmail.com>
 
 ## Downstream dependencies
 

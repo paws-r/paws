@@ -5,7 +5,14 @@
 
 ## R CMD check results
 
-There were no ERRORs, WARNINGs, or NOTEs.
+There were no ERRORs, WARNINGs.
+
+There was one Note:
+
+New maintainer:
+  Dyfan Jones <dyfan.r.jones@gmail.com>
+Old maintainer(s):
+  David Kretch <david.kretch@gmail.com>
 
 ## Downstream dependencies
 

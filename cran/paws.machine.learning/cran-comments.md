@@ -7,6 +7,12 @@
 
 There were no NOTEs, ERRORs, or WARNINGs.
 
+There was one Note:
+New maintainer:
+  Dyfan Jones <dyfan.r.jones@gmail.com>
+Old maintainer(s):
+  David Kretch <david.kretch@gmail.com>
+
 ## Downstream dependencies
 
 All downstream dependencies ('paws') pass R CMD check.
