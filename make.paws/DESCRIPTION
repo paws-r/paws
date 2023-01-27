@@ -1,7 +1,7 @@
 Package: make.paws
 Type: Package
 Title: Generate Paws AWS SDKs for R
-Version: 0.3.0
+Version: 0.4.0
 Authors@R: c(
     person("David", "Kretch", email = "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),

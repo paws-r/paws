@@ -234,7 +234,7 @@ test_that("check paws_release_sub_cat", {
   sapply(file.path(tmp_dir, dir_list), dir.create)
 
   mock_release <- mock2()
-  mockery::stub(paws_release_sub_cat, 'devtools::release', mock_release)
+  mockery::stub(paws_release_sub_cat, 'devtools::submit_cran', mock_release)
 
   check <- paws_release_sub_cat(tmp_dir)
 
@@ -251,7 +251,7 @@ test_that("check paws_release_cat", {
   sapply(file.path(tmp_dir, dir_list), dir.create)
 
   mock_release <- mock2()
-  mockery::stub(paws_release_cat, 'devtools::release', mock_release)
+  mockery::stub(paws_release_cat, 'devtools::submit_cran', mock_release)
 
   check <- paws_release_cat(tmp_dir)
 
@@ -301,6 +301,31 @@ test_that("check paws_uninstall", {
     mockery::mock_args(mock_remove_packages), list(
       list(c("paws.cat1", "paws.cat2")),
       list("paws")
+    )
+  )
+})
+
+test_that("check paws_check_pkg_size", {
+  mock_list_paws_pkgs <- mock2(c("paws", "paws.cat1", "paws.cat2"))
+  mock_devtools_build <- mock2()
+  mock_dir_info <- mock2(
+    data.table(
+      "size" = fs::as_fs_bytes(c("1MB", "4MB", "6MB"))
+    )
+  )
+  mockery::stub(paws_check_pkg_size, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mockery::stub(paws_check_pkg_size, 'devtools::build', mock_devtools_build)
+  mockery::stub(paws_check_pkg_size, 'fs::dir_info', mock_dir_info)
+
+  dir_info <- paws_check_pkg_size()
+
+  expect_equal(
+    dir_info,
+    data.table(
+      package = c("paws.cat2", "paws.cat1", "paws"),
+      size = fs::as_fs_bytes(c("6MB", "4MB", "1MB")),
+      status = c("ERROR", "WARNING", "OK"),
+      percentage = c("120 %", "80 %", "20 %")
     )
   )
 })

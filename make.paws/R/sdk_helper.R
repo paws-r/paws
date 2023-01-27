@@ -167,6 +167,45 @@ paws_check_win_devel_sub_cat <- function(in_dir = "../cran",
   }
 }
 
+#' @title Check paws sdk package size
+#' @description Check paws sdk package size after being tarball.
+#' @param in_dir Directory containing paws sdk packages.
+#' @param threshold [cran package size threshold](https://cran.r-project.org/web/packages/policies.html#:~:text=As%20a%20general%20rule%2C%20neither,to%20a%20maximum%20of%205MB.)
+#' (default 5MB)
+#' @param pkg_list list of packages check locally, check all packages by default
+#' @return A data.table with package status size and percentage.
+#' @name paws_check_pkg_size
+#' @export
+paws_check_pkg_size <- function(in_dir = "../cran",
+                                threshold = fs::fs_bytes("5MB"),
+                                pkg_list = list()) {
+  pkgs <- list_paws_pkgs(in_dir, pkg_list)
+  tmp <- tempfile()
+  fs::dir_create(tmp)
+  on.exit(fs::dir_delete(tmp))
+  lapply(
+    pkgs,
+    devtools::build,
+    path = tmp,
+    quiet = TRUE
+  )
+  dir_info <- fs::dir_info(tmp)
+  dir_info$package <- basename(pkgs)
+  dir_info <- dir_info[, c("package", "size")]
+  setDT(dir_info)
+
+  dir_info[, c("status", "percentage") := .(
+      fcase(
+        get("size") > threshold, "ERROR",
+        get("size") > threshold *.75, "WARNING",
+        get("size") <= threshold *.75, "OK"
+      ),
+      paste(round(as.numeric(get("size")/ threshold) * 100, 2), "%")
+    )
+  ]
+  return(dir_info[order(-get("size"))])
+}
+
 #' @title Method to uninstall paws sdk
 #' @export
 paws_uninstall <- function(){
@@ -202,7 +241,7 @@ paws_release <- function(in_dir = "../cran", pkg_list = list()){
   paws_release_sub_cat(in_dir, pkg_list)
   paws_release_cat(in_dir, pkg_list)
   pkg <- file.path(in_dir, "paws")
-  devtools::release(pkg)
+  devtools::submit_cran(pkg)
 }
 
 #' @rdname paws_release
@@ -211,7 +250,7 @@ paws_release_cat <- function(in_dir = "../cran", pkg_list = list()){
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
   for (pkg in pkgs){
-    devtools::release(pkg)
+    devtools::submit_cran(pkg)
   }
 }
 
@@ -222,7 +261,7 @@ paws_release_sub_cat <- function(in_dir = "../cran", pkg_list = list()){
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
     for (pkg in pkgs){
-      devtools::release(pkg)
+      devtools::submit_cran(pkg)
     }
   } else {
     warning("No sub-categories released.")
