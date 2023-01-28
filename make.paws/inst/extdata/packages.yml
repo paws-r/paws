@@ -1,24 +1,11 @@
 ---
-- name: compute.p1
-  services:
-    - ec2
-    - lightsail
-  title: "'Amazon Web Services' Compute Services"
-  description: >-
-    This is the backend package for 'paws.compute'. Please use 'paws.compute' to
-    access 'Amazon Web Services' compute services.
-  category_description: >-
-    Interface to 'Amazon Web Services' compute services, including
-    'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
-    containers, batch processing, and more <https://aws.amazon.com/>.
-  parent: compute
-
-- name: compute.p2
+- name: compute
   services:
     - apprunner
     - batch
     - braket
     - compute-optimizer
+    - ec2
     - ec2-instance-connect
     - ecr
     - ecr-public
@@ -29,14 +16,14 @@
     - emr-serverless
     - imagebuilder
     - lambda
+    - lightsail
     - proton
     - serverlessrepo
   title: "'Amazon Web Services' Compute Services"
   description: >-
-    This is the backend package for 'paws.compute'. Please use 'paws.compute' to
-    access 'Amazon Web Services' compute services.
-  category_description: ""
-  parent: compute
+    Interface to 'Amazon Web Services' compute services, including
+    'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
+    containers, batch processing, and more <https://aws.amazon.com/>.
 
 - name: storage
   services:
@@ -189,7 +176,7 @@
     'groundstation' API for control satellite communications, downlink and
     process satellite data applications <https://aws.amazon.com/>.
 
-- name: management.p1
+- name: management
   services:
     - amp
     - application-autoscaling
@@ -209,19 +196,6 @@
     - license-manager
     - license-manager-user-subscriptions
     - logs
-  title: "'Amazon Web Services' Management & Governance Services"
-  description: >-
-    This is the backend package for 'paws.management'. Please use 
-    'paws.management' to access 'Amazon Web Services' management services.
-  category_description: >-
-    Interface to 'Amazon Web Services' management and governance services,
-    including 'CloudWatch' application and infrastructure monitoring, 'Auto
-    Scaling' for automatically scaling resources, and more
-    <https://aws.amazon.com/>.
-  parent: management
-
-- name: management.p2
-  services:
     - monitoring
     - opsworks
     - opsworkscm
@@ -241,10 +215,10 @@
     - synthetics
   title: "'Amazon Web Services' Management & Governance Services"
   description: >-
-    This is the backend package for 'paws.management'. Please use 
-    'paws.management' to access 'Amazon Web Services' management services.
-  category_description: ""
-  parent: management
+    Interface to 'Amazon Web Services' management and governance services,
+    including 'CloudWatch' application and infrastructure monitoring, 'Auto
+    Scaling' for automatically scaling resources, and more
+    <https://aws.amazon.com/>.
 
 - name: media.services
   services:
@@ -332,62 +306,47 @@
     MapReduce' 'Hadoop' and 'Spark' big data service, 'Elasticsearch'
     search engine, and more <https://aws.amazon.com/>.
 
-- name: security.identity.p1
-  services:
-    - clouddirectory
-    - cognito-idp
-    - ds
-    - guardduty
-    - iam
-    - kms
-    - securityhub
-    - waf
-    - waf-regional
-  title: "'Amazon Web Services' Security, Identity, & Compliance Services"
-  description: >-
-    This is the backend package for 'paws.security.identity'. Please use
-    'paws.security.identity to access 'Amazon Web Services' security, identity,
-    and compliance services.
-  category_description: >-
-    Interface to 'Amazon Web Services' security, identity, and compliance
-    services, including the 'Identity & Access Management' ('IAM') service for
-    managing access to services and resources, and more
-    <https://aws.amazon.com/>.
-  parent: security.identity
-
-- name: security.identity.p2
+- name: security.identity
   services:
     - accessanalyzer
     - account
     - acm
     - acm-pca
+    - clouddirectory
     - cloudhsm
     - cloudhsmv2
     - cognito-identity
+    - cognito-idp
     - cognito-sync
     - detective
+    - ds
     - fms
-    - rolesanywhere
+    - guardduty
+    - iam
     - identitystore
     - inspector
     - inspector2
+    - kms
     - macie
     - macie2
     - ram
+    - rolesanywhere
     - secretsmanager
+    - securityhub
     - shield
     - sso
     - sso-admin
     - sso-oidc
     - sts
+    - waf
+    - waf-regional
     - wafv2
   title: "'Amazon Web Services' Security, Identity, & Compliance Services"
   description: >-
-    This is the backend package for 'paws.security.identity'. Please use
-    'paws.security.identity to access 'Amazon Web Services' security, identity,
-    and compliance services.
-  category_description: ""
-  parent: security.identity
+    Interface to 'Amazon Web Services' security, identity, and compliance
+    services, including the 'Identity & Access Management' ('IAM') service for
+    managing access to services and resources, and more
+    <https://aws.amazon.com/>.
 
 - name: mobile
   services:
